@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6416F6291EA65DAA00C1561F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416F6281EA65DAA00C1561F /* Person.swift */; };
+		6416F62B1EA665AA00C1561F /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416F62A1EA665AA00C1561F /* AAChartView.swift */; };
+		6416F62D1EA6693600C1561F /* Cauculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416F62C1EA6693600C1561F /* Cauculator.swift */; };
+		6416F62F1EA669E100C1561F /* NSObject+cauculater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416F62E1EA669E100C1561F /* NSObject+cauculater.swift */; };
 		718EC8811EA624CD00F36D85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8801EA624CD00F36D85 /* AppDelegate.swift */; };
 		718EC8831EA624CD00F36D85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8821EA624CD00F36D85 /* ViewController.swift */; };
 		718EC8861EA624CD00F36D85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718EC8841EA624CD00F36D85 /* Main.storyboard */; };
@@ -34,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6416F6281EA65DAA00C1561F /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		6416F62A1EA665AA00C1561F /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
+		6416F62C1EA6693600C1561F /* Cauculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cauculator.swift; sourceTree = "<group>"; };
+		6416F62E1EA669E100C1561F /* NSObject+cauculater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+cauculater.swift"; sourceTree = "<group>"; };
 		718EC87D1EA624CD00F36D85 /* AAChartKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AAChartKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		718EC8801EA624CD00F36D85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		718EC8821EA624CD00F36D85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +107,10 @@
 			children = (
 				718EC8801EA624CD00F36D85 /* AppDelegate.swift */,
 				718EC8821EA624CD00F36D85 /* ViewController.swift */,
+				6416F62A1EA665AA00C1561F /* AAChartView.swift */,
+				6416F6281EA65DAA00C1561F /* Person.swift */,
+				6416F62C1EA6693600C1561F /* Cauculator.swift */,
+				6416F62E1EA669E100C1561F /* NSObject+cauculater.swift */,
 				718EC8841EA624CD00F36D85 /* Main.storyboard */,
 				718EC8871EA624CD00F36D85 /* Assets.xcassets */,
 				718EC8891EA624CD00F36D85 /* LaunchScreen.storyboard */,
@@ -259,8 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6416F62D1EA6693600C1561F /* Cauculator.swift in Sources */,
+				6416F6291EA65DAA00C1561F /* Person.swift in Sources */,
+				6416F62F1EA669E100C1561F /* NSObject+cauculater.swift in Sources */,
 				718EC8831EA624CD00F36D85 /* ViewController.swift in Sources */,
 				718EC8811EA624CD00F36D85 /* AppDelegate.swift in Sources */,
+				6416F62B1EA665AA00C1561F /* AAChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +521,7 @@
 				718EC8A71EA624CD00F36D85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		718EC8A81EA624CD00F36D85 /* Build configuration list for PBXNativeTarget "AAChartKit-SwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +530,7 @@
 				718EC8AA1EA624CD00F36D85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		718EC8AB1EA624CD00F36D85 /* Build configuration list for PBXNativeTarget "AAChartKit-SwiftUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +539,7 @@
 				718EC8AD1EA624CD00F36D85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
