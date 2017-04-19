@@ -6,8 +6,9 @@
 //  Copyright © 2017年 Danny boy. All rights reserved.
 //
 
-import Foundation
-class AAChartView: NSObject {
+import UIKit
+import WebKit
+class AAChartView: UIWebView {
     var add:NSString?
     var sub:NSString?
     var mul:NSString?

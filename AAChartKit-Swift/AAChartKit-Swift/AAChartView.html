@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0">
+            
+            <script src="AAJQueryLibrary.js">
+                </script>
+            <script src="AAHighChartsLibrary.js">
+                </script>
+            <script src="AAHighchartsMore.js">
+                </script>
+            <script src="AAHighCharts-3d.js">
+                </script>
+            <script src="AAFunnel.js">
+                </script>
+            <style>
+                *{
+                    -webkit-user-select: none;
+                    user-select: none;
+                }
+            </style>
+            
+            </head>
+    <body>
+        <div id="container" style="width:min-450px; height: 200px; margin: 0 auto">
+        </div>
+        <script >
+            alert("我竟然没想到可以成功加载成功了");
+            
+            
+            function loadTheHighChartView(sender,receivedWidth,receivedHeight){
+                
+                alert(sender);
+                var o=document.getElementById('container');//获得元素
+                if(receivedWidth!=0){
+                    o.style.width=receivedWidth;//设置宽度
+                }
+                o.style.height=receivedHeight;//设置高度
+                
+                var chartModel = JSON.parse(sender);
+                var themeColor = chartModel.colorsTheme;
+                
+                
+                var chart = {
+                    type:             chartModel.type,
+                    inverted:         chartModel.inverted,
+                    backgroundColor:  chartModel.backgroundColor,
+                    animation:        true,
+                    zoomType:         chartModel.zoomType,
+                    panning:          true,
+                    polar:            chartModel.polar,
+                    options3d:        {
+                        enable:chartModel.options3dEnable,
+                        alpha:-15
+                    }
+                    
+                    
+                    
+                };
+                
+                
+                var title = {
+                    text: chartModel.title,
+                    style:{
+                        color:"#000000",
+                        fontSize:"12px"
+                    }
+                };
+                var subtitle = {
+                    text: chartModel.subtitle,
+                    style:{
+                        color:"#000000",
+                        fontSize:"9px"
+                    }
+                };
+                var xAxis = {
+                    label:{
+                        enable:chartModel.xAxisLabelsEnabled
+                     },
+                    reversed:chartModel.xAxisGridLineWidth,
+                    gridLineWidth:chartModel.xAxisGridLineWidth,
+                    categories:chartModel.categories
+                };
+                var yAxis = {
+                    title: {
+                        text: 'Temperature (\xB0C)'
+                    },
+                    plotLines: [{
+                                value: 0,
+                                width: 1,
+                                color: '#808080'
+                                }]
+                };
+                
+                var tooltip = {
+                    valueSuffix: '\xB0C'
+                }
+                
+                var legend = {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle',
+                    borderWidth: 0
+                };
+                
+                var series =  [
+                               {
+                               name: 'Tokyo',
+                               data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2,
+                                      26.5, 23.3, 18.3, 13.9, 9.6]
+                               },
+                               {
+                               name: 'New York',
+                               data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8,
+                                      24.1, 20.1, 14.1, 8.6, 2.5]
+                               },
+                               {
+                               name: 'London',
+                               data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0,
+                                      16.6, 14.2, 10.3, 6.6, 4.8]
+                               }
+                               ];
+                               
+                               var json = {};
+                               
+                               json.title = title;
+                               json.subtitle = subtitle;
+                               json.xAxis = xAxis;
+                               json.yAxis = yAxis;
+                               json.tooltip = tooltip;
+                               json.legend = legend;
+                               json.series = series;
+                               
+                               $('#container').highcharts(json);
+            }
+        </script>
+    </body>
+</html>
