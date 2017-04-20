@@ -62,16 +62,16 @@ class ViewController: UIViewController,UIWebViewDelegate {
     }
 
     open func webViewDidFinishLoad(_ webView: UIWebView) {
-                var chartModel = AAChartModel.init();
-                chartModel.title = "你是人间四月天";
-                chartModel.subtitle="你是爱是暖";
-//                print(chartModel);
+        var chartModel = AAChartModel.init();
+        chartModel.chartType = "column";
+        chartModel.title = "你是人间四月天";
+        chartModel.subtitle="你是爱是暖";
+        chartModel.inverted = true;
+        chartModel.yAxisTitle = "千万公顷";
+        chartModel.legendEnabled = true;
         let modelString = chartModel.toJSON();
-//        print(modelString ?? <#default value#>);
         
         let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,self.view.frame.size.width,self.view.frame.size.height);
-        
-        //            NSString *javaScriptStr = [NSString stringWithFormat:;@"loadTheHighChartView('%@','%@','%@');",self.json,[NSNumber numberWithFloat:chartViewContentWidth],[NSNumber numberWithFloat:charViewContentHeight]];
         
         globalWebview?.stringByEvaluatingJavaScript(from: jsString as String);
     }

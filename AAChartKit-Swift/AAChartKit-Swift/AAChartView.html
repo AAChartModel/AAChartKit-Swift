@@ -25,8 +25,7 @@
         <div id="container" style="width:min-450px; height: 200px; margin: 0 auto">
         </div>
         <script >
-            alert("我竟然没想到可以成功加载成功了");
-            
+             
             
             function loadTheHighChartView(sender,receivedWidth,receivedHeight){
                 
@@ -37,24 +36,20 @@
                 }
                 o.style.height=receivedHeight;//设置高度
                 
-                var chartModel = JSON.parse(sender);
-                var themeColor = chartModel.colorsTheme;
-                
+                var chartModel = options.parse(sender);
                 
                 var chart = {
-                    type:             chartModel.type,
-                    inverted:         chartModel.inverted,
-                    backgroundColor:  chartModel.backgroundColor,
-                    animation:        true,
-                    zoomType:         chartModel.zoomType,
-                    panning:          true,
-                    polar:            chartModel.polar,
-                    options3d:        {
+                    type:chartModel.chartType,
+                    inverted:chartModel.inverted,
+                    backgroundColor:chartModel.backgroundColor,
+                    animation:true,
+                    zoomType:chartModel.zoomType,
+                    panning:true,
+                    polar:chartModel.polar,
+                    options3d:{
                         enable:chartModel.options3dEnable,
                         alpha:-15
                     }
-                    
-                    
                     
                 };
                 
@@ -82,9 +77,15 @@
                     categories:chartModel.categories
                 };
                 var yAxis = {
-                    title: {
-                        text: 'Temperature (\xB0C)'
+                    label:{
+                        enable:chartModel.yAxisLabelsEnabled
                     },
+                    reversed:chartModel.yAxisReversed,
+                    gridLineWidth:chartModel.yAxisGridLineWidth,
+                    title: {
+                        text: chartModel.yAxisTitle
+                    },
+                    lineWidth:0,
                     plotLines: [{
                                 value: 0,
                                 width: 1,
@@ -93,16 +94,93 @@
                 };
                 
                 var tooltip = {
-                    valueSuffix: '\xB0C'
+                    valueSuffix: '\xB0C',
+                    shared:true,
+                    crosshairs:true,
                 }
                 
                 var legend = {
+                    enable:chartModel.legendEnabled,
                     layout: 'vertical',
                     align: 'right',
                     verticalAlign: 'middle',
                     borderWidth: 0
                 };
                 
+                
+                var chartModelStacking = chartModel.stacking;
+                
+                var plotOptions = {
+                    series:{
+                        stacking:chartModelStacking,
+                        marker:{
+                            radius:chartModel.markerRadius,
+                            symbol:chartModel.symbol,
+                        }
+                    }
+                
+                };
+                
+                if(chartModel.chartType =="column"){
+                    plotOptions.column:{
+                        pointPadding:0.2,
+                        borderWidth:0,
+                        borderRadius:chartModel.borderRadius,
+                        dataLabels:{
+                            enabled:chartModel.dataLabelEnabled,
+                        }
+                    }
+                }else if(chartModel.chartType=="bar"){
+                    plotOptions.bar:{
+                        pointPadding:0.2,
+                        borderWidth:0,
+                        colorByPoint:false,
+                        borderRadius.chartModel.borderRadius,
+                        dataLabels:{
+                            enabled:chartModel.dataLabelEnabled,
+                        }
+                    
+                    }
+                }else if(chartModel.chartType =="area"){
+                    plotOptions.area:{
+                        dataLabels:{
+                            enabled:chartModel.dataLabelEnabled,
+                        }
+                    }
+                }else if(chartModel.chartType =="areaspline"){
+                    plotOptions.areaspline:{
+                        dataLabels:{
+                            enabled:chartModel.dataLabelEnabled,
+                        }
+                    }
+                }else if(chartModel.chartType =="line"){
+                    plotOptions.line:{
+                        dataLabels:{
+                            enabled:chartModel.dataLabelEnabled,
+                        }
+                    }
+                }else if(chartModel.chartType=="spline"){
+                    plotOptions.spline:{
+                        dataLabels:{
+                            enabled:chartModel.dataLabelEnabled,
+                        }
+                    }
+                }else if(chartModel.chartType=="pie"){
+                    plotOptions.pie:{
+                        allowPointSelect:true,
+                        cursor:"pointer",
+                        depth:chartModel.options3dDepth,
+                        dataLabels:{
+                            enabled:chartModel.dataLabelEnabled,
+                            format:"<b>{point.name}</b>: {point.percentage:.1f} %",
+                            style:{
+                                color:"black",
+                            }
+                        }
+                        showInLegend:true,
+                    }
+                }
+         
                 var series =  [
                                {
                                name: 'Tokyo',
@@ -120,18 +198,21 @@
                                       16.6, 14.2, 10.3, 6.6, 4.8]
                                }
                                ];
-                               
-                               var json = {};
-                               
-                               json.title = title;
-                               json.subtitle = subtitle;
-                               json.xAxis = xAxis;
-                               json.yAxis = yAxis;
-                               json.tooltip = tooltip;
-                               json.legend = legend;
-                               json.series = series;
-                               
-                               $('#container').highcharts(json);
+                
+                var options = {};
+                options.chart = chart;
+                options.title = title;
+                options.subtitle = subtitle;
+                options.xAxis = xAxis;
+                options.yAxis = yAxis;
+                options.tooltip = tooltip;
+                options.plotOptions = plotOptions;
+                options.legend = legend;
+                options.series = series;
+                options.colorsTheme = chartModel.colorsTheme;
+                alert(chartModel.colorsTheme);
+                $('#container').highcharts(options);
+                
             }
         </script>
     </body>

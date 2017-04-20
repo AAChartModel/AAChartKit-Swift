@@ -7,17 +7,9 @@
 //
 
 struct Person {
-    var name:String
-    var age:Int
+    var name:String?
+    var data:Array<Any>?
     
    
     
-    func nameSet(_ str: String) -> Person {
-          return self
-    }
-    
-    func ageSet(num: Int) -> Person {
-        
-        return self
-    }
-}
+   }
