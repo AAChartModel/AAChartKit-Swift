@@ -52,12 +52,14 @@ public struct AAChartModel:JSONSerializable {
         self.chartType = "column";
         self.inverted = false;
         self.stacking = "percent";
+        self.symbol = "circle";
         self.xAxisReversed = false;
         self.yAxisReversed = false;
         self.zoomType = "x";
         self.colorsTheme =  ["#b5282a","#e7a701","#50c18d","#c37779","#f1c6c5"];
         self.gradientColorEnable = false;
         self.polar = false;
+        self.dataLabelEnabled = true;
         self.options3dEnable = false;
         self.crosshairs = true;
         self.xAxisLabelsEnabled = true;

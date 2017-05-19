@@ -30,7 +30,7 @@ class ViewController: UIViewController,UIWebViewDelegate {
             self.view.addSubview(globalWebview!)
 
             
-            globalWebview?.load(htmlData as! Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
+            globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
             
      
             

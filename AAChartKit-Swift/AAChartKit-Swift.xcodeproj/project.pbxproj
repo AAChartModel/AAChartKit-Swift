@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2740DCDD1ECE90C500094A29 /* AAChartView的副本.html in Resources */ = {isa = PBXBuildFile; fileRef = 2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */; };
+		27C835E31ECEA15E00043257 /* AADrawChart.js in Resources */ = {isa = PBXBuildFile; fileRef = 27C835E21ECEA15E00043257 /* AADrawChart.js */; };
+		27C835E51ECEA2B900043257 /* AAChartViewTest.html in Resources */ = {isa = PBXBuildFile; fileRef = 27C835E41ECEA2B900043257 /* AAChartViewTest.html */; };
 		6416F6291EA65DAA00C1561F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416F6281EA65DAA00C1561F /* Person.swift */; };
 		6416F62B1EA665AA00C1561F /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416F62A1EA665AA00C1561F /* AAChartView.swift */; };
 		6416F62D1EA6693600C1561F /* Cauculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416F62C1EA6693600C1561F /* Cauculator.swift */; };
@@ -24,7 +27,6 @@
 		71D02F4A1EA6F9B20086EEB4 /* AAHighChartsLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */; };
 		71D02F4B1EA6F9B20086EEB4 /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */; };
 		71D02F4C1EA6F9B20086EEB4 /* AAJQueryLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */; };
-		71D02F4D1EA6F9B20086EEB4 /* AAFunnel.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F471EA6F9B20086EEB4 /* AAFunnel.js */; };
 		71D02F501EA7018E0086EEB4 /* JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D02F4F1EA7018E0086EEB4 /* JSONSerializable.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "AAChartView的副本.html"; sourceTree = "<group>"; };
+		27C835E21ECEA15E00043257 /* AADrawChart.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AADrawChart.js; sourceTree = "<group>"; };
+		27C835E41ECEA2B900043257 /* AAChartViewTest.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AAChartViewTest.html; sourceTree = "<group>"; };
 		6416F6281EA65DAA00C1561F /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		6416F62A1EA665AA00C1561F /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
 		6416F62C1EA6693600C1561F /* Cauculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cauculator.swift; sourceTree = "<group>"; };
@@ -69,7 +74,6 @@
 		71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighChartsLibrary.js; sourceTree = "<group>"; };
 		71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
 		71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAJQueryLibrary.js; sourceTree = "<group>"; };
-		71D02F471EA6F9B20086EEB4 /* AAFunnel.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAFunnel.js; sourceTree = "<group>"; };
 		71D02F4F1EA7018E0086EEB4 /* JSONSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSerializable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,11 +164,13 @@
 			isa = PBXGroup;
 			children = (
 				71D02F421EA6F9B20086EEB4 /* AAChartView.html */,
+				2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */,
+				27C835E41ECEA2B900043257 /* AAChartViewTest.html */,
+				27C835E21ECEA15E00043257 /* AADrawChart.js */,
 				71D02F431EA6F9B20086EEB4 /* AAHighCharts-3d.js */,
 				71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */,
 				71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */,
 				71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */,
-				71D02F471EA6F9B20086EEB4 /* AAFunnel.js */,
 			);
 			name = AAJSFiles;
 			sourceTree = "<group>";
@@ -277,12 +283,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				718EC88B1EA624CD00F36D85 /* LaunchScreen.storyboard in Resources */,
-				71D02F4D1EA6F9B20086EEB4 /* AAFunnel.js in Resources */,
 				718EC8881EA624CD00F36D85 /* Assets.xcassets in Resources */,
 				71D02F481EA6F9B20086EEB4 /* AAChartView.html in Resources */,
 				71D02F4A1EA6F9B20086EEB4 /* AAHighChartsLibrary.js in Resources */,
+				27C835E51ECEA2B900043257 /* AAChartViewTest.html in Resources */,
 				71D02F4C1EA6F9B20086EEB4 /* AAJQueryLibrary.js in Resources */,
+				27C835E31ECEA15E00043257 /* AADrawChart.js in Resources */,
 				71D02F491EA6F9B20086EEB4 /* AAHighCharts-3d.js in Resources */,
+				2740DCDD1ECE90C500094A29 /* AAChartView的副本.html in Resources */,
 				71D02F4B1EA6F9B20086EEB4 /* AAHighchartsMore.js in Resources */,
 				718EC8861EA624CD00F36D85 /* Main.storyboard in Resources */,
 			);
