@@ -5,6 +5,95 @@
 //  Created by Danny boy on 17/4/19.
 //  Copyright © 2017年 Danny boy. All rights reserved.
 //
+/*
+ struct AAChartType{
+ static let AAChartTypeColumn = "column"
+ static let AAChartTypeBar = "bar"
+ static let AAChartTypeArea = "area"
+ static let AAChartTypeAreaSpline = "areaspline"
+ static let AAChartTypeLine = "line"
+ static let AAChartTypeSpline = "spline"
+ static let AAChartTypeScatter = "scatter"
+ static let AAChartTypePie = "pie"
+ static let AAChartTypeBubble = "bubble"
+ static let AAChartTypePyramid = "pyramid"
+ static let AAChartTypeFunnel = "funnel"
+ static let AAChartTypeColumnrange = "columnrange"
+ }
+ */
+
+/*
+ let AAChartTypeColumn = "column"
+ let AAChartTypeBar = "bar"
+ let AAChartTypeArea = "area"
+ let AAChartTypeAreaSpline = "areaspline"
+ let AAChartTypeLine = "line"
+ let AAChartTypeSpline = "spline"
+ let AAChartTypeScatter = "scatter"
+ let AAChartTypePie = "pie"
+ let AAChartTypeBubble = "bubble"
+ let AAChartTypePyramid = "pyramid"
+ let AAChartTypeFunnel = "funnel"
+ let AAChartTypeColumnrange = "columnrange"
+ */
+
+enum AAChartType{
+    static let AAChartTypeColumn      = "column"
+    static let AAChartTypeBar         = "bar"
+    static let AAChartTypeArea        = "area"
+    static let AAChartTypeAreaSpline  = "areaspline"
+    static let AAChartTypeLine        = "line"
+    static let AAChartTypeSpline      = "spline"
+    static let AAChartTypeScatter     = "scatter"
+    static let AAChartTypePie         = "pie"
+    static let AAChartTypeBubble      = "bubble"
+    static let AAChartTypePyramid     = "pyramid"
+    static let AAChartTypeFunnel      = "funnel"
+    static let AAChartTypeColumnrange = "columnrange"
+}
+
+enum AAChartSubtitleAlignType{
+    static let AAChartSubtitleAlignTypeLeft   = "left"
+    static let AAChartSubtitleAlignTypeCenter = "center"
+    static let AAChartSubtitleAlignTypeRight  = "right"
+}
+
+enum AAChartZoomType{
+    static let AAChartZoomTypeX = "x"
+    static let AAChartZoomTypeY = "y"
+    static let AAChartZoomTypeXY = "xy"
+}
+
+enum AAChartStackingType{
+    static let AAChartStackingTypeFalse = "nil"
+    static let AAChartStackingTypeNormal = "normal"
+    static let AAChartStackingTypePercent = "percent"
+}
+
+enum AAChartSymbolType{
+    static let AAChartSymbolTypeCircle         = "circle";
+    static let AAChartSymbolTypeSquare         = "square";
+    static let AAChartSymbolTypeDiamond        = "diamond";
+    static let AAChartSymbolTypeTriangle       = "triangle";
+    static let AAChartSymbolTypeTriangle_down   = "triangle-down";
+}
+
+enum AAchartLegendlLayoutType{
+    static let AAChartLegendLayoutTypeHorizontal  = "horizontal";
+    static let AAChartLegendLayoutTypeVertical    = "vertical";
+}
+
+enum AAChartLegendAlignType{
+    static let AAChartLegendAlignTypeLeft     = "left";
+    static let AAChartLegendAlignTypeCenter   = "center";
+    static let AAChartLegendAlignTypeRight    = "right";
+}
+
+enum AAChartLegendVerticalAlignType{
+    static let AAChartLegendVerticalAlignTypeTop     = "top";
+    static let AAChartLegendVerticalAlignTypeMiddle  = "middle";
+    static let AAChartLegendVerticalAlignTypeBottom  = "bottom";
+}
 
 public struct AAChartModel:JSONSerializable {
     var title:String?
@@ -48,14 +137,14 @@ public struct AAChartModel:JSONSerializable {
     
     var borderRadius:Int?
     var markerRadius:Int?
-  public  init() {
-        self.chartType = "column";
+    public  init() {
+        self.chartType = AAChartType.AAChartTypeColumn;
         self.inverted = false;
-        self.stacking = "percent";
-        self.symbol = "circle";
+        self.stacking = AAChartStackingType.AAChartStackingTypeNormal;
+        self.symbol = AAChartSymbolType.AAChartSymbolTypeSquare;
         self.xAxisReversed = false;
         self.yAxisReversed = false;
-        self.zoomType = "x";
+        self.zoomType = AAChartZoomType.AAChartZoomTypeX;
         self.colorsTheme =  ["#b5282a","#e7a701","#50c18d","#c37779","#f1c6c5"];
         self.gradientColorEnable = false;
         self.polar = false;
@@ -67,14 +156,14 @@ public struct AAChartModel:JSONSerializable {
         self.yAxisLabelsEnabled = true;
         self.yAxisGridLineWidth = 1;
         self.legendEnabled = true;
-//        self.legendLayout = AAChartLegendLayoutTypeHorizontal;
-//        self.legendAlign = AAChartLegendAlignTypeCenter;
-//        self.legendVerticalAlign = AAChartLegendVerticalAlignTypeBottom;
+        self.legendLayout = AAchartLegendlLayoutType.AAChartLegendLayoutTypeHorizontal;
+        self.legendAlign = AAChartLegendAlignType.AAChartLegendAlignTypeCenter;
+        self.legendVerticalAlign = AAChartLegendVerticalAlignType.AAChartLegendVerticalAlignTypeBottom;
         
         self.borderRadius = 0;//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
         self.markerRadius = 6;//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
-    
-    
+        
+        
     }
     
     

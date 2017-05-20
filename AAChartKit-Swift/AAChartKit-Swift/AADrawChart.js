@@ -1,6 +1,6 @@
 function drawChart(sender,receivedWidth,receivedHeight){
-    <!--                var chartModel = JSON.parse(sender)-->
-    
+    var chartModel = JSON.parse(sender);
+/*
     var chartModel = {
         title :'编程语言热度',
         subtitle : '虚拟数据',
@@ -29,7 +29,7 @@ function drawChart(sender,receivedWidth,receivedHeight){
         colorsTheme : ["#b5282a","#e7a701","#50c18d","#fd4800","#f1c6c5"],
         legendEnabled : true,
     };
-    
+  */
     
     
     alert(chartModel.chartType);
