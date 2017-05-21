@@ -94,8 +94,45 @@ enum AAChartLegendVerticalAlignType{
     static let AAChartLegendVerticalAlignTypeMiddle  = "middle";
     static let AAChartLegendVerticalAlignTypeBottom  = "bottom";
 }
+enum AAChartAnimationType:String{
+    case
+    AAChartAnimationTypeLinear              = "linear" ,
+    AAChartAnimationTypeSwing               = "swing",
+    AAChartAnimationTypeEaseInQuad          = "easeInQuad",
+    AAChartAnimationTypeEaseOutQuad         = "easeOutQuad",
+    AAChartAnimationTypeEaseInOutQuad       = "easeInOutQuad",
+    AAChartAnimationTypeEaseInCubic         = "easeInCubic",
+    AAChartAnimationTypeEaseOutCubic        = "easeOutCubic",
+    AAChartAnimationTypeEaseInOutCubic      = "easeInOutCubic",
+    AAChartAnimationTypeEaseInQuart         = "easeInQuart",
+    AAChartAnimationTypeEaseOutQuart        = "easeOutQuart",
+    AAChartAnimationTypeEaseInOutQuart      = "easeInOutQuart",
+    AAChartAnimationTypeEaseInQuint         = "easeInQuint",
+    AAChartAnimationTypeEaseOutQuint        = "easeOutQuint",
+    AAChartAnimationTypeEaseInOutQuint      = "easeInOutQuint",
+    AAChartAnimationTypeEaseInExpo          = "easeInExpo",
+    AAChartAnimationTypeEaseOutExpo         = "easeOutExpo",
+    AAChartAnimationTypeEaseInOutExpo       = "easeInOutExpo",
+    AAChartAnimationTypeEaseInSine          = "easeInSine",
+    AAChartAnimationTypeEaseOutSine         = "easeOutSine",
+    AAChartAnimationTypeEaseInOutSine       = "easeInOutSine",
+    AAChartAnimationTypeEaseInCirc          = "easeInCirc",
+    AAChartAnimationTypeEaseOutCirc         = "easeOutCirc",
+    AAChartAnimationTypeEaseInOutCirc       = "easeInOutCirc",
+    AAChartAnimationTypeEaseInElastic       = "easeInElastic",
+    AAChartAnimationTypeEaseOutElastic      = "easeOutElastic",
+    AAChartAnimationTypeEaseInOutElastic    = "easeInOutElastic",
+    AAChartAnimationTypeEaseInBack          = "easeInBack",
+    AAChartAnimationTypeEaseOutBack         = "easeOutBack",
+    AAChartAnimationTypeEaseInOutBack       = "easeInOutBack",
+    AAChartAnimationTypeEaseInBounce        = "easeInBounce",
+    AAChartAnimationTypeEaseOutBounce       = "easeOutBounce",
+    AAChartAnimationTypeEaseInOutBounce     = "easeInOutBounce"
+};
+
 
 public struct AAChartModel:JSONSerializable {
+    var animationType:String?
     var title:String?
     var subtitle:String?
     
@@ -138,6 +175,8 @@ public struct AAChartModel:JSONSerializable {
     var borderRadius:Int?
     var markerRadius:Int?
     public  init() {
+        print(AAChartAnimationType.AAChartAnimationTypeEaseInBack);
+        self.animationType = AAChartAnimationType.AAChartAnimationTypeEaseInBack.rawValue;
         self.chartType = AAChartType.AAChartTypeColumn;
         self.inverted = false;
         self.stacking = AAChartStackingType.AAChartStackingTypeNormal;

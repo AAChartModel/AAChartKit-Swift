@@ -38,7 +38,7 @@ function drawChart(sender,receivedWidth,receivedHeight){
         o.style.width=receivedWidth;//设置宽度
     }
     o.style.height=receivedHeight;//设置高度
-    var chart = {
+    var AAChart = {
     type:chartModel.chartType,
     inverted:chartModel.inverted,
     backgroundColor:chartModel.backgroundColor,
@@ -53,21 +53,21 @@ function drawChart(sender,receivedWidth,receivedHeight){
         
     };
     
-    var title = {
+    var AATitle = {
     text: chartModel.title,
     style:{
     color:"#000000",
     fontSize:"12px"
     }
     };
-    var subtitle = {
+    var AASubtitle = {
     text: chartModel.subtitle,
     style:{
     color:"#000000",
     fontSize:"9px"
     }
     };
-    var xAxis = {
+    var AAXAxis = {
     label:{
     enable:chartModel.xAxisLabelsEnabled
     },
@@ -75,7 +75,7 @@ function drawChart(sender,receivedWidth,receivedHeight){
     gridLineWidth:chartModel.xAxisGridLineWidth,
     categories:chartModel.categories
     };
-    var yAxis = {
+    var AAYAxis = {
     label:{
     enable:chartModel.yAxisLabelsEnabled
     },
@@ -92,13 +92,13 @@ function drawChart(sender,receivedWidth,receivedHeight){
                 }]
     };
     
-    var tooltip = {
+    var AATooltip = {
     valueSuffix: '\xB0C',
     shared:true,
     crosshairs:true,
     }
     
-    var legend = {
+    var AALegend = {
     enable:chartModel.legendEnabled,
     layout: 'vertical',
     align: 'right',
@@ -108,7 +108,7 @@ function drawChart(sender,receivedWidth,receivedHeight){
     
     var chartModelStacking = chartModel.stacking;
     
-    var plotOptions = {};
+    var AAPlotOptions = {};
     var series = {
     stacking:chartModelStacking,
     marker:{
@@ -116,7 +116,7 @@ function drawChart(sender,receivedWidth,receivedHeight){
     symbol:chartModel.symbol,
     }
     };
-    plotOptions.series = series;
+    AAPlotOptions.series = series;
     
     
     if(chartModel.chartType =="column"){
@@ -128,7 +128,7 @@ function drawChart(sender,receivedWidth,receivedHeight){
         enabled:chartModel.dataLabelEnabled,
         }
         };
-        plotOptions.column = column;
+        AAPlotOptions.column = column;
     }else if(chartModel.chartType=="bar"){
         var bar = {
         pointPadding:0.2,
@@ -139,7 +139,7 @@ function drawChart(sender,receivedWidth,receivedHeight){
         enabled:chartModel.dataLabelEnabled,
         }
         };
-        plotOptions.bar =bar
+        AAPlotOptions.bar =bar
         
     }else if(chartModel.chartType =="area"){
         var area ={
@@ -147,28 +147,28 @@ function drawChart(sender,receivedWidth,receivedHeight){
         enabled:chartModel.dataLabelEnabled,
         }
         };
-        plotOptions.area = area;
+        AAPlotOptions.area = area;
     }else if(chartModel.chartType =="areaspline"){
         var areaspline ={
         dataLabels:{
         enabled:chartModel.dataLabelEnabled,
         }
         }
-        plotOptions.areaspline = areaspline;
+        AAPlotOptions.areaspline = areaspline;
     }else if(chartModel.chartType =="line"){
         var line ={
         dataLabels:{
         enabled:chartModel.dataLabelEnabled,
         }
         };
-        plotOptions.line = line;
+        AAPlotOptions.line = line;
     }else if(chartModel.chartType=="spline"){
         var spline ={
         dataLabels:{
         enabled:chartModel.dataLabelEnabled,
         }
         };
-        plotOptions.spline =spline;
+        AAPlotOptions.spline =spline;
     }else if(chartModel.chartType=="pie"){
         var pie ={
         allowPointSelect:true,
@@ -183,9 +183,9 @@ function drawChart(sender,receivedWidth,receivedHeight){
         }
             <!--                                          showInLegend:true,-->
         };
-        plotOptions.pie = pie;
+        AAPlotOptions.pie = pie;
     };
-    var series =  [
+    var AASeries =  [
                    {
                    name: 'Tokyo',
                    data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2,
@@ -203,17 +203,17 @@ function drawChart(sender,receivedWidth,receivedHeight){
                    }
                    ];
     
-    var json = {};
-    json.chart = chart;
-    json.title = title;
-    json.subtitle = subtitle;
-    json.xAxis = xAxis;
-    json.yAxis = yAxis;
-    json.tooltip = tooltip;
-    json.legend = legend;
-    json.plotOptions = plotOptions;
-    json.series = series;
+    var AAOPtions = {};
+    AAOptions.chart = AAChart;
+    AAOptions.title = AATitle;
+    AAOptions.subtitle = AASubtitle;
+    AAOptions.xAxis = AAXAxis;
+    AAOptions.yAxis = AAYAxis;
+    AAOptions.tooltip = AATooltip;
+    AAOptions.legend = AALegend;
+    AAOptions.plotOptions = AAPlotOptions;
+    AAOptions.series = AASeries;
     
-    $('#container').highcharts(json);
+    $('#container').highcharts(AAOptions);
     
 };
