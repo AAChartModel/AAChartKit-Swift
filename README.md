@@ -72,35 +72,35 @@ AAChartKit 中扇形图、气泡图都归属为特殊类型,所以想要绘制�
 
 - 绘制扇形图,你需要这样配置模型对象 **AAChartModel**
 ``` swift
-    var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
-        chartModel.title = "编程语言热度;
+        chartModel.title = "编程语言热度";
         chartModel.subtitle = "虚拟数据";
         chartModel.yAxisTitle = "摄氏度";
-        chartModel.dataLabelEnabled= true;//是否直接显示扇形图数据
+        chartModel.dataLabelEnabled = true;//是否直接显示扇形图数据
         
-        chartModel.series = 
+        chartModel.series =
         [
-             {
-            type: 'pie',
-            name: '浏览器访问量占比',
-            data: [
-                ['Firefox',   45.0],
-                ['IE',       26.8],
-                {
-                    name: 'Chrome',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
-                },
-                ['Safari',    8.5],
-                ['Opera',     6.2],
-                ['其他',   0.7]
-            ]
+        {
+        type: "pie",
+        name: "浏览器访问量占比",
+        data: [
+        ["Firefox",   45.0],
+        ["IE",       26.8],
+        {
+        name: "Chrome",
+        y: 12.8,
+        sliced: true,
+        selected: true
+        },
+        ["Safari",    8.5],
+        ["Opera",     6.2],
+        ["其他",   0.7]
+        ]
         }
-         ]          
-                   
+        ]
+        
         ;
+
 ```
 - 绘制气泡图,你需要这样配置模型对象 **AAChartModel**
 
