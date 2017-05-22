@@ -78,6 +78,7 @@ AAChartKit 中扇形图、气泡图都归属为特殊类型,所以想要绘制�
         chartModel.subtitle = "虚拟数据";
         chartModel.yAxisTitle = "摄氏度";
         chartModel.dataLabelEnabled= true;//是否直接显示扇形图数据
+        
         chartModel.series = 
         [
              {
@@ -110,6 +111,7 @@ var chartModel = AAChartModel.init();
         chartModel.title = "编程语言热度;
         chartModel.subtitle = "虚拟数据";
         chartModel.yAxisTitle = "摄氏度";
+        
         chartModel.series =
                    [
                      {
@@ -179,6 +181,7 @@ var chartModel = AAChartModel.init();
         chartModel.title = "编程语言热度;
         chartModel.subtitle = "虚拟数据";
         chartModel.yAxisTitle = "摄氏度";
+        
         chartModel.series = 
                    [
                    {
