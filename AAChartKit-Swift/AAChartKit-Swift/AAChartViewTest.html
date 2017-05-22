@@ -86,7 +86,12 @@
                                    o.style.width=receivedWidth;//设置宽度
                                    }
                                    o.style.height=receivedHeight;//设置高度*/
-                                  var chart = {
+                                 /* var o=document.getElementById('container');//获得元素
+                                  if(receivedWidth!=0){
+                                      o.style.width=receivedWidth;//设置宽度
+                                  }
+                                  o.style.height=receivedHeight;//设置高度*/
+                                  var AAChart = {
                                       type:chartModel.chartType,
                                       inverted:chartModel.inverted,
                                       backgroundColor:chartModel.backgroundColor,
@@ -101,21 +106,21 @@
                                       
                                   };
                                   
-                                  var title = {
+                                  var AATitle = {
                                       text: chartModel.title,
                                       style:{
                                           color:"#000000",
                                           fontSize:"12px"
                                       }
                                   };
-                                  var subtitle = {
+                                  var AASubtitle = {
                                       text: chartModel.subtitle,
                                       style:{
                                           color:"#000000",
                                           fontSize:"9px"
                                       }
                                   };
-                                  var xAxis = {
+                                  var AAXAxis = {
                                       label:{
                                           enable:chartModel.xAxisLabelsEnabled
                                       },
@@ -123,7 +128,7 @@
                                       gridLineWidth:chartModel.xAxisGridLineWidth,
                                       categories:chartModel.categories
                                   };
-                                  var yAxis = {
+                                  var AAYAxis = {
                                       label:{
                                           enable:chartModel.yAxisLabelsEnabled
                                       },
@@ -140,13 +145,13 @@
                                                   }]
                                   };
                                   
-                                  var tooltip = {
+                                  var AATooltip = {
                                       valueSuffix: '\xB0C',
                                       shared:true,
                                       crosshairs:true,
                                   }
                                   
-                                  var legend = {
+                                  var AALegend = {
                                       enable:chartModel.legendEnabled,
                                       layout: 'vertical',
                                       align: 'right',
@@ -155,7 +160,8 @@
                                   };
                                   
                                   var chartModelStacking = chartModel.stacking;
-                                  var plotOptions = {};
+                                  
+                                  var AAPlotOptions = {};
                                   var series = {
                                       stacking:chartModelStacking,
                                       marker:{
@@ -163,7 +169,7 @@
                                           symbol:chartModel.symbol,
                                       }
                                   };
-                                  plotOptions.series = series;
+                                  AAPlotOptions.series = series;
                                   
                                   
                                   if(chartModel.chartType =="column"){
@@ -175,7 +181,7 @@
                                               enabled:chartModel.dataLabelEnabled,
                                           }
                                       };
-                                      plotOptions.column = column;
+                                      AAPlotOptions.column = column;
                                   }else if(chartModel.chartType=="bar"){
                                       var bar = {
                                           pointPadding:0.2,
@@ -186,36 +192,36 @@
                                               enabled:chartModel.dataLabelEnabled,
                                           }
                                       };
-                                          plotOptions.bar =bar
-                                          
-                                      }else if(chartModel.chartType =="area"){
+                                      AAPlotOptions.bar =bar
+                                      
+                                  }else if(chartModel.chartType =="area"){
                                       var area ={
                                           dataLabels:{
                                               enabled:chartModel.dataLabelEnabled,
                                           }
                                       };
-                                      plotOptions.area = area;
+                                      AAPlotOptions.area = area;
                                   }else if(chartModel.chartType =="areaspline"){
                                       var areaspline ={
                                           dataLabels:{
                                               enabled:chartModel.dataLabelEnabled,
                                           }
                                       }
-                                      plotOptions.areaspline = areaspline;
+                                      AAPlotOptions.areaspline = areaspline;
                                   }else if(chartModel.chartType =="line"){
                                       var line ={
                                           dataLabels:{
                                               enabled:chartModel.dataLabelEnabled,
                                           }
                                       };
-                                      plotOptions.line = line;
+                                      AAPlotOptions.line = line;
                                   }else if(chartModel.chartType=="spline"){
                                       var spline ={
                                           dataLabels:{
                                               enabled:chartModel.dataLabelEnabled,
                                           }
                                       };
-                                      plotOptions.spline =spline;
+                                      AAPlotOptions.spline =spline;
                                   }else if(chartModel.chartType=="pie"){
                                       var pie ={
                                           allowPointSelect:true,
@@ -228,45 +234,44 @@
                                                   color:"black",
                                               }
                                           }
-<!--                                          showInLegend:true,-->
+                                          <!--                                          showInLegend:true,-->
                                       };
-                                      plotOptions.pie = pie;
+                                      AAPlotOptions.pie = pie;
                                   };
- 
- var series =  [
-                                                 {
-                                                 name: 'Tokyo',
-                                                 data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2,
-                                                        26.5, 23.3, 18.3, 13.9, 9.6]
-                                                 },
-                                                 {
-                                                 name: 'New York',
-                                                 data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8,
-                                                        24.1, 20.1, 14.1, 8.6, 2.5]
-                                                 },
-                                                 {
-                                                 name: 'London',
-                                                 data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0,
-                                                        16.6, 14.2, 10.3, 6.6, 4.8]
-                                                 }
-                                                 ];
+                                  var AASeries =  [
+                                                   {
+                                                   name: 'Tokyo',
+                                                   data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2,
+                                                          26.5, 23.3, 18.3, 13.9, 9.6]
+                                                   },
+                                                   {
+                                                   name: 'New York',
+                                                   data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8,
+                                                          24.1, 20.1, 14.1, 8.6, 2.5]
+                                                   },
+                                                   {
+                                                   name: 'London',
+                                                   data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0,
+                                                          16.6, 14.2, 10.3, 6.6, 4.8]
+                                                   }
+                                                   ];
+                                                   
+                                                   var AAOptions = {};
+                                                   AAOptions.chart = AAChart;
+                                                   AAOptions.title = AATitle;
+                                                   AAOptions.subtitle = AASubtitle;
+                                                   AAOptions.xAxis = AAXAxis;
+                                                   AAOptions.yAxis = AAYAxis;
+                                                   AAOptions.tooltip = AATooltip;
+                                                   AAOptions.legend = AALegend;
+                                                   AAOptions.plotOptions = AAPlotOptions;
+                                                   AAOptions.series = AASeries;
+                                                   
+                                                   $('#container').highcharts(AAOptions);
                                                  
-                                                 var json = {};
-                                                 json.chart = chart;
-                                                 json.title = title;
-                                                 json.subtitle = subtitle;
-                                                 json.xAxis = xAxis;
-                                                 json.yAxis = yAxis;
-                                                 json.tooltip = tooltip;
-                                                 json.legend = legend;
-                                                 json.plotOptions = plotOptions;
-                                                 json.series = series;
                                                  
-                                                 $('#container').highcharts(json);
-                                                 
-                                                 
-                                                 var AATheme = AASetSandSignikaThemeForChartView();
-                                                 Highcharts.setOptions(Highcharts.theme);
+                                                // var AATheme = AASetSandSignikaThemeForChartView();
+                                                 //Highcharts.setOptions(Highcharts.theme);
 
 
                                                  

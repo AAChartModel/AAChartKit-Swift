@@ -1,4 +1,6 @@
 function drawChart(sender,receivedWidth,receivedHeight){
+    //alert(receivedHeight);
+
     var chartModel = JSON.parse(sender);
 /*
     var chartModel = {
@@ -32,7 +34,7 @@ function drawChart(sender,receivedWidth,receivedHeight){
   */
     
     
-    alert(chartModel.chartType);
+   // alert(chartModel.series);
     var o=document.getElementById('container');//获得元素
     if(receivedWidth!=0){
         o.style.width=receivedWidth;//设置宽度
@@ -185,7 +187,7 @@ function drawChart(sender,receivedWidth,receivedHeight){
         };
         AAPlotOptions.pie = pie;
     };
-    var AASeries =  [
+   /* var AASeries =  [
                    {
                    name: 'Tokyo',
                    data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2,
@@ -202,15 +204,18 @@ function drawChart(sender,receivedWidth,receivedHeight){
                           16.6, 14.2, 10.3, 6.6, 4.8]
                    }
                    ];
+    */
     
-    var AAOPtions = {};
+    var AASeries = chartModel.series;
+    
+    var AAOptions = {};
     AAOptions.chart = AAChart;
     AAOptions.title = AATitle;
     AAOptions.subtitle = AASubtitle;
     AAOptions.xAxis = AAXAxis;
     AAOptions.yAxis = AAYAxis;
     AAOptions.tooltip = AATooltip;
-    AAOptions.legend = AALegend;
+    //AAOptions.legend = AALegend;
     AAOptions.plotOptions = AAPlotOptions;
     AAOptions.series = AASeries;
     

@@ -166,7 +166,7 @@ public struct AAChartModel:JSONSerializable {
     var legendAlign:String?
     var legendVerticalAlign:String?
     
-    var backgroundColor:String?
+    //var backgroundColor:String?
     var options3dEnable:Bool?
     var options3dAlpha:Int?
     var  options3dBeta:Int?
