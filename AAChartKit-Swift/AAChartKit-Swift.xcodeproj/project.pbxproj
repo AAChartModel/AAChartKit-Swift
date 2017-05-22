@@ -27,6 +27,7 @@
 		649025BB1ED1CBCE009EA1A7 /* AAPlotLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025BA1ED1CBCE009EA1A7 /* AAPlotLines.swift */; };
 		649025BD1ED1CBE6009EA1A7 /* AAPlotBands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025BC1ED1CBE6009EA1A7 /* AAPlotBands.swift */; };
 		649025BF1ED1CC0C009EA1A7 /* AADataLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025BE1ED1CC0C009EA1A7 /* AADataLabels.swift */; };
+		649025C11ED1E00E009EA1A7 /* AAThemesKit.js in Resources */ = {isa = PBXBuildFile; fileRef = 649025C01ED1E00E009EA1A7 /* AAThemesKit.js */; };
 		718EC8811EA624CD00F36D85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8801EA624CD00F36D85 /* AppDelegate.swift */; };
 		718EC8831EA624CD00F36D85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8821EA624CD00F36D85 /* ViewController.swift */; };
 		718EC8861EA624CD00F36D85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718EC8841EA624CD00F36D85 /* Main.storyboard */; };
@@ -81,6 +82,7 @@
 		649025BA1ED1CBCE009EA1A7 /* AAPlotLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPlotLines.swift; sourceTree = "<group>"; };
 		649025BC1ED1CBE6009EA1A7 /* AAPlotBands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPlotBands.swift; sourceTree = "<group>"; };
 		649025BE1ED1CC0C009EA1A7 /* AADataLabels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AADataLabels.swift; sourceTree = "<group>"; };
+		649025C01ED1E00E009EA1A7 /* AAThemesKit.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAThemesKit.js; sourceTree = "<group>"; };
 		718EC87D1EA624CD00F36D85 /* AAChartKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AAChartKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		718EC8801EA624CD00F36D85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		718EC8821EA624CD00F36D85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -201,8 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				71D02F421EA6F9B20086EEB4 /* AAChartView.html */,
-				2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */,
-				27C835E41ECEA2B900043257 /* AAChartViewTest.html */,
+				649025C01ED1E00E009EA1A7 /* AAThemesKit.js */,
 				649025A61ED1C11C009EA1A7 /* AADarkUnica.js */,
 				649025A81ED1C1AA009EA1A7 /* AASandSignika.js */,
 				27C835E21ECEA15E00043257 /* AADrawChart.js */,
@@ -210,6 +211,8 @@
 				71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */,
 				71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */,
 				71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */,
+				2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */,
+				27C835E41ECEA2B900043257 /* AAChartViewTest.html */,
 			);
 			name = AAJSFiles;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				71D02F491EA6F9B20086EEB4 /* AAHighCharts-3d.js in Resources */,
 				2740DCDD1ECE90C500094A29 /* AAChartView的副本.html in Resources */,
 				71D02F4B1EA6F9B20086EEB4 /* AAHighchartsMore.js in Resources */,
+				649025C11ED1E00E009EA1A7 /* AAThemesKit.js in Resources */,
 				718EC8861EA624CD00F36D85 /* Main.storyboard in Resources */,
 				649025A71ED1C11C009EA1A7 /* AADarkUnica.js in Resources */,
 			);
