@@ -20,7 +20,7 @@ http://htmlpreview.github.io/?https://github.com/AAChartModel/AAChartKit/blob/ma
 ## 使用方法
 
 ### 准备工作
-1. 将项目demo中的文件夹`AAChartKitFiles`拖入到所需项目中.
+* 将项目demo中的文件夹`AAChartKitFiles`拖入到所需项目中.
  
 
 ### 正式开始
@@ -57,12 +57,12 @@ import AAChartView.swift
 ```
 4.  绘制图形
 
-```swift
+```objective-c
 [chartView aa_drawChartWithChartModel:chartModel];//图表视图对象调用图表模型对象,绘制最终图形
 ```
 5.  刷新图形
 
-```swift
+```objective-c
  [chartView aa_refreshChartWithChartModel:chartModel];//更新 AAChartModel 数据之后,刷新图表
 ```
 
@@ -70,15 +70,16 @@ import AAChartView.swift
 
 AAChartKit 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 AAChartModel 设置稍有不同,示例如下
 
-- 绘制扇形图,你需要这样配置模型 AAChartModel
+- 绘制扇形图,你需要这样配置模型对象 **AAChartModel**
 ```swift
     var chartModel = AAChartModel.init();
-        chartModel.chartTypeSet(AAChartTypePie)
-        chartModel.titleSet(@"编程语言热度")
-        chartModel.subtitleSet(@"虚拟数据")
-        chartModel.dataLabelEnabledSet(true)//是否直接显示扇形图数据
-        chartModel.yAxisTitleSet(@"摄氏度")
-        chartModel.seriesSet(
+        chartModel.chartType = AAChartTypeColumnrange;
+        chartModel.title = "编程语言热度;
+        chartModel.subtitle = "虚拟数据";
+        chartModel.yAxisTitle = "摄氏度";
+        chartModel.dataLabelEnabled= true;//是否直接显示扇形图数据
+        chartModel.series = 
+        [
              {
             type: 'pie',
             name: '浏览器访问量占比',
@@ -96,21 +97,20 @@ AAChartKit 中扇形图、气泡图都归属为特殊类型,所以想要绘制�
                 ['其他',   0.7]
             ]
         }
+         ]          
                    
-                   )
         ;
 ```
-- 绘制气泡图,你需要这样配置模型 AAChartModel
+- 绘制气泡图,你需要这样配置模型对象 **AAChartModel**
 
 
 ```swift
 var chartModel = AAChartModel.init();
-        chartModel.chartTypeSet(AAChartTypeBubble)
-        chartModel.titleSet(@"编程语言热度")
-        chartModel.subtitleSet(@"虚拟数据")
-        chartModel.dataLabelEnabledSet(true)//是否直接显示扇形图数据
-        chartModel.yAxisTitleSet(@"摄氏度")
-        chartModel.seriesSet(
+        chartModel.chartType = AAChartTypeColumnrange;
+        chartModel.title = "编程语言热度;
+        chartModel.subtitle = "虚拟数据";
+        chartModel.yAxisTitle = "摄氏度";
+        chartModel.series =
                    [
                      {
             name:'数据列 ONE',
@@ -168,21 +168,18 @@ var chartModel = AAChartModel.init();
              [15, 67, 48], 
              [54, 25, 81]]
         }
-                     
-                     ]
-                   )
-        ;
+                     ];
 ```
 
+- 绘制柱形范围图,你需要这样配置模型对象 **AAChartModel**
 
 ```swift
 var chartModel = AAChartModel.init();
-        chartModel.chartTypeSet(AAChartTypeColumnrange)
-        chartModel.titleSet(@"编程语言热度")
-        chartModel.subtitleSet(@"虚拟数据")
-        chartModel.dataLabelEnabledSet(true)//是否直接显示扇形图数据
-        chartModel.yAxisTitleSet(@"摄氏度")
-        chartModel.seriesSet(
+        chartModel.chartType = AAChartTypeColumnrange;
+        chartModel.title = "编程语言热度;
+        chartModel.subtitle = "虚拟数据";
+        chartModel.yAxisTitle = "摄氏度";
+        chartModel.series = 
                    [
                    {
             name: '温度',
@@ -202,7 +199,7 @@ var chartModel = AAChartModel.init();
             ]
         }
 
-                   ]
+                   ];
 ```
 
 7. 当前已支持的图表类型有十种以上,说明如下
