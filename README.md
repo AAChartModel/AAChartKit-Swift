@@ -1,5 +1,4 @@
-# AAChartKit-Swift
-
+ 
 # AAChartKit 2.0
 
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/LICENSE)&nbsp;
@@ -27,7 +26,7 @@ http://htmlpreview.github.io/?https://github.com/AAChartModel/AAChartKit/blob/ma
 ### 正式开始
 1. 在你的视图控制器文件中添加
 ```swift
-#import "AAChartView.swift"
+import AAChartView.swift
 ```
 2. 创建视图AAChartView
 ```swift
@@ -73,28 +72,30 @@ AAChartKit 中扇形图、气泡图都归属为特殊类型,所以想要绘制�
 
 - 绘制扇形图,你需要这样配置模型 AAChartModel
 ```swift
-AAChartModel *chartModel= AAObject(AAChartModel)
-        .chartTypeSet(AAChartTypePie)
-        .titleSet(@"编程语言热度")
-        .subtitleSet(@"虚拟数据")
-        .dataLabelEnabledSet(true)//是否直接显示扇形图数据
-        .yAxisTitleSet(@"摄氏度")
-        .seriesSet(
-                   @[AAObject(AASeriesElement)
-                     .nameSet(@"语言热度占比")
-                     .dataSet(@[
-                                @[@"Java"  , @67],
-                                @[@"Swift" , @44],
-                                @[@"Python", @83],
-                                @[@"OC"    , @11],
-                                @[@"Ruby"  , @42],
-                                @[@"PHP"   , @31],
-                                @[@"Go"    , @63],
-                                @[@"C"     , @24],
-                                @[@"C#"    , @888],
-                                @[@"C++"   , @66],
-                                ]),
-                     ]
+    var chartModel = AAChartModel.init();
+        chartModel.chartTypeSet(AAChartTypePie)
+        chartModel.titleSet(@"编程语言热度")
+        chartModel.subtitleSet(@"虚拟数据")
+        chartModel.dataLabelEnabledSet(true)//是否直接显示扇形图数据
+        chartModel.yAxisTitleSet(@"摄氏度")
+        chartModel.seriesSet(
+             {
+            type: 'pie',
+            name: '浏览器访问量占比',
+            data: [
+                ['Firefox',   45.0],
+                ['IE',       26.8],
+                {
+                    name: 'Chrome',
+                    y: 12.8,
+                    sliced: true,
+                    selected: true
+                },
+                ['Safari',    8.5],
+                ['Opera',     6.2],
+                ['其他',   0.7]
+            ]
+        }
                    
                    )
         ;
@@ -103,66 +104,105 @@ AAChartModel *chartModel= AAObject(AAChartModel)
 
 
 ```swift
-
-
-AAChartModel *chartModel= AAObject(AAChartModel)
-        .chartTypeSet(AAChartTypeBubble)
-        .titleSet(@"编程语言热度")
-        .subtitleSet(@"虚拟数据")
-        .yAxisTitleSet(@"摄氏度")
-        .seriesSet(
-                   @[
-                     AAObject(AASeriesElement)
-                     .nameSet(@"2017")
-                     .dataSet(
-                              @[
-                                @[@97, @36, @79],
-                                @[@94, @74, @60],
-                                @[@68, @76, @58],
-                                @[@64, @87, @56],
-                                @[@68, @27, @73],
-                                @[@74, @99, @42],
-                                @[@7,  @93, @87],
-                                @[@51, @69, @40],
-                                @[@38, @23, @33],
-                                @[@57, @86, @31]
-                                ]),
+var chartModel = AAChartModel.init();
+        chartModel.chartTypeSet(AAChartTypeBubble)
+        chartModel.titleSet(@"编程语言热度")
+        chartModel.subtitleSet(@"虚拟数据")
+        chartModel.dataLabelEnabledSet(true)//是否直接显示扇形图数据
+        chartModel.yAxisTitleSet(@"摄氏度")
+        chartModel.seriesSet(
+                   [
+                     {
+            name:'数据列 ONE',
+            data: [
+                [9, 81, 63],
+                [98, 5, 89],
+                [51, 50, 73],
+                [41, 22, 14],
+                [58, 24, 20],
+                [78, 37, 34],
+                [55, 56, 53],
+                [18, 45, 70],
+                [42, 44, 28],
+                [3, 52, 59],
+                [31, 18, 97],
+                [79, 91, 63],
+                [93, 23, 23],
+                [44, 83, 22]
+            ]},
                      
-                     AAObject(AASeriesElement)
-                     .nameSet(@"2018")
-                     .dataSet(
-                              @[
-                                @[@25, @10, @87],
-                                @[@2, @75, @59],
-                                @[@11, @54, @8],
-                                @[@86, @55, @93],
-                                @[@5, @3, @58],
-                                @[@90, @63, @44],
-                                @[@91, @33, @17],
-                                @[@97, @3, @56],
-                                @[@15, @67, @48],
-                                @[@54, @25, @81]
-                                ]),
+                     {
+            name:'数据列 TWO',
+            data: [
+                [42, 38, 20],
+                [6, 18, 1],
+                [1, 93, 55],
+                [57, 2, 90],
+                [80, 76, 22],
+                [11, 74, 96],
+                [88, 56, 10],
+                [30, 47, 49],
+                [57, 62, 98],
+                [4, 16, 16],
+                [46, 10, 11],
+                [22, 87, 89],
+                [57, 91, 82],
+                [45, 15, 98]
+            ]},
                      
-                     AAObject(AASeriesElement)
-                     .nameSet(@"2019")
-                     .dataSet(
-                              @[
-                                @[@47, @47, @21],
-                                @[@20, @12, @4],
-                                @[@6, @76, @91],
-                                @[@38, @30, @60],
-                                @[@57, @98, @64],
-                                @[@61, @17, @80],
-                                @[@83, @60, @13],
-                                @[@67, @78, @75],
-                                @[@64, @12, @10],
-                                @[@30, @77, @82]
-                                ]),
+                     {
+            name:'数据列 THREE',
+            data: [
+             [47, 47, 21],
+             [20, 12, 4], 
+             [6, 76, 91], 
+             [38, 30, 60], 
+             [57, 98, 64], 
+             [61, 17, 80], 
+             [83, 60, 13], 
+             [67, 78, 75], 
+             [64, 12, 10], 
+             [30, 77, 82],
+             [90, 63, 44], 
+             [91, 33, 17], 
+             [15, 67, 48], 
+             [54, 25, 81]]
+        }
                      
                      ]
                    )
         ;
+```
+
+
+```swift
+var chartModel = AAChartModel.init();
+        chartModel.chartTypeSet(AAChartTypeColumnrange)
+        chartModel.titleSet(@"编程语言热度")
+        chartModel.subtitleSet(@"虚拟数据")
+        chartModel.dataLabelEnabledSet(true)//是否直接显示扇形图数据
+        chartModel.yAxisTitleSet(@"摄氏度")
+        chartModel.seriesSet(
+                   [
+                   {
+            name: '温度',
+            data: [
+                [-9.7, 9.4],
+                [-8.7, 6.5],
+                [-3.5, 9.4],
+                [-1.4, 19.9],
+                [0.0, 22.6],
+                [2.9, 29.5],
+                [9.2, 30.7],
+                [7.3, 26.5],
+                [4.4, 18.0],
+                [-3.1, 11.4],
+                [-5.2, 10.4],
+                [-13.5, 9.8]
+            ]
+        }
+
+                   ]
 ```
 
 7. 当前已支持的图表类型有十种以上,说明如下
