@@ -203,18 +203,18 @@ var chartModel = AAChartModel.init();
 
 ```swift
 enum AAChartType{
-    static let AAChartTypeColumn      = "column"
-    static let AAChartTypeBar         = "bar"
-    static let AAChartTypeArea        = "area"
-    static let AAChartTypeAreaSpline  = "areaspline"
-    static let AAChartTypeLine        = "line"
-    static let AAChartTypeSpline      = "spline"
-    static let AAChartTypeScatter     = "scatter"
-    static let AAChartTypePie         = "pie"
-    static let AAChartTypeBubble      = "bubble"
-    static let AAChartTypePyramid     = "pyramid"
-    static let AAChartTypeFunnel      = "funnel"
-    static let AAChartTypeColumnrange = "columnrange"
+    static let AAChartTypeColumn      = "column"      //柱形图
+    static let AAChartTypeBar         = "bar"         //条形图
+    static let AAChartTypeArea        = "area"        //折线区域填充图
+    static let AAChartTypeAreaSpline  = "areaspline"  //曲线区域填充图
+    static let AAChartTypeLine        = "line"        //折线图
+    static let AAChartTypeSpline      = "spline"      //曲线图
+    static let AAChartTypeScatter     = "scatter"     //散点图
+    static let AAChartTypePie         = "pie"         //扇形图
+    static let AAChartTypeBubble      = "bubble"      //气泡图
+    static let AAChartTypePyramid     = "pyramid"     //金字塔图
+    static let AAChartTypeFunnel      = "funnel"      //漏斗图
+    static let AAChartTypeColumnrange = "columnrange" //柱形范围图
 }
 ```
 
