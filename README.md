@@ -71,7 +71,7 @@ import AAChartView.swift
 AAChartKit 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 AAChartModel 设置稍有不同,示例如下
 
 - 绘制扇形图,你需要这样配置模型对象 **AAChartModel**
-```swift
+```javascript
     var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
         chartModel.title = "编程语言热度;
@@ -104,7 +104,7 @@ AAChartKit 中扇形图、气泡图都归属为特殊类型,所以想要绘制�
 - 绘制气泡图,你需要这样配置模型对象 **AAChartModel**
 
 
-```swift
+```javascript
 var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
         chartModel.title = "编程语言热度;
@@ -173,7 +173,7 @@ var chartModel = AAChartModel.init();
 
 - 绘制柱形范围图,你需要这样配置模型对象 **AAChartModel**
 
-```swift
+```javascript
 var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
         chartModel.title = "编程语言热度;
