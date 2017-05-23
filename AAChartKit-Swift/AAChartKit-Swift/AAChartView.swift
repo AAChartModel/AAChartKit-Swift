@@ -8,26 +8,36 @@
 
 import UIKit
 import WebKit
-class AAChartView: UIWebView {
-    var add:NSString?
-    var sub:NSString?
-    var mul:NSString?
-    
-    func addSet(_ num: NSString) -> AAChartView {
-        self.add=num;
-        return self
+class AAChartView: UIWebView,UIWebViewDelegate {
+    open var optionsJson:String?
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.delegate = self
     }
     
-    func subSet(_ num: NSString) -> AAChartView {
-        self.sub = num;
-         return self
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    func mulSet(_ num: NSString) -> AAChartView {
-        self.mul = num;
-         return self
+    open func drawChartWithChartModel(_ chartModel: AAChartModel) {
+        if let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html"){
+            let htmlData = NSData(contentsOfFile: htmlFile)
+            let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
+            self.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
+            
+            let modelString = chartModel.toJSON();
+            let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,self.frame.size.width,self.frame.size.height);
+            optionsJson = jsString as String
+            
+        }
+        
+        
+        
+        func webViewDidFinishLoad(_ webView: UIWebView) {
+            self.stringByEvaluatingJavaScript(from: optionsJson!);
+        }
+        
     }
     
- 
+    
 }
-
