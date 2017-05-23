@@ -102,9 +102,9 @@ function drawChart(sender,receivedWidth,receivedHeight){
     
     var AALegend = {
     enable:chartModel.legendEnabled,
-    layout: 'vertical',
-    align: 'right',
-    verticalAlign: 'middle',
+    layout: chartModel.legendLayout,
+    align: chartModel.legendAlign,
+    verticalAlign: chartModel.legendVerticalAlign,
     borderWidth: 0
     };
     

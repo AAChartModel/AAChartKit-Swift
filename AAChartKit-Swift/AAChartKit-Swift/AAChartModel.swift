@@ -132,48 +132,45 @@ enum AAChartAnimationType:String{
 
 
 public struct AAChartModel:JSONSerializable {
-    var animationType:String?
-    var title:String?
-    var subtitle:String?
+    var animationType:String?       //动画类型
+    var title:String?               //标题内容
+    var subtitle:String?            //副标题内容
+    var chartType:String?           //图表类型
+    var stacking:String?            //堆积样式
+    var symbol:String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
     
-    var chartType:String?
-    var stacking:String?
-    var symbol:String?
+    var zoomType:String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
+    var inverted:Bool?              //x 轴是否垂直
+    var xAxisReversed:Bool?         // x 轴翻转
+    var yAxisReversed:Bool?         //y 轴翻转
+    var crosshairs:Bool?            //是否显示准星线(默认显示)
+    var gradientColorEnable:Bool?   //是否要为渐变色
+    var polar:Bool?                 //是否极化图形(变为雷达图)
+    var dataLabelEnabled:Bool?      //是否显示数据
+    var xAxisLabelsEnabled:Bool?    //x轴是否显示数据
     
-    var zoomType:String?
+    var categories:Array<Any>?      //x轴是否显示数据
+    var xAxisGridLineWidth:Int?     //x轴网格线的宽度
+    var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
+    var yAxisTitle:String?          //y轴标题
+    var yAxisGridLineWidth:Int?     //y轴网格线的宽度
     
-    var inverted:Bool?
-    var xAxisReversed:Bool?
-    var yAxisReversed:Bool?
-    var crosshairs:Bool?
-    var gradientColorEnable:Bool?
-    var polar:Bool?
-    var dataLabelEnabled:Bool?
-    var xAxisLabelsEnabled:Bool?
-    
-    var categories:Array<Any>?
-    var xAxisGridLineWidth:Int?
-    var yAxisLabelsEnabled:Bool?
-    var yAxisTitle:String?
-    var yAxisGridLineWidth:Int?
-    
-    var colorsTheme:Array<Any>?
+    var colorsTheme:Array<Any>?     //图表主题颜色数组
     var series:Array<Any>?
     
+    var legendEnabled:Bool?         //是否显示图例
+    var legendLayout:String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
+    var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
+    var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
     
-    var legendEnabled:Bool?
-    var legendLayout:String?
-    var legendAlign:String?
-    var legendVerticalAlign:String?
-    
-    //var backgroundColor:String?
-    var options3dEnable:Bool?
+    var backgroundColor:String?   //图表背景色
+    var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
     var options3dAlpha:Int?
     var  options3dBeta:Int?
-    var options3dDepth:Int?
+    var options3dDepth:Int?         //3D图形深度
     
-    var borderRadius:Int?
-    var markerRadius:Int?
+    var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
+    var markerRadius:Int?           //折线连接点的半径长度
     public  init() {
         print(AAChartAnimationType.AAChartAnimationTypeEaseInBack);
         self.animationType = AAChartAnimationType.AAChartAnimationTypeEaseInBack.rawValue;
