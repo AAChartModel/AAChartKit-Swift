@@ -1,35 +1,35 @@
 function drawChart(sender, receivedWidth, receivedHeight) {
         alert(receivedHeight);
-        var chartModel = JSON.parse(sender);
+        var AAChartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
         if (receivedWidth != 0) {
                 o.style.width = receivedWidth; //设置宽度
         }
         o.style.height = receivedHeight; //设置高度
         var AAChart = {
-                type: chartModel.chartType,
-                inverted: chartModel.inverted,
-                backgroundColor: chartModel.backgroundColor,
+                type: AAChartModel.chartType,
+                inverted: AAChartModel.inverted,
+                backgroundColor: AAChartModel.backgroundColor,
                 animation: true,
-                zoomType: chartModel.zoomType,
+                zoomType: AAChartModel.zoomType,
                 panning: true,
-                polar: chartModel.polar,
+                polar: AAChartModel.polar,
                 options3d: {
-                        enable: chartModel.options3dEnable,
+                        enable: AAChartModel.options3dEnable,
                         alpha: -15
                 }
 
         };
 
         var AATitle = {
-                text: chartModel.title,
+                text: AAChartModel.title,
                 style: {
                         color: "#000000",
                         fontSize: "12px"
                 }
         };
         var AASubtitle = {
-                text: chartModel.subtitle,
+                text: AAChartModel.subtitle,
                 style: {
                         color: "#000000",
                         fontSize: "9px"
@@ -37,20 +37,20 @@ function drawChart(sender, receivedWidth, receivedHeight) {
         };
         var AAXAxis = {
                 label: {
-                        enable: chartModel.xAxisLabelsEnabled
+                        enable: AAChartModel.xAxisLabelsEnabled
                 },
-                reversed: chartModel.xAxisGridLineWidth,
-                gridLineWidth: chartModel.xAxisGridLineWidth,
-                categories: chartModel.categories
+                reversed: AAChartModel.xAxisGridLineWidth,
+                gridLineWidth: AAChartModel.xAxisGridLineWidth,
+                categories: AAChartModel.categories
         };
         var AAYAxis = {
                 label: {
-                        enable: chartModel.yAxisLabelsEnabled
+                        enable: AAChartModel.yAxisLabelsEnabled
                 },
-                reversed: chartModel.yAxisReversed,
-                gridLineWidth: chartModel.yAxisGridLineWidth,
+                reversed: AAChartModel.yAxisReversed,
+                gridLineWidth: AAChartModel.yAxisGridLineWidth,
                 title: {
-                        text: chartModel.yAxisTitle
+                        text: AAChartModel.yAxisTitle
                 },
                 lineWidth: 0,
                 plotLines: [{
@@ -67,82 +67,82 @@ function drawChart(sender, receivedWidth, receivedHeight) {
         }
 
         var AALegend = {
-                enable: chartModel.legendEnabled,
-                layout: chartModel.legendLayout,
-                align: chartModel.legendAlign,
-                verticalAlign: chartModel.legendVerticalAlign,
+                enable: AAChartModel.legendEnabled,
+                layout: AAChartModel.legendLayout,
+                align: AAChartModel.legendAlign,
+                verticalAlign: AAChartModel.legendVerticalAlign,
                 borderWidth: 0
         };
 
-        var chartModelStacking = chartModel.stacking;
+        var AAChartModelStacking = AAChartModel.stacking;
 
         var AAPlotOptions = {};
         var series = {
-                stacking: chartModelStacking,
+                stacking: AAChartModelStacking,
                 marker: {
-                        radius: chartModel.markerRadius,
-                        symbol: chartModel.symbol,
+                        radius: AAChartModel.markerRadius,
+                        symbol: AAChartModel.symbol,
                 }
         };
         AAPlotOptions.series = series;
 
-        if (chartModel.chartType == "column") {
-                var column = {
+        if (AAChartModel.chartType == "column") {
+                var AAColumn = {
                         pointPadding: 0.2,
                         borderWidth: 0,
-                        borderRadius: chartModel.borderRadius,
+                        borderRadius: AAChartModel.borderRadius,
                         dataLabels: {
-                                enabled: chartModel.dataLabelEnabled,
+                                enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
-                AAPlotOptions.column = column;
-        } else if (chartModel.chartType == "bar") {
-                var bar = {
+                AAPlotOptions.column = AAColumn;
+        } else if (AAChartModel.chartType == "bar") {
+                var AABar = {
                         pointPadding: 0.2,
                         borderWidth: 0,
                         colorByPoint: false,
-                        borderRadius: chartModel.borderRadius,
+                        borderRadius: AAChartModel.borderRadius,
                         dataLabels: {
-                                enabled: chartModel.dataLabelEnabled,
+                                enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
-                AAPlotOptions.bar = bar
+                AAPlotOptions.bar = AABar;
 
-        } else if (chartModel.chartType == "area") {
-                var area = {
+        } else if (AAChartModel.chartType == "area") {
+                var AAArea = {
                         dataLabels: {
-                                enabled: chartModel.dataLabelEnabled,
+                                enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
-                AAPlotOptions.area = area;
-        } else if (chartModel.chartType == "areaspline") {
-                var areaspline = {
+                AAPlotOptions.area = AAArea;
+        } else if (AAChartModel.chartType == "areaspline") {
+                var AAAreaspline = {
                         dataLabels: {
-                                enabled: chartModel.dataLabelEnabled,
+                                enabled: AAChartModel.dataLabelEnabled,
                         }
                 }
-                AAPlotOptions.areaspline = areaspline;
-        } else if (chartModel.chartType == "line") {
-                var line = {
+                AAPlotOptions.areaspline = AAAreaspline;
+        } else if (AAChartModel.chartType == "line") {
+                var AALine = {
                         dataLabels: {
-                                enabled: chartModel.dataLabelEnabled,
+                                enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
-                AAPlotOptions.line = line;
-        } else if (chartModel.chartType == "spline") {
-                var spline = {
+                AAPlotOptions.line = AALine;
+        } else if (AAChartModel.chartType == "spline") {
+                var AASpline = {
                         dataLabels: {
-                                enabled: chartModel.dataLabelEnabled,
+                                enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
-                AAPlotOptions.spline = spline;
-        } else if (chartModel.chartType == "pie") {
-                var pie = {
+                AAPlotOptions.spline = AASpline;
+        } else if (AAChartModel.chartType == "pie") {
+                var AAPie = {
                         allowPointSelect: true,
                         cursor: "pointer",
-                        depth: chartModel.options3dDepth,
+                        depth: AAChartModel.options3dDepth,
                         dataLabels: {
-                                enabled: chartModel.dataLabelEnabled,
+                                enabled: AAChartModel.dataLabelEnabled,
                                 format: "<b>{point.name}</b>: {point.percentage:.1f} %",
                                 style: {
                                         color: "black",
@@ -151,10 +151,10 @@ function drawChart(sender, receivedWidth, receivedHeight) {
 //                    < !--showInLegend: true,
 //                        -->
                 };
-                AAPlotOptions.pie = pie;
+                AAPlotOptions.pie = AAPie;
         };
 
-        var AASeries = chartModel.series;
+        var AASeries = AAChartModel.series;
 
         var AAOptions = {};
         AAOptions.chart = AAChart;

@@ -14,17 +14,7 @@
     }
 }(function(Highcharts) {
     (function(Highcharts) {
-        /**
-         * (c) 2010-2017 Torstein Honsi
-         *
-         * License: www.highcharts.com/license
-         * 
-         * Dark theme for Highcharts JS
-         * @author Torstein Honsi
-         */
 
-        /* global document */
-        // Load the fonts
         Highcharts.createElement('link', {
             href: 'https://fonts.googleapis.com/css?family=Unica+One',
             rel: 'stylesheet',
