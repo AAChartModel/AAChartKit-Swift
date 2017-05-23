@@ -16,19 +16,18 @@ class CommonChartViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         self.title = "AAChartKit-Swift"
         chartTypeArr = [
-            ["Column Chart(柱形图)",
+            "Column Chart(柱形图)",
              "Bar Chart(条形图)",
              "Area Chart(折线填充图)",
              "Areaspline Chart(曲线填充图)",
              "Line Chart(折线图)",
              "Spline Chart(曲线图)",
-             "Scatter Chart(散点图)"],
-            
-            ["Pie Chart(扇形图)",
+             "Scatter Chart(散点图)",
+             "Pie Chart(扇形图)",
              "Bubble Chart(气泡图)",
              "Pyramid Chart(金字塔图)",
              "Funnel Chart(漏斗图)",
-             "Mixed Chart(混合图)"]
+             "Mixed Chart(混合图)"
         ];
         self.view.backgroundColor=UIColor.orange
         let myTableView = UITableView()
@@ -39,21 +38,18 @@ class CommonChartViewController: UIViewController,UITableViewDelegate,UITableVie
         myTableView.backgroundColor = UIColor.white
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (chartTypeArr![section] as AnyObject).count
+        return chartTypeArr!.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "MyFirstSwift"
-        var firstArr = NSArray()
-        firstArr = chartTypeArr?[indexPath.section] as! NSArray
-        let cellString = firstArr[indexPath.row]
-        cell.textLabel?.text = (cellString as! NSString) as String
+        let cellTitle = chartTypeArr?.object(at: indexPath.row);
+        cell.textLabel?.text = cellTitle as? String
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

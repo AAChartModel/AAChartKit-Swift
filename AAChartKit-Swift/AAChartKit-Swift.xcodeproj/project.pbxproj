@@ -43,7 +43,7 @@
 		71D02F4A1EA6F9B20086EEB4 /* AAHighChartsLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */; };
 		71D02F4B1EA6F9B20086EEB4 /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */; };
 		71D02F4C1EA6F9B20086EEB4 /* AAJQueryLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */; };
-		71D02F501EA7018E0086EEB4 /* JSONSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D02F4F1EA7018E0086EEB4 /* JSONSerializable.swift */; };
+		71D02F501EA7018E0086EEB4 /* AASerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D02F4F1EA7018E0086EEB4 /* AASerializable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,7 +106,7 @@
 		71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighChartsLibrary.js; sourceTree = "<group>"; };
 		71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
 		71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAJQueryLibrary.js; sourceTree = "<group>"; };
-		71D02F4F1EA7018E0086EEB4 /* JSONSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSerializable.swift; sourceTree = "<group>"; };
+		71D02F4F1EA7018E0086EEB4 /* AASerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AASerializable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +139,7 @@
 			children = (
 				71D02F401EA6F0530086EEB4 /* AAChartModel.swift */,
 				6416F62A1EA665AA00C1561F /* AAChartView.swift */,
-				71D02F4F1EA7018E0086EEB4 /* JSONSerializable.swift */,
+				71D02F4F1EA7018E0086EEB4 /* AASerializable.swift */,
 			);
 			name = AAChartCreator;
 			sourceTree = "<group>";
@@ -380,7 +380,7 @@
 				649025B51ED1CB94009EA1A7 /* AATooltip.swift in Sources */,
 				6416F62D1EA6693600C1561F /* Cauculator.swift in Sources */,
 				6416F6291EA65DAA00C1561F /* Person.swift in Sources */,
-				71D02F501EA7018E0086EEB4 /* JSONSerializable.swift in Sources */,
+				71D02F501EA7018E0086EEB4 /* AASerializable.swift in Sources */,
 				649025BD1ED1CBE6009EA1A7 /* AAPlotBands.swift in Sources */,
 				6416F62F1EA669E100C1561F /* NSObject+cauculater.swift in Sources */,
 				649025BB1ED1CBCE009EA1A7 /* AAPlotLines.swift in Sources */,

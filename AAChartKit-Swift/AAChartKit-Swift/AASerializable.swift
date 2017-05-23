@@ -1,5 +1,5 @@
 //
-//  JSONSerializable.swift
+//  AASerializable.swift
 //  AAChartKit-Swift
 //
 //  Created by Danny boy on 17/4/19.
@@ -10,10 +10,10 @@ protocol JSONRepresentable {
     var JSONRepresentation: AnyObject { get }
 }
 
-protocol JSONSerializable: JSONRepresentable {
+protocol AASerializable: JSONRepresentable {
 }
 
-extension JSONSerializable {
+extension AASerializable {
     var JSONRepresentation: AnyObject {
         var representation = [String: AnyObject]()
         
@@ -35,11 +35,11 @@ extension JSONSerializable {
     }
 }
 
-extension JSONSerializable {
+extension AASerializable {
     func toJSON() -> String? {
         let representation = JSONRepresentation
         
-//        guard JSONSerializable.isValidJSONObject(representation) else {
+//        guard AASerializable.isValidJSONObject(representation) else {
 //            return nil
 //        }
         

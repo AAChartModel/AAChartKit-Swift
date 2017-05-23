@@ -101,7 +101,7 @@ enum AAChartAnimationType:String{
 };
 
 
-public class AAChartModel:JSONSerializable {
+public class AAChartModel:AASerializable {
      public var animationType:String?       //动画类型
      public var title:String?               //标题内容
      public var subtitle:String?            //副标题内容
