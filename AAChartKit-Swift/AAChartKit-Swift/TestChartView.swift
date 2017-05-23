@@ -15,12 +15,10 @@ open var globalWebview: UIWebView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //检查 AAChartView是否存在
-    self.backgroundColor =  UIColor.cyan
+     self.backgroundColor =  UIColor.cyan
             globalWebview = AAChartView()
             globalWebview?.delegate=self;
             self.addSubview(globalWebview!)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

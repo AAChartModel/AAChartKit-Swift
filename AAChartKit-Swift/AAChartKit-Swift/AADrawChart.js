@@ -1,5 +1,4 @@
 function drawChart(sender, receivedWidth, receivedHeight) {
-        alert(receivedHeight);
         var AAChartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
         if (receivedWidth != 0) {
@@ -153,7 +152,7 @@ function drawChart(sender, receivedWidth, receivedHeight) {
                 };
                 AAPlotOptions.pie = AAPie;
         };
-
+        var AAColorsTheme = AAChartModel.colorsTheme;
         var AASeries = AAChartModel.series;
 
         var AAOptions = {};
@@ -165,6 +164,7 @@ function drawChart(sender, receivedWidth, receivedHeight) {
         AAOptions.tooltip = AATooltip;
         AAOptions.legend = AALegend;
         AAOptions.plotOptions = AAPlotOptions;
+        AAOptions.colorsTheme = AAColorsTheme;
         AAOptions.series = AASeries;
 
         $('#container').highcharts(AAOptions);
