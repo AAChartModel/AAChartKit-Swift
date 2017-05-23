@@ -134,6 +134,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27B0A3A81ED3C8520015B4C5 /* AAChartCreator */ = {
+			isa = PBXGroup;
+			children = (
+				71D02F401EA6F0530086EEB4 /* AAChartModel.swift */,
+				6416F62A1EA665AA00C1561F /* AAChartView.swift */,
+				71D02F4F1EA7018E0086EEB4 /* JSONSerializable.swift */,
+			);
+			name = AAChartCreator;
+			sourceTree = "<group>";
+		};
 		718EC8741EA624CD00F36D85 = {
 			isa = PBXGroup;
 			children = (
@@ -161,7 +171,6 @@
 				718EC8821EA624CD00F36D85 /* ViewController.swift */,
 				649025C81ED345DC009EA1A7 /* CommonChartViewController.swift */,
 				649025CA1ED345F3009EA1A7 /* SpecialChartViewController.swift */,
-				71D02F401EA6F0530086EEB4 /* AAChartModel.swift */,
 				649025AA1ED1CA82009EA1A7 /* AATitle.swift */,
 				649025AC1ED1CB41009EA1A7 /* AASubtitle.swift */,
 				649025AE1ED1CB67009EA1A7 /* AAXAxis.swift */,
@@ -173,11 +182,10 @@
 				649025BA1ED1CBCE009EA1A7 /* AAPlotLines.swift */,
 				649025BC1ED1CBE6009EA1A7 /* AAPlotBands.swift */,
 				649025BE1ED1CC0C009EA1A7 /* AADataLabels.swift */,
-				6416F62A1EA665AA00C1561F /* AAChartView.swift */,
 				6416F6281EA65DAA00C1561F /* Person.swift */,
 				6416F62C1EA6693600C1561F /* Cauculator.swift */,
 				6416F62E1EA669E100C1561F /* NSObject+cauculater.swift */,
-				71D02F4F1EA7018E0086EEB4 /* JSONSerializable.swift */,
+				27B0A3A81ED3C8520015B4C5 /* AAChartCreator */,
 				71D02F4E1EA6F9B70086EEB4 /* AAJSFiles */,
 				718EC8841EA624CD00F36D85 /* Main.storyboard */,
 				718EC8871EA624CD00F36D85 /* Assets.xcassets */,

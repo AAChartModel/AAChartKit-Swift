@@ -131,7 +131,7 @@ enum AAChartAnimationType:String{
 };
 
 
-public struct AAChartModel:JSONSerializable {
+public class AAChartModel:JSONSerializable {
     var animationType:String?       //动画类型
     var title:String?               //标题内容
     var subtitle:String?            //副标题内容
@@ -165,6 +165,28 @@ public struct AAChartModel:JSONSerializable {
     var options3dDepth:Int?         //3D图形深度
     var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     var markerRadius:Int?           //折线连接点的半径长度
+    
+    
+    func chartTypeSet(_ prop: String) -> AAChartModel {
+        self.chartType = prop;
+        return self
+    }
+    
+     func animationTypeSet(_ prop: String) -> AAChartModel {
+        self.animationType=prop;
+        return self
+    }
+    
+    func titleSet(_ prop: String) -> AAChartModel {
+        self.title = prop;
+        return self
+    }
+    
+    func seriesSet(_ prop: Array<Any>) -> AAChartModel {
+        self.series = prop;
+        return self
+    }
+  
     public  init() {
         print(AAChartAnimationType.AAChartAnimationTypeEaseInBack);
         self.animationType = AAChartAnimationType.AAChartAnimationTypeEaseInBack.rawValue;
@@ -192,9 +214,7 @@ public struct AAChartModel:JSONSerializable {
         
         self.borderRadius = 0;//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
         self.markerRadius = 6;//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
-        
-        
-    }
+}
     
     
 }

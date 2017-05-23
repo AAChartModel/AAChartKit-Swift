@@ -1,5 +1,5 @@
 function drawChart(sender, receivedWidth, receivedHeight) {
-        //alert(receivedHeight);
+        alert(receivedHeight);
         var chartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
         if (receivedWidth != 0) {
@@ -147,8 +147,9 @@ function drawChart(sender, receivedWidth, receivedHeight) {
                                 style: {
                                         color: "black",
                                 }
-                        } < !--showInLegend: true,
-                        -->
+                        }
+//                    < !--showInLegend: true,
+//                        -->
                 };
                 AAPlotOptions.pie = pie;
         };
