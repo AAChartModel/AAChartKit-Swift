@@ -40,6 +40,7 @@ import AAChartView.swift
          }
  ```
 3. 配置视图模型AAChartModel
+*常规方式配置 AAChartModel 模型对象属性
 ``` swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = "column";
@@ -48,21 +49,53 @@ import AAChartView.swift
         chartModel.inverted = true;
         chartModel.yAxisTitle = "千万公顷";
         chartModel.legendEnabled = true;
-        let modelString = chartModel.toJSON();
-        
-        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,self.view.frame.size.width,self.view.frame.size.height);
-        
-        globalWebview?.stringByEvaluatingJavaScript(from: jsString as String);
+        chartModel.series = [
+                [
+                    "name": "东京",
+                    "data": [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+                ], [
+                    "name": "纽约",
+                    "data": [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+                ], [
+                    "name": "柏林",
+                    "data": [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+                ], [
+                    "name": "伦敦",
+                    "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+                ]];
 ```
+*链式编程的方式配置 AAChartModel 模型对象属性
+```swift
+        let chartModel = AAChartModel.init()
+            .chartTypeSet(self.chartType!)
+            .animationTypeSet("donghualeixing")
+            .titleSet("donghua")
+            .animationTypeSet("jiushizheyang")
+            .seriesSet([
+                [
+                    "name": "东京",
+                    "data": [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+                ], [
+                    "name": "纽约",
+                    "data": [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+                ], [
+                    "name": "柏林",
+                    "data": [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+                ], [
+                    "name": "伦敦",
+                    "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+                ]]);
+```
+
 4.  绘制图形
 
-```objective-c
-[chartView aa_drawChartWithChartModel:chartModel];//图表视图对象调用图表模型对象,绘制最终图形
+```swift
+chartView?.aa_drawChartWithChartModel(chartModel)//图表视图对象调用图表模型对象,绘制最终图形
 ```
 5.  刷新图形
 
-```objective-c
- [chartView aa_refreshChartWithChartModel:chartModel];//更新 AAChartModel 数据之后,刷新图表
+```swift
+chartView?.aa_refreshChartWithChartModel(chartModel)//更新 AAChartModel 数据之后,刷新图表
 ```
 
 6. 特别说明
@@ -105,69 +138,71 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 
 
 ``` swift
-  var chartModel = AAChartModel.init();
+   var chartModel = AAChartModel.init();
         chartModel.chartType = "column";
         chartModel.title = "编程语言热度";
         chartModel.subtitle = "虚拟数据";
         chartModel.yAxisTitle = "摄氏度";
         chartModel.series = [
-        [
-        "name":"数据列 ONE",
-        "data": [
-        [9, 81, 63],
-        [98, 5, 89],
-        [51, 50, 73],
-        [41, 22, 14],
-        [58, 24, 20],
-        [78, 37, 34],
-        [55, 56, 53],
-        [18, 45, 70],
-        [42, 44, 28],
-        [3, 52, 59],
-        [31, 18, 97],
-        [79, 91, 63],
-        [93, 23, 23],
-        [44, 83, 22]
-        ]],
-        
-        [
-        "name":"数据列 TWO",
-        "data": [
-        [42, 38, 20],
-        [6, 18, 1],
-        [1, 93, 55],
-        [57, 2, 90],
-        [80, 76, 22],
-        [11, 74, 96],
-        [88, 56, 10],
-        [30, 47, 49],
-        [57, 62, 98],
-        [4, 16, 16],
-        [46, 10, 11],
-        [22, 87, 89],
-        [57, 91, 82],
-        [45, 15, 98]
-        ]],
-        
-        [
-        "name":"数据列 THREE",
-        "data": [
-        [47, 47, 21],
-        [20, 12, 4],
-        [6, 76, 91],
-        [38, 30, 60],
-        [57, 98, 64],
-        [61, 17, 80],
-        [83, 60, 13],
-        [67, 78, 75],
-        [64, 12, 10],
-        [30, 77, 82],
-        [90, 63, 44],
-        [91, 33, 17],
-        [15, 67, 48],
-        [54, 25, 81]]
-        ]
+            [
+                "name":"数据列 ONE",
+                "data": [
+                    [9, 81, 63],
+                    [98, 5, 89],
+                    [51, 50, 73],
+                    [41, 22, 14],
+                    [58, 24, 20],
+                    [78, 37, 34],
+                    [55, 56, 53],
+                    [18, 45, 70],
+                    [42, 44, 28],
+                    [3, 52, 59],
+                    [31, 18, 97],
+                    [79, 91, 63],
+                    [93, 23, 23],
+                    [44, 83, 22]
+                ]],
+            
+            [
+                "name":"数据列 TWO",
+                "data": [
+                    [42, 38, 20],
+                    [6, 18, 1],
+                    [1, 93, 55],
+                    [57, 2, 90],
+                    [80, 76, 22],
+                    [11, 74, 96],
+                    [88, 56, 10],
+                    [30, 47, 49],
+                    [57, 62, 98],
+                    [4, 16, 16],
+                    [46, 10, 11],
+                    [22, 87, 89],
+                    [57, 91, 82],
+                    [45, 15, 98]
+                ]],
+            
+            [
+                "name":"数据列 THREE",
+                "data": [
+                    [47, 47, 21],
+                    [20, 12, 4],
+                    [6, 76, 91],
+                    [38, 30, 60],
+                    [57, 98, 64],
+                    [61, 17, 80],
+                    [83, 60, 13],
+                    [67, 78, 75],
+                    [64, 12, 10],
+                    [30, 77, 82],
+                    [90, 63, 44],
+                    [91, 33, 17],
+                    [15, 67, 48],
+                    [54, 25, 81]]
+            ]
         ];
+
+
 ```
 
 - 绘制柱形范围图,你需要这样配置模型对象 **AAChartModel**
