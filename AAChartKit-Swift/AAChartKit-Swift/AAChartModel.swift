@@ -29,14 +29,14 @@ enum AAChartSubtitleAlignType{
 }
 
 enum AAChartZoomType{
-    static let AAChartZoomTypeX = "x"
-    static let AAChartZoomTypeY = "y"
+    static let AAChartZoomTypeX  = "x"
+    static let AAChartZoomTypeY  = "y"
     static let AAChartZoomTypeXY = "xy"
 }
 
 enum AAChartStackingType{
-    static let AAChartStackingTypeFalse = "nil"
-    static let AAChartStackingTypeNormal = "normal"
+    static let AAChartStackingTypeFalse   = "nil"
+    static let AAChartStackingTypeNormal  = "normal"
     static let AAChartStackingTypePercent = "percent"
 }
 
@@ -45,7 +45,7 @@ enum AAChartSymbolType{
     static let AAChartSymbolTypeSquare         = "square";
     static let AAChartSymbolTypeDiamond        = "diamond";
     static let AAChartSymbolTypeTriangle       = "triangle";
-    static let AAChartSymbolTypeTriangle_down   = "triangle-down";
+    static let AAChartSymbolTypeTriangle_down  = "triangle-down";
 }
 
 enum AAchartLegendlLayoutType{
@@ -293,7 +293,7 @@ public class AAChartModel:AASerializable {
         self.legendLayout = AAchartLegendlLayoutType.AAChartLegendLayoutTypeHorizontal;
         self.legendAlign = AAChartLegendAlignType.AAChartLegendAlignTypeCenter;
         self.legendVerticalAlign = AAChartLegendVerticalAlignType.AAChartLegendVerticalAlignTypeBottom;
-         self.borderRadius = 0;//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
+        self.borderRadius = 0;//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
         self.markerRadius = 6;//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
     }
     
