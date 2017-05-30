@@ -40,7 +40,8 @@ import AAChartView.swift
          }
  ```
 3. 配置视图模型AAChartModel
-*常规方式配置 AAChartModel 模型对象属性
+
+* 常规方式配置 AAChartModel 模型对象属性
 ``` swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = "column";
@@ -64,7 +65,8 @@ import AAChartView.swift
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
                 ]];
 ```
-*链式编程的方式配置 AAChartModel 模型对象属性
+
+* 链式编程的方式配置 AAChartModel 模型对象属性
 ```swift
         let chartModel = AAChartModel.init()
             .chartTypeSet(self.chartType!)
