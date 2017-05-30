@@ -79,9 +79,16 @@ function drawChart(sender, receivedWidth, receivedHeight) {
                 marker: {
                         radius: AAChartModel.markerRadius,
                         symbol: AAChartModel.symbol,
-                }
+                },
+                animation: {
+                        duration: AAChartModel.animationDuration,
+                        easing: AAChartModel.AAChartAnimationType,
+        }
+            
+            
         };
-        AAPlotOptions.series = series;
+    
+         AAPlotOptions.series = series;
 
         if (AAChartModel.chartType == "column") {
                 var AAColumn = {

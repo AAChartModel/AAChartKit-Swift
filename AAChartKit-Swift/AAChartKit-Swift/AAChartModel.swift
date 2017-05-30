@@ -103,6 +103,7 @@ enum AAChartAnimationType:String{
 
 public class AAChartModel:AASerializable {
      public var animationType:String?       //动画类型
+     public var animationDuration:Int?      //动画时间
      public var title:String?               //标题内容
      public var subtitle:String?            //副标题内容
      public var chartType:String?           //图表类型
@@ -138,6 +139,10 @@ public class AAChartModel:AASerializable {
     
     func animationTypeSet(_ prop: String) -> AAChartModel {
         self.animationType=prop;
+        return self
+    }
+    func animationDurationSet(_ prop: Int) -> AAChartModel {
+        self.animationDuration = prop;
         return self
     }
     func titleSet(_ prop: String) -> AAChartModel {
@@ -272,6 +277,7 @@ public class AAChartModel:AASerializable {
     public  init() {
         print(AAChartAnimationType.AAChartAnimationTypeEaseInBack);
         self.animationType = AAChartAnimationType.AAChartAnimationTypeEaseInBack.rawValue;
+        self.animationDuration = 2000;//以毫秒为单位
         self.chartType = AAChartType.AAChartTypeColumn;
         self.inverted = false;
         self.stacking = AAChartStackingType.AAChartStackingTypeNormal;
