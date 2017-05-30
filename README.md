@@ -12,14 +12,14 @@
 2. Powerful,support the  `column chart` `bar chart` `line chart` `spline chart` `pie chart` `polar chart` `radar chart` and other graphics.
 3. Interactive、animated,the `animation` is exquisite and deligate.
 4. Support `chain programming syntax` like *Masonry* 
-5. `AAChartView + AAChartModel = Chart`  In the AAChartKit,it follows a minimalist formula: ` Chart view + Chart model = The chart you want`.  
+5. `AAChartView + AAChartModel = Chart`  In the AAInfographics,it follows a minimalist formula: ` Chart view + Chart model = The chart you want`.  
 ***
 
 
 ## Method of use:
 
 ### The need of preparation
-1. Drag the folder `AAChartKitFiles` into your project.
+1. Drag the folder `AAInfographicsFiles` into your project.
   
 
 ### The offical start of the work 
@@ -68,7 +68,7 @@ import AAChartView.swift
 
 6. Special instructions
 
-Pie chart and bubble chart are special in AAChartKit,if you want to draw these charts,you should do some different things for AAChartModel,for example
+Pie chart and bubble chart are special in AAInfographics,if you want to draw these charts,you should do some different things for AAChartModel,for example
 
 - To draw a pie chart,you should configure the properties of `AAChartModel` like this:
 ``` swift
@@ -262,6 +262,53 @@ enum AAChartAnimationType:String{
 
 
 ```
+## Samples
+- line chart
+
+![IMG_1867.JPG](http://upload-images.jianshu.io/upload_images/2412088-98b871988b57d435.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+- column chart
+
+![IMG_1873.JPG](http://upload-images.jianshu.io/upload_images/2412088-c791a9a5bee44502.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+-   bar chart
+
+![IMG_1880.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1880.JPG
+)
+
+-  special area chart one 
+
+![IMG_1871.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1874.JPG)
+-  special area chart two
+
+![IMG_1869.JPG](http://upload-images.jianshu.io/upload_images/2412088-d089326452b19a11.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+-  special area chart three
+
+![IMG_1863.JPG](http://upload-images.jianshu.io/upload_images/2412088-dbbcf79f7946bb96.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+-   radar chart
+
+![IMG_1877.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1877.JPG
+)
+
+-   polar chart
+
+![IMG_1879.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1879.JPG
+)
+-   pie chart
+
+![IMG_1878.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1878.JPG
+)
+
+- the oval style column chart
+
+![IMG_1866.JPG](http://upload-images.jianshu.io/upload_images/2412088-4e2e142fc4bae5c2.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+- bubble chart
+
+![IMG_1875.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1875.JPG
+)
+
+
+
 ### AAChartModel:chart attribute list
 ```swift
      public var animationType:String?       //
@@ -333,11 +380,11 @@ An An
 
 ### LICENSE
 
-AAChartKit is Copyright (c) 2017 An An and released as open source under the attached [MIT LICENSE](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/LICENSE).
+AAInfographics is CAAopyright (c) 2017 An An and released as open source under the attached [MIT LICENSE](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/LICENSE).
 
 ### Postscript
-If you want to shrink the size of the `AAChartKit` lib ,you should do something like this:
-1. Delete the `.js` file of `AAJSFiles` folder in `AAChartKit`,The names of multiple files that need to be deleted are as follows
+If you want to shrink the size of the `AAInfographics` lib ,you should do something like this:
+1. Delete the `.js` file of `AAJSFiles` folder in `AAInfographics`,The names of multiple files that need to be deleted are as follows
 
 * AAJQueryLibrary.js 
 * AAHighchartsLibrary.js

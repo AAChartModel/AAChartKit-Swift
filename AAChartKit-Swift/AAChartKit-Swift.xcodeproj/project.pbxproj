@@ -118,6 +118,15 @@
 			name = AAChartCreator;
 			sourceTree = "<group>";
 		};
+		641A3D261EDD680B005D9662 /* AAInfographicsFiles */ = {
+			isa = PBXGroup;
+			children = (
+				27B0A3A81ED3C8520015B4C5 /* AAChartCreator */,
+				71D02F4E1EA6F9B70086EEB4 /* AAJSFiles */,
+			);
+			name = AAInfographicsFiles;
+			sourceTree = "<group>";
+		};
 		718EC8741EA624CD00F36D85 = {
 			isa = PBXGroup;
 			children = (
@@ -146,8 +155,7 @@
 				649025C81ED345DC009EA1A7 /* CommonChartViewController.swift */,
 				649025CA1ED345F3009EA1A7 /* SpecialChartViewController.swift */,
 				27C3EFEB1ED4541F00A1BC47 /* TestChartView.swift */,
-				27B0A3A81ED3C8520015B4C5 /* AAChartCreator */,
-				71D02F4E1EA6F9B70086EEB4 /* AAJSFiles */,
+				641A3D261EDD680B005D9662 /* AAInfographicsFiles */,
 				718EC8841EA624CD00F36D85 /* Main.storyboard */,
 				718EC8871EA624CD00F36D85 /* Assets.xcassets */,
 				718EC8891EA624CD00F36D85 /* LaunchScreen.storyboard */,
