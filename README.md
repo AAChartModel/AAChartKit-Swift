@@ -8,7 +8,7 @@
 
 ***
 ## Features:
-1. Support `iOS 6`、`ARC` & `Objective C`.
+1. Support `iOS 8`、`ARC` & `Swift`.
 2. Powerful,support the  `column chart` `bar chart` `line chart` `spline chart` `pie chart` `polar chart` `radar chart` and other graphics.
 3. Interactive、animated,the `animation` is exquisite and deligate.
 4. Support `chain programming syntax` like *Masonry* 
