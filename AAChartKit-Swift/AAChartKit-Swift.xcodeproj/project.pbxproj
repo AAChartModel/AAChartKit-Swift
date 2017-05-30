@@ -113,6 +113,7 @@
 			children = (
 				71D02F401EA6F0530086EEB4 /* AAChartModel.swift */,
 				6416F62A1EA665AA00C1561F /* AAChartView.swift */,
+				27C3EFEB1ED4541F00A1BC47 /* TestChartView.swift */,
 				71D02F4F1EA7018E0086EEB4 /* AASerializable.swift */,
 			);
 			name = AAChartCreator;
@@ -154,7 +155,6 @@
 				718EC8821EA624CD00F36D85 /* ViewController.swift */,
 				649025C81ED345DC009EA1A7 /* CommonChartViewController.swift */,
 				649025CA1ED345F3009EA1A7 /* SpecialChartViewController.swift */,
-				27C3EFEB1ED4541F00A1BC47 /* TestChartView.swift */,
 				641A3D261EDD680B005D9662 /* AAInfographicsFiles */,
 				718EC8841EA624CD00F36D85 /* Main.storyboard */,
 				718EC8871EA624CD00F36D85 /* Assets.xcassets */,
