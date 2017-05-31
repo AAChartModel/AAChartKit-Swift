@@ -4,8 +4,9 @@
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/LICENSE)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 
+### 中文使用说明书地址
+https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md
  
-
 ***
 ## Features:
 1. Support `iOS 8`、`ARC` & `Swift`.
