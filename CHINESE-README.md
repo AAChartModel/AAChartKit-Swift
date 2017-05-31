@@ -7,11 +7,11 @@
  
 ***
 ## 前言
-###### **AAInfographics**项目,是在流行的开源前端图表库*Highcharts*的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件.
-1. 适配 `iOS 6`,  支持`ARC`,支持 `swift 3.0`语言,配置简单.
+###### **AAInfographics**,是 `AAChartKit` 的 `swift`语言版本,是在流行的开源前端图表库*Highcharts*的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件.
+1. 适配 `iOS 8`,  支持`ARC`,支持 `swift 3.0`语言,配置简单.
 2. 功能强大,支持`柱状图`  `条形图`  `折线图`  `填充图` `雷达图` `扇形图` `气泡图`等多种图形
 3. `动画`效果细腻精致,流畅优美.
-4. 类 *Masonry* `链式编程语法` **(#warning:TODO)**
+4. 类 *Masonry* `链式编程语法`
 5. `AAChartView +AAChartModel = Chart`,在 AAInfographics 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`.
 ### *亲爱的,如果您使用时,觉得满意,请赏一颗星星✨,您的鼓励将是我继续努力的一大动力*.
 ***
@@ -337,7 +337,54 @@ enum AAChartAnimationType:String{
 
 
 ```
+###  AAChartModel一些重要属性经过配置之后的图形示例如下
+- line chart - 折线图
 
+![IMG_1867.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1867.JPG)
+- column chart - 柱形图
+
+![IMG_1873.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/IMG_1483.JPG)
+
+-   bar chart - 条形图
+
+![IMG_1880.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1880.JPG
+)
+
+-  special area chart one - 区域填充图一
+
+![IMG_1869.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/IMG_1482.JPG)
+-  special area chart two - 区域填充图二
+![IMG_1871.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1874.JPG)
+
+
+-  special area chart three - 区域填充图三
+
+![IMG_1863.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1863.JPG)
+
+-   radar chart - 雷达图
+
+![IMG_1877.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1877.JPG
+)
+
+-   polar chart - 极地图
+
+![IMG_1879.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1879.JPG
+)
+-   pie chart - 扇形图
+
+![IMG_1878.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1878.JPG
+)
+
+- the oval style column chart - 头部为椭圆形的柱形图
+
+![IMG_1866.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1866.JPG)
+- bubble chart - 气泡图
+
+![IMG_1875.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1875.JPG
+)
+
+- mixed chart - 混合图形
+![IMG_1882.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1882.JPG)
 
 ### 作者
 An An 
