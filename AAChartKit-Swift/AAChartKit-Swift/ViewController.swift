@@ -2,8 +2,9 @@
 //  ViewController.swift
 //  AAChartKit-Swift
 //
-//  Created by Danny boy on 17/4/18.
-//  Copyright © 2017年 Danny boy. All rights reserved.
+//  Created by An An  on 17/4/18.
+//  Copyright © 2017年 An An . All rights reserved.
+//  source code ----*** https://github.com/AAChartModel/AAChartKit-Swift ***--- source code
 //
 //
 
