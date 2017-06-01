@@ -1,12 +1,9 @@
-function drawChart(
-                   sender,
-                   receivedWidth,
-                   receivedHeight
-                   ){
+function drawChart(sender, receivedWidth, receivedHeight) {
         var AAChartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
         o.style.width = receivedWidth; //设置宽度
         o.style.height = receivedHeight; //设置高度
+
         var AAChart = {
                 type: AAChartModel.chartType,
                 inverted: AAChartModel.inverted,
@@ -29,6 +26,7 @@ function drawChart(
                         fontSize: "12px"
                 }
         };
+    
         var AASubtitle = {
                 text: AAChartModel.subtitle,
                 style: {
@@ -36,6 +34,7 @@ function drawChart(
                         fontSize: "9px"
                 }
         };
+    
         var AAXAxis = {
                 label: {
                         enable: AAChartModel.xAxisLabelsEnabled
@@ -44,6 +43,7 @@ function drawChart(
                 gridLineWidth: AAChartModel.xAxisGridLineWidth,
                 categories: AAChartModel.categories
         };
+    
         var AAYAxis = {
                 label: {
                         enable: AAChartModel.yAxisLabelsEnabled
@@ -78,21 +78,45 @@ function drawChart(
         var AAChartModelStacking = AAChartModel.stacking;
 
         var AAPlotOptions = {};
+    
         var series = {
                 stacking: AAChartModelStacking,
-                marker: {
-                        radius: AAChartModel.markerRadius,
-                        symbol: AAChartModel.symbol,
-                },
+                //设置是否百分比堆叠显示图形
                 animation: {
                         duration: AAChartModel.animationDuration,
                         easing: AAChartModel.animationType,
-        }
-            
-            
+                }
+
         };
+
+        AAPlotOptions.series = series;
+
+        var AAMarker = {};
+        AAMarker.radius = AAChartModel.markerRadius;
+        AAMarker.symbol = AAChartModel.symbol;
     
-         AAPlotOptions.series = series;
+        //设置曲线连接点是否为空心的
+        if (AAChartModel.pointHollow == true) {
+                AAMarker.fillColor = "#ffffff"; //点的填充色(用来设置折线连接点的填充色)
+                AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                AAMarker.lineColor = ""; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
+        }
+    
+        //数据点标记相关配置，只有线性图才有数据点标记。
+        if (   AAChartModel.chartType == "area" 
+        	|| AAChartModel.chartType == "areaspline" 
+        	|| AAChartModel.chartType == "line" 
+        	|| AAChartModel.chartType == "spline") {
+                AAPlotOptions.series = {
+                        stacking: AAChartModelStacking,
+                        //设置是否百分比堆叠显示图形
+                        marker: AAMarker,
+                        animation: {
+                                duration: AAChartModel.animationDuration,
+                                easing: AAChartModel.animationType,
+                        }
+                }
+        }
 
         if (AAChartModel.chartType == "column") {
                 var AAColumn = {
@@ -156,8 +180,8 @@ function drawChart(
                                         color: "black",
                                 }
                         }
-//                    < !--showInLegend: true,
-//                        -->
+                        //                    < !--showInLegend: true,
+                        //                        -->
                 };
                 AAPlotOptions.pie = AAPie;
         };

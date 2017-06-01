@@ -110,6 +110,7 @@ public class AAChartModel:AASerializable {
      public var stacking:String?            //堆积样式
      public var symbol:String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
      public var zoomType:String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
+     public var pointHollow:Bool?           //折线或者曲线的连接点是否为空心的
      public var inverted:Bool?              //x 轴是否垂直
      public var xAxisReversed:Bool?         // x 轴翻转
      public var yAxisReversed:Bool?         //y 轴翻转
@@ -171,6 +172,10 @@ public class AAChartModel:AASerializable {
     }
     func invertedSet(_ prop: Bool) -> AAChartModel {
         self.inverted = prop;
+        return self
+    }
+    func pointHollowSet(_ prop: Bool) -> AAChartModel {
+        self.pointHollow = prop;
         return self
     }
     func xAxisReversedSet(_ prop: Bool) -> AAChartModel {
@@ -285,6 +290,7 @@ public class AAChartModel:AASerializable {
         self.xAxisReversed = false;
         self.yAxisReversed = false;
         self.zoomType = AAChartZoomType.AAChartZoomTypeX;
+        self.pointHollow = false;//默认折线或者曲线的连接点不为空
         self.colorsTheme =  ["#b5282a","#e7a701","#50c18d","#c37779","#f1c6c5"];
         self.gradientColorEnable = false;
         self.polar = false;
