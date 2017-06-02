@@ -2,7 +2,7 @@
 //  CommonChartViewController.swift
 //  AAChartKit-Swift
 //
-//  Created by 金银岛 on 2017/5/23.
+//  Created by An An on 2017/5/23.
 //  Copyright © 2017年 An An . All rights reserved.
 //  source code ----*** https://github.com/AAChartModel/AAChartKit-Swift ***--- source code
 //

@@ -96,17 +96,17 @@ function drawChart(sender, receivedWidth, receivedHeight) {
         AAMarker.symbol = AAChartModel.symbol;
     
         //设置曲线连接点是否为空心的
-        if (AAChartModel.pointHollow == true) {
+        if (AAChartModel.pointHollow === true) {
                 AAMarker.fillColor = "#ffffff"; //点的填充色(用来设置折线连接点的填充色)
                 AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                 AAMarker.lineColor = ""; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
         }
     
         //数据点标记相关配置，只有线性图才有数据点标记。
-        if (   AAChartModel.chartType == "area" 
-        	|| AAChartModel.chartType == "areaspline" 
-        	|| AAChartModel.chartType == "line" 
-        	|| AAChartModel.chartType == "spline") {
+        if (   AAChartModel.chartType === "area" 
+        	|| AAChartModel.chartType === "areaspline" 
+        	|| AAChartModel.chartType === "line" 
+        	|| AAChartModel.chartType === "spline") {
                 AAPlotOptions.series = {
                         stacking: AAChartModelStacking,
                         //设置是否百分比堆叠显示图形
@@ -118,7 +118,7 @@ function drawChart(sender, receivedWidth, receivedHeight) {
                 }
         }
 
-        if (AAChartModel.chartType == "column") {
+        if (AAChartModel.chartType === "column") {
                 var AAColumn = {
                         pointPadding: 0.2,
                         borderWidth: 0,
@@ -128,7 +128,7 @@ function drawChart(sender, receivedWidth, receivedHeight) {
                         }
                 };
                 AAPlotOptions.column = AAColumn;
-        } else if (AAChartModel.chartType == "bar") {
+        } else if (AAChartModel.chartType === "bar") {
                 var AABar = {
                         pointPadding: 0.2,
                         borderWidth: 0,
@@ -140,35 +140,35 @@ function drawChart(sender, receivedWidth, receivedHeight) {
                 };
                 AAPlotOptions.bar = AABar;
 
-        } else if (AAChartModel.chartType == "area") {
+        } else if (AAChartModel.chartType === "area") {
                 var AAArea = {
                         dataLabels: {
                                 enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
                 AAPlotOptions.area = AAArea;
-        } else if (AAChartModel.chartType == "areaspline") {
+        } else if (AAChartModel.chartType === "areaspline") {
                 var AAAreaspline = {
                         dataLabels: {
                                 enabled: AAChartModel.dataLabelEnabled,
                         }
                 }
                 AAPlotOptions.areaspline = AAAreaspline;
-        } else if (AAChartModel.chartType == "line") {
+        } else if (AAChartModel.chartType === "line") {
                 var AALine = {
                         dataLabels: {
                                 enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
                 AAPlotOptions.line = AALine;
-        } else if (AAChartModel.chartType == "spline") {
+        } else if (AAChartModel.chartType === "spline") {
                 var AASpline = {
                         dataLabels: {
                                 enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
                 AAPlotOptions.spline = AASpline;
-        } else if (AAChartModel.chartType == "pie") {
+        } else if (AAChartModel.chartType === "pie") {
                 var AAPie = {
                         allowPointSelect: true,
                         cursor: "pointer",
