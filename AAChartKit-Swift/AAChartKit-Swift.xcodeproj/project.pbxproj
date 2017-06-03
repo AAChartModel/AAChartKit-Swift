@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2740DCDD1ECE90C500094A29 /* AAChartView的副本.html in Resources */ = {isa = PBXBuildFile; fileRef = 2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */; };
 		27C3EFEC1ED4541F00A1BC47 /* TestChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3EFEB1ED4541F00A1BC47 /* TestChartView.swift */; };
-		27C835E31ECEA15E00043257 /* AADrawChart.js in Resources */ = {isa = PBXBuildFile; fileRef = 27C835E21ECEA15E00043257 /* AADrawChart.js */; };
+		27C835E31ECEA15E00043257 /* AAOptionsConstructor.js in Resources */ = {isa = PBXBuildFile; fileRef = 27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */; };
 		27C835E51ECEA2B900043257 /* AAChartViewTest.html in Resources */ = {isa = PBXBuildFile; fileRef = 27C835E41ECEA2B900043257 /* AAChartViewTest.html */; };
 		6416F62B1EA665AA00C1561F /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416F62A1EA665AA00C1561F /* AAChartView.swift */; };
 		649025A71ED1C11C009EA1A7 /* AADarkUnica.js in Resources */ = {isa = PBXBuildFile; fileRef = 649025A61ED1C11C009EA1A7 /* AADarkUnica.js */; };
@@ -53,7 +53,7 @@
 /* Begin PBXFileReference section */
 		2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "AAChartView的副本.html"; sourceTree = "<group>"; };
 		27C3EFEB1ED4541F00A1BC47 /* TestChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestChartView.swift; sourceTree = "<group>"; };
-		27C835E21ECEA15E00043257 /* AADrawChart.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AADrawChart.js; sourceTree = "<group>"; };
+		27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAOptionsConstructor.js; sourceTree = "<group>"; };
 		27C835E41ECEA2B900043257 /* AAChartViewTest.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AAChartViewTest.html; sourceTree = "<group>"; };
 		6416F62A1EA665AA00C1561F /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
 		649025A61ED1C11C009EA1A7 /* AADarkUnica.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AADarkUnica.js; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				71D02F421EA6F9B20086EEB4 /* AAChartView.html */,
-				27C835E21ECEA15E00043257 /* AADrawChart.js */,
+				27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */,
 				649025C01ED1E00E009EA1A7 /* AAThemesKit.js */,
 				649025A61ED1C11C009EA1A7 /* AADarkUnica.js */,
 				649025A81ED1C1AA009EA1A7 /* AASandSignika.js */,
@@ -314,7 +314,7 @@
 				27C835E51ECEA2B900043257 /* AAChartViewTest.html in Resources */,
 				71D02F4C1EA6F9B20086EEB4 /* AAJQueryLibrary.js in Resources */,
 				649025A91ED1C1AA009EA1A7 /* AASandSignika.js in Resources */,
-				27C835E31ECEA15E00043257 /* AADrawChart.js in Resources */,
+				27C835E31ECEA15E00043257 /* AAOptionsConstructor.js in Resources */,
 				71D02F491EA6F9B20086EEB4 /* AAHighCharts-3d.js in Resources */,
 				2740DCDD1ECE90C500094A29 /* AAChartView的副本.html in Resources */,
 				71D02F4B1EA6F9B20086EEB4 /* AAHighchartsMore.js in Resources */,
