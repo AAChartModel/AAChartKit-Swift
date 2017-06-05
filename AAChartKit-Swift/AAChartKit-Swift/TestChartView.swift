@@ -17,7 +17,7 @@ open var globalWebview: UIWebView?
     override init(frame: CGRect) {
         super.init(frame: frame)
      self.backgroundColor =  UIColor.cyan
-            globalWebview = AAChartView()
+            globalWebview = UIWebView()
             globalWebview?.delegate=self;
             self.addSubview(globalWebview!)
     }

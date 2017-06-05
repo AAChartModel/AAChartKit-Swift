@@ -15,7 +15,7 @@ class ViewController: UIViewController,UIWebViewDelegate {
   open var chartType:String?
     
     
-  open var globalWebview: AAChartView?
+//  open var globalWebview: AAChartView?
     
       open var globalWebview2: TestChartView?
     override func viewDidLoad() {
@@ -81,14 +81,14 @@ class ViewController: UIViewController,UIWebViewDelegate {
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
                 ]]);
 
-        let modelString = chartModel.toJSON();
+//        let modelString = chartModel.toJSON();
         
-        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,self.view.frame.size.width,self.view.frame.size.height);
+//        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,self.view.frame.size.width,self.view.frame.size.height);
         
-        globalWebview?.stringByEvaluatingJavaScript(from: jsString as String);
+//        globalWebview?.stringByEvaluatingJavaScript(from: jsString as String);
         
         
-       // globalWebview2?.drawChartWithChartModel(chartModel);
+        globalWebview2?.drawChartWithChartModel(chartModel);
     }
     
     
