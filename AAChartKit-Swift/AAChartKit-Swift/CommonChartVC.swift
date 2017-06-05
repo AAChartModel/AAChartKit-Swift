@@ -11,7 +11,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIWebViewDelegate {
+class CommonChartVC: UIViewController,UIWebViewDelegate {
     open var chartType:String?
     open var chartModel: AAChartModel?
     open var globalWebview2: AAChartView?

@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		27C3EFEC1ED4541F00A1BC47 /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3EFEB1ED4541F00A1BC47 /* AAChartView.swift */; };
 		27C835E31ECEA15E00043257 /* AAOptionsConstructor.js in Resources */ = {isa = PBXBuildFile; fileRef = 27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */; };
-		649025C91ED345DC009EA1A7 /* CommonChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025C81ED345DC009EA1A7 /* CommonChartViewController.swift */; };
-		649025CB1ED345F3009EA1A7 /* SpecialChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025CA1ED345F3009EA1A7 /* SpecialChartViewController.swift */; };
+		649025C91ED345DC009EA1A7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025C81ED345DC009EA1A7 /* MainVC.swift */; };
+		649025CB1ED345F3009EA1A7 /* SpecialChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025CA1ED345F3009EA1A7 /* SpecialChartVC.swift */; };
 		718EC8811EA624CD00F36D85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8801EA624CD00F36D85 /* AppDelegate.swift */; };
-		718EC8831EA624CD00F36D85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8821EA624CD00F36D85 /* ViewController.swift */; };
+		718EC8831EA624CD00F36D85 /* CommonChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8821EA624CD00F36D85 /* CommonChartVC.swift */; };
 		718EC8861EA624CD00F36D85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718EC8841EA624CD00F36D85 /* Main.storyboard */; };
 		718EC8881EA624CD00F36D85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 718EC8871EA624CD00F36D85 /* Assets.xcassets */; };
 		718EC88B1EA624CD00F36D85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718EC8891EA624CD00F36D85 /* LaunchScreen.storyboard */; };
@@ -47,11 +47,11 @@
 /* Begin PBXFileReference section */
 		27C3EFEB1ED4541F00A1BC47 /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
 		27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAOptionsConstructor.js; sourceTree = "<group>"; };
-		649025C81ED345DC009EA1A7 /* CommonChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonChartViewController.swift; sourceTree = "<group>"; };
-		649025CA1ED345F3009EA1A7 /* SpecialChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialChartViewController.swift; sourceTree = "<group>"; };
+		649025C81ED345DC009EA1A7 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		649025CA1ED345F3009EA1A7 /* SpecialChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialChartVC.swift; sourceTree = "<group>"; };
 		718EC87D1EA624CD00F36D85 /* AAChartKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AAChartKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		718EC8801EA624CD00F36D85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		718EC8821EA624CD00F36D85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		718EC8821EA624CD00F36D85 /* CommonChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonChartVC.swift; sourceTree = "<group>"; };
 		718EC8851EA624CD00F36D85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		718EC8871EA624CD00F36D85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		718EC88A1EA624CD00F36D85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -139,9 +139,9 @@
 			isa = PBXGroup;
 			children = (
 				718EC8801EA624CD00F36D85 /* AppDelegate.swift */,
-				718EC8821EA624CD00F36D85 /* ViewController.swift */,
-				649025C81ED345DC009EA1A7 /* CommonChartViewController.swift */,
-				649025CA1ED345F3009EA1A7 /* SpecialChartViewController.swift */,
+				649025C81ED345DC009EA1A7 /* MainVC.swift */,
+				718EC8821EA624CD00F36D85 /* CommonChartVC.swift */,
+				649025CA1ED345F3009EA1A7 /* SpecialChartVC.swift */,
 				641A3D261EDD680B005D9662 /* AAInfographicsFiles */,
 				718EC8841EA624CD00F36D85 /* Main.storyboard */,
 				718EC8871EA624CD00F36D85 /* Assets.xcassets */,
@@ -324,10 +324,10 @@
 			files = (
 				27C3EFEC1ED4541F00A1BC47 /* AAChartView.swift in Sources */,
 				71D02F501EA7018E0086EEB4 /* AASerializable.swift in Sources */,
-				718EC8831EA624CD00F36D85 /* ViewController.swift in Sources */,
-				649025CB1ED345F3009EA1A7 /* SpecialChartViewController.swift in Sources */,
+				718EC8831EA624CD00F36D85 /* CommonChartVC.swift in Sources */,
+				649025CB1ED345F3009EA1A7 /* SpecialChartVC.swift in Sources */,
 				71D02F411EA6F0530086EEB4 /* AAChartModel.swift in Sources */,
-				649025C91ED345DC009EA1A7 /* CommonChartViewController.swift in Sources */,
+				649025C91ED345DC009EA1A7 /* MainVC.swift in Sources */,
 				718EC8811EA624CD00F36D85 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

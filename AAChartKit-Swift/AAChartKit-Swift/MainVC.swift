@@ -10,7 +10,7 @@
 import UIKit
 
 
-class CommonChartViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     open var chartTypeArr: NSArray?
     override func viewDidLoad() {
@@ -69,7 +69,7 @@ class CommonChartViewController: UIViewController,UITableViewDelegate,UITableVie
                               AAChartType.AAChartTypeColumnrange
                                 ];
         
-        let commonChartVC  = ViewController()
+        let commonChartVC  = CommonChartVC()
         commonChartVC.chartType = AAChartTypeArr[indexPath.row]
         self.navigationController?.pushViewController(commonChartVC, animated:true)
         //self.present(locationAlertController, animated: true, completion: nil)
