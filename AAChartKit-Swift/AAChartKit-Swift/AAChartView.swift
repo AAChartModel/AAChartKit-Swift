@@ -9,10 +9,12 @@
 
 import UIKit
 
-class TestChartView: UIView,UIWebViewDelegate {
-open var globalWebview: UIWebView?
-  open var model: AAChartModel?
- open var optionsJson: String?
+class AAChartView: UIView,UIWebViewDelegate {
+    open var contentWidth:CGFloat?
+    open var contentHeight:CGFloat?
+    
+   var globalWebview: UIWebView?
+   var optionsJson: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,8 +35,16 @@ open var globalWebview: UIWebView?
             let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
              globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
             
-            let modelString = chartModel.toJSON();
-                let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,self.frame.size.width,self.frame.size.height);
+            let modelString = chartModel.toJSON()
+            
+            let chartViewContentWidth = self.contentWidth
+            
+            let chartViewContentHeight = self.contentHeight
+            if (self.contentHeight == 0) {
+                chartViewContentHeight = self.frame.size.height
+            }
+            
+            let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,self.frame.size.width,self.frame.size.height);
              optionsJson = jsString as String;
              globalWebview?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
         }

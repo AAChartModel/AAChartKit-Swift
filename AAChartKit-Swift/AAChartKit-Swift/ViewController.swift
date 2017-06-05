@@ -14,11 +14,11 @@ import UIKit
 class ViewController: UIViewController,UIWebViewDelegate {
     open var chartType:String?
     open var chartModel: AAChartModel?
-    open var globalWebview2: TestChartView?
+    open var globalWebview2: AAChartView?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        globalWebview2 = TestChartView()
+        globalWebview2 = AAChartView()
         globalWebview2?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
         self.view.addSubview(globalWebview2!)
         
