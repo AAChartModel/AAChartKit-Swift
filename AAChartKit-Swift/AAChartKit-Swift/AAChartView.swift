@@ -13,15 +13,17 @@ class AAChartView: UIView,UIWebViewDelegate {
     open var contentWidth:CGFloat?
     open var contentHeight:CGFloat?
     
-   var globalWebview: UIWebView?
-   var optionsJson: String?
+    var globalWebview: UIWebView?
+    var optionsJson: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-     self.backgroundColor =  UIColor.cyan
-            globalWebview = UIWebView()
-            globalWebview?.delegate=self;
-            self.addSubview(globalWebview!)
+        self.contentWidth = 0
+        self.contentHeight = 0
+        self.backgroundColor =  UIColor.cyan
+        globalWebview = UIWebView()
+        globalWebview?.delegate=self
+        self.addSubview(globalWebview!)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,7 +35,7 @@ class AAChartView: UIView,UIWebViewDelegate {
         if  let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html"){
             let htmlData = NSData(contentsOfFile: htmlFile)
             let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
-             globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
+            globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
             
             let modelString = chartModel.toJSON()
             
@@ -44,14 +46,14 @@ class AAChartView: UIView,UIWebViewDelegate {
                 chartViewContentHeight = self.frame.size.height
             }
             
+            globalWebview?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
             let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,chartViewContentWidth!,chartViewContentHeight!);
-             optionsJson = jsString as String;
-             globalWebview?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
+            optionsJson = jsString as String;
         }
     }
     open func webViewDidFinishLoad(_ webView: UIWebView) {
         globalWebview?.stringByEvaluatingJavaScript(from: optionsJson!);
     }
     
-
+    
 }
