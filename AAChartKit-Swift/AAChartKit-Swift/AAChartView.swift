@@ -47,12 +47,12 @@ class AAChartView: UIView,UIWebViewDelegate {
             }
             
             globalWebview?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
-            let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,chartViewContentWidth!,chartViewContentHeight!);
+            let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,chartViewContentWidth!,chartViewContentHeight!)
             optionsJson = jsString as String;
         }
     }
     open func webViewDidFinishLoad(_ webView: UIWebView) {
-        globalWebview?.stringByEvaluatingJavaScript(from: optionsJson!);
+        globalWebview?.stringByEvaluatingJavaScript(from: optionsJson!)
     }
     
     
