@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2740DCDD1ECE90C500094A29 /* AAChartView的副本.html in Resources */ = {isa = PBXBuildFile; fileRef = 2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */; };
 		27C3EFEC1ED4541F00A1BC47 /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3EFEB1ED4541F00A1BC47 /* AAChartView.swift */; };
 		27C835E31ECEA15E00043257 /* AAOptionsConstructor.js in Resources */ = {isa = PBXBuildFile; fileRef = 27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */; };
-		27C835E51ECEA2B900043257 /* AAChartViewTest.html in Resources */ = {isa = PBXBuildFile; fileRef = 27C835E41ECEA2B900043257 /* AAChartViewTest.html */; };
-		649025A71ED1C11C009EA1A7 /* AADarkUnica.js in Resources */ = {isa = PBXBuildFile; fileRef = 649025A61ED1C11C009EA1A7 /* AADarkUnica.js */; };
-		649025A91ED1C1AA009EA1A7 /* AASandSignika.js in Resources */ = {isa = PBXBuildFile; fileRef = 649025A81ED1C1AA009EA1A7 /* AASandSignika.js */; };
-		649025C11ED1E00E009EA1A7 /* AAThemesKit.js in Resources */ = {isa = PBXBuildFile; fileRef = 649025C01ED1E00E009EA1A7 /* AAThemesKit.js */; };
 		649025C91ED345DC009EA1A7 /* CommonChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025C81ED345DC009EA1A7 /* CommonChartViewController.swift */; };
 		649025CB1ED345F3009EA1A7 /* SpecialChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025CA1ED345F3009EA1A7 /* SpecialChartViewController.swift */; };
 		718EC8811EA624CD00F36D85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8801EA624CD00F36D85 /* AppDelegate.swift */; };
@@ -50,13 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "AAChartView的副本.html"; sourceTree = "<group>"; };
 		27C3EFEB1ED4541F00A1BC47 /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
 		27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAOptionsConstructor.js; sourceTree = "<group>"; };
-		27C835E41ECEA2B900043257 /* AAChartViewTest.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AAChartViewTest.html; sourceTree = "<group>"; };
-		649025A61ED1C11C009EA1A7 /* AADarkUnica.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AADarkUnica.js; sourceTree = "<group>"; };
-		649025A81ED1C1AA009EA1A7 /* AASandSignika.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AASandSignika.js; sourceTree = "<group>"; };
-		649025C01ED1E00E009EA1A7 /* AAThemesKit.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAThemesKit.js; sourceTree = "<group>"; };
 		649025C81ED345DC009EA1A7 /* CommonChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonChartViewController.swift; sourceTree = "<group>"; };
 		649025CA1ED345F3009EA1A7 /* SpecialChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialChartViewController.swift; sourceTree = "<group>"; };
 		718EC87D1EA624CD00F36D85 /* AAChartKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AAChartKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,15 +174,10 @@
 			children = (
 				71D02F421EA6F9B20086EEB4 /* AAChartView.html */,
 				27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */,
-				649025C01ED1E00E009EA1A7 /* AAThemesKit.js */,
-				649025A61ED1C11C009EA1A7 /* AADarkUnica.js */,
-				649025A81ED1C1AA009EA1A7 /* AASandSignika.js */,
 				71D02F431EA6F9B20086EEB4 /* AAHighCharts-3d.js */,
 				71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */,
 				71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */,
 				71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */,
-				2740DCDC1ECE90C400094A29 /* AAChartView的副本.html */,
-				27C835E41ECEA2B900043257 /* AAChartViewTest.html */,
 			);
 			name = AAJSFiles;
 			sourceTree = "<group>";
@@ -308,16 +293,11 @@
 				718EC8881EA624CD00F36D85 /* Assets.xcassets in Resources */,
 				71D02F481EA6F9B20086EEB4 /* AAChartView.html in Resources */,
 				71D02F4A1EA6F9B20086EEB4 /* AAHighChartsLibrary.js in Resources */,
-				27C835E51ECEA2B900043257 /* AAChartViewTest.html in Resources */,
 				71D02F4C1EA6F9B20086EEB4 /* AAJQueryLibrary.js in Resources */,
-				649025A91ED1C1AA009EA1A7 /* AASandSignika.js in Resources */,
 				27C835E31ECEA15E00043257 /* AAOptionsConstructor.js in Resources */,
 				71D02F491EA6F9B20086EEB4 /* AAHighCharts-3d.js in Resources */,
-				2740DCDD1ECE90C500094A29 /* AAChartView的副本.html in Resources */,
 				71D02F4B1EA6F9B20086EEB4 /* AAHighchartsMore.js in Resources */,
-				649025C11ED1E00E009EA1A7 /* AAThemesKit.js in Resources */,
 				718EC8861EA624CD00F36D85 /* Main.storyboard in Resources */,
-				649025A71ED1C11C009EA1A7 /* AADarkUnica.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
