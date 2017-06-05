@@ -26,7 +26,7 @@ open var globalWebview: UIWebView?
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func drawChartWithChartModel(_ chartModel: AAChartModel){
+    public func aa_drawChartWithChartModel(_ chartModel: AAChartModel){
         //检查 AAChartView是否存在
         if let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html"){
             let htmlData = NSData(contentsOfFile: htmlFile)
