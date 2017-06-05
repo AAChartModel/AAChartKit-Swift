@@ -30,7 +30,7 @@ class AAChartView: UIView,UIWebViewDelegate {
     
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel){
         //检查 AAChartView是否存在
-        if let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html"){
+        if  let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html"){
             let htmlData = NSData(contentsOfFile: htmlFile)
             let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
              globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
@@ -39,12 +39,12 @@ class AAChartView: UIView,UIWebViewDelegate {
             
             let chartViewContentWidth = self.contentWidth
             
-            let chartViewContentHeight = self.contentHeight
+            var chartViewContentHeight = self.contentHeight
             if (self.contentHeight == 0) {
                 chartViewContentHeight = self.frame.size.height
             }
             
-            let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,self.frame.size.width,self.frame.size.height);
+            let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,chartViewContentWidth!,chartViewContentHeight!);
              optionsJson = jsString as String;
              globalWebview?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
         }
