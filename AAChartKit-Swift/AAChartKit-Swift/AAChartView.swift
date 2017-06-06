@@ -51,6 +51,9 @@ class AAChartView: UIView,UIWebViewDelegate {
             optionsJson = jsString as String;
         }
     }
+    public func aa_refreshChartWithChartModel(_ chartModel:AAChartModel){
+        
+    }
     open func webViewDidFinishLoad(_ webView: UIWebView) {
         globalWebview?.stringByEvaluatingJavaScript(from: optionsJson!)
     }

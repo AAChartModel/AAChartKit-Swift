@@ -20,13 +20,17 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         globalWebview2 = AAChartView()
         globalWebview2?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
+        globalWebview2?.contentHeight = self.view.frame.size.height;
         self.view.addSubview(globalWebview2!)
         
         chartModel = AAChartModel.init()
             .chartTypeSet(self.chartType!)
-            .animationTypeSet("donghualeixing")
+            .animationTypeSet(AAChartAnimationType.AAChartAnimationTypeSwing.rawValue)
             .titleSet("donghua")
-            .animationTypeSet("jiushizheyang")
+            .subtitleSet("subtitle")
+            .pointHollowSet(true)
+            .dataLabelEnabledSet(false)
+            .markerRadiusSet(15)
             .seriesSet([
                 [
                     "name": "Tokyo",
