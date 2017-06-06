@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27C3EFEC1ED4541F00A1BC47 /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3EFEB1ED4541F00A1BC47 /* AAChartView.swift */; };
-		27C835E31ECEA15E00043257 /* AAOptionsConstructor.js in Resources */ = {isa = PBXBuildFile; fileRef = 27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */; };
+		2791B89C1EE69A5B00759A22 /* AAChartView.html in Resources */ = {isa = PBXBuildFile; fileRef = 2791B8961EE69A5B00759A22 /* AAChartView.html */; };
+		2791B89D1EE69A5B00759A22 /* AAHighCharts-3d.js in Resources */ = {isa = PBXBuildFile; fileRef = 2791B8971EE69A5B00759A22 /* AAHighCharts-3d.js */; };
+		2791B89E1EE69A5B00759A22 /* AAHighChartsLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 2791B8981EE69A5B00759A22 /* AAHighChartsLibrary.js */; };
+		2791B89F1EE69A5B00759A22 /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 2791B8991EE69A5B00759A22 /* AAHighchartsMore.js */; };
+		2791B8A01EE69A5B00759A22 /* AAJQueryLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 2791B89A1EE69A5B00759A22 /* AAJQueryLibrary.js */; };
+		2791B8A11EE69A5B00759A22 /* AAOptionsConstructor.js in Resources */ = {isa = PBXBuildFile; fileRef = 2791B89B1EE69A5B00759A22 /* AAOptionsConstructor.js */; };
+		2791B8A61EE69A6300759A22 /* AAChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2791B8A31EE69A6300759A22 /* AAChartModel.swift */; };
+		2791B8A71EE69A6300759A22 /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2791B8A41EE69A6300759A22 /* AAChartView.swift */; };
+		2791B8A81EE69A6300759A22 /* AASerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2791B8A51EE69A6300759A22 /* AASerializable.swift */; };
 		649025C91ED345DC009EA1A7 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025C81ED345DC009EA1A7 /* MainVC.swift */; };
 		649025CB1ED345F3009EA1A7 /* SpecialChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649025CA1ED345F3009EA1A7 /* SpecialChartVC.swift */; };
 		718EC8811EA624CD00F36D85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8801EA624CD00F36D85 /* AppDelegate.swift */; };
@@ -18,13 +25,6 @@
 		718EC88B1EA624CD00F36D85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 718EC8891EA624CD00F36D85 /* LaunchScreen.storyboard */; };
 		718EC8961EA624CD00F36D85 /* AAChartKit_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8951EA624CD00F36D85 /* AAChartKit_SwiftTests.swift */; };
 		718EC8A11EA624CD00F36D85 /* AAChartKit_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718EC8A01EA624CD00F36D85 /* AAChartKit_SwiftUITests.swift */; };
-		71D02F411EA6F0530086EEB4 /* AAChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D02F401EA6F0530086EEB4 /* AAChartModel.swift */; };
-		71D02F481EA6F9B20086EEB4 /* AAChartView.html in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F421EA6F9B20086EEB4 /* AAChartView.html */; };
-		71D02F491EA6F9B20086EEB4 /* AAHighCharts-3d.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F431EA6F9B20086EEB4 /* AAHighCharts-3d.js */; };
-		71D02F4A1EA6F9B20086EEB4 /* AAHighChartsLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */; };
-		71D02F4B1EA6F9B20086EEB4 /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */; };
-		71D02F4C1EA6F9B20086EEB4 /* AAJQueryLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */; };
-		71D02F501EA7018E0086EEB4 /* AASerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D02F4F1EA7018E0086EEB4 /* AASerializable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		27C3EFEB1ED4541F00A1BC47 /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
-		27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAOptionsConstructor.js; sourceTree = "<group>"; };
+		2791B8961EE69A5B00759A22 /* AAChartView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AAChartView.html; sourceTree = "<group>"; };
+		2791B8971EE69A5B00759A22 /* AAHighCharts-3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "AAHighCharts-3d.js"; sourceTree = "<group>"; };
+		2791B8981EE69A5B00759A22 /* AAHighChartsLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighChartsLibrary.js; sourceTree = "<group>"; };
+		2791B8991EE69A5B00759A22 /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
+		2791B89A1EE69A5B00759A22 /* AAJQueryLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAJQueryLibrary.js; sourceTree = "<group>"; };
+		2791B89B1EE69A5B00759A22 /* AAOptionsConstructor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAOptionsConstructor.js; sourceTree = "<group>"; };
+		2791B8A31EE69A6300759A22 /* AAChartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartModel.swift; sourceTree = "<group>"; };
+		2791B8A41EE69A6300759A22 /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
+		2791B8A51EE69A6300759A22 /* AASerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AASerializable.swift; sourceTree = "<group>"; };
 		649025C81ED345DC009EA1A7 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		649025CA1ED345F3009EA1A7 /* SpecialChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialChartVC.swift; sourceTree = "<group>"; };
 		718EC87D1EA624CD00F36D85 /* AAChartKit-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AAChartKit-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,13 +69,6 @@
 		718EC89C1EA624CD00F36D85 /* AAChartKit-SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AAChartKit-SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		718EC8A01EA624CD00F36D85 /* AAChartKit_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChartKit_SwiftUITests.swift; sourceTree = "<group>"; };
 		718EC8A21EA624CD00F36D85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71D02F401EA6F0530086EEB4 /* AAChartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartModel.swift; sourceTree = "<group>"; };
-		71D02F421EA6F9B20086EEB4 /* AAChartView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AAChartView.html; sourceTree = "<group>"; };
-		71D02F431EA6F9B20086EEB4 /* AAHighCharts-3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "AAHighCharts-3d.js"; sourceTree = "<group>"; };
-		71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighChartsLibrary.js; sourceTree = "<group>"; };
-		71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
-		71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAJQueryLibrary.js; sourceTree = "<group>"; };
-		71D02F4F1EA7018E0086EEB4 /* AASerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AASerializable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,21 +96,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27B0A3A81ED3C8520015B4C5 /* AAChartCreator */ = {
+		2791B8951EE69A5B00759A22 /* AAJSFiles */ = {
 			isa = PBXGroup;
 			children = (
-				71D02F401EA6F0530086EEB4 /* AAChartModel.swift */,
-				27C3EFEB1ED4541F00A1BC47 /* AAChartView.swift */,
-				71D02F4F1EA7018E0086EEB4 /* AASerializable.swift */,
+				2791B8961EE69A5B00759A22 /* AAChartView.html */,
+				2791B8971EE69A5B00759A22 /* AAHighCharts-3d.js */,
+				2791B8981EE69A5B00759A22 /* AAHighChartsLibrary.js */,
+				2791B8991EE69A5B00759A22 /* AAHighchartsMore.js */,
+				2791B89A1EE69A5B00759A22 /* AAJQueryLibrary.js */,
+				2791B89B1EE69A5B00759A22 /* AAOptionsConstructor.js */,
 			);
-			name = AAChartCreator;
+			path = AAJSFiles;
+			sourceTree = "<group>";
+		};
+		2791B8A21EE69A6300759A22 /* AAChartCreator */ = {
+			isa = PBXGroup;
+			children = (
+				2791B8A31EE69A6300759A22 /* AAChartModel.swift */,
+				2791B8A41EE69A6300759A22 /* AAChartView.swift */,
+				2791B8A51EE69A6300759A22 /* AASerializable.swift */,
+			);
+			path = AAChartCreator;
 			sourceTree = "<group>";
 		};
 		641A3D261EDD680B005D9662 /* AAInfographicsFiles */ = {
 			isa = PBXGroup;
 			children = (
-				27B0A3A81ED3C8520015B4C5 /* AAChartCreator */,
-				71D02F4E1EA6F9B70086EEB4 /* AAJSFiles */,
+				2791B8A21EE69A6300759A22 /* AAChartCreator */,
+				2791B8951EE69A5B00759A22 /* AAJSFiles */,
 			);
 			name = AAInfographicsFiles;
 			sourceTree = "<group>";
@@ -167,19 +180,6 @@
 				718EC8A21EA624CD00F36D85 /* Info.plist */,
 			);
 			path = "AAChartKit-SwiftUITests";
-			sourceTree = "<group>";
-		};
-		71D02F4E1EA6F9B70086EEB4 /* AAJSFiles */ = {
-			isa = PBXGroup;
-			children = (
-				71D02F421EA6F9B20086EEB4 /* AAChartView.html */,
-				27C835E21ECEA15E00043257 /* AAOptionsConstructor.js */,
-				71D02F431EA6F9B20086EEB4 /* AAHighCharts-3d.js */,
-				71D02F441EA6F9B20086EEB4 /* AAHighChartsLibrary.js */,
-				71D02F451EA6F9B20086EEB4 /* AAHighchartsMore.js */,
-				71D02F461EA6F9B20086EEB4 /* AAJQueryLibrary.js */,
-			);
-			name = AAJSFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,12 +291,12 @@
 			files = (
 				718EC88B1EA624CD00F36D85 /* LaunchScreen.storyboard in Resources */,
 				718EC8881EA624CD00F36D85 /* Assets.xcassets in Resources */,
-				71D02F481EA6F9B20086EEB4 /* AAChartView.html in Resources */,
-				71D02F4A1EA6F9B20086EEB4 /* AAHighChartsLibrary.js in Resources */,
-				71D02F4C1EA6F9B20086EEB4 /* AAJQueryLibrary.js in Resources */,
-				27C835E31ECEA15E00043257 /* AAOptionsConstructor.js in Resources */,
-				71D02F491EA6F9B20086EEB4 /* AAHighCharts-3d.js in Resources */,
-				71D02F4B1EA6F9B20086EEB4 /* AAHighchartsMore.js in Resources */,
+				2791B89C1EE69A5B00759A22 /* AAChartView.html in Resources */,
+				2791B89E1EE69A5B00759A22 /* AAHighChartsLibrary.js in Resources */,
+				2791B8A01EE69A5B00759A22 /* AAJQueryLibrary.js in Resources */,
+				2791B89D1EE69A5B00759A22 /* AAHighCharts-3d.js in Resources */,
+				2791B8A11EE69A5B00759A22 /* AAOptionsConstructor.js in Resources */,
+				2791B89F1EE69A5B00759A22 /* AAHighchartsMore.js in Resources */,
 				718EC8861EA624CD00F36D85 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,13 +322,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C3EFEC1ED4541F00A1BC47 /* AAChartView.swift in Sources */,
-				71D02F501EA7018E0086EEB4 /* AASerializable.swift in Sources */,
 				718EC8831EA624CD00F36D85 /* CommonChartVC.swift in Sources */,
+				2791B8A61EE69A6300759A22 /* AAChartModel.swift in Sources */,
 				649025CB1ED345F3009EA1A7 /* SpecialChartVC.swift in Sources */,
-				71D02F411EA6F0530086EEB4 /* AAChartModel.swift in Sources */,
 				649025C91ED345DC009EA1A7 /* MainVC.swift in Sources */,
+				2791B8A81EE69A6300759A22 /* AASerializable.swift in Sources */,
 				718EC8811EA624CD00F36D85 /* AppDelegate.swift in Sources */,
+				2791B8A71EE69A6300759A22 /* AAChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
