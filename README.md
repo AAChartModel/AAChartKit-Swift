@@ -356,7 +356,7 @@ enum AAChartAnimationType:String{
 An An 
 ``` java
  "CODE IS FAR AWAY FROM BUG WITH THE ANIMAL PROTECTING"
- *            %%3      %%3
+ 
  *          ##2      ##2
  *       ┏-##1　  ┏-##1
  *    ┏_┛ ┻---━┛_┻━━┓
@@ -379,6 +379,8 @@ An An
  *
  "CODE IS FAR AWAY FROM BUG WITH THE ANIMAL PROTECTING"
  ```
+
+ 
 
 ### LICENSE
 
