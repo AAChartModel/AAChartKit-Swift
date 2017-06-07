@@ -314,7 +314,7 @@ enum AAChartAnimationType:String{
 ### AAChartModel:chart attribute list
 ```swift
      public var animationType:String?       //
-     public var title:String?               //
+     public var title:String?               //the tittle of chart
      public var subtitle:String?            //
      public var chartType:String?           //
      public var stacking:String?            //
