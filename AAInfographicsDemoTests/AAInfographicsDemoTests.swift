@@ -1,16 +1,15 @@
 //
-//  AAChartKit_SwiftTests.swift
-//  AAChartKit-SwiftTests
+//  AAInfographicsDemoTests.swift
+//  AAInfographicsDemoTests
 //
-//  Created by An An  on 17/4/18.
-//  Copyright © 2017年 An An . All rights reserved.
-//  source code ----*** https://github.com/AAChartModel/AAChartKit-Swift ***--- source code
+//  Created by An An on 2017/6/8.
+//  Copyright © 2017年 An An. All rights reserved.
 //
 
 import XCTest
-@testable import AAChartKit_Swift
+@testable import AAInfographicsDemo
 
-class AAChartKit_SwiftTests: XCTestCase {
+class AAInfographicsDemoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

@@ -1,0 +1,610 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54B11EE9472300770B97 /* AppDelegate.swift */; };
+		278C54B71EE9472300770B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B51EE9472300770B97 /* Main.storyboard */; };
+		278C54B91EE9472300770B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B81EE9472300770B97 /* Assets.xcassets */; };
+		278C54BC1EE9472300770B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C54BA1EE9472300770B97 /* LaunchScreen.storyboard */; };
+		278C54C71EE9472300770B97 /* AAInfographicsDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54C61EE9472300770B97 /* AAInfographicsDemoTests.swift */; };
+		278C54D21EE9472300770B97 /* AAInfographicsDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54D11EE9472300770B97 /* AAInfographicsDemoUITests.swift */; };
+		278C55001EE947DF00770B97 /* AAChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54F61EE947DF00770B97 /* AAChartModel.swift */; };
+		278C55011EE947DF00770B97 /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54F71EE947DF00770B97 /* AAChartView.swift */; };
+		278C55021EE947DF00770B97 /* AASerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54F81EE947DF00770B97 /* AASerializable.swift */; };
+		278C55031EE947DF00770B97 /* AAChartView.html in Resources */ = {isa = PBXBuildFile; fileRef = 278C54FA1EE947DF00770B97 /* AAChartView.html */; };
+		278C55041EE947DF00770B97 /* AAHighCharts-3d.js in Resources */ = {isa = PBXBuildFile; fileRef = 278C54FB1EE947DF00770B97 /* AAHighCharts-3d.js */; };
+		278C55051EE947DF00770B97 /* AAHighChartsLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 278C54FC1EE947DF00770B97 /* AAHighChartsLibrary.js */; };
+		278C55061EE947DF00770B97 /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 278C54FD1EE947DF00770B97 /* AAHighchartsMore.js */; };
+		278C55071EE947DF00770B97 /* AAJQueryLibrary.js in Resources */ = {isa = PBXBuildFile; fileRef = 278C54FE1EE947DF00770B97 /* AAJQueryLibrary.js */; };
+		278C55081EE947DF00770B97 /* AAOptionsConstructor.js in Resources */ = {isa = PBXBuildFile; fileRef = 278C54FF1EE947DF00770B97 /* AAOptionsConstructor.js */; };
+		278C55141EE948C900770B97 /* CommonChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55101EE948C900770B97 /* CommonChartVC.swift */; };
+		278C55151EE948C900770B97 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55111EE948C900770B97 /* MainVC.swift */; };
+		278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55121EE948C900770B97 /* SpecialChartVC.swift */; };
+		278C55171EE948C900770B97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55131EE948C900770B97 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		278C54C31EE9472300770B97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 278C54A61EE9472300770B97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 278C54AD1EE9472300770B97;
+			remoteInfo = AAInfographicsDemo;
+		};
+		278C54CE1EE9472300770B97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 278C54A61EE9472300770B97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 278C54AD1EE9472300770B97;
+			remoteInfo = AAInfographicsDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		278C54AE1EE9472300770B97 /* AAInfographicsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAInfographicsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		278C54B11EE9472300770B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		278C54B61EE9472300770B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		278C54B81EE9472300770B97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		278C54BB1EE9472300770B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		278C54BD1EE9472300770B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		278C54C21EE9472300770B97 /* AAInfographicsDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AAInfographicsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		278C54C61EE9472300770B97 /* AAInfographicsDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInfographicsDemoTests.swift; sourceTree = "<group>"; };
+		278C54C81EE9472300770B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		278C54CD1EE9472300770B97 /* AAInfographicsDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AAInfographicsDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		278C54D11EE9472300770B97 /* AAInfographicsDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInfographicsDemoUITests.swift; sourceTree = "<group>"; };
+		278C54D31EE9472300770B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		278C54F61EE947DF00770B97 /* AAChartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartModel.swift; sourceTree = "<group>"; };
+		278C54F71EE947DF00770B97 /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
+		278C54F81EE947DF00770B97 /* AASerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AASerializable.swift; sourceTree = "<group>"; };
+		278C54FA1EE947DF00770B97 /* AAChartView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = AAChartView.html; sourceTree = "<group>"; };
+		278C54FB1EE947DF00770B97 /* AAHighCharts-3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "AAHighCharts-3d.js"; sourceTree = "<group>"; };
+		278C54FC1EE947DF00770B97 /* AAHighChartsLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighChartsLibrary.js; sourceTree = "<group>"; };
+		278C54FD1EE947DF00770B97 /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
+		278C54FE1EE947DF00770B97 /* AAJQueryLibrary.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAJQueryLibrary.js; sourceTree = "<group>"; };
+		278C54FF1EE947DF00770B97 /* AAOptionsConstructor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAOptionsConstructor.js; sourceTree = "<group>"; };
+		278C55101EE948C900770B97 /* CommonChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonChartVC.swift; sourceTree = "<group>"; };
+		278C55111EE948C900770B97 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		278C55121EE948C900770B97 /* SpecialChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialChartVC.swift; sourceTree = "<group>"; };
+		278C55131EE948C900770B97 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		278C54AB1EE9472300770B97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		278C54BF1EE9472300770B97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		278C54CA1EE9472300770B97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		278C54A51EE9472300770B97 = {
+			isa = PBXGroup;
+			children = (
+				278C54B01EE9472300770B97 /* AAInfographicsDemo */,
+				278C54C51EE9472300770B97 /* AAInfographicsDemoTests */,
+				278C54D01EE9472300770B97 /* AAInfographicsDemoUITests */,
+				278C54AF1EE9472300770B97 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		278C54AF1EE9472300770B97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				278C54AE1EE9472300770B97 /* AAInfographicsDemo.app */,
+				278C54C21EE9472300770B97 /* AAInfographicsDemoTests.xctest */,
+				278C54CD1EE9472300770B97 /* AAInfographicsDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		278C54B01EE9472300770B97 /* AAInfographicsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				278C54B11EE9472300770B97 /* AppDelegate.swift */,
+				278C550F1EE9487F00770B97 /* Demo */,
+				278C54F41EE947DF00770B97 /* AAInfographics */,
+				278C54B51EE9472300770B97 /* Main.storyboard */,
+				278C54B81EE9472300770B97 /* Assets.xcassets */,
+				278C54BA1EE9472300770B97 /* LaunchScreen.storyboard */,
+				278C54BD1EE9472300770B97 /* Info.plist */,
+			);
+			path = AAInfographicsDemo;
+			sourceTree = "<group>";
+		};
+		278C54C51EE9472300770B97 /* AAInfographicsDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				278C54C61EE9472300770B97 /* AAInfographicsDemoTests.swift */,
+				278C54C81EE9472300770B97 /* Info.plist */,
+			);
+			path = AAInfographicsDemoTests;
+			sourceTree = "<group>";
+		};
+		278C54D01EE9472300770B97 /* AAInfographicsDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				278C54D11EE9472300770B97 /* AAInfographicsDemoUITests.swift */,
+				278C54D31EE9472300770B97 /* Info.plist */,
+			);
+			path = AAInfographicsDemoUITests;
+			sourceTree = "<group>";
+		};
+		278C54F41EE947DF00770B97 /* AAInfographics */ = {
+			isa = PBXGroup;
+			children = (
+				278C54F51EE947DF00770B97 /* AAChartCreator */,
+				278C54F91EE947DF00770B97 /* AAJSFiles */,
+			);
+			path = AAInfographics;
+			sourceTree = SOURCE_ROOT;
+		};
+		278C54F51EE947DF00770B97 /* AAChartCreator */ = {
+			isa = PBXGroup;
+			children = (
+				278C54F61EE947DF00770B97 /* AAChartModel.swift */,
+				278C54F81EE947DF00770B97 /* AASerializable.swift */,
+				278C54F71EE947DF00770B97 /* AAChartView.swift */,
+			);
+			path = AAChartCreator;
+			sourceTree = "<group>";
+		};
+		278C54F91EE947DF00770B97 /* AAJSFiles */ = {
+			isa = PBXGroup;
+			children = (
+				278C54FA1EE947DF00770B97 /* AAChartView.html */,
+				278C54FF1EE947DF00770B97 /* AAOptionsConstructor.js */,
+				278C54FB1EE947DF00770B97 /* AAHighCharts-3d.js */,
+				278C54FC1EE947DF00770B97 /* AAHighChartsLibrary.js */,
+				278C54FD1EE947DF00770B97 /* AAHighchartsMore.js */,
+				278C54FE1EE947DF00770B97 /* AAJQueryLibrary.js */,
+			);
+			path = AAJSFiles;
+			sourceTree = "<group>";
+		};
+		278C550F1EE9487F00770B97 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				278C55101EE948C900770B97 /* CommonChartVC.swift */,
+				278C55111EE948C900770B97 /* MainVC.swift */,
+				278C55121EE948C900770B97 /* SpecialChartVC.swift */,
+				278C55131EE948C900770B97 /* ViewController.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		278C54AD1EE9472300770B97 /* AAInfographicsDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 278C54D61EE9472300770B97 /* Build configuration list for PBXNativeTarget "AAInfographicsDemo" */;
+			buildPhases = (
+				278C54AA1EE9472300770B97 /* Sources */,
+				278C54AB1EE9472300770B97 /* Frameworks */,
+				278C54AC1EE9472300770B97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AAInfographicsDemo;
+			productName = AAInfographicsDemo;
+			productReference = 278C54AE1EE9472300770B97 /* AAInfographicsDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		278C54C11EE9472300770B97 /* AAInfographicsDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 278C54D91EE9472300770B97 /* Build configuration list for PBXNativeTarget "AAInfographicsDemoTests" */;
+			buildPhases = (
+				278C54BE1EE9472300770B97 /* Sources */,
+				278C54BF1EE9472300770B97 /* Frameworks */,
+				278C54C01EE9472300770B97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				278C54C41EE9472300770B97 /* PBXTargetDependency */,
+			);
+			name = AAInfographicsDemoTests;
+			productName = AAInfographicsDemoTests;
+			productReference = 278C54C21EE9472300770B97 /* AAInfographicsDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		278C54CC1EE9472300770B97 /* AAInfographicsDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 278C54DC1EE9472300770B97 /* Build configuration list for PBXNativeTarget "AAInfographicsDemoUITests" */;
+			buildPhases = (
+				278C54C91EE9472300770B97 /* Sources */,
+				278C54CA1EE9472300770B97 /* Frameworks */,
+				278C54CB1EE9472300770B97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				278C54CF1EE9472300770B97 /* PBXTargetDependency */,
+			);
+			name = AAInfographicsDemoUITests;
+			productName = AAInfographicsDemoUITests;
+			productReference = 278C54CD1EE9472300770B97 /* AAInfographicsDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		278C54A61EE9472300770B97 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "An An";
+				TargetAttributes = {
+					278C54AD1EE9472300770B97 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					278C54C11EE9472300770B97 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 278C54AD1EE9472300770B97;
+					};
+					278C54CC1EE9472300770B97 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 278C54AD1EE9472300770B97;
+					};
+				};
+			};
+			buildConfigurationList = 278C54A91EE9472300770B97 /* Build configuration list for PBXProject "AAInfographicsDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 278C54A51EE9472300770B97;
+			productRefGroup = 278C54AF1EE9472300770B97 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				278C54AD1EE9472300770B97 /* AAInfographicsDemo */,
+				278C54C11EE9472300770B97 /* AAInfographicsDemoTests */,
+				278C54CC1EE9472300770B97 /* AAInfographicsDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		278C54AC1EE9472300770B97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				278C54BC1EE9472300770B97 /* LaunchScreen.storyboard in Resources */,
+				278C54B91EE9472300770B97 /* Assets.xcassets in Resources */,
+				278C55031EE947DF00770B97 /* AAChartView.html in Resources */,
+				278C55051EE947DF00770B97 /* AAHighChartsLibrary.js in Resources */,
+				278C55071EE947DF00770B97 /* AAJQueryLibrary.js in Resources */,
+				278C55041EE947DF00770B97 /* AAHighCharts-3d.js in Resources */,
+				278C55081EE947DF00770B97 /* AAOptionsConstructor.js in Resources */,
+				278C55061EE947DF00770B97 /* AAHighchartsMore.js in Resources */,
+				278C54B71EE9472300770B97 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		278C54C01EE9472300770B97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		278C54CB1EE9472300770B97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		278C54AA1EE9472300770B97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				278C55001EE947DF00770B97 /* AAChartModel.swift in Sources */,
+				278C55151EE948C900770B97 /* MainVC.swift in Sources */,
+				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
+				278C55171EE948C900770B97 /* ViewController.swift in Sources */,
+				278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */,
+				278C55021EE947DF00770B97 /* AASerializable.swift in Sources */,
+				278C55011EE947DF00770B97 /* AAChartView.swift in Sources */,
+				278C55141EE948C900770B97 /* CommonChartVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		278C54BE1EE9472300770B97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				278C54C71EE9472300770B97 /* AAInfographicsDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		278C54C91EE9472300770B97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				278C54D21EE9472300770B97 /* AAInfographicsDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		278C54C41EE9472300770B97 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 278C54AD1EE9472300770B97 /* AAInfographicsDemo */;
+			targetProxy = 278C54C31EE9472300770B97 /* PBXContainerItemProxy */;
+		};
+		278C54CF1EE9472300770B97 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 278C54AD1EE9472300770B97 /* AAInfographicsDemo */;
+			targetProxy = 278C54CE1EE9472300770B97 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		278C54B51EE9472300770B97 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				278C54B61EE9472300770B97 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		278C54BA1EE9472300770B97 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				278C54BB1EE9472300770B97 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		278C54D41EE9472300770B97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		278C54D51EE9472300770B97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		278C54D71EE9472300770B97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		278C54D81EE9472300770B97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		278C54DA1EE9472300770B97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AAInfographicsDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AAInfographicsDemo.app/AAInfographicsDemo";
+			};
+			name = Debug;
+		};
+		278C54DB1EE9472300770B97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = AAInfographicsDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AAInfographicsDemo.app/AAInfographicsDemo";
+			};
+			name = Release;
+		};
+		278C54DD1EE9472300770B97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = AAInfographicsDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = AAInfographicsDemo;
+			};
+			name = Debug;
+		};
+		278C54DE1EE9472300770B97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = AAInfographicsDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = AAInfographicsDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		278C54A91EE9472300770B97 /* Build configuration list for PBXProject "AAInfographicsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278C54D41EE9472300770B97 /* Debug */,
+				278C54D51EE9472300770B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		278C54D61EE9472300770B97 /* Build configuration list for PBXNativeTarget "AAInfographicsDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278C54D71EE9472300770B97 /* Debug */,
+				278C54D81EE9472300770B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		278C54D91EE9472300770B97 /* Build configuration list for PBXNativeTarget "AAInfographicsDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278C54DA1EE9472300770B97 /* Debug */,
+				278C54DB1EE9472300770B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		278C54DC1EE9472300770B97 /* Build configuration list for PBXNativeTarget "AAInfographicsDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				278C54DD1EE9472300770B97 /* Debug */,
+				278C54DE1EE9472300770B97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 278C54A61EE9472300770B97 /* Project object */;
+}

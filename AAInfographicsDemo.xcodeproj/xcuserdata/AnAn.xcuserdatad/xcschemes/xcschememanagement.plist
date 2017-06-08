@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AAChartKit-Swift.xcscheme</key>
+		<key>AAInfographicsDemo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>718EC87C1EA624CD00F36D85</key>
+		<key>278C54AD1EE9472300770B97</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>718EC8901EA624CD00F36D85</key>
+		<key>278C54C11EE9472300770B97</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>718EC89B1EA624CD00F36D85</key>
+		<key>278C54CC1EE9472300770B97</key>
 		<dict>
 			<key>primary</key>
 			<true/>

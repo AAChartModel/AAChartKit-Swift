@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "718EC87C1EA624CD00F36D85"
-               BuildableName = "AAChartKit-Swift.app"
-               BlueprintName = "AAChartKit-Swift"
-               ReferencedContainer = "container:AAChartKit-Swift.xcodeproj">
+               BlueprintIdentifier = "278C54AD1EE9472300770B97"
+               BuildableName = "AAInfographicsDemo.app"
+               BlueprintName = "AAInfographicsDemo"
+               ReferencedContainer = "container:AAInfographicsDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "718EC8901EA624CD00F36D85"
-               BuildableName = "AAChartKit-SwiftTests.xctest"
-               BlueprintName = "AAChartKit-SwiftTests"
-               ReferencedContainer = "container:AAChartKit-Swift.xcodeproj">
+               BlueprintIdentifier = "278C54C11EE9472300770B97"
+               BuildableName = "AAInfographicsDemoTests.xctest"
+               BlueprintName = "AAInfographicsDemoTests"
+               ReferencedContainer = "container:AAInfographicsDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "718EC89B1EA624CD00F36D85"
-               BuildableName = "AAChartKit-SwiftUITests.xctest"
-               BlueprintName = "AAChartKit-SwiftUITests"
-               ReferencedContainer = "container:AAChartKit-Swift.xcodeproj">
+               BlueprintIdentifier = "278C54CC1EE9472300770B97"
+               BuildableName = "AAInfographicsDemoUITests.xctest"
+               BlueprintName = "AAInfographicsDemoUITests"
+               ReferencedContainer = "container:AAInfographicsDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "718EC87C1EA624CD00F36D85"
-            BuildableName = "AAChartKit-Swift.app"
-            BlueprintName = "AAChartKit-Swift"
-            ReferencedContainer = "container:AAChartKit-Swift.xcodeproj">
+            BlueprintIdentifier = "278C54AD1EE9472300770B97"
+            BuildableName = "AAInfographicsDemo.app"
+            BlueprintName = "AAInfographicsDemo"
+            ReferencedContainer = "container:AAInfographicsDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "718EC87C1EA624CD00F36D85"
-            BuildableName = "AAChartKit-Swift.app"
-            BlueprintName = "AAChartKit-Swift"
-            ReferencedContainer = "container:AAChartKit-Swift.xcodeproj">
+            BlueprintIdentifier = "278C54AD1EE9472300770B97"
+            BuildableName = "AAInfographicsDemo.app"
+            BlueprintName = "AAInfographicsDemo"
+            ReferencedContainer = "container:AAInfographicsDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "718EC87C1EA624CD00F36D85"
-            BuildableName = "AAChartKit-Swift.app"
-            BlueprintName = "AAChartKit-Swift"
-            ReferencedContainer = "container:AAChartKit-Swift.xcodeproj">
+            BlueprintIdentifier = "278C54AD1EE9472300770B97"
+            BuildableName = "AAInfographicsDemo.app"
+            BlueprintName = "AAInfographicsDemo"
+            ReferencedContainer = "container:AAInfographicsDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
