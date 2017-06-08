@@ -122,12 +122,12 @@
 			isa = PBXGroup;
 			children = (
 				278C54B11EE9472300770B97 /* AppDelegate.swift */,
-				278C550F1EE9487F00770B97 /* Demo */,
-				278C54F41EE947DF00770B97 /* AAInfographics */,
 				278C54B51EE9472300770B97 /* Main.storyboard */,
-				278C54B81EE9472300770B97 /* Assets.xcassets */,
 				278C54BA1EE9472300770B97 /* LaunchScreen.storyboard */,
 				278C54BD1EE9472300770B97 /* Info.plist */,
+				278C54B81EE9472300770B97 /* Assets.xcassets */,
+				278C550F1EE9487F00770B97 /* Demo */,
+				278C54F41EE947DF00770B97 /* AAInfographics */,
 			);
 			path = AAInfographicsDemo;
 			sourceTree = "<group>";
@@ -587,6 +587,7 @@
 				278C54D81EE9472300770B97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		278C54D91EE9472300770B97 /* Build configuration list for PBXNativeTarget "AAInfographicsDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -595,6 +596,7 @@
 				278C54DB1EE9472300770B97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		278C54DC1EE9472300770B97 /* Build configuration list for PBXNativeTarget "AAInfographicsDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -603,6 +605,7 @@
 				278C54DE1EE9472300770B97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

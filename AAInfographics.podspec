@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = 'AAInfographics'
-    s.version      = '1.0.1'
+    s.version      = '1.0.2'
     s.summary      = 'An elegant and friendly chart library for iOS developer who use Swift'
     s.description  = <<-DESC
 An elegant and friendly chart library for iOS developer who use Swift
