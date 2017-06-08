@@ -7,7 +7,6 @@ Pod::Spec.new do |s|
     s.authors      = {'An An' => '18256973864@163.com'}
     s.platform     = :ios, '8.0'
     s.source       = {:git => 'https://github.com/AAChartModel/AAChartKit-Swift.git', :tag => s.version}
-    s.source_files = 'AAChartKit-Swift/**/*.{swift,js,html}'
-    s.resource     = 'AAChartKit/AAChartKit.bundle'
+    s.source_files = 'AAInfographics/**/*.{swift}'
     s.requires_arc = true
 end
