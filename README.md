@@ -31,16 +31,13 @@ import AAChartView.swift
 ```
 2.Creat the object of chart view:`AAChartView`
 ```swift
-         if let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html"){
-             let htmlData = NSData(contentsOfFile: htmlFile)
-             let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
-             globalWebview = UIWebView()
+       
+             globalWebview = UIWebView()
             globalWebview?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
              globalWebview?.delegate=self;
             self.view.addSubview(globalWebview!)
-             globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
-         }
- ```
+             globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
+  ```
 3.Configure the properties of chart model:`AAChartModel`
 
 ``` swift
