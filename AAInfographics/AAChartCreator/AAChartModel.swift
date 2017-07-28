@@ -103,183 +103,218 @@ enum AAChartAnimationType:String{
 
 
 public class AAChartModel:AASerializable {
-     public var animationType:String?       //动画类型
-     public var animationDuration:Int?      //动画时间
-     public var title:String?               //标题内容
-     public var subtitle:String?            //副标题内容
-     public var chartType:String?           //图表类型
-     public var stacking:String?            //堆积样式
-     public var symbol:String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-     public var zoomType:String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
-     public var pointHollow:Bool?           //折线或者曲线的连接点是否为空心的
-     public var inverted:Bool?              //x 轴是否垂直
-     public var xAxisReversed:Bool?         // x 轴翻转
-     public var yAxisReversed:Bool?         //y 轴翻转
-     public var crosshairs:Bool?            //是否显示准星线(默认显示)
-     public var gradientColorEnable:Bool?   //是否要为渐变色
-     public var polar:Bool?                 //是否极化图形(变为雷达图)
-     public var dataLabelEnabled:Bool?      //是否显示数据
-     public var xAxisLabelsEnabled:Bool?    //x轴是否显示数据
-     public var categories:Array<Any>?      //x轴是否显示数据
-     public var xAxisGridLineWidth:Int?     //x轴网格线的宽度
-     public var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
-     public var yAxisTitle:String?          //y轴标题
-     public var yAxisGridLineWidth:Int?     //y轴网格线的宽度
-     public var colorsTheme:Array<Any>?     //图表主题颜色数组
-     public var series:Array<Any>?
-     public var legendEnabled:Bool?         //是否显示图例
-     public var legendLayout:String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
-     public var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
-     public var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
-     public var backgroundColor:String?   //图表背景色
-     public var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
-     public var options3dAlpha:Int?
-     public var  options3dBeta:Int?
-     public var options3dDepth:Int?         //3D图形深度
-     public var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
-     public var markerRadius:Int?           //折线连接点的半径长度
+    public var animationType:String?       //动画类型
+    public var animationDuration:Int?      //动画时间
+    public var title:String?               //标题内容
+    public var subtitle:String?            //副标题内容
+    public var chartType:String?           //图表类型
+    public var stacking:String?            //堆积样式
+    public var symbol:String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+    public var zoomType:String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
+    public var pointHollow:Bool?           //折线或者曲线的连接点是否为空心的
+    public var inverted:Bool?              //x 轴是否垂直
+    public var xAxisReversed:Bool?         // x 轴翻转
+    public var yAxisReversed:Bool?         //y 轴翻转
+    public var crosshairs:Bool?            //是否显示准星线(默认显示)
+    public var gradientColorEnable:Bool?   //是否要为渐变色
+    public var polar:Bool?                 //是否极化图形(变为雷达图)
+    public var dataLabelEnabled:Bool?      //是否显示数据
+    public var xAxisLabelsEnabled:Bool?    //x轴是否显示数据
+    public var categories:Array<Any>?      //x轴是否显示数据
+    public var xAxisGridLineWidth:Int?     //x轴网格线的宽度
+    public var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
+    public var yAxisTitle:String?          //y轴标题
+    public var yAxisGridLineWidth:Int?     //y轴网格线的宽度
+    public var colorsTheme:Array<Any>?     //图表主题颜色数组
+    public var series:Array<Any>?
+    public var legendEnabled:Bool?         //是否显示图例
+    public var legendLayout:String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
+    public var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
+    public var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
+    public var backgroundColor:String?   //图表背景色
+    public var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
+    public var options3dAlpha:Int?
+    public var  options3dBeta:Int?
+    public var options3dDepth:Int?         //3D图形深度
+    public var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
+    public var markerRadius:Int?           //折线连接点的半径长度
     
     func animationTypeSet(_ prop: String) -> AAChartModel {
         self.animationType=prop;
         return self
     }
+    
     func animationDurationSet(_ prop: Int) -> AAChartModel {
         self.animationDuration = prop;
         return self
     }
+    
     func titleSet(_ prop: String) -> AAChartModel {
         self.title = prop;
         return self
     }
+    
     func subtitleSet(_ prop: String) -> AAChartModel {
         self.subtitle = prop;
         return self
     }
+    
     func chartTypeSet(_ prop: String) -> AAChartModel {
         self.chartType = prop;
         return self
     }
+    
     func stackingSet(_ prop: String) -> AAChartModel {
         self.stacking = prop;
         return self
     }
+    
     func symbolSet(_ prop: String) -> AAChartModel {
         self.symbol = prop;
         return self
     }
+    
     func zoomTypeSet(_ prop: String) -> AAChartModel {
         self.zoomType = prop;
         return self
     }
+    
     func invertedSet(_ prop: Bool) -> AAChartModel {
         self.inverted = prop;
         return self
     }
+    
     func pointHollowSet(_ prop: Bool) -> AAChartModel {
         self.pointHollow = prop;
         return self
     }
+    
     func xAxisReversedSet(_ prop: Bool) -> AAChartModel {
         self.xAxisReversed = prop;
         return self
     }
+    
     func yAxisReversedSet(_ prop: Bool) -> AAChartModel {
         self.yAxisReversed = prop;
         return self
     }
+    
     func crosshairsSet(_ prop: Bool) -> AAChartModel {
         self.crosshairs = prop;
         return self
     }
+    
     func gradientColorEnableSet(_ prop: Bool) -> AAChartModel {
         self.gradientColorEnable = prop;
         return self
     }
+    
     func polarSet(_ prop: Bool) -> AAChartModel {
         self.polar = prop;
         return self
     }
+    
     func dataLabelEnabledSet(_ prop: Bool) -> AAChartModel {
         self.dataLabelEnabled = prop;
         return self
     }
+    
     func xAxisLabelsEnabledSet(_ prop: Bool) -> AAChartModel {
         self.xAxisLabelsEnabled = prop;
         return self
     }
+    
     func categoriesSet(_ prop: Array<Any>) -> AAChartModel {
         self.categories = prop;
         return self
     }
+    
     func xAxisGridLineWidthSet(_ prop: Int) -> AAChartModel {
         self.xAxisGridLineWidth = prop;
         return self
     }
+    
     func yAxisLabelsEnabledSet(_ prop: Bool) -> AAChartModel {
         self.yAxisLabelsEnabled = prop;
         return self
     }
+    
     func yAxisTitleSet(_ prop: String) -> AAChartModel {
         self.yAxisTitle = prop;
         return self
     }
+    
     func yAxisGridLineWidthSet(_ prop: Int) -> AAChartModel {
         self.yAxisGridLineWidth = prop;
         return self
     }
+    
     func colorsThemeSet(_ prop: Array<Any>) -> AAChartModel {
         self.colorsTheme = prop;
         return self
     }
-     func seriesSet(_ prop: Array<Any>) -> AAChartModel {
+    
+    func seriesSet(_ prop: Array<Any>) -> AAChartModel {
         self.series = prop;
         return self
     }
+    
     func legendEnabledSet(_ prop: Bool) -> AAChartModel {
         self.legendEnabled = prop;
         return self
     }
+    
     func legendLayoutSet(_ prop: String) -> AAChartModel {
         self.legendLayout = prop;
         return self
     }
+    
     func legendAlignSet(_ prop: String) -> AAChartModel {
         self.legendAlign = prop;
         return self
     }
+    
     func legendVerticalAlignSet(_ prop: String) -> AAChartModel {
         self.legendAlign = prop;
         return self
     }
+    
     func backgroundColorSet(_ prop: String) -> AAChartModel {
         self.legendAlign = prop;
         return self
     }
+    
     func options3dEnableSet(_ prop: Bool) -> AAChartModel {
         self.options3dEnable = prop;
         return self
     }
+    
     func options3dAlphaSet(_ prop: Int) -> AAChartModel {
         self.options3dAlpha = prop;
         return self
     }
+    
     func options3dBetaSet(_ prop: Int) -> AAChartModel {
         self.options3dBeta = prop;
         return self
     }
+    
     func options3dDepthSet(_ prop: Int) -> AAChartModel {
         self.options3dDepth = prop;
         return self
     }
+    
     func borderRadiusSet(_ prop: Int) -> AAChartModel {
         self.borderRadius = prop;
         return self
     }
+    
     func markerRadiusSet(_ prop: Int) -> AAChartModel {
         self.markerRadius = prop;
         return self
     }
-  
+    
+    
     public  init() {
         print(AAChartAnimationType.AAChartAnimationTypeEaseInBack);
         self.animationType = AAChartAnimationType.AAChartAnimationTypeEaseInBack.rawValue;
