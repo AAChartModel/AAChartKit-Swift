@@ -64,7 +64,7 @@ function drawChart(sender, receivedWidth, receivedHeight) {
         };
 
         var AATooltip = {
-                valueSuffix: '\xB0C',
+                valueSuffix: '\xB0C',//浮动提示层数值的单位后缀
                 shared: true,
                 crosshairs: true,
         }
@@ -204,4 +204,29 @@ function drawChart(sender, receivedWidth, receivedHeight) {
 
         $('#container').highcharts(AAOptions);
 
-};
+}
+
+function onlyRefreshTheChartDataWithSeries(receivedSeries) {
+    
+    var JavaScriptObject = JSON.parse(receivedSeries);
+    var receivedSeriesElementArr = JavaScriptObject.series;
+    
+    for (var i=0;i<receivedSeriesElementArr.length;i++){
+        var receivedSeriesData =receivedSeriesElementArr[i].data;
+        // 获取series
+        var chartSeries =  $('#container').highcharts().series[i];
+        // 执行只刷新数据的函数
+        chartSeries.setData(receivedSeriesData);
+    }
+    
+    <!--                // 加入当前数组有5个元素-->
+    <!--                var data = [1, 3, 5, 3, 1];-->
+    <!--                // 随机创建一个数字，或从服务器获取一个数字-->
+    <!--                var now = Math.random() * 10;-->
+    <!--                // 从头部弹出一个数字-->
+    <!--                data.shift();-->
+    <!--                // 把获取到的数据压入尾部-->
+    <!--                data.push(now);-->
+    <!--                // 最后设置数据，即可实现曲线、趋势线从右向左的动态效果-->
+    <!--                exSeries.setData(data, true, true, false);-->
+}

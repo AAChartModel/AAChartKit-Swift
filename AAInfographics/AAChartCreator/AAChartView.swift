@@ -52,7 +52,11 @@ class AAChartView: UIView,UIWebViewDelegate {
         }
     }
     
-    public func aa_refreshChartWithChartModel(_ chartModel:AAChartModel){
+    public func aa_refreshChartWithChartModel(_ chartModel:AAChartModel) {
+        
+    }
+    
+    public func aa_onlyRefreshTheChartDataWithChartModel(_ chartModel:AAChartModel) {
         
     }
     

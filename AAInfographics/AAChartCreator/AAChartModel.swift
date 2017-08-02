@@ -321,7 +321,7 @@ public class AAChartModel:AASerializable {
         self.animationDuration = 2000;//以毫秒为单位
         self.chartType = AAChartType.AAChartTypeColumn;
         self.inverted = false;
-        self.stacking = AAChartStackingType.AAChartStackingTypeNormal;
+        self.stacking = AAChartStackingType.AAChartStackingTypeFalse;
         self.symbol = AAChartSymbolType.AAChartSymbolTypeSquare;
         self.xAxisReversed = false;
         self.yAxisReversed = false;
