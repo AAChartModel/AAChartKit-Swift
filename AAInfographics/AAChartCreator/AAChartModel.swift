@@ -5,100 +5,100 @@
 //  Created by An An  on 17/4/19.
 //  Copyright © 2017年 An An . All rights reserved.
 //  source code ----*** https://github.com/AAChartModel/AAChartKit-Swift ***--- source code
-//
+//static let AAChartType(.*)=(.*)$
+//case $1=$2
 
-
-enum AAChartType{
-    static let AAChartTypeColumn      = "column"
-    static let AAChartTypeBar         = "bar"
-    static let AAChartTypeArea        = "area"
-    static let AAChartTypeAreaSpline  = "areaspline"
-    static let AAChartTypeLine        = "line"
-    static let AAChartTypeSpline      = "spline"
-    static let AAChartTypeScatter     = "scatter"
-    static let AAChartTypePie         = "pie"
-    static let AAChartTypeBubble      = "bubble"
-    static let AAChartTypePyramid     = "pyramid"
-    static let AAChartTypeFunnel      = "funnel"
-    static let AAChartTypeColumnrange = "columnrange"
+enum AAChartType:String{
+    case Column      = "column"
+    case Bar         = "bar"
+    case Area        = "area"
+    case AreaSpline  = "areaspline"
+    case Line        = "line"
+    case Spline      = "spline"
+    case Scatter     = "scatter"
+    case Pie         = "pie"
+    case Bubble      = "bubble"
+    case Pyramid     = "pyramid"
+    case Funnel      = "funnel"
+    case Columnrange = "columnrange"
 }
 
-enum AAChartSubtitleAlignType{
-    static let AAChartSubtitleAlignTypeLeft   = "left"
-    static let AAChartSubtitleAlignTypeCenter = "center"
-    static let AAChartSubtitleAlignTypeRight  = "right"
+enum AAChartSubtitleAlignType:String{
+    case Left   = "left"
+    case Center = "center"
+    case Right  = "right"
 }
 
-enum AAChartZoomType{
-    static let AAChartZoomTypeX  = "x"
-    static let AAChartZoomTypeY  = "y"
-    static let AAChartZoomTypeXY = "xy"
+enum AAChartZoomType:String{
+    case X  = "x"
+    case Y  = "y"
+    case XY = "xy"
 }
 
-enum AAChartStackingType{
-    static let AAChartStackingTypeFalse   = "nil"
-    static let AAChartStackingTypeNormal  = "normal"
-    static let AAChartStackingTypePercent = "percent"
+enum AAChartStackingType:String{
+    case
+    False   = "",
+    Normal  = "normal",
+    Percent = "percent"
 }
 
-enum AAChartSymbolType{
-    static let AAChartSymbolTypeCircle         = "circle";
-    static let AAChartSymbolTypeSquare         = "square";
-    static let AAChartSymbolTypeDiamond        = "diamond";
-    static let AAChartSymbolTypeTriangle       = "triangle";
-    static let AAChartSymbolTypeTriangle_down  = "triangle-down";
+enum AAChartSymbolType:String{
+    case Circle         = "circle";
+    case Square         = "square";
+    case Diamond        = "diamond";
+    case Triangle       = "triangle";
+    case Triangle_down  = "triangle-down";
 }
 
-enum AAchartLegendlLayoutType{
-    static let AAChartLegendLayoutTypeHorizontal  = "horizontal";
-    static let AAChartLegendLayoutTypeVertical    = "vertical";
+enum AAchartLegendlLayoutType:String{
+    case Horizontal  = "horizontal";
+    case Vertical    = "vertical";
 }
 
-enum AAChartLegendAlignType{
-    static let AAChartLegendAlignTypeLeft     = "left";
-    static let AAChartLegendAlignTypeCenter   = "center";
-    static let AAChartLegendAlignTypeRight    = "right";
+enum AAChartLegendAlignType:String{
+    case Left     = "left";
+    case Center   = "center";
+    case Right    = "right";
 }
 
-enum AAChartLegendVerticalAlignType{
-    static let AAChartLegendVerticalAlignTypeTop     = "top";
-    static let AAChartLegendVerticalAlignTypeMiddle  = "middle";
-    static let AAChartLegendVerticalAlignTypeBottom  = "bottom";
+enum AAChartLegendVerticalAlignType:String{
+    case Top     = "top";
+    case Middle  = "middle";
+    case Bottom  = "bottom";
 }
 enum AAChartAnimationType:String{
-    case
-    AAChartAnimationTypeLinear              = "linear" ,
-    AAChartAnimationTypeSwing               = "swing",
-    AAChartAnimationTypeEaseInQuad          = "easeInQuad",
-    AAChartAnimationTypeEaseOutQuad         = "easeOutQuad",
-    AAChartAnimationTypeEaseInOutQuad       = "easeInOutQuad",
-    AAChartAnimationTypeEaseInCubic         = "easeInCubic",
-    AAChartAnimationTypeEaseOutCubic        = "easeOutCubic",
-    AAChartAnimationTypeEaseInOutCubic      = "easeInOutCubic",
-    AAChartAnimationTypeEaseInQuart         = "easeInQuart",
-    AAChartAnimationTypeEaseOutQuart        = "easeOutQuart",
-    AAChartAnimationTypeEaseInOutQuart      = "easeInOutQuart",
-    AAChartAnimationTypeEaseInQuint         = "easeInQuint",
-    AAChartAnimationTypeEaseOutQuint        = "easeOutQuint",
-    AAChartAnimationTypeEaseInOutQuint      = "easeInOutQuint",
-    AAChartAnimationTypeEaseInExpo          = "easeInExpo",
-    AAChartAnimationTypeEaseOutExpo         = "easeOutExpo",
-    AAChartAnimationTypeEaseInOutExpo       = "easeInOutExpo",
-    AAChartAnimationTypeEaseInSine          = "easeInSine",
-    AAChartAnimationTypeEaseOutSine         = "easeOutSine",
-    AAChartAnimationTypeEaseInOutSine       = "easeInOutSine",
-    AAChartAnimationTypeEaseInCirc          = "easeInCirc",
-    AAChartAnimationTypeEaseOutCirc         = "easeOutCirc",
-    AAChartAnimationTypeEaseInOutCirc       = "easeInOutCirc",
-    AAChartAnimationTypeEaseInElastic       = "easeInElastic",
-    AAChartAnimationTypeEaseOutElastic      = "easeOutElastic",
-    AAChartAnimationTypeEaseInOutElastic    = "easeInOutElastic",
-    AAChartAnimationTypeEaseInBack          = "easeInBack",
-    AAChartAnimationTypeEaseOutBack         = "easeOutBack",
-    AAChartAnimationTypeEaseInOutBack       = "easeInOutBack",
-    AAChartAnimationTypeEaseInBounce        = "easeInBounce",
-    AAChartAnimationTypeEaseOutBounce       = "easeOutBounce",
-    AAChartAnimationTypeEaseInOutBounce     = "easeInOutBounce"
+    case Linear              = "linear" 
+    case Swing               = "swing"
+    case EaseInQuad          = "easeInQuad"
+    case EaseOutQuad         = "easeOutQuad"
+    case EaseInOutQuad       = "easeInOutQuad"
+    case EaseInCubic         = "easeInCubic"
+    case EaseOutCubic        = "easeOutCubic"
+    case EaseInOutCubic      = "easeInOutCubic"
+    case EaseInQuart         = "easeInQuart"
+    case EaseOutQuart        = "easeOutQuart"
+    case EaseInOutQuart      = "easeInOutQuart"
+    case EaseInQuint         = "easeInQuint"
+    case EaseOutQuint        = "easeOutQuint"
+    case EaseInOutQuint      = "easeInOutQuint"
+    case EaseInExpo          = "easeInExpo"
+    case EaseOutExpo         = "easeOutExpo"
+    case EaseInOutExpo       = "easeInOutExpo"
+    case EaseInSine          = "easeInSine"
+    case EaseOutSine         = "easeOutSine"
+    case EaseInOutSine       = "easeInOutSine"
+    case EaseInCirc          = "easeInCirc"
+    case EaseOutCirc         = "easeOutCirc"
+    case EaseInOutCirc       = "easeInOutCirc"
+    case EaseInElastic       = "easeInElastic"
+    case EaseOutElastic      = "easeOutElastic"
+    case EaseInOutElastic    = "easeInOutElastic"
+    case EaseInBack          = "easeInBack"
+    case EaseOutBack         = "easeOutBack"
+    case EaseInOutBack       = "easeInOutBack"
+    case EaseInBounce        = "easeInBounce"
+    case EaseOutBounce       = "easeOutBounce"
+    case EaseInOutBounce     = "easeInOutBounce"
 };
 
 
@@ -134,48 +134,55 @@ public class AAChartModel:AASerializable {
     public var backgroundColor:String?   //图表背景色
     public var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
     public var options3dAlpha:Int?
-    public var  options3dBeta:Int?
+    public var options3dBeta:Int?
     public var options3dDepth:Int?         //3D图形深度
     public var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     public var markerRadius:Int?           //折线连接点的半径长度
     
-    func animationTypeSet(_ prop: String) -> AAChartModel {
-        self.animationType=prop;
+    
+    /*public var tooltip:Dictionary<String,Any> = ["shared":true,"pointFormat":"{series.name}: <b>{point.y}</b><br/>"]
+     func valueSuffixSet(_ prop: String) -> AAChartModel {
+     self.tooltip["valueSuffix"] = prop
+     return self
+     }*/
+    
+    func animationTypeSet(_ prop: AAChartAnimationType) -> AAChartModel {
+        self.animationType = prop.rawValue
         return self
     }
     
     func animationDurationSet(_ prop: Int) -> AAChartModel {
-        self.animationDuration = prop;
+        self.animationDuration = prop
         return self
     }
     
     func titleSet(_ prop: String) -> AAChartModel {
-        self.title = prop;
+        self.title = prop
         return self
     }
     
     func subtitleSet(_ prop: String) -> AAChartModel {
-        self.subtitle = prop;
+        self.subtitle = prop
         return self
     }
     
-    func chartTypeSet(_ prop: String) -> AAChartModel {
-        self.chartType = prop;
+    func chartTypeSet(_ prop: AAChartType) -> AAChartModel {
+        self.chartType = prop.rawValue
         return self
     }
     
-    func stackingSet(_ prop: String) -> AAChartModel {
-        self.stacking = prop;
+    func stackingSet(_ prop: AAChartStackingType) -> AAChartModel {
+        self.stacking = prop.rawValue;
         return self
     }
     
-    func symbolSet(_ prop: String) -> AAChartModel {
-        self.symbol = prop;
+    func symbolSet(_ prop: AAChartSymbolType) -> AAChartModel {
+        self.symbol = prop.rawValue
         return self
     }
     
-    func zoomTypeSet(_ prop: String) -> AAChartModel {
-        self.zoomType = prop;
+    func zoomTypeSet(_ prop: AAChartZoomType) -> AAChartModel {
+        self.zoomType = prop.rawValue
         return self
     }
     
@@ -240,7 +247,7 @@ public class AAChartModel:AASerializable {
     }
     
     func yAxisTitleSet(_ prop: String) -> AAChartModel {
-        self.yAxisTitle = prop;
+        self.yAxisTitle = prop
         return self
     }
     
@@ -264,23 +271,24 @@ public class AAChartModel:AASerializable {
         return self
     }
     
-    func legendLayoutSet(_ prop: String) -> AAChartModel {
-        self.legendLayout = prop;
+    func legendLayoutSet(_ prop: AAchartLegendlLayoutType) -> AAChartModel {
+        self.legendLayout = prop.rawValue
         return self
     }
     
-    func legendAlignSet(_ prop: String) -> AAChartModel {
-        self.legendAlign = prop;
+    func legendAlignSet(_ prop: AAChartLegendAlignType) -> AAChartModel {
+        self.legendAlign = prop.rawValue
         return self
     }
     
-    func legendVerticalAlignSet(_ prop: String) -> AAChartModel {
-        self.legendAlign = prop;
+    func legendVerticalAlignSet(_ prop: AAChartLegendVerticalAlignType) -> AAChartModel {
+        self.legendAlign = prop.rawValue
         return self
     }
     
     func backgroundColorSet(_ prop: String) -> AAChartModel {
-        self.legendAlign = prop;
+        self.backgroundColor = prop
+        
         return self
     }
     
@@ -316,16 +324,17 @@ public class AAChartModel:AASerializable {
     
     
     public  init() {
-        print(AAChartAnimationType.AAChartAnimationTypeEaseInBack);
-        self.animationType = AAChartAnimationType.AAChartAnimationTypeEaseInBack.rawValue;
+        print(AAChartAnimationType.EaseInBack.rawValue);
+        
+        self.animationType = AAChartAnimationType.EaseInBack.rawValue;
         self.animationDuration = 2000;//以毫秒为单位
-        self.chartType = AAChartType.AAChartTypeColumn;
+        self.chartType = AAChartType.Column.rawValue;
         self.inverted = false;
-        self.stacking = AAChartStackingType.AAChartStackingTypeFalse;
-        self.symbol = AAChartSymbolType.AAChartSymbolTypeSquare;
+        self.stacking = AAChartStackingType.False.rawValue;
+        self.symbol = AAChartSymbolType.Square.rawValue;
         self.xAxisReversed = false;
         self.yAxisReversed = false;
-        self.zoomType = AAChartZoomType.AAChartZoomTypeX;
+        self.zoomType = AAChartZoomType.X.rawValue;
         self.pointHollow = false;//默认折线或者曲线的连接点不为空
         self.colorsTheme =  ["#b5282a","#e7a701","#50c18d","#c37779","#f1c6c5"];
         self.gradientColorEnable = false;
@@ -338,9 +347,9 @@ public class AAChartModel:AASerializable {
         self.yAxisLabelsEnabled = true;
         self.yAxisGridLineWidth = 1;
         self.legendEnabled = true;
-        self.legendLayout = AAchartLegendlLayoutType.AAChartLegendLayoutTypeHorizontal;
-        self.legendAlign = AAChartLegendAlignType.AAChartLegendAlignTypeCenter;
-        self.legendVerticalAlign = AAChartLegendVerticalAlignType.AAChartLegendVerticalAlignTypeBottom;
+        self.legendLayout = AAchartLegendlLayoutType.Horizontal.rawValue;
+        self.legendAlign = AAChartLegendAlignType.Center.rawValue;
+        self.legendVerticalAlign = AAChartLegendVerticalAlignType.Bottom.rawValue;
         self.borderRadius = 0;//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
         self.markerRadius = 6;//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
     }
