@@ -20,12 +20,12 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         globalWebview2 = AAChartView()
         globalWebview2?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
-        globalWebview2?.contentHeight = self.view.frame.size.height;
+        globalWebview2?.contentHeight = self.view.frame.size.height
         self.view.addSubview(globalWebview2!)
         
         chartModel = AAChartModel.init()
             .chartTypeSet(AAChartType(rawValue: self.chartType!)!)
-            .animationTypeSet(AAChartAnimationType(rawValue: AAChartAnimationType.Swing.rawValue)!)
+            .animationTypeSet(AAChartAnimationType.Swing)
             .titleSet("donghua")
             .subtitleSet("subtitle")
             .pointHollowSet(true)

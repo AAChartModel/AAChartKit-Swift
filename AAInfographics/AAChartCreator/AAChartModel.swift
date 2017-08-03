@@ -21,6 +21,7 @@ enum AAChartType:String{
     case Pyramid     = "pyramid"
     case Funnel      = "funnel"
     case Columnrange = "columnrange"
+    case Arearange = "arearange"
 }
 
 enum AAChartSubtitleAlignType:String{
@@ -43,28 +44,28 @@ enum AAChartStackingType:String{
 }
 
 enum AAChartSymbolType:String{
-    case Circle         = "circle";
-    case Square         = "square";
-    case Diamond        = "diamond";
-    case Triangle       = "triangle";
-    case Triangle_down  = "triangle-down";
+    case Circle         = "circle"
+    case Square         = "square"
+    case Diamond        = "diamond"
+    case Triangle       = "triangle"
+    case Triangle_down  = "triangle-down"
 }
 
 enum AAchartLegendlLayoutType:String{
-    case Horizontal  = "horizontal";
-    case Vertical    = "vertical";
+    case Horizontal  = "horizontal"
+    case Vertical    = "vertical"
 }
 
 enum AAChartLegendAlignType:String{
-    case Left     = "left";
-    case Center   = "center";
-    case Right    = "right";
+    case Left     = "left"
+    case Center   = "center"
+    case Right    = "right"
 }
 
 enum AAChartLegendVerticalAlignType:String{
-    case Top     = "top";
-    case Middle  = "middle";
-    case Bottom  = "bottom";
+    case Top     = "top"
+    case Middle  = "middle"
+    case Bottom  = "bottom"
 }
 enum AAChartAnimationType:String{
     case Linear              = "linear" 
@@ -99,7 +100,7 @@ enum AAChartAnimationType:String{
     case EaseInBounce        = "easeInBounce"
     case EaseOutBounce       = "easeOutBounce"
     case EaseInOutBounce     = "easeInOutBounce"
-};
+}
 
 
 public class AAChartModel:AASerializable {
@@ -172,7 +173,7 @@ public class AAChartModel:AASerializable {
     }
     
     func stackingSet(_ prop: AAChartStackingType) -> AAChartModel {
-        self.stacking = prop.rawValue;
+        self.stacking = prop.rawValue
         return self
     }
     
@@ -187,62 +188,62 @@ public class AAChartModel:AASerializable {
     }
     
     func invertedSet(_ prop: Bool) -> AAChartModel {
-        self.inverted = prop;
+        self.inverted = prop
         return self
     }
     
     func pointHollowSet(_ prop: Bool) -> AAChartModel {
-        self.pointHollow = prop;
+        self.pointHollow = prop
         return self
     }
     
     func xAxisReversedSet(_ prop: Bool) -> AAChartModel {
-        self.xAxisReversed = prop;
+        self.xAxisReversed = prop
         return self
     }
     
     func yAxisReversedSet(_ prop: Bool) -> AAChartModel {
-        self.yAxisReversed = prop;
+        self.yAxisReversed = prop
         return self
     }
     
     func crosshairsSet(_ prop: Bool) -> AAChartModel {
-        self.crosshairs = prop;
+        self.crosshairs = prop
         return self
     }
     
     func gradientColorEnableSet(_ prop: Bool) -> AAChartModel {
-        self.gradientColorEnable = prop;
+        self.gradientColorEnable = prop
         return self
     }
     
     func polarSet(_ prop: Bool) -> AAChartModel {
-        self.polar = prop;
+        self.polar = prop
         return self
     }
     
     func dataLabelEnabledSet(_ prop: Bool) -> AAChartModel {
-        self.dataLabelEnabled = prop;
+        self.dataLabelEnabled = prop
         return self
     }
     
     func xAxisLabelsEnabledSet(_ prop: Bool) -> AAChartModel {
-        self.xAxisLabelsEnabled = prop;
+        self.xAxisLabelsEnabled = prop
         return self
     }
     
     func categoriesSet(_ prop: Array<Any>) -> AAChartModel {
-        self.categories = prop;
+        self.categories = prop
         return self
     }
     
     func xAxisGridLineWidthSet(_ prop: Int) -> AAChartModel {
-        self.xAxisGridLineWidth = prop;
+        self.xAxisGridLineWidth = prop
         return self
     }
     
     func yAxisLabelsEnabledSet(_ prop: Bool) -> AAChartModel {
-        self.yAxisLabelsEnabled = prop;
+        self.yAxisLabelsEnabled = prop
         return self
     }
     
@@ -252,22 +253,22 @@ public class AAChartModel:AASerializable {
     }
     
     func yAxisGridLineWidthSet(_ prop: Int) -> AAChartModel {
-        self.yAxisGridLineWidth = prop;
+        self.yAxisGridLineWidth = prop
         return self
     }
     
     func colorsThemeSet(_ prop: Array<Any>) -> AAChartModel {
-        self.colorsTheme = prop;
+        self.colorsTheme = prop
         return self
     }
     
     func seriesSet(_ prop: Array<Any>) -> AAChartModel {
-        self.series = prop;
+        self.series = prop
         return self
     }
     
     func legendEnabledSet(_ prop: Bool) -> AAChartModel {
-        self.legendEnabled = prop;
+        self.legendEnabled = prop
         return self
     }
     
@@ -293,65 +294,65 @@ public class AAChartModel:AASerializable {
     }
     
     func options3dEnableSet(_ prop: Bool) -> AAChartModel {
-        self.options3dEnable = prop;
+        self.options3dEnable = prop
         return self
     }
     
     func options3dAlphaSet(_ prop: Int) -> AAChartModel {
-        self.options3dAlpha = prop;
+        self.options3dAlpha = prop
         return self
     }
     
     func options3dBetaSet(_ prop: Int) -> AAChartModel {
-        self.options3dBeta = prop;
+        self.options3dBeta = prop
         return self
     }
     
     func options3dDepthSet(_ prop: Int) -> AAChartModel {
-        self.options3dDepth = prop;
+        self.options3dDepth = prop
         return self
     }
     
     func borderRadiusSet(_ prop: Int) -> AAChartModel {
-        self.borderRadius = prop;
+        self.borderRadius = prop
         return self
     }
     
     func markerRadiusSet(_ prop: Int) -> AAChartModel {
-        self.markerRadius = prop;
+        self.markerRadius = prop
         return self
     }
     
     
     public  init() {
-        print(AAChartAnimationType.EaseInBack.rawValue);
+        print(AAChartAnimationType.EaseInBack.rawValue)
         
-        self.animationType = AAChartAnimationType.EaseInBack.rawValue;
-        self.animationDuration = 2000;//以毫秒为单位
-        self.chartType = AAChartType.Column.rawValue;
-        self.inverted = false;
-        self.stacking = AAChartStackingType.False.rawValue;
-        self.symbol = AAChartSymbolType.Square.rawValue;
-        self.xAxisReversed = false;
-        self.yAxisReversed = false;
-        self.zoomType = AAChartZoomType.X.rawValue;
-        self.pointHollow = false;//默认折线或者曲线的连接点不为空
-        self.colorsTheme =  ["#b5282a","#e7a701","#50c18d","#c37779","#f1c6c5"];
-        self.gradientColorEnable = false;
-        self.polar = false;
-        self.dataLabelEnabled = true;
-        self.options3dEnable = false;
-        self.crosshairs = true;
-        self.xAxisLabelsEnabled = true;
-        self.xAxisGridLineWidth = 0;
-        self.yAxisLabelsEnabled = true;
-        self.yAxisGridLineWidth = 1;
-        self.legendEnabled = true;
-        self.legendLayout = AAchartLegendlLayoutType.Horizontal.rawValue;
-        self.legendAlign = AAChartLegendAlignType.Center.rawValue;
-        self.legendVerticalAlign = AAChartLegendVerticalAlignType.Bottom.rawValue;
-        self.borderRadius = 0;//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
-        self.markerRadius = 6;//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
+        self.animationType = AAChartAnimationType.EaseInBack.rawValue
+        self.animationDuration = 2000//以毫秒为单位
+        self.chartType = AAChartType.Column.rawValue
+        self.inverted = false
+        self.stacking = AAChartStackingType.False.rawValue
+        self.symbol = AAChartSymbolType.Square.rawValue
+        self.xAxisReversed = false
+        self.yAxisReversed = false
+        self.zoomType = AAChartZoomType.X.rawValue
+        self.pointHollow = false//默认折线或者曲线的连接点不为空
+        self.colorsTheme =  ["#b5282a","#e7a701","#50c18d","#c37779","#f1c6c5"]
+        self.gradientColorEnable = false
+        self.polar = false
+        self.dataLabelEnabled = true
+        self.options3dEnable = false
+        self.crosshairs = true
+        self.xAxisLabelsEnabled = true
+        self.xAxisGridLineWidth = 0
+        self.yAxisLabelsEnabled = true
+        self.yAxisGridLineWidth = 1
+        self.legendEnabled = true
+        self.legendLayout = AAchartLegendlLayoutType.Horizontal.rawValue
+        self.legendAlign = AAChartLegendAlignType.Center.rawValue
+        self.legendVerticalAlign = AAChartLegendVerticalAlignType.Bottom.rawValue
+        self.borderRadius = 0//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
+        self.markerRadius = 6//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
     }
     
     

@@ -17,18 +17,18 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         super.viewDidLoad()
         self.title = "AAChartKit-Swift"
         chartTypeArr = [
-            "Column Chart(柱形图)",
-            "Bar Chart(条形图)",
-            "Area Chart(折线填充图)",
-            "Areaspline Chart(曲线填充图)",
-            "Line Chart(折线图)",
-            "Spline Chart(曲线图)",
-            "Scatter Chart(散点图)",
-            "Pie Chart(扇形图)",
-            "Bubble Chart(气泡图)",
-            "Pyramid Chart(金字塔图)",
-            "Funnel Chart(漏斗图)",
-            "Mixed Chart(混合图)"
+            "Column Chart---柱形图",
+            "Bar Chart---条形图",
+            "Area Chart---折线填充图",
+            "Areaspline Chart---曲线填充图",
+            "Line Chart---折线图",
+            "Spline Chart---曲线图",
+            "Scatter Chart---散点图",
+            "Pie Chart---扇形图",
+            "Bubble Chart---气泡图",
+            "Pyramid Chart---金字塔图",
+            "Funnel Chart---漏斗图",
+            "Mixed Chart---混合图"
         ];
         self.view.backgroundColor=UIColor.orange
         let myTableView = UITableView()
@@ -53,7 +53,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let cellTitle = chartTypeArr?.object(at: indexPath.row);
+        let cellTitle = chartTypeArr?.object(at: indexPath.row)
         cell.textLabel?.text = cellTitle as? String
         return cell
     }
