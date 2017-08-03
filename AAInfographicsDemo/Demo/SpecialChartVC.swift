@@ -110,6 +110,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             break
             
         case AAChartType.Scatter:
+            chartModel = AAChartModel.init()
             .chartTypeSet(AAChartType.Scatter)
                 .titleSet("按性别划分的身高体重分布图")
                 .yAxisTitleSet("千克(kg)")
@@ -232,9 +233,43 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             break
 
         case AAChartType.Pyramid:
+            chartModel = AAChartModel.init()
+                .chartTypeSet(AAChartType.Pyramid)
+                .titleSet("编程语言热度")
+                .subtitleSet("虚拟数据")
+                .yAxisTitleSet("摄氏度")
+                .seriesSet(
+                    [
+                        ["name":"2020",
+                         "data":[
+                            ["swift",15654],
+                            ["Objective-C",15654],
+                            ["JavaScript",15654],
+                            ["Go",15654],
+                            ["Python",15654],
+                            ]]
+                    ]
+            )
             break
             
         case AAChartType.Funnel:
+            chartModel = AAChartModel.init()
+                .chartTypeSet(AAChartType.Funnel)
+                .titleSet("编程语言热度")
+                .subtitleSet("虚拟数据")
+                .yAxisTitleSet("摄氏度")
+                .seriesSet(
+                    [
+                        ["name":"2020",
+                         "data":[
+                            ["swift",15654],
+                            ["Objective-C",15654],
+                            ["JavaScript",15654],
+                            ["Go",15654],
+                            ["Python",15654],
+                            ]]
+                    ]
+            )
             break
             
         case AAChartType.Arearange:
@@ -624,9 +659,34 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                     ]
             )
             break
-
-        case AAChartType.Scatter:
+            
+            
+        case AAChartType.Columnrange:
+            chartModel = AAChartModel.init()
+                .titleSet("金银岛每月温度变化范围")
+                .subtitleSet("2020年实测数据")
+                .yAxisTitleSet("℃")
+                .categoriesSet(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
+                .dataLabelEnabledSet(true)
+                .invertedSet(true)
+                .seriesSet(
+                    [
+                        [-9.7, 9.4],
+                        [-8.7, 6.5],
+                        [-3.5, 9.4],
+                        [-1.4, 19.9],
+                        [0.0, 22.6],
+                        [2.9, 29.5],
+                        [9.2, 30.7],
+                        [7.3, 26.5],
+                        [4.4, 18.0],
+                        [-3.1, 11.4],
+                        [-5.2, 10.4],
+                        [-13.5, 9.8]
+                    ])
             break
+
+   
             
         default:
             <#code#>
