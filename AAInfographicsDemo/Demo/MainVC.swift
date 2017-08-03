@@ -60,22 +60,22 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let AAChartTypeArr = [
-            AAChartType.AAChartTypeColumn,
-            AAChartType.AAChartTypeBar,
-            AAChartType.AAChartTypeArea,
-            AAChartType.AAChartTypeAreaSpline,
-            AAChartType.AAChartTypeLine,
-            AAChartType.AAChartTypeSpline,
-            AAChartType.AAChartTypeScatter,
-            AAChartType.AAChartTypePie,
-            AAChartType.AAChartTypeBubble,
-            AAChartType.AAChartTypePyramid,
-            AAChartType.AAChartTypeFunnel,
-            AAChartType.AAChartTypeColumnrange
+            AAChartType.Column,
+            AAChartType.Bar,
+            AAChartType.Area,
+            AAChartType.AreaSpline,
+            AAChartType.Line,
+            AAChartType.Spline,
+            AAChartType.Scatter,
+            AAChartType.Pie,
+            AAChartType.Bubble,
+            AAChartType.Pyramid,
+            AAChartType.Funnel,
+            AAChartType.Columnrange
         ];
         
         let commonChartVC  = CommonChartVC()
-        commonChartVC.chartType = AAChartTypeArr[indexPath.row]
+        commonChartVC.chartType = AAChartTypeArr[indexPath.row].rawValue
         self.navigationController?.pushViewController(commonChartVC, animated:true)
         //self.present(locationAlertController, animated: true, completion: nil)
     }

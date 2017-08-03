@@ -24,8 +24,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         self.view.addSubview(globalWebview2!)
         
         chartModel = AAChartModel.init()
-            .chartTypeSet(self.chartType!)
-            .animationTypeSet(AAChartAnimationType.AAChartAnimationTypeSwing.rawValue)
+            .chartTypeSet(AAChartType(rawValue: self.chartType!)!)
+            .animationTypeSet(AAChartAnimationType(rawValue: AAChartAnimationType.Swing.rawValue)!)
             .titleSet("donghua")
             .subtitleSet("subtitle")
             .pointHollowSet(true)
