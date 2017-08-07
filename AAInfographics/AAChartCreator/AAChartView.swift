@@ -1,5 +1,5 @@
 //
-//  TestChartView.swift
+//  AAChartView.swift
 //  AAChartKit-Swift
 //
 //  Created by An An on 2017/5/23.

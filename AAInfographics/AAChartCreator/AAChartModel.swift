@@ -5,8 +5,7 @@
 //  Created by An An  on 17/4/19.
 //  Copyright © 2017年 An An . All rights reserved.
 //  source code ----*** https://github.com/AAChartModel/AAChartKit-Swift ***--- source code
-//static let AAChartType(.*)=(.*)$
-//case $1=$2
+//
 
 enum AAChartType:String{
     case Column      = "column"
@@ -66,6 +65,7 @@ enum AAChartLegendVerticalAlignType:String{
     case Middle  = "middle"
     case Bottom  = "bottom"
 }
+
 enum AAChartAnimationType:String{
     case Linear              = "linear" 
     case Swing               = "swing"

@@ -1,3 +1,12 @@
+<!---->
+<!--  AAOptionsConstructor.html-->
+<!--  AAChartKit-Swift-->
+<!---->
+<!--  Created by An An  on 17/4/19.-->
+<!--  Copyright © 2017年 An An . All rights reserved.-->
+<!--  source code ----*** https://github.com/AAChartModel/AAChartKit-Swift ***--- source code-->
+<!---->
+
 function drawChart(sender, receivedWidth, receivedHeight) {
         var AAChartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
