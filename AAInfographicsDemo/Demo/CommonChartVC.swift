@@ -14,14 +14,14 @@ import UIKit
 class CommonChartVC: UIViewController,UIWebViewDelegate {
     open var chartType:String?
     open var chartModel: AAChartModel?
-    open var globalWebview2: AAChartView?
+    open var aaChartView: AAChartView?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        globalWebview2 = AAChartView()
-        globalWebview2?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
-        globalWebview2?.contentHeight = self.view.frame.size.height
-        self.view.addSubview(globalWebview2!)
+        aaChartView = AAChartView()
+        aaChartView?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
+        aaChartView?.contentHeight = self.view.frame.size.height
+        self.view.addSubview(aaChartView!)
         
         chartModel = AAChartModel.init()
             .chartTypeSet(AAChartType(rawValue: self.chartType!)!)
@@ -46,7 +46,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
                 ]]);
         
-        globalWebview2?.aa_drawChartWithChartModel(chartModel!)
+        aaChartView?.aa_drawChartWithChartModel(chartModel!)
         
     }
     

@@ -32,15 +32,10 @@ import AAChartView.swift
 ```
 2. 创建视图AAChartView
 ```swift
-         if let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html"){
-             let htmlData = NSData(contentsOfFile: htmlFile)
-             let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
-             globalWebview = UIWebView()
-            globalWebview?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
-             globalWebview?.delegate=self;
-            self.view.addSubview(globalWebview!)
-             globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
-         }
+        aaChartView = AAChartView()
+        aaChartView?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
+        aaChartView?.contentHeight = self.view.frame.size.height
+        self.view.addSubview(aaChartView!)
  ```
 3. 配置视图模型AAChartModel
 
