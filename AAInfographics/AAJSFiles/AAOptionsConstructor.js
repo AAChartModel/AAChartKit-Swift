@@ -2,7 +2,7 @@ function drawChart(sender, receivedWidth, receivedHeight) {
         var AAChartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
         if(receivedWidth!=0){
-            o.style.width=receivedWidth;//设置宽度
+            o.style.width = receivedWidth;//设置宽度
         }
         o.style.height = receivedHeight; //设置高度
 

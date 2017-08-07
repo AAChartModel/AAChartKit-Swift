@@ -37,10 +37,9 @@ enum AAChartZoomType:String{
 }
 
 enum AAChartStackingType:String{
-    case
-    False   = "",
-    Normal  = "normal",
-    Percent = "percent"
+    case False   = ""
+    case Normal  = "normal"
+    case Percent = "percent"
 }
 
 enum AAChartSymbolType:String{

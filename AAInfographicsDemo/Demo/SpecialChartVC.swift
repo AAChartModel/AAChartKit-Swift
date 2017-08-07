@@ -55,7 +55,8 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                                 ["C#"    ,888],
                                 ["C++"   ,66],
                             ]
-                        ],]
+                        ],
+                        ]
                     
             )
             
