@@ -242,19 +242,19 @@ var chartModel = AAChartModel.init();
 7. 当前已支持的图表类型有十种以上,说明如下
 
 ```swift
-enum AAChartType{
-    static let AAChartTypeColumn      = "column"      //柱形图
-    static let AAChartTypeBar         = "bar"         //条形图
-    static let AAChartTypeArea        = "area"        //折线区域填充图
-    static let AAChartTypeAreaSpline  = "areaspline"  //曲线区域填充图
-    static let AAChartTypeLine        = "line"        //折线图
-    static let AAChartTypeSpline      = "spline"      //曲线图
-    static let AAChartTypeScatter     = "scatter"     //散点图
-    static let AAChartTypePie         = "pie"         //扇形图
-    static let AAChartTypeBubble      = "bubble"      //气泡图
-    static let AAChartTypePyramid     = "pyramid"     //金字塔图
-    static let AAChartTypeFunnel      = "funnel"      //漏斗图
-    static let AAChartTypeColumnrange = "columnrange" //柱形范围图
+enum AAChartType:String{
+    case Column      = "column"      //柱形图
+    case Bar         = "bar"         //条形图
+    case Area        = "area"        //折线区域填充图
+    case AreaSpline  = "areaspline"  //曲线区域填充图
+    case Line        = "line"        //折线图
+    case Spline      = "spline"      //曲线图
+    case Scatter     = "scatter"     //散点图
+    case Pie         = "pie"         //扇形图
+    case Bubble      = "bubble"      //气泡图
+    case Pyramid     = "pyramid"     //金字塔图
+    case Funnel      = "funnel"      //漏斗图
+    case Columnrange = "columnrange" //柱形范围图
 }
 ```
 
@@ -263,39 +263,38 @@ enum AAChartType{
 
 ```swift
 enum AAChartAnimationType:String{
-    case
-    AAChartAnimationTypeLinear              = "linear" ,
-    AAChartAnimationTypeSwing               = "swing",
-    AAChartAnimationTypeEaseInQuad          = "easeInQuad",
-    AAChartAnimationTypeEaseOutQuad         = "easeOutQuad",
-    AAChartAnimationTypeEaseInOutQuad       = "easeInOutQuad",
-    AAChartAnimationTypeEaseInCubic         = "easeInCubic",
-    AAChartAnimationTypeEaseOutCubic        = "easeOutCubic",
-    AAChartAnimationTypeEaseInOutCubic      = "easeInOutCubic",
-    AAChartAnimationTypeEaseInQuart         = "easeInQuart",
-    AAChartAnimationTypeEaseOutQuart        = "easeOutQuart",
-    AAChartAnimationTypeEaseInOutQuart      = "easeInOutQuart",
-    AAChartAnimationTypeEaseInQuint         = "easeInQuint",
-    AAChartAnimationTypeEaseOutQuint        = "easeOutQuint",
-    AAChartAnimationTypeEaseInOutQuint      = "easeInOutQuint",
-    AAChartAnimationTypeEaseInExpo          = "easeInExpo",
-    AAChartAnimationTypeEaseOutExpo         = "easeOutExpo",
-    AAChartAnimationTypeEaseInOutExpo       = "easeInOutExpo",
-    AAChartAnimationTypeEaseInSine          = "easeInSine",
-    AAChartAnimationTypeEaseOutSine         = "easeOutSine",
-    AAChartAnimationTypeEaseInOutSine       = "easeInOutSine",
-    AAChartAnimationTypeEaseInCirc          = "easeInCirc",
-    AAChartAnimationTypeEaseOutCirc         = "easeOutCirc",
-    AAChartAnimationTypeEaseInOutCirc       = "easeInOutCirc",
-    AAChartAnimationTypeEaseInElastic       = "easeInElastic",
-    AAChartAnimationTypeEaseOutElastic      = "easeOutElastic",
-    AAChartAnimationTypeEaseInOutElastic    = "easeInOutElastic",
-    AAChartAnimationTypeEaseInBack          = "easeInBack",
-    AAChartAnimationTypeEaseOutBack         = "easeOutBack",
-    AAChartAnimationTypeEaseInOutBack       = "easeInOutBack",
-    AAChartAnimationTypeEaseInBounce        = "easeInBounce",
-    AAChartAnimationTypeEaseOutBounce       = "easeOutBounce",
-    AAChartAnimationTypeEaseInOutBounce     = "easeInOutBounce"
+    case Linear              = "linear" ,
+    case Swing               = "swing",
+    case EaseInQuad          = "easeInQuad",
+    case EaseOutQuad         = "easeOutQuad",
+    case EaseInOutQuad       = "easeInOutQuad",
+    case EaseInCubic         = "easeInCubic",
+    case EaseOutCubic        = "easeOutCubic",
+    case EaseInOutCubic      = "easeInOutCubic",
+    case EaseInQuart         = "easeInQuart",
+    case EaseOutQuart        = "easeOutQuart",
+    case EaseInOutQuart      = "easeInOutQuart",
+    case EaseInQuint         = "easeInQuint",
+    case EaseOutQuint        = "easeOutQuint",
+    case EaseInOutQuint      = "easeInOutQuint",
+    case EaseInExpo          = "easeInExpo",
+    case EaseOutExpo         = "easeOutExpo",
+    case EaseInOutExpo       = "easeInOutExpo",
+    case EaseInSine          = "easeInSine",
+    case EaseOutSine         = "easeOutSine",
+    case EaseInOutSine       = "easeInOutSine",
+    case EaseInCirc          = "easeInCirc",
+    case EaseOutCirc         = "easeOutCirc",
+    case EaseInOutCirc       = "easeInOutCirc",
+    case EaseInElastic       = "easeInElastic",
+    case EaseOutElastic      = "easeOutElastic",
+    case EaseInOutElastic    = "easeInOutElastic",
+    case EaseInBack          = "easeInBack",
+    case EaseOutBack         = "easeOutBack",
+    case EaseInOutBack       = "easeInOutBack",
+    case EaseInBounce        = "easeInBounce",
+    case EaseOutBounce       = "easeOutBounce",
+    case EaseInOutBounce     = "easeInOutBounce"
 };
 
 

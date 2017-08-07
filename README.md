@@ -106,68 +106,68 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 
 ``` swift
-  var chartModel = AAChartModel.init();
+     var chartModel = AAChartModel.init();
         chartModel.chartType = "column";
         chartModel.title = "编程语言热度";
         chartModel.subtitle = "虚拟数据";
         chartModel.yAxisTitle = "摄氏度";
         chartModel.series = [
-        [
-        "name":"数据列 ONE",
-        "data": [
-        [9, 81, 63],
-        [98, 5, 89],
-        [51, 50, 73],
-        [41, 22, 14],
-        [58, 24, 20],
-        [78, 37, 34],
-        [55, 56, 53],
-        [18, 45, 70],
-        [42, 44, 28],
-        [3, 52, 59],
-        [31, 18, 97],
-        [79, 91, 63],
-        [93, 23, 23],
-        [44, 83, 22]
-        ]],
-        
-        [
-        "name":"数据列 TWO",
-        "data": [
-        [42, 38, 20],
-        [6, 18, 1],
-        [1, 93, 55],
-        [57, 2, 90],
-        [80, 76, 22],
-        [11, 74, 96],
-        [88, 56, 10],
-        [30, 47, 49],
-        [57, 62, 98],
-        [4, 16, 16],
-        [46, 10, 11],
-        [22, 87, 89],
-        [57, 91, 82],
-        [45, 15, 98]
-        ]],
-        
-        [
-        "name":"数据列 THREE",
-        "data": [
-        [47, 47, 21],
-        [20, 12, 4],
-        [6, 76, 91],
-        [38, 30, 60],
-        [57, 98, 64],
-        [61, 17, 80],
-        [83, 60, 13],
-        [67, 78, 75],
-        [64, 12, 10],
-        [30, 77, 82],
-        [90, 63, 44],
-        [91, 33, 17],
-        [15, 67, 48],
-        [54, 25, 81]]
-        ]
+            [
+                "name":"数据列 ONE",
+                "data": [
+                    [9, 81, 63],
+                    [98, 5, 89],
+                    [51, 50, 73],
+                    [41, 22, 14],
+                    [58, 24, 20],
+                    [78, 37, 34],
+                    [55, 56, 53],
+                    [18, 45, 70],
+                    [42, 44, 28],
+                    [3, 52, 59],
+                    [31, 18, 97],
+                    [79, 91, 63],
+                    [93, 23, 23],
+                    [44, 83, 22]
+                ]],
+            
+            [
+                "name":"数据列 TWO",
+                "data": [
+                    [42, 38, 20],
+                    [6, 18, 1],
+                    [1, 93, 55],
+                    [57, 2, 90],
+                    [80, 76, 22],
+                    [11, 74, 96],
+                    [88, 56, 10],
+                    [30, 47, 49],
+                    [57, 62, 98],
+                    [4, 16, 16],
+                    [46, 10, 11],
+                    [22, 87, 89],
+                    [57, 91, 82],
+                    [45, 15, 98]
+                ]],
+            
+            [
+                "name":"数据列 THREE",
+                "data": [
+                    [47, 47, 21],
+                    [20, 12, 4],
+                    [6, 76, 91],
+                    [38, 30, 60],
+                    [57, 98, 64],
+                    [61, 17, 80],
+                    [83, 60, 13],
+                    [67, 78, 75],
+                    [64, 12, 10],
+                    [30, 77, 82],
+                    [90, 63, 44],
+                    [91, 33, 17],
+                    [15, 67, 48],
+                    [54, 25, 81]]
+            ]
         ];
 ```
 
@@ -204,18 +204,18 @@ var chartModel = AAChartModel.init();
 
 ```swift
 enum AAChartType{
-    static let AAChartTypeColumn      = @"column";      //column chart
-    static let AAChartTypeBar         = @"bar";         //bar chart 
-    static let AAChartTypeArea        = @"area";        //area chart 
-    static let AAChartTypeAreaspline  = @"areaspline";  //areaspline chart
-    static let AAChartTypeLine        = @"line";        //line chart
-    static let AAChartTypeSpline      = @"spline";      //spline chart
-    static let AAChartTypeScatter     = @"scatter";     //scatter chart 
-    static let AAChartTypePie         = @"pie";         //pie chart
-    static let AAChartTypeBubble      = @"bubble";      //bubble chart  
-    static let AAChartTypePyramid     = @"pyramid";     //pyramid chart
-    static let AAChartTypeFunnel      = @"funnel";      //funnel chart
-    static let AAChartTypeColumnrange = @"columnrange"; //columnrange chart
+    case Column      = @"column";      //column chart
+    case Bar         = @"bar";         //bar chart 
+    case Area        = @"area";        //area chart 
+    case Areaspline  = @"areaspline";  //areaspline chart
+    case Line        = @"line";        //line chart
+    case Spline      = @"spline";      //spline chart
+    case Scatter     = @"scatter";     //scatter chart 
+    case Pie         = @"pie";         //pie chart
+    case Bubble      = @"bubble";      //bubble chart  
+    case Pyramid     = @"pyramid";     //pyramid chart
+    case Funnel      = @"funnel";      //funnel chart
+    case Columnrange = @"columnrange"; //columnrange chart
 }
 ```
 
@@ -224,40 +224,40 @@ enum AAChartType{
 
 ```swift
 enum AAChartAnimationType:String{
-    case
-    AAChartAnimationTypeLinear              = "linear" ,
-    AAChartAnimationTypeSwing               = "swing",
-    AAChartAnimationTypeEaseInQuad          = "easeInQuad",
-    AAChartAnimationTypeEaseOutQuad         = "easeOutQuad",
-    AAChartAnimationTypeEaseInOutQuad       = "easeInOutQuad",
-    AAChartAnimationTypeEaseInCubic         = "easeInCubic",
-    AAChartAnimationTypeEaseOutCubic        = "easeOutCubic",
-    AAChartAnimationTypeEaseInOutCubic      = "easeInOutCubic",
-    AAChartAnimationTypeEaseInQuart         = "easeInQuart",
-    AAChartAnimationTypeEaseOutQuart        = "easeOutQuart",
-    AAChartAnimationTypeEaseInOutQuart      = "easeInOutQuart",
-    AAChartAnimationTypeEaseInQuint         = "easeInQuint",
-    AAChartAnimationTypeEaseOutQuint        = "easeOutQuint",
-    AAChartAnimationTypeEaseInOutQuint      = "easeInOutQuint",
-    AAChartAnimationTypeEaseInExpo          = "easeInExpo",
-    AAChartAnimationTypeEaseOutExpo         = "easeOutExpo",
-    AAChartAnimationTypeEaseInOutExpo       = "easeInOutExpo",
-    AAChartAnimationTypeEaseInSine          = "easeInSine",
-    AAChartAnimationTypeEaseOutSine         = "easeOutSine",
-    AAChartAnimationTypeEaseInOutSine       = "easeInOutSine",
-    AAChartAnimationTypeEaseInCirc          = "easeInCirc",
-    AAChartAnimationTypeEaseOutCirc         = "easeOutCirc",
-    AAChartAnimationTypeEaseInOutCirc       = "easeInOutCirc",
-    AAChartAnimationTypeEaseInElastic       = "easeInElastic",
-    AAChartAnimationTypeEaseOutElastic      = "easeOutElastic",
-    AAChartAnimationTypeEaseInOutElastic    = "easeInOutElastic",
-    AAChartAnimationTypeEaseInBack          = "easeInBack",
-    AAChartAnimationTypeEaseOutBack         = "easeOutBack",
-    AAChartAnimationTypeEaseInOutBack       = "easeInOutBack",
-    AAChartAnimationTypeEaseInBounce        = "easeInBounce",
-    AAChartAnimationTypeEaseOutBounce       = "easeOutBounce",
-    AAChartAnimationTypeEaseInOutBounce     = "easeInOutBounce"
-};
+    case Linear              = "linear" 
+    case Swing               = "swing"
+    case EaseInQuad          = "easeInQuad"
+    case EaseOutQuad         = "easeOutQuad"
+    case EaseInOutQuad       = "easeInOutQuad"
+    case EaseInCubic         = "easeInCubic"
+    case EaseOutCubic        = "easeOutCubic"
+    case EaseInOutCubic      = "easeInOutCubic"
+    case EaseInQuart         = "easeInQuart"
+    case EaseOutQuart        = "easeOutQuart"
+    case EaseInOutQuart      = "easeInOutQuart"
+    case EaseInQuint         = "easeInQuint"
+    case EaseOutQuint        = "easeOutQuint"
+    case EaseInOutQuint      = "easeInOutQuint"
+    case EaseInExpo          = "easeInExpo"
+    case EaseOutExpo         = "easeOutExpo"
+    case EaseInOutExpo       = "easeInOutExpo"
+    case EaseInSine          = "easeInSine"
+    case EaseOutSine         = "easeOutSine"
+    case EaseInOutSine       = "easeInOutSine"
+    case EaseInCirc          = "easeInCirc"
+    case EaseOutCirc         = "easeOutCirc"
+    case EaseInOutCirc       = "easeInOutCirc"
+    case EaseInElastic       = "easeInElastic"
+    case EaseOutElastic      = "easeOutElastic"
+    case EaseInOutElastic    = "easeInOutElastic"
+    case EaseInBack          = "easeInBack"
+    case EaseOutBack         = "easeOutBack"
+    case EaseInOutBack       = "easeInOutBack"
+    case EaseInBounce        = "easeInBounce"
+    case EaseOutBounce       = "easeOutBounce"
+    case EaseInOutBounce     = "easeInOutBounce"
+}
+
 
 
 
