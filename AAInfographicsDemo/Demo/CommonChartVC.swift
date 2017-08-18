@@ -50,7 +50,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
     }
     
-    
+
     
     
     
