@@ -336,7 +336,7 @@ public class AAChartModel:AASerializable {
         self.yAxisReversed = false
         self.zoomType = AAChartZoomType.X.rawValue
         self.pointHollow = false//默认折线或者曲线的连接点不为空
-        self.colorsTheme =  ["#b5282a","#e7a701","#50c18d","#c37779","#f1c6c5"]
+        self.colorsTheme = ["#b5282a","#e7a701","#50c18d","#c37779","#f1c6c5"]
         self.gradientColorEnable = false
         self.polar = false
         self.dataLabelEnabled = true

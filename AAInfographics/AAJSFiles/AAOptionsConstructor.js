@@ -196,7 +196,7 @@ function drawChart(sender, receivedWidth, receivedHeight) {
                 };
                 AAPlotOptions.pie = AAPie;
         };
-        var AAColorsTheme = AAChartModel.colorsTheme;
+        var AAThemeColors = AAChartModel.colorsTheme;
         var AASeries = AAChartModel.series;
 
         var AAOptions = {};
@@ -208,34 +208,12 @@ function drawChart(sender, receivedWidth, receivedHeight) {
         AAOptions.tooltip = AATooltip;
         AAOptions.legend = AALegend;
         AAOptions.plotOptions = AAPlotOptions;
-        AAOptions.colorsTheme = AAColorsTheme;
+        AAOptions.colors = AAThemeColors;
         AAOptions.series = AASeries;
+    
+//    alert(AAOptions.colorsTheme);//提示颜色字符串数组
 
-        $('#container').highcharts(AAOptions);
+        chartMax = Highcharts.chart('container', AAOptions);
 
 }
 
-function onlyRefreshTheChartDataWithSeries(receivedSeries) {
-    
-    var JavaScriptObject = JSON.parse(receivedSeries);
-    var receivedSeriesElementArr = JavaScriptObject.series;
-    
-    for (var i=0;i<receivedSeriesElementArr.length;i++){
-        var receivedSeriesData =receivedSeriesElementArr[i].data;
-        // 获取series
-        var chartSeries =  $('#container').highcharts().series[i];
-        // 执行只刷新数据的函数
-        chartSeries.setData(receivedSeriesData);
-    }
-    
-    <!--                // 加入当前数组有5个元素-->
-    <!--                var data = [1, 3, 5, 3, 1];-->
-    <!--                // 随机创建一个数字，或从服务器获取一个数字-->
-    <!--                var now = Math.random() * 10;-->
-    <!--                // 从头部弹出一个数字-->
-    <!--                data.shift();-->
-    <!--                // 把获取到的数据压入尾部-->
-    <!--                data.push(now);-->
-    <!--                // 最后设置数据，即可实现曲线、趋势线从右向左的动态效果-->
-    <!--                exSeries.setData(data, true, true, false);-->
-}

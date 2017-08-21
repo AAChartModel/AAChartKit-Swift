@@ -10,3 +10,5 @@ AAChartKit-Swift/AAChartKit-Swift.xcodeproj/project.xcworkspace/xcuserdata/jinyi
 AAInfographicsDemo.xcodeproj/xcuserdata/jinyindao.xcuserdatad/xcschemes/xcschememanagement.plist
 
 AAInfographicsDemo.xcodeproj/xcuserdata/jinyindao.xcuserdatad/xcschemes/AAInfographicsDemo.xcscheme
+
+*.xcbkptlist
