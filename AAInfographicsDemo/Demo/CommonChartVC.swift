@@ -159,7 +159,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             break
         }
         
-          aaChartView?.aa_drawChartWithChartModel(chartModel!)
+          aaChartView?.aa_refreshChartWithChartModel(chartModel!)
     }
     
     

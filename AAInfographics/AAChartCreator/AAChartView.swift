@@ -10,8 +10,15 @@
 import UIKit
 
 class AAChartView: UIView,UIWebViewDelegate {
+    
+    /// Content width of AAChartView
     open var contentWidth:CGFloat?
+    
+    /// Content height of AAChartView
     open var contentHeight:CGFloat?
+    
+    ///  Hide chart series content or not
+    open var chartSeriesHidden:Bool?
     
     var globalWebview: UIWebView?
     var optionsJson: String?
@@ -52,16 +59,45 @@ class AAChartView: UIView,UIWebViewDelegate {
         }
     }
     
+    open func webViewDidFinishLoad(_ webView: UIWebView) {
+        globalWebview?.stringByEvaluatingJavaScript(from: optionsJson!)
+    }
+    
+//    func options3dDepthSet(_ prop: Int) -> AAChartModel {
+//        self.options3dDepth = prop
+//        return self
+//    }
+    
+//    public func getJavaScriptFileURLRequest() -> NSURL {
+//        let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html")
+//        let htmlData = NSData(contentsOfFile: htmlFile)
+//        let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
+//        return baseURL
+//    }
+    
+    
     public func aa_refreshChartWithChartModel(_ chartModel:AAChartModel) {
+        let modelString = chartModel.toJSON()
         
+        let chartViewContentWidth = self.contentWidth
+        
+        var chartViewContentHeight = self.contentHeight
+        if (self.contentHeight == 0) {
+            chartViewContentHeight = self.frame.size.height
+        }
+        
+        globalWebview?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
+        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,chartViewContentWidth!,chartViewContentHeight!)
+        optionsJson = jsString as String;
+        globalWebview?.stringByEvaluatingJavaScript(from: optionsJson!)
     }
     
     public func aa_onlyRefreshTheChartDataWithChartModel(_ chartModel:AAChartModel) {
         
     }
     
-    open func webViewDidFinishLoad(_ webView: UIWebView) {
-        globalWebview?.stringByEvaluatingJavaScript(from: optionsJson!)
+    public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex:NSInteger) {
+        
     }
     
     
