@@ -8,7 +8,6 @@
 //
 //
 
-
 import UIKit
 
 class CommonChartVC: UIViewController,UIWebViewDelegate {
@@ -17,23 +16,25 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     open var aaChartView: AAChartView?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor.white
         self.configureTheSwith()
         self.configureTheSegmentControl()
         
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height-220)
-        aaChartView?.contentHeight = self.view.frame.size.height
+        aaChartView?.frame = CGRect(x:0,y:60,width:self.view.frame.size.width,height:self.view.frame.size.height-220)
+        aaChartView?.contentHeight = self.view.frame.size.height-220//AAChartViewd的内容高度
         self.view.addSubview(aaChartView!)
         
         chartModel = AAChartModel.init()
-            .chartTypeSet(AAChartType(rawValue: self.chartType!)!)
-            .animationTypeSet(AAChartAnimationType.Swing)
-            .titleSet("donghua")
-            .subtitleSet("subtitle")
-            .pointHollowSet(true)
-            .dataLabelEnabledSet(false)
-            .markerRadiusSet(15)
+            .chartTypeSet(AAChartType(rawValue: self.chartType!)!)//图形类型
+            .pointHollowSet(false)//设置折线连接点是否为空心
+            .animationTypeSet(AAChartAnimationType.EaseInBounce)//图形渲染动画类型
+            .titleSet("都市天气")//图形标题
+            .subtitleSet("2020年08月08日")//图形副标题
+            .pointHollowSet(true)//折线连接点是否为空心
+            .dataLabelEnabledSet(false)//是否显示数字
+            .markerRadiusSet(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .seriesSet([
                 [
                     "name": "Tokyo",
@@ -70,15 +71,15 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             let segment=UISegmentedControl.init(items: segmentedArray[i])
             // 位置
             segment.frame = CGRect(x: 20, y: 40.0*CGFloat(i) + (self.view.frame.size.height-145), width: self.view.frame.size.width-40, height: 20)
+            segment.tag = i;
             // 设置边框与文字内的颜色
-            segment.tintColor = UIColor.red
+            segment.tintColor = UIColor.purple
             // 默认选择
             segment.selectedSegmentIndex = 0
             // 设置选中为 3 的下标
-            segment.setTitle("点击喽", forSegmentAt: 2)
-
+            //            segment.setTitle("点击喽", forSegmentAt: 2)
             // 事件方法
-            segment.addTarget(self, action:#selector(segmentDidSelected(seg:)), for: UIControlEvents.touchUpInside)
+            segment.addTarget(self, action:#selector(segmentDidSelected(segmentedControl:)), for:.valueChanged)
             // 添加视图
             self.view.addSubview(segment)
             
@@ -95,25 +96,41 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
     }
     
-    func segmentDidSelected(seg:UISegmentedControl){
-        print("%d",seg.selectedSegmentIndex)
+    func segmentDidSelected(segmentedControl:UISegmentedControl){
+        print("%d",segmentedControl.selectedSegmentIndex)
         
+        switch segmentedControl.tag {
+        case 0:
+            let stackingArr = [AAChartStackingType.False,AAChartStackingType.Normal,AAChartStackingType.Percent]
+            self.chartModel?.stacking = stackingArr[segmentedControl.selectedSegmentIndex].rawValue
+            break
+            
+        case 1:
+            let symbolArr = [AAChartSymbolType.Circle,AAChartSymbolType.Square,AAChartSymbolType.Diamond,AAChartSymbolType.Triangle,AAChartSymbolType.Triangle_down]
+            self.chartModel?.symbol = symbolArr[segmentedControl.selectedSegmentIndex].rawValue
+            break
+            
+        default:
+            break
+        }
+        aaChartView?.aa_refreshChartWithChartModel(chartModel!)
     }
     
     func configureTheSwith() {
         let nameArr = ["x轴翻转","y轴翻转","x 轴直立","辐射化图形","隐藏连接点","显示数字"]
-
-          let switchWidth = (self.view.frame.size.width-40)/6
         
-          for  i in 0..<nameArr.count {
-          
+        let switchWidth = (self.view.frame.size.width-40)/6
+        
+        for  i in 0..<nameArr.count {
+            
             let uiswitch = UISwitch()
             //设置位置（开关大小无法设置）
             uiswitch.frame = CGRect(x: switchWidth*CGFloat(i)+20, y: self.view.frame.size.height-70, width: switchWidth, height: 20)
             //设置默认值
             uiswitch.isOn = false
-            uiswitch.onTintColor = UIColor.orange
-             uiswitch.addTarget(self, action: #selector(switchDidChange(switchView:)), for:.valueChanged)
+            uiswitch.tag = i;
+            uiswitch.onTintColor = UIColor.red
+            uiswitch.addTarget(self, action: #selector(switchDidChange(switchView:)), for:.valueChanged)
             self.view.addSubview(uiswitch)
             
             let subLabel = UILabel()
@@ -124,15 +141,15 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             subLabel.backgroundColor = UIColor.white
             self.view .addSubview(subLabel)
         }
-
+        
         
     }
-
+    
     func switchDidChange(switchView:UISwitch){
         //打印当前值
         print(switchView.isOn)
         
-        switch (switchView.tag) {
+        switch switchView.tag {
         case 0:
             self.chartModel?.xAxisReversed = switchView.isOn
             break
@@ -149,9 +166,9 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             if switchView.isOn == true {
                 self.chartModel?.markerRadius = 0
             } else {
-                 self.chartModel?.markerRadius = 5
+                self.chartModel?.markerRadius = 5
             }
-              break
+            break
         case 5:
             self.chartModel?.dataLabelEnabled = switchView.isOn
             break
@@ -159,10 +176,10 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             break
         }
         
-          aaChartView?.aa_refreshChartWithChartModel(chartModel!)
+        aaChartView?.aa_refreshChartWithChartModel(chartModel!)
     }
     
     
     
- }
+}
 

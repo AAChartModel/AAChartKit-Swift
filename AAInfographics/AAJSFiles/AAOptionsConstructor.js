@@ -7,10 +7,12 @@
 <!--  source code ----*** https://github.com/AAChartModel/AAChartKit-Swift ***--- source code-->
 <!---->
 
-function drawChart(sender, receivedWidth, receivedHeight) {
+function configureAAOptions(sender, receivedWidth, receivedHeight) {
+    
+//    alert(sender);//输出查看传输的是什么
         var AAChartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
-        if(receivedWidth!=0){
+        if (receivedWidth!=0) {
             o.style.width = receivedWidth;//设置宽度
         }
         o.style.height = receivedHeight; //设置高度
@@ -212,8 +214,8 @@ function drawChart(sender, receivedWidth, receivedHeight) {
         AAOptions.series = AASeries;
     
 //    alert(AAOptions.colorsTheme);//提示颜色字符串数组
-
-        chartMax = Highcharts.chart('container', AAOptions);
+    
+    return AAOptions;
 
 }
 

@@ -21,6 +21,8 @@
                 </script>
             <script src="AAHighCharts-3d.js">
                 </script>
+            <script src="AAFunnel.js">
+                </script>
             <script src="AAOptionsConstructor.js">
                 </script>
             <!--            <script src = "https://img.hcharts.cn/highcharts/themes/dark-unica.js">-->
@@ -46,27 +48,28 @@
         </div>
         <script >
          
-        var chartMax;
+        var AAWholeChart;
             
-        function loadTheHighChartView(
+        function loadTheHighChartView (
                                       sender,
                                       receivedWidth,
                                       receivedHeight
                                       ){
             <!--                alert(sender);-->
-            drawChart(
-                      sender,
-                      receivedWidth,
-                      receivedHeight
-                      );
-            };
+            var AAOptions = configureAAOptions (
+                                               sender,
+                                               receivedWidth,
+                                               receivedHeight
+                                               );
+                                               
+            AAWholeChart = Highcharts.chart('container', AAOptions);
+        };
         
-        function onlyRefreshTheChartDataWithSeries (receivedSeries) {
-            
-            var JavaScriptObject = JSON.parse(receivedSeries);
+        function onlyRefreshTheChartDataWithAAChartModel (receivedAAChartModel) {
+            var JavaScriptObject = JSON.parse(receivedAAChartModel);
             var receivedSeriesElementArr = JavaScriptObject.series;
             
-            for (var i = 0; i < receivedSeriesElementArr.length; i++){
+            for (var i = 0; i < receivedSeriesElementArr.length; i++) {
                 var receivedSeriesData = receivedSeriesElementArr[i].data;
                 // 获取series
                 var chartSeries =  $('#container').highcharts().series[i];
@@ -87,8 +90,8 @@
         }
         
         function chartSeriesContentHideOrShow (hidden) {
-            for (var i = 0; i < chartMax.series.length; i++){
-                var series = chartMax.series[i];
+            for (var i = 0; i < AAWholeChart.series.length; i++) {
+                var series = AAWholeChart.series[i];
                 if (hidden == true) {
                     series.hide();
                 } else {
@@ -98,7 +101,7 @@
         }
         
         function showTheSeriesElementContentWithIndex (elementIndex) {
-            var series = chartMax.series[elementIndex];
+            var series = AAWholeChart.series[elementIndex];
             series.show();
         }
         

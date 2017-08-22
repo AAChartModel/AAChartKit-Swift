@@ -20,7 +20,7 @@ enum AAChartType:String{
     case Pyramid     = "pyramid"
     case Funnel      = "funnel"
     case Columnrange = "columnrange"
-    case Arearange = "arearange"
+    case Arearange   = "arearange"
 }
 
 enum AAChartSubtitleAlignType:String{
@@ -112,8 +112,8 @@ public class AAChartModel:AASerializable {
     public var symbol:String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
     public var zoomType:String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
     public var pointHollow:Bool?           //折线或者曲线的连接点是否为空心的
-    public var inverted:Bool?              //x 轴是否垂直
-    public var xAxisReversed:Bool?         // x 轴翻转
+    public var inverted:Bool?              //x 轴是否翻转(垂直)
+    public var xAxisReversed:Bool?         //x 轴翻转
     public var yAxisReversed:Bool?         //y 轴翻转
     public var crosshairs:Bool?            //是否显示准星线(默认显示)
     public var gradientColorEnable:Bool?   //是否要为渐变色
@@ -131,7 +131,7 @@ public class AAChartModel:AASerializable {
     public var legendLayout:String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
     public var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
     public var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
-    public var backgroundColor:String?   //图表背景色
+    public var backgroundColor:String?     //图表背景色
     public var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
     public var options3dAlpha:Int?
     public var options3dBeta:Int?
@@ -327,16 +327,16 @@ public class AAChartModel:AASerializable {
         print(AAChartAnimationType.EaseInBack.rawValue)
         
         self.animationType = AAChartAnimationType.EaseInBack.rawValue
-        self.animationDuration = 2000//以毫秒为单位
+        self.animationDuration = 800//以毫秒为单位
         self.chartType = AAChartType.Column.rawValue
         self.inverted = false
         self.stacking = AAChartStackingType.False.rawValue
-        self.symbol = AAChartSymbolType.Square.rawValue
+        //self.symbol = AAChartSymbolType.Square.rawValue//默认的折线连接点类型
         self.xAxisReversed = false
         self.yAxisReversed = false
         self.zoomType = AAChartZoomType.X.rawValue
         self.pointHollow = false//默认折线或者曲线的连接点不为空
-        self.colorsTheme = ["#b5282a","#e7a701","#50c18d","#c37779","#f1c6c5"]
+        self.colorsTheme = ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
         self.gradientColorEnable = false
         self.polar = false
         self.dataLabelEnabled = true
@@ -351,7 +351,7 @@ public class AAChartModel:AASerializable {
         self.legendAlign = AAChartLegendAlignType.Center.rawValue
         self.legendVerticalAlign = AAChartLegendVerticalAlignType.Bottom.rawValue
         self.borderRadius = 0//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
-        self.markerRadius = 6//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
+        self.markerRadius = 5//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
     }
     
     

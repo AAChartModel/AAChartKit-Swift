@@ -15,7 +15,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     open var chartTypeArr: NSArray?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "AAChartKit-Swift"
+        self.title = "AAInfographics"
         chartTypeArr = [
             "Column Chart---柱形图",
             "Bar Chart---条形图",
@@ -23,12 +23,16 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             "Areaspline Chart---曲线填充图",
             "Line Chart---折线图",
             "Spline Chart---曲线图",
-            "Scatter Chart---散点图",
+            
             "Pie Chart---扇形图",
             "Bubble Chart---气泡图",
+            "Scatter Chart---散点图",
+            
             "Pyramid Chart---金字塔图",
             "Funnel Chart---漏斗图",
-            "Mixed Chart---混合图"
+            "Arearange Chart---区域范围图",
+            "Columnrange Chart--- 柱形范围图"
+//            "Mixed Chart---混合图"
         ];
         self.view.backgroundColor=UIColor.orange
         let myTableView = UITableView()
@@ -60,23 +64,36 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let AAChartTypeArr = [
+            /*基础类型图表*/
             AAChartType.Column,
             AAChartType.Bar,
             AAChartType.Area,
             AAChartType.AreaSpline,
             AAChartType.Line,
             AAChartType.Spline,
-            AAChartType.Scatter,
+            /*特殊类型图表*/
             AAChartType.Pie,
             AAChartType.Bubble,
+            AAChartType.Scatter,
             AAChartType.Pyramid,
             AAChartType.Funnel,
+            AAChartType.Arearange,
             AAChartType.Columnrange
         ];
         
-        let commonChartVC  = CommonChartVC()
-        commonChartVC.chartType = AAChartTypeArr[indexPath.row].rawValue
-        self.navigationController?.pushViewController(commonChartVC, animated:true)
+        if (indexPath.row<6) {
+            /*基础类型图表*/
+            let commonChartVC  = CommonChartVC()
+            commonChartVC.chartType = AAChartTypeArr[indexPath.row].rawValue
+            self.navigationController?.pushViewController(commonChartVC, animated:true)
+        } else {
+            /*特殊类型图表*/
+            let specialChartVC = SpecialChartVC()
+            specialChartVC.chartType = AAChartTypeArr[indexPath.row].rawValue
+            self.navigationController?.pushViewController(specialChartVC, animated:true)
+        }
+        
+
         //self.present(locationAlertController, animated: true, completion: nil)
     }
     
