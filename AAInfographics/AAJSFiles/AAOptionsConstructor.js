@@ -81,7 +81,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         }
 
         var AALegend = {
-                enable: AAChartModel.legendEnabled,
+                enabled: AAChartModel.legendEnabled,
                 layout: AAChartModel.legendLayout,
                 align: AAChartModel.legendAlign,
                 verticalAlign: AAChartModel.legendVerticalAlign,
