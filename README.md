@@ -28,7 +28,7 @@ https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md
 ### The offical start of the work 
 1.Add the following content into `your view controller` file.
 ```swift
-        import AAChartView.swift
+import AAChartView.swift
 ```
 2.Creat the object of chart view:`AAChartView`
 ```swift
