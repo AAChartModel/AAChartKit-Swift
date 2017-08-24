@@ -40,7 +40,7 @@ import AAChartView.swift
 3. 配置视图模型AAChartModel
 
 * 常规方式配置 AAChartModel 模型对象属性
-``` swift
+```swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = "column";
         chartModel.title = "你是人间四月天";
@@ -66,7 +66,7 @@ import AAChartView.swift
 
 * 链式编程的方式配置 AAChartModel 模型对象属性
 ```swift
-        let chartModel = AAChartModel.init()
+    let chartModel = AAChartModel.init()
             .chartTypeSet(self.chartType!)
             .animationTypeSet("donghualeixing")
             .titleSet("donghua")
@@ -90,12 +90,12 @@ import AAChartView.swift
 4.  绘制图形
 
 ```swift
-chartView?.aa_drawChartWithChartModel(chartModel)//图表视图对象调用图表模型对象,绘制最终图形
+    chartView?.aa_drawChartWithChartModel(chartModel)//图表视图对象调用图表模型对象,绘制最终图形
 ```
 5.  刷新图形
 
 ```swift
-chartView?.aa_refreshChartWithChartModel(chartModel)//更新 AAChartModel 数据之后,刷新图表
+    chartView?.aa_refreshChartWithChartModel(chartModel)//更新 AAChartModel 数据之后,刷新图表
 ```
 
 6. 特别说明
@@ -103,8 +103,8 @@ chartView?.aa_refreshChartWithChartModel(chartModel)//更新 AAChartModel 数据
 AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 AAChartModel 设置稍有不同,示例如下
 
 - 绘制扇形图,你需要这样配置模型对象 **AAChartModel**
-``` swift
-                var chartModel = AAChartModel.init();
+```swift
+    var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
         chartModel.title = "编程语言热度";
         chartModel.subtitle = "虚拟数据";
@@ -137,8 +137,8 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 - 绘制气泡图,你需要这样配置模型对象 **AAChartModel**
 
 
-``` swift
-   var chartModel = AAChartModel.init();
+```swift
+    var chartModel = AAChartModel.init();
         chartModel.chartType = "column";
         chartModel.title = "编程语言热度";
         chartModel.subtitle = "虚拟数据";
@@ -207,8 +207,8 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 
 - 绘制柱形范围图,你需要这样配置模型对象 **AAChartModel**
 
-``` swift
-var chartModel = AAChartModel.init();
+```swift
+    var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
         chartModel.title = "编程语言热度";
         chartModel.subtitle = "虚拟数据";
@@ -356,7 +356,7 @@ enum AAChartAnimationType:String{
 
 -  special area chart three - 区域填充图三
 
-![IMG_1863.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1863.JPG)
+![IMG_1869.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/PictureResources/屏幕快照%202017-05-06%20下午6.58.15.png)
 
 -   radar chart - 雷达图
 

@@ -28,11 +28,10 @@ https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md
 ### The offical start of the work 
 1.Add the following content into `your view controller` file.
 ```swift
-import AAChartView.swift
+        import AAChartView.swift
 ```
 2.Creat the object of chart view:`AAChartView`
 ```swift
-       
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
         aaChartView?.contentHeight = self.view.frame.size.height
@@ -67,12 +66,12 @@ import AAChartView.swift
 4.  Draw the chart
 
 ```objective-c
-[chartView aa_drawChartWithChartModel:chartModel];
+        [chartView aa_drawChartWithChartModel:chartModel];
 ```
 5.  Refresh the chart
 
 ```objective-c
-[chartView aa_refreshChartWithChartModel:chartModel];
+        [chartView aa_refreshChartWithChartModel:chartModel];
 ```
 
 6. Special instructions
@@ -81,7 +80,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 - To draw a pie chart,you should configure the properties of `AAChartModel` like this:
 ``` swift
-                var chartModel = AAChartModel.init();
+    var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
         chartModel.title = "编程语言热度";
         chartModel.subtitle = "虚拟数据";
@@ -111,11 +110,11 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
         ;
 
 ```
-- -  To draw a bubble chart,you should configure the properties of `AAChartModel` like this:
+- To draw a bubble chart,you should configure the properties of `AAChartModel` like this:
 
 
 ``` swift
-     var chartModel = AAChartModel.init();
+    var chartModel = AAChartModel.init();
         chartModel.chartType = "column";
         chartModel.title = "编程语言热度";
         chartModel.subtitle = "虚拟数据";
@@ -180,10 +179,10 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
         ];
 ```
 
-- -  To draw a columnrange chart,you should configure the properties of `AAChartModel` like this:
+- To draw a columnrange chart,you should configure the properties of `AAChartModel` like this:
 
 ``` swift
-var chartModel = AAChartModel.init();
+    var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
         chartModel.title = "编程语言热度";
         chartModel.subtitle = "虚拟数据";
@@ -321,7 +320,7 @@ enum AAChartAnimationType:String{
 ### AAChartModel:chart attribute list
 ```swift
      public var animationType:String?       //
-     public var title:String?               //the tittle of chart
+     public var title:String?               //
      public var subtitle:String?            //
      public var chartType:String?           //
      public var stacking:String?            //
@@ -432,20 +431,20 @@ to be
 > * - [x] Support graphics to refresh pure data (`series`) content dynamically
 > * - [x] Support graphics to refresh pure data in real time and scroll dynamically
 > * - [x] Support color layer gradient effects
-> * - [x] Support 3D graphics effects, valid only for partial graphics such as `column chart、bar chart、pie charts、scatterplot chart、bubble chart`, etc.
+> * - [x] Support 3D graphics effects, valid only for partial graphics such as `column chart、bar chart、pie charts、scatterplot chart、bubble chart`, etc
 > * - [ ] Support horizontal screen (full screen) effect
-> * - [ ] Support free to set graphics rendering animation
+> * - [ ] Support setting graphics rendering animation freely
 > * - [ ] Support rendered graphics to generate image files
-> * - [ ] Support to generate image files saved to the system album
+> * - [ ] Support generating image files saved to the system album
 > * - [ ] Support for users to configure `AAOptions` model object properties freely
 > * - [x] Support stacking the graphics 
 > * - [x] Support reversing the graphics axis 
-> * - [x] Support rendering scatter chart
-> * - [x] Support render column range map
-> * - [x] Support render area range graph
+> * - [x] Support rendering the scatter chart
+> * - [x] Support rendering the column range map
+> * - [x] Support rendering the area range graph
 > * - [ ] Support rendering the polar chart
 > * - [ ] Support rendering the polyline straight line chart
 > * - [ ] Support rendering the polyline straight area chart
 > * - [ ] Support rendering the rectangular tree hierarchy diagrams
 > * - [ ] Support rendering the circular progress bar chart 
-> * - [ ] Support for adding clicked event callbacks for graphics
+> * - [ ] Support adding clicked event callbacks for graphics
