@@ -75,7 +75,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         };
 
         var AATooltip = {
-                valueSuffix: '\xB0C',//浮动提示层数值的单位后缀
+//                valueSuffix: '\xB0C',//浮动提示层数值的单位后缀
                 shared: true,
                 crosshairs: true,
         }
@@ -192,9 +192,8 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                                 style: {
                                         color: "black",
                                 }
-                        }
-                        //                    < !--showInLegend: true,
-                        //                        -->
+                        },
+                        showInLegend: AAChartModel.legendEnabled,
                 };
                 AAPlotOptions.pie = AAPie;
         };
