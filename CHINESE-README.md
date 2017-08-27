@@ -7,6 +7,9 @@
 [![](https://img.shields.io/badge/language-Swift-green.svg)](https://github.com/AAChartModel/AAChartKit-Swift) 
 [![](https://img.shields.io/badge/support-OC-orange.svg)](https://github.com/AAChartModel/AAChartKit) 
 
+### 您所喜爱的`AAInfographics`开源图表库头同时更有`Objective-C`版本可供使用,详情请点击以下链接
+### 传送门
+#### *https://github.com/AAChartModel/AAChartKit*
  
 ***
 ## 前言

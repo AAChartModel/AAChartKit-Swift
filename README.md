@@ -7,7 +7,7 @@
 [![](https://img.shields.io/badge/Support-Animation-yellow.svg)](https://github.com/AAChartModel/AAChartKit-Swift) 
 [![](https://img.shields.io/badge/support-OC-orange.svg)](https://github.com/AAChartModel/AAChartKit) 
 ### 中文使用说明书地址
-https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md
+#### *https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md*
  
 ***
 ## Features:
@@ -19,7 +19,7 @@ https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md
 ***
 
 
-## Method of use:
+## Usage:
 
 ### The need of preparation
 1. Drag the folder `AAInfographicsFiles` into your project.
