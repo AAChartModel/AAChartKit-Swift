@@ -82,9 +82,8 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 ``` swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
-        chartModel.title = "编程语言热度";
-        chartModel.subtitle = "虚拟数据";
-        chartModel.yAxisTitle = "摄氏度";
+        chartModel.title = "BROWSER MARKET SHARES JANUARY,2015 TO MAY";
+        chartModel.subtitle = "VIRTUAL DATA";
         chartModel.dataLabelEnabled = true;//show the data label or not
         chartModel.series =
             [
@@ -328,39 +327,39 @@ enum AAChartAnimationType:String{
 
 ### AAChartModel:chart attribute list
 ```swift
-     public var animationType:String?       //
-     public var title:String?               //
-     public var subtitle:String?            //
-     public var chartType:String?           //
-     public var stacking:String?            //
-     public var symbol:String?              //
-     public var zoomType:String?            //
-     public var inverted:Bool?              //
-     public var xAxisReversed:Bool?         // 
-     public var yAxisReversed:Bool?         //
+     public var animationType:String?       //The type of chart animation
+     public var title:String?               //The chart title
+     public var subtitle:String?            //The chart subtitle
+     public var chartType:String?           //The default series type for the chart. Can be any of the chart types listed under `AAChartType`. Defaults to line
+     public var stacking:String?            //Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order
+     public var symbol:String?              //A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down"
+     public var zoomType:String?            //Decides in what dimensions the user can zoom by dragging the mouse. Can be one of x, y or xy
+     public var inverted:Bool?              //Whether to invert the axes so that the x axis is vertical and y axis is horizontal. When true, the x axis is reversed by default. If a bar series is present in the chart, it will be inverted automatically.Inverting the chart doesn't have an effect if there are no cartesian series in the chart, or if the chart is polar.Defaults to false
+     public var xAxisReversed:Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
+     public var yAxisReversed:Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
      public var crosshairs:Bool?            //
-     public var gradientColorEnable:Bool?   //
-     public var polar:Bool?                 //
-     public var dataLabelEnabled:Bool?      //
-     public var xAxisLabelsEnabled:Bool?    //
-     public var categories:Array<Any>?      //
-     public var xAxisGridLineWidth:Int?     //
-     public var yAxisLabelsEnabled:Bool?    //
-     public var yAxisTitle:String?          //
-     public var yAxisGridLineWidth:Int?     //
-     public var colorsTheme:Array<Any>?     //
-     public var series:Array<Any>?
-     public var legendEnabled:Bool?         //
-     public var legendLayout:String?        //
-     public var legendAlign:String?         //
-     public var legendVerticalAlign:String? //
-     public var backgroundColor:String?     //
-     public var options3dEnable:Bool?       //
-     public var options3dAlpha:Int?
-     public var  options3dBeta:Int?
-     public var options3dDepth:Int?         //
-     public var borderRadius:Int?           //
-     public var markerRadius:Int?           //
+     public var gradientColorEnable:Bool?   //Enable or disable the gradient color
+     public var polar:Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
+     public var dataLabelEnabled:Bool?      //Enable or disable the data labels. Defaults to false
+     public var xAxisLabelsEnabled:Bool?    //Enable or disable the axis labels. Defaults to true
+     public var categories:Array<Any>?      //Set new categories for the axis
+     public var xAxisGridLineWidth:Int?     //The width of the grid lines extending the ticks across the plot area.Defaults to 0
+     public var yAxisLabelsEnabled:Bool?    //Enable or disable the axis labels. Defaults to true
+     public var yAxisTitle:String?          //The actual text of the axis title
+     public var yAxisGridLineWidth:Int?     //The width of the grid lines extending the ticks across the plot area. Defaults to 1
+     public var colorsTheme:Array<Any>?     //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to:["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
+     public var series:Array<Any>?          //An array of all the chart's series
+     public var legendEnabled:Bool?         //Enable or disable the legend. Defaults to true
+     public var legendLayout:String?        //The layout of the legend items. Can be one of "horizontal" or "vertical". Defaults to horizontal
+     public var legendAlign:String?         //The horizontal alignment of the legend box within the chart area. Valid values are left, center and right.Defaults to center
+     public var legendVerticalAlign:String? //The vertical alignment of the legend box. Can be one of top, middle or bottom. Vertical position can be further determined by the y option.Defaults to bottom.
+     public var backgroundColor:String?     //The background color or gradient for the outer chart area. Defaults to #FFFFFF
+     public var options3dEnable:Bool?       //Wether to render the chart using the 3D functionality. Defaults to false
+     public var options3dAlpha:Int?         //One of the two rotation angles for the chart. Defaults to 0
+     public var  options3dBeta:Int?         //One of the two rotation angles for the chart. Defaults to 0
+     public var options3dDepth:Int?         //The total depth of the chart. Defaults to 100
+     public var borderRadius:Int?           //The corner radius of the outer chart border. Defaults to 0
+     public var markerRadius:Int?           //The radius of the point marker. Defaults to 4
 
 
 
