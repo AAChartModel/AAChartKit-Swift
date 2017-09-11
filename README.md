@@ -211,18 +211,18 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 ```swift
 enum AAChartType{
-    case Column      = @"column";      //column chart
-    case Bar         = @"bar";         //bar chart 
-    case Area        = @"area";        //area chart 
-    case Areaspline  = @"areaspline";  //areaspline chart
-    case Line        = @"line";        //line chart
-    case Spline      = @"spline";      //spline chart
-    case Scatter     = @"scatter";     //scatter chart 
-    case Pie         = @"pie";         //pie chart
-    case Bubble      = @"bubble";      //bubble chart  
-    case Pyramid     = @"pyramid";     //pyramid chart
-    case Funnel      = @"funnel";      //funnel chart
-    case Columnrange = @"columnrange"; //columnrange chart
+    case Column      = "column";      //column chart
+    case Bar         = "bar";         //bar chart 
+    case Area        = "area";        //area chart 
+    case Areaspline  = "areaspline";  //areaspline chart
+    case Line        = "line";        //line chart
+    case Spline      = "spline";      //spline chart
+    case Scatter     = "scatter";     //scatter chart 
+    case Pie         = "pie";         //pie chart
+    case Bubble      = "bubble";      //bubble chart  
+    case Pyramid     = "pyramid";     //pyramid chart
+    case Funnel      = "funnel";      //funnel chart
+    case Columnrange = "columnrange"; //columnrange chart
 }
 ```
 
@@ -264,10 +264,6 @@ enum AAChartAnimationType:String{
     case EaseOutBounce       = "easeOutBounce"
     case EaseInOutBounce     = "easeInOutBounce"
 }
-
-
-
-
 ```
 ## Samples
 - line chart
@@ -337,7 +333,7 @@ enum AAChartAnimationType:String{
      public var inverted:Bool?              //Whether to invert the axes so that the x axis is vertical and y axis is horizontal. When true, the x axis is reversed by default. If a bar series is present in the chart, it will be inverted automatically.Inverting the chart doesn't have an effect if there are no cartesian series in the chart, or if the chart is polar.Defaults to false
      public var xAxisReversed:Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
      public var yAxisReversed:Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
-     public var crosshairs:Bool?            //
+     public var crosshairs:Bool?            //Enable or disable the crosshairs
      public var gradientColorEnable:Bool?   //Enable or disable the gradient color
      public var polar:Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
      public var dataLabelEnabled:Bool?      //Enable or disable the data labels. Defaults to false
@@ -360,9 +356,6 @@ enum AAChartAnimationType:String{
      public var options3dDepth:Int?         //The total depth of the chart. Defaults to 100
      public var borderRadius:Int?           //The corner radius of the outer chart border. Defaults to 0
      public var markerRadius:Int?           //The radius of the point marker. Defaults to 4
-
-
-
 ```
 
 
