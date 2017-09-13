@@ -109,7 +109,7 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 ```swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
-        chartModel.title = "编程语言热度";
+        chartModel.title = "主要浏览器市场占比";
         chartModel.subtitle = "虚拟数据";
         chartModel.yAxisTitle = "摄氏度";
         chartModel.dataLabelEnabled = true;//是否直接显示扇形图数据
@@ -143,8 +143,8 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 ```swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = "column";
-        chartModel.title = "编程语言热度";
-        chartModel.subtitle = "虚拟数据";
+        chartModel.title = "AAChartKit气泡图演示";
+        chartModel.subtitle = "随机数";
         chartModel.yAxisTitle = "摄氏度";
         chartModel.series = [
             [
@@ -213,9 +213,9 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 ```swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
-        chartModel.title = "编程语言热度";
-        chartModel.subtitle = "虚拟数据";
-        chartModel.yAxisTitle = "摄氏度";
+        chartModel.title = "城市气温变化起伏";
+        chartModel.subtitle = "哥谭市";
+        chartModel.yAxisTitle = "华氏度";
         chartModel.series = [
                    [
             name: "温度",
@@ -308,7 +308,7 @@ enum AAChartAnimationType:String{
      public var symbol:String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
      public var zoomType:String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
      public var inverted:Bool?              //x 轴是否垂直
-     public var xAxisReversed:Bool?         // x 轴翻转
+     public var xAxisReversed:Bool?         //x 轴翻转
      public var yAxisReversed:Bool?         //y 轴翻转
      public var crosshairs:Bool?            //是否显示准星线(默认显示)
      public var gradientColorEnable:Bool?   //是否要为渐变色
@@ -321,12 +321,12 @@ enum AAChartAnimationType:String{
      public var yAxisTitle:String?          //y轴标题
      public var yAxisGridLineWidth:Int?     //y轴网格线的宽度
      public var colorsTheme:Array<Any>?     //图表主题颜色数组
-     public var series:Array<Any>?
+     public var series:Array<Any>?          //图表的主题数据列数组
      public var legendEnabled:Bool?         //是否显示图例
      public var legendLayout:String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
-     public var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
-     public var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
-     public var backgroundColor:String?   //图表背景色
+     public var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有 left，center 和 right。
+     public var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定
+     public var backgroundColor:String?     //图表背景色
      public var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
      public var options3dAlpha:Int?
      public var  options3dBeta:Int?
@@ -461,12 +461,12 @@ An An
 > * - [x] 支持图形动态刷新纯数据`(series)`内容
 > * - [ ] 支持图形实时刷新纯数据并动态滚动
 > * - [x] 支持色彩图层渐变效果
-> * - [x] 支持3D图形效果,仅对`柱状图、条形图、扇形图、散点图、气泡图`等部分图形有效
+> * - [x] 支持3D图形效果,仅对`柱状图`、`条形图`、`扇形图`、`散点图`、`气泡图`等部分图形有效
 > * - [ ] 支持横屏(全屏)效果
 > * - [ ] 支持自由设置图形渲染动画
 > * - [ ] 支持已渲染图形生成图片文件
 > * - [ ] 支持生成图片文件保存至系统相册
-> * - [ ] 支持用户自由配置`AAOptions`模型对象属性
+> * - [x] 支持用户自由配置`AAOptions`模型对象属性
 > * - [x] 支持图形堆叠
 > * - [x] 支持图形坐标轴反转
 > * - [x] 支持渲染散点图

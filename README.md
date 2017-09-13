@@ -352,7 +352,7 @@ enum AAChartAnimationType:String{
      public var backgroundColor:String?     //The background color or gradient for the outer chart area. Defaults to #FFFFFF
      public var options3dEnable:Bool?       //Wether to render the chart using the 3D functionality. Defaults to false
      public var options3dAlpha:Int?         //One of the two rotation angles for the chart. Defaults to 0
-     public var  options3dBeta:Int?         //One of the two rotation angles for the chart. Defaults to 0
+     public var options3dBeta:Int?         //One of the two rotation angles for the chart. Defaults to 0
      public var options3dDepth:Int?         //The total depth of the chart. Defaults to 100
      public var borderRadius:Int?           //The corner radius of the outer chart border. Defaults to 0
      public var markerRadius:Int?           //The radius of the point marker. Defaults to 4
@@ -432,7 +432,7 @@ to be
 > * - [x] Support graphics to refresh pure data (`series`) content dynamically
 > * - [x] Support graphics to refresh pure data in real time and scroll dynamically
 > * - [x] Support color layer gradient effects
-> * - [x] Support 3D graphics effects, valid only for partial graphics such as `column chart、bar chart、pie charts、scatterplot chart、bubble chart`, etc
+> * - [x] Support 3D graphics effects, valid only for partial graphics such as `column chart`、`bar chart`、`pie charts`、`scatterplot chart`、`bubble chart`, etc
 > * - [ ] Support horizontal screen (full screen) effect
 > * - [ ] Support setting graphics rendering animation freely
 > * - [ ] Support rendered graphics to generate image files
