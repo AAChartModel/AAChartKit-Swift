@@ -17,22 +17,22 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         super.viewDidLoad()
         self.title = "AAInfographics"
         chartTypeArr = [
+             /*基础类型图表*/
             "Column Chart---柱形图",
             "Bar Chart---条形图",
             "Area Chart---折线填充图",
             "Areaspline Chart---曲线填充图",
             "Line Chart---折线图",
             "Spline Chart---曲线图",
-            
+            /*特殊类型图表*/
             "Pie Chart---扇形图",
             "Bubble Chart---气泡图",
             "Scatter Chart---散点图",
-            
             "Pyramid Chart---金字塔图",
             "Funnel Chart---漏斗图",
             "Arearange Chart---区域范围图",
             "Columnrange Chart--- 柱形范围图"
-//            "Mixed Chart---混合图"
+//          "Mixed Chart---混合图"
         ];
         self.view.backgroundColor=UIColor.orange
         let myTableView = UITableView()

@@ -82,14 +82,14 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 ``` swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
-        chartModel.title = "BROWSER MARKET SHARES JANUARY,2015 TO MAY";
+        chartModel.title = "BROWSER MARKET SHARES JANUARY,2020 TO MAY";
         chartModel.subtitle = "VIRTUAL DATA";
         chartModel.dataLabelEnabled = true;//show the data label or not
         chartModel.series =
             [
                 [
                     type: "pie",
-                    name: "浏览器访问量占比",
+                    name: "Browser market shares",
                     data: [
                     ["Firefox",   45.0],
                     ["IE",       26.8],
@@ -101,7 +101,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                     ],
                     ["Safari",    8.5],
                     ["Opera",     6.2],
-                    ["其他",   0.7]
+                    ["Others",   0.7]
                     ]
                 ]
         ]
@@ -115,12 +115,12 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 ``` swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = "column";
-        chartModel.title = "编程语言热度";
-        chartModel.subtitle = "虚拟数据";
-        chartModel.yAxisTitle = "摄氏度";
+        chartModel.title = "AACHARTKIT BUBBLES";
+        chartModel.subtitle = "JUST FOR FUN";
+        chartModel.yAxisTitle = "℃";
         chartModel.series = [
             [
-                "name":"数据列 ONE",
+                "name":"DATA ARRAY ONE",
                 "data": [
                     [9,  81, 63],
                     [98, 5,  89],
@@ -139,7 +139,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                 ]],
             
             [
-                "name":"数据列 TWO",
+                "name":"DATA ARRAY TWO",
                 "data": [
                     [42, 38, 20],
                     [6,  18, 1 ],
@@ -158,7 +158,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                 ]],
             
             [
-                "name":"数据列 THREE",
+                "name":"DATA ARRAY THREE",
                 "data": [
                     [47, 47, 21],
                     [20, 12, 4 ],
@@ -183,12 +183,12 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 ``` swift
     var chartModel = AAChartModel.init();
         chartModel.chartType = AAChartTypeColumnrange;
-        chartModel.title = "编程语言热度";
-        chartModel.subtitle = "虚拟数据";
-        chartModel.yAxisTitle = "摄氏度";
+        chartModel.title = "TEMPERATURE VARIATION BY MONTH";
+        chartModel.subtitle = "OBSERVED IN GOTHAM CITY";
+        chartModel.yAxisTitle = "℉";
         chartModel.series = [
                    [
-            name: "温度",
+            name: "Temperature",
             data: [
                 [-9.7, 9.4],
                 [-8.7, 6.5],
