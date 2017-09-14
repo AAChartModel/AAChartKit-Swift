@@ -317,18 +317,18 @@ enum AAChartAnimationType:String{
 
 ![IMG_1882.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1882.JPG)
 
-### Basic Properties Instruction
+### AAChartModel:chart basic properties instruction
 
 Property name | Property type | Description | Value Range | 
 ------------ | ------------- | ------------- | ------------- |
-title | String | The chart title |      |         |        |
-subtitle | String |The chart subtitle  |  |  |  |
-chartType | AAChartType | The default series type for the chart. Can be any of the chart types listed under `AAChartType`.  | AAChartType.Column, AAChartType.Bar, AAChartType.Area, AAChartType.AreaSpline, AAChartType.Line, AAChartType.Spline, AAChartType.Pie, AAChartType.Bubble, AAChartType.Scatter, AAChartType.Pyramid, AAChartType.Funnel, AAChartType.Arearange, AAChartType.Columnrange|  AAChartType.Column |
+title | String | The chart title | Any valid string | 
+subtitle | String |The chart subtitle  | Any valid string |
+chartType | AAChartType | The default series type for the chart. Can be any of the chart types listed under `AAChartType`.  | AAChartType.Column,    AAChartType.Bar, AAChartType.Area, AAChartType.AreaSpline, AAChartType.Line,    AAChartType.Spline, AAChartType.Pie,    AAChartType.Bubble, AAChartType.Scatter, AAChartType.Pyramid, AAChartType.Funnel, AAChartType.Arearange, AAChartType.Columnrange|  AAChartType.Column |
 stacking| AAChartStackingType | Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order | AAChartStackingType.False, AAChartStackingType.Normal, AAChartStackingType.Percent | AAChartStackingType.False |
 symbol | AAChartSymbolType | A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down" | AAChartSymbolType.Circle, AAChartSymbolType.Square, AAChartSymbolType.Diamond, AAChartSymbolType.Triangle, AAChartSymbolType.Triangle_down |  
 
 
-### AAChartModel:chart Properties list
+### AAChartModel:chart all properties list
 ```swift
      public var animationType:String?       //The type of chart animation
      public var title:String?               //The chart title
@@ -359,7 +359,7 @@ symbol | AAChartSymbolType | A predefined shape or symbol for the marker. When n
      public var backgroundColor:String?     //The background color or gradient for the outer chart area. Defaults to #FFFFFF
      public var options3dEnable:Bool?       //Wether to render the chart using the 3D functionality. Defaults to false
      public var options3dAlpha:Int?         //One of the two rotation angles for the chart. Defaults to 0
-     public var options3dBeta:Int?         //One of the two rotation angles for the chart. Defaults to 0
+     public var options3dBeta:Int?          //One of the two rotation angles for the chart. Defaults to 0
      public var options3dDepth:Int?         //The total depth of the chart. Defaults to 100
      public var borderRadius:Int?           //The corner radius of the outer chart border. Defaults to 0
      public var markerRadius:Int?           //The radius of the point marker. Defaults to 4
