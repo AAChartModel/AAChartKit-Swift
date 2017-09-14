@@ -12,7 +12,7 @@
 ***
 ## Features:
 1. Support `iOS 8`、`ARC` & `Swift`.
-2. Powerful,support the  `column chart` `bar chart` `line chart` `spline chart` `pie chart` `polar chart` `radar chart` and other graphics.
+2. Powerful,support the  `column chart`、`bar chart`、`line chart`、`spline chart`、`pie chart`、`polar chart`、`radar chart` and other graphics.
 3. Interactive、animated,the `animation` is exquisite and deligate.
 4. Support `chain programming syntax` like *Masonry* 
 5. `AAChartView + AAChartModel = Chart`  In the AAInfographics,it follows a minimalist formula: ` Chart view + Chart model = The chart you want`.  
@@ -41,10 +41,10 @@ import AAChartView.swift
 
 ``` swift
         chartModel = AAChartModel.init()
-            .chartTypeSet(AAChartType(rawValue: self.chartType!)!)
+            .chartTypeSet(AAChartType.Column)
             .animationTypeSet(AAChartAnimationType.Swing)
-            .titleSet("donghua")
-            .subtitleSet("subtitle")
+            .titleSet("TITLE")
+            .subtitleSet("SUBTITLE")
             .pointHollowSet(true)
             .dataLabelEnabledSet(false)
             .markerRadiusSet(15)
@@ -80,10 +80,10 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 - To draw a pie chart,you should configure the properties of `AAChartModel` like this:
 ``` swift
-    var chartModel = AAChartModel.init();
-        chartModel.chartType = AAChartTypeColumnrange;
-        chartModel.title = "BROWSER MARKET SHARES JANUARY,2020 TO MAY";
-        chartModel.subtitle = "VIRTUAL DATA";
+    var chartModel = AAChartModel.init()
+        chartModel.chartType = AAChartType.Pie
+        chartModel.title = "BROWSER MARKET SHARES JANUARY,2020 TO MAY"
+        chartModel.subtitle = "VIRTUAL DATA"
         chartModel.dataLabelEnabled = true;//show the data label or not
         chartModel.series =
             [
@@ -105,16 +105,14 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                     ]
                 ]
         ]
-        
         ;
-
 ```
 - To draw a bubble chart,you should configure the properties of `AAChartModel` like this:
 
 
 ``` swift
     var chartModel = AAChartModel.init();
-        chartModel.chartType = "column";
+        chartModel.chartType = AAChartType.Bubble;
         chartModel.title = "AACHARTKIT BUBBLES";
         chartModel.subtitle = "JUST FOR FUN";
         chartModel.yAxisTitle = "℃";
@@ -182,7 +180,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 ``` swift
     var chartModel = AAChartModel.init();
-        chartModel.chartType = AAChartTypeColumnrange;
+        chartModel.chartType = AAChartType.Columnrange;
         chartModel.title = "TEMPERATURE VARIATION BY MONTH";
         chartModel.subtitle = "OBSERVED IN GOTHAM CITY";
         chartModel.yAxisTitle = "℉";
@@ -437,7 +435,7 @@ to be
 > * - [ ] Support setting graphics rendering animation freely
 > * - [ ] Support rendered graphics to generate image files
 > * - [ ] Support generating image files saved to the system album
-> * - [ ] Support for users to configure `AAOptions` model object properties freely
+> * - [x] Support for users to configure `AAOptions` model object properties freely
 > * - [x] Support stacking the graphics 
 > * - [x] Support reversing the graphics axis 
 > * - [x] Support rendering the scatter chart

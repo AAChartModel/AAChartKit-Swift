@@ -15,7 +15,7 @@
 ## 前言
 ###### **AAInfographics**,是 `AAChartKit` 的 `swift`语言版本,是在流行的开源前端图表库*Highcharts*的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件.
 1. 适配 `iOS 8`,  支持`ARC`,支持 `swift 3.0`语言,配置简单.
-2. 功能强大,支持`柱状图`  `条形图`  `折线图`  `填充图` `雷达图` `扇形图` `气泡图`等多种图形
+2. 功能强大,支持`柱状图` 、`条形图` 、`折线图` 、`填充图`、`雷达图`、`扇形图`、`气泡图`等多种图形
 3. `动画`效果细腻精致,流畅优美.
 4. 类 *Masonry* `链式编程语法`
 5. `AAChartView +AAChartModel = Chart`,在 AAInfographics 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`.
@@ -108,7 +108,7 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 - 绘制扇形图,你需要这样配置模型对象 **AAChartModel**
 ```swift
     var chartModel = AAChartModel.init();
-        chartModel.chartType = AAChartTypeColumnrange;
+        chartModel.chartType = AAChartType.Pie;
         chartModel.title = "主要浏览器市场占比";
         chartModel.subtitle = "虚拟数据";
         chartModel.yAxisTitle = "摄氏度";
@@ -142,7 +142,7 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 
 ```swift
     var chartModel = AAChartModel.init();
-        chartModel.chartType = "column";
+        chartModel.chartType = AAChartType.Bubble;
         chartModel.title = "AAChartKit气泡图演示";
         chartModel.subtitle = "随机数";
         chartModel.yAxisTitle = "摄氏度";
@@ -212,7 +212,7 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 
 ```swift
     var chartModel = AAChartModel.init();
-        chartModel.chartType = AAChartTypeColumnrange;
+        chartModel.chartType = AAChartType.Columnrange;
         chartModel.title = "城市气温变化起伏";
         chartModel.subtitle = "哥谭市";
         chartModel.yAxisTitle = "华氏度";
