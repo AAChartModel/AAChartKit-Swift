@@ -7,7 +7,7 @@
 [![](https://img.shields.io/badge/language-Swift-green.svg)](https://github.com/AAChartModel/AAChartKit-Swift) 
 [![](https://img.shields.io/badge/support-OC-orange.svg)](https://github.com/AAChartModel/AAChartKit) 
 
-### 您所喜爱的`AAInfographics`开源图表库头同时更有`Objective-C`版本可供使用,详情请点击以下链接
+### 您所喜爱的`AAInfographics`开源图表库同时更有`Objective-C`版本可供使用,详情请点击以下链接
 ### 传送门
 #### *https://github.com/AAChartModel/AAChartKit*
  
@@ -15,7 +15,7 @@
 ## 前言
 ###### **AAInfographics**,是 `AAChartKit` 的 `swift`语言版本,是在流行的开源前端图表库*Highcharts*的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件.
 1. 适配 `iOS 8`,  支持`ARC`,支持 `swift 3.0`语言,配置简单.
-2. 功能强大,支持`柱状图` 、`条形图` 、`折线图` 、`填充图`、`雷达图`、`扇形图`、`气泡图`等多种图形
+2. 功能强大,支持`柱状图` 、`条形图` 、`折线图` 、`曲线图` 、`折线填充图` 、`曲线填充图`、`雷达图`、`极地图`、`扇形图`、`气泡图`、`散点图`、`金字塔图`、`漏斗图`、`区域范围图`、`柱形范围图`等多种图形
 3. `动画`效果细腻精致,流畅优美.
 4. 类 *Masonry* `链式编程语法`
 5. `AAChartView +AAChartModel = Chart`,在 AAInfographics 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`.
@@ -163,8 +163,8 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
                     [31, 18, 97],
                     [79, 91, 63],
                     [93, 23, 23],
-                    [44, 83, 22]
-                ]],
+                    [44, 83, 22]]
+                ],
             
             [
                 "name":"数据列 TWO",
@@ -182,8 +182,8 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
                     [46, 10, 11],
                     [22, 87, 89],
                     [57, 91, 82],
-                    [45, 15, 98]
-                ]],
+                    [45, 15, 98]]
+                 ],
             
             [
                 "name":"数据列 THREE",
@@ -202,10 +202,8 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
                     [91, 33, 17],
                     [15, 67, 48],
                     [54, 25, 81]]
-            ]
+                 ]
         ];
-
-
 ```
 
 - 绘制柱形范围图,你需要这样配置模型对象 **AAChartModel**
@@ -231,8 +229,7 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
                 [4.4, 18.0],
                 [-3.1, 11.4],
                 [-5.2, 10.4],
-                [-13.5, 9.8]
-            ]
+                [-13.5, 9.8]]
         ]
                     ];
 ```
@@ -294,49 +291,8 @@ enum AAChartAnimationType:String{
     case EaseOutBounce       = "easeOutBounce",
     case EaseInOutBounce     = "easeInOutBounce"
 };
-
-
-
 ```
-### AAChartModel 属性列表
-```swift
-     public var animationType:String?       //动画类型
-     public var title:String?               //标题内容
-     public var subtitle:String?            //副标题内容
-     public var chartType:String?           //图表类型
-     public var stacking:String?            //堆积样式
-     public var symbol:String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-     public var zoomType:String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
-     public var inverted:Bool?              //x 轴是否垂直
-     public var xAxisReversed:Bool?         //x 轴翻转
-     public var yAxisReversed:Bool?         //y 轴翻转
-     public var crosshairs:Bool?            //是否显示准星线(默认显示)
-     public var gradientColorEnable:Bool?   //是否要为渐变色
-     public var polar:Bool?                 //是否极化图形(变为雷达图)
-     public var dataLabelEnabled:Bool?      //是否显示数据
-     public var xAxisLabelsEnabled:Bool?    //x轴是否显示数据
-     public var categories:Array<Any>?      //x轴是否显示数据
-     public var xAxisGridLineWidth:Int?     //x轴网格线的宽度
-     public var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
-     public var yAxisTitle:String?          //y轴标题
-     public var yAxisGridLineWidth:Int?     //y轴网格线的宽度
-     public var colorsTheme:Array<Any>?     //图表主题颜色数组
-     public var series:Array<Any>?          //图表的主题数据列数组
-     public var legendEnabled:Bool?         //是否显示图例
-     public var legendLayout:String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
-     public var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有 left，center 和 right。
-     public var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定
-     public var backgroundColor:String?     //图表背景色
-     public var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
-     public var options3dAlpha:Int?
-     public var  options3dBeta:Int?
-     public var options3dDepth:Int?         //3D图形深度
-     public var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
-     public var markerRadius:Int?           //折线连接点的半径长度
 
-
-
-```
 ###  AAChartModel一些重要属性经过配置之后的图形示例如下
 - line chart - 折线图
 
@@ -385,6 +341,52 @@ enum AAChartAnimationType:String{
 
 - mixed chart - 混合图形
 ![IMG_1882.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1882.JPG)
+
+### AAChartModel 主要属性说明
+属性名称 | 属性类型 | 描述 | 取值范围 | 
+------------ | ------------- | ------------- | ------------- |
+title | String | 图表主标题 | 任意有效的字符串 | 
+subtitle | String |图表副标题  | 任意有效的字符串 |
+chartType | AAChartType |  图表类型,可以为`AAChartType`枚举字符串当中指定的任意有效类型.其中有支持`柱状图` 、`条形图` 、`折线图` 、`曲线图` 、`折线填充图` 、`曲线填充图`、`雷达图`、`扇形图`、`气泡图`、`散点图`、`金字塔图`、`漏斗图`、`区域范围图`、`柱形范围图`等多种图形  | AAChartType.Column,    AAChartType.Bar, AAChartType.Area, AAChartType.AreaSpline, AAChartType.Line,    AAChartType.Spline, AAChartType.Pie,    AAChartType.Bubble, AAChartType.Scatter, AAChartType.Pyramid, AAChartType.Funnel, AAChartType.Arearange, AAChartType.Columnrange|  AAChartType.Column |
+stacking| AAChartStackingType | 是否将图表每个数据列的值叠加在一起。 默认的值为`AAChartStackingType.False`， 即禁用堆叠样式效果.另有常规堆叠样式和百分比堆叠样式可供选择 | AAChartStackingType.False, AAChartStackingType.Normal, AAChartStackingType.Percent | AAChartStackingType.False |
+symbol | AAChartSymbolType | 预定义的图表曲线连接点的样式类型.其可供选择的值有`圆`、`正方形`、`钻石`、`常规三角形`和`倒三角形`,默认为混合样式 | AAChartSymbolType.Circle, AAChartSymbolType.Square, AAChartSymbolType.Diamond, AAChartSymbolType.Triangle, AAChartSymbolType.Triangle_down | 
+
+### AAChartModel 所有属性列表
+```swift
+public var animationType:String?       //动画类型
+public var title:String?               //标题内容
+public var subtitle:String?            //副标题内容
+public var chartType:String?           //图表类型
+public var stacking:String?            //堆积样式
+public var symbol:String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+public var zoomType:String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
+public var inverted:Bool?              //x 轴是否垂直
+public var xAxisReversed:Bool?         //x 轴翻转
+public var yAxisReversed:Bool?         //y 轴翻转
+public var crosshairs:Bool?            //是否显示准星线(默认显示)
+public var gradientColorEnable:Bool?   //是否要为渐变色
+public var polar:Bool?                 //是否极化图形(变为雷达图)
+public var dataLabelEnabled:Bool?      //是否显示数据
+public var xAxisLabelsEnabled:Bool?    //x轴是否显示数据
+public var categories:Array<Any>?      //x轴是否显示数据
+public var xAxisGridLineWidth:Int?     //x轴网格线的宽度
+public var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
+public var yAxisTitle:String?          //y轴标题
+public var yAxisGridLineWidth:Int?     //y轴网格线的宽度
+public var colorsTheme:Array<Any>?     //图表主题颜色数组
+public var series:Array<Any>?          //图表的主题数据列数组
+public var legendEnabled:Bool?         //是否显示图例
+public var legendLayout:String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
+public var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有 left，center 和 right。
+public var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定
+public var backgroundColor:String?     //图表背景色
+public var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
+public var options3dAlpha:Int?
+public var  options3dBeta:Int?
+public var options3dDepth:Int?         //3D图形深度
+public var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
+public var markerRadius:Int?           //折线连接点的半径长度
+```
 
 ### 作者
 An An 

@@ -92,9 +92,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             specialChartVC.chartType = AAChartTypeArr[indexPath.row].rawValue
             self.navigationController?.pushViewController(specialChartVC, animated:true)
         }
-        
 
-        //self.present(locationAlertController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

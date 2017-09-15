@@ -12,7 +12,7 @@
 ***
 ## Features:
 1. Support `iOS 8`、`ARC` & `Swift`.
-2. Powerful,support the  `column chart`、`bar chart`、`line chart`、`spline chart`、`pie chart`、`polar chart`、`radar chart` and other graphics.
+2. Powerful,support the  `column chart`、`bar chart`、`area chart`、`areaspline chart`、`line chart`、`spline chart`、`radar chart`、`polar chart`、`pie chart`、`bubble chart`、`pyramid chart`、`funnel chart`、`columnrange chart`and other graphics.
 3. Interactive、animated,the `animation` is exquisite and deligate.
 4. Support `chain programming syntax` like *Masonry* 
 5. `AAChartView + AAChartModel = Chart`  In the AAInfographics,it follows a minimalist formula: ` Chart view + Chart model = The chart you want`.  
@@ -104,8 +104,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                     ["Others",   0.7]
                     ]
                 ]
-        ]
-        ;
+        ];
 ```
 - To draw a bubble chart,you should configure the properties of `AAChartModel` like this:
 
@@ -133,8 +132,8 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                     [31, 18, 97],
                     [79, 91, 63],
                     [93, 23, 23],
-                    [44, 83, 22]
-                ]],
+                    [44, 83, 22]]
+                ],
             
             [
                 "name":"DATA ARRAY TWO",
@@ -152,8 +151,8 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                     [46, 10, 11],
                     [22, 87, 89],
                     [57, 91, 82],
-                    [45, 15, 98]
-                ]],
+                    [45, 15, 98]]
+                ],
             
             [
                 "name":"DATA ARRAY THREE",
@@ -188,19 +187,18 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                    [
             name: "Temperature",
             data: [
-                [-9.7, 9.4],
-                [-8.7, 6.5],
-                [-3.5, 9.4],
+                [-9.7,  9.4],
+                [-8.7,  6.5],
+                [-3.5,  9.4],
                 [-1.4, 19.9],
-                [0.0, 22.6],
-                [2.9, 29.5],
-                [9.2, 30.7],
-                [7.3, 26.5],
-                [4.4, 18.0],
+                [0.0,  22.6],
+                [2.9,  29.5],
+                [9.2,  30.7],
+                [7.3,  26.5],
+                [4.4,  18.0],
                 [-3.1, 11.4],
                 [-5.2, 10.4],
-                [-13.5, 9.8]
-            ]
+                [-9.5,  9.8]]
         ]
                     ];
 ```

@@ -67,22 +67,13 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         for  i in 0..<segmentedArray.count {
             
-            // 定义
             let segment=UISegmentedControl.init(items: segmentedArray[i])
-            // 位置
             segment.frame = CGRect(x: 20, y: 40.0*CGFloat(i) + (self.view.frame.size.height-145), width: self.view.frame.size.width-40, height: 20)
             segment.tag = i;
-            // 设置边框与文字内的颜色
             segment.tintColor = UIColor.purple
-            // 默认选择
             segment.selectedSegmentIndex = 0
-            // 设置选中为 3 的下标
-            //            segment.setTitle("点击喽", forSegmentAt: 2)
-            // 事件方法
             segment.addTarget(self, action:#selector(segmentDidSelected(segmentedControl:)), for:.valueChanged)
-            // 添加视图
             self.view.addSubview(segment)
-            
             
             let subLabel = UILabel()
             subLabel.font = UIFont(name: "EuphemiaUCAS", size: 12.0)
@@ -101,12 +92,18 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         switch segmentedControl.tag {
         case 0:
-            let stackingArr = [AAChartStackingType.False,AAChartStackingType.Normal,AAChartStackingType.Percent]
+            let stackingArr = [AAChartStackingType.False,
+                               AAChartStackingType.Normal,
+                               AAChartStackingType.Percent]
             self.chartModel?.stacking = stackingArr[segmentedControl.selectedSegmentIndex].rawValue
             break
             
         case 1:
-            let symbolArr = [AAChartSymbolType.Circle,AAChartSymbolType.Square,AAChartSymbolType.Diamond,AAChartSymbolType.Triangle,AAChartSymbolType.Triangle_down]
+            let symbolArr = [AAChartSymbolType.Circle,
+                             AAChartSymbolType.Square,
+                             AAChartSymbolType.Diamond,
+                             AAChartSymbolType.Triangle,
+                             AAChartSymbolType.Triangle_down]
             self.chartModel?.symbol = symbolArr[segmentedControl.selectedSegmentIndex].rawValue
             break
             
@@ -124,9 +121,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         for  i in 0..<nameArr.count {
             
             let uiswitch = UISwitch()
-            //设置位置（开关大小无法设置）
             uiswitch.frame = CGRect(x: switchWidth*CGFloat(i)+20, y: self.view.frame.size.height-70, width: switchWidth, height: 20)
-            //设置默认值
             uiswitch.isOn = false
             uiswitch.tag = i;
             uiswitch.onTintColor = UIColor.red
