@@ -15,6 +15,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     open var chartTypeArr: NSArray?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "AAInfographics"
         chartTypeArr = [
              /*基础类型图表*/
@@ -34,13 +35,17 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             "Columnrange Chart--- 柱形范围图"
 //          "Mixed Chart---混合图"
         ];
-        self.view.backgroundColor=UIColor.orange
+        self.view.backgroundColor = UIColor.white
+        
         let myTableView = UITableView()
-        myTableView.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
-        self.view.addSubview(myTableView)
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.backgroundColor = UIColor.white
+        self.view.addSubview(myTableView)
+
+        myTableView.translatesAutoresizingMaskIntoConstraints = false
+        myTableView.superview!.addConstraints(self.configureTheConstraintArray(view1: myTableView, view2: self.view))//Note:父控件添加约束
+        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -93,6 +98,37 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             self.navigationController?.pushViewController(specialChartVC, animated:true)
         }
 
+    }
+    
+    func configureTheConstraintArray(view1:UIView, view2:UIView) -> [NSLayoutConstraint] {
+        return [NSLayoutConstraint(item:view1,
+                                   attribute:NSLayoutAttribute.left,
+                                   relatedBy:NSLayoutRelation.equal,
+                                   toItem:view2,
+                                   attribute:NSLayoutAttribute.left,
+                                   multiplier:1.0,
+                                   constant:0),
+                NSLayoutConstraint(item:view1,
+                                   attribute:NSLayoutAttribute.right,
+                                   relatedBy:NSLayoutRelation.equal,
+                                   toItem:view2,
+                                   attribute:NSLayoutAttribute.right,
+                                   multiplier:1.0,
+                                   constant:0),
+                NSLayoutConstraint(item:view1,
+                                   attribute:NSLayoutAttribute.top,
+                                   relatedBy:NSLayoutRelation.equal,
+                                   toItem:view2,
+                                   attribute:NSLayoutAttribute.top,
+                                   multiplier:1.0,
+                                   constant:0),
+                NSLayoutConstraint(item:view1,
+                                   attribute:NSLayoutAttribute.bottom,
+                                   relatedBy:NSLayoutRelation.equal,
+                                   toItem:view2,
+                                   attribute:NSLayoutAttribute.bottom,
+                                   multiplier:1.0,
+                                   constant:0)]
     }
     
     override func didReceiveMemoryWarning() {
