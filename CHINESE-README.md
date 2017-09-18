@@ -5,6 +5,7 @@
 [![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/) 
 [![](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/LICENSE) 
 [![](https://img.shields.io/badge/language-Swift-green.svg)](https://github.com/AAChartModel/AAChartKit-Swift) 
+[![](https://img.shields.io/badge/Support-Animation-yellow.svg)](https://github.com/AAChartModel/AAChartKit-Swift) 
 [![](https://img.shields.io/badge/support-OC-orange.svg)](https://github.com/AAChartModel/AAChartKit) 
 
 ### 您所喜爱的`AAInfographics`开源图表库同时更有`Objective-C`版本可供使用,详情请点击以下链接
@@ -44,13 +45,13 @@ import AAChartView.swift
 
 * 常规方式配置 AAChartModel 模型对象属性
 ```swift
-    var chartModel = AAChartModel.init();
-        chartModel.chartType = "column";
-        chartModel.title = "你是人间四月天";
-        chartModel.subtitle="你是爱是暖";
-        chartModel.inverted = true;
-        chartModel.yAxisTitle = "千万公顷";
-        chartModel.legendEnabled = true;
+    var chartModel = AAChartModel.init()
+        chartModel.chartType = "column"
+        chartModel.title = "你是人间四月天"
+        chartModel.subtitle="你是爱是暖"
+        chartModel.inverted = true
+        chartModel.yAxisTitle = "千万公顷"
+        chartModel.legendEnabled = true
         chartModel.series = [
                 [
                     "name": "东京",
@@ -64,7 +65,7 @@ import AAChartView.swift
                 ], [
                     "name": "伦敦",
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                ]];
+                ]]
 ```
 
 * 链式编程的方式配置 AAChartModel 模型对象属性
@@ -87,7 +88,7 @@ import AAChartView.swift
                 ], [
                     "name": "伦敦",
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                ]]);
+                ]])
 ```
 
 4.  绘制图形
@@ -107,12 +108,12 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
 
 - 绘制扇形图,你需要这样配置模型对象 **AAChartModel**
 ```swift
-    var chartModel = AAChartModel.init();
-        chartModel.chartType = AAChartType.Pie;
-        chartModel.title = "主要浏览器市场占比";
-        chartModel.subtitle = "虚拟数据";
-        chartModel.yAxisTitle = "摄氏度";
-        chartModel.dataLabelEnabled = true;//是否直接显示扇形图数据
+    var chartModel = AAChartModel.init()
+        chartModel.chartType = AAChartType.Pie
+        chartModel.title = "主要浏览器市场占比"
+        chartModel.subtitle = "虚拟数据"
+        chartModel.yAxisTitle = "摄氏度"
+        chartModel.dataLabelEnabled = true //是否直接显示扇形图数据
         chartModel.series =
             [
                 [
@@ -120,38 +121,36 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
                     name: "浏览器访问量占比",
                     data: [
                     ["Firefox",   45.0],
-                    ["IE",       26.8],
+                    ["IE",        26.8],
                     [
-                    name: "Chrome",
-                    y: 12.8,
-                    sliced: true,
+                    name:     "Chrome",
+                    y:        12.8,
+                    sliced:   true,
                     selected: true
                     ],
-                    ["Safari",    8.5],
-                    ["Opera",     6.2],
-                    ["其他",   0.7]
+                    ["Safari",     8.5],
+                    ["Opera",      6.2],
+                    ["Others",     0.7],
                     ]
                 ]
         ]
-        
-        ;
 
 ```
 - 绘制气泡图,你需要这样配置模型对象 **AAChartModel**
 
 
 ```swift
-    var chartModel = AAChartModel.init();
-        chartModel.chartType = AAChartType.Bubble;
-        chartModel.title = "AAChartKit气泡图演示";
-        chartModel.subtitle = "随机数";
-        chartModel.yAxisTitle = "摄氏度";
+    var chartModel = AAChartModel.init()
+        chartModel.chartType = AAChartType.Bubble
+        chartModel.title = "AAChartKit气泡图演示"
+        chartModel.subtitle = "随机数"
+        chartModel.yAxisTitle = "摄氏度"
         chartModel.series = [
             [
                 "name":"数据列 ONE",
                 "data": [
-                    [9, 81, 63],
-                    [98, 5, 89],
+                    [9,  81, 63],
+                    [98, 5,  89],
                     [51, 50, 73],
                     [41, 22, 14],
                     [58, 24, 20],
@@ -159,7 +158,7 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
                     [55, 56, 53],
                     [18, 45, 70],
                     [42, 44, 28],
-                    [3, 52, 59],
+                    [3,  52, 59],
                     [31, 18, 97],
                     [79, 91, 63],
                     [93, 23, 23],
@@ -170,15 +169,15 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
                 "name":"数据列 TWO",
                 "data": [
                     [42, 38, 20],
-                    [6, 18, 1],
-                    [1, 93, 55],
-                    [57, 2, 90],
+                    [6,  18,  1],
+                    [1,  93, 55],
+                    [57, 2,  90],
                     [80, 76, 22],
                     [11, 74, 96],
                     [88, 56, 10],
                     [30, 47, 49],
                     [57, 62, 98],
-                    [4, 16, 16],
+                    [4,  16, 16],
                     [46, 10, 11],
                     [22, 87, 89],
                     [57, 91, 82],
@@ -189,8 +188,8 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
                 "name":"数据列 THREE",
                 "data": [
                     [47, 47, 21],
-                    [20, 12, 4],
-                    [6, 76, 91],
+                    [20, 12,  4],
+                    [6,  76, 91],
                     [38, 30, 60],
                     [57, 98, 64],
                     [61, 17, 80],
@@ -203,35 +202,35 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
                     [15, 67, 48],
                     [54, 25, 81]]
                  ]
-        ];
+        ]
 ```
 
 - 绘制柱形范围图,你需要这样配置模型对象 **AAChartModel**
 
 ```swift
-    var chartModel = AAChartModel.init();
-        chartModel.chartType = AAChartType.Columnrange;
-        chartModel.title = "城市气温变化起伏";
-        chartModel.subtitle = "哥谭市";
-        chartModel.yAxisTitle = "华氏度";
+    var chartModel = AAChartModel.init()
+        chartModel.chartType = AAChartType.Columnrange
+        chartModel.title = "城市气温变化起伏"
+        chartModel.subtitle = "哥谭市"
+        chartModel.yAxisTitle = "华氏度"
         chartModel.series = [
                    [
             name: "温度",
             data: [
-                [-9.7, 9.4],
-                [-8.7, 6.5],
-                [-3.5, 9.4],
+                [-9.7,  9.4],
+                [-8.7,  6.5],
+                [-3.5,  9.4],
                 [-1.4, 19.9],
-                [0.0, 22.6],
-                [2.9, 29.5],
-                [9.2, 30.7],
-                [7.3, 26.5],
-                [4.4, 18.0],
+                [0.0,  22.6],
+                [2.9,  29.5],
+                [9.2,  30.7],
+                [7.3,  26.5],
+                [4.4,  18.0],
                 [-3.1, 11.4],
                 [-5.2, 10.4],
                 [-13.5, 9.8]]
         ]
-                    ];
+                    ]
 ```
 
 7. 当前已支持的图表类型有十种以上,说明如下
@@ -258,39 +257,39 @@ enum AAChartType:String{
 
 ```swift
 enum AAChartAnimationType:String{
-    case Linear              = "linear" ,
-    case Swing               = "swing",
-    case EaseInQuad          = "easeInQuad",
-    case EaseOutQuad         = "easeOutQuad",
-    case EaseInOutQuad       = "easeInOutQuad",
-    case EaseInCubic         = "easeInCubic",
-    case EaseOutCubic        = "easeOutCubic",
-    case EaseInOutCubic      = "easeInOutCubic",
-    case EaseInQuart         = "easeInQuart",
-    case EaseOutQuart        = "easeOutQuart",
-    case EaseInOutQuart      = "easeInOutQuart",
-    case EaseInQuint         = "easeInQuint",
-    case EaseOutQuint        = "easeOutQuint",
-    case EaseInOutQuint      = "easeInOutQuint",
-    case EaseInExpo          = "easeInExpo",
-    case EaseOutExpo         = "easeOutExpo",
-    case EaseInOutExpo       = "easeInOutExpo",
-    case EaseInSine          = "easeInSine",
-    case EaseOutSine         = "easeOutSine",
-    case EaseInOutSine       = "easeInOutSine",
-    case EaseInCirc          = "easeInCirc",
-    case EaseOutCirc         = "easeOutCirc",
-    case EaseInOutCirc       = "easeInOutCirc",
-    case EaseInElastic       = "easeInElastic",
-    case EaseOutElastic      = "easeOutElastic",
-    case EaseInOutElastic    = "easeInOutElastic",
-    case EaseInBack          = "easeInBack",
-    case EaseOutBack         = "easeOutBack",
-    case EaseInOutBack       = "easeInOutBack",
-    case EaseInBounce        = "easeInBounce",
-    case EaseOutBounce       = "easeOutBounce",
+    case Linear              = "linear" 
+    case Swing               = "swing"
+    case EaseInQuad          = "easeInQuad"
+    case EaseOutQuad         = "easeOutQuad"
+    case EaseInOutQuad       = "easeInOutQuad"
+    case EaseInCubic         = "easeInCubic"
+    case EaseOutCubic        = "easeOutCubic"
+    case EaseInOutCubic      = "easeInOutCubic"
+    case EaseInQuart         = "easeInQuart"
+    case EaseOutQuart        = "easeOutQuart"
+    case EaseInOutQuart      = "easeInOutQuart"
+    case EaseInQuint         = "easeInQuint"
+    case EaseOutQuint        = "easeOutQuint"
+    case EaseInOutQuint      = "easeInOutQuint"
+    case EaseInExpo          = "easeInExpo"
+    case EaseOutExpo         = "easeOutExpo"
+    case EaseInOutExpo       = "easeInOutExpo"
+    case EaseInSine          = "easeInSine"
+    case EaseOutSine         = "easeOutSine"
+    case EaseInOutSine       = "easeInOutSine"
+    case EaseInCirc          = "easeInCirc"
+    case EaseOutCirc         = "easeOutCirc"
+    case EaseInOutCirc       = "easeInOutCirc"
+    case EaseInElastic       = "easeInElastic"
+    case EaseOutElastic      = "easeOutElastic"
+    case EaseInOutElastic    = "easeInOutElastic"
+    case EaseInBack          = "easeInBack"
+    case EaseOutBack         = "easeOutBack"
+    case EaseInOutBack       = "easeInOutBack"
+    case EaseInBounce        = "easeInBounce"
+    case EaseOutBounce       = "easeOutBounce"
     case EaseInOutBounce     = "easeInOutBounce"
-};
+}
 ```
 
 ###  AAChartModel一些重要属性经过配置之后的图形示例如下

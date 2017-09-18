@@ -13,9 +13,9 @@
 ## Features:
 1. Support `iOS 8`、`ARC` & `Swift`.
 2. Powerful,support the  `column chart`、`bar chart`、`area chart`、`areaspline chart`、`line chart`、`spline chart`、`radar chart`、`polar chart`、`pie chart`、`bubble chart`、`pyramid chart`、`funnel chart`、`columnrange chart`and other graphics.
-3. Interactive、animated,the `animation` is exquisite and deligate.
+3. Interactive、animated, the `animation` effect is exquisite 、delicate、 smooth and beautiful.
 4. Support `chain programming syntax` like *Masonry* 
-5. `AAChartView + AAChartModel = Chart`  In the AAInfographics,it follows a minimalist formula: ` Chart view + Chart model = The chart you want`.  
+5. `AAChartView + AAChartModel = Chart`  In the AAInfographics,it follows a minimalist formula: ` Chart view + Chart model = The chart you want`. 
 ***
 
 
@@ -61,17 +61,17 @@ import AAChartView.swift
                 ], [
                     "name": "London",
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                ]]);
+                ]])
 ```
 4.  Draw the chart
 
 ```objective-c
-        [chartView aa_drawChartWithChartModel:chartModel];
+        [chartView aa_drawChartWithChartModel:chartModel]
 ```
 5.  Refresh the chart
 
 ```objective-c
-        [chartView aa_refreshChartWithChartModel:chartModel];
+        [chartView aa_refreshChartWithChartModel:chartModel]
 ```
 
 6. Special instructions
@@ -84,7 +84,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
         chartModel.chartType = AAChartType.Pie
         chartModel.title = "BROWSER MARKET SHARES JANUARY,2020 TO MAY"
         chartModel.subtitle = "VIRTUAL DATA"
-        chartModel.dataLabelEnabled = true;//show the data label or not
+        chartModel.dataLabelEnabled = true//show the data label or not
         chartModel.series =
             [
                 [
@@ -92,29 +92,29 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                     name: "Browser market shares",
                     data: [
                     ["Firefox",   45.0],
-                    ["IE",       26.8],
+                    ["IE",        26.8],
                     [
-                    name: "Chrome",
-                    y: 12.8,
-                    sliced: true,
+                    name:     "Chrome",
+                    y:        12.8,
+                    sliced:   true,
                     selected: true
                     ],
                     ["Safari",    8.5],
                     ["Opera",     6.2],
-                    ["Others",   0.7]
+                    ["Others",    0.7]
                     ]
                 ]
-        ];
+        ]
 ```
 - To draw a bubble chart,you should configure the properties of `AAChartModel` like this:
 
 
 ``` swift
-    var chartModel = AAChartModel.init();
-        chartModel.chartType = AAChartType.Bubble;
-        chartModel.title = "AACHARTKIT BUBBLES";
-        chartModel.subtitle = "JUST FOR FUN";
-        chartModel.yAxisTitle = "℃";
+    var chartModel = AAChartModel.init()
+        chartModel.chartType = AAChartType.Bubble
+        chartModel.title = "AACHARTKIT BUBBLES"
+        chartModel.subtitle = "JUST FOR FUN"
+        chartModel.yAxisTitle = "℃"
         chartModel.series = [
             [
                 "name":"DATA ARRAY ONE",
@@ -172,17 +172,17 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                     [15, 67, 48],
                     [54, 25, 81]]
             ]
-        ];
+        ]
 ```
 
 - To draw a columnrange chart,you should configure the properties of `AAChartModel` like this:
 
 ``` swift
-    var chartModel = AAChartModel.init();
-        chartModel.chartType = AAChartType.Columnrange;
-        chartModel.title = "TEMPERATURE VARIATION BY MONTH";
-        chartModel.subtitle = "OBSERVED IN GOTHAM CITY";
-        chartModel.yAxisTitle = "℉";
+    var chartModel = AAChartModel.init()
+        chartModel.chartType = AAChartType.Columnrange
+        chartModel.title = "TEMPERATURE VARIATION BY MONTH"
+        chartModel.subtitle = "OBSERVED IN GOTHAM CITY"
+        chartModel.yAxisTitle = "℉"
         chartModel.series = [
                    [
             name: "Temperature",
@@ -200,25 +200,25 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                 [-5.2, 10.4],
                 [-9.5,  9.8]]
         ]
-                    ];
+                    ]
 ```
 
 7. Supported chart type for now 
 
 ```swift
 enum AAChartType{
-    case Column      = "column";      //column chart
-    case Bar         = "bar";         //bar chart 
-    case Area        = "area";        //area chart 
-    case Areaspline  = "areaspline";  //areaspline chart
-    case Line        = "line";        //line chart
-    case Spline      = "spline";      //spline chart
-    case Scatter     = "scatter";     //scatter chart 
-    case Pie         = "pie";         //pie chart
-    case Bubble      = "bubble";      //bubble chart  
-    case Pyramid     = "pyramid";     //pyramid chart
-    case Funnel      = "funnel";      //funnel chart
-    case Columnrange = "columnrange"; //columnrange chart
+    case Column      = "column"      //column chart
+    case Bar         = "bar"         //bar chart 
+    case Area        = "area"        //area chart 
+    case Areaspline  = "areaspline"  //areaspline chart
+    case Line        = "line"        //line chart
+    case Spline      = "spline"      //spline chart
+    case Scatter     = "scatter"     //scatter chart 
+    case Pie         = "pie"         //pie chart
+    case Bubble      = "bubble"      //bubble chart  
+    case Pyramid     = "pyramid"     //pyramid chart
+    case Funnel      = "funnel"      //funnel chart
+    case Columnrange = "columnrange" //columnrange chart
 }
 ```
 
