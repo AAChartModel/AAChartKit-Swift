@@ -46,11 +46,11 @@ import AAChartView.swift
 * 常规方式配置 AAChartModel 模型对象属性
 ```swift
     var chartModel = AAChartModel.init()
-        chartModel.chartType = "column"
-        chartModel.title = "你是人间四月天"
-        chartModel.subtitle="你是爱是暖"
+        chartModel.chartType = AAChartType.Column
+        chartModel.title = "城市天气变化"
+        chartModel.subtitle="2020年09月18日"
         chartModel.inverted = true
-        chartModel.yAxisTitle = "千万公顷"
+        chartModel.yAxisTitle = "摄氏度"
         chartModel.legendEnabled = true
         chartModel.series = [
                 [
@@ -71,10 +71,12 @@ import AAChartView.swift
 * 链式编程的方式配置 AAChartModel 模型对象属性
 ```swift
     let chartModel = AAChartModel.init()
-            .chartTypeSet(self.chartType!)
-            .animationTypeSet("donghualeixing")
-            .titleSet("donghua")
-            .animationTypeSet("jiushizheyang")
+            .chartTypeSet(AAChartType.Column)
+            .titleSet("城市天气变化")
+            .subtitleSet("2020年09月18日")
+            .invertedSet(true)
+            .yAxisTitleSet("摄氏度")
+            .legendEnabledSet(true)
             .seriesSet([
                 [
                     "name": "东京",
@@ -112,7 +114,6 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
         chartModel.chartType = AAChartType.Pie
         chartModel.title = "主要浏览器市场占比"
         chartModel.subtitle = "虚拟数据"
-        chartModel.yAxisTitle = "摄氏度"
         chartModel.dataLabelEnabled = true //是否直接显示扇形图数据
         chartModel.series =
             [

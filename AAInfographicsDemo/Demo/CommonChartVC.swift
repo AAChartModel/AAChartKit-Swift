@@ -88,7 +88,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     }
     
     func segmentDidSelected(segmentedControl:UISegmentedControl){
-        print("%d",segmentedControl.selectedSegmentIndex)
         
         switch segmentedControl.tag {
         case 0:
@@ -141,8 +140,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     }
     
     func switchDidChange(switchView:UISwitch){
-        //打印当前值
-        print(switchView.isOn)
         
         switch switchView.tag {
         case 0:
