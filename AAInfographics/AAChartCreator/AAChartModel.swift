@@ -326,33 +326,33 @@ public class AAChartModel:AASerializable {
     public  init() {
         print(AAChartAnimationType.EaseInBack.rawValue)
         
-        self.animationType = AAChartAnimationType.EaseInBack.rawValue
-        self.animationDuration = 800//以毫秒为单位
-        self.chartType = AAChartType.Column.rawValue
-        self.inverted = false
-        self.stacking = AAChartStackingType.False.rawValue
-        //self.symbol = AAChartSymbolType.Square.rawValue//默认的折线连接点类型
-        self.xAxisReversed = false
-        self.yAxisReversed = false
-        self.zoomType = AAChartZoomType.X.rawValue
-        self.pointHollow = false//默认折线或者曲线的连接点不为空
-//        self.colorsTheme = ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
-        self.colorsTheme = ["#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",]//明艳色彩
+        self.animationType       = AAChartAnimationType.EaseInBack.rawValue
+        self.animationDuration   = 800//以毫秒为单位
+        self.chartType           = AAChartType.Column.rawValue
+        self.inverted            = false
+        self.stacking            = AAChartStackingType.False.rawValue
+//        self.symbol              = AAChartSymbolType.Square.rawValue//默认的折线连接点类型
+        self.xAxisReversed       = false
+        self.yAxisReversed       = false
+        self.zoomType            = AAChartZoomType.X.rawValue
+        self.pointHollow         = false//默认折线或者曲线的连接点不为空
+//        self.colorsTheme         = ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
+        self.colorsTheme         = ["#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",]//明艳色彩
         self.gradientColorEnable = false
-        self.polar = false
-        self.dataLabelEnabled = true
-        self.options3dEnable = false
-        self.crosshairs = true
-        self.xAxisLabelsEnabled = true
-        self.xAxisGridLineWidth = 0
-        self.yAxisLabelsEnabled = true
-        self.yAxisGridLineWidth = 1
-        self.legendEnabled = true
-        self.legendLayout = AAchartLegendlLayoutType.Horizontal.rawValue
-        self.legendAlign = AAChartLegendAlignType.Center.rawValue
+        self.polar               = false
+        self.dataLabelEnabled    = true
+        self.options3dEnable     = false
+        self.crosshairs          = true
+        self.xAxisLabelsEnabled  = true
+        self.xAxisGridLineWidth  = 0
+        self.yAxisLabelsEnabled  = true
+        self.yAxisGridLineWidth  = 1
+        self.legendEnabled       = true
+        self.legendLayout        = AAchartLegendlLayoutType.Horizontal.rawValue
+        self.legendAlign         = AAChartLegendAlignType.Center.rawValue
         self.legendVerticalAlign = AAChartLegendVerticalAlignType.Bottom.rawValue
-        self.borderRadius = 0//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
-        self.markerRadius = 5//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
+        self.borderRadius        = 0//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
+        self.markerRadius        = 5//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
     }
     
     
