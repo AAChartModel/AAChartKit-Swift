@@ -155,11 +155,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             self.chartModel?.polar = switchView.isOn
             break
         case 4:
-            if switchView.isOn == true {
-                self.chartModel?.markerRadius = 0
-            } else {
-                self.chartModel?.markerRadius = 5
-            }
+            self.chartModel?.markerRadius = switchView.isOn ? 0:5
             break
         case 5:
             self.chartModel?.dataLabelEnabled = switchView.isOn
