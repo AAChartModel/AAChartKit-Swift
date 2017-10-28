@@ -50,10 +50,10 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         if (self.chartType == AAChartType.Line
             || self.chartType == AAChartType.Spline) {
-            aaChartModel?.symbolStyleType = AAChartSymbolStyleType.BorderBlank.rawValue //设置折线连接点样式为:边缘白色
+            aaChartModel?.symbolStyle = AAChartSymbolStyleType.BorderBlank.rawValue //设置折线连接点样式为:边缘白色
         } else if (self.chartType == AAChartType.Area
                    || self.chartType == AAChartType.AreaSpline) {
-            aaChartModel?.symbolStyleType = AAChartSymbolStyleType.InnerBlank.rawValue//设置折线连接点样式为:内部白色
+            aaChartModel?.symbolStyle = AAChartSymbolStyleType.InnerBlank.rawValue//设置折线连接点样式为:内部白色
          }
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)

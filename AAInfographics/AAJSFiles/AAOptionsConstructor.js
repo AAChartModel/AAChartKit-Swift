@@ -8,65 +8,64 @@
 <!---->
 
 function configureAAOptions(sender, receivedWidth, receivedHeight) {
-    
-//    alert(sender);//输出查看传输的是什么
+
+        //    alert(sender);//输出查看传输的是什么
         var AAChartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
-        if (receivedWidth!=0) {
-            o.style.width = receivedWidth;//设置宽度
+        if (receivedWidth != 0) {
+                o.style.width = receivedWidth; //设置宽度
         }
         o.style.height = receivedHeight; //设置高度
-
         var AAChart = {
-                type: AAChartModel.chartType,
-                inverted: AAChartModel.inverted,
-                backgroundColor: AAChartModel.backgroundColor,
+                type: AAChartModel.chartType,//图表类型
+                inverted: AAChartModel.inverted,//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
+                backgroundColor: AAChartModel.backgroundColor,//图表背景色
                 animation: true,
-                zoomType: AAChartModel.zoomType,
-                panning: true,
-                polar: AAChartModel.polar,
+                zoomType: AAChartModel.zoomType,//设置手势缩放方向
+                panning: true,//设置手势缩放后是否可平移
+                polar: AAChartModel.polar,//是否辐射化图形
                 options3d: {
-                        enable: AAChartModel.options3dEnable,
+                        enable: AAChartModel.options3dEnable,//是否 3D 化图形
                         alpha: -15
                 }
 
         };
 
         var AATitle = {
-                text: AAChartModel.title,
+                text: AAChartModel.title,//标题文本内容
                 style: {
-                        color: "#000000",
-                        fontSize: "12px"
+                        color: "#000000",//标题颜色
+                        fontSize: "12px"//标题字体大小
                 }
         };
-    
+
         var AASubtitle = {
-                text: AAChartModel.subtitle,
+                text: AAChartModel.subtitle,//副标题文本内容
                 style: {
-                        color: "#000000",
-                        fontSize: "9px"
+                        color: "#000000",//副标题颜色
+                        fontSize: "9px"//副标题字体大小
                 }
         };
-    
+
         var AAXAxis = {
                 label: {
-                        enable: AAChartModel.xAxisLabelsEnabled
+                        enable: AAChartModel.xAxisLabelsEnabled// X 轴是否显示文字
                 },
-                reversed: AAChartModel.xAxisGridLineWidth,
-                gridLineWidth: AAChartModel.xAxisGridLineWidth,
+                reversed: AAChartModel.xAxisReversed,//是否反转 X 轴
+                gridLineWidth: AAChartModel.xAxisGridLineWidth,// X 轴网格线宽度
                 categories: AAChartModel.categories
         };
-    
+
         var AAYAxis = {
                 label: {
-                        enable: AAChartModel.yAxisLabelsEnabled
+                        enable: AAChartModel.yAxisLabelsEnabled// Y 轴是否显示数字
                 },
-                reversed: AAChartModel.yAxisReversed,
-                gridLineWidth: AAChartModel.yAxisGridLineWidth,
+                reversed: AAChartModel.yAxisReversed,//是否反转 Y 轴
+                gridLineWidth: AAChartModel.yAxisGridLineWidth,// Y 轴网格线宽度
                 title: {
-                        text: AAChartModel.yAxisTitle
+                        text: AAChartModel.yAxisTitle//Y 轴标题
                 },
-                lineWidth: 0,
+                lineWidth: 0,// Y 轴线宽度
                 plotLines: [{
                         value: 0,
                         width: 1,
@@ -75,10 +74,47 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         };
 
         var AATooltip = {
-//                valueSuffix: '\xB0C',//浮动提示层数值的单位后缀
+                //valueSuffix: '\xB0C',//浮动提示层数值的单位后缀
                 shared: true,
                 crosshairs: true,
         }
+
+        var AASeries = {
+                stacking: AAChartModel.stacking,//图表堆叠类型
+                animation: {
+                        duration: AAChartModel.animationDuration,
+                        easing: AAChartModel.animationType,
+                }
+        };
+    
+        var AAPlotOptions = {};
+        AAPlotOptions.series = AASeries;
+
+        //数据点标记相关配置，只有线性图才有数据点标记。
+        if (   AAChartModel.chartType === "area"
+            || AAChartModel.chartType === "areaspline"
+            || AAChartModel.chartType === "line"
+            || AAChartModel.chartType === "spline") {
+
+                var AAMarker = {};
+                AAMarker.radius = AAChartModel.markerRadius; //曲线连接点半径，默认是4
+                AAMarker.symbol = AAChartModel.symbol; //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记
+                //设置曲线连接点是否为空心的
+                if (AAChartModel.symbolStyle === "innerBlank") {
+                        AAMarker.fillColor = "#ffffff"; //点的填充色(用来设置折线连接点的填充色)
+                        AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                        AAMarker.lineColor = ""; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
+                } else if (AAChartModel.symbolStyle === "borderBlank") {
+                        AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                        AAMarker.lineColor = "#ffffff"; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
+                }
+
+            AAPlotOptions.series.marker = AAMarker;
+            
+        }
+
+        AAPlotOptions = configureAAPlotOptions(AAPlotOptions, AAChartModel);//配置 AAPlotOptions
 
         var AALegend = {
                 enabled: AAChartModel.legendEnabled,
@@ -88,49 +124,27 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 borderWidth: 0
         };
 
-        var AAChartModelStacking = AAChartModel.stacking;
+        var AAThemeColors = AAChartModel.colorsTheme;
 
-        var AAPlotOptions = {};
+        var AAOptions = {};
+        AAOptions.chart = AAChart;
+        AAOptions.title = AATitle;
+        AAOptions.subtitle = AASubtitle;
+        AAOptions.xAxis = AAXAxis;
+        AAOptions.yAxis = AAYAxis;
+        AAOptions.tooltip = AATooltip;
+        AAOptions.legend = AALegend;
+        AAOptions.plotOptions = AAPlotOptions;
+        AAOptions.colors = AAThemeColors;
+        AAOptions.series = AAChartModel.series;
+
+        //    alert(AAOptions.colorsTheme);//提示颜色字符串数组
+        return AAOptions;
+
+}
+
+function configureAAPlotOptions(AAPlotOptions, AAChartModel) {
     
-        var series = {
-                stacking: AAChartModelStacking,
-                //设置是否百分比堆叠显示图形
-                animation: {
-                        duration: AAChartModel.animationDuration,
-                        easing: AAChartModel.animationType,
-                }
-
-        };
-
-        AAPlotOptions.series = series;
-
-        var AAMarker = {};
-        AAMarker.radius = AAChartModel.markerRadius;
-        AAMarker.symbol = AAChartModel.symbol;
-    
-        //设置曲线连接点是否为空心的
-        if (AAChartModel.pointHollow === true) {
-                AAMarker.fillColor = "#ffffff"; //点的填充色(用来设置折线连接点的填充色)
-                AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                AAMarker.lineColor = ""; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
-        }
-    
-        //数据点标记相关配置，只有线性图才有数据点标记。
-        if (   AAChartModel.chartType === "area" 
-        	|| AAChartModel.chartType === "areaspline" 
-        	|| AAChartModel.chartType === "line" 
-        	|| AAChartModel.chartType === "spline") {
-                AAPlotOptions.series = {
-                        stacking: AAChartModelStacking,
-                        //设置是否百分比堆叠显示图形
-                        marker: AAMarker,
-                        animation: {
-                                duration: AAChartModel.animationDuration,
-                                easing: AAChartModel.animationType,
-                        }
-                }
-        }
-
         if (AAChartModel.chartType === "column") {
                 var AAColumn = {
                         pointPadding: 0.2,
@@ -197,24 +211,6 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 };
                 AAPlotOptions.pie = AAPie;
         };
-        var AAThemeColors = AAChartModel.colorsTheme;
-        var AASeries = AAChartModel.series;
 
-        var AAOptions = {};
-        AAOptions.chart = AAChart;
-        AAOptions.title = AATitle;
-        AAOptions.subtitle = AASubtitle;
-        AAOptions.xAxis = AAXAxis;
-        AAOptions.yAxis = AAYAxis;
-        AAOptions.tooltip = AATooltip;
-        AAOptions.legend = AALegend;
-        AAOptions.plotOptions = AAPlotOptions;
-        AAOptions.colors = AAThemeColors;
-        AAOptions.series = AASeries;
-    
-//    alert(AAOptions.colorsTheme);//提示颜色字符串数组
-    
-    return AAOptions;
-
+        return AAPlotOptions;
 }
-

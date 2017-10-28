@@ -123,7 +123,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         if (indexPath.section<1) {
             /*基础类型图表*/
             let commonChartVC  = CommonChartVC()
-            commonChartVC.chartType = AAChartTypeArr[indexPath.section][indexPath.row].rawValue
+            commonChartVC.chartType = AAChartType(rawValue: AAChartTypeArr[indexPath.section][indexPath.row].rawValue)
             self.navigationController?.pushViewController(commonChartVC, animated:true)
         } else {
             /*特殊类型图表*/

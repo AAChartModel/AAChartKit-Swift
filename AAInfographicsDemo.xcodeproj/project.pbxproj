@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */; };
-		2770FBC11F93687200091C75 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 2770FBC01F93687200091C75 /* File */; };
 		277322701F4BE0D500E6E295 /* AAFunnel.js in Resources */ = {isa = PBXBuildFile; fileRef = 2773226F1F4BE0D500E6E295 /* AAFunnel.js */; };
 		278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54B11EE9472300770B97 /* AppDelegate.swift */; };
 		278C54B71EE9472300770B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B51EE9472300770B97 /* Main.storyboard */; };
@@ -50,7 +49,6 @@
 
 /* Begin PBXFileReference section */
 		2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyRefreshChartDataVC.swift; sourceTree = "<group>"; };
-		2770FBC01F93687200091C75 /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		2773226F1F4BE0D500E6E295 /* AAFunnel.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAFunnel.js; sourceTree = "<group>"; };
 		278C54AE1EE9472300770B97 /* AAInfographicsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAInfographicsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		278C54B11EE9472300770B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 				278C55121EE948C900770B97 /* SpecialChartVC.swift */,
 				2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */,
 				278C55131EE948C900770B97 /* AnimationTypeVC.swift */,
-				2770FBC01F93687200091C75 /* File */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -316,7 +313,6 @@
 				278C55051EE947DF00770B97 /* AAHighChartsLibrary.js in Resources */,
 				278C55071EE947DF00770B97 /* AAJQueryLibrary.js in Resources */,
 				278C55041EE947DF00770B97 /* AAHighCharts-3d.js in Resources */,
-				2770FBC11F93687200091C75 /* File in Resources */,
 				277322701F4BE0D500E6E295 /* AAFunnel.js in Resources */,
 				278C55081EE947DF00770B97 /* AAOptionsConstructor.js in Resources */,
 				278C55061EE947DF00770B97 /* AAHighchartsMore.js in Resources */,
@@ -511,7 +507,7 @@
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -525,7 +521,7 @@
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDemj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
