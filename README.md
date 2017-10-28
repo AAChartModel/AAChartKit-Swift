@@ -8,6 +8,10 @@
 [![](https://img.shields.io/badge/support-OC-orange.svg)](https://github.com/AAChartModel/AAChartKit)
 [![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)
 [![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAChartKit-Swift)
+
+### There is the link of **Objective-C version** of  `AAChartKit` as follow
+#### *https://github.com/AAChartModel/AAChartKit*
+
 ### 中文使用说明书地址
 #### *https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md*
  
