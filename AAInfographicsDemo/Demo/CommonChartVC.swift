@@ -11,8 +11,8 @@
 import UIKit
 
 class CommonChartVC: UIViewController,UIWebViewDelegate {
-    open var chartType:String?
-    open var chartModel: AAChartModel?
+    open var chartType:AAChartType?
+    open var aaChartModel: AAChartModel?
     open var aaChartView: AAChartView?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +26,11 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         aaChartView?.contentHeight = self.view.frame.size.height-220//AAChartViewd的内容高度
         self.view.addSubview(aaChartView!)
         
-        chartModel = AAChartModel.init()
-            .chartTypeSet(AAChartType(rawValue: self.chartType!)!)//图形类型
-            .pointHollowSet(false)//设置折线连接点是否为空心
+        aaChartModel = AAChartModel.init()
+            .chartTypeSet(self.chartType!)//图形类型
             .animationTypeSet(AAChartAnimationType.EaseInBounce)//图形渲染动画类型
             .titleSet("都市天气")//图形标题
             .subtitleSet("2020年08月08日")//图形副标题
-            .pointHollowSet(true)//折线连接点是否为空心
             .dataLabelEnabledSet(false)//是否显示数字
             .markerRadiusSet(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .seriesSet([
@@ -50,7 +48,15 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
                 ]]);
         
-        aaChartView?.aa_drawChartWithChartModel(chartModel!)
+        if (self.chartType == AAChartType.Line
+            || self.chartType == AAChartType.Spline) {
+            aaChartModel?.symbolStyleType = AAChartSymbolStyleType.BorderBlank.rawValue //设置折线连接点样式为:边缘白色
+        } else if (self.chartType == AAChartType.Area
+                   || self.chartType == AAChartType.AreaSpline) {
+            aaChartModel?.symbolStyleType = AAChartSymbolStyleType.InnerBlank.rawValue//设置折线连接点样式为:内部白色
+         }
+        
+        aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
         
     }
     
@@ -94,7 +100,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             let stackingArr = [AAChartStackingType.False,
                                AAChartStackingType.Normal,
                                AAChartStackingType.Percent]
-            self.chartModel?.stacking = stackingArr[segmentedControl.selectedSegmentIndex].rawValue
+            self.aaChartModel?.stacking = stackingArr[segmentedControl.selectedSegmentIndex].rawValue
             break
             
         case 1:
@@ -103,13 +109,15 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                              AAChartSymbolType.Diamond,
                              AAChartSymbolType.Triangle,
                              AAChartSymbolType.Triangle_down]
-            self.chartModel?.symbol = symbolArr[segmentedControl.selectedSegmentIndex].rawValue
+     
+            
+            self.aaChartModel?.symbol = symbolArr[segmentedControl.selectedSegmentIndex].rawValue
             break
             
         default:
             break
         }
-        aaChartView?.aa_refreshChartWithChartModel(chartModel!)
+        aaChartView?.aa_refreshChartWithChartModel(aaChartModel!)
     }
     
     func configureTheSwith() {
@@ -143,28 +151,29 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         switch switchView.tag {
         case 0:
-            self.chartModel?.xAxisReversed = switchView.isOn
+            self.aaChartModel?.xAxisReversed = switchView.isOn
             break
         case 1:
-            self.chartModel?.yAxisReversed = switchView.isOn
+            self.aaChartModel?.yAxisReversed = switchView.isOn
             break
         case 2:
-            self.chartModel?.inverted = switchView.isOn
+            self.aaChartModel?.inverted = switchView.isOn
             break
         case 3:
-            self.chartModel?.polar = switchView.isOn
+            self.aaChartModel?.polar = switchView.isOn
             break
         case 4:
-            self.chartModel?.markerRadius = switchView.isOn ? 0:5
+            self.aaChartModel?.markerRadius = switchView.isOn ? 0:5
             break
         case 5:
-            self.chartModel?.dataLabelEnabled = switchView.isOn
+            self.aaChartModel?.dataLabelEnabled = switchView.isOn
             break
         default:
             break
         }
         
-        aaChartView?.aa_refreshChartWithChartModel(chartModel!)
+        
+        aaChartView?.aa_refreshChartWithChartModel(aaChartModel!)
     }
     
     

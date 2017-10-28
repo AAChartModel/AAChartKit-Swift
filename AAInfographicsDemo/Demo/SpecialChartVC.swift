@@ -13,8 +13,8 @@ import UIKit
 
 class SpecialChartVC: UIViewController,UIWebViewDelegate {
     open var chartType:String?
-    open var chartModel: AAChartModel?
-    open var globalWebview2: AAChartView?
+    open var aaChartModel: AAChartModel?
+    open var aaChartView: AAChartView?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,25 +27,25 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         self.view .addSubview(subLabel)
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
         
-        globalWebview2 = AAChartView()
-        globalWebview2?.frame = CGRect(x:0,y:60,width:self.view.frame.size.width,height:self.view.frame.size.height)
-        globalWebview2?.contentHeight = self.view.frame.size.height-60
-        self.view.addSubview(globalWebview2!)
+        aaChartView = AAChartView()
+        aaChartView?.frame = CGRect(x:0,y:60,width:self.view.frame.size.width,height:self.view.frame.size.height)
+        aaChartView?.contentHeight = self.view.frame.size.height-60
+        self.view.addSubview(aaChartView!)
         
         self.configureTheAAChartModel(chartTypeStr:AAChartType(rawValue: self.chartType!)!)
         
-        globalWebview2?.aa_drawChartWithChartModel(chartModel!)
+        aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
         
     }
     
     func configureTheAAChartModel(chartTypeStr:AAChartType) {
         switch chartTypeStr {
         case AAChartType.Pie:
-            chartModel = AAChartModel.init()
+            aaChartModel = AAChartModel.init()
                 .chartTypeSet(AAChartType.Pie)
                 .titleSet("编程语言热度")
                 .subtitleSet("虚拟数据")
-                .dataLabelEnabledSet(true)//是否直接显示扇形图数据
+//                .dataLabelEnabledSet(true)//是否直接显示扇形图数据
                 .yAxisTitleSet("摄氏度")
                 .seriesSet(
                     [
@@ -69,7 +69,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             )
             
         case AAChartType.Bubble:
-            chartModel = AAChartModel.init()
+            aaChartModel = AAChartModel.init()
                 .chartTypeSet(AAChartType.Bubble)
                 .titleSet("编程语言热度")
                 .subtitleSet("虚拟数据")
@@ -118,7 +118,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             break
             
         case AAChartType.Scatter:
-            chartModel = AAChartModel.init()
+            aaChartModel = AAChartModel.init()
                 .chartTypeSet(AAChartType.Scatter)
                 .titleSet("按性别划分的身高体重分布图")
                 .yAxisTitleSet("千克(kg)")
@@ -241,7 +241,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             break
             
         case AAChartType.Pyramid:
-            chartModel = AAChartModel.init()
+            aaChartModel = AAChartModel.init()
                 .chartTypeSet(AAChartType.Pyramid)
                 .titleSet("编程语言热度")
                 .subtitleSet("虚拟数据")
@@ -261,7 +261,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             break
             
         case AAChartType.Funnel:
-            chartModel = AAChartModel.init()
+            aaChartModel = AAChartModel.init()
                 .chartTypeSet(AAChartType.Funnel)
                 .titleSet("编程语言热度")
                 .subtitleSet("虚拟数据")
@@ -281,7 +281,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             break
             
         case AAChartType.Arearange:
-            chartModel = AAChartModel.init()
+            aaChartModel = AAChartModel.init()
                 .chartTypeSet(AAChartType.Arearange)
                 .titleSet("黄昏别馆日气温起伏图")
                 .subtitleSet("实时监测")
@@ -675,7 +675,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             
             
         case AAChartType.Columnrange:
-            chartModel = AAChartModel.init()
+            aaChartModel = AAChartModel.init()
                 .chartTypeSet(AAChartType.Columnrange)
                 .titleSet("金银岛每月温度变化范围")
                 .subtitleSet("2020年实测数据")
