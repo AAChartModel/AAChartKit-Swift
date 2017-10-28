@@ -73,38 +73,40 @@ enum AAChartLegendVerticalAlignType:String {
 }
 
 enum AAChartAnimationType:String {
-    case Linear              = "linear" 
-    case Swing               = "swing"
-    case EaseInQuad          = "easeInQuad"
-    case EaseOutQuad         = "easeOutQuad"
-    case EaseInOutQuad       = "easeInOutQuad"
-    case EaseInCubic         = "easeInCubic"
-    case EaseOutCubic        = "easeOutCubic"
-    case EaseInOutCubic      = "easeInOutCubic"
-    case EaseInQuart         = "easeInQuart"
-    case EaseOutQuart        = "easeOutQuart"
-    case EaseInOutQuart      = "easeInOutQuart"
-    case EaseInQuint         = "easeInQuint"
-    case EaseOutQuint        = "easeOutQuint"
-    case EaseInOutQuint      = "easeInOutQuint"
-    case EaseInExpo          = "easeInExpo"
-    case EaseOutExpo         = "easeOutExpo"
-    case EaseInOutExpo       = "easeInOutExpo"
-    case EaseInSine          = "easeInSine"
-    case EaseOutSine         = "easeOutSine"
-    case EaseInOutSine       = "easeInOutSine"
-    case EaseInCirc          = "easeInCirc"
-    case EaseOutCirc         = "easeOutCirc"
-    case EaseInOutCirc       = "easeInOutCirc"
-    case EaseInElastic       = "easeInElastic"
-    case EaseOutElastic      = "easeOutElastic"
-    case EaseInOutElastic    = "easeInOutElastic"
-    case EaseInBack          = "easeInBack"
-    case EaseOutBack         = "easeOutBack"
-    case EaseInOutBack       = "easeInOutBack"
-    case EaseInBounce        = "easeInBounce"
-    case EaseOutBounce       = "easeOutBounce"
-    case EaseInOutBounce     = "easeInOutBounce"
+    case EaseInQuad     = "easeInQuad"
+    case EaseOutQuad    = "easeOutQuad"
+    case EaseInOutQuad  = "easeInOutQuad"
+    case EaseInCubic    = "easeInCubic"
+    case EaseOutCubic   = "easeOutCubic"
+    case EaseInOutCubic = "easeInOutCubic"
+    case EaseInQuart    = "easeInQuart"
+    case EaseOutQuart   = "easeOutQuart"
+    case EaseInOutQuart = "easeInOutQuart"
+    case EaseInQuint    = "easeInQuint"
+    case EaseOutQuint   = "easeOutQuint"
+    case EaseInOutQuint = "easeInOutQuint"
+    case EaseInSine     = "easeInSine"
+    case EaseOutSine    = "easeOutSine"
+    case EaseInOutSine  = "easeInOutSine"
+    case EaseInExpo     = "easeInExpo"
+    case EaseOutExpo    = "easeOutExpo"
+    case EaseInOutExpo  = "easeInOutExpo"
+    case EaseInCirc     = "easeInCirc"
+    case EaseOutCirc    = "easeOutCirc"
+    case EaseInOutCirc  = "easeInOutCirc"
+    case EaseOutBounce  = "easeOutBounce"
+    case EaseInBack     = "easeInBack"
+    case EaseOutBack    = "easeOutBack"
+    case EaseInOutBack  = "easeInOutBack"
+    case Elastic        = "elastic"
+    case SwingFromTo    = "swingFromTo"
+    case SwingFrom      = "swingFrom"
+    case SwingTo        = "swingTo"
+    case Bounce         = "bounce"
+    case BouncePast     = "bouncePast"
+    case EaseFromTo     = "easeFromTo"
+    case EaseFrom       = "easeFrom"
+    case EaseTo         = "easeTo"
 }
 
 
@@ -332,7 +334,7 @@ public class AAChartModel:AASerializable {
     public  init() {
 //        print(AAChartAnimationType.EaseInBack.rawValue)
         
-        self.animationType       = AAChartAnimationType.EaseInBack.rawValue
+        self.animationType       = AAChartAnimationType.EaseInOutQuart.rawValue
         self.animationDuration   = 800//以毫秒为单位
         self.chartType           = AAChartType.Column.rawValue
         self.inverted            = false

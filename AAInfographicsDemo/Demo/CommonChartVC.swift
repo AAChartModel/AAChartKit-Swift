@@ -28,7 +28,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         aaChartModel = AAChartModel.init()
             .chartTypeSet(self.chartType!)//图形类型
-            .animationTypeSet(AAChartAnimationType.EaseInBounce)//图形渲染动画类型
+            .animationTypeSet(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
             .titleSet("都市天气")//图形标题
             .subtitleSet("2020年08月08日")//图形副标题
             .dataLabelEnabledSet(false)//是否显示数字
@@ -51,9 +51,12 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         if (self.chartType == AAChartType.Line
             || self.chartType == AAChartType.Spline) {
             aaChartModel?.symbolStyle = AAChartSymbolStyleType.BorderBlank.rawValue //设置折线连接点样式为:边缘白色
+//            aaChartModel?.animationType = AAChartAnimationType.SwingFromTo.rawValue
         } else if (self.chartType == AAChartType.Area
                    || self.chartType == AAChartType.AreaSpline) {
             aaChartModel?.symbolStyle = AAChartSymbolStyleType.InnerBlank.rawValue//设置折线连接点样式为:内部白色
+//            aaChartModel?.animationType = AAChartAnimationType.EaseFrom.rawValue
+
          }
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
@@ -147,7 +150,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
     }
     
-    func switchDidChange(switchView:UISwitch){
+    func switchDidChange(switchView:UISwitch) {
         
         switch switchView.tag {
         case 0:

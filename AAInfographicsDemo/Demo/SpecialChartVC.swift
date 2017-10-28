@@ -45,7 +45,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                 .chartTypeSet(AAChartType.Pie)
                 .titleSet("编程语言热度")
                 .subtitleSet("虚拟数据")
-//                .dataLabelEnabledSet(true)//是否直接显示扇形图数据
+                .dataLabelEnabledSet(false)//是否直接显示扇形图数据
                 .yAxisTitleSet("摄氏度")
                 .seriesSet(
                     [
