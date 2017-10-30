@@ -90,7 +90,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         var AAPlotOptions = {};
         AAPlotOptions.series = AASeries;
 
-        //数据点标记相关配置，只有线性图才有数据点标记。
+        //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记
         if (   AAChartModel.chartType === "area"
             || AAChartModel.chartType === "areaspline"
             || AAChartModel.chartType === "line"
@@ -99,15 +99,14 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 var AAMarker = {};
                 AAMarker.radius = AAChartModel.markerRadius; //曲线连接点半径，默认是4
                 AAMarker.symbol = AAChartModel.symbol; //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记
                 //设置曲线连接点是否为空心的
                 if (AAChartModel.symbolStyle === "innerBlank") {
                         AAMarker.fillColor = "#ffffff"; //点的填充色(用来设置折线连接点的填充色)
                         AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                         AAMarker.lineColor = ""; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
                 } else if (AAChartModel.symbolStyle === "borderBlank") {
-                        AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                        AAMarker.lineColor = "#ffffff"; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
+                        AAMarker.lineWidth = 2;
+                        AAMarker.lineColor = "#ffffff";
                 }
 
             AAPlotOptions.series.marker = AAMarker;
