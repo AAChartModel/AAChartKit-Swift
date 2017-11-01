@@ -334,7 +334,7 @@ stacking| AAChartStackingType | Whether to stack the values of each series on to
 symbol | AAChartSymbolType | A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down" | AAChartSymbolType.Circle, AAChartSymbolType.Square, AAChartSymbolType.Diamond, AAChartSymbolType.Triangle, AAChartSymbolType.Triangle_down |  
 
 
-### AAChartModel:chart all properties list
+## AAChartModel:chart all properties list
 ```swift
      public var animationType:String?       //The type of chart animation
      public var title:String?               //The chart title
@@ -372,7 +372,7 @@ symbol | AAChartSymbolType | A predefined shape or symbol for the marker. When n
 ```
 
 
-###  Created By:
+##  Created By:
 An An 
 ``` java
  "CODE IS FAR AWAY FROM BUG WITH THE ANIMAL PROTECTING"
@@ -402,12 +402,28 @@ An An
 
  
 
-### LICENSE
+## LICENSE
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
 AAInfographics is available under the MIT license. See the [LICENSE](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/LICENSE) file for more information.
 
-### Postscript
+## Contact
+* -------------------------------------------------------------------------------
+*
+* ❀❀❀   WARM TIPS!!!   ❀❀❀
+*
+* Please contact me on GitHub,if there are any problems encountered in use.
+* GitHub Issues : https://github.com/AAChartModel/AAChartKit/issues
+* -------------------------------------------------------------------------------
+* And if you want to contribute for this project, please contact me as well
+* GitHub        : https://github.com/AAChartModel
+* StackOverflow : https://stackoverflow.com/users/7842508/codeforu
+* JianShu       : http://www.jianshu.com/u/f1e6753d4254
+* SegmentFault  : https://segmentfault.com/u/huanghunbieguan
+*
+* -------------------------------------------------------------------------------
+
+## Postscript
 If you want to shrink the size of the `AAInfographics` lib ,you should do something like this:
 1. Delete the `.js` file of `AAJSFiles` folder in `AAInfographics`,The names of multiple files that need to be deleted are as follows
 
@@ -440,7 +456,7 @@ to be
 <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>
 ```
-### Todo list
+## Todo list
 > * - [x] Support for the user to add delegate events after the graphics content loading was completed
 > * - [x] Support graphics to refresh global content dynamically
 > * - [x] Support graphics to refresh pure data (`series`) content dynamically

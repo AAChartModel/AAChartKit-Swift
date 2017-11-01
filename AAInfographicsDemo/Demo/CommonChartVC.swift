@@ -114,7 +114,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
     }
     
-    func segmentDidSelected(segmentedControl:UISegmentedControl){
+    func segmentDidSelected(segmentedControl:UISegmentedControl) {
         
         switch segmentedControl.tag {
         case 0:

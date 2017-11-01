@@ -117,7 +117,8 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 var AAMarker = {};
                 AAMarker.radius = AAChartModel.markerRadius; //曲线连接点半径，默认是4
                 AAMarker.symbol = AAChartModel.symbol; //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                //设置曲线连接点是否为空心的
+            
+                //设置曲线连接点风格样式
                 if (AAChartModel.symbolStyle === "innerBlank") {
                         AAMarker.fillColor = "#ffffff"; //点的填充色(用来设置折线连接点的填充色)
                         AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
