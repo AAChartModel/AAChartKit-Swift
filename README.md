@@ -69,18 +69,20 @@ import AAChartView.swift
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
                 ]])
 ```
-4.  Draw the chart
+4.  Draw the chart(This method is called only for the first time after you create an AAChartView instance object)
 
 ```objective-c
+        //The chart view object calls the instance object of AAChartModel and draws the final graphic
         [chartView aa_drawChartWithChartModel:chartModel]
 ```
-5.  Refresh the chart
+5.  Refresh the chart(Subsequent refresh options are recommended to call this method after the first drawing of graphics is completed)
 
 ```objective-c
+        //Refresh the chart after the AAChartModel content is updated
         [chartView aa_refreshChartWithChartModel:chartModel]
 ```
 
-6. Special instructions
+6. Special instructions(This method is recommended to be called for updating the series data dynamically)
 
 Pie chart and bubble chart are special in AAInfographics,if you want to draw these charts,you should do some different things for AAChartModel,for example
 

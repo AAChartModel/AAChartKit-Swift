@@ -60,11 +60,11 @@ class AAChartView: UIView,UIWebViewDelegate {
     /// Function of drawing chart view
     ///
     /// - Parameter chartModel: The instance object of chart model
-    public func aa_drawChartWithChartModel(_ chartModel: AAChartModel){
+    public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
         
         self.configureTheJavaScriptString(chartModel)
         //检查 AAChartView是否存在
-        if  let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html"){
+        if  let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html") {
             let htmlData = NSData(contentsOfFile: htmlFile)
             let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
             globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
