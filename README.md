@@ -28,7 +28,7 @@
 ## Usage:
 
 ### The need of preparation
-1. Drag the folder `AAInfographicsFiles` into your project.
+1. Drag the folder `AAInfographics` into your project.
   
 
 ### The offical start of the work 

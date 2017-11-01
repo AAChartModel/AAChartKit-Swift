@@ -21,14 +21,14 @@
 2. 功能强大,支持`柱状图` 、`条形图` 、`折线图` 、`曲线图` 、`折线填充图` 、`曲线填充图`、`雷达图`、`极地图`、`扇形图`、`气泡图`、`散点图`、`金字塔图`、`漏斗图`、`区域范围图`、`柱形范围图`等多种图形
 3. `动画`效果细腻精致,流畅优美.
 4. 类 *Masonry* `链式编程语法`
-5. `AAChartView +AAChartModel = Chart`,在 AAInfographics 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`.
+5. `AAChartView +AAChartModel = Chart`,在 **AAInfographics** 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`.
 ### *亲爱的,如果您使用时,觉得满意,请赏一颗星星✨,您的鼓励将是我继续努力的一大动力*.
 ***
 
 ## 使用方法
 
 ### 准备工作
-* 将项目demo中的文件夹`AAChartKitFiles`拖入到所需项目中.
+* 将项目`demo`中的文件夹`AAInfographics`拖入到所需项目中.
  
 
 ### 正式开始
@@ -36,19 +36,19 @@
 ```swift
 import AAChartView.swift
 ```
-2. 创建视图AAChartView
+2. 创建视图*AAChartView*
 ```swift
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
         aaChartView?.contentHeight = self.view.frame.size.height
         self.view.addSubview(aaChartView!)
  ```
-3. 配置视图模型AAChartModel
+3. 配置视图模型*AAChartModel*
 
-* 常规方式配置 AAChartModel 模型对象属性
+* 常规方式配置*AAChartModel* 模型对象属性
 ```swift
     var chartModel = AAChartModel.init()
-        chartModel.chartType = AAChartType.Column
+        chartModel.chartType = AAChartType.Column.rawValue
         chartModel.title = "城市天气变化"
         chartModel.subtitle="2020年09月18日"
         chartModel.inverted = true
@@ -70,7 +70,7 @@ import AAChartView.swift
                 ]]
 ```
 
-* 链式编程的方式配置 AAChartModel 模型对象属性
+* 链式编程的方式配置 *AAChartModel* 模型对象属性
 ```swift
     let chartModel = AAChartModel.init()
             .chartTypeSet(AAChartType.Column)
@@ -108,9 +108,9 @@ import AAChartView.swift
 
 6. 特别说明
 
-AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 AAChartModel 设置稍有不同,示例如下
+**AAInfographics** 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 *AAChartModel* 设置稍有不同,示例如下
 
-- 绘制扇形图,你需要这样配置模型对象 **AAChartModel**
+- 绘制扇形图,你需要这样配置模型对象 *AAChartModel*
 ```swift
     var chartModel = AAChartModel.init()
         chartModel.chartType = AAChartType.Pie
@@ -139,7 +139,7 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
         ]
 
 ```
-- 绘制气泡图,你需要这样配置模型对象 **AAChartModel**
+- 绘制气泡图,你需要这样配置模型对象 *AAChartModel*
 
 
 ```swift
@@ -208,7 +208,7 @@ AAInfographics 中扇形图、气泡图都归属为特殊类型,所以想要绘�
         ]
 ```
 
-- 绘制柱形范围图,你需要这样配置模型对象 **AAChartModel**
+- 绘制柱形范围图,你需要这样配置模型对象 *AAChartModel*
 
 ```swift
     var chartModel = AAChartModel.init()
@@ -297,7 +297,7 @@ enum AAChartAnimationType:String {
 }
 ```
 
-##  AAChartModel一些重要属性经过配置之后的图形示例如下
+##  **AAChartModel**一些重要属性经过配置之后的图形示例如下
 - line chart - 折线图
 
 ![IMG_1867.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKit/ChartsDemo/IMG_1867.JPG)
