@@ -408,20 +408,18 @@ An An
 AAInfographics is available under the MIT license. See the [LICENSE](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/LICENSE) file for more information.
 
 ## Contact
-* -------------------------------------------------------------------------------
-*
+ -------------------------------------------------------------------------------
 * ❀❀❀   WARM TIPS!!!   ❀❀❀
 *
 * Please contact me on GitHub,if there are any problems encountered in use.
 * GitHub Issues : https://github.com/AAChartModel/AAChartKit/issues
-* -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 * And if you want to contribute for this project, please contact me as well
 * GitHub        : https://github.com/AAChartModel
 * StackOverflow : https://stackoverflow.com/users/7842508/codeforu
 * JianShu       : http://www.jianshu.com/u/f1e6753d4254
 * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
-*
-* -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 ## Postscript
 If you want to shrink the size of the `AAInfographics` lib ,you should do something like this:
