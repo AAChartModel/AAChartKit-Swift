@@ -99,13 +99,13 @@ import AAChartView.swift
 
 ```swift
     /*图表视图对象调用图表模型对象,绘制最终图形*/
-    chartView?.aa_drawChartWithChartModel(chartModel)//图表视图对象调用图表模型对象,绘制最终图形
+    chartView?.aa_drawChartWithChartModel(chartModel)
 ```
 5.  刷新图形(首次绘制图形完成之后,后续刷新均建议调用此方法)
 
 ```swift
     /*更新 AAChartModel 内容之后,刷新图表*/
-    chartView?.aa_refreshChartWithChartModel(chartModel)//更新 AAChartModel 数据之后,刷新图表
+    chartView?.aa_refreshChartWithChartModel(chartModel)
 ```
 
 6. 特别说明

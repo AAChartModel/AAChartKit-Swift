@@ -69,6 +69,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                     [
                         [
                             "name": "语言热度占比",
+                            "innerSize":"50%",//内部圆环半径大小占比(内部圆环半径/扇形图半径)
                             "data": [
                                 ["Java"  ,67],
                                 ["Swift" ,44],
