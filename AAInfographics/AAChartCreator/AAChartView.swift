@@ -30,13 +30,13 @@ import WebKit
 class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
     /// Content width of AAChartView
-    open var contentWidth:CGFloat?
+    public var contentWidth:CGFloat?
     
     /// Content height of AAChartView
-    open var contentHeight:CGFloat?
+    public var contentHeight:CGFloat?
     
     /// Hide chart series content or not
-    open var chartSeriesHidden:Bool?
+    public var chartSeriesHidden:Bool?
     
     var wkWebView: WKWebView?
     var uiWebView: UIWebView?
@@ -72,6 +72,12 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// - Parameter chartModel: The instance object of chart model
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
         
+        if #available(iOS 9.0, *) {
+            wkWebView?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
+        } else {
+            uiWebView?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
+        }
+        
         self.configureTheJavaScriptString(chartModel)
         //检查 AAChartView是否存在
         if  let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html") {
@@ -100,7 +106,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// - Parameter chartModel: The instance object of chart model
     public func aa_onlyRefreshTheChartDataWithChartModel(_ chartModel:AAChartModel) {
         let modelString = chartModel.toJSON()
-        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@');", modelString!)
+        let jsString = NSString.localizedStringWithFormat("onlyRefreshTheChartDataWithAAChartModel('%@');", modelString!)
         optionsJson = jsString as String
         self.drawChart()
     }
@@ -138,12 +144,6 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         var chartViewContentHeight = self.contentHeight
         if (self.contentHeight == 0) {
             chartViewContentHeight = self.frame.size.height
-        }
-        
-        if #available(iOS 9.0, *) {
-            wkWebView?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
-        } else {
-            uiWebView?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
         }
         
         let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,chartViewContentWidth!,chartViewContentHeight!)
