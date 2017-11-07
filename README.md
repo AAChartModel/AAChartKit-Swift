@@ -414,7 +414,7 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 * ❀❀❀   WARM TIPS!!!   ❀❀❀
 *
 * Please contact me on GitHub,if there are any problems encountered in use.
-* GitHub Issues : https://github.com/AAChartModel/AAChartKit/issues
+* GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
 -------------------------------------------------------------------------------
 * And if you want to contribute for this project, please contact me as well
 * GitHub        : https://github.com/AAChartModel
