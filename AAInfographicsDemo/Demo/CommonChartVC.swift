@@ -54,6 +54,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             .seriesSet([
                 [
                     "name": "Tokyo",
+                    "step":true,
                     "data": [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
                 ], [
                     "name": "New York",
@@ -64,7 +65,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 ], [
                     "name": "London",
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                ]]);
+                ]])
         
         if (self.chartType == AAChartType.Line
             || self.chartType == AAChartType.Spline) {
@@ -85,7 +86,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         let  segmentedArray = [["常规","堆叠","百分比堆叠"],
                                ["波点","方块","钻石","正三角","倒三角"]];
-        let typeLabelNameArr = ["堆叠类型选择","折线连接点形状选择"];
+        let typeLabelNameArr = ["堆叠类型选择","折线连接点形状选择"]
         
         for i in 0..<5          //等同代码 fot( int i = 0 ; i < 5 ; i++ )
         {

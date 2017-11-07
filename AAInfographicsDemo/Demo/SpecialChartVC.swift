@@ -723,6 +723,41 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             )
             break
             
+        case AAChartType.Line:
+            aaChartModel = AAChartModel.init()
+                .chartTypeSet(AAChartType.Line)//图形类型
+                .animationTypeSet(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+                .titleSet("直方折线填充图")//图形标题
+                .subtitleSet("2020年08月08日")//图形副标题
+                .dataLabelEnabledSet(true)//是否显示数字
+                .symbolStyleSet(AAChartSymbolStyleType.BorderBlank)//折线连接点样式
+                .markerRadiusSet(7)//折线连接点半径长度,为0时相当于没有折线连接点
+                .seriesSet([
+                    [
+                        "name": "New York",
+                        "data": [0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5],
+                        "step": true,
+                        ] ])
+            break
+            
+        case AAChartType.Area:
+            aaChartModel = AAChartModel.init()
+                .chartTypeSet(AAChartType.Area)//图形类型
+                .animationTypeSet(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+                .titleSet("直方区域填充图")//图形标题
+                .subtitleSet("2049年08月08日")//图形副标题
+                .dataLabelEnabledSet(false)//是否显示数字
+                .symbolStyleSet(AAChartSymbolStyleType.InnerBlank)//折线连接点样式
+                .markerRadiusSet(5)//折线连接点半径长度,为0时相当于没有折线连接点
+                .seriesSet([
+                    [
+                        "name": "Berlin",
+                        "data": [0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0],
+                        "step": true,
+                        ] ])
+            break
+            
+            
         default:
             break;
         }
