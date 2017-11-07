@@ -26,8 +26,8 @@
  */
 
 import UIKit
-
-class AAChartView: UIView,UIWebViewDelegate {
+import WebKit
+class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
     /// Content width of AAChartView
     open var contentWidth:CGFloat?
@@ -38,18 +38,28 @@ class AAChartView: UIView,UIWebViewDelegate {
     /// Hide chart series content or not
     open var chartSeriesHidden:Bool?
     
-    var globalWebview: UIWebView?
+    var wkWebView: WKWebView?
+    var uiWebView: UIWebView?
     var optionsJson: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.contentWidth = 0
         self.contentHeight = 0
-        self.backgroundColor =  UIColor.cyan
-        globalWebview = UIWebView()
-        globalWebview?.backgroundColor = UIColor.white
-        globalWebview?.delegate=self
-        self.addSubview(globalWebview!)
+        //        self.backgroundColor =  UIColor.white
+        
+        if #available(iOS 9.0, *) {
+            wkWebView = WKWebView()
+            wkWebView?.backgroundColor = UIColor.white
+            wkWebView?.navigationDelegate = self
+            self.addSubview(wkWebView!)
+        } else {
+            // Fallback on earlier versions
+            uiWebView = UIWebView()
+            uiWebView?.backgroundColor = UIColor.white
+            uiWebView?.delegate = self
+            self.addSubview(uiWebView!)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,9 +77,13 @@ class AAChartView: UIView,UIWebViewDelegate {
         if  let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html") {
             let htmlData = NSData(contentsOfFile: htmlFile)
             let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
-            globalWebview?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
-            
-         }
+            if #available(iOS 9.0, *) {
+                wkWebView?.load(htmlData! as Data, mimeType: "text/html", characterEncodingName: "UTF-8", baseURL: baseURL)
+            } else {
+                // Fallback on earlier versions
+                uiWebView?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
+            }
+        }
     }
     
     ///  Function of refreshing whole chart view content
@@ -87,7 +101,8 @@ class AAChartView: UIView,UIWebViewDelegate {
     public func aa_onlyRefreshTheChartDataWithChartModel(_ chartModel:AAChartModel) {
         let modelString = chartModel.toJSON()
         let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@');", modelString!)
-        globalWebview?.stringByEvaluatingJavaScript(from: jsString as String)
+        optionsJson = jsString as String
+        self.drawChart()
     }
     
     /// Show the series element content with index
@@ -97,12 +112,22 @@ class AAChartView: UIView,UIWebViewDelegate {
         
     }
     
+    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.drawChart()
+    }
+    
     open func webViewDidFinishLoad(_ webView: UIWebView) {
-       self.drawChart()
+        self.drawChart()
     }
     
     func drawChart() {
-        globalWebview?.stringByEvaluatingJavaScript(from: optionsJson!)
+        if #available(iOS 9.0, *) {
+            wkWebView?.evaluateJavaScript(optionsJson!, completionHandler: { (item, error) in
+            })
+        } else {
+            // Fallback on earlier versions
+            uiWebView?.stringByEvaluatingJavaScript(from: optionsJson!)
+        }
     }
     
     func configureTheJavaScriptString(_ chartModel:AAChartModel) {
@@ -115,11 +140,16 @@ class AAChartView: UIView,UIWebViewDelegate {
             chartViewContentHeight = self.frame.size.height
         }
         
-        globalWebview?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
+        if #available(iOS 9.0, *) {
+            wkWebView?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
+        } else {
+            uiWebView?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
+        }
+        
         let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,chartViewContentWidth!,chartViewContentHeight!)
         optionsJson = jsString as String;
     }
     
-
+    
     
 }

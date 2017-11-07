@@ -28,7 +28,7 @@
 import UIKit
 
 
-class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     open var chartTypeArr = Array<Array<String>>()
     override func viewDidLoad() {
@@ -56,6 +56,8 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                 "Columnrange Chart--- 柱形范围图"
                 ],
             /*Mixed Chart---混合图*/
+            /*同时显示多个图表*/
+            ["在同一个页面同时添加多个 AAChartView"]
         ]
         
         self.view.backgroundColor = UIColor.white
@@ -91,7 +93,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         let view = UIView()
         view.backgroundColor = UIColor.white
         
-        let sectionTitleArr = ["基础类型图表","特殊类型图表"]
+        let sectionTitleArr = ["基础类型图表","特殊类型图表","同时显示多个图表"]
         
         let sectionTitleLabel = UILabel()
         sectionTitleLabel.text = sectionTitleArr[section]
@@ -138,15 +140,20 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                 ],
         ]
         
-        if (indexPath.section<1) {
+        if (indexPath.section == 0) {
             /*基础类型图表*/
             let commonChartVC  = CommonChartVC()
             commonChartVC.chartType = AAChartType(rawValue: AAChartTypeArr[indexPath.section][indexPath.row].rawValue)
             self.navigationController?.pushViewController(commonChartVC, animated:true)
-        } else {
+        } else if (indexPath.section == 1) {
             /*特殊类型图表*/
             let specialChartVC = SpecialChartVC()
             specialChartVC.chartType = AAChartTypeArr[indexPath.section][indexPath.row].rawValue
+            self.navigationController?.pushViewController(specialChartVC, animated:true)
+            
+        } else {
+            /*同时显示多个图表*/
+            let specialChartVC = ShowManyChartViewVC()
             self.navigationController?.pushViewController(specialChartVC, animated:true)
         }
 
@@ -183,7 +190,4 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                                    constant:0)]
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
