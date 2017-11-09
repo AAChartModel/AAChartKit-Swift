@@ -27,7 +27,7 @@
 
 ## Usage:
 
-### The need of preparation
+### Pre-preparation work
 1. Drag the folder `AAInfographics` into your project.
   
 
@@ -36,10 +36,12 @@
 ```swift
 import AAChartView.swift
 ```
-2.Creat the object of chart view:`AAChartView`
+2.Creat the instance object of chart view:`AAChartView`
 ```swift
+        CGFloat chartViewWidth  = self.view.frame.size.width;
+        CGFloat chartViewHeight = self.view.frame.size.height;
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
+        aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
         aaChartView?.contentHeight = self.view.frame.size.height
         self.view.addSubview(aaChartView!)
   ```

@@ -38,8 +38,10 @@ import AAChartView.swift
 ```
 2. 创建视图*AAChartView*
 ```swift
+        CGFloat chartViewWidth  = self.view.frame.size.width;
+        CGFloat chartViewHeight = self.view.frame.size.height;
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:0,width:self.view.frame.size.width,height:self.view.frame.size.height)
+        aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
         aaChartView?.contentHeight = self.view.frame.size.height
         self.view.addSubview(aaChartView!)
  ```
