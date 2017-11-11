@@ -54,13 +54,13 @@ class ShowManyChartViewVC: UIViewController {
          self.view.addSubview(aaChartView)
         
         let  aaChartModel = AAChartModel.init()
-            .chartTypeSet(AAChartType.Bar)//图形类型
-            .animationTypeSet(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-            .titleSet("都市天气")//图形标题
-            .subtitleSet("2020年08月08日")//图形副标题
-            .dataLabelEnabledSet(false)//是否显示数字
-            .markerRadiusSet(5)//折线连接点半径长度,为0时相当于没有折线连接点
-            .seriesSet([
+            .chartType(AAChartType.Bar)//图形类型
+            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+            .title("都市天气")//图形标题
+            .subtitle("2020年08月08日")//图形副标题
+            .dataLabelEnabled(false)//是否显示数字
+            .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
+            .series([
                 [
                     "name": "Berlin",
                     "data": [0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
@@ -79,13 +79,13 @@ class ShowManyChartViewVC: UIViewController {
         self.view.addSubview(aaChartView2)
         
         let  aaChartModel2 = AAChartModel.init()
-            .chartTypeSet(AAChartType.Area)//图形类型
-            .animationTypeSet(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-            .titleSet("都市天气")//图形标题
-            .subtitleSet("2020年08月08日")//图形副标题
-            .dataLabelEnabledSet(false)//是否显示数字
-            .markerRadiusSet(5)//折线连接点半径长度,为0时相当于没有折线连接点
-            .seriesSet([
+            .chartType(AAChartType.Area)//图形类型
+            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+            .title("都市天气")//图形标题
+            .subtitle("2020年08月08日")//图形副标题
+            .dataLabelEnabled(false)//是否显示数字
+            .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
+            .series([
                 [
                     "name": "New York",
                     "data": [0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]

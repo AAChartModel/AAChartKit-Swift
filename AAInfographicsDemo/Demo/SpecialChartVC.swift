@@ -60,12 +60,12 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         switch chartTypeStr {
         case AAChartType.Pie:
             aaChartModel = AAChartModel.init()
-                .chartTypeSet(AAChartType.Pie)
-                .titleSet("编程语言热度")
-                .subtitleSet("虚拟数据")
-                .dataLabelEnabledSet(false)//是否直接显示扇形图数据
-                .yAxisTitleSet("摄氏度")
-                .seriesSet(
+                .chartType(AAChartType.Pie)
+                .title("编程语言热度")
+                .subtitle("虚拟数据")
+                .dataLabelEnabled(false)//是否直接显示扇形图数据
+                .yAxisTitle("摄氏度")
+                .series(
                     [
                         [
                             "name": "语言热度占比",
@@ -89,11 +89,11 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             
         case AAChartType.Bubble:
             aaChartModel = AAChartModel.init()
-                .chartTypeSet(AAChartType.Bubble)
-                .titleSet("编程语言热度")
-                .subtitleSet("虚拟数据")
-                .yAxisTitleSet("摄氏度")
-                .seriesSet(
+                .chartType(AAChartType.Bubble)
+                .title("编程语言热度")
+                .subtitle("虚拟数据")
+                .yAxisTitle("摄氏度")
+                .series(
                     [
                         [
                             "data": [[97, 36, 79],
@@ -138,10 +138,10 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             
         case AAChartType.Scatter:
             aaChartModel = AAChartModel.init()
-                .chartTypeSet(AAChartType.Scatter)
-                .titleSet("按性别划分的身高体重分布图")
-                .yAxisTitleSet("千克(kg)")
-                .seriesSet(
+                .chartType(AAChartType.Scatter)
+                .title("按性别划分的身高体重分布图")
+                .yAxisTitle("千克(kg)")
+                .series(
                     [
                         [
                             "name": "Female",
@@ -261,11 +261,11 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             
         case AAChartType.Pyramid:
             aaChartModel = AAChartModel.init()
-                .chartTypeSet(AAChartType.Pyramid)
-                .titleSet("编程语言热度")
-                .subtitleSet("虚拟数据")
-                .yAxisTitleSet("摄氏度")
-                .seriesSet(
+                .chartType(AAChartType.Pyramid)
+                .title("编程语言热度")
+                .subtitle("虚拟数据")
+                .yAxisTitle("摄氏度")
+                .series(
                     [
                         ["name":"2020",
                          "data":[
@@ -281,11 +281,11 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             
         case AAChartType.Funnel:
             aaChartModel = AAChartModel.init()
-                .chartTypeSet(AAChartType.Funnel)
-                .titleSet("编程语言热度")
-                .subtitleSet("虚拟数据")
-                .yAxisTitleSet("摄氏度")
-                .seriesSet(
+                .chartType(AAChartType.Funnel)
+                .title("编程语言热度")
+                .subtitle("虚拟数据")
+                .yAxisTitle("摄氏度")
+                .series(
                     [
                         ["name":"2020",
                          "data":[
@@ -301,11 +301,11 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             
         case AAChartType.Arearange:
             aaChartModel = AAChartModel.init()
-                .chartTypeSet(AAChartType.Arearange)
-                .titleSet("黄昏别馆日气温起伏图")
-                .subtitleSet("实时监测")
-                .yAxisTitleSet("摄氏度")
-                .seriesSet(
+                .chartType(AAChartType.Arearange)
+                .title("黄昏别馆日气温起伏图")
+                .subtitle("实时监测")
+                .yAxisTitle("摄氏度")
+                .series(
                     [
                         ["name":"2020",
                          "data":[
@@ -695,14 +695,14 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             
         case AAChartType.Columnrange:
             aaChartModel = AAChartModel.init()
-                .chartTypeSet(AAChartType.Columnrange)
-                .titleSet("金银岛每月温度变化范围")
-                .subtitleSet("2020年实测数据")
-                .yAxisTitleSet("℃")
-                .categoriesSet(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
-                .dataLabelEnabledSet(true)
-                //.invertedSet(true)//x 轴是否垂直翻转
-                .seriesSet(
+                .chartType(AAChartType.Columnrange)
+                .title("金银岛每月温度变化范围")
+                .subtitle("2020年实测数据")
+                .yAxisTitle("℃")
+                .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
+                .dataLabelEnabled(true)
+                //.inverted(true)//x 轴是否垂直翻转
+                .series(
                     [
                         [
                             "name":"温度",
@@ -725,14 +725,14 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             
         case AAChartType.Line:
             aaChartModel = AAChartModel.init()
-                .chartTypeSet(AAChartType.Line)//图形类型
-                .animationTypeSet(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-                .titleSet("直方折线填充图")//图形标题
-                .subtitleSet("2020年08月08日")//图形副标题
-                .dataLabelEnabledSet(true)//是否显示数字
-                .symbolStyleSet(AAChartSymbolStyleType.BorderBlank)//折线连接点样式
-                .markerRadiusSet(7)//折线连接点半径长度,为0时相当于没有折线连接点
-                .seriesSet([
+                .chartType(AAChartType.Line)//图形类型
+                .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+                .title("直方折线填充图")//图形标题
+                .subtitle("2020年08月08日")//图形副标题
+                .dataLabelEnabled(true)//是否显示数字
+                .symbolStyle(AAChartSymbolStyleType.BorderBlank)//折线连接点样式
+                .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
+                .series([
                     [
                         "name": "New York",
                         "data": [0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5],
@@ -742,14 +742,14 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             
         case AAChartType.Area:
             aaChartModel = AAChartModel.init()
-                .chartTypeSet(AAChartType.Area)//图形类型
-                .animationTypeSet(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-                .titleSet("直方区域填充图")//图形标题
-                .subtitleSet("2049年08月08日")//图形副标题
-                .dataLabelEnabledSet(false)//是否显示数字
-                .symbolStyleSet(AAChartSymbolStyleType.InnerBlank)//折线连接点样式
-                .markerRadiusSet(5)//折线连接点半径长度,为0时相当于没有折线连接点
-                .seriesSet([
+                .chartType(AAChartType.Area)//图形类型
+                .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+                .title("直方区域填充图")//图形标题
+                .subtitle("2049年08月08日")//图形副标题
+                .dataLabelEnabled(false)//是否显示数字
+                .symbolStyle(AAChartSymbolStyleType.InnerBlank)//折线连接点样式
+                .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
+                .series([
                     [
                         "name": "Berlin",
                         "data": [0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0],

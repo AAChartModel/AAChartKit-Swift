@@ -74,17 +74,15 @@
                                       sender,
                                       receivedWidth,
                                       receivedHeight
-                                      ){
-            <!--                alert(sender);-->
-            var AAOptions = configureAAOptions (
+                                      ) {
+             var AAOptions = configureAAOptions (
                                                sender,
                                                receivedWidth,
                                                receivedHeight
                                                );
                                                
             var animationEasingType = AAOptions.plotOptions.series.animation.easing;
-<!--                                  alert(animationEasingType);-->
-            AAOptions.plotOptions.series.animation.easing = configureTheChartAnimationEasingType(animationEasingType);
+             AAOptions.plotOptions.series.animation.easing = configureTheChartAnimationEasingType(animationEasingType);
 
             AAGlobalChart = Highcharts.chart('container', AAOptions);
         };

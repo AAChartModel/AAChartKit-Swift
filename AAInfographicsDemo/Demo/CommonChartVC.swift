@@ -45,13 +45,14 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         self.view.addSubview(aaChartView!)
         
         aaChartModel = AAChartModel.init()
-            .chartTypeSet(self.chartType!)//图形类型
-            .animationTypeSet(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-            .titleSet("都市天气")//图形标题
-            .subtitleSet("2020年08月08日")//图形副标题
-            .dataLabelEnabledSet(false)//是否显示数字
-            .markerRadiusSet(5)//折线连接点半径长度,为0时相当于没有折线连接点
-            .seriesSet([
+            .chartType(self.chartType!)//图形类型
+            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+            .title("都市天气")//图形标题
+            .subtitle("2020年08月08日")//图形副标题
+            .dataLabelEnabled(false)//是否显示数字
+            .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
+            .justTestProperty("时间简史")
+            .series([
                 [
                     "name": "Tokyo",
                     "step":true,
@@ -69,11 +70,14 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         if (self.chartType == AAChartType.Line
             || self.chartType == AAChartType.Spline) {
-            aaChartModel?.symbolStyle = AAChartSymbolStyleType.BorderBlank.rawValue //设置折线连接点样式为:边缘白色
+            aaChartModel?.symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.BorderBlank.rawValue)!)
+            
+//            aaChartModel?.symbolStyle = AAChartSymbolStyleType.BorderBlank.rawValue //设置折线连接点样式为:边缘白色
 //            aaChartModel?.animationType = AAChartAnimationType.SwingFromTo.rawValue
         } else if (self.chartType == AAChartType.Area
                    || self.chartType == AAChartType.AreaSpline) {
-            aaChartModel?.symbolStyle = AAChartSymbolStyleType.InnerBlank.rawValue//设置折线连接点样式为:内部白色
+            aaChartModel?.symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.InnerBlank.rawValue)!)
+//            aaChartModel?.symbolStyle = AAChartSymbolStyleType.InnerBlank.rawValue//设置折线连接点样式为:内部白色
 //            aaChartModel?.animationType = AAChartAnimationType.EaseFrom.rawValue
 
          }
@@ -122,7 +126,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             let stackingArr = [AAChartStackingType.False,
                                AAChartStackingType.Normal,
                                AAChartStackingType.Percent]
-            self.aaChartModel?.stacking = stackingArr[segmentedControl.selectedSegmentIndex].rawValue
+//            self.aaChartModel?.stacking = stackingArr[segmentedControl.selectedSegmentIndex].rawValue
+            self.aaChartModel?.stacking(AAChartStackingType(rawValue: stackingArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             break
             
         case 1:
@@ -133,7 +138,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                              AAChartSymbolType.Triangle_down]
      
             
-            self.aaChartModel?.symbol = symbolArr[segmentedControl.selectedSegmentIndex].rawValue
+//            self.aaChartModel?.symbol = symbolArr[segmentedControl.selectedSegmentIndex].rawValue
+            self.aaChartModel?.symbol(AAChartSymbolType(rawValue: symbolArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             break
             
         default:
@@ -170,25 +176,31 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     }
     
     func switchDidChange(switchView:UISwitch) {
-        
+
         switch switchView.tag {
         case 0:
-            self.aaChartModel?.xAxisReversed = switchView.isOn
+            self.aaChartModel?.xAxisReversed(switchView.isOn)
+//            self.aaChartModel?.xAxisReversed = switchView.isOn
             break
         case 1:
-            self.aaChartModel?.yAxisReversed = switchView.isOn
+            self.aaChartModel?.yAxisReversed(switchView.isOn)
+//            self.aaChartModel?.yAxisReversed = switchView.isOn
             break
         case 2:
-            self.aaChartModel?.inverted = switchView.isOn
+            self.aaChartModel?.inverted(switchView.isOn)
+//            self.aaChartModel?.inverted = switchView.isOn
             break
         case 3:
-            self.aaChartModel?.polar = switchView.isOn
+            self.aaChartModel?.polar(switchView.isOn)
+//            self.aaChartModel?.polar = switchView.isOn
             break
         case 4:
-            self.aaChartModel?.markerRadius = switchView.isOn ? 0:5
+            self.aaChartModel?.markerRadius(switchView.isOn ? 0:5)
+//            self.aaChartModel?.markerRadius = switchView.isOn ? 0:5
             break
         case 5:
-            self.aaChartModel?.dataLabelEnabled = switchView.isOn
+            self.aaChartModel?.dataLabelEnabled(switchView.isOn)
+//            self.aaChartModel?.dataLabelEnabled = switchView.isOn
             break
         default:
             break
