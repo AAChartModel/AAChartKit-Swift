@@ -69,14 +69,13 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         if (self.chartType == AAChartType.Line
             || self.chartType == AAChartType.Spline) {
+            //设置折线连接点样式为:边缘白色
             aaChartModel?.symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.BorderBlank.rawValue)!)
-            
-//            aaChartModel?.symbolStyle = AAChartSymbolStyleType.BorderBlank.rawValue //设置折线连接点样式为:边缘白色
 //            aaChartModel?.animationType = AAChartAnimationType.SwingFromTo.rawValue
         } else if (self.chartType == AAChartType.Area
                    || self.chartType == AAChartType.AreaSpline) {
+            //设置折线连接点样式为:内部白色
             aaChartModel?.symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.InnerBlank.rawValue)!)
-//            aaChartModel?.symbolStyle = AAChartSymbolStyleType.InnerBlank.rawValue//设置折线连接点样式为:内部白色
 //            aaChartModel?.animationType = AAChartAnimationType.EaseFrom.rawValue
 
          }
@@ -125,7 +124,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             let stackingArr = [AAChartStackingType.False,
                                AAChartStackingType.Normal,
                                AAChartStackingType.Percent]
-//            self.aaChartModel?.stacking = stackingArr[segmentedControl.selectedSegmentIndex].rawValue
             self.aaChartModel?.stacking(AAChartStackingType(rawValue: stackingArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             break
             
@@ -135,9 +133,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                              AAChartSymbolType.Diamond,
                              AAChartSymbolType.Triangle,
                              AAChartSymbolType.Triangle_down]
-     
-            
-//            self.aaChartModel?.symbol = symbolArr[segmentedControl.selectedSegmentIndex].rawValue
             self.aaChartModel?.symbol(AAChartSymbolType(rawValue: symbolArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             break
             
@@ -179,27 +174,21 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         switch switchView.tag {
         case 0:
             self.aaChartModel?.xAxisReversed(switchView.isOn)
-//            self.aaChartModel?.xAxisReversed = switchView.isOn
             break
         case 1:
             self.aaChartModel?.yAxisReversed(switchView.isOn)
-//            self.aaChartModel?.yAxisReversed = switchView.isOn
             break
         case 2:
             self.aaChartModel?.inverted(switchView.isOn)
-//            self.aaChartModel?.inverted = switchView.isOn
             break
         case 3:
             self.aaChartModel?.polar(switchView.isOn)
-//            self.aaChartModel?.polar = switchView.isOn
             break
         case 4:
             self.aaChartModel?.markerRadius(switchView.isOn ? 0:5)
-//            self.aaChartModel?.markerRadius = switchView.isOn ? 0:5
             break
         case 5:
             self.aaChartModel?.dataLabelEnabled(switchView.isOn)
-//            self.aaChartModel?.dataLabelEnabled = switchView.isOn
             break
         default:
             break

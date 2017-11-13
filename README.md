@@ -49,7 +49,7 @@ import AAChartView.swift
 
 ``` swift
         aaChartModel = AAChartModel.init()
-            .chartType(self.chartType!)//Can be any of the chart types listed under `AAChartType`. Defaults to line
+            .chartType(AAChartType.Column)//Can be any of the chart types listed under `AAChartType`.
             .animationType(AAChartAnimationType.Bounce)
             .title("TITLE")//The chart title
             .subtitle("subtitle")//The chart subtitle
@@ -90,7 +90,6 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 - To draw a pie chart,you should configure the properties of `AAChartModel` like this:
 ``` swift
-    var chartModel = AAChartModel.init()
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Pie)
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
