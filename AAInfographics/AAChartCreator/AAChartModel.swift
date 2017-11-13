@@ -166,7 +166,6 @@ public class AAChartModel:AASerializable {
     private var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     private var markerRadius:Int?           //折线连接点的半径长度
     
-    private var justTestproperty:String?
     
     
     /*private var tooltip:Dictionary<String,Any> = ["shared":true,"pointFormat":"{series.name}: <b>{point.y}</b><br/>"]
@@ -174,11 +173,6 @@ public class AAChartModel:AASerializable {
      self.tooltip["valueSuffix"] = prop
      return self
      }*/
-    
-    func justTestProperty(_ prop:String) -> AAChartModel {
-        self.justTestproperty = prop;
-        return self;
-    }
     
     func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
         self.animationType = prop.rawValue

@@ -61,14 +61,14 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         case AAChartType.Pie:
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Pie)
-                .title("编程语言热度")
-                .subtitle("虚拟数据")
+                .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
+                .subtitle("virtual data")
                 .dataLabelEnabled(false)//是否直接显示扇形图数据
-                .yAxisTitle("摄氏度")
+                .yAxisTitle("℃")
                 .series(
                     [
                         [
-                            "name": "语言热度占比",
+                            "name": "Language market shares",
                             "innerSize":"50%",//内部圆环半径大小占比(内部圆环半径/扇形图半径)
                             "data": [
                                 ["Java"  ,67],
@@ -90,9 +90,9 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         case AAChartType.Bubble:
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Bubble)
-                .title("编程语言热度")
-                .subtitle("虚拟数据")
-                .yAxisTitle("摄氏度")
+                .title("AACHARTKIT BUBBLES")
+                .subtitle("JUST FOR FUN")
+                .yAxisTitle("℃")
                 .series(
                     [
                         [
@@ -139,8 +139,8 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         case AAChartType.Scatter:
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Scatter)
-                .title("按性别划分的身高体重分布图")
-                .yAxisTitle("千克(kg)")
+                .title("Height and weight distribution by sex")
+                .yAxisTitle("kg)")
                 .series(
                     [
                         [
@@ -262,9 +262,9 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         case AAChartType.Pyramid:
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Pyramid)
-                .title("编程语言热度")
-                .subtitle("虚拟数据")
-                .yAxisTitle("摄氏度")
+                .title("THE HEAT OF PROGRAM LANGUAGE")
+                .subtitle("virtual data")
+                .yAxisTitle("℃")
                 .series(
                     [
                         ["name":"2020",
@@ -282,9 +282,9 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         case AAChartType.Funnel:
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Funnel)
-                .title("编程语言热度")
-                .subtitle("虚拟数据")
-                .yAxisTitle("摄氏度")
+                .title("THE HEAT OF PROGRAM LANGUAGE")
+                .subtitle("virtual data")
+                .yAxisTitle("℉")
                 .series(
                     [
                         ["name":"2020",
@@ -302,9 +302,9 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         case AAChartType.Arearange:
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Arearange)
-                .title("黄昏别馆日气温起伏图")
-                .subtitle("实时监测")
-                .yAxisTitle("摄氏度")
+                .title("Twilight Hall day temperature fluctuation map")
+                .subtitle("real-time monitoring data")
+                .yAxisTitle("℃")
                 .series(
                     [
                         ["name":"2020",
@@ -696,16 +696,17 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         case AAChartType.Columnrange:
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Columnrange)
-                .title("金银岛每月温度变化范围")
-                .subtitle("2020年实测数据")
+                .title("TEMPERATURE VARIATION BY MONTH")
+                .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")
-                .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
+                .categories(["January", "February", "March", "April", "May", "June",
+                             "July", "August", "September", "October", "November", "December"])
                 .dataLabelEnabled(true)
                 //.inverted(true)//x 轴是否垂直翻转
                 .series(
                     [
                         [
-                            "name":"温度",
+                            "name":"temperature",
                             "data":[
                                 [-9.7,  9.4],
                                 [-8.7,  6.5],
@@ -727,8 +728,8 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Line)//图形类型
                 .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-                .title("直方折线填充图")//图形标题
-                .subtitle("2020年08月08日")//图形副标题
+                .title("STEP LINE CHART")//图形标题
+                .subtitle("2020/08/08")//图形副标题
                 .dataLabelEnabled(true)//是否显示数字
                 .symbolStyle(AAChartSymbolStyleType.BorderBlank)//折线连接点样式
                 .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
@@ -744,8 +745,8 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Area)//图形类型
                 .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-                .title("直方区域填充图")//图形标题
-                .subtitle("2049年08月08日")//图形副标题
+                .title("STEP AREA CHART")//图形标题
+                .subtitle("2049/08/08")//图形副标题
                 .dataLabelEnabled(false)//是否显示数字
                 .symbolStyle(AAChartSymbolStyleType.InnerBlank)//折线连接点样式
                 .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点

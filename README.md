@@ -48,24 +48,24 @@ import AAChartView.swift
 3.Configure the properties of chart model:`AAChartModel`
 
 ``` swift
-        chartModel = AAChartModel.init()
-            .chartTypeSet(AAChartType.Column)
-            .animationTypeSet(AAChartAnimationType.Swing)
-            .titleSet("TITLE")
-            .subtitleSet("SUBTITLE")
-            .pointHollowSet(true)
-            .dataLabelEnabledSet(false)
-            .markerRadiusSet(15)
-            .seriesSet([
+        aaChartModel = AAChartModel.init()
+            .chartType(self.chartType!)//Can be any of the chart types listed under `AAChartType`. Defaults to line
+            .animationType(AAChartAnimationType.Bounce)
+            .title("TITLE")//The chart title
+            .subtitle("subtitle")//The chart subtitle
+            .dataLabelEnabled(false) //Enable or disable the data labels. Defaults to false
+            .markerRadius(5) //The radius of the point marker. Defaults to 4
+            .series([
                 [
                     "name": "Tokyo",
+                    "step":true,
                     "data": [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
                 ], [
                     "name": "New York",
-                    "data": [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+                    "data": [0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
                 ], [
                     "name": "Berlin",
-                    "data": [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+                    "data": [0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
                 ], [
                     "name": "London",
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
@@ -91,126 +91,116 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 - To draw a pie chart,you should configure the properties of `AAChartModel` like this:
 ``` swift
     var chartModel = AAChartModel.init()
-        chartModel.chartType = AAChartType.Pie
-        chartModel.title = "BROWSER MARKET SHARES JANUARY,2020 TO MAY"
-        chartModel.subtitle = "VIRTUAL DATA"
-        chartModel.dataLabelEnabled = true//show the data label or not
-        chartModel.series =
-            [
-                [
-                    type: "pie",
-                    name: "Browser market shares",
-                    data: [
-                    ["Firefox",   45.0],
-                    ["IE",        26.8],
+            aaChartModel = AAChartModel.init()
+                .chartType(AAChartType.Pie)
+                .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
+                .subtitle("virtual data")
+                .dataLabelEnabled(false)
+                .yAxisTitle("℃")
+                .series(
                     [
-                    name:     "Chrome",
-                    y:        12.8,
-                    sliced:   true,
-                    selected: true
-                    ],
-                    ["Safari",    8.5],
-                    ["Opera",     6.2],
-                    ["Others",    0.7]
-                    ]
-                ]
-        ]
+                        [
+                            "name": "Language market shares",
+                            "innerSize":"50%",
+                            "data": [
+                                ["Java"  ,67],
+                                ["Swift" ,44],
+                                ["Python",83],
+                                ["OC"    ,11],
+                                ["Ruby"  ,42],
+                                ["PHP"   ,31],
+                                ["Go"    ,63],
+                                ["C"     ,24],
+                                ["C#"    ,888],
+                                ["C++"   ,66],
+                            ]
+                        ],
+                        ]
+                    
+            )
 ```
 - To draw a bubble chart,you should configure the properties of `AAChartModel` like this:
 
 
 ``` swift
-    var chartModel = AAChartModel.init()
-        chartModel.chartType = AAChartType.Bubble
-        chartModel.title = "AACHARTKIT BUBBLES"
-        chartModel.subtitle = "JUST FOR FUN"
-        chartModel.yAxisTitle = "℃"
-        chartModel.series = [
-            [
-                "name":"DATA ARRAY ONE",
-                "data": [
-                    [9,  81, 63],
-                    [98, 5,  89],
-                    [51, 50, 73],
-                    [41, 22, 14],
-                    [58, 24, 20],
-                    [78, 37, 34],
-                    [55, 56, 53],
-                    [18, 45, 70],
-                    [42, 44, 28],
-                    [3,  52, 59],
-                    [31, 18, 97],
-                    [79, 91, 63],
-                    [93, 23, 23],
-                    [44, 83, 22]]
-                ],
-            
-            [
-                "name":"DATA ARRAY TWO",
-                "data": [
-                    [42, 38, 20],
-                    [6,  18, 1 ],
-                    [1,  93, 55],
-                    [57, 2,  90],
-                    [80, 76, 22],
-                    [11, 74, 96],
-                    [88, 56, 10],
-                    [30, 47, 49],
-                    [57, 62, 98],
-                    [4,  16, 16],
-                    [46, 10, 11],
-                    [22, 87, 89],
-                    [57, 91, 82],
-                    [45, 15, 98]]
-                ],
-            
-            [
-                "name":"DATA ARRAY THREE",
-                "data": [
-                    [47, 47, 21],
-                    [20, 12, 4 ],
-                    [6,  76, 91],
-                    [38, 30, 60],
-                    [57, 98, 64],
-                    [61, 17, 80],
-                    [83, 60, 13],
-                    [67, 78, 75],
-                    [64, 12, 10],
-                    [30, 77, 82],
-                    [90, 63, 44],
-                    [91, 33, 17],
-                    [15, 67, 48],
-                    [54, 25, 81]]
-            ]
-        ]
+            aaChartModel = AAChartModel.init()
+                .chartType(AAChartType.Bubble)
+                .title("AACHARTKIT BUBBLES")
+                .subtitle("JUST FOR FUN")
+                .yAxisTitle("℃")
+                .series(
+                    [
+                        [
+                            "data": [[97, 36, 79],
+                                     [94, 74, 60],
+                                     [68, 76, 58],
+                                     [64, 87, 56],
+                                     [68, 27, 73],
+                                     [74, 99, 42],
+                                     [7,  93, 87],
+                                     [51, 69, 40],
+                                     [38, 23, 33],
+                                     [57, 86, 31]]
+                        ],
+                        [
+                            "data": [[25, 10, 87],
+                                     [2,  75, 59],
+                                     [11, 54, 8 ],
+                                     [86, 55, 93],
+                                     [5,  3,  58],
+                                     [90, 63, 44],
+                                     [91, 33, 17],
+                                     [97, 3,  56],
+                                     [15, 67, 48],
+                                     [54, 25, 81]]
+                        ],
+                        [
+                            "data": [[47, 47, 21],
+                                     [20, 12, 4 ],
+                                     [6,  76, 91],
+                                     [38, 30, 60],
+                                     [57, 98, 64],
+                                     [61, 17, 80],
+                                     [83, 60, 13],
+                                     [67, 78, 75],
+                                     [64, 12, 10],
+                                     [30, 77, 82]]
+                        ]
+                    ]
+            )
 ```
 
 - To draw a columnrange chart,you should configure the properties of `AAChartModel` like this:
 
 ``` swift
-    var chartModel = AAChartModel.init()
-        chartModel.chartType = AAChartType.Columnrange
-        chartModel.title = "TEMPERATURE VARIATION BY MONTH"
-        chartModel.subtitle = "OBSERVED IN GOTHAM CITY"
-        chartModel.yAxisTitle = "℉"
-        chartModel.series = [
-                   [
-            name: "Temperature",
-            data: [
-                [-9.7,  9.4],
-                [-8.7,  6.5],
-                [-3.5,  9.4],
-                [-1.4, 19.9],
-                [0.0,  22.6],
-                [2.9,  29.5],
-                [9.2,  30.7],
-                [7.3,  26.5],
-                [4.4,  18.0],
-                [-3.1, 11.4],
-                [-5.2, 10.4],
-                [-9.5,  9.8]]
-        ]
-                    ]
+            aaChartModel = AAChartModel.init()
+                .chartType(AAChartType.Columnrange)
+                .title("TEMPERATURE VARIATION BY MONTH")
+                .subtitle("observed in Gotham city")
+                .yAxisTitle("℃")
+                .categories(["January", "February", "March", "April", "May", "June",
+                             "July", "August", "September", "October", "November", "December"])
+                .dataLabelEnabled(true)
+                //.inverted(true)
+                .series(
+                    [
+                        [
+                            "name":"temperature",
+                            "data":[
+                                [-9.7,  9.4],
+                                [-8.7,  6.5],
+                                [-3.5,  9.4],
+                                [-1.4, 19.9],
+                                [0.0,  22.6],
+                                [2.9,  29.5],
+                                [9.2,  30.7],
+                                [7.3,  26.5],
+                                [4.4,  18.0],
+                                [-3.1, 11.4],
+                                [-5.2, 10.4],
+                                [-13.5, 9.8]
+                            ]]]
+            )
 ```
 
 7. Supported chart type for now 
