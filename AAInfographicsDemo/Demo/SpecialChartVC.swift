@@ -732,7 +732,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                 .subtitle("2020/08/08")//图形副标题
                 .dataLabelEnabled(true)//是否显示数字
                 .symbolStyle(AAChartSymbolStyleType.BorderBlank)//折线连接点样式
-                .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
+                .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
                 .series([
                     [
                         "name": "New York",
@@ -749,7 +749,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                 .subtitle("2049/08/08")//图形副标题
                 .dataLabelEnabled(false)//是否显示数字
                 .symbolStyle(AAChartSymbolStyleType.InnerBlank)//折线连接点样式
-                .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
+                .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
                 .series([
                     [
                         "name": "Berlin",
