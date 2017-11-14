@@ -353,7 +353,7 @@ public class AAChartModel:AASerializable {
     
     public  init() {
 //        print(AAChartAnimationType.EaseInBack.rawValue)
-        
+        self.backgroundColor     = "#4b2b7f"
         self.animationType       = AAChartAnimationType.EaseInOutQuart.rawValue
         self.animationDuration   = 800//以毫秒为单位
         self.chartType           = AAChartType.Column.rawValue
@@ -364,7 +364,8 @@ public class AAChartModel:AASerializable {
         self.yAxisReversed       = false
         self.zoomType            = AAChartZoomType.X.rawValue
 //        self.colorsTheme         = ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
-        self.colorsTheme         = ["#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",]//明艳色彩
+//        self.colorsTheme         = ["#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",]//明艳色彩
+        self.colorsTheme         = ["#fe117c","#ffc069","#06caf4","#7dffc0"]
         self.gradientColorEnable = false
         self.polar               = false
         self.dataLabelEnabled    = true
@@ -373,8 +374,8 @@ public class AAChartModel:AASerializable {
         self.xAxisLabelsEnabled  = true
         self.xAxisGridLineWidth  = 0
         self.yAxisLabelsEnabled  = true
-        self.yAxisGridLineWidth  = 1
-        self.legendEnabled       = true
+        self.yAxisGridLineWidth  = 0
+        self.legendEnabled       = false
         self.legendLayout        = AAchartLegendlLayoutType.Horizontal.rawValue
         self.legendAlign         = AAChartLegendAlignType.Center.rawValue
         self.legendVerticalAlign = AAChartLegendVerticalAlignType.Bottom.rawValue

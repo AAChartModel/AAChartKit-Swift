@@ -47,8 +47,10 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         aaChartModel = AAChartModel.init()
             .chartType(self.chartType!)//图形类型
             .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-            .title("都市天气")//图形标题
-            .subtitle("2020年08月08日")//图形副标题
+            .backgroundColor("#4b2b7f")
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .title("")//图形标题
+            .subtitle("")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .series([
@@ -66,18 +68,30 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
                 ]])
         
-        if (self.chartType == AAChartType.Line
+        
+        if (self.chartType == AAChartType.Column
+            || self.chartType == AAChartType.Bar) {
+            aaChartModel?
+                .borderRadius(5)
+                .legendEnabled(true)
+                .colorsTheme(["#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",])
+        } else if (self.chartType == AAChartType.Line
             || self.chartType == AAChartType.Spline) {
             //设置折线连接点样式为:边缘白色
-            aaChartModel?.symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.BorderBlank.rawValue)!)
-//            aaChartModel?.animationType = AAChartAnimationType.SwingFromTo.rawValue
+            aaChartModel?
+                .symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.BorderBlank.rawValue)!)
+                .markerRadius(6)
+            //            aaChartModel?.animationType = AAChartAnimationType.SwingFromTo.rawValue
         } else if (self.chartType == AAChartType.Area
-                   || self.chartType == AAChartType.AreaSpline) {
+            || self.chartType == AAChartType.AreaSpline) {
             //设置折线连接点样式为:内部白色
-            aaChartModel?.symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.InnerBlank.rawValue)!)
-//            aaChartModel?.animationType = AAChartAnimationType.EaseFrom.rawValue
-
-         }
+            aaChartModel?
+                .symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.InnerBlank.rawValue)!)
+                .gradientColorEnable(true)
+                .markerRadius(5)
+            //            aaChartModel?.animationType = AAChartAnimationType.EaseFrom.rawValue
+            
+        }
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
         

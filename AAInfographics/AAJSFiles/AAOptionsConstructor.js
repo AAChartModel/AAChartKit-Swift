@@ -34,6 +34,21 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 o.style.width = receivedWidth; //设置宽度
         }
         o.style.height = receivedHeight; //设置高度
+    
+        if (AAChartModel.gradientColorEnable == true) { //开启图表渐变色功能
+            var colors = AAChartModel.colorsTheme;
+            AAChartModel.colorsTheme = Highcharts.map(colors, function (color) {
+                                                     return {
+                                                     linearGradient:  { x1: 0, y1: 0, x2: 0, y2: 1},
+                                                     stops: [
+                                                             [0, color],
+                                                             [1, Highcharts.Color(color).setOpacity(0.45).get('rgba')]
+                                                             ]
+                                                     };
+                                                     });
+        }
+    
+    
         var AAChart = {
                 type: AAChartModel.chartType,//图表类型
                 inverted: AAChartModel.inverted,//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
@@ -124,8 +139,8 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                         AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                         AAMarker.lineColor = ""; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
                 } else if (AAChartModel.symbolStyle === "borderBlank") {
-                        AAMarker.lineWidth = 2;
-                        AAMarker.lineColor = "#ffffff";
+                        AAMarker.lineWidth = 3;
+                        AAMarker.lineColor = AAChartModel.backgroundColor;
                 }
 
             AAPlotOptions.series.marker = AAMarker;
@@ -142,7 +157,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 borderWidth: 0
         };
 
-        var AAThemeColors = AAChartModel.colorsTheme;
+        var AAColorsTheme = AAChartModel.colorsTheme;
 
         var AAOptions = {};
         AAOptions.chart = AAChart;
@@ -153,7 +168,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         AAOptions.tooltip = AATooltip;
         AAOptions.legend = AALegend;
         AAOptions.plotOptions = AAPlotOptions;
-        AAOptions.colors = AAThemeColors;
+        AAOptions.colors = AAColorsTheme;
         AAOptions.series = AAChartModel.series;
 
         //    alert(AAOptions.colorsTheme);//提示颜色字符串数组
