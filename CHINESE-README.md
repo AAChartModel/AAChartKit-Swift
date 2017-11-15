@@ -1,4 +1,4 @@
- 
+  ![AAInfographics-LOGO](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AAInfographics-LOGO.png)
 # AAInfographics
 
  
