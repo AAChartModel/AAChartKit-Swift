@@ -50,13 +50,13 @@ import AAChartView.swift
 * 链式编程的方式配置 *AAChartModel* 模型对象属性
 ```swift
     let chartModel = AAChartModel.init()
-            .chartTypeSet(AAChartType.Column)
-            .titleSet("城市天气变化")
-            .subtitleSet("2020年09月18日")
-            .invertedSet(true)
-            .yAxisTitleSet("摄氏度")
-            .legendEnabledSet(true)
-            .seriesSet([
+            .chartType(AAChartType.Column)//图表类型
+            .title("城市天气变化")//图表主标题
+            .subtitle("2020年09月18日")//图表副标题
+            .inverted(false)//是否翻转图形
+            .yAxisTitle("摄氏度")// Y 轴标题
+            .legendEnabled(true)//是否启用图表的图例(图表底部的可点击的小圆点)
+            .series([
                 [
                     "name": "东京",
                     "data": [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
