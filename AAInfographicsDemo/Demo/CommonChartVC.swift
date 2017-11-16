@@ -48,11 +48,12 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             .chartType(self.chartType!)//图形类型
             .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
             .backgroundColor("#4b2b7f")
-            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])//主题颜色数组
             .title("")//图形标题
             .subtitle("")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
+            .tooltipValueSuffix("摄氏度")//浮动提示框单位后缀
             .series([
                 [
                     "name": "Tokyo",

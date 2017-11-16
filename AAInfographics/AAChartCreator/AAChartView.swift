@@ -38,9 +38,9 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// Hide chart series content or not
     public var chartSeriesHidden:Bool?
     
-    var wkWebView: WKWebView?
-    var uiWebView: UIWebView?
-    var optionsJson: String?
+    private var wkWebView: WKWebView?
+    private var uiWebView: UIWebView?
+    private var optionsJson: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,6 +66,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //
     
     /// Function of drawing chart view
     ///
@@ -128,7 +129,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         self.drawChart()
     }
     
-    func drawChart() {
+    private func drawChart() {
         if #available(iOS 9.0, *) {
             wkWebView?.evaluateJavaScript(optionsJson!, completionHandler: { (item, error) in
             })
@@ -138,7 +139,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         }
     }
     
-    func configureTheJavaScriptString(_ chartModel:AAChartModel) {
+    private func configureTheJavaScriptString(_ chartModel:AAChartModel) {
         let modelString = chartModel.toJSON()
         
         let chartViewContentWidth = self.contentWidth

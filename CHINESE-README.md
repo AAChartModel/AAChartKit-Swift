@@ -56,6 +56,8 @@ import AAChartView.swift
             .inverted(false)//是否翻转图形
             .yAxisTitle("摄氏度")// Y 轴标题
             .legendEnabled(true)//是否启用图表的图例(图表底部的可点击的小圆点)
+            .tooltipValueSuffix("摄氏度")//浮动提示框单位后缀
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])//主题颜色数组
             .series([
                 [
                     "name": "东京",

@@ -142,7 +142,6 @@ public class AAChartModel:AASerializable {
     private var inverted:Bool?              //x 轴是否翻转(垂直)
     private var xAxisReversed:Bool?         //x 轴翻转
     private var yAxisReversed:Bool?         //y 轴翻转
-    private var crosshairs:Bool?            //是否显示准星线(默认显示)
     private var gradientColorEnable:Bool?   //是否要为渐变色
     private var polar:Bool?                 //是否极化图形(变为雷达图)
     private var dataLabelEnabled:Bool?      //是否显示数据
@@ -152,8 +151,10 @@ public class AAChartModel:AASerializable {
     private var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
     private var yAxisTitle:String?          //y轴标题
     private var yAxisGridLineWidth:Int?     //y轴网格线的宽度
+    private var tooltipValueSuffix:String?  //浮动提示框单位后缀
+    private var tooltipCrosshairs:Bool?     //是否显示准星线(默认显示)
     private var colorsTheme:Array<Any>?     //图表主题颜色数组
-    private var series:Array<Any>?
+    private var series:Array<Any>?          //图表的数据数组
     private var legendEnabled:Bool?         //是否显示图例
     private var legendLayout:String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
     private var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
@@ -165,14 +166,8 @@ public class AAChartModel:AASerializable {
     private var options3dDepth:Int?         //3D图形深度
     private var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     private var markerRadius:Int?           //折线连接点的半径长度
-    
-    
-    
-    /*private var tooltip:Dictionary<String,Any> = ["shared":true,"pointFormat":"{series.name}: <b>{point.y}</b><br/>"]
-     func valueSuffix(_ prop: String) -> AAChartModel {
-     self.tooltip["valueSuffix"] = prop
-     return self
-     }*/
+  
+
     
     func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
         self.animationType = prop.rawValue
@@ -234,8 +229,13 @@ public class AAChartModel:AASerializable {
         return self
     }
     
-    func crosshairs(_ prop: Bool) -> AAChartModel {
-        self.crosshairs = prop
+    func tooltipValueSuffix(_ prop:String) -> AAChartModel {
+        self.tooltipValueSuffix = prop
+        return self
+    }
+    
+    func tooltipCrosshairs(_ prop: Bool) -> AAChartModel {
+        self.tooltipCrosshairs = prop
         return self
     }
     
@@ -352,7 +352,6 @@ public class AAChartModel:AASerializable {
     
     
     public  init() {
-//        print(AAChartAnimationType.EaseInBack.rawValue)
         self.backgroundColor     = "#4b2b7f"
         self.animationType       = AAChartAnimationType.EaseInOutQuart.rawValue
         self.animationDuration   = 800//以毫秒为单位
@@ -370,7 +369,7 @@ public class AAChartModel:AASerializable {
         self.polar               = false
         self.dataLabelEnabled    = true
         self.options3dEnable     = false
-        self.crosshairs          = true
+        self.tooltipCrosshairs   = true
         self.xAxisLabelsEnabled  = true
         self.xAxisGridLineWidth  = 0
         self.yAxisLabelsEnabled  = true
