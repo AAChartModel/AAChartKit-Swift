@@ -152,7 +152,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         default:
             break
         }
-        aaChartView?.aa_refreshChartWithChartModel(aaChartModel!)
+        aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
     func configureTheSwith() {
@@ -208,7 +208,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         }
         
         
-        aaChartView?.aa_refreshChartWithChartModel(aaChartModel!)
+        aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
     

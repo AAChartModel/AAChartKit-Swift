@@ -78,14 +78,22 @@ import AAChartView.swift
     /*图表视图对象调用图表模型对象,绘制最终图形*/
     chartView?.aa_drawChartWithChartModel(chartModel)
 ```
-5.  刷新图形(首次绘制图形完成之后,后续刷新均建议调用此方法)
+
+5. 仅仅刷新图形的`series`数据内容(首次绘制图形完成之后,后续刷新图表数据均建议调用此方法)
 
 ```swift
-    /*更新 AAChartModel 内容之后,刷新图表*/
-    chartView?.aa_refreshChartWithChartModel(chartModel)
+    /*仅仅更新了图表的series数组数据,不改动图表的其他内容*/
+    chartView?.aa_onlyRefreshTheChartDataWithChartModel(chartModel)
 ```
 
-6. 特别说明
+6.  刷新图形整体内容
+
+```swift
+    /*更新 AAChartModel 整体内容(如修改了图表的类型,将 column chart 改为 area chart)之后,刷新图表*/
+    chartView?.aa_refreshChartWholeContentWithChartModel(chartModel)
+```
+
+7. 特别说明
 
 **AAInfographics** 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 *AAChartModel* 设置稍有不同,示例如下
 
@@ -201,7 +209,7 @@ import AAChartView.swift
             )
 ```
 
-7. 当前已支持的图表类型有十种以上,说明如下
+8. 当前已支持的图表类型有十种以上,说明如下
 
 ```swift
 enum AAChartType:String{
@@ -221,7 +229,7 @@ enum AAChartType:String{
 ```
 
 
-8. 当前已支持的图表渲染动画类型有三十种以上,说明如下
+9. 当前已支持的图表渲染动画类型有三十种以上,说明如下
 
 ```swift
 enum AAChartAnimationType:String {

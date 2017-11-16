@@ -92,15 +92,8 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         }
     }
     
-    ///  Function of refreshing whole chart view content
-    ///
-    /// - Parameter chartModel: The instance object of chart model
-    public func aa_refreshChartWithChartModel(_ chartModel:AAChartModel) {
-        
-        self.configureTheJavaScriptString(chartModel)
-        self.drawChart()
-    }
     
+    // ToDo:此处性能需要优化,因为仅仅刷新数据的话,其实只要是传递 series 里面的字符串数据就可以了,不需要传递整个序列化为字符串之后的 AAChartModel,这样操作实际上是传递了冗余信息,造成了不必要的计算资源的浪费 参见 issue #13
     /// Function of only refresh the chart data
     ///
     /// - Parameter chartModel: The instance object of chart model
@@ -108,6 +101,15 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         let modelString = chartModel.toJSON()
         let jsString = NSString.localizedStringWithFormat("onlyRefreshTheChartDataWithAAChartModel('%@');", modelString!)
         optionsJson = jsString as String
+        self.drawChart()
+    }
+    
+    ///  Function of refreshing whole chart view content
+    ///
+    /// - Parameter chartModel: The instance object of chart model
+    public func aa_refreshChartWholeContentWithChartModel(_ chartModel:AAChartModel) {
+        
+        self.configureTheJavaScriptString(chartModel)
         self.drawChart()
     }
     
