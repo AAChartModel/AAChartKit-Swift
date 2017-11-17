@@ -230,6 +230,9 @@ function configureAAPlotOptions(AAPlotOptions, AAChartModel) {
                 AAPlotOptions.spline = AASpline;
         } else if (AAChartModel.chartType === "pie") {
                 var AAPie = {
+                        //扇形图尺寸大小,大小设置得当的话,扇形图讲始终保持居中的位置,
+                        //不偏不倚,将不会产生自动布局导致的大小变化
+                        //size: 300,
                         allowPointSelect: true,
                         cursor: "pointer",
                         depth: AAChartModel.options3dDepth,
