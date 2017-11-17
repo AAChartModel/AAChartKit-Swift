@@ -50,13 +50,15 @@ import AAChartView.swift
 * 链式编程的方式配置 *AAChartModel* 模型对象属性
 ```swift
     let chartModel = AAChartModel.init()
-            .chartTypeSet(AAChartType.Column)
-            .titleSet("城市天气变化")
-            .subtitleSet("2020年09月18日")
-            .invertedSet(true)
-            .yAxisTitleSet("摄氏度")
-            .legendEnabledSet(true)
-            .seriesSet([
+            .chartType(AAChartType.Column)//图表类型
+            .title("城市天气变化")//图表主标题
+            .subtitle("2020年09月18日")//图表副标题
+            .inverted(false)//是否翻转图形
+            .yAxisTitle("摄氏度")// Y 轴标题
+            .legendEnabled(true)//是否启用图表的图例(图表底部的可点击的小圆点)
+            .tooltipValueSuffix("摄氏度")//浮动提示框单位后缀
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])//主题颜色数组
+            .series([
                 [
                     "name": "东京",
                     "data": [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
@@ -78,14 +80,22 @@ import AAChartView.swift
     /*图表视图对象调用图表模型对象,绘制最终图形*/
     chartView?.aa_drawChartWithChartModel(chartModel)
 ```
-5.  刷新图形(首次绘制图形完成之后,后续刷新均建议调用此方法)
+
+5. 仅仅刷新图形的`series`数据内容(首次绘制图形完成之后,后续刷新图表数据均建议调用此方法)
 
 ```swift
-    /*更新 AAChartModel 内容之后,刷新图表*/
-    chartView?.aa_refreshChartWithChartModel(chartModel)
+    /*仅仅更新了图表的series数组数据,不改动图表的其他内容*/
+    chartView?.aa_onlyRefreshTheChartDataWithChartModel(chartModel)
 ```
 
-6. 特别说明
+6.  刷新图形整体内容
+
+```swift
+    /*更新 AAChartModel 整体内容(如修改了图表的类型,将 column chart 改为 area chart)之后,刷新图表*/
+    chartView?.aa_refreshChartWholeContentWithChartModel(chartModel)
+```
+
+7. 特别说明
 
 **AAInfographics** 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 *AAChartModel* 设置稍有不同,示例如下
 
@@ -201,7 +211,7 @@ import AAChartView.swift
             )
 ```
 
-7. 当前已支持的图表类型有十种以上,说明如下
+8. 当前已支持的图表类型有十种以上,说明如下
 
 ```swift
 enum AAChartType:String{
@@ -221,7 +231,7 @@ enum AAChartType:String{
 ```
 
 
-8. 当前已支持的图表渲染动画类型有三十种以上,说明如下
+9. 当前已支持的图表渲染动画类型有三十种以上,说明如下
 
 ```swift
 enum AAChartAnimationType:String {

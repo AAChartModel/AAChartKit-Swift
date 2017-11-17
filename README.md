@@ -73,18 +73,25 @@ import AAChartView.swift
 ```
 4.  Draw the chart(This method is called only for the first time after you create an AAChartView instance object)
 
-```objective-c
+```swift
         //The chart view object calls the instance object of AAChartModel and draws the final graphic
-        [chartView aa_drawChartWithChartModel:chartModel]
+        chartView?.aa_drawChartWithChartModel(chartModel)
 ```
-5.  Refresh the chart(Subsequent refresh options are recommended to call this method after the first drawing of graphics is completed)
+5. Only refresh the chart data
 
-```objective-c
-        //Refresh the chart after the AAChartModel content is updated
-        [chartView aa_refreshChartWithChartModel:chartModel]
+```swift
+        //Only refresh the chart series data
+        chartView?.aa_onlyRefreshTheChartDataWithChartModel(chartModel)
 ```
 
-6. Special instructions(This method is recommended to be called for updating the series data dynamically)
+6.  Refresh the chart(Subsequent refresh options are recommended to call this method after the first drawing of graphics is completed)
+
+```swift
+        //Refresh the chart after the AAChartModel whole content is updated
+        chartView?.aa_refreshChartWholeContentWithChartModel(chartModel)
+```
+
+7. Special instructions(This method is recommended to be called for updating the series data dynamically)
 
 Pie chart and bubble chart are special in AAInfographics,if you want to draw these charts,you should do some different things for AAChartModel,for example
 
@@ -202,7 +209,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
             )
 ```
 
-7. Supported chart type for now 
+8. Supported chart type for now
 
 ```swift
 enum AAChartType{
@@ -222,7 +229,7 @@ enum AAChartType{
 ```
 
 
-8. Supported animation type for now
+9. Supported animation type for now
 
 ```swift
 enum AAChartAnimationType:String {

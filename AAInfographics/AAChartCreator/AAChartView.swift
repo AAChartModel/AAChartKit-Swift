@@ -38,9 +38,9 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// Hide chart series content or not
     public var chartSeriesHidden:Bool?
     
-    var wkWebView: WKWebView?
-    var uiWebView: UIWebView?
-    var optionsJson: String?
+    private var wkWebView: WKWebView?
+    private var uiWebView: UIWebView?
+    private var optionsJson: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,6 +66,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //
     
     /// Function of drawing chart view
     ///
@@ -92,15 +93,8 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         }
     }
     
-    ///  Function of refreshing whole chart view content
-    ///
-    /// - Parameter chartModel: The instance object of chart model
-    public func aa_refreshChartWithChartModel(_ chartModel:AAChartModel) {
-        
-        self.configureTheJavaScriptString(chartModel)
-        self.drawChart()
-    }
     
+    // ToDo:此处性能需要优化,因为仅仅刷新数据的话,其实只要是传递 series 里面的字符串数据就可以了,不需要传递整个序列化为字符串之后的 AAChartModel,这样操作实际上是传递了冗余信息,造成了不必要的计算资源的浪费 参见 issue #13
     /// Function of only refresh the chart data
     ///
     /// - Parameter chartModel: The instance object of chart model
@@ -108,6 +102,15 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         let modelString = chartModel.toJSON()
         let jsString = NSString.localizedStringWithFormat("onlyRefreshTheChartDataWithAAChartModel('%@');", modelString!)
         optionsJson = jsString as String
+        self.drawChart()
+    }
+    
+    ///  Function of refreshing whole chart view content
+    ///
+    /// - Parameter chartModel: The instance object of chart model
+    public func aa_refreshChartWholeContentWithChartModel(_ chartModel:AAChartModel) {
+        
+        self.configureTheJavaScriptString(chartModel)
         self.drawChart()
     }
     
@@ -126,7 +129,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         self.drawChart()
     }
     
-    func drawChart() {
+    private func drawChart() {
         if #available(iOS 9.0, *) {
             wkWebView?.evaluateJavaScript(optionsJson!, completionHandler: { (item, error) in
             })
@@ -136,7 +139,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         }
     }
     
-    func configureTheJavaScriptString(_ chartModel:AAChartModel) {
+    private func configureTheJavaScriptString(_ chartModel:AAChartModel) {
         let modelString = chartModel.toJSON()
         
         let chartViewContentWidth = self.contentWidth
