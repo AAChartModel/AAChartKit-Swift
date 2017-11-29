@@ -110,14 +110,14 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                                      [57, 86, 31]]
                         ],
                         [
-                            "data": [[25, 10, 87],
+                            "data": [[25, 60, 87],
                                      [2,  75, 59],
                                      [11, 54, 8 ],
                                      [86, 55, 93],
-                                     [5,  3,  58],
+                                     [5,  33, 88],
                                      [90, 63, 44],
-                                     [91, 33, 17],
-                                     [97, 3,  56],
+                                     [91, 43, 17],
+                                     [97, 56, 56],
                                      [15, 67, 48],
                                      [54, 25, 81]]
                         ],
@@ -682,10 +682,10 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                             [1419296400000, 1.5,  4.4],
                             [1419382800000, 0,      0],
                             [1419469200000, 0,      0],
-                            [1419555600000, -40.6, -4],
-                            [1419642000000, -10.8, -5],
-                            [1419728400000, -8.4,  -4],
-                            [1419814800000, -5.2, 2.4],
+                            [1419555600000, 10.6, 4],
+                            [1419642000000, 10.8, 5],
+                            [1419728400000, 8.4,  4],
+                            [1419814800000, 5.2, 2.4],
                             [1419901200000, 1.3,  2.5],
                             [1419987600000, 1.6,  4.2]
                             
@@ -732,15 +732,25 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                 .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
                 .title("STEP LINE CHART")//图形标题
                 .subtitle("2020/08/08")//图形副标题
-                .dataLabelEnabled(true)//是否显示数字
+                .dataLabelEnabled(false)//是否显示数字
                 .symbolStyle(AAChartSymbolStyleType.BorderBlank)//折线连接点样式
-                .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
+                .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
                 .series([
                     [
+                        "name": "Berlin",
+                        "data": [450, 432, 401, 454, 590, 530, 510],
+                        "step":"right"
+                    ],
+                    [
                         "name": "New York",
-                        "data": [0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5],
-                        "step": true,
-                        ] ])
+                        "data": [220, 282, 201, 234, 290, 430, 410],
+                        "step":"center"
+                    ],
+                    [
+                        "name": "Tokyo",
+                        "data": [120, 132, 101, 134, 90, 230, 210],
+                        "step":"left"
+                    ], ])
             break
             
         case AAChartType.Area:
@@ -750,14 +760,25 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                 .title("STEP AREA CHART")//图形标题
                 .subtitle("2049/08/08")//图形副标题
                 .dataLabelEnabled(false)//是否显示数字
+//                .stacking(AAChartStackingType.Normal)//图形堆叠类型
                 .symbolStyle(AAChartSymbolStyleType.InnerBlank)//折线连接点样式
                 .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
                 .series([
                     [
                         "name": "Berlin",
-                        "data": [0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0],
-                        "step": true,
-                        ] ])
+                        "data": [450, 432, 401, 454, 590, 530, 510],
+                        "step":true
+                    ],
+                    [
+                        "name": "New York",
+                        "data": [220, 282, 201, 234, 290, 430, 410],
+                        "step":true
+                    ],
+                    [
+                        "name": "Tokyo",
+                        "data": [120, 132, 101, 134, 90, 230, 210],
+                        "step":true
+                    ], ])
             break
             
             
