@@ -225,6 +225,8 @@ enum AAChartType{
     case Pyramid     = "pyramid"     //pyramid chart
     case Funnel      = "funnel"      //funnel chart
     case Columnrange = "columnrange" //columnrange chart
+    case Arearange   = "arearange"   //arearange chart
+    
 }
 ```
 

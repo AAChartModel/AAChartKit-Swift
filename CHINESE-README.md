@@ -227,6 +227,8 @@ enum AAChartType:String{
     case Pyramid     = "pyramid"     //金字塔图
     case Funnel      = "funnel"      //漏斗图
     case Columnrange = "columnrange" //柱形范围图
+    case Arearange   = "arearange"   //区域范围图
+
 }
 ```
 

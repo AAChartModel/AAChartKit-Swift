@@ -64,7 +64,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                 .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
                 .subtitle("virtual data")
-                .dataLabelEnabled(false)//是否直接显示扇形图数据
+                .dataLabelEnabled(true)//是否直接显示扇形图数据
                 .yAxisTitle("℃")
                 .series(
                     [
@@ -78,9 +78,9 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                                 ["OC"    ,11],
                                 ["Ruby"  ,42],
                                 ["PHP"   ,31],
-                                ["Go"    ,63],
+                                ["Go"    ,630],
                                 ["C"     ,24],
-                                ["C#"    ,888],
+                                ["C#"    ,88],
                                 ["C++"   ,66],
                             ]
                         ],
@@ -745,17 +745,17 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                     [
                         "name": "Berlin",
                         "data": [450, 432, 401, 454, 590, 530, 510],
-                        "step":"right"
+                        "step":"right" //折线连接点靠右👉
                     ],
                     [
                         "name": "New York",
                         "data": [220, 282, 201, 234, 290, 430, 410],
-                        "step":"center"
+                        "step":"center" //折线连接点居中
                     ],
                     [
                         "name": "Tokyo",
                         "data": [120, 132, 101, 134, 90, 230, 210],
-                        "step":"left"
+                        "step":"left" //折线连接点靠左👈
                     ], ])
             break
             
@@ -773,17 +773,17 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                     [
                         "name": "Berlin",
                         "data": [450, 432, 401, 454, 590, 530, 510],
-                        "step":true
+                        "step":true //设置折线样式为直方折线,连接点位置默认靠左👈
                     ],
                     [
                         "name": "New York",
                         "data": [220, 282, 201, 234, 290, 430, 410],
-                        "step":true
+                        "step":true //设置折线样式为直方折线,连接点位置默认靠左👈
                     ],
                     [
                         "name": "Tokyo",
                         "data": [120, 132, 101, 134, 90, 230, 210],
-                        "step":true
+                        "step":true //设置折线样式为直方折线,连接点位置默认靠左👈
                     ], ])
             break
             
