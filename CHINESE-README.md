@@ -309,16 +309,23 @@ enum AAChartAnimationType:String {
 )
 -   pie chart - 扇形图
 
-![IMG_1878.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1878.JPG
-)
+![pie chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/PieChart.png)
 
-- the oval style column chart - 头部为椭圆形的柱形图
 
-![IMG_1866.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1866.JPG)
+
 - bubble chart - 气泡图
 
 ![IMG_1875.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1875.JPG
 )
+
+- arearange chart - 区域范围图
+
+![arearange chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ArearangeChart.png)
+
+-   step area chart - 直方折线填充图
+
+![step area chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/StepAreaChart.png)
+
 
 - mixed chart - 混合图形
 ![IMG_1882.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1882.JPG)
