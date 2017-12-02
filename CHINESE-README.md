@@ -315,8 +315,8 @@ enum AAChartAnimationType:String {
 
 - bubble chart - 气泡图
 
-![IMG_1875.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1875.JPG
-)
+![bubble chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/BubbleChart.png)
+
 
 - arearange chart - 区域范围图
 
@@ -328,7 +328,7 @@ enum AAChartAnimationType:String {
 
 
 - mixed chart - 混合图形
-![IMG_1882.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1882.JPG)
+![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
 
 ## AAChartModel 主要属性说明
 属性名称 | 属性类型 | 描述 | 取值范围 | 
