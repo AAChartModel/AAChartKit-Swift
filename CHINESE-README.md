@@ -297,7 +297,7 @@ enum AAChartAnimationType:String {
 
 -  special area chart three - 堆积效果的区域填充图
 
-![IMG_1869.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/PictureResources/屏幕快照%202017-05-06%20下午6.58.15.png)
+![IMG_1863.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AreaChartTwo.png)
 
 -   radar chart - 雷达图
 
