@@ -274,7 +274,7 @@ enum AAChartAnimationType:String {
 ## Samples
 - line chart
 
-![IMG_1867.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1867.JPG)
+![line chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/LineChart.png)
 
 - column chart
 

@@ -277,7 +277,7 @@ enum AAChartAnimationType:String {
 ##  **AAChartModel**一些重要属性经过配置之后的图形示例如下
 - line chart - 折线图
 
-![IMG_1867.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1867.JPG)
+![line chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/LineChart.png)
 
 - column chart - 柱形图
 
