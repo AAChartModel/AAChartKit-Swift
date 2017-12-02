@@ -287,15 +287,15 @@ enum AAChartAnimationType:String {
 
 ![IMG_1880.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1880.JPG)
 
--  special area chart one - 区域填充图一
+-  special area chart one - 常规折线区域填充图
 
 ![IMG_1869.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/IMG_1482.JPG)
 
--  special area chart two - 区域填充图二
+-  special area chart two - 带有负数的区域填充图
 
-![IMG_1871.JPG](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1874.JPG)
+![IMG_1871.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AreaChartOne.png))
 
--  special area chart three - 区域填充图三
+-  special area chart three - 堆积效果的区域填充图
 
 ![IMG_1869.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/PictureResources/屏幕快照%202017-05-06%20下午6.58.15.png)
 
