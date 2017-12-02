@@ -315,6 +315,10 @@ enum AAChartAnimationType:String {
 
 ![bubble chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/BubbleChart.png)
 
+- scatter chart - 散点图
+
+![scatter chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ScatterChart.png)
+
 - arearange chart - 区域范围图
 
 ![arearange chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ArearangeChart.png)
