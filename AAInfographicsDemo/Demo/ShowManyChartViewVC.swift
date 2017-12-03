@@ -46,8 +46,8 @@ class ShowManyChartViewVC: UIViewController {
     }
     
     func setUpTheAAChartViewOne() {
-        let chartViewWidth  = self.view.frame.size.width;
-        let screenHeight = self.view.frame.size.height;
+        let chartViewWidth  = self.view.frame.size.width
+        let screenHeight = self.view.frame.size.height-60
         
         let aaChartView = AAChartView()
         aaChartView.frame = CGRect(x:0,y:60,width:chartViewWidth,height:screenHeight/2)
@@ -71,8 +71,8 @@ class ShowManyChartViewVC: UIViewController {
     }
     
     func setUpTheAAChartViewTwo() {
-        let chartViewWidth  = self.view.frame.size.width;
-        let screenHeight = self.view.frame.size.height;
+        let chartViewWidth  = self.view.frame.size.width
+        let screenHeight = self.view.frame.size.height-60
         
         let aaChartView2 = AAChartView()
         aaChartView2.frame = CGRect(x:0,y:screenHeight/2+60,width:chartViewWidth,height:screenHeight/2)
