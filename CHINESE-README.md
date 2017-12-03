@@ -299,13 +299,13 @@ enum AAChartAnimationType:String {
 
 ![IMG_1863.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AreaChartTwo.png)
 
--   radar chart - 雷达图
-
-![radar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/RadarChart.png)
-
 -   polar chart - 极地图
 
 ![polar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/PolarChart.png)
+
+-   radar chart - 雷达图
+
+![radar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/RadarChart.png)
 
 -   pie chart - 扇形图
 
