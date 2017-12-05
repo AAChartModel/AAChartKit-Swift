@@ -332,7 +332,9 @@ enum AAChartAnimationType:String {
 
 ![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
 
-## AAChartModel 主要属性说明
+## 关于`AAChartModel` 主要属性说明
+* ### AAChartModel 主要属性说明
+
 属性名称 | 属性类型 | 描述 | 取值范围 | 
 ------------ | ------------- | ------------- | ------------- |
 title | String | 图表主标题 | 任意有效的字符串 | 
@@ -341,7 +343,7 @@ chartType | AAChartType |  图表类型,可以为`AAChartType`枚举字符串当
 stacking| AAChartStackingType | 是否将图表每个数据列的值叠加在一起。 默认的值为`AAChartStackingType.False`， 即禁用堆叠样式效果.另有常规堆叠样式和百分比堆叠样式可供选择 | AAChartStackingType.False, AAChartStackingType.Normal, AAChartStackingType.Percent | AAChartStackingType.False |
 symbol | AAChartSymbolType | 预定义的图表曲线连接点的样式类型.其可供选择的值有`圆`、`正方形`、`钻石`、`常规三角形`和`倒三角形`,默认为混合样式 | AAChartSymbolType.Circle, AAChartSymbolType.Square, AAChartSymbolType.Diamond, AAChartSymbolType.Triangle, AAChartSymbolType.Triangle_down | 
 
-## AAChartModel 所有属性列表
+* ### AAChartModel 所有属性列表说明
 ```swift
 public var animationType:String?       //动画类型
 public var title:String?               //标题内容

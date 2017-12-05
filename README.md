@@ -331,7 +331,8 @@ enum AAChartAnimationType:String {
 
 ![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
 
-### AAChartModel:chart basic properties instruction
+## About AAChartModel
+* ### AAChartModel:chart basic properties instruction
 
 Property name | Property type | Description | Value Range | 
 ------------ | ------------- | ------------- | ------------- |
@@ -342,7 +343,7 @@ stacking| AAChartStackingType | Whether to stack the values of each series on to
 symbol | AAChartSymbolType | A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down" | AAChartSymbolType.Circle, AAChartSymbolType.Square, AAChartSymbolType.Diamond, AAChartSymbolType.Triangle, AAChartSymbolType.Triangle_down |  
 
 
-## AAChartModel:chart all properties list
+* ### AAChartModel:chart all properties list
 ```swift
      public var animationType:String?       //The type of chart animation
      public var title:String?               //The chart title
