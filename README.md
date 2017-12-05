@@ -15,10 +15,13 @@
 ### 中文使用说明书地址
 #### *https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md*
  
-***
-###### ***AAInfographics*** is the `Swift` language version of `AAChartKit` which is object-oriented, a set of easy-to-use, extremely elegant graphics drawing controls,based on the popular open source front-end chart library *Highcharts*.
+## Preface
+ 
+ ***AAInfographics*** is the `Swift` language version of `AAChartKit` which is object-oriented, a set of easy-to-use, extremely elegant graphics drawing controls,based on the popular open source front-end chart library *Highcharts*.
 
-## Features:
+***
+## Features
+
 1. Support `iOS 6`、`ARC` & `Swift`.
 2. Powerful,support the  `column chart`、`bar chart`、`area chart`、`areaspline chart`、`line chart`、`spline chart`、`radar chart`、`polar chart`、`pie chart`、`bubble chart`、`pyramid chart`、`funnel chart`、`columnrange chart`and other graphics.
 3. Interactive、animated, the `animation` effect is exquisite 、delicate、 smooth and beautiful.
@@ -27,7 +30,7 @@
 ***
 
 
-## Usage:
+## Usage
 
 ### Pre-preparation work
 1. Drag the folder `AAInfographics` into your project.
@@ -94,6 +97,7 @@ import AAChartView.swift
 ```
 
 ## Special instructions
+
 ### Special charts in ***AAInfographics***
 Pie chart and bubble chart are special in AAInfographics,if you want to draw these charts,you should do some different things for AAChartModel,for example
 
@@ -274,6 +278,7 @@ enum AAChartAnimationType:String {
 }
 ```
 ## Samples
+
 - line chart
 
 ![line chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/LineChart.png)
@@ -332,6 +337,7 @@ enum AAChartAnimationType:String {
 ![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
 
 ## About AAChartModel
+
 * ### AAChartModel:chart basic properties instruction
 
 Property name | Property type | Description | Value Range | 
@@ -380,8 +386,43 @@ symbol | AAChartSymbolType | A predefined shape or symbol for the marker. When n
      public var markerRadius:Int?           //The radius of the point marker. Defaults to 4
 ```
 
+## Postscript
 
-##  Created By:
+If you want to shrink the size of the `AAInfographics` lib ,you should do something like this:
+1. Delete the `.js` file of `AAJSFiles` folder in `AAInfographics`,The names of multiple files that need to be deleted are as follows
+
+* AAJQueryLibrary.js
+* AAHighchartsLibrary.js
+* AAHighchartsMore.js
+* AAHighcharts-3d.js
+* AAFunnel.js
+
+2.Change the content of `AAChartView.html` file
+``` html
+<script src="AAJQueryLibrary.js">
+</script>
+<script src="AAHighchartsLibrary.js">
+</script>
+<script src="AAHighchartsMore.js">
+</script>
+<script src="AAHighcharts-3d.js">
+</script>
+<script src="AAFunnel.js">
+</script>
+```
+to be
+
+``` html
+<script src="https://img.hcharts.cn/jquery/jquery-1.8.3.min.js">
+</script>
+<script src="https://img.hcharts.cn/highcharts/highcharts.js">
+</script>
+<script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
+</script>
+```
+
+##  Created By
+
 An An 
 ``` java
  "CODE IS FAR AWAY FROM BUG WITH THE ANIMAL PROTECTING"
@@ -417,6 +458,7 @@ An An
 AAInfographics is available under the MIT license. See the [LICENSE](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/LICENSE) file for more information.
 
 ## Contact
+
  -------------------------------------------------------------------------------
 * ❀❀❀   WARM TIPS!!!   ❀❀❀
 *
@@ -430,40 +472,8 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
 -------------------------------------------------------------------------------
 
-## Postscript
-If you want to shrink the size of the `AAInfographics` lib ,you should do something like this:
-1. Delete the `.js` file of `AAJSFiles` folder in `AAInfographics`,The names of multiple files that need to be deleted are as follows
-
-* AAJQueryLibrary.js 
-* AAHighchartsLibrary.js
-* AAHighchartsMore.js
-* AAHighcharts-3d.js
-* AAFunnel.js
-
-2.Change the content of `AAChartView.html` file 
-``` html
-<script src="AAJQueryLibrary.js">
-</script>
-<script src="AAHighchartsLibrary.js">
-</script>
-<script src="AAHighchartsMore.js">
-</script>
-<script src="AAHighcharts-3d.js">
-</script>
-<script src="AAFunnel.js">
-</script>
-```
-to be 
-
-``` html
-<script src="https://img.hcharts.cn/jquery/jquery-1.8.3.min.js">
-</script>
-<script src="https://img.hcharts.cn/highcharts/highcharts.js">
-</script>
-<script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
-</script>
-```
 ## Todo list
+
 > * - [x] Support for the user to add delegate events after the graphics content loading was completed
 > * - [x] Support graphics to refresh global content dynamically
 > * - [x] Support graphics to refresh pure data (`series`) content dynamically
