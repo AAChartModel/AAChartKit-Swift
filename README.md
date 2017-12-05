@@ -16,6 +16,8 @@
 #### *https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md*
  
 ***
+###### ***AAInfographics*** is the `Swift` language version of `AAChartKit` which is object-oriented, a set of easy-to-use, extremely elegant graphics drawing controls,based on the popular open source front-end chart library *Highcharts*.
+
 ## Features:
 1. Support `iOS 6`、`ARC` & `Swift`.
 2. Powerful,support the  `column chart`、`bar chart`、`area chart`、`areaspline chart`、`line chart`、`spline chart`、`radar chart`、`polar chart`、`pie chart`、`bubble chart`、`pyramid chart`、`funnel chart`、`columnrange chart`and other graphics.
@@ -77,7 +79,7 @@ import AAChartView.swift
         //The chart view object calls the instance object of AAChartModel and draws the final graphic
         chartView?.aa_drawChartWithChartModel(chartModel)
 ```
-5. Only refresh the chart data
+5. Only refresh the chart data(This method is recommended to be called for updating the series data dynamically)
 
 ```swift
         //Only refresh the chart series data
@@ -91,8 +93,8 @@ import AAChartView.swift
         chartView?.aa_refreshChartWholeContentWithChartModel(chartModel)
 ```
 
-7. Special instructions(This method is recommended to be called for updating the series data dynamically)
-
+## Special instructions
+### Special charts in ***AAInfographics***
 Pie chart and bubble chart are special in AAInfographics,if you want to draw these charts,you should do some different things for AAChartModel,for example
 
 - To draw a pie chart,you should configure the properties of `AAChartModel` like this:
@@ -209,7 +211,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
             )
 ```
 
-8. Supported chart type for now
+### Supported chart type for now
 
 ```swift
 enum AAChartType{
@@ -231,7 +233,7 @@ enum AAChartType{
 ```
 
 
-9. Supported animation type for now
+### Supported animation type for now
 
 ```swift
 enum AAChartAnimationType:String {
