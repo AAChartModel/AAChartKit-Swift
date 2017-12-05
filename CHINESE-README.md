@@ -102,7 +102,7 @@ import AAChartView.swift
 
 ## 特别说明
 
-### 特殊图表配置
+### 特殊类型图表配置
 
 **AAInfographics** 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 *AAChartModel* 设置稍有不同,示例如下
 
@@ -339,7 +339,7 @@ enum AAChartAnimationType:String {
 
 ![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
 
-## 关于`AAChartModel` 主要属性说明
+## 关于`AAChartModel` 属性说明
 
 * ### AAChartModel 主要属性说明
 
@@ -459,6 +459,7 @@ An An
 ## 许可证
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
+
 本项目 `AAInfographics`使用 MIT许可证,详情请点击[MIT LICENSE](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/LICENSE)
 
 ## 联系方式
@@ -467,7 +468,7 @@ An An
 * ❀❀❀   温馨提示   ❀❀❀
 *
 * 如果有任何使用上的问题,随时欢迎您在 GitHub 上向我提 issue.
-* GitHub Issues : https://github.com/AAChartModel/AAChartKit/issues
+* GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
 -------------------------------------------------------------------------------
 *  如果您想参与到此项目的开源活动中来,也同样随时欢迎您联系我
 * GitHub        : https://github.com/AAChartModel
