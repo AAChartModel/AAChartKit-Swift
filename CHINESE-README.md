@@ -425,7 +425,7 @@ public var markerRadius:Int?           //折线连接点的半径长度
 
 ## 作者
 
-An An 
+![](https://avatars1.githubusercontent.com/u/16357599?s=40&v=4)An An
 ```java
 
                        _oo0oo_
