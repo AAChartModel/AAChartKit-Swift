@@ -17,7 +17,7 @@
 
 ## 前言
 
- ***AAInfographics***,是 `AAChartKit` 的 `swift`语言版本,是在流行的开源前端图表库*Highcharts*的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件.
+ ***AAInfographics***,是 [AAChartKit](https://github.com/AAChartModel/AAChartKit) 的 `swift`语言版本,是在流行的开源前端图表库*Highcharts*的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件.
 
 ***
 ## 功能特性
@@ -26,7 +26,7 @@
 2. 功能强大,支持`柱状图` 、`条形图` 、`折线图` 、`曲线图` 、`折线填充图` 、`曲线填充图`、`雷达图`、`极地图`、`扇形图`、`气泡图`、`散点图`、`金字塔图`、`漏斗图`、`区域范围图`、`柱形范围图`等多种图形
 3. `动画`效果细腻精致,流畅优美.
 4. 类 *Masonry* `链式编程语法`
-5. `AAChartView +AAChartModel = Chart`,在 **AAInfographics** 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`.
+5. `AAChartView +AAChartModel = Chart`,在 **AAInfographics** 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`.同另一个好用的图表库[AAChartKit](https://github.com/AAChartModel/AAChartKit)完全一致.
 ### *亲爱的,如果您使用时,觉得满意,请赏一颗星星✨,您的鼓励将是我继续努力的一大动力*.
 ***
 

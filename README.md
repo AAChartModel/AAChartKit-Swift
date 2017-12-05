@@ -17,7 +17,7 @@
  
 ## Preface
  
- ***AAInfographics*** is the `Swift` language version of `AAChartKit` which is object-oriented, a set of easy-to-use, extremely elegant graphics drawing controls,based on the popular open source front-end chart library *Highcharts*.
+ ***AAInfographics*** is the `Swift` language version of [AAChartKit](https://github.com/AAChartModel/AAChartKit)  which is object-oriented, a set of easy-to-use, extremely elegant graphics drawing controls,based on the popular open source front-end chart library *Highcharts*.
 
 ***
 ## Features
@@ -25,8 +25,8 @@
 1. Support `iOS 6`、`ARC` & `Swift`.
 2. Powerful,support the  `column chart`、`bar chart`、`area chart`、`areaspline chart`、`line chart`、`spline chart`、`radar chart`、`polar chart`、`pie chart`、`bubble chart`、`pyramid chart`、`funnel chart`、`columnrange chart`and other graphics.
 3. Interactive、animated, the `animation` effect is exquisite 、delicate、 smooth and beautiful.
-4. Support `chain programming syntax` like *Masonry* 
-5. `AAChartView + AAChartModel = Chart`  In the AAInfographics,it follows a minimalist formula: ` Chart view + Chart model = The chart you want`. 
+4. Support `chain programming syntax` like *Masonry*.
+5. `AAChartView + AAChartModel = Chart`  In the AAInfographics,it follows a minimalist formula: ` Chart view + Chart model = The chart you want`. Like the powerful charts lib [AAChartKit](https://github.com/AAChartModel/AAChartKit).
 ***
 
 
