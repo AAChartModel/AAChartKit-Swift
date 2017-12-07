@@ -283,59 +283,59 @@ enum AAChartAnimationType:String {
 
 ##  **AAChartModel**一些重要属性经过配置之后的图形示例如下
 
-- line chart - 折线图
+- ### line chart - 折线图
 
 ![line chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/LineChart.png)
 
-- column chart - 柱形图
+- ### column chart - 柱形图
 
 ![IMG_1873.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/IMG_1483.JPG)
 
--   bar chart - 条形图
+- ### bar chart - 条形图
 
 ![bar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/BarChart.png)
 
--  special area chart one - 常规折线区域填充图
+- ### special area chart one - 常规折线区域填充图
 
 ![IMG_1869.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/IMG_1482.JPG)
 
--  special area chart two - 带有负数的区域填充图
+- ### special area chart two - 带有负数的区域填充图
 
 ![IMG_1871.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AreaChartOne.png))
 
--  special area chart three - 堆积效果的区域填充图
+- ### special area chart three - 堆积效果的区域填充图
 
 ![IMG_1863.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AreaChartTwo.png)
 
--   polar chart - 极地图
+- ### polar chart - 极地图
 
 ![polar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/PolarChart.png)
 
--   radar chart - 雷达图
+- ### radar chart - 雷达图
 
 ![radar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/RadarChart.png)
 
--   pie chart - 扇形图
+- ### pie chart - 扇形图
 
 ![pie chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/PieChart.png)
 
-- bubble chart - 气泡图
+- ### bubble chart - 气泡图
 
 ![bubble chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/BubbleChart.png)
 
-- scatter chart - 散点图
+- ### scatter chart - 散点图
 
 ![scatter chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ScatterChart.png)
 
-- arearange chart - 区域范围图
+- ### arearange chart - 区域范围图
 
 ![arearange chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ArearangeChart.png)
 
--   step area chart - 直方折线填充图
+- ### step area chart - 直方折线填充图
 
 ![step area chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/StepAreaChart.png)
 
-- mixed chart - 混合图形
+- ### mixed chart - 混合图形
 
 ![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
 
