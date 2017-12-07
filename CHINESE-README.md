@@ -164,7 +164,7 @@ import AAChartView.swift
 
 ### 特殊类型图表配置
 
-**AAInfographics** 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 *AAChartModel* 设置稍有不同,示例如下
+**AAInfographics** 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 *AAChartModel* 的数据属性`series`设置稍有不同,示例如下
 
 - 绘制扇形图,你需要这样配置模型对象 *AAChartModel*
 ```swift
@@ -277,6 +277,7 @@ import AAChartView.swift
                             ]]]
             )
 ```
+***NOTE:*** 关于更多类型特殊图表的 `AAChartModel`实例对象属性配置,详情请见 ***AAInfographics*** 工程 `Demo` 中的`SpecialChartVC.swift`文件内容,查看文件内容详情请点击[这里](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/AAInfographicsDemo/Demo/SpecialChartVC.swift),您也可以选择下载 `Demo` 后,在  `Xcode` 中查看 ***AAInfographics*** 的`SpecialChartVC.m`内容
 
 ### 当前已支持的图表类型有十种以上,说明如下
 
