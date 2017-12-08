@@ -18,28 +18,5 @@ An elegant and friendly chart library for iOS developer who use Swift
     s.platform     = :ios, '8.0'
     s.source       = {:git => 'https://github.com/AAChartModel/AAChartKit-Swift.git', :tag => s.version}
     s.source_files = 'AAInfographics', 'AAInfographics/**/*.{swift,html,js}'
-
-    # s.source_files = 'AAInfographics'
-
-  #   s.subspec 'AAChartCreator' do |ss|
-  #   ss.source_files = 'AAInfographics/AAChartCreator/*.{swift}'
-  # end
-
-  #   s.subspec 'AAJSFiles' do |ss|
-  #   ss.source_files = 'AAInfographics/AAJSFiles/*.{html,js}'
-  #  end
-
-
     s.requires_arc = true
-
-
-
-
-
-
-
-
-
-
-
 end
