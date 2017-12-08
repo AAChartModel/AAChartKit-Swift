@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = 'AAInfographics'
-    s.version      = '1.0.2'
+    s.version      = '1.0.3'
     s.summary      = 'An elegant and friendly chart library for iOS developer who use Swift'
     s.description  = <<-DESC
 An elegant and friendly chart library for iOS developer who use Swift
@@ -17,6 +17,29 @@ An elegant and friendly chart library for iOS developer who use Swift
     s.authors      = {'An An' => '18256973864@163.com'}
     s.platform     = :ios, '8.0'
     s.source       = {:git => 'https://github.com/AAChartModel/AAChartKit-Swift.git', :tag => s.version}
-    s.source_files = 'AAInfographics', 'AAInfographics/**/*.{swift,html,js}'
+    # s.source_files = 'AAInfographics', 'AAInfographics/**/*.{swift,html,js}'
+
+    s.source_files = 'AAInfographics'
+
+    s.subspec 'AAChartCreator' do |ss|
+    ss.source_files = 'AAInfographics/AAChartCreator/*.{swift}'
+  end
+
+    s.subspec 'AAJSFiles' do |ss|
+    ss.source_files = 'AAInfographics/AAJSFiles/*.{html,js}'
+   end
+
+
     s.requires_arc = true
+
+
+
+
+
+
+
+
+
+
+
 end

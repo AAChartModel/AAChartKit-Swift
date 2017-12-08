@@ -111,7 +111,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         for  i in 0..<segmentedArray.count {
             
-            let segment=UISegmentedControl.init(items: segmentedArray[i])
+            let segment = UISegmentedControl.init(items: segmentedArray[i])
             segment.frame = CGRect(x: 20, y: 40.0*CGFloat(i) + (self.view.frame.size.height-145), width: self.view.frame.size.width-40, height: 20)
             segment.tag = i;
             segment.tintColor = UIColor.purple
@@ -125,7 +125,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             subLabel.numberOfLines = 0
             subLabel.text = typeLabelNameArr[i]
             subLabel.backgroundColor = UIColor.white
-            self.view .addSubview(subLabel)
+            self.view.addSubview(subLabel)
             
         }
         
