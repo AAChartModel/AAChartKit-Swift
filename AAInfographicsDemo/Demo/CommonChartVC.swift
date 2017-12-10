@@ -41,7 +41,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x:0,y:60,width:self.view.frame.size.width,height:self.view.frame.size.height-220)
-        aaChartView?.contentHeight = self.view.frame.size.height-220//AAChartViewd的内容高度
+//        aaChartView?.contentHeight = self.view.frame.size.height-220//AAChartViewd的内容高度
         self.view.addSubview(aaChartView!)
         
         aaChartModel = AAChartModel.init()

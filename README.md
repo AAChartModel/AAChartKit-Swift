@@ -47,7 +47,8 @@ import AAChartView.swift
         CGFloat chartViewHeight = self.view.frame.size.height;
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
-        aaChartView?.contentHeight = self.view.frame.size.height
+        // set the content height of aachartView
+        // aaChartView?.contentHeight = self.view.frame.size.height
         self.view.addSubview(aaChartView!)
   ```
 3.Configure the properties of chart model:`AAChartModel`
