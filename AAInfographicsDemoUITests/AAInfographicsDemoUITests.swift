@@ -37,6 +37,38 @@ class AAInfographicsDemoUITests: XCTestCase {
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
+        
+        /*
+ 
+ 面朝大海 春暖花开 
+ 
+ 从明天起
+ 做一个幸福的人
+ 喂🐎劈柴 周游世界
+ 从明天起
+ 关心粮食 生产和蔬菜
+ 我有一所🏡
+ 面朝大海 春暖花开
+
+ 从明天起
+ 和每一个亲人通✉️
+ 告诉他们我的幸福
+ 那幸福的⚡告诉我的
+ 我将告诉每一个人
+ 
+ 给每一条河每一座⛰取一个温暖的名字
+ 陌生人
+ 我也为你祝福
+ 愿你有一个灿烂的前程
+ 愿你在尘世获🉐幸福
+ 我只愿面朝大海 春暖🌹开
+
+
+ */
+        
+        
+        
+        
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
