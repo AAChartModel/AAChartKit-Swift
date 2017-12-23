@@ -35,9 +35,24 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// Content height of AAChartView
     public var contentHeight:CGFloat?
     
+    public var scrollEnabled:Bool? {
+        set{
+            _scrollEnabled=newValue
+            if #available(iOS 9.0, *) {
+                wkWebView?.scrollView.isScrollEnabled = _scrollEnabled!
+            } else {
+                // Fallback on earlier versions
+                uiWebView?.scrollView.isScrollEnabled = _scrollEnabled!
+            }
+        }
+        get{
+            return  _scrollEnabled
+        }
+    }
     /// Hide chart series content or not
     public var chartSeriesHidden:Bool?
 
+    private var _scrollEnabled:Bool?
     
     private var wkWebView: WKWebView?
     private var uiWebView: UIWebView?
@@ -45,10 +60,18 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.setUpBasicView()
+    }
+    
+    convenience init() {
+        self.init(frame: CGRect.zero)
+        self.setUpBasicView()
+    }
+    
+    private func setUpBasicView() {
         self.contentWidth = 0
         self.contentHeight = 0
         //        self.backgroundColor =  UIColor.white
-        
         if #available(iOS 9.0, *) {
             wkWebView = WKWebView()
             wkWebView?.backgroundColor = UIColor.white
@@ -67,7 +90,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         }
     }
     
-    func configureTheConstraintArray(childView:UIView, fatherView:UIView) -> [NSLayoutConstraint] {
+   private func configureTheConstraintArray(childView:UIView, fatherView:UIView) -> [NSLayoutConstraint] {
         return [NSLayoutConstraint(item:childView,
                                    attribute:NSLayoutAttribute.left,
                                    relatedBy:NSLayoutRelation.equal,
