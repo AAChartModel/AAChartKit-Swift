@@ -110,17 +110,15 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
         
         self.configureTheJavaScriptString(chartModel)
-        //检查 AAChartView是否存在
-        if  let htmlFile = Bundle.main.path(forResource: "AAChartView", ofType: "html") {
-            let htmlData = NSData(contentsOfFile: htmlFile)
-            let baseURL = NSURL.fileURL(withPath: Bundle.main.bundlePath)
-            if #available(iOS 9.0, *) {
-                wkWebView?.load(htmlData! as Data, mimeType: "text/html", characterEncodingName: "UTF-8", baseURL: baseURL)
-            } else {
-                // Fallback on earlier versions
-                uiWebView?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
-            }
-            
+        
+        let path = Bundle.main.path(forResource: "AAChartView", ofType: "html")
+        let urlStr = NSURL.fileURL(withPath: path!)
+        let urlRequest = NSURLRequest(url: urlStr) as URLRequest
+        if #available(iOS 9.0, *) {
+            wkWebView?.load(urlRequest)
+        } else {
+            // Fallback on earlier versions
+            uiWebView?.loadRequest(urlRequest)
         }
     }
     
