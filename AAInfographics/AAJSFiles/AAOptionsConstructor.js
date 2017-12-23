@@ -180,17 +180,19 @@ function configureAAPlotOptions(AAPlotOptions, AAChartModel) {
     
         if (AAChartModel.chartType === "column") {
                 var AAColumn = {
-                        pointPadding: 0.2,
                         borderWidth: 0,
                         borderRadius: AAChartModel.borderRadius,
                         dataLabels: {
                                 enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
+            if (AAChartModel.polar == true) {
+                AAColumn.pointPadding = 0;
+                AAColumn.groupPadding = 0.005;
+            }
                 AAPlotOptions.column = AAColumn;
         } else if (AAChartModel.chartType === "bar") {
                 var AABar = {
-                        pointPadding: 0.2,
                         borderWidth: 0,
                         colorByPoint: false,
                         borderRadius: AAChartModel.borderRadius,
@@ -198,8 +200,11 @@ function configureAAPlotOptions(AAPlotOptions, AAChartModel) {
                                 enabled: AAChartModel.dataLabelEnabled,
                         }
                 };
+            if (AAChartModel.polar == true) {
+                AABar.pointPadding = 0;
+                AABar.groupPadding = 0.005;
+            }
                 AAPlotOptions.bar = AABar;
-
         } else if (AAChartModel.chartType === "area") {
                 var AAArea = {
                         dataLabels: {
