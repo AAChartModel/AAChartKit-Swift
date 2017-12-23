@@ -82,7 +82,9 @@
                                                );
                                                
             var animationEasingType = AAOptions.plotOptions.series.animation.easing;
-             AAOptions.plotOptions.series.animation.easing = configureTheChartAnimationEasingType(animationEasingType);
+            if (animationEasingType) { //懒调用(只有在 AAChartModel 实例对象设置了 animationType 属性值的时候才会调用设置动画类型的函数,否则不调用)
+                AAOptions.plotOptions.series.animation.easing = configureTheChartAnimationEasingType(animationEasingType);
+            }
 
             AAGlobalChart = Highcharts.chart('container', AAOptions);
         };

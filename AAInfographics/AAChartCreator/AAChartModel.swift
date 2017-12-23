@@ -354,7 +354,7 @@ public class AAChartModel:AASerializable {
     public  init() {
 //        self.backgroundColor     = "#4b2b7f"
         self.backgroundColor     = "#ffffff"
-        self.animationType       = AAChartAnimationType.EaseInOutQuart.rawValue
+//        self.animationType       = AAChartAnimationType.EaseInOutQuart.rawValue
         self.animationDuration   = 800//以毫秒为单位
         self.chartType           = AAChartType.Column.rawValue
         self.inverted            = false
