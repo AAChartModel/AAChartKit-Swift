@@ -37,6 +37,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
     /// Hide chart series content or not
     public var chartSeriesHidden:Bool?
+
     
     private var wkWebView: WKWebView?
     private var uiWebView: UIWebView?
@@ -119,19 +120,19 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
                 // Fallback on earlier versions
                 uiWebView?.load(htmlData! as Data, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: baseURL)
             }
+            
         }
     }
     
-    
-    // ToDo:此处性能需要优化,因为仅仅刷新数据的话,其实只要是传递 series 里面的字符串数据就可以了,不需要传递整个序列化为字符串之后的 AAChartModel,这样操作实际上是传递了冗余信息,造成了不必要的计算资源的浪费 参见 issue #13
     /// Function of only refresh the chart data
     ///
     /// - Parameter chartModel: The instance object of chart model
-    public func aa_onlyRefreshTheChartDataWithChartModel(_ chartModel:AAChartModel) {
-        let modelString = chartModel.toJSON()
-        let jsString = NSString.localizedStringWithFormat("onlyRefreshTheChartDataWithAAChartModel('%@');", modelString!)
-        optionsJson = jsString as String
-        self.drawChart()
+    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries:Array<Any>) {
+        let jsonData = try! JSONSerialization.data(withJSONObject: chartModelSeries, options: JSONSerialization.WritingOptions.prettyPrinted)
+        var str = String(data: jsonData, encoding: String.Encoding.utf8)!
+        str = (str.replacingOccurrences(of: "\n", with: "") as NSString) as String
+        let jsString = NSString.localizedStringWithFormat("onlyRefreshTheChartDataWithSeries('%@');", str)
+        self.evaluateJavaScriptWithFunctionNameString(jsString as String)
     }
     
     ///  Function of refreshing whole chart view content
@@ -159,12 +160,20 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     }
     
     private func drawChart() {
+        self.evaluateJavaScriptWithFunctionNameString(optionsJson!)
+    }
+    
+    private func evaluateJavaScriptWithFunctionNameString (_ jsString:String) {
         if #available(iOS 9.0, *) {
-            wkWebView?.evaluateJavaScript(optionsJson!, completionHandler: { (item, error) in
+            wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
+                if ((error) != nil) {
+                    let errorInfo = NSString.localizedStringWithFormat("💀💀💀WARNING!!!!! THERE ARE SOME ERROR INFOMATION_______%@", error! as CVarArg)
+                    print(errorInfo)
+                }
             })
         } else {
             // Fallback on earlier versions
-            uiWebView?.stringByEvaluatingJavaScript(from: optionsJson!)
+            uiWebView?.stringByEvaluatingJavaScript(from: jsString)
         }
     }
     
@@ -185,3 +194,4 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
     
 }
+

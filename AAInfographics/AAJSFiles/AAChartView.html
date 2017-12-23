@@ -89,9 +89,8 @@
             AAGlobalChart = Highcharts.chart('container', AAOptions);
         };
         
-        function onlyRefreshTheChartDataWithAAChartModel (receivedAAChartModel) {
-            var JavaScriptObject = JSON.parse(receivedAAChartModel);
-            var receivedSeriesElementArr = JavaScriptObject.series;
+        function onlyRefreshTheChartDataWithSeries (receivedSeries) {
+            var receivedSeriesElementArr = JSON.parse(receivedSeries);
             
             for (var i = 0; i < receivedSeriesElementArr.length; i++) {
                 var receivedSeriesData = receivedSeriesElementArr[i].data;
