@@ -71,7 +71,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         self.view.addSubview(myTableView)
 
         myTableView.translatesAutoresizingMaskIntoConstraints = false
-        myTableView.superview!.addConstraints(self.configureTheConstraintArray(view1: myTableView, view2: self.view))//Note:父控件添加约束
+        myTableView.superview!.addConstraints(self.configureTheConstraintArray(childView: myTableView, fatherView: self.view))//Note:父控件添加约束
         
     }
     
@@ -105,7 +105,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         view.addSubview(sectionTitleLabel)
         
         sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        sectionTitleLabel.superview!.addConstraints(self.configureTheConstraintArray(view1: sectionTitleLabel, view2: view))
+        sectionTitleLabel.superview!.addConstraints(self.configureTheConstraintArray(childView: sectionTitleLabel, fatherView: view))
         
         return view
     }
@@ -163,32 +163,32 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     }
     
-    func configureTheConstraintArray(view1:UIView, view2:UIView) -> [NSLayoutConstraint] {
-        return [NSLayoutConstraint(item:view1,
+    func configureTheConstraintArray(childView:UIView, fatherView:UIView) -> [NSLayoutConstraint] {
+        return [NSLayoutConstraint(item:childView,
                                    attribute:NSLayoutAttribute.left,
                                    relatedBy:NSLayoutRelation.equal,
-                                   toItem:view2,
+                                   toItem:fatherView,
                                    attribute:NSLayoutAttribute.left,
                                    multiplier:1.0,
                                    constant:0),
-                NSLayoutConstraint(item:view1,
+                NSLayoutConstraint(item:childView,
                                    attribute:NSLayoutAttribute.right,
                                    relatedBy:NSLayoutRelation.equal,
-                                   toItem:view2,
+                                   toItem:fatherView,
                                    attribute:NSLayoutAttribute.right,
                                    multiplier:1.0,
                                    constant:0),
-                NSLayoutConstraint(item:view1,
+                NSLayoutConstraint(item:childView,
                                    attribute:NSLayoutAttribute.top,
                                    relatedBy:NSLayoutRelation.equal,
-                                   toItem:view2,
+                                   toItem:fatherView,
                                    attribute:NSLayoutAttribute.top,
                                    multiplier:1.0,
                                    constant:0),
-                NSLayoutConstraint(item:view1,
+                NSLayoutConstraint(item:childView,
                                    attribute:NSLayoutAttribute.bottom,
                                    relatedBy:NSLayoutRelation.equal,
-                                   toItem:view2,
+                                   toItem:fatherView,
                                    attribute:NSLayoutAttribute.bottom,
                                    multiplier:1.0,
                                    constant:0)]

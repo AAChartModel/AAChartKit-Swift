@@ -53,13 +53,48 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
             wkWebView?.backgroundColor = UIColor.white
             wkWebView?.navigationDelegate = self
             self.addSubview(wkWebView!)
+            wkWebView?.translatesAutoresizingMaskIntoConstraints = false
+            wkWebView?.superview!.addConstraints(self.configureTheConstraintArray(childView: wkWebView!, fatherView: self))//Note:父控件添加约束
         } else {
             // Fallback on earlier versions
             uiWebView = UIWebView()
             uiWebView?.backgroundColor = UIColor.white
             uiWebView?.delegate = self
             self.addSubview(uiWebView!)
+            uiWebView?.translatesAutoresizingMaskIntoConstraints = false
+            uiWebView?.superview!.addConstraints(self.configureTheConstraintArray(childView: uiWebView!, fatherView: self))//Note:父控件添加约束
         }
+    }
+    
+    func configureTheConstraintArray(childView:UIView, fatherView:UIView) -> [NSLayoutConstraint] {
+        return [NSLayoutConstraint(item:childView,
+                                   attribute:NSLayoutAttribute.left,
+                                   relatedBy:NSLayoutRelation.equal,
+                                   toItem:fatherView,
+                                   attribute:NSLayoutAttribute.left,
+                                   multiplier:1.0,
+                                   constant:0),
+                NSLayoutConstraint(item:childView,
+                                   attribute:NSLayoutAttribute.right,
+                                   relatedBy:NSLayoutRelation.equal,
+                                   toItem:fatherView,
+                                   attribute:NSLayoutAttribute.right,
+                                   multiplier:1.0,
+                                   constant:0),
+                NSLayoutConstraint(item:childView,
+                                   attribute:NSLayoutAttribute.top,
+                                   relatedBy:NSLayoutRelation.equal,
+                                   toItem:fatherView,
+                                   attribute:NSLayoutAttribute.top,
+                                   multiplier:1.0,
+                                   constant:0),
+                NSLayoutConstraint(item:childView,
+                                   attribute:NSLayoutAttribute.bottom,
+                                   relatedBy:NSLayoutRelation.equal,
+                                   toItem:fatherView,
+                                   attribute:NSLayoutAttribute.bottom,
+                                   multiplier:1.0,
+                                   constant:0)]
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,12 +107,6 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
-        
-        if #available(iOS 9.0, *) {
-            wkWebView?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
-        } else {
-            uiWebView?.frame = CGRect(x:0,y:0,width:self.frame.size.width,height:self.frame.size.height)
-        }
         
         self.configureTheJavaScriptString(chartModel)
         //检查 AAChartView是否存在
