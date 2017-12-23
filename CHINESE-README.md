@@ -91,7 +91,7 @@ import AAChartView.swift
 
 ```swift
     /*仅仅更新了图表的series数组数据,不改动图表的其他内容*/
-    chartView?.aa_onlyRefreshTheChartDataWithChartModel(chartModel)
+    chartView?.aa_onlyRefreshTheChartDataWithChartModelSeries(chartModelSeriesArray)
 ```
 
 6.  刷新图形整体内容

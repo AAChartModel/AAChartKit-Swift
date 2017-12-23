@@ -87,7 +87,7 @@ import AAChartView.swift
 
 ```swift
         //Only refresh the chart series data
-        chartView?.aa_onlyRefreshTheChartDataWithChartModel(chartModel)
+        chartView?.aa_onlyRefreshTheChartDataWithChartModelSeries(chartModelSeriesArray)
 ```
 
 6.  Refresh the chart(Subsequent refresh options are recommended to call this method after the first drawing of graphics is completed)
