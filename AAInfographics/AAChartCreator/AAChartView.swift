@@ -36,8 +36,8 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     public var contentHeight:CGFloat?
     
     public var scrollEnabled:Bool? {
-        set{
-            _scrollEnabled=newValue
+        set {
+            _scrollEnabled = newValue
             if #available(iOS 9.0, *) {
                 wkWebView?.scrollView.isScrollEnabled = _scrollEnabled!
             } else {
@@ -45,7 +45,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
                 uiWebView?.scrollView.isScrollEnabled = _scrollEnabled!
             }
         }
-        get{
+        get {
             return  _scrollEnabled
         }
     }

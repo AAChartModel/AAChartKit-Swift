@@ -148,6 +148,8 @@ public class AAChartModel:AASerializable {
     private var xAxisLabelsEnabled:Bool?    //x轴是否显示数据
     private var categories:Array<Any>?      //x轴是否显示数据
     private var xAxisGridLineWidth:Int?     //x轴网格线的宽度
+    private var xAxisVisible:Bool?          //x轴是否显示
+    private var yAxisVisible:Bool?          //y轴是否显示
     private var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
     private var yAxisTitle:String?          //y轴标题
     private var yAxisGridLineWidth:Int?     //y轴网格线的宽度
@@ -266,6 +268,16 @@ public class AAChartModel:AASerializable {
     
     func xAxisGridLineWidth(_ prop: Int) -> AAChartModel {
         self.xAxisGridLineWidth = prop
+        return self
+    }
+    
+    func xAxisVisible(_ prop: Bool) -> AAChartModel {
+        self.xAxisVisible = prop
+        return self
+    }
+    
+    func yAxisVisible(_ prop: Bool) -> AAChartModel {
+        self.yAxisVisible = prop
         return self
     }
     

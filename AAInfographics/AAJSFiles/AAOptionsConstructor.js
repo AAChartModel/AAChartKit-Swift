@@ -86,7 +86,8 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 },
                 reversed: AAChartModel.xAxisReversed,//是否反转 X 轴
                 gridLineWidth: AAChartModel.xAxisGridLineWidth,// X 轴网格线宽度
-                categories: AAChartModel.categories
+                categories: AAChartModel.categories,
+                visible:AAChartModel.xAxisVisible
         };
 
         var AAYAxis = {
@@ -103,7 +104,9 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                         value: 0,
                         width: 1,
                         color: '#808080'
-                }]
+                }],
+                visible:AAChartModel.yAxisVisible
+
         };
 
         var AATooltip = {
