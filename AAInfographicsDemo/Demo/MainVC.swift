@@ -95,7 +95,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let view = UIView()
         view.backgroundColor = UIColor.white
         
-        let sectionTitleArr = ["基础类型图表","特殊类型图表","同时显示多个图表"]
+        let sectionTitleArr = ["Basic Type Chart --- 基础类型图表","Special Type Chart --- 特殊类型图表","同时显示多个图表"]
         
         let sectionTitleLabel = UILabel()
         sectionTitleLabel.text = sectionTitleArr[section]

@@ -49,6 +49,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         aaChartView?.frame = CGRect(x:0,y:60,width:self.view.frame.size.width,height:self.view.frame.size.height)
         aaChartView?.contentHeight = self.view.frame.size.height-60
         self.view.addSubview(aaChartView!)
+        aaChartView?.scrollEnabled = false
         
         self.configureTheAAChartModel(chartTypeStr:AAChartType(rawValue: self.chartType!)!)
         
