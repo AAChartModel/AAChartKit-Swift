@@ -711,7 +711,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                 .categories(["January", "February", "March", "April", "May", "June",
                              "July", "August", "September", "October", "November", "December"])
                 .dataLabelEnabled(true)
-                //.inverted(true)//x 轴是否垂直翻转
+                .inverted(true)//x 轴是否垂直翻转
                 .series(
                     [
                         [

@@ -96,7 +96,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             || self.chartType == AAChartType.Spline {
             //设置折线连接点样式为:边缘白色
             aaChartModel?
-                .symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.InnerBlank.rawValue)!)
+                .symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.BorderBlank.rawValue)!)
                 .markerRadius(6)
             //            aaChartModel?.animationType = AAChartAnimationType.SwingFromTo.rawValue
         }

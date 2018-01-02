@@ -254,7 +254,14 @@ function configureAAPlotOptions(AAPlotOptions, AAChartModel) {
                         showInLegend: AAChartModel.legendEnabled,
                 };
                 AAPlotOptions.pie = AAPie;
-        };
+        } else if (AAChartModel.chartType === "columnrange") {
+                var AAColumnrange = {
+                         dataLabels: {
+                                enabled: AAChartModel.dataLabelEnabled,
+                         }
+                };
+                AAPlotOptions.columnrange = AAColumnrange;
+        } ;
 
         return AAPlotOptions;
 }
