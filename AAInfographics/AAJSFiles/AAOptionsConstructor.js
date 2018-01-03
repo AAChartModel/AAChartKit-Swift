@@ -261,7 +261,7 @@ function configureAAPlotOptions(AAPlotOptions, AAChartModel) {
                          }
                 };
                 AAPlotOptions.columnrange = AAColumnrange;
-        } ;
+        };
 
         return AAPlotOptions;
 }

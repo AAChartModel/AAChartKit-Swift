@@ -61,6 +61,8 @@ import AAChartView.swift
             .subtitle("subtitle")//The chart subtitle
             .dataLabelEnabled(false) //Enable or disable the data labels. Defaults to false
             .markerRadius(5) //The radius of the point marker. Defaults to 4
+            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .series([
                 [
                     "name": "Tokyo",

@@ -37,6 +37,7 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
+        self.title = self.chartType
         
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
         let subLabel = UILabel()
