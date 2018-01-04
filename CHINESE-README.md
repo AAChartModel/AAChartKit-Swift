@@ -136,7 +136,7 @@ import AAChartView.swift
 
 - ### radar chart - 雷达图
 
-![radar chart](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1877.JPG)
+![radar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/RadarChart.png)
 
 - ### pie chart - 扇形图
 
@@ -160,7 +160,7 @@ import AAChartView.swift
 
 - ### mixed chart - 混合图形
 
-![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/raw/master/NfAVBj7.png)
+![mixed chart](https://github.com/AAChartModel/AAChartKit/raw/master/AAChartKitDemo/ChartsDemo/IMG_1882.JPG)
 
 
 ## 特别说明

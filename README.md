@@ -133,7 +133,7 @@ import AAChartView.swift
 
 - ### radar chart
 
-![radar chart](https://github.com/AAChartModel/AAChartKit/blob/master/AAChartKitDemo/ChartsDemo/IMG_1877.JPG)
+![radar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/RadarChart.png)
 
 - ### pie chart
 
@@ -157,7 +157,7 @@ import AAChartView.swift
 
 - ### mixed chart
 
-![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/raw/master/NfAVBj7.png)
+![mixed chart](https://github.com/AAChartModel/AAChartKit/raw/master/AAChartKitDemo/ChartsDemo/IMG_1882.JPG)
 
 ## Special instructions
 
