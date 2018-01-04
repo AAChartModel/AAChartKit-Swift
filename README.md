@@ -157,7 +157,7 @@ import AAChartView.swift
 
 - ### mixed chart
 
-![mixed chart](https://github.com/AAChartModel/AAChartKit/raw/master/AAChartKitDemo/ChartsDemo/IMG_1882.JPG)
+![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
 
 ## Special instructions
 

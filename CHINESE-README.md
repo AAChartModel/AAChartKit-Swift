@@ -160,7 +160,7 @@ import AAChartView.swift
 
 - ### mixed chart - 混合图形
 
-![mixed chart](https://github.com/AAChartModel/AAChartKit/raw/master/AAChartKitDemo/ChartsDemo/IMG_1882.JPG)
+![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
 
 
 ## 特别说明
