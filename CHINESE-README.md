@@ -112,7 +112,7 @@ import AAChartView.swift
 
 - ### column chart - 柱形图
 
-![IMG_1873.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/IMG_1483.JPG)
+![IMG_1873.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ColumnChart.png)
 
 - ### bar chart - 条形图
 
@@ -160,7 +160,7 @@ import AAChartView.swift
 
 - ### mixed chart - 混合图形
 
-![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
+![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/raw/master/NfAVBj7.png)
 
 
 ## 特别说明
