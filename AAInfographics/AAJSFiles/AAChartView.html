@@ -87,6 +87,7 @@
             }
 
             AAGlobalChart = Highcharts.chart('container', AAOptions);
+           //全局配置(可通过全局配置设置主题)https://api.hcharts.cn/highcharts#Highcharts.setOptions
         };
         
         function onlyRefreshTheChartDataWithSeries (receivedSeries) {
@@ -298,6 +299,19 @@
             }
         
         return animationObject[easingType];
+        }
+        
+        //pragma mark -- setter method 适应内容https://code.hcharts.cn/highcharts/4YM0a8
+        function setTheChartViewContentWidth (receivedWidth) {
+            var container = document.getElementById('container');//获得元素
+            container.style.width = receivedWidth;//设置宽度
+            AAGlobalChart.reflow();
+        }
+        
+        function setTheChartViewContentHeight (receivedHeight) {
+            var container = document.getElementById('container');//获得元素
+            container.style.height = receivedHeight;//设置高度
+            AAGlobalChart.reflow();
         }
         
             </script>

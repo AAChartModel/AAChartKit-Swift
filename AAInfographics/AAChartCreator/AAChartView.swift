@@ -29,12 +29,6 @@ import UIKit
 import WebKit
 class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
-    /// Content width of AAChartView
-    public var contentWidth:CGFloat?
-    
-    /// Content height of AAChartView
-    public var contentHeight:CGFloat?
-    
     public var scrollEnabled:Bool? {
         set {
             _scrollEnabled = newValue
@@ -49,10 +43,42 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
             return  _scrollEnabled
         }
     }
+    
+    /// Content width of AAChartView
+    public var contentWidth:CGFloat? {
+        set {
+            _contentWidth = newValue
+            if (self.optionsJson != nil) {
+                let jsString = NSString.localizedStringWithFormat("setTheChartViewContentWidth(%f)",_contentWidth!)
+                self.evaluateJavaScriptWithFunctionNameString(jsString as String)
+            }
+        }
+        get {
+            return  _contentWidth
+        }
+    }
+    
+    /// Content height of AAChartView
+    public var contentHeight:CGFloat? {
+        set {
+            _contentHeight = newValue
+            if (self.optionsJson != nil) {
+                let jsString = NSString.localizedStringWithFormat("setTheChartViewContentHeight(%f)",_contentHeight!)
+                self.evaluateJavaScriptWithFunctionNameString(jsString as String)
+            }
+        }
+        get {
+            return  _contentHeight
+        }
+    }
+    
+
     /// Hide chart series content or not
     public var chartSeriesHidden:Bool?
 
     private var _scrollEnabled:Bool?
+    private var _contentWidth:CGFloat?
+    private var _contentHeight:CGFloat?
     
     private var wkWebView: WKWebView?
     private var uiWebView: UIWebView?
