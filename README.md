@@ -60,7 +60,7 @@ import AAChartView.swift
             .title("TITLE")//The chart title
             .subtitle("subtitle")//The chart subtitle
             .dataLabelEnabled(false) //Enable or disable the data labels. Defaults to false
-            .markerRadius(5) //The radius of the point marker. Defaults to 4
+            .tooltipValueSuffix("USD")//the value suffix of the chart tooltip
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
@@ -488,7 +488,7 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 > * - [x] Support color layer gradient effects
 > * - [x] Support 3D graphics effects, valid only for partial graphics such as `column chart`、`bar chart`、`pie charts`、`scatterplot chart`、`bubble chart`, etc
 > * - [ ] Support horizontal screen (full screen) effect
-> * - [ ] Support setting graphics rendering animation freely
+> * - [x] Support setting graphics rendering animation freely
 > * - [ ] Support rendered graphics to generate image files
 > * - [ ] Support generating image files saved to the system album
 > * - [x] Support for users to configure `AAOptions` model object properties freely
@@ -497,9 +497,9 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 > * - [x] Support rendering the scatter chart
 > * - [x] Support rendering the column range map
 > * - [x] Support rendering the area range graph
-> * - [ ] Support rendering the polar chart
-> * - [ ] Support rendering the polyline straight line chart
-> * - [ ] Support rendering the polyline straight area chart
+> * - [x] Support rendering the polar chart
+> * - [x] Support rendering the step line chart
+> * - [x] Support rendering the step area chart
 > * - [ ] Support rendering the rectangular tree hierarchy diagrams
 > * - [ ] Support rendering the circular progress bar chart 
 > * - [ ] Support adding clicked event callbacks for graphics
