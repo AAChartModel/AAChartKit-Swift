@@ -84,20 +84,20 @@ import AAChartView.swift
 
 ```swift
         //The chart view object calls the instance object of AAChartModel and draws the final graphic
-        chartView?.aa_drawChartWithChartModel(chartModel)
+        aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
 ```
 5. Only refresh the chart data(This method is recommended to be called for updating the series data dynamically)
 
 ```swift
         //Only refresh the chart series data
-        chartView?.aa_onlyRefreshTheChartDataWithChartModelSeries(chartModelSeriesArray)
+        aaChartView?.aa_onlyRefreshTheChartDataWithChartModelSeries(chartModelSeriesArray)
 ```
 
 6.  Refresh the chart(Subsequent refresh options are recommended to call this method after the first drawing of graphics is completed)
 
 ```swift
         //Refresh the chart after the AAChartModel whole content is updated
-        chartView?.aa_refreshChartWholeContentWithChartModel(chartModel)
+        aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
 ```
 
 ## Infographics sample

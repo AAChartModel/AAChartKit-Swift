@@ -86,21 +86,21 @@ import AAChartView.swift
 
 ```swift
     /*图表视图对象调用图表模型对象,绘制最终图形*/
-    chartView?.aa_drawChartWithChartModel(chartModel)
+    aaChartView?.aa_drawChartWithChartModel(aaChartModel)
 ```
 
 5. 仅仅刷新图形的`series`数据内容(首次绘制图形完成之后,后续刷新图表数据均建议调用此方法)
 
 ```swift
     /*仅仅更新了图表的series数组数据,不改动图表的其他内容*/
-    chartView?.aa_onlyRefreshTheChartDataWithChartModelSeries(chartModelSeriesArray)
+    aaChartView?.aa_onlyRefreshTheChartDataWithChartModelSeries(chartModelSeriesArray)
 ```
 
 6.  刷新图形整体内容
 
 ```swift
     /*更新 AAChartModel 整体内容(如修改了图表的类型,将 column chart 改为 area chart)之后,刷新图表*/
-    chartView?.aa_refreshChartWholeContentWithChartModel(chartModel)
+    aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel)
 ```
 
 
