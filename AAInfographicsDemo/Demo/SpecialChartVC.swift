@@ -46,8 +46,11 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         self.view .addSubview(subLabel)
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
         
+      
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:60,width:self.view.frame.size.width,height:self.view.frame.size.height)
+        let chartWidth = self.view.frame.size.width
+        let chartHeight = self.view.frame.size.height  
+        aaChartView?.frame = CGRect(x:0,y:60,width:chartWidth,height:chartHeight)
         aaChartView?.contentHeight = self.view.frame.size.height-60
         self.view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false
@@ -792,10 +795,8 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
         case AAChartType.Boxplot:
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Boxplot)
-                .backgroundColor("#ffffff")
                 .title("BOXPLOT CHART")
                 .subtitle("virtual data")
-                .dataLabelEnabled(true)//是否直接显示扇形图数据
                 .yAxisTitle("℃")
                 .yAxisVisible(true)
                 .series(
@@ -813,6 +814,47 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                     
             )
             break
+            
+        case AAChartType.Waterfall:
+            aaChartModel = AAChartModel.init()
+                .chartType(AAChartType.Waterfall)
+                .title("WATERFALL CHART")
+                .subtitle("virtual data")
+                .yAxisVisible(true)
+                .series(
+                    [[
+                        "upColor":"#9b43b4",
+                        "color": "#ef476f",
+                        "data": [[
+                        "name": "启动资金",
+                        "y": 120000
+                        ], [
+                        "name": "产品收入",
+                        "y": 569000
+                        ], [
+                        "name": "服务收入",
+                        "y": 231000
+                        ], [
+                        "name": "正平衡",
+                        "isIntermediateSum": true,
+                        "color": "#ffd066"
+                        ], [
+                        "name": "固定成本",
+                        "y": -342000
+                        ], [
+                        "name": "可变成本",
+                        "y": -233000
+                        ], [
+                        "name": "余额",
+                        "isSum": true,
+                        "color": "#04d69f"
+                        ]],
+                        "pointPadding": 0
+                        ]]
+                    
+            )
+            break
+            
             
         default:
             break;
