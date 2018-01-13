@@ -56,6 +56,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 "Columnrange Chart--- 柱形范围图",
                 "Step Line Chart--- 直方折线图",
                 "Step Area Chart--- 直方折线填充图",
+                "Boxplot Chart--- 箱线图"
                 ],
             /*Mixed Chart---混合图*/
             /*同时显示多个图表*/
@@ -141,6 +142,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 AAChartType.Columnrange,
                 AAChartType.Line,
                 AAChartType.Area,
+                AAChartType.Boxplot,
                 ],
         ]
         

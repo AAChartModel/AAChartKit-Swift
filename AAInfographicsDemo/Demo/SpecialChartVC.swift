@@ -789,6 +789,30 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                     ], ])
             break
             
+        case AAChartType.Boxplot:
+            aaChartModel = AAChartModel.init()
+                .chartType(AAChartType.Boxplot)
+                .backgroundColor("#ffffff")
+                .title("BOXPLOT CHART")
+                .subtitle("virtual data")
+                .dataLabelEnabled(true)//是否直接显示扇形图数据
+                .yAxisTitle("℃")
+                .yAxisVisible(true)
+                .series(
+                    [[
+                        "name":"Observed Data",
+                        "data": [
+                            [760, 801, 848, 895, 965],
+                            [733, 853, 939, 980, 1080],
+                            [714, 762, 817, 870, 918],
+                            [724, 802, 806, 871, 950],
+                            [834, 836, 864, 882, 910]
+                        ],
+                        
+                        ], ]
+                    
+            )
+            break
             
         default:
             break;

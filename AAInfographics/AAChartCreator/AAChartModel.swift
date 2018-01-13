@@ -77,6 +77,9 @@ enum AAChartType:String {
     case Funnel      = "funnel"
     case Columnrange = "columnrange"
     case Arearange   = "arearange"
+    case Boxplot     = "boxplot"
+
+    
 }
 
 enum AAChartSubtitleAlignType:String {
@@ -152,7 +155,7 @@ public class AAChartModel:AASerializable {
     private var yAxisVisible:Bool?          //y轴是否显示
     private var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
     private var yAxisTitle:String?          //y轴标题
-    private var yAxisGridLineWidth:Int?     //y轴网格线的宽度
+    private var yAxisGridLineWidth:Float?   //y轴网格线的宽度
     private var tooltipValueSuffix:String?  //浮动提示框单位后缀
     private var tooltipCrosshairs:Bool?     //是否显示准星线(默认显示)
     private var colorsTheme:Array<Any>?     //图表主题颜色数组
@@ -291,7 +294,7 @@ public class AAChartModel:AASerializable {
         return self
     }
     
-    func yAxisGridLineWidth(_ prop: Int) -> AAChartModel {
+    func yAxisGridLineWidth(_ prop: Float) -> AAChartModel {
         self.yAxisGridLineWidth = prop
         return self
     }
@@ -364,20 +367,17 @@ public class AAChartModel:AASerializable {
     
     
     public  init() {
-//        self.backgroundColor     = "#4b2b7f"
+//        self.backgroundColor     = "#9b43b4"
         self.backgroundColor     = "#ffffff"
 //        self.animationType       = AAChartAnimationType.EaseInOutQuart.rawValue
         self.animationDuration   = 800//以毫秒为单位
         self.chartType           = AAChartType.Column.rawValue
         self.inverted            = false
         self.stacking            = AAChartStackingType.False.rawValue
-//        self.symbol              = AAChartSymbolType.Square.rawValue//默认的折线连接点类型
         self.xAxisReversed       = false
         self.yAxisReversed       = false
         self.zoomType            = AAChartZoomType.X.rawValue
-//        self.colorsTheme         = ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
-//        self.colorsTheme         = ["#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",]//明艳色彩
-        self.colorsTheme         = ["#fe117c","#ffc069","#06caf4","#7dffc0"]
+        self.colorsTheme         = ["#9b43b4","#ef476f","#ffd066","#04d69f","#25547c",]
         self.gradientColorEnable = false
         self.polar               = false
         self.dataLabelEnabled    = true
@@ -385,8 +385,10 @@ public class AAChartModel:AASerializable {
         self.tooltipCrosshairs   = true
         self.xAxisLabelsEnabled  = true
         self.xAxisGridLineWidth  = 0
+        self.xAxisVisible        = true
+        self.yAxisVisible        = false
         self.yAxisLabelsEnabled  = true
-        self.yAxisGridLineWidth  = 0
+        self.yAxisGridLineWidth  = 0.6
         self.legendEnabled       = false
         self.legendLayout        = AAchartLegendlLayoutType.Horizontal.rawValue
         self.legendAlign         = AAChartLegendAlignType.Center.rawValue
