@@ -27,7 +27,7 @@
 3. **动画** 效果细腻精致,流畅优美.有三十多种以上图形渲染动画效果可供选择,用户可自由设置渲染图形时的动画时间和动画类型,关于图形渲染动画类型,具体参见[ AAInfographics 动画类型](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#当前已支持的图表渲染动画类型有三十种以上说明如下).
 4. `AAChartView +AAChartModel = Chart`,在 **AAInfographics** 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`. 同另一个好用的图表库[AAChartKit](https://github.com/AAChartModel/AAChartKit)完全一致.
 5. 类 *Masonry* `链式编程语法`, 一行代码即可配置完成 `AAChartModel` 模型对象实例.
-6. 简洁清晰,轻便易用. 最少仅仅需要 **五行代码** 即可完成整个图表的绘制工作(*使用链式编程语法配置 `AAChartModel` 实例对象时,无论你写多少行代码,理论上只能算作是一行(😜😜😜)*)
+6. 简洁清晰,轻便易用. 最少仅仅需要 **五行代码** 即可完成整个图表的绘制工作(使用链式编程语法配置 `AAChartModel` 实例对象时,无论你写多少行代码,理论上只能算作是一行)(😜😜😜)
 
 ***
 
