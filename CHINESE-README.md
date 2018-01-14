@@ -24,9 +24,11 @@
 
 1. 适配 `iOS 6 +`,  支持`ARC`,支持 `swift 3.0`及以上语言,配置简单.
 2. 功能强大,支持`柱状图` 、`条形图` 、`折线图` 、`曲线图` 、`折线填充图` 、`曲线填充图`、`雷达图`、`极地图`、`扇形图`、`气泡图`、`散点图`、`区域范围图`、`柱形范围图`、`面积范围图`、`面积范围均线图`、`直方折线图`、`直方折线填充图`、`箱线图`、`瀑布图`、`热力图``桑基图`、`金字塔图`、`漏斗图`、等十几种类型的图形,不可谓之不多
-3. `动画`效果细腻精致,流畅优美.有三十多种以上图形渲染动画效果可供选择,用户可自由设置图形渲染的动画时间和动画类型,具体参见![ AAInfographics 动画类型](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#当前已支持的图表渲染动画类型有三十种以上说明如下)
-4. 类 *Masonry* `链式编程语法`,最少仅仅需要五行代码即可完成整个图表的绘制工作(*使用链式编程语法配置 AAChartModel 实例对象时,只能算作是一行代码(滑稽O(∩_∩))*),简洁清晰,轻便易用.
-5. `AAChartView +AAChartModel = Chart`,在 **AAInfographics** 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`.同另一个好用的图表库[AAChartKit](https://github.com/AAChartModel/AAChartKit)完全一致.
+3. `动画`效果细腻精致,流畅优美.有三十多种以上图形渲染动画效果可供选择,用户可自由设置图形渲染的动画时间和动画类型,具体参见[ AAInfographics 动画类型](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#当前已支持的图表渲染动画类型有三十种以上说明如下)
+4. `AAChartView +AAChartModel = Chart`,在 **AAInfographics** 封装库当中,遵循这样一个极简主义公式:`图表视图控件+图表模型=你想要的图表`.同另一个好用的图表库[AAChartKit](https://github.com/AAChartModel/AAChartKit)完全一致.
+5. 类 *Masonry* `链式编程语法`,一行代码即可配置完成 AAChartModel 模型对象实例.
+6. 简洁清晰,轻便易用.最少仅仅需要五行代码即可完成整个图表的绘制工作(*使用链式编程语法配置 AAChartModel 实例对象时,无论你些多少行代码只能算作是一行(滑稽)*)  O(∩_∩)O哈！
+
 ### *亲爱的,如果您使用时,觉得满意,请赏一颗星星✨,您的鼓励将是我继续努力的一大动力*.
 ***
 
@@ -472,7 +474,7 @@ public var markerRadius:Int?           //折线连接点的半径长度
 ## 联系方式
 
 -------------------------------------------------------------------------------
-* ❀❀❀   温馨提示   ❀❀❀
+* 💕💕💕❤️❤️   暖心提示   ❤️❤️💕💕💕
 *
 * 如果有任何使用上的问题,随时欢迎您在 GitHub 上向我提 issue.
 * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
