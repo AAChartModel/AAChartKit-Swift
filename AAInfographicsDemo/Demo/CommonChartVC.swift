@@ -174,10 +174,10 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         var switchWidth:CGFloat
         
         if self.chartType == AAChartType.Column || self.chartType == AAChartType.Bar {
-            nameArr = ["xAxisReversed","yAxisReversed","xAxisInverted","Polarization","DataLabelShow",];
+            nameArr = ["xReversed","yReversed","xInverted","Polarization","DataShow",];
             switchWidth = (self.view.frame.size.width-40)/5
         } else {
-            nameArr = ["xAxisReversed","yAxisReversed","xAxisInverted","Polarization","DataShow","HideMarker"];
+            nameArr = ["xReversed","yReversed","xInverted","Polarization","DataShow","HideMarker"];
             switchWidth = (self.view.frame.size.width-40)/6
         }
         
@@ -191,11 +191,11 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             self.view.addSubview(uiswitch)
             
             let subLabel = UILabel()
-            subLabel.font = UIFont(name: "EuphemiaUCAS", size: 10.0)
-            subLabel.frame = CGRect(x: switchWidth*CGFloat(i)+20, y:self.view.frame.size.height-35, width:  switchWidth, height: 35)
+            subLabel.font = UIFont(name: "EuphemiaUCAS", size: nameArr.count == 5 ? 10.0:9.0)
+            subLabel.frame = CGRect(x: switchWidth*CGFloat(i)+20, y:self.view.frame.size.height-45, width:  switchWidth, height: 35)
             subLabel.numberOfLines = 0
             subLabel.text = nameArr[i] as? String
-            subLabel.backgroundColor = UIColor.white
+            subLabel.backgroundColor = UIColor.clear
             self.view .addSubview(subLabel)
         }
     }

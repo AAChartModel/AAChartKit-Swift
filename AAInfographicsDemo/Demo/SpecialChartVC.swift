@@ -272,46 +272,6 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
             )
             break
             
-        case AAChartType.Pyramid:
-            aaChartModel = AAChartModel.init()
-                .chartType(AAChartType.Pyramid)
-                .title("THE HEAT OF PROGRAM LANGUAGE")
-                .subtitle("virtual data")
-                .yAxisTitle("℃")
-                .series(
-                    [
-                        ["name":"2020",
-                         "data":[
-                            ["swift",      11850],
-                            ["Objective-C",12379],
-                            ["JavaScript", 14286],
-                            ["Go",         15552],
-                            ["Python",     18654],
-                            ]]
-                    ]
-            )
-            break
-            
-        case AAChartType.Funnel:
-            aaChartModel = AAChartModel.init()
-                .chartType(AAChartType.Funnel)
-                .title("THE HEAT OF PROGRAM LANGUAGE")
-                .subtitle("virtual data")
-                .yAxisTitle("℉")
-                .series(
-                    [
-                        ["name":"2020",
-                         "data":[
-                            ["swift",      11256],
-                            ["Objective-C",12365],
-                            ["JavaScript", 13569],
-                            ["Go",         15221],
-                            ["Python",     16298],
-                            ]]
-                    ]
-            )
-            break
-            
         case AAChartType.Arearange:
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Arearange)
@@ -852,6 +812,46 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                         "pointPadding": 0
                         ]]
                     
+            )
+            break
+            
+        case AAChartType.Pyramid:
+            aaChartModel = AAChartModel.init()
+                .chartType(AAChartType.Pyramid)
+                .title("THE HEAT OF PROGRAM LANGUAGE")
+                .subtitle("virtual data")
+                .yAxisTitle("℃")
+                .series(
+                    [
+                        ["name":"2020",
+                         "data":[
+                            ["swift",      11850],
+                            ["Objective-C",12379],
+                            ["JavaScript", 14286],
+                            ["Go",         15552],
+                            ["Python",     18654],
+                            ]]
+                    ]
+            )
+            break
+            
+        case AAChartType.Funnel:
+            aaChartModel = AAChartModel.init()
+                .chartType(AAChartType.Funnel)
+                .title("THE HEAT OF PROGRAM LANGUAGE")
+                .subtitle("virtual data")
+                .yAxisTitle("℉")
+                .series(
+                    [
+                        ["name":"2020",
+                         "data":[
+                            ["swift",      11256],
+                            ["Objective-C",12365],
+                            ["JavaScript", 13569],
+                            ["Go",         15221],
+                            ["Python",     16298],
+                            ]]
+                    ]
             )
             break
             

@@ -366,7 +366,6 @@ public class AAChartModel:AASerializable {
     
     
     public  init() {
-//        self.backgroundColor     = "#9b43b4"
         self.backgroundColor     = "#ffffff"
 //        self.animationType       = AAChartAnimationType.EaseInOutQuart.rawValue
         self.animationDuration   = 800//以毫秒为单位
@@ -384,8 +383,8 @@ public class AAChartModel:AASerializable {
         self.tooltipCrosshairs   = true
         self.xAxisLabelsEnabled  = true
         self.xAxisGridLineWidth  = 0
-        self.xAxisVisible        = true
-        self.yAxisVisible        = false
+        self.xAxisVisible        = true  // X 轴默认可见
+        self.yAxisVisible        = false // Y 轴默认不可见
         self.yAxisLabelsEnabled  = true
         self.yAxisGridLineWidth  = 0.6
         self.legendEnabled       = false

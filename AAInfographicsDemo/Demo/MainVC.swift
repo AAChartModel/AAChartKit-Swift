@@ -50,14 +50,14 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 "Pie Chart---扇形图",
                 "Bubble Chart---气泡图",
                 "Scatter Chart---散点图",
-                "Pyramid Chart---金字塔图",
-                "Funnel Chart---漏斗图",
                 "Arearange Chart---区域范围图",
                 "Columnrange Chart--- 柱形范围图",
                 "Step Line Chart--- 直方折线图",
                 "Step Area Chart--- 直方折线填充图",
                 "Boxplot Chart--- 箱线图",
-                "Waterfall Chart--- 瀑布图"
+                "Waterfall Chart--- 瀑布图",
+                "Pyramid Chart---金字塔图",
+                "Funnel Chart---漏斗图",
                 ],
             /*Mixed Chart---混合图*/
             /*同时显示多个图表*/
@@ -137,14 +137,14 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 AAChartType.Pie,
                 AAChartType.Bubble,
                 AAChartType.Scatter,
-                AAChartType.Pyramid,
-                AAChartType.Funnel,
                 AAChartType.Arearange,
                 AAChartType.Columnrange,
                 AAChartType.Line,
                 AAChartType.Area,
                 AAChartType.Boxplot,
                 AAChartType.Waterfall,
+                AAChartType.Pyramid,
+                AAChartType.Funnel,
                 ],
         ]
         
