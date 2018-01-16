@@ -29,7 +29,8 @@
 import UIKit
 
 class CommonChartVC: UIViewController,UIWebViewDelegate {
-    open var chartType:AAChartType?
+    open var chartType: AAChartType?
+    open var step : Bool?
     open var aaChartModel: AAChartModel?
     open var aaChartView: AAChartView?
     override func viewDidLoad() {
@@ -51,7 +52,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         aaChartModel = AAChartModel.init()
             .chartType(self.chartType!)//图形类型
-            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+//            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
             .backgroundColor("#4b2b7f")//图表背景色
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])//主题颜色数组
             .title("")//图形标题
@@ -75,8 +76,32 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                     "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
                 ]])
         
+        self.configureTheStyleForDifferentTypeChart()
         
-        if self.chartType == AAChartType.Column
+        aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
+        
+    }
+    
+    func configureTheStyleForDifferentTypeChart() {
+        
+        if (self.chartType == AAChartType.Area && self.step == true)
+            || (self.chartType == AAChartType.Line && self.step == true) {
+            aaChartModel = self.chartType == AAChartType.Area ? aaChartModel?.gradientColorEnable(true) : aaChartModel?.gradientColorEnable(false)
+            aaChartModel = aaChartModel?.series([ [
+                "name": "Berlin",
+                "data": [149.9, 171.5, 106.4, 129.2, 144.0, 176.0, 135.6, 188.5, 276.4, 214.1, 95.6, 54.4],
+                "step": (true) //设置折线样式为直方折线,连接点位置默认靠左👈
+                ], [
+                "name": "New York",
+                "data": [83.6, 78.8, 188.5, 93.4, 106.0, 84.5, 105.0, 104.3, 131.2, 153.5, 226.6, 192.3],
+                "step": (true)
+                ], [
+                "name": "Tokyo",
+                "data": [48.9, 38.8, 19.3, 41.4, 47.0, 28.3, 59.0, 69.6, 52.4, 65.2, 53.3, 72.2],
+                "step": (true)
+                ], ])
+            
+        } else if self.chartType == AAChartType.Column
             || self.chartType == AAChartType.Bar {
             aaChartModel = aaChartModel?
                 .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
@@ -98,9 +123,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .markerRadius(6)
             //            aaChartModel?.animationType = AAChartAnimationType.SwingFromTo.rawValue //设置图表渲染动画类型为 SwingFromTo
         }
-        
-        aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
-        
     }
     
     func configureTheSegmentControl() {

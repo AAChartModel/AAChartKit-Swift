@@ -42,8 +42,11 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 "Bar Chart---条形图",
                 "Area Chart---折线填充图",
                 "Areaspline Chart---曲线填充图",
+                "Step Area Chart--- 直方折线填充图",
+                "Step Line Chart--- 直方折线图",
                 "Line Chart---折线图",
                 "Spline Chart---曲线图",
+                
                 ],
             /*特殊类型图表*/
             [
@@ -97,7 +100,9 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let view = UIView()
         view.backgroundColor = UIColor.white
         
-        let sectionTitleArr = ["Basic Type Chart --- 基础类型图表","Special Type Chart --- 特殊类型图表","同时显示多个图表"]
+        let sectionTitleArr = ["Basic Type Chart --- 基础类型图表",
+                               "Special Type Chart --- 特殊类型图表",
+                               "同时显示多个图表"]
         
         let sectionTitleLabel = UILabel()
         sectionTitleLabel.text = sectionTitleArr[section]
@@ -129,6 +134,8 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 AAChartType.Bar,
                 AAChartType.Area,
                 AAChartType.AreaSpline,
+                AAChartType.Area,
+                AAChartType.Line,
                 AAChartType.Line,
                 AAChartType.Spline,
                 ],
@@ -152,7 +159,11 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             /*基础类型图表*/
             let commonChartVC  = CommonChartVC()
             commonChartVC.chartType = AAChartType(rawValue: AAChartTypeArr[indexPath.section][indexPath.row].rawValue)
+            if indexPath.row == 4 || indexPath.row == 5 {
+                commonChartVC.step = true
+            }
             self.navigationController?.pushViewController(commonChartVC, animated:true)
+            
         } else if (indexPath.section == 1) {
             /*特殊类型图表*/
             let specialChartVC = SpecialChartVC()
@@ -163,6 +174,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             /*同时显示多个图表*/
             let specialChartVC = ShowManyChartViewVC()
             self.navigationController?.pushViewController(specialChartVC, animated:true)
+            
         }
 
     }
