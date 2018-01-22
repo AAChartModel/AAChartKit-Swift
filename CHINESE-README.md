@@ -19,14 +19,14 @@
 
 ## 前言
 
- ***AAInfographics***,是 [AAChartKit](https://github.com/AAChartModel/AAChartKit) 的 `swift`语言版本,是在流行的开源前端图表库*Highcharts*的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件.
+ ***AAInfographics***,是 [AAChartKit](https://github.com/AAChartModel/AAChartKit) 的 `swift`语言版本,是在流行的开源前端图表库*Highcharts*的基础上,封装的面向对象的,一组简单易用,极其精美的图表绘制控件.可能是全网络 UI 最精致的第三方 iOS 开源图表库了(✟我以无神论者的名义向上帝起誓🖐,我真的没有在说鬼话✟)
 
 ***
 ## 功能特性
 
 1. 适配 `iOS 6 +`,  支持`ARC`,支持 `swift 3.0`及以上语言,配置简单.
 2. 功能强大,支持`柱状图` 、`条形图` 、`折线图` 、`曲线图` 、`折线填充图` 、`曲线填充图`、`雷达图`、`极地图`、`扇形图`、`气泡图`、`散点图`、`区域范围图`、`柱形范围图`、`面积范围图`、`面积范围均线图`、`直方折线图`、`直方折线填充图`、`箱线图`、`瀑布图`、`热力图`、`桑基图`、`金字塔图`、`漏斗图`、等二十几种类型的图形,不可谓之不多.
-3. **动画** 效果细腻精致,流畅优.可能是全网络 UI 最精致的第三方 iOS 开源图表库了(✟我以无神论者的名义向上帝发启誓🖐,我真的没有胡说✟)有三十多种以上图形渲染动画效果可供选择,用户可自由设置渲染图形时的动画时间和动画类型,关于图形渲染动画类型,具体参见[ AAInfographics 动画类型](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#当前已支持的图表渲染动画类型有三十种以上说明如下).
+3. **动画** 效果细腻精致,流畅优美.有三十多种以上图形渲染动画效果可供选择,用户可自由设置渲染图形时的动画时间和动画类型,关于图形渲染动画类型,具体参见[ AAInfographics 动画类型](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#当前已支持的图表渲染动画类型有三十种以上说明如下).
 4. `AAChartView + AAChartModel = Chart`,在 **AAInfographics** 封装库当中,遵循这样一个极简主义公式:`图表视图控件 + 图表模型 = 你想要的图表`. 同另一个好用的iOS 开源图表库 [AAChartKit](https://github.com/AAChartModel/AAChartKit) 完全一致.
 5. 类 *Masonry* `链式编程语法`, 一行代码即可配置完成 `AAChartModel` 模型对象实例.
 6. 简洁清晰,轻便易用. 最少仅仅需要 **五行代码** 即可完成整个图表的绘制工作(使用链式编程语法配置 `AAChartModel` 实例对象时,无论你写多少行代码,理论上只能算作是一行). 😜😜😜
@@ -109,59 +109,59 @@ import AAChartView.swift
 
 ##  **AAChartModel**一些重要属性经过配置之后的图形示例如下
 
--  ### line chart 
+- ### line chart - 折线图
 
-![IMG_1867.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/LineChart.png)
+![line chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/LineChart.png)
 
--  ### column chart
+- ### column chart - 柱形图
 
-![IMG_1873.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/ColumnChart.png)
+![IMG_1873.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ColumnChart.png)
 
-- ###  bar chart
+- ### bar chart - 条形图
 
-![IMG_1880.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BarChart.png)
+![bar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/BarChart.png)
 
-- ### special area chart one
+- ### special area chart one - 常规折线区域填充图
 
 ![IMG_1869.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/IMG_1482.JPG)
 
-- ### special area chart two
+- ### special area chart two - 带有负数的区域填充图
 
-![IMG_1871.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/AreasplineChart.png)
+![IMG_1871.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AreaChartOne.png))
 
-- ### special area chart three
+- ### special area chart three - 堆积效果的区域填充图
 
-![IMG_1863.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/PictureResources/屏幕快照%202017-05-06%20下午6.58.15.png)
+![IMG_1863.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AreaChartTwo.png)
 
-- ### radar chart
+- ### polar chart - 极地图
 
-![IMG_1877.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/RadarChart.png)
+![polar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/PolarChart.png)
 
-- ### polar chart
+- ### radar chart - 雷达图
 
-![IMG_1879.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/PolarChart.png)
+![radar chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/RadarChart.png)
 
-- ### pie chart
+- ### pie chart - 扇形图
 
-![IMG_1878.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/PieChart.png)
+![pie chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/PieChart.png)
 
-- ### bubble chart
+- ### bubble chart - 气泡图
 
-![IMG_1875.JPG](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BubbleChart.png)
+![bubble chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/BubbleChart.png)
 
-- ### scatter chart
+- ### scatter chart - 散点图
 
 ![scatter chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ScatterChart.png)
 
-- ### arearange chart
+- ### arearange chart - 区域范围图
 
 ![arearange chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ArearangeChart.png)
 
-- ### step area chart
+- ### step area chart - 直方折线填充图
 
 ![step area chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/StepAreaChart.png)
 
-- ### mixed chart
+- ### mixed chart - 混合图形
 
 ![mixed chart](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
 
