@@ -54,7 +54,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 inverted: AAChartModel.inverted,//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
                 backgroundColor: AAChartModel.backgroundColor,//图表背景色
                 animation: true,
-                zoomType: AAChartModel.zoomType,//设置手势缩放方向
+                pinchType: AAChartModel.zoomType,//设置手势缩放方向
                 panning: true,//设置手势缩放后是否可平移
                 polar: AAChartModel.polar,//是否辐射化图形
                 options3d: {
@@ -113,6 +113,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 valueSuffix: AAChartModel.tooltipValueSuffix,//浮动提示层数值的单位后缀
                 shared: true,//多组数据浮动提示框是否共享
                 crosshairs: AAChartModel.tooltipCrosshairs,//是否显示准星线
+                followTouchMove:false,//在触摸设备上，tooltip.followTouchMove选项为true（默认）时，平移需要两根手指。若要允许用一根手指平移，需要将followTouchMove设置为false。
         }
 
         var AASeries = {

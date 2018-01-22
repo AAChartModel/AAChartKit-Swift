@@ -88,9 +88,10 @@ enum AAChartSubtitleAlignType:String {
 }
 
 enum AAChartZoomType:String {
-    case X  = "x"
-    case Y  = "y"
-    case XY = "xy"
+    case none = "none"
+    case X    = "x"
+    case Y    = "y"
+    case XY   = "xy"
 }
 
 enum AAChartStackingType:String {
