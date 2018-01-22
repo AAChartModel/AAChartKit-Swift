@@ -12,6 +12,8 @@
 ### There is the link of **Objective-C version** of  `AAChartKit` as follow
 #### *https://github.com/AAChartModel/AAChartKit*
 
+ [ **中文文档** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)  |  [ **English Document** ](https://github.com/AAChartModel/AAChartKit-Swift)
+
 ### 中文使用说明书地址
 #### *https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md*
  

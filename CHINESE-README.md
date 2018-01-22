@@ -13,7 +13,9 @@
 ### 您所喜爱的`AAInfographics`开源图表库同时更有`Objective-C`版本可供使用,详情请点击以下链接
 ### 传送门
 #### *https://github.com/AAChartModel/AAChartKit*
- 
+
+ [ **English Document** ](https://github.com/AAChartModel/AAChartKit-Swift)  |  [ **中文文档** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)
+  |
 
 ## 前言
 
