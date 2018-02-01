@@ -1,16 +1,20 @@
 <!---->
 <!--  Created by An An on 18/2/1.-->
 <!--  Copyright © 2018年 An An. All rights reserved.-->
-<!--  source code ----*** https://github.com/AAChartModel/AAChartKit ***--- source code-->
-<!---->
+//*************** ...... SOURCE CODE ...... ***************
+//***...................................................***
+//***  https://github.com/AAChartModel/AAChartKit-Swift ***
+//***...................................................***
+//*************** ...... SOURCE CODE ...... ***************
+
 /*
  
  * -------------------------------------------------------------------------------
  *
- * ❀❀❀   WARM TIPS!!!   ❀❀❀
+ *  🌕 🌖 🌗 🌘  ❀❀❀   WARM TIPS!!!   ❀❀❀ 🌑 🌒 🌓 🌔
  *
  * Please contact me on GitHub,if there are any problems encountered in use.
- * GitHub Issues : https://github.com/AAChartModel/AAChartKit/issues
+ * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
  * -------------------------------------------------------------------------------
  * And if you want to contribute for this project, please contact me as well
  * GitHub        : https://github.com/AAChartModel
