@@ -455,7 +455,13 @@ to be
  "CODE IS FAR AWAY FROM BUG WITH THE ANIMAL PROTECTING"
  ```
 
- 
+## Source Code
+
+//*************** ...... SOURCE CODE ...... ***************
+//***...................................................***
+//***  https://github.com/AAChartModel/AAChartKit-Swift ***
+//***...................................................***
+//*************** ...... SOURCE CODE ...... ***************
 
 ## LICENSE
 
@@ -466,7 +472,7 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 ## Contact
 
  -------------------------------------------------------------------------------
-*  💕💕💕❤️❤️  WARM TIPS  ❤️❤️💕💕💕
+*  🌕 🌖 🌗 🌘  ❀❀❀   WARM TIPS!!!   ❀❀❀ 🌑 🌒 🌓 🌔
 *
 * Please contact me on GitHub,if there are any problems encountered in use.
 * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues

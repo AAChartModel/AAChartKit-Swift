@@ -4,14 +4,18 @@
 <!---->
 <!--  Created by An An  on 17/4/19.-->
 <!--  Copyright © 2017年 An An . All rights reserved.-->
-<!--  source code ----*** https://github.com/AAChartModel/AAChartKit-Swift ***--- source code-->
-<!---->
+//*************** ...... SOURCE CODE ...... ***************
+//***...................................................***
+//***  https://github.com/AAChartModel/AAChartKit-Swift ***
+//***...................................................***
+//*************** ...... SOURCE CODE ...... ***************
 
 /*
  
  * -------------------------------------------------------------------------------
  *
- * ❤❤❤❤❤   WARM TIPS!!!   ❤❤❤❤❤
+ *  🌕 🌖 🌗 🌘  ❀❀❀   WARM TIPS!!!   ❀❀❀ 🌑 🌒 🌓 🌔
+ *
  * Please contact me on GitHub,if there are any problems encountered in use.
  * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
  * -------------------------------------------------------------------------------
@@ -113,7 +117,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 valueSuffix: AAChartModel.tooltipValueSuffix,//浮动提示层数值的单位后缀
                 shared: true,//多组数据浮动提示框是否共享
                 crosshairs: AAChartModel.tooltipCrosshairs,//是否显示准星线
-                followTouchMove:false,//在触摸设备上，tooltip.followTouchMove选项为true（默认）时，平移需要两根手指。若要允许用一根手指平移，需要将followTouchMove设置为false。
+//                followTouchMove:false,//在触摸设备上，tooltip.followTouchMove选项为true（默认）时，平移需要两根手指。若要允许用一根手指平移，需要将followTouchMove设置为false。
         }
 
         var AASeries = {
@@ -241,7 +245,7 @@ function configureAAPlotOptions(AAPlotOptions, AAChartModel) {
                 var AAPie = {
                         //扇形图尺寸大小,大小设置得当的话,扇形图讲始终保持居中的位置,
                         //不偏不倚,将不会产生自动布局导致的大小变化
-                        //size: 300,
+//                        size: 300,
                         allowPointSelect: true,
                         cursor: "pointer",
                         depth: AAChartModel.options3dDepth,

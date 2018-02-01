@@ -4,15 +4,18 @@
 //
 //  Created by An An  on 17/4/18.
 //  Copyright © 2017年 An An . All rights reserved.
-//  source code ----*** https://github.com/AAChartModel/AAChartKit-Swift ***--- source code
-//
-//
+//*************** ...... SOURCE CODE ...... ***************
+//***...................................................***
+//***  https://github.com/AAChartModel/AAChartKit-Swift ***
+//***...................................................***
+//*************** ...... SOURCE CODE ...... ***************
 
 /*
  
  *********************************************************************************
  *
- * ❤❤❤❤❤   WARM TIPS!!!   ❤❤❤❤❤
+ *  🌕 🌖 🌗 🌘  ❀❀❀   WARM TIPS!!!   ❀❀❀ 🌑 🌒 🌓 🌔
+ *
  * Please contact me on GitHub,if there are any problems encountered in use.
  * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
  * -------------------------------------------------------------------------------
@@ -81,12 +84,8 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                                 ["Swift" ,44],
                                 ["Python",83],
                                 ["OC"    ,11],
-                                ["Ruby"  ,42],
-                                ["PHP"   ,31],
                                 ["Go"    ,630],
-                                ["C"     ,24],
-                                ["C#"    ,88],
-                                ["C++"   ,66],
+
                             ]
                         ],
                         ]
