@@ -466,6 +466,12 @@ public var markerRadius:Int?           //折线连接点的半径长度
 
 ```
 
+## 源代码⛓
+语言版本 |  项目名称 | 源代码链接|
+------------ | ------------- | ------------- |
+Swift | AAInfographics | https://github.com/AAChartModel/AAChartKit-Swift |
+Objective C | AAChartKit | https://github.com/AAChartModel/AAChartKit |
+
 ## 许可证
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/128px-License_icon-mit-88x31-2.svg.png)
@@ -475,7 +481,7 @@ public var markerRadius:Int?           //折线连接点的半径长度
 ## 联系方式
 
 -------------------------------------------------------------------------------
-*  *  🌕 🌖 🌗 🌘  ❀❀❀   暖心提示   ❀❀❀ 🌑 🌒 🌓 🌔
+*  *  🌕 🌖 🌗 🌘     暖心提示   🌑 🌒 🌓 🌔
 *
 * 如果有任何使用上的问题,随时欢迎您在 GitHub 上向我提 issue.
 * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
