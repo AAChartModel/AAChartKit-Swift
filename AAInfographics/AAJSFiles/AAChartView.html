@@ -37,7 +37,7 @@
             
             <script src="AAJQueryLibrary.js">
                 </script>
-            <script src="AAHighChartsLib.js">
+            <script src="AAHighchartsLib.js">
                 </script>
             <script src="AAHighchartsMore.js">
                 </script>
@@ -88,6 +88,7 @@
             if (animationEasingType) { //懒调用(只有在 AAChartModel 实例对象设置了 animationType 属性值的时候才会调用设置动画类型的函数,否则不调用)
                 AAOptions.plotOptions.series.animation.easing = configureTheChartAnimationEasingType(animationEasingType);
             }
+            AAOptions.credits = {enabled:false};//去掉表格右下角版权信息
 
             AAGlobalChart = Highcharts.chart('container', AAOptions);
            //全局配置(可通过全局配置设置主题)https://api.hcharts.cn/highcharts#Highcharts.setOptions

@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */; };
-		27717014202312E300DFF4EF /* AAHighchartsLib.js in Resources */ = {isa = PBXBuildFile; fileRef = 27717012202312E300DFF4EF /* AAHighchartsLib.js */; };
-		27717015202312E300DFF4EF /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 27717013202312E300DFF4EF /* AAHighchartsMore.js */; };
 		277170172023154D00DFF4EF /* AAHighcharts-3d.js in Resources */ = {isa = PBXBuildFile; fileRef = 277170162023154D00DFF4EF /* AAHighcharts-3d.js */; };
-		27717019202315B100DFF4EF /* AAFunnel.js in Resources */ = {isa = PBXBuildFile; fileRef = 27717018202315B100DFF4EF /* AAFunnel.js */; };
+		2771702B202390E800DFF4EF /* AAHighchartsLib.js in Resources */ = {isa = PBXBuildFile; fileRef = 27717028202390E800DFF4EF /* AAHighchartsLib.js */; };
+		2771702C202390E800DFF4EF /* AAFunnel.js in Resources */ = {isa = PBXBuildFile; fileRef = 27717029202390E800DFF4EF /* AAFunnel.js */; };
+		2771702D202390E800DFF4EF /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 2771702A202390E800DFF4EF /* AAHighchartsMore.js */; };
 		278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54B11EE9472300770B97 /* AppDelegate.swift */; };
 		278C54B71EE9472300770B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B51EE9472300770B97 /* Main.storyboard */; };
 		278C54B91EE9472300770B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B81EE9472300770B97 /* Assets.xcassets */; };
@@ -50,10 +50,10 @@
 
 /* Begin PBXFileReference section */
 		2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyRefreshChartDataVC.swift; sourceTree = "<group>"; };
-		27717012202312E300DFF4EF /* AAHighchartsLib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsLib.js; sourceTree = "<group>"; };
-		27717013202312E300DFF4EF /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
 		277170162023154D00DFF4EF /* AAHighcharts-3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "AAHighcharts-3d.js"; sourceTree = "<group>"; };
-		27717018202315B100DFF4EF /* AAFunnel.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAFunnel.js; sourceTree = "<group>"; };
+		27717028202390E800DFF4EF /* AAHighchartsLib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsLib.js; sourceTree = "<group>"; };
+		27717029202390E800DFF4EF /* AAFunnel.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAFunnel.js; sourceTree = "<group>"; };
+		2771702A202390E800DFF4EF /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
 		278C54AE1EE9472300770B97 /* AAInfographicsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAInfographicsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		278C54B11EE9472300770B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		278C54B61EE9472300770B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -180,10 +180,10 @@
 			children = (
 				278C54FA1EE947DF00770B97 /* AAChartView.html */,
 				278C54FF1EE947DF00770B97 /* AAOptionsConstructor.js */,
-				27717012202312E300DFF4EF /* AAHighchartsLib.js */,
-				27717013202312E300DFF4EF /* AAHighchartsMore.js */,
+				27717028202390E800DFF4EF /* AAHighchartsLib.js */,
+				2771702A202390E800DFF4EF /* AAHighchartsMore.js */,
 				277170162023154D00DFF4EF /* AAHighcharts-3d.js */,
-				27717018202315B100DFF4EF /* AAFunnel.js */,
+				27717029202390E800DFF4EF /* AAFunnel.js */,
 				278C54FE1EE947DF00770B97 /* AAJQueryLibrary.js */,
 			);
 			path = AAJSFiles;
@@ -311,12 +311,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				278C54BC1EE9472300770B97 /* LaunchScreen.storyboard in Resources */,
+				2771702C202390E800DFF4EF /* AAFunnel.js in Resources */,
 				277170172023154D00DFF4EF /* AAHighcharts-3d.js in Resources */,
 				278C54B91EE9472300770B97 /* Assets.xcassets in Resources */,
+				2771702D202390E800DFF4EF /* AAHighchartsMore.js in Resources */,
+				2771702B202390E800DFF4EF /* AAHighchartsLib.js in Resources */,
 				278C55031EE947DF00770B97 /* AAChartView.html in Resources */,
-				27717014202312E300DFF4EF /* AAHighchartsLib.js in Resources */,
-				27717019202315B100DFF4EF /* AAFunnel.js in Resources */,
-				27717015202312E300DFF4EF /* AAHighchartsMore.js in Resources */,
 				278C55071EE947DF00770B97 /* AAJQueryLibrary.js in Resources */,
 				278C55081EE947DF00770B97 /* AAOptionsConstructor.js in Resources */,
 				278C54B71EE9472300770B97 /* Main.storyboard in Resources */,
@@ -511,7 +511,7 @@
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsD;
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -525,7 +525,7 @@
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsD;
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
