@@ -481,7 +481,7 @@ Objective C | AAChartKit | https://github.com/AAChartModel/AAChartKit |
 ## 联系方式
 
 -------------------------------------------------------------------------------
-*  *  🌕 🌖 🌗 🌘     暖心提示   🌑 🌒 🌓 🌔
+*  🌕 🌖 🌗 🌘     暖心提示   🌑 🌒 🌓 🌔
 *
 * 如果有任何使用上的问题,随时欢迎您在 GitHub 上向我提 issue.
 * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
