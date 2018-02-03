@@ -62,7 +62,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 panning: true,//设置手势缩放后是否可平移
                 polar: AAChartModel.polar,//是否辐射化图形
                 options3d: {
-                        enable: AAChartModel.options3dEnable,//是否 3D 化图形
+                        enabled: AAChartModel.options3dEnable,//是否 3D 化图形
                         alpha: -15
                 }
 
@@ -86,7 +86,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
 
         var AAXAxis = {
                 label: {
-                        enable: AAChartModel.xAxisLabelsEnabled// X 轴是否显示文字
+                        enabled: AAChartModel.xAxisLabelsEnabled// X 轴是否显示文字
                 },
                 reversed: AAChartModel.xAxisReversed,//是否反转 X 轴
                 gridLineWidth: AAChartModel.xAxisGridLineWidth,// X 轴网格线宽度
@@ -96,7 +96,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
 
         var AAYAxis = {
                 label: {
-                        enable: AAChartModel.yAxisLabelsEnabled// Y 轴是否显示数字
+                        enabled: AAChartModel.yAxisLabelsEnabled// Y 轴是否显示数字
                 },
                 reversed: AAChartModel.yAxisReversed,//是否反转 Y 轴
                 gridLineWidth: AAChartModel.yAxisGridLineWidth,// Y 轴网格线宽度
