@@ -109,6 +109,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             aaChartModel = aaChartModel?
                 .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
                 .legendEnabled(true)
+                .animationType(AAChartAnimationType.Bounce)
+                .animationDuration(1200)
             //                .colorsTheme(["#EA007B", "#49C1B6", "#1E90FF", "#F78320", "#068E81",])
         } else if self.chartType == AAChartType.Area
             || self.chartType == AAChartType.AreaSpline {
