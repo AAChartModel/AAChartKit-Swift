@@ -396,17 +396,14 @@ public var markerRadius:Int?           //The radius of the point marker. Default
 If you want to shrink the size of the `AAInfographics` lib ,you should do something like this:
 1. Delete the `.js` file of `AAJSFiles` folder in `AAInfographics`,The names of multiple files that need to be deleted are as follows
 
-* AAJQueryLibrary.js
-* AAHighchartsLibrary.js
+* AAHighchartsLib.js
 * AAHighchartsMore.js
 * AAHighcharts-3d.js
 * AAFunnel.js
 
 2.Change the content of `AAChartView.html` file
 ``` html
-<script src="AAJQueryLibrary.js">
-</script>
-<script src="AAHighchartsLibrary.js">
+<script src="AAHighchartsLib.js">
 </script>
 <script src="AAHighchartsMore.js">
 </script>
@@ -418,8 +415,6 @@ If you want to shrink the size of the `AAInfographics` lib ,you should do someth
 to be
 
 ``` html
-<script src="https://img.hcharts.cn/jquery/jquery-1.8.3.min.js">
-</script>
 <script src="https://img.hcharts.cn/highcharts/highcharts.js">
 </script>
 <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
