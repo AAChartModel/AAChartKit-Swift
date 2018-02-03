@@ -34,13 +34,18 @@
 ***
 
 ## 真机美图
-| Column Chart 柱状图 | Columnrange Chart 条形范围图 | Area Chart 区域填充图 |
-| :----:  | :----: | :----: |
-| ![image1](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/ColumnChart.png) | ![image1](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/BarChart.png) | ![image1](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/AreaChart.png) |
+| Column Chart 柱状图 | Columnrange Chart 条形范围图 |
+| :----:  | :----: |
+| ![ColumnChart.png](http://upload-images.jianshu.io/upload_images/2412088-eae5ee89583b4527.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) | ![BarChart.png](http://upload-images.jianshu.io/upload_images/2412088-d26e94cee3fec09f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) |
 
-| Line Chart 折线图 | Step Area Chart 直方折线填充图 | Step Line Chart 直方折线图 |
+| Area Chart 区域填充图 | Line Chart 折线图  |
+| :----:  | :----: |
+| ![AreaChart.png](http://upload-images.jianshu.io/upload_images/2412088-d5d398af3474ccaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) | ![LineChart.png](http://upload-images.jianshu.io/upload_images/2412088-1f5582b048b2c199.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) |
+
+| Step Area Chart 直方折线填充图 | Step Line Chart 直方折线图 |
 | :----:  | :----: | :----: |
-| ![image1](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/LineChart.png) | ![image1](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/StepAreaChart.png) | ![image1](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/StepLineChart.png) |
+| ![StepAreaChart.png](http://upload-images.jianshu.io/upload_images/2412088-3128d1802f0af06a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) |![StepLineChart.png](http://upload-images.jianshu.io/upload_images/2412088-0f1dbd262c24ffb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ## 使用方法
 
