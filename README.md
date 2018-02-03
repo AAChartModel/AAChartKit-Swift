@@ -29,17 +29,18 @@
 ***
 
 ## Appreciation
+
 | Column Chart  | Columnrange Chart  |
 | :----:  | :----: |
-| ![ColumnChart.png](http://upload-images.jianshu.io/upload_images/2412088-eae5ee89583b4527.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) | ![BarChart.png](http://upload-images.jianshu.io/upload_images/2412088-d26e94cee3fec09f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) |
+| ![image1](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/ColumnChart.png) | ![image1](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/BarChart.png) |
 
 | Area Chart  | Line Chart   |
 | :----:  | :----: |
-| ![AreaChart.png](http://upload-images.jianshu.io/upload_images/2412088-d5d398af3474ccaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) | ![LineChart.png](http://upload-images.jianshu.io/upload_images/2412088-1f5582b048b2c199.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) |
+| ![image1](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/AreaChart.png) | ![LineChart.png](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/LineChart.png)  |
 
 | Step Area Chart  | Step Line Chart  |
 | :----:  | :----: | :----: |
-| ![StepAreaChart.png](http://upload-images.jianshu.io/upload_images/2412088-3128d1802f0af06a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) |![StepLineChart.png](http://upload-images.jianshu.io/upload_images/2412088-0f1dbd262c24ffb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+| ![StepAreaChart.png](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/StepAreaChart.png) |![StepLineChart.png](https://github.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/StepLineChart.png) |
 
 ## Usage
 
