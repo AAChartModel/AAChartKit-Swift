@@ -160,6 +160,7 @@ public class AAChartModel:AASerializable {
     private var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
     private var yAxisTitle:String?          //y轴标题
     private var yAxisGridLineWidth:Float?   //y轴网格线的宽度
+    private var tooltipEnabled:Bool?        //是否显示浮动提示框(默认显示)
     private var tooltipValueSuffix:String?  //浮动提示框单位后缀
     private var tooltipCrosshairs:Bool?     //是否显示准星线(默认显示)
     private var colorsTheme:Array<Any>?     //图表主题颜色数组
@@ -235,6 +236,11 @@ public class AAChartModel:AASerializable {
     
     func yAxisReversed(_ prop: Bool) -> AAChartModel {
         self.yAxisReversed = prop
+        return self
+    }
+    
+    func tooltipEnabled(_ prop:Bool) -> AAChartModel {
+        self.tooltipEnabled = prop
         return self
     }
     
@@ -385,6 +391,7 @@ public class AAChartModel:AASerializable {
         self.polar               = false
         self.dataLabelEnabled    = true
         self.options3dEnable     = false
+        self.tooltipEnabled      = true
         self.tooltipCrosshairs   = true
         self.xAxisLabelsEnabled  = true
         self.xAxisGridLineWidth  = 0

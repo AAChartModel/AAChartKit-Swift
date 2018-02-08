@@ -114,6 +114,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         };
 
         var AATooltip = {
+                enabled:AAChartModel.tooltipEnabled,
                 valueSuffix: AAChartModel.tooltipValueSuffix,//浮动提示层数值的单位后缀
                 shared: true,//多组数据浮动提示框是否共享
                 crosshairs: AAChartModel.tooltipCrosshairs,//是否显示准星线
