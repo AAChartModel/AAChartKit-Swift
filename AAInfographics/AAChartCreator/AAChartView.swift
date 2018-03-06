@@ -93,11 +93,6 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         self.setUpBasicView()
     }
     
-    convenience init() {
-        self.init(frame: CGRect.zero)
-        self.setUpBasicView()
-    }
-    
     private func setUpBasicView() {
         self.contentWidth = 0
         self.contentHeight = 0
