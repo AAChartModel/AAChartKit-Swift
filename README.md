@@ -353,6 +353,17 @@ enum AAChartAnimationType:String {
 }
 ```
 
+Here are the ten concrete animation types of **AAInfographics**
+
+| Back      | Bounce    | Circ      | Cubic     | Elastic   |
+|:---------:|:---------:|:---------:|:---------:|:---------:|
+| ![][1]    | ![][2]    | ![][3]    | ![][4]    | ![][5]    |
+
+
+| Expo      | Quad      | Quart     | Quint     | Sine      |
+|:---------:|:---------:|:---------:|:---------:|:---------:|
+| ![][6]    | ![][7]    | ![][8]    | ![][9]    | ![][10]   |
+
 
 ## About AAChartModel
 
@@ -515,3 +526,15 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 > * - [ ] Support rendering the rectangular tree hierarchy diagrams
 > * - [ ] Support rendering the circular progress bar chart 
 > * - [ ] Support adding clicked event callbacks for graphics
+
+
+[1]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/1.gif
+[2]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/2.gif
+[3]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/3.gif
+[4]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/4.gif
+[5]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/5.gif
+[6]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/6.gif
+[7]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/7.gif
+[8]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/8.gif
+[9]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/9.gif
+[10]: https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/10.gif
