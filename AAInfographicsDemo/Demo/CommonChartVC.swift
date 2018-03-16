@@ -56,8 +56,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         aaChartModel = AAChartModel.init()
             .chartType(self.chartType!)//图形类型
 //            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-            .backgroundColor("#4b2b7f")//图表背景色
-            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])//主题颜色数组
+//            .backgroundColor("#222733")//图表背景色
+            .colorsTheme(["#9b43b4","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
             .title("")//图形标题
             .subtitle("")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
@@ -109,6 +109,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             aaChartModel = aaChartModel?
                 .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
                 .legendEnabled(true)
+                .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
                 .animationType(AAChartAnimationType.Bounce)
                 .animationDuration(1200)
             //                .colorsTheme(["#EA007B", "#49C1B6", "#1E90FF", "#F78320", "#068E81",])
@@ -151,7 +152,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             let segment = UISegmentedControl.init(items: segmentedNamesArray[i] as? [Any])
             segment.frame = CGRect(x: 20, y: 40.0*CGFloat(i) + (self.view.frame.size.height-145), width: self.view.frame.size.width-40, height: 20)
             segment.tag = i;
-            segment.tintColor = UIColor.purple
+            segment.tintColor = UIColor.red
             segment.selectedSegmentIndex = 0
             segment.addTarget(self, action:#selector(segmentDidSelected(segmentedControl:)), for:.valueChanged)
             self.view.addSubview(segment)
@@ -213,7 +214,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             uiswitch.frame = CGRect(x: switchWidth*CGFloat(i)+20, y: self.view.frame.size.height-70, width: switchWidth, height: 20)
             uiswitch.isOn = false
             uiswitch.tag = i;
-            uiswitch.onTintColor = UIColor.red
+            uiswitch.onTintColor = UIColor.blue
             uiswitch.addTarget(self, action: #selector(switchDidChange(switchView:)), for:.valueChanged)
             self.view.addSubview(uiswitch)
             

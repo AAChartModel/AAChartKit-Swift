@@ -193,9 +193,9 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// Show the series element content with index
     ///
     /// - Parameter elementIndex: elementIndex element index
-    public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex:NSInteger) {
-        
-    }
+//    public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex:NSInteger) {
+//
+//    }
     
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.drawChart()

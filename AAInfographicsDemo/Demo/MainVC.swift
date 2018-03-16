@@ -127,6 +127,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.textLabel?.text = cellTitle
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         cell.textLabel?.textColor = UIColor.darkGray
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return cell
     }
     

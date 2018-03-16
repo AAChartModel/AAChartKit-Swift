@@ -64,7 +64,7 @@ class ShowManyChartViewVC: UIViewController {
             .dataLabelEnabled(false)//是否显示数字
             .stacking(AAChartStackingType.Normal)
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
-            .colorsTheme(["#bb250c","#f67210","#fde680","#257679","#f1c6c5"])
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .series([
                 [
                     "name": "Tokyo",
