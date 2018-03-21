@@ -120,6 +120,22 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .gradientColorEnable(true)
                 .legendEnabled(true)
                 .markerRadius(5)
+                .symbol(AAChartSymbolType.Circle)
+            
+            if self.chartType == AAChartType.AreaSpline {
+                aaChartModel = aaChartModel?
+                    .gradientColorEnable(false)
+                    .series([
+                    ["data": [0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36],
+                     ],
+                    ["data": [0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67],
+                     ],
+                    ["data": [0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64],
+                     ],
+                    [ "data": [0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53],
+                      ]
+                    ])
+            }
             //            aaChartModel?.animationType = AAChartAnimationType.EaseFrom.rawValue //设置图表渲染动画类型为 EaseFrom
             
         } else if self.chartType == AAChartType.Line
@@ -127,6 +143,23 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             aaChartModel = aaChartModel?
                 .symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.BorderBlank.rawValue)!)//设置折线连接点样式为:边缘白色
                 .markerRadius(6)
+            if self.chartType == AAChartType.Spline {
+                aaChartModel = aaChartModel?.series([
+                    [
+                        "name": "Tokyo",
+                        "data": [50, 320, 230, 370, 230, 400,]
+                    ], [
+                        "name": "New York",
+                        "data": [80, 390, 210, 340, 240, 350,]
+                    ], [
+                        "name": "Berlin",
+                        "data": [100, 370, 180, 280, 260, 300,]
+                    ], [
+                        "name": "London",
+                        "data": [130, 350, 160, 310, 250, 268,]
+                    ]])
+            }
+            
             //            aaChartModel?.animationType = AAChartAnimationType.SwingFromTo.rawValue //设置图表渲染动画类型为 SwingFromTo
         }
     }
@@ -214,7 +247,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             uiswitch.frame = CGRect(x: switchWidth*CGFloat(i)+20, y: self.view.frame.size.height-70, width: switchWidth, height: 20)
             uiswitch.isOn = false
             uiswitch.tag = i;
-            uiswitch.onTintColor = UIColor.blue
+//            uiswitch.onTintColor = UIColor.blue
             uiswitch.addTarget(self, action: #selector(switchDidChange(switchView:)), for:.valueChanged)
             self.view.addSubview(uiswitch)
             
