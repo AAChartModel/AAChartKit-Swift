@@ -311,6 +311,15 @@ enum AAChartType{
 }
 ```
 
+### Supported zoom guesture types for now
+```Objective-c
+enum AAChartZoomType:String {
+    case None = "none"
+    case X    = "x"
+    case Y    = "y"
+    case XY   = "xy"
+}
+```
 
 ### Supported animation type for now
 
