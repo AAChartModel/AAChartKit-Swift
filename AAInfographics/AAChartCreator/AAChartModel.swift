@@ -92,7 +92,7 @@ enum AAChartSubtitleAlignType:String {
 }
 
 enum AAChartZoomType:String {
-    case none = "none"
+    case None = "none"
     case X    = "x"
     case Y    = "y"
     case XY   = "xy"
@@ -385,7 +385,7 @@ public class AAChartModel:AASerializable {
         self.stacking            = AAChartStackingType.False.rawValue
         self.xAxisReversed       = false
         self.yAxisReversed       = false
-        self.zoomType            = AAChartZoomType.X.rawValue
+        self.zoomType            = AAChartZoomType.None.rawValue//默认禁用手势缩放
         self.colorsTheme         = ["#9b43b4","#ef476f","#ffd066","#04d69f","#25547c",]
         self.gradientColorEnable = false
         self.polar               = false
