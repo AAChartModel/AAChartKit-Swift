@@ -67,6 +67,8 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 "Funnel Chart---漏斗图",
                 ],
             /*Mixed Chart---混合图*/
+            ["面积范围均线图",
+             "柱形范围图混合折线图"],
             /*同时显示多个图表*/
             ["在同一个页面同时添加多个 AAChartView"]
         ]
@@ -106,6 +108,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let sectionTitleArr = ["Basic Type Chart --- 基础类型图表",
                                "Special Type Chart --- 特殊类型图表",
+                               "Mixed Chart --- 混合图形",
                                "同时显示多个图表"]
         
         let sectionTitleLabel = UILabel()
@@ -175,10 +178,15 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             specialChartVC.chartType = AAChartTypeArr[indexPath.section][indexPath.row].rawValue
             self.navigationController?.pushViewController(specialChartVC, animated:true)
             
-        } else {
+        } else if (indexPath.section == 2) {
+             let mixedChartVC = MixedChartVC()
+            let chartTypeArr = ["arearangeMixedLine","columnrangeMixedLine"]
+            mixedChartVC.chartType = chartTypeArr[indexPath.row]
+            self.navigationController?.pushViewController(mixedChartVC, animated: true)
+        } else if (indexPath.section == 3) {
             /*同时显示多个图表*/
-            let specialChartVC = ShowManyChartViewVC()
-            self.navigationController?.pushViewController(specialChartVC, animated:true)
+            let manyChartVC = ShowManyChartViewVC()
+            self.navigationController?.pushViewController(manyChartVC, animated:true)
             
         }
 

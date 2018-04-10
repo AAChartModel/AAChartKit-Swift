@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */; };
 		2771702C202390E800DFF4EF /* AAFunnel.js in Resources */ = {isa = PBXBuildFile; fileRef = 27717029202390E800DFF4EF /* AAFunnel.js */; };
+		27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27766454207C55BE00F0A62C /* MixedChartVC.swift */; };
 		278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54B11EE9472300770B97 /* AppDelegate.swift */; };
 		278C54B71EE9472300770B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B51EE9472300770B97 /* Main.storyboard */; };
 		278C54B91EE9472300770B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B81EE9472300770B97 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyRefreshChartDataVC.swift; sourceTree = "<group>"; };
 		27717029202390E800DFF4EF /* AAFunnel.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAFunnel.js; sourceTree = "<group>"; };
+		27766454207C55BE00F0A62C /* MixedChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartVC.swift; sourceTree = "<group>"; };
 		278C54AE1EE9472300770B97 /* AAInfographicsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAInfographicsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		278C54B11EE9472300770B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		278C54B61EE9472300770B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				278C55111EE948C900770B97 /* MainVC.swift */,
 				278C55101EE948C900770B97 /* CommonChartVC.swift */,
 				278C55121EE948C900770B97 /* SpecialChartVC.swift */,
+				27766454207C55BE00F0A62C /* MixedChartVC.swift */,
 				279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */,
 				2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */,
 				278C55131EE948C900770B97 /* AnimationTypeVC.swift */,
@@ -346,6 +349,7 @@
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
 				2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */,
+				27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */,
 				278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */,
 				278C55021EE947DF00770B97 /* AASerializable.swift in Sources */,
 				278C55011EE947DF00770B97 /* AAChartView.swift in Sources */,
@@ -507,7 +511,7 @@
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDj;
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -521,7 +525,7 @@
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographicsDj;
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

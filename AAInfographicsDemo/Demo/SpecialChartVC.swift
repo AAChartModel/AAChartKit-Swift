@@ -32,7 +32,7 @@
 
 import UIKit
 
-class SpecialChartVC: UIViewController,UIWebViewDelegate {
+class SpecialChartVC: UIViewController {
     open var chartType:String?
     open var aaChartModel: AAChartModel?
     open var aaChartView: AAChartView?
@@ -78,13 +78,14 @@ class SpecialChartVC: UIViewController,UIWebViewDelegate {
                     [
                         [
                             "name": "Language market shares",
-                            "innerSize":"30%",//内部圆环半径大小占比(内部圆环半径/扇形图半径)
+                            "innerSize":"20%",//内部圆环半径大小占比(内部圆环半径/扇形图半径),
+                            "allowPointSelect":false,
                             "data": [
                                 ["Java"  ,67],
-                                ["Swift" ,44],
+                                ["Swift",999],
                                 ["Python",83],
                                 ["OC"    ,11],
-                                ["Go"    ,630],
+                                ["Go"    ,30],
 
                             ]
                         ],

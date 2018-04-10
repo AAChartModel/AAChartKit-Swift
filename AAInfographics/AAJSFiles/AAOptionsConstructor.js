@@ -148,7 +148,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                         AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                         AAMarker.lineColor = ""; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
                 } else if (AAChartModel.symbolStyle === "borderBlank") {
-                        AAMarker.lineWidth = 3;
+                        AAMarker.lineWidth = 2;
                         AAMarker.lineColor = AAChartModel.backgroundColor;
                 }
 
@@ -252,10 +252,7 @@ function configureAAPlotOptions(AAPlotOptions, AAChartModel) {
                         depth: AAChartModel.options3dDepth,
                         dataLabels: {
                                 enabled: AAChartModel.dataLabelEnabled,
-                                format: "<b>{point.name}</b>: {point.percentage:.1f} %",
-                                style: {
-                                        color: "black",
-                                }
+                                format: "{point.name}",
                         },
                         showInLegend: AAChartModel.legendEnabled,
                 };
