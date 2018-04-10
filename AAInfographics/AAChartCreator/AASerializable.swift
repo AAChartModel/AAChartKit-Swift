@@ -70,5 +70,9 @@ extension AASerializable {
             return nil
         }
     }
+    
+    func toDic() -> Dictionary<String, Any>? {
+        return JSONRepresentation as? Dictionary<String, Any>
+    }
 }
 

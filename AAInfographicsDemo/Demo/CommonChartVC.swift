@@ -55,8 +55,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         aaChartModel = AAChartModel.init()
             .chartType(self.chartType!)//图形类型
-//            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
-//            .backgroundColor("#222733")//图表背景色
+            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
             .colorsTheme(["#9b43b4","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
             .title("")//图形标题
             .subtitle("")//图形副标题
@@ -64,20 +63,24 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             .tooltipValueSuffix("℃")//浮动提示框单位后缀
             //            .xAxisVisible(false)// X 轴是否可见
             //            .yAxisVisible(false)// Y 轴是否可见
+            //            .backgroundColor("#222733")//图表背景色
             .series([
-                [
-                    "name": "Tokyo",
-                    "data": [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-                ], [
-                    "name": "New York",
-                    "data": [0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-                ], [
-                    "name": "Berlin",
-                    "data": [0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-                ], [
-                    "name": "London",
-                    "data": [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                ]])
+                AASeriesElement()
+                    .name("Tokyo")
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+                    .toDic()!,
+                AASeriesElement()
+                    .name("New York")
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+                    .toDic()!,
+                AASeriesElement()
+                    .name("Berlin")
+                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
+                    .toDic()!,
+                AASeriesElement()
+                    .name("London")
+                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
+                    .toDic()!,])
         
         self.configureTheStyleForDifferentTypeChart()
         
@@ -90,19 +93,23 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         if (self.chartType == AAChartType.Area && self.step == true)
             || (self.chartType == AAChartType.Line && self.step == true) {
             aaChartModel = self.chartType == AAChartType.Area ? aaChartModel?.gradientColorEnable(true) : aaChartModel?.gradientColorEnable(false)
-            aaChartModel = aaChartModel?.series([ [
-                "name": "Berlin",
-                "data": [149.9, 171.5, 106.4, 129.2, 144.0, 176.0, 135.6, 188.5, 276.4, 214.1, 95.6, 54.4],
-                "step": (true) //设置折线样式为直方折线,连接点位置默认靠左👈
-                ], [
-                "name": "New York",
-                "data": [83.6, 78.8, 188.5, 93.4, 106.0, 84.5, 105.0, 104.3, 131.2, 153.5, 226.6, 192.3],
-                "step": (true)
-                ], [
-                "name": "Tokyo",
-                "data": [48.9, 38.8, 19.3, 41.4, 47.0, 28.3, 59.0, 69.6, 52.4, 65.2, 53.3, 72.2],
-                "step": (true)
-                ], ])
+            aaChartModel = aaChartModel?.series([
+                   AASeriesElement()
+                    .name("Berlin")
+                    .data([149.9, 171.5, 106.4, 129.2, 144.0, 176.0, 135.6, 188.5, 276.4, 214.1, 95.6, 54.4])
+                    .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
+                    .toDic()!,
+                   AASeriesElement()
+                    .name("New York")
+                    .data([83.6, 78.8, 188.5, 93.4, 106.0, 84.5, 105.0, 104.3, 131.2, 153.5, 226.6, 192.3])
+                    .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
+                    .toDic()!,
+                   AASeriesElement()
+                    .name("Tokyo")
+                    .data([48.9, 38.8, 19.3, 41.4, 47.0, 28.3, 59.0, 69.6, 52.4, 65.2, 53.3, 72.2])
+                    .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
+                    .toDic()!,
+                   ])
             
         } else if self.chartType == AAChartType.Column
             || self.chartType == AAChartType.Bar {
@@ -145,19 +152,23 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .markerRadius(6)
             if self.chartType == AAChartType.Spline {
                 aaChartModel = aaChartModel?.series([
-                    [
-                        "name": "Tokyo",
-                        "data": [50, 320, 230, 370, 230, 400,]
-                    ], [
-                        "name": "New York",
-                        "data": [80, 390, 210, 340, 240, 350,]
-                    ], [
-                        "name": "Berlin",
-                        "data": [100, 370, 180, 280, 260, 300,]
-                    ], [
-                        "name": "London",
-                        "data": [130, 350, 160, 310, 250, 268,]
-                    ]])
+                    AASeriesElement()
+                        .name("Tokyo")
+                        .data([50, 320, 230, 370, 230, 400,])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("New York")
+                        .data([80, 390, 210, 340, 240, 350,])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("Berlin")
+                        .data([100, 370, 180, 280, 260, 300,])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("London")
+                        .data([130, 350, 160, 310, 250, 268,])
+                        .toDic()!,
+                    ])
             }
             
             //            aaChartModel?.animationType = AAChartAnimationType.SwingFromTo.rawValue //设置图表渲染动画类型为 SwingFromTo

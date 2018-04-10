@@ -679,9 +679,9 @@ class SpecialChartVC: UIViewController {
                 .inverted(true)//x 轴是否垂直翻转
                 .series(
                     [
-                        [
-                            "name":"temperature",
-                            "data":[
+                        AASeriesElement()
+                            .name("temperature")
+                            .data([
                                 [-9.7,  9.4],
                                 [-8.7,  6.5],
                                 [-3.5,  9.4],
@@ -694,7 +694,9 @@ class SpecialChartVC: UIViewController {
                                 [-3.1, 11.4],
                                 [-5.2, 10.4],
                                 [-13.5, 9.8]
-                            ]]]
+                                ])
+                            .toDic()!,
+                        ]
             )
             break
             
@@ -708,21 +710,22 @@ class SpecialChartVC: UIViewController {
                 .symbolStyle(AAChartSymbolStyleType.BorderBlank)//折线连接点样式
                 .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
                 .series([
-                    [
-                        "name": "Berlin",
-                        "data": [450, 432, 401, 454, 590, 530, 510],
-                        "step":"right" //折线连接点靠右👉
-                    ],
-                    [
-                        "name": "New York",
-                        "data": [220, 282, 201, 234, 290, 430, 410],
-                        "step":"center" //折线连接点居中
-                    ],
-                    [
-                        "name": "Tokyo",
-                        "data": [120, 132, 101, 134, 90, 230, 210],
-                        "step":"left" //折线连接点靠左👈
-                    ], ])
+                    AASeriesElement()
+                        .name("Berlin")
+                        .data([450, 432, 401, 454, 590, 530, 510])
+                        .step("right")//设置折线样式为直方折线,折线连接点位置靠右👉
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("New York")
+                        .data([220, 282, 201, 234, 290, 430, 410])
+                        .step("center")//设置折线样式为直方折线,折线连接点位置居中
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("Tokyo")
+                        .data([120, 132, 101, 134, 90, 230, 210])
+                        .step("left")//设置折线样式为直方折线,折线连接点位置靠左👈
+                        .toDic()!,
+                    ])
             break
             
         case AAChartType.Area:
@@ -736,21 +739,22 @@ class SpecialChartVC: UIViewController {
                 .symbolStyle(AAChartSymbolStyleType.InnerBlank)//折线连接点样式
                 .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
                 .series([
-                    [
-                        "name": "Berlin",
-                        "data": [450, 432, 401, 454, 590, 530, 510],
-                        "step":true //设置折线样式为直方折线,连接点位置默认靠左👈
-                    ],
-                    [
-                        "name": "New York",
-                        "data": [220, 282, 201, 234, 290, 430, 410],
-                        "step":true //设置折线样式为直方折线,连接点位置默认靠左👈
-                    ],
-                    [
-                        "name": "Tokyo",
-                        "data": [120, 132, 101, 134, 90, 230, 210],
-                        "step":true //设置折线样式为直方折线,连接点位置默认靠左👈
-                    ], ])
+                    AASeriesElement()
+                        .name("Berlin")
+                        .data([450, 432, 401, 454, 590, 530, 510])
+                        .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("New York")
+                        .data([220, 282, 201, 234, 290, 430, 410])
+                        .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("Tokyo")
+                        .data([120, 132, 101, 134, 90, 230, 210])
+                        .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
+                        .toDic()!,
+                    ])
             break
             
         case AAChartType.Boxplot:
@@ -760,20 +764,18 @@ class SpecialChartVC: UIViewController {
                 .subtitle("virtual data")
                 .yAxisTitle("℃")
                 .yAxisVisible(true)
-                .series(
-                    [[
-                        "name":"Observed Data",
-                        "data": [
+                .series([
+                     AASeriesElement()
+                        .name("Observed Data")
+                        .data([
                             [760, 801, 848, 895, 965],
                             [733, 853, 939, 980, 1080],
                             [714, 762, 817, 870, 918],
                             [724, 802, 806, 871, 950],
                             [834, 836, 864, 882, 910]
-                        ],
-                        
-                        ], ]
-                    
-            )
+                            ])
+                        .toDic()!,
+                     ])
             break
             
         case AAChartType.Waterfall:
@@ -822,18 +824,18 @@ class SpecialChartVC: UIViewController {
                 .title("THE HEAT OF PROGRAM LANGUAGE")
                 .subtitle("virtual data")
                 .yAxisTitle("℃")
-                .series(
-                    [
-                        ["name":"2020",
-                         "data":[
-                            ["swift",      11850],
-                            ["Objective-C",12379],
-                            ["JavaScript", 14286],
-                            ["Go",         15552],
-                            ["Python",     18654],
-                            ]]
-                    ]
-            )
+                .series([
+                        AASeriesElement()
+                            .name("2020")
+                            .data([
+                                ["swift",      11850],
+                                ["Objective-C",12379],
+                                ["JavaScript", 14286],
+                                ["Go",         15552],
+                                ["Python",     18654],
+                                ])
+                            .toDic()!,
+                    ])
             break
             
         case AAChartType.Funnel:
@@ -842,18 +844,18 @@ class SpecialChartVC: UIViewController {
                 .title("THE HEAT OF PROGRAM LANGUAGE")
                 .subtitle("virtual data")
                 .yAxisTitle("℉")
-                .series(
-                    [
-                        ["name":"2020",
-                         "data":[
-                            ["swift",      11256],
-                            ["Objective-C",12365],
-                            ["JavaScript", 13569],
-                            ["Go",         15221],
-                            ["Python",     16298],
-                            ]]
-                    ]
-            )
+                .series([
+                        AASeriesElement()
+                            .name("2020")
+                            .data([
+                                ["swift",      11256],
+                                ["Objective-C",12365],
+                                ["JavaScript", 13569],
+                                ["Go",         15221],
+                                ["Python",     16298],
+                                ])
+                            .toDic()!,
+                    ])
             break
             
             
