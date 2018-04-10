@@ -41,11 +41,6 @@ class ShowManyChartViewVC: UIViewController {
         self.setUpTheAAChartViewOne()
         self.setUpTheAAChartViewTwo()
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//            self.setUpTheAAChartViewTwo()
-//
-//        }
-    
     }
     
     func setUpTheAAChartViewOne() {
@@ -54,7 +49,8 @@ class ShowManyChartViewVC: UIViewController {
         
         let aaChartView = AAChartView()
         aaChartView.frame = CGRect(x:0,y:60,width:chartViewWidth,height:screenHeight/2)
-         self.view.addSubview(aaChartView)
+        aaChartView.scrollEnabled = false
+        self.view.addSubview(aaChartView)
         
         let  aaChartModel = AAChartModel.init()
             .chartType(AAChartType.Bar)//图形类型
@@ -84,7 +80,7 @@ class ShowManyChartViewVC: UIViewController {
                 ])
         
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
-
+        
     }
     
     func setUpTheAAChartViewTwo() {
@@ -93,6 +89,7 @@ class ShowManyChartViewVC: UIViewController {
         
         let aaChartView2 = AAChartView()
         aaChartView2.frame = CGRect(x:0,y:screenHeight/2+60,width:chartViewWidth,height:screenHeight/2)
+        aaChartView2.scrollEnabled = false
         self.view.addSubview(aaChartView2)
         
         let  aaChartModel2 = AAChartModel.init()

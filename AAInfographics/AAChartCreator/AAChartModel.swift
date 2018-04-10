@@ -135,6 +135,20 @@ enum AAChartLegendVerticalAlignType:String {
     case Bottom  = "bottom"
 }
 
+enum AALineDashSyleType:String {
+    case Solid           = "Solid";
+    case ShortDash       = "ShortDash";
+    case ShortDot        = "ShortDot";
+    case ShortDashDot    = "ShortDashDot";
+    case ShortDashDotDot = "ShortDashDotDot";
+    case Dot             = "Dot";
+    case Dash            = "Dash";
+    case LongDash        = "LongDash";
+    case DashDot         = "DashDot";
+    case LongDashDot     = "LongDashDot";
+    case LongDashDotDot  = "LongDashDotDot";
+}
+
 
 public class AAChartModel:AASerializable {
     private var animationType:String?       //动画类型
@@ -177,7 +191,6 @@ public class AAChartModel:AASerializable {
     private var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     private var markerRadius:Int?           //折线连接点的半径长度
   
-
     
     func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
         self.animationType = prop.rawValue

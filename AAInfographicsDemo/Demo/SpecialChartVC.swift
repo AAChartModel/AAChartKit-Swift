@@ -100,6 +100,7 @@ class SpecialChartVC: UIViewController {
                 .subtitle("JUST FOR FUN")
                 .yAxisTitle("℃")
                 .gradientColorEnable(true)
+                .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
                 .series(
                     [
                         [
@@ -132,14 +133,14 @@ class SpecialChartVC: UIViewController {
                         ],
                         [
                             "data": [[47, 47, 21],
-                                     [20, 12, 4 ],
+                                     [20, 12, 66],
                                      [6,  76, 91],
                                      [38, 30, 60],
                                      [57, 98, 64],
                                      [61, 47, 80],
                                      [83, 60, 13],
                                      [67, 78, 75],
-                                     [64, 12, 10],
+                                     [64, 12, 55],
                                      [30, 77, 82],
                                      [88, 66, 13]
                             ]
