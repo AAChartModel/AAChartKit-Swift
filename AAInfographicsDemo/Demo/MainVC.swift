@@ -35,12 +35,15 @@ import UIKit
 
 class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    open var chartTypeArr = Array<Array<String>>()
+    open var chartTypeTitleArr = Array<Array<String>>()
+    open var chartTypeArr = Array<Array<AAChartType>>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "AAInfographics"
-        chartTypeArr = [
+        
+        chartTypeTitleArr = [
             /*基础类型图表*/
             [
                 "Column Chart---柱形图",
@@ -78,6 +81,34 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             ["在同一个页面同时添加多个 AAChartView"]
         ]
         
+        chartTypeArr = [
+            /*基础类型图表*/
+            [
+                AAChartType.Column,
+                AAChartType.Bar,
+                AAChartType.Area,
+                AAChartType.AreaSpline,
+                AAChartType.Area,
+                AAChartType.Line,
+                AAChartType.Line,
+                AAChartType.Spline,
+                ],
+            /*特殊类型图表*/
+            [
+                AAChartType.Pie,
+                AAChartType.Bubble,
+                AAChartType.Scatter,
+                AAChartType.Arearange,
+                AAChartType.Columnrange,
+                AAChartType.Line,
+                AAChartType.Area,
+                AAChartType.Boxplot,
+                AAChartType.Waterfall,
+                AAChartType.Pyramid,
+                AAChartType.Funnel,
+                ],
+        ]
+        
         self.view.backgroundColor = UIColor.white
         
         let myTableView = UITableView()
@@ -92,11 +123,11 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return chartTypeArr.count
+        return chartTypeTitleArr.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chartTypeArr[section].count
+        return chartTypeTitleArr[section].count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -131,7 +162,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let cellTitle = chartTypeArr[indexPath.section][indexPath.row]
+        let cellTitle = chartTypeTitleArr[indexPath.section][indexPath.row]
         cell.textLabel?.text = cellTitle
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         cell.textLabel?.textColor = UIColor.darkGray
@@ -140,38 +171,10 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let AAChartTypeArr = [
-            /*基础类型图表*/
-            [
-                AAChartType.Column,
-                AAChartType.Bar,
-                AAChartType.Area,
-                AAChartType.AreaSpline,
-                AAChartType.Area,
-                AAChartType.Line,
-                AAChartType.Line,
-                AAChartType.Spline,
-                ],
-            /*特殊类型图表*/
-            [
-                AAChartType.Pie,
-                AAChartType.Bubble,
-                AAChartType.Scatter,
-                AAChartType.Arearange,
-                AAChartType.Columnrange,
-                AAChartType.Line,
-                AAChartType.Area,
-                AAChartType.Boxplot,
-                AAChartType.Waterfall,
-                AAChartType.Pyramid,
-                AAChartType.Funnel,
-                ],
-        ]
-        
         if (indexPath.section == 0) {
             /*基础类型图表*/
             let commonChartVC  = CommonChartVC()
-            commonChartVC.chartType = AAChartType(rawValue: AAChartTypeArr[indexPath.section][indexPath.row].rawValue)
+            commonChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row]
             if indexPath.row == 4 || indexPath.row == 5 {
                 commonChartVC.step = true
             }
@@ -180,7 +183,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         } else if (indexPath.section == 1) {
             /*特殊类型图表*/
             let specialChartVC = SpecialChartVC()
-            specialChartVC.chartType = AAChartTypeArr[indexPath.section][indexPath.row].rawValue
+            specialChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row]
             self.navigationController?.pushViewController(specialChartVC, animated:true)
             
         } else if (indexPath.section == 2) {
@@ -192,9 +195,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             /*同时显示多个图表*/
             let manyChartVC = ShowManyChartViewVC()
             self.navigationController?.pushViewController(manyChartVC, animated:true)
-            
         }
-
     }
     
     func configureTheConstraintArray(childView:UIView, fatherView:UIView) -> [NSLayoutConstraint] {

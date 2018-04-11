@@ -58,13 +58,13 @@ class MixedChartVC: UIViewController {
         self.view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false
         
-        self.configureTheAAChartModel(chartTypeStr: self.chartType!)
+        self.configureTheAAChartModel(self.chartType!)
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
         
     }
     
-    func configureTheAAChartModel(chartTypeStr:String) {
+    func configureTheAAChartModel(_ chartTypeStr:String) {
         
         switch chartTypeStr {
         case "arearangeMixedLine":

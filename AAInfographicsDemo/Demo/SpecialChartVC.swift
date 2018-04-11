@@ -34,14 +34,14 @@
 import UIKit
 
 class SpecialChartVC: UIViewController {
-    open var chartType:String?
+    open var chartType:AAChartType?
     open var aaChartModel: AAChartModel?
     open var aaChartView: AAChartView?
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.white
-        self.title = self.chartType
+        self.title = self.chartType?.rawValue
         
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
         let subLabel = UILabel()
@@ -59,13 +59,13 @@ class SpecialChartVC: UIViewController {
         self.view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false
         
-        self.configureTheAAChartModel(chartTypeStr:AAChartType(rawValue: self.chartType!)!)
+        self.configureTheAAChartModel(self.chartType!)
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
         
     }
     
-    func configureTheAAChartModel(chartTypeStr:AAChartType) {
+    func configureTheAAChartModel(_ chartTypeStr:AAChartType) {
         switch chartTypeStr {
         case AAChartType.Pie:
             aaChartModel = AAChartModel.init()

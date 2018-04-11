@@ -43,6 +43,8 @@ class OnlyRefreshChartDataVC: UIViewController {
     
     func  setUpTheView() {
         
+        //what "@import 'common.js'" does mean // https://github.com/pavelkuligin/chart/blob/master/Chart.sketchplugin/Contents/Sketch/pieChart.js
+        
         //数据来源http://gallery.echartsjs.com/editor.html?c=xBJGEynUhl
         
         let dic = [
