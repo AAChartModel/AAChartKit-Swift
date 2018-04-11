@@ -410,7 +410,7 @@ public class AAChartModel:AASerializable {
         self.xAxisLabelsEnabled  = true
         self.xAxisGridLineWidth  = 0
         self.xAxisVisible        = true  // X 轴默认可见
-        self.yAxisVisible        = false // Y 轴默认不可见
+        self.yAxisVisible        = true  // Y 轴默认可见
         self.yAxisLabelsEnabled  = true
         self.yAxisGridLineWidth  = 0.6
         self.legendEnabled       = false

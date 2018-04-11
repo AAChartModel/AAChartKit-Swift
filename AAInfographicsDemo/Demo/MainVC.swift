@@ -70,7 +70,8 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             /*Mixed Chart---混合图*/
             ["Arearange Mixed Line---面积范围均线图",
              "Columnrange Mixed Line---柱形范围图混合折线图",
-             "Dash Style Types Mixed---多种类型曲线混合图"],
+             "Dash Style Types Mixed---多种类型曲线混合图",
+             "Negative Color Mixed---基准线以下异色混合图"],
             /*同时显示多个图表*/
             ["在同一个页面同时添加多个 AAChartView"]
         ]
@@ -182,7 +183,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             
         } else if (indexPath.section == 2) {
              let mixedChartVC = MixedChartVC()
-            let chartTypeArr = ["arearangeMixedLine","columnrangeMixedLine","DashStyleTypeMixed"]
+            let chartTypeArr = ["arearangeMixedLine","columnrangeMixedLine","dashStyleTypeMixed","negativeColorMixed"]
             mixedChartVC.chartType = chartTypeArr[indexPath.row]
             self.navigationController?.pushViewController(mixedChartVC, animated: true)
         } else if (indexPath.section == 3) {

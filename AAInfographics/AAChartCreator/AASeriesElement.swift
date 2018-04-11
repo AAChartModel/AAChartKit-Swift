@@ -28,9 +28,14 @@ class AASeriesElement: AASerializable {
     private var type:String?
     private var name:String?
     private var data:Array<Any>?
-    private var lineWidth:Float?
+    private var lineWidth:Float?//折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
+    private var color:String?
+    private var fillOpacity:Float?//折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色透明度
+    private var threshold:Float?//The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
+    private var negativeColor:String?// The color for the parts of the graph or points that are below the threshold
     private var dashStyle:String?
     private var dataLabels:Dictionary<String,Any>?
+    private var marker:Dictionary<String,Any>?
     private var step:Any?
     
     func type(_ prop:String) -> AASeriesElement {
@@ -53,6 +58,26 @@ class AASeriesElement: AASerializable {
         return self
     }
     
+    func color(_ prop:String) -> AASeriesElement {
+        self.color = prop
+        return self
+    }
+    
+    func fillOpacity(_ prop:Float) -> AASeriesElement {
+        self.fillOpacity = prop
+        return self
+    }
+    
+    func threshold(_ prop:Float) -> AASeriesElement {
+        self.threshold = prop
+        return self
+    }
+    
+    func negativeColor(_ prop:String) -> AASeriesElement {
+        self.negativeColor = prop
+        return self
+    }
+    
     func dashStyle(_ prop:String) -> AASeriesElement {
         self.dashStyle = prop;
         return self
@@ -60,6 +85,11 @@ class AASeriesElement: AASerializable {
     
     func dataLabels(_ prop:Dictionary<String,Any>) -> AASeriesElement {
         self.dataLabels = prop
+        return self
+    }
+    
+    func marker(_ prop:Dictionary<String,Any>) -> AASeriesElement {
+        self.marker = prop
         return self
     }
     

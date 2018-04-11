@@ -216,7 +216,7 @@ class MixedChartVC: UIViewController {
             
             break
             
-        case "DashStyleTypeMixed":
+        case "dashStyleTypeMixed":
             aaChartModel = AAChartModel.init()
                 .chartType(AAChartType.Line)//图形类型
                 .dataLabelEnabled(false)//是否显示数字
@@ -246,6 +246,24 @@ class MixedChartVC: UIViewController {
                     .dashStyle(AALineDashSyleType.LongDashDot.rawValue)
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
                     .toDic()!,
+                    ])
+            break
+            
+        case "negativeColorMixed":
+            aaChartModel = AAChartModel.init()
+                .dataLabelEnabled(false)//是否显示数字
+                .markerRadius(0)
+                .series([
+                    AASeriesElement()
+                        .name("Column")
+                        .type(AAChartType.Column.rawValue)
+                        .data([-6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
+                               -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
+                               -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,])
+                        .color("#0088FF")
+                        .negativeColor("#FF0000")
+                        .threshold(4)//default:0
+                        .toDic()!,
                     ])
             break
             
