@@ -56,7 +56,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         aaChartModel = AAChartModel.init()
             .chartType(self.chartType!)//图形类型
-            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
             .colorsTheme(["#9b43b4","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
             .title("")//图形标题
             .subtitle("")//图形副标题
@@ -65,6 +64,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             //            .xAxisVisible(false)// X 轴是否可见
             //            .yAxisVisible(false)// Y 轴是否可见
             //            .backgroundColor("#222733")//图表背景色
+            //            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
             .series([
                 AASeriesElement()
                     .name("Tokyo")
