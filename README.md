@@ -312,7 +312,7 @@ enum AAChartType{
 ```
 
 ### Supported zoom guesture types for now
-```Objective-c
+```swift
 enum AAChartZoomType:String {
     case None = "none"
     case X    = "x"
