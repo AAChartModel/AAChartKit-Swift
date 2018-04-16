@@ -137,17 +137,17 @@ enum AAChartLegendVerticalAlignType:String {
 }
 
 enum AALineDashSyleType:String {
-    case Solid           = "Solid";
-    case ShortDash       = "ShortDash";
-    case ShortDot        = "ShortDot";
-    case ShortDashDot    = "ShortDashDot";
-    case ShortDashDotDot = "ShortDashDotDot";
-    case Dot             = "Dot";
-    case Dash            = "Dash";
-    case LongDash        = "LongDash";
-    case DashDot         = "DashDot";
-    case LongDashDot     = "LongDashDot";
-    case LongDashDotDot  = "LongDashDotDot";
+    case Solid           = "Solid"
+    case ShortDash       = "ShortDash"
+    case ShortDot        = "ShortDot"
+    case ShortDashDot    = "ShortDashDot"
+    case ShortDashDotDot = "ShortDashDotDot"
+    case Dot             = "Dot"
+    case Dash            = "Dash"
+    case LongDash        = "LongDash"
+    case DashDot         = "DashDot"
+    case LongDashDot     = "LongDashDot"
+    case LongDashDotDot  = "LongDashDotDot"
 }
 
 
