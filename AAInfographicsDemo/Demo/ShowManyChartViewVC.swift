@@ -53,7 +53,7 @@ class ShowManyChartViewVC: UIViewController {
         aaChartView.scrollEnabled = false
         self.view.addSubview(aaChartView)
         
-        let  aaChartModel = AAChartModel.init()
+        let  aaChartModel = AAChartModel()
             .chartType(AAChartType.Bar)//图形类型
             .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
             .title("都市天气")//图形标题
@@ -93,7 +93,7 @@ class ShowManyChartViewVC: UIViewController {
         aaChartView2.scrollEnabled = false
         self.view.addSubview(aaChartView2)
         
-        let  aaChartModel2 = AAChartModel.init()
+        let  aaChartModel2 = AAChartModel()
             .chartType(AAChartType.Area)//图形类型
             .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
             .title("都市天气")//图形标题

@@ -54,7 +54,7 @@ class MixedChartVC: UIViewController {
         let chartWidth = self.view.frame.size.width
         let chartHeight = self.view.frame.size.height
         aaChartView?.frame = CGRect(x:0,y:60,width:chartWidth,height:chartHeight)
-        aaChartView?.contentHeight = self.view.frame.size.height-60
+        aaChartView?.contentHeight = self.view.frame.size.height-80
         self.view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false
         
@@ -68,39 +68,17 @@ class MixedChartVC: UIViewController {
         
         switch chartTypeStr {
         case "arearangeMixedLine":
-            let rangesArr = [[1246406400000, 14.3, 27.7],
-                             [1246492800000, 14.5, 27.8],
-                             [1246579200000, 15.5, 29.6],
-                             [1246665600000, 16.7, 30.7],
-                             [1246752000000, 16.5, 25.0],
-                             [1246838400000, 17.8, 25.7],
-                             [1246924800000, 13.5, 24.8],
-                             [1247011200000, 10.5, 21.4],
-                             [1247097600000, 9.2, 23.8],
-                             [1247184000000, 11.6, 21.8],
-                             [1247270400000, 10.7, 23.7],
-                             [1247356800000, 11.0, 23.3],
-                             [1247443200000, 11.6, 23.7],
-                             [1247529600000, 11.8, 20.7],
-                             [1247616000000, 12.6, 22.4],
-                             [1247702400000, 13.6, 19.6],
-                             [1247788800000, 11.4, 22.6],
-                             [1247875200000, 13.2, 25.0],
-                             [1247961600000, 14.2, 21.6],
-                             [1248048000000, 13.1, 17.1],
-                             [1248134400000, 12.2, 15.5],
-                             [1248220800000, 12.0, 20.8],
-                             [1248307200000, 12.0, 17.1],
-                             [1248393600000, 12.7, 18.3],
-                             [1248480000000, 12.4, 19.4],
-                             [1248566400000, 12.6, 19.9],
-                             [1248652800000, 11.9, 20.2],
-                             [1248739200000, 11.0, 19.3],
-                             [1248825600000, 10.8, 17.8],
-                             [1248912000000, 11.8, 18.5],
-                             [1248998400000, 10.8, 16.1]]
+            //http://jsfiddle.net/7L6n922w/1/
             
-            let averagesArr = [[1246406400000, 21.5],
+            aaChartModel = AAChartModel()
+                .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
+                .subtitle("virtual data")
+                .series([
+                    AASeriesElement()
+                        .name("Temperature")
+                        .color("#1E90FF")
+                        .type(AAChartType.Line.rawValue)
+                        .data([[1246406400000, 21.5],
                                [1246492800000, 22.1],
                                [1246579200000, 23],
                                [1246665600000, 23.8],
@@ -130,44 +108,59 @@ class MixedChartVC: UIViewController {
                                [1248739200000, 14.8],
                                [1248825600000, 14.4],
                                [1248912000000, 15],
-                               [1248998400000, 13.6]]
-            
-            let seriesArr = [
-                [
-                    "name": "Temperature",
-                    "color": "#1E90FF",
-                    "type": AAChartType.Line.rawValue,
-                    "data": averagesArr,
-                    "zIndex": 1,
-                    "marker": [
-                        "fillColor":"#1E90FF" ,
-                        "lineWidth": 2,
-                        "lineColor":"white"
-                    ]
-                ],
-                [
-                    "name": "Range",
-                    "data": rangesArr,
-                    "type": AAChartType.Arearange.rawValue,
-                    "lineWidth": 0,
-                    "linkedTo": ":previous",
-                    "fillOpacity": 0.4,
-                    "zIndex": 0,
-                    "color": "#1E90FF",
-                    "marker": [
-                        "enabled": false
-                    ]
-                ]
-            ]
-            
-            aaChartModel = AAChartModel.init()
-                .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
-                .subtitle("virtual data")
-                .series(seriesArr)
+                               [1248998400000, 13.6]])
+                        .zIndex(1)
+                        .marker([
+                            "fillColor":"#1E90FF" ,
+                            "lineWidth": 2,
+                            "lineColor":"white"
+                            ])
+                        .toDic()!,
+                    
+                    AASeriesElement()
+                        .name("Range")
+                        .color("#1E90FF")
+                        .type(AAChartType.Arearange.rawValue)
+                        .lineWidth(1)
+                        .fillOpacity(0.3)
+                        .data([[1246406400000, 14.3, 27.7],
+                               [1246492800000, 14.5, 27.8],
+                               [1246579200000, 15.5, 29.6],
+                               [1246665600000, 16.7, 30.7],
+                               [1246752000000, 16.5, 25.0],
+                               [1246838400000, 17.8, 25.7],
+                               [1246924800000, 13.5, 24.8],
+                               [1247011200000, 10.5, 21.4],
+                               [1247097600000, 9.2, 23.8],
+                               [1247184000000, 11.6, 21.8],
+                               [1247270400000, 10.7, 23.7],
+                               [1247356800000, 11.0, 23.3],
+                               [1247443200000, 11.6, 23.7],
+                               [1247529600000, 11.8, 20.7],
+                               [1247616000000, 12.6, 22.4],
+                               [1247702400000, 13.6, 19.6],
+                               [1247788800000, 11.4, 22.6],
+                               [1247875200000, 13.2, 25.0],
+                               [1247961600000, 14.2, 21.6],
+                               [1248048000000, 13.1, 17.1],
+                               [1248134400000, 12.2, 15.5],
+                               [1248220800000, 12.0, 20.8],
+                               [1248307200000, 12.0, 17.1],
+                               [1248393600000, 12.7, 18.3],
+                               [1248480000000, 12.4, 19.4],
+                               [1248566400000, 12.6, 19.9],
+                               [1248652800000, 11.9, 20.2],
+                               [1248739200000, 11.0, 19.3],
+                               [1248825600000, 10.8, 17.8],
+                               [1248912000000, 11.8, 18.5],
+                               [1248998400000, 10.8, 16.1]])
+                        .zIndex(0)
+                        .toDic()!,
+                    ])
             break
             
         case "columnrangeMixedLine":
-            aaChartModel = AAChartModel.init()
+            aaChartModel = AAChartModel()
                 .colorsTheme(["#1e90ff","#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",])//主题颜色数组
                 .title("")//图形标题
                 .subtitle("")//图形副标题
@@ -216,7 +209,7 @@ class MixedChartVC: UIViewController {
             break
             
         case "dashStyleTypeMixed":
-            aaChartModel = AAChartModel.init()
+            aaChartModel = AAChartModel()
                 .chartType(AAChartType.Line)//图形类型
                 .dataLabelEnabled(false)//是否显示数字
                 .markerRadius(0)
@@ -249,7 +242,7 @@ class MixedChartVC: UIViewController {
             break
             
         case "negativeColorMixed":
-            aaChartModel = AAChartModel.init()
+            aaChartModel = AAChartModel()
                 .dataLabelEnabled(false)//是否显示数字
                 .markerRadius(0)
                 .series([
@@ -267,7 +260,7 @@ class MixedChartVC: UIViewController {
             break
             
         case "scatterMixedLine":
-            aaChartModel = AAChartModel.init()
+            aaChartModel = AAChartModel()
                 .dataLabelEnabled(false)//是否显示数字
                 .markerRadius(0)
                 .series([
@@ -482,7 +475,7 @@ class MixedChartVC: UIViewController {
             break
             
         case "negativeColorMixedBubble":
-            aaChartModel = AAChartModel.init()
+            aaChartModel = AAChartModel()
                 .categories(["Saturday", "Friday", "Thursday","Wednesday", "Tuesday", "Monday", "Sunday"])
                 .series([
                     AASeriesElement()

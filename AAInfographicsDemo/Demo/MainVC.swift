@@ -140,17 +140,16 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = kRGBColorFromHex(rgbValue: 0xF5F5F5)//白烟
         
+        let sectionTitleLabel = UILabel()
         let sectionTitleArr = ["Basic Type Chart --- 基础类型图表",
                                "Special Type Chart --- 特殊类型图表",
                                "Mixed Chart --- 混合图形",
                                "同时显示多个图表"]
-        
-        let sectionTitleLabel = UILabel()
         sectionTitleLabel.text = sectionTitleArr[section]
-        sectionTitleLabel.textColor = UIColor.blue
-        sectionTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
+        sectionTitleLabel.font = UIFont.boldSystemFont(ofSize: 14)
         sectionTitleLabel.textAlignment = NSTextAlignment.center
         view.addSubview(sectionTitleLabel)
         
@@ -164,7 +163,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let cell = UITableViewCell()
         let cellTitle = chartTypeTitleArr[indexPath.section][indexPath.row]
         cell.textLabel?.text = cellTitle
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
         cell.textLabel?.textColor = UIColor.darkGray
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return cell
@@ -188,7 +187,12 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             
         } else if (indexPath.section == 2) {
              let mixedChartVC = MixedChartVC()
-            let chartTypeArr = ["arearangeMixedLine","columnrangeMixedLine","dashStyleTypeMixed","negativeColorMixed","scatterMixedLine","negativeColorMixedBubble"]
+            let chartTypeArr = ["arearangeMixedLine",
+                                "columnrangeMixedLine",
+                                "dashStyleTypeMixed",
+                                "negativeColorMixed",
+                                "scatterMixedLine",
+                                "negativeColorMixedBubble"]
             mixedChartVC.chartType = chartTypeArr[indexPath.row]
             self.navigationController?.pushViewController(mixedChartVC, animated: true)
         } else if (indexPath.section == 3) {
@@ -228,5 +232,14 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                    multiplier:1.0,
                                    constant:0)]
     }
+    
+    func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
+        return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
+                       green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
+                       blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
+                       alpha: 1.0)
+    }
+    
+   
     
 }

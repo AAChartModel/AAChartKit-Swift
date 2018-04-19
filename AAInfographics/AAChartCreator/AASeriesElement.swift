@@ -29,6 +29,7 @@ class AASeriesElement: AASerializable {
     private var name:String?
     private var data:Array<Any>?
     private var lineWidth:Float?//折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
+    private var innerSize:String?//内部圆环半径大小占比(内部圆环半径/扇形图半径)
     private var color:String?
     private var fillOpacity:Float?//折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色透明度
     private var threshold:Float?//The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
@@ -37,10 +38,12 @@ class AASeriesElement: AASerializable {
     private var dataLabels:Dictionary<String,Any>?
     private var marker:Dictionary<String,Any>?
     private var step:Any?
+    private var allowPointSelect:Bool?
+    private var zIndex:Int?
     
     func type(_ prop:String) -> AASeriesElement {
         self.type = prop
-        return self;
+        return self
     }
     
     func name(_ prop:String) -> AASeriesElement {
@@ -55,6 +58,11 @@ class AASeriesElement: AASerializable {
     
     func lineWidth(_ prop:Float) -> AASeriesElement {
         self.lineWidth = prop
+        return self
+    }
+    
+    func innerSize(_ prop:String) -> AASeriesElement {
+        self.innerSize = prop
         return self
     }
     
@@ -95,6 +103,16 @@ class AASeriesElement: AASerializable {
     
     func step(_ prop:Any) -> AASeriesElement {
         self.step = prop
+        return self
+    }
+    
+    func allowPointSelect(_ prop:Bool) -> AASeriesElement {
+        self.allowPointSelect = prop
+        return self
+    }
+    
+    func zIndex(_ prop:Int) -> AASeriesElement {
+        self.zIndex = prop
         return self
     }
 
