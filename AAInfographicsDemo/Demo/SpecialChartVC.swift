@@ -87,11 +87,9 @@ class SpecialChartVC: UIViewController {
                                 ["Python",83],
                                 ["OC"    ,11],
                                 ["Go"    ,30],
-                                
                                 ])
                             .toDic()!,
                         ]
-                    
             )
             
         case AAChartType.Bubble:

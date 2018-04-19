@@ -184,89 +184,96 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 - To draw a pie chart,you should configure the properties of `AAChartModel` like this:
 ``` swift
-            aaChartModel = AAChartModel.init()
+            aaChartModel = AAChartModel()
                 .chartType(AAChartType.Pie)
+                .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
                 .subtitle("virtual data")
-                .dataLabelEnabled(false)
+                .dataLabelEnabled(true)
                 .yAxisTitle("℃")
                 .series(
                     [
-                        [
-                            "name": "Language market shares",
-                            "innerSize":"50%",
-                            "data": [
+                        AASeriesElement()
+                            .name("Language market shares")
+                            .innerSize("20%")
+                            .allowPointSelect(false)
+                            .data([
                                 ["Java"  ,67],
-                                ["Swift" ,44],
+                                ["Swift",999],
                                 ["Python",83],
                                 ["OC"    ,11],
-                                ["Ruby"  ,42],
-                                ["PHP"   ,31],
-                                ["Go"    ,63],
-                                ["C"     ,24],
-                                ["C#"    ,888],
-                                ["C++"   ,66],
-                            ]
-                        ],
+                                ["Go"    ,30],
+                                ])
+                            .toDic()!,
                         ]
-                    
             )
 ```
 - To draw a bubble chart,you should configure the properties of `AAChartModel` like this:
 
 
 ``` swift
-            aaChartModel = AAChartModel.init()
+            aaChartModel = AAChartModel()
                 .chartType(AAChartType.Bubble)
                 .title("AACHARTKIT BUBBLES")
                 .subtitle("JUST FOR FUN")
                 .yAxisTitle("℃")
+                .gradientColorEnable(true)
+                .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
                 .series(
                     [
-                        [
-                            "data": [[97, 36, 79],
-                                     [94, 74, 60],
-                                     [68, 76, 58],
-                                     [64, 87, 56],
-                                     [68, 27, 73],
-                                     [74, 99, 42],
-                                     [7,  93, 87],
-                                     [51, 69, 40],
-                                     [38, 23, 33],
-                                     [57, 86, 31]]
-                        ],
-                        [
-                            "data": [[25, 10, 87],
-                                     [2,  75, 59],
-                                     [11, 54, 8 ],
-                                     [86, 55, 93],
-                                     [5,  3,  58],
-                                     [90, 63, 44],
-                                     [91, 33, 17],
-                                     [97, 3,  56],
-                                     [15, 67, 48],
-                                     [54, 25, 81]]
-                        ],
-                        [
-                            "data": [[47, 47, 21],
-                                     [20, 12, 4 ],
-                                     [6,  76, 91],
-                                     [38, 30, 60],
-                                     [57, 98, 64],
-                                     [61, 17, 80],
-                                     [83, 60, 13],
-                                     [67, 78, 75],
-                                     [64, 12, 10],
-                                     [30, 77, 82]]
+                        AASeriesElement()
+                            .name("BubbleOne")
+                            .data([[97, 36, 79],
+                                   [94, 74, 60],
+                                   [68, 76, 58],
+                                   [64, 87, 56],
+                                   [68, 27, 73],
+                                   [74, 99, 42],
+                                   [7,  93, 99],
+                                   [51, 69, 40],
+                                   [38, 23, 33],
+                                   [57, 86, 31],
+                                   [33, 24, 22]
+                                ])
+                            .toDic()!,
+                        AASeriesElement()
+                            .name("BubbleTwo")
+                            .data([[25, 60, 87],
+                                   [2,  75, 59],
+                                   [11, 54, 8 ],
+                                   [86, 55, 93],
+                                   [5,  33, 88],
+                                   [90, 63, 44],
+                                   [91, 43, 17],
+                                   [97, 56, 56],
+                                   [15, 67, 48],
+                                   [54, 25, 81],
+                                   [55, 66, 11]
+                                ])
+                            .toDic()!,
+                        AASeriesElement()
+                            .name("BubbleThree")
+                            .data([[47, 47, 21],
+                                   [20, 12, 66],
+                                   [6,  76, 91],
+                                   [38, 30, 60],
+                                   [57, 98, 64],
+                                   [61, 47, 80],
+                                   [83, 60, 13],
+                                   [67, 78, 75],
+                                   [64, 12, 55],
+                                   [30, 77, 82],
+                                   [88, 66, 13]
+                                ])
+                            .toDic()!,
                         ]
-                    ]
             )
 ```
 
 - To draw a columnrange chart,you should configure the properties of `AAChartModel` like this:
 
 ``` swift
-            aaChartModel = AAChartModel.init()
+             aaChartModel = AAChartModel()
                 .chartType(AAChartType.Columnrange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
@@ -274,12 +281,12 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                 .categories(["January", "February", "March", "April", "May", "June",
                              "July", "August", "September", "October", "November", "December"])
                 .dataLabelEnabled(true)
-                //.inverted(true)
+                .inverted(true)
                 .series(
                     [
-                        [
-                            "name":"temperature",
-                            "data":[
+                        AASeriesElement()
+                            .name("temperature")
+                            .data([
                                 [-9.7,  9.4],
                                 [-8.7,  6.5],
                                 [-3.5,  9.4],
@@ -292,8 +299,9 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                                 [-3.1, 11.4],
                                 [-5.2, 10.4],
                                 [-13.5, 9.8]
-                            ]]]
-            )
+                                ])
+                            .toDic()!,
+                        ]
 ```
 
 ### Supported chart type for now
