@@ -41,8 +41,8 @@ class AASeriesElement: AASerializable {
     private var allowPointSelect:Bool?
     private var zIndex:Int?
     
-    func type(_ prop:String) -> AASeriesElement {
-        self.type = prop
+    func type(_ prop:AAChartType) -> AASeriesElement {
+        self.type = prop.rawValue
         return self
     }
     
@@ -86,8 +86,8 @@ class AASeriesElement: AASerializable {
         return self
     }
     
-    func dashStyle(_ prop:String) -> AASeriesElement {
-        self.dashStyle = prop;
+    func dashStyle(_ prop:AALineDashSyleType) -> AASeriesElement {
+        self.dashStyle = prop.rawValue
         return self
     }
     
