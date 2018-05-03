@@ -106,34 +106,34 @@ enum AAChartStackingType:String {
 }
 
 enum AAChartSymbolType:String {
-    case Circle         = "circle"
-    case Square         = "square"
-    case Diamond        = "diamond"
-    case Triangle       = "triangle"
-    case Triangle_down  = "triangle-down"
+    case Circle        = "circle"
+    case Square        = "square"
+    case Diamond       = "diamond"
+    case Triangle      = "triangle"
+    case Triangle_down = "triangle-down"
 }
 
 enum AAChartSymbolStyleType:String {
-    case Normal       = "normal"
-    case InnerBlank   = "innerBlank"
-    case BorderBlank  = "borderBlank"
+    case Normal      = "normal"
+    case InnerBlank  = "innerBlank"
+    case BorderBlank = "borderBlank"
 }
 
 enum AAchartLegendlLayoutType:String {
-    case Horizontal  = "horizontal"
-    case Vertical    = "vertical"
+    case Horizontal = "horizontal"
+    case Vertical   = "vertical"
 }
 
 enum AAChartLegendAlignType:String {
-    case Left     = "left"
-    case Center   = "center"
-    case Right    = "right"
+    case Left   = "left"
+    case Center = "center"
+    case Right  = "right"
 }
 
 enum AAChartLegendVerticalAlignType:String {
-    case Top     = "top"
-    case Middle  = "middle"
-    case Bottom  = "bottom"
+    case Top    = "top"
+    case Middle = "middle"
+    case Bottom = "bottom"
 }
 
 enum AALineDashSyleType:String {
