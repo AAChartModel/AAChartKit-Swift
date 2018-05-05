@@ -67,6 +67,24 @@ class SpecialChartVC: UIViewController {
     
     func configureTheAAChartModel(_ chartTypeStr:AAChartType) {
         switch chartTypeStr {
+        case AAChartType.Column:
+            aaChartModel = AAChartModel()
+                .chartType(AAChartType.Column)
+                .polar(true)
+                .dataLabelEnabled(false)
+                .categories(["January", "February", "March", "April", "May", "June",
+                             "July", "August", "September", "October", "November", "December"])
+                .marginLeft(50)
+                .marginRight(30)
+                .series(
+                    [
+                        AASeriesElement()
+                            .name("Tokyo")
+                            .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+                            .toDic()!,
+                        ]
+            )
+            
         case AAChartType.Pie:
             aaChartModel = AAChartModel()
                 .chartType(AAChartType.Pie)

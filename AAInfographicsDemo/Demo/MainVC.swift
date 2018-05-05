@@ -58,6 +58,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 ],
             /*特殊类型图表*/
             [
+                "Polar Chart---极地图",
                 "Pie Chart---扇形图",
                 "Bubble Chart---气泡图",
                 "Scatter Chart---散点图",
@@ -95,6 +96,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 ],
             /*特殊类型图表*/
             [
+                AAChartType.Column,
                 AAChartType.Pie,
                 AAChartType.Bubble,
                 AAChartType.Scatter,

@@ -166,6 +166,8 @@ public class AAChartModel:AASerializable {
     private var yAxisReversed:Bool?         //y 轴翻转
     private var gradientColorEnable:Bool?   //是否要为渐变色
     private var polar:Bool?                 //是否极化图形(变为雷达图)
+    private var marginLeft:Float?
+    private var marginRight:Float?
     private var dataLabelEnabled:Bool?      //是否显示数据
     private var xAxisLabelsEnabled:Bool?    //x轴是否显示数据
     private var categories:Array<Any>?      //x轴是否显示数据
@@ -271,6 +273,16 @@ public class AAChartModel:AASerializable {
     
     func polar(_ prop: Bool) -> AAChartModel {
         self.polar = prop
+        return self
+    }
+    
+    func marginLeft(_ prop: Float) -> AAChartModel {
+        self.marginLeft = prop
+        return self
+    }
+    
+    func marginRight(_ prop: Float) -> AAChartModel {
+        self.marginRight = prop
         return self
     }
     
