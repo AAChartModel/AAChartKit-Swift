@@ -62,11 +62,6 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 pinchType: AAChartModel.zoomType,//设置手势缩放方向
                 panning: true,//设置手势缩放后是否可平移
                 polar: AAChartModel.polar,//是否辐射化图形
-                options3d: {
-                        enabled: AAChartModel.options3dEnable,//是否 3D 化图形
-                        alpha: -15
-                }
-
         };
 
         var AATitle = {

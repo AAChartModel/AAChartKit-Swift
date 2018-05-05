@@ -27,7 +27,6 @@
 		278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55121EE948C900770B97 /* SpecialChartVC.swift */; };
 		278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55131EE948C900770B97 /* AnimationTypeVC.swift */; };
 		279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */; };
-		3C05E5FD2025A8460002EC81 /* AAHighcharts-3d.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C05E5FA2025A8460002EC81 /* AAHighcharts-3d.js */; };
 		3C05E5FE2025A8460002EC81 /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C05E5FB2025A8460002EC81 /* AAHighchartsMore.js */; };
 		3C05E5FF2025A8460002EC81 /* AAHighchartsLib.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C05E5FC2025A8460002EC81 /* AAHighchartsLib.js */; };
 /* End PBXBuildFile section */
@@ -76,7 +75,6 @@
 		278C55121EE948C900770B97 /* SpecialChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialChartVC.swift; sourceTree = "<group>"; };
 		278C55131EE948C900770B97 /* AnimationTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeVC.swift; sourceTree = "<group>"; };
 		279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowManyChartViewVC.swift; sourceTree = "<group>"; };
-		3C05E5FA2025A8460002EC81 /* AAHighcharts-3d.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "AAHighcharts-3d.js"; sourceTree = "<group>"; };
 		3C05E5FB2025A8460002EC81 /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
 		3C05E5FC2025A8460002EC81 /* AAHighchartsLib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsLib.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,7 +182,6 @@
 				278C54FA1EE947DF00770B97 /* AAChartView.html */,
 				278C54FF1EE947DF00770B97 /* AAOptionsConstructor.js */,
 				3C05E5FC2025A8460002EC81 /* AAHighchartsLib.js */,
-				3C05E5FA2025A8460002EC81 /* AAHighcharts-3d.js */,
 				3C05E5FB2025A8460002EC81 /* AAHighchartsMore.js */,
 				27717029202390E800DFF4EF /* AAFunnel.js */,
 			);
@@ -315,7 +312,6 @@
 			files = (
 				3C05E5FE2025A8460002EC81 /* AAHighchartsMore.js in Resources */,
 				278C54BC1EE9472300770B97 /* LaunchScreen.storyboard in Resources */,
-				3C05E5FD2025A8460002EC81 /* AAHighcharts-3d.js in Resources */,
 				3C05E5FF2025A8460002EC81 /* AAHighchartsLib.js in Resources */,
 				2771702C202390E800DFF4EF /* AAFunnel.js in Resources */,
 				278C54B91EE9472300770B97 /* Assets.xcassets in Resources */,

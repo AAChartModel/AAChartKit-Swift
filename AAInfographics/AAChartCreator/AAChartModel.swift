@@ -185,10 +185,6 @@ public class AAChartModel:AASerializable {
     private var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
     private var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
     private var backgroundColor:String?     //图表背景色
-    private var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
-    private var options3dAlpha:Int?
-    private var options3dBeta:Int?
-    private var options3dDepth:Int?         //3D图形深度
     private var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     private var markerRadius:Int?           //折线连接点的半径长度
   
@@ -358,26 +354,6 @@ public class AAChartModel:AASerializable {
         return self
     }
     
-    func options3dEnable(_ prop: Bool) -> AAChartModel {
-        self.options3dEnable = prop
-        return self
-    }
-    
-    func options3dAlpha(_ prop: Int) -> AAChartModel {
-        self.options3dAlpha = prop
-        return self
-    }
-    
-    func options3dBeta(_ prop: Int) -> AAChartModel {
-        self.options3dBeta = prop
-        return self
-    }
-    
-    func options3dDepth(_ prop: Int) -> AAChartModel {
-        self.options3dDepth = prop
-        return self
-    }
-    
     func borderRadius(_ prop: Int) -> AAChartModel {
         self.borderRadius = prop
         return self
@@ -403,7 +379,6 @@ public class AAChartModel:AASerializable {
         self.gradientColorEnable = false
         self.polar               = false
         self.dataLabelEnabled    = true
-        self.options3dEnable     = false
         self.tooltipEnabled      = true
         self.tooltipCrosshairs   = true
         self.xAxisLabelsEnabled  = true
