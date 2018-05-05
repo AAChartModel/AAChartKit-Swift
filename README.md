@@ -9,7 +9,7 @@
 [![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)</br>
 [![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAChartKit-Swift)
 
-##  [ **中文文档 🇨🇳** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)  |  [ **English Document 🇬🇧** ](https://github.com/AAChartModel/AAChartKit-Swift)
+## [ **English Document 🇬🇧** ](https://github.com/AAChartModel-Swift/AAChartKit)  |  [ **简体中文文档 🇨🇳** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)| [ **繁體中文文檔 🇭🇰** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/TRADITIONAL-CHINESE-README.md)
 
 ### There is the link of **Objective-C version** of  `AAChartKit` as follow
 #### *https://github.com/AAChartModel/AAChartKit*
@@ -104,15 +104,22 @@ import AAChartView.swift
         //The chart view object calls the instance object of AAChartModel and draws the final graphic
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
 ```
-5. Only refresh the chart data(This method is recommended to be called for updating the series data dynamically)
+
+
+🌹🌹🌹Congratulations! Everything was done!!! You will get you want!!!
+
+### Update chart content 
+if you want to refresh chart content,you should do something as follow.According to your actual needs, select the function that fits you.
+
+
+*  Only refresh the chart data(This method is recommended to be called for updating the series data dynamically)
 
 ```swift
         //Only refresh the chart series data
         aaChartView?.aa_onlyRefreshTheChartDataWithChartModelSeries(chartModelSeriesArray)
 ```
 
-6.  Refresh the chart(Subsequent refresh options are recommended to call this method after the first drawing of graphics is completed)
-
+*  Refresh the chart, minus the chart data (this method is recommended for subsequent refreshes after the first drawing of graphics has completed. If you want to update the chart data only, you should use the function `aa_onlyRefreshTheChartDataWithChartModelSeries`)
 ```swift
         //Refresh the chart after the AAChartModel whole content is updated
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
