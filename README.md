@@ -458,7 +458,6 @@ If you want to shrink the size of the `AAInfographics` lib ,you should do someth
 
 * AAHighchartsLib.js
 * AAHighchartsMore.js
-* AAHighcharts-3d.js
 * AAFunnel.js
 
 2.Change the content of `AAChartView.html` file
@@ -466,8 +465,6 @@ If you want to shrink the size of the `AAInfographics` lib ,you should do someth
 <script src="AAHighchartsLib.js">
 </script>
 <script src="AAHighchartsMore.js">
-</script>
-<script src="AAHighcharts-3d.js">
 </script>
 <script src="AAFunnel.js">
 </script>
