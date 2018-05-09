@@ -122,6 +122,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             || self.chartType == AAChartType.AreaSpline {
             aaChartModel = aaChartModel?
                 .symbolStyle(AAChartSymbolStyleType.InnerBlank)//设置折线连接点样式为:内部白色
+                .animationType(AAChartAnimationType.EaseOutQuart)
                 .gradientColorEnable(true)
                 .legendEnabled(true)
                 .markerRadius(5)
