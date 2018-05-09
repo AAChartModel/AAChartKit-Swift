@@ -33,16 +33,16 @@
 function configureAAOptions(sender, receivedWidth, receivedHeight) {
 
         //    alert(sender);//输出查看传输的是什么
-        var AAChartModel = JSON.parse(sender);
+        var aaChartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
         if (receivedWidth != 0) {
                 o.style.width = receivedWidth; //设置宽度
         }
         o.style.height = receivedHeight; //设置高度
     
-        if (AAChartModel.gradientColorEnable == true) { //开启图表渐变色功能
-            var colors = AAChartModel.colorsTheme;
-            AAChartModel.colorsTheme = Highcharts.map(colors, function (color) {
+        if (aaChartModel.gradientColorEnable == true) { //开启图表渐变色功能
+            var colors = aaChartModel.colorsTheme;
+            aaChartModel.colorsTheme = Highcharts.map(colors, function (color) {
                                                      return {
                                                      linearGradient:  { x1: 0, y1: 0, x2: 0, y2: 1},
                                                      stops: [
@@ -54,215 +54,214 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         }
     
     
-        var AAChart = {
-                type: AAChartModel.chartType,//图表类型
-                inverted: AAChartModel.inverted,//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
-                backgroundColor: AAChartModel.backgroundColor,//图表背景色
+        var aaChart = {
+                type: aaChartModel.chartType,//图表类型
+                inverted: aaChartModel.inverted,//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
+                backgroundColor: aaChartModel.backgroundColor,//图表背景色
                 animation: true,
-                pinchType: AAChartModel.zoomType,//设置手势缩放方向
+                pinchType: aaChartModel.zoomType,//设置手势缩放方向
                 panning: true,//设置手势缩放后是否可平移
-                polar: AAChartModel.polar,//是否辐射化图形
-                marginLeft: AAChartModel.marginLeft,
-                marginRight: AAChartModel.marginRight,
+                polar: aaChartModel.polar,//是否辐射化图形
+                marginLeft: aaChartModel.marginLeft,
+                marginRight: aaChartModel.marginRight,
         };
 
-        var AATitle = {
-                text: AAChartModel.title,//标题文本内容
+        var aaTitle = {
+                text: aaChartModel.title,//标题文本内容
                 style: {
                         color: "#000000",//标题颜色
                         fontSize: "12px"//标题字体大小
                 }
         };
 
-        var AASubtitle = {
-                text: AAChartModel.subtitle,//副标题文本内容
+        var aaSubtitle = {
+                text: aaChartModel.subtitle,//副标题文本内容
                 style: {
                         color: "#000000",//副标题颜色
                         fontSize: "9px"//副标题字体大小
                 }
         };
 
-        var AAXAxis = {
+        var aaXAxis = {
                 label: {
-                        enabled: AAChartModel.xAxisLabelsEnabled// X 轴是否显示文字
+                        enabled: aaChartModel.xAxisLabelsEnabled// X 轴是否显示文字
                 },
-                reversed: AAChartModel.xAxisReversed,//是否反转 X 轴
-                gridLineWidth: AAChartModel.xAxisGridLineWidth,// X 轴网格线宽度
-                categories: AAChartModel.categories,
-                visible:AAChartModel.xAxisVisible
+                reversed: aaChartModel.xAxisReversed,//是否反转 X 轴
+                gridLineWidth: aaChartModel.xAxisGridLineWidth,// X 轴网格线宽度
+                categories: aaChartModel.categories,
+                visible:aaChartModel.xAxisVisible
         };
 
-        var AAYAxis = {
+        var aaYAxis = {
                 label: {
-                        enabled: AAChartModel.yAxisLabelsEnabled// Y 轴是否显示数字
+                        enabled: aaChartModel.yAxisLabelsEnabled// Y 轴是否显示数字
                 },
-                reversed: AAChartModel.yAxisReversed,//是否反转 Y 轴
-                gridLineWidth: AAChartModel.yAxisGridLineWidth,// Y 轴网格线宽度
+                reversed: aaChartModel.yAxisReversed,//是否反转 Y 轴
+                gridLineWidth: aaChartModel.yAxisGridLineWidth,// Y 轴网格线宽度
                 title: {
-                        text: AAChartModel.yAxisTitle//Y 轴标题
+                        text: aaChartModel.yAxisTitle//Y 轴标题
                 },
-                lineWidth: 0,// Y 轴线宽度
+                lineWidth: aaChartModel.yAxisLineWidth,// Y 轴线宽度
                 plotLines: [{
                         value: 0,
                         width: 1,
                         color: '#808080'
                 }],
-                visible:AAChartModel.yAxisVisible
+                visible:aaChartModel.yAxisVisible
 
         };
 
-        var AATooltip = {
-                enabled:AAChartModel.tooltipEnabled,
-                valueSuffix: AAChartModel.tooltipValueSuffix,//浮动提示层数值的单位后缀
+        var aaTooltip = {
+                enabled:aaChartModel.tooltipEnabled,
+                valueSuffix: aaChartModel.tooltipValueSuffix,//浮动提示层数值的单位后缀
                 shared: true,//多组数据浮动提示框是否共享
-                crosshairs: AAChartModel.tooltipCrosshairs,//是否显示准星线
+                crosshairs: aaChartModel.tooltipCrosshairs,//是否显示准星线
 //                followTouchMove:false,//在触摸设备上，tooltip.followTouchMove选项为true（默认）时，平移需要两根手指。若要允许用一根手指平移，需要将followTouchMove设置为false。
         }
 
-        var AASeries = {
-                stacking: AAChartModel.stacking,//图表堆叠类型
+        var aaSeries = {
+                stacking: aaChartModel.stacking,//图表堆叠类型
                 animation: {
-                        duration: AAChartModel.animationDuration,
-                        easing: AAChartModel.animationType,
+                        duration: aaChartModel.animationDuration,
+                        easing: aaChartModel.animationType,
                 }
         };
     
-        var AAPlotOptions = {};
-        AAPlotOptions.series = AASeries;
+        var aaPlotOptions = {};
+        aaPlotOptions.series = aaSeries;
 
         //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记
-        if (   AAChartModel.chartType === "area"
-            || AAChartModel.chartType === "areaspline"
-            || AAChartModel.chartType === "line"
-            || AAChartModel.chartType === "spline") {
+        if (   aaChartModel.chartType === "area"
+            || aaChartModel.chartType === "areaspline"
+            || aaChartModel.chartType === "line"
+            || aaChartModel.chartType === "spline") {
 
-                var AAMarker = {};
-                AAMarker.radius = AAChartModel.markerRadius; //曲线连接点半径，默认是4
-                AAMarker.symbol = AAChartModel.symbol; //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                var aaMarker = {};
+                aaMarker.radius = aaChartModel.markerRadius; //曲线连接点半径，默认是4
+                aaMarker.symbol = aaChartModel.symbol; //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
             
                 //设置曲线连接点风格样式
-                if (AAChartModel.symbolStyle === "innerBlank") {
-                        AAMarker.fillColor = "#ffffff"; //点的填充色(用来设置折线连接点的填充色)
-                        AAMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                        AAMarker.lineColor = ""; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
-                } else if (AAChartModel.symbolStyle === "borderBlank") {
-                        AAMarker.lineWidth = 2;
-                        AAMarker.lineColor = AAChartModel.backgroundColor;
+                if (aaChartModel.symbolStyle === "innerBlank") {
+                        aaMarker.fillColor = "#ffffff"; //点的填充色(用来设置折线连接点的填充色)
+                        aaMarker.lineWidth = 2; //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                        aaMarker.lineColor = ""; //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
+                } else if (aaChartModel.symbolStyle === "borderBlank") {
+                        aaMarker.lineWidth = 2;
+                        aaMarker.lineColor = aaChartModel.backgroundColor;
                 }
 
-            AAPlotOptions.series.marker = AAMarker;
+            aaPlotOptions.series.marker = aaMarker;
             
         }
 
-        AAPlotOptions = configureAAPlotOptions(AAPlotOptions, AAChartModel);//配置 AAPlotOptions
+        aaPlotOptions = configureAAPlotOptions(aaPlotOptions, aaChartModel);//配置 aaPlotOptions
 
-        var AALegend = {
-                enabled: AAChartModel.legendEnabled,
-                layout: AAChartModel.legendLayout,
-                align: AAChartModel.legendAlign,
-                verticalAlign: AAChartModel.legendVerticalAlign,
+        var aaLegend = {
+                enabled: aaChartModel.legendEnabled,
+                layout: aaChartModel.legendLayout,
+                align: aaChartModel.legendAlign,
+                verticalAlign: aaChartModel.legendVerticalAlign,
                 borderWidth: 0
         };
 
-        var AAColorsTheme = AAChartModel.colorsTheme;
+        var aaColorsTheme = aaChartModel.colorsTheme;
 
-        var AAOptions = {};
-        AAOptions.chart = AAChart;
-        AAOptions.title = AATitle;
-        AAOptions.subtitle = AASubtitle;
-        AAOptions.xAxis = AAXAxis;
-        AAOptions.yAxis = AAYAxis;
-        AAOptions.tooltip = AATooltip;
-        AAOptions.legend = AALegend;
-        AAOptions.plotOptions = AAPlotOptions;
-        AAOptions.colors = AAColorsTheme;
-        AAOptions.series = AAChartModel.series;
+        var aaOptions = {};
+        aaOptions.chart = aaChart;
+        aaOptions.title = aaTitle;
+        aaOptions.subtitle = aaSubtitle;
+        aaOptions.xAxis = aaXAxis;
+        aaOptions.yAxis = aaYAxis;
+        aaOptions.tooltip = aaTooltip;
+        aaOptions.legend = aaLegend;
+        aaOptions.plotOptions = aaPlotOptions;
+        aaOptions.colors = aaColorsTheme;
+        aaOptions.series = aaChartModel.series;
 
-        //    alert(AAOptions.colorsTheme);//提示颜色字符串数组
-        return AAOptions;
+        //    alert(aaOptions.colorsTheme);//提示颜色字符串数组
+        return aaOptions;
 
 }
 
-function configureAAPlotOptions(AAPlotOptions, AAChartModel) {
+function configureAAPlotOptions(aaPlotOptions, aaChartModel) {
     
-        if (AAChartModel.chartType === "column") {
-                var AAColumn = {
+        if (aaChartModel.chartType === "column") {
+                var aaColumn = {
                         borderWidth: 0,
-                        borderRadius: AAChartModel.borderRadius,
+                        borderRadius: aaChartModel.borderRadius,
                         dataLabels: {
-                                enabled: AAChartModel.dataLabelEnabled,
+                                enabled: aaChartModel.dataLabelEnabled,
                         }
                 };
-            if (AAChartModel.polar == true) {
-                AAColumn.pointPadding = 0;
-                AAColumn.groupPadding = 0.005;
+            if (aaChartModel.polar == true) {
+                aaColumn.pointPadding = 0;
+                aaColumn.groupPadding = 0.005;
             }
-                AAPlotOptions.column = AAColumn;
-        } else if (AAChartModel.chartType === "bar") {
-                var AABar = {
+                aaPlotOptions.column = aaColumn;
+        } else if (aaChartModel.chartType === "bar") {
+                var aaBar = {
                         borderWidth: 0,
                         colorByPoint: false,
-                        borderRadius: AAChartModel.borderRadius,
+                        borderRadius: aaChartModel.borderRadius,
                         dataLabels: {
-                                enabled: AAChartModel.dataLabelEnabled,
+                                enabled: aaChartModel.dataLabelEnabled,
                         }
                 };
-            if (AAChartModel.polar == true) {
-                AABar.pointPadding = 0;
-                AABar.groupPadding = 0.005;
+            if (aaChartModel.polar == true) {
+                aaBar.pointPadding = 0;
+                aaBar.groupPadding = 0.005;
             }
-                AAPlotOptions.bar = AABar;
-        } else if (AAChartModel.chartType === "area") {
-                var AAArea = {
+                aaPlotOptions.bar = aaBar;
+        } else if (aaChartModel.chartType === "area") {
+                var aaArea = {
                         dataLabels: {
-                                enabled: AAChartModel.dataLabelEnabled,
+                                enabled: aaChartModel.dataLabelEnabled,
                         }
                 };
-                AAPlotOptions.area = AAArea;
-        } else if (AAChartModel.chartType === "areaspline") {
-                var AAAreaspline = {
+                aaPlotOptions.area = aaArea;
+        } else if (aaChartModel.chartType === "areaspline") {
+                var aaAreaspline = {
                         dataLabels: {
-                                enabled: AAChartModel.dataLabelEnabled,
+                                enabled: aaChartModel.dataLabelEnabled,
                         }
                 }
-                AAPlotOptions.areaspline = AAAreaspline;
-        } else if (AAChartModel.chartType === "line") {
-                var AALine = {
+                aaPlotOptions.areaspline = aaAreaspline;
+        } else if (aaChartModel.chartType === "line") {
+                var aaLine = {
                         dataLabels: {
-                                enabled: AAChartModel.dataLabelEnabled,
+                                enabled: aaChartModel.dataLabelEnabled,
                         }
                 };
-                AAPlotOptions.line = AALine;
-        } else if (AAChartModel.chartType === "spline") {
-                var AASpline = {
+                aaPlotOptions.line = aaLine;
+        } else if (aaChartModel.chartType === "spline") {
+                var aaSpline = {
                         dataLabels: {
-                                enabled: AAChartModel.dataLabelEnabled,
+                                enabled: aaChartModel.dataLabelEnabled,
                         }
                 };
-                AAPlotOptions.spline = AASpline;
-        } else if (AAChartModel.chartType === "pie") {
-                var AAPie = {
+                aaPlotOptions.spline = aaSpline;
+        } else if (aaChartModel.chartType === "pie") {
+                var aaPie = {
                         //扇形图尺寸大小,大小设置得当的话,扇形图讲始终保持居中的位置,
                         //不偏不倚,将不会产生自动布局导致的大小变化
 //                        size: 300,
                         allowPointSelect: true,
                         cursor: "pointer",
-                        depth: AAChartModel.options3dDepth,
                         dataLabels: {
-                                enabled: AAChartModel.dataLabelEnabled,
+                                enabled: aaChartModel.dataLabelEnabled,
                                 format: "{point.name}",
                         },
-                        showInLegend: AAChartModel.legendEnabled,
+                        showInLegend: aaChartModel.legendEnabled,
                 };
-                AAPlotOptions.pie = AAPie;
-        } else if (AAChartModel.chartType === "columnrange") {
-                var AAColumnrange = {
+                aaPlotOptions.pie = aaPie;
+        } else if (aaChartModel.chartType === "columnrange") {
+                var aaColumnrange = {
                          dataLabels: {
-                                enabled: AAChartModel.dataLabelEnabled,
+                                enabled: aaChartModel.dataLabelEnabled,
                          }
                 };
-                AAPlotOptions.columnrange = AAColumnrange;
+                aaPlotOptions.columnrange = aaColumnrange;
         };
 
-        return AAPlotOptions;
+        return aaPlotOptions;
 }

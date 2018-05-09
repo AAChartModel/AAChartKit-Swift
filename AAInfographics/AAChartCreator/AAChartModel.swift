@@ -171,11 +171,12 @@ public class AAChartModel:AASerializable {
     private var dataLabelEnabled:Bool?      //是否显示数据
     private var xAxisLabelsEnabled:Bool?    //x轴是否显示数据
     private var categories:Array<Any>?      //x轴是否显示数据
-    private var xAxisGridLineWidth:Int?     //x轴网格线的宽度
+    private var xAxisGridLineWidth:Float?   //x轴网格线的宽度
     private var xAxisVisible:Bool?          //x轴是否显示
     private var yAxisVisible:Bool?          //y轴是否显示
     private var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
     private var yAxisTitle:String?          //y轴标题
+    private var yAxisLineWidth:Float?       //y轴轴线的宽度
     private var yAxisGridLineWidth:Float?   //y轴网格线的宽度
     private var tooltipEnabled:Bool?        //是否显示浮动提示框(默认显示)
     private var tooltipValueSuffix:String?  //浮动提示框单位后缀
@@ -301,7 +302,7 @@ public class AAChartModel:AASerializable {
         return self
     }
     
-    func xAxisGridLineWidth(_ prop: Int) -> AAChartModel {
+    func xAxisGridLineWidth(_ prop: Float) -> AAChartModel {
         self.xAxisGridLineWidth = prop
         return self
     }
@@ -394,10 +395,11 @@ public class AAChartModel:AASerializable {
         self.tooltipEnabled      = true
         self.tooltipCrosshairs   = true
         self.xAxisLabelsEnabled  = true
-        self.xAxisGridLineWidth  = 0
+        self.xAxisGridLineWidth  = 1
         self.xAxisVisible        = true  // X 轴默认可见
         self.yAxisVisible        = true  // Y 轴默认可见
         self.yAxisLabelsEnabled  = true
+        self.yAxisLineWidth      = 0
         self.yAxisGridLineWidth  = 0.6
         self.legendEnabled       = false
         self.legendLayout        = AAchartLegendlLayoutType.Horizontal.rawValue
