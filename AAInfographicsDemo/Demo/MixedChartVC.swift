@@ -206,6 +206,85 @@ class MixedChartVC: UIViewController {
             )
             break
             
+        case "stackingColumnMixedLine":
+            aaChartModel = AAChartModel()
+                .colorsTheme(["rgba(255,144,128,1)","rgba(0,191,183,1)", "rgba(252,230,48,1)",])//主题颜色数组
+                .title("16年1月-16年11月充值客单分析")//图形标题
+                .subtitle("BY MICVS")//图形副标题
+                .chartType(AAChartType.Column)
+                .stacking(AAChartStackingType.Normal)
+                .legendEnabled(true)
+                .symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.BorderBlank.rawValue)!)
+                .series([
+                    AASeriesElement()
+                        .name("新用户")
+                        .dataLabels(["enabled":true,
+                                     "style":["color":"#000000",
+                                              "fontSize":"11 px",
+                            ]])
+                        .data([
+                            82.89,
+                            67.54,
+                            62.07,
+                            59.43,
+                            67.02,
+                            67.09,
+                            35.66,
+                            71.78,
+                            81.61,
+                            78.85,
+                            79.12,
+                            72.30
+                            ])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("老用户")
+                        .dataLabels(["enabled":true,
+                                     "style":["color":"#000000",
+                                              "fontSize":"11 px",
+                            ]])
+                        .data([
+                            198.66,
+                            330.81,
+                            151.95,
+                            160.12,
+                            222.56,
+                            229.05,
+                            128.53,
+                            250.91,
+                            224.47,
+                            473.99,
+                            126.85,
+                            260.50
+                            ])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("总量")
+                        .type(AAChartType.Line)
+                        .dataLabels(["enabled":true,
+                                     "style":["color":"#000000",
+                                              "fontSize":"11 px",
+                            ]])
+                        .data([
+                            281.55,
+                            398.35,
+                            214.02,
+                            219.55,
+                            289.57,
+                            296.14,
+                            164.18,
+                            322.69,
+                            306.08,
+                            552.84,
+                            205.97,
+                            332.79
+                            ])
+                        .toDic()!,
+                    
+                    ]
+            )
+            break
+            
         case "dashStyleTypeMixed":
             aaChartModel = AAChartModel()
                 .chartType(AAChartType.Line)//图形类型

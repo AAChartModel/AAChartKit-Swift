@@ -74,6 +74,8 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             /*Mixed Chart---混合图*/
             ["Arearange Mixed Line---面积范围均线图",
              "Columnrange Mixed Line---柱形范围图混合折线图",
+             "Stacking Column Mixed Line---堆积柱形图混合折线图",
+
              "Dash Style Types Mixed---多种类型曲线混合图",
              "Negative Color Mixed---基准线以下异色混合图",
              "scatterMixedLine---散点图混合折线图(待完成)",
@@ -191,6 +193,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
              let mixedChartVC = MixedChartVC()
             let chartTypeArr = ["arearangeMixedLine",
                                 "columnrangeMixedLine",
+                                "stackingColumnMixedLine",
                                 "dashStyleTypeMixed",
                                 "negativeColorMixed",
                                 "scatterMixedLine",
