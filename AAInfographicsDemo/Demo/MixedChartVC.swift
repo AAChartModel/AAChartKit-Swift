@@ -165,7 +165,7 @@ class MixedChartVC: UIViewController {
                 .subtitle("")//图形副标题
                 .chartType(AAChartType.Line)
                 .dataLabelEnabled(false)
-                .symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.BorderBlank.rawValue)!)
+                .symbolStyle(AAChartSymbolStyleType.BorderBlank)
                 .series([
                     AASeriesElement()
                         .name("Temperature")
@@ -208,77 +208,28 @@ class MixedChartVC: UIViewController {
             
         case "stackingColumnMixedLine":
             aaChartModel = AAChartModel()
-                .colorsTheme(["rgba(255,144,128,1)","rgba(0,191,183,1)", "rgba(252,230,48,1)",])//主题颜色数组
+//                .colorsTheme(["rgba(255,144,128,1)","rgba(0,191,183,1)", "rgba(252,230,48,1)",])//主题颜色数组
                 .title("16年1月-16年11月充值客单分析")//图形标题
                 .subtitle("BY MICVS")//图形副标题
                 .chartType(AAChartType.Column)
                 .stacking(AAChartStackingType.Normal)
                 .legendEnabled(true)
-                .symbolStyle(AAChartSymbolStyleType(rawValue: AAChartSymbolStyleType.BorderBlank.rawValue)!)
                 .series([
                     AASeriesElement()
                         .name("新用户")
-                        .dataLabels(["enabled":true,
-                                     "style":["color":"#000000",
-                                              "fontSize":"11 px",
-                            ]])
-                        .data([
-                            82.89,
-                            67.54,
-                            62.07,
-                            59.43,
-                            67.02,
-                            67.09,
-                            35.66,
-                            71.78,
-                            81.61,
-                            78.85,
-                            79.12,
-                            72.30
-                            ])
+                        .data([82.89,67.54,62.07,59.43,67.02,67.09,35.66,71.78,81.61,78.85,79.12,72.30])
+                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11 px",]])
                         .toDic()!,
                     AASeriesElement()
                         .name("老用户")
-                        .dataLabels(["enabled":true,
-                                     "style":["color":"#000000",
-                                              "fontSize":"11 px",
-                            ]])
-                        .data([
-                            198.66,
-                            330.81,
-                            151.95,
-                            160.12,
-                            222.56,
-                            229.05,
-                            128.53,
-                            250.91,
-                            224.47,
-                            473.99,
-                            126.85,
-                            260.50
-                            ])
+                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11 px",]])
+                        .data([198.66,330.81,151.95,160.12,222.56,229.05,128.53,250.91,224.47,473.99,126.85,260.50])
                         .toDic()!,
                     AASeriesElement()
                         .name("总量")
                         .type(AAChartType.Line)
-                        .dataLabels(["enabled":true,
-                                     "style":["color":"#000000",
-                                              "fontSize":"11 px",
-                            ]])
-                        .data([
-                            281.55,
-                            398.35,
-                            214.02,
-                            219.55,
-                            289.57,
-                            296.14,
-                            164.18,
-                            322.69,
-                            306.08,
-                            552.84,
-                            205.97,
-                            332.79
-                            ])
+                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11 px",]])
+                        .data([281.55,398.35,214.02,219.55,289.57,296.14,164.18,322.69,306.08,552.84,205.97,332.79])
                         .toDic()!,
                     
                     ]
@@ -289,39 +240,43 @@ class MixedChartVC: UIViewController {
             aaChartModel = AAChartModel()
                 .chartType(AAChartType.Line)//图形类型
                 .dataLabelEnabled(false)//是否显示数字
-                .markerRadius(0)
+                .stacking(AAChartStackingType.Normal)
                 .series([
-                   AASeriesElement()
-                    .name(AALineDashSyleType.Dash.rawValue)
-                    .lineWidth(3)
-                    .dashStyle(AALineDashSyleType.Dash)
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .toDic()!,
-                   AASeriesElement()
-                    .name(AALineDashSyleType.DashDot.rawValue)
-                    .lineWidth(3)
-                    .dashStyle(AALineDashSyleType.DashDot)
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    .toDic()!,
-                   AASeriesElement()
-                    .name(AALineDashSyleType.LongDash.rawValue)
-                    .lineWidth(3)
-                    .dashStyle(AALineDashSyleType.LongDash)
-                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                    .toDic()!,
-                   AASeriesElement()
-                    .name(AALineDashSyleType.LongDashDot.rawValue)
-                    .lineWidth(3)
-                    .dashStyle(AALineDashSyleType.LongDashDot)
-                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                    .toDic()!,
+                    AASeriesElement()
+                        .name("SolidLine")
+                        .lineWidth(3)
+                        .data([50, 320, 230, 370, 230, 400,])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name(AALineDashSyleType.Dash.rawValue)
+                        .lineWidth(3)
+                        .dashStyle(AALineDashSyleType.Dash)
+                        .data([50, 320, 230, 370, 230, 400,])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name(AALineDashSyleType.DashDot.rawValue)
+                        .lineWidth(3)
+                        .dashStyle(AALineDashSyleType.DashDot)
+                        .data([50, 320, 230, 370, 230, 400,])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name(AALineDashSyleType.LongDash.rawValue)
+                        .lineWidth(3)
+                        .dashStyle(AALineDashSyleType.LongDash)
+                        .data([50, 320, 230, 370, 230, 400,])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name(AALineDashSyleType.LongDashDot.rawValue)
+                        .lineWidth(3)
+                        .dashStyle(AALineDashSyleType.LongDashDot)
+                        .data([50, 320, 230, 370, 230, 400,])
+                        .toDic()!,
                     ])
             break
             
         case "negativeColorMixed":
             aaChartModel = AAChartModel()
                 .dataLabelEnabled(false)//是否显示数字
-                .markerRadius(0)
                 .series([
                     AASeriesElement()
                         .name("Column")
@@ -339,7 +294,6 @@ class MixedChartVC: UIViewController {
         case "scatterMixedLine":
             aaChartModel = AAChartModel()
                 .dataLabelEnabled(false)//是否显示数字
-                .markerRadius(0)
                 .series([
                     AASeriesElement()
                         .name("Scatter")

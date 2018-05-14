@@ -37,10 +37,20 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     open var step : Bool?
     open var aaChartModel: AAChartModel?
     open var aaChartView: AAChartView?
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.barTintColor = kRGBColorFromHex(rgbValue: 0x22324c)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = kRGBColorFromHex(rgbValue: 0x22324c)
         self.title = self.chartType.map { $0.rawValue }
         self.configureTheSwith()
         self.configureTheSegmentControl()
@@ -53,6 +63,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         aaChartView?.contentHeight = chartViewHeight-20
         self.view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false//禁止图表内容滚动
+        aaChartView?.isClearBackgroundColor = true
         
         aaChartModel = AAChartModel()
             .chartType(self.chartType!)//图形类型
@@ -63,6 +74,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             .tooltipValueSuffix("℃")//浮动提示框单位后缀
             .backgroundColor("#ffffff")//图表背景色(默认就是白色)
             .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+            .backgroundColor("#22324c")
             .series([
                 AASeriesElement()
                     .name("Tokyo")
@@ -223,9 +235,9 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             let subLabel = UILabel()
             subLabel.font = UIFont(name: "EuphemiaUCAS", size: 12.0)
             subLabel.frame = CGRect(x: 20, y: 40*CGFloat(i)+(self.view.frame.size.height-165), width: self.view.frame.size.width-40, height: 20)
-            subLabel.numberOfLines = 0
             subLabel.text = typeLabelNameArr[i] as? String
-            subLabel.backgroundColor = UIColor.white
+            subLabel.backgroundColor = UIColor.clear
+            subLabel.textColor = UIColor.lightGray
             self.view.addSubview(subLabel)
         }
     }
@@ -293,9 +305,9 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             let subLabel = UILabel()
             subLabel.font = UIFont(name: "EuphemiaUCAS", size: nameArr.count == 5 ? 10.0:9.0)
             subLabel.frame = CGRect(x: switchWidth*CGFloat(i)+20, y:self.view.frame.size.height-45, width:  switchWidth, height: 35)
-            subLabel.numberOfLines = 0
             subLabel.text = nameArr[i] as? String
             subLabel.backgroundColor = UIColor.clear
+            subLabel.textColor = UIColor.lightGray
             self.view .addSubview(subLabel)
         }
     }
@@ -326,6 +338,13 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         }
         
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
+    }
+    
+    func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
+        return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
+                       green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
+                       blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
+                       alpha: 1.0)
     }
     
 }

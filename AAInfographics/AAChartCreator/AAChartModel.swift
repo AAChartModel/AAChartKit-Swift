@@ -395,13 +395,13 @@ public class AAChartModel:AASerializable {
         self.tooltipEnabled      = true
         self.tooltipCrosshairs   = true
         self.xAxisLabelsEnabled  = true
-        self.xAxisGridLineWidth  = 1
+//        self.xAxisGridLineWidth  = 1
         self.xAxisVisible        = true  // X 轴默认可见
         self.yAxisVisible        = true  // Y 轴默认可见
         self.yAxisLabelsEnabled  = true
         self.yAxisLineWidth      = 0
         self.yAxisGridLineWidth  = 0.6
-        self.legendEnabled       = false
+        self.legendEnabled       = true
         self.legendLayout        = AAchartLegendlLayoutType.Horizontal.rawValue
         self.legendAlign         = AAChartLegendAlignType.Center.rawValue
         self.legendVerticalAlign = AAChartLegendVerticalAlignType.Bottom.rawValue

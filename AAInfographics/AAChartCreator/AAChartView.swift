@@ -49,6 +49,26 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         }
     }
     
+    public var isClearBackgroundColor:Bool? {
+        set {
+            _isClearBackgroundColor = newValue
+            if _isClearBackgroundColor == true {
+                self.backgroundColor = UIColor.clear
+                if #available(iOS 9.0, *) {
+                    wkWebView?.backgroundColor = UIColor.clear
+                    wkWebView?.isOpaque = false
+                } else {
+                    // Fallback on earlier versions
+                    uiWebView?.backgroundColor = UIColor.clear
+                    uiWebView?.isOpaque = false
+                }
+            }
+        }
+        get {
+            return  _scrollEnabled
+        }
+    }
+    
     /// Content width of AAChartView
     public var contentWidth:CGFloat? {
         set {
@@ -76,12 +96,10 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
             return  _contentHeight
         }
     }
-    
-
-    /// Hide chart series content or not
-    public var chartSeriesHidden:Bool?
 
     private var _scrollEnabled:Bool?
+    private var _isClearBackgroundColor:Bool?
+    
     private var _contentWidth:CGFloat?
     private var _contentHeight:CGFloat?
     
