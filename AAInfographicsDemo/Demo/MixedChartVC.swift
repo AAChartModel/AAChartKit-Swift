@@ -218,17 +218,17 @@ class MixedChartVC: UIViewController {
                     AASeriesElement()
                         .name("新用户")
                         .data([82.89,67.54,62.07,59.43,67.02,67.09,35.66,71.78,81.61,78.85,79.12,72.30])
-                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11 px",]])
+                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11px",]])
                         .toDic()!,
                     AASeriesElement()
                         .name("老用户")
-                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11 px",]])
+                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11px",]])
                         .data([198.66,330.81,151.95,160.12,222.56,229.05,128.53,250.91,224.47,473.99,126.85,260.50])
                         .toDic()!,
                     AASeriesElement()
                         .name("总量")
                         .type(AAChartType.Line)
-                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11 px",]])
+                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"15px",]])
                         .data([281.55,398.35,214.02,219.55,289.57,296.14,164.18,322.69,306.08,552.84,205.97,332.79])
                         .toDic()!,
                     
@@ -238,9 +238,10 @@ class MixedChartVC: UIViewController {
             
         case "dashStyleTypeMixed":
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Line)//图形类型
+                .chartType(AAChartType.Spline)//图形类型
                 .dataLabelEnabled(false)//是否显示数字
                 .stacking(AAChartStackingType.Normal)
+                .markerRadius(0)
                 .series([
                     AASeriesElement()
                         .name("SolidLine")
