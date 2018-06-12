@@ -65,7 +65,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
             }
         }
         get {
-            return  _scrollEnabled
+            return  _isClearBackgroundColor
         }
     }
     

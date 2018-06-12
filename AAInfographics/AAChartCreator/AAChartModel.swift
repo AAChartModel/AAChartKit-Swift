@@ -84,6 +84,7 @@ enum AAChartType:String {
     case Arearange   = "arearange"
     case Boxplot     = "boxplot"
     case Waterfall   = "waterfall"
+    case Polygon     = "polygon"
 }
 
 enum AAChartSubtitleAlignType:String {

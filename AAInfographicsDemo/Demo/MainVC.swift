@@ -79,7 +79,8 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
              "Dash Style Types Mixed---多种类型曲线混合图",
              "Negative Color Mixed---基准线以下异色混合图",
              "scatterMixedLine---散点图混合折线图(待完成)",
-             "Negative Color Mixed bubble---基准线以下异色气泡图"],
+             "Negative Color Mixed bubble---基准线以下异色气泡图",
+             "Polygon Mixed Scatter---多边形混合散点图"],
             /*同时显示多个图表*/
             ["在同一个页面同时添加多个 AAChartView"]
         ]
@@ -197,7 +198,8 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                 "dashStyleTypeMixed",
                                 "negativeColorMixed",
                                 "scatterMixedLine",
-                                "negativeColorMixedBubble"]
+                                "negativeColorMixedBubble",
+                                "polygonMixedScatter"]
             mixedChartVC.chartType = chartTypeArr[indexPath.row]
             self.navigationController?.pushViewController(mixedChartVC, animated: true)
         } else if (indexPath.section == 3) {
