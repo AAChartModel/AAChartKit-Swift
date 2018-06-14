@@ -231,7 +231,6 @@ class MixedChartVC: UIViewController {
                         .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"15px",]])
                         .data([281.55,398.35,214.02,219.55,289.57,296.14,164.18,322.69,306.08,552.84,205.97,332.79])
                         .toDic()!,
-                    
                     ]
             )
             break
