@@ -336,23 +336,25 @@ import AAChartView.swift
 
 ```swift
 enum AAChartType:String{
-    case Column      = "column"      //柱形图
-    case Bar         = "bar"         //条形图
-    case Area        = "area"        //折线区域填充图
-    case AreaSpline  = "areaspline"  //曲线区域填充图
-    case Line        = "line"        //折线图
-    case Spline      = "spline"      //曲线图
-    case Scatter     = "scatter"     //散点图
-    case Pie         = "pie"         //扇形图
-    case Bubble      = "bubble"      //气泡图
-    case Pyramid     = "pyramid"     //金字塔图
-    case Funnel      = "funnel"      //漏斗图
-    case Columnrange = "columnrange" //柱形范围图
-    case Arearange   = "arearange"   //区域范围图
-
+    case Column          = "column"          //柱形图
+    case Bar             = "bar"             //条形图
+    case Area            = "area"            //折线区域填充图
+    case AreaSpline      = "areaspline"      //曲线区域填充图
+    case Line            = "line"            //折线图
+    case Spline          = "spline"          //曲线图
+    case Scatter         = "scatter"         //散点图
+    case Pie             = "pie"             //扇形图
+    case Bubble          = "bubble"          //气泡图
+    case Pyramid         = "pyramid"         //金字塔图
+    case Funnel          = "funnel"          //漏斗图
+    case ColumnRange     = "columnrange"     //柱形范围图
+    case AreaRange       = "arearange"       //折线区域范围图
+    case AreaSplineRange = "areasplinerange" //曲线区域范围图
+    case Boxplot         = "boxplot"         //箱线图
+    case Waterfall       = "waterfall"       //瀑布图
+    case Polygon         = "polygon"         //多边形图
 }
 ```
-
 
 ### 当前已支持的图表手势缩放类型共有三种,说明如下
 

@@ -86,7 +86,14 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             /*同时显示多个图表*/
             ["在同一个页面同时添加多个 AAChartView"],
             /*动画类型示例*/
-            ["图表的各种渲染动画 animation 示例 "]
+            [  "Column Chart---柱形图",
+               "Bar Chart---条形图",
+               "Area Chart---折线填充图",
+               "Areaspline Chart---曲线填充图",
+               "Step Area Chart--- 直方折线填充图",
+               "Step Line Chart--- 直方折线图",
+               "Line Chart---折线图",
+               "Spline Chart---曲线图",]
         ]
         
         chartTypeArr = [
@@ -107,9 +114,9 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 AAChartType.Pie,
                 AAChartType.Bubble,
                 AAChartType.Scatter,
-                AAChartType.Arearange,
-                AAChartType.Areasplinerange,
-                AAChartType.Columnrange,
+                AAChartType.AreaRange,
+                AAChartType.AreaSplineRange,
+                AAChartType.ColumnRange,
                 AAChartType.Line,
                 AAChartType.Area,
                 AAChartType.Boxplot,
@@ -214,7 +221,22 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             let manyChartVC = ShowManyChartViewVC()
             self.navigationController?.pushViewController(manyChartVC, animated:true)
         } else if indexPath.section == 4 {
+            let chartTypeArr = [
+                AAChartType.Column,
+                AAChartType.Bar,
+                AAChartType.Area,
+                AAChartType.AreaSpline,
+                AAChartType.Area,
+                AAChartType.Line,
+                AAChartType.Line,
+                AAChartType.Spline,
+                ]
             let animationTypeVC = AnimationTypeVC()
+            animationTypeVC.chartType = chartTypeArr[indexPath.row]
+            animationTypeVC.step = false
+            if indexPath.row == 4 || indexPath.row == 5 {
+                animationTypeVC.step = true
+            }
             self.navigationController?.pushViewController(animationTypeVC, animated: true)
         }
     }

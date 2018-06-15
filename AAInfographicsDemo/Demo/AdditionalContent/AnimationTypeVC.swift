@@ -33,6 +33,8 @@
 import UIKit
 
 class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    open var chartType: AAChartType?
+    open var step:Bool?
     private var chartAnimationTypeArr = Array<AAChartAnimationType>()
     private var aaChartModel:AAChartModel?
     private var aaChartView:AAChartView?
@@ -119,30 +121,46 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         self.view.addSubview(aaChartView!)
 
         aaChartModel = AAChartModel()
-            .chartType(AAChartType.Column)//图形类型
+            .chartType(self.chartType!)//图形类型
             .title("都市天气")//图形标题
             .subtitle("2020年08月08日")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
-            .stacking(AAChartStackingType.Normal)
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
-            .series(([
+        
+        if self.chartType == AAChartType.Area || self.chartType == AAChartType.AreaSpline {
+          aaChartModel = aaChartModel?
+            .gradientColorEnable(true)
+            .markerRadius(0)
+            .series([
                 AASeriesElement()
                     .name("Tokyo")
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+                    .step(self.step!)
                     .toDic()!,
-                AASeriesElement()
-                    .name("New York")
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    .toDic()!,
-                AASeriesElement()
-                    .name("Berlin")
-                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                    .toDic()!,
-                AASeriesElement()
-                    .name("London")
-                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                    .toDic()!,]))
+                ])
+        } else {
+            let gradientColorDic = [
+                "linearGradient": [
+                    "x1": 0,
+                    "y1": 0,
+                    "x2": 0,
+                    "y2": 1
+                ],
+                "stops": [[0,"rgba(138,43,226,1)"],
+                          [1,"rgba(30,144,255,1)"]]//颜色字符串设置支持十六进制类型和 rgba 类型
+                ] as [String : Any]
+            
+            aaChartModel = aaChartModel?
+                .series([
+                    AASeriesElement()
+                        .name("Tokyo")
+                        .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
+                        .color(gradientColorDic)
+                        .step(self.step!)
+                        .toDic()!,
+                    ])
+        }
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
     }

@@ -321,20 +321,23 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 ```swift
 enum AAChartType{
-    case Column      = "column"      //column chart
-    case Bar         = "bar"         //bar chart 
-    case Area        = "area"        //area chart 
-    case Areaspline  = "areaspline"  //areaspline chart
-    case Line        = "line"        //line chart
-    case Spline      = "spline"      //spline chart
-    case Scatter     = "scatter"     //scatter chart 
-    case Pie         = "pie"         //pie chart
-    case Bubble      = "bubble"      //bubble chart  
-    case Pyramid     = "pyramid"     //pyramid chart
-    case Funnel      = "funnel"      //funnel chart
-    case Columnrange = "columnrange" //columnrange chart
-    case Arearange   = "arearange"   //arearange chart
-    
+    case Column          = "column"          //column chart
+    case Bar             = "bar"             //bar chart 
+    case Area            = "area"            //area chart 
+    case AreaSpline      = "areaspline"      //areaspline chart
+    case Line            = "line"            //line chart
+    case Spline          = "spline"          //spline chart
+    case Scatter         = "scatter"         //scatter chart 
+    case Pie             = "pie"             //pie chart
+    case Bubble          = "bubble"          //bubble chart  
+    case Pyramid         = "pyramid"         //pyramid chart
+    case Funnel          = "funnel"          //funnel chart
+    case ColumnRange     = "columnrange"     //column range chart
+    case AreaRange       = "arearange"       //area range chart
+    case AreaSplineRange = "areasplinerange" //area spline range chart
+    case Boxplot         = "boxplot"         //boxplot chart
+    case Waterfall       = "waterfall"       //waterfall chart
+    case Polygon         = "polygon"         //polygon chart
 }
 ```
 

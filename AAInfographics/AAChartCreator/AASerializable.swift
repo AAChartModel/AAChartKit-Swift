@@ -73,7 +73,8 @@ extension AASerializable {
     }
     
     func toDic() -> Dictionary<String, Any>? {
-        return JSONRepresentation as? Dictionary<String, Any>
+        let dictionary = JSONRepresentation as? Dictionary<String, Any>
+        return dictionary
     }
 }
 

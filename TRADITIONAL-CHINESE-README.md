@@ -336,20 +336,23 @@ import AAChartView.swift
 
 ```swift
 enum AAChartType:String{
-    case Column      = "column"      //柱形圖
-    case Bar         = "bar"         //條形圖
-    case Area        = "area"        //折線區域填充圖
-    case AreaSpline  = "areaspline"  //曲線區域填充圖
-    case Line        = "line"        //折線圖
-    case Spline      = "spline"      //曲線圖
-    case Scatter     = "scatter"     //散點圖
-    case Pie         = "pie"         //扇形圖
-    case Bubble      = "bubble"      //氣泡圖
-    case Pyramid     = "pyramid"     //金字塔圖
-    case Funnel      = "funnel"      //漏鬥圖
-    case Columnrange = "columnrange" //柱形範圍圖
-    case Arearange   = "arearange"   //區域範圍圖
-
+    case Column          = "column"          //柱形圖
+    case Bar             = "bar"             //條形圖
+    case Area            = "area"            //折線區域填充圖
+    case AreaSpline      = "areaspline"      //曲線區域填充圖
+    case Line            = "line"            //折線圖
+    case Spline          = "spline"          //曲線圖
+    case Scatter         = "scatter"         //散點圖
+    case Pie             = "pie"             //扇形圖
+    case Bubble          = "bubble"          //氣泡圖
+    case Pyramid         = "pyramid"         //金字塔圖
+    case Funnel          = "funnel"          //漏鬥圖
+    case ColumnRange     = "columnrange"     //柱形範圍圖
+    case AreaRange       = "arearange"       //折線區域範圍圖
+    case AreaSplineRange = "areasplinerange" //曲線區域範圍圖
+    case Boxplot         = "boxplot"         //箱線圖
+    case Waterfall       = "waterfall"       //瀑布圖
+    case Polygon         = "polygon"         //多邊形圖
 }
 ```
 

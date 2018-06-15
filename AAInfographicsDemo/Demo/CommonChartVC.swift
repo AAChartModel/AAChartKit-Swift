@@ -35,8 +35,8 @@ import UIKit
 class CommonChartVC: UIViewController,UIWebViewDelegate {
     open var chartType: AAChartType?
     open var step : Bool?
-    open var aaChartModel: AAChartModel?
-    open var aaChartView: AAChartView?
+    private var aaChartModel: AAChartModel?
+    private var aaChartView: AAChartView?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.barTintColor = kRGBColorFromHex(rgbValue: 0x22324c)
