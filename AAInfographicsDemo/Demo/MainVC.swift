@@ -35,8 +35,8 @@ import UIKit
 
 class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    open var chartTypeTitleArr = Array<Array<String>>()
-    open var chartTypeArr = Array<Array<AAChartType>>()
+    private var chartTypeTitleArr = Array<Array<String>>()
+    private var chartTypeArr = Array<Array<AAChartType>>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +84,9 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
              "Polygon Mixed Scatter---多边形混合散点图",
              "Polar Chart Mixed---极地混合图"],
             /*同时显示多个图表*/
-            ["在同一个页面同时添加多个 AAChartView"]
+            ["在同一个页面同时添加多个 AAChartView"],
+            /*动画类型示例*/
+            ["图表的各种渲染动画 animation 示例 "]
         ]
         
         chartTypeArr = [
@@ -154,7 +156,8 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let sectionTitleArr = ["Basic Type Chart --- 基础类型图表",
                                "Special Type Chart --- 特殊类型图表",
                                "Mixed Chart --- 混合图形",
-                               "同时显示多个图表"]
+                               "同时显示多个图表",
+                               "渲染动画示例"]
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
         sectionTitleLabel.font = UIFont.boldSystemFont(ofSize: 14)
@@ -178,7 +181,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 0) {
+        if indexPath.section == 0 {
             /*基础类型图表*/
             let commonChartVC  = CommonChartVC()
             commonChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row]
@@ -187,13 +190,13 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
             self.navigationController?.pushViewController(commonChartVC, animated:true)
             
-        } else if (indexPath.section == 1) {
+        } else if indexPath.section == 1 {
             /*特殊类型图表*/
             let specialChartVC = SpecialChartVC()
             specialChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row]
             self.navigationController?.pushViewController(specialChartVC, animated:true)
             
-        } else if (indexPath.section == 2) {
+        } else if indexPath.section == 2 {
              let mixedChartVC = MixedChartVC()
             let chartTypeArr = ["arearangeMixedLine",
                                 "columnrangeMixedLine",
@@ -206,10 +209,13 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                 "polarChartMixed"]
             mixedChartVC.chartType = chartTypeArr[indexPath.row]
             self.navigationController?.pushViewController(mixedChartVC, animated: true)
-        } else if (indexPath.section == 3) {
+        } else if indexPath.section == 3 {
             /*同时显示多个图表*/
             let manyChartVC = ShowManyChartViewVC()
             self.navigationController?.pushViewController(manyChartVC, animated:true)
+        } else if indexPath.section == 4 {
+            let animationTypeVC = AnimationTypeVC()
+            self.navigationController?.pushViewController(animationTypeVC, animated: true)
         }
     }
     
