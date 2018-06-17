@@ -79,7 +79,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 AASeriesElement()
                     .name("Tokyo")
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .colorByPoint(true)
                     .toDic()!,
                 AASeriesElement()
                     .name("New York")
@@ -251,7 +250,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                AAChartStackingType.Normal,
                                AAChartStackingType.Percent]
             aaChartModel = aaChartModel?.stacking(AAChartStackingType(rawValue: stackingArr[segmentedControl.selectedSegmentIndex].rawValue)!)
-            aaChartView?.aa_hideTheSeriesElementContentWithSeriesElementIndex(segmentedControl.selectedSegmentIndex)
             break
             
         case 1:
@@ -265,15 +263,13 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                  AAChartSymbolType.Triangle,
                                  AAChartSymbolType.Triangle_down]
                 aaChartModel = aaChartModel?.symbol(AAChartSymbolType(rawValue: symbolArr[segmentedControl.selectedSegmentIndex].rawValue)!)
-                aaChartView?.aa_showTheSeriesElementContentWithSeriesElementIndex(segmentedControl.selectedSegmentIndex)
-
             }
             break
             
         default:
             break
         }
-//        aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
+        aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
     func configureTheSwith() {
@@ -342,8 +338,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         }
         
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
-        
-        aaChartView?.isSeriesHidden = switchView.isOn
     }
     
     func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
