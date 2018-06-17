@@ -390,7 +390,7 @@ public class AAChartModel:AASerializable {
         self.xAxisReversed       = false
         self.yAxisReversed       = false
         self.zoomType            = AAChartZoomType.None.rawValue//默认禁用手势缩放
-        self.colorsTheme         = ["#9b43b4","#ef476f","#ffd066","#04d69f","#25547c",]
+        self.colorsTheme         = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
         self.gradientColorEnable = false
         self.polar               = false
         self.dataLabelEnabled    = true

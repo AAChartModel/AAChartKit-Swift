@@ -320,7 +320,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 ### Supported chart type for now
 
 ```swift
-enum AAChartType{
+enum AAChartType {
     case Column          = "column"          //column chart
     case Bar             = "bar"             //bar chart 
     case Area            = "area"            //area chart 

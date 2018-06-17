@@ -209,7 +209,7 @@ import AAChartView.swift
 
 - 绘制扇形图,你需要这样配置模型对象 *AAChartModel*
 ```swift
-                 aaChartModel = AAChartModel()
+            aaChartModel = AAChartModel()
                 .chartType(AAChartType.Pie)
                 .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
@@ -335,7 +335,7 @@ import AAChartView.swift
 ### 当前已支持的图表类型有十种以上,说明如下
 
 ```swift
-enum AAChartType:String{
+enum AAChartType:String {
     case Column          = "column"          //柱形图
     case Bar             = "bar"             //条形图
     case Area            = "area"            //折线区域填充图

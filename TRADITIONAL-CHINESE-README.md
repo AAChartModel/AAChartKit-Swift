@@ -335,7 +335,7 @@ import AAChartView.swift
 ### 當前已支持的圖表類型有十種以上,說明如下
 
 ```swift
-enum AAChartType:String{
+enum AAChartType:String {
     case Column          = "column"          //柱形圖
     case Bar             = "bar"             //條形圖
     case Area            = "area"            //折線區域填充圖

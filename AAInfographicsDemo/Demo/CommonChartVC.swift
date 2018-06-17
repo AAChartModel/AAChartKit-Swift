@@ -67,7 +67,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         aaChartModel = AAChartModel()
             .chartType(self.chartType!)//图形类型
-            .colorsTheme(["#9b43b4","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
+            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
             .title("")//图形标题
             .subtitle("")//图形副标题
             .dataLabelEnabled(false)//是否显示数字

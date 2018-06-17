@@ -551,7 +551,7 @@ class MixedChartVC: UIViewController {
                         .color("rgba(119, 152, 191, 0.5)")
                         .toDic()!,
                     AASeriesElement()
-                        .name("目标")
+                        .name("实际值")
                         .type(AAChartType.Scatter)
                         .data([[161.2, 51.6], [167.5, 59.0], [159.5, 49.2], [157.0, 63.0], [155.8, 53.6],
                                [170.0, 59.0], [159.1, 47.6], [166.0, 69.8], [176.2, 66.8], [160.2, 75.2],
