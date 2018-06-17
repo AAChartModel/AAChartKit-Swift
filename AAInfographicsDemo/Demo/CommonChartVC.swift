@@ -131,7 +131,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .animationType(AAChartAnimationType.Bounce)
                 .animationDuration(1200)
         } else if self.chartType == AAChartType.Area
-            || self.chartType == AAChartType.AreaSpline {
+            || self.chartType == AAChartType.Areaspline {
             aaChartModel = aaChartModel?
                 .symbolStyle(AAChartSymbolStyleType.InnerBlank)//设置折线连接点样式为:内部白色
                 .animationType(AAChartAnimationType.EaseOutQuart)
@@ -140,7 +140,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .markerRadius(5)
                 .symbol(AAChartSymbolType.Circle)
             
-            if self.chartType == AAChartType.AreaSpline {
+            if self.chartType == AAChartType.Areaspline {
                 aaChartModel = aaChartModel?
                     .gradientColorEnable(false)
                     .animationType(AAChartAnimationType.EaseFrom)//设置图表渲染动画类型为 EaseFrom

@@ -72,7 +72,7 @@ enum AAChartType:String {
     case Column          = "column"
     case Bar             = "bar"
     case Area            = "area"
-    case AreaSpline      = "areaspline"
+    case Areaspline      = "areaspline"
     case Line            = "line"
     case Spline          = "spline"
     case Scatter         = "scatter"

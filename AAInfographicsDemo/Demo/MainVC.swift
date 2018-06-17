@@ -54,7 +54,6 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 "Step Line Chart--- 直方折线图",
                 "Line Chart---折线图",
                 "Spline Chart---曲线图",
-                
                 ],
             /*特殊类型图表*/
             [
@@ -73,18 +72,21 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 "Funnel Chart---漏斗图",
                 ],
             /*Mixed Chart---混合图*/
-            ["Arearange Mixed Line---面积范围均线图",
-             "Columnrange Mixed Line---柱形范围图混合折线图",
-             "Stacking Column Mixed Line---堆积柱形图混合折线图",
-
-             "Dash Style Types Mixed---多种类型曲线混合图",
-             "Negative Color Mixed---基准线以下异色混合图",
-             "scatterMixedLine---散点图混合折线图(待完成)",
-             "Negative Color Mixed bubble---基准线以下异色气泡图",
-             "Polygon Mixed Scatter---多边形混合散点图",
-             "Polar Chart Mixed---极地混合图"],
+            [
+                "Arearange Mixed Line---面积范围均线图",
+                "Columnrange Mixed Line---柱形范围图混合折线图",
+                "Stacking Column Mixed Line---堆积柱形图混合折线图",
+                "Dash Style Types Mixed---多种类型曲线混合图",
+                "Negative Color Mixed---基准线以下异色混合图",
+                "scatterMixedLine---散点图混合折线图(待完成)",
+                "Negative Color Mixed bubble---基准线以下异色气泡图",
+                "Polygon Mixed Scatter---多边形混合散点图",
+                "Polar Chart Mixed---极地混合图"
+            ],
             /*同时显示多个图表*/
-            ["在同一个页面同时添加多个 AAChartView"],
+            [
+                "在同一个页面同时添加多个 AAChartView"
+            ],
             /*动画类型示例*/
             [  "Column Chart---柱形图",
                "Bar Chart---条形图",
@@ -102,7 +104,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 AAChartType.Column,
                 AAChartType.Bar,
                 AAChartType.Area,
-                AAChartType.AreaSpline,
+                AAChartType.Areaspline,
                 AAChartType.Area,
                 AAChartType.Line,
                 AAChartType.Line,
@@ -225,7 +227,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 AAChartType.Column,
                 AAChartType.Bar,
                 AAChartType.Area,
-                AAChartType.AreaSpline,
+                AAChartType.Areaspline,
                 AAChartType.Area,
                 AAChartType.Line,
                 AAChartType.Line,

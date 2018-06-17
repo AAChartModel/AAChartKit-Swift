@@ -128,7 +128,7 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         
-        if self.chartType == AAChartType.Area || self.chartType == AAChartType.AreaSpline {
+        if self.chartType == AAChartType.Area || self.chartType == AAChartType.Areaspline {
           aaChartModel = aaChartModel?
             .gradientColorEnable(true)
             .markerRadius(0)
