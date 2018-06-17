@@ -33,8 +33,8 @@
 import UIKit
 
 class CommonChartVC: UIViewController,UIWebViewDelegate {
-    open var chartType: AAChartType?
-    open var step : Bool?
+    public var chartType: AAChartType?
+    public var step : Bool?
     private var aaChartModel: AAChartModel?
     private var aaChartView: AAChartView?
     override func viewWillAppear(_ animated: Bool) {

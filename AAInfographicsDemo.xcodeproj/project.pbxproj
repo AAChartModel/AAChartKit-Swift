@@ -117,6 +117,7 @@
 		278C54A51EE9472300770B97 = {
 			isa = PBXGroup;
 			children = (
+				278C54F41EE947DF00770B97 /* AAInfographics */,
 				278C54B01EE9472300770B97 /* AAInfographicsDemo */,
 				278C54C51EE9472300770B97 /* AAInfographicsDemoTests */,
 				278C54D01EE9472300770B97 /* AAInfographicsDemoUITests */,
@@ -143,7 +144,6 @@
 				278C54BD1EE9472300770B97 /* Info.plist */,
 				278C54B81EE9472300770B97 /* Assets.xcassets */,
 				278C550F1EE9487F00770B97 /* Demo */,
-				278C54F41EE947DF00770B97 /* AAInfographics */,
 			);
 			path = AAInfographicsDemo;
 			sourceTree = "<group>";

@@ -86,7 +86,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     public var contentWidth:CGFloat? {
         set {
             _contentWidth = newValue
-            if (self.optionsJson != nil) {
+            if self.optionsJson != nil {
                 let jsString = NSString.localizedStringWithFormat("setTheChartViewContentWidth(%f)",_contentWidth!)
                 self.evaluateJavaScriptWithFunctionNameString(jsString as String)
             }
@@ -100,7 +100,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     public var contentHeight:CGFloat? {
         set {
             _contentHeight = newValue
-            if (self.optionsJson != nil) {
+            if self.optionsJson != nil {
                 let jsString = NSString.localizedStringWithFormat("setTheChartViewContentHeight(%f)",_contentHeight!)
                 self.evaluateJavaScriptWithFunctionNameString(jsString as String)
             }
@@ -268,7 +268,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         let chartViewContentWidth = self.contentWidth
         
         var chartViewContentHeight = self.contentHeight
-        if (self.contentHeight == 0) {
+        if self.contentHeight == 0 {
             chartViewContentHeight = self.frame.size.height
         }
         

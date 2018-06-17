@@ -33,8 +33,8 @@
 import UIKit
 
 class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    open var chartType: AAChartType?
-    open var step:Bool?
+    public var chartType: AAChartType?
+    public var step:Bool?
     private var chartAnimationTypeArr = Array<AAChartAnimationType>()
     private var aaChartModel:AAChartModel?
     private var aaChartView:AAChartView?
