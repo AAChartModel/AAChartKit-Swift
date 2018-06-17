@@ -40,6 +40,7 @@ class AASeriesElement: AASerializable {
     private var dataLabels:Dictionary<String,Any>?
     private var marker:Dictionary<String,Any>?
     private var step:Any?
+    private var colorByPoint:Bool?
     private var allowPointSelect:Bool?
     private var zIndex:Int?
     private var innerSize:String?//内部圆环半径大小占比(内部圆环半径/扇形图半径)
@@ -117,6 +118,11 @@ class AASeriesElement: AASerializable {
     
     func step(_ prop:Any) -> AASeriesElement {
         self.step = prop
+        return self
+    }
+    
+    func colorByPoint(_ prop:Bool) -> AASeriesElement {
+        self.colorByPoint = prop
         return self
     }
     
