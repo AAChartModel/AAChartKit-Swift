@@ -69,6 +69,19 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         }
     }
     
+    public var isSeriesHidden: Bool?{
+        set {
+            _isSeriesHidden = newValue
+            if self.optionsJson != nil {
+                let jsString = NSString.localizedStringWithFormat("setChartSeriesHidden(%d)",_isSeriesHidden!)
+                self.evaluateJavaScriptWithFunctionNameString(jsString as String)
+            }
+        }
+        get {
+            return _isSeriesHidden
+        }
+    }
+    
     /// Content width of AAChartView
     public var contentWidth:CGFloat? {
         set {
@@ -99,6 +112,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
 
     private var _scrollEnabled:Bool?
     private var _isClearBackgroundColor:Bool?
+    private var _isSeriesHidden:Bool?
     
     private var _contentWidth:CGFloat?
     private var _contentHeight:CGFloat?
@@ -169,8 +183,6 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //
-    
     /// Function of drawing chart view
     ///
     /// - Parameter chartModel: The instance object of chart model
@@ -204,7 +216,6 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_refreshChartWholeContentWithChartModel(_ chartModel:AAChartModel) {
-        
         self.configureTheJavaScriptString(chartModel)
         self.drawChart()
     }
@@ -212,9 +223,18 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// Show the series element content with index
     ///
     /// - Parameter elementIndex: elementIndex element index
-//    public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex:NSInteger) {
-//
-//    }
+    public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex:NSInteger) {
+        let jsStr = NSString.localizedStringWithFormat("showTheSeriesElementContentWithIndex('%d');", elementIndex)
+        self.evaluateJavaScriptWithFunctionNameString(jsStr as String)
+    }
+    
+    ///  Hide the series element content with index
+    ///
+    /// - Parameter elementIndex: element index
+    public func aa_hideTheSeriesElementContentWithSeriesElementIndex(_ elementIndex:NSInteger) {
+        let jsStr = NSString.localizedStringWithFormat("hideTheSeriesElementContentWithIndex('%d');", elementIndex)
+        self.evaluateJavaScriptWithFunctionNameString(jsStr as String)
+    }
     
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.drawChart()
@@ -255,8 +275,5 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');", modelString!,chartViewContentWidth!,chartViewContentHeight!)
         optionsJson = jsString as String;
     }
-    
-    
-    
 }
 
