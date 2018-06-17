@@ -29,7 +29,6 @@ class AASeriesElement: AASerializable {
     private var name:String?
     private var data:Array<Any>?
     private var color:Any?
-    private var visible:Bool?
     private var lineWidth:Float?//折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
     private var borderWidth:Float?//柱形图、条形图、扇形图等图形的描边宽度
     private var borderColor:String?//柱形图、条形图、扇形图顿号等图形的描边颜色
@@ -61,16 +60,6 @@ class AASeriesElement: AASerializable {
         return self
     }
     
-    func color(_ prop:Any) -> AASeriesElement {
-        self.color = prop
-        return self
-    }
-    
-    func visible(_ prop:Bool) -> AASeriesElement {
-        self.visible = prop
-        return self
-    }
-    
     func lineWidth(_ prop:Float) -> AASeriesElement {
         self.lineWidth = prop
         return self
@@ -88,6 +77,11 @@ class AASeriesElement: AASerializable {
     
     func fillColor(_ prop:Any) -> AASeriesElement {
         self.fillColor = prop
+        return self
+    }
+    
+    func color(_ prop:Any) -> AASeriesElement {
+        self.color = prop
         return self
     }
     
