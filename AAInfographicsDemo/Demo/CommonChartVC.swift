@@ -207,8 +207,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                     "Rounded corners",
                                     "Wedge"]
             ];
-            typeLabelNameArr = ["Stacking type selection",
-                                "Corners Style type selection"];
+            typeLabelNameArr = ["Stacking Type Selection",
+                                "Corners Style Type Selection"];
         } else {
             segmentedNamesArray = [["No stacking",
                                     "Normal stacking",
@@ -219,8 +219,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                     "Triangle",
                                     "Triangle-down"]
             ];
-            typeLabelNameArr = ["Stacking type selection",
-                                "Chart symbol type selection"];
+            typeLabelNameArr = ["Stacking Type Selection",
+                                "Chart Symbol Type Selection"];
         }
         
         for  i in 0..<segmentedNamesArray.count {

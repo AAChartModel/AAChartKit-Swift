@@ -54,7 +54,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 "Step Line Chart--- 直方折线图",
                 "Line Chart---折线图",
                 "Spline Chart---曲线图",
-                ],
+            ],
             /*特殊类型图表*/
             [
                 "Polar Chart---极地图",
@@ -70,7 +70,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 "Waterfall Chart--- 瀑布图",
                 "Pyramid Chart---金字塔图",
                 "Funnel Chart---漏斗图",
-                ],
+            ],
             /*Mixed Chart---混合图*/
             [
                 "Arearange Mixed Line---面积范围均线图",
@@ -95,7 +95,18 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                "Step Area Chart--- 直方折线填充图",
                "Step Line Chart--- 直方折线图",
                "Line Chart---折线图",
-               "Spline Chart---曲线图",]
+               "Spline Chart---曲线图",
+            ],
+            /*隐藏或显示 Series*/
+            [  "Column Chart---柱形图",
+               "Bar Chart---条形图",
+               "Area Chart---折线填充图",
+               "Areaspline Chart---曲线填充图",
+               "Step Area Chart--- 直方折线填充图",
+               "Step Line Chart--- 直方折线图",
+               "Line Chart---折线图",
+               "Spline Chart---曲线图",
+               ],
         ]
         
         chartTypeArr = [
@@ -166,7 +177,8 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                "Special Type Chart --- 特殊类型图表",
                                "Mixed Chart --- 混合图形",
                                "同时显示多个图表",
-                               "渲染动画示例"]
+                               "渲染动画示例",
+                               "Hide Or Show Chart Series"]
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
         sectionTitleLabel.font = UIFont.boldSystemFont(ofSize: 14)
@@ -240,6 +252,24 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 animationTypeVC.step = true
             }
             self.navigationController?.pushViewController(animationTypeVC, animated: true)
+        } else if indexPath.section == 5 {
+            let chartTypeArr = [
+                AAChartType.Column,
+                AAChartType.Bar,
+                AAChartType.Area,
+                AAChartType.Areaspline,
+                AAChartType.Area,
+                AAChartType.Line,
+                AAChartType.Line,
+                AAChartType.Spline,
+                ]
+            let seriesHideOrShowVC = ChartSeriesHideOrShowVC()
+            seriesHideOrShowVC.chartType = chartTypeArr[indexPath.row]
+            seriesHideOrShowVC.step = false
+            if indexPath.row == 4 || indexPath.row == 5 {
+                seriesHideOrShowVC.step = true
+            }
+            self.navigationController?.pushViewController(seriesHideOrShowVC, animated: true)
         }
     }
     
