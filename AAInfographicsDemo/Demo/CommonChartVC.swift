@@ -91,7 +91,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 AASeriesElement()
                     .name("London")
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                    .toDic()!,])
+                    .toDic()!,
+                ])
         
         self.configureTheStyleForDifferentTypeChart()
         
@@ -141,6 +142,17 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .symbol(AAChartSymbolType.Circle)
             
             if self.chartType == AAChartType.Areaspline {
+                let gradientColorDic = [
+                    "linearGradient": [
+                        "x1": 0,
+                        "y1": 0,
+                        "x2": 0,
+                        "y2": 1
+                    ],
+                    "stops": [[0,"rgba(138,43,226,1)"],
+                              [1,"rgba(30,144,255,1)"]]//颜色字符串设置支持十六进制类型和 rgba 类型
+                    ] as [String : Any]
+                
                 aaChartModel = aaChartModel?
                     .gradientColorEnable(false)
                     .animationType(AAChartAnimationType.EaseFrom)//设置图表渲染动画类型为 EaseFrom
@@ -148,6 +160,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                         AASeriesElement()
                             .name("Tokyo Hot")
                             .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
+                            .color(gradientColorDic)
                             .toDic()!,
                         AASeriesElement()
                             .name("Berlin Hot")

@@ -87,11 +87,9 @@ class ChartSeriesHideOrShowVC: UIViewController {
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
                     .toDic()!,])
         } else {
-            if self.step == true {
-                aaChartModel = aaChartModel.markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
-            }
-            
-            aaChartModel = aaChartModel.series([
+            aaChartModel = aaChartModel
+                .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
+                .series([
                 AASeriesElement()
                     .name("Tokyo Hot")
                     .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])

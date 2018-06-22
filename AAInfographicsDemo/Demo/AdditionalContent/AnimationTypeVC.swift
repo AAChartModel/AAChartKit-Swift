@@ -113,11 +113,13 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     
     func setUpTheAAChartView() {
         let chartViewWidth  = self.view.frame.size.width-115
-        let screenHeight = self.view.frame.size.height-60
+        let chartViewHeight = self.view.frame.size.height-60
         
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:60,width:chartViewWidth,height:screenHeight)
+        aaChartView?.frame = CGRect(x:0,y:60,width:chartViewWidth,height:chartViewHeight)
         aaChartView?.scrollEnabled = false
+        ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
+        aaChartView?.contentHeight = chartViewHeight-20
         self.view.addSubview(aaChartView!)
 
         aaChartModel = AAChartModel()

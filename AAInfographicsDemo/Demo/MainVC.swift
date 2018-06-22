@@ -36,7 +36,7 @@ import UIKit
 class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     private var chartTypeTitleArr = Array<Array<String>>()
-    private var chartTypeArr = Array<Array<AAChartType>>()
+    private var chartTypeArr = Array<Array<Any>>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +83,16 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 "Polygon Mixed Scatter---多边形混合散点图",
                 "Polar Chart Mixed---极地混合图"
             ],
+            /*单纯刷新数据*/
+            [  "Column Chart---柱形图",
+               "Bar Chart---条形图",
+               "Area Chart---折线填充图",
+               "Areaspline Chart---曲线填充图",
+               "Step Area Chart--- 直方折线填充图",
+               "Step Line Chart--- 直方折线图",
+               "Line Chart---折线图",
+               "Spline Chart---曲线图",
+            ],
             /*同时显示多个图表*/
             [
                 "在同一个页面同时添加多个 AAChartView"
@@ -106,7 +116,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                "Step Line Chart--- 直方折线图",
                "Line Chart---折线图",
                "Spline Chart---曲线图",
-               ],
+            ],
         ]
         
         chartTypeArr = [
@@ -137,6 +147,49 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 AAChartType.Pyramid,
                 AAChartType.Funnel,
                 ],
+            ["arearangeMixedLine",
+             "columnrangeMixedLine",
+             "stackingColumnMixedLine",
+             "dashStyleTypeMixed",
+             "negativeColorMixed",
+             "scatterMixedLine",
+             "negativeColorMixedBubble",
+             "polygonMixedScatter",
+             "polarChartMixed"
+            ],
+            
+            [
+                AAChartType.Column,
+                AAChartType.Bar,
+                AAChartType.Area,
+                AAChartType.Areaspline,
+                AAChartType.Area,
+                AAChartType.Line,
+                AAChartType.Line,
+                AAChartType.Spline,
+                ],
+            [//Empty Array,just for holding place
+            ],
+            [
+                AAChartType.Column,
+                AAChartType.Bar,
+                AAChartType.Area,
+                AAChartType.Areaspline,
+                AAChartType.Area,
+                AAChartType.Line,
+                AAChartType.Line,
+                AAChartType.Spline,
+                ],
+            [
+                AAChartType.Column,
+                AAChartType.Bar,
+                AAChartType.Area,
+                AAChartType.Areaspline,
+                AAChartType.Area,
+                AAChartType.Line,
+                AAChartType.Line,
+                AAChartType.Spline,
+                ]
         ]
         
         self.view.backgroundColor = UIColor.white
@@ -176,9 +229,10 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let sectionTitleArr = ["Basic Type Chart --- 基础类型图表",
                                "Special Type Chart --- 特殊类型图表",
                                "Mixed Chart --- 混合图形",
-                               "同时显示多个图表",
-                               "渲染动画示例",
-                               "Hide Or Show Chart Series"]
+                               "Only Refresh data ---单纯刷新数据",
+                               "Double Chart View---同时显示多个图表",
+                               "Rendering Animation types ---渲染动画示例",
+                               "Hide Or Show Chart Series---隐藏或显示内容"]
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
         sectionTitleLabel.font = UIFont.boldSystemFont(ofSize: 14)
@@ -205,7 +259,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0 {
             /*基础类型图表*/
             let commonChartVC  = CommonChartVC()
-            commonChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row]
+            commonChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             if indexPath.row == 4 || indexPath.row == 5 {
                 commonChartVC.step = true
             }
@@ -214,57 +268,36 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         } else if indexPath.section == 1 {
             /*特殊类型图表*/
             let specialChartVC = SpecialChartVC()
-            specialChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row]
+            specialChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             self.navigationController?.pushViewController(specialChartVC, animated:true)
             
         } else if indexPath.section == 2 {
              let mixedChartVC = MixedChartVC()
-            let chartTypeArr = ["arearangeMixedLine",
-                                "columnrangeMixedLine",
-                                "stackingColumnMixedLine",
-                                "dashStyleTypeMixed",
-                                "negativeColorMixed",
-                                "scatterMixedLine",
-                                "negativeColorMixedBubble",
-                                "polygonMixedScatter",
-                                "polarChartMixed"]
-            mixedChartVC.chartType = chartTypeArr[indexPath.row]
+            mixedChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? String
             self.navigationController?.pushViewController(mixedChartVC, animated: true)
-        } else if indexPath.section == 3 {
+        }  else if indexPath.section == 3 {
+            let refreshchartDataVC = OnlyRefreshChartDataVC()
+            refreshchartDataVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            refreshchartDataVC.step = false
+            if indexPath.row == 4 || indexPath.row == 5 {
+                refreshchartDataVC.step = true
+            }
+            self.navigationController?.pushViewController(refreshchartDataVC, animated: true)
+        } else if indexPath.section == 4 {
             /*同时显示多个图表*/
             let manyChartVC = ShowManyChartViewVC()
             self.navigationController?.pushViewController(manyChartVC, animated:true)
-        } else if indexPath.section == 4 {
-            let chartTypeArr = [
-                AAChartType.Column,
-                AAChartType.Bar,
-                AAChartType.Area,
-                AAChartType.Areaspline,
-                AAChartType.Area,
-                AAChartType.Line,
-                AAChartType.Line,
-                AAChartType.Spline,
-                ]
+        } else if indexPath.section == 5 {
             let animationTypeVC = AnimationTypeVC()
-            animationTypeVC.chartType = chartTypeArr[indexPath.row]
+            animationTypeVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             animationTypeVC.step = false
             if indexPath.row == 4 || indexPath.row == 5 {
                 animationTypeVC.step = true
             }
             self.navigationController?.pushViewController(animationTypeVC, animated: true)
-        } else if indexPath.section == 5 {
-            let chartTypeArr = [
-                AAChartType.Column,
-                AAChartType.Bar,
-                AAChartType.Area,
-                AAChartType.Areaspline,
-                AAChartType.Area,
-                AAChartType.Line,
-                AAChartType.Line,
-                AAChartType.Spline,
-                ]
+        } else if indexPath.section == 6 {
             let seriesHideOrShowVC = ChartSeriesHideOrShowVC()
-            seriesHideOrShowVC.chartType = chartTypeArr[indexPath.row]
+            seriesHideOrShowVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             seriesHideOrShowVC.step = false
             if indexPath.row == 4 || indexPath.row == 5 {
                 seriesHideOrShowVC.step = true
