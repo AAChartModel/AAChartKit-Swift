@@ -437,39 +437,39 @@ symbol | AAChartSymbolType | 預定義的圖表曲線連接點的樣式類型.�
 
 * ### AAChartModel 所有屬性列表說明
 ```swift
-public var animationType:String?       //動畫類型
-public var title:String?               //標題內容
-public var subtitle:String?            //副標題內容
-public var chartType:String?           //圖表類型
-public var stacking:String?            //堆積樣式
-public var symbol:String?              //折線曲線連接點的類型："circle", "square", "diamond", "triangle","triangle-down"，默認是"circle"
-public var zoomType:String?            //縮放類型 AAChartZoomTypeX表示可沿著 x 軸進行手勢縮放
-public var inverted:Bool?              //x 軸是否垂直
-public var xAxisReversed:Bool?         //x 軸翻轉
-public var yAxisReversed:Bool?         //y 軸翻轉
-public var crosshairs:Bool?            //是否顯示準星線(默認顯示)
-public var gradientColorEnable:Bool?   //是否要為漸變色
-public var polar:Bool?                 //是否極化圖形(變為雷達圖)
-public var dataLabelEnabled:Bool?      //是否顯示數據
-public var xAxisLabelsEnabled:Bool?    //x軸是否顯示數據
-public var categories:Array<Any>?      //x軸是否顯示數據
-public var xAxisGridLineWidth:Int?     //x軸網格線的寬度
-public var yAxisLabelsEnabled:Bool?    //y軸是否顯示數據
-public var yAxisTitle:String?          //y軸標題
-public var yAxisGridLineWidth:Int?     //y軸網格線的寬度
-public var colorsTheme:Array<Any>?     //圖表主題顏色數組
-public var series:Array<Any>?          //圖表的主題數據列數組
-public var legendEnabled:Bool?         //是否顯示圖例
-public var legendLayout:String?        //圖例數據項的布局。布局類型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默認是：horizontal.
-public var legendAlign:String?         //設定圖例在圖表區中的水平對齊方式，合法值有 left，center 和 right。
-public var legendVerticalAlign:String? //設定圖例在圖表區中的垂直對齊方式，合法值有 top，middle 和 bottom。垂直位置可以通過 y 選項做進壹步設定
-public var backgroundColor:String?     //圖表背景色
-public var options3dEnable:Bool?       //是否3D化圖形(僅對條形圖,柱狀圖有效)
-public var options3dAlpha:Int?
-public var  options3dBeta:Int?
-public var options3dDepth:Int?         //3D圖形深度
-public var borderRadius:Int?           //柱狀圖長條圖頭部圓角半徑(可用於設置頭部的形狀,僅對條形圖,柱狀圖有效)
-public var markerRadius:Int?           //折線連接點的半徑長度
+private var animationType:String?       //動畫類型
+private var title:String?               //標題內容
+private var subtitle:String?            //副標題內容
+private var chartType:String?           //圖表類型
+private var stacking:String?            //堆積樣式
+private var symbol:String?              //折線曲線連接點的類型："circle", "square", "diamond", "triangle","triangle-down"，默認是"circle"
+private var zoomType:String?            //縮放類型 AAChartZoomTypeX表示可沿著 x 軸進行手勢縮放
+private var inverted:Bool?              //x 軸是否垂直
+private var xAxisReversed:Bool?         //x 軸翻轉
+private var yAxisReversed:Bool?         //y 軸翻轉
+private var crosshairs:Bool?            //是否顯示準星線(默認顯示)
+private var gradientColorEnable:Bool?   //是否要為漸變色
+private var polar:Bool?                 //是否極化圖形(變為雷達圖)
+private var dataLabelEnabled:Bool?      //是否顯示數據
+private var xAxisLabelsEnabled:Bool?    //x軸是否顯示數據
+private var categories:Array<Any>?      //x軸是否顯示數據
+private var xAxisGridLineWidth:Int?     //x軸網格線的寬度
+private var yAxisLabelsEnabled:Bool?    //y軸是否顯示數據
+private var yAxisTitle:String?          //y軸標題
+private var yAxisGridLineWidth:Int?     //y軸網格線的寬度
+private var colorsTheme:Array<Any>?     //圖表主題顏色數組
+private var series:Array<Any>?          //圖表的主題數據列數組
+private var legendEnabled:Bool?         //是否顯示圖例
+private var legendLayout:String?        //圖例數據項的布局。布局類型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默認是：horizontal.
+private var legendAlign:String?         //設定圖例在圖表區中的水平對齊方式，合法值有 left，center 和 right。
+private var legendVerticalAlign:String? //設定圖例在圖表區中的垂直對齊方式，合法值有 top，middle 和 bottom。垂直位置可以通過 y 選項做進壹步設定
+private var backgroundColor:String?     //圖表背景色
+private var options3dEnable:Bool?       //是否3D化圖形(僅對條形圖,柱狀圖有效)
+private var options3dAlpha:Int?
+private var  options3dBeta:Int?
+private var options3dDepth:Int?         //3D圖形深度
+private var borderRadius:Int?           //柱狀圖長條圖頭部圓角半徑(可用於設置頭部的形狀,僅對條形圖,柱狀圖有效)
+private var markerRadius:Int?           //折線連接點的半徑長度
 ```
 
 ## 附言
