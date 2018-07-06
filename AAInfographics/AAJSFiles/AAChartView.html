@@ -44,11 +44,14 @@
         <!-- </script>-->
         <!-- <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">-->
         <!-- </script>-->
-        <style>*{ -webkit-user-select: none; user-select: none; }</style></head>
+        <style>*{ -webkit-user-select: none; user-select: none; }</style>
+    </head>
     
     <body>
         <div id="container" style="width:min-450px; height: 200px; margin: -8px"></div>
-        <script>var aaGlobalChart;
+        <script>
+
+            var aaGlobalChart;
 
             function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
                 var aaOptions = configureAAOptions(sender, receivedWidth, receivedHeight);
@@ -64,33 +67,6 @@
                 //全局配置(可通过全局配置设置主题)https://api.hcharts.cn/highcharts#Highcharts.setOptions
             };
 
-            function onlyRefreshTheChartDataWithSeries(receivedSeries) {
-                var receivedSeriesElementArr = JSON.parse(receivedSeries);
-
-                for (var i = 0; i < receivedSeriesElementArr.length; i++) {
-                    var receivedSeriesData = receivedSeriesElementArr[i].data;
-                    // 获取series
-                    var chartSeries = aaGlobalChart.series[i];
-                    // 执行只刷新数据的函数
-                    chartSeries.setData(receivedSeriesData);
-                }
-            }
-
-            function chartSeriesContentHideOrShow(hidden) {
-                for (var i = 0; i < aaGlobalChart.series.length; i++) {
-                    var series = aaGlobalChart.series[i];
-                    if (hidden == true) {
-                        series.hide();
-                    } else {
-                        series.show();
-                    }
-                }
-            }
-
-            function showTheSeriesElementContentWithIndex(elementIndex) {
-                var series = aaGlobalChart.series[elementIndex];
-                series.show();
-            }
 
             function configureTheChartAnimationEasingType(easingType) {
                 switch (easingType) {
@@ -270,6 +246,18 @@
                     return function(pos) {
                         return Math.pow(pos, 0.25);
                     }
+                }
+            }
+
+            function onlyRefreshTheChartDataWithSeries(receivedSeries) {
+                var receivedSeriesElementArr = JSON.parse(receivedSeries);
+
+                for (var i = 0; i < receivedSeriesElementArr.length; i++) {
+                    var receivedSeriesData = receivedSeriesElementArr[i].data;
+                    // 获取series
+                    var chartSeries = aaGlobalChart.series[i];
+                    // 执行只刷新数据的函数
+                    chartSeries.setData(receivedSeriesData);
                 }
             }
 
