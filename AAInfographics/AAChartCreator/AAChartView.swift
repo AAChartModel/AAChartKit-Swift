@@ -190,7 +190,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         
         self.configureTheJavaScriptString(chartModel)
         
-        let path = Bundle.main.path(forResource: "AAChartView", ofType: "html")
+        let path = Bundle.main.path(forResource: "AAChartView", ofType: "html", inDirectory: "AAJSFiles.bundle")
         let urlStr = NSURL.fileURL(withPath: path!)
         let urlRequest = NSURLRequest(url: urlStr) as URLRequest
         if #available(iOS 9.0, *) {
