@@ -51,21 +51,23 @@
 | :----:  | :----: | :----: |
 | ![image1](https://github.com/AAChartModel/Gallery/blob/master/AAInfographics/BubbleChart.png) | ![image1](https://github.com/AAChartModel/Gallery/blob/master/AAInfographics/ArearangeAverageValueChart.png) | ![image1](https://github.com/AAChartModel/Gallery/blob/master/AAInfographics/ColumnMixedLineChart.png) |
 
+## 安裝
 
+### 使用 CocoaPods (推薦)
+
+1. 添加 `pod 'AAInfographics'` 到妳的 **Podfile**文件當中.
+2. 在終端中運行命令 `pod install` or `pod update`.
+3. 導入頭文件  `AAInfographics`.
+
+### 手動安裝
+
+1. 下載 Demo  `AAInfographicsDemo`
+2. 將 Demo 中的名為`AAInfographics` 的文件夾拖入至妳的項目之中.
 
 
 ## 使用方法
 
-### 準備工作
-* 將項目`demo`中的文件夾`AAInfographics`拖入到所需項目中.
- 
-
-### 正式開始
-1. 在妳的視圖控制器文件中添加
-```swift
-import AAChartView.swift
-```
-2. 創建視圖*AAChartView*
+1. 創建視圖*AAChartView*
 ```swift
         CGFloat chartViewWidth  = self.view.frame.size.width;
         CGFloat chartViewHeight = self.view.frame.size.height;
@@ -75,7 +77,7 @@ import AAChartView.swift
         // aaChartView?.contentHeight = self.view.frame.size.height
         self.view.addSubview(aaChartView!)
  ```
-3. 配置視圖模型*AAChartModel*
+2. 配置視圖模型*AAChartModel*
 
 * 鏈式編程的方式配置 *AAChartModel* 模型對象屬性
 ```swift
@@ -109,7 +111,7 @@ import AAChartView.swift
                     .toDic()!,])
 ```
 
-4.  繪制圖形(創建 AAChartView 實例對象後,首次繪制圖形調用此方法)
+3.  繪制圖形(創建 AAChartView 實例對象後,首次繪制圖形調用此方法)
 
 ```swift
     /*圖表視圖對象調用圖表模型對象,繪制最終圖形*/

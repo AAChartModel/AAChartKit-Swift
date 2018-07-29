@@ -46,18 +46,22 @@
 | :----:  | :----: | :----: |
 | ![image1](https://github.com/AAChartModel/Gallery/blob/master/AAInfographics/BubbleChart.png) | ![image1](https://github.com/AAChartModel/Gallery/blob/master/AAInfographics/ArearangeAverageValueChart.png) | ![image1](https://github.com/AAChartModel/Gallery/blob/master/AAInfographics/ColumnMixedLineChart.png) |
 
+## Installation
+
+### CocoaPods
+
+1. Add `pod 'AAInfographics'` to your Podfile.
+2. Run `pod install` or `pod update`.
+3. Import  `AAInfographics`.
+
+### Manually
+
+1. Download whole project demo of `AAInfographicsDemo`
+2. Drag the folder `AAInfographics` into your project.
+
 ## Usage
 
-### Pre-preparation work
-1. Drag the folder `AAInfographics` into your project.
-  
-
-### The offical start of the work 
-1.Add the following content into `your view controller` file.
-```swift
-import AAChartView.swift
-```
-2.Creat the instance object of chart view:`AAChartView`
+1. Creat the instance object of chart view:`AAChartView`
 ```swift
         CGFloat chartViewWidth  = self.view.frame.size.width;
         CGFloat chartViewHeight = self.view.frame.size.height;
@@ -67,7 +71,7 @@ import AAChartView.swift
         // aaChartView?.contentHeight = self.view.frame.size.height
         self.view.addSubview(aaChartView!)
   ```
-3.Configure the properties of chart model:`AAChartModel`
+2. Configure the properties of chart model:`AAChartModel`
 
 ``` swift
         aaChartModel = AAChartModel.init()
@@ -98,7 +102,7 @@ import AAChartView.swift
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
                     .toDic()!,])
 ```
-4.  Draw the chart(This method is called only for the first time after you create an AAChartView instance object)
+3.  Draw the chart(This method is called only for the first time after you create an AAChartView instance object)
 
 ```swift
         //The chart view object calls the instance object of AAChartModel and draws the final graphic
