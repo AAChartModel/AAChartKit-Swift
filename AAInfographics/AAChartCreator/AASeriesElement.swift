@@ -24,7 +24,7 @@
  
  */
 
-class AASeriesElement: AASerializable {
+ public class AASeriesElement: AASerializable {
     private var type:String?
     private var name:String?
     private var data:Array<Any>?
@@ -46,99 +46,101 @@ class AASeriesElement: AASerializable {
     private var innerSize:String?//内部圆环半径大小占比(内部圆环半径/扇形图半径)
 
     
-    func type(_ prop:AAChartType) -> AASeriesElement {
+    public func type(_ prop:AAChartType) -> AASeriesElement {
         self.type = prop.rawValue
         return self
     }
     
-    func name(_ prop:String) -> AASeriesElement {
+    public func name(_ prop:String) -> AASeriesElement {
         self.name = prop
         return self
     }
     
-    func data(_ prop:Array<Any>) -> AASeriesElement {
+    public func data(_ prop:Array<Any>) -> AASeriesElement {
         self.data = prop
         return self
     }
     
-    func lineWidth(_ prop:Float) -> AASeriesElement {
+    public func lineWidth(_ prop:Float) -> AASeriesElement {
         self.lineWidth = prop
         return self
     }
     
-    func borderWidth(_ prop:Float) -> AASeriesElement {
+    public func borderWidth(_ prop:Float) -> AASeriesElement {
         self.borderWidth = prop
         return self
     }
     
-    func borderColor(_ prop:String) -> AASeriesElement {
+    public func borderColor(_ prop:String) -> AASeriesElement {
         self.borderColor = prop
         return self
     }
     
-    func fillColor(_ prop:Any) -> AASeriesElement {
+    public func fillColor(_ prop:Any) -> AASeriesElement {
         self.fillColor = prop
         return self
     }
     
-    func color(_ prop:Any) -> AASeriesElement {
+    public func color(_ prop:Any) -> AASeriesElement {
         self.color = prop
         return self
     }
     
-    func fillOpacity(_ prop:Float) -> AASeriesElement {
+    public func fillOpacity(_ prop:Float) -> AASeriesElement {
         self.fillOpacity = prop
         return self
     }
     
-    func threshold(_ prop:Float) -> AASeriesElement {
+    public func threshold(_ prop:Float) -> AASeriesElement {
         self.threshold = prop
         return self
     }
     
-    func negativeColor(_ prop:String) -> AASeriesElement {
+    public func negativeColor(_ prop:String) -> AASeriesElement {
         self.negativeColor = prop
         return self
     }
     
-    func dashStyle(_ prop:AALineDashSyleType) -> AASeriesElement {
+    public func dashStyle(_ prop:AALineDashSyleType) -> AASeriesElement {
         self.dashStyle = prop.rawValue
         return self
     }
     
-    func dataLabels(_ prop:Dictionary<String,Any>) -> AASeriesElement {
+    public func dataLabels(_ prop:Dictionary<String,Any>) -> AASeriesElement {
         self.dataLabels = prop
         return self
     }
     
-    func marker(_ prop:Dictionary<String,Any>) -> AASeriesElement {
+    public func marker(_ prop:Dictionary<String,Any>) -> AASeriesElement {
         self.marker = prop
         return self
     }
     
-    func step(_ prop:Any) -> AASeriesElement {
+    public func step(_ prop:Any) -> AASeriesElement {
         self.step = prop
         return self
     }
     
-    func colorByPoint(_ prop:Bool) -> AASeriesElement {
+    public func colorByPoint(_ prop:Bool) -> AASeriesElement {
         self.colorByPoint = prop
         return self
     }
     
-    func allowPointSelect(_ prop:Bool) -> AASeriesElement {
+    public func allowPointSelect(_ prop:Bool) -> AASeriesElement {
         self.allowPointSelect = prop
         return self
     }
     
-    func zIndex(_ prop:Int) -> AASeriesElement {
+    public func zIndex(_ prop:Int) -> AASeriesElement {
         self.zIndex = prop
         return self
     }
     
-    func innerSize(_ prop:String) -> AASeriesElement {
+    public func innerSize(_ prop:String) -> AASeriesElement {
         self.innerSize = prop
         return self
     }
 
+    public  init() {
+    }
 }

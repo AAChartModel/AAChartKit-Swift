@@ -30,8 +30,7 @@
  
  */
 
-
-enum AAChartAnimationType:String {
+ public enum AAChartAnimationType:String {
     case EaseInQuad     = "easeInQuad"
     case EaseOutQuad    = "easeOutQuad"
     case EaseInOutQuad  = "easeInOutQuad"
@@ -68,7 +67,7 @@ enum AAChartAnimationType:String {
     case EaseTo         = "easeTo"
 }
 
-enum AAChartType:String {
+public enum AAChartType:String {
     case Column          = "column"
     case Bar             = "bar"
     case Area            = "area"
@@ -88,26 +87,26 @@ enum AAChartType:String {
     case Polygon         = "polygon"
 }
 
-enum AAChartSubtitleAlignType:String {
+public enum AAChartSubtitleAlignType:String {
     case Left   = "left"
     case Center = "center"
     case Right  = "right"
 }
 
-enum AAChartZoomType:String {
+public enum AAChartZoomType:String {
     case None = "none"
     case X    = "x"
     case Y    = "y"
     case XY   = "xy"
 }
 
-enum AAChartStackingType:String {
+public enum AAChartStackingType:String {
     case False   = ""
     case Normal  = "normal"
     case Percent = "percent"
 }
 
-enum AAChartSymbolType:String {
+public enum AAChartSymbolType:String {
     case Circle        = "circle"
     case Square        = "square"
     case Diamond       = "diamond"
@@ -115,30 +114,30 @@ enum AAChartSymbolType:String {
     case Triangle_down = "triangle-down"
 }
 
-enum AAChartSymbolStyleType:String {
+public enum AAChartSymbolStyleType:String {
     case Normal      = "normal"
     case InnerBlank  = "innerBlank"
     case BorderBlank = "borderBlank"
 }
 
-enum AAchartLegendlLayoutType:String {
+public enum AAchartLegendlLayoutType:String {
     case Horizontal = "horizontal"
     case Vertical   = "vertical"
 }
 
-enum AAChartLegendAlignType:String {
+public enum AAChartLegendAlignType:String {
     case Left   = "left"
     case Center = "center"
     case Right  = "right"
 }
 
-enum AAChartLegendVerticalAlignType:String {
+public enum AAChartLegendVerticalAlignType:String {
     case Top    = "top"
     case Middle = "middle"
     case Bottom = "bottom"
 }
 
-enum AALineDashSyleType:String {
+public enum AALineDashSyleType:String {
     case Solid           = "Solid"
     case ShortDash       = "ShortDash"
     case ShortDot        = "ShortDot"
@@ -194,187 +193,187 @@ public class AAChartModel:AASerializable {
     private var markerRadius:Int?           //折线连接点的半径长度
   
     
-    func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
+    public func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
         self.animationType = prop.rawValue
         return self
     }
     
-    func animationDuration(_ prop: Int) -> AAChartModel {
+    public func animationDuration(_ prop: Int) -> AAChartModel {
         self.animationDuration = prop
         return self
     }
     
-    func title(_ prop: String) -> AAChartModel {
+    public func title(_ prop: String) -> AAChartModel {
         self.title = prop
         return self
     }
     
-    func subtitle(_ prop: String) -> AAChartModel {
+    public func subtitle(_ prop: String) -> AAChartModel {
         self.subtitle = prop
         return self
     }
     
-    func chartType(_ prop: AAChartType) -> AAChartModel {
+    public func chartType(_ prop: AAChartType) -> AAChartModel {
         self.chartType = prop.rawValue
         return self
     }
     
-    func stacking(_ prop: AAChartStackingType) -> AAChartModel {
+    public func stacking(_ prop: AAChartStackingType) -> AAChartModel {
         self.stacking = prop.rawValue
         return self
     }
     
-    func symbol(_ prop: AAChartSymbolType) -> AAChartModel {
+    public func symbol(_ prop: AAChartSymbolType) -> AAChartModel {
         self.symbol = prop.rawValue
         return self
     }
     
-    func zoomType(_ prop: AAChartZoomType) -> AAChartModel {
+    public func zoomType(_ prop: AAChartZoomType) -> AAChartModel {
         self.zoomType = prop.rawValue
         return self
     }
     
-    func inverted(_ prop: Bool) -> AAChartModel {
+    public func inverted(_ prop: Bool) -> AAChartModel {
         self.inverted = prop
         return self
     }
     
-    func symbolStyle(_ prop: AAChartSymbolStyleType) -> AAChartModel {
+    public func symbolStyle(_ prop: AAChartSymbolStyleType) -> AAChartModel {
         self.symbolStyle = prop.rawValue
         return self
     }
     
-    func xAxisReversed(_ prop: Bool) -> AAChartModel {
+    public func xAxisReversed(_ prop: Bool) -> AAChartModel {
         self.xAxisReversed = prop
         return self
     }
     
-    func yAxisReversed(_ prop: Bool) -> AAChartModel {
+    public func yAxisReversed(_ prop: Bool) -> AAChartModel {
         self.yAxisReversed = prop
         return self
     }
     
-    func tooltipEnabled(_ prop:Bool) -> AAChartModel {
+    public func tooltipEnabled(_ prop:Bool) -> AAChartModel {
         self.tooltipEnabled = prop
         return self
     }
     
-    func tooltipValueSuffix(_ prop:String) -> AAChartModel {
+    public func tooltipValueSuffix(_ prop:String) -> AAChartModel {
         self.tooltipValueSuffix = prop
         return self
     }
     
-    func tooltipCrosshairs(_ prop: Bool) -> AAChartModel {
+    public func tooltipCrosshairs(_ prop: Bool) -> AAChartModel {
         self.tooltipCrosshairs = prop
         return self
     }
     
-    func gradientColorEnable(_ prop: Bool) -> AAChartModel {
+    public func gradientColorEnable(_ prop: Bool) -> AAChartModel {
         self.gradientColorEnable = prop
         return self
     }
     
-    func polar(_ prop: Bool) -> AAChartModel {
+    public func polar(_ prop: Bool) -> AAChartModel {
         self.polar = prop
         return self
     }
     
-    func marginLeft(_ prop: Float) -> AAChartModel {
+    public func marginLeft(_ prop: Float) -> AAChartModel {
         self.marginLeft = prop
         return self
     }
     
-    func marginRight(_ prop: Float) -> AAChartModel {
+    public func marginRight(_ prop: Float) -> AAChartModel {
         self.marginRight = prop
         return self
     }
     
-    func dataLabelEnabled(_ prop: Bool) -> AAChartModel {
+    public func dataLabelEnabled(_ prop: Bool) -> AAChartModel {
         self.dataLabelEnabled = prop
         return self
     }
     
-    func xAxisLabelsEnabled(_ prop: Bool) -> AAChartModel {
+    public func xAxisLabelsEnabled(_ prop: Bool) -> AAChartModel {
         self.xAxisLabelsEnabled = prop
         return self
     }
     
-    func categories(_ prop: Array<Any>) -> AAChartModel {
+    public func categories(_ prop: Array<Any>) -> AAChartModel {
         self.categories = prop
         return self
     }
     
-    func xAxisGridLineWidth(_ prop: Float) -> AAChartModel {
+    public func xAxisGridLineWidth(_ prop: Float) -> AAChartModel {
         self.xAxisGridLineWidth = prop
         return self
     }
     
-    func xAxisVisible(_ prop: Bool) -> AAChartModel {
+    public func xAxisVisible(_ prop: Bool) -> AAChartModel {
         self.xAxisVisible = prop
         return self
     }
     
-    func yAxisVisible(_ prop: Bool) -> AAChartModel {
+    public func yAxisVisible(_ prop: Bool) -> AAChartModel {
         self.yAxisVisible = prop
         return self
     }
     
-    func yAxisLabelsEnabled(_ prop: Bool) -> AAChartModel {
+    public func yAxisLabelsEnabled(_ prop: Bool) -> AAChartModel {
         self.yAxisLabelsEnabled = prop
         return self
     }
     
-    func yAxisTitle(_ prop: String) -> AAChartModel {
+    public func yAxisTitle(_ prop: String) -> AAChartModel {
         self.yAxisTitle = prop
         return self
     }
     
-    func yAxisGridLineWidth(_ prop: Float) -> AAChartModel {
+    public func yAxisGridLineWidth(_ prop: Float) -> AAChartModel {
         self.yAxisGridLineWidth = prop
         return self
     }
     
-    func colorsTheme(_ prop: Array<Any>) -> AAChartModel {
+    public func colorsTheme(_ prop: Array<Any>) -> AAChartModel {
         self.colorsTheme = prop
         return self
     }
     
-    func series(_ prop: Array<Dictionary<String, Any>>) -> AAChartModel {
+    public func series(_ prop: Array<Dictionary<String, Any>>) -> AAChartModel {
         self.series = prop
         return self
     }
     
-    func legendEnabled(_ prop: Bool) -> AAChartModel {
+    public func legendEnabled(_ prop: Bool) -> AAChartModel {
         self.legendEnabled = prop
         return self
     }
     
-    func legendLayout(_ prop: AAchartLegendlLayoutType) -> AAChartModel {
+    public func legendLayout(_ prop: AAchartLegendlLayoutType) -> AAChartModel {
         self.legendLayout = prop.rawValue
         return self
     }
     
-    func legendAlign(_ prop: AAChartLegendAlignType) -> AAChartModel {
+    public func legendAlign(_ prop: AAChartLegendAlignType) -> AAChartModel {
         self.legendAlign = prop.rawValue
         return self
     }
     
-    func legendVerticalAlign(_ prop: AAChartLegendVerticalAlignType) -> AAChartModel {
+    public func legendVerticalAlign(_ prop: AAChartLegendVerticalAlignType) -> AAChartModel {
         self.legendAlign = prop.rawValue
         return self
     }
     
-    func backgroundColor(_ prop: String) -> AAChartModel {
+    public func backgroundColor(_ prop: String) -> AAChartModel {
         self.backgroundColor = prop
         return self
     }
     
-    func borderRadius(_ prop: Int) -> AAChartModel {
+    public func borderRadius(_ prop: Int) -> AAChartModel {
         self.borderRadius = prop
         return self
     }
     
-    func markerRadius(_ prop: Int) -> AAChartModel {
+    public func markerRadius(_ prop: Int) -> AAChartModel {
         self.markerRadius = prop
         return self
     }

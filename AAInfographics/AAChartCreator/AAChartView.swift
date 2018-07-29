@@ -32,7 +32,7 @@
 
 import UIKit
 import WebKit
-class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
+public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
     public var scrollEnabled:Bool? {
         set {
@@ -179,7 +179,7 @@ class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
                                    constant:0)]
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

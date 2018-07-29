@@ -8,18 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		27499098210D7B2E003D18C2 /* AAJSFiles.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27499097210D7B2E003D18C2 /* AAJSFiles.bundle */; };
+		2749914F210D90B5003D18C2 /* AAChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749914B210D90B5003D18C2 /* AAChartModel.swift */; };
+		27499150210D90B5003D18C2 /* AASeriesElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749914C210D90B5003D18C2 /* AASeriesElement.swift */; };
+		27499151210D90B5003D18C2 /* AASerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749914D210D90B5003D18C2 /* AASerializable.swift */; };
+		27499152210D90B5003D18C2 /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749914E210D90B5003D18C2 /* AAChartView.swift */; };
 		2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */; };
 		27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27766454207C55BE00F0A62C /* MixedChartVC.swift */; };
-		27766457207C8AB300F0A62C /* AASeriesElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27766456207C8AB300F0A62C /* AASeriesElement.swift */; };
 		278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54B11EE9472300770B97 /* AppDelegate.swift */; };
 		278C54B71EE9472300770B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B51EE9472300770B97 /* Main.storyboard */; };
 		278C54B91EE9472300770B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B81EE9472300770B97 /* Assets.xcassets */; };
 		278C54BC1EE9472300770B97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C54BA1EE9472300770B97 /* LaunchScreen.storyboard */; };
 		278C54C71EE9472300770B97 /* AAInfographicsDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54C61EE9472300770B97 /* AAInfographicsDemoTests.swift */; };
 		278C54D21EE9472300770B97 /* AAInfographicsDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54D11EE9472300770B97 /* AAInfographicsDemoUITests.swift */; };
-		278C55001EE947DF00770B97 /* AAChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54F61EE947DF00770B97 /* AAChartModel.swift */; };
-		278C55011EE947DF00770B97 /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54F71EE947DF00770B97 /* AAChartView.swift */; };
-		278C55021EE947DF00770B97 /* AASerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54F81EE947DF00770B97 /* AASerializable.swift */; };
 		278C55141EE948C900770B97 /* CommonChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55101EE948C900770B97 /* CommonChartVC.swift */; };
 		278C55151EE948C900770B97 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55111EE948C900770B97 /* MainVC.swift */; };
 		278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55121EE948C900770B97 /* SpecialChartVC.swift */; };
@@ -47,9 +47,12 @@
 
 /* Begin PBXFileReference section */
 		27499097210D7B2E003D18C2 /* AAJSFiles.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AAJSFiles.bundle; sourceTree = "<group>"; };
+		2749914B210D90B5003D18C2 /* AAChartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartModel.swift; sourceTree = "<group>"; };
+		2749914C210D90B5003D18C2 /* AASeriesElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AASeriesElement.swift; sourceTree = "<group>"; };
+		2749914D210D90B5003D18C2 /* AASerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AASerializable.swift; sourceTree = "<group>"; };
+		2749914E210D90B5003D18C2 /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
 		2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyRefreshChartDataVC.swift; sourceTree = "<group>"; };
 		27766454207C55BE00F0A62C /* MixedChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartVC.swift; sourceTree = "<group>"; };
-		27766456207C8AB300F0A62C /* AASeriesElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeriesElement.swift; sourceTree = "<group>"; };
 		278C54AE1EE9472300770B97 /* AAInfographicsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAInfographicsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		278C54B11EE9472300770B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		278C54B61EE9472300770B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,9 +65,6 @@
 		278C54CD1EE9472300770B97 /* AAInfographicsDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AAInfographicsDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		278C54D11EE9472300770B97 /* AAInfographicsDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInfographicsDemoUITests.swift; sourceTree = "<group>"; };
 		278C54D31EE9472300770B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		278C54F61EE947DF00770B97 /* AAChartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartModel.swift; sourceTree = "<group>"; };
-		278C54F71EE947DF00770B97 /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
-		278C54F81EE947DF00770B97 /* AASerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AASerializable.swift; sourceTree = "<group>"; };
 		278C55101EE948C900770B97 /* CommonChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonChartVC.swift; sourceTree = "<group>"; };
 		278C55111EE948C900770B97 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		278C55121EE948C900770B97 /* SpecialChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialChartVC.swift; sourceTree = "<group>"; };
@@ -173,10 +173,10 @@
 		278C54F51EE947DF00770B97 /* AAChartCreator */ = {
 			isa = PBXGroup;
 			children = (
-				278C54F61EE947DF00770B97 /* AAChartModel.swift */,
-				27766456207C8AB300F0A62C /* AASeriesElement.swift */,
-				278C54F81EE947DF00770B97 /* AASerializable.swift */,
-				278C54F71EE947DF00770B97 /* AAChartView.swift */,
+				2749914B210D90B5003D18C2 /* AAChartModel.swift */,
+				2749914E210D90B5003D18C2 /* AAChartView.swift */,
+				2749914D210D90B5003D18C2 /* AASerializable.swift */,
+				2749914C210D90B5003D18C2 /* AASeriesElement.swift */,
 			);
 			path = AAChartCreator;
 			sourceTree = "<group>";
@@ -329,18 +329,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				278C55001EE947DF00770B97 /* AAChartModel.swift in Sources */,
+				27499151210D90B5003D18C2 /* AASerializable.swift in Sources */,
 				279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */,
 				278C55151EE948C900770B97 /* MainVC.swift in Sources */,
-				27766457207C8AB300F0A62C /* AASeriesElement.swift in Sources */,
+				27499150210D90B5003D18C2 /* AASeriesElement.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
 				2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */,
 				27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */,
+				2749914F210D90B5003D18C2 /* AAChartModel.swift in Sources */,
 				278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */,
-				278C55021EE947DF00770B97 /* AASerializable.swift in Sources */,
-				278C55011EE947DF00770B97 /* AAChartView.swift in Sources */,
 				27FADB8620D6569000FED960 /* ChartSeriesHideOrShowVC.swift in Sources */,
+				27499152210D90B5003D18C2 /* AAChartView.swift in Sources */,
 				278C55141EE948C900770B97 /* CommonChartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
