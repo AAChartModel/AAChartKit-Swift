@@ -95,6 +95,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                 "stops": [[0,"#00BFFF"],
                           [1,"#00FA9A"]]//颜色字符串设置支持十六进制类型和 rgba 类型
                 ] as [String : Any]
+            
             aaChartModel = aaChartModel?
                 .markerRadius(0)
                 .series([

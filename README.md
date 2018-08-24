@@ -7,7 +7,9 @@
 [![](https://img.shields.io/badge/support-Animation-yellow.svg)](https://github.com/AAChartModel/AAChartKit-Swift#supported-animation-type-for-now)</br>
 [![](https://img.shields.io/badge/support-OC-orange.svg)](https://github.com/AAChartModel/AAChartKit)</br>
 [![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)</br>
-[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAChartKit-Swift)
+[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAChartKit-Swift)</br>
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/AAChartModel/AAChartKit-Swift.svg)](http://isitmaintained.com/project/AAChartModel/AAChartKit-Swift "Average time to resolve an issue")</br>
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/AAChartModel/AAChartKit-Swift.svg)](http://isitmaintained.com/project/AAChartModel/AAChartKit-Swift "Percentage of issues still open")
 
 ## [ **English Document 🇬🇧** ](https://github.com/AAChartModel-Swift/AAChartKit)  |  [ **简体中文文档 🇨🇳** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)| [ **繁體中文文檔 🇭🇰** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/TRADITIONAL-CHINESE-README.md)
 
@@ -544,28 +546,28 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 
 ## Todo list
 
-> * - [x] Support for the user to add delegate events after the graphics content loading was completed
-> * - [x] Support graphics to refresh global content dynamically
-> * - [x] Support graphics to refresh pure data (`series`) content dynamically
-> * - [x] Support graphics to refresh pure data in real time and scroll dynamically
-> * - [x] Support color layer gradient effects
-> * - [x] Support 3D graphics effects, valid only for partial graphics such as `column chart`、`bar chart`、`pie charts`、`scatterplot chart`、`bubble chart`, etc
-> * - [ ] Support horizontal screen (full screen) effect
-> * - [x] Support setting graphics rendering animation freely
-> * - [ ] Support rendered graphics to generate image files
-> * - [ ] Support generating image files saved to the system album
-> * - [x] Support for users to configure `AAOptions` model object properties freely
-> * - [x] Support stacking the graphics 
-> * - [x] Support reversing the graphics axis 
-> * - [x] Support rendering the scatter chart
-> * - [x] Support rendering the column range map
-> * - [x] Support rendering the area range graph
-> * - [x] Support rendering the polar chart
-> * - [x] Support rendering the step line chart
-> * - [x] Support rendering the step area chart
-> * - [ ] Support rendering the rectangular tree hierarchy diagrams
-> * - [ ] Support rendering the circular progress bar chart 
-> * - [ ] Support adding clicked event callbacks for graphics
+- [x] Support for the user to add delegate events after the graphics content loading was completed
+- [x] Support graphics to refresh global content dynamically
+- [x] Support graphics to refresh pure data (`series`) content dynamically
+- [x] Support graphics to refresh pure data in real time and scroll dynamically
+- [x] Support color layer gradient effects
+- [x] Support 3D graphics effects, valid only for partial graphics such as `column chart`、`bar chart`、`pie charts`、`scatterplot chart`、`bubble chart`, etc
+- [ ] Support horizontal screen (full screen) effect
+- [x] Support setting graphics rendering animation freely
+- [ ] Support rendered graphics to generate image files
+- [ ] Support generating image files saved to the system album
+- [x] Support for users to configure `AAOptions` model object properties freely
+- [x] Support stacking the graphics 
+- [x] Support reversing the graphics axis 
+- [x] Support rendering the scatter chart
+- [x] Support rendering the column range map
+- [x] Support rendering the area range graph
+- [x] Support rendering the polar chart
+- [x] Support rendering the step line chart
+- [x] Support rendering the step area chart
+- [ ] Support rendering the rectangular tree hierarchy diagrams
+- [ ] Support rendering the circular progress bar chart 
+- [ ] Support adding clicked event callbacks for graphics
 
 
 [1]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/1.gif

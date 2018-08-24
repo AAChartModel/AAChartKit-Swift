@@ -151,7 +151,6 @@ public enum AALineDashSyleType:String {
     case LongDashDotDot  = "LongDashDotDot"
 }
 
-
 public class AAChartModel:AASerializable {
     private var animationType:String?       //动画类型
     private var animationDuration:Int?      //动画时间

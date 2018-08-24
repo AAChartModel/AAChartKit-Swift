@@ -8,7 +8,9 @@
 [![](https://img.shields.io/badge/support-Animation-yellow.svg)](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#當前已支持的圖表渲染動畫類型有三十種以上說明如下)</br>
 [![](https://img.shields.io/badge/support-OC-orange.svg)](https://github.com/AAChartModel/AAChartKit)</br>
 [![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)</br>
-[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAChartKit-Swift)
+[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAChartKit-Swift)</br>
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/AAChartModel/AAChartKit-Swift.svg)](http://isitmaintained.com/project/AAChartModel/AAChartKit-Swift "Average time to resolve an issue")</br>
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/AAChartModel/AAChartKit-Swift.svg)](http://isitmaintained.com/project/AAChartModel/AAChartKit-Swift "Percentage of issues still open")
 
 
 ## [ **English Document 🇬🇧** ](https://github.com/AAChartModel-Swift/AAChartKit)  |  [ **简体中文文档 🇨🇳** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)| [ **繁體中文文檔 🇭🇰** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/TRADITIONAL-CHINESE-README.md)
@@ -563,29 +565,29 @@ Objective C | AAChartKit | https://github.com/AAChartModel/AAChartKit |
 
 ## 待辦清單
 
-> * - [x] 支持圖形加載完成後用戶添加代理事件
-> * - [x] 支持圖形動態刷新全局內容
-> * - [x] 支持圖形動態刷新純數據`(series)`內容
-> * - [ ] 支持圖形實時刷新純數據並動態滾動
-> * - [x] 支持色彩圖層漸變效果
-> * - [x] 支持3D圖形效果,僅對`柱狀圖`、`條形圖`、`扇形圖`、`散點圖`、`氣泡圖`等部分圖形有效
-> * - [ ] 支持橫屏(全屏)效果
-> * - [x] 支持自由設置圖形渲染動畫
-> * - [ ] 支持已渲染圖形生成圖片文件
-> * - [ ] 支持生成圖片文件保存至系統相冊
-> * - [x] 支持用戶自由配置`AAOptions`模型對象屬性
-> * - [x] 支持圖形堆疊
-> * - [x] 支持圖形坐標軸反轉
-> * - [x] 支持渲染散點圖
-> * - [x] 支持渲染柱形範圍圖
-> * - [x] 支持渲染面積範圍圖
-> * - [ ] 支持渲染面積範圍均線圖
-> * - [x] 支持渲染極地圖
-> * - [x] 支持渲染折線直方圖
-> * - [x] 支持渲染折線直方填充圖
-> * - [ ] 支持渲染矩形樹狀層級關系圖
-> * - [ ] 支持渲染活動刻度儀表圖
-> * - [ ] 支持為圖形添加點擊事件回調
+- [x] 支持圖形加載完成後用戶添加代理事件
+- [x] 支持圖形動態刷新全局內容
+- [x] 支持圖形動態刷新純數據`(series)`內容
+- [ ] 支持圖形實時刷新純數據並動態滾動
+- [x] 支持色彩圖層漸變效果
+- [x] 支持3D圖形效果,僅對`柱狀圖`、`條形圖`、`扇形圖`、`散點圖`、`氣泡圖`等部分圖形有效
+- [ ] 支持橫屏(全屏)效果
+- [x] 支持自由設置圖形渲染動畫
+- [ ] 支持已渲染圖形生成圖片文件
+- [ ] 支持生成圖片文件保存至系統相冊
+- [x] 支持用戶自由配置`AAOptions`模型對象屬性
+- [x] 支持圖形堆疊
+- [x] 支持圖形坐標軸反轉
+- [x] 支持渲染散點圖
+- [x] 支持渲染柱形範圍圖
+- [x] 支持渲染面積範圍圖
+- [ ] 支持渲染面積範圍均線圖
+- [x] 支持渲染極地圖
+- [x] 支持渲染折線直方圖
+- [x] 支持渲染折線直方填充圖
+- [ ] 支持渲染矩形樹狀層級關系圖
+- [ ] 支持渲染活動刻度儀表圖
+- [ ] 支持為圖形添加點擊事件回調
 
 
 [1]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/1.gif
