@@ -73,7 +73,7 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         set {
             _isSeriesHidden = newValue
             if self.optionsJson != nil {
-                let jsString = NSString.localizedStringWithFormat("setChartSeriesHidden(%d)",_isSeriesHidden!)
+                let jsString = NSString.localizedStringWithFormat("setChartSeriesHidden(%d)",_isSeriesHidden! as CVarArg)
                 self.evaluateJavaScriptWithFunctionNameString(jsString as String)
             }
         }
@@ -264,7 +264,6 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
     private func configureTheJavaScriptString(_ chartModel:AAChartModel) {
         let modelString = chartModel.toJSON()
-        
         let chartViewContentWidth = self.contentWidth
         
         var chartViewContentHeight = self.contentHeight

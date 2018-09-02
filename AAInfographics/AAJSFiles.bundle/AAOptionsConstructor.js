@@ -70,7 +70,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         var aaTitle = {
                 text: aaChartModel.title,//标题文本内容
                 style: {
-                        color: "#000000",//标题颜色
+                        color: aaChartModel.titleColor,//标题颜色
                         fontSize: "12px"//标题字体大小
                 }
         };
@@ -78,7 +78,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         var aaSubtitle = {
                 text: aaChartModel.subtitle,//副标题文本内容
                 style: {
-                        color: "#000000",//副标题颜色
+                        color: aaChartModel.subTitleColor,//副标题颜色
                         fontSize: "9px"//副标题字体大小
                 }
         };
@@ -146,6 +146,7 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
         aaOptions.plotOptions = aaPlotOptions;
         aaOptions.colors = aaColorsTheme;
         aaOptions.series = aaChartModel.series;
+        aaOptions.axisColor = aaChartModel.axisColor;
 
         //x 轴和 Y 轴的相关配置,扇形图、金字塔图和漏斗图则不需要设置 X 轴和 Y 轴的相关内容
         if (   aaChartModel.chartType !== "pie"
@@ -162,7 +163,7 @@ function configureAxisContentAndStyle(aaOptions, aaChartModel) {
 
         var aaXAxis = {
                 label: {
-                        enabled: aaChartModel.xAxisLabelsEnabled // X 轴是否显示文字
+                        enabled: aaChartModel.xAxisLabelsEnabled, // X 轴是否显示文字
                 },
                 reversed: aaChartModel.xAxisReversed,
                 //是否反转 X 轴
