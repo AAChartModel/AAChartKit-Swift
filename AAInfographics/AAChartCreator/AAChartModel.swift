@@ -190,7 +190,9 @@ public class AAChartModel:AASerializable {
     private var backgroundColor:String?     //图表背景色
     private var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     private var markerRadius:Int?           //折线连接点的半径长度
-  
+    private var titleColor:String?
+    private var subTitleColor:String?
+    private var axisColor:String?
     
     public func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
         self.animationType = prop.rawValue
@@ -367,6 +369,21 @@ public class AAChartModel:AASerializable {
         return self
     }
     
+    public func titleColor(_ prop: String) -> AAChartModel {
+        self.titleColor = prop
+        return self
+    }
+    
+    public func subTitleColor(_ prop: String) -> AAChartModel {
+        self.subTitleColor = prop
+        return self
+    }
+    
+    public func axisColor(_ prop: String) -> AAChartModel {
+        self.axisColor = prop
+        return self
+    }
+    
     public func borderRadius(_ prop: Int) -> AAChartModel {
         self.borderRadius = prop
         return self
@@ -380,6 +397,9 @@ public class AAChartModel:AASerializable {
     
     public  init() {
         self.backgroundColor     = "#ffffff"
+        self.titleColor          = "#000000"
+        self.subTitleColor       = "#000000"
+        self.axisColor           = "#00ff00"
         self.animationDuration   = 800//以毫秒为单位
         self.chartType           = AAChartType.Column.rawValue
         self.inverted            = false
@@ -406,6 +426,5 @@ public class AAChartModel:AASerializable {
         self.borderRadius        = 0//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
         self.markerRadius        = 5//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
     }
-    
     
 }
