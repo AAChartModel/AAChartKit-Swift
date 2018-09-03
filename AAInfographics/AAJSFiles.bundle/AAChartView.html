@@ -63,8 +63,15 @@
                 aaOptions.credits = {
                     enabled: false
                 }; //去掉表格右下角版权信息
-                aaGlobalChart = Highcharts.chart('container', aaOptions);
+                
                 //全局配置(可通过全局配置设置主题)https://api.hcharts.cn/highcharts#Highcharts.setOptions
+                Highcharts.setOptions({
+                                      lang: {
+                                      thousandsSep: ","
+                                      }
+                                      });
+                
+                aaGlobalChart = Highcharts.chart('container', aaOptions);
             };
 
 
