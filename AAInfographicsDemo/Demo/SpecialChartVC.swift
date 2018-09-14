@@ -176,7 +176,13 @@ class SpecialChartVC: UIViewController {
             aaChartModel = AAChartModel()
                 .chartType(AAChartType.Scatter)
                 .title("Height and weight distribution by sex")
-                .yAxisTitle("kg)")
+                .titleColor("#ffffff")
+                .axisColor("#ffffff")
+                .yAxisTitle("kg")
+                .symbol(AAChartSymbolType.Circle)
+                .symbolStyle(AAChartSymbolStyleType.InnerBlank)
+                .markerRadius(9)
+                .backgroundColor("#22324c")
                 .series(
                     [
                         AASeriesElement()

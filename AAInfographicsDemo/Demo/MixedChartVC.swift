@@ -294,10 +294,13 @@ class MixedChartVC: UIViewController {
         case "scatterMixedLine":
             aaChartModel = AAChartModel()
                 .dataLabelEnabled(false)//是否显示数字
+                .chartType(AAChartType.Scatter)
+                .symbolStyle(AAChartSymbolStyleType.InnerBlank)
+                .symbol(AAChartSymbolType.Circle)
+                .markerRadius(10)
                 .series([
                     AASeriesElement()
                         .name("Scatter")
-                        .type(AAChartType.Scatter)
                         .data([
                             [0.067732, 3.176513],
                             [0.42781,  3.816464],
