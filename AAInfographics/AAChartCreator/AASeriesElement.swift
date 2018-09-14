@@ -45,97 +45,115 @@
     private var zIndex:Int?
     private var innerSize:String?//内部圆环半径大小占比(内部圆环半径/扇形图半径)
 
-    
+    @discardableResult
     public func type(_ prop:AAChartType) -> AASeriesElement {
         self.type = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func name(_ prop:String) -> AASeriesElement {
         self.name = prop
         return self
     }
     
+    @discardableResult
     public func data(_ prop:Array<Any>) -> AASeriesElement {
         self.data = prop
         return self
     }
     
+    @discardableResult
     public func lineWidth(_ prop:Float) -> AASeriesElement {
         self.lineWidth = prop
         return self
     }
     
+    @discardableResult
     public func borderWidth(_ prop:Float) -> AASeriesElement {
         self.borderWidth = prop
         return self
     }
     
+    @discardableResult
     public func borderColor(_ prop:String) -> AASeriesElement {
         self.borderColor = prop
         return self
     }
     
+    @discardableResult
     public func fillColor(_ prop:Any) -> AASeriesElement {
         self.fillColor = prop
         return self
     }
     
+    @discardableResult
     public func color(_ prop:Any) -> AASeriesElement {
         self.color = prop
         return self
     }
     
+    @discardableResult
     public func fillOpacity(_ prop:Float) -> AASeriesElement {
         self.fillOpacity = prop
         return self
     }
     
+    @discardableResult
     public func threshold(_ prop:Float) -> AASeriesElement {
         self.threshold = prop
         return self
     }
     
+    @discardableResult
     public func negativeColor(_ prop:String) -> AASeriesElement {
         self.negativeColor = prop
         return self
     }
     
+    @discardableResult
     public func dashStyle(_ prop:AALineDashSyleType) -> AASeriesElement {
         self.dashStyle = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func dataLabels(_ prop:Dictionary<String,Any>) -> AASeriesElement {
         self.dataLabels = prop
         return self
     }
     
+    @discardableResult
     public func marker(_ prop:Dictionary<String,Any>) -> AASeriesElement {
         self.marker = prop
         return self
     }
     
+    @discardableResult
     public func step(_ prop:Any) -> AASeriesElement {
         self.step = prop
         return self
     }
     
+    @discardableResult
     public func colorByPoint(_ prop:Bool) -> AASeriesElement {
         self.colorByPoint = prop
         return self
     }
     
+    @discardableResult
     public func allowPointSelect(_ prop:Bool) -> AASeriesElement {
         self.allowPointSelect = prop
         return self
     }
     
+    @discardableResult
     public func zIndex(_ prop:Int) -> AASeriesElement {
         self.zIndex = prop
         return self
     }
     
+    @discardableResult
     public func innerSize(_ prop:String) -> AASeriesElement {
         self.innerSize = prop
         return self

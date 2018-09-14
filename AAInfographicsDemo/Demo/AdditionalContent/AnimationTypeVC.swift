@@ -107,7 +107,7 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        aaChartModel = aaChartModel?.animationType(chartAnimationTypeArr[indexPath.row])
+        aaChartModel?.animationType(chartAnimationTypeArr[indexPath.row])
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
@@ -131,7 +131,7 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         
         if self.chartType == AAChartType.Area || self.chartType == AAChartType.Areaspline {
-          aaChartModel = aaChartModel?
+          aaChartModel?
             .gradientColorEnable(true)
             .markerRadius(0)
             .series([
@@ -153,7 +153,7 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
                           [1,"rgba(30,144,255,1)"]]//颜色字符串设置支持十六进制类型和 rgba 类型
                 ] as [String : Any]
             
-            aaChartModel = aaChartModel?
+            aaChartModel?
                 .series([
                     AASeriesElement()
                         .name("Tokyo")

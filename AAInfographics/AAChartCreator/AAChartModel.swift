@@ -194,201 +194,241 @@ public class AAChartModel:AASerializable {
     private var subTitleColor:String?
     private var axisColor:String?
     
+    @discardableResult
     public func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
         self.animationType = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func animationDuration(_ prop: Int) -> AAChartModel {
         self.animationDuration = prop
         return self
     }
     
+    @discardableResult
     public func title(_ prop: String) -> AAChartModel {
         self.title = prop
         return self
     }
     
+    @discardableResult
     public func subtitle(_ prop: String) -> AAChartModel {
         self.subtitle = prop
         return self
     }
     
+    @discardableResult
     public func chartType(_ prop: AAChartType) -> AAChartModel {
         self.chartType = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func stacking(_ prop: AAChartStackingType) -> AAChartModel {
         self.stacking = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func symbol(_ prop: AAChartSymbolType) -> AAChartModel {
         self.symbol = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func zoomType(_ prop: AAChartZoomType) -> AAChartModel {
         self.zoomType = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func inverted(_ prop: Bool) -> AAChartModel {
         self.inverted = prop
         return self
     }
     
+    @discardableResult
     public func symbolStyle(_ prop: AAChartSymbolStyleType) -> AAChartModel {
         self.symbolStyle = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func xAxisReversed(_ prop: Bool) -> AAChartModel {
         self.xAxisReversed = prop
         return self
     }
     
+    @discardableResult
     public func yAxisReversed(_ prop: Bool) -> AAChartModel {
         self.yAxisReversed = prop
         return self
     }
     
+    @discardableResult
     public func tooltipEnabled(_ prop:Bool) -> AAChartModel {
         self.tooltipEnabled = prop
         return self
     }
     
+    @discardableResult
     public func tooltipValueSuffix(_ prop:String) -> AAChartModel {
         self.tooltipValueSuffix = prop
         return self
     }
     
+    @discardableResult
     public func tooltipCrosshairs(_ prop: Bool) -> AAChartModel {
         self.tooltipCrosshairs = prop
         return self
     }
     
+    @discardableResult
     public func gradientColorEnable(_ prop: Bool) -> AAChartModel {
         self.gradientColorEnable = prop
         return self
     }
     
+    @discardableResult
     public func polar(_ prop: Bool) -> AAChartModel {
         self.polar = prop
         return self
     }
     
+    @discardableResult
     public func marginLeft(_ prop: Float) -> AAChartModel {
         self.marginLeft = prop
         return self
     }
     
+    @discardableResult
     public func marginRight(_ prop: Float) -> AAChartModel {
         self.marginRight = prop
         return self
     }
     
+    @discardableResult
     public func dataLabelEnabled(_ prop: Bool) -> AAChartModel {
         self.dataLabelEnabled = prop
         return self
     }
     
+    @discardableResult
     public func xAxisLabelsEnabled(_ prop: Bool) -> AAChartModel {
         self.xAxisLabelsEnabled = prop
         return self
     }
     
+    @discardableResult
     public func categories(_ prop: Array<Any>) -> AAChartModel {
         self.categories = prop
         return self
     }
     
+    @discardableResult
     public func xAxisGridLineWidth(_ prop: Float) -> AAChartModel {
         self.xAxisGridLineWidth = prop
         return self
     }
     
+    @discardableResult
     public func xAxisVisible(_ prop: Bool) -> AAChartModel {
         self.xAxisVisible = prop
         return self
     }
     
+    @discardableResult
     public func yAxisVisible(_ prop: Bool) -> AAChartModel {
         self.yAxisVisible = prop
         return self
     }
     
+    @discardableResult
     public func yAxisLabelsEnabled(_ prop: Bool) -> AAChartModel {
         self.yAxisLabelsEnabled = prop
         return self
     }
     
+    @discardableResult
     public func yAxisTitle(_ prop: String) -> AAChartModel {
         self.yAxisTitle = prop
         return self
     }
     
+    @discardableResult
     public func yAxisGridLineWidth(_ prop: Float) -> AAChartModel {
         self.yAxisGridLineWidth = prop
         return self
     }
     
+    @discardableResult
     public func colorsTheme(_ prop: Array<Any>) -> AAChartModel {
         self.colorsTheme = prop
         return self
     }
     
+    @discardableResult
     public func series(_ prop: Array<Dictionary<String, Any>>) -> AAChartModel {
         self.series = prop
         return self
     }
     
+    @discardableResult
     public func legendEnabled(_ prop: Bool) -> AAChartModel {
         self.legendEnabled = prop
         return self
     }
     
+    @discardableResult
     public func legendLayout(_ prop: AAchartLegendlLayoutType) -> AAChartModel {
         self.legendLayout = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func legendAlign(_ prop: AAChartLegendAlignType) -> AAChartModel {
         self.legendAlign = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func legendVerticalAlign(_ prop: AAChartLegendVerticalAlignType) -> AAChartModel {
         self.legendAlign = prop.rawValue
         return self
     }
     
+    @discardableResult
     public func backgroundColor(_ prop: String) -> AAChartModel {
         self.backgroundColor = prop
         return self
     }
     
+    @discardableResult
     public func titleColor(_ prop: String) -> AAChartModel {
         self.titleColor = prop
         return self
     }
     
+    @discardableResult
     public func subTitleColor(_ prop: String) -> AAChartModel {
         self.subTitleColor = prop
         return self
     }
     
+    @discardableResult
     public func axisColor(_ prop: String) -> AAChartModel {
         self.axisColor = prop
         return self
     }
     
+    @discardableResult
     public func borderRadius(_ prop: Int) -> AAChartModel {
         self.borderRadius = prop
         return self
     }
     
+    @discardableResult
     public func markerRadius(_ prop: Int) -> AAChartModel {
         self.markerRadius = prop
         return self
@@ -399,7 +439,7 @@ public class AAChartModel:AASerializable {
         self.backgroundColor     = "#ffffff"
         self.titleColor          = "#000000"
         self.subTitleColor       = "#000000"
-        self.axisColor           = "#00ff00"
+        self.axisColor           = "#000000"
         self.animationDuration   = 800//以毫秒为单位
         self.chartType           = AAChartType.Column.rawValue
         self.inverted            = false

@@ -96,7 +96,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                           [1,"#00FA9A"]]//颜色字符串设置支持十六进制类型和 rgba 类型
                 ] as [String : Any]
             
-            aaChartModel = aaChartModel?
+            aaChartModel?
                 .markerRadius(0)
                 .series([
                     AASeriesElement()
@@ -111,7 +111,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                         .step(self.step!)
                         .toDic()!,
                     ])
-            aaChartModel = aaChartModel?.symbolStyle(AAChartSymbolStyleType.InnerBlank)
+            aaChartModel?.symbolStyle(AAChartSymbolStyleType.InnerBlank)
         } else {
             let gradientColorDic = [
                 "linearGradient": [
@@ -124,7 +124,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                           [1,"rgba(30,144,255,1)"]]//颜色字符串设置支持十六进制类型和 rgba 类型
                 ] as [String : Any]
             
-            aaChartModel = aaChartModel?
+            aaChartModel?
                 .series([
                     AASeriesElement()
                         .name("Tokyo")
@@ -139,7 +139,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                         .toDic()!,
                     ])
             if self.step! != true {
-                aaChartModel = aaChartModel?.symbolStyle(AAChartSymbolStyleType.BorderBlank)
+                aaChartModel?.symbolStyle(AAChartSymbolStyleType.BorderBlank)
                 .markerRadius(7)
             }
         }

@@ -68,6 +68,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         aaChartModel = AAChartModel()
             .chartType(self.chartType!)//图形类型
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
+            .axisColor("#ffffff")
             .title("")//图形标题
             .subtitle("")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
@@ -105,7 +106,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         if (self.chartType == AAChartType.Area && self.step == true)
             || (self.chartType == AAChartType.Line && self.step == true) {
             aaChartModel = self.chartType == AAChartType.Area ? aaChartModel?.gradientColorEnable(true) : aaChartModel?.gradientColorEnable(false)
-            aaChartModel = aaChartModel?.series([
+            aaChartModel?.series([
                 AASeriesElement()
                     .name("Berlin")
                     .data([149.9, 171.5, 106.4, 129.2, 144.0, 176.0, 135.6, 188.5, 276.4, 214.1, 95.6, 54.4])
@@ -125,7 +126,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             
         } else if self.chartType == AAChartType.Column
             || self.chartType == AAChartType.Bar {
-            aaChartModel = aaChartModel?
+            aaChartModel?
                 .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
                 .legendEnabled(true)
                 .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
@@ -133,7 +134,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .animationDuration(1200)
         } else if self.chartType == AAChartType.Area
             || self.chartType == AAChartType.Areaspline {
-            aaChartModel = aaChartModel?
+            aaChartModel?
                 .symbolStyle(AAChartSymbolStyleType.InnerBlank)//设置折线连接点样式为:内部白色
                 .animationType(AAChartAnimationType.EaseOutQuart)
                 .gradientColorEnable(true)
@@ -153,7 +154,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                               [1,"rgba(30,144,255,1)"]]//颜色字符串设置支持十六进制类型和 rgba 类型
                     ] as [String : Any]
                 
-                aaChartModel = aaChartModel?
+                aaChartModel?
                     .gradientColorEnable(false)
                     .animationType(AAChartAnimationType.EaseFrom)//设置图表渲染动画类型为 EaseFrom
                     .series([
@@ -179,11 +180,11 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             
         } else if self.chartType == AAChartType.Line
             || self.chartType == AAChartType.Spline {
-            aaChartModel = aaChartModel?
+            aaChartModel?
                 .symbolStyle(AAChartSymbolStyleType.BorderBlank)//设置折线连接点样式为:边缘白色
                 .markerRadius(6)
             if self.chartType == AAChartType.Spline {
-                aaChartModel = aaChartModel?
+                aaChartModel?
                     .animationType(AAChartAnimationType.SwingFromTo)
                     .series([
                         AASeriesElement()
@@ -262,20 +263,20 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             let stackingArr = [AAChartStackingType.False,
                                AAChartStackingType.Normal,
                                AAChartStackingType.Percent]
-            aaChartModel = aaChartModel?.stacking(AAChartStackingType(rawValue: stackingArr[segmentedControl.selectedSegmentIndex].rawValue)!)
+            aaChartModel?.stacking(AAChartStackingType(rawValue: stackingArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             break
             
         case 1:
             if self.chartType == AAChartType.Column || self.chartType == AAChartType.Bar {
                 let borderRadiusArr = [0,10,100]
-                aaChartModel = aaChartModel?.borderRadius(borderRadiusArr[segmentedControl.selectedSegmentIndex])
+                aaChartModel?.borderRadius(borderRadiusArr[segmentedControl.selectedSegmentIndex])
             } else {
                 let symbolArr = [AAChartSymbolType.Circle,
                                  AAChartSymbolType.Square,
                                  AAChartSymbolType.Diamond,
                                  AAChartSymbolType.Triangle,
                                  AAChartSymbolType.Triangle_down]
-                aaChartModel = aaChartModel?.symbol(AAChartSymbolType(rawValue: symbolArr[segmentedControl.selectedSegmentIndex].rawValue)!)
+                aaChartModel?.symbol(AAChartSymbolType(rawValue: symbolArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             }
             break
             
@@ -329,22 +330,22 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         switch switchView.tag {
         case 0:
-            aaChartModel = aaChartModel?.xAxisReversed(switchView.isOn)
+            aaChartModel?.xAxisReversed(switchView.isOn)
             break
         case 1:
-            aaChartModel = aaChartModel?.yAxisReversed(switchView.isOn)
+            aaChartModel?.yAxisReversed(switchView.isOn)
             break
         case 2:
-            aaChartModel = aaChartModel?.inverted(switchView.isOn)
+            aaChartModel?.inverted(switchView.isOn)
             break
         case 3:
-            aaChartModel = aaChartModel?.polar(switchView.isOn)
+            aaChartModel?.polar(switchView.isOn)
             break
         case 4:
-            aaChartModel = aaChartModel?.dataLabelEnabled(switchView.isOn)
+            aaChartModel?.dataLabelEnabled(switchView.isOn)
             break
         case 5:
-            aaChartModel = aaChartModel?.markerRadius(switchView.isOn ? 0:5)//折线连接点半径长度,为0时相当于没有折线连接点
+            aaChartModel?.markerRadius(switchView.isOn ? 0:5)//折线连接点半径长度,为0时相当于没有折线连接点
             break
         default:
             break
