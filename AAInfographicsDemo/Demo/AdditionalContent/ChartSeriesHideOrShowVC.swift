@@ -152,7 +152,7 @@ class ChartSeriesHideOrShowVC: UIViewController {
         }
     }
     
-    func segmentDidSelected(segmentedControl:UISegmentedControl) {
+    @objc func segmentDidSelected(segmentedControl:UISegmentedControl) {
         if segmentedControl.tag == 0 {
             aaChartView?.aa_hideTheSeriesElementContentWithSeriesElementIndex(segmentedControl.selectedSegmentIndex)
         } else {
@@ -177,7 +177,7 @@ class ChartSeriesHideOrShowVC: UIViewController {
         self.view .addSubview(subLabel)
     }
 
-    func switchDidChange(switchView:UISwitch) {
+    @objc func switchDidChange(switchView:UISwitch) {
         aaChartView?.isSeriesHidden = switchView.isOn
     }
 

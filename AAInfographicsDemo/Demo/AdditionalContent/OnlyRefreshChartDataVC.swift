@@ -147,7 +147,7 @@ class OnlyRefreshChartDataVC: UIViewController {
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
     }
     
-    func onlyRefreshTheChartData() {
+    @objc func onlyRefreshTheChartData() {
         let randomNumArrA = NSMutableArray()
         let randomNumArrB = NSMutableArray()
         for  _ in 0..<12 {
