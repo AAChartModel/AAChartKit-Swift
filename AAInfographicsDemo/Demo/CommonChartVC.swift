@@ -256,7 +256,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         }
     }
     
-    func segmentDidSelected(segmentedControl:UISegmentedControl) {
+    @objc func segmentDidSelected(segmentedControl:UISegmentedControl) {
         
         switch segmentedControl.tag {
         case 0:
@@ -326,7 +326,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         }
     }
     
-    func switchDidChange(switchView:UISwitch) {
+    @objc func switchDidChange(switchView:UISwitch) {
         
         switch switchView.tag {
         case 0:
