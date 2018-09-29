@@ -257,7 +257,18 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         if #available(iOS 9.0, *) {
             wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
                 if ((error) != nil) {
-                    let errorInfo = NSString.localizedStringWithFormat("☠️☠️💀☠️☠️WARNING!!!!! THERE ARE SOME ERROR INFOMATION_______%@", error! as CVarArg)
+                    let errorInfo =
+                    """
+                    
+                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
+                    ==========================================================================================
+                    ------------------------------------------------------------------------------------------
+                    \(error! as CVarArg)
+                    ------------------------------------------------------------------------------------------
+                    ==========================================================================================
+                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
+
+                    """
                     print(errorInfo)
                 }
             })

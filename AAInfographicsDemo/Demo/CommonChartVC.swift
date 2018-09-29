@@ -240,7 +240,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         for  i in 0..<segmentedNamesArray.count {
             let segment = UISegmentedControl.init(items: segmentedNamesArray[i] as? [Any])
             segment.frame = CGRect(x: 20,
-                                   y: 40.0*CGFloat(i) + (self.view.frame.size.height - 145),
+                                   y: 40.0 * CGFloat(i) + (self.view.frame.size.height - 145),
                                    width: self.view.frame.size.width - 40,
                                    height: 20)
             segment.tag = i;
