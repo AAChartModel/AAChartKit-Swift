@@ -35,7 +35,7 @@ import UIKit
 class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     public var chartType: AAChartType?
     public var step:Bool?
-    private var chartAnimationTypeArr = Array<AAChartAnimationType>()
+    private var chartAnimationTypeArr = [AAChartAnimationType]()
     private var aaChartModel:AAChartModel?
     private var aaChartView:AAChartView?
     
@@ -44,40 +44,40 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         self.view.backgroundColor = UIColor.white
         
         chartAnimationTypeArr = [
-            AAChartAnimationType.EaseInQuad,
-            AAChartAnimationType.EaseOutQuad,
-            AAChartAnimationType.EaseInOutQuad,
-            AAChartAnimationType.EaseInCubic,
-            AAChartAnimationType.EaseOutCubic,
-            AAChartAnimationType.EaseInOutCubic,
-            AAChartAnimationType.EaseInQuart,
-            AAChartAnimationType.EaseOutQuart,
-            AAChartAnimationType.EaseInOutQuart,
-            AAChartAnimationType.EaseInQuint,
-            AAChartAnimationType.EaseOutQuint,
-            AAChartAnimationType.EaseInOutQuint,
-            AAChartAnimationType.EaseInSine,
-            AAChartAnimationType.EaseOutSine,
-            AAChartAnimationType.EaseInOutSine,
-            AAChartAnimationType.EaseInExpo,
-            AAChartAnimationType.EaseOutExpo,
-            AAChartAnimationType.EaseInOutExpo,
-            AAChartAnimationType.EaseInCirc,
-            AAChartAnimationType.EaseOutCirc,
-            AAChartAnimationType.EaseInOutCirc,
-            AAChartAnimationType.EaseOutBounce,
-            AAChartAnimationType.EaseInBack,
-            AAChartAnimationType.EaseOutBack,
-            AAChartAnimationType.EaseInOutBack,
-            AAChartAnimationType.Elastic,
-            AAChartAnimationType.SwingFromTo,
-            AAChartAnimationType.SwingFrom,
-            AAChartAnimationType.SwingTo,
-            AAChartAnimationType.Bounce,
-            AAChartAnimationType.BouncePast,
-            AAChartAnimationType.EaseFromTo,
-            AAChartAnimationType.EaseFrom,
-            AAChartAnimationType.EaseTo,
+            .EaseInQuad,
+            .EaseOutQuad,
+            .EaseInOutQuad,
+            .EaseInCubic,
+            .EaseOutCubic,
+            .EaseInOutCubic,
+            .EaseInQuart,
+            .EaseOutQuart,
+            .EaseInOutQuart,
+            .EaseInQuint,
+            .EaseOutQuint,
+            .EaseInOutQuint,
+            .EaseInSine,
+            .EaseOutSine,
+            .EaseInOutSine,
+            .EaseInExpo,
+            .EaseOutExpo,
+            .EaseInOutExpo,
+            .EaseInCirc,
+            .EaseOutCirc,
+            .EaseInOutCirc,
+            .EaseOutBounce,
+            .EaseInBack,
+            .EaseOutBack,
+            .EaseInOutBack,
+            .Elastic,
+            .SwingFromTo,
+            .SwingFrom,
+            .SwingTo,
+            .Bounce,
+            .BouncePast,
+            .EaseFromTo,
+            .EaseFrom,
+            .EaseTo,
         ]
         
         self.setUpTheAnimationTypeTableView()
@@ -130,7 +130,7 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         
-        if self.chartType == AAChartType.Area || self.chartType == AAChartType.Areaspline {
+        if self.chartType == .Area || self.chartType == .Areaspline {
           aaChartModel?
             .gradientColorEnable(true)
             .markerRadius(0)

@@ -136,7 +136,8 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
             wkWebView?.navigationDelegate = self
             self.addSubview(wkWebView!)
             wkWebView?.translatesAutoresizingMaskIntoConstraints = false
-            wkWebView?.superview!.addConstraints(self.configureTheConstraintArray(childView: wkWebView!, fatherView: self))//Note:父控件添加约束
+            wkWebView?.superview!.addConstraints(self.configureTheConstraintArray(childView: wkWebView!,
+                                                                                  fatherView: self)) //Note:父控件添加约束
         } else {
             // Fallback on earlier versions
             uiWebView = UIWebView()
@@ -144,7 +145,8 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
             uiWebView?.delegate = self
             self.addSubview(uiWebView!)
             uiWebView?.translatesAutoresizingMaskIntoConstraints = false
-            uiWebView?.superview!.addConstraints(self.configureTheConstraintArray(childView: uiWebView!, fatherView: self))//Note:父控件添加约束
+            uiWebView?.superview!.addConstraints(self.configureTheConstraintArray(childView: uiWebView!,
+                                                                                  fatherView: self)) //Note:父控件添加约束
         }
     }
     
@@ -190,7 +192,9 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         
         self.configureTheJavaScriptString(chartModel)
         
-        let path = Bundle.main.path(forResource: "AAChartView", ofType: "html", inDirectory: "AAJSFiles.bundle")
+        let path = Bundle.main.path(forResource: "AAChartView",
+                                    ofType: "html",
+                                    inDirectory: "AAJSFiles.bundle")
         let urlStr = NSURL.fileURL(withPath: path!)
         let urlRequest = NSURLRequest(url: urlStr) as URLRequest
         if #available(iOS 9.0, *) {
@@ -205,7 +209,8 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries:Array<Any>) {
-        let jsonData = try! JSONSerialization.data(withJSONObject: chartModelSeries, options: JSONSerialization.WritingOptions.prettyPrinted)
+        let jsonData = try! JSONSerialization.data(withJSONObject: chartModelSeries,
+                                                   options: JSONSerialization.WritingOptions.prettyPrinted)
         var str = String(data: jsonData, encoding: String.Encoding.utf8)!
         str = (str.replacingOccurrences(of: "\n", with: "") as NSString) as String
         let jsString = NSString.localizedStringWithFormat("onlyRefreshTheChartDataWithSeries('%@');", str)

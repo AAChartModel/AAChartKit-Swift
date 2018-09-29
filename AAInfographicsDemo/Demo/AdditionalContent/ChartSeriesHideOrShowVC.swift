@@ -61,14 +61,14 @@ class ChartSeriesHideOrShowVC: UIViewController {
         
         var  aaChartModel = AAChartModel()
             .chartType(self.chartType!)//图形类型
-            .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+            .animationType(.Bounce)//图形渲染动画类型为"bounce"
             .title("CHART SERIES HIDE OR SHOW")//图形标题
             .subtitle("2020/08/08")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
-            .stacking(AAChartStackingType.Normal)
+            .stacking(.Normal)
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         
-        if self.chartType == AAChartType.Column || self.chartType == AAChartType.Bar {
+        if self.chartType == .Column || self.chartType == .Bar {
             aaChartModel = aaChartModel.series([
                 AASeriesElement()
                     .name("Tokyo")

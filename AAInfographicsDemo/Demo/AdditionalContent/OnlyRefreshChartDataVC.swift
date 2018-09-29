@@ -59,7 +59,11 @@ class OnlyRefreshChartDataVC: UIViewController {
         let time: TimeInterval = 3.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             print("1 秒后输出")
-            self.timer = Timer.scheduledTimer(timeInterval: 1, target:self, selector:#selector(self.onlyRefreshTheChartData), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 1,
+                                              target:self,
+                                              selector:#selector(self.onlyRefreshTheChartData),
+                                              userInfo: nil,
+                                              repeats: true)
             self.timer?.fire()
         }
     }
@@ -69,7 +73,10 @@ class OnlyRefreshChartDataVC: UIViewController {
         let chartViewHeight = self.view.frame.size.height-60
         
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:60,width:chartViewWidth,height:chartViewHeight)
+        aaChartView?.frame = CGRect(x: 0,
+                                    y: 60,
+                                    width: chartViewWidth,
+                                    height: chartViewHeight)
         aaChartView?.scrollEnabled = false
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
         aaChartView?.contentHeight = chartViewHeight-20
@@ -82,9 +89,10 @@ class OnlyRefreshChartDataVC: UIViewController {
             .dataLabelEnabled(false)//是否显示数字
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
-            .stacking(AAChartStackingType.Normal)
+            .stacking(.Normal)
         
-        if self.chartType == AAChartType.Area || self.chartType == AAChartType.Areaspline {
+        if self.chartType == .Area
+            || self.chartType == .Areaspline {
             let gradientColorDic = [
                 "linearGradient": [
                     "x1": 0,
@@ -111,7 +119,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                         .step(self.step!)
                         .toDic()!,
                     ])
-            aaChartModel?.symbolStyle(AAChartSymbolStyleType.InnerBlank)
+            aaChartModel?.symbolStyle(.InnerBlank)
         } else {
             let gradientColorDic = [
                 "linearGradient": [
@@ -139,7 +147,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                         .toDic()!,
                     ])
             if self.step! != true {
-                aaChartModel?.symbolStyle(AAChartSymbolStyleType.BorderBlank)
+                aaChartModel?.symbolStyle(.BorderBlank)
                 .markerRadius(7)
             }
         }

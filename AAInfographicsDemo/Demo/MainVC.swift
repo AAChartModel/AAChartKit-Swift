@@ -35,8 +35,8 @@ import UIKit
 
 class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    private var chartTypeTitleArr = Array<Array<String>>()
-    private var chartTypeArr = Array<Array<Any>>()
+    private var chartTypeTitleArr = [[String]]()
+    private var chartTypeArr = [[Any]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

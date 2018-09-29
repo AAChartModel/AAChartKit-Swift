@@ -77,7 +77,7 @@ class MixedChartVC: UIViewController {
                     AASeriesElement()
                         .name("Temperature")
                         .color("#1E90FF")
-                        .type(AAChartType.Line)
+                        .type(.Line)
                         .data([[1246406400000, 21.5],
                                [1246492800000, 22.1],
                                [1246579200000,   23],
@@ -119,7 +119,7 @@ class MixedChartVC: UIViewController {
                     AASeriesElement()
                         .name("Range")
                         .color("#1E90FF")
-                        .type(AAChartType.Arearange)
+                        .type(.Arearange)
                         .lineWidth(0)
                         .fillOpacity(0.3)
                         .data([[1246406400000, 14.3, 27.7],
@@ -163,13 +163,13 @@ class MixedChartVC: UIViewController {
                 .colorsTheme(["#1e90ff","#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",])//主题颜色数组
                 .title("")//图形标题
                 .subtitle("")//图形副标题
-                .chartType(AAChartType.Line)
+                .chartType(.Line)
                 .dataLabelEnabled(false)
-                .symbolStyle(AAChartSymbolStyleType.BorderBlank)
+                .symbolStyle(.BorderBlank)
                 .series([
                     AASeriesElement()
                         .name("Temperature")
-                        .type(AAChartType.Columnrange)
+                        .type(.Columnrange)
                         .dataLabels(["enabled":true])
                         .data([
                             [(-9.7), 9.4],
@@ -211,8 +211,8 @@ class MixedChartVC: UIViewController {
 //                .colorsTheme(["rgba(255,144,128,1)","rgba(0,191,183,1)", "rgba(252,230,48,1)",])//主题颜色数组
                 .title("16年1月-16年11月充值客单分析")//图形标题
                 .subtitle("BY MICVS")//图形副标题
-                .chartType(AAChartType.Column)
-                .stacking(AAChartStackingType.Normal)
+                .chartType(.Column)
+                .stacking(.Normal)
                 .legendEnabled(true)
                 .series([
                     AASeriesElement()
@@ -227,7 +227,7 @@ class MixedChartVC: UIViewController {
                         .toDic()!,
                     AASeriesElement()
                         .name("总量")
-                        .type(AAChartType.Line)
+                        .type(.Line)
                         .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"15px",]])
                         .data([281.55,398.35,214.02,219.55,289.57,296.14,164.18,322.69,306.08,552.84,205.97,332.79])
                         .toDic()!,
@@ -237,9 +237,9 @@ class MixedChartVC: UIViewController {
             
         case "dashStyleTypeMixed":
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Spline)//图形类型
+                .chartType(.Spline)//图形类型
                 .dataLabelEnabled(false)//是否显示数字
-                .stacking(AAChartStackingType.Normal)
+                .stacking(.Normal)
                 .markerRadius(0)
                 .series([
                     AASeriesElement()
@@ -250,25 +250,25 @@ class MixedChartVC: UIViewController {
                     AASeriesElement()
                         .name(AALineDashSyleType.Dash.rawValue)
                         .lineWidth(3)
-                        .dashStyle(AALineDashSyleType.Dash)
+                        .dashStyle(.Dash)
                         .data([50, 320, 230, 370, 230, 400,])
                         .toDic()!,
                     AASeriesElement()
                         .name(AALineDashSyleType.DashDot.rawValue)
                         .lineWidth(3)
-                        .dashStyle(AALineDashSyleType.DashDot)
+                        .dashStyle(.DashDot)
                         .data([50, 320, 230, 370, 230, 400,])
                         .toDic()!,
                     AASeriesElement()
                         .name(AALineDashSyleType.LongDash.rawValue)
                         .lineWidth(3)
-                        .dashStyle(AALineDashSyleType.LongDash)
+                        .dashStyle(.LongDash)
                         .data([50, 320, 230, 370, 230, 400,])
                         .toDic()!,
                     AASeriesElement()
                         .name(AALineDashSyleType.LongDashDot.rawValue)
                         .lineWidth(3)
-                        .dashStyle(AALineDashSyleType.LongDashDot)
+                        .dashStyle(.LongDashDot)
                         .data([50, 320, 230, 370, 230, 400,])
                         .toDic()!,
                     ])
@@ -280,7 +280,7 @@ class MixedChartVC: UIViewController {
                 .series([
                     AASeriesElement()
                         .name("Column")
-                        .type(AAChartType.Column)
+                        .type(.Column)
                         .data([-6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
                                -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
                                -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,])
@@ -294,9 +294,9 @@ class MixedChartVC: UIViewController {
         case "scatterMixedLine":
             aaChartModel = AAChartModel()
                 .dataLabelEnabled(false)//是否显示数字
-                .chartType(AAChartType.Scatter)
-                .symbolStyle(AAChartSymbolStyleType.InnerBlank)
-                .symbol(AAChartSymbolType.Circle)
+                .chartType(.Scatter)
+                .symbolStyle(.InnerBlank)
+                .symbol(.Circle)
                 .markerRadius(10)
                 .series([
                     AASeriesElement()
@@ -515,7 +515,7 @@ class MixedChartVC: UIViewController {
                 .series([
                     AASeriesElement()
                         .name("Bubble")
-                        .type(AAChartType.Bubble)
+                        .type(.Bubble)
                         .data(
                             [[0,0,5],[0,1,1],[0,2,0],[0,3,0],[0,4,0],[0,5,0],[0,6,0],[0,7,0],[0,8,0],[0,9,0],
                              [0,10,0],[0,11,2],[0,12,4],[0,13,1],[0,14,1],[0,15,3],[0,16,4],[0,17,6],[0,18,4],
@@ -548,14 +548,14 @@ class MixedChartVC: UIViewController {
                 .series([
                     AASeriesElement()
                         .name("目标")
-                        .type(AAChartType.Polygon)
+                        .type(.Polygon)
                         .data([[153, 42], [149, 46], [149, 55], [152, 60], [159, 70], [170, 77], [180, 70],
                                [180, 60], [173, 52], [166, 45]])
                         .color("rgba(119, 152, 191, 0.5)")
                         .toDic()!,
                     AASeriesElement()
                         .name("实际值")
-                        .type(AAChartType.Scatter)
+                        .type(.Scatter)
                         .data([[161.2, 51.6], [167.5, 59.0], [159.5, 49.2], [157.0, 63.0], [155.8, 53.6],
                                [170.0, 59.0], [159.1, 47.6], [166.0, 69.8], [176.2, 66.8], [160.2, 75.2],
                                [172.5, 55.2], [170.9, 54.2], [172.9, 62.5], [153.4, 42.0], [160.0, 50.0],
@@ -615,23 +615,23 @@ class MixedChartVC: UIViewController {
             
         case "polarChartMixed":
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Column)
+                .chartType(.Column)
                 .polar(true)
                 .series([
                     AASeriesElement()
                         .name("Column")
-                        .type(AAChartType.Column)
+                        .type(.Column)
                         .data([8, 7, 6, 5, 4, 3, 2, 1])
                         .color("#0088FF")
                         .toDic()!,
                     AASeriesElement()
                         .name("Line")
-                        .type(AAChartType.Line)
+                        .type(.Line)
                         .data([1, 2, 3, 4, 5, 6, 7, 8])
                         .toDic()!,
                     AASeriesElement()
                         .name("Area")
-                        .type(AAChartType.Area)
+                        .type(.Area)
                         .data([1, 8, 2, 7, 3, 6, 4, 5])
                         .toDic()!,
                     ])

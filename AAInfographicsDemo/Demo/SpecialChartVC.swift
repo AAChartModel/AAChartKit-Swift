@@ -10,7 +10,6 @@
 //*** https://github.com/AAChartModel/AAChartKit-Swift  ***
 //***...................................................***
 //*************** ...... SOURCE CODE ...... ***************
-
 /*
  
  *********************************************************************************
@@ -67,9 +66,9 @@ class SpecialChartVC: UIViewController {
     
     func configureTheAAChartModel(_ chartTypeStr:AAChartType) {
         switch chartTypeStr {
-        case AAChartType.Column:
+        case .Column:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Column)
+                .chartType(.Column)
                 .polar(true)
                 .dataLabelEnabled(false)
                 .categories(["January", "February", "March", "April", "May", "June",
@@ -87,9 +86,9 @@ class SpecialChartVC: UIViewController {
                     
             )
             
-        case AAChartType.Pie:
+        case .Pie:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Pie)
+                .chartType(.Pie)
                 .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
                 .subtitle("virtual data")
@@ -112,9 +111,9 @@ class SpecialChartVC: UIViewController {
                         ]
             )
             
-        case AAChartType.Bubble:
+        case .Bubble:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Bubble)
+                .chartType(.Bubble)
                 .title("AACHARTKIT BUBBLES")
                 .subtitle("JUST FOR FUN")
                 .yAxisTitle("℃")
@@ -172,15 +171,15 @@ class SpecialChartVC: UIViewController {
             
             break
             
-        case AAChartType.Scatter:
+        case .Scatter:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Scatter)
+                .chartType(.Scatter)
                 .title("Height and weight distribution by sex")
                 .titleColor("#ffffff")
                 .axisColor("#ffffff")
                 .yAxisTitle("kg")
-                .symbol(AAChartSymbolType.Circle)
-                .symbolStyle(AAChartSymbolStyleType.InnerBlank)
+                .symbol(.Circle)
+                .symbolStyle(.InnerBlank)
                 .markerRadius(9)
                 .backgroundColor("#22324c")
                 .series(
@@ -299,9 +298,9 @@ class SpecialChartVC: UIViewController {
             )
             break
             
-        case AAChartType.Arearange:
+        case .Arearange:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Arearange)
+                .chartType(.Arearange)
                 .title("Twilight Hall day temperature fluctuation map")
                 .subtitle("real-time monitoring data")
                 .yAxisTitle("℃")
@@ -693,7 +692,7 @@ class SpecialChartVC: UIViewController {
             )
             break
             
-        case AAChartType.Areasplinerange:
+        case .Areasplinerange:
             let gradientColorDic = [
                 "linearGradient": [
                     "x1": 0,
@@ -706,7 +705,7 @@ class SpecialChartVC: UIViewController {
                 ] as [String : Any]
             
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Areasplinerange)
+                .chartType(.Areasplinerange)
                 .title("Area spline range chart")
                 .subtitle("virtual data")
                 .yAxisTitle("℃")
@@ -752,9 +751,9 @@ class SpecialChartVC: UIViewController {
             break
             
             
-        case AAChartType.Columnrange:
+        case .Columnrange:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Columnrange)
+                .chartType(.Columnrange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")
@@ -785,14 +784,14 @@ class SpecialChartVC: UIViewController {
             )
             break
             
-        case AAChartType.Line:
+        case .Line:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Line)//图形类型
-                .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+                .chartType(.Line)//图形类型
+                .animationType(.Bounce)//图形渲染动画类型为"bounce"
                 .title("STEP LINE CHART")//图形标题
                 .subtitle("2020/08/08")//图形副标题
                 .dataLabelEnabled(false)//是否显示数字
-                .symbolStyle(AAChartSymbolStyleType.BorderBlank)//折线连接点样式
+                .symbolStyle(.BorderBlank)//折线连接点样式
                 .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
                 .series([
                     AASeriesElement()
@@ -813,14 +812,14 @@ class SpecialChartVC: UIViewController {
                     ])
             break
             
-        case AAChartType.Area:
+        case .Area:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Area)//图形类型
-                .animationType(AAChartAnimationType.Bounce)//图形渲染动画类型为"bounce"
+                .chartType(.Area)//图形类型
+                .animationType(.Bounce)//图形渲染动画类型为"bounce"
                 .title("STEP AREA CHART")//图形标题
                 .subtitle("2049/08/08")//图形副标题
                 .dataLabelEnabled(false)//是否显示数字
-                .symbolStyle(AAChartSymbolStyleType.InnerBlank)//折线连接点样式
+                .symbolStyle(.InnerBlank)//折线连接点样式
                 .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
                 .series([
                     AASeriesElement()
@@ -841,9 +840,9 @@ class SpecialChartVC: UIViewController {
                     ])
             break
             
-        case AAChartType.Boxplot:
+        case .Boxplot:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Boxplot)
+                .chartType(.Boxplot)
                 .title("BOXPLOT CHART")
                 .subtitle("virtual data")
                 .yAxisTitle("℃")
@@ -863,9 +862,9 @@ class SpecialChartVC: UIViewController {
                     ])
             break
             
-        case AAChartType.Waterfall:
+        case .Waterfall:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Waterfall)
+                .chartType(.Waterfall)
                 .title("WATERFALL CHART")
                 .subtitle("virtual data")
                 .yAxisVisible(true)
@@ -902,9 +901,9 @@ class SpecialChartVC: UIViewController {
             )
             break
             
-        case AAChartType.Pyramid:
+        case .Pyramid:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Pyramid)
+                .chartType(.Pyramid)
                 .title("THE HEAT OF PROGRAM LANGUAGE")
                 .subtitle("virtual data")
                 .yAxisTitle("℃")
@@ -922,9 +921,9 @@ class SpecialChartVC: UIViewController {
                     ])
             break
             
-        case AAChartType.Funnel:
+        case .Funnel:
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Funnel)
+                .chartType(.Funnel)
                 .title("THE HEAT OF PROGRAM LANGUAGE")
                 .subtitle("virtual data")
                 .yAxisTitle("℉")
