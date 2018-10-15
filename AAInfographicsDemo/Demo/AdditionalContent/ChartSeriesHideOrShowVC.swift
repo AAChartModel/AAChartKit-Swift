@@ -34,8 +34,8 @@ import UIKit
 
 class ChartSeriesHideOrShowVC: UIViewController {
     public var chartType: AAChartType?
-    public var step:Bool?
-    private var aaChartView:AAChartView?
+    public var step: Bool?
+    private var aaChartView: AAChartView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,12 +50,15 @@ class ChartSeriesHideOrShowVC: UIViewController {
     
     func setUpTheAAChartView() {
         let chartViewWidth  = self.view.frame.size.width
-        let chartViewHeight = self.view.frame.size.height-220
+        let chartViewHeight = self.view.frame.size.height - 220
 
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:60,width:chartViewWidth,height:chartViewHeight)
+        aaChartView?.frame = CGRect(x: 0,
+                                    y: 60,
+                                    width: chartViewWidth,
+                                    height: chartViewHeight)
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
-        aaChartView?.contentHeight = chartViewHeight-20
+        aaChartView?.contentHeight = chartViewHeight - 20
         aaChartView?.scrollEnabled = false
         self.view.addSubview(aaChartView!)
         
@@ -135,16 +138,22 @@ class ChartSeriesHideOrShowVC: UIViewController {
         
         for  i in 0..<segmentedNamesArray.count {
             let segment = UISegmentedControl.init(items: segmentedNamesArray[i])
-            segment.frame = CGRect(x: 20, y: 40.0*CGFloat(i) + (self.view.frame.size.height-145), width: self.view.frame.size.width-40, height: 20)
+            segment.frame = CGRect(x: 20,
+                                   y: 40.0 * CGFloat(i) + (self.view.frame.size.height - 145),
+                                   width: self.view.frame.size.width-40,
+                                   height: 20)
             segment.tag = i;
             segment.tintColor = UIColor.red
             segment.selectedSegmentIndex = 0
-            segment.addTarget(self, action:#selector(segmentDidSelected(segmentedControl:)), for:.valueChanged)
+            segment.addTarget(self, action: #selector(segmentDidSelected(segmentedControl:)), for: .valueChanged)
             self.view.addSubview(segment)
             
             let subLabel = UILabel()
             subLabel.font = UIFont(name: "EuphemiaUCAS", size: 12.0)
-            subLabel.frame = CGRect(x: 20, y: 40*CGFloat(i)+(self.view.frame.size.height-165), width: self.view.frame.size.width-40, height: 20)
+            subLabel.frame = CGRect(x: 20,
+                                    y: 40 * CGFloat(i) + (self.view.frame.size.height - 165),
+                                    width: self.view.frame.size.width-40,
+                                    height: 20)
             subLabel.text = typeLabelNameArr[i]
             subLabel.backgroundColor = UIColor.clear
             subLabel.textColor = UIColor.lightGray
@@ -163,14 +172,20 @@ class ChartSeriesHideOrShowVC: UIViewController {
     func setUpTheHideChartSeriesSwitch() {
         let i = 0
         let uiswitch = UISwitch()
-        uiswitch.frame = CGRect(x: 100*CGFloat(i)+20, y: self.view.frame.size.height-70, width: 100, height: 20)
+        uiswitch.frame = CGRect(x: 100 * CGFloat(i) + 20,
+                                y: self.view.frame.size.height - 70,
+                                width: 100,
+                                height: 20)
         uiswitch.isOn = false
         uiswitch.addTarget(self, action: #selector(switchDidChange(switchView:)), for:.valueChanged)
         self.view.addSubview(uiswitch)
         
         let subLabel = UILabel()
         subLabel.font = UIFont(name: "EuphemiaUCAS", size: 10)
-        subLabel.frame = CGRect(x: 100*CGFloat(i)+20, y:self.view.frame.size.height-45, width: 200, height: 35)
+        subLabel.frame = CGRect(x: 100 * CGFloat(i) + 20,
+                                y:self.view.frame.size.height - 45,
+                                width: 200,
+                                height: 35)
         subLabel.text = "Hide Chart Whole Series Content"
         subLabel.backgroundColor = UIColor.clear
         subLabel.textColor = UIColor.lightGray

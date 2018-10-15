@@ -34,10 +34,10 @@ import UIKit
 
 class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     public var chartType: AAChartType?
-    public var step:Bool?
+    public var step: Bool?
     private var chartAnimationTypeArr = [AAChartAnimationType]()
-    private var aaChartModel:AAChartModel?
-    private var aaChartView:AAChartView?
+    private var aaChartModel: AAChartModel?
+    private var aaChartView: AAChartView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +86,10 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     
     func setUpTheAnimationTypeTableView() {
         let animationTypeTableView = UITableView()
-        animationTypeTableView.frame = CGRect(x: self.view.frame.size.width-115, y: 0, width: 115, height: self.view.frame.size.height-60)
+        animationTypeTableView.frame = CGRect(x: self.view.frame.size.width - 115,
+                                              y: 0,
+                                              width: 115,
+                                              height: self.view.frame.size.height - 60)
         animationTypeTableView.delegate = self
         animationTypeTableView.dataSource = self
         animationTypeTableView.backgroundColor = UIColor.white
@@ -116,10 +119,13 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         let chartViewHeight = self.view.frame.size.height-60
         
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:60,width:chartViewWidth,height:chartViewHeight)
+        aaChartView?.frame = CGRect(x: 0,
+                                    y: 60,
+                                    width: chartViewWidth,
+                                    height: chartViewHeight)
         aaChartView?.scrollEnabled = false
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
-        aaChartView?.contentHeight = chartViewHeight-20
+        aaChartView?.contentHeight = chartViewHeight - 20
         self.view.addSubview(aaChartView!)
 
         aaChartModel = AAChartModel()

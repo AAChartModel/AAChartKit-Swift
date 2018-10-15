@@ -33,7 +33,7 @@ import UIKit
 
 class MixedChartVC: UIViewController {
 
-    open var chartType:String?
+    open var chartType: String?
     open var aaChartModel: AAChartModel?
     open var aaChartView: AAChartView?
     override func viewDidLoad() {
@@ -44,7 +44,10 @@ class MixedChartVC: UIViewController {
         
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
         let subLabel = UILabel()
-        subLabel.frame = CGRect(x: 20, y:0, width: 5, height: 5)
+        subLabel.frame = CGRect(x: 20,
+                                y:0,
+                                width: 5,
+                                height: 5)
         subLabel.text = "不要将 AAChartView 作为第一个子视图添加到 ViewController 上,否则会有 bug,不信你试试注释掉我"
         self.view .addSubview(subLabel)
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
@@ -53,8 +56,11 @@ class MixedChartVC: UIViewController {
         aaChartView = AAChartView()
         let chartWidth = self.view.frame.size.width
         let chartHeight = self.view.frame.size.height
-        aaChartView?.frame = CGRect(x:0,y:60,width:chartWidth,height:chartHeight)
-        aaChartView?.contentHeight = self.view.frame.size.height-80
+        aaChartView?.frame = CGRect(x: 0,
+                                    y: 60,
+                                    width: chartWidth,
+                                    height: chartHeight)
+        aaChartView?.contentHeight = self.view.frame.size.height - 80
         self.view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false
         

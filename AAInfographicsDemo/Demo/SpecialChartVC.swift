@@ -33,9 +33,10 @@
 import UIKit
 
 class SpecialChartVC: UIViewController {
-    open var chartType:AAChartType?
+    open var chartType: AAChartType?
     open var aaChartModel: AAChartModel?
     open var aaChartView: AAChartView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +45,10 @@ class SpecialChartVC: UIViewController {
         
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
         let subLabel = UILabel()
-        subLabel.frame = CGRect(x: 20, y:0, width: 5, height: 5)
+        subLabel.frame = CGRect(x: 20,
+                                y:0,
+                                width: 5,
+                                height: 5)
         subLabel.text = "不要将 AAChartView 作为第一个子视图添加到 ViewController 上,否则会有 bug,不信你试试注释掉我"
         self.view .addSubview(subLabel)
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
@@ -53,8 +57,11 @@ class SpecialChartVC: UIViewController {
         aaChartView = AAChartView()
         let chartWidth = self.view.frame.size.width
         let chartHeight = self.view.frame.size.height  
-        aaChartView?.frame = CGRect(x:0,y:60,width:chartWidth,height:chartHeight)
-        aaChartView?.contentHeight = self.view.frame.size.height-80
+        aaChartView?.frame = CGRect(x: 0,
+                                    y: 60,
+                                    width: chartWidth,
+                                    height: chartHeight)
+        aaChartView?.contentHeight = self.view.frame.size.height - 80
         self.view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false
         
@@ -702,7 +709,7 @@ class SpecialChartVC: UIViewController {
                 ],
                 "stops": [[0,"#8A2BE2"],
                           [1,"#1E90FF"]]//颜色字符串设置支持十六进制类型和 rgba 类型
-                ] as [String : Any]
+                ] as [String : AnyObject]
             
             aaChartModel = AAChartModel()
                 .chartType(.Areasplinerange)
@@ -712,7 +719,7 @@ class SpecialChartVC: UIViewController {
                 .series([
                     AASeriesElement()
                         .name("2020")
-                        .color(gradientColorDic)//猩红色
+                        .color(gradientColorDic)
                         .data([
                             /* 2014-06-01 */
                             [1401580800000, 5.1, 20.6],

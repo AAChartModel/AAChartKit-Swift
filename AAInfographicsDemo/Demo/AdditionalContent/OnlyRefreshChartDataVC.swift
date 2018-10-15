@@ -60,8 +60,8 @@ class OnlyRefreshChartDataVC: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             print("1 秒后输出")
             self.timer = Timer.scheduledTimer(timeInterval: 1,
-                                              target:self,
-                                              selector:#selector(self.onlyRefreshTheChartData),
+                                              target: self,
+                                              selector: #selector(self.onlyRefreshTheChartData),
                                               userInfo: nil,
                                               repeats: true)
             self.timer?.fire()
@@ -79,7 +79,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                                     height: chartViewHeight)
         aaChartView?.scrollEnabled = false
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
-        aaChartView?.contentHeight = chartViewHeight-20
+        aaChartView?.contentHeight = chartViewHeight - 20
         self.view.addSubview(aaChartView!)
         
         aaChartModel = AAChartModel()
@@ -168,11 +168,11 @@ class OnlyRefreshChartDataVC: UIViewController {
         let chartSeriesArr = [
             AASeriesElement()
                 .name("2017")
-                .data(randomNumArrA as! Array<Any>)
+                .data(randomNumArrA as! [Any])
                 .toDic()!,
             AASeriesElement()
                 .name("2018")
-                .data(randomNumArrB as! Array<Any>)
+                .data(randomNumArrB as! [Any])
                 .toDic()!
         ]
         

@@ -37,6 +37,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     public var step : Bool?
     private var aaChartModel: AAChartModel?
     private var aaChartView: AAChartView?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.barTintColor = kRGBColorFromHex(rgbValue: 0x22324c)
@@ -326,7 +327,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             self.view.addSubview(uiswitch)
             
             let subLabel = UILabel()
-            subLabel.font = UIFont(name: "EuphemiaUCAS", size: nameArr.count == 5 ? 10.0:9.0)
+            subLabel.font = UIFont(name: "EuphemiaUCAS", size: nameArr.count == 5 ? 10.0 : 9.0)
             subLabel.frame = CGRect(x: switchWidth * CGFloat(i) + 20,
                                     y: self.view.frame.size.height - 45,
                                     width: switchWidth,

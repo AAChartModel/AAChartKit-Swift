@@ -33,7 +33,7 @@
 import UIKit
 
 
-class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class MainVC: UIViewController {
     
     private var chartTypeTitleArr = [[String]]()
     private var chartTypeArr = [[Any]]()
@@ -204,6 +204,47 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         myTableView.superview!.addConstraints(self.configureTheConstraintArray(childView: myTableView, fatherView: self.view))//Note:父控件添加约束
         
     }
+ 
+    func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
+        return [NSLayoutConstraint(item: childView,
+                                   attribute: NSLayoutConstraint.Attribute.left,
+                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   toItem: fatherView,
+                                   attribute: NSLayoutConstraint.Attribute.left,
+                                   multiplier: 1.0,
+                                   constant: 0),
+                NSLayoutConstraint(item: childView,
+                                   attribute: NSLayoutConstraint.Attribute.right,
+                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   toItem: fatherView,
+                                   attribute: NSLayoutConstraint.Attribute.right,
+                                   multiplier: 1.0,
+                                   constant: 0),
+                NSLayoutConstraint(item: childView,
+                                   attribute: NSLayoutConstraint.Attribute.top,
+                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   toItem: fatherView,
+                                   attribute: NSLayoutConstraint.Attribute.top,
+                                   multiplier: 1.0,
+                                   constant: 0),
+                NSLayoutConstraint(item: childView,
+                                   attribute: NSLayoutConstraint.Attribute.bottom,
+                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   toItem: fatherView,
+                                   attribute: NSLayoutConstraint.Attribute.bottom,
+                                   multiplier: 1.0,
+                                   constant: 0)]
+    }
+    
+    func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
+        return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
+                       green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
+                       blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
+                       alpha: 1.0)
+    }
+}
+
+extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return chartTypeTitleArr.count
@@ -263,16 +304,16 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             if indexPath.row == 4 || indexPath.row == 5 {
                 commonChartVC.step = true
             }
-            self.navigationController?.pushViewController(commonChartVC, animated:true)
+            self.navigationController?.pushViewController(commonChartVC, animated: true)
             
         } else if indexPath.section == 1 {
             /*特殊类型图表*/
             let specialChartVC = SpecialChartVC()
             specialChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
-            self.navigationController?.pushViewController(specialChartVC, animated:true)
+            self.navigationController?.pushViewController(specialChartVC, animated: true)
             
         } else if indexPath.section == 2 {
-             let mixedChartVC = MixedChartVC()
+            let mixedChartVC = MixedChartVC()
             mixedChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? String
             self.navigationController?.pushViewController(mixedChartVC, animated: true)
         }  else if indexPath.section == 3 {
@@ -286,7 +327,7 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         } else if indexPath.section == 4 {
             /*同时显示多个图表*/
             let manyChartVC = ShowManyChartViewVC()
-            self.navigationController?.pushViewController(manyChartVC, animated:true)
+            self.navigationController?.pushViewController(manyChartVC, animated: true)
         } else if indexPath.section == 5 {
             let animationTypeVC = AnimationTypeVC()
             animationTypeVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
@@ -305,45 +346,5 @@ class MainVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             self.navigationController?.pushViewController(seriesHideOrShowVC, animated: true)
         }
     }
-    
-    func configureTheConstraintArray(childView:UIView, fatherView:UIView) -> [NSLayoutConstraint] {
-        return [NSLayoutConstraint(item:childView,
-                                   attribute:NSLayoutConstraint.Attribute.left,
-                                   relatedBy:NSLayoutConstraint.Relation.equal,
-                                   toItem:fatherView,
-                                   attribute:NSLayoutConstraint.Attribute.left,
-                                   multiplier:1.0,
-                                   constant:0),
-                NSLayoutConstraint(item:childView,
-                                   attribute:NSLayoutConstraint.Attribute.right,
-                                   relatedBy:NSLayoutConstraint.Relation.equal,
-                                   toItem:fatherView,
-                                   attribute:NSLayoutConstraint.Attribute.right,
-                                   multiplier:1.0,
-                                   constant:0),
-                NSLayoutConstraint(item:childView,
-                                   attribute:NSLayoutConstraint.Attribute.top,
-                                   relatedBy:NSLayoutConstraint.Relation.equal,
-                                   toItem:fatherView,
-                                   attribute:NSLayoutConstraint.Attribute.top,
-                                   multiplier:1.0,
-                                   constant:0),
-                NSLayoutConstraint(item:childView,
-                                   attribute:NSLayoutConstraint.Attribute.bottom,
-                                   relatedBy:NSLayoutConstraint.Relation.equal,
-                                   toItem:fatherView,
-                                   attribute:NSLayoutConstraint.Attribute.bottom,
-                                   multiplier:1.0,
-                                   constant:0)]
-    }
-    
-    func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
-        return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
-                       green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
-                       blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
-                       alpha: 1.0)
-    }
-    
-   
     
 }
