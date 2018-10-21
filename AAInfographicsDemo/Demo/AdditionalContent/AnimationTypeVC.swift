@@ -32,7 +32,7 @@
 
 import UIKit
 
-class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class AnimationTypeVC: UIViewController {
     public var chartType: AAChartType?
     public var step: Bool?
     private var chartAnimationTypeArr = [AAChartAnimationType]()
@@ -80,7 +80,6 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
             .easeFrom,
             .easeTo,
         ]
-        
         setUpTheAnimationTypeTableView()
         setUpTheAAChartView()
     }
@@ -95,24 +94,6 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         animationTypeTableView.dataSource = self
         animationTypeTableView.backgroundColor = UIColor.white
         view.addSubview(animationTypeTableView)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chartAnimationTypeArr.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let cellTitle = chartAnimationTypeArr[indexPath.row].rawValue
-        cell.textLabel?.text = cellTitle
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 11)
-        cell.textLabel?.textColor = UIColor.darkGray
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        aaChartModel?.animationType(chartAnimationTypeArr[indexPath.row])
-        aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
     func setUpTheAAChartView() {
@@ -173,6 +154,30 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
     }
-
 }
+
+extension AnimationTypeVC: UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return chartAnimationTypeArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier = "cell"
+        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: identifier)
+        if cell == nil {
+            cell =  UITableViewCell.init(style: .default, reuseIdentifier: identifier)
+        }
+        let cellTitle = chartAnimationTypeArr[indexPath.row].rawValue
+        cell.textLabel?.text = cellTitle
+        cell.textLabel?.font = .systemFont(ofSize: 11)
+        cell.textLabel?.textColor = .darkGray
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        aaChartModel?.animationType(chartAnimationTypeArr[indexPath.row])
+        aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
+    }
+}
+
 

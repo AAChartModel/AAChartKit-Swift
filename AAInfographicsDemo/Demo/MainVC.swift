@@ -245,7 +245,6 @@ class MainVC: UIViewController {
 }
 
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return chartTypeTitleArr.count
     }
@@ -287,10 +286,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifer = "cell"
-        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: identifer)
+        let identifier = "cell"
+        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: identifier)
         if cell == nil {
-            cell = UITableViewCell.init(style: .default, reuseIdentifier: identifer)
+            cell = UITableViewCell.init(style: .default, reuseIdentifier: identifier)
         }
         
         let cellTitle = chartTypeTitleArr[indexPath.section][indexPath.row]

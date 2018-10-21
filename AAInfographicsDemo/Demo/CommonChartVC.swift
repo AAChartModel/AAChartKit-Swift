@@ -270,7 +270,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     }
     
     @objc func segmentDidSelected(segmentedControl:UISegmentedControl) {
-        
         switch segmentedControl.tag {
         case 0:
             let stackingArr = [AAChartStackingType.none,
@@ -345,7 +344,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     }
     
     @objc func switchDidChange(switchView:UISwitch) {
-        
         switch switchView.tag {
         case 0:
             aaChartModel?.xAxisReversed(switchView.isOn)
