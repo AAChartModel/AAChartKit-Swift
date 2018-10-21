@@ -84,7 +84,7 @@
 * 鏈式編程的方式配置 *AAChartModel* 模型對象屬性
 ```swift
     let chartModel = AAChartModel.init()
-            .chartType(AAChartType.Column)//圖表類型
+            .chartType(AAChartType.column)//圖表類型
             .title("城市天氣變化")//圖表主標題
             .subtitle("2020年09月18日")//圖表副標題
             .inverted(false)//是否翻轉圖形
@@ -214,7 +214,7 @@
 - 繪制扇形圖,妳需要這樣配置模型對象 *AAChartModel*
 ```swift
                  aaChartModel = AAChartModel()
-                .chartType(AAChartType.Pie)
+                .chartType(pie)
                 .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
                 .subtitle("virtual data")
@@ -243,7 +243,7 @@
 
 ```swift  
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Bubble)
+                .chartType(.bubble)
                 .title("AACHARTKIT BUBBLES")
                 .subtitle("JUST FOR FUN")
                 .yAxisTitle("℃")
@@ -304,7 +304,7 @@
 
 ```swift
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Columnrange)
+                .chartType(.olumnrange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")
@@ -340,23 +340,23 @@
 
 ```swift
 enum AAChartType:String {
-    case Column          = "column"          //柱形圖
-    case Bar             = "bar"             //條形圖
-    case Area            = "area"            //折線區域填充圖
-    case AreaSpline      = "areaspline"      //曲線區域填充圖
-    case Line            = "line"            //折線圖
-    case Spline          = "spline"          //曲線圖
-    case Scatter         = "scatter"         //散點圖
-    case Pie             = "pie"             //扇形圖
-    case Bubble          = "bubble"          //氣泡圖
-    case Pyramid         = "pyramid"         //金字塔圖
-    case Funnel          = "funnel"          //漏鬥圖
-    case ColumnRange     = "columnrange"     //柱形範圍圖
-    case AreaRange       = "arearange"       //折線區域範圍圖
-    case AreaSplineRange = "areasplinerange" //曲線區域範圍圖
-    case Boxplot         = "boxplot"         //箱線圖
-    case Waterfall       = "waterfall"       //瀑布圖
-    case Polygon         = "polygon"         //多邊形圖
+    case column          = "column"          //柱形圖
+    case bar             = "bar"             //條形圖
+    case area            = "area"            //折線區域填充圖
+    case areaSpline      = "areaspline"      //曲線區域填充圖
+    case line            = "line"            //折線圖
+    case spline          = "spline"          //曲線圖
+    case scatter         = "scatter"         //散點圖
+    case pie             = "pie"             //扇形圖
+    case bubble          = "bubble"          //氣泡圖
+    case pyramid         = "pyramid"         //金字塔圖
+    case funnel          = "funnel"          //漏鬥圖
+    case columnRange     = "columnrange"     //柱形範圍圖
+    case areaRange       = "arearange"       //折線區域範圍圖
+    case areaSplineRange = "areasplinerange" //曲線區域範圍圖
+    case boxplot         = "boxplot"         //箱線圖
+    case waterfall       = "waterfall"       //瀑布圖
+    case polygon         = "polygon"         //多邊形圖
 }
 ```
 
@@ -365,10 +365,10 @@ enum AAChartType:String {
 
 ```swift
 enum AAChartZoomType:String {
-    case None = "none"   //禁用圖表手勢縮放功能(默認禁用手勢縮放)
-    case X    = "x"      //支持圖表 X 軸橫向縮放
-    case Y    = "y"      //支持圖表 Y 軸縱向縮放
-    case XY   = "xy"     //支持圖表等比例縮放
+    case none = "none"   //禁用圖表手勢縮放功能(默認禁用手勢縮放)
+    case x    = "x"      //支持圖表 X 軸橫向縮放
+    case y    = "y"      //支持圖表 Y 軸縱向縮放
+    case xY   = "xy"     //支持圖表等比例縮放
 }
 ```
 
@@ -377,41 +377,41 @@ NOTE:例如,設置了`AAChartModel`的縮放屬性`zoomType`為`AAChartZoomType.
 ### 當前已支持的圖表渲染動畫類型有三十種以上,說明如下
 
 ```swift
-enum AAChartAnimationType:String {
-    case EaseInQuad     = "easeInQuad"
-    case EaseOutQuad    = "easeOutQuad"
-    case EaseInOutQuad  = "easeInOutQuad"
-    case EaseInCubic    = "easeInCubic"
-    case EaseOutCubic   = "easeOutCubic"
-    case EaseInOutCubic = "easeInOutCubic"
-    case EaseInQuart    = "easeInQuart"
-    case EaseOutQuart   = "easeOutQuart"
-    case EaseInOutQuart = "easeInOutQuart"
-    case EaseInQuint    = "easeInQuint"
-    case EaseOutQuint   = "easeOutQuint"
-    case EaseInOutQuint = "easeInOutQuint"
-    case EaseInSine     = "easeInSine"
-    case EaseOutSine    = "easeOutSine"
-    case EaseInOutSine  = "easeInOutSine"
-    case EaseInExpo     = "easeInExpo"
-    case EaseOutExpo    = "easeOutExpo"
-    case EaseInOutExpo  = "easeInOutExpo"
-    case EaseInCirc     = "easeInCirc"
-    case EaseOutCirc    = "easeOutCirc"
-    case EaseInOutCirc  = "easeInOutCirc"
-    case EaseOutBounce  = "easeOutBounce"
-    case EaseInBack     = "easeInBack"
-    case EaseOutBack    = "easeOutBack"
-    case EaseInOutBack  = "easeInOutBack"
-    case Elastic        = "elastic"
-    case SwingFromTo    = "swingFromTo"
-    case SwingFrom      = "swingFrom"
-    case SwingTo        = "swingTo"
-    case Bounce         = "bounce"
-    case BouncePast     = "bouncePast"
-    case EaseFromTo     = "easeFromTo"
-    case EaseFrom       = "easeFrom"
-    case EaseTo         = "easeTo"
+ public enum AAChartAnimationType: String {
+    case easeInQuad     = "easeInQuad"
+    case easeOutQuad    = "easeOutQuad"
+    case easeInOutQuad  = "easeInOutQuad"
+    case easeInCubic    = "easeInCubic"
+    case easeOutCubic   = "easeOutCubic"
+    case easeInOutCubic = "easeInOutCubic"
+    case easeInQuart    = "easeInQuart"
+    case easeOutQuart   = "easeOutQuart"
+    case easeInOutQuart = "easeInOutQuart"
+    case easeInQuint    = "easeInQuint"
+    case easeOutQuint   = "easeOutQuint"
+    case easeInOutQuint = "easeInOutQuint"
+    case easeInSine     = "easeInSine"
+    case easeOutSine    = "easeOutSine"
+    case easeInOutSine  = "easeInOutSine"
+    case easeInExpo     = "easeInExpo"
+    case easeOutExpo    = "easeOutExpo"
+    case easeInOutExpo  = "easeInOutExpo"
+    case easeInCirc     = "easeInCirc"
+    case easeOutCirc    = "easeOutCirc"
+    case easeInOutCirc  = "easeInOutCirc"
+    case easeOutBounce  = "easeOutBounce"
+    case easeInBack     = "easeInBack"
+    case easeOutBack    = "easeOutBack"
+    case easeInOutBack  = "easeInOutBack"
+    case elastic        = "elastic"
+    case swingFromTo    = "swingFromTo"
+    case swingFrom      = "swingFrom"
+    case swingTo        = "swingTo"
+    case bounce         = "bounce"
+    case bouncePast     = "bouncePast"
+    case easeFromTo     = "easeFromTo"
+    case easeFrom       = "easeFrom"
+    case easeTo         = "easeTo"
 }
 ```
 

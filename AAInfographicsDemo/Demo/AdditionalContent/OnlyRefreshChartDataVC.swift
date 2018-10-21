@@ -89,10 +89,10 @@ class OnlyRefreshChartDataVC: UIViewController {
             .dataLabelEnabled(false)//是否显示数字
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
-            .stacking(.Normal)
+            .stacking(.normal)
         
-        if self.chartType == .Area
-            || self.chartType == .Areaspline {
+        if self.chartType == .area
+            || self.chartType == .areaspline {
             let gradientColorDic = [
                 "linearGradient": [
                     "x1": 0,
@@ -119,7 +119,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                         .step(self.step!)
                         .toDic()!,
                     ])
-            aaChartModel?.symbolStyle(.InnerBlank)
+            aaChartModel?.symbolStyle(.innerBlank)
         } else {
             let gradientColorDic = [
                 "linearGradient": [
@@ -147,7 +147,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                         .toDic()!,
                     ])
             if self.step! != true {
-                aaChartModel?.symbolStyle(.BorderBlank)
+                aaChartModel?.symbolStyle(.borderBlank)
                 .markerRadius(7)
             }
         }

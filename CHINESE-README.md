@@ -84,7 +84,7 @@
 * 链式编程的方式配置 *AAChartModel* 模型对象属性
 ```swift
     let chartModel = AAChartModel.init()
-            .chartType(AAChartType.Column)//图表类型
+            .chartType(AAChartType.column)//图表类型
             .title("城市天气变化")//图表主标题
             .subtitle("2020年09月18日")//图表副标题
             .inverted(false)//是否翻转图形
@@ -214,7 +214,7 @@
 - 绘制扇形图,你需要这样配置模型对象 *AAChartModel*
 ```swift
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Pie)
+                .chartType(AAChartType.pie)
                 .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
                 .subtitle("virtual data")
@@ -243,7 +243,7 @@
 
 ```swift  
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Bubble)
+                .chartType(AAChartType.bubble)
                 .title("AACHARTKIT BUBBLES")
                 .subtitle("JUST FOR FUN")
                 .yAxisTitle("℃")
@@ -304,7 +304,7 @@
 
 ```swift
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Columnrange)
+                .chartType(columnrange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")
@@ -340,23 +340,23 @@
 
 ```swift
 enum AAChartType:String {
-    case Column          = "column"          //柱形图
-    case Bar             = "bar"             //条形图
-    case Area            = "area"            //折线区域填充图
-    case AreaSpline      = "areaspline"      //曲线区域填充图
-    case Line            = "line"            //折线图
-    case Spline          = "spline"          //曲线图
-    case Scatter         = "scatter"         //散点图
-    case Pie             = "pie"             //扇形图
-    case Bubble          = "bubble"          //气泡图
-    case Pyramid         = "pyramid"         //金字塔图
-    case Funnel          = "funnel"          //漏斗图
-    case ColumnRange     = "columnrange"     //柱形范围图
-    case AreaRange       = "arearange"       //折线区域范围图
-    case AreaSplineRange = "areasplinerange" //曲线区域范围图
-    case Boxplot         = "boxplot"         //箱线图
-    case Waterfall       = "waterfall"       //瀑布图
-    case Polygon         = "polygon"         //多边形图
+    case column          = "column"          //柱形图
+    case bar             = "bar"             //条形图
+    case area            = "area"            //折线区域填充图
+    case areaSpline      = "areaspline"      //曲线区域填充图
+    case line            = "line"            //折线图
+    case spline          = "spline"          //曲线图
+    case scatter         = "scatter"         //散点图
+    case pie             = "pie"             //扇形图
+    case bubble          = "bubble"          //气泡图
+    case pyramid         = "pyramid"         //金字塔图
+    case funnel          = "funnel"          //漏斗图
+    case columnRange     = "columnrange"     //柱形范围图
+    case areaRange       = "arearange"       //折线区域范围图
+    case areaSplineRange = "areasplinerange" //曲线区域范围图
+    case boxplot         = "boxplot"         //箱线图
+    case waterfall       = "waterfall"       //瀑布图
+    case polygon         = "polygon"         //多边形图
 }
 ```
 
@@ -364,10 +364,10 @@ enum AAChartType:String {
 
 ```swift
 enum AAChartZoomType:String {
-    case None = "none"   //禁用图表手势缩放功能(默认禁用手势缩放)
-    case X    = "x"      //支持图表 X 轴横向缩放
-    case Y    = "y"      //支持图表 Y 轴纵向缩放
-    case XY   = "xy"     //支持图表等比例缩放
+    case none = "none"   //禁用图表手势缩放功能(默认禁用手势缩放)
+    case x    = "x"      //支持图表 X 轴横向缩放
+    case y    = "y"      //支持图表 Y 轴纵向缩放
+    case xy   = "xy"     //支持图表等比例缩放
 }
 ```
 
@@ -376,41 +376,41 @@ NOTE:例如,设置了`AAChartModel`的缩放属性`zoomType`为`AAChartZoomType.
 ### 当前已支持的图表渲染动画类型有三十种以上,说明如下
 
 ```swift
-enum AAChartAnimationType:String {
-    case EaseInQuad     = "easeInQuad"
-    case EaseOutQuad    = "easeOutQuad"
-    case EaseInOutQuad  = "easeInOutQuad"
-    case EaseInCubic    = "easeInCubic"
-    case EaseOutCubic   = "easeOutCubic"
-    case EaseInOutCubic = "easeInOutCubic"
-    case EaseInQuart    = "easeInQuart"
-    case EaseOutQuart   = "easeOutQuart"
-    case EaseInOutQuart = "easeInOutQuart"
-    case EaseInQuint    = "easeInQuint"
-    case EaseOutQuint   = "easeOutQuint"
-    case EaseInOutQuint = "easeInOutQuint"
-    case EaseInSine     = "easeInSine"
-    case EaseOutSine    = "easeOutSine"
-    case EaseInOutSine  = "easeInOutSine"
-    case EaseInExpo     = "easeInExpo"
-    case EaseOutExpo    = "easeOutExpo"
-    case EaseInOutExpo  = "easeInOutExpo"
-    case EaseInCirc     = "easeInCirc"
-    case EaseOutCirc    = "easeOutCirc"
-    case EaseInOutCirc  = "easeInOutCirc"
-    case EaseOutBounce  = "easeOutBounce"
-    case EaseInBack     = "easeInBack"
-    case EaseOutBack    = "easeOutBack"
-    case EaseInOutBack  = "easeInOutBack"
-    case Elastic        = "elastic"
-    case SwingFromTo    = "swingFromTo"
-    case SwingFrom      = "swingFrom"
-    case SwingTo        = "swingTo"
-    case Bounce         = "bounce"
-    case BouncePast     = "bouncePast"
-    case EaseFromTo     = "easeFromTo"
-    case EaseFrom       = "easeFrom"
-    case EaseTo         = "easeTo"
+ public enum AAChartAnimationType: String {
+    case easeInQuad     = "easeInQuad"
+    case easeOutQuad    = "easeOutQuad"
+    case easeInOutQuad  = "easeInOutQuad"
+    case easeInCubic    = "easeInCubic"
+    case easeOutCubic   = "easeOutCubic"
+    case easeInOutCubic = "easeInOutCubic"
+    case easeInQuart    = "easeInQuart"
+    case easeOutQuart   = "easeOutQuart"
+    case easeInOutQuart = "easeInOutQuart"
+    case easeInQuint    = "easeInQuint"
+    case easeOutQuint   = "easeOutQuint"
+    case easeInOutQuint = "easeInOutQuint"
+    case easeInSine     = "easeInSine"
+    case easeOutSine    = "easeOutSine"
+    case easeInOutSine  = "easeInOutSine"
+    case easeInExpo     = "easeInExpo"
+    case easeOutExpo    = "easeOutExpo"
+    case easeInOutExpo  = "easeInOutExpo"
+    case easeInCirc     = "easeInCirc"
+    case easeOutCirc    = "easeOutCirc"
+    case easeInOutCirc  = "easeInOutCirc"
+    case easeOutBounce  = "easeOutBounce"
+    case easeInBack     = "easeInBack"
+    case easeOutBack    = "easeOutBack"
+    case easeInOutBack  = "easeInOutBack"
+    case elastic        = "elastic"
+    case swingFromTo    = "swingFromTo"
+    case swingFrom      = "swingFrom"
+    case swingTo        = "swingTo"
+    case bounce         = "bounce"
+    case bouncePast     = "bouncePast"
+    case easeFromTo     = "easeFromTo"
+    case easeFrom       = "easeFrom"
+    case easeTo         = "easeTo"
 }
 ```
 
@@ -440,44 +440,52 @@ symbol | AAChartSymbolType | 预定义的图表曲线连接点的样式类型.�
 
 * ### AAChartModel 所有属性列表说明
 ```swift
-private var animationType:String?       //动画类型
-private var title:String?               //标题内容
-private var subtitle:String?            //副标题内容
-private var chartType:String?           //图表类型
-private var stacking:String?            //堆积样式
-private var symbol:String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-private var zoomType:String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
-private var inverted:Bool?              //x 轴是否垂直
-private var xAxisReversed:Bool?         //x 轴翻转
-private var yAxisReversed:Bool?         //y 轴翻转
-private var crosshairs:Bool?            //是否显示准星线(默认显示)
-private var gradientColorEnable:Bool?   //是否要为渐变色
-private var polar:Bool?                 //是否极化图形(变为雷达图)
-private var dataLabelEnabled:Bool?      //是否显示数据
-private var xAxisLabelsEnabled:Bool?    //x轴是否显示数据
-private var categories:Array<Any>?      //x轴是否显示数据
-private var xAxisGridLineWidth:Int?     //x轴网格线的宽度
-private var yAxisLabelsEnabled:Bool?    //y轴是否显示数据
-private var yAxisTitle:String?          //y轴标题
-private var yAxisGridLineWidth:Int?     //y轴网格线的宽度
-private var colorsTheme:Array<Any>?     //图表主题颜色数组
-private var series:Array<Any>?          //图表的主题数据列数组
-private var legendEnabled:Bool?         //是否显示图例
-private var legendLayout:String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
-private var legendAlign:String?         //设定图例在图表区中的水平对齐方式，合法值有 left，center 和 right。
-private var legendVerticalAlign:String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定
-private var backgroundColor:String?     //图表背景色
-private var options3dEnable:Bool?       //是否3D化图形(仅对条形图,柱状图有效)
-private var options3dAlpha:Int?
-private var  options3dBeta:Int?
-private var options3dDepth:Int?         //3D图形深度
-private var borderRadius:Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
-private var markerRadius:Int?           //折线连接点的半径长度
+private var animationType: String?       //动画类型
+private var animationDuration: Int?      //动画时间
+private var title: String?               //标题内容
+private var subtitle: String?            //副标题内容
+private var chartType: String?           //图表类型
+private var stacking: String?            //堆积样式
+private var symbol: String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+private var symbolStyle: String?         //折线或者曲线的连接点是否为空心的
+private var zoomType: String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
+private var inverted: Bool?              //x 轴是否翻转(垂直)
+private var xAxisReversed: Bool?         //x 轴翻转
+private var yAxisReversed: Bool?         //y 轴翻转
+private var gradientColorEnable: Bool?   //是否要为渐变色
+private var polar: Bool?                 //是否极化图形(变为雷达图)
+private var marginLeft: Float?           //图表左边距
+private var marginRight: Float?          //图表右边距
+private var dataLabelEnabled: Bool?      //是否显示数据
+private var xAxisLabelsEnabled: Bool?    //x 轴是否显示数据
+private var categories: [String]?        //x 轴是否显示数据
+private var xAxisGridLineWidth: Float?   //x 轴网格线的宽度
+private var xAxisVisible: Bool?          //x 轴是否显示
+private var yAxisVisible: Bool?          //y 轴是否显示
+private var yAxisLabelsEnabled: Bool?    //y 轴是否显示数据
+private var yAxisTitle: String?          //y 轴标题
+private var yAxisLineWidth: Float?       //y 轴轴线的宽度
+private var yAxisGridLineWidth: Float?   //y 轴网格线的宽度
+private var tooltipEnabled: Bool?        //是否显示浮动提示框(默认显示)
+private var tooltipValueSuffix: String?  //浮动提示框单位后缀
+private var tooltipCrosshairs: Bool?     //是否显示准星线(默认显示)
+private var colorsTheme: [Any]?          //图表主题颜色数组
+private var series: [[String: Any]]?     //图表的数据数组
+private var legendEnabled: Bool?         //是否显示图例
+private var legendLayout: String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
+private var legendAlign: String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
+private var legendVerticalAlign: String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
+private var backgroundColor: String?     //图表背景色
+private var borderRadius: Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
+private var markerRadius: Int?           //折线连接点的半径长度
+private var titleColor: String?          //标题颜色
+private var subTitleColor: String?       //副标题颜色
+private var axisColor: String?           //x 轴和 y 轴文字颜色
 ```
 
 ## 附言
 
-在 `AAInfographics` 数据可视化图形框架的初始设计中,为提升`.js`文件的加载速度,故将所依赖的`.js`文件放置在本地.然而由于本项目功能较多,故放置于本地的附加`JavaScript`文件库体积较大,整个`AAJSFiles`文件夹下所有的`.js`文件体积合计共有`250KB左右`(当然在工程打包压缩之后实际大小远小于此),若对工程文件体积大小较为敏感的使用者,可使用以下建议的替代方案
+在 `AAInfographics` 数据可视化图形框架的初始设计中,为提升`.js`文件的加载速度,故将所依赖的`.js`文件放置在本地.然而由于本项目功能较多,故放置于本地的附加`JavaScript`文件库体积有一定大小,整个`AAJSFiles`文件夹下所有的`.js`文件体积合计共有`250KB左右`(当然在工程打包压缩之后实际大小远小于此),若对工程文件体积大小较为敏感的使用者,可使用以下建议的替代方案
 1.  删除在本`AAInfographics`项目文件中,`AAJSFiles`文件夹下的`4`项`.js`文件.需要被删除的文件名称如下
 * AAHighchartsLibrary.js
 * AAHighchartsMore.js

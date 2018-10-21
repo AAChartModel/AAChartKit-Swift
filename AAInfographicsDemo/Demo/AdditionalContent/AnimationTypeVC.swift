@@ -44,40 +44,40 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         self.view.backgroundColor = UIColor.white
         
         chartAnimationTypeArr = [
-            .EaseInQuad,
-            .EaseOutQuad,
-            .EaseInOutQuad,
-            .EaseInCubic,
-            .EaseOutCubic,
-            .EaseInOutCubic,
-            .EaseInQuart,
-            .EaseOutQuart,
-            .EaseInOutQuart,
-            .EaseInQuint,
-            .EaseOutQuint,
-            .EaseInOutQuint,
-            .EaseInSine,
-            .EaseOutSine,
-            .EaseInOutSine,
-            .EaseInExpo,
-            .EaseOutExpo,
-            .EaseInOutExpo,
-            .EaseInCirc,
-            .EaseOutCirc,
-            .EaseInOutCirc,
-            .EaseOutBounce,
-            .EaseInBack,
-            .EaseOutBack,
-            .EaseInOutBack,
-            .Elastic,
-            .SwingFromTo,
-            .SwingFrom,
-            .SwingTo,
-            .Bounce,
-            .BouncePast,
-            .EaseFromTo,
-            .EaseFrom,
-            .EaseTo,
+            .easeInQuad,
+            .easeOutQuad,
+            .easeInOutQuad,
+            .easeInCubic,
+            .easeOutCubic,
+            .easeInOutCubic,
+            .easeInQuart,
+            .easeOutQuart,
+            .easeInOutQuart,
+            .easeInQuint,
+            .easeOutQuint,
+            .easeInOutQuint,
+            .easeInSine,
+            .easeOutSine,
+            .easeInOutSine,
+            .easeInExpo,
+            .easeOutExpo,
+            .easeInOutExpo,
+            .easeInCirc,
+            .easeOutCirc,
+            .easeInOutCirc,
+            .easeOutBounce,
+            .easeInBack,
+            .easeOutBack,
+            .easeInOutBack,
+            .elastic,
+            .swingFromTo,
+            .swingFrom,
+            .swingTo,
+            .bounce,
+            .bouncePast,
+            .easeFromTo,
+            .easeFrom,
+            .easeTo,
         ]
         
         self.setUpTheAnimationTypeTableView()
@@ -136,7 +136,7 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         
-        if self.chartType == .Area || self.chartType == .Areaspline {
+        if self.chartType == .area || self.chartType == .areaspline {
           aaChartModel?
             .gradientColorEnable(true)
             .markerRadius(0)

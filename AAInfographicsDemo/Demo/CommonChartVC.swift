@@ -78,7 +78,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             .dataLabelEnabled(false)//是否显示数字
             .tooltipValueSuffix("℃")//浮动提示框单位后缀
             .backgroundColor("#ffffff")//图表背景色(默认就是白色)
-            .animationType(.Bounce)//图形渲染动画类型为"bounce"
+            .animationType(.bounce)//图形渲染动画类型为"bounce"
             .backgroundColor("#22324c")
             .series([
                 AASeriesElement()
@@ -107,9 +107,9 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     
     func configureTheStyleForDifferentTypeChart() {
         
-        if (self.chartType == .Area && self.step == true)
-            || (self.chartType == .Line && self.step == true) {
-            aaChartModel = self.chartType == .Area ? aaChartModel?.gradientColorEnable(true) : aaChartModel?.gradientColorEnable(false)
+        if (self.chartType == .area && self.step == true)
+            || (self.chartType == .line && self.step == true) {
+            aaChartModel = self.chartType == .area ? aaChartModel?.gradientColorEnable(true) : aaChartModel?.gradientColorEnable(false)
             aaChartModel?.series([
                 AASeriesElement()
                     .name("Berlin")
@@ -128,25 +128,25 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                     .toDic()!,
                 ])
             
-        } else if self.chartType == .Column
-            || self.chartType == .Bar {
+        } else if self.chartType == .column
+            || self.chartType == .bar {
             aaChartModel?
                 .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
                 .legendEnabled(true)
                 .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
-                .animationType(.Bounce)
+                .animationType(.bounce)
                 .animationDuration(1200)
-        } else if self.chartType == .Area
-            || self.chartType == .Areaspline {
+        } else if self.chartType == .area
+            || self.chartType == .areaspline {
             aaChartModel?
-                .symbolStyle(.InnerBlank)//设置折线连接点样式为:内部白色
-                .animationType(.EaseOutQuart)
+                .symbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
+                .animationType(.easeOutQuart)
                 .gradientColorEnable(true)
                 .legendEnabled(true)
                 .markerRadius(5)
-                .symbol(.Circle)
+                .symbol(.circle)
             
-            if self.chartType == .Areaspline {
+            if self.chartType == .areaspline {
                 let gradientColorDic = [
                     "linearGradient": [
                         "x1": 0,
@@ -160,7 +160,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 
                 aaChartModel?
                     .gradientColorEnable(false)
-                    .animationType(.EaseFrom)//设置图表渲染动画类型为 EaseFrom
+                    .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
                     .series([
                         AASeriesElement()
                             .name("Tokyo Hot")
@@ -182,14 +182,14 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                         ])
             }
             
-        } else if self.chartType == .Line
-            || self.chartType == .Spline {
+        } else if self.chartType == .line
+            || self.chartType == .spline {
             aaChartModel?
-                .symbolStyle(.BorderBlank)//设置折线连接点样式为:边缘白色
+                .symbolStyle(.borderBlank)//设置折线连接点样式为:边缘白色
                 .markerRadius(6)
-            if self.chartType == .Spline {
+            if self.chartType == .spline {
                 aaChartModel?
-                    .animationType(.SwingFromTo)
+                    .animationType(.swingFromTo)
                     .series([
                         AASeriesElement()
                             .name("Tokyo")
@@ -216,8 +216,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         var segmentedNamesArray:[[String]]
         var typeLabelNameArr:[String]
         
-        if self.chartType == .Column
-            || self.chartType == .Bar {
+        if self.chartType == .column
+            || self.chartType == .bar {
             segmentedNamesArray = [["No stacking",
                                     "Normal stacking",
                                     "Percent stacking"],
@@ -270,21 +270,21 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         switch segmentedControl.tag {
         case 0:
-            let stackingArr = [AAChartStackingType.False,
-                               .Normal,
-                               .Percent]
+            let stackingArr = [AAChartStackingType.none,
+                               .normal,
+                               .percent]
             aaChartModel?.stacking(AAChartStackingType(rawValue: stackingArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             
         case 1:
-            if self.chartType == .Column || self.chartType == .Bar {
+            if self.chartType == .column || self.chartType == .bar {
                 let borderRadiusArr = [0,10,100]
                 aaChartModel?.borderRadius(borderRadiusArr[segmentedControl.selectedSegmentIndex])
             } else {
-                let symbolArr = [AAChartSymbolType.Circle,
-                                 .Square,
-                                 .Diamond,
-                                 .Triangle,
-                                 .Triangle_down]
+                let symbolArr = [AAChartSymbolType.circle,
+                                 .square,
+                                 .diamond,
+                                 .triangle,
+                                 .triangle_down]
                 aaChartModel?.symbol(AAChartSymbolType(rawValue: symbolArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             }
             
@@ -297,7 +297,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         let nameArr: [String]
         let switchWidth: CGFloat
         
-        if self.chartType == .Column || self.chartType == .Bar {
+        if self.chartType == .column || self.chartType == .bar {
             nameArr = ["xReversed",
                        "yReversed",
                        "xInverted",

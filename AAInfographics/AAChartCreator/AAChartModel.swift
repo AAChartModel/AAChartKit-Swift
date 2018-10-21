@@ -31,125 +31,126 @@
  */
 
  public enum AAChartAnimationType: String {
-    case EaseInQuad     = "easeInQuad"
-    case EaseOutQuad    = "easeOutQuad"
-    case EaseInOutQuad  = "easeInOutQuad"
-    case EaseInCubic    = "easeInCubic"
-    case EaseOutCubic   = "easeOutCubic"
-    case EaseInOutCubic = "easeInOutCubic"
-    case EaseInQuart    = "easeInQuart"
-    case EaseOutQuart   = "easeOutQuart"
-    case EaseInOutQuart = "easeInOutQuart"
-    case EaseInQuint    = "easeInQuint"
-    case EaseOutQuint   = "easeOutQuint"
-    case EaseInOutQuint = "easeInOutQuint"
-    case EaseInSine     = "easeInSine"
-    case EaseOutSine    = "easeOutSine"
-    case EaseInOutSine  = "easeInOutSine"
-    case EaseInExpo     = "easeInExpo"
-    case EaseOutExpo    = "easeOutExpo"
-    case EaseInOutExpo  = "easeInOutExpo"
-    case EaseInCirc     = "easeInCirc"
-    case EaseOutCirc    = "easeOutCirc"
-    case EaseInOutCirc  = "easeInOutCirc"
-    case EaseOutBounce  = "easeOutBounce"
-    case EaseInBack     = "easeInBack"
-    case EaseOutBack    = "easeOutBack"
-    case EaseInOutBack  = "easeInOutBack"
-    case Elastic        = "elastic"
-    case SwingFromTo    = "swingFromTo"
-    case SwingFrom      = "swingFrom"
-    case SwingTo        = "swingTo"
-    case Bounce         = "bounce"
-    case BouncePast     = "bouncePast"
-    case EaseFromTo     = "easeFromTo"
-    case EaseFrom       = "easeFrom"
-    case EaseTo         = "easeTo"
+    case easeInQuad     = "easeInQuad"
+    case easeOutQuad    = "easeOutQuad"
+    case easeInOutQuad  = "easeInOutQuad"
+    case easeInCubic    = "easeInCubic"
+    case easeOutCubic   = "easeOutCubic"
+    case easeInOutCubic = "easeInOutCubic"
+    case easeInQuart    = "easeInQuart"
+    case easeOutQuart   = "easeOutQuart"
+    case easeInOutQuart = "easeInOutQuart"
+    case easeInQuint    = "easeInQuint"
+    case easeOutQuint   = "easeOutQuint"
+    case easeInOutQuint = "easeInOutQuint"
+    case easeInSine     = "easeInSine"
+    case easeOutSine    = "easeOutSine"
+    case easeInOutSine  = "easeInOutSine"
+    case easeInExpo     = "easeInExpo"
+    case easeOutExpo    = "easeOutExpo"
+    case easeInOutExpo  = "easeInOutExpo"
+    case easeInCirc     = "easeInCirc"
+    case easeOutCirc    = "easeOutCirc"
+    case easeInOutCirc  = "easeInOutCirc"
+    case easeOutBounce  = "easeOutBounce"
+    case easeInBack     = "easeInBack"
+    case easeOutBack    = "easeOutBack"
+    case easeInOutBack  = "easeInOutBack"
+    case elastic        = "elastic"
+    case swingFromTo    = "swingFromTo"
+    case swingFrom      = "swingFrom"
+    case swingTo        = "swingTo"
+    case bounce         = "bounce"
+    case bouncePast     = "bouncePast"
+    case easeFromTo     = "easeFromTo"
+    case easeFrom       = "easeFrom"
+    case easeTo         = "easeTo"
 }
 
 public enum AAChartType: String {
-    case Column          = "column"
-    case Bar             = "bar"
-    case Area            = "area"
-    case Areaspline      = "areaspline"
-    case Line            = "line"
-    case Spline          = "spline"
-    case Scatter         = "scatter"
-    case Pie             = "pie"
-    case Bubble          = "bubble"
-    case Pyramid         = "pyramid"
-    case Funnel          = "funnel"
-    case Columnrange     = "columnrange"
-    case Arearange       = "arearange"
-    case Areasplinerange = "areasplinerange"
-    case Boxplot         = "boxplot"
-    case Waterfall       = "waterfall"
-    case Polygon         = "polygon"
+    case column          = "column"
+    case bar             = "bar"
+    case area            = "area"
+    case areaspline      = "areaspline"
+    case line            = "line"
+    case spline          = "spline"
+    case scatter         = "scatter"
+    case pie             = "pie"
+    case bubble          = "bubble"
+    case pyramid         = "pyramid"
+    case funnel          = "funnel"
+    case columnrange     = "columnrange"
+    case arearange       = "arearange"
+    case areasplinerange = "areasplinerange"
+    case boxplot         = "boxplot"
+    case waterfall       = "waterfall"
+    case polygon         = "polygon"
 }
 
 public enum AAChartSubtitleAlignType: String {
-    case Left   = "left"
-    case Center = "center"
-    case Right  = "right"
+    case left   = "left"
+    case center = "center"
+    case right  = "right"
 }
 
 public enum AAChartZoomType: String {
-    case None = "none"
-    case X    = "x"
-    case Y    = "y"
-    case XY   = "xy"
+    case none = "none"
+    case x    = "x"
+    case y    = "y"
+    case xy   = "xy"
 }
 
 public enum AAChartStackingType: String {
-    case False   = ""
-    case Normal  = "normal"
-    case Percent = "percent"
+    case none   = ""
+    case normal  = "normal"
+    case percent = "percent"
 }
 
 public enum AAChartSymbolType: String {
-    case Circle        = "circle"
-    case Square        = "square"
-    case Diamond       = "diamond"
-    case Triangle      = "triangle"
-    case Triangle_down = "triangle-down"
+    case circle        = "circle"
+    case square        = "square"
+    case diamond       = "diamond"
+    case triangle      = "triangle"
+    case triangle_down = "triangle-down"
 }
 
 public enum AAChartSymbolStyleType: String {
-    case Normal      = "normal"
-    case InnerBlank  = "innerBlank"
-    case BorderBlank = "borderBlank"
+    case normal      = "normal"
+    case innerBlank  = "innerBlank"
+    case borderBlank = "borderBlank"
 }
 
 public enum AAchartLegendlLayoutType: String {
-    case Horizontal = "horizontal"
-    case Vertical   = "vertical"
+    case horizontal = "horizontal"
+    case vertical   = "vertical"
 }
 
 public enum AAChartLegendAlignType: String {
-    case Left   = "left"
-    case Center = "center"
-    case Right  = "right"
+    case left   = "left"
+    case center = "center"
+    case right  = "right"
 }
 
 public enum AAChartLegendVerticalAlignType: String {
-    case Top    = "top"
-    case Middle = "middle"
-    case Bottom = "bottom"
+    case top    = "top"
+    case middle = "middle"
+    case bottom = "bottom"
 }
 
 public enum AALineDashSyleType: String {
-    case Solid           = "Solid"
-    case ShortDash       = "ShortDash"
-    case ShortDot        = "ShortDot"
-    case ShortDashDot    = "ShortDashDot"
-    case ShortDashDotDot = "ShortDashDotDot"
-    case Dot             = "Dot"
-    case Dash            = "Dash"
-    case LongDash        = "LongDash"
-    case DashDot         = "DashDot"
-    case LongDashDot     = "LongDashDot"
-    case LongDashDotDot  = "LongDashDotDot"
+    case solid           = "Solid"
+    case shortDash       = "ShortDash"
+    case shortDot        = "ShortDot"
+    case shortDashDot    = "ShortDashDot"
+    case shortDashDotDot = "ShortDashDotDot"
+    case dot             = "Dot"
+    case dash            = "Dash"
+    case longDash        = "LongDash"
+    case dashDot         = "DashDot"
+    case longDashDot     = "LongDashDot"
+    case longDashDotDot  = "LongDashDotDot"
 }
+
 
 public class AAChartModel: AASerializable {
     private var animationType: String?       //动画类型
@@ -166,18 +167,18 @@ public class AAChartModel: AASerializable {
     private var yAxisReversed: Bool?         //y 轴翻转
     private var gradientColorEnable: Bool?   //是否要为渐变色
     private var polar: Bool?                 //是否极化图形(变为雷达图)
-    private var marginLeft: Float?
-    private var marginRight: Float?
+    private var marginLeft: Float?           //图表左边距
+    private var marginRight: Float?          //图表右边距
     private var dataLabelEnabled: Bool?      //是否显示数据
-    private var xAxisLabelsEnabled: Bool?    //x轴是否显示数据
-    private var categories: [String]?        //x轴是否显示数据
-    private var xAxisGridLineWidth: Float?   //x轴网格线的宽度
-    private var xAxisVisible: Bool?          //x轴是否显示
-    private var yAxisVisible: Bool?          //y轴是否显示
-    private var yAxisLabelsEnabled: Bool?    //y轴是否显示数据
-    private var yAxisTitle: String?          //y轴标题
-    private var yAxisLineWidth: Float?       //y轴轴线的宽度
-    private var yAxisGridLineWidth: Float?   //y轴网格线的宽度
+    private var xAxisLabelsEnabled: Bool?    //x 轴是否显示数据
+    private var categories: [String]?        //x 轴是否显示数据
+    private var xAxisGridLineWidth: Float?   //x 轴网格线的宽度
+    private var xAxisVisible: Bool?          //x 轴是否显示
+    private var yAxisVisible: Bool?          //y 轴是否显示
+    private var yAxisLabelsEnabled: Bool?    //y 轴是否显示数据
+    private var yAxisTitle: String?          //y 轴标题
+    private var yAxisLineWidth: Float?       //y 轴轴线的宽度
+    private var yAxisGridLineWidth: Float?   //y 轴网格线的宽度
     private var tooltipEnabled: Bool?        //是否显示浮动提示框(默认显示)
     private var tooltipValueSuffix: String?  //浮动提示框单位后缀
     private var tooltipCrosshairs: Bool?     //是否显示准星线(默认显示)
@@ -190,9 +191,10 @@ public class AAChartModel: AASerializable {
     private var backgroundColor: String?     //图表背景色
     private var borderRadius: Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     private var markerRadius: Int?           //折线连接点的半径长度
-    private var titleColor: String?
-    private var subTitleColor: String?
-    private var axisColor: String?
+    private var titleColor: String?          //标题颜色
+    private var subTitleColor: String?       //副标题颜色
+    private var axisColor: String?           //x 轴和 y 轴文字颜色
+    
     
     @discardableResult
     public func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
@@ -441,12 +443,12 @@ public class AAChartModel: AASerializable {
         subTitleColor       = "#000000"
         axisColor           = "#000000"
         animationDuration   = 800//以毫秒为单位
-        chartType           = AAChartType.Column.rawValue
+        chartType           = AAChartType.column.rawValue
         inverted            = false
-        stacking            = AAChartStackingType.False.rawValue
+        stacking            = AAChartStackingType.none.rawValue
         xAxisReversed       = false
         yAxisReversed       = false
-        zoomType            = AAChartZoomType.None.rawValue//默认禁用手势缩放
+        zoomType            = AAChartZoomType.none.rawValue//默认禁用手势缩放
         colorsTheme         = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
         gradientColorEnable = false
         polar               = false
@@ -454,17 +456,17 @@ public class AAChartModel: AASerializable {
         tooltipEnabled      = true
         tooltipCrosshairs   = true
         xAxisLabelsEnabled  = true
-        xAxisVisible        = true  // X 轴默认可见
-        yAxisVisible        = true  // Y 轴默认可见
+        xAxisVisible        = true // X 轴默认可见
+        yAxisVisible        = true // Y 轴默认可见
         yAxisLabelsEnabled  = true
         yAxisLineWidth      = 0
         yAxisGridLineWidth  = 0.6
         legendEnabled       = true
-        legendLayout        = AAchartLegendlLayoutType.Horizontal.rawValue
-        legendAlign         = AAChartLegendAlignType.Center.rawValue
-        legendVerticalAlign = AAChartLegendVerticalAlignType.Bottom.rawValue
-        borderRadius        = 0//柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
-        markerRadius        = 5//折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
+        legendLayout        = AAchartLegendlLayoutType.horizontal.rawValue
+        legendAlign         = AAChartLegendAlignType.center.rawValue
+        legendVerticalAlign = AAChartLegendVerticalAlignType.bottom.rawValue
+        borderRadius        = 0 //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
+        markerRadius        = 5 //折线连接点的半径长度,设置默认值为0,这样就相当于不显示了
     }
     
 }

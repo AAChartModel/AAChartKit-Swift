@@ -74,11 +74,11 @@
         self.view.addSubview(aaChartView!)
   ```
 2. Configure the properties of chart model:`AAChartModel`
-
+c
 ``` swift
         aaChartModel = AAChartModel.init()
-            .chartType(AAChartType.Column)//Can be any of the chart types listed under `AAChartType`.
-            .animationType(AAChartAnimationType.Bounce)
+            .chartType(AAChartType.column)//Can be any of the chart types listed under `AAChartType`.
+            .animationType(bounce)
             .title("TITLE")//The chart title
             .subtitle("subtitle")//The chart subtitle
             .dataLabelEnabled(false) //Enable or disable the data labels. Defaults to false
@@ -204,7 +204,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 - To draw a pie chart,you should configure the properties of `AAChartModel` like this:
 ``` swift
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Pie)
+                .chartType(.pie)
                 .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
                 .subtitle("virtual data")
@@ -232,7 +232,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 ``` swift
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.Bubble)
+                .chartType(.bubble)
                 .title("AACHARTKIT BUBBLES")
                 .subtitle("JUST FOR FUN")
                 .yAxisTitle("℃")
@@ -293,7 +293,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 ``` swift
              aaChartModel = AAChartModel()
-                .chartType(AAChartType.Columnrange)
+                .chartType(.columnrange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")
@@ -327,74 +327,75 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 ```swift
 enum AAChartType {
-    case Column          = "column"          //column chart
-    case Bar             = "bar"             //bar chart 
-    case Area            = "area"            //area chart 
-    case AreaSpline      = "areaspline"      //areaspline chart
-    case Line            = "line"            //line chart
-    case Spline          = "spline"          //spline chart
-    case Scatter         = "scatter"         //scatter chart 
-    case Pie             = "pie"             //pie chart
-    case Bubble          = "bubble"          //bubble chart  
-    case Pyramid         = "pyramid"         //pyramid chart
-    case Funnel          = "funnel"          //funnel chart
-    case ColumnRange     = "columnrange"     //column range chart
-    case AreaRange       = "arearange"       //area range chart
-    case AreaSplineRange = "areasplinerange" //area spline range chart
-    case Boxplot         = "boxplot"         //boxplot chart
-    case Waterfall       = "waterfall"       //waterfall chart
-    case Polygon         = "polygon"         //polygon chart
+    case column          = "column"          //column chart
+    case bar             = "bar"             //bar chart 
+    case area            = "area"            //area chart 
+    case areaSpline      = "areaspline"      //areaspline chart
+    case line            = "line"            //line chart
+    case spline          = "spline"          //spline chart
+    case scatter         = "scatter"         //scatter chart 
+    case pie             = "pie"             //pie chart
+    case bubble          = "bubble"          //bubble chart  
+    case pyramid         = "pyramid"         //pyramid chart
+    case funnel          = "funnel"          //funnel chart
+    case columnRange     = "columnrange"     //column range chart
+    case areaRange       = "arearange"       //area range chart
+    case areaSplineRange = "areasplinerange" //area spline range chart
+    case boxplot         = "boxplot"         //boxplot chart
+    case waterfall       = "waterfall"       //waterfall chart
+    case polygon         = "polygon"         //polygon chart
 }
 ```
 
 ### Supported zoom guesture types for now
 ```swift
 enum AAChartZoomType:String {
-    case None = "none"
-    case X    = "x"
-    case Y    = "y"
-    case XY   = "xy"
+    case none = "none"
+    case x    = "x"
+    case y    = "y"
+    case xy   = "xy"
 }
 ```
 
 ### Supported animation type for now
 
 ```swift
-enum AAChartAnimationType:String {
-    case EaseInQuad     = "easeInQuad"
-    case EaseOutQuad    = "easeOutQuad"
-    case EaseInOutQuad  = "easeInOutQuad"
-    case EaseInCubic    = "easeInCubic"
-    case EaseOutCubic   = "easeOutCubic"
-    case EaseInOutCubic = "easeInOutCubic"
-    case EaseInQuart    = "easeInQuart"
-    case EaseOutQuart   = "easeOutQuart"
-    case EaseInOutQuart = "easeInOutQuart"
-    case EaseInQuint    = "easeInQuint"
-    case EaseOutQuint   = "easeOutQuint"
-    case EaseInOutQuint = "easeInOutQuint"
-    case EaseInSine     = "easeInSine"
-    case EaseOutSine    = "easeOutSine"
-    case EaseInOutSine  = "easeInOutSine"
-    case EaseInExpo     = "easeInExpo"
-    case EaseOutExpo    = "easeOutExpo"
-    case EaseInOutExpo  = "easeInOutExpo"
-    case EaseInCirc     = "easeInCirc"
-    case EaseOutCirc    = "easeOutCirc"
-    case EaseInOutCirc  = "easeInOutCirc"
-    case EaseOutBounce  = "easeOutBounce"
-    case EaseInBack     = "easeInBack"
-    case EaseOutBack    = "easeOutBack"
-    case EaseInOutBack  = "easeInOutBack"
-    case Elastic        = "elastic"
-    case SwingFromTo    = "swingFromTo"
-    case SwingFrom      = "swingFrom"
-    case SwingTo        = "swingTo"
-    case Bounce         = "bounce"
-    case BouncePast     = "bouncePast"
-    case EaseFromTo     = "easeFromTo"
-    case EaseFrom       = "easeFrom"
-    case EaseTo         = "easeTo"
+
+ public enum AAChartAnimationType: String {
+    case easeInQuad     = "easeInQuad"
+    case easeOutQuad    = "easeOutQuad"
+    case easeInOutQuad  = "easeInOutQuad"
+    case easeInCubic    = "easeInCubic"
+    case easeOutCubic   = "easeOutCubic"
+    case easeInOutCubic = "easeInOutCubic"
+    case easeInQuart    = "easeInQuart"
+    case easeOutQuart   = "easeOutQuart"
+    case easeInOutQuart = "easeInOutQuart"
+    case easeInQuint    = "easeInQuint"
+    case easeOutQuint   = "easeOutQuint"
+    case easeInOutQuint = "easeInOutQuint"
+    case easeInSine     = "easeInSine"
+    case easeOutSine    = "easeOutSine"
+    case easeInOutSine  = "easeInOutSine"
+    case easeInExpo     = "easeInExpo"
+    case easeOutExpo    = "easeOutExpo"
+    case easeInOutExpo  = "easeInOutExpo"
+    case easeInCirc     = "easeInCirc"
+    case easeOutCirc    = "easeOutCirc"
+    case easeInOutCirc  = "easeInOutCirc"
+    case easeOutBounce  = "easeOutBounce"
+    case easeInBack     = "easeInBack"
+    case easeOutBack    = "easeOutBack"
+    case easeInOutBack  = "easeInOutBack"
+    case elastic        = "elastic"
+    case swingFromTo    = "swingFromTo"
+    case swingFrom      = "swingFrom"
+    case swingTo        = "swingTo"
+    case bounce         = "bounce"
+    case bouncePast     = "bouncePast"
+    case easeFromTo     = "easeFromTo"
+    case easeFrom       = "easeFrom"
+    case easeTo         = "easeTo"
 }
 ```
 

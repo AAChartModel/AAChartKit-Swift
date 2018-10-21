@@ -57,12 +57,12 @@ class ShowManyChartViewVC: UIViewController {
         self.view.addSubview(aaChartView)
         
         let  aaChartModel = AAChartModel()
-            .chartType(.Bar)//图形类型
-            .animationType(.Bounce)//图形渲染动画类型为"bounce"
+            .chartType(.bar)//图形类型
+            .animationType(.bounce)//图形渲染动画类型为"bounce"
             .title("都市天气")//图形标题
             .subtitle("2020年08月08日")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
-            .stacking(.Normal)
+            .stacking(.none)
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .series(([
@@ -100,13 +100,13 @@ class ShowManyChartViewVC: UIViewController {
         self.view.addSubview(aaChartView2)
         
         let  aaChartModel2 = AAChartModel()
-            .chartType(.Area)//图形类型
-            .animationType(.Bounce)//图形渲染动画类型为"bounce"
+            .chartType(.area)//图形类型
+            .animationType(.bounce)//图形渲染动画类型为"bounce"
             .title("都市天气")//图形标题
             .subtitle("2020年08月08日")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
             .markerRadius(4)//折线连接点半径长度,为0时相当于没有折线连接点
-            .symbolStyle(.InnerBlank)
+            .symbolStyle(.innerBlank)
             .gradientColorEnable(true)
             .legendEnabled(true)
             .series([
