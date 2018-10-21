@@ -32,7 +32,7 @@
 
 import UIKit
 import WebKit
-public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
+public class AAChartView: UIView {
     
     public var scrollEnabled: Bool? {
         set {
@@ -185,24 +185,88 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func drawChart() {
+        evaluateJavaScriptWithFunctionNameString(optionsJson!)
+    }
+    
+    private func configureTheJavaScriptString(_ chartModel: AAChartModel) {
+        let modelString = chartModel.toJSON()
+        let chartViewContentWidth = contentWidth
+        
+        var chartViewContentHeight = contentHeight
+        if contentHeight == 0 {
+            chartViewContentHeight = frame.size.height
+        }
+        
+        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');",
+                                                          modelString!,
+                                                          chartViewContentWidth!,
+                                                          chartViewContentHeight!)
+        optionsJson = jsString as String;
+    }
+    
+
+}
+
+extension AAChartView: WKNavigationDelegate,UIWebViewDelegate {
+    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        drawChart()
+    }
+    
+    open func webViewDidFinishLoad(_ webView: UIWebView) {
+        drawChart()
+    }
+    
+    private func evaluateJavaScriptWithFunctionNameString (_ jsString: String) {
+        if #available(iOS 9.0, *) {
+            wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
+                if ((error) != nil) {
+                    let errorInfo =
+                    """
+                    
+                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
+                    ==========================================================================================
+                    ------------------------------------------------------------------------------------------
+                    \(error! as CVarArg)
+                    ------------------------------------------------------------------------------------------
+                    ==========================================================================================
+                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
+                    
+                    """
+                    print(errorInfo)
+                }
+            })
+        } else {
+            // Fallback on earlier versions
+            uiWebView?.stringByEvaluatingJavaScript(from: jsString)
+        }
+    }
+}
+
+
+extension AAChartView {
     /// Function of drawing chart view
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
-        
-        configureTheJavaScriptString(chartModel)
-        
-        let path = Bundle.main.path(forResource: "AAChartView",
-                                    ofType: "html",
-                                    inDirectory: "AAJSFiles.bundle")
-        let urlStr = NSURL.fileURL(withPath: path!)
-        let urlRequest = NSURLRequest(url: urlStr) as URLRequest
-        if #available(iOS 9.0, *) {
-            wkWebView?.load(urlRequest)
+        if optionsJson == nil {
+            configureTheJavaScriptString(chartModel)
+            let path = Bundle.main.path(forResource: "AAChartView",
+                                        ofType: "html",
+                                        inDirectory: "AAJSFiles.bundle")
+            let urlStr = NSURL.fileURL(withPath: path!)
+            let urlRequest = NSURLRequest(url: urlStr) as URLRequest
+            if #available(iOS 9.0, *) {
+                wkWebView?.load(urlRequest)
+            } else {
+                // Fallback on earlier versions
+                uiWebView?.loadRequest(urlRequest)
+            }
         } else {
-            // Fallback on earlier versions
-            uiWebView?.loadRequest(urlRequest)
+            configureTheJavaScriptString(chartModel)
+            drawChart()
         }
+        
     }
     
     /// Function of only refresh the chart data
@@ -239,59 +303,6 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     public func aa_hideTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
         let jsStr = "hideTheSeriesElementContentWithIndex('\(elementIndex)');"
         evaluateJavaScriptWithFunctionNameString(jsStr as String)
-    }
-    
-    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        drawChart()
-    }
-    
-    open func webViewDidFinishLoad(_ webView: UIWebView) {
-        drawChart()
-    }
-    
-    private func drawChart() {
-        evaluateJavaScriptWithFunctionNameString(optionsJson!)
-    }
-    
-    private func evaluateJavaScriptWithFunctionNameString (_ jsString: String) {
-        if #available(iOS 9.0, *) {
-            wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
-                if ((error) != nil) {
-                    let errorInfo =
-                    """
-                    
-                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
-                    ==========================================================================================
-                    ------------------------------------------------------------------------------------------
-                    \(error! as CVarArg)
-                    ------------------------------------------------------------------------------------------
-                    ==========================================================================================
-                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
-
-                    """
-                    print(errorInfo)
-                }
-            })
-        } else {
-            // Fallback on earlier versions
-            uiWebView?.stringByEvaluatingJavaScript(from: jsString)
-        }
-    }
-    
-    private func configureTheJavaScriptString(_ chartModel: AAChartModel) {
-        let modelString = chartModel.toJSON()
-        let chartViewContentWidth = contentWidth
-        
-        var chartViewContentHeight = contentHeight
-        if contentHeight == 0 {
-            chartViewContentHeight = frame.size.height
-        }
-        
-        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');",
-                                                          modelString!,
-                                                          chartViewContentWidth!,
-                                                          chartViewContentHeight!)
-        optionsJson = jsString as String;
     }
 }
 
