@@ -32,6 +32,7 @@
 
 
 import Foundation
+
 protocol JSONRepresentable {
     var JSONRepresentation: AnyObject { get }
 }
@@ -72,7 +73,7 @@ extension AASerializable {
         }
     }
     
-    public  func toDic() -> [String:Any]? {
+    public func toDic() -> [String:Any]? {
         let dictionary = JSONRepresentation as? [String:Any]
         return dictionary
     }

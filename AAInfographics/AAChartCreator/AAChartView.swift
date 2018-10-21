@@ -208,11 +208,11 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// Function of only refresh the chart data
     ///
     /// - Parameter chartModel: The instance object of chart model
-    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: Array<Any>) {
+    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [Any]) {
         let jsonData = try! JSONSerialization.data(withJSONObject: chartModelSeries,
                                                    options: JSONSerialization.WritingOptions.prettyPrinted)
         var str = String(data: jsonData, encoding: String.Encoding.utf8)!
-        str = (str.replacingOccurrences(of: "\n", with: "") as NSString) as String
+        str = str.replacingOccurrences(of: "\n", with: "") as String
         let jsString = NSString.localizedStringWithFormat("onlyRefreshTheChartDataWithSeries('%@');", str)
         self.evaluateJavaScriptWithFunctionNameString(jsString as String)
     }

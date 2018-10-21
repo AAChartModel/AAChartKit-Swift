@@ -435,7 +435,7 @@ public class AAChartModel: AASerializable {
     }
     
     
-    public  init() {
+    public init() {
         backgroundColor     = "#ffffff"
         titleColor          = "#000000"
         subTitleColor       = "#000000"

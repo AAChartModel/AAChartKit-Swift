@@ -58,8 +58,11 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         
         aaChartView = AAChartView()
         let chartViewWidth = self.view.frame.size.width
-        let chartViewHeight = self.view.frame.size.height-220
-        aaChartView?.frame = CGRect(x:0,y:60,width:chartViewWidth,height:chartViewHeight)
+        let chartViewHeight = self.view.frame.size.height - 220
+        aaChartView?.frame = CGRect(x: 0,
+                                    y: 60,
+                                    width: chartViewWidth,
+                                    height: chartViewHeight)
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
         aaChartView?.contentHeight = chartViewHeight-20
         self.view.addSubview(aaChartView!)
@@ -210,8 +213,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     }
     
     func configureTheSegmentControl() {
-        var segmentedNamesArray:NSArray
-        var typeLabelNameArr:NSArray
+        var segmentedNamesArray:[[String]]
+        var typeLabelNameArr:[String]
         
         if self.chartType == .Column
             || self.chartType == .Bar {
@@ -239,7 +242,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         }
         
         for  i in 0..<segmentedNamesArray.count {
-            let segment = UISegmentedControl.init(items: segmentedNamesArray[i] as? [Any])
+            let segment = UISegmentedControl.init(items: segmentedNamesArray[i] as [Any])
             segment.frame = CGRect(x: 20,
                                    y: 40.0 * CGFloat(i) + (self.view.frame.size.height - 145),
                                    width: self.view.frame.size.width - 40,
@@ -256,7 +259,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                     y: 40 * CGFloat(i) + (self.view.frame.size.height - 165),
                                     width: self.view.frame.size.width - 40,
                                     height: 20)
-            subLabel.text = typeLabelNameArr[i] as? String
+            subLabel.text = typeLabelNameArr[i] as String
             subLabel.backgroundColor = UIColor.clear
             subLabel.textColor = UIColor.lightGray
             self.view.addSubview(subLabel)
@@ -294,8 +297,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     }
     
     func configureTheSwith() {
-        let nameArr:NSArray
-        let switchWidth:CGFloat
+        let nameArr: [String]
+        let switchWidth: CGFloat
         
         if self.chartType == .Column || self.chartType == .Bar {
             nameArr = ["xReversed",
@@ -332,7 +335,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                     y: self.view.frame.size.height - 45,
                                     width: switchWidth,
                                     height: 35)
-            subLabel.text = nameArr[i] as? String
+            subLabel.text = nameArr[i] as String
             subLabel.backgroundColor = UIColor.clear
             subLabel.textColor = UIColor.lightGray
             self.view .addSubview(subLabel)
@@ -344,22 +347,16 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         switch switchView.tag {
         case 0:
             aaChartModel?.xAxisReversed(switchView.isOn)
-            break
         case 1:
             aaChartModel?.yAxisReversed(switchView.isOn)
-            break
         case 2:
             aaChartModel?.inverted(switchView.isOn)
-            break
         case 3:
             aaChartModel?.polar(switchView.isOn)
-            break
         case 4:
             aaChartModel?.dataLabelEnabled(switchView.isOn)
-            break
         case 5:
-            aaChartModel?.markerRadius(switchView.isOn ? 0:5)//折线连接点半径长度,为0时相当于没有折线连接点
-            break
+            aaChartModel?.markerRadius(switchView.isOn ? 0 : 5)//折线连接点半径长度,为0时相当于没有折线连接点
         default:
             break
         }
