@@ -214,8 +214,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     }
     
     func configureTheSegmentControl() {
-        var segmentedNamesArray:[[String]]
-        var typeLabelNameArr:[String]
+        let segmentedNamesArray:[[String]]
+        let typeLabelNameArr:[String]
         
         if chartType == .column
             || chartType == .bar {

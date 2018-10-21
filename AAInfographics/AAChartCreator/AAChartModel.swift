@@ -164,8 +164,8 @@ public class AAChartModel: AASerializable {
     private var tooltipEnabled: Bool?        //是否显示浮动提示框(默认显示)
     private var tooltipValueSuffix: String?  //浮动提示框单位后缀
     private var tooltipCrosshairs: Bool?     //是否显示准星线(默认显示)
-    private var colorsTheme: [Any]?    //图表主题颜色数组
-    private var series: [[String: Any]]?//图表的数据数组
+    private var colorsTheme: [Any]?          //图表主题颜色数组
+    private var series: [[String: Any]]?     //图表的数据数组
     private var legendEnabled: Bool?         //是否显示图例
     private var legendLayout: String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
     private var legendAlign: String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。

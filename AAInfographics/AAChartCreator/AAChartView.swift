@@ -45,7 +45,7 @@ public class AAChartView: UIView {
             }
         }
         get {
-            return  _scrollEnabled
+            return _scrollEnabled
         }
     }
     
@@ -65,11 +65,11 @@ public class AAChartView: UIView {
             }
         }
         get {
-            return  _isClearBackgroundColor
+            return _isClearBackgroundColor
         }
     }
     
-    public var isSeriesHidden: Bool?{
+    public var isSeriesHidden: Bool? {
         set {
             _isSeriesHidden = newValue
             if optionsJson != nil {
@@ -92,7 +92,7 @@ public class AAChartView: UIView {
             }
         }
         get {
-            return  _contentWidth
+            return _contentWidth
         }
     }
     
