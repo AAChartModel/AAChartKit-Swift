@@ -31,25 +31,26 @@
  */
 
  public class AASeriesElement: AASerializable {
-    private var type: String?
-    private var name: String?
-    private var data: [Any]?
-    private var color: Any?
-    private var lineWidth: Float?//折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
-    private var borderWidth: Float?//柱形图、条形图、扇形图等图形的描边宽度
-    private var borderColor: String?//柱形图、条形图、扇形图等图形的描边颜色
-    private var fillColor: Any?//折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色
-    private var fillOpacity: Float?//折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色透明度 Fill opacity for the area. Note that when you set an explicit fillColor, the fillOpacity is not applied. Instead, you should define the opacity in the fillColor with an rgba color definition. 默认是：0.75. https://api.hcharts.cn/highcharts#plotOptions.area.fillOpacity
-    private var threshold: Float?//The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
-    private var negativeColor: String?// The color for the parts of the graph or points that are below the threshold
-    private var dashStyle: String?
-    private var dataLabels: [String: Any]?
-    private var marker: [String: Any]?
-    private var step: Any?
-    private var colorByPoint: Bool?
-    private var allowPointSelect: Bool?
-    private var zIndex: Int?
-    private var innerSize: String?//内部圆环半径大小占比(内部圆环半径/扇形图半径)
+    
+    private var type: String?               //A chart type series. If the type option is not specified, it is inherited from `chart.type`.
+    private var name: String?               //The name of the series as shown in the legend, tooltip etc.
+    private var data: [Any]?                //An array of data points for the series
+    private var color: Any?                 //The main color or the series. In line type series it applies to the line and the point markers unless otherwise specified. In bar type series it applies to the bars unless a color is specified per point. The default value is pulled from the options.colors array.
+    private var lineWidth: Float?           //折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
+    private var borderWidth: Float?         //柱形图、条形图、扇形图等图形的描边宽度
+    private var borderColor: String?        //柱形图、条形图、扇形图等图形的描边颜色
+    private var fillColor: Any?             //折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色
+    private var fillOpacity: Float?         //折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色透明度 Fill opacity for the area. Note that when you set an explicit fillColor, the fillOpacity is not applied. Instead, you should define the opacity in the fillColor with an rgba color definition. 默认是：0.75. https://api.hcharts.cn/highcharts#plotOptions.area.fillOpacity
+    private var threshold: Float?           //The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
+    private var negativeColor: String?      //The color for the parts of the graph or points that are below the threshold
+    private var dashStyle: String?          //A name for the dash style to use for the graph. Applies only to series type having a graph, like line, spline, area and scatter in case it has a lineWidth.
+    private var dataLabels: [String: Any]?//Individual data label for each point. The options are the same as the ones for `plotOptions.series.dataLabels`.
+    private var marker: [String: Any]?//Enable or disable the point marker. If null, the markers are hidden when the data is dense, and shown for more widespread data points.
+    private var step: Any?            //Whether to apply steps to the line. Possible values are left, center and right.
+    private var colorByPoint: Bool?         //When using automatic point colors pulled from the `options.colors` collection, this option determines whether the chart should receive one color per series or one color per point.
+    private var allowPointSelect: Bool?     //Allow this series' points to be selected by clicking on the markers, bars or pie slices
+    private var zIndex: Int?                //Define the visual z index of the series.
+    private var innerSize: String?          //内部圆环半径大小占比(内部圆环半径/扇形图半径)
 
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {

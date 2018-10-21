@@ -34,10 +34,10 @@ import UIKit
 
 class OnlyRefreshChartDataVC: UIViewController {
     public var chartType: AAChartType?
-    public var step:Bool?
-    private var aaChartModel:AAChartModel?
-    private var aaChartView:AAChartView?
-    private var timer:Timer?
+    public var step: Bool?
+    private var aaChartModel: AAChartModel?
+    private var aaChartView: AAChartView?
+    private var timer: Timer?
     
     private var myBasicValue:Int?
     
@@ -50,10 +50,11 @@ class OnlyRefreshChartDataVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.title = "ONLY REFRESH CHART DATA"
         
-        self.setUpTheAAChartView()
+        view.backgroundColor = .white
+        title = "ONLY REFRESH CHART DATA"
+        
+        setUpTheAAChartView()
         
         //延时3秒执行
         let time: TimeInterval = 3.0
@@ -69,8 +70,8 @@ class OnlyRefreshChartDataVC: UIViewController {
     }
 
     func setUpTheAAChartView() {
-        let chartViewWidth  = self.view.frame.size.width
-        let chartViewHeight = self.view.frame.size.height-60
+        let chartViewWidth  = view.frame.size.width
+        let chartViewHeight = view.frame.size.height - 60
         
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x: 0,
@@ -80,10 +81,10 @@ class OnlyRefreshChartDataVC: UIViewController {
         aaChartView?.scrollEnabled = false
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
         aaChartView?.contentHeight = chartViewHeight - 20
-        self.view.addSubview(aaChartView!)
+        view.addSubview(aaChartView!)
         
         aaChartModel = AAChartModel()
-            .chartType(self.chartType!)//图形类型
+            .chartType(chartType!)//图形类型
             .title("CYBERPUNK")//图形标题
             .subtitle("2077/08/08")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
@@ -91,8 +92,8 @@ class OnlyRefreshChartDataVC: UIViewController {
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .stacking(.normal)
         
-        if self.chartType == .area
-            || self.chartType == .areaSpline {
+        if chartType == .area
+            || chartType == .areaSpline {
             let gradientColorDic = [
                 "linearGradient": [
                     "x1": 0,
@@ -111,12 +112,12 @@ class OnlyRefreshChartDataVC: UIViewController {
                         .name("Tokyo")
                         .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                         .color(gradientColorDic)
-                        .step(self.step!)
+                        .step(step!)
                         .toDic()!,
                     AASeriesElement()
                         .name("New York")
                         .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                        .step(self.step!)
+                        .step(step!)
                         .toDic()!,
                     ])
             aaChartModel?.symbolStyle(.innerBlank)
@@ -138,15 +139,15 @@ class OnlyRefreshChartDataVC: UIViewController {
                         .name("Tokyo")
                         .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
                         .color(gradientColorDic)
-                        .step(self.step!)
+                        .step(step!)
                         .toDic()!,
                     AASeriesElement()
                         .name("Berlin")
                         .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                        .step(self.step!)
+                        .step(step!)
                         .toDic()!,
                     ])
-            if self.step! != true {
+            if step! != true {
                 aaChartModel?.symbolStyle(.borderBlank)
                 .markerRadius(7)
             }

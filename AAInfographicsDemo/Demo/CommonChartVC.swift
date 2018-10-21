@@ -40,37 +40,38 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.navigationBar.barTintColor = kRGBColorFromHex(rgbValue: 0x22324c)
+        navigationController?.navigationBar.barTintColor = kRGBColorFromHex(rgbValue: 0x22324c)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = .white
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = kRGBColorFromHex(rgbValue: 0x22324c)
-        self.title = self.chartType.map { $0.rawValue }
-        self.configureTheSwith()
-        self.configureTheSegmentControl()
+        view.backgroundColor = kRGBColorFromHex(rgbValue: 0x22324c)
+        title = chartType.map { $0.rawValue }
+        
+        configureTheSwith()
+        configureTheSegmentControl()
         
         aaChartView = AAChartView()
-        let chartViewWidth = self.view.frame.size.width
-        let chartViewHeight = self.view.frame.size.height - 220
+        let chartViewWidth = view.frame.size.width
+        let chartViewHeight = view.frame.size.height - 220
         aaChartView?.frame = CGRect(x: 0,
                                     y: 60,
                                     width: chartViewWidth,
                                     height: chartViewHeight)
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
         aaChartView?.contentHeight = chartViewHeight-20
-        self.view.addSubview(aaChartView!)
+        view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false//禁止图表内容滚动
         aaChartView?.isClearBackgroundColor = true
         
         aaChartModel = AAChartModel()
-            .chartType(self.chartType!)//图形类型
+            .chartType(chartType!)//图形类型
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
             .axisColor("#ffffff")
             .title("")//图形标题
@@ -99,7 +100,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                     .toDic()!,
                 ])
         
-        self.configureTheStyleForDifferentTypeChart()
+        configureTheStyleForDifferentTypeChart()
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
         
@@ -107,9 +108,9 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
     
     func configureTheStyleForDifferentTypeChart() {
         
-        if (self.chartType == .area && self.step == true)
-            || (self.chartType == .line && self.step == true) {
-            aaChartModel = self.chartType == .area ? aaChartModel?.gradientColorEnable(true) : aaChartModel?.gradientColorEnable(false)
+        if (chartType == .area && step == true)
+            || (chartType == .line && step == true) {
+            aaChartModel = chartType == .area ? aaChartModel?.gradientColorEnable(true) : aaChartModel?.gradientColorEnable(false)
             aaChartModel?.series([
                 AASeriesElement()
                     .name("Berlin")
@@ -128,16 +129,16 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                     .toDic()!,
                 ])
             
-        } else if self.chartType == .column
-            || self.chartType == .bar {
+        } else if chartType == .column
+            || chartType == .bar {
             aaChartModel?
                 .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
                 .legendEnabled(true)
                 .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
                 .animationType(.bounce)
                 .animationDuration(1200)
-        } else if self.chartType == .area
-            || self.chartType == .areaSpline {
+        } else if chartType == .area
+            || chartType == .areaSpline {
             aaChartModel?
                 .symbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
                 .animationType(.easeOutQuart)
@@ -146,7 +147,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .markerRadius(5)
                 .symbol(.circle)
             
-            if self.chartType == .areaSpline {
+            if chartType == .areaSpline {
                 let gradientColorDic = [
                     "linearGradient": [
                         "x1": 0,
@@ -182,12 +183,12 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                         ])
             }
             
-        } else if self.chartType == .line
-            || self.chartType == .spline {
+        } else if chartType == .line
+            || chartType == .spline {
             aaChartModel?
                 .symbolStyle(.borderBlank)//设置折线连接点样式为:边缘白色
                 .markerRadius(6)
-            if self.chartType == .spline {
+            if chartType == .spline {
                 aaChartModel?
                     .animationType(.swingFromTo)
                     .series([
@@ -216,8 +217,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         var segmentedNamesArray:[[String]]
         var typeLabelNameArr:[String]
         
-        if self.chartType == .column
-            || self.chartType == .bar {
+        if chartType == .column
+            || chartType == .bar {
             segmentedNamesArray = [["No stacking",
                                     "Normal stacking",
                                     "Percent stacking"],
@@ -244,25 +245,27 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         for  i in 0..<segmentedNamesArray.count {
             let segment = UISegmentedControl.init(items: segmentedNamesArray[i] as [Any])
             segment.frame = CGRect(x: 20,
-                                   y: 40.0 * CGFloat(i) + (self.view.frame.size.height - 145),
-                                   width: self.view.frame.size.width - 40,
+                                   y: 40.0 * CGFloat(i) + (view.frame.size.height - 145),
+                                   width: view.frame.size.width - 40,
                                    height: 20)
             segment.tag = i;
-            segment.tintColor = UIColor.red
+            segment.tintColor = .red
             segment.selectedSegmentIndex = 0
-            segment.addTarget(self, action:#selector(segmentDidSelected(segmentedControl:)), for:.valueChanged)
-            self.view.addSubview(segment)
+            segment.addTarget(self,
+                              action: #selector(segmentDidSelected(segmentedControl:)),
+                              for:.valueChanged)
+            view.addSubview(segment)
             
             let subLabel = UILabel()
             subLabel.font = UIFont(name: "EuphemiaUCAS", size: 12.0)
             subLabel.frame = CGRect(x: 20,
-                                    y: 40 * CGFloat(i) + (self.view.frame.size.height - 165),
-                                    width: self.view.frame.size.width - 40,
+                                    y: 40 * CGFloat(i) + (view.frame.size.height - 165),
+                                    width: view.frame.size.width - 40,
                                     height: 20)
             subLabel.text = typeLabelNameArr[i] as String
-            subLabel.backgroundColor = UIColor.clear
-            subLabel.textColor = UIColor.lightGray
-            self.view.addSubview(subLabel)
+            subLabel.backgroundColor = .clear
+            subLabel.textColor = .lightGray
+            view.addSubview(subLabel)
         }
     }
     
@@ -276,7 +279,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             aaChartModel?.stacking(AAChartStackingType(rawValue: stackingArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             
         case 1:
-            if self.chartType == .column || self.chartType == .bar {
+            if chartType == .column || chartType == .bar {
                 let borderRadiusArr = [0,10,100]
                 aaChartModel?.borderRadius(borderRadiusArr[segmentedControl.selectedSegmentIndex])
             } else {
@@ -297,13 +300,13 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
         let nameArr: [String]
         let switchWidth: CGFloat
         
-        if self.chartType == .column || self.chartType == .bar {
+        if chartType == .column || chartType == .bar {
             nameArr = ["xReversed",
                        "yReversed",
                        "xInverted",
                        "Polarization",
                        "DataShow",];
-            switchWidth = (self.view.frame.size.width - 40) / 5
+            switchWidth = (view.frame.size.width - 40) / 5
         } else {
             nameArr = ["xReversed",
                        "yReversed",
@@ -311,31 +314,33 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                        "Polarization",
                        "DataShow",
                        "HideMarker"];
-            switchWidth = (self.view.frame.size.width - 40) / 6
+            switchWidth = (view.frame.size.width - 40) / 6
         }
         
         for  i in 0..<nameArr.count {
             let uiswitch = UISwitch()
             uiswitch.frame = CGRect(x: switchWidth * CGFloat(i) + 20,
-                                    y: self.view.frame.size.height - 70,
+                                    y: view.frame.size.height - 70,
                                     width: switchWidth,
                                     height: 20)
             uiswitch.isOn = false
             uiswitch.tag = i;
 //            uiswitch.onTintColor = UIColor.blue
-            uiswitch.addTarget(self, action: #selector(switchDidChange(switchView:)), for: .valueChanged)
-            self.view.addSubview(uiswitch)
+            uiswitch.addTarget(self,
+                               action: #selector(switchDidChange(switchView:)),
+                               for: .valueChanged)
+            view.addSubview(uiswitch)
             
             let subLabel = UILabel()
             subLabel.font = UIFont(name: "EuphemiaUCAS", size: nameArr.count == 5 ? 10.0 : 9.0)
             subLabel.frame = CGRect(x: switchWidth * CGFloat(i) + 20,
-                                    y: self.view.frame.size.height - 45,
+                                    y: view.frame.size.height - 45,
                                     width: switchWidth,
                                     height: 35)
             subLabel.text = nameArr[i] as String
-            subLabel.backgroundColor = UIColor.clear
-            subLabel.textColor = UIColor.lightGray
-            self.view .addSubview(subLabel)
+            subLabel.backgroundColor = .clear
+            subLabel.textColor = .lightGray
+            view .addSubview(subLabel)
         }
     }
     

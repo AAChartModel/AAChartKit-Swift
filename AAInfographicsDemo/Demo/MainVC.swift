@@ -41,7 +41,7 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "AAInfographics"
+        title = "AAInfographics"
         
         chartTypeTitleArr = [
             /*基础类型图表*/
@@ -192,46 +192,46 @@ class MainVC: UIViewController {
                 ]
         ]
         
-        self.view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         
         let myTableView = UITableView()
         myTableView.delegate = self
         myTableView.dataSource = self
-        myTableView.backgroundColor = UIColor.white
-        self.view.addSubview(myTableView)
+        myTableView.backgroundColor = .white
+        view.addSubview(myTableView)
 
         myTableView.translatesAutoresizingMaskIntoConstraints = false
-        myTableView.superview!.addConstraints(self.configureTheConstraintArray(childView: myTableView, fatherView: self.view))//Note:父控件添加约束
+        myTableView.superview!.addConstraints(configureTheConstraintArray(childView: myTableView, fatherView: view))//Note:父控件添加约束
         
     }
  
     func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
         return [NSLayoutConstraint(item: childView,
-                                   attribute: NSLayoutConstraint.Attribute.left,
-                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   attribute: .left,
+                                   relatedBy: .equal,
                                    toItem: fatherView,
-                                   attribute: NSLayoutConstraint.Attribute.left,
+                                   attribute: .left,
                                    multiplier: 1.0,
                                    constant: 0),
                 NSLayoutConstraint(item: childView,
-                                   attribute: NSLayoutConstraint.Attribute.right,
-                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   attribute: .right,
+                                   relatedBy: .equal,
                                    toItem: fatherView,
-                                   attribute: NSLayoutConstraint.Attribute.right,
+                                   attribute: .right,
                                    multiplier: 1.0,
                                    constant: 0),
                 NSLayoutConstraint(item: childView,
-                                   attribute: NSLayoutConstraint.Attribute.top,
-                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   attribute: .top,
+                                   relatedBy: .equal,
                                    toItem: fatherView,
-                                   attribute: NSLayoutConstraint.Attribute.top,
+                                   attribute: .top,
                                    multiplier: 1.0,
                                    constant: 0),
                 NSLayoutConstraint(item: childView,
-                                   attribute: NSLayoutConstraint.Attribute.bottom,
-                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   attribute: .bottom,
+                                   relatedBy: .equal,
                                    toItem: fatherView,
-                                   attribute: NSLayoutConstraint.Attribute.bottom,
+                                   attribute: .bottom,
                                    multiplier: 1.0,
                                    constant: 0)]
     }
@@ -276,74 +276,81 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                                "Hide Or Show Chart Series---隐藏或显示内容"]
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
-        sectionTitleLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        sectionTitleLabel.textAlignment = NSTextAlignment.center
+        sectionTitleLabel.font = .boldSystemFont(ofSize: 14)
+        sectionTitleLabel.textAlignment = .center
         view.addSubview(sectionTitleLabel)
         
         sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        sectionTitleLabel.superview!.addConstraints(self.configureTheConstraintArray(childView: sectionTitleLabel, fatherView: view))
+        sectionTitleLabel.superview!.addConstraints(configureTheConstraintArray(childView: sectionTitleLabel, fatherView: view))
         
         return view
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let identifer = "cell"
+        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: identifer)
+        if cell == nil {
+            cell = UITableViewCell.init(style: .default, reuseIdentifier: identifer)
+        }
+        
         let cellTitle = chartTypeTitleArr[indexPath.section][indexPath.row]
-        cell.textLabel?.text = cellTitle
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
-        cell.textLabel?.textColor = UIColor.darkGray
-        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        cell?.textLabel?.text = cellTitle
+        cell?.textLabel?.font = .systemFont(ofSize: 13)
+        cell?.textLabel?.textColor = .darkGray
+        cell?.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             /*基础类型图表*/
-            let commonChartVC  = CommonChartVC()
-            commonChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            let vc = CommonChartVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             if indexPath.row == 4 || indexPath.row == 5 {
-                commonChartVC.step = true
+                vc.step = true
             }
-            self.navigationController?.pushViewController(commonChartVC, animated: true)
-            
+            navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 1 {
             /*特殊类型图表*/
-            let specialChartVC = SpecialChartVC()
-            specialChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
-            self.navigationController?.pushViewController(specialChartVC, animated: true)
-            
+            let vc = SpecialChartVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 2 {
-            let mixedChartVC = MixedChartVC()
-            mixedChartVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? String
-            self.navigationController?.pushViewController(mixedChartVC, animated: true)
+            /*混合类型图表*/
+            let vc = MixedChartVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? String
+            navigationController?.pushViewController(vc, animated: true)
         }  else if indexPath.section == 3 {
-            let refreshchartDataVC = OnlyRefreshChartDataVC()
-            refreshchartDataVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
-            refreshchartDataVC.step = false
+            /*动态刷新图表数据*/
+            let vc = OnlyRefreshChartDataVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            vc.step = false
             if indexPath.row == 4 || indexPath.row == 5 {
-                refreshchartDataVC.step = true
+                vc.step = true
             }
-            self.navigationController?.pushViewController(refreshchartDataVC, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 4 {
             /*同时显示多个图表*/
-            let manyChartVC = ShowManyChartViewVC()
-            self.navigationController?.pushViewController(manyChartVC, animated: true)
+            let vc = ShowManyChartViewVC()
+            navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 5 {
-            let animationTypeVC = AnimationTypeVC()
-            animationTypeVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
-            animationTypeVC.step = false
+            /*图表渲染动画*/
+            let vc = AnimationTypeVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            vc.step = false
             if indexPath.row == 4 || indexPath.row == 5 {
-                animationTypeVC.step = true
+                vc.step = true
             }
-            self.navigationController?.pushViewController(animationTypeVC, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 6 {
-            let seriesHideOrShowVC = ChartSeriesHideOrShowVC()
-            seriesHideOrShowVC.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
-            seriesHideOrShowVC.step = false
+            /*图表 sereies 元素显示或隐藏*/
+            let vc = ChartSeriesHideOrShowVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            vc.step = false
             if indexPath.row == 4 || indexPath.row == 5 {
-                seriesHideOrShowVC.step = true
+                vc.step = true
             }
-            self.navigationController?.pushViewController(seriesHideOrShowVC, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     

@@ -40,17 +40,18 @@ class ChartSeriesHideOrShowVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "SeriesHideOrShow"
-        self.view.backgroundColor = UIColor.white
-        self.setUpSegmentedControls()
-        self.setUpTheHideChartSeriesSwitch()
+        title = "SeriesHideOrShow"
+        view.backgroundColor = .white
         
-        self.setUpTheAAChartView()
+        setUpSegmentedControls()
+        setUpTheHideChartSeriesSwitch()
+        
+        setUpTheAAChartView()
     }
     
     func setUpTheAAChartView() {
-        let chartViewWidth  = self.view.frame.size.width
-        let chartViewHeight = self.view.frame.size.height - 220
+        let chartViewWidth  = view.frame.size.width
+        let chartViewHeight = view.frame.size.height - 220
 
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x: 0,
@@ -60,18 +61,18 @@ class ChartSeriesHideOrShowVC: UIViewController {
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
         aaChartView?.contentHeight = chartViewHeight - 20
         aaChartView?.scrollEnabled = false
-        self.view.addSubview(aaChartView!)
+        view.addSubview(aaChartView!)
         
         var  aaChartModel = AAChartModel()
-            .chartType(self.chartType!)//图形类型
+            .chartType(chartType!)//图形类型
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .title("CHART SERIES HIDE OR SHOW")//图形标题
             .subtitle("2020/08/08")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
-            .stacking(.none)
+            .stacking(.normal)
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         
-        if self.chartType == .column || self.chartType == .bar {
+        if chartType == .column || chartType == .bar {
             aaChartModel = aaChartModel.series([
                 AASeriesElement()
                     .name("Tokyo")
@@ -96,22 +97,22 @@ class ChartSeriesHideOrShowVC: UIViewController {
                 AASeriesElement()
                     .name("Tokyo Hot")
                     .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
-                    .step(self.step!)
+                    .step(step!)
                     .toDic()!,
                 AASeriesElement()
                     .name("Berlin Hot")
                     .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
-                    .step(self.step!)
+                    .step(step!)
                     .toDic()!,
                 AASeriesElement()
                     .name("New York Hot")
                     .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
-                    .step(self.step!)
+                    .step(step!)
                     .toDic()!,
                 AASeriesElement()
                     .name("London Hot")
                     .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
-                    .step(self.step!)
+                    .step(step!)
                     .toDic()!,
                 ])
         }
@@ -139,25 +140,27 @@ class ChartSeriesHideOrShowVC: UIViewController {
         for  i in 0..<segmentedNamesArray.count {
             let segment = UISegmentedControl.init(items: segmentedNamesArray[i])
             segment.frame = CGRect(x: 20,
-                                   y: 40.0 * CGFloat(i) + (self.view.frame.size.height - 145),
-                                   width: self.view.frame.size.width-40,
+                                   y: 40.0 * CGFloat(i) + (view.frame.size.height - 145),
+                                   width: view.frame.size.width-40,
                                    height: 20)
             segment.tag = i;
-            segment.tintColor = UIColor.red
+            segment.tintColor = .red
             segment.selectedSegmentIndex = 0
-            segment.addTarget(self, action: #selector(segmentDidSelected(segmentedControl:)), for: .valueChanged)
-            self.view.addSubview(segment)
+            segment.addTarget(self,
+                              action: #selector(segmentDidSelected(segmentedControl:)),
+                              for: .valueChanged)
+            view.addSubview(segment)
             
             let subLabel = UILabel()
             subLabel.font = UIFont(name: "EuphemiaUCAS", size: 12.0)
             subLabel.frame = CGRect(x: 20,
-                                    y: 40 * CGFloat(i) + (self.view.frame.size.height - 165),
-                                    width: self.view.frame.size.width-40,
+                                    y: 40 * CGFloat(i) + (view.frame.size.height - 165),
+                                    width: view.frame.size.width-40,
                                     height: 20)
             subLabel.text = typeLabelNameArr[i]
-            subLabel.backgroundColor = UIColor.clear
-            subLabel.textColor = UIColor.lightGray
-            self.view.addSubview(subLabel)
+            subLabel.backgroundColor = .clear
+            subLabel.textColor = .lightGray
+            view.addSubview(subLabel)
         }
     }
     
@@ -173,23 +176,25 @@ class ChartSeriesHideOrShowVC: UIViewController {
         let i = 0
         let uiswitch = UISwitch()
         uiswitch.frame = CGRect(x: 100 * CGFloat(i) + 20,
-                                y: self.view.frame.size.height - 70,
+                                y: view.frame.size.height - 70,
                                 width: 100,
                                 height: 20)
         uiswitch.isOn = false
-        uiswitch.addTarget(self, action: #selector(switchDidChange(switchView:)), for:.valueChanged)
-        self.view.addSubview(uiswitch)
+        uiswitch.addTarget(self,
+                           action: #selector(switchDidChange(switchView:)),
+                           for:.valueChanged)
+        view.addSubview(uiswitch)
         
         let subLabel = UILabel()
         subLabel.font = UIFont(name: "EuphemiaUCAS", size: 10)
         subLabel.frame = CGRect(x: 100 * CGFloat(i) + 20,
-                                y:self.view.frame.size.height - 45,
+                                y:view.frame.size.height - 45,
                                 width: 200,
                                 height: 35)
         subLabel.text = "Hide Chart Whole Series Content"
-        subLabel.backgroundColor = UIColor.clear
-        subLabel.textColor = UIColor.lightGray
-        self.view .addSubview(subLabel)
+        subLabel.backgroundColor = .clear
+        subLabel.textColor = .lightGray
+        view .addSubview(subLabel)
     }
 
     @objc func switchDidChange(switchView:UISwitch) {

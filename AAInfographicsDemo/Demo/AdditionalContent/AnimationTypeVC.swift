@@ -41,7 +41,8 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        
+        view.backgroundColor = .white
         
         chartAnimationTypeArr = [
             .easeInQuad,
@@ -80,20 +81,20 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
             .easeTo,
         ]
         
-        self.setUpTheAnimationTypeTableView()
-        self.setUpTheAAChartView()
+        setUpTheAnimationTypeTableView()
+        setUpTheAAChartView()
     }
     
     func setUpTheAnimationTypeTableView() {
         let animationTypeTableView = UITableView()
-        animationTypeTableView.frame = CGRect(x: self.view.frame.size.width - 115,
+        animationTypeTableView.frame = CGRect(x: view.frame.size.width - 115,
                                               y: 0,
                                               width: 115,
-                                              height: self.view.frame.size.height - 60)
+                                              height: view.frame.size.height - 60)
         animationTypeTableView.delegate = self
         animationTypeTableView.dataSource = self
         animationTypeTableView.backgroundColor = UIColor.white
-        self.view.addSubview(animationTypeTableView)
+        view.addSubview(animationTypeTableView)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -115,8 +116,8 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
     }
     
     func setUpTheAAChartView() {
-        let chartViewWidth  = self.view.frame.size.width-115
-        let chartViewHeight = self.view.frame.size.height-60
+        let chartViewWidth  = view.frame.size.width - 115
+        let chartViewHeight = view.frame.size.height - 60
         
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x: 0,
@@ -126,17 +127,17 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         aaChartView?.scrollEnabled = false
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
         aaChartView?.contentHeight = chartViewHeight - 20
-        self.view.addSubview(aaChartView!)
+        view.addSubview(aaChartView!)
 
         aaChartModel = AAChartModel()
-            .chartType(self.chartType!)//图形类型
+            .chartType(chartType!)//图形类型
             .title("都市天气")//图形标题
             .subtitle("2020年08月08日")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         
-        if self.chartType == .area || self.chartType == .areaSpline {
+        if chartType == .area || chartType == .areaSpline {
           aaChartModel?
             .gradientColorEnable(true)
             .markerRadius(0)
@@ -144,7 +145,7 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
                 AASeriesElement()
                     .name("Tokyo")
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .step(self.step!)
+                    .step(step!)
                     .toDic()!,
                 ])
         } else {
@@ -165,7 +166,7 @@ class AnimationTypeVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
                         .name("Tokyo")
                         .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
                         .color(gradientColorDic)
-                        .step(self.step!)
+                        .step(step!)
                         .toDic()!,
                     ])
         }

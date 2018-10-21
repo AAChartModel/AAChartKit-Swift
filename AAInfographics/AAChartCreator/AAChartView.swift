@@ -53,13 +53,13 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         set {
             _isClearBackgroundColor = newValue
             if _isClearBackgroundColor == true {
-                self.backgroundColor = UIColor.clear
+                backgroundColor = .clear
                 if #available(iOS 9.0, *) {
-                    wkWebView?.backgroundColor = UIColor.clear
+                    wkWebView?.backgroundColor = .clear
                     wkWebView?.isOpaque = false
                 } else {
                     // Fallback on earlier versions
-                    uiWebView?.backgroundColor = UIColor.clear
+                    uiWebView?.backgroundColor = .clear
                     uiWebView?.isOpaque = false
                 }
             }
@@ -72,9 +72,9 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     public var isSeriesHidden: Bool?{
         set {
             _isSeriesHidden = newValue
-            if self.optionsJson != nil {
+            if optionsJson != nil {
                 let jsStr = "setChartSeriesHidden(\(String(describing: _isSeriesHidden)))"
-                self.evaluateJavaScriptWithFunctionNameString(jsStr)
+                evaluateJavaScriptWithFunctionNameString(jsStr)
             }
         }
         get {
@@ -86,9 +86,9 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     public var contentWidth: CGFloat? {
         set {
             _contentWidth = newValue
-            if self.optionsJson != nil {
+            if optionsJson != nil {
                 let jsStr = "setTheChartViewContentWidth(\(String(describing: _contentWidth)))"
-                self.evaluateJavaScriptWithFunctionNameString(jsStr)
+                evaluateJavaScriptWithFunctionNameString(jsStr)
             }
         }
         get {
@@ -100,9 +100,9 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     public var contentHeight: CGFloat? {
         set {
             _contentHeight = newValue
-            if self.optionsJson != nil {
+            if optionsJson != nil {
                 let jsStr = "setTheChartViewContentHeight(\(String(describing: _contentHeight)))"
-                self.evaluateJavaScriptWithFunctionNameString(jsStr)
+                evaluateJavaScriptWithFunctionNameString(jsStr)
             }
         }
         get {
@@ -123,61 +123,61 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setUpBasicView()
+        setUpBasicView()
     }
     
     private func setUpBasicView() {
-        self.contentWidth = 0
-        self.contentHeight = 0
-        //        self.backgroundColor =  UIColor.white
+        contentWidth = 0
+        contentHeight = 0
+        //        backgroundColor =  .white
         if #available(iOS 9.0, *) {
             wkWebView = WKWebView()
-            wkWebView?.backgroundColor = UIColor.white
+            wkWebView?.backgroundColor = .white
             wkWebView?.navigationDelegate = self
-            self.addSubview(wkWebView!)
+            addSubview(wkWebView!)
             wkWebView?.translatesAutoresizingMaskIntoConstraints = false
-            wkWebView?.superview!.addConstraints(self.configureTheConstraintArray(childView: wkWebView!,
+            wkWebView?.superview!.addConstraints(configureTheConstraintArray(childView: wkWebView!,
                                                                                   fatherView: self)) //Note:父控件添加约束
         } else {
             // Fallback on earlier versions
             uiWebView = UIWebView()
-            uiWebView?.backgroundColor = UIColor.white
+            uiWebView?.backgroundColor = .white
             uiWebView?.delegate = self
-            self.addSubview(uiWebView!)
+            addSubview(uiWebView!)
             uiWebView?.translatesAutoresizingMaskIntoConstraints = false
-            uiWebView?.superview!.addConstraints(self.configureTheConstraintArray(childView: uiWebView!,
+            uiWebView?.superview!.addConstraints(configureTheConstraintArray(childView: uiWebView!,
                                                                                   fatherView: self)) //Note:父控件添加约束
         }
     }
     
    private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
         return [NSLayoutConstraint(item: childView,
-                                   attribute: NSLayoutConstraint.Attribute.left,
-                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   attribute: .left,
+                                   relatedBy: .equal,
                                    toItem: fatherView,
-                                   attribute: NSLayoutConstraint.Attribute.left,
-                                   multiplier: 1.0,
+                                   attribute: .left,
+                                   multiplier: 1,
                                    constant: 0),
                 NSLayoutConstraint(item: childView,
-                                   attribute: NSLayoutConstraint.Attribute.right,
-                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   attribute: .right,
+                                   relatedBy: .equal,
                                    toItem: fatherView,
-                                   attribute: NSLayoutConstraint.Attribute.right,
-                                   multiplier: 1.0,
+                                   attribute: .right,
+                                   multiplier: 1,
                                    constant: 0),
                 NSLayoutConstraint(item: childView,
-                                   attribute: NSLayoutConstraint.Attribute.top,
-                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   attribute: .top,
+                                   relatedBy: .equal,
                                    toItem: fatherView,
-                                   attribute: NSLayoutConstraint.Attribute.top,
-                                   multiplier: 1.0,
+                                   attribute: .top,
+                                   multiplier: 1,
                                    constant: 0),
                 NSLayoutConstraint(item: childView,
-                                   attribute: NSLayoutConstraint.Attribute.bottom,
-                                   relatedBy: NSLayoutConstraint.Relation.equal,
+                                   attribute: .bottom,
+                                   relatedBy: .equal,
                                    toItem: fatherView,
-                                   attribute: NSLayoutConstraint.Attribute.bottom,
-                                   multiplier: 1.0,
+                                   attribute: .bottom,
+                                   multiplier: 1,
                                    constant: 0)]
     }
     
@@ -190,7 +190,7 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// - Parameter chartModel: The instance object of chart model
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
         
-        self.configureTheJavaScriptString(chartModel)
+        configureTheJavaScriptString(chartModel)
         
         let path = Bundle.main.path(forResource: "AAChartView",
                                     ofType: "html",
@@ -208,21 +208,21 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// Function of only refresh the chart data
     ///
     /// - Parameter chartModel: The instance object of chart model
-    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [Any]) {
+    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [[String: AnyObject]]) {
         let jsonData = try! JSONSerialization.data(withJSONObject: chartModelSeries,
                                                    options: JSONSerialization.WritingOptions.prettyPrinted)
         var str = String(data: jsonData, encoding: String.Encoding.utf8)!
         str = str.replacingOccurrences(of: "\n", with: "") as String
         let jsStr = "onlyRefreshTheChartDataWithSeries('\(str)');"
-        self.evaluateJavaScriptWithFunctionNameString(jsStr)
+        evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
     ///  Function of refreshing whole chart view content
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_refreshChartWholeContentWithChartModel(_ chartModel: AAChartModel) {
-        self.configureTheJavaScriptString(chartModel)
-        self.drawChart()
+        configureTheJavaScriptString(chartModel)
+        drawChart()
     }
     
     /// Show the series element content with index
@@ -230,7 +230,7 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// - Parameter elementIndex: elementIndex element index
     public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
         let jsStr = "showTheSeriesElementContentWithIndex('\(elementIndex)');"
-        self.evaluateJavaScriptWithFunctionNameString(jsStr)
+        evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
     ///  Hide the series element content with index
@@ -238,19 +238,19 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     /// - Parameter elementIndex: element index
     public func aa_hideTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
         let jsStr = "hideTheSeriesElementContentWithIndex('\(elementIndex)');"
-        self.evaluateJavaScriptWithFunctionNameString(jsStr as String)
+        evaluateJavaScriptWithFunctionNameString(jsStr as String)
     }
     
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        self.drawChart()
+        drawChart()
     }
     
     open func webViewDidFinishLoad(_ webView: UIWebView) {
-        self.drawChart()
+        drawChart()
     }
     
     private func drawChart() {
-        self.evaluateJavaScriptWithFunctionNameString(optionsJson!)
+        evaluateJavaScriptWithFunctionNameString(optionsJson!)
     }
     
     private func evaluateJavaScriptWithFunctionNameString (_ jsString: String) {
@@ -280,11 +280,11 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     
     private func configureTheJavaScriptString(_ chartModel: AAChartModel) {
         let modelString = chartModel.toJSON()
-        let chartViewContentWidth = self.contentWidth
+        let chartViewContentWidth = contentWidth
         
-        var chartViewContentHeight = self.contentHeight
-        if self.contentHeight == 0 {
-            chartViewContentHeight = self.frame.size.height
+        var chartViewContentHeight = contentHeight
+        if contentHeight == 0 {
+            chartViewContentHeight = frame.size.height
         }
         
         let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');",

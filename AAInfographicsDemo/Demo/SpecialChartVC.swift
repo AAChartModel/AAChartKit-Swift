@@ -40,8 +40,8 @@ class SpecialChartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.white
-        self.title = self.chartType?.rawValue
+        view.backgroundColor = .white
+        title = chartType?.rawValue
         
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
         let subLabel = UILabel()
@@ -50,22 +50,22 @@ class SpecialChartVC: UIViewController {
                                 width: 5,
                                 height: 5)
         subLabel.text = "不要将 AAChartView 作为第一个子视图添加到 ViewController 上,否则会有 bug,不信你试试注释掉我"
-        self.view .addSubview(subLabel)
+        view .addSubview(subLabel)
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
         
       
         aaChartView = AAChartView()
-        let chartWidth = self.view.frame.size.width
-        let chartHeight = self.view.frame.size.height  
+        let chartWidth = view.frame.size.width
+        let chartHeight = view.frame.size.height
         aaChartView?.frame = CGRect(x: 0,
                                     y: 60,
                                     width: chartWidth,
                                     height: chartHeight)
-        aaChartView?.contentHeight = self.view.frame.size.height - 80
-        self.view.addSubview(aaChartView!)
+        aaChartView?.contentHeight = view.frame.size.height - 80
+        view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false
         
-        self.configureTheAAChartModel(self.chartType!)
+        configureTheAAChartModel(chartType!)
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
         

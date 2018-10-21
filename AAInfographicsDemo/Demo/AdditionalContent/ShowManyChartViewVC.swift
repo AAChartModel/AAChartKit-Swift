@@ -36,17 +36,18 @@ class ShowManyChartViewVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "同时显示多个图表"
-        self.view.backgroundColor = UIColor.white
         
-        self.setUpTheAAChartViewOne()
-        self.setUpTheAAChartViewTwo()
+        title = "同时显示多个图表"
+        view.backgroundColor = .white
+        
+        setUpTheAAChartViewOne()
+        setUpTheAAChartViewTwo()
         
     }
     
     func setUpTheAAChartViewOne() {
-        let chartViewWidth  = self.view.frame.size.width
-        let screenHeight = self.view.frame.size.height-60
+        let chartViewWidth  = view.frame.size.width
+        let screenHeight = view.frame.size.height - 60
         
         let aaChartView = AAChartView()
         aaChartView.frame = CGRect(x: 0,
@@ -54,7 +55,7 @@ class ShowManyChartViewVC: UIViewController {
                                    width: chartViewWidth,
                                    height: screenHeight / 2)
         aaChartView.scrollEnabled = false
-        self.view.addSubview(aaChartView)
+        view.addSubview(aaChartView)
         
         let  aaChartModel = AAChartModel()
             .chartType(.bar)//图形类型
@@ -88,8 +89,8 @@ class ShowManyChartViewVC: UIViewController {
     }
     
     func setUpTheAAChartViewTwo() {
-        let chartViewWidth  = self.view.frame.size.width
-        let screenHeight = self.view.frame.size.height-60
+        let chartViewWidth  = view.frame.size.width
+        let screenHeight = view.frame.size.height - 60
         
         let aaChartView2 = AAChartView()
         aaChartView2.frame = CGRect(x:0,
@@ -97,7 +98,7 @@ class ShowManyChartViewVC: UIViewController {
                                     width:chartViewWidth,
                                     height:screenHeight / 2)
         aaChartView2.scrollEnabled = false
-        self.view.addSubview(aaChartView2)
+        view.addSubview(aaChartView2)
         
         let  aaChartModel2 = AAChartModel()
             .chartType(.area)//图形类型
