@@ -162,7 +162,6 @@ class MixedChartVC: UIViewController {
                         .zIndex(0)
                         .toDic()!,
                     ])
-            break
             
         case "columnrangeMixedLine":
             aaChartModel = AAChartModel()
@@ -210,7 +209,6 @@ class MixedChartVC: UIViewController {
                         .toDic()!,
                     ]
             )
-            break
             
         case "stackingColumnMixedLine":
             aaChartModel = AAChartModel()
@@ -239,7 +237,6 @@ class MixedChartVC: UIViewController {
                         .toDic()!,
                     ]
             )
-            break
             
         case "dashStyleTypeMixed":
             aaChartModel = AAChartModel()
@@ -278,7 +275,6 @@ class MixedChartVC: UIViewController {
                         .data([50, 320, 230, 370, 230, 400,])
                         .toDic()!,
                     ])
-            break
             
         case "negativeColorMixed":
             aaChartModel = AAChartModel()
@@ -295,7 +291,6 @@ class MixedChartVC: UIViewController {
                         .threshold(4)//default:0
                         .toDic()!,
                     ])
-            break
             
         case "scatterMixedLine":
             aaChartModel = AAChartModel()
@@ -512,7 +507,6 @@ class MixedChartVC: UIViewController {
                         .color("#0088FF")
                         .toDic()!,
                     ])
-            break
             
         case "negativeColorMixedBubble":
             aaChartModel = AAChartModel()
@@ -547,7 +541,6 @@ class MixedChartVC: UIViewController {
                         .threshold(4)//default:0
                         .toDic()!,
                     ])
-            break
             
         case "polygonMixedScatter":
             aaChartModel = AAChartModel()
@@ -617,7 +610,6 @@ class MixedChartVC: UIViewController {
                         .color("#ff0000")
                         .toDic()!,
                     ])
-            break
             
         case "polarChartMixed":
             aaChartModel = AAChartModel()
@@ -641,7 +633,6 @@ class MixedChartVC: UIViewController {
                         .data([1, 8, 2, 7, 3, 6, 4, 5])
                         .toDic()!,
                     ])
-            break
        
         default:
             break

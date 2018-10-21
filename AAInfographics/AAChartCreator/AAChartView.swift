@@ -73,8 +73,8 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         set {
             _isSeriesHidden = newValue
             if self.optionsJson != nil {
-                let jsString = NSString.localizedStringWithFormat("setChartSeriesHidden(%d)",_isSeriesHidden! as CVarArg)
-                self.evaluateJavaScriptWithFunctionNameString(jsString as String)
+                let jsStr = "setChartSeriesHidden(\(String(describing: _isSeriesHidden)))"
+                self.evaluateJavaScriptWithFunctionNameString(jsStr)
             }
         }
         get {
@@ -87,8 +87,8 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         set {
             _contentWidth = newValue
             if self.optionsJson != nil {
-                let jsString = NSString.localizedStringWithFormat("setTheChartViewContentWidth(%f)",_contentWidth!)
-                self.evaluateJavaScriptWithFunctionNameString(jsString as String)
+                let jsStr = "setTheChartViewContentWidth(\(String(describing: _contentWidth)))"
+                self.evaluateJavaScriptWithFunctionNameString(jsStr)
             }
         }
         get {
@@ -101,8 +101,8 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
         set {
             _contentHeight = newValue
             if self.optionsJson != nil {
-                let jsString = NSString.localizedStringWithFormat("setTheChartViewContentHeight(%f)",_contentHeight!)
-                self.evaluateJavaScriptWithFunctionNameString(jsString as String)
+                let jsStr = "setTheChartViewContentHeight(\(String(describing: _contentHeight)))"
+                self.evaluateJavaScriptWithFunctionNameString(jsStr)
             }
         }
         get {
@@ -213,8 +213,8 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
                                                    options: JSONSerialization.WritingOptions.prettyPrinted)
         var str = String(data: jsonData, encoding: String.Encoding.utf8)!
         str = str.replacingOccurrences(of: "\n", with: "") as String
-        let jsString = NSString.localizedStringWithFormat("onlyRefreshTheChartDataWithSeries('%@');", str)
-        self.evaluateJavaScriptWithFunctionNameString(jsString as String)
+        let jsStr = "onlyRefreshTheChartDataWithSeries('\(str)');"
+        self.evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
     ///  Function of refreshing whole chart view content
@@ -229,15 +229,15 @@ public class AAChartView: UIView,WKNavigationDelegate,UIWebViewDelegate {
     ///
     /// - Parameter elementIndex: elementIndex element index
     public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
-        let jsStr = NSString.localizedStringWithFormat("showTheSeriesElementContentWithIndex('%d');", elementIndex)
-        self.evaluateJavaScriptWithFunctionNameString(jsStr as String)
+        let jsStr = "showTheSeriesElementContentWithIndex('\(elementIndex)');"
+        self.evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
     ///  Hide the series element content with index
     ///
     /// - Parameter elementIndex: element index
     public func aa_hideTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
-        let jsStr = NSString.localizedStringWithFormat("hideTheSeriesElementContentWithIndex('%d');", elementIndex)
+        let jsStr = "hideTheSeriesElementContentWithIndex('\(elementIndex)');"
         self.evaluateJavaScriptWithFunctionNameString(jsStr as String)
     }
     

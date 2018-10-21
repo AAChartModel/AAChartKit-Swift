@@ -274,7 +274,6 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                .Normal,
                                .Percent]
             aaChartModel?.stacking(AAChartStackingType(rawValue: stackingArr[segmentedControl.selectedSegmentIndex].rawValue)!)
-            break
             
         case 1:
             if self.chartType == .Column || self.chartType == .Bar {
@@ -288,10 +287,8 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                  .Triangle_down]
                 aaChartModel?.symbol(AAChartSymbolType(rawValue: symbolArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             }
-            break
             
-        default:
-            break
+        default: break
         }
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }

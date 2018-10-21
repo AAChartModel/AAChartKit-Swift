@@ -303,7 +303,6 @@ class SpecialChartVC: UIViewController {
                             .toDic()!
                     ]
             )
-            break
             
         case .Arearange:
             aaChartModel = AAChartModel()
@@ -697,7 +696,6 @@ class SpecialChartVC: UIViewController {
                             .toDic()!,
                         ]
             )
-            break
             
         case .Areasplinerange:
             let gradientColorDic = [
@@ -755,8 +753,6 @@ class SpecialChartVC: UIViewController {
                             ])
                         .toDic()!,
                     ])
-            break
-            
             
         case .Columnrange:
             aaChartModel = AAChartModel()
@@ -789,7 +785,6 @@ class SpecialChartVC: UIViewController {
                             .toDic()!,
                         ]
             )
-            break
             
         case .Line:
             aaChartModel = AAChartModel()
@@ -817,7 +812,6 @@ class SpecialChartVC: UIViewController {
                         .step("left")//设置折线样式为直方折线,折线连接点位置靠左👈
                         .toDic()!,
                     ])
-            break
             
         case .Area:
             aaChartModel = AAChartModel()
@@ -845,7 +839,6 @@ class SpecialChartVC: UIViewController {
                         .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
                         .toDic()!,
                     ])
-            break
             
         case .Boxplot:
             aaChartModel = AAChartModel()
@@ -867,7 +860,6 @@ class SpecialChartVC: UIViewController {
                             ])
                         .toDic()!,
                     ])
-            break
             
         case .Waterfall:
             aaChartModel = AAChartModel()
@@ -906,7 +898,6 @@ class SpecialChartVC: UIViewController {
                         "pointPadding": 0
                         ]]
             )
-            break
             
         case .Pyramid:
             aaChartModel = AAChartModel()
@@ -926,7 +917,6 @@ class SpecialChartVC: UIViewController {
                             ])
                         .toDic()!,
                     ])
-            break
             
         case .Funnel:
             aaChartModel = AAChartModel()
@@ -945,9 +935,7 @@ class SpecialChartVC: UIViewController {
                             ["Python",     16298],
                             ])
                         .toDic()!,
-                    ])
-            break
-            
+                    ])            
             
         default:
             break;
