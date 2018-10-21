@@ -92,7 +92,7 @@ class OnlyRefreshChartDataVC: UIViewController {
             .stacking(.normal)
         
         if self.chartType == .area
-            || self.chartType == .areaspline {
+            || self.chartType == .areaSpline {
             let gradientColorDic = [
                 "linearGradient": [
                     "x1": 0,

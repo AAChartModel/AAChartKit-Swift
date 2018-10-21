@@ -83,8 +83,8 @@
 
 * 链式编程的方式配置 *AAChartModel* 模型对象属性
 ```swift
-    let chartModel = AAChartModel.init()
-            .chartType(AAChartType.column)//图表类型
+    let chartModel = AAChartModel()
+            .chartType(.column)//图表类型
             .title("城市天气变化")//图表主标题
             .subtitle("2020年09月18日")//图表副标题
             .inverted(false)//是否翻转图形
@@ -214,7 +214,7 @@
 - 绘制扇形图,你需要这样配置模型对象 *AAChartModel*
 ```swift
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.pie)
+                .chartType(.pie)
                 .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
                 .subtitle("virtual data")
@@ -243,7 +243,7 @@
 
 ```swift  
             aaChartModel = AAChartModel()
-                .chartType(AAChartType.bubble)
+                .chartType(.bubble)
                 .title("AACHARTKIT BUBBLES")
                 .subtitle("JUST FOR FUN")
                 .yAxisTitle("℃")
@@ -304,7 +304,7 @@
 
 ```swift
             aaChartModel = AAChartModel()
-                .chartType(columnrange)
+                .chartType(.columnrange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")
@@ -339,7 +339,7 @@
 ### 当前已支持的图表类型有十种以上,说明如下
 
 ```swift
-enum AAChartType:String {
+enum AAChartType: String {
     case column          = "column"          //柱形图
     case bar             = "bar"             //条形图
     case area            = "area"            //折线区域填充图
@@ -363,7 +363,7 @@ enum AAChartType:String {
 ### 当前已支持的图表手势缩放类型共有三种,说明如下
 
 ```swift
-enum AAChartZoomType:String {
+enum AAChartZoomType: String {
     case none = "none"   //禁用图表手势缩放功能(默认禁用手势缩放)
     case x    = "x"      //支持图表 X 轴横向缩放
     case y    = "y"      //支持图表 Y 轴纵向缩放
@@ -434,9 +434,9 @@ NOTE:例如,设置了`AAChartModel`的缩放属性`zoomType`为`AAChartZoomType.
 ------------ | ------------- | ------------- | ------------- |
 title | String | 图表主标题 | 任意有效的字符串 | 
 subtitle | String |图表副标题  | 任意有效的字符串 |
-chartType | AAChartType |  图表类型,可以为`AAChartType`枚举字符串当中指定的任意有效类型.其中有支持`柱状图` 、`条形图` 、`折线图` 、`曲线图` 、`折线填充图` 、`曲线填充图`、`雷达图`、`扇形图`、`气泡图`、`散点图`、`金字塔图`、`漏斗图`、`区域范围图`、`柱形范围图`等多种图形  | AAChartType.Column,    AAChartType.Bar, AAChartType.Area, AAChartType.AreaSpline, AAChartType.Line,    AAChartType.Spline, AAChartType.Pie,    AAChartType.Bubble, AAChartType.Scatter, AAChartType.Pyramid, AAChartType.Funnel, AAChartType.Arearange, AAChartType.Columnrange|  AAChartType.Column |
-stacking| AAChartStackingType | 是否将图表每个数据列的值叠加在一起。 默认的值为`AAChartStackingType.False`， 即禁用堆叠样式效果.另有常规堆叠样式和百分比堆叠样式可供选择 | AAChartStackingType.False, AAChartStackingType.Normal, AAChartStackingType.Percent | AAChartStackingType.False |
-symbol | AAChartSymbolType | 预定义的图表曲线连接点的样式类型.其可供选择的值有`圆`、`正方形`、`钻石`、`常规三角形`和`倒三角形`,默认为混合样式 | AAChartSymbolType.Circle, AAChartSymbolType.Square, AAChartSymbolType.Diamond, AAChartSymbolType.Triangle, AAChartSymbolType.Triangle_down | 
+chartType | AAChartType |  图表类型,可以为`AAChartType`枚举字符串当中指定的任意有效类型.其中有支持`柱状图` 、`条形图` 、`折线图` 、`曲线图` 、`折线填充图` 、`曲线填充图`、`雷达图`、`扇形图`、`气泡图`、`散点图`、`金字塔图`、`漏斗图`、`区域范围图`、`柱形范围图`等多种图形  | .column,  .bar,  .area,  .areaSpline,  .line,  .spline,  .pie,  .bubble,  .scatter,  .pyramid,  .funnel,  .areaRange,  .columnRange |  
+stacking| AAChartStackingType | 是否将图表每个数据列的值叠加在一起。 默认的值为`.none`， 即禁用堆叠样式效果.另有常规堆叠样式和百分比堆叠样式可供选择 | .none,  .normal,  .percent | 
+symbol | AAChartSymbolType | 预定义的图表曲线连接点的样式类型.其可供选择的值有`圆`、`正方形`、`钻石`、`常规三角形`和`倒三角形`,默认为混合样式 | .circle,  .square,  .diamond,  .triangle,  .triangleDown | 
 
 * ### AAChartModel 所有属性列表说明
 ```swift
@@ -575,26 +575,26 @@ Objective C | AAChartKit | https://github.com/AAChartModel/AAChartKit |
 - [x] 支持图形加载完成后用户添加代理事件
 - [x] 支持图形动态刷新全局内容
 - [x] 支持图形动态刷新纯数据`(series)`内容
-- [ ] 支持图形实时刷新纯数据并动态滚动
 - [x] 支持色彩图层渐变效果
 - [x] 支持3D图形效果,仅对`柱状图`、`条形图`、`扇形图`、`散点图`、`气泡图`等部分图形有效
-- [ ] 支持横屏(全屏)效果
+- [x] 支持横屏(全屏)效果
 - [x] 支持自由设置图形渲染动画
-- [ ] 支持已渲染图形生成图片文件
-- [ ] 支持生成图片文件保存至系统相册
 - [x] 支持用户自由配置`AAOptions`模型对象属性
 - [x] 支持图形堆叠
 - [x] 支持图形坐标轴反转
 - [x] 支持渲染散点图
 - [x] 支持渲染柱形范围图
 - [x] 支持渲染面积范围图
-- [ ] 支持渲染面积范围均线图
+- [x] 支持渲染面积范围均线图
 - [x] 支持渲染极地图
 - [x] 支持渲染折线直方图
 - [x] 支持渲染折线直方填充图
 - [ ] 支持渲染矩形树状层级关系图
 - [ ] 支持渲染活动刻度仪表图
 - [ ] 支持为图形添加点击事件回调
+- [ ] 支持图形实时刷新纯数据并动态滚动
+- [ ] 支持已渲染图形生成图片文件
+- [ ] 支持生成图片文件保存至系统相册
 
 
 [1]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/1.gif

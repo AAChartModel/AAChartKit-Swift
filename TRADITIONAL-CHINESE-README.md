@@ -83,8 +83,8 @@
 
 * 鏈式編程的方式配置 *AAChartModel* 模型對象屬性
 ```swift
-    let chartModel = AAChartModel.init()
-            .chartType(AAChartType.column)//圖表類型
+    let chartModel = AAChartModel()
+            .chartType(.column)//圖表類型
             .title("城市天氣變化")//圖表主標題
             .subtitle("2020年09月18日")//圖表副標題
             .inverted(false)//是否翻轉圖形
@@ -435,45 +435,44 @@ NOTE:例如,設置了`AAChartModel`的縮放屬性`zoomType`為`AAChartZoomType.
 ------------ | ------------- | ------------- | ------------- |
 title | String | 圖表主標題 | 任意有效的字符串 | 
 subtitle | String |圖表副標題  | 任意有效的字符串 |
-chartType | AAChartType |  圖表類型,可以為`AAChartType`枚舉字符串當中指定的任意有效類型.其中有支持`柱狀圖` 、`條形圖` 、`折線圖` 、`曲線圖` 、`折線填充圖` 、`曲線填充圖`、`雷達圖`、`扇形圖`、`氣泡圖`、`散點圖`、`金字塔圖`、`漏鬥圖`、`區域範圍圖`、`柱形範圍圖`等多種圖形  | AAChartType.Column,    AAChartType.Bar, AAChartType.Area, AAChartType.AreaSpline, AAChartType.Line,    AAChartType.Spline, AAChartType.Pie,    AAChartType.Bubble, AAChartType.Scatter, AAChartType.Pyramid, AAChartType.Funnel, AAChartType.Arearange, AAChartType.Columnrange|  AAChartType.Column |
-stacking| AAChartStackingType | 是否將圖表每個數據列的值疊加在壹起。 默認的值為`AAChartStackingType.False`， 即禁用堆疊樣式效果.另有常規堆疊樣式和百分比堆疊樣式可供選擇 | AAChartStackingType.False, AAChartStackingType.Normal, AAChartStackingType.Percent | AAChartStackingType.False |
-symbol | AAChartSymbolType | 預定義的圖表曲線連接點的樣式類型.其可供選擇的值有`圓`、`正方形`、`鉆石`、`常規三角形`和`倒三角形`,默認為混合樣式 | AAChartSymbolType.Circle, AAChartSymbolType.Square, AAChartSymbolType.Diamond, AAChartSymbolType.Triangle, AAChartSymbolType.Triangle_down | 
+chartType | AAChartType |  圖表類型,可以為`AAChartType`枚舉字符串當中指定的任意有效類型.其中有支持`柱狀圖` 、`條形圖` 、`折線圖` 、`曲線圖` 、`折線填充圖` 、`曲線填充圖`、`雷達圖`、`扇形圖`、`氣泡圖`、`散點圖`、`金字塔圖`、`漏鬥圖`、`區域範圍圖`、`柱形範圍圖`等多種圖形 | .column,  .bar,  .area,  .areaSpline,  .line,  .spline,  .pie,  .bubble,  .scatter,  .pyramid,  .funnel,  .areaRange,  .columnRange |  
+stacking| AAChartStackingType | 是否將圖表每個數據列的值疊加在壹起。 默認的值為`.none`， 即禁用堆疊樣式效果.另有常規堆疊樣式和百分比堆疊樣式可供選擇  | .none,  .normal,  .percent | 
+symbol | AAChartSymbolType | 預定義的圖表曲線連接點的樣式類型.其可供選擇的值有`圓`、`正方形`、`鉆石`、`常規三角形`和`倒三角形`,默認為混合樣式 | .circle,  .square,  .diamond,  .triangle,  .triangleDown | 
 
 * ### AAChartModel 所有屬性列表說明
 ```swift
-private var animationType:String?       //動畫類型
-private var title:String?               //標題內容
-private var subtitle:String?            //副標題內容
-private var chartType:String?           //圖表類型
-private var stacking:String?            //堆積樣式
-private var symbol:String?              //折線曲線連接點的類型："circle", "square", "diamond", "triangle","triangle-down"，默認是"circle"
-private var zoomType:String?            //縮放類型 AAChartZoomTypeX表示可沿著 x 軸進行手勢縮放
-private var inverted:Bool?              //x 軸是否垂直
-private var xAxisReversed:Bool?         //x 軸翻轉
-private var yAxisReversed:Bool?         //y 軸翻轉
-private var crosshairs:Bool?            //是否顯示準星線(默認顯示)
-private var gradientColorEnable:Bool?   //是否要為漸變色
-private var polar:Bool?                 //是否極化圖形(變為雷達圖)
-private var dataLabelEnabled:Bool?      //是否顯示數據
-private var xAxisLabelsEnabled:Bool?    //x軸是否顯示數據
-private var categories:Array<Any>?      //x軸是否顯示數據
-private var xAxisGridLineWidth:Int?     //x軸網格線的寬度
-private var yAxisLabelsEnabled:Bool?    //y軸是否顯示數據
-private var yAxisTitle:String?          //y軸標題
-private var yAxisGridLineWidth:Int?     //y軸網格線的寬度
-private var colorsTheme:Array<Any>?     //圖表主題顏色數組
-private var series:Array<Any>?          //圖表的主題數據列數組
-private var legendEnabled:Bool?         //是否顯示圖例
-private var legendLayout:String?        //圖例數據項的布局。布局類型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默認是：horizontal.
-private var legendAlign:String?         //設定圖例在圖表區中的水平對齊方式，合法值有 left，center 和 right。
-private var legendVerticalAlign:String? //設定圖例在圖表區中的垂直對齊方式，合法值有 top，middle 和 bottom。垂直位置可以通過 y 選項做進壹步設定
-private var backgroundColor:String?     //圖表背景色
-private var options3dEnable:Bool?       //是否3D化圖形(僅對條形圖,柱狀圖有效)
-private var options3dAlpha:Int?
-private var  options3dBeta:Int?
-private var options3dDepth:Int?         //3D圖形深度
-private var borderRadius:Int?           //柱狀圖長條圖頭部圓角半徑(可用於設置頭部的形狀,僅對條形圖,柱狀圖有效)
-private var markerRadius:Int?           //折線連接點的半徑長度
+private var animationType: String?       //動畫類型
+private var title: String?               //標題內容
+private var subtitle: String?            //副標題內容
+private var chartType: String?           //圖表類型
+private var stacking: String?            //堆積樣式
+private var symbol: String?              //折線曲線連接點的類型："circle", "square", "diamond", "triangle","triangle-down"，默認是"circle"
+private var zoomType: String?            //縮放類型 AAChartZoomTypeX表示可沿著 x 軸進行手勢縮放
+private var inverted: Bool?              //x 軸是否垂直
+private var xAxisReversed: Bool?         //x 軸翻轉
+private var yAxisReversed: Bool?         //y 軸翻轉
+private var crosshairs: Bool?            //是否顯示準星線(默認顯示)
+private var gradientColorEnable: Bool?   //是否要為漸變色
+private var polar: Bool?                 //是否極化圖形(變為雷達圖)
+private var dataLabelEnabled: Bool?      //是否顯示數據
+private var xAxisLabelsEnabled: Bool?    //x 軸是否顯示數據
+private var categories: Array<String>?   //x 軸文字內容
+private var xAxisGridLineWidth: Int?     //x 軸網格線的寬度
+private var yAxisLabelsEnabled: Bool?    //y 軸是否顯示數據
+private var yAxisTitle: String?          //y 軸標題
+private var yAxisGridLineWidth: Int?     //y 軸網格線的寬度
+private var colorsTheme: Array<Any>?     //圖表主題顏色數組
+private var series: Array<Any>?          //圖表的主題數據列數組
+private var legendEnabled: Bool?         //是否顯示圖例
+private var legendLayout: String?        //圖例數據項的布局。布局類型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默認是：horizontal.
+private var legendAlign: String?         //設定圖例在圖表區中的水平對齊方式，合法值有 left，center 和 right。
+private var legendVerticalAlign: String? //設定圖例在圖表區中的垂直對齊方式，合法值有 top，middle 和 bottom。垂直位置可以通過 y 選項做進壹步設定
+private var backgroundColor: String?     //圖表背景色
+private var borderRadius: Int?           //柱狀圖長條圖頭部圓角半徑(可用於設置頭部的形狀,僅對條形圖,柱狀圖有效)
+private var markerRadius: Int?           //折線連接點的半徑長度
+private var titleColor: String?          //標題顏色
+private var subTitleColor: String?       //副標題顏色
+private var axisColor: String?           //x 軸和 y 軸文字顏色
 ```
 
 ## 附言
@@ -568,26 +567,27 @@ Objective C | AAChartKit | https://github.com/AAChartModel/AAChartKit |
 - [x] 支持圖形加載完成後用戶添加代理事件
 - [x] 支持圖形動態刷新全局內容
 - [x] 支持圖形動態刷新純數據`(series)`內容
-- [ ] 支持圖形實時刷新純數據並動態滾動
 - [x] 支持色彩圖層漸變效果
 - [x] 支持3D圖形效果,僅對`柱狀圖`、`條形圖`、`扇形圖`、`散點圖`、`氣泡圖`等部分圖形有效
-- [ ] 支持橫屏(全屏)效果
+- [x] 支持橫屏(全屏)效果
 - [x] 支持自由設置圖形渲染動畫
-- [ ] 支持已渲染圖形生成圖片文件
-- [ ] 支持生成圖片文件保存至系統相冊
 - [x] 支持用戶自由配置`AAOptions`模型對象屬性
 - [x] 支持圖形堆疊
 - [x] 支持圖形坐標軸反轉
 - [x] 支持渲染散點圖
 - [x] 支持渲染柱形範圍圖
 - [x] 支持渲染面積範圍圖
-- [ ] 支持渲染面積範圍均線圖
+- [x] 支持渲染面積範圍均線圖
 - [x] 支持渲染極地圖
 - [x] 支持渲染折線直方圖
 - [x] 支持渲染折線直方填充圖
 - [ ] 支持渲染矩形樹狀層級關系圖
 - [ ] 支持渲染活動刻度儀表圖
 - [ ] 支持為圖形添加點擊事件回調
+- [ ] 支持圖形實時刷新純數據並動態滾動
+- [ ] 支持已渲染圖形生成圖片文件
+- [ ] 支持生成圖片文件保存至系統相冊
+
 
 
 [1]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/1.gif

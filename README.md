@@ -77,8 +77,8 @@
 c
 ``` swift
         aaChartModel = AAChartModel.init()
-            .chartType(AAChartType.column)//Can be any of the chart types listed under `AAChartType`.
-            .animationType(bounce)
+            .chartType(.column)//Can be any of the chart types listed under `AAChartType`.
+            .animationType(.bounce)
             .title("TITLE")//The chart title
             .subtitle("subtitle")//The chart subtitle
             .dataLabelEnabled(false) //Enable or disable the data labels. Defaults to false
@@ -326,7 +326,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 ### Supported chart type for now
 
 ```swift
-enum AAChartType {
+enum AAChartType: String {
     case column          = "column"          //column chart
     case bar             = "bar"             //bar chart 
     case area            = "area"            //area chart 
@@ -349,7 +349,7 @@ enum AAChartType {
 
 ### Supported zoom guesture types for now
 ```swift
-enum AAChartZoomType:String {
+enum AAChartZoomType: String {
     case none = "none"
     case x    = "x"
     case y    = "y"
@@ -419,46 +419,45 @@ Property name | Property type | Description | Value Range |
 ------------ | ------------- | ------------- | ------------- |
 title | String | The chart title | Any valid string | 
 subtitle | String |The chart subtitle  | Any valid string |
-chartType | AAChartType | The default series type for the chart. Can be any of the chart types listed under `AAChartType`.  | AAChartType.Column,    AAChartType.Bar, AAChartType.Area, AAChartType.AreaSpline, AAChartType.Line,    AAChartType.Spline, AAChartType.Pie,    AAChartType.Bubble, AAChartType.Scatter, AAChartType.Pyramid, AAChartType.Funnel, AAChartType.Arearange, AAChartType.Columnrange|  AAChartType.Column |
-stacking| AAChartStackingType | Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order | AAChartStackingType.False, AAChartStackingType.Normal, AAChartStackingType.Percent | AAChartStackingType.False |
-symbol | AAChartSymbolType | A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down" | AAChartSymbolType.Circle, AAChartSymbolType.Square, AAChartSymbolType.Diamond, AAChartSymbolType.Triangle, AAChartSymbolType.Triangle_down |  
+chartType | AAChartType | The default series type for the chart. Can be any of the chart types listed under `AAChartType`.  | .column,  .bar,  .area,  .areaSpline,  .line,  .spline,  .pie,  .bubble,  .scatter,  .pyramid,  .funnel,  .areaRange,  .columnRange |  
+stacking| AAChartStackingType | Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order | .none,  .normal,  .percent | 
+symbol | AAChartSymbolType | A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down" | .circle,  .square,  .diamond,  .triangle,  .triangleDown |
 
 
 * ### AAChartModel:chart all properties list
 ```swift
-private var animationType:String?       //The type of chart animation
-private var title:String?               //The chart title
-private var subtitle:String?            //The chart subtitle
-private var chartType:String?           //The default series type for the chart. Can be any of the chart types listed under `AAChartType`. Defaults to line
-private var stacking:String?            //Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order
-private var symbol:String?              //A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down"
-private var zoomType:String?            //Decides in what dimensions the user can zoom by dragging the mouse. Can be one of x, y or xy
-private var inverted:Bool?              //Whether to invert the axes so that the x axis is vertical and y axis is horizontal. When true, the x axis is reversed by default. If a bar series is present in the chart, it will be inverted automatically.Inverting the chart doesn't have an effect if there are no cartesian series in the chart, or if the chart is polar.Defaults to false
-private var xAxisReversed:Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
-private var yAxisReversed:Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
-private var crosshairs:Bool?            //Enable or disable the crosshairs
-private var gradientColorEnable:Bool?   //Enable or disable the gradient color
-private var polar:Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
-private var dataLabelEnabled:Bool?      //Enable or disable the data labels. Defaults to false
-private var xAxisLabelsEnabled:Bool?    //Enable or disable the axis labels. Defaults to true
-private var categories:Array<Any>?      //Set new categories for the axis
-private var xAxisGridLineWidth:Int?     //The width of the grid lines extending the ticks across the plot area.Defaults to 0
-private var yAxisLabelsEnabled:Bool?    //Enable or disable the axis labels. Defaults to true
-private var yAxisTitle:String?          //The actual text of the axis title
-private var yAxisGridLineWidth:Int?     //The width of the grid lines extending the ticks across the plot area. Defaults to 1
-private var colorsTheme:Array<Any>?     //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to:["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
-private var series:Array<Any>?          //An array of all the chart's series
-private var legendEnabled:Bool?         //Enable or disable the legend. Defaults to true
-private var legendLayout:String?        //The layout of the legend items. Can be one of "horizontal" or "vertical". Defaults to horizontal
-private var legendAlign:String?         //The horizontal alignment of the legend box within the chart area. Valid values are left, center and right.Defaults to center
-private var legendVerticalAlign:String? //The vertical alignment of the legend box. Can be one of top, middle or bottom. Vertical position can be further determined by the y option.Defaults to bottom.
-private var backgroundColor:String?     //The background color or gradient for the outer chart area. Defaults to #FFFFFF
-private var options3dEnable:Bool?       //Wether to render the chart using the 3D functionality. Defaults to false
-private var options3dAlpha:Int?         //One of the two rotation angles for the chart. Defaults to 0
-private var options3dBeta:Int?          //One of the two rotation angles for the chart. Defaults to 0
-private var options3dDepth:Int?         //The total depth of the chart. Defaults to 100
-private var borderRadius:Int?           //The corner radius of the outer chart border. Defaults to 0
-private var markerRadius:Int?           //The radius of the point marker. Defaults to 4
+private var animationType: String?       //The type of chart animation
+private var title: String?               //The chart title
+private var subtitle: String?            //The chart subtitle
+private var chartType: String?           //The default series type for the chart. Can be any of the chart types listed under `AAChartType`. Defaults to line
+private var stacking: String?            //Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order
+private var symbol: String?              //A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down"
+private var zoomType: String?            //Decides in what dimensions the user can zoom by dragging the mouse. Can be one of x, y or xy
+private var inverted: Bool?              //Whether to invert the axes so that the x axis is vertical and y axis is horizontal. When true, the x axis is reversed by default. If a bar series is present in the chart, it will be inverted automatically.Inverting the chart doesn't have an effect if there are no cartesian series in the chart, or if the chart is polar.Defaults to false
+private var xAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
+private var yAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
+private var crosshairs: Bool?            //Enable or disable the crosshairs
+private var gradientColorEnable: Bool?   //Enable or disable the gradient color
+private var polar: Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
+private var dataLabelEnabled: Bool?      //Enable or disable the data labels. Defaults to false
+private var xAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
+private var categories: Array<String>?      //Set new categories for the axis
+private var xAxisGridLineWidth: Int?     //The width of the grid lines extending the ticks across the plot area.Defaults to 0
+private var yAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
+private var yAxisTitle: String?          //The actual text of the axis title
+private var yAxisGridLineWidth: Int?     //The width of the grid lines extending the ticks across the plot area. Defaults to 1
+private var colorsTheme: Array<Any>?     //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to: ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
+private var series: Array<Any>?          //An array of all the chart's series
+private var legendEnabled: Bool?         //Enable or disable the legend. Defaults to true
+private var legendLayout: String?        //The layout of the legend items. Can be one of "horizontal" or "vertical". Defaults to horizontal
+private var legendAlign: String?         //The horizontal alignment of the legend box within the chart area. Valid values are left, center and right.Defaults to center
+private var legendVerticalAlign: String? //The vertical alignment of the legend box. Can be one of top, middle or bottom. Vertical position can be further determined by the y option.Defaults to bottom.
+private var backgroundColor: String?     //The background color or gradient for the outer chart area. Defaults to #FFFFFF
+private var borderRadius: Int?           //The corner radius of the outer chart border. Defaults to 0
+private var markerRadius: Int?           //The radius of the point marker. Defaults to 4
+private var titleColor: String?          //The chart title color
+private var subTitleColor: String?       //The chart subtitle color
+private var axisColor: String?           //The color of chart x axis and y axis
 ```
 
 ## Postscript

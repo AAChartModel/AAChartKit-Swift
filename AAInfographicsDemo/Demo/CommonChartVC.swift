@@ -137,7 +137,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .animationType(.bounce)
                 .animationDuration(1200)
         } else if self.chartType == .area
-            || self.chartType == .areaspline {
+            || self.chartType == .areaSpline {
             aaChartModel?
                 .symbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
                 .animationType(.easeOutQuart)
@@ -146,7 +146,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                 .markerRadius(5)
                 .symbol(.circle)
             
-            if self.chartType == .areaspline {
+            if self.chartType == .areaSpline {
                 let gradientColorDic = [
                     "linearGradient": [
                         "x1": 0,
@@ -284,7 +284,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                  .square,
                                  .diamond,
                                  .triangle,
-                                 .triangle_down]
+                                 .triangleDown]
                 aaChartModel?.symbol(AAChartSymbolType(rawValue: symbolArr[segmentedControl.selectedSegmentIndex].rawValue)!)
             }
             

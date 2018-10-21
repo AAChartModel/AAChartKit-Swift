@@ -125,7 +125,7 @@ class MixedChartVC: UIViewController {
                     AASeriesElement()
                         .name("Range")
                         .color("#1E90FF")
-                        .type(.arearange)
+                        .type(.areaRange)
                         .lineWidth(0)
                         .fillOpacity(0.3)
                         .data([[1246406400000, 14.3, 27.7],
@@ -174,7 +174,7 @@ class MixedChartVC: UIViewController {
                 .series([
                     AASeriesElement()
                         .name("Temperature")
-                        .type(.columnrange)
+                        .type(.columnRange)
                         .dataLabels(["enabled":true])
                         .data([
                             [(-9.7), 9.4],

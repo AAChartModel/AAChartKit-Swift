@@ -71,7 +71,7 @@ public enum AAChartType: String {
     case column          = "column"
     case bar             = "bar"
     case area            = "area"
-    case areaspline      = "areaspline"
+    case areaSpline      = "areaspline"
     case line            = "line"
     case spline          = "spline"
     case scatter         = "scatter"
@@ -79,9 +79,9 @@ public enum AAChartType: String {
     case bubble          = "bubble"
     case pyramid         = "pyramid"
     case funnel          = "funnel"
-    case columnrange     = "columnrange"
-    case arearange       = "arearange"
-    case areasplinerange = "areasplinerange"
+    case columnRange     = "columnrange"
+    case areaRange       = "arearange"
+    case areaSplineRange = "areasplinerange"
     case boxplot         = "boxplot"
     case waterfall       = "waterfall"
     case polygon         = "polygon"
@@ -101,7 +101,7 @@ public enum AAChartZoomType: String {
 }
 
 public enum AAChartStackingType: String {
-    case none   = ""
+    case none    = ""
     case normal  = "normal"
     case percent = "percent"
 }
@@ -111,7 +111,7 @@ public enum AAChartSymbolType: String {
     case square        = "square"
     case diamond       = "diamond"
     case triangle      = "triangle"
-    case triangle_down = "triangle-down"
+    case triangleDown  = "triangle-down"
 }
 
 public enum AAChartSymbolStyleType: String {
