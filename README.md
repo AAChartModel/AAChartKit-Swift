@@ -76,7 +76,7 @@
 2. Configure the properties of chart model:`AAChartModel`
 c
 ``` swift
-        aaChartModel = AAChartModel.init()
+        aaChartModel = AAChartModel()
             .chartType(.column)//Can be any of the chart types listed under `AAChartType`.
             .animationType(.bounce)
             .title("TITLE")//The chart title
@@ -293,7 +293,7 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
 
 ``` swift
              aaChartModel = AAChartModel()
-                .chartType(.columnrange)
+                .chartType(.columnRange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")
@@ -549,13 +549,10 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 - [x] Support for the user to add delegate events after the graphics content loading was completed
 - [x] Support graphics to refresh global content dynamically
 - [x] Support graphics to refresh pure data (`series`) content dynamically
-- [x] Support graphics to refresh pure data in real time and scroll dynamically
 - [x] Support color layer gradient effects
 - [x] Support 3D graphics effects, valid only for partial graphics such as `column chart`、`bar chart`、`pie charts`、`scatterplot chart`、`bubble chart`, etc
-- [ ] Support horizontal screen (full screen) effect
+- [x] Support horizontal screen (full screen) effect
 - [x] Support setting graphics rendering animation freely
-- [ ] Support rendered graphics to generate image files
-- [ ] Support generating image files saved to the system album
 - [x] Support for users to configure `AAOptions` model object properties freely
 - [x] Support stacking the graphics 
 - [x] Support reversing the graphics axis 
@@ -568,6 +565,9 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 - [ ] Support rendering the rectangular tree hierarchy diagrams
 - [ ] Support rendering the circular progress bar chart 
 - [ ] Support adding clicked event callbacks for graphics
+- [ ] Support graphics to refresh pure data in real time and scroll dynamically
+- [ ] Support rendered graphics to generate image files
+- [ ] Support generating image files saved to the system album
 
 
 [1]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/1.gif

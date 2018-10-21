@@ -304,7 +304,7 @@
 
 ```swift
             aaChartModel = AAChartModel()
-                .chartType(.columnrange)
+                .chartType(.columnRange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")

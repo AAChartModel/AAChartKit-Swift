@@ -214,7 +214,7 @@
 - 繪制扇形圖,妳需要這樣配置模型對象 *AAChartModel*
 ```swift
                  aaChartModel = AAChartModel()
-                .chartType(pie)
+                .chartType(.pie)
                 .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
                 .subtitle("virtual data")
@@ -304,7 +304,7 @@
 
 ```swift
             aaChartModel = AAChartModel()
-                .chartType(.olumnrange)
+                .chartType(.columnRange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")
