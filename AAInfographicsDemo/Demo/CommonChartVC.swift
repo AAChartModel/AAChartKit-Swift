@@ -32,9 +32,9 @@
 
 import UIKit
 
-class CommonChartVC: UIViewController,UIWebViewDelegate {
+class CommonChartVC: UIViewController {
     public var chartType: AAChartType?
-    public var step : Bool?
+    public var step: Bool?
     private var aaChartModel: AAChartModel?
     private var aaChartView: AAChartView?
     
@@ -275,7 +275,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             let stackingArr = [AAChartStackingType.none,
                                .normal,
                                .percent]
-            aaChartModel?.stacking(AAChartStackingType(rawValue: stackingArr[segmentedControl.selectedSegmentIndex].rawValue)!)
+            aaChartModel?.stacking(stackingArr[segmentedControl.selectedSegmentIndex])
             
         case 1:
             if chartType == .column || chartType == .bar {
@@ -287,7 +287,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
                                  .diamond,
                                  .triangle,
                                  .triangleDown]
-                aaChartModel?.symbol(AAChartSymbolType(rawValue: symbolArr[segmentedControl.selectedSegmentIndex].rawValue)!)
+                aaChartModel?.symbol(symbolArr[segmentedControl.selectedSegmentIndex])
             }
             
         default: break
@@ -339,7 +339,7 @@ class CommonChartVC: UIViewController,UIWebViewDelegate {
             subLabel.text = nameArr[i] as String
             subLabel.backgroundColor = .clear
             subLabel.textColor = .lightGray
-            view .addSubview(subLabel)
+            view.addSubview(subLabel)
         }
     }
     

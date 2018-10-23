@@ -33,14 +33,14 @@
 
 import Foundation
 
-protocol JSONRepresentable {
+public protocol JSONRepresentable {
     var JSONRepresentation: AnyObject { get }
 }
 
-protocol AASerializable: JSONRepresentable {
+public protocol AASerializable: JSONRepresentable {
 }
 
-extension AASerializable {
+public extension AASerializable {
     var JSONRepresentation: AnyObject {
         var representation = [String: AnyObject]()
         
@@ -62,7 +62,7 @@ extension AASerializable {
     }
 }
 
-extension AASerializable {
+public extension AASerializable {
     func toJSON() -> String? {
         let representation = JSONRepresentation
         do {
