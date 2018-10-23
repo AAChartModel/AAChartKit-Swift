@@ -266,7 +266,6 @@ extension AAChartView {
             configureTheJavaScriptString(chartModel)
             drawChart()
         }
-        
     }
     
     /// Function of only refresh the chart data

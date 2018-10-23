@@ -55,6 +55,7 @@ class ShowManyChartViewVC: UIViewController {
                                    width: chartViewWidth,
                                    height: screenHeight / 2)
         aaChartView.scrollEnabled = false
+        aaChartView.contentHeight = (screenHeight / 2) - 20
         view.addSubview(aaChartView)
         
         let  aaChartModel = AAChartModel()
@@ -66,6 +67,7 @@ class ShowManyChartViewVC: UIViewController {
             .stacking(.none)
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .stacking(.percent)
             .series(([
                 AASeriesElement()
                     .name("Tokyo")
@@ -110,6 +112,19 @@ class ShowManyChartViewVC: UIViewController {
             .symbolStyle(.innerBlank)
             .gradientColorEnable(true)
             .legendEnabled(true)
+            .tooltipEnabled(false)
+            .categories(["孤<br>岛<br>危<br>机",
+                         "使<br>命<br>召<br>唤",
+                         "荣<br>誉<br>勋<br>章",
+                         "狙<br>击<br>精<br>英",
+                         "神<br>秘<br>海<br>域",
+                         "最<br>后<br>生<br>还<br>者",
+                         "巫<br>师<br>3<br>狂<br>猎",
+                         "对<br>马<br>之<br>魂",
+                         "蝙<br>蝠<br>侠<br>阿<br>甘<br>骑<br>士<br> .",
+                         "地<br>狱<br>边<br>境",
+                         "闪<br>客",
+                         "忍<br>者<br>之<br>印"])
             .series([
                 AASeriesElement()
                     .name("Tokyo")
