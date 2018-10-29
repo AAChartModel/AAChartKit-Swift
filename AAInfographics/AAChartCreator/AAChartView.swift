@@ -35,24 +35,19 @@ import WebKit
 public class AAChartView: UIView {
     
     public var scrollEnabled: Bool? {
-        set {
-            _scrollEnabled = newValue
+        willSet {
             if #available(iOS 9.0, *) {
-                wkWebView?.scrollView.isScrollEnabled = _scrollEnabled!
+                wkWebView?.scrollView.isScrollEnabled = newValue!
             } else {
                 // Fallback on earlier versions
-                uiWebView?.scrollView.isScrollEnabled = _scrollEnabled!
+                uiWebView?.scrollView.isScrollEnabled = newValue!
             }
-        }
-        get {
-            return _scrollEnabled
         }
     }
     
     public var isClearBackgroundColor: Bool? {
-        set {
-            _isClearBackgroundColor = newValue
-            if _isClearBackgroundColor == true {
+        willSet {
+            if newValue! == true {
                 backgroundColor = .clear
                 if #available(iOS 9.0, *) {
                     wkWebView?.backgroundColor = .clear
@@ -64,58 +59,38 @@ public class AAChartView: UIView {
                 }
             }
         }
-        get {
-            return _isClearBackgroundColor
-        }
     }
     
     public var isSeriesHidden: Bool? {
-        set {
-            _isSeriesHidden = newValue
+        willSet {
             if optionsJson != nil {
-                let jsStr = "setChartSeriesHidden(\(String(describing: _isSeriesHidden)))"
+                let jsStr = "setChartSeriesHidden(`\(newValue!)`)"
                 evaluateJavaScriptWithFunctionNameString(jsStr)
+                print(jsStr)
+                
             }
-        }
-        get {
-            return _isSeriesHidden
         }
     }
     
     /// Content width of AAChartView
     public var contentWidth: CGFloat? {
-        set {
-            _contentWidth = newValue
+        willSet {
             if optionsJson != nil {
-                let jsStr = "setTheChartViewContentWidth(\(String(describing: _contentWidth)))"
+                let jsStr = "setTheChartViewContentWidth(`\(newValue!)`)"
                 evaluateJavaScriptWithFunctionNameString(jsStr)
             }
-        }
-        get {
-            return _contentWidth
         }
     }
     
     /// Content height of AAChartView
     public var contentHeight: CGFloat? {
-        set {
-            _contentHeight = newValue
+        willSet {
             if optionsJson != nil {
-                let jsStr = "setTheChartViewContentHeight(\(String(describing: _contentHeight)))"
+                let jsStr = "setTheChartViewContentHeight(`\(newValue!)`)"
                 evaluateJavaScriptWithFunctionNameString(jsStr)
             }
         }
-        get {
-            return  _contentHeight
-        }
     }
-
-    private var _scrollEnabled: Bool?
-    private var _isClearBackgroundColor: Bool?
-    private var _isSeriesHidden: Bool?
-    
-    private var _contentWidth: CGFloat?
-    private var _contentHeight: CGFloat?
     
     private var wkWebView: WKWebView?
     private var uiWebView: UIWebView?
@@ -137,7 +112,7 @@ public class AAChartView: UIView {
             addSubview(wkWebView!)
             wkWebView?.translatesAutoresizingMaskIntoConstraints = false
             wkWebView?.superview!.addConstraints(configureTheConstraintArray(childView: wkWebView!,
-                                                                                  fatherView: self)) //Note:父控件添加约束
+                                                                             fatherView: self)) //Note:父控件添加约束
         } else {
             // Fallback on earlier versions
             uiWebView = UIWebView()
@@ -146,11 +121,11 @@ public class AAChartView: UIView {
             addSubview(uiWebView!)
             uiWebView?.translatesAutoresizingMaskIntoConstraints = false
             uiWebView?.superview!.addConstraints(configureTheConstraintArray(childView: uiWebView!,
-                                                                                  fatherView: self)) //Note:父控件添加约束
+                                                                             fatherView: self)) //Note:父控件添加约束
         }
     }
     
-   private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
+    private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
         return [NSLayoutConstraint(item: childView,
                                    attribute: .left,
                                    relatedBy: .equal,
@@ -204,8 +179,6 @@ public class AAChartView: UIView {
                                                           chartViewContentHeight!)
         optionsJson = jsString as String;
     }
-    
-
 }
 
 extension AAChartView: WKNavigationDelegate,UIWebViewDelegate {
