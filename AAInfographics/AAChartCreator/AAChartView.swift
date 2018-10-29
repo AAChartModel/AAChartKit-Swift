@@ -64,7 +64,7 @@ public class AAChartView: UIView {
     public var isSeriesHidden: Bool? {
         willSet {
             if optionsJson != nil {
-                let jsStr = "setChartSeriesHidden(`\(newValue!)`)"
+                let jsStr = "setChartSeriesHidden(\(newValue!))"
                 evaluateJavaScriptWithFunctionNameString(jsStr)
                 print(jsStr)
                 
@@ -76,7 +76,7 @@ public class AAChartView: UIView {
     public var contentWidth: CGFloat? {
         willSet {
             if optionsJson != nil {
-                let jsStr = "setTheChartViewContentWidth(`\(newValue!)`)"
+                let jsStr = "setTheChartViewContentWidth('\(newValue!)')"
                 evaluateJavaScriptWithFunctionNameString(jsStr)
             }
         }
@@ -86,7 +86,7 @@ public class AAChartView: UIView {
     public var contentHeight: CGFloat? {
         willSet {
             if optionsJson != nil {
-                let jsStr = "setTheChartViewContentHeight(`\(newValue!)`)"
+                let jsStr = "setTheChartViewContentHeight('\(newValue!)')"
                 evaluateJavaScriptWithFunctionNameString(jsStr)
             }
         }
