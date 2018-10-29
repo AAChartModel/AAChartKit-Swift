@@ -174,7 +174,7 @@ public class AAChartModel: AASerializable {
     private var borderRadius: Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     private var markerRadius: Int?           //折线连接点的半径长度
     private var titleColor: String?          //标题颜色
-    private var subTitleColor: String?       //副标题颜色
+    private var subtitleColor: String?       //副标题颜色
     private var axisColor: String?           //x 轴和 y 轴文字颜色
     
     
@@ -395,8 +395,8 @@ public class AAChartModel: AASerializable {
     }
     
     @discardableResult
-    public func subTitleColor(_ prop: String) -> AAChartModel {
-        subTitleColor = prop
+    public func subtitleColor(_ prop: String) -> AAChartModel {
+        subtitleColor = prop
         return self
     }
     
@@ -422,7 +422,7 @@ public class AAChartModel: AASerializable {
     public init() {
         backgroundColor     = "#ffffff"
         titleColor          = "#000000"
-        subTitleColor       = "#000000"
+        subtitleColor       = "#000000"
         axisColor           = "#000000"
         animationDuration   = 800//以毫秒为单位
         chartType           = AAChartType.column.rawValue

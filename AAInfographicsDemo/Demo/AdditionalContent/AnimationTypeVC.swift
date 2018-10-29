@@ -92,7 +92,7 @@ class AnimationTypeVC: UIViewController {
                                               height: view.frame.size.height - 60)
         animationTypeTableView.delegate = self
         animationTypeTableView.dataSource = self
-        animationTypeTableView.backgroundColor = UIColor.white
+        animationTypeTableView.backgroundColor = .white
         view.addSubview(animationTypeTableView)
     }
     

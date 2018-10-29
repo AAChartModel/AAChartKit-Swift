@@ -851,6 +851,7 @@ class SpecialChartVC: UIViewController {
                     AASeriesElement()
                         .name("Observed Data")
                         .color("#ef476f")
+                        .fillColor("#04d69f")
                         .data([
                             [760, 801, 848, 895, 965],
                             [733, 853, 939, 980, 1080],
@@ -871,6 +872,7 @@ class SpecialChartVC: UIViewController {
                     [[
                         "upColor":"#9b43b4",
                         "color": "#ef476f",
+                        "borderWidth":0,
                         "data": [[
                             "name": "启动资金",
                             "y": 120000
@@ -895,7 +897,6 @@ class SpecialChartVC: UIViewController {
                                 "isSum": true,
                                 "color": "#04d69f"
                             ]],
-                        "pointPadding": 0
                         ]]
             )
             
