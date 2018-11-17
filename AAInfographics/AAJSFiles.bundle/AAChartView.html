@@ -54,8 +54,8 @@
             var aaGlobalChart;
 
             function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
+                <!--                alert(sender);-->
                 var aaOptions = configureAAOptions(sender, receivedWidth, receivedHeight);
-
                 var animationEasingType = aaOptions.plotOptions.series.animation.easing;
                 if (animationEasingType) { //懒调用(只有在 aaChartModel 实例对象设置了 animationType 属性值的时候才会调用设置动画类型的函数,否则不调用)
                     aaOptions.plotOptions.series.animation.easing = configureTheChartAnimationEasingType(animationEasingType);

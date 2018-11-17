@@ -108,6 +108,7 @@ public class AAChartView: UIView {
         if #available(iOS 9.0, *) {
             wkWebView = WKWebView()
             wkWebView?.backgroundColor = .white
+//            wkWebView?.uiDelegate = self
             wkWebView?.navigationDelegate = self
             addSubview(wkWebView!)
             wkWebView?.translatesAutoresizingMaskIntoConstraints = false
@@ -164,6 +165,31 @@ public class AAChartView: UIView {
         evaluateJavaScriptWithFunctionNameString(optionsJson!)
     }
     
+    private func evaluateJavaScriptWithFunctionNameString (_ jsString: String) {
+        if #available(iOS 9.0, *) {
+            wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
+                if error != nil {
+                    let errorInfo =
+                    """
+                    
+                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
+                    ==========================================================================================
+                    ------------------------------------------------------------------------------------------
+                    \(error! as CVarArg)
+                    ------------------------------------------------------------------------------------------
+                    ==========================================================================================
+                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
+                    
+                    """
+                    debugPrint(errorInfo)
+                }
+            })
+        } else {
+            // Fallback on earlier versions
+            uiWebView?.stringByEvaluatingJavaScript(from: jsString)
+        }
+    }
+    
     private func configureTheJavaScriptString(_ chartModel: AAChartModel) {
         let modelString = chartModel.toJSON()
         let chartViewContentWidth = contentWidth
@@ -181,40 +207,8 @@ public class AAChartView: UIView {
     }
 }
 
-extension AAChartView: WKNavigationDelegate,UIWebViewDelegate {
-    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        drawChart()
-    }
-    
-    open func webViewDidFinishLoad(_ webView: UIWebView) {
-        drawChart()
-    }
-    
-    private func evaluateJavaScriptWithFunctionNameString (_ jsString: String) {
-        if #available(iOS 9.0, *) {
-            wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
-                if ((error) != nil) {
-                    let errorInfo =
-                    """
-                    
-                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
-                    ==========================================================================================
-                    ------------------------------------------------------------------------------------------
-                    \(error! as CVarArg)
-                    ------------------------------------------------------------------------------------------
-                    ==========================================================================================
-                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
-                    
-                    """
-                    print(errorInfo)
-                }
-            })
-        } else {
-            // Fallback on earlier versions
-            uiWebView?.stringByEvaluatingJavaScript(from: jsString)
-        }
-    }
-}
+
+
 
 
 extension AAChartView {
@@ -278,3 +272,25 @@ extension AAChartView {
     }
 }
 
+extension AAChartView: WKUIDelegate {
+    open func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        let alert = UIAlertController(title: "FBI WARNING", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+            completionHandler()
+        }))
+        let rootVC = UIApplication.shared.keyWindow?.rootViewController
+        rootVC!.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension AAChartView:  WKNavigationDelegate, UIWebViewDelegate {
+    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        drawChart()
+    }
+    
+    open func webViewDidFinishLoad(_ webView: UIWebView) {
+        drawChart()
+    }
+    
+    
+}

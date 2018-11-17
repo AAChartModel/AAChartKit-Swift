@@ -32,7 +32,6 @@
 
 function configureAAOptions(sender, receivedWidth, receivedHeight) {
 
-        //    alert(sender);//输出查看传输的是什么
         var aaChartModel = JSON.parse(sender);
         var o = document.getElementById('container'); //获得元素
         if (receivedWidth != 0) {
@@ -154,7 +153,6 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
             && aaChartModel.chartType !== "pyramid"
             && aaChartModel.chartType !== "funnel") {
                 configureAxisContentAndStyle(aaOptions, aaChartModel);
-//                alert("需要设置");
         }
 
         return aaOptions;
