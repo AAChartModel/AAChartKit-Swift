@@ -176,10 +176,10 @@
 		278C54F51EE947DF00770B97 /* AAChartCreator */ = {
 			isa = PBXGroup;
 			children = (
-				2749914B210D90B5003D18C2 /* AAChartModel.swift */,
 				2749914E210D90B5003D18C2 /* AAChartView.swift */,
-				2749914D210D90B5003D18C2 /* AASerializable.swift */,
+				2749914B210D90B5003D18C2 /* AAChartModel.swift */,
 				2749914C210D90B5003D18C2 /* AASeriesElement.swift */,
+				2749914D210D90B5003D18C2 /* AASerializable.swift */,
 			);
 			path = AAChartCreator;
 			sourceTree = "<group>";

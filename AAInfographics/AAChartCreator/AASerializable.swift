@@ -33,11 +33,11 @@
 
 import Foundation
 
-public protocol JSONRepresentable {
+public protocol AAJSONRepresentable {
     var JSONRepresentation: AnyObject { get }
 }
 
-public protocol AASerializable: JSONRepresentable {
+public protocol AASerializable: AAJSONRepresentable {
 }
 
 public extension AASerializable {
@@ -46,7 +46,7 @@ public extension AASerializable {
         
         for case let (label?, value) in Mirror(reflecting: self).children {
             switch value {
-            case let value as JSONRepresentable:
+            case let value as AAJSONRepresentable:
                 representation[label] = value.JSONRepresentation
                 
             case let value as NSObject:
