@@ -57,6 +57,7 @@ class MainVC: UIViewController {
             ],
             /*特殊类型图表*/
             [
+                "Colorful Bar Chart---多彩条形图",
                 "Polar Chart---极地图",
                 "Pie Chart---扇形图",
                 "Bubble Chart---气泡图",
@@ -132,7 +133,7 @@ class MainVC: UIViewController {
                 AAChartType.spline,
                 ],
             /*特殊类型图表*/
-            [
+            [   AAChartType.bar,
                 AAChartType.column,
                 AAChartType.pie,
                 AAChartType.bubble,

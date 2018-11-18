@@ -73,6 +73,72 @@ class SpecialChartVC: UIViewController {
     
     func configureTheAAChartModel(_ chartTypeStr:AAChartType) {
         switch chartTypeStr {
+        case .bar:
+            let gradientColorNamesArr = ["oceanBlue",
+                                         "sanguine",
+                                         "lusciousLime",
+                                         "purpleLake",
+                                         "freshPapaya",
+                                         "ultramarine",
+                                         "pinkSugar",
+                                         "lemonDrizzle",
+                                         "victoriaPurple",
+                                         "springGreens",
+                                         "mysticMauve",
+                                         "reflexSilver",
+                                         "newLeaf",
+                                         "cottonCandy",
+                                         "pixieDust",
+                                         "fizzyPeach",
+                                         "sweetDream",
+                                         "firebrick",
+                                         "wroughtIron",
+                                         "deepSea",
+                                         "coastalBreeze",
+                                         "eveningDelight",
+                                         ]
+            let gradientColorArr = [AAGradientColor.oceanBlue,
+                                    AAGradientColor.sanguine,
+                                    AAGradientColor.lusciousLime,
+                                    AAGradientColor.purpleLake,
+                                    AAGradientColor.freshPapaya,
+                                    AAGradientColor.ultramarine,
+                                    AAGradientColor.pinkSugar,
+                                    AAGradientColor.lemonDrizzle,
+                                    AAGradientColor.victoriaPurple,
+                                    AAGradientColor.springGreens,
+                                    AAGradientColor.mysticMauve,
+                                    AAGradientColor.reflexSilver,
+                                    AAGradientColor.newLeaf,
+                                    AAGradientColor.cottonCandy,
+                                    AAGradientColor.pixieDust,
+                                    AAGradientColor.fizzyPeach,
+                                    AAGradientColor.sweetDream,
+                                    AAGradientColor.firebrick,
+                                    AAGradientColor.wroughtIron,
+                                    AAGradientColor.deepSea,
+                                    AAGradientColor.coastalBreeze,
+                                    AAGradientColor.eveningDelight,
+                                    ]
+   
+            
+            aaChartModel = AAChartModel()
+                .chartType(.bar)
+                .title("Colorful Gradient Chart")
+                .backgroundColor("#22324c")
+                .categories(gradientColorNamesArr)
+                .colorsTheme(gradientColorArr as [Any])
+                .series(
+                    [
+                        AASeriesElement()
+                            .name("2018")
+                            .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+                            .colorByPoint(true)
+                            .toDic()!
+                    ]
+                    
+            )
+            
         case .column:
             aaChartModel = AAChartModel()
                 .chartType(.column)
