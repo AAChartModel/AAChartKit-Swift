@@ -74,7 +74,20 @@ class MixedChartVC: UIViewController {
         
         switch chartTypeStr {
         case "manyColorMixedBar":
-
+            let colorsNameArr = ["red",
+                                 "orange",
+                                 "yellow",
+                                 "green",
+                                 "cyan",
+                                 "blue",
+                                 "purple",
+                                 "gray",
+                                 "darkGray",
+                                 "lightGray",
+                                 "magenta",
+                                 "brown",
+                                 "black"]
+            
             let colorsArr = [AAColor.red,
                              AAColor.orange,
                              AAColor.yellow,
@@ -90,17 +103,18 @@ class MixedChartVC: UIViewController {
                              AAColor.black]
             
             aaChartModel = AAChartModel()
-                .chartType(.bar)//图形类型
-                .animationType(.bounce)//图形渲染动画类型为"bounce"
-                .title("都市天气")//图形标题
-                .subtitle("2020年08月08日")//图形副标题
-                .dataLabelEnabled(false)//是否显示数字
+                .chartType(.bar)
+                .animationType(.bounce)
+                .title("Colorful Chart")
+                .subtitle("use AAColor to get color string")
+                .dataLabelEnabled(false)
+                .categories(colorsNameArr)
                 .colorsTheme(colorsArr as [Any])
                 .stacking(.percent)
                 .series(([
                     AASeriesElement()
                         .name("Tokyo")
-                        .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6,5.5])
+                        .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6, 5.5])
                         .colorByPoint(true)
                         .toDic()!,
                     ])

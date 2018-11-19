@@ -128,6 +128,10 @@ class SpecialChartVC: UIViewController {
                 .backgroundColor("#22324c")
                 .categories(gradientColorNamesArr)
                 .colorsTheme(gradientColorArr as [Any])
+                .stacking(.percent)
+                .titleColor("#ffffff")
+                .axisColor("#ffffff")
+                .dataLabelEnabled(false)
                 .series(
                     [
                         AASeriesElement()
