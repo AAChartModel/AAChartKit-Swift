@@ -64,8 +64,6 @@ class ShowManyChartViewVC: UIViewController {
             .title("都市天气")//图形标题
             .subtitle("2020年08月08日")//图形副标题
             .dataLabelEnabled(false)//是否显示数字
-            .stacking(.none)
-            .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .stacking(.percent)
             .series(([

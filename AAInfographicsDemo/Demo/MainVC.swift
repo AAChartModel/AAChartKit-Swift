@@ -74,6 +74,7 @@ class MainVC: UIViewController {
             ],
             /*Mixed Chart---混合图*/
             [
+                "Colorful Bar Chart---多彩条形图",
                 "Arearange Mixed Line---面积范围均线图",
                 "Columnrange Mixed Line---柱形范围图混合折线图",
                 "Stacking Column Mixed Line---堆积柱形图混合折线图",
@@ -148,15 +149,17 @@ class MainVC: UIViewController {
                 AAChartType.pyramid,
                 AAChartType.funnel,
                 ],
-            ["arearangeMixedLine",
-             "columnrangeMixedLine",
-             "stackingColumnMixedLine",
-             "dashStyleTypeMixed",
-             "negativeColorMixed",
-             "scatterMixedLine",
-             "negativeColorMixedBubble",
-             "polygonMixedScatter",
-             "polarChartMixed"
+            [
+                "manyColorMixedBar",
+                "arearangeMixedLine",
+                "columnrangeMixedLine",
+                "stackingColumnMixedLine",
+                "dashStyleTypeMixed",
+                "negativeColorMixed",
+                "scatterMixedLine",
+                "negativeColorMixedBubble",
+                "polygonMixedScatter",
+                "polarChartMixed"
             ],
             
             [
