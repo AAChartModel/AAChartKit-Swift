@@ -96,7 +96,7 @@ class AAColor: NSObject {
     
    public static var clear: String! {
         get {
-            return "#FFFFFF00"
+            return "#00000000"
         }
     } // 0.0 white, 0.0 alpha
 }
