@@ -57,7 +57,7 @@ class MainVC: UIViewController {
             ],
             /*特殊类型图表*/
             [
-                "Colorful Bar Chart---多彩条形图",
+                "Colorful Gradient Bar Chart---多彩渐变色条形图",
                 "Polar Chart---极地图",
                 "Pie Chart---扇形图",
                 "Bubble Chart---气泡图",
@@ -74,7 +74,7 @@ class MainVC: UIViewController {
             ],
             /*Mixed Chart---混合图*/
             [
-                "Colorful Gradient Bar Chart---多彩渐变色条形图",
+                "Colorful Bar Chart---多彩条形图",
                 "Arearange Mixed Line---面积范围均线图",
                 "Columnrange Mixed Line---柱形范围图混合折线图",
                 "Stacking Column Mixed Line---堆积柱形图混合折线图",
@@ -83,7 +83,9 @@ class MainVC: UIViewController {
                 "scatterMixedLine---散点图混合折线图(待完成)",
                 "Negative Color Mixed bubble---基准线以下异色气泡图",
                 "Polygon Mixed Scatter---多边形混合散点图",
-                "Polar Chart Mixed---极地混合图"
+                "Polar Chart Mixed---极地混合图",
+                "Column Mixed Scatter---柱形图混合散点图",
+                "Pie Mixed Line Mixed Column---扇形折线柱形混合图"
             ],
             /*单纯刷新数据*/
             [  "Column Chart---柱形图",
@@ -159,7 +161,9 @@ class MainVC: UIViewController {
                 "scatterMixedLine",
                 "negativeColorMixedBubble",
                 "polygonMixedScatter",
-                "polarChartMixed"
+                "polarChartMixed",
+                "columnMixedScatter",
+                "PieMixeLineMixedColumn"
             ],
             
             [

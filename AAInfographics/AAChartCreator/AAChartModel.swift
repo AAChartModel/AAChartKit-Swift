@@ -170,7 +170,7 @@ public class AAChartModel: AASerializable {
     private var legendLayout: String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
     private var legendAlign: String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
     private var legendVerticalAlign: String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
-    private var backgroundColor: String?     //图表背景色
+    private var backgroundColor: Any?     //图表背景色
     private var borderRadius: Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     private var markerRadius: Int?           //折线连接点的半径长度
     private var titleColor: String?          //标题颜色
@@ -383,7 +383,7 @@ public class AAChartModel: AASerializable {
     }
     
     @discardableResult
-    public func backgroundColor(_ prop: String) -> AAChartModel {
+    public func backgroundColor(_ prop: Any) -> AAChartModel {
         backgroundColor = prop
         return self
     }

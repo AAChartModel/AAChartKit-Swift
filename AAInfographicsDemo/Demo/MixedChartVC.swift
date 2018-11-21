@@ -260,12 +260,15 @@ class MixedChartVC: UIViewController {
             
         case "stackingColumnMixedLine":
             aaChartModel = AAChartModel()
-//                .colorsTheme(["rgba(255,144,128,1)","rgba(0,191,183,1)", "rgba(252,230,48,1)",])//主题颜色数组
                 .title("16年1月-16年11月充值客单分析")//图形标题
                 .subtitle("BY MICVS")//图形副标题
                 .chartType(.column)
                 .stacking(.normal)
                 .legendEnabled(true)
+                .colorsTheme([AAColor.darkGray,
+                              AAColor.gray,
+                              AAColor.lightGray,
+                              ])
                 .series([
                     AASeriesElement()
                         .name("新用户")
@@ -668,7 +671,6 @@ class MixedChartVC: UIViewController {
                         .name("Column")
                         .type(.column)
                         .data([8, 7, 6, 5, 4, 3, 2, 1])
-                        .color("#0088FF")
                         .toDic()!,
                     AASeriesElement()
                         .name("Line")
@@ -681,6 +683,105 @@ class MixedChartVC: UIViewController {
                         .data([1, 8, 2, 7, 3, 6, 4, 5])
                         .toDic()!,
                     ])
+            
+        case "columnMixedScatter":
+            aaChartModel = AAChartModel()
+                .xAxisReversed(true)
+                .series([
+                    AASeriesElement()
+                        .name("Column")
+                        .type(.column)
+                        .data([
+                            8,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                            7,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                            6,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                            5,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                            4,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                            3,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                            2,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                            1])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("Scatter")
+                        .type(.scatter)
+                        .data([3.5, 3, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3, 3.3, 4, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3,
+                               3.4, 3, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3, 3.8, 3.2,
+                               3.7, 3.3, 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2, 3, 2.2, 2.9, 2.9, 3.1, 3, 2.7, 2.2, 2.5, 3.2, 2.8,
+                               2.5, 2.8, 2.9, 3, 2.8, 3, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3, 3.4, 3.1, 2.3, 3, 2.5, 2.6, 3.6, 2.6, 2.3, 2.7, 3, 2.9,
+                               2.9, 2.5, 2.8, 3.3, 2.7, 3, 2.9, 3, 3, 2.5, 2.9, 2.5, 3.6, 3.2, 2.7, 3, 2.5, 2.8, 3.2, 3, 3.8, 2.6, 2.2, 3.2, 2.8,
+                               2.8, 2.7, 3.3, 3.2, 2.8, 3, 2.8, 3, 2.8, 3.8, 2.8, 2.8, 2.6, 3, 3.4, 3.1, 3, 3.1, 3.1, 3.1, 2.7, 3.2, 3.3, 3, 2.5,
+                               3, 3.4, 3])
+                        .marker([
+                            "radius": 5,
+                            "symbol": "circle",
+                            "fillColor":"#FFFFFF" ,
+                            "lineWidth": 2,
+                            "lineColor":""
+                            ])
+                        .toDic()!
+                    ])
+
+        case "PieMixeLineMixedColumn":
+            let pieElement = AASeriesElement()
+                .type(.pie)
+                .name("Total cosume")
+                .data([
+                    [
+                        "name": "小张",
+                        "y": 13,
+                        "color": AAGradientColor.oceanBlue
+                    ], [
+                        "name": "小潘",
+                        "y": 23,
+                        "color": AAGradientColor.sanguine
+                    ], [
+                        "name": "小王",
+                        "y": 19,
+                        "color": AAGradientColor.purpleLake
+                    ]]);
+            
+            let pieElementDic:NSMutableDictionary = NSMutableDictionary.init(dictionary: pieElement.toDic()!)
+            pieElementDic.setValue([100, 80], forKey: "center")
+            pieElementDic.setValue(100, forKey: "size")
+            pieElementDic.setValue(false, forKey: "showInLegend")
+            pieElementDic.setValue(["enabled": false], forKey: "dataLabels")
+            
+            aaChartModel = AAChartModel()
+                .stacking(.normal)
+                .colorsTheme([AAGradientColor.oceanBlue,
+                              AAGradientColor.sanguine,
+                              AAGradientColor.purpleLake])
+                .dataLabelEnabled(false)
+                .series([
+                    AASeriesElement()
+                        .name("Anna")
+                        .type(.column)
+                        .data([3, 2, 1, 3, 4])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("Babara")
+                        .type(.column)
+                        .data([2, 3, 5, 7, 6])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("Cortana")
+                        .type(.column)
+                        .data([4, 3, 3, 9, 0])
+                        .toDic()!,
+                    AASeriesElement()
+                        .name("average value")
+                        .type(.line)
+                        .data([3, 2.67, 3, 6.33, 3.33])
+                        .marker([
+                            "fillColor":"#1E90FF" ,
+                            "lineWidth": 2,
+                            "lineColor":"white"
+                            ])
+                        .toDic()!,
+                    pieElementDic as! Dictionary<String, Any>
+                    ])
+            
+
        
         default:
             break
