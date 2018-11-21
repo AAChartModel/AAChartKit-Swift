@@ -939,13 +939,14 @@ class SpecialChartVC: UIViewController {
                 .subtitle("virtual data")
                 .yAxisVisible(true)
                 .series(
-                    [[
-                        "upColor":"#9b43b4",
-                        "color": "#ef476f",
-                        "borderWidth":0,
-                        "data": [[
-                            "name": "启动资金",
-                            "y": 120000
+                    [
+                        ["upColor":"#9b43b4",
+                         "color": "#ef476f",
+                         "borderWidth":0,
+                         "data": [
+                            [
+                                "name": "启动资金",
+                                "y": 120000
                             ], [
                                 "name": "产品收入",
                                 "y": 569000
@@ -967,7 +968,7 @@ class SpecialChartVC: UIViewController {
                                 "isSum": true,
                                 "color": "#04d69f"
                             ]],
-                        ]]
+                         ]]
             )
             
         case .pyramid:
