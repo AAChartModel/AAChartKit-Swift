@@ -132,7 +132,10 @@ function configureAAOptions(sender, receivedWidth, receivedHeight) {
                 layout: aaChartModel.legendLayout,
                 align: aaChartModel.legendAlign,
                 verticalAlign: aaChartModel.legendVerticalAlign,
-                borderWidth: 0
+                borderWidth: 0,
+                itemStyle: {
+                       color: aaChartModel.axisColor, //默认图例的文字颜色和X轴文字颜色一样
+                }
         };
 
         var aaColorsTheme = aaChartModel.colorsTheme;
