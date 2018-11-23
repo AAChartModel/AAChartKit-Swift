@@ -65,7 +65,7 @@ class CommonChartVC: UIViewController {
                                     width: chartViewWidth,
                                     height: chartViewHeight)
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
-        aaChartView?.contentHeight = chartViewHeight-20
+        aaChartView?.contentHeight = chartViewHeight - 20
         view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false//禁止图表内容滚动
         aaChartView?.isClearBackgroundColor = true
@@ -109,7 +109,6 @@ class CommonChartVC: UIViewController {
         
         if (chartType == .area && step == true)
             || (chartType == .line && step == true) {
-            aaChartModel = chartType == .area ? aaChartModel?.gradientColorEnable(true) : aaChartModel?.gradientColorEnable(false)
             aaChartModel?.series([
                 AASeriesElement()
                     .name("Berlin")
@@ -141,7 +140,6 @@ class CommonChartVC: UIViewController {
             aaChartModel?
                 .symbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
                 .animationType(.easeOutQuart)
-                .gradientColorEnable(true)
                 .legendEnabled(true)
                 .markerRadius(5)
                 .symbol(.circle)
@@ -159,7 +157,6 @@ class CommonChartVC: UIViewController {
                     ] as [String : Any]
                 
                 aaChartModel?
-                    .gradientColorEnable(false)
                     .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
                     .series([
                         AASeriesElement()

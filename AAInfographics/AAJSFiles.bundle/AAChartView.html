@@ -36,7 +36,6 @@
         <script src="AAHighchartsLib.js"></script>
         <script src="AAHighchartsMore.js"></script>
         <script src="AAFunnel.js"></script>
-        <script src="AAOptionsConstructor.js"></script>
         <!-- <script src=" https://img.hcharts.cn/highcharts/themes/dark-unica.js">-->
         <!-- </script>-->
         <!-- 若介意本地js代码体积(250KB左右)过大，可换用加载网络js代码 -->
@@ -54,8 +53,13 @@
             var aaGlobalChart;
 
             function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
-                <!--                alert(sender);-->
-                var aaOptions = configureAAOptions(sender, receivedWidth, receivedHeight);
+<!--                                alert(sender);-->
+                var aaOptions = JSON.parse(sender);
+                var o = document.getElementById('container'); //获得元素
+                if (receivedWidth != 0) {
+                    o.style.width = receivedWidth; //设置宽度
+                }
+                o.style.height = receivedHeight; //设置高度
                 var animationEasingType = aaOptions.plotOptions.series.animation.easing;
                 if (animationEasingType) { //懒调用(只有在 aaChartModel 实例对象设置了 animationType 属性值的时候才会调用设置动画类型的函数,否则不调用)
                     aaOptions.plotOptions.series.animation.easing = configureTheChartAnimationEasingType(animationEasingType);

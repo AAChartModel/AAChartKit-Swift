@@ -120,7 +120,6 @@ class AnimationTypeVC: UIViewController {
         
         if chartType == .area || chartType == .areaSpline {
           aaChartModel?
-            .gradientColorEnable(true)
             .markerRadius(0)
             .series([
                 AASeriesElement()

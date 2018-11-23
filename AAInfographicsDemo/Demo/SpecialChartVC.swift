@@ -194,7 +194,6 @@ class SpecialChartVC: UIViewController {
                 .title("AACHARTKIT BUBBLES")
                 .subtitle("JUST FOR FUN")
                 .yAxisTitle("℃")
-                .gradientColorEnable(true)
                 .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
                 .series(
                     [

@@ -28,6 +28,7 @@
 		279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */; };
 		27FADB8620D6569000FED960 /* ChartSeriesHideOrShowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FADB8520D6569000FED960 /* ChartSeriesHideOrShowVC.swift */; };
 		44143D3621A17F2300D44657 /* AAGradientColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44143D3521A17F2300D44657 /* AAGradientColor.swift */; };
+		44143DD221A7A28300D44657 /* AAOptionsConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowManyChartViewVC.swift; sourceTree = "<group>"; };
 		27FADB8520D6569000FED960 /* ChartSeriesHideOrShowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSeriesHideOrShowVC.swift; sourceTree = "<group>"; };
 		44143D3521A17F2300D44657 /* AAGradientColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGradientColor.swift; sourceTree = "<group>"; };
+		44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsConstructor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,12 +141,12 @@
 		278C54B01EE9472300770B97 /* AAInfographicsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				278C550F1EE9487F00770B97 /* Demo */,
 				278C54B11EE9472300770B97 /* AppDelegate.swift */,
 				278C54B51EE9472300770B97 /* Main.storyboard */,
 				278C54BA1EE9472300770B97 /* LaunchScreen.storyboard */,
 				278C54BD1EE9472300770B97 /* Info.plist */,
 				278C54B81EE9472300770B97 /* Assets.xcassets */,
-				278C550F1EE9487F00770B97 /* Demo */,
 			);
 			path = AAInfographicsDemo;
 			sourceTree = "<group>";
@@ -182,6 +184,7 @@
 				2749914E210D90B5003D18C2 /* AAChartView.swift */,
 				2749914B210D90B5003D18C2 /* AAChartModel.swift */,
 				2749914C210D90B5003D18C2 /* AASeriesElement.swift */,
+				44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */,
 				2749914D210D90B5003D18C2 /* AASerializable.swift */,
 			);
 			path = AAChartCreator;
@@ -343,6 +346,7 @@
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
 				2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */,
 				272BBE7821A258C200DBE69D /* AAColor.swift in Sources */,
+				44143DD221A7A28300D44657 /* AAOptionsConstructor.swift in Sources */,
 				27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */,
 				2749914F210D90B5003D18C2 /* AAChartModel.swift in Sources */,
 				278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */,

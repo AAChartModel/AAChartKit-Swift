@@ -191,7 +191,12 @@ public class AAChartView: UIView {
     }
     
     private func configureTheJavaScriptString(_ chartModel: AAChartModel) {
-        let modelString = chartModel.toJSON()
+        let modelJsonDic = AAOptionsConstructor.configureAAoptions(aaChartModel: chartModel)
+        let modelJsonData = try! JSONSerialization.data(withJSONObject: modelJsonDic,
+                                                   options: JSONSerialization.WritingOptions.prettyPrinted)
+        var modelJsonStr = String(data: modelJsonData, encoding: String.Encoding.utf8)!
+        modelJsonStr = modelJsonStr.replacingOccurrences(of: "\n", with: "") as String
+        
         let chartViewContentWidth = contentWidth
         
         var chartViewContentHeight = contentHeight
@@ -200,7 +205,7 @@ public class AAChartView: UIView {
         }
         
         let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');",
-                                                          modelString!,
+                                                          modelJsonStr,
                                                           chartViewContentWidth!,
                                                           chartViewContentHeight!)
         optionsJson = jsString as String;
@@ -280,6 +285,7 @@ extension AAChartView: WKUIDelegate {
         }))
         let rootVC = UIApplication.shared.keyWindow?.rootViewController
         rootVC!.present(alert, animated: true, completion: nil)
+        print(message)
     }
 }
 

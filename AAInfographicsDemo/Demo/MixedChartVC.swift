@@ -562,7 +562,6 @@ class MixedChartVC: UIViewController {
         case "negativeColorMixedBubble":
             aaChartModel = AAChartModel()
                 .categories(["Saturday", "Friday", "Thursday","Wednesday", "Tuesday", "Monday", "Sunday"])
-                .gradientColorEnable(true)
                 .series([
                     AASeriesElement()
                         .name("Bubble")

@@ -108,7 +108,6 @@ class ShowManyChartViewVC: UIViewController {
             .dataLabelEnabled(false)//是否显示数字
             .markerRadius(4)//折线连接点半径长度,为0时相当于没有折线连接点
             .symbolStyle(.innerBlank)
-            .gradientColorEnable(true)
             .legendEnabled(true)
             .tooltipEnabled(false)
             .categories(["孤<br>岛<br>危<br>机",
