@@ -63,7 +63,7 @@ public class AAOptionsConstructor: NSObject {
         aaTooltip.setValue(aaChartModel.tooltipValueSuffix, forKey: "valueSuffix")//浮动提示层数值的单位后缀
         aaTooltip.setValue(true, forKey: "shared")//多组数据浮动提示框是否共享
         aaTooltip.setValue(aaChartModel.tooltipCrosshairs, forKey: "crosshairs")//是否显示准星线
-        //                followTouchMove:false,//在触摸设备上，tooltip.followTouchMove选项为true（默认）时，平移需要两根手指。若要允许用一根手指平移，需要将followTouchMove设置为false。
+        //aaTooltip.setValue(false, forKey: "followTouchMove") //在触摸设备上，tooltip.followTouchMove选项为true（默认）时，平移需要两根手指。若要允许用一根手指平移，需要将followTouchMove设置为false。
         
         let aaSeries = NSMutableDictionary()
         aaSeries.setValue(aaChartModel.stacking, forKey: "stacking")//图表堆叠类型
@@ -143,11 +143,6 @@ public class AAOptionsConstructor: NSObject {
         aaYAxis.setValue(aaChartModel.yAxisGridLineWidth, forKey: "gridLineWidth") // Y 轴网格线宽度
         aaYAxis.setValue(["text":aaChartModel.yAxisTitle], forKey: "title")//Y 轴标题
         aaYAxis.setValue(aaChartModel.yAxisLineWidth, forKey: "lineWidth")
-        // Y 轴轴线样式 注意:这里plotLines是数组而不是字典,少了一个[ ] 方括号,图表便无法正常显示
-        aaYAxis.setValue([["value":0,
-                           "width":1,
-                           "color":"#808080"]
-            ] , forKey: "plotLines")
         aaYAxis.setValue(aaChartModel.yAxisVisible, forKey: "visible")
         
         aaOptions.setValue(aaXAxis, forKey: "xAxis")
