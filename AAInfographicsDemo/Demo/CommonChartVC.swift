@@ -79,7 +79,7 @@ class CommonChartVC: UIViewController {
             .dataLabelEnabled(false)//是否显示数字
             .tooltipValueSuffix("℃")//浮动提示框单位后缀
             .animationType(.bounce)//图形渲染动画类型为"bounce"
-            .backgroundColor("#00000000")//图表背景色为透明色,或者设置为 "rgba(0,0,0,0)".  "#00000000"和"rgba(0,0,0,0)"效果相同
+            .backgroundColor("#22324c")//若要使图表背景色为透明色,可将 backgroundColor 设置为 "rgba(0,0,0,0)" 或 "rgba(0,0,0,0)". 同时确保 aaChartView?.isClearBackgroundColor = true
             .series([
                 AASeriesElement()
                     .name("Tokyo")
