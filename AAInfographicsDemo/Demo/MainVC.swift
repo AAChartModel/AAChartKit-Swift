@@ -274,13 +274,15 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         view.backgroundColor = kRGBColorFromHex(rgbValue: 0xF5F5F5)//白烟
         
         let sectionTitleLabel = UILabel()
-        let sectionTitleArr = ["Basic Type Chart --- 基础类型图表",
-                               "Special Type Chart --- 特殊类型图表",
-                               "Mixed Chart --- 混合图形",
-                               "Only Refresh data ---单纯刷新数据",
-                               "Double Chart View---同时显示多个图表",
-                               "Rendering Animation types ---渲染动画示例",
-                               "Hide Or Show Chart Series---隐藏或显示内容"]
+        let sectionTitleArr = [
+            "Basic Type Chart --- 基础类型图表",
+            "Special Type Chart --- 特殊类型图表",
+            "Mixed Chart --- 混合图形",
+            "Only Refresh data ---单纯刷新数据",
+            "Double Chart View---同时显示多个图表",
+            "Rendering Animation types ---渲染动画示例",
+            "Hide Or Show Chart Series---隐藏或显示内容"
+        ]
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
         sectionTitleLabel.font = .boldSystemFont(ofSize: 14)

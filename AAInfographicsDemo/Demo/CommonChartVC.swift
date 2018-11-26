@@ -215,27 +215,35 @@ class CommonChartVC: UIViewController {
         
         if chartType == .column
             || chartType == .bar {
-            segmentedNamesArray = [["No stacking",
-                                    "Normal stacking",
-                                    "Percent stacking"],
-                                   ["Square corners",
-                                    "Rounded corners",
-                                    "Wedge"]
+            segmentedNamesArray = [
+                ["No stacking",
+                 "Normal stacking",
+                 "Percent stacking"],
+                ["Square corners",
+                 "Rounded corners",
+                 "Wedge"]
             ];
-            typeLabelNameArr = ["Stacking Type Selection",
-                                "Corners Style Type Selection"];
+            typeLabelNameArr = [
+                "Stacking Type Selection",
+                "Corners Style Type Selection"
+            ];
         } else {
-            segmentedNamesArray = [["No stacking",
-                                    "Normal stacking",
-                                    "Percent stacking"],
-                                   ["Circle",
-                                    "Square",
-                                    "Diamond",
-                                    "Triangle",
-                                    "Triangle-down"]
+            segmentedNamesArray = [
+                ["No stacking",
+                 "Normal stacking",
+                 "Percent stacking"
+                ],
+                ["Circle",
+                 "Square",
+                 "Diamond",
+                 "Triangle",
+                 "Triangle-down"
+                ]
             ];
-            typeLabelNameArr = ["Stacking Type Selection",
-                                "Chart Symbol Type Selection"];
+            typeLabelNameArr = [
+                "Stacking Type Selection",
+                "Chart Symbol Type Selection"
+            ];
         }
         
         for  i in 0..<segmentedNamesArray.count {
@@ -268,9 +276,11 @@ class CommonChartVC: UIViewController {
     @objc func segmentDidSelected(segmentedControl:UISegmentedControl) {
         switch segmentedControl.tag {
         case 0:
-            let stackingArr = [AAChartStackingType.none,
-                               .normal,
-                               .percent]
+            let stackingArr = [
+                AAChartStackingType.none,
+                .normal,
+                .percent
+            ]
             aaChartModel?.stacking(stackingArr[segmentedControl.selectedSegmentIndex])
             
         case 1:
@@ -278,11 +288,13 @@ class CommonChartVC: UIViewController {
                 let borderRadiusArr = [0,10,100]
                 aaChartModel?.borderRadius(borderRadiusArr[segmentedControl.selectedSegmentIndex])
             } else {
-                let symbolArr = [AAChartSymbolType.circle,
-                                 .square,
-                                 .diamond,
-                                 .triangle,
-                                 .triangleDown]
+                let symbolArr = [
+                    AAChartSymbolType.circle,
+                    .square,
+                    .diamond,
+                    .triangle,
+                    .triangleDown
+                ]
                 aaChartModel?.symbol(symbolArr[segmentedControl.selectedSegmentIndex])
             }
             
@@ -296,19 +308,21 @@ class CommonChartVC: UIViewController {
         let switchWidth: CGFloat
         
         if chartType == .column || chartType == .bar {
-            nameArr = ["xReversed",
-                       "yReversed",
-                       "xInverted",
-                       "Polarization",
-                       "DataShow",];
+            nameArr = [
+                "xReversed",
+                "yReversed",
+                "xInverted",
+                "Polarization",
+                "DataShow",];
             switchWidth = (view.frame.size.width - 40) / 5
         } else {
-            nameArr = ["xReversed",
-                       "yReversed",
-                       "xInverted",
-                       "Polarization",
-                       "DataShow",
-                       "HideMarker"];
+            nameArr = [
+                "xReversed",
+                "yReversed",
+                "xInverted",
+                "Polarization",
+                "DataShow",
+                "HideMarker"];
             switchWidth = (view.frame.size.width - 40) / 6
         }
         

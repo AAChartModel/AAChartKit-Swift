@@ -187,8 +187,10 @@ public class GradientColorDicMaker {
                 "x2": 0,
                 "y2": 1
             ],
-            "stops": [[0, "#\(startColor)"],
-                      [1, "#\(endColor)"]]//颜色字符串设置支持十六进制类型和 rgba 类型
+            "stops": [
+                [0, "#\(startColor)"],
+                [1, "#\(endColor)"]
+            ]//颜色字符串设置支持十六进制类型和 rgba 类型
             ] as [String : Any]
     }
 }

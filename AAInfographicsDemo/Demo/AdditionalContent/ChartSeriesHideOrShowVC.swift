@@ -121,18 +121,17 @@ class ChartSeriesHideOrShowVC: UIViewController {
     }
     
     func setUpSegmentedControls() {
-        let segmentedNamesArray =
-            [
-                ["hide One",
-                 "hide Two",
-                 "hide Three",
-                 "hide Four",
-                 ],
-                ["show One",
-                 "show Two",
-                 "show Three",
-                 "show Four",
-                 ]
+        let segmentedNamesArray = [
+            ["hide One",
+             "hide Two",
+             "hide Three",
+             "hide Four",
+             ],
+            ["show One",
+             "show Two",
+             "show Three",
+             "show Four",
+             ]
         ];
         let typeLabelNameArr = ["HIDE CHART SERIES",
                                 "SHOW CHART SERIES"];
