@@ -42,6 +42,10 @@ class MixedChartVC: UIViewController {
         view.backgroundColor = .white
         title = chartType
         
+        setUpAAChartView()
+    }
+    
+    func setUpAAChartView() {
         /*不要将 AAChartView 作为第一个添加到 ViewController 上的子视图,否则会有 bug!!!!!!不信你试试注释掉中间这段*/
         let subLabel = UILabel()
         subLabel.frame = CGRect(x: 20,
@@ -67,7 +71,6 @@ class MixedChartVC: UIViewController {
         configureTheAAChartModel(chartType!)
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
-        
     }
     
     func configureTheAAChartModel(_ chartTypeStr:String) {

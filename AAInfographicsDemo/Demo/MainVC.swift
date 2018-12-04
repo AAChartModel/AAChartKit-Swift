@@ -202,15 +202,18 @@ class MainVC: UIViewController {
         
         view.backgroundColor = .white
         
+        setUpMainTableView()
+    }
+    
+    func setUpMainTableView() {
         let myTableView = UITableView()
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.backgroundColor = .white
         view.addSubview(myTableView)
-
+        
         myTableView.translatesAutoresizingMaskIntoConstraints = false
         myTableView.superview!.addConstraints(configureTheConstraintArray(childView: myTableView, fatherView: view))//Note:父控件添加约束
-        
     }
  
     func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {

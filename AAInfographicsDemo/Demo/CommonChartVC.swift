@@ -57,6 +57,11 @@ class CommonChartVC: UIViewController {
         configureTheSwith()
         configureTheSegmentControl()
         
+        configureAAChartView()
+        
+    }
+    
+    func configureAAChartView() {
         aaChartView = AAChartView()
         let chartViewWidth = view.frame.size.width
         let chartViewHeight = view.frame.size.height - 220
@@ -102,7 +107,6 @@ class CommonChartVC: UIViewController {
         configureTheStyleForDifferentTypeChart()
         
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
-        
     }
     
     func configureTheStyleForDifferentTypeChart() {
