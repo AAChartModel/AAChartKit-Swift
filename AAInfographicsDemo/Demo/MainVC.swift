@@ -123,7 +123,8 @@ class MainVC: UIViewController {
             ],
             /*执行由 JavaScript 字符串映射转换成的 js function 函数*/
             [
-                "Change Chart DataLabel Sample"
+                "Change Chart DataLabel Sample One",
+                "Change Chart DataLabel Sample Two"
             ],
         ]
         
@@ -368,6 +369,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 7:
             /*图表 sereies 元素显示或隐藏*/
             let vc = EvaluateJSStringFunctionVC()
+            vc.sampleChartTypeIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

@@ -9,68 +9,112 @@
 import UIKit
 
 class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
-    private var aaChartView: AAChartView! 
+    public var sampleChartTypeIndex: NSInteger?
+    
+    private var aaChartView: AAChartView!    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
 
         setUpTheAAChartViewOne()
-        
-       
-      
     }
     
-    func configureJavaScriptFunctionString() -> String {
+    func configureMaxMiniLabelJSFunctionString() -> String {
         //refer to highcharts sample  https://jshare.com.cn/hcharts.cn/hhhhov
         let jsFunctionStr =
         """
-var minLabel = null,
-    maxLabel = null;
-function render(aaGlobalChart, point, text) {
-//alert(point);
-//alert("就是为了测试一下这个函数是否被成功执行了"+text);
-    return aaGlobalChart.renderer.label(text + ': ' + point.y,  point.plotX + aaGlobalChart.plotLeft -20 , point.plotY + aaGlobalChart.plotTop - 45, 'callout', point.plotX + aaGlobalChart.plotLeft, point.plotY + aaGlobalChart.plotTop)
+        var minLabel = null,
+        maxLabel = null;
+        function render(aaGlobalChart, point, text) {
+        return aaGlobalChart.renderer.label(text + ': ' + point.y,  point.plotX + aaGlobalChart.plotLeft -20 , point.plotY + aaGlobalChart.plotTop - 45, 'callout', point.plotX + aaGlobalChart.plotLeft, point.plotY + aaGlobalChart.plotTop)
         .css({
         color: '#FFFFFF',
         align: 'center',
-    })
+        })
         .attr({
         fill: 'rgba(0, 0, 0, 0.75)',
         padding: 8,
         r: 5,
         zIndex: 6
-    })
+        })
         .add();
-}
-function renderMinMaxLabel(aaGlobalChart) {
-    if(minLabel) {
+        }
+        function renderMinMaxLabel(aaGlobalChart) {
+        if(minLabel) {
         minLabel.destroy();
-    }
-    if(maxLabel) {
+        }
+        if(maxLabel) {
         maxLabel.destroy();
-    }
-    var min = 1000,
+        }
+        var min = 1000,
         max = 0,
         pointsToShow = [0, 0],
         points = aaGlobalChart.series[0].points;
-    Highcharts.each(points, function(p) {
+        Highcharts.each(points, function(p) {
         if(p.y>max) {
-            pointsToShow[0] = p.index;
-            max = p.y;
+        pointsToShow[0] = p.index;
+        max = p.y;
         }
         if(p.y<min) {
-            pointsToShow[1] = p.index;
-            min = p.y;
+        pointsToShow[1] = p.index;
+        min = p.y;
         }
-    });
-    minLabel = render(aaGlobalChart, points[pointsToShow[0]], 'Max');
-    maxLabel = render(aaGlobalChart, points[pointsToShow[1]], 'Min');
-}
-
-    renderMinMaxLabel(aaGlobalChart);
-"""
+        });
+        minLabel = render(aaGlobalChart, points[pointsToShow[0]], 'Max');
+        maxLabel = render(aaGlobalChart, points[pointsToShow[1]], 'Min');
+        }
+        
+        renderMinMaxLabel(aaGlobalChart);
+        """
+        
         return jsFunctionStr
+    }
+    
+    func configureFirstSecondThirdLabelJSFunctionString() -> String {
+        let firstMaxNumberIndex = 8
+        let secondMaxNumberIndex = 9
+        let thirdMaxNumberIndex = 5
+        
+        let jsFunctionStr2 =
+        """
+        var firstLabel = null;
+        var secondLabel = null;
+        var thirdLabel = null;
+        
+        function render(aaGlobalChart, point, text) {
+        return aaGlobalChart.renderer.label(text + ': ' + point.y,  point.plotX + aaGlobalChart.plotLeft -20 , point.plotY + aaGlobalChart.plotTop - 45, 'callout', point.plotX + aaGlobalChart.plotLeft, point.plotY + aaGlobalChart.plotTop)
+        .css({
+        color: '#FFFFFF',
+        align: 'center',
+        })
+        .attr({
+        fill: 'rgba(0, 0, 0, 0.75)',
+        padding: 8,
+        r: 5,
+        zIndex: 6
+        })
+        .add();
+        }
+        function renderFirstSecondThirdLabel(aaGlobalChart) {
+        if(firstLabel) {
+        firstLabel.destroy();
+        }
+        if(secondLabel) {
+        secondLabel.destroy();
+        }
+        if(thirdLabel) {
+        thirdLabel.destroy();
+        }
+        var points = aaGlobalChart.series[0].points;
+        firstLabel = render(aaGlobalChart, points[\(firstMaxNumberIndex)], '第一名');
+        secondLabel = render(aaGlobalChart, points[\(secondMaxNumberIndex)], '第二名');
+        thirdLabel = render(aaGlobalChart, points[\(thirdMaxNumberIndex)], '第三名');
+        }
+        
+        renderFirstSecondThirdLabel(aaGlobalChart);
+        """
+        return jsFunctionStr2
     }
     
     func setUpTheAAChartViewOne() {
@@ -109,8 +153,13 @@ function renderMinMaxLabel(aaGlobalChart) {
     func AAChartViewDidFinishedLoad () {
         print("🚀🚀🚀AAChartView did finished load")
         
+        var jsFunctionStr:String
+        if self.sampleChartTypeIndex == 0 {
+            jsFunctionStr = configureMaxMiniLabelJSFunctionString()
+        } else {
+            jsFunctionStr = configureFirstSecondThirdLabelJSFunctionString()
+        }
         //图表加载完成后调用,避免WebView还没有获得JavaScript上下文,致使调用失败
-        let jsFunctionStr = configureJavaScriptFunctionString()
         self.aaChartView!.evaluateJavaScriptStringFunctionBody(jsFunctionStr)
     }
 
