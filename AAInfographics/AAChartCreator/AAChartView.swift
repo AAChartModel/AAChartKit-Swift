@@ -277,6 +277,9 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(jsStr as String)
     }
     
+    ///  Evaluate JavaScript string function body
+    ///
+    /// - Parameter JSFunctionBodyString: JavaScript function body string
     public func evaluateJavaScriptStringFunctionBody(_ JSFunctionBodyString: String) {
         if optionsJson != nil {
             var pureJSFunctionBodyStr = JSFunctionBodyString

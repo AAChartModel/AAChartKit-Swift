@@ -123,7 +123,7 @@ class MainVC: UIViewController {
             ],
             /*执行由 JavaScript 字符串映射转换成的 js function 函数*/
             [
-                "执行由 JavaScript 字符串映射转换成的 js function 函数"
+                "Change Chart DataLabel Sample"
             ],
         ]
         
@@ -321,7 +321,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             /*基础类型图表*/
             let vc = CommonChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
@@ -329,17 +330,17 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.section == 1 {
+        case 1:
             /*特殊类型图表*/
             let vc = SpecialChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.section == 2 {
+        case 2:
             /*混合类型图表*/
             let vc = MixedChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? String
             navigationController?.pushViewController(vc, animated: true)
-        }  else if indexPath.section == 3 {
+        case 3:
             /*动态刷新图表数据*/
             let vc = OnlyRefreshChartDataVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
@@ -348,11 +349,11 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.section == 4 {
+        case 4:
             /*同时显示多个图表*/
             let vc = ShowManyChartViewVC()
             navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.section == 5 {
+        case 5:
             /*图表渲染动画*/
             let vc = AnimationTypeVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
@@ -361,7 +362,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.section == 6 {
+        case 6:
             /*图表 sereies 元素显示或隐藏*/
             let vc = ChartSeriesHideOrShowVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
@@ -370,10 +371,12 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
-        } else if indexPath.section == 7 {
+        case 7:
             /*图表 sereies 元素显示或隐藏*/
             let vc = EvaluateJSStringFunctionVC()
             navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
         }
     }
     
