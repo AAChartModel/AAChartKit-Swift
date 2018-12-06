@@ -216,6 +216,8 @@ class MainVC: UIViewController {
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.backgroundColor = .white
+        myTableView.rowHeight = 40
+        myTableView.sectionHeaderHeight = 35
         view.addSubview(myTableView)
         
         myTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -268,14 +270,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chartTypeTitleArr[section].count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 35
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
