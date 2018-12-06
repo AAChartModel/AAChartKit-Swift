@@ -33,6 +33,7 @@
 import UIKit
 import WebKit
 public class AAChartView: UIView {
+    public var delegate: AAChartViewDelegate?
     
     public var scrollEnabled: Bool? {
         willSet {
@@ -275,6 +276,27 @@ extension AAChartView {
         let jsStr = "hideTheSeriesElementContentWithIndex('\(elementIndex)');"
         evaluateJavaScriptWithFunctionNameString(jsStr as String)
     }
+    
+    public func evaluateJavaScriptStringFunctionBody(_ JSFunctionBodyString: String) {
+        if optionsJson != nil {
+            var pureJSFunctionBodyStr = JSFunctionBodyString
+            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\\", with: "\\\\")
+            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\"", with: "\\\"")
+            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\'", with: "\\\'")
+            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\n", with: "\\n")
+            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\r", with: "\\r")
+            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\u{000C}", with: "\\f")
+            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
+            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
+            
+            let jsFunctionNameStr = "evaluateTheJavaScriptStringFunction('\(pureJSFunctionBodyStr)')"
+            evaluateJavaScriptWithFunctionNameString(jsFunctionNameStr)
+        }
+    }
+}
+
+@objc public protocol AAChartViewDelegate: NSObjectProtocol {
+    @objc optional func AAChartViewDidFinishedLoad ()
 }
 
 extension AAChartView: WKUIDelegate {
@@ -292,10 +314,12 @@ extension AAChartView: WKUIDelegate {
 extension AAChartView:  WKNavigationDelegate, UIWebViewDelegate {
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         drawChart()
+        self.delegate?.AAChartViewDidFinishedLoad!()
     }
     
     open func webViewDidFinishLoad(_ webView: UIWebView) {
         drawChart()
+        self.delegate?.AAChartViewDidFinishedLoad!()
     }
     
     

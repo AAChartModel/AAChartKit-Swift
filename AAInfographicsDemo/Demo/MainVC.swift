@@ -121,6 +121,10 @@ class MainVC: UIViewController {
                "Line Chart---折线图",
                "Spline Chart---曲线图",
             ],
+            /*执行由 JavaScript 字符串映射转换成的 js function 函数*/
+            [
+                "执行由 JavaScript 字符串映射转换成的 js function 函数"
+            ],
         ]
         
         chartTypeArr = [
@@ -197,7 +201,9 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.line,
                 AAChartType.spline,
-                ]
+                ],
+            [//Empty Array,just for holding place
+            ],
         ]
         
         view.backgroundColor = .white
@@ -284,7 +290,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             "Only Refresh data ---单纯刷新数据",
             "Double Chart View---同时显示多个图表",
             "Rendering Animation types ---渲染动画示例",
-            "Hide Or Show Chart Series---隐藏或显示内容"
+            "Hide Or Show Chart Series---隐藏或显示内容",
+            "Evaluate JS String Function---执行js函数"
         ]
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
@@ -362,6 +369,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true
             }
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.section == 7 {
+            /*图表 sereies 元素显示或隐藏*/
+            let vc = EvaluateJSStringFunctionVC()
             navigationController?.pushViewController(vc, animated: true)
         }
     }
