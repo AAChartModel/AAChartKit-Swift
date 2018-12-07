@@ -123,8 +123,9 @@ class MainVC: UIViewController {
             ],
             /*执行由 JavaScript 字符串映射转换成的 js function 函数*/
             [
-                "Change Chart DataLabel Sample One",
-                "Change Chart DataLabel Sample Two"
+                "Custom Chart DataLabel Sample One",
+                "Custom Chart DataLabel Sample Two",
+                "Custom Chart StackLabel Sample "
             ],
         ]
         

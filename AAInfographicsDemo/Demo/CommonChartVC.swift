@@ -54,14 +54,14 @@ class CommonChartVC: UIViewController {
         view.backgroundColor = kRGBColorFromHex(rgbValue: 0x22324c)
         title = chartType.map { $0.rawValue }
         
-        configureTheSwith()
-        configureTheSegmentControl()
+        setUpTheSwiths()
+        setUpTheSegmentControls()
         
-        configureAAChartView()
+        setUpAAChartView()
         
     }
     
-    func configureAAChartView() {
+    func setUpAAChartView() {
         aaChartView = AAChartView()
         let chartViewWidth = view.frame.size.width
         let chartViewHeight = view.frame.size.height - 220
@@ -213,7 +213,7 @@ class CommonChartVC: UIViewController {
         }
     }
     
-    func configureTheSegmentControl() {
+    func setUpTheSegmentControls() {
         let segmentedNamesArray:[[String]]
         let typeLabelNameArr:[String]
         
@@ -307,7 +307,7 @@ class CommonChartVC: UIViewController {
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
-    func configureTheSwith() {
+    func setUpTheSwiths() {
         let nameArr: [String]
         let switchWidth: CGFloat
         
