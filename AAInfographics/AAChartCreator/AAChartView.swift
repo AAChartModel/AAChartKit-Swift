@@ -170,19 +170,29 @@ public class AAChartView: UIView {
         if #available(iOS 9.0, *) {
             wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
                 if error != nil {
+                    let objcError = error! as NSError
+                    let errorUserInfo = objcError.userInfo
+                    
                     let errorInfo =
                     """
                     
                     ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
                     ==========================================================================================
                     ------------------------------------------------------------------------------------------
-                    \(error! as CVarArg)
+                    code = \(objcError.code);
+                    domain = \(objcError.domain);
+                    userInfo =     {
+                    NSLocalizedDescription = "A JavaScript exception occurred";
+                    WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
+                    WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
+                    WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
+                    WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
                     ------------------------------------------------------------------------------------------
                     ==========================================================================================
                     ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
                     
                     """
-                    debugPrint(errorInfo)
+                    print(errorInfo)
                 }
             })
         } else {
