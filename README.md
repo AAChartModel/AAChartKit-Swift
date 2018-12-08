@@ -65,8 +65,8 @@
 
 1. Creat the instance object of chart view:`AAChartView`
 ```swift
-        CGFloat chartViewWidth  = self.view.frame.size.width;
-        CGFloat chartViewHeight = self.view.frame.size.height;
+        CGFloat chartViewWidth  = self.view.frame.size.width
+        CGFloat chartViewHeight = self.view.frame.size.height
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
         // set the content height of aachartView
@@ -330,7 +330,7 @@ enum AAChartType: String {
     case column          = "column"          //column chart
     case bar             = "bar"             //bar chart 
     case area            = "area"            //area chart 
-    case areaSpline      = "areaspline"      //areaspline chart
+    case areaspline      = "areaspline"      //areaspline chart
     case line            = "line"            //line chart
     case spline          = "spline"          //spline chart
     case scatter         = "scatter"         //scatter chart 
@@ -338,9 +338,9 @@ enum AAChartType: String {
     case bubble          = "bubble"          //bubble chart  
     case pyramid         = "pyramid"         //pyramid chart
     case funnel          = "funnel"          //funnel chart
-    case columnRange     = "columnrange"     //column range chart
-    case areaRange       = "arearange"       //area range chart
-    case areaSplineRange = "areasplinerange" //area spline range chart
+    case columnrange     = "columnrange"     //column range chart
+    case arearange       = "arearange"       //area range chart
+    case areasplinerange = "areasplinerange" //area spline range chart
     case boxplot         = "boxplot"         //boxplot chart
     case waterfall       = "waterfall"       //waterfall chart
     case polygon         = "polygon"         //polygon chart
@@ -482,6 +482,8 @@ to be
 
 ``` html
 <script src="https://img.hcharts.cn/highcharts/highcharts.js">
+</script>
+<script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>
 <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>

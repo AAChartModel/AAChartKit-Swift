@@ -84,8 +84,8 @@
 
 1. 创建视图*AAChartView*
 ```swift
-        CGFloat chartViewWidth  = self.view.frame.size.width;
-        CGFloat chartViewHeight = self.view.frame.size.height;
+        CGFloat chartViewWidth  = self.view.frame.size.width
+        CGFloat chartViewHeight = self.view.frame.size.height
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
         // 设置 aaChartView 的内容高度(content height)
@@ -356,7 +356,7 @@ enum AAChartType: String {
     case column          = "column"          //柱形图
     case bar             = "bar"             //条形图
     case area            = "area"            //折线区域填充图
-    case areaSpline      = "areaspline"      //曲线区域填充图
+    case areaspline      = "areaspline"      //曲线区域填充图
     case line            = "line"            //折线图
     case spline          = "spline"          //曲线图
     case scatter         = "scatter"         //散点图
@@ -364,9 +364,9 @@ enum AAChartType: String {
     case bubble          = "bubble"          //气泡图
     case pyramid         = "pyramid"         //金字塔图
     case funnel          = "funnel"          //漏斗图
-    case columnRange     = "columnrange"     //柱形范围图
-    case areaRange       = "arearange"       //折线区域范围图
-    case areaSplineRange = "areasplinerange" //曲线区域范围图
+    case columnrange     = "columnrange"     //柱形范围图
+    case arearange       = "arearange"       //折线区域范围图
+    case areasplinerange = "areasplinerange" //曲线区域范围图
     case boxplot         = "boxplot"         //箱线图
     case waterfall       = "waterfall"       //瀑布图
     case polygon         = "polygon"         //多边形图
@@ -515,6 +515,8 @@ private var axisColor: String?           //x 轴和 y 轴文字颜色
 替换为
 ``` html
 <script src="https://img.hcharts.cn/highcharts/highcharts.js">
+</script>
+<script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>
 <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>

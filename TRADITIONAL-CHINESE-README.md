@@ -71,8 +71,8 @@
 
 1. 創建視圖*AAChartView*
 ```swift
-        CGFloat chartViewWidth  = self.view.frame.size.width;
-        CGFloat chartViewHeight = self.view.frame.size.height;
+        CGFloat chartViewWidth  = self.view.frame.size.width
+        CGFloat chartViewHeight = self.view.frame.size.height
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
         // 設置 aaChartView 的內容高度(content height)
@@ -213,7 +213,7 @@
 
 - 繪制扇形圖,妳需要這樣配置模型對象 *AAChartModel*
 ```swift
-                 aaChartModel = AAChartModel()
+            aaChartModel = AAChartModel()
                 .chartType(.pie)
                 .backgroundColor("#ffffff")
                 .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
@@ -343,7 +343,7 @@ enum AAChartType:String {
     case column          = "column"          //柱形圖
     case bar             = "bar"             //條形圖
     case area            = "area"            //折線區域填充圖
-    case areaSpline      = "areaspline"      //曲線區域填充圖
+    case areaspline      = "areaspline"      //曲線區域填充圖
     case line            = "line"            //折線圖
     case spline          = "spline"          //曲線圖
     case scatter         = "scatter"         //散點圖
@@ -351,9 +351,9 @@ enum AAChartType:String {
     case bubble          = "bubble"          //氣泡圖
     case pyramid         = "pyramid"         //金字塔圖
     case funnel          = "funnel"          //漏鬥圖
-    case columnRange     = "columnrange"     //柱形範圍圖
-    case areaRange       = "arearange"       //折線區域範圍圖
-    case areaSplineRange = "areasplinerange" //曲線區域範圍圖
+    case columnrange     = "columnrange"     //柱形範圍圖
+    case arearange       = "arearange"       //折線區域範圍圖
+    case areasplinerange = "areasplinerange" //曲線區域範圍圖
     case boxplot         = "boxplot"         //箱線圖
     case waterfall       = "waterfall"       //瀑布圖
     case polygon         = "polygon"         //多邊形圖
@@ -494,6 +494,8 @@ private var axisColor: String?           //x 軸和 y 軸文字顏色
 替換為
 ``` html
 <script src="https://img.hcharts.cn/highcharts/highcharts.js">
+</script>
+<script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>
 <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>
