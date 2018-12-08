@@ -223,10 +223,6 @@ public class AAChartView: UIView {
     }
 }
 
-
-
-
-
 extension AAChartView {
     /// Function of drawing chart view
     ///

@@ -71,7 +71,7 @@ public enum AAChartType: String {
     case column
     case bar
     case area
-    case areaSpline      = "areaspline"
+    case areaspline
     case line
     case spline
     case scatter
@@ -79,9 +79,9 @@ public enum AAChartType: String {
     case bubble
     case pyramid
     case funnel
-    case columnRange     = "columnrange"
-    case areaRange       = "arearange"
-    case areaSplineRange = "areasplinerange"
+    case columnrange
+    case arearange
+    case areasplinerange
     case boxplot
     case waterfall
     case polygon

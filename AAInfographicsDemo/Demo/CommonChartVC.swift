@@ -140,7 +140,7 @@ class CommonChartVC: UIViewController {
                 .animationType(.bounce)
                 .animationDuration(1200)
         } else if chartType == .area
-            || chartType == .areaSpline {
+            || chartType == .areaspline {
             aaChartModel?
                 .symbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
                 .animationType(.easeOutQuart)
@@ -148,7 +148,7 @@ class CommonChartVC: UIViewController {
                 .markerRadius(5)
                 .symbol(.circle)
             
-            if chartType == .areaSpline {
+            if chartType == .areaspline {
                 let gradientColorDic = [
                     "linearGradient": [
                         "x1": 0,

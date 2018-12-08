@@ -35,7 +35,6 @@ import UIKit
 public class AAOptionsConstructor: NSObject {
     public static func configureAAoptions(aaChartModel: AAChartModel) -> NSMutableDictionary {
         let aaChart = NSMutableDictionary()
-        
         aaChart.setValue(aaChartModel.chartType, forKey: "type")//图表类型
         aaChart.setValue(aaChartModel.inverted, forKey: "inverted")//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
         aaChart.setValue(aaChartModel.backgroundColor, forKey: "backgroundColor")//图表背景色
@@ -116,7 +115,7 @@ public class AAOptionsConstructor: NSObject {
 
         //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记
         if     chartType == AAChartType.area.rawValue
-            || chartType == AAChartType.areaSpline.rawValue
+            || chartType == AAChartType.areaspline.rawValue
             || chartType == AAChartType.line.rawValue
             || chartType == AAChartType.spline.rawValue
             || chartType == AAChartType.scatter.rawValue {

@@ -102,6 +102,7 @@ class SpecialChartVC: UIViewController {
                 "coastalBreeze",
                 "eveningDelight",
                 ]
+            
             let gradientColorArr = [
                 AAGradientColor.oceanBlue,
                 AAGradientColor.sanguine,
@@ -127,7 +128,6 @@ class SpecialChartVC: UIViewController {
                 AAGradientColor.eveningDelight,
                 ]
             
-            
             aaChartModel = AAChartModel()
                 .chartType(.bar)
                 .title("Colorful Gradient Chart")
@@ -146,7 +146,6 @@ class SpecialChartVC: UIViewController {
                             .colorByPoint(true)
                             .toDic()!
                     ]
-                    
             )
             
         case .column:
@@ -166,7 +165,6 @@ class SpecialChartVC: UIViewController {
                             .colorByPoint(true)
                             .toDic()!
                     ]
-                    
             )
             
         case .pie:
@@ -253,8 +251,6 @@ class SpecialChartVC: UIViewController {
                             .toDic()!,
                         ]
             )
-            
-            break
             
         case .scatter:
             aaChartModel = AAChartModel()
@@ -387,9 +383,9 @@ class SpecialChartVC: UIViewController {
                     ]
             )
             
-        case .areaRange:
+        case .arearange:
             aaChartModel = AAChartModel()
-                .chartType(.areaRange)
+                .chartType(.arearange)
                 .title("Twilight Hall day temperature fluctuation map")
                 .subtitle("real-time monitoring data")
                 .yAxisTitle("℃")
@@ -781,7 +777,7 @@ class SpecialChartVC: UIViewController {
                         ]
             )
             
-        case .areaSplineRange:
+        case .areasplinerange:
             let gradientColorDic = [
                 "linearGradient": [
                     "x1": 0,
@@ -794,7 +790,7 @@ class SpecialChartVC: UIViewController {
                 ] as [String : AnyObject]
             
             aaChartModel = AAChartModel()
-                .chartType(.areaSplineRange)
+                .chartType(.areasplinerange)
                 .title("Area spline range chart")
                 .subtitle("virtual data")
                 .yAxisTitle("℃")
@@ -838,9 +834,9 @@ class SpecialChartVC: UIViewController {
                         .toDic()!,
                     ])
             
-        case .columnRange:
+        case .columnrange:
             aaChartModel = AAChartModel()
-                .chartType(.columnRange)
+                .chartType(.columnrange)
                 .title("TEMPERATURE VARIATION BY MONTH")
                 .subtitle("observed in Gotham city")
                 .yAxisTitle("℃")

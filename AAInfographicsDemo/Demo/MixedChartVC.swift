@@ -182,7 +182,7 @@ class MixedChartVC: UIViewController {
                     AASeriesElement()
                         .name("Range")
                         .color("#1E90FF")
-                        .type(.areaRange)
+                        .type(.arearange)
                         .lineWidth(0)
                         .fillOpacity(0.3)
                         .data([
@@ -233,7 +233,7 @@ class MixedChartVC: UIViewController {
                 .series([
                     AASeriesElement()
                         .name("Temperature")
-                        .type(.columnRange)
+                        .type(.columnrange)
                         .dataLabels(["enabled":true])
                         .data([
                             [(-9.7), 9.4],
@@ -795,8 +795,6 @@ class MixedChartVC: UIViewController {
                     pieElementDic as! Dictionary<String, Any>
                     ])
             
-
-       
         default:
             break
         }
