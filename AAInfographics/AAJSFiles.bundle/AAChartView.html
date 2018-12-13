@@ -47,7 +47,7 @@
     </head>
     
     <body>
-        <div id="container" style="width:min-450px; height: 200px; margin: -8px"></div>
+        <div id="container" style="width:100%; height: 100%;"></div>
         <script>
 
             var aaGlobalChart;
@@ -59,7 +59,9 @@
                 if (receivedWidth != 0) {
                     o.style.width = receivedWidth; //设置宽度
                 }
-                o.style.height = receivedHeight; //设置高度
+                if(receivedHeight != 0) {
+                    o.style.height = receivedHeight; //设置高度
+                }
                 var animationEasingType = aaOptions.plotOptions.series.animation.easing;
                 if (animationEasingType) { //懒调用(只有在 aaChartModel 实例对象设置了 animationType 属性值的时候才会调用设置动画类型的函数,否则不调用)
                     aaOptions.plotOptions.series.animation.easing = configureTheChartAnimationEasingType(animationEasingType);

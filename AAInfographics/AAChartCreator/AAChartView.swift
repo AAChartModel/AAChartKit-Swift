@@ -208,17 +208,10 @@ public class AAChartView: UIView {
         var modelJsonStr = String(data: modelJsonData, encoding: String.Encoding.utf8)!
         modelJsonStr = modelJsonStr.replacingOccurrences(of: "\n", with: "") as String
         
-        let chartViewContentWidth = contentWidth
-        
-        var chartViewContentHeight = contentHeight
-        if contentHeight == 0 {
-            chartViewContentHeight = frame.size.height
-        }
-        
         let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');",
                                                           modelJsonStr,
-                                                          chartViewContentWidth!,
-                                                          chartViewContentHeight!)
+                                                          contentWidth ?? 0,
+                                                          contentHeight ?? 0)
         optionsJson = jsString as String;
     }
 }
