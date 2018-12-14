@@ -44,6 +44,7 @@ public class AAOptionsConstructor: NSObject {
         aaChart.setValue(aaChartModel.polar, forKey: "polar")//是否辐射化图形
         aaChart.setValue(aaChartModel.marginLeft, forKey: "marginLeft")
         aaChart.setValue(aaChartModel.marginRight, forKey: "marginRight")
+        aaChart.setValue(aaChartModel.marginBottom, forKey: "marginBottom")
         
         let aaTitle = NSMutableDictionary()
         aaTitle.setValue(aaChartModel.title, forKey: "text")//标题文本内容
