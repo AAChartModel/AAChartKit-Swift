@@ -223,9 +223,10 @@ extension AAChartView {
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
         if optionsJson == nil {
             configureTheJavaScriptString(chartModel)
-            let path = Bundle.main.path(forResource: "AAChartView",
-                                        ofType: "html",
-                                        inDirectory: "AAJSFiles.bundle")
+            let path = Bundle(for: self.classForCoder)
+                .path(forResource: "AAChartView",
+                      ofType: "html",
+                      inDirectory: "AAJSFiles.bundle")
             let urlStr = NSURL.fileURL(withPath: path!)
             let urlRequest = NSURLRequest(url: urlStr) as URLRequest
             if #available(iOS 9.0, *) {
