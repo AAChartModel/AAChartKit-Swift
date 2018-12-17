@@ -1,4 +1,4 @@
-  ![AAInfographics-LOGO](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AAInfographics-LOGO.png)
+  ![AAInfographics-LOGO](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/AAInfographics-LOGO.png)
 # AAInfographics
 
  
@@ -43,27 +43,27 @@
 ## 真机美图
 
 <div>
-<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/ColumnChart.png' width=280>
-<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/BarChart.png' width=280>
-<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/AreaChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/ColumnChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/BarChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/AreaChart.png' width=280>
 </div>
 
 <div>
-<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/LineChart.png' width=280>
-<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/StepAreaChart.png' width=280>
-<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/StepLineChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/LineChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/StepAreaChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/StepLineChart.png' width=280>
 </div>
 
 <div>
-<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/SplineChart.png' width=280>
-<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/AreasplineChart.png' width=280>
-<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAChartKit/BeautyAppreciation/StackedPolarChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/SplineChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/AreasplineChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/StackedPolarChart.png' width=280>
 </div>
 
 <div>
-<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/blob/master/AAInfographics/BubbleChart.png' width=280>
-<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/blob/master/AAInfographics/ArearangeAverageValueChart.png' width=280>
-<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/blob/master/AAInfographics/ColumnMixedLineChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/BubbleChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/ArearangeAverageValueChart.png' width=280>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/ColumnMixedLineChart.png' width=280>
 </div>
 
 ## 安装
@@ -157,65 +157,65 @@
 
 - ### line chart - 折线图
 
-![line chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/LineChart.png)
+![line chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/LineChart.png)
 
 - ### column chart - 柱形图
 
-![IMG_1873.JPG](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ColumnChart.png)
+![IMG_1873.JPG](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/ColumnChart.png)
 
 - ### bar chart - 条形图
 
-![bar chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/BarChart.png)
+![bar chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/BarChart.png)
 
 - ### special area chart one - 常规折线区域填充图
 
-![IMG_1869.JPG](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/IMG_1482.JPG)
+![IMG_1869.JPG](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/IMG_1482.JPG)
 
 - ### special area chart two - 带有负数的区域填充图
 
-![IMG_1871.JPG](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AreaChartOne.png))
+![IMG_1871.JPG](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/AreaChartOne.png))
 
 - ### special area chart three - 堆积效果的区域填充图
 
-![IMG_1863.JPG](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/AreaChartTwo.png)
+![IMG_1863.JPG](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/AreaChartTwo.png)
 
 - ### polar chart - 极地图
 
-![polar chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/PolarChart.png)
+![polar chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/PolarChart.png)
 
 - ### radar chart - 雷达图
 
-![radar chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/RadarChart.png)
+![radar chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/RadarChart.png)
 
 - ### pie chart - 扇形图
 
-![pie chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/PieChart.png)
+![pie chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/PieChart.png)
 
 - ### bubble chart - 气泡图
 
-![bubble chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/BubbleChart.png)
+![bubble chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/BubbleChart.png)
 
 - ### scatter chart - 散点图
 
-![scatter chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ScatterChart.png)
+![scatter chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/ScatterChart.png)
 
 - ### arearange chart - 区域范围图
 
-![arearange chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/ArearangeChart.png)
+![arearange chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/ArearangeChart.png)
 
 - ### step area chart - 直方折线填充图
 
-![step area chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/StepAreaChart.png)
+![step area chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/StepAreaChart.png)
 
 - ### mixed chart - 混合图形
 
-![mixed chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/blob/master/AAInfographics/MixedChart.png)
+![mixed chart](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/MixedChart.png)
 
 
 ### 更多图形效果
 注意:如下的这幅`DEMO演示图`为大小*6M*左右的`GIF动态图`,如未显示动态效果则说明图片资源未全部加载。请耐心等待至图片资源内容完全加载结束后，即可最终观赏更多的项目的动态演示效果.
 
-![AAChartKit-Live](https://raw.githubusercontent.com/AAChartModel/Gallery/blob/master/AAChartKit/AAChartKit-Live.gif)
+![AAChartKit-Live](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/AAChartKit-Live.gif)
 
 
 ## 特别说明
