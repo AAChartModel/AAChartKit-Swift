@@ -175,6 +175,7 @@ public class AAChartModel: AASerializable {
     public var titleColor: String?          //标题颜色
     public var subtitleColor: String?       //副标题颜色
     public var axisColor: String?           //x 轴和 y 轴文字颜色
+    private var marginBottom: Float?
     
     
     @discardableResult
@@ -411,6 +412,11 @@ public class AAChartModel: AASerializable {
         return self
     }
     
+    @discardableResult
+    public func marginBottom(_ prop: Float) -> AAChartModel {
+        marginBottom = prop
+        return self
+    }
     
     public init() {
         backgroundColor     = "#ffffff"
