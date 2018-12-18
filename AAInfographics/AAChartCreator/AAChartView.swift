@@ -280,19 +280,19 @@ extension AAChartView {
     ///  Evaluate JavaScript string function body
     ///
     /// - Parameter JSFunctionBodyString: JavaScript function body string
-    public func evaluateJavaScriptStringFunctionBody(_ JSFunctionBodyString: String) {
+    public func evaluateJavaScriptStringFunction(JSFunctionString: String) {
         if optionsJson != nil {
-            var pureJSFunctionBodyStr = JSFunctionBodyString
-            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\\", with: "\\\\")
-            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\"", with: "\\\"")
-            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\'", with: "\\\'")
-            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\n", with: "\\n")
-            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\r", with: "\\r")
-            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\u{000C}", with: "\\f")
-            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
-            pureJSFunctionBodyStr = pureJSFunctionBodyStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
+            var pureJSFunctionStr = JSFunctionString
+            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\\", with: "\\\\")
+            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\"", with: "\\\"")
+            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\'", with: "\\\'")
+            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\n", with: "\\n")
+            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\r", with: "\\r")
+            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\u{000C}", with: "\\f")
+            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
+            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
             
-            let jsFunctionNameStr = "evaluateTheJavaScriptStringFunction('\(pureJSFunctionBodyStr)')"
+            let jsFunctionNameStr = "evaluateTheJavaScriptStringFunction('\(pureJSFunctionStr)')"
             evaluateJavaScriptWithFunctionNameString(jsFunctionNameStr)
         }
     }

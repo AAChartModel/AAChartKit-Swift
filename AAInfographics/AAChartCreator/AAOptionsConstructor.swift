@@ -161,9 +161,10 @@ public class AAOptionsConstructor: NSObject {
             aaSomeTypeChart.setValue(aaChartModel.legendEnabled, forKey: "showInLegend")
             aaSomeTypeChart.setValue(["enabled":aaChartModel.dataLabelEnabled!,
                             "format":"{point.name}"] , forKey: "dataLabels")
-        } else  {
+        } else {
             aaSomeTypeChart.setValue(aaDataLabels , forKey: "dataLabels")
         }
+        
         aaPlotOptions.setValue(aaSomeTypeChart, forKey: chartType!)
         
         return aaPlotOptions
