@@ -175,7 +175,7 @@ public class AAChartModel: AASerializable {
     public var titleColor: String?          //标题颜色
     public var subtitleColor: String?       //副标题颜色
     public var axisColor: String?           //x 轴和 y 轴文字颜色
-    private var marginBottom: Float?
+    public var marginBottom: Float?
     
     
     @discardableResult
