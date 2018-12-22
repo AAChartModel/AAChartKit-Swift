@@ -110,8 +110,8 @@ public class AAOptionsConstructor: NSObject {
     }
     
     private static func configureAAPlotOptionsMarkerStyle(aaChartModel: AAChartModel,
-                                             aaSeries: NSMutableDictionary,
-                                             aaPlotOptions: NSMutableDictionary) -> NSMutableDictionary {
+                                                          aaSeries: NSMutableDictionary,
+                                                          aaPlotOptions: NSMutableDictionary) -> NSMutableDictionary {
         let chartType = aaChartModel.chartType
 
         //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记

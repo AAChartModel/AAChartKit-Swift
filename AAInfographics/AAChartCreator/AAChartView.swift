@@ -201,10 +201,10 @@ public class AAChartView: UIView {
         }
     }
     
-    private func configureTheJavaScriptString(_ chartModel: AAChartModel) {
-        let modelJsonDic = AAOptionsConstructor.configureAAoptions(aaChartModel: chartModel)
+    private func configureTheJavaScriptStringWithOptions(_ chartOptions: NSMutableDictionary) {
+        let modelJsonDic = chartOptions
         let modelJsonData = try! JSONSerialization.data(withJSONObject: modelJsonDic,
-                                                   options: JSONSerialization.WritingOptions.prettyPrinted)
+                                                        options: JSONSerialization.WritingOptions.prettyPrinted)
         var modelJsonStr = String(data: modelJsonData, encoding: String.Encoding.utf8)!
         modelJsonStr = modelJsonStr.replacingOccurrences(of: "\n", with: "") as String
         
@@ -221,8 +221,28 @@ extension AAChartView {
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
+        let options = AAOptionsConstructor.configureAAoptions(aaChartModel: chartModel)
+        aa_drawChartWithChartOptions(options)
+    }
+    
+    /// Function of only refresh the chart data
+    ///
+    /// - Parameter chartModel: The instance object of chart model
+    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [[String: AnyObject]]) {
+        aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartModelSeries)
+    }
+    
+    ///  Function of refreshing whole chart view content
+    ///
+    /// - Parameter chartModel: The instance object of chart model
+    public func aa_refreshChartWholeContentWithChartModel(_ chartModel: AAChartModel) {
+        let options = AAOptionsConstructor.configureAAoptions(aaChartModel: chartModel)
+        aa_refreshChartWholeContentWithChartOptions(options)
+    }
+    
+    public func aa_drawChartWithChartOptions(_ options: NSMutableDictionary) {
         if optionsJson == nil {
-            configureTheJavaScriptString(chartModel)
+            configureTheJavaScriptStringWithOptions(options)
             let path = Bundle(for: self.classForCoder)
                 .path(forResource: "AAChartView",
                       ofType: "html",
@@ -236,15 +256,12 @@ extension AAChartView {
                 uiWebView?.loadRequest(urlRequest)
             }
         } else {
-            configureTheJavaScriptString(chartModel)
+            configureTheJavaScriptStringWithOptions(options)
             drawChart()
         }
     }
     
-    /// Function of only refresh the chart data
-    ///
-    /// - Parameter chartModel: The instance object of chart model
-    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [[String: AnyObject]]) {
+    public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartModelSeries: [[String: AnyObject]]) {
         let jsonData = try! JSONSerialization.data(withJSONObject: chartModelSeries,
                                                    options: JSONSerialization.WritingOptions.prettyPrinted)
         var str = String(data: jsonData, encoding: String.Encoding.utf8)!
@@ -253,11 +270,8 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
-    ///  Function of refreshing whole chart view content
-    ///
-    /// - Parameter chartModel: The instance object of chart model
-    public func aa_refreshChartWholeContentWithChartModel(_ chartModel: AAChartModel) {
-        configureTheJavaScriptString(chartModel)
+    public func aa_refreshChartWholeContentWithChartOptions(_ options: NSMutableDictionary) {
+        configureTheJavaScriptStringWithOptions(options)
         drawChart()
     }
     

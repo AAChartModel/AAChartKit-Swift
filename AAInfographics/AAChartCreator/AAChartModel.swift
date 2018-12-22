@@ -150,6 +150,7 @@ public class AAChartModel: AASerializable {
     public var polar: Bool?                 //是否极化图形(变为雷达图)
     public var marginLeft: Float?           //图表左边距
     public var marginRight: Float?          //图表右边距
+    public var marginBottom: Float?         //图表底部边距
     public var dataLabelEnabled: Bool?      //是否显示数据
     public var xAxisLabelsEnabled: Bool?    //x 轴是否显示数据
     public var categories: [String]?        //x 轴是否显示数据
@@ -175,7 +176,6 @@ public class AAChartModel: AASerializable {
     public var titleColor: String?          //标题颜色
     public var subtitleColor: String?       //副标题颜色
     public var axisColor: String?           //x 轴和 y 轴文字颜色
-    public var marginBottom: Float?
     
     
     @discardableResult
@@ -283,6 +283,12 @@ public class AAChartModel: AASerializable {
     @discardableResult
     public func marginRight(_ prop: Float) -> AAChartModel {
         marginRight = prop
+        return self
+    }
+    
+    @discardableResult
+    public func marginBottom(_ prop: Float) -> AAChartModel {
+        marginBottom = prop
         return self
     }
     
@@ -412,11 +418,6 @@ public class AAChartModel: AASerializable {
         return self
     }
     
-    @discardableResult
-    public func marginBottom(_ prop: Float) -> AAChartModel {
-        marginBottom = prop
-        return self
-    }
     
     public init() {
         backgroundColor     = "#ffffff"

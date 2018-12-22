@@ -127,6 +127,13 @@ class MainVC: UIViewController {
                 "Custom Chart DataLabel Sample Two",
                 "Custom Chart StackLabel Sample "
             ],
+            
+            /*通过options字典来绘制图表*/
+            [
+                "Custom Chart  Sample One",
+                "Custom Chart  Sample Two",
+                "Custom Chart  Sample three "
+            ],
         ]
         
         chartTypeArr = [
@@ -287,7 +294,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             "Double Chart View---同时显示多个图表",
             "Rendering Animation types ---渲染动画示例",
             "Hide Or Show Chart Series---隐藏或显示内容",
-            "Evaluate JS String Function---执行js函数"
+            "Evaluate JS String Function---执行js函数",
+            "Draw Chart With Options Dictionary---通过Options绘图"
         ]
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
@@ -371,6 +379,11 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             /*图表 sereies 元素显示或隐藏*/
             let vc = EvaluateJSStringFunctionVC()
             vc.sampleChartTypeIndex = indexPath.row
+            navigationController?.pushViewController(vc, animated: true)
+        case 8:
+            /*图表 sereies 元素显示或隐藏*/
+            let vc = DrawChartWithAAOptionsVC()
+            vc.chartType = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         default:
             break
