@@ -363,7 +363,7 @@ class MixedChartVC: UIViewController {
                 .markerRadius(10)
                 .series([
                     AASeriesElement()
-                        .name("Scatter")
+                        .name("观测值")
                         .data([
                             [0.067732, 3.176513],
                             [0.42781,  3.816464],
@@ -568,6 +568,13 @@ class MixedChartVC: UIViewController {
                             ])
                         .color("#0088FF")
                         .toDic()!,
+                    AASeriesElement()
+                        .type(.line)
+                        .name("线性回归线")
+                        .data([[0.014, 3.078], [0.969, 4.655]])
+                        .color("#FF0000")
+                        .marker(["radius": 0])
+                        .toDic()!
                     ])
             
         case "negativeColorMixedBubble":

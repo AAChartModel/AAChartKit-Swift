@@ -80,7 +80,7 @@ class MainVC: UIViewController {
                 "Stacking Column Mixed Line---堆积柱形图混合折线图",
                 "Dash Style Types Mixed---多种类型曲线混合图",
                 "Negative Color Mixed---基准线以下异色混合图",
-                "scatterMixedLine---散点图混合折线图(待完成)",
+                "scatterMixedLine---散点图混合折线图",
                 "Negative Color Mixed bubble---基准线以下异色气泡图",
                 "Polygon Mixed Scatter---多边形混合散点图",
                 "Polar Chart Mixed---极地混合图",
@@ -132,7 +132,10 @@ class MainVC: UIViewController {
             [
                 "Custom Chart  Sample One",
                 "Custom Chart  Sample Two",
-                "Custom Chart  Sample three "
+                "Custom Chart  Sample three",
+                "Custom Chart  Sample 4",
+                "Custom Chart  Sample 5",
+                "Custom Chart  Sample 6",
             ],
         ]
         
