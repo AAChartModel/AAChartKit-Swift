@@ -117,8 +117,6 @@
 				27FADB8520D6569000FED960 /* ChartSeriesHideOrShowVC.swift */,
 				4409BECF21B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift */,
 				447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */,
-				44143D3521A17F2300D44657 /* AAGradientColor.swift */,
-				272BBE7721A258C200DBE69D /* AAColor.swift */,
 			);
 			path = AdditionalContent;
 			sourceTree = "<group>";
@@ -192,6 +190,8 @@
 				2749914C210D90B5003D18C2 /* AASeriesElement.swift */,
 				44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */,
 				2749914D210D90B5003D18C2 /* AASerializable.swift */,
+				44143D3521A17F2300D44657 /* AAGradientColor.swift */,
+				272BBE7721A258C200DBE69D /* AAColor.swift */,
 			);
 			path = AAChartCreator;
 			sourceTree = "<group>";

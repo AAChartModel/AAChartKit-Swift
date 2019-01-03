@@ -135,7 +135,8 @@ class MainVC: UIViewController {
                 "Custom Chart  Sample three",
                 "Custom Chart  Sample 4",
                 "Custom Chart  Sample 5",
-                "Custom Chart  Sample 6",
+                "Adjust Y Axis Min value",
+                "Mirror Chart",
             ],
         ]
         

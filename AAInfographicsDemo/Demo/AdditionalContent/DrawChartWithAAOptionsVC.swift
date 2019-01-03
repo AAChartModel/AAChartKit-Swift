@@ -53,7 +53,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 2: return setUpOptions2()
         case 3: return configureChartWithBackgroundImage()
         case 4: return yAxisOnTheRightSideChart()
-        case 5: return configureTheMirrorColumnChart()
+        case 5: return adjustYAxisMinValueForChart()
+        case 6: return configureTheMirrorColumnChart()
         default:
             return NSMutableDictionary()
         }
@@ -121,7 +122,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         )
         
         let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
-        let aaChart = aaOptions["chart"]! as! NSMutableDictionary
+        let aaChart = aaOptions["chart"] as! NSMutableDictionary
         aaChart["plotBackgroundImage"] = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg"
         
         return aaOptions
@@ -148,6 +149,27 @@ class DrawChartWithAAOptionsVC: UIViewController {
         //默认是：false.
         let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
         aaYAxis["opposite"] = true
+        return aaOptions;
+    }
+    
+    private func adjustYAxisMinValueForChart() -> NSMutableDictionary  {
+        let aaChartModel = AAChartModel()
+            .chartType(.column)//图表类型
+            .title("")//图表主标题
+            .subtitle("")//图表副标题
+            .borderRadius(5)
+            .series([
+                AASeriesElement()
+                    .name("2020")
+                    .data([1003.9, 1004.2, 1005.7, 1008.5, 1011.9, 1015.2,])
+                    .color(AAGradientColor.sanguine)
+                    .toDic()!
+                ]
+        )
+        
+        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
+        aaYAxis["min"] = 1000
         return aaOptions;
     }
     
