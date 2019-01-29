@@ -27,7 +27,7 @@
  * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
  *
  *********************************************************************************
- 
+
  */
 import UIKit
 
@@ -55,6 +55,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 4: return yAxisOnTheRightSideChart()
         case 5: return adjustYAxisMinValueForChart()
         case 6: return configureTheMirrorColumnChart()
+        case 7: return adjustTheXAxisLabels()
+        case 8: return adjustGroupPaddingBetweenColumns()
         default:
             return NSMutableDictionary()
         }
@@ -133,10 +135,10 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .chartType(.column)//图表类型
             .title("Y轴在右侧的柱状图📊")//图表主标题
             .subtitle("设置 aaOptions.yAxis.opposite = YES 即可")//图表副标题
-            .colorsTheme(["#ffc069","#fe117c","#06caf4","#7dffc0"])//设置主体颜色数组
             .series([
                 AASeriesElement()
                     .name("2020")
+                    .color(AAGradientColor.cottonCandy)
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2,])
                     .toDic()!
                 ]
@@ -197,46 +199,50 @@ class DrawChartWithAAOptionsVC: UIViewController {
             ] as [String : Any]
         
         let aaChart = NSMutableDictionary()
-        aaChart.setValue(AAChartType.column.rawValue, forKey: "type")//图表类型
+        aaChart["type"] = AAChartType.column.rawValue
         
         let aaTitle = NSMutableDictionary()
-        aaTitle.setValue("正负镜像柱状图", forKey: "text")//标题文本内容
-        aaTitle.setValue(
-            ["color":"#000000",//标题颜色
-                "fontSize":"12px"],//标题字体大小
-            forKey: "style")
+        aaTitle["text"] = "正负镜像柱状图"
+        aaTitle["style"] = ["color":"#000000",//标题颜色
+                            "fontSize":"12px"]//标题字体大小
         
         let aaXAxis = NSMutableDictionary()
-        aaXAxis.setValue(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"], forKey: "categories")
+        aaXAxis["categories"] = ["一月", "二月", "三月", "四月", "五月", "六月",
+                                 "七月", "八月", "九月", "十月", "十一月", "十二月"]
         
         let aaYAxis1 = NSMutableDictionary()
-        aaYAxis1.setValue(0, forKey: "gridLineWidth") // Y 轴网格线宽度
-        aaYAxis1.setValue(["text":"收入"], forKey: "title")//Y 轴标题
-//        aaYAxis1.setValue(0, forKey: "min")
+        aaYAxis1["gridLineWidth"] = 0 // Y 轴网格线宽度
+        aaYAxis1["title"] = ["text":"收入"]//Y 轴标题
         
         let aaYAxis2 = NSMutableDictionary()
-        aaYAxis2.setValue(["text":"支出"], forKey: "title")//Y 轴标题
-        aaYAxis2.setValue(true, forKey: "opposite")
+        aaYAxis2["title"] = ["text":"支出"]
+        aaYAxis2["opposite"] = true
         
         let YAxisArr = [aaYAxis1,aaYAxis2]
         
-        let aaPlotOptions = NSMutableDictionary()
         
         let aaSeries = NSMutableDictionary()
-        let animation = ["duration":800,
-                         "easing":AAChartAnimationType.bounce.rawValue]
+        let aaAnimation = ["duration":800,
+                           "easing":AAChartAnimationType.bounce.rawValue]
             as [String : Any]
-        aaSeries.setValue(animation, forKey: "animation")
+        aaSeries["animation"] = aaAnimation
         
         let aaColumn = NSMutableDictionary()
-        aaColumn .setValue(false, forKey: "grouping")
-        aaColumn.setValue(0, forKey: "borderWidth")
-        aaColumn.setValue(5, forKey: "borderRadius")
+        aaColumn["grouping"] = false
+        aaColumn["borderWidth"] = 0
+        aaColumn["borderRadius"] = 5
         
-        aaPlotOptions.setValue(aaSeries, forKey: "series")
-        aaPlotOptions.setValue(aaColumn, forKey: "column")
-
-        let aaSeriesElementArr = [
+        let aaPlotOptions = NSMutableDictionary()
+        aaPlotOptions["series"] = aaSeries
+        aaPlotOptions["column"] = aaColumn
+        
+        let aaOptions = NSMutableDictionary()
+        aaOptions["chart"] = aaChart
+        aaOptions["title"] = aaTitle
+        aaOptions["xAxis"] = aaXAxis
+        aaOptions["yAxis"] = YAxisArr
+        aaOptions["plotOptions"] = aaPlotOptions
+        aaOptions["series"] = [
             AASeriesElement()
                 .name("收入")
                 .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9,7.0, 6.9, 9.5, 14.5,])
@@ -247,15 +253,82 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 .data([-20.1, -14.1, -8.6, -2.5, -0.8, -5.7, -11.3, -17.0, -22.0, -24.8, -24.1, -20.1, -14.1, -8.6, -2.5])
                 .color(gradientColorDic2)
                 .toDic()!,
-            ]
+        ]
+        return aaOptions;
+    }
+    
+    private func adjustTheXAxisLabels() -> NSMutableDictionary {
+        let aaChartModel = AAChartModel()
+            .chartType(.column)
+            .title("")
+            .subtitle("")
+            .colorsTheme(["#ffc069","#fe117c","#06caf4","#7dffc0"])
+            .categories(["January", "February", "March", "April", "May", "June",
+                         "July", "August", "Septembel", "October", "November", "December",
+                         "January", "February", "March", "April", "May", "June",
+                         "July", "August", "Septembel", "October", "November", "December",])
+            .dataLabelEnabled(false)
+            .legendEnabled(false)
+            .series([
+                AASeriesElement()
+                    .name("2020")
+                    .color(AAGradientColor.sanguine)
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+                    .toDic()!,
+                AASeriesElement()
+                    .name("2021")
+                    .color(AAGradientColor.deepSea)
+                    .data([NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                           NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                           0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+                    .toDic()!,
+                
+                ]
+        )
         
-        let aaOptions = NSMutableDictionary()
-        aaOptions.setValue(aaChart, forKey: "chart")
-        aaOptions.setValue(aaTitle, forKey: "title")
-        aaOptions.setValue(aaXAxis, forKey: "xAxis")
-        aaOptions.setValue(YAxisArr, forKey: "yAxis")
-        aaOptions.setValue(aaPlotOptions, forKey: "plotOptions")
-        aaOptions.setValue(aaSeriesElementArr, forKey: "series")
+        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        
+        let aaXAxisLabels =  ["autoRotation": [-10, -20, -30, -40, -50, -60, -70, -80, -90]]
+        
+        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
+        
+        aaXAxis["labels"] = aaXAxisLabels
+        
+        return aaOptions;
+    }
+    
+    
+    private func adjustGroupPaddingBetweenColumns() -> NSMutableDictionary {
+        let aaChartModel = AAChartModel()
+            .chartType(.column)
+            .title("")
+            .subtitle("")
+            .categories(["January", "February", "March", "April", "May", "June",
+                         "July", "August", "Septembel", "October", "November", "December"])
+            .dataLabelEnabled(false)
+            .legendEnabled(false)
+            .series([
+                AASeriesElement()
+                    .name("2020")
+                    .color(AAGradientColor.coastalBreeze)
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+                    .toDic()!
+                ]
+        )
+        
+        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        
+        let aaPlotOptions =  aaOptions["plotOptions"]! as! NSMutableDictionary
+        
+        let aaColumn = aaPlotOptions["column"]! as! NSMutableDictionary
+        
+        //    * 关于 `pointPadding`
+        //https://api.highcharts.com.cn/highcharts#plotOptions.column.groupPadding
+        //
+        //    * 关于 `pointPadding`
+        //https://api.highcharts.com.cn/highcharts#plotOptions.column.pointPadding
+        aaColumn["groupPadding"] = 0.05 //Padding between each column or bar, in x axis units. default：0.1.
+        aaColumn["pointPadding"] = 0 //Padding between each value groups, in x axis units. default：0.2.
         
         return aaOptions;
     }

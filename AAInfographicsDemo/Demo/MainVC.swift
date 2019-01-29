@@ -137,6 +137,8 @@ class MainVC: UIViewController {
                 "Custom Chart  Sample 5",
                 "Adjust Y Axis Min value",
                 "Mirror Chart",
+                "Adjust The XAxis Labels",
+                "Adjust GroupPadding Between Columns"
             ],
         ]
         
