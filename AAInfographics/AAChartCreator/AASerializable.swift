@@ -63,7 +63,7 @@ public extension AASerializable {
 }
 
 public extension AASerializable {
-    public func toDic() -> [String: AnyObject]? {
+    func toDic() -> [String: AnyObject]? {
         return JSONRepresentation as? [String: AnyObject]
     }
     
