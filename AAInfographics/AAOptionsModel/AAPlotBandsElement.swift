@@ -9,18 +9,18 @@
 import UIKit
 
 class AAPlotBandsElement: AASerializable {
-    private var from: Any?
-    private var to: Any?
+    private var from: Float?
+    private var to: Float?
     private var color: Any?
     
     @discardableResult
-    public func from(_ prop: Any) -> AAPlotBandsElement {
+    public func from(_ prop: Float) -> AAPlotBandsElement {
         from = prop
         return self
     }
     
     @discardableResult
-    public func to(_ prop: Any) -> AAPlotBandsElement {
+    public func to(_ prop: Float) -> AAPlotBandsElement {
         to = prop
         return self
     }
