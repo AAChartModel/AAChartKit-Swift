@@ -276,9 +276,9 @@ class MixedChartVC: UIViewController {
                 .chartType(.column)
                 .stacking(.normal)
                 .legendEnabled(true)
-                .colorsTheme([AAColor.darkGray,
-                              AAColor.gray,
-                              AAColor.lightGray,
+                .colorsTheme([AAColor.darkGray!,
+                              AAColor.gray!,
+                              AAColor.lightGray!,
                               ])
                 .series([
                     AASeriesElement()
@@ -749,15 +749,15 @@ class MixedChartVC: UIViewController {
                     [
                         "name": "小张",
                         "y": 13,
-                        "color": AAGradientColor.oceanBlue
+                        "color": AAGradientColor.oceanBlue!
                     ], [
                         "name": "小潘",
                         "y": 23,
-                        "color": AAGradientColor.sanguine
+                        "color": AAGradientColor.sanguine!
                     ], [
                         "name": "小王",
                         "y": 19,
-                        "color": AAGradientColor.purpleLake
+                        "color": AAGradientColor.purpleLake!
                     ]
                     ]);
             
@@ -769,9 +769,9 @@ class MixedChartVC: UIViewController {
             
             aaChartModel = AAChartModel()
                 .stacking(.normal)
-                .colorsTheme([AAGradientColor.oceanBlue,
-                              AAGradientColor.sanguine,
-                              AAGradientColor.purpleLake])
+                .colorsTheme([AAGradientColor.oceanBlue!,
+                              AAGradientColor.sanguine!,
+                              AAGradientColor.purpleLake!])
                 .dataLabelEnabled(false)
                 .series([
                     AASeriesElement()
