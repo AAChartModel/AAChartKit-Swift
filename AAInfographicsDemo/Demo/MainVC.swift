@@ -139,7 +139,9 @@ class MainVC: UIViewController {
                 "Adjust Y Axis Min value",
                 "Mirror Chart",
                 "Adjust The XAxis Labels",
-                "Adjust GroupPadding Between Columns"
+                "Adjust GroupPadding Between Columns",
+                "configureAAPlotBandsForChart",
+                "configureAAPlotLinesForChart"
             ],
         ]
         

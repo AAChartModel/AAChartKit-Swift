@@ -119,6 +119,10 @@ public enum AAChartLegendVerticalAlignType: String {
     case top, middle, bottom
 }
 
+public enum AAChartFontWeightType: String {
+    case thin, regular, bold
+}
+
 public enum AALineDashSyleType: String {
     case solid
     case shortDash
@@ -429,7 +433,7 @@ public class AAChartModel {
         chartType           = AAChartType.column.rawValue
         stacking            = AAChartStackingType.none.rawValue
         zoomType            = AAChartZoomType.none.rawValue//默认禁用手势缩放
-        colorsTheme         = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
+//        colorsTheme         = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
         dataLabelEnabled    = true
         tooltipEnabled      = true
         tooltipCrosshairs   = true

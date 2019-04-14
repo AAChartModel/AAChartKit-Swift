@@ -52,6 +52,7 @@
     private var zIndex: Int?                //Define the visual z index of the series.
     private var innerSize: String?          //内部圆环半径大小占比(内部圆环半径/扇形图半径)
     private var shadow: Any?
+    private var zones: [Any]?
 
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
@@ -170,6 +171,12 @@
     @discardableResult
     public func shadow(_ prop: Any) -> AASeriesElement {
         shadow = prop
+        return self
+    }
+    
+    @discardableResult
+    public func zones(_ prop: [Any]) -> AASeriesElement {
+        zones = prop
         return self
     }
 

@@ -57,6 +57,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 6: return configureTheMirrorColumnChart()
         case 7: return adjustTheXAxisLabels()
         case 8: return adjustGroupPaddingBetweenColumns()
+        case 9: return configureAAPlotBandsForChart()
+        case 10:return configureAAPlotLinesForChart()
         default:
             return NSMutableDictionary()
         }
@@ -402,6 +404,135 @@ class DrawChartWithAAOptionsVC: UIViewController {
             ] as NSMutableDictionary
         return aaOptions
     }
+    
+    func configureAAPlotBandsForChart() -> NSMutableDictionary {
+        let aaChartModel = AAChartModel()
+            .chartType(.spline)//图形类型
+            .dataLabelEnabled(false)
+            .markerRadius(0)
+            .series([
+                AASeriesElement()
+                    .name("Tokyo")
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+                    .color(AAColor.white!)
+                    .lineWidth(10)
+                    .toDic()!,
+                ])
+        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaPlotBandsArr = [
+            AAPlotBandsElement()
+                .from(0)
+                .to(5)
+                .color("#BC2B44")
+                .toDic()!,
+            AAPlotBandsElement()
+                .from(5)
+                .to(10)
+                .color("#EC6444")
+                .toDic()!,
+            AAPlotBandsElement()
+                .from(10)
+                .to(15)
+                .color("#f19742")
+                .toDic()!,
+            AAPlotBandsElement()
+                .from(15)
+                .to(20)
+                .color("#f3da60")
+                .toDic()!,
+            AAPlotBandsElement()
+                .from(20)
+                .to(25)
+                .color("#9bd040")
+                .toDic()!,
+            AAPlotBandsElement()
+                .from(25)
+                .to(50)
+                .color("#acf08f")
+                .toDic()!,
+        ]
+        
+        let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
+        aaYAxis["plotBands"] = aaPlotBandsArr
+        return aaOptions
+    }
+    
+    func configureAAPlotLinesForChart() -> NSMutableDictionary {
+        let aaChartModel = AAChartModel()
+            .chartType(.areaspline)//图形类型
+            .dataLabelEnabled(false)
+            .series([
+                AASeriesElement()
+                    .name("Tokyo")
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+                    .fillOpacity(0.5)
+                    .lineWidth(10)
+                    .zones([
+                        ["value": 12,"color": "#1e90ff"],
+                        ["value": 24,"color": "#ef476f"],
+                        ["value": 36,"color": "#04d69f"],
+                        ["color": "#ffd066"]
+                        ])
+                    .toDic()!,
+                ])
+        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        
+        
+        let aaPlotLinesArr = [
+            AAPlotLinesElement()
+                .color("#1e90ff")//颜色值(16进制)
+                .dashStyle(.longDashDotDot)//样式：Dash,Dot,Solid等,默认Solid
+                .width((1)) //标示线粗细
+                .value((12)) //所在位置
+                .zIndex((1)) //层叠,标示线在图表中显示的层叠级别，值越大，显示越向前
+                .label(AALabel()
+                    .text("PLOT LINES ONE")
+                    .style(AAStyle()
+                        .color("#1e90ff")
+                        .fontWeight(.bold)
+                        .toDic()!)
+                    .toDic()!
+                )
+                .toDic()!
+            ,
+        
+            AAPlotLinesElement()
+                .color("#ef476f")
+                .dashStyle(.longDashDot)
+                .width((1))
+                .value((24))
+                .label(AALabel()
+                    .text("PLOT LINES TWO")
+                    .style(AAStyle()
+                        .color("#ef476f")
+                        .fontWeight(.bold)
+                        .toDic()!)
+                    .toDic()!)
+                .toDic()!
+        ,
+        
+            AAPlotLinesElement()
+                .color("#04d69f")
+                .dashStyle(.longDash)
+                .width((1))
+                .value((36))
+                .label(AALabel()
+                    .text("PLOT LINES THREE")
+                    .style(AAStyle()
+                        .color("#04d69f")
+                        .fontWeight(.bold)
+                        .toDic()!)
+                    .toDic()!)
+                .toDic()!
+        ]
+        
+        let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
+        aaYAxis["plotLines"] = aaPlotLinesArr
+        
+        return aaOptions
+    }
+    
+    
     
 }
 
