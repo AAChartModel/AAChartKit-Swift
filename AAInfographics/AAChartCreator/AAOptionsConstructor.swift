@@ -35,11 +35,11 @@ import UIKit
 public class AAOptionsConstructor: NSObject {
     public static func configureAAoptions(aaChartModel: AAChartModel) -> NSMutableDictionary {
         let aaChart = NSMutableDictionary()
-        aaChart.setValue(aaChartModel.chartType, forKey: "type")//图表类型
+        aaChart.setValue(aaChartModel.chartType?.rawValue, forKey: "type")//图表类型
         aaChart.setValue(aaChartModel.inverted, forKey: "inverted")//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
         aaChart.setValue(aaChartModel.backgroundColor, forKey: "backgroundColor")//图表背景色
         aaChart.setValue(true, forKey: "animation")
-        aaChart.setValue(aaChartModel.zoomType, forKey: "pinchType")//设置手势缩放方向
+        aaChart.setValue(aaChartModel.zoomType?.rawValue, forKey: "pinchType")//设置手势缩放方向
         aaChart.setValue(true, forKey: "panning")//设置手势缩放后是否可平移
         aaChart.setValue(aaChartModel.polar, forKey: "polar")//是否辐射化图形
         aaChart.setValue(aaChartModel.marginLeft, forKey: "marginLeft")
@@ -68,9 +68,9 @@ public class AAOptionsConstructor: NSObject {
         //aaTooltip.setValue(false, forKey: "followTouchMove") //在触摸设备上，tooltip.followTouchMove选项为true（默认）时，平移需要两根手指。若要允许用一根手指平移，需要将followTouchMove设置为false。
         
         let aaSeries = NSMutableDictionary()
-        aaSeries.setValue(aaChartModel.stacking, forKey: "stacking")//图表堆叠类型
+        aaSeries.setValue(aaChartModel.stacking?.rawValue, forKey: "stacking")//图表堆叠类型
         let animation = ["duration":aaChartModel.animationDuration!,
-                         "easing":aaChartModel.animationType!] as [String : Any]
+                         "easing":aaChartModel.animationType!.rawValue] as [String : Any]
         aaSeries.setValue(animation, forKey: "animation")
         
         var aaPlotOptions = NSMutableDictionary()
@@ -86,9 +86,9 @@ public class AAOptionsConstructor: NSObject {
         
         let aaLegend = NSMutableDictionary()
         aaLegend.setValue(aaChartModel.legendEnabled, forKey: "enabled")
-        aaLegend.setValue(aaChartModel.legendLayout, forKey: "layout")
-        aaLegend.setValue(aaChartModel.legendAlign, forKey: "align")
-        aaLegend.setValue(aaChartModel.legendVerticalAlign, forKey: "verticalAlign")
+        aaLegend.setValue(aaChartModel.legendLayout?.rawValue, forKey: "layout")
+        aaLegend.setValue(aaChartModel.legendAlign?.rawValue, forKey: "align")
+        aaLegend.setValue(aaChartModel.legendVerticalAlign?.rawValue, forKey: "verticalAlign")
         aaLegend.setValue(0, forKey: "borderWidth")
         aaLegend.setValue(["color":aaChartModel.axisColor!] , forKey: "itemStyle")//默认图例的文字颜色和X轴文字颜色一样
         
@@ -112,24 +112,24 @@ public class AAOptionsConstructor: NSObject {
     private static func configureAAPlotOptionsMarkerStyle(aaChartModel: AAChartModel,
                                                           aaSeries: NSMutableDictionary,
                                                           aaPlotOptions: NSMutableDictionary) -> NSMutableDictionary {
-        let chartType = aaChartModel.chartType
+        let chartType = aaChartModel.chartType!
 
         //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记
-        if     chartType == AAChartType.area.rawValue
-            || chartType == AAChartType.areaspline.rawValue
-            || chartType == AAChartType.line.rawValue
-            || chartType == AAChartType.spline.rawValue
-            || chartType == AAChartType.scatter.rawValue {
+        if     chartType == AAChartType.area
+            || chartType == AAChartType.areaspline
+            || chartType == AAChartType.line
+            || chartType == AAChartType.spline
+            || chartType == AAChartType.scatter {
             let aaMarker = NSMutableDictionary()
             aaMarker.setValue(aaChartModel.markerRadius, forKey: "radius")//曲线连接点半径，默认是4
             aaMarker.setValue(aaChartModel.symbol, forKey: "symbol")//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
             
             //设置曲线连接点风格样式
-            if aaChartModel.symbolStyle == AAChartSymbolStyleType.innerBlank.rawValue {
+            if aaChartModel.symbolStyle == AAChartSymbolStyleType.innerBlank {
                 aaMarker.setValue("#ffffff", forKey: "fillColor")//点的填充色(用来设置折线连接点的填充色)
                 aaMarker.setValue(2, forKey: "lineWidth")//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                 aaMarker.setValue("", forKey: "lineColor")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色。)
-            } else if aaChartModel.symbolStyle == AAChartSymbolStyleType.borderBlank.rawValue {
+            } else if aaChartModel.symbolStyle == AAChartSymbolStyleType.borderBlank {
                 aaMarker.setValue(2, forKey: "lineWidth")
                 aaMarker.setValue(aaChartModel.backgroundColor, forKey: "lineColor")
             }
@@ -146,8 +146,8 @@ public class AAOptionsConstructor: NSObject {
         let aaDataLabels = ["enabled":aaChartModel.dataLabelEnabled!]
         let aaSomeTypeChart = NSMutableDictionary()
 
-        if chartType == AAChartType.column.rawValue ||
-           chartType == AAChartType.bar.rawValue {
+        if chartType == AAChartType.column ||
+           chartType == AAChartType.bar {
             aaSomeTypeChart.setValue(0, forKey: "borderWidth")
             aaSomeTypeChart.setValue(aaChartModel.borderRadius, forKey: "borderRadius")
             aaSomeTypeChart.setValue(aaDataLabels , forKey: "dataLabels" )
@@ -155,7 +155,7 @@ public class AAOptionsConstructor: NSObject {
                 aaSomeTypeChart.setValue(0, forKey: "pointPadding")
                 aaSomeTypeChart.setValue(0.005, forKey: "groupPadding")
             }
-        } else if chartType == AAChartType.pie.rawValue {
+        } else if chartType == AAChartType.pie {
             aaSomeTypeChart.setValue(true, forKey: "allowPointSelect")
             aaSomeTypeChart.setValue("pointer", forKey: "cursor")
             aaSomeTypeChart.setValue(aaChartModel.legendEnabled, forKey: "showInLegend")
@@ -165,7 +165,7 @@ public class AAOptionsConstructor: NSObject {
             aaSomeTypeChart.setValue(aaDataLabels , forKey: "dataLabels")
         }
         
-        aaPlotOptions.setValue(aaSomeTypeChart, forKey: chartType!)
+        aaPlotOptions.setValue(aaSomeTypeChart, forKey: chartType!.rawValue)
         
         return aaPlotOptions
     }
@@ -175,9 +175,9 @@ public class AAOptionsConstructor: NSObject {
         let chartType = aaChartModel.chartType
         
         //x 轴和 Y 轴的相关配置,扇形图、金字塔图和漏斗图则不需要设置 X 轴和 Y 轴的相关内容
-        if (   chartType != AAChartType.pie.rawValue
-            && chartType != AAChartType.pyramid.rawValue
-            && chartType != AAChartType.funnel.rawValue) {
+        if (   chartType != AAChartType.pie
+            && chartType != AAChartType.pyramid
+            && chartType != AAChartType.funnel) {
             
             let aaXAxis = NSMutableDictionary()
             aaXAxis.setValue(["enabled":aaChartModel.xAxisLabelsEnabled!], forKey: "label")// X 轴是否显示文字

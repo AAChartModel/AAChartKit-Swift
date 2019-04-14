@@ -139,15 +139,15 @@ public enum AALineDashSyleType: String {
 
 
 public class AAChartModel {
-    public var animationType: String?       //动画类型
+    public var animationType: AAChartAnimationType?       //动画类型
     public var animationDuration: Int?      //动画时间
     public var title: String?               //标题内容
     public var subtitle: String?            //副标题内容
-    public var chartType: String?           //图表类型
-    public var stacking: String?            //堆积样式
-    public var symbol: String?              //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-    public var symbolStyle: String?         //折线或者曲线的连接点是否为空心的
-    public var zoomType: String?            //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
+    public var chartType: AAChartType?      //图表类型
+    public var stacking: AAChartStackingType?//堆积样式
+    public var symbol: AAChartSymbolType?//折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+    public var symbolStyle: AAChartSymbolStyleType?//折线或者曲线的连接点是否为空心的
+    public var zoomType: AAChartZoomType?//缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
     public var inverted: Bool?              //x 轴是否翻转(垂直)
     public var xAxisReversed: Bool?         //x 轴翻转
     public var yAxisReversed: Bool?         //y 轴翻转
@@ -171,9 +171,9 @@ public class AAChartModel {
     public var colorsTheme: [Any]?          //图表主题颜色数组
     public var series: [[String: Any]]?     //图表的数据数组
     public var legendEnabled: Bool?         //是否显示图例
-    public var legendLayout: String?        //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
-    public var legendAlign: String?         //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
-    public var legendVerticalAlign: String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
+    public var legendLayout: AAChartLegendlLayoutType?//图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
+    public var legendAlign: AAChartLegendAlignType?//设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
+    public var legendVerticalAlign: AAChartLegendVerticalAlignType?//设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
     public var backgroundColor: Any?        //图表背景色
     public var borderRadius: Int?           //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     public var markerRadius: Int?           //折线连接点的半径长度
@@ -184,7 +184,7 @@ public class AAChartModel {
     
     @discardableResult
     public func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
-        animationType = prop.rawValue
+        animationType = prop
         return self
     }
     
@@ -208,25 +208,25 @@ public class AAChartModel {
     
     @discardableResult
     public func chartType(_ prop: AAChartType) -> AAChartModel {
-        chartType = prop.rawValue
+        chartType = prop
         return self
     }
     
     @discardableResult
     public func stacking(_ prop: AAChartStackingType) -> AAChartModel {
-        stacking = prop.rawValue
+        stacking = prop
         return self
     }
     
     @discardableResult
     public func symbol(_ prop: AAChartSymbolType) -> AAChartModel {
-        symbol = prop.rawValue
+        symbol = prop
         return self
     }
     
     @discardableResult
     public func zoomType(_ prop: AAChartZoomType) -> AAChartModel {
-        zoomType = prop.rawValue
+        zoomType = prop
         return self
     }
     
@@ -238,7 +238,7 @@ public class AAChartModel {
     
     @discardableResult
     public func symbolStyle(_ prop: AAChartSymbolStyleType) -> AAChartModel {
-        symbolStyle = prop.rawValue
+        symbolStyle = prop
         return self
     }
     
@@ -370,19 +370,19 @@ public class AAChartModel {
     
     @discardableResult
     public func legendLayout(_ prop: AAChartLegendlLayoutType) -> AAChartModel {
-        legendLayout = prop.rawValue
+        legendLayout = prop
         return self
     }
     
     @discardableResult
     public func legendAlign(_ prop: AAChartLegendAlignType) -> AAChartModel {
-        legendAlign = prop.rawValue
+        legendAlign = prop
         return self
     }
     
     @discardableResult
     public func legendVerticalAlign(_ prop: AAChartLegendVerticalAlignType) -> AAChartModel {
-        legendAlign = prop.rawValue
+        legendVerticalAlign = prop
         return self
     }
     
@@ -428,12 +428,12 @@ public class AAChartModel {
         titleColor          = "#000000"
         subtitleColor       = "#000000"
         axisColor           = "#000000"
-        animationType       = AAChartAnimationType.easeInQuad.rawValue
+        animationType       = AAChartAnimationType.easeInQuad
         animationDuration   = 800//以毫秒为单位
-        chartType           = AAChartType.column.rawValue
-        stacking            = AAChartStackingType.none.rawValue
-        zoomType            = AAChartZoomType.none.rawValue//默认禁用手势缩放
-//        colorsTheme         = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
+        chartType           = AAChartType.column
+        stacking            = AAChartStackingType.none
+        zoomType            = AAChartZoomType.none//默认禁用手势缩放
+        colorsTheme         = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
         dataLabelEnabled    = true
         tooltipEnabled      = true
         tooltipCrosshairs   = true
@@ -444,9 +444,9 @@ public class AAChartModel {
         yAxisLineWidth      = 0
         yAxisGridLineWidth  = 0.6
         legendEnabled       = true
-        legendLayout        = AAChartLegendlLayoutType.horizontal.rawValue
-        legendAlign         = AAChartLegendAlignType.center.rawValue
-        legendVerticalAlign = AAChartLegendVerticalAlignType.bottom.rawValue
+        legendLayout        = AAChartLegendlLayoutType.horizontal
+        legendAlign         = AAChartLegendAlignType.center
+        legendVerticalAlign = AAChartLegendVerticalAlignType.bottom
         borderRadius        = 0 //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
         markerRadius        = 5 //折线连接点的半径长度,如果设置默认值为0,那么这样就相当于不显示了
     }
