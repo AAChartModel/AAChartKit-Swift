@@ -11,6 +11,7 @@
 //***...................................................***
 //*************** ...... SOURCE CODE ...... ***************
 
+
 /*
  
  *********************************************************************************
@@ -214,12 +215,12 @@ class CommonChartVC: UIViewController {
     }
     
     func setUpTheSegmentControls() {
-        let segmentedNamesArray:[[String]]
-        let typeLabelNameArr:[String]
+        let segmentedNamesArr:[[String]]
+        let typeLabelNamesArr:[String]
         
         if chartType == .column
             || chartType == .bar {
-            segmentedNamesArray = [
+            segmentedNamesArr = [
                 ["No stacking",
                  "Normal stacking",
                  "Percent stacking"],
@@ -227,31 +228,29 @@ class CommonChartVC: UIViewController {
                  "Rounded corners",
                  "Wedge"]
             ];
-            typeLabelNameArr = [
+            typeLabelNamesArr = [
                 "Stacking Type Selection",
                 "Corners Style Type Selection"
             ];
         } else {
-            segmentedNamesArray = [
+            segmentedNamesArr = [
                 ["No stacking",
                  "Normal stacking",
-                 "Percent stacking"
-                ],
+                 "Percent stacking"],
                 ["Circle",
                  "Square",
                  "Diamond",
                  "Triangle",
-                 "Triangle-down"
-                ]
+                 "Triangle-down"]
             ];
-            typeLabelNameArr = [
+            typeLabelNamesArr = [
                 "Stacking Type Selection",
                 "Chart Symbol Type Selection"
             ];
         }
         
-        for  i in 0..<segmentedNamesArray.count {
-            let segment = UISegmentedControl.init(items: segmentedNamesArray[i] as [Any])
+        for  i in 0..<segmentedNamesArr.count {
+            let segment = UISegmentedControl.init(items: segmentedNamesArr[i] as [Any])
             segment.frame = CGRect(x: 20,
                                    y: 40.0 * CGFloat(i) + (view.frame.size.height - 145),
                                    width: view.frame.size.width - 40,
@@ -270,7 +269,7 @@ class CommonChartVC: UIViewController {
                                     y: 40 * CGFloat(i) + (view.frame.size.height - 165),
                                     width: view.frame.size.width - 40,
                                     height: 20)
-            subLabel.text = typeLabelNameArr[i] as String
+            subLabel.text = typeLabelNamesArr[i] as String
             subLabel.backgroundColor = .clear
             subLabel.textColor = .lightGray
             view.addSubview(subLabel)
@@ -317,7 +316,8 @@ class CommonChartVC: UIViewController {
                 "yReversed",
                 "xInverted",
                 "Polarization",
-                "DataShow",];
+                "DataShow"
+            ]
             switchWidth = (view.frame.size.width - 40) / 5
         } else {
             nameArr = [
@@ -326,7 +326,8 @@ class CommonChartVC: UIViewController {
                 "xInverted",
                 "Polarization",
                 "DataShow",
-                "HideMarker"];
+                "HideMarker"
+            ]
             switchWidth = (view.frame.size.width - 40) / 6
         }
         

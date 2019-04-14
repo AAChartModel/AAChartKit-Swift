@@ -51,6 +51,7 @@
     private var allowPointSelect: Bool?     //Allow this series' points to be selected by clicking on the markers, bars or pie slices
     private var zIndex: Int?                //Define the visual z index of the series.
     private var innerSize: String?          //内部圆环半径大小占比(内部圆环半径/扇形图半径)
+    private var shadow: Any?
 
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
@@ -165,7 +166,53 @@
         innerSize = prop
         return self
     }
+    
+    @discardableResult
+    public func shadow(_ prop: Any) -> AASeriesElement {
+        shadow = prop
+        return self
+    }
 
     public  init() {
+    }   
+}
+
+public class AAShadow: AASerializable {
+    private var color: String?
+    private var offsetX: Float?
+    private var offsetY: Float?
+    private var opacity: Float?
+    private var width: Float?
+    
+    @discardableResult
+    public func color(_ prop: String) -> AAShadow {
+        color = prop
+        return self
+    }
+    
+    @discardableResult
+    public func offsetX(_ prop: Float) -> AAShadow {
+        offsetX = prop
+        return self
+    }
+    
+    @discardableResult
+    public func offsetY(_ prop: Float) -> AAShadow {
+        offsetY = prop
+        return self
+    }
+    
+    @discardableResult
+    public func opacity(_ prop: Float) -> AAShadow {
+        opacity = prop
+        return self
+    }
+    
+    @discardableResult
+    public func width(_ prop: Float) -> AAShadow {
+        width = prop
+        return self
     }
 }
+
+

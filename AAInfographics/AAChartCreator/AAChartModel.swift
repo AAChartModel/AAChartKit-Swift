@@ -107,7 +107,7 @@ public enum AAChartSymbolStyleType: String {
     case normal, innerBlank, borderBlank
 }
 
-public enum AAchartLegendlLayoutType: String {
+public enum AAChartLegendlLayoutType: String {
     case horizontal, vertical
 }
 
@@ -134,7 +134,7 @@ public enum AALineDashSyleType: String {
 }
 
 
-public class AAChartModel: AASerializable {
+public class AAChartModel {
     public var animationType: String?       //动画类型
     public var animationDuration: Int?      //动画时间
     public var title: String?               //标题内容
@@ -365,7 +365,7 @@ public class AAChartModel: AASerializable {
     }
     
     @discardableResult
-    public func legendLayout(_ prop: AAchartLegendlLayoutType) -> AAChartModel {
+    public func legendLayout(_ prop: AAChartLegendlLayoutType) -> AAChartModel {
         legendLayout = prop.rawValue
         return self
     }
@@ -440,7 +440,7 @@ public class AAChartModel: AASerializable {
         yAxisLineWidth      = 0
         yAxisGridLineWidth  = 0.6
         legendEnabled       = true
-        legendLayout        = AAchartLegendlLayoutType.horizontal.rawValue
+        legendLayout        = AAChartLegendlLayoutType.horizontal.rawValue
         legendAlign         = AAChartLegendAlignType.center.rawValue
         legendVerticalAlign = AAChartLegendVerticalAlignType.bottom.rawValue
         borderRadius        = 0 //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)

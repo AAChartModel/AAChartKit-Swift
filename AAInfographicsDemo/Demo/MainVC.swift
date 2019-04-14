@@ -85,7 +85,8 @@ class MainVC: UIViewController {
                 "Polygon Mixed Scatter---多边形混合散点图",
                 "Polar Chart Mixed---极地混合图",
                 "Column Mixed Scatter---柱形图混合散点图",
-                "Pie Mixed Line Mixed Column---扇形折线柱形混合图"
+                "Pie Mixed Line Mixed Column---扇形折线柱形混合图",
+                "Line Chart With Shadow---带有阴影效果的折线图"
             ],
             /*单纯刷新数据*/
             [  "Column Chart---柱形图",
@@ -182,7 +183,8 @@ class MainVC: UIViewController {
                 "polygonMixedScatter",
                 "polarChartMixed",
                 "columnMixedScatter",
-                "PieMixeLineMixedColumn"
+                "PieMixeLineMixedColumn",
+                "LineChartWithShadow"
             ],
             
             [
