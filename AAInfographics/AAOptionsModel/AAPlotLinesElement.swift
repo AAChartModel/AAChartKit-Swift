@@ -10,7 +10,7 @@ import UIKit
 
 class AAPlotLinesElement: AASerializable {
     private var color: Any?
-    private var dashStyle: AALineDashSyleType?
+    private var dashStyle: String?
     private var width: Float?
     private var value: Float?
     private var zIndex: Int?
@@ -24,7 +24,7 @@ class AAPlotLinesElement: AASerializable {
     
     @discardableResult
     public func dashStyle(_ prop: AALineDashSyleType) -> AAPlotLinesElement {
-        dashStyle = prop
+        dashStyle = prop.rawValue
         return self
     }
     
@@ -76,7 +76,7 @@ class AALabel: AASerializable {
 
 class AAStyle: AASerializable {
     private var color: Any?
-    private var fontWeight: AAChartFontWeightType?
+    private var fontWeight: String?
 
     @discardableResult
     public func color(_ prop: String) -> AAStyle {
@@ -86,7 +86,7 @@ class AAStyle: AASerializable {
     
     @discardableResult
     public func fontWeight(_ prop: AAChartFontWeightType) -> AAStyle {
-        fontWeight = prop
+        fontWeight = prop.rawValue
         return self
     }
 

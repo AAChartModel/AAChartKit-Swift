@@ -122,7 +122,7 @@ public class AAOptionsConstructor: NSObject {
             || chartType == AAChartType.scatter {
             let aaMarker = NSMutableDictionary()
             aaMarker.setValue(aaChartModel.markerRadius, forKey: "radius")//曲线连接点半径，默认是4
-            aaMarker.setValue(aaChartModel.symbol, forKey: "symbol")//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+            aaMarker.setValue(aaChartModel.symbol?.rawValue, forKey: "symbol")//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
             
             //设置曲线连接点风格样式
             if aaChartModel.symbolStyle == AAChartSymbolStyleType.innerBlank {
