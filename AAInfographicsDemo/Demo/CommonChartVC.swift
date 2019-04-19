@@ -75,6 +75,7 @@ class CommonChartVC: UIViewController {
         view.addSubview(aaChartView!)
         aaChartView?.scrollEnabled = false//禁止图表内容滚动
         aaChartView?.isClearBackgroundColor = true
+        aaChartView?.delegate = self as AAChartViewDelegate
         
         aaChartModel = AAChartModel()
             .chartType(chartType!)//图形类型
@@ -86,6 +87,7 @@ class CommonChartVC: UIViewController {
             .tooltipValueSuffix("℃")//浮动提示框单位后缀
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .backgroundColor("#22324c")//若要使图表背景色为透明色,可将 backgroundColor 设置为 "rgba(0,0,0,0)" 或 "rgba(0,0,0,0)". 同时确保 aaChartView?.isClearBackgroundColor = true
+            .touchEventEnabled(true)
             .series([
                 AASeriesElement()
                     .name("Tokyo")
@@ -386,5 +388,35 @@ class CommonChartVC: UIViewController {
                        alpha: 1.0)
     }
     
+   
+    
+}
+
+extension CommonChartVC: AAChartViewDelegate {
+    open func aaChartViewDidFinishedLoad() {
+       print("🙂🙂🙂, AAChartView Did Finished Load!!!")
+    }
+    
+    open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
+        print(
+            """
+            🚀🚀🚀selected point series element name: \(String(describing: moveOverEventMessage.name))
+            🦋🦋🦋🦋🦋WARNING!!!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!!!!! WARNING🦋🦋🦋🦋🦋
+            ==========================================================================================
+            ------------------------------------------------------------------------------------------
+             user finger moved over!!!,get the move over event message: {
+            category = \(String(describing: moveOverEventMessage.category));
+            index = \(String(describing: moveOverEventMessage.index));
+            name = \(String(describing: moveOverEventMessage.name));
+            offset =     \(String(describing: moveOverEventMessage.offset));
+            x = \(String(describing: moveOverEventMessage.x));
+            y = \(String(describing: moveOverEventMessage.y));
+            }
+            ------------------------------------------------------------------------------------------
+            ==========================================================================================
+            🦋🦋🦋🦋🦋WARNING!!!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!!!!! WARNING🦋🦋🦋🦋🦋
+            """
+        )
+    }
 }
 

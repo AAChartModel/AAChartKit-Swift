@@ -67,6 +67,30 @@
                 if (animationEasingType) { //懒调用(只有在 aaChartModel 实例对象设置了 animationType 属性值的时候才会调用设置动画类型的函数,否则不调用)
                     aaOptions.plotOptions.series.animation.easing = configureTheChartAnimationEasingType(animationEasingType);
                 }
+                
+                // 添加鼠标事件
+                if (aaOptions.touchEventEnabled == true && aaOptions.plotOptions.series) {
+                    var pointEvents = {
+                        point:{
+                            events:{
+                                mouseOver:function(){
+                                    //console.log(this)
+                                    var message = {
+                                        name: this.series.name,
+                                        y :this.y,
+                                        x: this.x,
+                                        category:this.category,
+                                        offset:{plotX:this.plotX,plotY:this.plotY},
+                                        index: this.index,
+                                    };
+                                    window.webkit.messageHandlers.MouseOver.postMessage(message);
+                                }
+                            }
+                        }
+                    }
+                    aaOptions.plotOptions.series = Object.assign(pointEvents,aaOptions.plotOptions.series)
+                }
+                
                 }
                 aaOptions.credits = {
                     enabled: false

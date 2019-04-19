@@ -180,6 +180,7 @@ public class AAChartModel {
     public var titleColor: String?          //标题颜色
     public var subtitleColor: String?       //副标题颜色
     public var axisColor: String?           //x 轴和 y 轴文字颜色
+    public var touchEventEnabled: Bool?
     
     
     @discardableResult
@@ -419,6 +420,12 @@ public class AAChartModel {
     @discardableResult
     public func markerRadius(_ prop: Int) -> AAChartModel {
         markerRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func touchEventEnabled(_ prop: Bool) -> AAChartModel {
+        touchEventEnabled = prop
         return self
     }
     

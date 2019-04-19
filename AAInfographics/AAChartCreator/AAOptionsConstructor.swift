@@ -102,6 +102,7 @@ public class AAOptionsConstructor: NSObject {
         aaOptions.setValue(aaChartModel.colorsTheme, forKey: "colors")
         aaOptions.setValue(aaChartModel.series, forKey: "series")
         aaOptions.setValue(aaChartModel.axisColor, forKey: "axisColor")
+        aaOptions.setValue(aaChartModel.touchEventEnabled, forKey: "touchEventEnabled")
         
         configureAAOptionsAxisContentAndStyle(aaOptions: aaOptions,
                                               aaChartModel: aaChartModel)

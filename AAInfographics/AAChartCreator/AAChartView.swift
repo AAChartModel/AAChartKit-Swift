@@ -32,6 +32,23 @@
 
 import UIKit
 import WebKit
+
+let kUserContentMessageNameMouseOver = "MouseOver"
+
+@objc public protocol AAChartViewDelegate: NSObjectProtocol {
+    @objc optional func aaChartViewDidFinishedLoad ()
+    @objc optional func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel)
+}
+
+public class AAMoveOverEventMessageModel: NSObject {
+    var name: String?
+    var x: Float?
+    var y: Float?
+    var category: String?
+    var offset: [String: Any]?
+    var index: Int?
+}
+
 public class AAChartView: UIView {
     public var delegate: AAChartViewDelegate?
     
@@ -107,7 +124,12 @@ public class AAChartView: UIView {
         contentHeight = 0
         //        backgroundColor =  .white
         if #available(iOS 9.0, *) {
-            wkWebView = WKWebView()
+            let userContentController = WKUserContentController()
+            userContentController.add(self as WKScriptMessageHandler, name: kUserContentMessageNameMouseOver)
+            let configuration = WKWebViewConfiguration()
+            configuration.userContentController = userContentController
+            
+            wkWebView = WKWebView.init(frame: .zero, configuration: configuration)
             wkWebView?.backgroundColor = .white
 //            wkWebView?.uiDelegate = self
             wkWebView?.navigationDelegate = self
@@ -312,9 +334,6 @@ extension AAChartView {
     }
 }
 
-@objc public protocol AAChartViewDelegate: NSObjectProtocol {
-    @objc optional func AAChartViewDidFinishedLoad ()
-}
 
 extension AAChartView: WKUIDelegate {
     open func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
@@ -331,13 +350,29 @@ extension AAChartView: WKUIDelegate {
 extension AAChartView:  WKNavigationDelegate, UIWebViewDelegate {
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         drawChart()
-        self.delegate?.AAChartViewDidFinishedLoad!()
+        self.delegate?.aaChartViewDidFinishedLoad!()
     }
     
     open func webViewDidFinishLoad(_ webView: UIWebView) {
         drawChart()
-        self.delegate?.AAChartViewDidFinishedLoad!()
+        self.delegate?.aaChartViewDidFinishedLoad!()
     }
-    
-    
+}
+
+extension AAChartView: WKScriptMessageHandler {
+    open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == kUserContentMessageNameMouseOver {
+            if self.delegate != nil {
+                let eventMessageModel = AAMoveOverEventMessageModel()
+                let messageBody = message.body as! [String: Any]
+                eventMessageModel.name = messageBody["name"] as? String
+                eventMessageModel.x = messageBody["x"] as? Float
+                eventMessageModel.y = messageBody["y"] as? Float
+                eventMessageModel.category = messageBody["category"] as? String
+                eventMessageModel.offset = messageBody["offset"] as? [String: Any]
+                eventMessageModel.index = messageBody["index"] as? Int
+                self.delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
+            }
+        }
+    }
 }
