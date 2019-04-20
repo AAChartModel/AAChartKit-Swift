@@ -350,29 +350,27 @@ extension AAChartView: WKUIDelegate {
 extension AAChartView:  WKNavigationDelegate, UIWebViewDelegate {
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         drawChart()
-        self.delegate?.aaChartViewDidFinishedLoad!()
+        self.delegate?.aaChartViewDidFinishedLoad?()
     }
     
     open func webViewDidFinishLoad(_ webView: UIWebView) {
         drawChart()
-        self.delegate?.aaChartViewDidFinishedLoad!()
+        self.delegate?.aaChartViewDidFinishedLoad?()
     }
 }
 
 extension AAChartView: WKScriptMessageHandler {
     open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == kUserContentMessageNameMouseOver {
-            if self.delegate != nil {
-                let eventMessageModel = AAMoveOverEventMessageModel()
-                let messageBody = message.body as! [String: Any]
-                eventMessageModel.name = messageBody["name"] as? String
-                eventMessageModel.x = messageBody["x"] as? Float
-                eventMessageModel.y = messageBody["y"] as? Float
-                eventMessageModel.category = messageBody["category"] as? String
-                eventMessageModel.offset = messageBody["offset"] as? [String: Any]
-                eventMessageModel.index = messageBody["index"] as? Int
-                self.delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
-            }
+            let eventMessageModel = AAMoveOverEventMessageModel()
+            let messageBody = message.body as! [String: Any]
+            eventMessageModel.name = messageBody["name"] as? String
+            eventMessageModel.x = messageBody["x"] as? Float
+            eventMessageModel.y = messageBody["y"] as? Float
+            eventMessageModel.category = messageBody["category"] as? String
+            eventMessageModel.offset = messageBody["offset"] as? [String: Any]
+            eventMessageModel.index = messageBody["index"] as? Int
+            self.delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
         }
     }
 }
