@@ -66,16 +66,16 @@ class CommonChartVC: UIViewController {
         aaChartView = AAChartView()
         let chartViewWidth = view.frame.size.width
         let chartViewHeight = view.frame.size.height - 220
-        aaChartView?.frame = CGRect(x: 0,
+        aaChartView!.frame = CGRect(x: 0,
                                     y: 60,
                                     width: chartViewWidth,
                                     height: chartViewHeight)
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
-        aaChartView?.contentHeight = chartViewHeight - 20
+        aaChartView!.contentHeight = chartViewHeight - 20
         view.addSubview(aaChartView!)
-        aaChartView?.scrollEnabled = false//禁止图表内容滚动
-        aaChartView?.isClearBackgroundColor = true
-        aaChartView?.delegate = self as AAChartViewDelegate
+        aaChartView!.scrollEnabled = false//禁止图表内容滚动
+        aaChartView!.isClearBackgroundColor = true
+        aaChartView!.delegate = self as AAChartViewDelegate
         
         aaChartModel = AAChartModel()
             .chartType(chartType!)//图形类型
@@ -109,7 +109,7 @@ class CommonChartVC: UIViewController {
         
         configureTheStyleForDifferentTypeChart()
         
-        aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
+        aaChartView!.aa_drawChartWithChartModel(aaChartModel!)
     }
     
     func configureTheStyleForDifferentTypeChart() {
@@ -387,8 +387,6 @@ class CommonChartVC: UIViewController {
                        blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
                        alpha: 1.0)
     }
-    
-   
     
 }
 

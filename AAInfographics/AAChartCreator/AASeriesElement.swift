@@ -184,6 +184,75 @@
     }   
 }
 
+public class AADataElement: AASerializable {
+    private var name: String?
+    private var y: Float?
+    private var color: Any?
+    private var dataLabels: [String: Any]?
+    
+    @discardableResult
+    public func name(_ prop: String) -> AADataElement {
+        name = prop
+        return self
+    }
+    
+    @discardableResult
+    public func y(_ prop: Float) -> AADataElement {
+        y = prop
+        return self
+    }
+    
+    @discardableResult
+    public func color(_ prop: Any) -> AADataElement {
+        color = prop
+        return self
+    }
+    
+    @discardableResult
+    public func dataLabels(_ prop: [String: Any]) -> AADataElement {
+        dataLabels = prop
+        return self
+    }
+}
+
+public class AAMarker: AASerializable {
+    private var radius: Float?
+    private var symbol: String?
+    private var fillColor: String?
+    private var lineWidth: Float?
+    private var lineColor: String?
+    
+    @discardableResult
+    public func radius(_ prop: Float) -> AAMarker {
+        radius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func symbol(_ prop: AAChartSymbolType) -> AAMarker {
+        symbol = prop.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func fillColor(_ prop: String) -> AAMarker {
+        fillColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineWidth(_ prop: Float) -> AAMarker {
+        lineWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineColor(_ prop: String) -> AAMarker {
+        lineColor = prop
+        return self
+    }
+}
+
 public class AAShadow: AASerializable {
     private var color: String?
     private var offsetX: Float?
@@ -221,5 +290,7 @@ public class AAShadow: AASerializable {
         return self
     }
 }
+
+
 
 

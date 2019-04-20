@@ -173,11 +173,12 @@ class MixedChartVC: UIViewController {
                             [12489984, 13.6]
                             ])
                         .zIndex(1)
-                        .marker([
-                            "fillColor":"#1E90FF" ,
-                            "lineWidth": 2,
-                            "lineColor":"white"
-                            ])
+                        .marker(
+                            AAMarker()
+                                .radius(5.0)
+                                .fillColor("#1E90FF")
+                                .lineWidth(2.0)
+                                .toDic()!)
                         .toDic()!,
                     AASeriesElement()
                         .name("Range")
@@ -283,18 +284,38 @@ class MixedChartVC: UIViewController {
                 .series([
                     AASeriesElement()
                         .name("新用户")
-                        .data([82.89,67.54,62.07,59.43,67.02,67.09,35.66,71.78,81.61,78.85,79.12,72.30])
-                        .dataLabels(["enabled":true,"style":["color":"#0","fontSize":"11px",]])
+                        .data([82.89, 67.54, 62.07, 59.43, 67.02, 67.09, 35.66, 71.78, 81.61, 78.85, 79.12, 72.30])
+                        .dataLabels(AADataLabels()
+                            .enabled(true)
+                            .style(AAStyle()
+                                .color(AAColor.red!)
+                                .fontSize(11)
+                                .toDic()!)
+                            .toDic()!)
                         .toDic()!,
+                    
                     AASeriesElement()
                         .name("老用户")
-                        .dataLabels(["enabled":true,"style":["color":"#0","fontSize":"11px",]])
-                        .data([198.66,330.81,151.95,160.12,222.56,229.05,128.53,250.91,224.47,473.99,126.85,260.50])
+                        .dataLabels(AADataLabels()
+                            .enabled(true)
+                            .style(AAStyle()
+                                .color(AAColor.green!)
+                                .fontSize(11)
+                                .toDic()!)
+                            .toDic()!)
+                        .data([198.66, 330.81, 151.95, 160.12, 222.56, 229.05, 128.53, 250.91, 224.47, 473.99, 126.85, 260.50])
                         .toDic()!,
+                    
                     AASeriesElement()
                         .name("总量")
                         .type(.line)
-                        .dataLabels(["enabled":true,"style":["color":"#0","fontSize":"15px",]])
+                        .dataLabels(AADataLabels()
+                            .enabled(true)
+                            .style(AAStyle()
+                                .color(AAColor.blue!)
+                                .fontSize(15)
+                                .toDic()!)
+                            .toDic()!)
                         .data([281.55, 398.35, 214.02, 219.55, 289.57, 296.14, 164.18, 322.69, 306.08, 552.84, 205.97, 332.79])
                         .toDic()!,
                     ]
@@ -731,35 +752,40 @@ class MixedChartVC: UIViewController {
                                2.9, 2.5, 2.8, 3.3, 2.7, 3, 2.9, 3, 3, 2.5, 2.9, 2.5, 3.6, 3.2, 2.7, 3, 2.5, 2.8, 3.2, 3, 3.8, 2.6, 2.2, 3.2, 2.8,
                                2.8, 2.7, 3.3, 3.2, 2.8, 3, 2.8, 3, 2.8, 3.8, 2.8, 2.8, 2.6, 3, 3.4, 3.1, 3, 3.1, 3.1, 3.1, 2.7, 3.2, 3.3, 3, 2.5,
                                3, 3.4, 3])
-                        .marker([
-                            "radius": 5,
-                            "symbol": "circle",
-                            "fillColor":"#FFFFFF" ,
-                            "lineWidth": 2,
-                            "lineColor":""
-                            ])
+                        .marker(
+                            AAMarker()
+                                .radius(5.0)
+                                .symbol(.circle)
+                                .fillColor("#1E90FF")
+                                .lineWidth(2.0)
+                                .lineColor(AAColor.red!)
+                                .toDic()!)
                         .toDic()!
                     ])
+            
+            
 
         case "PieMixeLineMixedColumn":
             let pieElement = AASeriesElement()
                 .type(.pie)
                 .name("Total cosume")
                 .data([
-                    [
-                        "name": "小张",
-                        "y": 13,
-                        "color": AAGradientColor.oceanBlue!
-                    ], [
-                        "name": "小潘",
-                        "y": 23,
-                        "color": AAGradientColor.sanguine!
-                    ], [
-                        "name": "小王",
-                        "y": 19,
-                        "color": AAGradientColor.purpleLake!
-                    ]
-                    ]);
+                    AADataElement()
+                        .name("Ada")
+                        .y(13.0)
+                        .color(AAGradientColor.oceanBlue!)
+                        .toDic()!,
+                    AADataElement()
+                        .name("Bob")
+                        .y(13.0)
+                        .color(AAGradientColor.sanguine!)
+                        .toDic()!,
+                    AADataElement()
+                        .name("Coco")
+                        .y(13.0)
+                        .color(AAGradientColor.purpleLake!)
+                        .toDic()!
+                    ])
             
             let pieElementDic:NSMutableDictionary = NSMutableDictionary.init(dictionary: pieElement.toDic()!)
             pieElementDic.setValue([100, 80], forKey: "center")
@@ -793,13 +819,15 @@ class MixedChartVC: UIViewController {
                         .name("average value")
                         .type(.line)
                         .data([3, 2.67, 3, 6.33, 3.33])
-                        .marker([
-                            "fillColor":"#1E90FF" ,
-                            "lineWidth": 2,
-                            "lineColor":"white"
-                            ])
+                        .marker(
+                            AAMarker()
+                                .fillColor("#1E90FF")
+                                .lineWidth(2.0)
+                                .lineColor(AAColor.white!)
+                                .toDic()!)
                         .toDic()!,
-                    pieElementDic as! Dictionary<String, Any>
+                    
+                     pieElementDic as! Dictionary<String, Any>
                     ])
             
         case "LineChartWithShadow":

@@ -74,20 +74,3 @@ class AALabel: AASerializable {
     }
 }
 
-class AAStyle: AASerializable {
-    private var color: Any?
-    private var fontWeight: String?
-
-    @discardableResult
-    public func color(_ prop: String) -> AAStyle {
-        color = prop
-        return self
-    }
-    
-    @discardableResult
-    public func fontWeight(_ prop: AAChartFontWeightType) -> AAStyle {
-        fontWeight = prop.rawValue
-        return self
-    }
-
-}
