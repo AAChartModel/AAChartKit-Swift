@@ -33,7 +33,7 @@
 import UIKit
 import WebKit
 
-let kUserContentMessageNameMouseOver = "MouseOver"
+let kUserContentMessageNameMouseOver = "mouseover"
 
 @objc public protocol AAChartViewDelegate: NSObjectProtocol {
     @objc optional func aaChartViewDidFinishedLoad ()
@@ -230,10 +230,13 @@ public class AAChartView: UIView {
         var modelJsonStr = String(data: modelJsonData, encoding: String.Encoding.utf8)!
         modelJsonStr = modelJsonStr.replacingOccurrences(of: "\n", with: "") as String
         
-        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');",
+        let isWKWebView = (wkWebView != nil)
+        
+        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f', '%d');",
                                                           modelJsonStr,
                                                           contentWidth ?? 0,
-                                                          contentHeight ?? 0)
+                                                          contentHeight ?? 0,
+                                                          isWKWebView)
         optionsJson = jsString as String;
     }
 }
@@ -347,13 +350,8 @@ extension AAChartView: WKUIDelegate {
     }
 }
 
-extension AAChartView:  WKNavigationDelegate, UIWebViewDelegate {
+extension AAChartView:  WKNavigationDelegate {
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        drawChart()
-        self.delegate?.aaChartViewDidFinishedLoad?()
-    }
-    
-    open func webViewDidFinishLoad(_ webView: UIWebView) {
         drawChart()
         self.delegate?.aaChartViewDidFinishedLoad?()
     }
@@ -362,15 +360,54 @@ extension AAChartView:  WKNavigationDelegate, UIWebViewDelegate {
 extension AAChartView: WKScriptMessageHandler {
     open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == kUserContentMessageNameMouseOver {
-            let eventMessageModel = AAMoveOverEventMessageModel()
             let messageBody = message.body as! [String: Any]
-            eventMessageModel.name = messageBody["name"] as? String
-            eventMessageModel.x = messageBody["x"] as? Float
-            eventMessageModel.y = messageBody["y"] as? Float
-            eventMessageModel.category = messageBody["category"] as? String
-            eventMessageModel.offset = messageBody["offset"] as? [String: Any]
-            eventMessageModel.index = messageBody["index"] as? Int
+            let eventMessageModel = getEventMessageModel(messageBody: messageBody)
             self.delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
         }
+    }
+}
+
+extension AAChartView: UIWebViewDelegate {
+    open func webViewDidFinishLoad(_ webView: UIWebView) {
+        drawChart()
+        self.delegate?.aaChartViewDidFinishedLoad?()
+    }
+    
+    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        let URL = request.url
+        let scheme = URL?.scheme
+        if scheme == kUserContentMessageNameMouseOver {
+            var messageStr = URL?.absoluteString
+            messageStr = messageStr?.replacingOccurrences(of: "mouseover://?", with: "")
+            let decodedMessageStr = (messageStr?.removingPercentEncoding)!
+            let messageBody = getDictionary(jsonString: decodedMessageStr)
+            let eventMessageModel = getEventMessageModel(messageBody: messageBody)
+            self.delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
+            return false
+        }
+        return true
+    }
+
+}
+
+extension AAChartView {
+    func getEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
+        let eventMessageModel = AAMoveOverEventMessageModel()
+        eventMessageModel.name = messageBody["name"] as? String
+        eventMessageModel.x = messageBody["x"] as? Float
+        eventMessageModel.y = messageBody["y"] as? Float
+        eventMessageModel.category = messageBody["category"] as? String
+        eventMessageModel.offset = messageBody["offset"] as? [String: Any]
+        eventMessageModel.index = messageBody["index"] as? Int
+        return eventMessageModel
+    }
+    
+    func getDictionary(jsonString:String) -> [String: Any] {
+        let jsonData:Data = jsonString.data(using: .utf8)!
+        let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
+        if dict != nil {
+            return dict as! [String: Any]
+        }
+        return [String: Any]()
     }
 }

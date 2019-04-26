@@ -52,8 +52,7 @@
 
             var aaGlobalChart;
 
-            function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
-<!--                                alert(sender);-->
+            function loadTheHighChartView(sender, receivedWidth, receivedHeight,isWKWebView) {
                 var aaOptions = JSON.parse(sender);
                 var o = document.getElementById('container'); //获得元素
                 if (receivedWidth != 0) {
@@ -70,25 +69,8 @@
                 
                 // 添加鼠标事件
                 if (aaOptions.touchEventEnabled == true && aaOptions.plotOptions.series) {
-                    var pointEvents = {
-                        point:{
-                            events:{
-                                mouseOver:function(){
-                                    //console.log(this)
-                                    var message = {
-                                        name: this.series.name,
-                                        y :this.y,
-                                        x: this.x,
-                                        category:this.category,
-                                        offset:{plotX:this.plotX,plotY:this.plotY},
-                                        index: this.index,
-                                    };
-                                    window.webkit.messageHandlers.MouseOver.postMessage(message);
-                                }
-                            }
-                        }
-                    }
-                    aaOptions.plotOptions.series = Object.assign(pointEvents,aaOptions.plotOptions.series)
+                    configureChartTouchEvent(aaOptions,isWKWebView);
+
                 }
                 
                 }
@@ -105,6 +87,49 @@
                 
                 aaGlobalChart = Highcharts.chart('container', aaOptions);
             };
+        
+        function configureChartTouchEvent(aaOptions,isWKWebView) {
+            var mouseOverFunc = function(){
+                //console.log(this)
+                var message = {
+                    name: this.series.name,
+                    y :this.y,
+                    x: this.x,
+                    category:this.category,
+                    offset:{plotX:this.plotX,plotY:this.plotY},
+                    index: this.index,
+                };
+                if (isWKWebView == true) {
+                    window.webkit.messageHandlers.mouseover.postMessage(message);
+                } else {
+                    var messageStr = JSON.stringify(message);
+                    uiWebViewLoadURL("mouseover://?"+ messageStr);
+                }
+                
+            };
+            
+            var pointEvents = {
+                point:{
+                    events:{
+                        mouseOver: mouseOverFunc,
+                    }
+                }
+            }
+            aaOptions.plotOptions.series = Object.assign(pointEvents,aaOptions.plotOptions.series)
+        }
+        
+        function uiWebViewLoadURL(url) {
+            var iFrame;
+            iFrame = document.createElement("iframe");
+            iFrame.setAttribute("src", url);
+            iFrame.setAttribute("style", "display:none;");
+            iFrame.setAttribute("height", "0px");
+            iFrame.setAttribute("width", "0px");
+            iFrame.setAttribute("frameborder", "0");
+            document.body.appendChild(iFrame);
+            iFrame.parentNode.removeChild(iFrame);
+            iFrame = null;
+        }
 
 
             function configureTheChartAnimationEasingType(easingType) {
