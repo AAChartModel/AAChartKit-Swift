@@ -9,7 +9,7 @@
             <script src="AAEasing.js"></script>
             <!-- <script src=" https://img.hcharts.cn/highcharts/themes/dark-unica.js">-->
             <!-- </script>-->
-            <!-- 若介意本地js代码体积(250KB左右)过大，可换用加载网络js代码 -->
+<!--             若介意本地js代码体积(250KB左右)过大，可换用加载网络js代码 -->
             <!-- <script src="https://img.hcharts.cn/highcharts/highcharts.js">-->
             <!-- </script>-->
             <!-- <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">-->
@@ -60,7 +60,11 @@
                     }
                 }
                 
-               
+                if (aaOptions.tooltip) {
+                    if (aaOptions.tooltip.formatter) {
+                        aaOptions.tooltip.formatter = eval(aaOptions.tooltip.formatter);
+                    }
+                }
                                       
                 aaGlobalChart = Highcharts.chart('container', aaOptions);
             };

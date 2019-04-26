@@ -321,16 +321,7 @@ extension AAChartView {
     /// - Parameter JSFunctionBodyString: JavaScript function body string
     public func evaluateJavaScriptStringFunction(JSFunctionString: String) {
         if optionsJson != nil {
-            var pureJSFunctionStr = JSFunctionString
-            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\\", with: "\\\\")
-            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\"", with: "\\\"")
-            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\'", with: "\\\'")
-            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\n", with: "\\n")
-            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\r", with: "\\r")
-            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\u{000C}", with: "\\f")
-            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
-            pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
-            
+            let pureJSFunctionStr = AAEasyTool.pureJavaScriptFunctionString(JSFunctionString)
             let jsFunctionNameStr = "evaluateTheJavaScriptStringFunction('\(pureJSFunctionStr)')"
             evaluateJavaScriptWithFunctionNameString(jsFunctionNameStr)
         }

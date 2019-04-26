@@ -141,7 +141,8 @@ class MainVC: UIViewController {
                 "Adjust The XAxis Labels",
                 "Adjust GroupPadding Between Columns",
                 "configureAAPlotBandsForChart",
-                "configureAAPlotLinesForChart"
+                "configureAAPlotLinesForChart",
+                "customAATooltipWithJSFuntion"
             ],
         ]
         
