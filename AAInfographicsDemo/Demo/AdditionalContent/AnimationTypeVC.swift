@@ -35,6 +35,7 @@ import UIKit
 class AnimationTypeVC: UIViewController {
     public var chartType: AAChartType?
     public var step: Bool?
+    private var chartAnimationTypeStringArr = [String]()
     private var chartAnimationTypeArr = [AAChartAnimationType]()
     private var aaChartModel: AAChartModel?
     private var aaChartView: AAChartView?
@@ -43,6 +44,43 @@ class AnimationTypeVC: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        chartAnimationTypeStringArr = [
+            "easeInQuad",
+            "easeOutQuad",
+            "easeInOutQuad",
+            "easeInCubic",
+            "easeOutCubic",
+            "easeInOutCubic",
+            "easeInQuart",
+            "easeOutQuart",
+            "easeInOutQuart",
+            "easeInQuint",
+            "easeOutQuint",
+            "easeInOutQuint",
+            "easeInSine",
+            "easeOutSine",
+            "easeInOutSine",
+            "easeInExpo",
+            "easeOutExpo",
+            "easeInOutExpo",
+            "easeInCirc",
+            "easeOutCirc",
+            "easeInOutCirc",
+            "easeOutBounce",
+            "easeInBack",
+            "easeOutBack",
+            "easeInOutBack",
+            "elastic",
+            "swingFromTo",
+            "swingFrom",
+            "swingTo",
+            "bounce",
+            "bouncePast",
+            "easeFromTo",
+            "easeFrom",
+            "easeTo",
+        ]
         
         chartAnimationTypeArr = [
             .easeInQuad,
@@ -80,6 +118,7 @@ class AnimationTypeVC: UIViewController {
             .easeFrom,
             .easeTo,
         ]
+        
         setUpTheAnimationTypeTableView()
         setUpTheAAChartView()
     }
@@ -163,7 +202,7 @@ class AnimationTypeVC: UIViewController {
 
 extension AnimationTypeVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chartAnimationTypeArr.count
+        return chartAnimationTypeStringArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -172,7 +211,7 @@ extension AnimationTypeVC: UITableViewDelegate,UITableViewDataSource {
         if cell == nil {
             cell =  UITableViewCell.init(style: .default, reuseIdentifier: identifier)
         }
-        let cellTitle = chartAnimationTypeArr[indexPath.row].rawValue
+        let cellTitle = chartAnimationTypeStringArr[indexPath.row]
         cell.textLabel?.text = cellTitle
         cell.textLabel?.font = .systemFont(ofSize: 11)
         cell.textLabel?.textColor = .darkGray

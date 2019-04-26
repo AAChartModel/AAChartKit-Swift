@@ -30,7 +30,8 @@
  
  */
 
- public enum AAChartAnimationType: String {
+ public enum AAChartAnimationType: Int {
+    case linear
     case easeInQuad
     case easeOutQuad
     case easeInOutQuad
