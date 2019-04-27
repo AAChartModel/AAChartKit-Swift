@@ -398,7 +398,7 @@ extension CommonChartVC: AAChartViewDelegate {
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
         print(
             """
-            selected point series element name: \(String(describing: moveOverEventMessage.name))
+            selected point series element name: \(moveOverEventMessage.name ?? "")
             🔥🔥🔥WARNING!!!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!!!!! WARNING🔥🔥🔥
             ==========================================================================================
             ------------------------------------------------------------------------------------------

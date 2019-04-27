@@ -33,7 +33,7 @@
 1. **极简主义**. `AAChartView + AAChartModel = Chart`,在 ***AAInfographics*** 数据可视化图形框架当中,遵循这样一个极简主义公式:`图表视图控件 + 图表模型 = 你想要的图表`.同另一款强大、精美而又易用的开源图形框架 [AAChartKit](https://github.com/AAChartModel/AAChartKit)完全一致.
 1. **链式编程语法**. 支持类 *Masonry* `链式编程语法`,一行代码即可配置完成 `AAChartModel`模型对象实例.
 1. **简洁清晰,轻便易用**. 最少仅仅需要 **五行代码** 即可完成整个图表的绘制工作(使用链式编程语法配置 `AAChartModel` 实例对象时,无论你写多少行代码,理论上只能算作是一行). 😜😜😜
-1. **支持点击事件** 支持图表的用户点击事件及单指滑动事件,可在此基础上实现双表联动乃至多表联动,以及其他更多更复杂的自定义用户交互效果.具体参见[](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#支持监听用户点击事件及单指滑动事件)
+1. **支持点击事件** 支持监听用户交互事件,可在此基础上实现双表联动乃至多表联动,以及其他更多更复杂的自定义用户交互效果.具体参见[支持监听用户点击事件及单指滑动事件](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#支持监听用户点击事件及单指滑动事件)
 
 ***
 
@@ -231,7 +231,7 @@
   //实现对 AAChartView 事件代理的监听
 extension CommonChartVC: AAChartViewDelegate {
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
-        print("🔥selected point series element name: \(String(describing: moveOverEventMessage.name))")
+        print("🔥selected point series element name: \(moveOverEventMessage.name ?? "")")
     }
 }
   ```
