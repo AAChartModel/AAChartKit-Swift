@@ -33,6 +33,7 @@
 1. **极简主义**. `AAChartView + AAChartModel = Chart`,在 ***AAInfographics*** 数据可视化图形框架当中,遵循这样一个极简主义公式:`图表视图控件 + 图表模型 = 你想要的图表`.同另一款强大、精美而又易用的开源图形框架 [AAChartKit](https://github.com/AAChartModel/AAChartKit)完全一致.
 1. **链式编程语法**. 支持类 *Masonry* `链式编程语法`,一行代码即可配置完成 `AAChartModel`模型对象实例.
 1. **简洁清晰,轻便易用**. 最少仅仅需要 **五行代码** 即可完成整个图表的绘制工作(使用链式编程语法配置 `AAChartModel` 实例对象时,无论你写多少行代码,理论上只能算作是一行). 😜😜😜
+1. **支持图表的[用户点击事件及单指滑动事件](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#用户点击事件及单指滑动事件),可在此基础上实现双表联动乃至多表联动,以及其他更多更复杂的自定义用户交互效果.
 
 ***
 
@@ -220,134 +221,83 @@
 
 ## 特别说明
 
-### 特殊类型图表配置
+### 支持监听用户点击事件及单指滑动事件
 
-**AAInfographics** 中扇形图、气泡图都归属为特殊类型,所以想要绘制扇形图、气泡图,图表模型 *AAChartModel* 的数据属性`series`设置稍有不同,示例如下
+  可通过给 AAChartView 示例对象设置代理方法,来实现监听用户的点击事件和单指滑动事件
+ ```swift
+  //设置 AAChartView 事件代理
+  aaChartView!.delegate = self as AAChartViewDelegate
 
-- 绘制扇形图,你需要这样配置模型对象 *AAChartModel*
+  //实现对 AAChartView 事件代理的监听
+extension CommonChartVC: AAChartViewDelegate {
+    open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
+        print(
+            """
+            selected point series element name: \(String(describing: moveOverEventMessage.name))
+            🔥🔥🔥WARNING!!!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!!!!! WARNING🔥🔥🔥
+            ==========================================================================================
+            ------------------------------------------------------------------------------------------
+             user finger moved over!!!,get the move over event message: {
+            category = \(String(describing: moveOverEventMessage.category));
+            index = \(String(describing: moveOverEventMessage.index));
+            name = \(String(describing: moveOverEventMessage.name));
+            offset =     \(String(describing: moveOverEventMessage.offset));
+            x = \(String(describing: moveOverEventMessage.x));
+            y = \(String(describing: moveOverEventMessage.y));
+            }
+            ------------------------------------------------------------------------------------------
+            ==========================================================================================
+            🔥🔥🔥WARNING!!!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!!!!! WARNING🔥🔥🔥
+            """
+        )
+    }
+}
+  ```
+
+  在监听用户交互事件时,获取的事件信息`AAMoveOverEventMessageModel`共包含以下内容
+  ```swift
+public class AAMoveOverEventMessageModel: NSObject {
+    var name: String?
+    var x: Float?
+    var y: Float?
+    var category: String?
+    var offset: [String: Any]?
+    var index: Int?
+}
+  ```
+
+
+### 支持通过`JavaScript` 函数来自定义 `AATooltip`视图显示效果
+有时系统默认的 tooltip 浮动提示框的显示效果无法满足使用者的特殊自定义要求,此时可以通过添加 AATooltip 的 formatter 函数来实现视图的特殊定制化
+例如,如下配置 AATooltip 实例对象属性
 ```swift
-            aaChartModel = AAChartModel()
-                .chartType(.pie)
-                .backgroundColor("#ffffff")
-                .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
-                .subtitle("virtual data")
-                .dataLabelEnabled(true)//是否直接显示扇形图数据
-                .yAxisTitle("℃")
-                .series(
-                    [
-                        AASeriesElement()
-                            .name("Language market shares")
-                            .innerSize("20%")//内部圆环半径大小占比(内部圆环半径/扇形图半径),
-                            .allowPointSelect(false)
-                            .data([
-                                ["Java"  ,67],
-                                ["Swift",999],
-                                ["Python",83],
-                                ["OC"    ,11],
-                                ["Go"    ,30],
-                                ])
-                            .toDic()!,
-                        ]
-                    
-            )
-                    
+        //custom tooltip style
+        let myTooltip = AATooltip()
+            .useHTML(true)
+            .formatter("""
+function () {
+        return ' 🌕 🌖 🌗 🌘🌑 🌒 🌓 🌔 <br/> '
+        + ' Support JavaScript Function Just Right Now !!! <br/> '
+        + ' The Gold Price For <b>2020 '
+        +  this.x
+        + ' </b> Is <b> '
+        +  this.y
+        + ' </b> Dollars ';
+        }
+""")
+            .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
+            .backgroundColor("#000000")
+            .borderColor("#000000")
+            .style(
+                AAStyle()
+                    .color("#FFD700")
+                    .fontSize(12)
+                    .toDic()!)
+            .toDic()!
 ```
-- 绘制气泡图,你需要这样配置模型对象 *AAChartModel*
+即可完成图表的浮动提示框的特殊定制化.得到的自定义浮动提示框的视觉效果图如下👇
+![Custom Tooltip Style](https://user-images.githubusercontent.com/16357599/56589690-543c5880-6618-11e9-9d18-6bc0fe2fa53f.png)
 
-```swift  
-            aaChartModel = AAChartModel()
-                .chartType(.bubble)
-                .title("AACHARTKIT BUBBLES")
-                .subtitle("JUST FOR FUN")
-                .yAxisTitle("℃")
-                .gradientColorEnable(true)
-                .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
-                .series(
-                    [
-                        AASeriesElement()
-                            .name("BubbleOne")
-                            .data([[97, 36, 79],
-                                   [94, 74, 60],
-                                   [68, 76, 58],
-                                   [64, 87, 56],
-                                   [68, 27, 73],
-                                   [74, 99, 42],
-                                   [7,  93, 99],
-                                   [51, 69, 40],
-                                   [38, 23, 33],
-                                   [57, 86, 31],
-                                   [33, 24, 22]
-                                ])
-                            .toDic()!,
-                        AASeriesElement()
-                            .name("BubbleTwo")
-                            .data([[25, 60, 87],
-                                   [2,  75, 59],
-                                   [11, 54, 8 ],
-                                   [86, 55, 93],
-                                   [5,  33, 88],
-                                   [90, 63, 44],
-                                   [91, 43, 17],
-                                   [97, 56, 56],
-                                   [15, 67, 48],
-                                   [54, 25, 81],
-                                   [55, 66, 11]
-                                ])
-                            .toDic()!,
-                        AASeriesElement()
-                            .name("BubbleThree")
-                            .data([[47, 47, 21],
-                                   [20, 12, 66],
-                                   [6,  76, 91],
-                                   [38, 30, 60],
-                                   [57, 98, 64],
-                                   [61, 47, 80],
-                                   [83, 60, 13],
-                                   [67, 78, 75],
-                                   [64, 12, 55],
-                                   [30, 77, 82],
-                                   [88, 66, 13]
-                                ])
-                            .toDic()!,
-                        ]
-            )      
-```
-
-- 绘制柱形范围图,你需要这样配置模型对象 *AAChartModel*
-
-```swift
-            aaChartModel = AAChartModel()
-                .chartType(.columnRange)
-                .title("TEMPERATURE VARIATION BY MONTH")
-                .subtitle("observed in Gotham city")
-                .yAxisTitle("℃")
-                .categories(["January", "February", "March", "April", "May", "June",
-                             "July", "August", "September", "October", "November", "December"])
-                .dataLabelEnabled(true)
-                .inverted(true)//x 轴是否垂直翻转
-                .series(
-                    [
-                        AASeriesElement()
-                            .name("temperature")
-                            .data([
-                                [-9.7,  9.4],
-                                [-8.7,  6.5],
-                                [-3.5,  9.4],
-                                [-1.4, 19.9],
-                                [0.0,  22.6],
-                                [2.9,  29.5],
-                                [9.2,  30.7],
-                                [7.3,  26.5],
-                                [4.4,  18.0],
-                                [-3.1, 11.4],
-                                [-5.2, 10.4],
-                                [-13.5, 9.8]
-                                ])
-                            .toDic()!,
-                        ]
-            )
-```
-***NOTE:*** 关于更多类型特殊图表的 `AAChartModel`实例对象属性配置,详情请见 ***AAInfographics*** 工程 `Demo` 中的`SpecialChartVC.swift`文件内容,查看文件内容详情请点击[这里](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/AAInfographicsDemo/Demo/SpecialChartVC.swift),您也可以选择下载 `Demo` 后,在  `Xcode` 中查看 ***AAInfographics*** 的`SpecialChartVC.swift`内容
 
 ### 当前已支持的图表类型有十种以上,说明如下
 
