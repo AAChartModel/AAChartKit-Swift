@@ -131,12 +131,12 @@ public class AAChartView: UIView {
             
             wkWebView = WKWebView.init(frame: .zero, configuration: configuration)
             wkWebView?.backgroundColor = .white
-//            wkWebView?.uiDelegate = self
+            wkWebView?.uiDelegate = self
             wkWebView?.navigationDelegate = self
             addSubview(wkWebView!)
             wkWebView?.translatesAutoresizingMaskIntoConstraints = false
             wkWebView?.superview!.addConstraints(configureTheConstraintArray(childView: wkWebView!,
-                                                                             fatherView: self)) //Note:父控件添加约束
+                                                                             fatherView: self))
         } else {
             // Fallback on earlier versions
             uiWebView = UIWebView()
@@ -145,7 +145,7 @@ public class AAChartView: UIView {
             addSubview(uiWebView!)
             uiWebView?.translatesAutoresizingMaskIntoConstraints = false
             uiWebView?.superview!.addConstraints(configureTheConstraintArray(childView: uiWebView!,
-                                                                             fatherView: self)) //Note:父控件添加约束
+                                                                             fatherView: self))
         }
     }
     
@@ -378,7 +378,6 @@ extension AAChartView: UIWebViewDelegate {
         }
         return true
     }
-
 }
 
 extension AAChartView {
