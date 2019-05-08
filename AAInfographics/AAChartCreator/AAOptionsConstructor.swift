@@ -181,14 +181,22 @@ public class AAOptionsConstructor: NSObject {
             && chartType != AAChartType.funnel) {
             
             let aaXAxis = NSMutableDictionary()
-            aaXAxis.setValue(["enabled":aaChartModel.xAxisLabelsEnabled!], forKey: "label")// X 轴是否显示文字
+            if aaChartModel.xAxisLabelsEnabled == true {
+                aaXAxis["labels"] = ["style": ["color": aaChartModel.axisColor]]// X 轴文字颜色
+            } else {
+                aaXAxis["labels"] = ["enabled":false]// X 轴是否显示文字
+            }
             aaXAxis.setValue(aaChartModel.xAxisReversed, forKey: "reversed")//是否反转 X 轴
             aaXAxis.setValue(aaChartModel.xAxisGridLineWidth, forKey: "gridLineWidth")// X 轴网格线宽度
             aaXAxis.setValue(aaChartModel.categories, forKey: "categories")
             aaXAxis.setValue(aaChartModel.xAxisVisible, forKey: "visible")
             
             let aaYAxis = NSMutableDictionary()
-            aaYAxis.setValue(["enabled":aaChartModel.yAxisLabelsEnabled!] , forKey: "label")// Y 轴是否显示数字
+            if aaChartModel.xAxisLabelsEnabled == true {
+                aaYAxis["labels"] = ["style": ["color": aaChartModel.axisColor]]// Y 轴文字颜色
+            } else {
+                aaYAxis["labels"] = ["enabled":false]// Y 轴是否显示文字
+            }
             aaYAxis.setValue(aaChartModel.yAxisReversed, forKey: "reversed")//是否反转 Y 轴
             aaYAxis.setValue(aaChartModel.yAxisGridLineWidth, forKey: "gridLineWidth") // Y 轴网格线宽度
             aaYAxis.setValue(["text":aaChartModel.yAxisTitle], forKey: "title")//Y 轴标题
