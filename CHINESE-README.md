@@ -450,9 +450,9 @@ private var axisColor: String?           //x 轴和 y 轴文字颜色
 </script>
 <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>
-<script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
+<script src="https://img.hcharts.cn/highcharts/modules/funnel.js">
 </script>
-```
+``` 
 即可.
 
 此方案是将原本加载放置在本地的`.js`依赖文件改为了加载放置在网络上的`.js`文件,减小了本地文件大小,但有可能会有一定的网络延迟(`0.5s以内`),所以建议`AAInfographics`用户可根据自己的实际项目的开发需要,酌情选择最终是否使用本替代方案.

@@ -398,21 +398,23 @@ extension CommonChartVC: AAChartViewDelegate {
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
         print(
             """
+            
             selected point series element name: \(moveOverEventMessage.name ?? "")
             🔥🔥🔥WARNING!!!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!!!!! WARNING🔥🔥🔥
             ==========================================================================================
             ------------------------------------------------------------------------------------------
-             user finger moved over!!!,get the move over event message: {
+            user finger moved over!!!,get the move over event message: {
             category = \(String(describing: moveOverEventMessage.category));
             index = \(String(describing: moveOverEventMessage.index));
             name = \(String(describing: moveOverEventMessage.name));
-            offset =     \(String(describing: moveOverEventMessage.offset));
+            offset = \(String(describing: moveOverEventMessage.offset));
             x = \(String(describing: moveOverEventMessage.x));
             y = \(String(describing: moveOverEventMessage.y));
             }
             ------------------------------------------------------------------------------------------
             ==========================================================================================
             🔥🔥🔥WARNING!!!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!!!!! WARNING🔥🔥🔥
+            
             """
         )
     }

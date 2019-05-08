@@ -497,7 +497,7 @@ private var axisColor: String?           //x 軸和 y 軸文字顏色
 </script>
 <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>
-<script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
+<script src="https://img.hcharts.cn/highcharts/modules/funnel.js">
 </script>
 ```
 即可.

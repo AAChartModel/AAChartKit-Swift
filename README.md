@@ -485,7 +485,7 @@ to be
 </script>
 <script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
 </script>
-<script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
+<script src="https://img.hcharts.cn/highcharts/modules/funnel.js">
 </script>
 ```
 
