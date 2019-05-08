@@ -190,7 +190,9 @@ public class AAOptionsConstructor: NSObject {
             aaXAxis.setValue(aaChartModel.xAxisGridLineWidth, forKey: "gridLineWidth")// X 轴网格线宽度
             aaXAxis.setValue(aaChartModel.categories, forKey: "categories")
             aaXAxis.setValue(aaChartModel.xAxisVisible, forKey: "visible")
-            
+            aaXAxis.setValue("rgba(212,220,232,1)", forKey: "tickColor")
+            aaXAxis.setValue(1, forKey: "tickWidth")
+
             let aaYAxis = NSMutableDictionary()
             if aaChartModel.xAxisLabelsEnabled == true {
                 aaYAxis["labels"] = ["style": ["color": aaChartModel.axisColor]]// Y 轴文字颜色
