@@ -71,7 +71,12 @@
 
 ### 使用 CocoaPods (推荐)
 
-1. 添加 `pod 'AAInfographics'` 到你的 **Podfile**文件当中.
+1. 添加 
+```ruby
+pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
+
+```
+ 到你的 **Podfile**文件当中.
 2. 在终端中运行命令 `pod install` or `pod update`.
 3. 导入头文件  `AAInfographics`.
 
