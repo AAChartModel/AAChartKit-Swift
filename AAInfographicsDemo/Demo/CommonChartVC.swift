@@ -362,18 +362,12 @@ class CommonChartVC: UIViewController {
     
     @objc func switchDidChange(switchView:UISwitch) {
         switch switchView.tag {
-        case 0:
-            aaChartModel?.xAxisReversed(switchView.isOn)
-        case 1:
-            aaChartModel?.yAxisReversed(switchView.isOn)
-        case 2:
-            aaChartModel?.inverted(switchView.isOn)
-        case 3:
-            aaChartModel?.polar(switchView.isOn)
-        case 4:
-            aaChartModel?.dataLabelEnabled(switchView.isOn)
-        case 5:
-            aaChartModel?.markerRadius(switchView.isOn ? 0 : 5)//折线连接点半径长度,为0时相当于没有折线连接点
+        case 0: aaChartModel?.xAxisReversed(switchView.isOn)
+        case 1: aaChartModel?.yAxisReversed(switchView.isOn)
+        case 2: aaChartModel?.inverted(switchView.isOn)
+        case 3: aaChartModel?.polar(switchView.isOn)
+        case 4: aaChartModel?.dataLabelEnabled(switchView.isOn)
+        case 5: aaChartModel?.markerRadius(switchView.isOn ? 0 : 5)//折线连接点半径长度,为0时相当于没有折线连接点
         default:
             break
         }

@@ -50,18 +50,19 @@
 
 ## Installation
 
-### CocoaPods
+### CocoaPods (recommand)
 
-1. Add 
+1. Add following content
 ```ruby
 pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
 
 ```
-to your Podfile.
+to your project Podfile.
+
 2. Run `pod install` or `pod update`.
 3. Import  `AAInfographics`.
 
-### Manually
+### Manually  (old school way)
 
 1. Download whole project demo of `AAInfographicsDemo`
 2. Drag the folder `AAInfographics` into your project.
