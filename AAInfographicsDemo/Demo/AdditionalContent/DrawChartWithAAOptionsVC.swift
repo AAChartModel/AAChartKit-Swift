@@ -60,6 +60,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 9: return configureAAPlotBandsForChart()
         case 10:return configureAAPlotLinesForChart()
         case 11: return customAATooltipWithJSFuntion()
+        case 12: return customXAxisCrosshairStyle()
         default:
             return NSMutableDictionary()
         }
@@ -131,6 +132,62 @@ class DrawChartWithAAOptionsVC: UIViewController {
         aaChart["plotBackgroundImage"] = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg"
         
         return aaOptions
+    }
+    
+    private func customXAxisCrosshairStyle() -> NSMutableDictionary {
+        let aaChartModel = AAChartModel()
+            .chartType(.line)//图表类型
+            .series([
+                AASeriesElement()
+                    .name("2020")
+                    .color(AAGradientColor.deepSea!)
+                    .data([
+                        [12464064, 21.5],
+                        [12464928, 22.1],
+                        [12465792,   23],
+                        [12466656, 23.8],
+                        [12467520, 21.4],
+                        [12468384, 21.3],
+                        [12469248, 18.3],
+                        [12470112, 15.4],
+                        [12470976, 16.4],
+                        [12471840, 17.7],
+                        [12472704, 17.5],
+                        [12473568, 17.6],
+                        [12474432, 17.7],
+                        [12475296, 16.8],
+                        [12476160, 17.7],
+                        [12477024, 16.3],
+                        [12477888, 17.8],
+                        [12478752, 18.1],
+                        [12479616, 17.2],
+                        [12480480, 14.4],
+                        [12481344, 13.7],
+                        [12482208, 15.7],
+                        [12483072, 14.6],
+                        [12483936, 15.3],
+                        [12484800, 15.3],
+                        [12485664, 15.8],
+                        [12486528, 15.2],
+                        [12487392, 14.8],
+                        [12488256, 14.4],
+                        [12489120,   15],
+                        [12489984, 13.6]
+                        ])
+                    .toDic()!
+                ]
+        )
+        
+        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
+        let aaCrosshair = [
+            "width":1,
+            "color":AAColor.red!,
+            "dashStyle":AALineDashSyleType.longDashDot.rawValue,
+            ] as [String: Any]
+        aaXAxis["crosshair"] = aaCrosshair
+        
+        return aaOptions;
     }
     
     private func yAxisOnTheRightSideChart() -> NSMutableDictionary  {

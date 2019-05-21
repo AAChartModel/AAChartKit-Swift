@@ -142,7 +142,8 @@ class MainVC: UIViewController {
                 "Adjust GroupPadding Between Columns",
                 "configureAAPlotBandsForChart",
                 "configureAAPlotLinesForChart",
-                "customAATooltipWithJSFuntion"
+                "customAATooltipWithJSFuntion",
+                "customXAxisCrosshairStyle"
             ],
         ]
         
