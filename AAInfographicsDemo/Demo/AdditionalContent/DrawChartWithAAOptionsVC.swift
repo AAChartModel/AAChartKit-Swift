@@ -576,7 +576,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .useHTML(true)
             .formatter("""
 function () {
-        return ' 🌕 🌖 🌗 🌘🌑 🌒 🌓 🌔 <br/> '
+        return ' 🌕 🌖 🌗 🌘 🌑 🌒 🌓 🌔 <br/> '
         + ' Support JavaScript Function Just Right Now !!! <br/> '
         + ' The Gold Price For <b>2020 '
         +  this.x
