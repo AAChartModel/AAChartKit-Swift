@@ -286,6 +286,17 @@ function () {
 即可完成图表的浮动提示框的特殊定制化.得到的自定义浮动提示框的视觉效果图如下👇
 ![Custom Tooltip Style](https://user-images.githubusercontent.com/16357599/56589690-543c5880-6618-11e9-9d18-6bc0fe2fa53f.png)
 
+### 支持添加值域分割功能⚔
+
+* 添加`颜色带🎀`值域分割
+![plotBandsChart](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/plotBandsChart.png)
+
+
+* 添加`颜色线🧶`值域分割
+![plotLinesChart](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/plotLinesChart.png)
+
+
+
 
 ### 当前已支持的图表类型有十种以上,说明如下
 
@@ -324,46 +335,7 @@ enum AAChartZoomType: String {
 
 NOTE:例如,设置了`AAChartModel`的缩放属性`zoomType`为`AAChartZoomType.X`,并且将图表进行了手势放大之后,这时候如果想要左右滑动图表,可以使用 **双指点按** 屏幕中的`AAChartView`视图区域进行 **左右拖动** 即可.同时屏幕的右上角会自动出现一个标题为 **"恢复缩放"** 的按钮,点击恢复缩放,图表大小和位置将会回归到原初的样式.
 
-### 当前已支持的图表渲染动画类型有三十种以上,说明如下
-
-```swift
- public enum AAChartAnimationType: String {
-    case easeInQuad     = "easeInQuad"
-    case easeOutQuad    = "easeOutQuad"
-    case easeInOutQuad  = "easeInOutQuad"
-    case easeInCubic    = "easeInCubic"
-    case easeOutCubic   = "easeOutCubic"
-    case easeInOutCubic = "easeInOutCubic"
-    case easeInQuart    = "easeInQuart"
-    case easeOutQuart   = "easeOutQuart"
-    case easeInOutQuart = "easeInOutQuart"
-    case easeInQuint    = "easeInQuint"
-    case easeOutQuint   = "easeOutQuint"
-    case easeInOutQuint = "easeInOutQuint"
-    case easeInSine     = "easeInSine"
-    case easeOutSine    = "easeOutSine"
-    case easeInOutSine  = "easeInOutSine"
-    case easeInExpo     = "easeInExpo"
-    case easeOutExpo    = "easeOutExpo"
-    case easeInOutExpo  = "easeInOutExpo"
-    case easeInCirc     = "easeInCirc"
-    case easeOutCirc    = "easeOutCirc"
-    case easeInOutCirc  = "easeInOutCirc"
-    case easeOutBounce  = "easeOutBounce"
-    case easeInBack     = "easeInBack"
-    case easeOutBack    = "easeOutBack"
-    case easeInOutBack  = "easeInOutBack"
-    case elastic        = "elastic"
-    case swingFromTo    = "swingFromTo"
-    case swingFrom      = "swingFrom"
-    case swingTo        = "swingTo"
-    case bounce         = "bounce"
-    case bouncePast     = "bouncePast"
-    case easeFromTo     = "easeFromTo"
-    case easeFrom       = "easeFrom"
-    case easeTo         = "easeTo"
-}
-```
+### 当前已支持的图表渲染动画类型有三十种以上
 
 以下是**AAInfographics**其中十种图表渲染动画类型
 
