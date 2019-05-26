@@ -329,6 +329,16 @@ Pie chart and bubble chart are special in AAInfographics,if you want to draw the
                         ]
 ```
 
+### Support value range segmentation 
+
+
+* chart with value range segmentation `bands 🎀`
+![plotBandsChart](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/plotBandsChart.png)
+
+
+* chart with value range segmentation `lines 🧶`
+![plotLinesChart](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/plotLinesChart.png)
+
 ### Supported chart type for now
 
 ```swift
