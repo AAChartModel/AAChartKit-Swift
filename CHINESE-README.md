@@ -233,6 +233,8 @@ pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.
  ```swift
   //设置 AAChartView 事件代理
   aaChartView!.delegate = self as AAChartViewDelegate
+  //设置 AAChartModel 支持触摸事件
+  aaChartModel = aaChartModel!.touchEventEnabled(true)
 
   //实现对 AAChartView 事件代理的监听
 extension CommonChartVC: AAChartViewDelegate {
