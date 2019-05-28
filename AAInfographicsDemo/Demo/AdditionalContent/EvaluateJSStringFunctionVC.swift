@@ -99,27 +99,46 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
                     AASeriesElement()
                         .name("伦敦")
                         .data([82.89,67.54,62.07,59.43,67.02,67.09,35.66,71.78,81.61,78.85,79.12,72.30])
-                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11px",]])
+                        .dataLabels(AADataLabels()
+                            .enabled(true)
+                            .style(AAStyle()
+                                .color("#555555")
+                                .fontSize(11)
+                                .toDic()!)
+                            .toDic()!)
                         .toDic()!,
                     AASeriesElement()
                         .name("东京")
-                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"11px",]])
+                        .dataLabels(AADataLabels()
+                            .enabled(true)
+                            .style(AAStyle()
+                                .color("#555555")
+                                .fontSize(11)
+                                .toDic()!)
+                            .toDic()!)
                         .data([198.66,330.81,151.95,160.12,222.56,229.05,128.53,250.91,224.47,473.99,126.85,260.50])
                         .toDic()!,
                     AASeriesElement()
                         .name("总销量")
                         .type(.line)
-                        .dataLabels(["enabled":true,"style":["color":"#000000","fontSize":"15px",]])
+                        .dataLabels(AADataLabels()
+                            .enabled(true)
+                            .style(AAStyle()
+                                .color("#555555")
+                                .fontSize(15)
+                                .toDic()!)
+                            .toDic()!)
                         .data([281.55,398.35,214.02,219.55,289.57,296.14,164.18,322.69,306.08,552.84,205.97,332.79])
                         .toDic()!,
                     ])
+    
         }
         
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
         
     }
     
-    func AAChartViewDidFinishedLoad () {
+    func aaChartViewDidFinishedLoad (_ aaChartView: AAChartView) {
         print("🚀🚀🚀AAChartView did finished load")
         
         var jsFunctionStr:String

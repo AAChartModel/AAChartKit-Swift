@@ -36,7 +36,7 @@ import WebKit
 let kUserContentMessageNameMouseOver = "mouseover"
 
 @objc public protocol AAChartViewDelegate: NSObjectProtocol {
-    @objc optional func aaChartViewDidFinishedLoad ()
+    @objc optional func aaChartViewDidFinishedLoad (_ aaChartView: AAChartView)
     @objc optional func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel)
 }
 
@@ -344,7 +344,7 @@ extension AAChartView: WKUIDelegate {
 extension AAChartView:  WKNavigationDelegate {
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         drawChart()
-        self.delegate?.aaChartViewDidFinishedLoad?()
+        self.delegate?.aaChartViewDidFinishedLoad?(self)
     }
 }
 
@@ -361,7 +361,7 @@ extension AAChartView: WKScriptMessageHandler {
 extension AAChartView: UIWebViewDelegate {
     open func webViewDidFinishLoad(_ webView: UIWebView) {
         drawChart()
-        self.delegate?.aaChartViewDidFinishedLoad?()
+        self.delegate?.aaChartViewDidFinishedLoad?(self)
     }
     
     open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
