@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AAPlotBandsElement: AASerializable {
+public class AAPlotBandsElement: AASerializable {
     private var from: Float?
     private var to: Float?
     private var color: Any?

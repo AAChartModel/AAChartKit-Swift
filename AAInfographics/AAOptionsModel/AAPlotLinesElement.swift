@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AAPlotLinesElement: AASerializable {
+public class AAPlotLinesElement: AASerializable {
     private var color: Any?
     private var dashStyle: String?
     private var width: Float?
@@ -57,7 +57,7 @@ class AAPlotLinesElement: AASerializable {
 
 }
 
-class AALabel: AASerializable {
+public class AALabel: AASerializable {
    private var text: String?
    private var style: [String: AnyObject]?
     
@@ -71,6 +71,9 @@ class AALabel: AASerializable {
     public func style(_ prop: [String: AnyObject]) -> AALabel {
         style = prop
         return self
+    }
+    
+    public init() {
     }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AADataLabels: AASerializable {
+public class AADataLabels: AASerializable {
     private var enabled: Bool?
     private var style: [String:Any]?
     private var format: String?
@@ -121,9 +121,12 @@ class AADataLabels: AASerializable {
         shape = prop
         return self
     }
+    
+    public init() {
+    }
 }
 
-class AAStyle: AASerializable {
+public class AAStyle: AASerializable {
     private var color: String?
     private var fontSize: String?
     private var fontWeight: String?
@@ -151,5 +154,8 @@ class AAStyle: AASerializable {
     public func textOutLine(_ prop: String) -> AAStyle {
         textOutLine = prop
         return self
+    }
+    
+    public init() {
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit 
 
-class AATooltip: AASerializable {
+public class AATooltip: AASerializable {
     private var backgroundColor: String?
     private var borderColor: String?
     private var borderRadius: Float?
@@ -115,5 +115,8 @@ class AATooltip: AASerializable {
     public func valueSuffix(_ prop: String) -> AATooltip {
         valueSuffix = prop
         return self
+    }
+    
+    public init() {
     }
 }
