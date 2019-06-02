@@ -50,8 +50,8 @@ public class AATooltip: AASerializable {
     }
     
     @discardableResult
-    public func style(_ prop: [String: Any]) -> AATooltip {
-        style = prop
+    public func style(_ prop: AAStyle) -> AATooltip {
+        style = prop.toDic()!
         return self
     }
     

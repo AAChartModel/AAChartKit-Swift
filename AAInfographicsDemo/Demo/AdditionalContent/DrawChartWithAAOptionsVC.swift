@@ -58,7 +58,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 7: return adjustTheXAxisLabels()
         case 8: return adjustGroupPaddingBetweenColumns()
         case 9: return configureAAPlotBandsForChart()
-        case 10:return configureAAPlotLinesForChart()
+        case 10: return configureAAPlotLinesForChart()
         case 11: return customAATooltipWithJSFuntion()
         case 12: return customXAxisCrosshairStyle()
         default:
@@ -497,8 +497,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .style(AAStyle()
                         .color("#1e90ff")
                         .fontWeight(.bold)
-                        .toDic()!)
-                    .toDic()!
+                        )
                 )
                 .toDic()!
             ,
@@ -513,8 +512,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .style(AAStyle()
                         .color("#ef476f")
                         .fontWeight(.bold)
-                        .toDic()!)
-                    .toDic()!)
+                        )
+                    )
                 .toDic()!
         ,
         
@@ -528,8 +527,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .style(AAStyle()
                         .color("#04d69f")
                         .fontWeight(.bold)
-                        .toDic()!)
-                    .toDic()!)
+                        )
+                    )
                 .toDic()!
         ]
         
@@ -588,11 +587,10 @@ function () {
             .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
             .backgroundColor("#000000")
             .borderColor("#000000")
-            .style(
-                AAStyle()
+            .style(AAStyle()
                     .color("#FFD700")
                     .fontSize(12)
-                    .toDic()!)
+                    )
             .toDic()!
         
         let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)

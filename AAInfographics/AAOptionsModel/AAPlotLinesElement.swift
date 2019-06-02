@@ -47,8 +47,8 @@ public class AAPlotLinesElement: AASerializable {
     }
     
     @discardableResult
-    public func label(_ prop: [String: AnyObject]) -> AAPlotLinesElement {
-        label = prop
+    public func label(_ prop: AALabel) -> AAPlotLinesElement {
+        label = prop.toDic()!
         return self
     }
     
@@ -68,12 +68,13 @@ public class AALabel: AASerializable {
     }
     
     @discardableResult
-    public func style(_ prop: [String: AnyObject]) -> AALabel {
-        style = prop
+    public func style(_ prop: AAStyle) -> AALabel {
+        style = prop.toDic()!
         return self
     }
     
     public init() {
     }
+    
 }
 
