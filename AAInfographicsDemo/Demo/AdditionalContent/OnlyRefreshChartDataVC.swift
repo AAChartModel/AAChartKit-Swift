@@ -83,16 +83,11 @@ class OnlyRefreshChartDataVC: UIViewController {
         
         if chartType == .area
             || chartType == .areaspline {
-            let gradientColorDic = [
-                "linearGradient": [
-                    "x1": 0,
-                    "y1": 0,
-                    "x2": 0,
-                    "y2": 1
-                ],
-                "stops": [[0,"#00BFFF"],
-                          [1,"#00FA9A"]]//颜色字符串设置支持十六进制类型和 rgba 类型
-                ] as [String : Any]
+            let gradientColorDic = AAGradientColor.gradientColorDictionary(
+                direction: .toBottom,
+                startColor: "#00BFFF",
+                endColor: "#00FA9A"//颜色字符串设置支持十六进制类型和 rgba 类型
+            )
             
             aaChartModel?
                 .markerRadius(0)
@@ -111,16 +106,11 @@ class OnlyRefreshChartDataVC: UIViewController {
                     ])
             aaChartModel?.symbolStyle(.innerBlank)
         } else {
-            let gradientColorDic = [
-                "linearGradient": [
-                    "x1": 0,
-                    "y1": 0,
-                    "x2": 0,
-                    "y2": 1
-                ],
-                "stops": [[0,"rgba(138,43,226,1)"],
-                          [1,"rgba(30,144,255,1)"]]//颜色字符串设置支持十六进制类型和 rgba 类型
-                ] as [String : Any]
+            let gradientColorDic = AAGradientColor.gradientColorDictionary(
+                direction: .toBottom,
+                startColor: "rgba(138,43,226,1)",
+                endColor: "rgba(30,144,255,1)"//颜色字符串设置支持十六进制类型和 rgba 类型
+            )
             
             aaChartModel?
                 .series([

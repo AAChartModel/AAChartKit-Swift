@@ -180,28 +180,6 @@ class DrawChartWithAAOptionsVC: UIViewController {
     }
     
     private func configureTheMirrorColumnChart() -> NSMutableDictionary  {
-       let gradientColorDic1 = [
-            "linearGradient": [
-                "x1": 0,
-                "y1": 1,
-                "x2": 0,
-                "y2": 0
-            ],
-            "stops": [[0,"#7052f4"],
-                      [1,"#00b0ff"]]//颜色字符串设置支持十六进制类型和 rgba 类型
-        ] as [String : Any]
-        
-        let gradientColorDic2 = [
-            "linearGradient": [
-                "x1": 0,
-                "y1": 1,
-                "x2": 0,
-                "y2": 0
-            ],
-            "stops": [[0,"#EF71FF"],
-                      [1,"#4740C8"]]//颜色字符串设置支持十六进制类型和 rgba 类型
-            ] as [String : Any]
-        
         let aaChart = NSMutableDictionary()
         aaChart["type"] = AAChartType.column.rawValue
         
@@ -251,17 +229,27 @@ class DrawChartWithAAOptionsVC: UIViewController {
         aaOptions["xAxis"] = aaXAxis
         aaOptions["yAxis"] = YAxisArr
         aaOptions["plotOptions"] = aaPlotOptions
+        let gradientColorDic1 = AAGradientColor.gradientColorDictionary(
+            direction: .toTop,
+            startColor: "#7052f4",
+            endColor: "#00b0ff"//颜色字符串设置支持十六进制类型和 rgba 类型
+        )
+        
+        let gradientColorDic2 = AAGradientColor.gradientColorDictionary(
+            direction: .toTop,
+            startColor: "#EF71FF",
+            endColor: "#4740C8"//颜色字符串设置支持十六进制类型和 rgba 类型
+        )
+        
         aaOptions["series"] = [
-            AASeriesElement()
-                .name("收入")
-                .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9,7.0, 6.9, 9.5, 14.5,])
-                .color(gradientColorDic1)
-                .toDic()!,
-            AASeriesElement()
-                .name("支出")
-                .data([-20.1, -14.1, -8.6, -2.5, -0.8, -5.7, -11.3, -17.0, -22.0, -24.8, -24.1, -20.1, -14.1, -8.6, -2.5])
-                .color(gradientColorDic2)
-                .toDic()!,
+            ["name": "收入",
+                "data": [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9,7.0, 6.9, 9.5, 14.5,],
+                "color":gradientColorDic1
+            ],
+            ["name": "支出",
+                "data": [-20.1, -14.1, -8.6, -2.5, -0.8, -5.7, -11.3, -17.0, -22.0, -24.8, -24.1, -20.1, -14.1, -8.6, -2.5],
+                "color":gradientColorDic2
+            ],
         ]
         return aaOptions;
     }
@@ -296,16 +284,17 @@ class DrawChartWithAAOptionsVC: UIViewController {
         )
         
         let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
-        
+        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
+        aaXAxis["tickInterval"] = 3
         let aaXAxisLabels =  ["autoRotation": [-10, -20, -30, -40, -50, -60, -70, -80, -90]]
         
-        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
+      
         
         aaXAxis["labels"] = aaXAxisLabels
         
         return aaOptions;
     }
-    
+
     
     private func adjustGroupPaddingBetweenColumns() -> NSMutableDictionary {
         let aaChartModel = AAChartModel()
@@ -414,9 +403,12 @@ class DrawChartWithAAOptionsVC: UIViewController {
     
     func configureAAPlotBandsForChart() -> NSMutableDictionary {
         let aaChartModel = AAChartModel()
+            .title("")
             .chartType(.spline)//图形类型
             .dataLabelEnabled(false)
             .markerRadius(0)
+            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+            .legendEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Tokyo")
@@ -466,8 +458,11 @@ class DrawChartWithAAOptionsVC: UIViewController {
     
     func configureAAPlotLinesForChart() -> NSMutableDictionary {
         let aaChartModel = AAChartModel()
+            .title("")
             .chartType(.areaspline)//图形类型
             .dataLabelEnabled(false)
+            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+            .legendEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Tokyo")

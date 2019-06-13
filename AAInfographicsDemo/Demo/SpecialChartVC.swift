@@ -779,16 +779,11 @@ class SpecialChartVC: UIViewController {
             )
             
         case .areasplinerange:
-            let gradientColorDic = [
-                "linearGradient": [
-                    "x1": 0,
-                    "y1": 0,
-                    "x2": 0,
-                    "y2": 1
-                ],
-                "stops": [[0,"#8A2BE2"],
-                          [1,"#1E90FF"]]//颜色字符串设置支持十六进制类型和 rgba 类型
-                ] as [String : AnyObject]
+            let gradientColorDic = AAGradientColor.gradientColorDictionary(
+                direction: .toBottomRight,
+                startColor: "#8A2BE2",
+                endColor: "#1E90FF"//颜色字符串设置支持十六进制类型和 rgba 类型
+            )
             
             aaChartModel = AAChartModel()
                 .chartType(.areasplinerange)
