@@ -32,7 +32,7 @@
 
 import UIKit
 
-public enum AALinerGradientDirection: Int {
+public enum AALinearGradientDirection: Int {
     case toTop = 0
     case toBottom
     case toLeft
@@ -45,102 +45,102 @@ public enum AALinerGradientDirection: Int {
 
 public class AAGradientColor: NSObject  {
     public static var oceanBlue: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "2E3192", endColor: "1BFFFF")
+        return gradientColorDictionary(startColor: "2E3192", endColor: "1BFFFF")
     }
     
     public static var sanguine: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "D4145A", endColor: "FBB03B")
+        return gradientColorDictionary(startColor: "D4145A", endColor: "FBB03B")
     }
     
     public static var lusciousLime: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "009245", endColor: "FCEE21")
+        return gradientColorDictionary(startColor: "009245", endColor: "FCEE21")
     }
     
     public static var purpleLake: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "662D8C", endColor: "ED1E79")
+        return gradientColorDictionary(startColor: "662D8C", endColor: "ED1E79")
     }
     
     public static var freshPapaya: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "ED1C24", endColor: "FCEE21")
+        return gradientColorDictionary(startColor: "ED1C24", endColor: "FCEE21")
     }
     
     public static var ultramarine: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "00A8C5", endColor: "FFFF7E")
+        return gradientColorDictionary(startColor: "00A8C5", endColor: "FFFF7E")
     }
     
     public static var pinkSugar: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "D74177", endColor: "FFE98A")
+        return gradientColorDictionary(startColor: "D74177", endColor: "FFE98A")
     }
     
     public static var lemonDrizzle: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "FB872B", endColor: "D9E021")
+        return gradientColorDictionary(startColor: "FB872B", endColor: "D9E021")
     }
     
     public static var victoriaPurple: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "312A6C", endColor: "852D91")
+        return gradientColorDictionary(startColor: "312A6C", endColor: "852D91")
     }
     
     public static var springGreens: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "009E00", endColor: "FFFF96")
+        return gradientColorDictionary(startColor: "009E00", endColor: "FFFF96")
     }
     
     public static var mysticMauve: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "B066FE", endColor: "63E2FF")
+        return gradientColorDictionary(startColor: "B066FE", endColor: "63E2FF")
     }
     
     public static var reflexSilver: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "808080", endColor: "E6E6E6")
+        return gradientColorDictionary(startColor: "808080", endColor: "E6E6E6")
     }
     
     public static var neonGlow: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "00FFA1", endColor: "00FFFF")
+        return gradientColorDictionary(startColor: "00FFA1", endColor: "00FFFF")
     }
     
     public static var berrySmoothie: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "8E78FF", endColor: "FC7D7B")
+        return gradientColorDictionary(startColor: "8E78FF", endColor: "FC7D7B")
     }
     
     public static var newLeaf: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "00537E", endColor: "3AA17E")
+        return gradientColorDictionary(startColor: "00537E", endColor: "3AA17E")
     }
     
     public static var cottonCandy: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "FCA5F1", endColor: "B5FFFF")
+        return gradientColorDictionary(startColor: "FCA5F1", endColor: "B5FFFF")
     }
     
     public static var pixieDust: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "D585FF", endColor: "00FFEE")
+        return gradientColorDictionary(startColor: "D585FF", endColor: "00FFEE")
     }
     
     public static var fizzyPeach: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "F24645", endColor: "EBC08D")
+        return gradientColorDictionary(startColor: "F24645", endColor: "EBC08D")
     }
     
     public static var sweetDream: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "3A3897", endColor: "A3A1FF")
+        return gradientColorDictionary(startColor: "3A3897", endColor: "A3A1FF")
     }
     
     public static var firebrick: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "45145A", endColor: "FF5300")
+        return gradientColorDictionary(startColor: "45145A", endColor: "FF5300")
     }
     
     public static var wroughtIron: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "333333", endColor: "5A5454")
+        return gradientColorDictionary(startColor: "333333", endColor: "5A5454")
     }
     
     public static var deepSea: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "4F00BC", endColor: "29ABE2")
+        return gradientColorDictionary(startColor: "4F00BC", endColor: "29ABE2")
     }
     
     public static var coastalBreeze: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "00B7FF", endColor: "FFFFC7")
+        return gradientColorDictionary(startColor: "00B7FF", endColor: "FFFFC7")
     }
     
     public static var eveningDelight: [String : Any]! {
-        return configureGradientColorDictionary(startColor: "93278F", endColor: "00A99D")
+        return gradientColorDictionary(startColor: "93278F", endColor: "00A99D")
     }
     
-    public static func configureGradientColorDictionary(startColor: String, endColor: String) -> [String : Any] {
+    public static func gradientColorDictionary(startColor: String, endColor: String) -> [String : Any] {
         return self.gradientColorDictionary(
             direction: .toTop,
             startColor: startColor,
@@ -148,7 +148,7 @@ public class AAGradientColor: NSObject  {
     }
     
     public static func gradientColorDictionary(
-        direction: AALinerGradientDirection,
+        direction: AALinearGradientDirection,
         startColor: String,
         endColor: String) -> [String : Any] {
         return [
@@ -169,7 +169,7 @@ public class AAGradientColor: NSObject  {
      |                   |
      (0,1) ----------- (1,1)
      */
-    private static func linearGradientDictionary(_ direction: AALinerGradientDirection) -> [String : Int] {
+    private static func linearGradientDictionary(_ direction: AALinearGradientDirection) -> [String : Int] {
         switch direction {
         case .toTop:
             return ["x1":0, "y1":1, "x2":0, "y2":0];
