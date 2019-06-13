@@ -82,7 +82,7 @@ public class AAChartView: UIView {
     public var isSeriesHidden: Bool? {
         willSet {
             if optionsJson != nil {
-                let jsStr = "setChartSeriesHidden(\(newValue!))"
+                let jsStr = "setChartSeriesHidden('\(newValue!)')"
                 evaluateJavaScriptWithFunctionNameString(jsStr)
                 print(jsStr)
                 

@@ -68,9 +68,8 @@ public extension AASerializable {
     }
     
     func toJSON() -> String? {
-        let representation = JSONRepresentation
         do {
-            let data = try JSONSerialization.data(withJSONObject: representation, options: [])
+            let data = try JSONSerialization.data(withJSONObject: JSONRepresentation, options: [])
             return String(data: data, encoding: String.Encoding.utf8)
         } catch {
             return nil
