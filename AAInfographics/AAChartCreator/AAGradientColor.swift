@@ -32,6 +32,17 @@
 
 import UIKit
 
+public enum AALinerGradientDirection: Int {
+    case toTop = 0
+    case toBottom
+    case toLeft
+    case toRight
+    case toTopLeft
+    case toTopRight
+    case toBottomLeft
+    case toBottomRight
+}
+
 public class AAGradientColor: NSObject  {
     public static var oceanBlue: [String : Any]! {
         return GradientColorDicMaker.configureGradientColorDictionary(startColor: "2E3192", endColor: "1BFFFF")
@@ -132,18 +143,47 @@ public class AAGradientColor: NSObject  {
 
 public class GradientColorDicMaker {
     public static func configureGradientColorDictionary(startColor: String, endColor: String) -> [String : Any] {
+        return self.configureGradientColorDictionary(direction: .toTop, startColor: startColor, endColor: endColor)
+    }
+    
+    public static func configureGradientColorDictionary(direction:AALinerGradientDirection, startColor: String, endColor: String) -> [String : Any] {
         return [
-            "linearGradient": [
-                "x1": 0,
-                "y1": 0,
-                "x2": 0,
-                "y2": 1
-            ],
+            "linearGradient": [self .configureLinearGradientDictionary(direction)],
             "stops": [
                 [0, "#\(startColor)"],
                 [1, "#\(endColor)"]
             ]//颜色字符串设置支持十六进制类型和 rgba 类型
             ] as [String : Any]
+    }
+    
+    /**
+    (0,0) ----------- (1,0)
+     |                   |
+     |                   |
+     |                   |
+     |                   |
+     |                   |
+    (0,1) ----------- (1,1)
+     */
+    private static func configureLinearGradientDictionary(_ direction:AALinerGradientDirection) -> [String : Int] {
+        switch direction {
+        case .toTop:
+            return ["x1":0, "y1":1, "x2":0, "y2":0];
+        case .toBottom:
+            return ["x1":0, "y1":0, "x2":0, "y2":1];
+        case .toLeft:
+            return ["x1":1, "y1":0, "x2":0, "y2":0];
+        case .toRight:
+            return ["x1":0, "y1":0, "x2":1, "y2":0];
+        case .toTopLeft:
+            return ["x1":1, "y1":1, "x2":0, "y2":0];
+        case .toTopRight:
+            return ["x1":0, "y1":1, "x2":1, "y2":0];
+        case .toBottomLeft:
+            return ["x1":1, "y1":0, "x2":0, "y2":1];
+        case .toBottomRight:
+            return ["x1":0, "y1":0, "x2":1, "y2":1];
+        }
     }
 }
 
