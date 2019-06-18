@@ -204,130 +204,71 @@ if you want to refresh chart content,you should do something as follow.According
 
 ## Special instructions
 
-### Special charts in ***AAInfographics***
-Pie chart and bubble chart are special in AAInfographics,if you want to draw these charts,you should do some different things for AAChartModel,for example
+### Support user click events and move over events
 
-- To draw a pie chart,you should configure the properties of `AAChartModel` like this:
-``` swift
-            aaChartModel = AAChartModel()
-                .chartType(.pie)
-                .backgroundColor("#ffffff")
-                .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
-                .subtitle("virtual data")
-                .dataLabelEnabled(true)
-                .yAxisTitle("℃")
-                .series(
-                    [
-                        AASeriesElement()
-                            .name("Language market shares")
-                            .innerSize("20%")
-                            .allowPointSelect(false)
-                            .data([
-                                ["Java"  ,67],
-                                ["Swift",999],
-                                ["Python",83],
-                                ["OC"    ,11],
-                                ["Go"    ,30],
-                                ])
-                            .toDic()!,
-                        ]
-            )
-```
-- To draw a bubble chart,you should configure the properties of `AAChartModel` like this:
+you can monitor the user touch events message through implementing delegate function for AAChartView instance object
 
+```swift
+ //Set AAChartView events delegate
+ aaChartView!.delegate = self as AAChartViewDelegate
+ //set AAChartModel support user touch event
+ aaChartModel = aaChartModel!.touchEventEnabled(true)
 
-``` swift
-            aaChartModel = AAChartModel()
-                .chartType(.bubble)
-                .title("AACHARTKIT BUBBLES")
-                .subtitle("JUST FOR FUN")
-                .yAxisTitle("℃")
-                .gradientColorEnable(true)
-                .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
-                .series(
-                    [
-                        AASeriesElement()
-                            .name("BubbleOne")
-                            .data([[97, 36, 79],
-                                   [94, 74, 60],
-                                   [68, 76, 58],
-                                   [64, 87, 56],
-                                   [68, 27, 73],
-                                   [74, 99, 42],
-                                   [7,  93, 99],
-                                   [51, 69, 40],
-                                   [38, 23, 33],
-                                   [57, 86, 31],
-                                   [33, 24, 22]
-                                ])
-                            .toDic()!,
-                        AASeriesElement()
-                            .name("BubbleTwo")
-                            .data([[25, 60, 87],
-                                   [2,  75, 59],
-                                   [11, 54, 8 ],
-                                   [86, 55, 93],
-                                   [5,  33, 88],
-                                   [90, 63, 44],
-                                   [91, 43, 17],
-                                   [97, 56, 56],
-                                   [15, 67, 48],
-                                   [54, 25, 81],
-                                   [55, 66, 11]
-                                ])
-                            .toDic()!,
-                        AASeriesElement()
-                            .name("BubbleThree")
-                            .data([[47, 47, 21],
-                                   [20, 12, 66],
-                                   [6,  76, 91],
-                                   [38, 30, 60],
-                                   [57, 98, 64],
-                                   [61, 47, 80],
-                                   [83, 60, 13],
-                                   [67, 78, 75],
-                                   [64, 12, 55],
-                                   [30, 77, 82],
-                                   [88, 66, 13]
-                                ])
-                            .toDic()!,
-                        ]
-            )
+ //implement AAChartView user touch events delegate function
+extension CommonChartVC: AAChartViewDelegate {
+   open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
+       print("🔥selected point series element name: \(moveOverEventMessage.name ?? "")")
+   }
+}
+
+The received touch events message contain following content
+
+```swift
+public class AAMoveOverEventMessageModel: NSObject {
+  var name: String?
+  var x: Float?
+  var y: Float?
+  var category: String?
+  var offset: [String: Any]?
+  var index: Int?
+}
 ```
 
-- To draw a columnrange chart,you should configure the properties of `AAChartModel` like this:
 
-``` swift
-             aaChartModel = AAChartModel()
-                .chartType(.columnRange)
-                .title("TEMPERATURE VARIATION BY MONTH")
-                .subtitle("observed in Gotham city")
-                .yAxisTitle("℃")
-                .categories(["January", "February", "March", "April", "May", "June",
-                             "July", "August", "September", "October", "November", "December"])
-                .dataLabelEnabled(true)
-                .inverted(true)
-                .series(
-                    [
-                        AASeriesElement()
-                            .name("temperature")
-                            .data([
-                                [-9.7,  9.4],
-                                [-8.7,  6.5],
-                                [-3.5,  9.4],
-                                [-1.4, 19.9],
-                                [0.0,  22.6],
-                                [2.9,  29.5],
-                                [9.2,  30.7],
-                                [7.3,  26.5],
-                                [4.4,  18.0],
-                                [-3.1, 11.4],
-                                [-5.2, 10.4],
-                                [-13.5, 9.8]
-                                ])
-                            .toDic()!,
-                        ]
+### Support for custom the style of chart AATooltip through `JavaScript` function
+
+As we all know, AAInfographics support using HTML String.  Most of time, the `headerFormat` 、`pointFormat`、`footerFormat` HTML string is enough for customing chart tooltip string content, However, sometimes the needs of APP is so weird to satified, in this time, you can even customize the chart tooltip style through `JavaScript` function. 
+
+For example, configuring AATooltip instance object properties as follow:
+
+
+```swift
+
+        let myTooltip = AATooltip()
+            .useHTML(true)
+            .formatter("""
+function () {
+        return ' 🌕 🌖 🌗 🌘 🌑 🌒 🌓 🌔 <br/> '
+        + ' Support JavaScript Function Just Right Now !!! <br/> '
+        + ' The Gold Price For <b>2020 '
+        +  this.x
+        + ' </b> Is <b> '
+        +  this.y
+        + ' </b> Dollars ';
+        }
+""")
+            .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
+            .backgroundColor("#000000")
+            .borderColor("#000000")
+            .style(AAStyle()
+                    .color("#FFD700")
+                    .fontSize(12)
+                    )
 ```
+
+you can get the customized tooltip style chart like this👇
+![](https://user-images.githubusercontent.com/16357599/56589690-543c5880-6618-11e9-9d18-6bc0fe2fa53f.png)
+
 
 ### Support value range segmentation 
 
