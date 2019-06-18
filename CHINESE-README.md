@@ -229,7 +229,7 @@ pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.
 
 ### 支持监听用户点击事件及单指滑动事件
 
-  可通过给 AAChartView 示例对象设置代理方法,来实现监听用户的点击事件和单指滑动事件
+  可通过给 AAChartView 实例对象设置代理方法,来实现监听用户的点击事件和单指滑动事件
  ```swift
   //设置 AAChartView 事件代理
   aaChartView!.delegate = self as AAChartViewDelegate
