@@ -220,6 +220,7 @@ extension CommonChartVC: AAChartViewDelegate {
        print("🔥selected point series element name: \(moveOverEventMessage.name ?? "")")
    }
 }
+```
 
 The received touch events message contain following content
 
