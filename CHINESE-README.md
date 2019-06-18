@@ -258,8 +258,9 @@ public class AAMoveOverEventMessageModel: NSObject {
 
 
 ### 支持通过`JavaScript` 函数来自定义 `AATooltip`视图显示效果
-有时系统默认的 tooltip 浮动提示框的显示效果无法满足使用者的特殊自定义要求,此时可以通过添加 AATooltip 的 formatter 函数来实现视图的特殊定制化
-例如,如下配置 AATooltip 实例对象属性
+有时系统默认的 tooltip 浮动提示框的显示效果无法满足使用者的特殊自定义要求,此时可以通过添加 AATooltip 的 `headerFormat`、`footerFormat` 和 `pointFormat` 的字符串属性的`HTML`文本内容,来自定义浮动提示框的显示内容,此三者可以胜任绝大数情况下的自定义浮动提示框 AATooltip 的任务.
+
+如仍旧不能满足需求,更可以通过 AATooltip 的 `formatter` 函数来实现视图的特殊定制化 例如,如下配置 AATooltip 实例对象属性
 ```swift
         //custom tooltip style
         let myTooltip = AATooltip()
@@ -282,8 +283,8 @@ function () {
                 AAStyle()
                     .color("#FFD700")
                     .fontSize(12)
-                    .toDic()!)
-            .toDic()!
+                    )
+          
 ```
 即可完成图表的浮动提示框的特殊定制化.得到的自定义浮动提示框的视觉效果图如下👇
 ![Custom Tooltip Style](https://user-images.githubusercontent.com/16357599/56589690-543c5880-6618-11e9-9d18-6bc0fe2fa53f.png)

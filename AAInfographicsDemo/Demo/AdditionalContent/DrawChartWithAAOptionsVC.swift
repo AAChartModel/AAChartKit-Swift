@@ -586,10 +586,10 @@ function () {
                     .color("#FFD700")
                     .fontSize(12)
                     )
-            .toDic()!
+        
         
         let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = myTooltip
+        aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }
     
