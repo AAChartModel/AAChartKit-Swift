@@ -187,11 +187,7 @@ function () {
         let colorDot1 = '<span style=\"' + 'color:mediumspringgreen; font-size:13px\"' + '>◉</span> ';
         let colorDot2 = '<span style=\"' + 'color:deepskyblue; font-size:13px\"' + '>◉</span> ';
         let colorDot3 = '<span style=\"' + 'color:sandybrown; font-size:13px\"' + '>◉</span> ';
-        let colorDotArr = [];
-        colorDotArr.push(colorDot0);
-        colorDotArr.push(colorDot1);
-        colorDotArr.push(colorDot2);
-        colorDotArr.push(colorDot3);
+        let colorDotArr = [colorDot0, colorDot1, colorDot2, colorDot3];
         let wholeContentString = this.points[0].x + '<br/>';
         for (let i = 0;i < 4;i++) {
             let yValue = this.points[i].y;
@@ -250,11 +246,7 @@ function () {
             .useHTML(true)
             .formatter(#"""
 function () {
-        let colorsArr = [];
-        colorsArr.push("mediumspringgreen");
-        colorsArr.push("deepskyblue");
-        colorsArr.push("red");
-        colorsArr.push("sandybrown");
+        let colorsArr = ["mediumspringgreen", "deepskyblue", "red", "sandybrown"];
         let wholeContentString ='<span style=\"' + 'color:lightGray; font-size:13px\"' + '>◉ Time: ' + this.x + ' year</span><br/>';
         for (let i = 0;i < 4;i++) {
             let thisPoint = this.points[i];
@@ -297,13 +289,14 @@ function () {
                         ])
                     .toDic()!,
                 ])
-        let str1 = "◉ <b> {series.name}</b><br/>"
-        let str2 = "最大值: {point.high}<br/>"
-        let str3 = "Q2: {point.q3}<br/>"
-        let str4 = "中位数: {point.median}<br/>"
-        let str5 = "Q1: {point.q1}<br/>"
-        let str6 = "最小值: {point.low}<br/>"
-        let pointFormatStr = str1 + str2 + str3 + str4 + str5 + str6
+        let pointFormatStr = (
+            "◉</span> <b> {series.name}</b><br/>"
+            + "最大值: {point.high}<br/>"
+            + "Q2: {point.q3}<br/>"
+            + "中位数: {point.median}<br/>"
+            + "Q1: {point.q1}<br/>"
+            + "最小值: {point.low}<br/>"
+        )
         
         let myTooltip = AATooltip()
             .useHTML(true)
