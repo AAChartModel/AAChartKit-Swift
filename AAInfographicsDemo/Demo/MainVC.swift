@@ -145,6 +145,13 @@ class MainVC: UIViewController {
                 "customAATooltipWithJSFuntion",
                 "customXAxisCrosshairStyle"
             ],
+            [
+                "简单字符串拼接",
+                "自定义不同单位后缀",
+                "值为0时,在tooltip中不显示",
+                "自定义多彩颜色文字",
+                "自定义箱线图的浮动提示框头部内容"
+            ]
         ]
         
         chartTypeArr = [
@@ -223,6 +230,8 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.spline,
                 ],
+            [//Empty Array,just for holding place
+            ],
             [//Empty Array,just for holding place
             ],
         ]
@@ -307,7 +316,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             "Rendering Animation types ---渲染动画示例",
             "Hide Or Show Chart Series---隐藏或显示内容",
             "Evaluate JS String Function---执行js函数",
-            "Draw Chart With Options Dictionary---通过Options绘图"
+            "Draw Chart With Options Dictionary---通过Options绘图",
+            "Custom Tooltip With JS Function ---通过JS函数自定义Tooltip",
         ]
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
@@ -396,6 +406,11 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             /*图表 sereies 元素显示或隐藏*/
             let vc = DrawChartWithAAOptionsVC()
             vc.chartType = indexPath.row
+            navigationController?.pushViewController(vc, animated: true)
+        case 9:
+            /*图表 sereies 元素显示或隐藏*/
+            let vc = CustomTooltipWithJSFunctionVC()
+            vc.selectedIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

@@ -118,5 +118,8 @@ public class AATooltip: AASerializable {
     }
     
     public init() {
+        enabled = true
+        shared = true
+        crosshairs = true
     }
 }

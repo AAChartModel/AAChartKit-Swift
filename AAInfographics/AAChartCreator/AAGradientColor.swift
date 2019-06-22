@@ -33,14 +33,14 @@
 import UIKit
 
 public enum AALinearGradientDirection: Int {
-    case toTop = 0
-    case toBottom
-    case toLeft
-    case toRight
-    case toTopLeft
-    case toTopRight
-    case toBottomLeft
-    case toBottomRight
+    case toTop = 0       //⇧⇧⇧⇧
+    case toBottom        //⇩⇩⇩⇩
+    case toLeft          //⇦⇦⇦⇦
+    case toRight         //⇨⇨⇨⇨
+    case toTopLeft       //⇖⇖⇖⇖⇖⇖
+    case toTopRight      //⇗⇗⇗⇗⇗⇗
+    case toBottomLeft    //⇙⇙⇙⇙⇙⇙
+    case toBottomRight   //⇘⇘⇘⇘⇘⇘
 }
 
 public class AAGradientColor: NSObject  {

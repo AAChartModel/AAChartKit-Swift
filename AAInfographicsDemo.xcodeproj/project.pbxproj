@@ -36,6 +36,7 @@
 		445353C122631B0E009FA12A /* AAPlotBandsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445353C022631B0E009FA12A /* AAPlotBandsElement.swift */; };
 		445353C322631B48009FA12A /* AAPlotLinesElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445353C222631B48009FA12A /* AAPlotLinesElement.swift */; };
 		447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */; };
+		44EB70A722BCB606008FECE4 /* CustomTooltipWithJSFunctionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EB70A622BCB606008FECE4 /* CustomTooltipWithJSFunctionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		445353C022631B0E009FA12A /* AAPlotBandsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotBandsElement.swift; sourceTree = "<group>"; };
 		445353C222631B48009FA12A /* AAPlotLinesElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotLinesElement.swift; sourceTree = "<group>"; };
 		447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawChartWithAAOptionsVC.swift; sourceTree = "<group>"; };
+		44EB70A622BCB606008FECE4 /* CustomTooltipWithJSFunctionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTooltipWithJSFunctionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				27FADB8520D6569000FED960 /* ChartSeriesHideOrShowVC.swift */,
 				4409BECF21B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift */,
 				447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */,
+				44EB70A622BCB606008FECE4 /* CustomTooltipWithJSFunctionVC.swift */,
 			);
 			path = AdditionalContent;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				2749914F210D90B5003D18C2 /* AAChartModel.swift in Sources */,
 				278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */,
 				27FADB8620D6569000FED960 /* ChartSeriesHideOrShowVC.swift in Sources */,
+				44EB70A722BCB606008FECE4 /* CustomTooltipWithJSFunctionVC.swift in Sources */,
 				27499152210D90B5003D18C2 /* AAChartView.swift in Sources */,
 				447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */,
 				278C55141EE948C900770B97 /* CommonChartVC.swift in Sources */,
