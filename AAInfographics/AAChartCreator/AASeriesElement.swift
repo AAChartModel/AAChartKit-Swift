@@ -127,14 +127,14 @@
     }
     
     @discardableResult
-    public func dataLabels(_ prop: [String: Any]) -> AASeriesElement {
-        dataLabels = prop
+    public func dataLabels(_ prop: AADataLabels) -> AASeriesElement {
+        dataLabels = prop.toDic()!
         return self
     }
     
     @discardableResult
-    public func marker(_ prop: [String: Any]) -> AASeriesElement {
-        marker = prop
+    public func marker(_ prop: AAMarker) -> AASeriesElement {
+        marker = prop.toDic()!
         return self
     }
     
@@ -169,8 +169,8 @@
     }
     
     @discardableResult
-    public func shadow(_ prop: Any) -> AASeriesElement {
-        shadow = prop
+    public func shadow(_ prop: AAShadow) -> AASeriesElement {
+        shadow = prop.toDic()!
         return self
     }
     

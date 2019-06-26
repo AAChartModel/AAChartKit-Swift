@@ -178,7 +178,7 @@ class MixedChartVC: UIViewController {
                                 .radius(5.0)
                                 .fillColor("#1E90FF")
                                 .lineWidth(2.0)
-                                .toDic()!)
+                                )
                         .toDic()!,
                     AASeriesElement()
                         .name("Range")
@@ -235,7 +235,6 @@ class MixedChartVC: UIViewController {
                     AASeriesElement()
                         .name("Temperature")
                         .type(.columnrange)
-                        .dataLabels(["enabled":true])
                         .data([
                             [(-9.7), 9.4],
                             [(-8.7), 6.5],
@@ -290,8 +289,8 @@ class MixedChartVC: UIViewController {
                             .style(AAStyle()
                                 .color(AAColor.red!)
                                 .fontSize(11)
-                                .toDic()!)
-                            .toDic()!)
+                            )
+                        )
                         .toDic()!,
                     
                     AASeriesElement()
@@ -301,8 +300,8 @@ class MixedChartVC: UIViewController {
                             .style(AAStyle()
                                 .color(AAColor.green!)
                                 .fontSize(11)
-                                .toDic()!)
-                            .toDic()!)
+                            )
+                        )
                         .data([198.66, 330.81, 151.95, 160.12, 222.56, 229.05, 128.53, 250.91, 224.47, 473.99, 126.85, 260.50])
                         .toDic()!,
                     
@@ -314,8 +313,8 @@ class MixedChartVC: UIViewController {
                             .style(AAStyle()
                                 .color(AAColor.blue!)
                                 .fontSize(15)
-                                .toDic()!)
-                            .toDic()!)
+                            )
+                        )
                         .data([281.55, 398.35, 214.02, 219.55, 289.57, 296.14, 164.18, 322.69, 306.08, 552.84, 205.97, 332.79])
                         .toDic()!,
                     ]
@@ -594,7 +593,6 @@ class MixedChartVC: UIViewController {
                         .name("线性回归线")
                         .data([[0.014, 3.078], [0.969, 4.655]])
                         .color("#FF0000")
-                        .marker(["radius": 0])
                         .toDic()!
                     ])
             
@@ -759,7 +757,7 @@ class MixedChartVC: UIViewController {
                                 .fillColor("#1E90FF")
                                 .lineWidth(2.0)
                                 .lineColor(AAColor.red!)
-                                .toDic()!)
+                                )
                         .toDic()!
                     ])
             
@@ -824,7 +822,7 @@ class MixedChartVC: UIViewController {
                                 .fillColor("#1E90FF")
                                 .lineWidth(2.0)
                                 .lineColor(AAColor.white!)
-                                .toDic()!)
+                        )
                         .toDic()!,
                     
                      pieElementDic as! Dictionary<String, Any>
@@ -849,7 +847,6 @@ class MixedChartVC: UIViewController {
                                 .opacity(0.1)
                                 .width(9.0)
                                 .color(AAColor.red)
-                                .toDic()!
                         ).toDic()!
                     ])
             

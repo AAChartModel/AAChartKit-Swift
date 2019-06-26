@@ -33,8 +33,8 @@ public class AADataLabels: AASerializable {
     }
     
     @discardableResult
-    public func style(_ prop: [String: Any]) -> AADataLabels {
-        style = prop
+    public func style(_ prop: AAStyle) -> AADataLabels {
+        style = prop.toDic()!
         return self
     }
     
