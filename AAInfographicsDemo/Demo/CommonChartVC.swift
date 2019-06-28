@@ -55,7 +55,7 @@ class CommonChartVC: UIViewController {
         view.backgroundColor = kRGBColorFromHex(rgbValue: 0x22324c)
         title = chartType.map { $0.rawValue }
         
-        setUpTheSwiths()
+        setUpTheSwitches()
         setUpTheSegmentControls()
         
         setUpAAChartView()
@@ -245,7 +245,7 @@ class CommonChartVC: UIViewController {
             ];
         }
         
-        for  i in 0..<segmentedNamesArr.count {
+        for  i in 0 ..< segmentedNamesArr.count {
             let segment = UISegmentedControl.init(items: segmentedNamesArr[i] as [Any])
             segment.frame = CGRect(x: 20,
                                    y: 40.0 * CGFloat(i) + (view.frame.size.height - 145),
@@ -302,7 +302,7 @@ class CommonChartVC: UIViewController {
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
-    func setUpTheSwiths() {
+    func setUpTheSwitches() {
         let nameArr: [String]
         let switchWidth: CGFloat
         
@@ -328,18 +328,18 @@ class CommonChartVC: UIViewController {
         }
         
         for  i in 0..<nameArr.count {
-            let uiswitch = UISwitch()
-            uiswitch.frame = CGRect(x: switchWidth * CGFloat(i) + 20,
+            let uiSwitch = UISwitch()
+            uiSwitch.frame = CGRect(x: switchWidth * CGFloat(i) + 20,
                                     y: view.frame.size.height - 70,
                                     width: switchWidth,
                                     height: 20)
-            uiswitch.isOn = false
-            uiswitch.tag = i;
+            uiSwitch.isOn = false
+            uiSwitch.tag = i;
 //            uiswitch.onTintColor = UIColor.blue
-            uiswitch.addTarget(self,
+            uiSwitch.addTarget(self,
                                action: #selector(switchDidChange(switchView:)),
                                for: .valueChanged)
-            view.addSubview(uiswitch)
+            view.addSubview(uiSwitch)
             
             let subLabel = UILabel()
             subLabel.font = UIFont(name: "EuphemiaUCAS", size: nameArr.count == 5 ? 10.0 : 9.0)

@@ -35,6 +35,9 @@
 		44143DD221A7A28300D44657 /* AAOptionsConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */; };
 		445353C122631B0E009FA12A /* AAPlotBandsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445353C022631B0E009FA12A /* AAPlotBandsElement.swift */; };
 		445353C322631B48009FA12A /* AAPlotLinesElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445353C222631B48009FA12A /* AAPlotLinesElement.swift */; };
+		446809DC22C3806E00BAE647 /* AALegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446809DB22C3806E00BAE647 /* AALegend.swift */; };
+		446809DE22C3809000BAE647 /* AAXAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446809DD22C3809000BAE647 /* AAXAxis.swift */; };
+		446809E022C380A000BAE647 /* AAYAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446809DF22C380A000BAE647 /* AAYAxis.swift */; };
 		447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */; };
 		44EB70A722BCB606008FECE4 /* CustomTooltipWithJSFunctionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EB70A622BCB606008FECE4 /* CustomTooltipWithJSFunctionVC.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +94,9 @@
 		44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsConstructor.swift; sourceTree = "<group>"; };
 		445353C022631B0E009FA12A /* AAPlotBandsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotBandsElement.swift; sourceTree = "<group>"; };
 		445353C222631B48009FA12A /* AAPlotLinesElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotLinesElement.swift; sourceTree = "<group>"; };
+		446809DB22C3806E00BAE647 /* AALegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALegend.swift; sourceTree = "<group>"; };
+		446809DD22C3809000BAE647 /* AAXAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAXAxis.swift; sourceTree = "<group>"; };
+		446809DF22C380A000BAE647 /* AAYAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAYAxis.swift; sourceTree = "<group>"; };
 		447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawChartWithAAOptionsVC.swift; sourceTree = "<group>"; };
 		44EB70A622BCB606008FECE4 /* CustomTooltipWithJSFunctionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTooltipWithJSFunctionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,6 +236,9 @@
 				445353C222631B48009FA12A /* AAPlotLinesElement.swift */,
 				440839A0226AD2B600645263 /* AADataLabels.swift */,
 				27DB49A32273767000B7926B /* AATooltip.swift */,
+				446809DB22C3806E00BAE647 /* AALegend.swift */,
+				446809DD22C3809000BAE647 /* AAXAxis.swift */,
+				446809DF22C380A000BAE647 /* AAYAxis.swift */,
 			);
 			path = AAOptionsModel;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 				TargetAttributes = {
 					278C54AD1EE9472300770B97 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = BPAYP34L8N;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
@@ -371,10 +381,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446809E022C380A000BAE647 /* AAYAxis.swift in Sources */,
 				27499151210D90B5003D18C2 /* AASerializable.swift in Sources */,
 				279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */,
 				278C55151EE948C900770B97 /* MainVC.swift in Sources */,
 				27DB49A42273767000B7926B /* AATooltip.swift in Sources */,
+				446809DC22C3806E00BAE647 /* AALegend.swift in Sources */,
 				27DB49A6227381C300B7926B /* AAEasyTool.swift in Sources */,
 				27499150210D90B5003D18C2 /* AASeriesElement.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
@@ -387,6 +399,7 @@
 				2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */,
 				272BBE7821A258C200DBE69D /* AAColor.swift in Sources */,
 				44143DD221A7A28300D44657 /* AAOptionsConstructor.swift in Sources */,
+				446809DE22C3809000BAE647 /* AAXAxis.swift in Sources */,
 				27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */,
 				2749914F210D90B5003D18C2 /* AAChartModel.swift in Sources */,
 				278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */,
@@ -564,11 +577,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BPAYP34L8N;
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographics;
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -578,11 +591,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BPAYP34L8N;
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographics;
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
