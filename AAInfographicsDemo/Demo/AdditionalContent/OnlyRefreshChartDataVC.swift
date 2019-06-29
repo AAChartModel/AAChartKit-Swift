@@ -137,7 +137,7 @@ class OnlyRefreshChartDataVC: UIViewController {
     
     func setUpRefreshingChartTimer() {
         //延时3秒执行
-        let time: TimeInterval = 3.0
+        let time: TimeInterval = 2.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             print("1 秒后输出")
             self.timer = Timer.scheduledTimer(timeInterval: 1,

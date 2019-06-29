@@ -33,7 +33,7 @@
 import UIKit
 
 public class AAOptionsConstructor: NSObject {
-    public static func configureAAoptions(aaChartModel: AAChartModel) -> NSMutableDictionary {
+    public static func configureAAOptions(aaChartModel: AAChartModel) -> NSMutableDictionary {
         let aaChart = NSMutableDictionary()
         aaChart.setValue(aaChartModel.chartType?.rawValue, forKey: "type")//图表类型
         aaChart.setValue(aaChartModel.inverted, forKey: "inverted")//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转

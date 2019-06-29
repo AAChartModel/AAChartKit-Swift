@@ -127,7 +127,7 @@ function () {
         )
         
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }
@@ -170,7 +170,7 @@ function () {
         return s;
     }
 """#)
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }
@@ -223,7 +223,7 @@ function () {
     }
 """#)
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }
@@ -286,7 +286,7 @@ function () {
             .backgroundColor("#050505")
             .borderColor("#050505")        
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }
@@ -333,7 +333,7 @@ function () {
                 .fontSize(12)
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }

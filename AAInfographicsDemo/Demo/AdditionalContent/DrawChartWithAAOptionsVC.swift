@@ -96,7 +96,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                     .toDic()!,
                 ])
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         
         return aaOptions
     }
@@ -127,7 +127,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaChart = aaOptions["chart"] as! NSMutableDictionary
         aaChart["plotBackgroundImage"] = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg"
         
@@ -148,7 +148,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，
         //坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。
         //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。
@@ -173,7 +173,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
         aaYAxis["min"] = 1000
         return aaOptions;
@@ -283,7 +283,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
         aaXAxis["tickInterval"] = 3
         let aaXAxisLabels =  ["autoRotation": [-10, -20, -30, -40, -50, -60, -70, -80, -90]]
@@ -314,7 +314,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         
         let aaPlotOptions =  aaOptions["plotOptions"]! as! NSMutableDictionary
         
@@ -417,7 +417,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .lineWidth(10)
                     .toDic()!,
                 ])
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaPlotBandsArr = [
             AAPlotBandsElement()
                 .from(0)
@@ -477,7 +477,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         ])
                     .toDic()!,
                 ])
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         
         
         let aaPlotLinesArr = [
@@ -588,7 +588,7 @@ function () {
                     )
         
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }
@@ -637,7 +637,7 @@ function () {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAoptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
         let aaCrosshair = [
             "width":1,

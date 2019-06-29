@@ -173,16 +173,16 @@ class ChartSeriesHideOrShowVC: UIViewController {
     
     func setUpTheHideChartSeriesSwitch() {
         let i = 0
-        let uiswitch = UISwitch()
-        uiswitch.frame = CGRect(x: 100 * CGFloat(i) + 20,
+        let uiSwitch = UISwitch()
+        uiSwitch.frame = CGRect(x: 100 * CGFloat(i) + 20,
                                 y: view.frame.size.height - 70,
                                 width: 100,
                                 height: 20)
-        uiswitch.isOn = false
-        uiswitch.addTarget(self,
+        uiSwitch.isOn = false
+        uiSwitch.addTarget(self,
                            action: #selector(switchDidChange(switchView:)),
                            for:.valueChanged)
-        view.addSubview(uiswitch)
+        view.addSubview(uiSwitch)
         
         let subLabel = UILabel()
         subLabel.font = UIFont(name: "EuphemiaUCAS", size: 10)

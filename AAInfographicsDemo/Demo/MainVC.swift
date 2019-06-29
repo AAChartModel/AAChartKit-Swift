@@ -100,7 +100,8 @@ class MainVC: UIViewController {
             ],
             /*同时显示多个图表*/
             [
-                "在同一个页面同时添加多个 AAChartView"
+                "在同一个页面同时添加多个 AAChartView",
+                " Double Charts Linkedwork 双表联动",
             ],
             /*动画类型示例*/
             [  "Column Chart---柱形图",
@@ -349,7 +350,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            /*基础类型图表*/
+            /*Basic Type Charts*/
             let vc = CommonChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             if indexPath.row == 4 || indexPath.row == 5 {
@@ -357,17 +358,17 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             }
             navigationController?.pushViewController(vc, animated: true)
         case 1:
-            /*特殊类型图表*/
+            /*Special Type Charts*/
             let vc = SpecialChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             navigationController?.pushViewController(vc, animated: true)
         case 2:
-            /*混合类型图表*/
+            /*Mixed Type Charts*/
             let vc = MixedChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? String
             navigationController?.pushViewController(vc, animated: true)
         case 3:
-            /*动态刷新图表数据*/
+            /*Only Refresh Chart Data Dynamiclly*/
             let vc = OnlyRefreshChartDataVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             vc.step = false
@@ -376,11 +377,17 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             }
             navigationController?.pushViewController(vc, animated: true)
         case 4:
-            /*同时显示多个图表*/
-            let vc = ShowManyChartViewVC()
-            navigationController?.pushViewController(vc, animated: true)
+            /*Show Many Charts In the Same View*/
+            if indexPath.row == 0 {
+                let vc = ShowManyChartViewVC()
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = DoubleChartsLinkedWorkVC()
+                navigationController?.pushViewController(vc, animated: true)
+            }
+         
         case 5:
-            /*图表渲染动画*/
+            /*Chart Rendering Animation Types*/
             let vc = AnimationTypeVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             vc.step = false
@@ -389,7 +396,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             }
             navigationController?.pushViewController(vc, animated: true)
         case 6:
-            /*图表 sereies 元素显示或隐藏*/
+            /*Hide Or Show Chart Series Element*/
             let vc = ChartSeriesHideOrShowVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             vc.step = false
@@ -398,17 +405,17 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             }
             navigationController?.pushViewController(vc, animated: true)
         case 7:
-            /*图表 sereies 元素显示或隐藏*/
+            /*Evaluate JavaScript String Function*/
             let vc = EvaluateJSStringFunctionVC()
             vc.sampleChartTypeIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         case 8:
-            /*图表 sereies 元素显示或隐藏*/
+            /*Draw Chart With AAOptions Instance Object*/
             let vc = DrawChartWithAAOptionsVC()
             vc.chartType = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         case 9:
-            /*图表 sereies 元素显示或隐藏*/
+            /*Custom Tooltip With JavaScript Function */
             let vc = CustomTooltipWithJSFunctionVC()
             vc.selectedIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)

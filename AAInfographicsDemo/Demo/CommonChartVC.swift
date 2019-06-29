@@ -70,7 +70,7 @@ class CommonChartVC: UIViewController {
                                     y: 60,
                                     width: chartViewWidth,
                                     height: chartViewHeight)
-        ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
+        ///AAChartView的内容高度(内容高度默认和 AAChartView 等高)
         aaChartView!.contentHeight = chartViewHeight - 20
         view.addSubview(aaChartView!)
         aaChartView!.scrollEnabled = false//禁止图表内容滚动
