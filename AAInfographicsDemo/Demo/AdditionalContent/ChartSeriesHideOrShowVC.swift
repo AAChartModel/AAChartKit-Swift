@@ -49,7 +49,7 @@ class ChartSeriesHideOrShowVC: UIViewController {
         setUpTheAAChartView()
     }
     
-    func setUpTheAAChartView() {
+   private func setUpTheAAChartView() {
         let chartViewWidth  = view.frame.size.width
         let chartViewHeight = view.frame.size.height - 220
 
@@ -120,7 +120,7 @@ class ChartSeriesHideOrShowVC: UIViewController {
         aaChartView?.aa_drawChartWithChartModel(aaChartModel)
     }
     
-    func setUpSegmentedControls() {
+   private func setUpSegmentedControls() {
         let segmentedNamesArray = [
             ["hide One",
              "hide Two",
@@ -171,7 +171,7 @@ class ChartSeriesHideOrShowVC: UIViewController {
         }
     }
     
-    func setUpTheHideChartSeriesSwitch() {
+   private func setUpTheHideChartSeriesSwitch() {
         let i = 0
         let uiSwitch = UISwitch()
         uiSwitch.frame = CGRect(x: 100 * CGFloat(i) + 20,

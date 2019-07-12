@@ -123,7 +123,7 @@ class AnimationTypeVC: UIViewController {
         setUpTheAAChartView()
     }
     
-    func setUpTheAnimationTypeTableView() {
+   private func setUpTheAnimationTypeTableView() {
         let animationTypeTableView = UITableView()
         animationTypeTableView.frame = CGRect(x: view.frame.size.width - 115,
                                               y: 0,
@@ -135,7 +135,7 @@ class AnimationTypeVC: UIViewController {
         view.addSubview(animationTypeTableView)
     }
     
-    func setUpTheAAChartView() {
+   private func setUpTheAAChartView() {
         let chartViewWidth  = view.frame.size.width - 115
         let chartViewHeight = view.frame.size.height - 60
         

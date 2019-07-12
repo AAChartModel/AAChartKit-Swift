@@ -46,7 +46,7 @@ class SpecialChartVC: UIViewController {
         setUpAAChartView()
     }
     
-   fileprivate func setUpAAChartView() {
+   private func setUpAAChartView() {
  
         aaChartView = AAChartView()
         let chartWidth = view.frame.size.width
@@ -63,7 +63,7 @@ class SpecialChartVC: UIViewController {
         aaChartView!.aa_drawChartWithChartModel(aaChartModel!)
     }
     
-   fileprivate func configureTheAAChartModel(_ chartTypeStr:AAChartType) -> AAChartModel {
+   private func configureTheAAChartModel(_ chartTypeStr:AAChartType) -> AAChartModel {
         switch chartTypeStr {
         case .bar: return configureColorfulGradientBarChart()
         case .column: return configureColumnChart()
@@ -83,7 +83,7 @@ class SpecialChartVC: UIViewController {
         }
     }
     
-   fileprivate func configureColorfulGradientBarChart() -> AAChartModel {
+   private func configureColorfulGradientBarChart() -> AAChartModel {
         let gradientColorNamesArr = [
             "oceanBlue",
             "sanguine",
@@ -156,7 +156,7 @@ class SpecialChartVC: UIViewController {
         )
     }
     
-   fileprivate func configureColumnChart() -> AAChartModel {
+   private func configureColumnChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.column)
             .polar(true)
@@ -176,7 +176,7 @@ class SpecialChartVC: UIViewController {
         )
     }
     
-   fileprivate func configurePieChart() -> AAChartModel {
+   private func configurePieChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.pie)
             .backgroundColor("#ffffff")
@@ -202,7 +202,7 @@ class SpecialChartVC: UIViewController {
         )
     }
     
-   fileprivate func configureBubbleChart() -> AAChartModel {
+   private func configureBubbleChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.bubble)
             .title("AACHARTKIT BUBBLES")
@@ -264,7 +264,7 @@ class SpecialChartVC: UIViewController {
         
     }
     
-    fileprivate func configureScatterChart() -> AAChartModel {
+    private func configureScatterChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.scatter)
             .title("Height and weight distribution by sex")
@@ -396,7 +396,7 @@ class SpecialChartVC: UIViewController {
         )
     }
     
-    fileprivate func configureArearangeChart() -> AAChartModel {
+    private func configureArearangeChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.arearange)
             .title("Twilight Hall day temperature fluctuation map")
@@ -791,7 +791,7 @@ class SpecialChartVC: UIViewController {
         )
     }
     
-    fileprivate func configureAreasplinerangeChart() -> AAChartModel {
+    private func configureAreasplinerangeChart() -> AAChartModel {
         let gradientColorDic = AAGradientColor.gradientColorDictionary(
             direction: .toBottomRight,
             startColor: "#8A2BE2",
@@ -844,7 +844,7 @@ class SpecialChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureColumnrangeChart() -> AAChartModel {
+    private func configureColumnrangeChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.columnrange)
             .title("TEMPERATURE VARIATION BY MONTH")
@@ -877,7 +877,7 @@ class SpecialChartVC: UIViewController {
         )
     }
     
-    fileprivate func configureStepLineChart() -> AAChartModel {
+    private func configureStepLineChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.line)//图形类型
             .animationType(.bounce)//图形渲染动画类型为"bounce"
@@ -905,7 +905,7 @@ class SpecialChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureStepAreaChart() -> AAChartModel {
+    private func configureStepAreaChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.area)//图形类型
             .animationType(.bounce)//图形渲染动画类型为"bounce"
@@ -933,7 +933,7 @@ class SpecialChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureBoxplotChart() -> AAChartModel {
+    private func configureBoxplotChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.boxplot)
             .title("BOXPLOT CHART")
@@ -956,7 +956,7 @@ class SpecialChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureWaterfallChart() -> AAChartModel {
+    private func configureWaterfallChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.waterfall)
             .title("WATERFALL CHART")
@@ -996,7 +996,7 @@ class SpecialChartVC: UIViewController {
         )
     }
     
-    fileprivate func configurePyramidChart() -> AAChartModel {
+    private func configurePyramidChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.pyramid)
             .title("THE HEAT OF PROGRAM LANGUAGE")
@@ -1016,7 +1016,7 @@ class SpecialChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureFunnelChart() -> AAChartModel {
+    private func configureFunnelChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.funnel)
             .title("THE HEAT OF PROGRAM LANGUAGE")

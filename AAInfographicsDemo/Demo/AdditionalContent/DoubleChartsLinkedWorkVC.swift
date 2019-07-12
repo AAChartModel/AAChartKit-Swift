@@ -22,7 +22,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
         setUpTheAAChartViewTwo()
     }
     
-    func setUpTheAAChartViewOne() {
+   private func setUpTheAAChartViewOne() {
         let chartViewWidth  = view.frame.size.width
         let screenHeight = view.frame.size.height - 60
         
@@ -69,7 +69,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
         aaChartView1.aa_drawChartWithChartOptions(aaOptions)
     }
     
-    func setUpTheAAChartViewTwo() {
+   private func setUpTheAAChartViewTwo() {
         let chartViewWidth  = view.frame.size.width
         let screenHeight = view.frame.size.height - 60
         
@@ -129,7 +129,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
         aaChartView2.aa_refreshChartWholeContentWithChartModel(aaChartModel2)
     }
     
-    func getRandomNumbersArr(numbers: Int) -> [Float] {
+   private func getRandomNumbersArr(numbers: Int) -> [Float] {
         let randomNumArr = NSMutableArray()
         for _ in 0..<numbers {
             print(Float(arc4random() % 100))

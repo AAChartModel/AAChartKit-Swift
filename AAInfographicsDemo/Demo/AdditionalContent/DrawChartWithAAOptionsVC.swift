@@ -401,7 +401,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         return aaOptions
     }
     
-    func configureAAPlotBandsForChart() -> NSMutableDictionary {
+   private func configureAAPlotBandsForChart() -> NSMutableDictionary {
         let aaChartModel = AAChartModel()
             .title("")
             .chartType(.spline)//图形类型
@@ -456,7 +456,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         return aaOptions
     }
     
-    func configureAAPlotLinesForChart() -> NSMutableDictionary {
+   private func configureAAPlotLinesForChart() -> NSMutableDictionary {
         let aaChartModel = AAChartModel()
             .title("")
             .chartType(.areaspline)//图形类型
@@ -533,7 +533,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         return aaOptions
     }
     
-    func customAATooltipWithJSFuntion() -> NSMutableDictionary {
+   private func customAATooltipWithJSFuntion() -> NSMutableDictionary {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
             .title("近三个月金价起伏周期图")//图表主标题

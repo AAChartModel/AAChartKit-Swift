@@ -58,7 +58,7 @@ class OnlyRefreshChartDataVC: UIViewController {
         setUpRefreshingChartTimer()
     }
 
-    func setUpTheAAChartView() {
+   private func setUpTheAAChartView() {
         let chartViewWidth  = view.frame.size.width
         let chartViewHeight = view.frame.size.height - 60
         
@@ -135,7 +135,7 @@ class OnlyRefreshChartDataVC: UIViewController {
         aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
     }
     
-    func setUpRefreshingChartTimer() {
+   private func setUpRefreshingChartTimer() {
         //延时3秒执行
         let time: TimeInterval = 2.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {

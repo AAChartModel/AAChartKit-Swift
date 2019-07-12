@@ -45,7 +45,7 @@ class MixedChartVC: UIViewController {
         setUpAAChartView()
     }
     
-    func setUpAAChartView() {
+   private func setUpAAChartView() {
         aaChartView = AAChartView()
         let chartWidth = view.frame.size.width
         let chartHeight = view.frame.size.height
@@ -61,7 +61,7 @@ class MixedChartVC: UIViewController {
         aaChartView!.aa_drawChartWithChartModel(aaChartModel!)
     }
     
-   fileprivate func configureTheAAChartModel(_ chartTypeStr:String) -> AAChartModel {
+   private func configureTheAAChartModel(_ chartTypeStr:String) -> AAChartModel {
         switch chartTypeStr {
         case "manyColorMixedBar":return configureManyColorMixedBarChart()
         case "arearangeMixedLine":return configureArearangeMixedLineChart()
@@ -80,7 +80,7 @@ class MixedChartVC: UIViewController {
         }
     }
     
-    fileprivate func configureManyColorMixedBarChart() -> AAChartModel {
+    private func configureManyColorMixedBarChart() -> AAChartModel {
         let colorsNameArr = [
             "red",
             "orange",
@@ -132,7 +132,7 @@ class MixedChartVC: UIViewController {
         )
     }
     
-    fileprivate func configureArearangeMixedLineChart() -> AAChartModel {
+    private func configureArearangeMixedLineChart() -> AAChartModel {
         //http://jsfiddle.net/7L6n922w/1/
         return AAChartModel()
             .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
@@ -227,7 +227,7 @@ class MixedChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureColumnrangeMixedLineChart() -> AAChartModel {
+    private func configureColumnrangeMixedLineChart() -> AAChartModel {
         return AAChartModel()
             .colorsTheme(["#1e90ff","#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",])//主题颜色数组
             .title("")//图形标题
@@ -274,7 +274,7 @@ class MixedChartVC: UIViewController {
         )
     }
     
-    fileprivate func configureStackingColumnMixedLineChart() -> AAChartModel {
+    private func configureStackingColumnMixedLineChart() -> AAChartModel {
         return AAChartModel()
             .title("16年1月-16年11月充值客单分析")//图形标题
             .subtitle("BY MICVS")//图形副标题
@@ -326,7 +326,7 @@ class MixedChartVC: UIViewController {
         )
     }
     
-    fileprivate func configureDashStyleTypesMixedChart() -> AAChartModel {
+    private func configureDashStyleTypesMixedChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.spline)//图形类型
             .dataLabelEnabled(false)//是否显示数字
@@ -365,7 +365,7 @@ class MixedChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureNegativeColorMixedChart() -> AAChartModel {
+    private func configureNegativeColorMixedChart() -> AAChartModel {
         return AAChartModel()
             .dataLabelEnabled(false)//是否显示数字
             .series([
@@ -382,7 +382,7 @@ class MixedChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureScatterMixedLineChart() -> AAChartModel {
+    private func configureScatterMixedLineChart() -> AAChartModel {
         return AAChartModel()
             .dataLabelEnabled(false)//是否显示数字
             .chartType(.scatter)
@@ -605,7 +605,7 @@ class MixedChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureNegativeColorMixedBubbleChart() -> AAChartModel {
+    private func configureNegativeColorMixedBubbleChart() -> AAChartModel {
         return AAChartModel()
             .categories(["Saturday", "Friday", "Thursday","Wednesday", "Tuesday", "Monday", "Sunday"])
             .series([
@@ -640,7 +640,7 @@ class MixedChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configurePolygonMixedScatterChart() -> AAChartModel {
+    private func configurePolygonMixedScatterChart() -> AAChartModel {
         return AAChartModel()
             .series([
                 AASeriesElement()
@@ -712,7 +712,7 @@ class MixedChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configurePolarChartMixedChart() -> AAChartModel {
+    private func configurePolarChartMixedChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.column)
             .polar(true)
@@ -735,7 +735,7 @@ class MixedChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureColumnMixedScatterChart() -> AAChartModel {
+    private func configureColumnMixedScatterChart() -> AAChartModel {
         return AAChartModel()
             .xAxisReversed(true)
             .series([
@@ -774,7 +774,7 @@ class MixedChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configurePieMixedLineMixedColumnChart() -> AAChartModel {
+    private func configurePieMixedLineMixedColumnChart() -> AAChartModel {
         let pieElement = AASeriesElement()
             .type(.pie)
             .name("Total cosume")
@@ -840,7 +840,7 @@ class MixedChartVC: UIViewController {
                 ])
     }
     
-    fileprivate func configureLineChartWithShadow() -> AAChartModel {
+    private func configureLineChartWithShadow() -> AAChartModel {
         return AAChartModel()
             .chartType(.line)
             .title("Line Chart With Shadow")

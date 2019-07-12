@@ -62,7 +62,7 @@ class CommonChartVC: UIViewController {
         
     }
     
-    func setUpAAChartView() {
+   private func setUpAAChartView() {
         aaChartView = AAChartView()
         let chartViewWidth = view.frame.size.width
         let chartViewHeight = view.frame.size.height - 220

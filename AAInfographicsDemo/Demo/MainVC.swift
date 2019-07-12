@@ -242,7 +242,7 @@ class MainVC: UIViewController {
         setUpMainTableView()
     }
     
-    func setUpMainTableView() {
+   private func setUpMainTableView() {
         let myTableView = UITableView()
         myTableView.delegate = self
         myTableView.dataSource = self
@@ -255,7 +255,7 @@ class MainVC: UIViewController {
         myTableView.superview!.addConstraints(configureTheConstraintArray(childView: myTableView, fatherView: view))//Note:父控件添加约束
     }
  
-    func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
+   private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
         return [NSLayoutConstraint(item: childView,
                                    attribute: .left,
                                    relatedBy: .equal,
@@ -286,7 +286,7 @@ class MainVC: UIViewController {
                                    constant: 0)]
     }
     
-    func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
+   private func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
         return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
                        green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
                        blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,

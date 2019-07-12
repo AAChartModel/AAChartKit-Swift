@@ -45,7 +45,7 @@ class ShowManyChartViewVC: UIViewController {
         
     }
     
-    func setUpTheAAChartViewOne() {
+   private func setUpTheAAChartViewOne() {
         let chartViewWidth  = view.frame.size.width
         let screenHeight = view.frame.size.height - 60
         
@@ -88,7 +88,7 @@ class ShowManyChartViewVC: UIViewController {
         
     }
     
-    func setUpTheAAChartViewTwo() {
+   private func setUpTheAAChartViewTwo() {
         let chartViewWidth  = view.frame.size.width
         let screenHeight = view.frame.size.height - 60
         
