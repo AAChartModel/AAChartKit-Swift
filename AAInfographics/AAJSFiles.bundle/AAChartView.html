@@ -45,29 +45,31 @@
                     }
                 };
                 Highcharts.setOptions(globalOptions);
-                                      
+
                 if (aaOptions.plotOptions) {
-                    var animation = aaOptions.plotOptions.series.animation;
-                    if (animation) {
-                        var animationEasingType = animation.easing;
-                        animation.easing = configureTheChartAnimationEasingType(animationEasingType);
-                    }
-                    
-                    // 添加鼠标事件
-                    if (aaOptions.touchEventEnabled == true && aaOptions.plotOptions.series) {
-                        configureChartTouchEvent(aaOptions,isWKWebView);
-                    }
+                    configurePlotOptions(aaOptions,isWKWebView);
                 }
                 
-                if (aaOptions.tooltip) {
-                    if (aaOptions.tooltip.formatter) {
-                        aaOptions.tooltip.formatter = eval(aaOptions.tooltip.formatter);
-                    }
-                }
+                configureOptionsFormatters(aaOptions);
+
                 aaGlobalChart = Highcharts.chart('container', aaOptions);
             };
+
+        function configurePlotOptions(aaOptions,isWKWebView) {
+            var aaPlotOptions = aaOptions.plotOptions;
+            var animation = aaPlotOptions.series.animation;
+            if (animation) {
+                var animationEasingType = animation.easing;
+                animation.easing = configureTheChartAnimationEasingType(animationEasingType);
+            }
+            
+            // 添加鼠标事件
+            if (aaOptions.touchEventEnabled == true && aaPlotOptions.series) {
+                configureChartTouchEvent(aaPlotOptions,isWKWebView);
+            }
+        }
         
-        function configureChartTouchEvent(aaOptions,isWKWebView) {
+        function configureChartTouchEvent(aaPlotOptions,isWKWebView) {
             var mouseOverFunc = function(){
                 //console.log(this)
                 var message = {
@@ -94,7 +96,7 @@
                     }
                 }
             }
-            aaOptions.plotOptions.series = Object.assign(pointEvents,aaOptions.plotOptions.series)
+            aaPlotOptions.series = Object.assign(pointEvents,aaPlotOptions.series)
         }
         
         function uiWebViewLoadURL(url) {
@@ -108,6 +110,25 @@
             document.body.appendChild(iFrame);
             iFrame.parentNode.removeChild(iFrame);
             iFrame = null;
+        }
+
+        function configureOptionsFormatters(aaOptions) {
+            if (aaOptions.tooltip
+                && aaOptions.tooltip.formatter) {
+                aaOptions.tooltip.formatter = eval(aaOptions.tooltip.formatter);
+            }
+
+            if (aaOptions.xAxis
+                && aaOptions.xAxis.labels
+                && aaOptions.xAxis.labels.formatter) {
+                aaOptions.xAxis.labels.formatter = eval(aaOptions.xAxis.labels.formatter);
+            }
+
+            if (aaOptions.yAxis
+                && aaOptions.yAxis.labels
+                && aaOptions.yAxis.labels.formatter) {
+                aaOptions.yAxis.labels.formatter = eval(aaOptions.yAxis.labels.formatter);
+            } 
         }
         
         function onlyRefreshTheChartDataWithSeries(receivedSeries) {
@@ -134,7 +155,6 @@
             container.style.height = receivedHeight; //设置高度
             aaGlobalChart.reflow();
         }
-        
         
         function setChartSeriesHidden(hidden) {
             for (var i = 0; i < aaGlobalChart.series.length; i++) {

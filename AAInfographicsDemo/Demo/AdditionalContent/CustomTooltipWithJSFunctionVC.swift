@@ -53,6 +53,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
         case 2: return customAreaChartTooltipStyleWithFormatterFunction3()
         case 3: return customAreaChartTooltipStyleWithFormatterFunction4()
         case 4: return customBoxplotTooltipContent()
+        case 5: return customYAxisLabels()
         default:
             return NSMutableDictionary()
         }
@@ -335,6 +336,49 @@ function () {
         
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions["tooltip"] = myTooltip.toDic()!
+        return aaOptions
+    }
+    
+    private func customYAxisLabels() -> NSMutableDictionary{
+        let aaChartModel = AAChartModel()
+            .chartType(.line)//图形类型
+            .title("")//图表主标题
+            .subtitle("")//图表副标题
+            .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .dataLabelEnabled(false)
+            .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
+            .stacking(.normal)
+            .markerRadius(8)
+            .series([
+                AASeriesElement()
+                    .name("Tokyo Hot")
+                    .lineWidth(5.0)
+                    .fillOpacity(0.4)
+                    .data([29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
+                    .toDic()!,
+                ])
+        
+        let aaYAxisLabels = AALabels()
+            .formatter(#"""
+function () {
+        let yValue = this.value;
+        if (yValue >= 200) {
+            return "极佳";
+        } else if (yValue >= 150 && yValue < 200) {
+            return "非常棒";
+        } else if (yValue >= 100 && yValue < 150) {
+            return "相当棒";
+        } else if (yValue >= 50 && yValue < 100) {
+            return "还不错";
+        } else {
+            return "一般";
+        }
+    }
+"""#)
+        
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaYAxis =  aaOptions["yAxis"] as! NSMutableDictionary
+        aaYAxis["labels"] = aaYAxisLabels.toDic()!
         return aaOptions
     }
     

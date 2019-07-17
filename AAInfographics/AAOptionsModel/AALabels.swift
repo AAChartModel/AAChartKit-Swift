@@ -87,7 +87,9 @@ class AALabels: AASerializable {
     
     @discardableResult
     public func formatter(_ prop: String) -> AALabels {
-        formatter = prop
+        var pureJSFunctionStr = "(\(prop))"
+        pureJSFunctionStr = AAEasyTool.pureJavaScriptFunctionString(pureJSFunctionStr)
+        formatter = pureJSFunctionStr
         return self
     }
     
