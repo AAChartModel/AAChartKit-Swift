@@ -81,24 +81,4 @@ public class AAPlotLinesElement: AASerializable {
 
 }
 
-public class AALabel: AASerializable {
-   private var text: String?
-   private var style: [String: AnyObject]?
-    
-    @discardableResult
-    public func text(_ prop: String) -> AALabel {
-        text = prop
-        return self
-    }
-    
-    @discardableResult
-    public func style(_ prop: AAStyle) -> AALabel {
-        style = prop.toDic()!
-        return self
-    }
-    
-    public init() {
-    }
-    
-}
 
