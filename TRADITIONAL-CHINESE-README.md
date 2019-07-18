@@ -2,7 +2,7 @@
 # AAInfographics
 
  
-[![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/) </br>
+[![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/) </br>
 [![](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/LICENSE)</br>
 [![](https://img.shields.io/badge/language-Swift-green.svg)](https://github.com/AAChartModel/AAChartKit-Swift) </br>
 [![](https://img.shields.io/badge/support-Animation-yellow.svg)](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#當前已支持的圖表渲染動畫類型有三十種以上說明如下)</br>
@@ -13,7 +13,7 @@
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/AAChartModel/AAChartKit-Swift.svg)](http://isitmaintained.com/project/AAChartModel/AAChartKit-Swift "Percentage of issues still open")
 
 
-## [ **English Document 🇬🇧** ](https://github.com/AAChartModel-Swift/AAChartKit)  |  [ **简体中文文档 🇨🇳** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)| [ **繁體中文文檔 🇭🇰** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/TRADITIONAL-CHINESE-README.md)
+## [ **English Document 🇬🇧** ](https://github.com/AAChartModel/AAChartKit-Swift)  |  [ **簡體中文文檔 🇨🇳** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)| [ **繁體中文文檔 🇭🇰** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/TRADITIONAL-CHINESE-README.md)
 
 ### 您所喜愛的`AAInfographics`開源圖表框架同時更有`Objective-C`版本可供使用,詳情請點擊以下鏈接
 ### 傳送門
@@ -26,32 +26,53 @@
 ***
 ## 功能特性
 
-1. **環境友好,兼容性強**. 適配 `iOS 6 +`,  支持`ARC`,支持 `swift`語言,配置簡單.同時更有 Objective-C 版本[AAChartKit](https://github.com/AAChartModel/AAChartKit)可供使用.
+1. **環境友好,兼容性強**. 適配 `iOS 8 +`,  支持`ARC`,支持 `swift`語言,配置簡單.同時更有 Objective-C 版本[AAChartKit](https://github.com/AAChartModel/AAChartKit)可供使用.
 1. **功能強大,類型多樣**. 支持`柱狀圖` 、`條形圖` 、`折線圖` 、`曲線圖` 、`折線填充圖` 、`曲線填充圖`、`雷達圖`、`極地圖`、`扇形圖`、`氣泡圖`、`散點圖`、`區域範圍圖`、`柱形範圍圖`、`面積範圍圖`、`面積範圍均線圖`、`直方折線圖`、`直方折線填充圖`、`箱線圖`、`瀑布圖`、`熱力圖`、`桑基圖`、`金字塔圖`、`漏鬥圖`、等二十幾種類型的圖形,不可謂之不多.
-1. **交互式圖形動畫**. 有著清晰和充滿細節的用戶交互方式,與此同時,圖形渲染`動畫`效果細膩精致,流暢優美.有三十多種以上渲染動畫效果可供選擇,用戶可自由設置渲染圖形時的動畫時間和動畫類型,關於圖形渲染動畫類型,具體參見[ AAInfographics 動畫類型](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#當前已支持的圖表渲染動畫類型有三十種以上說明如下).
+1. **交互式圖形動畫**. 有著清晰和充滿細節的用戶交互方式,與此同時,圖形渲染`動畫`效果細膩精致,流暢優美.有三十多種以上渲染動畫效果可供選擇,用戶可自由設置渲染圖形時的動畫時間和動畫類型,關於圖形渲染動畫類型,具體參見[ AAInfographics 動畫類型](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#當前已支持的圖表渲染動畫類型有三十種以上).
 1. **支持手勢縮放**.支持圖表的手勢縮放和拖動閱覽,手勢縮放類型具體參見[ AAInfographics 手勢縮放類型](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#當前已支持的圖表手勢縮放類型共有三種說明如下),默認禁用手勢縮放功能.
 1. **極簡主義**. `AAChartView + AAChartModel = Chart`,在 ***AAInfographics*** 數據可視化圖形框架當中,遵循這樣壹個極簡主義公式:`圖表視圖控件 + 圖表模型 = 妳想要的圖表`.同另壹款強大、精美而又易用的開源圖形框架 [AAChartKit](https://github.com/AAChartModel/AAChartKit)完全壹致.
 1. **鏈式編程語法**. 支持類 *Masonry* `鏈式編程語法`,壹行代碼即可配置完成 `AAChartModel`模型對象實例.
 1. **簡潔清晰,輕便易用**. 最少僅僅需要 **五行代碼** 即可完成整個圖表的繪制工作(使用鏈式編程語法配置 `AAChartModel` 實例對象時,無論妳寫多少行代碼,理論上只能算作是壹行). 😜😜😜
+1. **支持點擊事件** 支持監聽用戶交互事件,可在此基礎上實現雙表聯動乃至多表聯動,以及其他更多更復雜的自定義用戶交互效果.具體參見[支持監聽用戶點擊事件及單指滑動事件](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md#支持監聽用戶點擊事件及單指滑動事件)
 
 ***
 
+
+
+
+
 ## 真機美圖
-| Column Chart 柱狀圖 | Column Range Chart 條形範圍圖 | Area Chart 區域填充圖 |
-| :----:  | :----: | :----: |
-| ![image1](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/ColumnChart.png) | ![image1](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/BarChart.png) | ![image1](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/AreaChart.png) |
 
-| Line Chart 折線圖 | Step Area Chart 直方折線填充圖 | Step Line Chart 直方折線圖 |
-| :----:  | :----: | :----: |
-| ![image1](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/LineChart.png) | ![image1](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/StepAreaChart.png) | ![image1](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/StepLineChart.png) |
+<div>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/ColumnChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/BarChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/AreaChart.png' width=285>
+</div>
 
-| Spline Chart 曲線圖| Areaspline Chart 曲線填充圖 | Stacked Polar Chart 堆積填充圖 |
-| :----:  | :----: | :----: |
-| ![image1](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/SplineChart.png) | ![image1](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/AreasplineChart.png) | ![image1](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/StackedPolarChart.png) |
+<div>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/LineChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/StepAreaChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAChartKit/BeautyAppreciation/StepLineChart.png' width=285>
+</div>
 
-| Bubble Chart 折線圖 | Arearange Average Value Chart 範圍均線圖 | Column Mixed Line Chart 雙Y軸柱形折線混合圖 |
-| :----:  | :----: | :----: |
-| ![image1](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/BubbleChart.png) | ![image1](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/ArearangeAverageValueChart.png) | ![image1](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/ColumnMixedLineChart.png) |
+<div>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/splineChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/areasplineChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/percentStackingAreasplineChart.png' width=285>
+</div>
+
+<div>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/BubbleChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/ArearangeAverageValueChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/ColumnMixedLineChart.png' width=285>
+</div>
+
+<div>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/scatterChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/boxplotChart.png' width=285>
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/MirrorColumnChart.png' width=285>
+</div>
+
 
 ## 安裝
 
@@ -62,8 +83,8 @@
 pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
 
 ```
-到妳的 **Podfile**文件當中.
-
+ 到妳的 **Podfile**文件當中.
+ 
 2. 在終端中運行命令 `pod install` or `pod update`.
 3. 導入頭文件  `AAInfographics`.
 
@@ -213,139 +234,84 @@ pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.
 
 ## 特別說明
 
-### 特殊類型圖表配置
+### 支持監聽用戶點擊事件及單指滑動事件
 
-**AAInfographics** 中扇形圖、氣泡圖都歸屬為特殊類型,所以想要繪制扇形圖、氣泡圖,圖表模型 *AAChartModel* 的數據屬性`series`設置稍有不同,示例如下
+  可通過給 AAChartView 實例對象設置代理方法,來實現監聽用戶的點擊事件和單指滑動事件
+ ```swift
+  //設置 AAChartView 事件代理
+  aaChartView!.delegate = self as AAChartViewDelegate
+  //設置 AAChartModel 支持觸摸事件
+  aaChartModel = aaChartModel!.touchEventEnabled(true)
 
-- 繪制扇形圖,妳需要這樣配置模型對象 *AAChartModel*
+  //實現對 AAChartView 事件代理的監聽
+extension CommonChartVC: AAChartViewDelegate {
+    open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
+        print("🔥selected point series element name: \(moveOverEventMessage.name ?? "")")
+    }
+}
+  ```
+
+  在監聽用戶交互事件時,獲取的事件信息`AAMoveOverEventMessageModel`共包含以下內容
+  ```swift
+public class AAMoveOverEventMessageModel: NSObject {
+    var name: String?
+    var x: Float?
+    var y: Float?
+    var category: String?
+    var offset: [String: Any]?
+    var index: Int?
+}
+  ```
+
+
+### 支持通過`JavaScript` 函數來自定義 `AATooltip`視圖顯示效果
+有時系統默認的 tooltip 浮動提示框的顯示效果無法滿足使用者的特殊自定義要求,此時可以通過添加 AATooltip 的 `headerFormat`、`footerFormat` 和 `pointFormat` 的字符串屬性的`HTML`文本內容,來自定義浮動提示框的顯示內容,此三者可以勝任絕大數情況下的自定義浮動提示框 AATooltip 的任務.
+
+如仍舊不能滿足需求,更可以通過 AATooltip 的 `formatter` 函數來實現視圖的特殊定制化 例如,如下配置 AATooltip 實例對象屬性
 ```swift
-            aaChartModel = AAChartModel()
-                .chartType(.pie)
-                .backgroundColor("#ffffff")
-                .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
-                .subtitle("virtual data")
-                .dataLabelEnabled(true)//是否直接顯示扇形圖數據
-                .yAxisTitle("℃")
-                .series(
-                    [
-                        AASeriesElement()
-                            .name("Language market shares")
-                            .innerSize("20%")//內部圓環半徑大小占比(內部圓環半徑/扇形圖半徑),
-                            .allowPointSelect(false)
-                            .data([
-                                ["Java"  ,67],
-                                ["Swift",999],
-                                ["Python",83],
-                                ["OC"    ,11],
-                                ["Go"    ,30],
-                                ])
-                            .toDic()!,
-                        ]
-                    
-            )
-                    
+        //custom tooltip style
+        let myTooltip = AATooltip()
+            .useHTML(true)
+            .formatter("""
+function () {
+        return ' 🌕 🌖 🌗 🌘 🌑 🌒 🌓 🌔 <br/> '
+        + ' Support JavaScript Function Just Right Now !!! <br/> '
+        + ' The Gold Price For <b>2020 '
+        +  this.x
+        + ' </b> Is <b> '
+        +  this.y
+        + ' </b> Dollars ';
+        }
+""")
+            .valueDecimals(2)//設置取值精確到小數點後幾位//設置取值精確到小數點後幾位
+            .backgroundColor("#000000")
+            .borderColor("#000000")
+            .style(
+                AAStyle()
+                    .color("#FFD700")
+                    .fontSize(12)
+                    )
+          
 ```
-- 繪制氣泡圖,妳需要這樣配置模型對象 *AAChartModel*
+即可完成圖表的浮動提示框的特殊定制化.得到的自定義浮動提示框的視覺效果圖如下👇
+![Custom Tooltip Style](https://user-images.githubusercontent.com/16357599/56589690-543c5880-6618-11e9-9d18-6bc0fe2fa53f.png)
 
-```swift  
-            aaChartModel = AAChartModel()
-                .chartType(.bubble)
-                .title("AACHARTKIT BUBBLES")
-                .subtitle("JUST FOR FUN")
-                .yAxisTitle("℃")
-                .gradientColorEnable(true)
-                .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
-                .series(
-                    [
-                        AASeriesElement()
-                            .name("BubbleOne")
-                            .data([[97, 36, 79],
-                                   [94, 74, 60],
-                                   [68, 76, 58],
-                                   [64, 87, 56],
-                                   [68, 27, 73],
-                                   [74, 99, 42],
-                                   [7,  93, 99],
-                                   [51, 69, 40],
-                                   [38, 23, 33],
-                                   [57, 86, 31],
-                                   [33, 24, 22]
-                                ])
-                            .toDic()!,
-                        AASeriesElement()
-                            .name("BubbleTwo")
-                            .data([[25, 60, 87],
-                                   [2,  75, 59],
-                                   [11, 54, 8 ],
-                                   [86, 55, 93],
-                                   [5,  33, 88],
-                                   [90, 63, 44],
-                                   [91, 43, 17],
-                                   [97, 56, 56],
-                                   [15, 67, 48],
-                                   [54, 25, 81],
-                                   [55, 66, 11]
-                                ])
-                            .toDic()!,
-                        AASeriesElement()
-                            .name("BubbleThree")
-                            .data([[47, 47, 21],
-                                   [20, 12, 66],
-                                   [6,  76, 91],
-                                   [38, 30, 60],
-                                   [57, 98, 64],
-                                   [61, 47, 80],
-                                   [83, 60, 13],
-                                   [67, 78, 75],
-                                   [64, 12, 55],
-                                   [30, 77, 82],
-                                   [88, 66, 13]
-                                ])
-                            .toDic()!,
-                        ]
-            )      
-```
+### 支持添加值域分割功能⚔
 
-- 繪制柱形範圍圖,妳需要這樣配置模型對象 *AAChartModel*
+* 添加`顏色帶🎀`值域分割
+![plotBandsChart](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/plotBandsChart.png)
 
-```swift
-            aaChartModel = AAChartModel()
-                .chartType(.columnRange)
-                .title("TEMPERATURE VARIATION BY MONTH")
-                .subtitle("observed in Gotham city")
-                .yAxisTitle("℃")
-                .categories(["January", "February", "March", "April", "May", "June",
-                             "July", "August", "September", "October", "November", "December"])
-                .dataLabelEnabled(true)
-                .inverted(true)//x 軸是否垂直翻轉
-                .series(
-                    [
-                        AASeriesElement()
-                            .name("temperature")
-                            .data([
-                                [-9.7,  9.4],
-                                [-8.7,  6.5],
-                                [-3.5,  9.4],
-                                [-1.4, 19.9],
-                                [0.0,  22.6],
-                                [2.9,  29.5],
-                                [9.2,  30.7],
-                                [7.3,  26.5],
-                                [4.4,  18.0],
-                                [-3.1, 11.4],
-                                [-5.2, 10.4],
-                                [-13.5, 9.8]
-                                ])
-                            .toDic()!,
-                        ]
-            )
-```
-***NOTE:*** 關於更多類型特殊圖表的 `AAChartModel`實例對象屬性配置,詳情請見 ***AAInfographics*** 工程 `Demo` 中的`SpecialChartVC.swift`文件內容,查看文件內容詳情請點擊[這裏](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/AAInfographicsDemo/Demo/SpecialChartVC.swift),您也可以選擇下載 `Demo` 後,在  `Xcode` 中查看 ***AAInfographics*** 的`SpecialChartVC.swift`內容
+
+* 添加`顏色線🧶`值域分割
+![plotLinesChart](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/plotLinesChart.png)
+
+
+
 
 ### 當前已支持的圖表類型有十種以上,說明如下
 
 ```swift
-enum AAChartType:String {
+enum AAChartType: String {
     case column          = "column"          //柱形圖
     case bar             = "bar"             //條形圖
     case area            = "area"            //折線區域填充圖
@@ -366,60 +332,20 @@ enum AAChartType:String {
 }
 ```
 
-
 ### 當前已支持的圖表手勢縮放類型共有三種,說明如下
 
 ```swift
-enum AAChartZoomType:String {
+enum AAChartZoomType: String {
     case none = "none"   //禁用圖表手勢縮放功能(默認禁用手勢縮放)
     case x    = "x"      //支持圖表 X 軸橫向縮放
     case y    = "y"      //支持圖表 Y 軸縱向縮放
-    case xY   = "xy"     //支持圖表等比例縮放
+    case xy   = "xy"     //支持圖表等比例縮放
 }
 ```
 
 NOTE:例如,設置了`AAChartModel`的縮放屬性`zoomType`為`AAChartZoomType.X`,並且將圖表進行了手勢放大之後,這時候如果想要左右滑動圖表,可以使用 **雙指點按** 屏幕中的`AAChartView`視圖區域進行 **左右拖動** 即可.同時屏幕的右上角會自動出現壹個標題為 **"恢復縮放"** 的按鈕,點擊恢復縮放,圖表大小和位置將會回歸到原初的樣式.
 
-### 當前已支持的圖表渲染動畫類型有三十種以上,說明如下
-
-```swift
- public enum AAChartAnimationType: String {
-    case easeInQuad     = "easeInQuad"
-    case easeOutQuad    = "easeOutQuad"
-    case easeInOutQuad  = "easeInOutQuad"
-    case easeInCubic    = "easeInCubic"
-    case easeOutCubic   = "easeOutCubic"
-    case easeInOutCubic = "easeInOutCubic"
-    case easeInQuart    = "easeInQuart"
-    case easeOutQuart   = "easeOutQuart"
-    case easeInOutQuart = "easeInOutQuart"
-    case easeInQuint    = "easeInQuint"
-    case easeOutQuint   = "easeOutQuint"
-    case easeInOutQuint = "easeInOutQuint"
-    case easeInSine     = "easeInSine"
-    case easeOutSine    = "easeOutSine"
-    case easeInOutSine  = "easeInOutSine"
-    case easeInExpo     = "easeInExpo"
-    case easeOutExpo    = "easeOutExpo"
-    case easeInOutExpo  = "easeInOutExpo"
-    case easeInCirc     = "easeInCirc"
-    case easeOutCirc    = "easeOutCirc"
-    case easeInOutCirc  = "easeInOutCirc"
-    case easeOutBounce  = "easeOutBounce"
-    case easeInBack     = "easeInBack"
-    case easeOutBack    = "easeOutBack"
-    case easeInOutBack  = "easeInOutBack"
-    case elastic        = "elastic"
-    case swingFromTo    = "swingFromTo"
-    case swingFrom      = "swingFrom"
-    case swingTo        = "swingTo"
-    case bounce         = "bounce"
-    case bouncePast     = "bouncePast"
-    case easeFromTo     = "easeFromTo"
-    case easeFrom       = "easeFrom"
-    case easeTo         = "easeTo"
-}
-```
+### 當前已支持的圖表渲染動畫類型有三十種以上
 
 以下是**AAInfographics**其中十種圖表渲染動畫類型
 
@@ -441,38 +367,47 @@ NOTE:例如,設置了`AAChartModel`的縮放屬性`zoomType`為`AAChartZoomType.
 ------------ | ------------- | ------------- | ------------- |
 title | String | 圖表主標題 | 任意有效的字符串 | 
 subtitle | String |圖表副標題  | 任意有效的字符串 |
-chartType | AAChartType |  圖表類型,可以為`AAChartType`枚舉字符串當中指定的任意有效類型.其中有支持`柱狀圖` 、`條形圖` 、`折線圖` 、`曲線圖` 、`折線填充圖` 、`曲線填充圖`、`雷達圖`、`扇形圖`、`氣泡圖`、`散點圖`、`金字塔圖`、`漏鬥圖`、`區域範圍圖`、`柱形範圍圖`等多種圖形 | .column,  .bar,  .area,  .areaSpline,  .line,  .spline,  .pie,  .bubble,  .scatter,  .pyramid,  .funnel,  .areaRange,  .columnRange |  
-stacking| AAChartStackingType | 是否將圖表每個數據列的值疊加在壹起。 默認的值為`.none`， 即禁用堆疊樣式效果.另有常規堆疊樣式和百分比堆疊樣式可供選擇  | .none,  .normal,  .percent | 
+chartType | AAChartType |  圖表類型,可以為`AAChartType`枚舉字符串當中指定的任意有效類型.其中有支持`柱狀圖` 、`條形圖` 、`折線圖` 、`曲線圖` 、`折線填充圖` 、`曲線填充圖`、`雷達圖`、`扇形圖`、`氣泡圖`、`散點圖`、`金字塔圖`、`漏鬥圖`、`區域範圍圖`、`柱形範圍圖`等多種圖形  | .column,  .bar,  .area,  .areaSpline,  .line,  .spline,  .pie,  .bubble,  .scatter,  .pyramid,  .funnel,  .areaRange,  .columnRange |  
+stacking| AAChartStackingType | 是否將圖表每個數據列的值疊加在壹起。 默認的值為`.none`， 即禁用堆疊樣式效果.另有常規堆疊樣式和百分比堆疊樣式可供選擇 | .none,  .normal,  .percent | 
 symbol | AAChartSymbolType | 預定義的圖表曲線連接點的樣式類型.其可供選擇的值有`圓`、`正方形`、`鉆石`、`常規三角形`和`倒三角形`,默認為混合樣式 | .circle,  .square,  .diamond,  .triangle,  .triangleDown | 
 
 * ### AAChartModel 所有屬性列表說明
 ```swift
 private var animationType: String?       //動畫類型
+private var animationDuration: Int?      //動畫時間
 private var title: String?               //標題內容
 private var subtitle: String?            //副標題內容
 private var chartType: String?           //圖表類型
 private var stacking: String?            //堆積樣式
 private var symbol: String?              //折線曲線連接點的類型："circle", "square", "diamond", "triangle","triangle-down"，默認是"circle"
+private var symbolStyle: String?         //折線或者曲線的連接點是否為空心的
 private var zoomType: String?            //縮放類型 AAChartZoomTypeX表示可沿著 x 軸進行手勢縮放
-private var inverted: Bool?              //x 軸是否垂直
+private var inverted: Bool?              //x 軸是否翻轉(垂直)
 private var xAxisReversed: Bool?         //x 軸翻轉
 private var yAxisReversed: Bool?         //y 軸翻轉
-private var crosshairs: Bool?            //是否顯示準星線(默認顯示)
 private var gradientColorEnable: Bool?   //是否要為漸變色
 private var polar: Bool?                 //是否極化圖形(變為雷達圖)
+private var marginLeft: Float?           //圖表左邊距
+private var marginRight: Float?          //圖表右邊距
 private var dataLabelEnabled: Bool?      //是否顯示數據
 private var xAxisLabelsEnabled: Bool?    //x 軸是否顯示數據
-private var categories: Array<String>?   //x 軸文字內容
-private var xAxisGridLineWidth: Int?     //x 軸網格線的寬度
+private var categories: [String]?        //x 軸是否顯示數據
+private var xAxisGridLineWidth: Float?   //x 軸網格線的寬度
+private var xAxisVisible: Bool?          //x 軸是否顯示
+private var yAxisVisible: Bool?          //y 軸是否顯示
 private var yAxisLabelsEnabled: Bool?    //y 軸是否顯示數據
 private var yAxisTitle: String?          //y 軸標題
-private var yAxisGridLineWidth: Int?     //y 軸網格線的寬度
-private var colorsTheme: Array<Any>?     //圖表主題顏色數組
-private var series: Array<Any>?          //圖表的主題數據列數組
+private var yAxisLineWidth: Float?       //y 軸軸線的寬度
+private var yAxisGridLineWidth: Float?   //y 軸網格線的寬度
+private var tooltipEnabled: Bool?        //是否顯示浮動提示框(默認顯示)
+private var tooltipValueSuffix: String?  //浮動提示框單位後綴
+private var tooltipCrosshairs: Bool?     //是否顯示準星線(默認顯示)
+private var colorsTheme: [Any]?          //圖表主題顏色數組
+private var series: [[String: Any]]?     //圖表的數據數組
 private var legendEnabled: Bool?         //是否顯示圖例
 private var legendLayout: String?        //圖例數據項的布局。布局類型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默認是：horizontal.
-private var legendAlign: String?         //設定圖例在圖表區中的水平對齊方式，合法值有 left，center 和 right。
-private var legendVerticalAlign: String? //設定圖例在圖表區中的垂直對齊方式，合法值有 top，middle 和 bottom。垂直位置可以通過 y 選項做進壹步設定
+private var legendAlign: String?         //設定圖例在圖表區中的水平對齊方式，合法值有left，center 和 right。
+private var legendVerticalAlign: String? //設定圖例在圖表區中的垂直對齊方式，合法值有 top，middle 和 bottom。垂直位置可以通過 y 選項做進壹步設定。
 private var backgroundColor: String?     //圖表背景色
 private var borderRadius: Int?           //柱狀圖長條圖頭部圓角半徑(可用於設置頭部的形狀,僅對條形圖,柱狀圖有效)
 private var markerRadius: Int?           //折線連接點的半徑長度
@@ -483,7 +418,7 @@ private var axisColor: String?           //x 軸和 y 軸文字顏色
 
 ## 附言
 
-在 `AAInfographics` 數據可視化圖形框架的初始設計中,為提升`.js`文件的加載速度,故將所依賴的`.js`文件放置在本地.然而由於本項目功能較多,故放置於本地的附加`JavaScript`文件庫體積較大,整個`AAJSFiles`文件夾下所有的`.js`文件體積合計共有`250KB左右`(當然在工程打包壓縮之後實際大小遠小於此),若對工程文件體積大小較為敏感的使用者,可使用以下建議的替代方案
+在 `AAInfographics` 數據可視化圖形框架的初始設計中,為提升`.js`文件的加載速度,故將所依賴的`.js`文件放置在本地.然而由於本項目功能較多,故放置於本地的附加`JavaScript`文件庫體積有壹定大小,整個`AAJSFiles`文件夾下所有的`.js`文件體積合計共有`250KB左右`(當然在工程打包壓縮之後實際大小遠小於此),若對工程文件體積大小較為敏感的使用者,可使用以下建議的替代方案
 1.  刪除在本`AAInfographics`項目文件中,`AAJSFiles`文件夾下的`4`項`.js`文件.需要被刪除的文件名稱如下
 * AAHighchartsLibrary.js
 * AAHighchartsMore.js
@@ -505,7 +440,7 @@ private var axisColor: String?           //x 軸和 y 軸文字顏色
 </script>
 <script src="https://img.hcharts.cn/highcharts/modules/funnel.js">
 </script>
-```
+``` 
 即可.
 
 此方案是將原本加載放置在本地的`.js`依賴文件改為了加載放置在網絡上的`.js`文件,減小了本地文件大小,但有可能會有壹定的網絡延遲(`0.5s以內`),所以建議`AAInfographics`用戶可根據自己的實際項目的開發需要,酌情選擇最終是否使用本替代方案.
@@ -595,7 +530,6 @@ Objective C | AAChartKit | https://github.com/AAChartModel/AAChartKit |
 - [ ] 支持圖形實時刷新純數據並動態滾動
 - [ ] 支持已渲染圖形生成圖片文件
 - [ ] 支持生成圖片文件保存至系統相冊
-
 
 
 [1]:  https://raw.githubusercontent.com/adad184/MMTweenAnimation/master/Images/1.gif
