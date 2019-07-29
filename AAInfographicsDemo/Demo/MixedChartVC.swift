@@ -127,7 +127,7 @@ class MixedChartVC: UIViewController {
                     .name("Tokyo")
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6, 5.5])
                     .colorByPoint(true)
-                    .toDic()!,
+                    ,
                 ])
         )
     }
@@ -182,7 +182,7 @@ class MixedChartVC: UIViewController {
                             .fillColor("#1E90FF")
                             .lineWidth(2.0)
                     )
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Range")
                     .color("#1E90FF")
@@ -223,7 +223,7 @@ class MixedChartVC: UIViewController {
                         [12489984, 10.8, 16.1]
                         ])
                     .zIndex(0)
-                    .toDic()!,
+                    ,
                 ])
     }
     
@@ -253,23 +253,23 @@ class MixedChartVC: UIViewController {
                         [(-5.2),10.4],
                         [(-9.9),16.8]
                         ])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Tokyo")
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("New York")
                     .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Berlin")
                     .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("London")
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                    .toDic()!,
+                    ,
                 ]
         )
     }
@@ -296,7 +296,7 @@ class MixedChartVC: UIViewController {
                             .fontSize(11)
                         )
                     )
-                    .toDic()!,
+                    ,
                 
                 AASeriesElement()
                     .name("老用户")
@@ -308,7 +308,7 @@ class MixedChartVC: UIViewController {
                         )
                     )
                     .data([198.66, 330.81, 151.95, 160.12, 222.56, 229.05, 128.53, 250.91, 224.47, 473.99, 126.85, 260.50])
-                    .toDic()!,
+                    ,
                 
                 AASeriesElement()
                     .name("总量")
@@ -321,7 +321,7 @@ class MixedChartVC: UIViewController {
                         )
                     )
                     .data([281.55, 398.35, 214.02, 219.55, 289.57, 296.14, 164.18, 322.69, 306.08, 552.84, 205.97, 332.79])
-                    .toDic()!,
+                    ,
                 ]
         )
     }
@@ -337,31 +337,31 @@ class MixedChartVC: UIViewController {
                     .name("Solid")
                     .lineWidth(3)
                     .data([50, 320, 230, 370, 230, 400,])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Dash")
                     .lineWidth(3)
                     .dashStyle(.dash)
                     .data([50, 320, 230, 370, 230, 400,])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("DashDot")
                     .lineWidth(3)
                     .dashStyle(.dashDot)
                     .data([50, 320, 230, 370, 230, 400,])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("LongDash")
                     .lineWidth(3)
                     .dashStyle(.longDash)
                     .data([50, 320, 230, 370, 230, 400,])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("LongDashDot")
                     .lineWidth(3)
                     .dashStyle(.longDashDot)
                     .data([50, 320, 230, 370, 230, 400,])
-                    .toDic()!,
+                    ,
                 ])
     }
     
@@ -378,7 +378,7 @@ class MixedChartVC: UIViewController {
                     .color("#0088FF")
                     .negativeColor("#FF0000")
                     .threshold(4)//default:0
-                    .toDic()!,
+                    ,
                 ])
     }
     
@@ -595,13 +595,12 @@ class MixedChartVC: UIViewController {
                         [0.116163, 3.129283]
                         ])
                     .color("#0088FF")
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .type(.line)
                     .name("线性回归线")
                     .data([[0.014, 3.078], [0.969, 4.655]])
                     .color("#FF0000")
-                    .toDic()!
                 ])
     }
     
@@ -636,7 +635,7 @@ class MixedChartVC: UIViewController {
                     .color("#0088FF")
                     .negativeColor("#FF0000")
                     .threshold(4)//default:0
-                    .toDic()!,
+                    ,
                 ])
     }
     
@@ -649,7 +648,7 @@ class MixedChartVC: UIViewController {
                     .data([[153, 42], [149, 46], [149, 55], [152, 60], [159, 70], [170, 77], [180, 70],
                            [180, 60], [173, 52], [166, 45]])
                     .color("rgba(119, 152, 191, 0.5)")
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("实际值")
                     .type(.scatter)
@@ -708,7 +707,7 @@ class MixedChartVC: UIViewController {
                         [176.5, 71.8], [164.4, 55.5], [160.7, 48.6], [174.0, 66.4], [163.8, 67.3]
                         ])
                     .color("#ff0000")
-                    .toDic()!,
+                    ,
                 ])
     }
     
@@ -721,17 +720,17 @@ class MixedChartVC: UIViewController {
                     .name("Column")
                     .type(.column)
                     .data([8, 7, 6, 5, 4, 3, 2, 1])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Line")
                     .type(.line)
                     .data([1, 2, 3, 4, 5, 6, 7, 8])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Area")
                     .type(.area)
                     .data([1, 8, 2, 7, 3, 6, 4, 5])
-                    .toDic()!,
+                    ,
                 ])
     }
     
@@ -751,7 +750,7 @@ class MixedChartVC: UIViewController {
                         3,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
                         2,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
                         1])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Scatter")
                     .type(.scatter)
@@ -770,7 +769,6 @@ class MixedChartVC: UIViewController {
                             .lineWidth(2.0)
                             .lineColor(AAColor.red!)
                     )
-                    .toDic()!
                 ])
     }
     
@@ -813,17 +811,17 @@ class MixedChartVC: UIViewController {
                     .name("Anna")
                     .type(.column)
                     .data([3, 2, 1, 3, 4])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Babara")
                     .type(.column)
                     .data([2, 3, 5, 7, 6])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Cortana")
                     .type(.column)
                     .data([4, 3, 3, 9, 0])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("average value")
                     .type(.line)
@@ -834,9 +832,9 @@ class MixedChartVC: UIViewController {
                             .lineWidth(2.0)
                             .lineColor(AAColor.white!)
                     )
-                    .toDic()!,
+                    ,
                 
-                pieElementDic as! Dictionary<String, Any>
+//                pieElementDic as! Dictionary<String, Any>
                 ])
     }
     
@@ -859,7 +857,7 @@ class MixedChartVC: UIViewController {
                             .opacity(0.1)
                             .width(9.0)
                             .color(AAColor.red)
-                    ).toDic()!
+                    )
                 ])
     }
 

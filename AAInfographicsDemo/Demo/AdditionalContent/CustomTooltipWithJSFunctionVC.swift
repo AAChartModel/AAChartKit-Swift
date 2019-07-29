@@ -104,7 +104,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
                            2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05,
                            2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
                            5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48])
-                    .toDic()!,
+                    ,
                 ])
         
         let myTooltip = AATooltip()
@@ -149,13 +149,13 @@ function () {
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("🌲树木")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
-                    .toDic()!,
+                    ,
                 ])
         
         let myTooltip = AATooltip()
@@ -189,19 +189,19 @@ function () {
                 AASeriesElement()
                     .name("上市")
                     .data([0,0,7])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("中止")
                     .data([4,5,1])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("无进展")
                     .data([2,0,1])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("进行中")
                     .data([3,5,2])
-                    .toDic()!,
+                    ,
                 ])
         
         let myTooltip = AATooltip()
@@ -246,25 +246,25 @@ function () {
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("Berlin Hot")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("New York Hot")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("London Hot")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
-                    .toDic()!,
+                    ,
                 ])
         
         let myTooltip = AATooltip()
@@ -312,7 +312,7 @@ function () {
                         [724, 802, 806, 871, 950],
                         [834, 836, 864, 882, 910]
                         ])
-                    .toDic()!,
+                    ,
                 ])
         let pointFormatStr = (
             "◉</span> <b> {series.name}</b><br/>"
@@ -356,7 +356,7 @@ function () {
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
-                    .toDic()!,
+                    ,
                 ])
         
         let aaYAxisLabels = AALabels()
@@ -398,26 +398,22 @@ function () {
                     .name("John")
                     .data([5,3,4,7,2,])
                     .stack("male")
-                    .toDic()!
-                ,
+                    ,
                 AASeriesElement()
                     .name("Joe")
                     .data([3,4,4,2,5,])
                     .stack("male")
-                    .toDic()!
-                ,
+                    ,
                 AASeriesElement()
                     .name("Jane")
                     .data([2,5,6,2,1,])
                     .stack("female")
-                    .toDic()!
-                ,
+                    ,
                 AASeriesElement()
                     .name("Janet")
                     .data([3,0,4, 4,3,])
                     .stack("female")
-                    .toDic()!
-                ,
+                    ,
                 ]
         )
         

@@ -124,20 +124,17 @@ pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.
             .series([
                 AASeriesElement()
                     .name("东京")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .toDic()!,
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]),
                 AASeriesElement()
                     .name("纽约")
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    .toDic()!,
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]),
                 AASeriesElement()
                     .name("柏林")
-                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                    .toDic()!,
+                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]),
                 AASeriesElement()
                     .name("伦敦")
-                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                    .toDic()!,])
+                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
+                    ])
 ```
 
 3.  绘制图形(创建 AAChartView 实例对象后,首次绘制图形调用此方法)
@@ -270,7 +267,7 @@ public class AAMoveOverEventMessageModel: NSObject {
 如仍旧不能满足需求,更可以通过 AATooltip 的 `formatter` 函数来实现视图的特殊定制化 例如,如下配置 AATooltip 实例对象属性
 ```swift
         //custom tooltip style
-        let myTooltip = AATooltip()
+        let aaTooltip = AATooltip()
             .useHTML(true)
             .formatter("""
 function () {

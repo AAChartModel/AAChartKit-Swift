@@ -50,12 +50,12 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             .borderRadius(3)
             .yAxisReversed(true)
             .categories(colorsArr!)
-            .series(([
+            .series([
                 AASeriesElement()
                     .colorByPoint(true)
                     .data(getRandomNumbersArr(numbers: 9))
-                    .toDic()!,
-                ]))
+                    ,
+                ])
         
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel1)
         let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
@@ -108,7 +108,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
                 AASeriesElement()
                     .color("#fe117c")
                     .data(getRandomNumbersArr(numbers: 12))
-                    .toDic()!,
+                    ,
                 ])
         
         aaChartView2.aa_drawChartWithChartModel(aaChartModel2)
@@ -124,7 +124,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
                 .lineWidth(3.5)
                 .color(selectedColor)
                 .data(data)
-                .toDic()!,
+                ,
             ])
         aaChartView2.aa_refreshChartWholeContentWithChartModel(aaChartModel2)
     }

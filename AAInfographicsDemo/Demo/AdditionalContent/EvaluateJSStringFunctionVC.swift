@@ -44,7 +44,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
         setUpTheAAChartViewOne()
     }
     
-    func setUpTheAAChartViewOne() {
+   private func setUpTheAAChartViewOne() {
         let chartViewWidth  = view.frame.size.width
         let screenHeight = view.frame.size.height - 60
         
@@ -106,7 +106,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
                                 .fontSize(11)
                             )
                         )
-                        .toDic()!,
+                        ,
                     AASeriesElement()
                         .name("东京")
                         .dataLabels(AADataLabels()
@@ -117,7 +117,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
                             )
                         )
                         .data([198.66,330.81,151.95,160.12,222.56,229.05,128.53,250.91,224.47,473.99,126.85,260.50])
-                        .toDic()!,
+                        ,
                     AASeriesElement()
                         .name("总销量")
                         .type(.line)
@@ -129,7 +129,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
                             )
                         )
                         .data([281.55,398.35,214.02,219.55,289.57,296.14,164.18,322.69,306.08,552.84,205.97,332.79])
-                        .toDic()!,
+                        ,
                     ])
     
         }

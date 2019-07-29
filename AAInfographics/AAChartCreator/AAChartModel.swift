@@ -359,8 +359,12 @@ public class AAChartModel {
     }
     
     @discardableResult
-    public func series(_ prop: [[String: Any]]) -> AAChartModel {
-        series = prop
+    public func series(_ prop: [AASeriesElement]) -> AAChartModel {
+        var seriesElementsArr = [[String: Any]]()
+        prop.forEach { (aaSeriesElement) in
+           seriesElementsArr.append(aaSeriesElement.toDic()!)
+        }
+        series = seriesElementsArr
         return self
     }
     

@@ -96,7 +96,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 AASeriesElement()
                     .name("Tokyo")
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .toDic()!,
+                    ,
                 ])
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         
@@ -125,7 +125,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         ["C#"    , 888],
                         ["C++"   , 66],
                         ])
-                .toDic()!
+                
                 ]
         )
         
@@ -146,7 +146,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .name("2020")
                     .color(AAGradientColor.cottonCandy!)
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2,])
-                    .toDic()!
+                
                 ]
         )
         
@@ -171,7 +171,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .name("2020")
                     .data([1003.9, 1004.2, 1005.7, 1008.5, 1011.9, 1015.2,])
                     .color(AAGradientColor.sanguine!)
-                    .toDic()!
+                
                 ]
         )
         
@@ -273,14 +273,14 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .name("2020")
                     .color(AAGradientColor.sanguine!)
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .toDic()!,
+                    ,
                 AASeriesElement()
                     .name("2021")
                     .color(AAGradientColor.deepSea!)
                     .data([NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
                            NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
                            0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    .toDic()!,
+                    ,
                 
                 ]
         )
@@ -297,7 +297,6 @@ class DrawChartWithAAOptionsVC: UIViewController {
         return aaOptions
     }
 
-    
     private func adjustGroupPaddingBetweenColumns() -> NSMutableDictionary {
         let aaChartModel = AAChartModel()
             .chartType(.column)
@@ -312,7 +311,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .name("2020")
                     .color(AAGradientColor.coastalBreeze!)
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .toDic()!
+                
                 ]
         )
         
@@ -417,7 +416,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     .color(AAColor.white!)
                     .lineWidth(10)
-                    .toDic()!,
+                    ,
                 ])
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaPlotBandsArr = [
@@ -477,7 +476,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         ["value": 36, "color": "#04d69f"],
                         ["color": "#ffd066"]
                         ])
-                    .toDic()!,
+                    ,
                 ])
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         
@@ -565,7 +564,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                            2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05,
                            2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
                            5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48])
-                    .toDic()!,
+                    ,
                 ])
         
         let aaTooltip = AATooltip()
@@ -635,7 +634,7 @@ function () {
                         [12489120,   15],
                         [12489984, 13.6]
                         ])
-                    .toDic()!
+                
                 ]
         )
         
@@ -679,7 +678,7 @@ function () {
                     .name("Berlin Hot")
                     .color(AAGradientColor.mysticMauve!)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                    .toDic()!,
+                    ,
                 ]
             );
         
@@ -722,7 +721,7 @@ function () {
                     .name("Berlin Hot")
                     .color(AAGradientColor.deepSea!)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                    .toDic()!,
+                    ,
                 ]
         )
         
