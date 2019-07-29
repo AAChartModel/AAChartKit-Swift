@@ -195,9 +195,27 @@ public class AAXAxis: AASerializable {
 }
 
 public class AACrosshair: AASerializable {
-    private var dashStyle: AALineDashSyleType? //准星线样式
+    private var dashStyle: String? //准星线样式
     private var color: String?  //准星线颜色
     private var width: Float?  //准星线宽度
+    
+    @discardableResult
+    public func dashStyle(_ prop: AALineDashSyleType) -> AACrosshair {
+        dashStyle = prop.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func color(_ prop: String) -> AACrosshair {
+        color = prop
+        return self
+    }
+    
+    @discardableResult
+    public func width(_ prop: Float) -> AACrosshair {
+        width = prop
+        return self
+    }
     
     public init() {
         

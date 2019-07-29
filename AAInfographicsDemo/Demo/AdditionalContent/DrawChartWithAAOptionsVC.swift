@@ -568,7 +568,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .toDic()!,
                 ])
         
-        let myTooltip = AATooltip()
+        let aaTooltip = AATooltip()
             .useHTML(true)
             .formatter("""
 function () {
@@ -591,7 +591,7 @@ function () {
         
         
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = myTooltip.toDic()!
+        aaOptions["tooltip"] = aaTooltip.toDic()!
         return aaOptions
     }
     
@@ -640,13 +640,12 @@ function () {
         )
         
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaCrosshair = AACrosshair()
+            .dashStyle(.longDashDot)
+            .color(AAColor.red!)
+            .width(1)
         let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
-        let aaCrosshair = [
-            "width":1,
-            "color":AAColor.red!,
-            "dashStyle":AALineDashSyleType.longDashDot.rawValue,
-            ] as [String: Any]
-        aaXAxis["crosshair"] = aaCrosshair
+        aaXAxis["crosshair"] = aaCrosshair.toDic()!
         
         return aaOptions
     }
@@ -717,6 +716,7 @@ function () {
             .yAxisVisible(false)
             .categories(categories)
             .markerRadius(0)
+            .dataLabelEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Berlin Hot")
