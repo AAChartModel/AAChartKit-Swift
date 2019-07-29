@@ -54,6 +54,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
         case 3: return customAreaChartTooltipStyleWithFormatterFunction4()
         case 4: return customBoxplotTooltipContent()
         case 5: return customYAxisLabels()
+        case 6: return customStackedAndGroupedColumnChartTooltip()
         default:
             return NSMutableDictionary()
         }
@@ -322,7 +323,7 @@ function () {
             + "最小值: {point.low}<br/>"
         )
         
-        let myTooltip = AATooltip()
+        let aaTooltip = AATooltip()
             .useHTML(true)
             .headerFormat("<em>实验号码： {point.key}</em><br/>")
             .pointFormat(pointFormatStr)
@@ -335,11 +336,11 @@ function () {
         )
         
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = myTooltip.toDic()!
+        aaOptions["tooltip"] = aaTooltip.toDic()!
         return aaOptions
     }
     
-    private func customYAxisLabels() -> NSMutableDictionary{
+    private func customYAxisLabels() -> NSMutableDictionary {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
             .title("")//图表主标题
@@ -382,5 +383,64 @@ function () {
         return aaOptions
     }
     
+    private func customStackedAndGroupedColumnChartTooltip() -> NSMutableDictionary {
+        let aaChartModel = AAChartModel()
+            .title("Total fruit consumtion, grouped by gender")
+            .subtitle("stacked and grouped")
+            .yAxisTitle("Number of fruits")
+            .chartType(.column)
+            .legendEnabled(false)//隐藏图例(底部可点按的小圆点)
+            .stacking(.normal)
+            .categories(["Apples", "Oranges", "Pears","Grapes","Bananas",])
+            .dataLabelEnabled(true)
+            .series([
+                AASeriesElement()
+                    .name("John")
+                    .data([5,3,4,7,2,])
+                    .stack("male")
+                    .toDic()!
+                ,
+                AASeriesElement()
+                    .name("Joe")
+                    .data([3,4,4,2,5,])
+                    .stack("male")
+                    .toDic()!
+                ,
+                AASeriesElement()
+                    .name("Jane")
+                    .data([2,5,6,2,1,])
+                    .stack("female")
+                    .toDic()!
+                ,
+                AASeriesElement()
+                    .name("Janet")
+                    .data([3,0,4, 4,3,])
+                    .stack("female")
+                    .toDic()!
+                ,
+                ]
+        )
+        
+        let aaTooltip = AATooltip()
+            .shared(false)
+            .formatter(#"""
+function () {
+                return '<b>'
+                + this.x
+                + '</b><br/>'
+                + this.series.name
+                + ': '
+                + this.y
+                + '<br/>'
+                + 'Total: '
+                + this.point.stackTotal;
+     }
+"""#)
+        /*Custom Tooltip Style --- 自定义图表浮动提示框样式及内容*/
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions["tooltip"] = aaTooltip.toDic()!
+        
+        return aaOptions;
+    }
 
 }

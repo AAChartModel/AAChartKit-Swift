@@ -53,6 +53,7 @@
     private var innerSize: String?          //内部圆环半径大小占比(内部圆环半径/扇形图半径)
     private var shadow: Any?
     private var zones: [Any]?
+    private var stack: String?
 
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
@@ -177,6 +178,12 @@
     @discardableResult
     public func zones(_ prop: [Any]) -> AASeriesElement {
         zones = prop
+        return self
+    }
+    
+    @discardableResult
+    public func stack(_ prop: String) -> AASeriesElement {
+        stack = prop
         return self
     }
 

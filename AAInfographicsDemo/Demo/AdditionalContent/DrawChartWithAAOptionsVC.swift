@@ -61,6 +61,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 10: return configureAAPlotLinesForChart()
         case 11: return customAATooltipWithJSFuntion()
         case 12: return customXAxisCrosshairStyle()
+        case 13: return configureXAxisLabelsFontColorWithHTMLString()
+        case 14: return configureXAxisLabelsFontColorAndFontSizeWithHTMLString()
         default:
             return NSMutableDictionary()
         }
@@ -155,7 +157,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         //默认是：false.
         let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
         aaYAxis["opposite"] = true
-        return aaOptions;
+        return aaOptions
     }
     
     private func adjustYAxisMinValueForChart() -> NSMutableDictionary  {
@@ -176,7 +178,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
         aaYAxis["min"] = 1000
-        return aaOptions;
+        return aaOptions
     }
     
     private func configureTheMirrorColumnChart() -> NSMutableDictionary  {
@@ -251,7 +253,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 "color":gradientColorDic2
             ],
         ]
-        return aaOptions;
+        return aaOptions
     }
     
     private func adjustTheXAxisLabels() -> NSMutableDictionary {
@@ -292,7 +294,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         
         aaXAxis["labels"] = aaXAxisLabels
         
-        return aaOptions;
+        return aaOptions
     }
 
     
@@ -328,7 +330,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         aaColumn["groupPadding"] = 0.05 //Padding between each column or bar, in x axis units. default：0.1.
         aaColumn["pointPadding"] = 0 //Padding between each value groups, in x axis units. default：0.2.
         
-        return aaOptions;
+        return aaOptions
     }
     
     private func setUpOptions1() -> NSMutableDictionary {
@@ -646,10 +648,92 @@ function () {
             ] as [String: Any]
         aaXAxis["crosshair"] = aaCrosshair
         
-        return aaOptions;
+        return aaOptions
     }
 
+    private func configureXAxisLabelsFontColorWithHTMLString() -> NSMutableDictionary {
+        let categories = [
+            "<font color=\\\"#CC0066\\\">孤岛危机<\\/font>",
+            "<font color=\\\"#CC0033\\\">使命召唤<\\/font>",
+            "<font color=\\\"#FF0066\\\">荣誉勋章<\\/font>",
+            "<font color=\\\"##66FF99\\\">狙击精英<\\/font>",
+            "<font color=\\\"#00FF00\\\">神秘海域<\\/font>",
+            "<font color=\\\"#00CC00\\\">美国末日<\\/font>",
+            "<font color=\\\"#666FF\\\">巫师狂猎<\\/font>",
+            "<font color=\\\"#000CC\\\">死亡搁浅<\\/font>",
+            "<font color=\\\"#9933CC\\\">地狱边境<\\/font>",
+            "<font color=\\\"##FFCC99\\\">忍者之印<\\/font>",
+            "<font color=\\\"#FFCC00\\\">合金装备<\\/font>",
+            "<font color=\\\"#CC99090\\\">全战三国<\\/font>",
+        ]
+        
+           let aaChartModel = AAChartModel()
+            .chartType(.areaspline)
+            .title("")
+            .subtitle("")
+            .stacking(.normal)
+            .categories(categories)
+            .dataLabelEnabled(false)
+            .markerRadius(0)
+            .series([
+                AASeriesElement()
+                    .name("Berlin Hot")
+                    .color(AAGradientColor.mysticMauve!)
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+                    .toDic()!,
+                ]
+            );
+        
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
+        var aaXAxisLabels =  aaXAxis["labels"] as! [String: Any]
+        aaXAxisLabels["useHTML"] = true
+        aaXAxis["labels"] = aaXAxisLabels
+        
+        return aaOptions
+    }
     
+    private func configureXAxisLabelsFontColorAndFontSizeWithHTMLString() -> NSMutableDictionary {
+        let categories = [
+        "<span style=\\\"color:#CC0066;font-weight:bold;font-size:10px\\\">使命召唤</span>",
+        "<span style=\\\"color:#CC0033;font-weight:bold;font-size:11px\\\">荣誉勋章</span>",
+        "<span style=\\\"color:#FF0066;font-weight:bold;font-size:12px\\\">狙击精英</span>",
+        "<span style=\\\"color:#66FF99;font-weight:bold;font-size:13px\\\">神秘海域</span>",
+        "<span style=\\\"color:#00FF00;font-weight:bold;font-size:14px\\\">美国末日</span>",
+        "<span style=\\\"color:#00CC00;font-weight:bold;font-size:15px\\\">巫师狂猎</span>",
+        "<span style=\\\"color:#666FF;font-weight:bold;font-size:15px\\\">孤岛危机</span>",
+        "<span style=\\\"color:#000CC;font-weight:bold;font-size:14px\\\">地狱边境</span>",
+        "<span style=\\\"color:#9933CC;font-weight:bold;font-size:13px\\\">忍者之印</span>",
+        "<span style=\\\"color:#FFCC99;font-weight:bold;font-size:12px\\\">合金装备</span>",
+        "<span style=\\\"color:#FFCC00;font-weight:bold;font-size:11px\\\">全战三国</span>",
+        "<span style=\\\"color:#CC99090;font-weight:bold;font-size:10px\\\">死亡搁浅</span>",
+        ]
+
+        let aaChartModel = AAChartModel()
+            .chartType(.areaspline)
+            .title("")
+            .subtitle("")
+            .stacking(.normal)
+            .yAxisVisible(false)
+            .categories(categories)
+            .markerRadius(0)
+            .series([
+                AASeriesElement()
+                    .name("Berlin Hot")
+                    .color(AAGradientColor.deepSea!)
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+                    .toDic()!,
+                ]
+        )
+        
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
+        var aaXAxisLabels =  aaXAxis["labels"] as! [String: Any]
+        aaXAxisLabels["useHTML"] = true
+        aaXAxis["labels"] = aaXAxisLabels
+        
+        return aaOptions
+    }
 }
 
 
