@@ -115,7 +115,7 @@ public class AAItemStyle: AASerializable {
     private var cursor: String?
     private var pointer: String?
     private var fontSize: String?
-    private var fontWeight: String?
+    private var fontWeight: AAChartFontWeightType?
     
     @discardableResult
     public func color(_ prop: String) -> AAItemStyle {
@@ -142,7 +142,7 @@ public class AAItemStyle: AASerializable {
     }
     
     @discardableResult
-    public func fontWeight(_ prop: String) -> AAItemStyle {
+    public func fontWeight(_ prop: AAChartFontWeightType) -> AAItemStyle {
         fontWeight = prop
         return self
     }

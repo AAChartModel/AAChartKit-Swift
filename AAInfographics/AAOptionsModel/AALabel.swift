@@ -38,7 +38,7 @@ public class AALabel: AASerializable {
     private var textAlign: String?//文字对齐
     private var useHTML: Bool?//HTML渲染
     private var verticalAlign: String?//竖直对齐
-    private var style: AAStyle?//轴标签的 CSS 样式
+    private var style: [String: AnyObject]?//轴标签的 CSS 样式
     private var x: Float?//相对于坐标轴刻度线的水平偏移。 默认是：0.
     private var y: Float?//相对于坐标轴刻度线的垂直平偏移。 默认是：null.
     
@@ -80,7 +80,7 @@ public class AALabel: AASerializable {
     
     @discardableResult
     public func style(_ prop: AAStyle) -> AALabel {
-        style = prop
+        style = prop.toDic()!
         return self
     }
     

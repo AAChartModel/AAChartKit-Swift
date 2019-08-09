@@ -40,7 +40,7 @@ public class AAPlotBandsElement: AASerializable {
     private var borderWidth: Float?
     private var className: String?
     private var label: AALabel?
-    private var index: Int?
+    private var zIndex: Int?
     
     @discardableResult
     public func from(_ prop: Float) -> AAPlotBandsElement {
@@ -85,8 +85,8 @@ public class AAPlotBandsElement: AASerializable {
     }
     
     @discardableResult
-    public func index(_ prop: Int) -> AAPlotBandsElement {
-        index = prop
+    public func zIndex(_ prop: Int) -> AAPlotBandsElement {
+        zIndex = prop
         return self
     }
     

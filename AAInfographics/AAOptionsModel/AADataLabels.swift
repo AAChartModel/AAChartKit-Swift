@@ -154,7 +154,7 @@ public class AAStyle: AASerializable {
     private var color: String?
     private var fontSize: String?
     private var fontWeight: String?
-    private var textOutLine: String?
+    private var textOutline: String?
     
     @discardableResult
     public func color(_ prop: String) -> AAStyle {
@@ -175,8 +175,8 @@ public class AAStyle: AASerializable {
     }
     
     @discardableResult
-    public func textOutLine(_ prop: String) -> AAStyle {
-        textOutLine = prop
+    public func textOutline(_ prop: String) -> AAStyle {
+        textOutline = prop
         return self
     }
     

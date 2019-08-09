@@ -147,6 +147,8 @@ class MainVC: UIViewController {
                 "customXAxisCrosshairStyle",
                 "configureXAxisLabelsFontColorWithHTMLString",
                 "configureXAxisLabelsFontColorAndFontSizeWithHTMLString",
+                "configure_DataLabels_XAXis_YAxis_Legend_Style",
+                "configureXAxisPlotBand",
             ],
             [
                 "简单字符串拼接",

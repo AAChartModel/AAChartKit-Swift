@@ -63,6 +63,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 12: return customXAxisCrosshairStyle()
         case 13: return configureXAxisLabelsFontColorWithHTMLString()
         case 14: return configureXAxisLabelsFontColorAndFontSizeWithHTMLString()
+        case 15: return configure_DataLabels_XAXis_YAxis_Legend_Style()
+        case 16: return configureXAxisPlotBand()
         default:
             return NSMutableDictionary()
         }
@@ -85,7 +87,6 @@ class DrawChartWithAAOptionsVC: UIViewController {
     private func setUpOptions0() -> NSMutableDictionary {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
-            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
             .axisColor("#ffffff")
             .title("")//图形标题
             .subtitle("")//图形副标题
@@ -95,7 +96,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .series([
                 AASeriesElement()
                     .name("Tokyo")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+                    .fillColor(AAGradientColor.berrySmoothie!)
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     ,
                 ])
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
@@ -731,6 +733,161 @@ function () {
         aaXAxisLabels["useHTML"] = true
         aaXAxis["labels"] = aaXAxisLabels
         
+        return aaOptions
+    }
+    
+    private func configure_DataLabels_XAXis_YAxis_Legend_Style() ->NSMutableDictionary {
+        let backgroundColorGradientColor = AAGradientColor.gradientColorDictionary(
+            direction: .toTop,
+            startColor: "#4F00BC",
+            endColor: "#29ABE2"//颜色字符串设置支持十六进制类型和 rgba 类型
+        )
+        
+        let fillColorGradientColor = AAGradientColor.gradientColorDictionary(
+            direction: .toTop,
+            startColor: "rgba(256,256,256,0.3)",
+            endColor: "rgba(256,256,256,1.0)"//颜色字符串设置支持十六进制类型和 rgba 类型
+        )
+        
+        let aaChartModel = AAChartModel()
+            .chartType(.areaspline)
+            .title("")
+            .subtitle("")
+            .backgroundColor(backgroundColorGradientColor)
+            .yAxisVisible(true)
+            .yAxisTitle("")
+            .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
+            .markerRadius(0)
+            .axisColor(AAColor.white)
+            .series([
+                AASeriesElement()
+                    .name("Berlin Hot")
+                    .color(AAColor.white!)
+                    .lineWidth(7)
+                    .fillColor(fillColorGradientColor)
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
+                ])
+        
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        
+        let aaDataLabels = AADataLabels()
+            .enabled(true)
+            .style(AAStyle()
+                .color(AAColor.white!)
+                .fontSize(14)
+                .fontWeight(.thin)
+                .textOutline("0px 0px contrast")//文字轮廓描边
+        )
+        
+        let aaCrosshair = AACrosshair()
+            .dashStyle(.longDashDot)
+            .color(AAColor.white!)
+            .width(1)
+        
+        let aaLabels = AALabels()
+            .style(AAStyle()
+                .fontSize(10)
+                .fontWeight(.bold)
+                .color(AAColor.white)//轴文字颜色
+        )
+        
+        let aaYAxis = AAYAxis()
+            .opposite(true)
+            .tickWidth(2)
+            .lineWidth(1.5)//Y轴轴线颜色
+            .lineColor(AAColor.white)//Y轴轴线颜色
+            .gridLineWidth(0)//Y轴网格线宽度
+            .crosshair(aaCrosshair)
+            .labels(aaLabels)
+        
+        let aaXAxis = AAXAxis()
+            .tickWidth(2)//X轴刻度线宽度
+            .lineWidth(1.5)//X轴轴线宽度
+            .lineColor(AAColor.white)//X轴轴线颜色
+            .crosshair(aaCrosshair)
+            .labels(aaLabels)
+        
+        //设定图例项的CSS样式。只支持有关文本的CSS样式设定。
+        /*默认是：{
+         "color": "#333333",
+         "cursor": "pointer",
+         "fontSize": "12px",
+         "fontWeight": "bold"
+         }
+         */
+        let aaLegend = AALegend()
+            .itemStyle(AAItemStyle()
+                .color(AAColor.white)//字体颜色
+                .fontSize("13px")//字体大小
+                .fontWeight(.thin)//字体为细体字
+        )
+        
+        let plotOptions = aaOptions["plotOptions"] as! NSMutableDictionary
+        let someTypeChart = plotOptions[AAChartType.areaspline.rawValue] as! NSMutableDictionary
+        someTypeChart.setValue(aaDataLabels.toDic()!, forKey: "dataLabels")
+        let aaDataLabelsDic = aaDataLabels.toDic()!
+        someTypeChart["dataLabels"] = aaDataLabelsDic
+        
+        let XAxis = aaOptions["xAxis"] as! NSMutableDictionary
+        XAxis.setValuesForKeys(aaXAxis.toDic()!)
+        
+        let YAxis = aaOptions["yAxis"] as! NSMutableDictionary
+        YAxis.setValuesForKeys(aaYAxis.toDic()!)
+        
+        let legend = aaOptions["legend"] as! NSMutableDictionary
+        legend.setValuesForKeys(aaLegend.toDic()!)
+        
+        return aaOptions;
+    }
+    
+    private func configureXAxisPlotBand() -> NSMutableDictionary {
+        let aaChartModel = AAChartModel()
+            .chartType(.areaspline)
+            .title("")
+            .subtitle("")
+            .categories(["一月", "二月", "三月", "四月", "五月", "六月",
+                         "七月", "八月", "九月", "十月", "十一月", "十二月"])
+            .yAxisTitle("")
+            .yAxisGridLineWidth(0)
+            .markerRadius(8)
+            .symbolStyle(.innerBlank)
+            .series([
+                AASeriesElement()
+                    .name("New York Hot")
+                    .lineWidth(5.0)
+                    .color("rgba(220,20,60,1)")//猩红色, alpha 透明度 1
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
+                AASeriesElement()
+                    .type(.column)
+                    .name("Berlin Hot")
+                    .color("#25547c")
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
+                ])
+        
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaPlotBandsArr = [
+            AAPlotBandsElement()
+                .from(-0.25)//值域颜色带X轴起始值
+                .to(4.75)//值域颜色带X轴结束值
+                .color("#ef476f66")//值域颜色带填充色
+                .zIndex(0)//层叠,标示线在图表中显示的层叠级别，值越大，显示越向前
+                .toDic()!,
+            AAPlotBandsElement()
+                .from(4.75)
+                .to(8.25)
+                .color("#ffd06666")
+                .zIndex(0)
+                .toDic()!,
+            AAPlotBandsElement()
+                .from(8.25)
+                .to(11.25)
+                .color("#04d69f66")
+                .zIndex(0)
+                .toDic()!,
+        ]
+        
+        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
+        aaXAxis["plotBands"] = aaPlotBandsArr
         return aaOptions
     }
 }

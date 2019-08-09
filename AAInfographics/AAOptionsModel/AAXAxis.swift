@@ -46,7 +46,7 @@ public class AAXAxis: AASerializable {
     private var gridLineColor: String? //x轴网格线颜色
     private var gridLineDashStyle: String? //x轴网格线样式
     private var offset: Float? //x轴垂直偏移
-    private var labels: Any? //用于设置 x 轴文字相关的
+    private var labels: [String: AnyObject]? //用于设置 x 轴文字相关的
     private var visible: Bool? //用于设置 x 轴以及 x 轴文字是否显示
     private var startOnTick: Bool? //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. 默认是：false.
     private var tickInterval: Int? //x轴刻度点间隔数(设置每隔几个点显示一个 X轴的内容:
@@ -135,8 +135,8 @@ public class AAXAxis: AASerializable {
     }
     
     @discardableResult
-    public func labels(_ prop: Any) -> AAXAxis {
-        labels = prop
+    public func labels(_ prop: AALabels) -> AAXAxis {
+        labels = prop.toDic()!
         return self
     }
     

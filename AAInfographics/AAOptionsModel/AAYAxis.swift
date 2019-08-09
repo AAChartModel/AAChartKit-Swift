@@ -55,7 +55,7 @@ public class AAYAxis: AASerializable {
     private var visible: Bool?  //y轴是否允许显示
     private var opposite: Bool? //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。 默认是：false.
     private var tickInterval: Int?
-    private var crosshair: AALineDashSyleType?  //准星线样式设置
+    private var crosshair: [String: AnyObject]?  //准星线样式设置
     private var stackLabels: [String: Any]?
     private var tickWidth: Float? //坐标轴刻度线的宽度，设置为 0 时则不显示刻度线
     private var tickLength: Float? //坐标轴刻度线的长度。 默认是：10.
@@ -122,8 +122,8 @@ public class AAYAxis: AASerializable {
     }
     
     @discardableResult
-    public func labels(_ prop: [String:Any]) -> AAYAxis {
-        labels = prop
+    public func labels(_ prop: AALabels) -> AAYAxis {
+        labels = prop.toDic()!
         return self
     }
     
@@ -188,8 +188,8 @@ public class AAYAxis: AASerializable {
     }
     
     @discardableResult
-    public func crosshair(_ prop: AALineDashSyleType) -> AAYAxis {
-        crosshair = prop
+    public func crosshair(_ prop: AACrosshair) -> AAYAxis {
+        crosshair = prop.toDic()!
         return self
     }
     
