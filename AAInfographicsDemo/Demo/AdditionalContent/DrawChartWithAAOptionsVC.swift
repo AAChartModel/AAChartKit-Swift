@@ -90,7 +90,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .axisColor("#ffffff")
             .title("")//图形标题
             .subtitle("")//图形副标题
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .tooltipValueSuffix("℃")//浮动提示框单位后缀
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .series([
@@ -110,7 +110,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .chartType(.pie)
             .title("编程语言热度")
             .subtitle("虚拟数据")
-            .dataLabelEnabled(true)//是否直接显示扇形图数据
+            .dataLabelsEnabled(true)//是否直接显示扇形图数据
             .yAxisTitle("摄氏度")
             .series([
                 AASeriesElement()
@@ -268,7 +268,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                          "July", "August", "Septembel", "October", "November", "December",
                          "January", "February", "March", "April", "May", "June",
                          "July", "August", "Septembel", "October", "November", "December",])
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .legendEnabled(false)
             .series([
                 AASeriesElement()
@@ -306,7 +306,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .subtitle("")
             .categories(["January", "February", "March", "April", "May", "June",
                          "July", "August", "Septembel", "October", "November", "December"])
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .legendEnabled(false)
             .series([
                 AASeriesElement()
@@ -408,7 +408,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         let aaChartModel = AAChartModel()
             .title("")
             .chartType(.spline)//图形类型
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .markerRadius(0)
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .legendEnabled(false)
@@ -463,7 +463,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         let aaChartModel = AAChartModel()
             .title("")
             .chartType(.areaspline)//图形类型
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .legendEnabled(false)
             .series([
@@ -542,7 +542,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .title("近三个月金价起伏周期图")//图表主标题
             .subtitle("金价(元/克)")//图表副标题
             .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .categories([
                 "10-01","10-02","10-03","10-04","10-05","10-06","10-07","10-08","10-09","10-10","10-11",
                 "10-12","10-13","10-14","10-15","10-16","10-17","10-18","10-19","10-20","10-21","10-22",
@@ -673,7 +673,7 @@ function () {
             .subtitle("")
             .stacking(.normal)
             .categories(categories)
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .markerRadius(0)
             .series([
                 AASeriesElement()
@@ -717,7 +717,7 @@ function () {
             .yAxisVisible(false)
             .categories(categories)
             .markerRadius(0)
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Berlin Hot")

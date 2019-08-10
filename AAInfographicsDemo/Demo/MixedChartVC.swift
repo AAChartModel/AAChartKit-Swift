@@ -118,7 +118,7 @@ class MixedChartVC: UIViewController {
             .animationType(.bounce)
             .title("Colorful Chart")
             .subtitle("use AAColor to get color string")
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .categories(colorsNameArr)
             .colorsTheme(colorsArr as [Any])
             .stacking(.percent)
@@ -233,7 +233,7 @@ class MixedChartVC: UIViewController {
             .title("")//图形标题
             .subtitle("")//图形副标题
             .chartType(.line)
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .symbolStyle(.borderBlank)
             .series([
                 AASeriesElement()
@@ -329,7 +329,7 @@ class MixedChartVC: UIViewController {
     private func configureDashStyleTypesMixedChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.spline)//图形类型
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .stacking(.normal)
             .markerRadius(0)
             .series([
@@ -367,7 +367,7 @@ class MixedChartVC: UIViewController {
     
     private func configureNegativeColorMixedChart() -> AAChartModel {
         return AAChartModel()
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .series([
                 AASeriesElement()
                     .name("Column")
@@ -384,7 +384,7 @@ class MixedChartVC: UIViewController {
     
     private func configureScatterMixedLineChart() -> AAChartModel {
         return AAChartModel()
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .chartType(.scatter)
             .symbolStyle(.innerBlank)
             .symbol(.circle)
@@ -805,7 +805,7 @@ class MixedChartVC: UIViewController {
             .colorsTheme([AAGradientColor.oceanBlue!,
                           AAGradientColor.sanguine!,
                           AAGradientColor.purpleLake!])
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Anna")
@@ -844,7 +844,7 @@ class MixedChartVC: UIViewController {
             .title("Line Chart With Shadow")
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .legendEnabled(false)
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .symbolStyle(.borderBlank)
             .series([
                 AASeriesElement()

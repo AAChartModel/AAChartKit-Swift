@@ -83,7 +83,7 @@ class CommonChartVC: UIViewController {
             .axisColor("#ffffff")
             .title("")//图形标题
             .subtitle("")//图形副标题
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .tooltipValueSuffix("℃")//浮动提示框单位后缀
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .backgroundColor("#22324c")//若要使图表背景色为透明色,可将 backgroundColor 设置为 "rgba(0,0,0,0)" 或 "rgba(0,0,0,0)". 同时确保 aaChartView?.isClearBackgroundColor = true
@@ -360,7 +360,7 @@ class CommonChartVC: UIViewController {
         case 1: aaChartModel?.yAxisReversed(switchView.isOn)
         case 2: aaChartModel?.inverted(switchView.isOn)
         case 3: aaChartModel?.polar(switchView.isOn)
-        case 4: aaChartModel?.dataLabelEnabled(switchView.isOn)
+        case 4: aaChartModel?.dataLabelsEnabled(switchView.isOn)
         case 5: aaChartModel?.markerRadius(switchView.isOn ? 0 : 5)//折线连接点半径长度,为0时相当于没有折线连接点
         default:
             break

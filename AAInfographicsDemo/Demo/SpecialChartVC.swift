@@ -143,7 +143,7 @@ class SpecialChartVC: UIViewController {
             .stacking(.percent)
             .titleColor("#ffffff")
             .axisColor("#ffffff")
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
                     .name("2018")
@@ -158,7 +158,7 @@ class SpecialChartVC: UIViewController {
         return AAChartModel()
             .chartType(.column)
             .polar(true)
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .categories(["January", "February", "March", "April", "May", "June",
                          "July", "August", "September", "October", "November", "December"])
             .marginLeft(50)
@@ -179,7 +179,7 @@ class SpecialChartVC: UIViewController {
             .backgroundColor("#ffffff")
             .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
             .subtitle("virtual data")
-            .dataLabelEnabled(true)//是否直接显示扇形图数据
+            .dataLabelsEnabled(true)//是否直接显示扇形图数据
             .yAxisTitle("℃")
             .series([
                 AASeriesElement()
@@ -270,7 +270,7 @@ class SpecialChartVC: UIViewController {
             .symbolStyle(.innerBlank)
             .markerRadius(9)
             .backgroundColor("#22324c")
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Female")
@@ -396,7 +396,7 @@ class SpecialChartVC: UIViewController {
             .title("Twilight Hall day temperature fluctuation map")
             .subtitle("real-time monitoring data")
             .yAxisTitle("℃")
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
                     .name("2020")
@@ -843,7 +843,7 @@ class SpecialChartVC: UIViewController {
             .yAxisTitle("℃")
             .categories(["January", "February", "March", "April", "May", "June",
                          "July", "August", "September", "October", "November", "December"])
-            .dataLabelEnabled(true)
+            .dataLabelsEnabled(true)
             .inverted(true)//x 轴是否垂直翻转
             .series([
                 AASeriesElement()
@@ -872,7 +872,7 @@ class SpecialChartVC: UIViewController {
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .title("STEP LINE CHART")//图形标题
             .subtitle("2020/08/08")//图形副标题
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .symbolStyle(.borderBlank)//折线连接点样式
             .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
             .series([
@@ -900,7 +900,7 @@ class SpecialChartVC: UIViewController {
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .title("STEP AREA CHART")//图形标题
             .subtitle("2049/08/08")//图形副标题
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .symbolStyle(.innerBlank)//折线连接点样式
             .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
             .series([

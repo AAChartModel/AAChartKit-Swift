@@ -68,7 +68,7 @@ class ChartSeriesHideOrShowVC: UIViewController {
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .title("CHART SERIES HIDE OR SHOW")//图形标题
             .subtitle("2020/08/08")//图形副标题
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .stacking(.normal)
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         

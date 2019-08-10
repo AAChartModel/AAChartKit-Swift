@@ -80,7 +80,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
             .title("近三个月金价起伏周期图")//图表主标题
             .subtitle("金价(元/克)")//图表副标题
             .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .categories([
                 "10-01","10-02","10-03","10-04","10-05","10-06","10-07","10-08","10-09","10-10","10-11",
                 "10-12","10-13","10-14","10-15","10-16","10-17","10-18","10-19","10-20","10-21","10-22",
@@ -141,7 +141,7 @@ function () {
             .subtitle("数据来源：www.无任何可靠依据.com")//图表副标题
             .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .colorsTheme(["#1e90ff","#ef476f",])
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .stacking(.normal)
             .series([
                 AASeriesElement()
@@ -183,7 +183,7 @@ function () {
             .title("")//图表主标题
             .subtitle("")//图表副标题
             .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .categories(["临床一期","临床二期","临床三期"])
             .series([
                 AASeriesElement()
@@ -236,7 +236,7 @@ function () {
             .title("")//图表主标题
             .subtitle("")//图表副标题
             .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
             .stacking(.normal)
             .markerRadius(0)
@@ -346,7 +346,7 @@ function () {
             .title("")//图表主标题
             .subtitle("")//图表副标题
             .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
-            .dataLabelEnabled(false)
+            .dataLabelsEnabled(false)
             .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
             .stacking(.normal)
             .markerRadius(8)
@@ -392,7 +392,7 @@ function () {
             .legendEnabled(false)//隐藏图例(底部可点按的小圆点)
             .stacking(.normal)
             .categories(["Apples", "Oranges", "Pears","Grapes","Bananas",])
-            .dataLabelEnabled(true)
+            .dataLabelsEnabled(true)
             .series([
                 AASeriesElement()
                     .name("John")

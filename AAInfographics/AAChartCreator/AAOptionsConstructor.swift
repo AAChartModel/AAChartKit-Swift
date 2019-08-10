@@ -144,7 +144,7 @@ public class AAOptionsConstructor: NSObject {
     private static  func configureAAPlotOptionsDataLabels(aaPlotOptions: NSMutableDictionary,
                                                           aaChartModel: AAChartModel) -> NSMutableDictionary {
         let chartType = aaChartModel.chartType
-        let aaDataLabels = ["enabled":aaChartModel.dataLabelEnabled!]
+        let aaDataLabels = ["enabled":aaChartModel.dataLabelsEnabled!]
         let aaSomeTypeChart = NSMutableDictionary()
 
         if chartType == AAChartType.column ||
@@ -160,7 +160,7 @@ public class AAOptionsConstructor: NSObject {
             aaSomeTypeChart.setValue(true, forKey: "allowPointSelect")
             aaSomeTypeChart.setValue("pointer", forKey: "cursor")
             aaSomeTypeChart.setValue(aaChartModel.legendEnabled, forKey: "showInLegend")
-            aaSomeTypeChart.setValue(["enabled":aaChartModel.dataLabelEnabled!,
+            aaSomeTypeChart.setValue(["enabled":aaChartModel.dataLabelsEnabled!,
                             "format":"{point.name}"] , forKey: "dataLabels")
         } else {
             aaSomeTypeChart.setValue(aaDataLabels , forKey: "dataLabels")

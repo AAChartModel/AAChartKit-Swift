@@ -42,7 +42,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .title("")//图形标题
             .subtitle("")//图形副标题
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .legendEnabled(false)
             .colorsTheme(colorsArr!)
             .touchEventEnabled(true)
@@ -85,7 +85,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             .animationType(.easeOutQuart)//图形渲染动画类型为"bounce"
             .title("")//图形标题
             .subtitle("")//图形副标题
-            .dataLabelEnabled(false)//是否显示数字
+            .dataLabelsEnabled(false)//是否显示数字
             .markerRadius(4)//折线连接点半径长度,为0时相当于没有折线连接点
             .symbolStyle(.innerBlank)
             .legendEnabled(false)

@@ -156,7 +156,7 @@ public class AAChartModel {
     public var marginLeft: Float?           //图表左边距
     public var marginRight: Float?          //图表右边距
     public var marginBottom: Float?         //图表底部边距
-    public var dataLabelEnabled: Bool?      //是否显示数据
+    public var dataLabelsEnabled: Bool?      //是否显示数据
     public var xAxisLabelsEnabled: Bool?    //x 轴是否显示数据
     public var categories: [String]?        //x 轴是否显示数据
     public var xAxisGridLineWidth: Float?   //x 轴网格线的宽度
@@ -299,8 +299,8 @@ public class AAChartModel {
     }
     
     @discardableResult
-    public func dataLabelEnabled(_ prop: Bool) -> AAChartModel {
-        dataLabelEnabled = prop
+    public func dataLabelsEnabled(_ prop: Bool) -> AAChartModel {
+        dataLabelsEnabled = prop
         return self
     }
     
@@ -446,7 +446,7 @@ public class AAChartModel {
         stacking            = AAChartStackingType.none
         zoomType            = AAChartZoomType.none//默认禁用手势缩放
         colorsTheme         = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
-        dataLabelEnabled    = true
+        dataLabelsEnabled    = true
         tooltipEnabled      = true
         tooltipCrosshairs   = true
         xAxisLabelsEnabled  = true
