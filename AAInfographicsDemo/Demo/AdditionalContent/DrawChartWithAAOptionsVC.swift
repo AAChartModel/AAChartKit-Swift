@@ -824,7 +824,6 @@ function () {
         
         let plotOptions = aaOptions["plotOptions"] as! NSMutableDictionary
         let someTypeChart = plotOptions[AAChartType.areaspline.rawValue] as! NSMutableDictionary
-        someTypeChart.setValue(aaDataLabels.toDic()!, forKey: "dataLabels")
         let aaDataLabelsDic = aaDataLabels.toDic()!
         someTypeChart["dataLabels"] = aaDataLabelsDic
         
