@@ -764,7 +764,7 @@ class MixedChartVC: UIViewController {
                     .marker(
                         AAMarker()
                             .radius(5.0)
-                            .symbol(.circle)
+                            .symbol("circle")
                             .fillColor("#1E90FF")
                             .lineWidth(2.0)
                             .lineColor(AAColor.red!)

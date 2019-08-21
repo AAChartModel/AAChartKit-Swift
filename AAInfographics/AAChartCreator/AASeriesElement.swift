@@ -236,8 +236,8 @@ public class AAMarker: AASerializable {
     }
     
     @discardableResult
-    public func symbol(_ prop: AAChartSymbolType) -> AAMarker {
-        symbol = prop.rawValue
+    public func symbol(_ prop: String) -> AAMarker {
+        symbol = prop
         return self
     }
     

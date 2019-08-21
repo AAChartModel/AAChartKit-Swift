@@ -72,6 +72,33 @@ class MainVC: UIViewController {
                 "Pyramid Chart---金字塔图",
                 "Funnel Chart---漏斗图",
             ],
+            /*一些仅仅通过AAChartModel自定义风格样式图表*/
+            ["Colorful Column Chart---多彩条形图",
+             "Colorful Gradient Color Chart---多彩颜色渐变条形图",
+             "Discontinuous Data Chart---数值不连续的图表",
+             "Mixed Line Chart---虚实线混合折线图",
+             "Colorful Column Chart---多彩柱形图",
+             "Gradient Color Bar Chart---颜色渐变条形图",
+             "With Dividing Line---带有阈值分割线区域图",
+             "Area Chart with minus--带有负数的区域填充图",
+             "Step Line Chart--直方折线图",
+             "Step Area Chart--直方折线填充图",
+             "Nightingale Rose Chart---南丁格尔玫瑰图",
+             "Specific Data Customize Datalabel",
+             "Chart With Shadow Style---带有阴影效果の图表",
+             "Colorful gradient Areaspline Chart---多层次渐变区域填充图",
+             "Colorful gradient Spline Chart---多层次渐变曲线图",
+             "Gradient Color Areaspline Chart---半透明渐变效果区域填充图",
+             "Special Style Marker Of Single Data Element Chart",
+             "Special Style Column Of Single Data Element Chart",
+             "configure Area Chart Threshold---自定义阈值",
+             "custom Scatter Chart Marker Symbol Content---自定义散点图的标志点内容",
+             "custom Line Chart Marker Symbol Content---自定义折线图的标志点内容",
+             "Triangle Radar Chart---三角形雷达图",
+             "Quadrangle Radar Chart---四角形雷达图",
+             "Pentagon Radar Chart---五角形雷达图",
+             "Hexagon Radar Chart----六角形雷达图"
+            ],
             /*Mixed Chart---混合图*/
             [
                 "Colorful Bar Chart---多彩条形图",
@@ -189,6 +216,8 @@ class MainVC: UIViewController {
                 AAChartType.pyramid,
                 AAChartType.funnel,
                 ],
+            [//Empty Array,just for holding place
+            ],
             [
                 "manyColorMixedBar",
                 "arearangeMixedLine",
@@ -317,6 +346,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         let sectionTitleArr = [
             "Basic Type Chart --- 基础类型图表",
             "Special Type Chart --- 特殊类型图表",
+            "Some Custom Style---一些自定义风格样式图表",
             "Mixed Chart --- 混合图形",
             "Only Refresh data ---单纯刷新数据",
             "Double Chart View---同时显示多个图表",
@@ -346,6 +376,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         let cellTitle = chartTypeTitleArr[indexPath.section][indexPath.row]
+        cell?.textLabel?.numberOfLines = 0
         cell?.textLabel?.text = cellTitle
         cell?.textLabel?.font = .systemFont(ofSize: 13)
         cell?.textLabel?.textColor = .darkGray
@@ -370,10 +401,15 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         case 2:
             /*Mixed Type Charts*/
+            let vc = CustomStyleChartVC()
+            vc.chartType = indexPath.row
+            navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            /*Mixed Type Charts*/
             let vc = MixedChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? String
             navigationController?.pushViewController(vc, animated: true)
-        case 3:
+        case 4:
             /*Only Refresh Chart Data Dynamiclly*/
             let vc = OnlyRefreshChartDataVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
@@ -382,7 +418,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
-        case 4:
+        case 5:
             /*Show Many Charts In the Same View*/
             if indexPath.row == 0 {
                 let vc = ShowManyChartViewVC()
@@ -392,7 +428,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 navigationController?.pushViewController(vc, animated: true)
             }
          
-        case 5:
+        case 6:
             /*Chart Rendering Animation Types*/
             let vc = AnimationTypeVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
@@ -401,7 +437,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
-        case 6:
+        case 7:
             /*Hide Or Show Chart Series Element*/
             let vc = ChartSeriesHideOrShowVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
@@ -410,17 +446,17 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
-        case 7:
+        case 8:
             /*Evaluate JavaScript String Function*/
             let vc = EvaluateJSStringFunctionVC()
             vc.sampleChartTypeIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
-        case 8:
+        case 9:
             /*Draw Chart With AAOptions Instance Object*/
             let vc = DrawChartWithAAOptionsVC()
             vc.chartType = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
-        case 9:
+        case 10:
             /*Custom Tooltip With JavaScript Function */
             let vc = CustomTooltipWithJSFunctionVC()
             vc.selectedIndex = indexPath.row

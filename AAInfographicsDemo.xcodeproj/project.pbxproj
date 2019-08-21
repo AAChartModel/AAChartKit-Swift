@@ -34,6 +34,7 @@
 		4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4409BECF21B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift */; };
 		44143D3621A17F2300D44657 /* AAGradientColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44143D3521A17F2300D44657 /* AAGradientColor.swift */; };
 		44143DD221A7A28300D44657 /* AAOptionsConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */; };
+		4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */; };
 		445353C122631B0E009FA12A /* AAPlotBandsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445353C022631B0E009FA12A /* AAPlotBandsElement.swift */; };
 		445353C322631B48009FA12A /* AAPlotLinesElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445353C222631B48009FA12A /* AAPlotLinesElement.swift */; };
 		4454E46922DF15AE00E01944 /* AALabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4454E46822DF15AE00E01944 /* AALabels.swift */; };
@@ -96,6 +97,7 @@
 		4409BECF21B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateJSStringFunctionVC.swift; sourceTree = "<group>"; };
 		44143D3521A17F2300D44657 /* AAGradientColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGradientColor.swift; sourceTree = "<group>"; };
 		44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsConstructor.swift; sourceTree = "<group>"; };
+		4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleChartVC.swift; sourceTree = "<group>"; };
 		445353C022631B0E009FA12A /* AAPlotBandsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotBandsElement.swift; sourceTree = "<group>"; };
 		445353C222631B48009FA12A /* AAPlotLinesElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotLinesElement.swift; sourceTree = "<group>"; };
 		4454E46822DF15AE00E01944 /* AALabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALabels.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				278C55111EE948C900770B97 /* MainVC.swift */,
 				278C55101EE948C900770B97 /* CommonChartVC.swift */,
 				278C55121EE948C900770B97 /* SpecialChartVC.swift */,
+				4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */,
 				27766454207C55BE00F0A62C /* MixedChartVC.swift */,
 				275BB8D720CFA6DB00DE1991 /* AdditionalContent */,
 			);
@@ -404,6 +407,7 @@
 				4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */,
 				44143D3621A17F2300D44657 /* AAGradientColor.swift in Sources */,
 				276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */,
+				4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */,
 				4454E46B22DF1A4F00E01944 /* AALabel.swift in Sources */,
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
 				445353C322631B48009FA12A /* AAPlotLinesElement.swift in Sources */,
