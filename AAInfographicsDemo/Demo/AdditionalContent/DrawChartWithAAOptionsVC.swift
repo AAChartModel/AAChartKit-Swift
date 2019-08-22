@@ -233,13 +233,13 @@ class DrawChartWithAAOptionsVC: UIViewController {
         aaOptions["xAxis"] = aaXAxis
         aaOptions["yAxis"] = YAxisArr
         aaOptions["plotOptions"] = aaPlotOptions
-        let gradientColorDic1 = AAGradientColor.gradientColorDictionary(
+        let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toTop,
             startColor: "#7052f4",
             endColor: "#00b0ff"//颜色字符串设置支持十六进制类型和 rgba 类型
         )
         
-        let gradientColorDic2 = AAGradientColor.gradientColorDictionary(
+        let gradientColorDic2 = AAGradientColor.linearGradient(
             direction: .toTop,
             startColor: "#EF71FF",
             endColor: "#4740C8"//颜色字符串设置支持十六进制类型和 rgba 类型
@@ -737,13 +737,13 @@ function () {
     }
     
     private func configure_DataLabels_XAXis_YAxis_Legend_Style() ->NSMutableDictionary {
-        let backgroundColorGradientColor = AAGradientColor.gradientColorDictionary(
+        let backgroundColorGradientColor = AAGradientColor.linearGradient(
             direction: .toTop,
             startColor: "#4F00BC",
             endColor: "#29ABE2"//颜色字符串设置支持十六进制类型和 rgba 类型
         )
         
-        let fillColorGradientColor = AAGradientColor.gradientColorDictionary(
+        let fillColorGradientColor = AAGradientColor.linearGradient(
             direction: .toTop,
             startColor: "rgba(256,256,256,0.3)",
             endColor: "rgba(256,256,256,1.0)"//颜色字符串设置支持十六进制类型和 rgba 类型

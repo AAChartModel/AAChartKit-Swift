@@ -152,7 +152,7 @@ class CommonChartVC: UIViewController {
                 .symbol(.circle)
             
             if chartType == .areaspline {
-                let gradientColorDic = AAGradientColor.gradientColorDictionary(
+                let gradientColorDic = AAGradientColor.linearGradient(
                     direction: .toBottomRight,
                     startColor: "rgba(138,43,226,1)",
                     endColor: "rgba(30,144,255,1)"//颜色字符串设置支持十六进制类型和 rgba 类型

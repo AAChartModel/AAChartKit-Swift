@@ -784,7 +784,7 @@ class SpecialChartVC: UIViewController {
     }
     
     private func configureAreasplinerangeChart() -> AAChartModel {
-        let gradientColorDic = AAGradientColor.gradientColorDictionary(
+        let gradientColorDic = AAGradientColor.linearGradient(
             direction: .toBottomRight,
             startColor: "#8A2BE2",
             endColor: "#1E90FF"//颜色字符串设置支持十六进制类型和 rgba 类型

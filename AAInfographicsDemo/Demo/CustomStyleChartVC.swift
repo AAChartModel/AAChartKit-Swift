@@ -446,6 +446,7 @@ class CustomStyleChartVC: UIViewController {
             .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .symbolStyle(.innerBlank)
             .markerRadius(8)
+            .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Tokoyo")
@@ -468,7 +469,7 @@ class CustomStyleChartVC: UIViewController {
             [1.0, "#0bf8f5"]
         ]
         
-        let gradientColorDic1 = AAGradientColor.gradientColorDictionary(
+        let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toRight,
             stops: stopsArr)
         
@@ -482,6 +483,7 @@ class CustomStyleChartVC: UIViewController {
             .backgroundColor("#FFFFFF")
             .markerRadius(0)
             .legendEnabled(false)
+            .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Tokyo Hot")
@@ -500,7 +502,7 @@ class CustomStyleChartVC: UIViewController {
             [1.00, "#1904dd"],
         ]
         
-        let gradientColorDic1 = AAGradientColor.gradientColorDictionary(
+        let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toRight,
             stops: stopsArr)
         
@@ -513,6 +515,7 @@ class CustomStyleChartVC: UIViewController {
             .yAxisTitle("")
             .markerRadius(0)
             .legendEnabled(false)
+            .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Tokyo Hot")
@@ -524,7 +527,7 @@ class CustomStyleChartVC: UIViewController {
     }
     
     private func configureGradientColorAreasplineChart() -> AAChartModel {
-        let gradientColorDic1 = AAGradientColor.gradientColorDictionary(
+        let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toBottom,
             startColor: "rgba(255,20,147,1)",//深粉色, alpha 透明度 1
             endColor: "rgba(255,20,147,0.3)"//热情的粉红, alpha 透明度 0.3
@@ -541,6 +544,7 @@ class CustomStyleChartVC: UIViewController {
             .symbolStyle(.innerBlank)//marker点为空心效果
             .symbol(.circle)//marker点为圆形点○
             .legendEnabled(false)
+            .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
                     .name("Tokyo Hot")
@@ -561,7 +565,7 @@ class CustomStyleChartVC: UIViewController {
             [1.00, "#1904dd"],
         ]
         
-        let gradientColorDic1 = AAGradientColor.gradientColorDictionary(
+        let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toRight,
             stops: stopsArr)
         
@@ -618,7 +622,7 @@ class CustomStyleChartVC: UIViewController {
     }
     
     private func configureAreaChartThreshold() -> AAChartModel {
-        let gradientColorDic1 = AAGradientColor.gradientColorDictionary(
+        let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toBottom,
             startColor: "rgba(30, 144, 255,1)", //DodgerBlue, alpha 透明度 1
             endColor: "rgba(30, 144, 255,0.1)"//DodgerBlue, alpha 透明度 0.1
