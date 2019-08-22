@@ -47,7 +47,7 @@ public class AAPlotLinesElement: AASerializable {
     }
     
     @discardableResult
-    public func dashStyle(_ prop: AALineDashSyleType) -> AAPlotLinesElement {
+    public func dashStyle(_ prop: AALineDashStyleType) -> AAPlotLinesElement {
         dashStyle = prop.rawValue
         return self
     }

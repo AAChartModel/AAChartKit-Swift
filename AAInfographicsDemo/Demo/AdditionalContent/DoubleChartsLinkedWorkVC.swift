@@ -86,7 +86,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
         let aaCrosshair = [
             "width":1,
             "color":AAColor.black!,
-            "dashStyle":AALineDashSyleType.longDashDot.rawValue,
+            "dashStyle":AALineDashStyleType.longDashDot.rawValue,
             ] as [String: Any]
         aaXAxis["crosshair"] = aaCrosshair
         

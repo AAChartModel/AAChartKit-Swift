@@ -200,7 +200,7 @@ public class AACrosshair: AASerializable {
     private var width: Float?  //准星线宽度
     
     @discardableResult
-    public func dashStyle(_ prop: AALineDashSyleType) -> AACrosshair {
+    public func dashStyle(_ prop: AALineDashStyleType) -> AACrosshair {
         dashStyle = prop.rawValue
         return self
     }

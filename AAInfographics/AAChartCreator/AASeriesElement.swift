@@ -122,7 +122,7 @@
     }
     
     @discardableResult
-    public func dashStyle(_ prop: AALineDashSyleType) -> AASeriesElement {
+    public func dashStyle(_ prop: AALineDashStyleType) -> AASeriesElement {
         dashStyle = prop.rawValue
         return self
     }
@@ -196,6 +196,7 @@ public class AADataElement: AASerializable {
     private var y: Float?
     private var color: Any?
     private var dataLabels: [String: Any]?
+    private var marker: [String: Any]?
     
     @discardableResult
     public func name(_ prop: String) -> AADataElement {
@@ -216,8 +217,14 @@ public class AADataElement: AASerializable {
     }
     
     @discardableResult
-    public func dataLabels(_ prop: [String: Any]) -> AADataElement {
-        dataLabels = prop
+    public func dataLabels(_ prop: AADataLabels) -> AADataElement {
+        dataLabels = prop.toDic()!
+        return self
+    }
+    
+    @discardableResult
+    public func marker(_ prop: AAMarker) -> AADataElement {
+        marker = prop.toDic()!
         return self
     }
 }

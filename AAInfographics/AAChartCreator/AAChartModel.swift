@@ -124,7 +124,7 @@ public enum AAChartFontWeightType: String {
     case thin, regular, bold
 }
 
-public enum AALineDashSyleType: String {
+public enum AALineDashStyleType: String {
     case solid
     case shortDash
     case shortDot
