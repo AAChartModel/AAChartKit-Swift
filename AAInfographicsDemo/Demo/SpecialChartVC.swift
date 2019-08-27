@@ -65,7 +65,6 @@ class SpecialChartVC: UIViewController {
     
    private func configureTheAAChartModel(_ chartTypeStr:AAChartType) -> AAChartModel {
         switch chartTypeStr {
-        case .bar: return configureColorfulGradientBarChart()
         case .column: return configureColumnChart()
         case .pie: return configurePieChart()
         case .bubble: return configureBubbleChart()
@@ -79,79 +78,8 @@ class SpecialChartVC: UIViewController {
         case .waterfall: return configureWaterfallChart()
         case .pyramid: return configurePyramidChart()
         case .funnel: return configureFunnelChart()
-        default: return configureColorfulGradientBarChart()
+        default: return configureColumnChart()
         }
-    }
-    
-   private func configureColorfulGradientBarChart() -> AAChartModel {
-        let gradientColorNamesArr = [
-            "oceanBlue",
-            "sanguine",
-            "lusciousLime",
-            "purpleLake",
-            "freshPapaya",
-            "ultramarine",
-            "pinkSugar",
-            "lemonDrizzle",
-            "victoriaPurple",
-            "springGreens",
-            "mysticMauve",
-            "reflexSilver",
-            "newLeaf",
-            "cottonCandy",
-            "pixieDust",
-            "fizzyPeach",
-            "sweetDream",
-            "firebrick",
-            "wroughtIron",
-            "deepSea",
-            "coastalBreeze",
-            "eveningDelight",
-        ]
-        
-        let gradientColorArr = [
-            AAGradientColor.oceanBlue,
-            AAGradientColor.sanguine,
-            AAGradientColor.lusciousLime,
-            AAGradientColor.purpleLake,
-            AAGradientColor.freshPapaya,
-            AAGradientColor.ultramarine,
-            AAGradientColor.pinkSugar,
-            AAGradientColor.lemonDrizzle,
-            AAGradientColor.victoriaPurple,
-            AAGradientColor.springGreens,
-            AAGradientColor.mysticMauve,
-            AAGradientColor.reflexSilver,
-            AAGradientColor.newLeaf,
-            AAGradientColor.cottonCandy,
-            AAGradientColor.pixieDust,
-            AAGradientColor.fizzyPeach,
-            AAGradientColor.sweetDream,
-            AAGradientColor.firebrick,
-            AAGradientColor.wroughtIron,
-            AAGradientColor.deepSea,
-            AAGradientColor.coastalBreeze,
-            AAGradientColor.eveningDelight,
-        ]
-        
-        return AAChartModel()
-            .chartType(.bar)
-            .title("Colorful Gradient Chart")
-            .backgroundColor("#5E5E5E")
-            .categories(gradientColorNamesArr)
-            .colorsTheme(gradientColorArr as [Any])
-            .stacking(.percent)
-            .titleColor("#ffffff")
-            .axisColor("#ffffff")
-            .dataLabelsEnabled(false)
-            .series([
-                AASeriesElement()
-                    .name("2018")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9,
-                           9.6, 7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3,])
-                    .colorByPoint(true)
-                ]
-    )
     }
     
    private func configureColumnChart() -> AAChartModel {

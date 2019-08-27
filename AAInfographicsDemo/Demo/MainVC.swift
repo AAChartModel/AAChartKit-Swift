@@ -57,7 +57,6 @@ class MainVC: UIViewController {
             ],
             /*特殊类型图表*/
             [
-                "Colorful Gradient Bar Chart---多彩渐变色条形图",
                 "Polar Chart---极地图",
                 "Pie Chart---扇形图",
                 "Bubble Chart---气泡图",
@@ -73,11 +72,12 @@ class MainVC: UIViewController {
                 "Funnel Chart---漏斗图",
             ],
             /*一些仅仅通过AAChartModel自定义风格样式图表*/
-            ["Colorful Column Chart---多彩条形图",
+            [
+             "Colorful Column Chart---多彩条形图",
              "Colorful Gradient Color Chart---多彩颜色渐变条形图",
              "Discontinuous Data Chart---数值不连续的图表",
              "Mixed Line Chart---虚实线混合折线图",
-             "Colorful Column Chart---多彩柱形图",
+             "Random Colors Colorful Column Chart---随机颜色的多彩柱形图",
              "Gradient Color Bar Chart---颜色渐变条形图",
              "With Dividing Line---带有阈值分割线区域图",
              "Area Chart with minus--带有负数的区域填充图",
@@ -101,7 +101,6 @@ class MainVC: UIViewController {
             ],
             /*Mixed Chart---混合图*/
             [
-                "Colorful Bar Chart---多彩条形图",
                 "Arearange Mixed Line---面积范围均线图",
                 "Columnrange Mixed Line---柱形范围图混合折线图",
                 "Stacking Column Mixed Line---堆积柱形图混合折线图",
@@ -201,7 +200,7 @@ class MainVC: UIViewController {
                 AAChartType.spline,
                 ],
             /*特殊类型图表*/
-            [   AAChartType.bar,
+            [
                 AAChartType.column,
                 AAChartType.pie,
                 AAChartType.bubble,
@@ -218,8 +217,8 @@ class MainVC: UIViewController {
                 ],
             [//Empty Array,just for holding place
             ],
+            /*Mixed Chart---混合图*/
             [
-                "manyColorMixedBar",
                 "arearangeMixedLine",
                 "columnrangeMixedLine",
                 "stackingColumnMixedLine",

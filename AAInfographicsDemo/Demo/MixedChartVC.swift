@@ -63,7 +63,6 @@ class MixedChartVC: UIViewController {
     
    private func configureTheAAChartModel(_ chartTypeStr:String) -> AAChartModel {
         switch chartTypeStr {
-        case "manyColorMixedBar":return configureManyColorMixedBarChart()
         case "arearangeMixedLine":return configureArearangeMixedLineChart()
         case "columnrangeMixedLine":return configureColumnrangeMixedLineChart()
         case "stackingColumnMixedLine":return configureStackingColumnMixedLineChart()
@@ -76,60 +75,8 @@ class MixedChartVC: UIViewController {
         case "columnMixedScatter":return configureColumnMixedScatterChart()
         case "PieMixeLineMixedColumn":return configurePieMixedLineMixedColumnChart()
         case "LineChartWithShadow":return configureLineChartWithShadow()
-        default: return configureManyColorMixedBarChart()
+        default: return configureArearangeMixedLineChart()
         }
-    }
-    
-    private func configureManyColorMixedBarChart() -> AAChartModel {
-        let colorsNameArr = [
-            "red",
-            "orange",
-            "yellow",
-            "green",
-            "cyan",
-            "blue",
-            "purple",
-            "gray",
-            "darkGray",
-            "lightGray",
-            "magenta",
-            "brown",
-            "black"
-        ]
-        
-        let colorsArr = [
-            AAColor.red,
-            AAColor.orange,
-            AAColor.yellow,
-            AAColor.green,
-            AAColor.cyan,
-            AAColor.blue,
-            AAColor.purple,
-            AAColor.gray,
-            AAColor.darkGray,
-            AAColor.lightGray,
-            AAColor.magenta,
-            AAColor.brown,
-            AAColor.black
-        ]
-        
-        return AAChartModel()
-            .chartType(.bar)
-            .animationType(.bounce)
-            .title("Colorful Chart")
-            .subtitle("use AAColor to get color string")
-            .dataLabelsEnabled(false)
-            .categories(colorsNameArr)
-            .colorsTheme(colorsArr as [Any])
-            .stacking(.percent)
-            .series(([
-                AASeriesElement()
-                    .name("Tokyo")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6, 5.5])
-                    .colorByPoint(true)
-                    ,
-                ])
-        )
     }
     
     private func configureArearangeMixedLineChart() -> AAChartModel {
