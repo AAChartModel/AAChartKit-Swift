@@ -304,7 +304,7 @@ function () {
                 AASeriesElement()
                     .name("Observed Data")
                     .color("#ef476f")
-                    .fillColor(AAGradientColor.deepSea!)
+                    .fillColor(AAGradientColor.deepSea)
                     .data([
                         [760, 801, 848, 895, 965],
                         [733, 853, 939, 980, 1080],

@@ -96,7 +96,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .series([
                 AASeriesElement()
                     .name("Tokyo")
-                    .fillColor(AAGradientColor.berrySmoothie!)
+                    .fillColor(AAGradientColor.berrySmoothie)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     ,
                 ])
@@ -146,7 +146,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .series([
                 AASeriesElement()
                     .name("2020")
-                    .color(AAGradientColor.cottonCandy!)
+                    .color(AAGradientColor.cottonCandy)
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2,])
                 
                 ]
@@ -172,7 +172,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 AASeriesElement()
                     .name("2020")
                     .data([1003.9, 1004.2, 1005.7, 1008.5, 1011.9, 1015.2,])
-                    .color(AAGradientColor.sanguine!)
+                    .color(AAGradientColor.sanguine)
                 
                 ]
         )
@@ -273,12 +273,12 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .series([
                 AASeriesElement()
                     .name("2020")
-                    .color(AAGradientColor.sanguine!)
+                    .color(AAGradientColor.sanguine)
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                     ,
                 AASeriesElement()
                     .name("2021")
-                    .color(AAGradientColor.deepSea!)
+                    .color(AAGradientColor.deepSea)
                     .data([NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
                            NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
                            0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
@@ -311,7 +311,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .series([
                 AASeriesElement()
                     .name("2020")
-                    .color(AAGradientColor.coastalBreeze!)
+                    .color(AAGradientColor.coastalBreeze)
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                 
                 ]
@@ -416,7 +416,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 AASeriesElement()
                     .name("Tokyo")
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                    .color(AAColor.white!)
+                    .color(AAColor.white)
                     .lineWidth(10)
                     ,
                 ])
@@ -602,7 +602,7 @@ function () {
             .series([
                 AASeriesElement()
                     .name("2020")
-                    .color(AAGradientColor.deepSea!)
+                    .color(AAGradientColor.deepSea)
                     .data([
                         [12464064, 21.5],
                         [12464928, 22.1],
@@ -643,7 +643,7 @@ function () {
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaCrosshair = AACrosshair()
             .dashStyle(.longDashDot)
-            .color(AAColor.red!)
+            .color(AAColor.red)
             .width(1)
         let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
         aaXAxis["crosshair"] = aaCrosshair.toDic()!
@@ -678,7 +678,7 @@ function () {
             .series([
                 AASeriesElement()
                     .name("Berlin Hot")
-                    .color(AAGradientColor.mysticMauve!)
+                    .color(AAGradientColor.mysticMauve)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     ,
                 ]
@@ -721,7 +721,7 @@ function () {
             .series([
                 AASeriesElement()
                     .name("Berlin Hot")
-                    .color(AAGradientColor.deepSea!)
+                    .color(AAGradientColor.deepSea)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     ,
                 ]
@@ -762,7 +762,7 @@ function () {
             .series([
                 AASeriesElement()
                     .name("Berlin Hot")
-                    .color(AAColor.white!)
+                    .color(AAColor.white)
                     .lineWidth(7)
                     .fillColor(fillColorGradientColor)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
@@ -773,7 +773,7 @@ function () {
         let aaDataLabels = AADataLabels()
             .enabled(true)
             .style(AAStyle()
-                .color(AAColor.white!)
+                .color(AAColor.white)
                 .fontSize(14)
                 .fontWeight(.thin)
                 .textOutline("0px 0px contrast")//文字轮廓描边
@@ -781,7 +781,7 @@ function () {
         
         let aaCrosshair = AACrosshair()
             .dashStyle(.longDashDot)
-            .color(AAColor.white!)
+            .color(AAColor.white)
             .width(1)
         
         let aaLabels = AALabels()

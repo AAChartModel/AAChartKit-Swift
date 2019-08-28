@@ -44,176 +44,345 @@ public enum AALinearGradientDirection: Int {
 }
 
 public class AAGradientColor: NSObject  {
-    public static var oceanBlue: [String : Any]! {
+    public static var oceanBlue: [String : Any] {
+        return oceanBlueColor(direction: .toTop)
+    }
+    
+    public static var sanguine: [String : Any] {
+        return sanguineColor(direction: .toTop)
+    }
+    
+    public static var lusciousLime: [String : Any] {
+        return lusciousLimeColor(direction: .toTop)
+    }
+    
+    public static var purpleLake: [String : Any] {
+        return purpleLakeColor(direction: .toTop)
+    }
+    
+    public static var freshPapaya: [String : Any] {
+        return freshPapayaColor(direction: .toTop)
+    }
+    
+    public static var ultramarine: [String : Any] {
+        return ultramarineColor(direction: .toTop)
+    }
+    
+    public static var pinkSugar: [String : Any] {
+        return pinkSugarColor(direction: .toTop)
+    }
+    
+    public static var lemonDrizzle: [String : Any] {
+        return lemonDrizzleColor(direction: .toTop)
+    }
+    
+    public static var victoriaPurple: [String : Any] {
+        return victoriaPurpleColor(direction: .toTop)
+    }
+    
+    public static var springGreens: [String : Any] {
+        return springGreensColor(direction: .toTop)
+    }
+    
+    public static var mysticMauve: [String : Any] {
+        return mysticMauveColor(direction: .toTop)
+    }
+    
+    public static var reflexSilver: [String : Any] {
+        return reflexSilverColor(direction: .toTop)
+    }
+    
+    public static var neonGlow: [String : Any] {
+        return neonGlowColor(direction: .toTop)
+    }
+    
+    public static var berrySmoothie: [String : Any] {
+        return berrySmoothieColor(direction: .toTop)
+    }
+    
+    public static var newLeaf: [String : Any] {
+        return newLeafColor(direction: .toTop)
+    }
+    
+    public static var cottonCandy: [String : Any] {
+        return cottonCandyColor(direction: .toTop)
+    }
+    
+    public static var pixieDust: [String : Any] {
+        return pixieDustColor(direction: .toTop)
+    }
+    
+    public static var fizzyPeach: [String : Any] {
+        return fizzyPeachColor(direction: .toTop)
+    }
+    
+    public static var sweetDream: [String : Any] {
+        return sweetDreamColor(direction: .toTop)
+    }
+    
+    public static var firebrick: [String : Any] {
+        return firebrickColor(direction: .toTop)
+    }
+    
+    public static var wroughtIron: [String : Any] {
+        return wroughtIronColor(direction: .toTop)
+    }
+    
+    public static var deepSea: [String : Any] {
+        return deepSeaColor(direction: .toTop)
+    }
+    
+    public static var coastalBreeze: [String : Any] {
+        return coastalBreezeColor(direction: .toTop)
+    }
+    
+    public static var eveningDelight: [String : Any] {
+        return eveningDelightColor(direction: .toTop)
+    }
+    
+    public static func oceanBlueColor(
+         direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#2E3192",
             endColor: "#1BFFFF"
         )
     }
     
-    public static var sanguine: [String : Any]! {
+    public static func sanguineColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#D4145A",
             endColor: "#FBB03B"
         )
     }
     
-    public static var lusciousLime: [String : Any]! {
+    public static func lusciousLimeColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#009245",
             endColor: "#FCEE21"
         )
     }
     
-    public static var purpleLake: [String : Any]! {
+    public static func purpleLakeColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#662D8C",
             endColor: "#ED1E79"
         )
     }
     
-    public static var freshPapaya: [String : Any]! {
+    public static func freshPapayaColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#ED1C24",
             endColor: "#FCEE21"
         )
     }
     
-    public static var ultramarine: [String : Any]! {
+    public static func ultramarineColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#00A8C5",
             endColor: "#FFFF7E"
         )
     }
     
-    public static var pinkSugar: [String : Any]! {
+    public static func pinkSugarColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#D74177",
             endColor: "#FFE98A"
         )
     }
     
-    public static var lemonDrizzle: [String : Any]! {
+    public static func lemonDrizzleColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#FB872B",
             endColor: "#D9E021"
         )
     }
     
-    public static var victoriaPurple: [String : Any]! {
+    public static func victoriaPurpleColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#312A6C",
             endColor: "#852D91"
         )
     }
     
-    public static var springGreens: [String : Any]! {
+    public static func springGreensColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#009E00",
             endColor: "#FFFF96"
         )
     }
     
-    public static var mysticMauve: [String : Any]! {
+    public static func mysticMauveColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#B066FE",
             endColor: "#63E2FF"
         )
     }
     
-    public static var reflexSilver: [String : Any]! {
+    public static func reflexSilverColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#808080",
             endColor: "#E6E6E6"
         )
     }
     
-    public static var neonGlow: [String : Any]! {
+    public static func neonGlowColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#00FFA1",
             endColor: "#00FFFF"
         )
     }
     
-    public static var berrySmoothie: [String : Any]! {
+    public static func berrySmoothieColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#8E78FF",
             endColor: "#FC7D7B"
         )
     }
     
-    public static var newLeaf: [String : Any]! {
+    public static func newLeafColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#00537E",
             endColor: "#3AA17E"
         )
     }
     
-    public static var cottonCandy: [String : Any]! {
+    public static func cottonCandyColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#FCA5F1",
             endColor: "#B5FFFF"
         )
     }
     
-    public static var pixieDust: [String : Any]! {
+    public static func pixieDustColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#D585FF",
             endColor: "#00FFEE"
         )
     }
     
-    public static var fizzyPeach: [String : Any]! {
+    public static func fizzyPeachColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#F24645",
             endColor: "#EBC08D"
         )
     }
     
-    public static var sweetDream: [String : Any]! {
+    public static func sweetDreamColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#3A3897",
             endColor: "#A3A1FF"
         )
     }
     
-    public static var firebrick: [String : Any]! {
+    public static func firebrickColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#45145A",
             endColor: "#FF5300"
         )
     }
     
-    public static var wroughtIron: [String : Any]! {
+    public static func wroughtIronColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#333333",
             endColor: "#5A5454"
         )
     }
     
-    public static var deepSea: [String : Any]! {
+    public static func deepSeaColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#4F00BC",
             endColor: "#29ABE2"
         )
     }
     
-    public static var coastalBreeze: [String : Any]! {
+    public static func coastalBreezeColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#00B7FF",
             endColor: "#FFFFC7"
         )
     }
     
-    public static var eveningDelight: [String : Any]! {
+    public static func eveningDelightColor(
+        direction: AALinearGradientDirection
+        ) -> [String : Any] {
         return linearGradient(
+            direction: direction,
             startColor: "#93278F",
             endColor: "#00A99D"
         )
     }
     
     public static func linearGradient(
-        startColor: String, endColor: String
+        startColor: String,
+        endColor: String
         ) -> [String : Any] {
         return self.linearGradient(
             direction: .toTop,
@@ -230,8 +399,8 @@ public class AAGradientColor: NSObject  {
         return self.linearGradient(
             direction: direction,
             stops: [
-            [0, startColor],
-            [1, endColor]
+                [0, startColor],
+                [1, endColor]
             ]
         )
     }
@@ -240,10 +409,11 @@ public class AAGradientColor: NSObject  {
         direction: AALinearGradientDirection,
         stops: [Any]
         ) -> [String : Any] {
+        let linearGradient = linearGradientDirectionDictionary(direction: direction)
         return [
-            "linearGradient": self.linearGradientDirectionDictionary(direction),
-            "stops": stops//颜色字符串设置支持十六进制类型和 rgba 类型
-            ] as [String : Any]
+            "linearGradient": linearGradient,
+            "stops": stops //颜色字符串设置支持十六进制类型和 rgba 类型
+        ]
     }
     
     /**
@@ -256,7 +426,7 @@ public class AAGradientColor: NSObject  {
      (0,1) ----------- (1,1)
      */
     private static func linearGradientDirectionDictionary(
-        _ direction: AALinearGradientDirection
+        direction: AALinearGradientDirection
         ) -> [String : Int] {
         switch direction {
         case .toTop:

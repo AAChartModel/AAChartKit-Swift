@@ -225,7 +225,7 @@ class CustomStyleChartVC: UIViewController {
                 AASeriesElement()
                     .name("所有专业")
                     .data([7.0, 6.9, 9.5, 14.5, 18.2,NSNull(),NSNull(),NSNull(),NSNull(), 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6,])
-                    .color(AAGradientColor.firebrick!)
+                    .color(AAGradientColor.firebrick)
                 ])
     }
     
@@ -242,14 +242,14 @@ class CustomStyleChartVC: UIViewController {
                     .name("本专业")
                     .data([45,88,49,43,65,56,47,28,49,44,89,55])
                     //    .zoneAxis("x")
-                    .color(AAGradientColor.freshPapaya!)
+                    .color(AAGradientColor.freshPapaya)
                     .lineWidth(5)
                     .zones([["value": 8],
                             ["dashStyle": AALineDashStyleType.dot.rawValue]
                         ]),
                 AASeriesElement()
                     .name("所有专业")
-                    .color(AAGradientColor.pixieDust!)
+                    .color(AAGradientColor.pixieDust)
                     .lineWidth(5)
                     .data([NSNull(), NSNull(), 100, 109, 89, NSNull(), NSNull(), 120, NSNull(), NSNull(), NSNull(), NSNull()])
                 ])
@@ -292,11 +292,11 @@ class CustomStyleChartVC: UIViewController {
                 AASeriesElement()
                     .name("2020")
                     .data([211,183,157,133,111,91,73,57,43,31,21,13,7,3])
-                    .color(AAGradientColor.oceanBlue!),
+                    .color(AAGradientColor.oceanBlue),
                 AASeriesElement()
                     .name("2021")
                     .data([111,83,187,163,151,191,173,157,143,131,121,113,97,93])
-                    .color(AAGradientColor.sanguine!),
+                    .color(AAGradientColor.sanguine),
                 ]
         )
     }
@@ -427,7 +427,7 @@ class CustomStyleChartVC: UIViewController {
         return AAChartModel()
             .title("单独自定义某个指定数据元素的DataLabel")
             .subtitle("")
-            .colorsTheme([AAGradientColor.mysticMauve!])
+            .colorsTheme([AAGradientColor.mysticMauve])
             .series([
                 AASeriesElement()
                     .name("货币")
@@ -453,11 +453,11 @@ class CustomStyleChartVC: UIViewController {
                     .lineWidth(8.0)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     .shadow(AAShadow()
+                        .color(AAColor.red)
                         .offsetX(15.0)
                         .offsetY(15.0)
                         .opacity(0.2)
                         .width(8.0)
-                        .color(AAColor.red)
                 ),
                 ])
     }
@@ -570,7 +570,8 @@ class CustomStyleChartVC: UIViewController {
             stops: stopsArr)
         
         let singleSpecialData = AADataElement()
-            .marker(AAMarker()
+            .marker(
+                AAMarker()
                 .radius(8)//曲线连接点半径
                 .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
                 .fillColor("#FFFFFF")//点的填充色(用来设置折线连接点的填充色)
@@ -600,7 +601,7 @@ class CustomStyleChartVC: UIViewController {
     
     private func configureSpecialStyleColumnOfSingleDataElementChart() -> AAChartModel {
         let singleSpecialData = AADataElement()
-            .color(AAGradientColor.freshPapaya!)
+            .color(AAGradientColor.freshPapaya)
             .y(49.5)
         
         return AAChartModel()
@@ -617,7 +618,7 @@ class CustomStyleChartVC: UIViewController {
                     .name("Virtual Data")
                     .lineWidth(6)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData.toDic()!, 5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
-                    .color(AAGradientColor.oceanBlue!)
+                    .color(AAGradientColor.oceanBlue)
                 ])
     }
     
