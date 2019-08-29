@@ -51,7 +51,7 @@ public class AAYAxis: AASerializable {
     private var max: Float?  //y轴最大值
     private var min: Float?  //y轴最小值（设置为0就不会有负数）
     //private var minPadding:   //Padding of the min value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the lowest data value to appear on the edge of the plot area. 默认是：0.05.
-    private var tickPositions: [Any]? //自定义Y轴坐标（如：[@(0: , @(25: , @(50: , @(75:  , (100: ]）
+    private var tickPositions: [Any]? //自定义Y轴坐标（如：[0, 25, 50, 75 , 100]）
     private var visible: Bool?  //y轴是否允许显示
     private var opposite: Bool? //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。 默认是：false.
     private var tickInterval: Int?
