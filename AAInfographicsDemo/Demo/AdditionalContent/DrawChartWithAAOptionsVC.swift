@@ -791,6 +791,13 @@ function () {
                 .color(AAColor.white)//轴文字颜色
         )
         
+        let aaXAxis = AAXAxis()
+            .tickWidth(2)//X轴刻度线宽度
+            .lineWidth(1.5)//X轴轴线宽度
+            .lineColor(AAColor.white)//X轴轴线颜色
+            .crosshair(aaCrosshair)
+            .labels(aaLabels)
+        
         let aaYAxis = AAYAxis()
             .opposite(true)
             .tickWidth(2)
@@ -798,14 +805,9 @@ function () {
             .lineColor(AAColor.white)//Y轴轴线颜色
             .gridLineWidth(0)//Y轴网格线宽度
             .crosshair(aaCrosshair)
-            .labels(aaLabels)
-        
-        let aaXAxis = AAXAxis()
-            .tickWidth(2)//X轴刻度线宽度
-            .lineWidth(1.5)//X轴轴线宽度
-            .lineColor(AAColor.white)//X轴轴线颜色
-            .crosshair(aaCrosshair)
-            .labels(aaLabels)
+            .labels(aaLabels
+                .format("{value} ℃")//给y轴添加单位
+        )
         
         //设定图例项的CSS样式。只支持有关文本的CSS样式设定。
         /*默认是：{

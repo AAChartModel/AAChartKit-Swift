@@ -38,7 +38,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.title = "AATooltip Formatter"
+        self.title = "JS Function Formatter"
         
         let aaChartView = setUpChartView()
         let aaOptions = configureAAOptions()
@@ -54,7 +54,8 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
         case 3: return customAreaChartTooltipStyleWithFormatterFunction4()
         case 4: return customBoxplotTooltipContent()
         case 5: return customYAxisLabels()
-        case 6: return customStackedAndGroupedColumnChartTooltip()
+        case 6: return customYAxisLabels2()
+        case 7: return customStackedAndGroupedColumnChartTooltip()
         default:
             return NSMutableDictionary()
         }
@@ -380,6 +381,63 @@ function () {
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaYAxis =  aaOptions["yAxis"] as! NSMutableDictionary
         aaYAxis["labels"] = aaYAxisLabels.toDic()!
+        return aaOptions
+    }
+    
+    private func customYAxisLabels2() -> NSMutableDictionary {
+        let aaChartModel = AAChartModel()
+            .chartType(.line)//图形类型
+            .title("")//图表主标题
+            .subtitle("")//图表副标题
+            .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .dataLabelsEnabled(false)
+            .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
+            .stacking(.normal)
+            .markerRadius(8)
+            .series([
+                AASeriesElement()
+                    .name("Tokyo Hot")
+                    .lineWidth(5.0)
+                    .fillOpacity(0.4)
+                    .data([229.9, 771.5, 1106.4, 1129.2, 6644.0, 1176.0, 8835.6, 148.5, 8816.4, 6694.1, 7795.6, 9954.4])
+                ,
+                ])
+        
+        let aaYAxisLabels = AALabels()
+            .style(AAStyle()
+                .fontSize(10)
+                .fontWeight(.bold)
+                .color(AAColor.gray)//Y轴文字颜色
+            )
+            .formatter(#"""
+function () {
+        let yValue = this.value;
+        if (yValue == 0) {
+            return "0";
+        } else if (yValue == 2500) {
+            return "25%";
+        } else if (yValue == 5000) {
+            return "50%";
+        } else if (yValue == 7500) {
+            return "75%";
+        } else if (yValue == 10000) {
+            return "100%";
+        }
+    }
+"""#)
+        
+        let yAxis = AAYAxis()
+            .opposite(true)
+            .tickWidth(2)
+            .lineWidth(1.5)//Y轴轴线颜色
+            .lineColor(AAColor.lightGray)//Y轴轴线颜色
+            .gridLineWidth(0)//Y轴网格线宽度
+            .tickPositions([0,2500,5000,7500,10000])
+            .labels(aaYAxisLabels)
+        
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaYAxis =  aaOptions["yAxis"] as! NSMutableDictionary
+        aaYAxis.setValuesForKeys(yAxis.toDic()!)
         return aaOptions
     }
     
