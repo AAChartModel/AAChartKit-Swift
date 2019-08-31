@@ -151,7 +151,8 @@ class AAOptionsComposer: NSObject {
             )
         }
         
-        if chartType == AAChartType.column  {
+        switch chartType {
+        case AAChartType.column:
             let aaColumn = AAColumn()
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
@@ -161,7 +162,7 @@ class AAOptionsComposer: NSObject {
                     .groupPadding(0.005)
             }
             aaPlotOptions.column(aaColumn)
-        } else if chartType == AAChartType.bar {
+        case AAChartType.bar:
             let aaBar = AABar()
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
@@ -171,15 +172,15 @@ class AAOptionsComposer: NSObject {
                     .groupPadding(0.005)
             }
             aaPlotOptions.bar(aaBar)
-        } else if chartType == AAChartType.area {
+        case AAChartType.area:
             aaPlotOptions.area(AAArea().dataLabels(aaDataLabels))
-        } else if chartType == AAChartType.areaspline {
+        case AAChartType.areaspline:
             aaPlotOptions.areaspline(AAAreaspline().dataLabels(aaDataLabels))
-        } else if chartType == AAChartType.line {
+        case AAChartType.line:
             aaPlotOptions.line(AALine().dataLabels(aaDataLabels))
-        } else if chartType == AAChartType.spline {
+        case AAChartType.spline:
             aaPlotOptions.spline(AASpline().dataLabels(aaDataLabels))
-        } else if chartType == AAChartType.pie {
+        case AAChartType.pie:
             let aaPie = AAPie()
                 .allowPointSelect(true)
                 .cursor("pointer")
@@ -190,13 +191,15 @@ class AAOptionsComposer: NSObject {
                 aaPie.dataLabels(aaDataLabels)
             }
             aaPlotOptions.pie(aaPie)
-        } else if chartType == AAChartType.columnrange {
+        case AAChartType.columnrange:
             aaPlotOptions.columnrange(AAColumnrange()
                 .dataLabels(aaDataLabels)
                 .borderRadius(0)
                 .borderWidth(0))
-        }else if chartType == AAChartType.arearange {
+        case AAChartType.arearange:
             aaPlotOptions.arearange(AAArearange() .dataLabels(aaDataLabels))
+        default:
+            aaPlotOptions.line(AALine().dataLabels(aaDataLabels))
         }
     }
     
@@ -229,7 +232,6 @@ class AAOptionsComposer: NSObject {
                 .allowDecimals(aaChartModel.yAxisAllowDecimals)//是否允许显示小数
                 .reversed(aaChartModel.yAxisReversed)
                 .gridLineWidth(aaChartModel.yAxisGridLineWidth)//y轴网格线宽度
-                
                 .lineWidth(aaChartModel.yAxisLineWidth)//设置 y轴轴线的宽度,为0即是隐藏 y轴轴线
                 .visible(aaChartModel.yAxisVisible)
                 .title(AATitle()
