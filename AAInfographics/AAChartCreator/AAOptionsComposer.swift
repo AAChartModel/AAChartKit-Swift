@@ -75,7 +75,7 @@ class AAOptionsComposer: NSObject {
                 .stacking(aaChartModel.stacking?.rawValue)//设置是否百分比堆叠显示图形
         )
         
-        if (aaChartModel.animationType != AAChartAnimationType.linear) {
+        if (aaChartModel.animationType != .linear) {
             aaPlotOptions
                 .series?.animation(AAAnimation()
                     .easing(aaChartModel.animationType?.rawValue)
@@ -112,19 +112,19 @@ class AAOptionsComposer: NSObject {
         let chartType = aaChartModel.chartType!
         
         //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记
-        if     chartType == AAChartType.area
-            || chartType == AAChartType.areaspline
-            || chartType == AAChartType.line
-            || chartType == AAChartType.spline
-            || chartType == AAChartType.scatter {
+        if     chartType == .area
+            || chartType == .areaspline
+            || chartType == .line
+            || chartType == .spline
+            || chartType == .scatter {
             let aaMarker = AAMarker()
                 .radius(aaChartModel.markerRadius)//曲线连接点半径，默认是4
                 .symbol(aaChartModel.symbol?.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-            if (aaChartModel.symbolStyle == AAChartSymbolStyleType.innerBlank) {
+            if (aaChartModel.symbolStyle == .innerBlank) {
                 aaMarker.fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
                     .lineWidth(2.0)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                     .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
-            } else if (aaChartModel.symbolStyle == AAChartSymbolStyleType.borderBlank) {
+            } else if (aaChartModel.symbolStyle == .borderBlank) {
                 aaMarker.lineWidth(2.0)
                     .lineColor(aaChartModel.backgroundColor)
             }
@@ -152,7 +152,7 @@ class AAOptionsComposer: NSObject {
         }
         
         switch chartType {
-        case AAChartType.column:
+        case .column:
             let aaColumn = AAColumn()
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
@@ -162,7 +162,7 @@ class AAOptionsComposer: NSObject {
                     .groupPadding(0.005)
             }
             aaPlotOptions.column(aaColumn)
-        case AAChartType.bar:
+        case .bar:
             let aaBar = AABar()
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
@@ -172,15 +172,15 @@ class AAOptionsComposer: NSObject {
                     .groupPadding(0.005)
             }
             aaPlotOptions.bar(aaBar)
-        case AAChartType.area:
+        case .area:
             aaPlotOptions.area(AAArea().dataLabels(aaDataLabels))
-        case AAChartType.areaspline:
+        case .areaspline:
             aaPlotOptions.areaspline(AAAreaspline().dataLabels(aaDataLabels))
-        case AAChartType.line:
+        case .line:
             aaPlotOptions.line(AALine().dataLabels(aaDataLabels))
-        case AAChartType.spline:
+        case .spline:
             aaPlotOptions.spline(AASpline().dataLabels(aaDataLabels))
-        case AAChartType.pie:
+        case .pie:
             let aaPie = AAPie()
                 .allowPointSelect(true)
                 .cursor("pointer")
@@ -191,12 +191,12 @@ class AAOptionsComposer: NSObject {
                 aaPie.dataLabels(aaDataLabels)
             }
             aaPlotOptions.pie(aaPie)
-        case AAChartType.columnrange:
+        case .columnrange:
             aaPlotOptions.columnrange(AAColumnrange()
                 .dataLabels(aaDataLabels)
                 .borderRadius(0)
                 .borderWidth(0))
-        case AAChartType.arearange:
+        case .arearange:
             aaPlotOptions.arearange(AAArearange() .dataLabels(aaDataLabels))
         default:
             aaPlotOptions.line(AALine().dataLabels(aaDataLabels))
@@ -210,9 +210,9 @@ class AAOptionsComposer: NSObject {
         let chartType = aaChartModel.chartType
         
         //x 轴和 Y 轴的相关配置,扇形图、金字塔图和漏斗图则不需要设置 X 轴和 Y 轴的相关内容
-        if (   chartType != AAChartType.pie
-            && chartType != AAChartType.pyramid
-            && chartType != AAChartType.funnel) {
+        if (   chartType != .pie
+            && chartType != .pyramid
+            && chartType != .funnel) {
             let aaXAxis = AAXAxis()
                 .labels(AALabels()
                     .enabled(aaChartModel.xAxisLabelsEnabled)//设置 x 轴是否显示文字
