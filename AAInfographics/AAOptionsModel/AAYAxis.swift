@@ -32,8 +32,8 @@
 
 import UIKit
 
-public class AAYAxis: AASerializable {
-    private var title: [String: Any]?
+public class AAYAxis: AAObject {
+    private var title: AATitle?
     private var plotBands: [AAPlotBandsElement]?
     private var plotLines: [AAPlotLinesElement]?
     private var categories:[String]?
@@ -62,162 +62,162 @@ public class AAYAxis: AASerializable {
     private var tickPosition: String? //刻度线相对于轴线的位置，可用的值有 inside 和 outside，分别表示在轴线的内部和外部。 默认是：outside.
     
     @discardableResult
-    public func title(_ prop:[String: AnyObject]) -> AAYAxis {
+    public func title(_ prop:AATitle?) -> AAYAxis {
         title = prop
         return self
     }
     
     @discardableResult
-    public func plotBands(_ prop: [AAPlotBandsElement]) -> AAYAxis {
+    public func plotBands(_ prop: [AAPlotBandsElement]?) -> AAYAxis {
         plotBands = prop
         return self
     }
     
     @discardableResult
-    public func plotLines(_ prop: [AAPlotLinesElement]) -> AAYAxis {
+    public func plotLines(_ prop: [AAPlotLinesElement]?) -> AAYAxis {
         plotLines = prop
         return self
     }
     
     @discardableResult
-    public func categories(_ prop: [String]) -> AAYAxis {
+    public func categories(_ prop: [String]?) -> AAYAxis {
         categories = prop
         return self
     }
     
     @discardableResult
-    public func reversed(_ prop: Bool) -> AAYAxis {
+    public func reversed(_ prop: Bool?) -> AAYAxis {
         reversed = prop
         return self
     }
     
     @discardableResult
-    public func gridLineWidth(_ prop: Float) -> AAYAxis {
+    public func gridLineWidth(_ prop: Float?) -> AAYAxis {
         gridLineWidth = prop
         return self
     }
     
     @discardableResult
-    public func gridLineColor(_ prop: String) -> AAYAxis {
+    public func gridLineColor(_ prop: String?) -> AAYAxis {
         gridLineColor = prop
         return self
     }
     
     @discardableResult
-    public func gridLineDashStyle(_ prop: AALineDashStyleType) -> AAYAxis {
+    public func gridLineDashStyle(_ prop: AALineDashStyleType?) -> AAYAxis {
         gridLineDashStyle = prop
         return self
     }
     
     @discardableResult
-    public func alternateGridColor(_ prop: String) -> AAYAxis {
+    public func alternateGridColor(_ prop: String?) -> AAYAxis {
         alternateGridColor = prop
         return self
     }
     
     @discardableResult
-    public func gridLineInterpolation(_ prop: String) -> AAYAxis {
+    public func gridLineInterpolation(_ prop: String?) -> AAYAxis {
         gridLineInterpolation = prop
         return self
     }
     
     @discardableResult
-    public func labels(_ prop: AALabels) -> AAYAxis {
-        labels = prop.toDic()!
+    public func labels(_ prop: AALabels?) -> AAYAxis {
+        labels = prop?.toDic()
         return self
     }
     
     @discardableResult
-    public func lineWidth(_ prop: Float) -> AAYAxis {
+    public func lineWidth(_ prop: Float?) -> AAYAxis {
         lineWidth = prop
         return self
     }
     
     @discardableResult
-    public func lineColor(_ prop: String) -> AAYAxis {
+    public func lineColor(_ prop: String?) -> AAYAxis {
         lineColor = prop
         return self
     }
     
     @discardableResult
-    public func offset(_ prop: Float) -> AAYAxis {
+    public func offset(_ prop: Float?) -> AAYAxis {
         offset = prop
         return self
     }
     
     @discardableResult
-    public func allowDecimals(_ prop: Bool) -> AAYAxis {
+    public func allowDecimals(_ prop: Bool?) -> AAYAxis {
         allowDecimals = prop
         return self
     }
     
     @discardableResult
-    public func max(_ prop: Float) -> AAYAxis {
+    public func max(_ prop: Float?) -> AAYAxis {
         max = prop
         return self
     }
     
     @discardableResult
-    public func min(_ prop: Float) -> AAYAxis {
+    public func min(_ prop: Float?) -> AAYAxis {
         min = prop
         return self
     }
     
     @discardableResult
-    public func tickPositions(_ prop: [Any]) -> AAYAxis {
+    public func tickPositions(_ prop: [Any]?) -> AAYAxis {
         tickPositions = prop
         return self
     }
     
     @discardableResult
-    public func visible(_ prop: Bool) -> AAYAxis {
+    public func visible(_ prop: Bool?) -> AAYAxis {
         visible = prop
         return self
     }
     
     @discardableResult
-    public func opposite(_ prop: Bool) -> AAYAxis {
+    public func opposite(_ prop: Bool?) -> AAYAxis {
         opposite = prop
         return self
     }
     
     @discardableResult
-    public func tickInterval(_ prop: Int) -> AAYAxis {
+    public func tickInterval(_ prop: Int?) -> AAYAxis {
         tickInterval = prop
         return self
     }
     
     @discardableResult
-    public func crosshair(_ prop: AACrosshair) -> AAYAxis {
-        crosshair = prop.toDic()!
+    public func crosshair(_ prop: AACrosshair?) -> AAYAxis {
+        crosshair = prop?.toDic()
         return self
     }
     
     @discardableResult
-    public func stackLabels(_ prop: [String: Any]) -> AAYAxis {
+    public func stackLabels(_ prop: [String: Any]?) -> AAYAxis {
         stackLabels = prop
         return self
     }
     
     @discardableResult
-    public func tickWidth(_ prop: Float) -> AAYAxis {
+    public func tickWidth(_ prop: Float?) -> AAYAxis {
         tickWidth = prop
         return self
     }
     
     @discardableResult
-    public func tickLength(_ prop: Float) -> AAYAxis {
+    public func tickLength(_ prop: Float?) -> AAYAxis {
         tickLength = prop
         return self
     }
     
     @discardableResult
-    public func tickPosition(_ prop: String) -> AAYAxis {
+    public func tickPosition(_ prop: String?) -> AAYAxis {
         tickPosition = prop
         return self
     }
     
-    public init() {
+    public override init() {
         
     }
 }

@@ -32,12 +32,12 @@
 
 import UIKit 
 
-public class AATooltip: AASerializable {
+public class AATooltip: AAObject {
     private var backgroundColor: String?
     private var borderColor: String?
     private var borderRadius: Float?
     private var borderWidth: Float?
-    private var style: [String: Any]?
+    private var style: AAStyle?
     private var enabled: Bool?
     private var useHTML: Bool?
     private var formatter: String?
@@ -50,43 +50,43 @@ public class AATooltip: AASerializable {
     private var valueSuffix: String?
     
     @discardableResult
-    public func backgroundColor(_ prop: String) -> AATooltip {
+    public func backgroundColor(_ prop: String?) -> AATooltip {
         backgroundColor = prop
         return self
     }
     
     @discardableResult
-    public func borderColor(_ prop: String) -> AATooltip {
+    public func borderColor(_ prop: String?) -> AATooltip {
         borderColor = prop
         return self
     }
     
     @discardableResult
-    public func borderRadius(_ prop: Float) -> AATooltip {
+    public func borderRadius(_ prop: Float?) -> AATooltip {
         borderRadius = prop
         return self
     }
     
     @discardableResult
-    public func borderWidth(_ prop: Float) -> AATooltip {
+    public func borderWidth(_ prop: Float?) -> AATooltip {
         borderWidth = prop
         return self
     }
     
     @discardableResult
-    public func style(_ prop: AAStyle) -> AATooltip {
-        style = prop.toDic()!
+    public func style(_ prop: AAStyle?) -> AATooltip {
+        style = prop
         return self
     }
     
     @discardableResult
-    public func enabled(_ prop: Bool) -> AATooltip {
+    public func enabled(_ prop: Bool?) -> AATooltip {
         enabled = prop
         return self
     }
     
     @discardableResult
-    public func useHTML(_ prop: Bool) -> AATooltip {
+    public func useHTML(_ prop: Bool?) -> AATooltip {
         useHTML = prop
         return self
     }
@@ -100,48 +100,48 @@ public class AATooltip: AASerializable {
     }
     
     @discardableResult
-    public func headerFormat(_ prop: String) -> AATooltip {
+    public func headerFormat(_ prop: String?) -> AATooltip {
         headerFormat = prop
         return self
     }
     
     @discardableResult
-    public func pointFormat(_ prop: String) -> AATooltip {
+    public func pointFormat(_ prop: String?) -> AATooltip {
         pointFormat = prop
         return self
     }
     
     @discardableResult
-    public func footerFormat(_ prop: String) -> AATooltip {
+    public func footerFormat(_ prop: String?) -> AATooltip {
         footerFormat = prop
         return self
     }
     
     @discardableResult
-    public func valueDecimals(_ prop: Int) -> AATooltip {
+    public func valueDecimals(_ prop: Int?) -> AATooltip {
         valueDecimals = prop
         return self
     }
     
     @discardableResult
-    public func shared(_ prop: Bool) -> AATooltip {
+    public func shared(_ prop: Bool?) -> AATooltip {
         shared = prop
         return self
     }
     
     @discardableResult
-    public func crosshairs(_ prop: Bool) -> AATooltip {
+    public func crosshairs(_ prop: Bool?) -> AATooltip {
         crosshairs = prop
         return self
     }
     
     @discardableResult
-    public func valueSuffix(_ prop: String) -> AATooltip {
+    public func valueSuffix(_ prop: String?) -> AATooltip {
         valueSuffix = prop
         return self
     }
     
-    public init() {
+    public override init() {
         enabled = true
         shared = true
         crosshairs = true

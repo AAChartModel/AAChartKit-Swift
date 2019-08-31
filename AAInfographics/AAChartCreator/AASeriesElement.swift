@@ -30,7 +30,7 @@
  
  */
 
- public class AASeriesElement: AASerializable {
+ public class AASeriesElement: AAObject {
     
     private var type: String?               //A chart type series. If the type option is not specified, it is inherited from `chart.type`.
     private var name: String?               //The name of the series as shown in the legend, tooltip etc.
@@ -187,11 +187,11 @@
         return self
     }
 
-    public  init() {
+    public  override init() {
     }   
 }
 
-public class AADataElement: AASerializable {
+public class AADataElement: AAObject {
     private var name: String?
     private var y: Float?
     private var color: Any?
@@ -229,45 +229,7 @@ public class AADataElement: AASerializable {
     }
 }
 
-public class AAMarker: AASerializable {
-    private var radius: Float?
-    private var symbol: String?
-    private var fillColor: String?
-    private var lineWidth: Float?
-    private var lineColor: String?
-    
-    @discardableResult
-    public func radius(_ prop: Float) -> AAMarker {
-        radius = prop
-        return self
-    }
-    
-    @discardableResult
-    public func symbol(_ prop: String) -> AAMarker {
-        symbol = prop
-        return self
-    }
-    
-    @discardableResult
-    public func fillColor(_ prop: String) -> AAMarker {
-        fillColor = prop
-        return self
-    }
-    
-    @discardableResult
-    public func lineWidth(_ prop: Float) -> AAMarker {
-        lineWidth = prop
-        return self
-    }
-    
-    @discardableResult
-    public func lineColor(_ prop: String) -> AAMarker {
-        lineColor = prop
-        return self
-    }
-}
-
-public class AAShadow: AASerializable {
+public class AAShadow: AAObject {
     private var color: String?
     private var offsetX: Float?
     private var offsetY: Float?

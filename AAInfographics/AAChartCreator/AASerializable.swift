@@ -38,19 +38,29 @@ public protocol AAJSONRepresentable {
 }
 
 public protocol AASerializable: AAJSONRepresentable {
+
+}
+
+public class AAObject: AASerializable  {
 }
 
 public extension AASerializable {
     var JSONRepresentation: AnyObject {
         var representation = [String: AnyObject]()
         
-        for case let (label?, value) in Mirror(reflecting: self).children {
+        let mirrorChildren = Mirror(reflecting: self).children
+        
+        for case let (label?, value) in mirrorChildren {
+//            print("propery name：\(label)     property value：\(value)")
             switch value {
-            case let value as AAJSONRepresentable:
+            case let value as AAObject: do {
+//                print("To be saved value：\(value.JSONRepresentation)")
                 representation[label] = value.JSONRepresentation
+                }
                 
-            case let value as NSObject:
+            case let value as NSObject: do {
                 representation[label] = value
+                }
                 
             default:
                 // Ignore any unserializable properties
@@ -64,13 +74,15 @@ public extension AASerializable {
 
 public extension AASerializable {
     func toDic() -> [String: AnyObject]? {
-        return JSONRepresentation as? [String: AnyObject]
+        let dic = JSONRepresentation as? [String: AnyObject]
+        return dic
     }
     
     func toJSON() -> String? {
         do {
             let data = try JSONSerialization.data(withJSONObject: JSONRepresentation, options: [])
-            return String(data: data, encoding: String.Encoding.utf8)
+            let jsonStr = String(data: data, encoding: String.Encoding.utf8)
+            return jsonStr
         } catch {
             return nil
         }

@@ -31,7 +31,7 @@
  */
 import UIKit
 
-public class AALabel: AASerializable {
+public class AALabel: AAObject {
     private var align :String?//轴标签的对齐方式，可用的值有 "left"、"center" 及 "right"。默认值是根据坐标轴的位置（在图表中的位置）即标签的旋转角度进行智能判断的。 默认是：center.
     private var rotation: Float?//轴标签的旋转角度 默认是：0.
     private var text: String?//文字
@@ -96,7 +96,7 @@ public class AALabel: AASerializable {
         return self
     }
     
-    public init() {
+    public override init() {
     }
     
 }

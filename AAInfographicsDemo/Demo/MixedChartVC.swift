@@ -125,7 +125,7 @@ class MixedChartVC: UIViewController {
                     .zIndex(1)
                     .marker(
                         AAMarker()
-                            .radius(5.0)
+                            .radius(5)
                             .fillColor("#1E90FF")
                             .lineWidth(2.0)
                     )
@@ -710,7 +710,7 @@ class MixedChartVC: UIViewController {
                            3, 3.4, 3])
                     .marker(
                         AAMarker()
-                            .radius(5.0)
+                            .radius(5)
                             .symbol("circle")
                             .fillColor("#1E90FF")
                             .lineWidth(2.0)

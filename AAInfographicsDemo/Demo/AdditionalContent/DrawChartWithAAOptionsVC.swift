@@ -487,7 +487,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             AAPlotLinesElement()
                 .color("#1e90ff")//颜色值(16进制)
                 .dashStyle(.longDashDotDot)//样式：Dash,Dot,Solid等,默认Solid
-                .width((1)) //标示线粗细
+                .width((1.0)) //标示线粗细
                 .value((12)) //所在位置
                 .zIndex((1)) //层叠,标示线在图表中显示的层叠级别，值越大，显示越向前
                 .label(AALabel()

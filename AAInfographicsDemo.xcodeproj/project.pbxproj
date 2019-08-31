@@ -34,6 +34,16 @@
 		4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4409BECF21B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift */; };
 		44143D3621A17F2300D44657 /* AAGradientColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44143D3521A17F2300D44657 /* AAGradientColor.swift */; };
 		44143DD221A7A28300D44657 /* AAOptionsConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */; };
+		4415475B231A18C500382DAD /* AAAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415475A231A18C500382DAD /* AAAnimation.swift */; };
+		4415475D231A194000382DAD /* AAChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415475C231A194000382DAD /* AAChart.swift */; };
+		4415475F231A1A4000382DAD /* AACrosshair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415475E231A1A4000382DAD /* AACrosshair.swift */; };
+		44154761231A1AE100382DAD /* AAMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44154760231A1AE100382DAD /* AAMarker.swift */; };
+		44154763231A1B4800382DAD /* AAOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44154762231A1B4800382DAD /* AAOptions.swift */; };
+		44154765231A1BEB00382DAD /* AATitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44154764231A1BEB00382DAD /* AATitle.swift */; };
+		44154767231A1D0200382DAD /* AASubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44154766231A1D0200382DAD /* AASubtitle.swift */; };
+		44154769231A1D5600382DAD /* AASeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44154768231A1D5600382DAD /* AASeries.swift */; };
+		4415476B231A1E8200382DAD /* AAPlotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415476A231A1E8200382DAD /* AAPlotOptions.swift */; };
+		4415476D231A1F9100382DAD /* AAOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415476C231A1F9100382DAD /* AAOptionsComposer.swift */; };
 		4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */; };
 		445353C122631B0E009FA12A /* AAPlotBandsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445353C022631B0E009FA12A /* AAPlotBandsElement.swift */; };
 		445353C322631B48009FA12A /* AAPlotLinesElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445353C222631B48009FA12A /* AAPlotLinesElement.swift */; };
@@ -97,6 +107,16 @@
 		4409BECF21B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateJSStringFunctionVC.swift; sourceTree = "<group>"; };
 		44143D3521A17F2300D44657 /* AAGradientColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAGradientColor.swift; sourceTree = "<group>"; };
 		44143DD121A7A28300D44657 /* AAOptionsConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsConstructor.swift; sourceTree = "<group>"; };
+		4415475A231A18C500382DAD /* AAAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAnimation.swift; sourceTree = "<group>"; };
+		4415475C231A194000382DAD /* AAChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChart.swift; sourceTree = "<group>"; };
+		4415475E231A1A4000382DAD /* AACrosshair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACrosshair.swift; sourceTree = "<group>"; };
+		44154760231A1AE100382DAD /* AAMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMarker.swift; sourceTree = "<group>"; };
+		44154762231A1B4800382DAD /* AAOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptions.swift; sourceTree = "<group>"; };
+		44154764231A1BEB00382DAD /* AATitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATitle.swift; sourceTree = "<group>"; };
+		44154766231A1D0200382DAD /* AASubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASubtitle.swift; sourceTree = "<group>"; };
+		44154768231A1D5600382DAD /* AASeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeries.swift; sourceTree = "<group>"; };
+		4415476A231A1E8200382DAD /* AAPlotOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotOptions.swift; sourceTree = "<group>"; };
+		4415476C231A1F9100382DAD /* AAOptionsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AAOptionsComposer.swift; path = ../../../AAInfographics/AAChartCreator/AAOptionsComposer.swift; sourceTree = "<group>"; };
 		4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleChartVC.swift; sourceTree = "<group>"; };
 		445353C022631B0E009FA12A /* AAPlotBandsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotBandsElement.swift; sourceTree = "<group>"; };
 		445353C222631B48009FA12A /* AAPlotLinesElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotLinesElement.swift; sourceTree = "<group>"; };
@@ -137,6 +157,7 @@
 		275BB8D720CFA6DB00DE1991 /* AdditionalContent */ = {
 			isa = PBXGroup;
 			children = (
+				4415476C231A1F9100382DAD /* AAOptionsComposer.swift */,
 				276A56FE22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift */,
 				279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */,
 				2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */,
@@ -251,6 +272,15 @@
 				446809DB22C3806E00BAE647 /* AALegend.swift */,
 				446809DD22C3809000BAE647 /* AAXAxis.swift */,
 				446809DF22C380A000BAE647 /* AAYAxis.swift */,
+				4415475A231A18C500382DAD /* AAAnimation.swift */,
+				4415475E231A1A4000382DAD /* AACrosshair.swift */,
+				4415475C231A194000382DAD /* AAChart.swift */,
+				44154760231A1AE100382DAD /* AAMarker.swift */,
+				44154762231A1B4800382DAD /* AAOptions.swift */,
+				44154764231A1BEB00382DAD /* AATitle.swift */,
+				44154766231A1D0200382DAD /* AASubtitle.swift */,
+				44154768231A1D5600382DAD /* AASeries.swift */,
+				4415476A231A1E8200382DAD /* AAPlotOptions.swift */,
 			);
 			path = AAOptionsModel;
 			sourceTree = "<group>";
@@ -396,10 +426,13 @@
 				446809E022C380A000BAE647 /* AAYAxis.swift in Sources */,
 				27499151210D90B5003D18C2 /* AASerializable.swift in Sources */,
 				279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */,
+				4415476B231A1E8200382DAD /* AAPlotOptions.swift in Sources */,
 				278C55151EE948C900770B97 /* MainVC.swift in Sources */,
 				27DB49A42273767000B7926B /* AATooltip.swift in Sources */,
 				446809DC22C3806E00BAE647 /* AALegend.swift in Sources */,
+				4415475F231A1A4000382DAD /* AACrosshair.swift in Sources */,
 				27DB49A6227381C300B7926B /* AAEasyTool.swift in Sources */,
+				4415475D231A194000382DAD /* AAChart.swift in Sources */,
 				27499150210D90B5003D18C2 /* AASeriesElement.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
 				4454E46922DF15AE00E01944 /* AALabels.swift in Sources */,
@@ -407,6 +440,9 @@
 				4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */,
 				44143D3621A17F2300D44657 /* AAGradientColor.swift in Sources */,
 				276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */,
+				4415476D231A1F9100382DAD /* AAOptionsComposer.swift in Sources */,
+				44154763231A1B4800382DAD /* AAOptions.swift in Sources */,
+				4415475B231A18C500382DAD /* AAAnimation.swift in Sources */,
 				4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */,
 				4454E46B22DF1A4F00E01944 /* AALabel.swift in Sources */,
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
@@ -416,14 +452,18 @@
 				272BBE7821A258C200DBE69D /* AAColor.swift in Sources */,
 				44143DD221A7A28300D44657 /* AAOptionsConstructor.swift in Sources */,
 				446809DE22C3809000BAE647 /* AAXAxis.swift in Sources */,
+				44154767231A1D0200382DAD /* AASubtitle.swift in Sources */,
 				27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */,
 				2749914F210D90B5003D18C2 /* AAChartModel.swift in Sources */,
 				278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */,
+				44154761231A1AE100382DAD /* AAMarker.swift in Sources */,
 				27FADB8620D6569000FED960 /* ChartSeriesHideOrShowVC.swift in Sources */,
 				44EB70A722BCB606008FECE4 /* CustomTooltipWithJSFunctionVC.swift in Sources */,
+				44154769231A1D5600382DAD /* AASeries.swift in Sources */,
 				27499152210D90B5003D18C2 /* AAChartView.swift in Sources */,
 				447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */,
 				278C55141EE948C900770B97 /* CommonChartVC.swift in Sources */,
+				44154765231A1BEB00382DAD /* AATitle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

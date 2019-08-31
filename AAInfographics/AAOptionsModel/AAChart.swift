@@ -1,8 +1,8 @@
 //
-//  AAPlotBandsElement.swift
+//  AAChart.swift
 //  AAInfographicsDemo
 //
-//  Created by AnAn on 2019/4/14.
+//  Created by AnAn on 2019/8/31.
 //  Copyright © 2019 An An. All rights reserved.
 //*************** ...... SOURCE CODE ...... ***************
 //***...................................................***
@@ -32,65 +32,87 @@
 
 import UIKit
 
-public class AAPlotBandsElement: AAObject {
-    private var from: Float?
-    private var to: Float?
-    private var color: Any?
-    private var borderColor: String?
-    private var borderWidth: Float?
-    private var className: String?
-    private var label: AALabel?
-    private var zIndex: Int?
+public class AAChart: AAObject {
+    var type: String?
+    var backgroundColor: Any?
+    var plotBackgroundImage: String?
+    var pinchType: String?
+    var panning: Bool?
+    var panKey: String?
+    var polar: Bool?
+    var animation: AAAnimation?
+    var inverted: Bool?
+    var marginLeft: Float?
+    var marginRight: Float?
     
     @discardableResult
-    public func from(_ prop: Float) -> AAPlotBandsElement {
-        from = prop
+    func type(_ prop: String?) -> AAChart {
+        type = prop
         return self
     }
     
     @discardableResult
-    public func to(_ prop: Float) -> AAPlotBandsElement {
-        to = prop
+    func backgroundColor(_ prop: Any?) -> AAChart {
+        backgroundColor = prop
         return self
     }
     
     @discardableResult
-    public func color(_ prop: Any) -> AAPlotBandsElement {
-        color = prop
+    func plotBackgroundImage(_ prop: String) -> AAChart {
+        plotBackgroundImage = prop
         return self
     }
     
     @discardableResult
-    public func borderColor(_ prop: String) -> AAPlotBandsElement {
-        borderColor = prop
+    func pinchType(_ prop: String?) -> AAChart {
+        pinchType = prop
         return self
     }
     
     @discardableResult
-    public func borderWidth(_ prop: Float) -> AAPlotBandsElement {
-        borderWidth = prop
+    func panning(_ prop: Bool?) -> AAChart {
+        panning = prop
         return self
     }
     
     @discardableResult
-    public func className(_ prop: String) -> AAPlotBandsElement {
-        className = prop
+    func panKey(_ prop: String) -> AAChart {
+        panKey = prop
         return self
     }
     
     @discardableResult
-    public func label(_ prop: AALabel) -> AAPlotBandsElement {
-        label = prop
+    func polar(_ prop: Bool?) -> AAChart {
+        polar = prop
         return self
     }
     
     @discardableResult
-    public func zIndex(_ prop: Int) -> AAPlotBandsElement {
-        zIndex = prop
+    func animation(_ prop: AAAnimation) -> AAChart {
+        animation = prop
+        return self
+    }
+    
+    @discardableResult
+    func inverted(_ prop: Bool?) -> AAChart {
+        inverted = prop
+        return self
+    }
+    
+    @discardableResult
+    func marginLeft(_ prop: Float?) -> AAChart {
+        marginLeft = prop
+        return self
+    }
+    
+    @discardableResult
+    func marginRight(_ prop: Float?) -> AAChart {
+        marginRight = prop
         return self
     }
     
     public override init() {
-    }   
-
+        
+    }
 }
+

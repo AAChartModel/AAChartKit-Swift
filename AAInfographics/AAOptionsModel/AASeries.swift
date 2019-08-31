@@ -1,8 +1,8 @@
 //
-//  AAPlotBandsElement.swift
+//  AASeries.swift
 //  AAInfographicsDemo
 //
-//  Created by AnAn on 2019/4/14.
+//  Created by AnAn on 2019/8/31.
 //  Copyright © 2019 An An. All rights reserved.
 //*************** ...... SOURCE CODE ...... ***************
 //***...................................................***
@@ -32,65 +32,74 @@
 
 import UIKit
 
-public class AAPlotBandsElement: AAObject {
-    private var from: Float?
-    private var to: Float?
-    private var color: Any?
-    private var borderColor: String?
-    private var borderWidth: Float?
-    private var className: String?
-    private var label: AALabel?
-    private var zIndex: Int?
+public class AASeries: AAObject {
+    private var borderRadius: Float?
+    private var marker: AAMarker?
+    private var stacking: String?
+    private var animation: AAAnimation?
+    private var keys: Array<String>?
+    private var colorByPoint: Bool? //决定了图表是否给每个数据列或每个点分配一个颜色，默认值是 false， 即默认是给每个数据类分配颜色，
+    private var connectNulls: Bool? //设置折线是否断点重连
+    private var events: Dictionary<String, Any>?
+    private var shadow: AAShadow?
     
     @discardableResult
-    public func from(_ prop: Float) -> AAPlotBandsElement {
-        from = prop
+    func borderRadius(_ prop: Float?) -> AASeries {
+        borderRadius = prop
         return self
     }
     
     @discardableResult
-    public func to(_ prop: Float) -> AAPlotBandsElement {
-        to = prop
+    func marker(_ prop: AAMarker) -> AASeries {
+        marker = prop
         return self
     }
     
     @discardableResult
-    public func color(_ prop: Any) -> AAPlotBandsElement {
-        color = prop
+    func stacking(_ prop: String?) -> AASeries {
+        stacking = prop
         return self
     }
     
     @discardableResult
-    public func borderColor(_ prop: String) -> AAPlotBandsElement {
-        borderColor = prop
+    func animation(_ prop: AAAnimation) -> AASeries {
+        animation = prop
         return self
     }
     
     @discardableResult
-    public func borderWidth(_ prop: Float) -> AAPlotBandsElement {
-        borderWidth = prop
+    func keys(_ prop: Array<String>) -> AASeries {
+        keys = prop
         return self
     }
     
     @discardableResult
-    public func className(_ prop: String) -> AAPlotBandsElement {
-        className = prop
+    func colorByPoint(_ prop: Bool?) -> AASeries {
+        colorByPoint = prop
         return self
     }
     
     @discardableResult
-    public func label(_ prop: AALabel) -> AAPlotBandsElement {
-        label = prop
+    func connectNulls(_ prop: Bool?) -> AASeries {
+        connectNulls = prop
         return self
     }
     
     @discardableResult
-    public func zIndex(_ prop: Int) -> AAPlotBandsElement {
-        zIndex = prop
+    func events(_ prop: Dictionary<String, Any>?) -> AASeries {
+        events = prop
+        return self
+    }
+    
+    @discardableResult
+    func shadow(_ prop: AAShadow) -> AASeries {
+        shadow = prop
         return self
     }
     
     public override init() {
-    }   
-
+        
+    }
 }
+
+

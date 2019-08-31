@@ -32,7 +32,7 @@
 
 import UIKit
 
-public class AAPlotLinesElement: AASerializable {
+public class AAPlotLinesElement: AAObject {
     private var color: Any?
     private var dashStyle: String?
     private var width: Float?
@@ -76,7 +76,7 @@ public class AAPlotLinesElement: AASerializable {
         return self
     }
     
-    public  init() {
+    public  override init() {
     }
 
 }

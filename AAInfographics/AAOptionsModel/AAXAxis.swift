@@ -32,7 +32,7 @@
 
 import UIKit
 
-public class AAXAxis: AASerializable {
+public class AAXAxis: AAObject {
     private var plotBands: [AAPlotBandsElement]?
     private var plotLines: [AAPlotLinesElement]?
     private var categories: [String]?
@@ -57,167 +57,140 @@ public class AAXAxis: AASerializable {
     private var tickPosition: String? //刻度线相对于轴线的位置，可用的值有 inside 和 outside，分别表示在轴线的内部和外部。 默认是：outside.
     
     @discardableResult
-    public func plotBands(_ prop: [AAPlotBandsElement]) -> AAXAxis {
+    public func plotBands(_ prop: [AAPlotBandsElement]?) -> AAXAxis {
         plotBands = prop
         return self
     }
     
     @discardableResult
-    public func plotLines(_ prop: [AAPlotLinesElement]) -> AAXAxis {
+    public func plotLines(_ prop: [AAPlotLinesElement]?) -> AAXAxis {
         plotLines = prop
         return self
     }
     
     @discardableResult
-    public func categories(_ prop: [String]) -> AAXAxis {
+    public func categories(_ prop: [String]?) -> AAXAxis {
         categories = prop
         return self
     }
     
     @discardableResult
-    public func reversed(_ prop: Bool) -> AAXAxis {
+    public func reversed(_ prop: Bool?) -> AAXAxis {
         reversed = prop
         return self
     }
     
     @discardableResult
-    public func lineWidth(_ prop: Float) -> AAXAxis {
+    public func lineWidth(_ prop: Float?) -> AAXAxis {
         lineWidth = prop
         return self
     }
     
     @discardableResult
-    public func lineColor(_ prop: String) -> AAXAxis {
+    public func lineColor(_ prop: String?) -> AAXAxis {
         lineColor = prop
         return self
     }
     
     @discardableResult
-    public func max(_ prop: Float) -> AAXAxis {
+    public func max(_ prop: Float?) -> AAXAxis {
         max = prop
         return self
     }
     
     @discardableResult
-    public func min(_ prop: Float) -> AAXAxis {
+    public func min(_ prop: Float?) -> AAXAxis {
         min = prop
         return self
     }
     
     @discardableResult
-    public func tickColor(_ prop: String) -> AAXAxis {
+    public func tickColor(_ prop: String?) -> AAXAxis {
         tickColor = prop
         return self
     }
     
     @discardableResult
-    public func gridLineWidth(_ prop: Float) -> AAXAxis {
+    public func gridLineWidth(_ prop: Float?) -> AAXAxis {
         gridLineWidth = prop
         return self
     }
     
     @discardableResult
-    public func gridLineColor(_ prop: String) -> AAXAxis {
+    public func gridLineColor(_ prop: String?) -> AAXAxis {
         gridLineColor = prop
         return self
     }
     
     @discardableResult
-    public func gridLineDashStyle(_ prop: String) -> AAXAxis {
+    public func gridLineDashStyle(_ prop: String?) -> AAXAxis {
         gridLineDashStyle = prop
         return self
     }
     
     @discardableResult
-    public func offset(_ prop: Float) -> AAXAxis {
+    public func offset(_ prop: Float?) -> AAXAxis {
         offset = prop
         return self
     }
     
     @discardableResult
-    public func labels(_ prop: AALabels) -> AAXAxis {
-        labels = prop.toDic()!
+    public func labels(_ prop: AALabels?) -> AAXAxis {
+        labels = prop?.toDic()
         return self
     }
     
     @discardableResult
-    public func visible(_ prop: Bool) -> AAXAxis {
+    public func visible(_ prop: Bool?) -> AAXAxis {
         visible = prop
         return self
     }
     
     @discardableResult
-    public func startOnTick(_ prop: Bool) -> AAXAxis {
+    public func startOnTick(_ prop: Bool?) -> AAXAxis {
         startOnTick = prop
         return self
     }
     
     @discardableResult
-    public func tickInterval(_ prop: Int) -> AAXAxis {
+    public func tickInterval(_ prop: Int?) -> AAXAxis {
         tickInterval = prop
         return self
     }
     
     @discardableResult
-    public func crosshair(_ prop: AACrosshair) -> AAXAxis {
-        crosshair = prop.toDic()!
+    public func crosshair(_ prop: AACrosshair?) -> AAXAxis {
+        crosshair = prop?.toDic()
         return self
     }
     
     @discardableResult
-    public func tickmarkPlacement(_ prop: String) -> AAXAxis {
+    public func tickmarkPlacement(_ prop: String?) -> AAXAxis {
         tickmarkPlacement = prop
         return self
     }
     
     @discardableResult
-    public func tickWidth(_ prop: Float) -> AAXAxis {
+    public func tickWidth(_ prop: Float?) -> AAXAxis {
         tickWidth = prop
         return self
     }
     
     @discardableResult
-    public func tickLength(_ prop: Float) -> AAXAxis {
+    public func tickLength(_ prop: Float?) -> AAXAxis {
         tickLength = prop
         return self
     }
     
     @discardableResult
-    public func tickPosition(_ prop: String) -> AAXAxis {
+    public func tickPosition(_ prop: String?) -> AAXAxis {
         tickPosition = prop
         return self
     }
     
-    public init() {
+    public override init() {
         
     }
 
 }
 
-public class AACrosshair: AASerializable {
-    private var dashStyle: String? //准星线样式
-    private var color: String?  //准星线颜色
-    private var width: Float?  //准星线宽度
-    
-    @discardableResult
-    public func dashStyle(_ prop: AALineDashStyleType) -> AACrosshair {
-        dashStyle = prop.rawValue
-        return self
-    }
-    
-    @discardableResult
-    public func color(_ prop: String) -> AACrosshair {
-        color = prop
-        return self
-    }
-    
-    @discardableResult
-    public func width(_ prop: Float) -> AACrosshair {
-        width = prop
-        return self
-    }
-    
-    public init() {
-        
-    }
-}

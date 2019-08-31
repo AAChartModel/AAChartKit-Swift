@@ -20,7 +20,7 @@
  * Please contact me on GitHub,if there are any problems encountered in use.
  * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
  * -------------------------------------------------------------------------------
- * And if you want to contribute for this project, please contact me as well
+ * And if you want to contribute for self project, please contact me as well
  * GitHub        : https://github.com/AAChartModel
  * StackOverflow : https://stackoverflow.com/users/7842508/codeforu
  * JianShu       : https://www.jianshu.com/u/f1e6753d4254
@@ -139,11 +139,18 @@ public enum AALineDashStyleType: String {
 }
 
 
-public class AAChartModel {
+public class AAChartModel: AAObject {
     public var animationType: AAChartAnimationType?       //动画类型
     public var animationDuration: Int?      //动画时间
     public var title: String?               //标题内容
+    public var titleFontColor: String?        //标题字体颜色
+    public var titleFontSize: Float?          //标题字体大小
+    public var titleFontWeight: AAChartFontWeightType?       //标题字体粗细
     public var subtitle: String?            //副标题内容
+    public var subtitleAlign: String?
+    public var subtitleFontColor: String?     //副标题字体颜色
+    public var subtitleFontSize: Float?       //副标题字体大小
+    public var subtitleFontWeight: AAChartFontWeightType?    //副标题字体粗细
     public var chartType: AAChartType?      //图表类型
     public var stacking: AAChartStackingType?//堆积样式
     public var symbol: AAChartSymbolType?//折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
@@ -157,14 +164,21 @@ public class AAChartModel {
     public var marginRight: Float?          //图表右边距
     public var marginBottom: Float?         //图表底部边距
     public var dataLabelsEnabled: Bool?      //是否显示数据
+    public var dataLabelsFontColor: String?
+    public var dataLabelsFontSize: Float?
+    public var dataLabelsFontWeight: AAChartFontWeightType?
     public var xAxisLabelsEnabled: Bool?    //x 轴是否显示数据
     public var categories: [String]?        //x 轴是否显示数据
     public var xAxisGridLineWidth: Float?   //x 轴网格线的宽度
     public var xAxisVisible: Bool?          //x 轴是否显示
+    public var xAxisTickInterval: Int?
     public var yAxisVisible: Bool?          //y 轴是否显示
     public var yAxisLabelsEnabled: Bool?    //y 轴是否显示数据
     public var yAxisTitle: String?          //y 轴标题
     public var yAxisLineWidth: Float?       //y 轴轴线的宽度
+    public var yAxisMin: Float?
+    public var yAxisMax: Float?
+    public var yAxisAllowDecimals: Bool?
     public var yAxisGridLineWidth: Float?   //y 轴网格线的宽度
     public var tooltipEnabled: Bool?        //是否显示浮动提示框(默认显示)
     public var tooltipValueSuffix: String?  //浮动提示框单位后缀
@@ -182,7 +196,7 @@ public class AAChartModel {
     public var subtitleColor: String?       //副标题颜色
     public var axisColor: String?           //x 轴和 y 轴文字颜色
     public var touchEventEnabled: Bool?
-    
+
     
     @discardableResult
     public func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
@@ -203,9 +217,51 @@ public class AAChartModel {
     }
     
     @discardableResult
+    public func titleFontColor(prop: String) -> AAChartModel {
+    titleFontColor = prop
+    return self
+    }
+    
+    @discardableResult
+    public func titleFontSize(prop: Float?) -> AAChartModel {
+    titleFontSize = prop
+    return self
+    }
+    
+    @discardableResult
+    public func titleFontWeight(prop: AAChartFontWeightType) -> AAChartModel {
+    titleFontWeight = prop
+    return self
+    }
+    
+    @discardableResult
     public func subtitle(_ prop: String) -> AAChartModel {
         subtitle = prop
         return self
+    }
+    
+    @discardableResult
+    public func subtitleAlign(prop: String) -> AAChartModel {
+    subtitleAlign = prop
+    return self
+    }
+    
+    @discardableResult
+    public func subtitleFontColor(prop: String) -> AAChartModel {
+    subtitleFontColor = prop
+    return self
+    }
+    
+    @discardableResult
+    public func subtitleFontSize(prop: Float?) -> AAChartModel {
+    subtitleFontSize = prop
+    return self
+    }
+    
+    @discardableResult
+    public func subtitleFontWeight(prop: AAChartFontWeightType) -> AAChartModel {
+    subtitleFontWeight = prop
+    return self
     }
     
     @discardableResult
@@ -305,6 +361,24 @@ public class AAChartModel {
     }
     
     @discardableResult
+    public func dataLabelsFontColor(prop: String) -> AAChartModel {
+    dataLabelsFontColor = prop
+    return self
+    }
+    
+    @discardableResult
+    public func dataLabelsFontSize(prop: Float?) -> AAChartModel {
+    dataLabelsFontSize = prop
+    return self
+    }
+    
+    @discardableResult
+    public func dataLabelsFontWeight(prop: AAChartFontWeightType) -> AAChartModel {
+    dataLabelsFontWeight = prop
+    return self
+    }
+    
+    @discardableResult
     public func xAxisLabelsEnabled(_ prop: Bool) -> AAChartModel {
         xAxisLabelsEnabled = prop
         return self
@@ -329,6 +403,12 @@ public class AAChartModel {
     }
     
     @discardableResult
+    public func xAxisTickInterval(_ prop: Int) -> AAChartModel {
+        xAxisTickInterval = prop
+        return self
+    }
+    
+    @discardableResult
     public func yAxisVisible(_ prop: Bool) -> AAChartModel {
         yAxisVisible = prop
         return self
@@ -344,6 +424,24 @@ public class AAChartModel {
     public func yAxisTitle(_ prop: String) -> AAChartModel {
         yAxisTitle = prop
         return self
+    }
+    
+    @discardableResult
+    public func yAxisMin(prop: Float) -> AAChartModel {
+    yAxisMin = prop
+    return self
+    }
+    
+    @discardableResult
+    public func yAxisMax(prop: Float) -> AAChartModel {
+    yAxisMax = prop
+    return self
+    }
+    
+    @discardableResult
+    public func yAxisAllowDecimals(prop: Bool) -> AAChartModel {
+    yAxisAllowDecimals = prop
+    return self
     }
     
     @discardableResult
@@ -435,7 +533,7 @@ public class AAChartModel {
     }
     
     
-    public init() {
+    public override init() {
         backgroundColor     = "#ffffff"
         titleColor          = "#000000"
         subtitleColor       = "#000000"
@@ -446,7 +544,7 @@ public class AAChartModel {
         stacking            = AAChartStackingType.none
         zoomType            = AAChartZoomType.none//默认禁用手势缩放
         colorsTheme         = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
-        dataLabelsEnabled    = true
+        dataLabelsEnabled   = true
         tooltipEnabled      = true
         tooltipCrosshairs   = true
         xAxisLabelsEnabled  = true
@@ -461,6 +559,16 @@ public class AAChartModel {
         legendVerticalAlign = AAChartLegendVerticalAlignType.bottom
         borderRadius        = 0 //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
         markerRadius        = 5 //折线连接点的半径长度,如果设置默认值为0,那么这样就相当于不显示了
+        titleFontColor      = "#000000"//标题字体颜色为黑色
+        titleFontWeight     = AAChartFontWeightType.regular//常规字体
+        titleFontSize       = 11
+        subtitleFontColor   = "#000000"//副标题字体颜色为黑色
+        subtitleFontWeight  = AAChartFontWeightType.regular //常规字体
+        subtitleFontSize    = 9
+        dataLabelsFontColor = "#000000"//数据标签默认颜色为黑色
+        dataLabelsFontWeight = AAChartFontWeightType.bold//图表的数据字体为粗体
+        dataLabelsFontSize  = 10
+        
     }
     
 }

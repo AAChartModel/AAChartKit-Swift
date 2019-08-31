@@ -1,8 +1,8 @@
 //
-//  AAPlotBandsElement.swift
+//  AASubtitle.swift
 //  AAInfographicsDemo
 //
-//  Created by AnAn on 2019/4/14.
+//  Created by AnAn on 2019/8/31.
 //  Copyright © 2019 An An. All rights reserved.
 //*************** ...... SOURCE CODE ...... ***************
 //***...................................................***
@@ -32,65 +32,58 @@
 
 import UIKit
 
-public class AAPlotBandsElement: AAObject {
-    private var from: Float?
-    private var to: Float?
-    private var color: Any?
-    private var borderColor: String?
-    private var borderWidth: Float?
-    private var className: String?
-    private var label: AALabel?
-    private var zIndex: Int?
+public class AASubtitle: AAObject {
+    var text: String?
+    var style: AAStyle?
+    var align: String?
+    var verticalAlign: String?
+    var x: Float?
+    var y: Float?
+    var userHTML: Bool?
     
     @discardableResult
-    public func from(_ prop: Float) -> AAPlotBandsElement {
-        from = prop
+    func text(_ prop: String?) -> AASubtitle {
+        text = prop
         return self
     }
     
     @discardableResult
-    public func to(_ prop: Float) -> AAPlotBandsElement {
-        to = prop
+    func style(_ prop: AAStyle?) -> AASubtitle {
+        style = prop
         return self
     }
     
     @discardableResult
-    public func color(_ prop: Any) -> AAPlotBandsElement {
-        color = prop
+    func align(_ prop: String?) -> AASubtitle {
+        align = prop
         return self
     }
     
     @discardableResult
-    public func borderColor(_ prop: String) -> AAPlotBandsElement {
-        borderColor = prop
+    func verticalAlign(_ prop: AAChartLegendVerticalAlignType?) -> AASubtitle {
+        verticalAlign = prop?.rawValue
         return self
     }
     
     @discardableResult
-    public func borderWidth(_ prop: Float) -> AAPlotBandsElement {
-        borderWidth = prop
+    func x(_ prop: Float?) -> AASubtitle {
+        x = prop
         return self
     }
     
     @discardableResult
-    public func className(_ prop: String) -> AAPlotBandsElement {
-        className = prop
+    func y(_ prop: Float?) -> AASubtitle {
+        y = prop
         return self
     }
     
     @discardableResult
-    public func label(_ prop: AALabel) -> AAPlotBandsElement {
-        label = prop
-        return self
-    }
-    
-    @discardableResult
-    public func zIndex(_ prop: Int) -> AAPlotBandsElement {
-        zIndex = prop
+    func userHTML(_ prop: Bool?) -> AASubtitle {
+        userHTML = prop
         return self
     }
     
     public override init() {
-    }   
-
+        
+    }
 }

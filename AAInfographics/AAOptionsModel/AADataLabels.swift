@@ -32,7 +32,7 @@
 
 import UIKit
 
-public class AADataLabels: AASerializable {
+public class AADataLabels: AAObject {
     private var enabled: Bool?
     private var style: [String:Any]?
     private var format: String?
@@ -51,135 +51,135 @@ public class AADataLabels: AASerializable {
     private var shape: String?
     
     @discardableResult
-    public func enabled(_ prop: Bool) -> AADataLabels {
+    public func enabled(_ prop: Bool?) -> AADataLabels {
         enabled = prop
         return self
     }
     
     @discardableResult
-    public func style(_ prop: AAStyle) -> AADataLabels {
-        style = prop.toDic()!
+    public func style(_ prop: AAStyle?) -> AADataLabels {
+        style = prop?.toDic()!
         return self
     }
     
     @discardableResult
-    public func format(_ prop: String) -> AADataLabels {
+    public func format(_ prop: String?) -> AADataLabels {
         format = prop
         return self
     }
     
     @discardableResult
-    public func rotation(_ prop: Float) -> AADataLabels {
+    public func rotation(_ prop: Float?) -> AADataLabels {
         rotation = prop
         return self
     }
     
     @discardableResult
-    public func allowOverlap(_ prop: Bool) -> AADataLabels {
+    public func allowOverlap(_ prop: Bool?) -> AADataLabels {
         allowOverlap = prop
         return self
     }
     
     @discardableResult
-    public func useHTML(_ prop: Bool) -> AADataLabels {
+    public func useHTML(_ prop: Bool?) -> AADataLabels {
         useHTML = prop
         return self
     }
     
     @discardableResult
-    public func distance(_ prop: Float) -> AADataLabels {
+    public func distance(_ prop: Float?) -> AADataLabels {
         distance = prop
         return self
     }
     
     @discardableResult
-    public func verticalAlign(_ prop: String) -> AADataLabels {
+    public func verticalAlign(_ prop: String?) -> AADataLabels {
         verticalAlign = prop
         return self
     }
     
     @discardableResult
-    public func x(_ prop: Float) -> AADataLabels {
+    public func x(_ prop: Float?) -> AADataLabels {
         x = prop
         return self
     }
     
     @discardableResult
-    public func y(_ prop: Float) -> AADataLabels {
+    public func y(_ prop: Float?) -> AADataLabels {
         y = prop
         return self
     }
     
     @discardableResult
-    public func color(_ prop: String) -> AADataLabels {
+    public func color(_ prop: String?) -> AADataLabels {
         color = prop
         return self
     }
     
     @discardableResult
-    public func backgroundColor(_ prop: String) -> AADataLabels {
+    public func backgroundColor(_ prop: String?) -> AADataLabels {
         backgroundColor = prop
         return self
     }
     
     @discardableResult
-    public func borderColor(_ prop: String) -> AADataLabels {
+    public func borderColor(_ prop: String?) -> AADataLabels {
         borderColor = prop
         return self
     }
     
     @discardableResult
-    public func borderRadius(_ prop: Float) -> AADataLabels {
+    public func borderRadius(_ prop: Float?) -> AADataLabels {
         borderRadius = prop
         return self
     }
     
     @discardableResult
-    public func borderWidth(_ prop: Float) -> AADataLabels {
+    public func borderWidth(_ prop: Float?) -> AADataLabels {
         borderWidth = prop
         return self
     }
     
     @discardableResult
-    public func shape(_ prop: String) -> AADataLabels {
+    public func shape(_ prop: String?) -> AADataLabels {
         shape = prop
         return self
     }
     
-    public init() {
+    public override init() {
     }
 }
 
-public class AAStyle: AASerializable {
+public class AAStyle: AAObject {
     private var color: String?
     private var fontSize: String?
     private var fontWeight: String?
     private var textOutline: String?
     
     @discardableResult
-    public func color(_ prop: String) -> AAStyle {
+    public func color(_ prop: String?) -> AAStyle {
         color = prop
         return self
     }
     
     @discardableResult
-    public func fontSize(_ prop: Int) -> AAStyle {
+    public func fontSize(_ prop: Float) -> AAStyle {
         fontSize = "\(prop)px"
         return self
     }
     
     @discardableResult
-    public func fontWeight(_ prop: AAChartFontWeightType) -> AAStyle {
-        fontWeight = prop.rawValue
+    public func fontWeight(_ prop: AAChartFontWeightType?) -> AAStyle {
+        fontWeight = prop?.rawValue
         return self
     }
     
     @discardableResult
-    public func textOutline(_ prop: String) -> AAStyle {
+    public func textOutline(_ prop: String?) -> AAStyle {
         textOutline = prop
         return self
     }
     
-    public init() {
+    public override init() {
     }
 }
