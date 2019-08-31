@@ -540,7 +540,7 @@ public class AAChartModel: AAObject {
         axisColor           = "#000000"
         animationType       = AAChartAnimationType.easeInQuad
         animationDuration   = 800//以毫秒为单位
-        chartType           = AAChartType.column
+        chartType           = AAChartType.line
         stacking            = AAChartStackingType.none
         zoomType            = AAChartZoomType.none//默认禁用手势缩放
         colorsTheme         = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
@@ -568,6 +568,7 @@ public class AAChartModel: AAObject {
         dataLabelsFontColor = "#000000"//数据标签默认颜色为黑色
         dataLabelsFontWeight = AAChartFontWeightType.bold//图表的数据字体为粗体
         dataLabelsFontSize  = 10
+        yAxisTitle          = ""
         
     }
     

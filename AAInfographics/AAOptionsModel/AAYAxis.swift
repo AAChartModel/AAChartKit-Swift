@@ -34,8 +34,8 @@ import UIKit
 
 public class AAYAxis: AAObject {
     private var title: AATitle?
-    private var plotBands: [AAPlotBandsElement]?
-    private var plotLines: [AAPlotLinesElement]?
+    private var plotBands: [[String: Any]]?
+    private var plotLines: [[String: Any]]?
     private var categories:[String]?
     private var reversed: Bool?
     private var gridLineWidth: Float? // y 轴网格线宽度
@@ -68,14 +68,22 @@ public class AAYAxis: AAObject {
     }
     
     @discardableResult
-    public func plotBands(_ prop: [AAPlotBandsElement]?) -> AAYAxis {
-        plotBands = prop
+    public func plotBands(_ prop: [AAPlotBandsElement]) -> AAYAxis {
+        var seriesElementsArr = [[String: Any]]()
+        prop.forEach { (aaSeriesElement) in
+            seriesElementsArr.append(aaSeriesElement.toDic()!)
+        }
+        plotBands = seriesElementsArr
         return self
     }
     
     @discardableResult
-    public func plotLines(_ prop: [AAPlotLinesElement]?) -> AAYAxis {
-        plotLines = prop
+    public func plotLines(_ prop: [AAPlotLinesElement]) -> AAYAxis {
+        var seriesElementsArr = [[String: Any]]()
+        prop.forEach { (aaSeriesElement) in
+            seriesElementsArr.append(aaSeriesElement.toDic()!)
+        }
+        plotLines = seriesElementsArr
         return self
     }
     

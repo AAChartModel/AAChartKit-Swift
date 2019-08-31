@@ -138,12 +138,12 @@ class AAOptionsComposer: NSObject {
         _ aaPlotOptions: AAPlotOptions,
         _ aaChartModel: AAChartModel
         ) {
-        let chartType = aaChartModel.chartType
+        let chartType = aaChartModel.chartType!
         
         var aaDataLabels = AADataLabels()
+        .enabled(aaChartModel.dataLabelsEnabled)
         if (aaChartModel.dataLabelsEnabled == true) {
             aaDataLabels = aaDataLabels
-                .enabled(true)
                 .style(AAStyle()
                     .color(aaChartModel.dataLabelsFontColor)
                     .fontSize(aaChartModel.dataLabelsFontSize!)
@@ -180,21 +180,24 @@ class AAOptionsComposer: NSObject {
         } else if chartType == AAChartType.spline {
             aaPlotOptions.spline(AASpline().dataLabels(aaDataLabels))
         } else if chartType == AAChartType.pie {
-            aaPlotOptions.pie(AAPie().dataLabels(aaDataLabels))
+            let aaPie = AAPie()
+                .allowPointSelect(true)
+                .cursor("pointer")
+                .showInLegend(true)
+            if (aaChartModel.dataLabelsEnabled == true) {
+                aaPie.dataLabels(aaDataLabels.format("<b>{point.name}</b>: {point.percentage:.1f} %"))
+            } else {
+                aaPie.dataLabels(aaDataLabels)
+            }
+            aaPlotOptions.pie(aaPie)
         } else if chartType == AAChartType.columnrange {
-            let columnRangeDic = [
-                "borderRadius" : 0,//The color of the border surrounding each column or bar
-                "borderWidth" : 0,//The corner radius of the border surrounding each column or bar. default：0
-                "dataLabels" : aaDataLabels
-                ] as [String : Any]
-            aaPlotOptions.columnrange(columnRangeDic)
-        } else if chartType == AAChartType.arearange {
-            let columnRangeDic = [
-                "dataLabels" : aaDataLabels
-                ] as [String : Any]
-            aaPlotOptions.arearange(columnRangeDic)
+            aaPlotOptions.columnrange(AAColumnrange()
+                .dataLabels(aaDataLabels)
+                .borderRadius(0)
+                .borderWidth(0))
+        }else if chartType == AAChartType.arearange {
+            aaPlotOptions.arearange(AAArearange() .dataLabels(aaDataLabels))
         }
- 
     }
     
     private static func configureAxisContentAndStyle(

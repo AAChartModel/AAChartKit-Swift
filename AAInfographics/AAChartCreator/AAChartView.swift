@@ -221,11 +221,8 @@ public class AAChartView: UIView {
         }
     }
     
-    private func configureTheJavaScriptStringWithOptions(_ chartOptions: NSMutableDictionary) {
-        let modelJsonDic = chartOptions
-        let modelJsonData = try! JSONSerialization.data(withJSONObject: modelJsonDic,
-                                                        options: JSONSerialization.WritingOptions.prettyPrinted)
-        var modelJsonStr = String(data: modelJsonData, encoding: String.Encoding.utf8)!
+    private func configureTheJavaScriptStringWithOptions(_ chartOptions: AAOptions) {
+        var modelJsonStr = chartOptions.toJSON()!
         modelJsonStr = modelJsonStr.replacingOccurrences(of: "\n", with: "") as String
         
         let isWKWebView = (wkWebView != nil)
@@ -244,7 +241,7 @@ extension AAChartView {
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
-        let options = AAOptionsConstructor.configureAAOptions(aaChartModel: chartModel)
+        let options = AAOptionsComposer.configureAAOptions(aaChartModel: chartModel)
         aa_drawChartWithChartOptions(options)
     }
     
@@ -259,11 +256,11 @@ extension AAChartView {
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_refreshChartWholeContentWithChartModel(_ chartModel: AAChartModel) {
-        let options = AAOptionsConstructor.configureAAOptions(aaChartModel: chartModel)
+        let options = AAOptionsComposer.configureAAOptions(aaChartModel: chartModel)
         aa_refreshChartWholeContentWithChartOptions(options)
     }
     
-    public func aa_drawChartWithChartOptions(_ options: NSMutableDictionary) {
+    public func aa_drawChartWithChartOptions(_ options: AAOptions) {
         if optionsJson == nil {
             configureTheJavaScriptStringWithOptions(options)
             let path = Bundle(for: self.classForCoder)
@@ -293,7 +290,7 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
-    public func aa_refreshChartWholeContentWithChartOptions(_ options: NSMutableDictionary) {
+    public func aa_refreshChartWholeContentWithChartOptions(_ options: AAOptions) {
         configureTheJavaScriptStringWithOptions(options)
         drawChart()
     }

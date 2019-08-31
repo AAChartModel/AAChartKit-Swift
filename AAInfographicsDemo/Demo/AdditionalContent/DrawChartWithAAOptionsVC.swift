@@ -46,7 +46,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         aaChartView.aa_drawChartWithChartOptions(aaOptions)
     }
     
-    private func configureAAOptions() -> NSMutableDictionary {
+    private func configureAAOptions() -> AAOptions {
         switch self.chartType {
         case 0: return setUpOptions0()
         case 1: return setUpOptions1()
@@ -66,7 +66,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 15: return configure_DataLabels_XAXis_YAxis_Legend_Style()
         case 16: return configureXAxisPlotBand()
         default:
-            return NSMutableDictionary()
+            return AAOptions()
         }
     }
     
@@ -84,7 +84,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         return aaChartView
     }
     
-    private func setUpOptions0() -> NSMutableDictionary {
+    private func setUpOptions0() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
             .axisColor("#ffffff")
@@ -100,12 +100,12 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     ,
                 ])
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
         
         return aaOptions
     }
     
-    private func configureChartWithBackgroundImage() -> NSMutableDictionary {
+    private func configureChartWithBackgroundImage() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.pie)
             .title("编程语言热度")
@@ -131,14 +131,13 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        let aaChart = aaOptions["chart"] as! NSMutableDictionary
-        aaChart["plotBackgroundImage"] = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg"
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+    aaOptions.chart?.plotBackgroundImage("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg")
         
         return aaOptions
     }
     
-    private func yAxisOnTheRightSideChart() -> NSMutableDictionary  {
+    private func yAxisOnTheRightSideChart() -> AAOptions  {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
             .title("Y轴在右侧的柱状图📊")//图表主标题
@@ -152,17 +151,16 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
         //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，
         //坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。
         //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。
         //默认是：false.
-        let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
-        aaYAxis["opposite"] = true
+        aaOptions.yAxis?.opposite(true)
         return aaOptions
     }
     
-    private func adjustYAxisMinValueForChart() -> NSMutableDictionary  {
+    private func adjustYAxisMinValueForChart() -> AAOptions  {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
             .title("")//图表主标题
@@ -177,13 +175,12 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
-        aaYAxis["min"] = 1000
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.yAxis?.min(1000)
         return aaOptions
     }
     
-    private func configureTheMirrorColumnChart() -> NSMutableDictionary  {
+    private func configureTheMirrorColumnChart() -> AAOptions  {
         let aaChart = NSMutableDictionary()
         aaChart["type"] = AAChartType.column.rawValue
         
@@ -255,10 +252,10 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 "color":gradientColorDic2
             ],
         ]
-        return aaOptions
+        return AAOptions()
     }
     
-    private func adjustTheXAxisLabels() -> NSMutableDictionary {
+    private func adjustTheXAxisLabels() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)
             .title("")
@@ -287,19 +284,17 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
-        aaXAxis["tickInterval"] = 3
-        let aaXAxisLabels =  ["autoRotation": [-10, -20, -30, -40, -50, -60, -70, -80, -90]]
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
         
-      
-        
-        aaXAxis["labels"] = aaXAxisLabels
-        
+        aaOptions.xAxis?
+            .tickInterval(3)
+            .labels(AALabels()
+                .autoRotation([-10, -20, -30, -40, -50, -60, -70, -80, -90] as AnyObject))
+       
         return aaOptions
     }
 
-    private func adjustGroupPaddingBetweenColumns() -> NSMutableDictionary {
+    private func adjustGroupPaddingBetweenColumns() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)
             .title("")
@@ -317,24 +312,20 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        
-        let aaPlotOptions =  aaOptions["plotOptions"]! as! NSMutableDictionary
-        
-        let aaColumn = aaPlotOptions["column"]! as! NSMutableDictionary
-        
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
         //    * 关于 `pointPadding`
         //https://api.highcharts.com.cn/highcharts#plotOptions.column.groupPadding
         //
         //    * 关于 `pointPadding`
         //https://api.highcharts.com.cn/highcharts#plotOptions.column.pointPadding
-        aaColumn["groupPadding"] = 0.05 //Padding between each column or bar, in x axis units. default：0.1.
-        aaColumn["pointPadding"] = 0 //Padding between each value groups, in x axis units. default：0.2.
+        aaOptions.plotOptions?.column?
+            .groupPadding(0.05)//Padding between each column or bar, in x axis units. default：0.1.
+            .pointPadding(0)//Padding between each value groups, in x axis units. default：0.2.
         
         return aaOptions
     }
     
-    private func setUpOptions1() -> NSMutableDictionary {
+    private func setUpOptions1() -> AAOptions {
         let aaOptions = [
                 "chart": [
                     "type": "gauge"
@@ -359,10 +350,10 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     "data": [80]
                     ]]
                 ] as NSMutableDictionary
-        return aaOptions
+        return AAOptions()
     }
     
-    private func setUpOptions2() -> NSMutableDictionary {
+    private func setUpOptions2() -> AAOptions {
         let aaOptions = [
             "chart": [
                 "type": "gauge",
@@ -401,10 +392,10 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 "data": [80],
                 ]]
             ] as NSMutableDictionary
-        return aaOptions
+        return AAOptions()
     }
     
-   private func configureAAPlotBandsForChart() -> NSMutableDictionary {
+   private func configureAAPlotBandsForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("")
             .chartType(.spline)//图形类型
@@ -420,49 +411,43 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .lineWidth(10)
                     ,
                 ])
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
         let aaPlotBandsArr = [
             AAPlotBandsElement()
                 .from(0)
                 .to(5)
-                .color("#BC2B44")
-                .toDic()!,
+                .color("#BC2B44"),
             AAPlotBandsElement()
                 .from(5)
                 .to(10)
-                .color("#EC6444")
-                .toDic()!,
+                .color("#EC6444"),
             AAPlotBandsElement()
                 .from(10)
                 .to(15)
-                .color("#f19742")
-                .toDic()!,
+                .color("#f19742"),
             AAPlotBandsElement()
                 .from(15)
                 .to(20)
-                .color("#f3da60")
-                .toDic()!,
+                .color("#f3da60"),
             AAPlotBandsElement()
                 .from(20)
                 .to(25)
-                .color("#9bd040")
-                .toDic()!,
+                .color("#9bd040"),
             AAPlotBandsElement()
                 .from(25)
                 .to(50)
-                .color("#acf08f")
-                .toDic()!,
+                .color("#acf08f"),
         ]
-        
-        let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
-        aaYAxis["plotBands"] = aaPlotBandsArr
-        return aaOptions
+    
+    aaOptions.yAxis?.plotBands(aaPlotBandsArr)
+    
+    return aaOptions
     }
     
-   private func configureAAPlotLinesForChart() -> NSMutableDictionary {
+   private func configureAAPlotLinesForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("")
-            .chartType(.areaspline)//图形类型
+            .chartType(.areaspline)//图形类型chartOptions.toDic()!
             .dataLabelsEnabled(false)
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .legendEnabled(false)
@@ -480,7 +465,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         ])
                     ,
                 ])
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
         
         
         let aaPlotLinesArr = [
@@ -497,7 +482,6 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         .fontWeight(.bold)
                         )
                 )
-                .toDic()!
             ,
         
             AAPlotLinesElement()
@@ -512,7 +496,6 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         .fontWeight(.bold)
                         )
                     )
-                .toDic()!
         ,
         
             AAPlotLinesElement()
@@ -527,16 +510,13 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         .fontWeight(.bold)
                         )
                     )
-                .toDic()!
         ]
-        
-        let aaYAxis = aaOptions["yAxis"] as! NSMutableDictionary
-        aaYAxis["plotLines"] = aaPlotLinesArr
+        aaOptions.yAxis?.plotLines(aaPlotLinesArr)
 
         return aaOptions
     }
     
-   private func customAATooltipWithJSFuntion() -> NSMutableDictionary {
+   private func customAATooltipWithJSFuntion() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
             .title("近三个月金价起伏周期图")//图表主标题
@@ -591,12 +571,13 @@ function () {
                     )
         
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = aaTooltip.toDic()!
+    let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+    aaOptions.tooltip(aaTooltip)
+    
         return aaOptions
     }
     
-    private func customXAxisCrosshairStyle() -> NSMutableDictionary {
+    private func customXAxisCrosshairStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图表类型
             .series([
@@ -640,18 +621,18 @@ function () {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
         let aaCrosshair = AACrosshair()
             .dashStyle(.longDashDot)
             .color(AAColor.red)
             .width(1)
-        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
-        aaXAxis["crosshair"] = aaCrosshair.toDic()!
+        
+        aaOptions.xAxis?.crosshair(aaCrosshair)
         
         return aaOptions
     }
 
-    private func configureXAxisLabelsFontColorWithHTMLString() -> NSMutableDictionary {
+    private func configureXAxisLabelsFontColorWithHTMLString() -> AAOptions {
         let categories = [
             "<font color=\\\"#CC0066\\\">孤岛危机<\\/font>",
             "<font color=\\\"#CC0033\\\">使命召唤<\\/font>",
@@ -684,16 +665,12 @@ function () {
                 ]
             );
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
-        var aaXAxisLabels =  aaXAxis["labels"] as! [String: Any]
-        aaXAxisLabels["useHTML"] = true
-        aaXAxis["labels"] = aaXAxisLabels
-        
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.xAxis?.labels?.useHTML(true)
         return aaOptions
     }
     
-    private func configureXAxisLabelsFontColorAndFontSizeWithHTMLString() -> NSMutableDictionary {
+    private func configureXAxisLabelsFontColorAndFontSizeWithHTMLString() -> AAOptions {
         let categories = [
         "<span style=\\\"color:#CC0066;font-weight:bold;font-size:10px\\\">使命召唤</span>",
         "<span style=\\\"color:#CC0033;font-weight:bold;font-size:11px\\\">荣誉勋章</span>",
@@ -727,16 +704,13 @@ function () {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
-        var aaXAxisLabels =  aaXAxis["labels"] as! [String: Any]
-        aaXAxisLabels["useHTML"] = true
-        aaXAxis["labels"] = aaXAxisLabels
-        
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.xAxis?.labels?.useHTML(true)
+    
         return aaOptions
     }
     
-    private func configure_DataLabels_XAXis_YAxis_Legend_Style() ->NSMutableDictionary {
+    private func configure_DataLabels_XAXis_YAxis_Legend_Style() -> AAOptions {
         let backgroundColorGradientColor = AAGradientColor.linearGradient(
             direction: .toTop,
             startColor: "#4F00BC",
@@ -768,9 +742,8 @@ function () {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
                 ])
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        
-        let aaDataLabels = AADataLabels()
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.plotOptions?.areaspline?.dataLabels?
             .enabled(true)
             .style(AAStyle()
                 .color(AAColor.white)
@@ -791,14 +764,14 @@ function () {
                 .color(AAColor.white)//轴文字颜色
         )
         
-        let aaXAxis = AAXAxis()
-            .tickWidth(2)//X轴刻度线宽度
-            .lineWidth(1.5)//X轴轴线宽度
-            .lineColor(AAColor.white)//X轴轴线颜色
-            .crosshair(aaCrosshair)
-            .labels(aaLabels)
+       aaOptions.xAxis?
+        .tickWidth(2)//X轴刻度线宽度
+        .lineWidth(1.5)//X轴轴线宽度
+        .lineColor(AAColor.white)//X轴轴线颜色
+        .crosshair(aaCrosshair)
+        .labels(aaLabels)
         
-        let aaYAxis = AAYAxis()
+        aaOptions.yAxis?
             .opposite(true)
             .tickWidth(2)
             .lineWidth(1.5)//Y轴轴线颜色
@@ -809,39 +782,10 @@ function () {
                 .format("{value} ℃")//给y轴添加单位
         )
         
-        //设定图例项的CSS样式。只支持有关文本的CSS样式设定。
-        /*默认是：{
-         "color": "#333333",
-         "cursor": "pointer",
-         "fontSize": "12px",
-         "fontWeight": "bold"
-         }
-         */
-        let aaLegend = AALegend()
-            .itemStyle(AAItemStyle()
-                .color(AAColor.white)//字体颜色
-                .fontSize("13px")//字体大小
-                .fontWeight(.thin)//字体为细体字
-        )
-        
-        let plotOptions = aaOptions["plotOptions"] as! NSMutableDictionary
-        let someTypeChart = plotOptions[AAChartType.areaspline.rawValue] as! NSMutableDictionary
-        let aaDataLabelsDic = aaDataLabels.toDic()!
-        someTypeChart["dataLabels"] = aaDataLabelsDic
-        
-        let XAxis = aaOptions["xAxis"] as! NSMutableDictionary
-        XAxis.setValuesForKeys(aaXAxis.toDic()!)
-        
-        let YAxis = aaOptions["yAxis"] as! NSMutableDictionary
-        YAxis.setValuesForKeys(aaYAxis.toDic()!)
-        
-        let legend = aaOptions["legend"] as! NSMutableDictionary
-        legend.setValuesForKeys(aaLegend.toDic()!)
-        
         return aaOptions;
     }
     
-    private func configureXAxisPlotBand() -> NSMutableDictionary {
+    private func configureXAxisPlotBand() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .title("")
@@ -865,30 +809,29 @@ function () {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
                 ])
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
         let aaPlotBandsArr = [
             AAPlotBandsElement()
                 .from(-0.25)//值域颜色带X轴起始值
                 .to(4.75)//值域颜色带X轴结束值
                 .color("#ef476f66")//值域颜色带填充色
                 .zIndex(0)//层叠,标示线在图表中显示的层叠级别，值越大，显示越向前
-                .toDic()!,
+            ,
             AAPlotBandsElement()
                 .from(4.75)
                 .to(8.25)
                 .color("#ffd06666")
                 .zIndex(0)
-                .toDic()!,
+            ,
             AAPlotBandsElement()
                 .from(8.25)
                 .to(11.25)
                 .color("#04d69f66")
                 .zIndex(0)
-                .toDic()!,
-        ]
+            ,        ]
         
-        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
-        aaXAxis["plotBands"] = aaPlotBandsArr
+        aaOptions.xAxis?.plotBands(aaPlotBandsArr)
+
         return aaOptions
     }
 }

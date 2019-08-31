@@ -80,17 +80,16 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
                     .data(getRandomNumbersArr(numbers: 9))
                     ,
                 ])
-        
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel1)
-        let aaXAxis = aaOptions["xAxis"] as! NSMutableDictionary
-        let aaCrosshair = [
-            "width":1,
-            "color":AAColor.black,
-            "dashStyle":AALineDashStyleType.longDashDot.rawValue,
-            ] as [String: Any]
-        aaXAxis["crosshair"] = aaCrosshair
-        
-        aaChartView1.aa_drawChartWithChartOptions(aaOptions)
+    
+    let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel1)
+    aaOptions.xAxis?
+        .crosshair(AACrosshair()
+            .dashStyle(AALineDashStyleType.longDashDot)
+            .color(AAColor.black)
+            .width(1)
+    )
+
+    aaChartView1.aa_drawChartWithChartOptions(aaOptions)
     }
     
    private func setUpTheAAChartViewTwo() {

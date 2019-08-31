@@ -46,7 +46,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
         aaChartView.aa_drawChartWithChartOptions(aaOptions)
     }
     
-    private func configureAAOptions() -> NSMutableDictionary {
+    private func configureAAOptions() -> AAOptions {
         switch self.selectedIndex {
         case 0: return customAreaChartTooltipStyleWithFormatterFunction1()
         case 1: return customAreaChartTooltipStyleWithFormatterFunction2()
@@ -57,7 +57,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
         case 6: return customYAxisLabels2()
         case 7: return customStackedAndGroupedColumnChartTooltip()
         default:
-            return NSMutableDictionary()
+            return AAOptions()
         }
     }
     
@@ -75,7 +75,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
         return aaChartView
     }
     
-    private func customAreaChartTooltipStyleWithFormatterFunction1() -> NSMutableDictionary {
+    private func customAreaChartTooltipStyleWithFormatterFunction1() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
             .title("近三个月金价起伏周期图")//图表主标题
@@ -108,7 +108,8 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
                     ,
                 ])
         
-        let myTooltip = AATooltip()
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.tooltip?
             .useHTML(true)
             .formatter("""
 function () {
@@ -129,13 +130,10 @@ function () {
                 .fontSize(12)
         )
         
-        
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }
     
-    private func customAreaChartTooltipStyleWithFormatterFunction2() -> NSMutableDictionary {
+    private func customAreaChartTooltipStyleWithFormatterFunction2() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
             .title("2014 ~ 2020 汪星人生存指数")//图表主标题
@@ -150,16 +148,17 @@ function () {
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
-                    ,
+                ,
                 AASeriesElement()
                     .name("🌲树木")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
-                    ,
+                ,
                 ])
         
-        let myTooltip = AATooltip()
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.tooltip?
             .useHTML(true)
             .enabled(true)
             .formatter(#"""
@@ -173,12 +172,11 @@ function () {
         return s;
     }
 """#)
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = myTooltip.toDic()!
+        
         return aaOptions
     }
     
-    private func customAreaChartTooltipStyleWithFormatterFunction3() -> NSMutableDictionary {
+    private func customAreaChartTooltipStyleWithFormatterFunction3() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
             .title("")//图表主标题
@@ -205,7 +203,8 @@ function () {
                     ,
                 ])
         
-        let myTooltip = AATooltip()
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.tooltip?
             .useHTML(true)
             .formatter(#"""
 function () {
@@ -226,12 +225,10 @@ function () {
     }
 """#)
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }
     
-    private func customAreaChartTooltipStyleWithFormatterFunction4() -> NSMutableDictionary {
+    private func customAreaChartTooltipStyleWithFormatterFunction4() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
             .title("")//图表主标题
@@ -268,7 +265,8 @@ function () {
                     ,
                 ])
         
-        let myTooltip = AATooltip()
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.tooltip?
             .useHTML(true)
             .formatter(#"""
 function () {
@@ -287,14 +285,12 @@ function () {
     }
 """#)
             .backgroundColor("#050505")
-            .borderColor("#050505")        
+            .borderColor("#050505")
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = myTooltip.toDic()!
         return aaOptions
     }
     
-    private func customBoxplotTooltipContent() -> NSMutableDictionary {
+    private func customBoxplotTooltipContent() -> AAOptions {
        let aaChartModel = AAChartModel()
             .chartType(.boxplot)
             .title("BOXPLOT CHART")
@@ -324,7 +320,8 @@ function () {
             + "最小值: {point.low}<br/>"
         )
         
-        let aaTooltip = AATooltip()
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.tooltip?
             .useHTML(true)
             .headerFormat("<em>实验号码： {point.key}</em><br/>")
             .pointFormat(pointFormatStr)
@@ -336,12 +333,10 @@ function () {
                 .fontSize(12)
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = aaTooltip.toDic()!
         return aaOptions
     }
     
-    private func customYAxisLabels() -> NSMutableDictionary {
+    private func customYAxisLabels() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
             .title("")//图表主标题
@@ -378,13 +373,13 @@ function () {
     }
 """#)
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        let aaYAxis =  aaOptions["yAxis"] as! NSMutableDictionary
-        aaYAxis["labels"] = aaYAxisLabels.toDic()!
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.yAxis?.labels(aaYAxisLabels)
+
         return aaOptions
     }
     
-    private func customYAxisLabels2() -> NSMutableDictionary {
+    private func customYAxisLabels2() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
             .title("")//图表主标题
@@ -426,7 +421,8 @@ function () {
     }
 """#)
         
-        let yAxis = AAYAxis()
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.yAxis?
             .opposite(true)
             .tickWidth(2)
             .lineWidth(1.5)//Y轴轴线颜色
@@ -434,14 +430,11 @@ function () {
             .gridLineWidth(0)//Y轴网格线宽度
             .tickPositions([0,2500,5000,7500,10000])
             .labels(aaYAxisLabels)
-        
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        let aaYAxis =  aaOptions["yAxis"] as! NSMutableDictionary
-        aaYAxis.setValuesForKeys(yAxis.toDic()!)
+
         return aaOptions
     }
     
-    private func customStackedAndGroupedColumnChartTooltip() -> NSMutableDictionary {
+    private func customStackedAndGroupedColumnChartTooltip() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("Total fruit consumtion, grouped by gender")
             .subtitle("stacked and grouped")
@@ -475,7 +468,9 @@ function () {
                 ]
         )
         
-        let aaTooltip = AATooltip()
+        /*Custom Tooltip Style --- 自定义图表浮动提示框样式及内容*/
+        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.tooltip?
             .shared(false)
             .formatter(#"""
 function () {
@@ -490,9 +485,6 @@ function () {
                 + this.point.stackTotal;
      }
 """#)
-        /*Custom Tooltip Style --- 自定义图表浮动提示框样式及内容*/
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions["tooltip"] = aaTooltip.toDic()!
         
         return aaOptions;
     }

@@ -40,8 +40,8 @@ public class AAPlotOptions: AAObject {
     var area: AAArea?
     var areaspline: AAAreaspline?
     var pie: AAPie?
-    var columnrange: Any?
-    var arearange: Any?
+    var columnrange: AAColumnrange?
+    var arearange: AAArearange?
     var series: AASeries?
     
     @discardableResult
@@ -87,13 +87,13 @@ public class AAPlotOptions: AAObject {
     }
     
     @discardableResult
-    func columnrange(_ prop: Any) -> AAPlotOptions {
+    func columnrange(_ prop: AAColumnrange) -> AAPlotOptions {
         columnrange = prop
         return self
     }
     
     @discardableResult
-    func arearange(_ prop: Any) -> AAPlotOptions {
+    func arearange(_ prop: AAArearange) -> AAPlotOptions {
         arearange = prop
         return self
     }
@@ -351,10 +351,10 @@ public class AAArea: AAObject {
 }
 
 public class AAAreaspline: AAObject {
-    var dataLabels: AADataLabels?
+    public var dataLabels: AADataLabels?
     
     @discardableResult
-    func dataLabels(_ prop: AADataLabels) -> AAAreaspline {
+    public func dataLabels(_ prop: AADataLabels) -> AAAreaspline {
         dataLabels = prop
         return self
     }
@@ -433,6 +433,48 @@ public class AAPie: AAObject {
         
     }
     
+}
+
+public class AAColumnrange: AAObject {
+    public var borderRadius: Float?//The color of the border surrounding each column or bar
+    public var borderWidth: Float?//The corner radius of the border surrounding each column or bar. default：0
+    public var dataLabels: AADataLabels?
+    
+    @discardableResult
+    public func borderRadius(_ prop: Float) -> AAColumnrange {
+        borderRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderWidth(_ prop: Float) -> AAColumnrange {
+        borderWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func dataLabels(_ prop: AADataLabels) -> AAColumnrange {
+        dataLabels = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
+public class AAArearange: AAObject {
+    public var dataLabels: AADataLabels?
+    
+    @discardableResult
+    public func dataLabels(_ prop: AADataLabels) -> AAArearange {
+        dataLabels = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
 }
 
 
