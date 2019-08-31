@@ -31,7 +31,7 @@
  */
 import UIKit
 
-public class AAColor: NSObject {
+public class AAColor {
     
     public static var black: String {
         return "black"

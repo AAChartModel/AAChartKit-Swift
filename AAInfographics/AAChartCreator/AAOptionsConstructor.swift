@@ -32,7 +32,7 @@
 
 import UIKit
 
-public class AAOptionsConstructor: NSObject {
+public class AAOptionsConstructor {
     public static func configureAAOptions(aaChartModel: AAChartModel) -> NSMutableDictionary {
         let aaChart = NSMutableDictionary()
         aaChart.setValue(aaChartModel.chartType?.rawValue, forKey: "type")//图表类型

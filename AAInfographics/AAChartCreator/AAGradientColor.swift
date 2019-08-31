@@ -43,7 +43,7 @@ public enum AALinearGradientDirection: Int {
     case toBottomRight   //⇘⇘⇘⇘⇘⇘
 }
 
-public class AAGradientColor: NSObject  {
+public class AAGradientColor  {
     public static var oceanBlue: [String : Any] {
         return oceanBlueColor(direction: .toTop)
     }
