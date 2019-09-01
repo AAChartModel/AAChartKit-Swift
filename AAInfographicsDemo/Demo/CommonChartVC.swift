@@ -112,37 +112,6 @@ class CommonChartVC: UIViewController {
         configureTheStyleForDifferentTypeChart()
         
         aaChartView!.aa_drawChartWithChartModel(aaChartModel!)
-    
-    let aaTooltip = AATooltip()
-        .useHTML(true)
-        .formatter("""
-function () {
-        return ' 🌕 🌖 🌗 🌘 🌑 🌒 🌓 🌔 <br/> '
-        + ' Support JavaScript Function Just Right Now !!! <br/> '
-        + ' The Gold Price For <b>2020 '
-        +  this.x
-        + ' </b> Is <b> '
-        +  this.y
-        + ' </b> Dollars ';
-        }
-""")
-        .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
-        .backgroundColor("#000000")
-        .borderColor("#000000")
-        .style(AAStyle()
-            .color("#FFD700")
-            .fontSize(12)
-    )
-    
-    let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel!)
-    aaOptions.tooltip = aaTooltip
-    
-    let aaOpionsJson = aaOptions.toDic()
-    let aaOptionsJsonString = aaOptions.toJSON()
-    
-    
-//   let Str = aaChartModel?.toDic()
-    
     }
     
     
