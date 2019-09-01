@@ -38,7 +38,7 @@ class AAOptionsComposer: NSObject {
         aaChartModel: AAChartModel
         ) -> AAOptions {
         let aaChart = AAChart()
-            .type(aaChartModel.chartType?.rawValue)//绘图类型
+            .type(aaChartModel.chartType!)//绘图类型
             .inverted(aaChartModel.inverted)//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
             .backgroundColor(aaChartModel.backgroundColor)//设置图表的背景色(包含透明度的设置)
             .pinchType(aaChartModel.zoomType?.rawValue)//设置手势缩放方向
@@ -186,20 +186,17 @@ class AAOptionsComposer: NSObject {
                 .cursor("pointer")
                 .showInLegend(true)
             if (aaChartModel.dataLabelsEnabled == true) {
-                aaPie.dataLabels(aaDataLabels.format("<b>{point.name}</b>: {point.percentage:.1f} %"))
-            } else {
-                aaPie.dataLabels(aaDataLabels)
+                aaDataLabels.format("<b>{point.name}</b>: {point.percentage:.1f} %")
             }
-            aaPlotOptions.pie(aaPie)
+            aaPlotOptions.pie(aaPie.dataLabels(aaDataLabels))
         case .columnrange:
             aaPlotOptions.columnrange(AAColumnrange()
                 .dataLabels(aaDataLabels)
                 .borderRadius(0)
                 .borderWidth(0))
         case .arearange:
-            aaPlotOptions.arearange(AAArearange() .dataLabels(aaDataLabels))
-        default:
-            aaPlotOptions.line(AALine().dataLabels(aaDataLabels))
+            aaPlotOptions.arearange(AAArearange().dataLabels(aaDataLabels))
+        default: break
         }
     }
     

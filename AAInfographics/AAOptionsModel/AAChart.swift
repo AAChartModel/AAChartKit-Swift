@@ -46,8 +46,8 @@ public class AAChart: AAObject {
     var marginRight: Float?
     
     @discardableResult
-    func type(_ prop: String?) -> AAChart {
-        type = prop
+    func type(_ prop: AAChartType) -> AAChart {
+        type = prop.rawValue
         return self
     }
     
