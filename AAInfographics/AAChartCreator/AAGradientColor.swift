@@ -45,103 +45,103 @@ public enum AALinearGradientDirection: Int {
 
 public class AAGradientColor  {
     public static var oceanBlue: [String : Any] {
-        return oceanBlueColor(direction: .toTop)
+        return oceanBlueColor(.toTop)
     }
     
     public static var sanguine: [String : Any] {
-        return sanguineColor(direction: .toTop)
+        return sanguineColor(.toTop)
     }
     
     public static var lusciousLime: [String : Any] {
-        return lusciousLimeColor(direction: .toTop)
+        return lusciousLimeColor(.toTop)
     }
     
     public static var purpleLake: [String : Any] {
-        return purpleLakeColor(direction: .toTop)
+        return purpleLakeColor(.toTop)
     }
     
     public static var freshPapaya: [String : Any] {
-        return freshPapayaColor(direction: .toTop)
+        return freshPapayaColor(.toTop)
     }
     
     public static var ultramarine: [String : Any] {
-        return ultramarineColor(direction: .toTop)
+        return ultramarineColor(.toTop)
     }
     
     public static var pinkSugar: [String : Any] {
-        return pinkSugarColor(direction: .toTop)
+        return pinkSugarColor(.toTop)
     }
     
     public static var lemonDrizzle: [String : Any] {
-        return lemonDrizzleColor(direction: .toTop)
+        return lemonDrizzleColor(.toTop)
     }
     
     public static var victoriaPurple: [String : Any] {
-        return victoriaPurpleColor(direction: .toTop)
+        return victoriaPurpleColor(.toTop)
     }
     
     public static var springGreens: [String : Any] {
-        return springGreensColor(direction: .toTop)
+        return springGreensColor(.toTop)
     }
     
     public static var mysticMauve: [String : Any] {
-        return mysticMauveColor(direction: .toTop)
+        return mysticMauveColor(.toTop)
     }
     
     public static var reflexSilver: [String : Any] {
-        return reflexSilverColor(direction: .toTop)
+        return reflexSilverColor(.toTop)
     }
     
     public static var neonGlow: [String : Any] {
-        return neonGlowColor(direction: .toTop)
+        return neonGlowColor(.toTop)
     }
     
     public static var berrySmoothie: [String : Any] {
-        return berrySmoothieColor(direction: .toTop)
+        return berrySmoothieColor(.toTop)
     }
     
     public static var newLeaf: [String : Any] {
-        return newLeafColor(direction: .toTop)
+        return newLeafColor(.toTop)
     }
     
     public static var cottonCandy: [String : Any] {
-        return cottonCandyColor(direction: .toTop)
+        return cottonCandyColor(.toTop)
     }
     
     public static var pixieDust: [String : Any] {
-        return pixieDustColor(direction: .toTop)
+        return pixieDustColor(.toTop)
     }
     
     public static var fizzyPeach: [String : Any] {
-        return fizzyPeachColor(direction: .toTop)
+        return fizzyPeachColor(.toTop)
     }
     
     public static var sweetDream: [String : Any] {
-        return sweetDreamColor(direction: .toTop)
+        return sweetDreamColor(.toTop)
     }
     
     public static var firebrick: [String : Any] {
-        return firebrickColor(direction: .toTop)
+        return firebrickColor(.toTop)
     }
     
     public static var wroughtIron: [String : Any] {
-        return wroughtIronColor(direction: .toTop)
+        return wroughtIronColor(.toTop)
     }
     
     public static var deepSea: [String : Any] {
-        return deepSeaColor(direction: .toTop)
+        return deepSeaColor(.toTop)
     }
     
     public static var coastalBreeze: [String : Any] {
-        return coastalBreezeColor(direction: .toTop)
+        return coastalBreezeColor(.toTop)
     }
     
     public static var eveningDelight: [String : Any] {
-        return eveningDelightColor(direction: .toTop)
+        return eveningDelightColor(.toTop)
     }
     
     public static func oceanBlueColor(
-         direction: AALinearGradientDirection
+         _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -151,7 +151,7 @@ public class AAGradientColor  {
     }
     
     public static func sanguineColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -161,7 +161,7 @@ public class AAGradientColor  {
     }
     
     public static func lusciousLimeColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -171,7 +171,7 @@ public class AAGradientColor  {
     }
     
     public static func purpleLakeColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -181,7 +181,7 @@ public class AAGradientColor  {
     }
     
     public static func freshPapayaColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -191,7 +191,7 @@ public class AAGradientColor  {
     }
     
     public static func ultramarineColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -201,7 +201,7 @@ public class AAGradientColor  {
     }
     
     public static func pinkSugarColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -211,7 +211,7 @@ public class AAGradientColor  {
     }
     
     public static func lemonDrizzleColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -221,7 +221,7 @@ public class AAGradientColor  {
     }
     
     public static func victoriaPurpleColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -231,7 +231,7 @@ public class AAGradientColor  {
     }
     
     public static func springGreensColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -241,7 +241,7 @@ public class AAGradientColor  {
     }
     
     public static func mysticMauveColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -251,7 +251,7 @@ public class AAGradientColor  {
     }
     
     public static func reflexSilverColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -261,7 +261,7 @@ public class AAGradientColor  {
     }
     
     public static func neonGlowColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -271,7 +271,7 @@ public class AAGradientColor  {
     }
     
     public static func berrySmoothieColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -281,7 +281,7 @@ public class AAGradientColor  {
     }
     
     public static func newLeafColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -291,7 +291,7 @@ public class AAGradientColor  {
     }
     
     public static func cottonCandyColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -301,7 +301,7 @@ public class AAGradientColor  {
     }
     
     public static func pixieDustColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -311,7 +311,7 @@ public class AAGradientColor  {
     }
     
     public static func fizzyPeachColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -321,7 +321,7 @@ public class AAGradientColor  {
     }
     
     public static func sweetDreamColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -331,7 +331,7 @@ public class AAGradientColor  {
     }
     
     public static func firebrickColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -341,7 +341,7 @@ public class AAGradientColor  {
     }
     
     public static func wroughtIronColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -351,7 +351,7 @@ public class AAGradientColor  {
     }
     
     public static func deepSeaColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -361,7 +361,7 @@ public class AAGradientColor  {
     }
     
     public static func coastalBreezeColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -371,7 +371,7 @@ public class AAGradientColor  {
     }
     
     public static func eveningDelightColor(
-        direction: AALinearGradientDirection
+        _ direction: AALinearGradientDirection
         ) -> [String : Any] {
         return linearGradient(
             direction: direction,
@@ -426,7 +426,7 @@ public class AAGradientColor  {
      (0,1) ----------- (1,1)
      */
     private static func linearGradientDirectionDictionary(
-        direction: AALinearGradientDirection
+         direction: AALinearGradientDirection
         ) -> [String : Int] {
         switch direction {
         case .toTop:
