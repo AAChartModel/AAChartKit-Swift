@@ -192,7 +192,7 @@ class SpecialChartVC: UIViewController {
             .chartType(.scatter)
             .title("Height and weight distribution by sex")
             .titleFontColor(AAColor.white)
-            .axisColor(AAColor.white)
+            .axesTextColor(AAColor.white)
             .yAxisTitle("kg")
             .symbol(.circle)
             .symbolStyle(.innerBlank)

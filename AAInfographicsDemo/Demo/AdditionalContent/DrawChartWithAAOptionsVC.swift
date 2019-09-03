@@ -87,7 +87,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
     private func setUpOptions0() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
-            .axisColor("#ffffff")
+            .axesTextColor(AAColor.white)
             .title("")//图形标题
             .subtitle("")//图形副标题
             .dataLabelsEnabled(false)//是否显示数字
@@ -736,7 +736,7 @@ function () {
             .yAxisTitle("")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .markerRadius(0)
-            .axisColor(AAColor.white)
+            .axesTextColor(AAColor.white)
             .series([
                 AASeriesElement()
                     .name("Berlin Hot")

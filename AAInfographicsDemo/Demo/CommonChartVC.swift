@@ -82,7 +82,7 @@ class CommonChartVC: UIViewController {
         aaChartModel = AAChartModel()
             .chartType(chartType!)//图形类型
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
-            .axisColor(AAColor.white)
+            .axesTextColor(AAColor.white)
             .title("")//图形标题
             .subtitle("")//图形副标题
             .dataLabelsEnabled(false)//是否显示数字
