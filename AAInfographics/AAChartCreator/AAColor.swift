@@ -92,5 +92,14 @@ public class AAColor {
     public static var clear: String {
         return "#00000000"
     } // 0.0 white, 0.0 alpha
+    
+    public static func rgbaColor(
+        _ red: Int,
+        _ green: Int,
+        _ blue: Int,
+        _ alpha: Float
+        ) -> String {
+        return "rgba(\(red),\(green),\(blue),\(alpha))"
+    }
 }
 

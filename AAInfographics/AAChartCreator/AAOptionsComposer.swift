@@ -88,6 +88,9 @@ class AAOptionsComposer: NSObject {
         
         let aaLegend = AALegend()
             .enabled(aaChartModel.legendEnabled)//是否显示 legend
+            .itemStyle(AAItemStyle()
+                .color(aaChartModel.axesTextColor ?? "#000000")
+        ) //默认图例的文字颜色和X轴文字颜色一样
         
         let aaOptions = AAOptions()
             .chart(aaChart)
@@ -210,20 +213,37 @@ class AAOptionsComposer: NSObject {
         if (   chartType != .pie
             && chartType != .pyramid
             && chartType != .funnel) {
-            let aaXAxis = AAXAxis()
-                .labels(AALabels()
-                    .enabled(aaChartModel.xAxisLabelsEnabled)//设置 x 轴是否显示文字
+
+            let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled
+            let aaXAxisLabels = AALabels()
+                .enabled(aaXAxisLabelsEnabled)//设置 x 轴是否显示文字
+            if aaXAxisLabelsEnabled == true {
+                aaXAxisLabels.style(
+                    AAStyle()
+                    .color(aaChartModel.axesTextColor)
                 )
+            }
+            
+            let aaXAxis = AAXAxis()
+                .labels(aaXAxisLabels)
                 .reversed(aaChartModel.xAxisReversed)
                 .gridLineWidth(aaChartModel.xAxisGridLineWidth)//x轴网格线宽度
                 .categories(aaChartModel.categories)
                 .visible(aaChartModel.xAxisVisible)//x轴是否可见
                 .tickInterval(aaChartModel.xAxisTickInterval) //x轴坐标点间隔数
             
+            let aaYAxisLabelsEnabled = aaChartModel.yAxisLabelsEnabled
+            let aaYAxisLabels = AALabels()
+                .enabled(aaChartModel.yAxisLabelsEnabled)
+            if aaYAxisLabelsEnabled == true {
+                aaYAxisLabels.style(
+                    AAStyle()
+                    .color(aaChartModel.axesTextColor)
+                )
+            }
+            
             let aaYAxis = AAYAxis()
-                .labels(AALabels()
-                    .enabled(aaChartModel.yAxisLabelsEnabled)
-                )//设置 y 轴是否显示数字
+                .labels(aaYAxisLabels)//设置 y 轴文字
                 .min(aaChartModel.yAxisMin)//设置 y 轴最小值,最小值等于零就不能显示负值了
                 .max(aaChartModel.yAxisMax)//y轴最大值
                 .allowDecimals(aaChartModel.yAxisAllowDecimals)//是否允许显示小数

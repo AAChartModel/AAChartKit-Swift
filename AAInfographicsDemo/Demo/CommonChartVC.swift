@@ -82,7 +82,7 @@ class CommonChartVC: UIViewController {
         aaChartModel = AAChartModel()
             .chartType(chartType!)//图形类型
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
-            .axisColor("#ffffff")
+            .axisColor(AAColor.white)
             .title("")//图形标题
             .subtitle("")//图形副标题
             .dataLabelsEnabled(false)//是否显示数字
@@ -339,7 +339,7 @@ class CommonChartVC: UIViewController {
                                     height: 20)
             uiSwitch.isOn = false
             uiSwitch.tag = i;
-//            uiswitch.onTintColor = UIColor.blue
+            uiSwitch.onTintColor = .red
             uiSwitch.addTarget(self,
                                action: #selector(switchDidChange(switchView:)),
                                for: .valueChanged)
@@ -369,6 +369,8 @@ class CommonChartVC: UIViewController {
         default:
             break
         }
+        
+    
         
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
