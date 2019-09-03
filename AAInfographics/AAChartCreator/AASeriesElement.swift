@@ -44,8 +44,8 @@
     private var threshold: Float?           //The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
     private var negativeColor: String?      //The color for the parts of the graph or points that are below the threshold
     private var dashStyle: String?          //A name for the dash style to use for the graph. Applies only to series type having a graph, like line, spline, area and scatter in case it has a lineWidth.
-    private var dataLabels: [String: Any]?  //Individual data label for each point. The options are the same as the ones for `plotOptions.series.dataLabels`.
-    private var marker: [String: Any]?      //Enable or disable the point marker. If null, the markers are hidden when the data is dense, and shown for more widespread data points.
+    private var dataLabels: AADataLabels?  //Individual data label for each point. The options are the same as the ones for `plotOptions.series.dataLabels`.
+    private var marker: AAMarker?      //Enable or disable the point marker. If null, the markers are hidden when the data is dense, and shown for more widespread data points.
     private var step: Any?                  //Whether to apply steps to the line. Possible values are left, center and right.
     private var colorByPoint: Bool?         //When using automatic point colors pulled from the `options.colors` collection, this option determines whether the chart should receive one color per series or one color per point.
     private var allowPointSelect: Bool?     //Allow this series' points to be selected by clicking on the markers, bars or pie slices
@@ -129,13 +129,13 @@
     
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AASeriesElement {
-        dataLabels = prop.toDic()!
+        dataLabels = prop
         return self
     }
     
     @discardableResult
     public func marker(_ prop: AAMarker) -> AASeriesElement {
-        marker = prop.toDic()!
+        marker = prop
         return self
     }
     
@@ -195,8 +195,8 @@ public class AADataElement: AAObject {
     private var name: String?
     private var y: Float?
     private var color: Any?
-    private var dataLabels: [String: Any]?
-    private var marker: [String: Any]?
+    private var dataLabels: AADataLabels?
+    private var marker: AAMarker?
     
     @discardableResult
     public func name(_ prop: String) -> AADataElement {
@@ -218,13 +218,13 @@ public class AADataElement: AAObject {
     
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AADataElement {
-        dataLabels = prop.toDic()!
+        dataLabels = prop
         return self
     }
     
     @discardableResult
     public func marker(_ prop: AAMarker) -> AADataElement {
-        marker = prop.toDic()!
+        marker = prop
         return self
     }
 }

@@ -34,8 +34,8 @@ import UIKit
 
 public class AAYAxis: AAObject {
     private var title: AATitle?
-    private var plotBands: [[String: Any]]?
-    private var plotLines: [[String: Any]]?
+    private var plotBands: [AAPlotBandsElement]?
+    private var plotLines: [AAPlotLinesElement]?
     private var categories:[String]?
     private var reversed: Bool?
     private var gridLineWidth: Float? // y 轴网格线宽度
@@ -43,7 +43,7 @@ public class AAYAxis: AAObject {
     private var gridLineDashStyle: AALineDashStyleType? //网格线线条样式，所有可用的线条样式参考：Highcharts线条样式
     private var alternateGridColor: String?  //backcolor of every other grid line area
     private var gridLineInterpolation: String? //Polar charts only. Whether the grid lines should draw as a polygon with straight lines between categories, or as circles. Can be either circle or polygon. 默认是：null.
-    private var labels: [String:Any]? //用于设置 y 轴文字相关的
+    private var labels: AALabels? //用于设置 y 轴文字相关的
     private var lineWidth: Float?  // y 轴线宽度
     private var lineColor: String? // y 轴线颜色
     private var offset: Float? // y 轴线水平偏移
@@ -55,7 +55,7 @@ public class AAYAxis: AAObject {
     private var visible: Bool?  //y轴是否允许显示
     private var opposite: Bool? //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。 默认是：false.
     private var tickInterval: Int?
-    private var crosshair: [String: AnyObject]?  //准星线样式设置
+    private var crosshair: AACrosshair?  //准星线样式设置
     private var stackLabels: [String: Any]?
     private var tickWidth: Float? //坐标轴刻度线的宽度，设置为 0 时则不显示刻度线
     private var tickLength: Float? //坐标轴刻度线的长度。 默认是：10.
@@ -69,21 +69,13 @@ public class AAYAxis: AAObject {
     
     @discardableResult
     public func plotBands(_ prop: [AAPlotBandsElement]) -> AAYAxis {
-        var seriesElementsArr = [[String: Any]]()
-        prop.forEach { (aaSeriesElement) in
-            seriesElementsArr.append(aaSeriesElement.toDic()!)
-        }
-        plotBands = seriesElementsArr
+        plotBands = prop
         return self
     }
     
     @discardableResult
     public func plotLines(_ prop: [AAPlotLinesElement]) -> AAYAxis {
-        var seriesElementsArr = [[String: Any]]()
-        prop.forEach { (aaSeriesElement) in
-            seriesElementsArr.append(aaSeriesElement.toDic()!)
-        }
-        plotLines = seriesElementsArr
+        plotLines = prop
         return self
     }
     
@@ -131,7 +123,7 @@ public class AAYAxis: AAObject {
     
     @discardableResult
     public func labels(_ prop: AALabels?) -> AAYAxis {
-        labels = prop?.toDic()
+        labels = prop
         return self
     }
     
@@ -197,7 +189,7 @@ public class AAYAxis: AAObject {
     
     @discardableResult
     public func crosshair(_ prop: AACrosshair?) -> AAYAxis {
-        crosshair = prop?.toDic()
+        crosshair = prop
         return self
     }
     

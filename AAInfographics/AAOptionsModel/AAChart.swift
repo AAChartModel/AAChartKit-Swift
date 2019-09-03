@@ -46,67 +46,67 @@ public class AAChart: AAObject {
     var marginRight: Float?
     
     @discardableResult
-    func type(_ prop: AAChartType) -> AAChart {
+    public func type(_ prop: AAChartType) -> AAChart {
         type = prop.rawValue
         return self
     }
     
     @discardableResult
-    func backgroundColor(_ prop: Any?) -> AAChart {
+    public func backgroundColor(_ prop: Any?) -> AAChart {
         backgroundColor = prop
         return self
     }
     
     @discardableResult
-    func plotBackgroundImage(_ prop: String) -> AAChart {
+    public func plotBackgroundImage(_ prop: String) -> AAChart {
         plotBackgroundImage = prop
         return self
     }
     
     @discardableResult
-    func pinchType(_ prop: String?) -> AAChart {
+    public func pinchType(_ prop: String?) -> AAChart {
         pinchType = prop
         return self
     }
     
     @discardableResult
-    func panning(_ prop: Bool?) -> AAChart {
+    public func panning(_ prop: Bool?) -> AAChart {
         panning = prop
         return self
     }
     
     @discardableResult
-    func panKey(_ prop: String) -> AAChart {
+    public func panKey(_ prop: String) -> AAChart {
         panKey = prop
         return self
     }
     
     @discardableResult
-    func polar(_ prop: Bool?) -> AAChart {
+    public func polar(_ prop: Bool?) -> AAChart {
         polar = prop
         return self
     }
     
     @discardableResult
-    func animation(_ prop: AAAnimation) -> AAChart {
+    public func animation(_ prop: AAAnimation) -> AAChart {
         animation = prop
         return self
     }
     
     @discardableResult
-    func inverted(_ prop: Bool?) -> AAChart {
+    public func inverted(_ prop: Bool?) -> AAChart {
         inverted = prop
         return self
     }
     
     @discardableResult
-    func marginLeft(_ prop: Float?) -> AAChart {
+    public func marginLeft(_ prop: Float?) -> AAChart {
         marginLeft = prop
         return self
     }
     
     @discardableResult
-    func marginRight(_ prop: Float?) -> AAChart {
+    public func marginRight(_ prop: Float?) -> AAChart {
         marginRight = prop
         return self
     }

@@ -37,13 +37,13 @@ public class AAAnimation: AAObject {
     var easing: Int?
     
     @discardableResult
-    func duration(_ prop: Int?) -> AAAnimation {
+    public func duration(_ prop: Int?) -> AAAnimation {
         duration = prop
         return self
     }
     
     @discardableResult
-    func easing(_ prop: Int?) -> AAAnimation {
+    public func easing(_ prop: Int?) -> AAAnimation {
         easing = prop
         return self
     }

@@ -42,43 +42,43 @@ public class AASubtitle: AAObject {
     var userHTML: Bool?
     
     @discardableResult
-    func text(_ prop: String?) -> AASubtitle {
+    public func text(_ prop: String?) -> AASubtitle {
         text = prop
         return self
     }
     
     @discardableResult
-    func style(_ prop: AAStyle?) -> AASubtitle {
+    public func style(_ prop: AAStyle?) -> AASubtitle {
         style = prop
         return self
     }
     
     @discardableResult
-    func align(_ prop: String?) -> AASubtitle {
+    public func align(_ prop: String?) -> AASubtitle {
         align = prop
         return self
     }
     
     @discardableResult
-    func verticalAlign(_ prop: AAChartLegendVerticalAlignType?) -> AASubtitle {
+    public func verticalAlign(_ prop: AAChartLegendVerticalAlignType?) -> AASubtitle {
         verticalAlign = prop?.rawValue
         return self
     }
     
     @discardableResult
-    func x(_ prop: Float?) -> AASubtitle {
+    public func x(_ prop: Float?) -> AASubtitle {
         x = prop
         return self
     }
     
     @discardableResult
-    func y(_ prop: Float?) -> AASubtitle {
+    public func y(_ prop: Float?) -> AASubtitle {
         y = prop
         return self
     }
     
     @discardableResult
-    func userHTML(_ prop: Bool?) -> AASubtitle {
+    public func userHTML(_ prop: Bool?) -> AASubtitle {
         userHTML = prop
         return self
     }
@@ -87,3 +87,4 @@ public class AASubtitle: AAObject {
         
     }
 }
+

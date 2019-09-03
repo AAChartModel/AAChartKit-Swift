@@ -156,7 +156,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
         //坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。
         //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。
         //默认是：false.
-        aaOptions.yAxis?.opposite(true)
+        let aaYAxis = aaOptions.yAxis as? AAYAxis
+        aaYAxis?.opposite(true)
         return aaOptions
     }
     
@@ -176,60 +177,12 @@ class DrawChartWithAAOptionsVC: UIViewController {
         )
         
         let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions.yAxis?.min(1000)
+        let aaYAxis = aaOptions.yAxis as? AAYAxis
+        aaYAxis?.min(1000)
         return aaOptions
     }
     
-    private func configureTheMirrorColumnChart() -> AAOptions  {
-        let aaChart = NSMutableDictionary()
-        aaChart["type"] = AAChartType.column.rawValue
-        
-        let aaTitle = NSMutableDictionary()
-        aaTitle["text"] = "正负镜像柱状图"
-        aaTitle["style"] = [
-            "color":"#000000",//标题颜色
-            "fontSize":"12px"
-        ]
-        
-        let aaXAxis = NSMutableDictionary()
-        aaXAxis["categories"] = [
-            "一月", "二月", "三月", "四月", "五月", "六月",
-            "七月", "八月", "九月", "十月", "十一月", "十二月"
-        ]
-        
-        let aaYAxis1 = NSMutableDictionary()
-        aaYAxis1["gridLineWidth"] = 0 // Y 轴网格线宽度
-        aaYAxis1["title"] = ["text":"收入"]//Y 轴标题
-        
-        let aaYAxis2 = NSMutableDictionary()
-        aaYAxis2["title"] = ["text":"支出"]
-        aaYAxis2["opposite"] = true
-        
-        let YAxisArr = [aaYAxis1,aaYAxis2]
-        
-        
-        let aaSeries = NSMutableDictionary()
-        let aaAnimation = [
-            "duration":800,
-            "easing":AAChartAnimationType.bounce.rawValue
-            ] as [String : Any]
-        aaSeries["animation"] = aaAnimation
-        
-        let aaColumn = NSMutableDictionary()
-        aaColumn["grouping"] = false
-        aaColumn["borderWidth"] = 0
-        aaColumn["borderRadius"] = 5
-        
-        let aaPlotOptions = NSMutableDictionary()
-        aaPlotOptions["series"] = aaSeries
-        aaPlotOptions["column"] = aaColumn
-        
-        let aaOptions = NSMutableDictionary()
-        aaOptions["chart"] = aaChart
-        aaOptions["title"] = aaTitle
-        aaOptions["xAxis"] = aaXAxis
-        aaOptions["yAxis"] = YAxisArr
-        aaOptions["plotOptions"] = aaPlotOptions
+    private func configureTheMirrorColumnChart() -> AAOptions {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toTop,
             startColor: "#7052f4",
@@ -242,17 +195,66 @@ class DrawChartWithAAOptionsVC: UIViewController {
             endColor: "#4740C8"//颜色字符串设置支持十六进制类型和 rgba 类型
         )
         
-        aaOptions["series"] = [
-            ["name": "收入",
-                "data": [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9,7.0, 6.9, 9.5, 14.5,],
-                "color":gradientColorDic1
-            ],
-            ["name": "支出",
-                "data": [-20.1, -14.1, -8.6, -2.5, -0.8, -5.7, -11.3, -17.0, -22.0, -24.8, -24.1, -20.1, -14.1, -8.6, -2.5],
-                "color":gradientColorDic2
-            ],
-        ]
-        return AAOptions()
+        let aaChart = AAChart()
+            .type(.column)
+        
+        let aaTitle = AATitle()
+            .text("正负镜像柱状图")
+            .style(AAStyle()
+                .color("#000000")
+                .fontSize(12.0))
+
+        let aaXAxis = AAXAxis()
+            .categories([
+            "一月", "二月", "三月", "四月", "五月", "六月","七月", "八月", "九月", "十月", "十一月", "十二月"
+            ])
+        
+        let aaYAxis1 = AAYAxis()
+            .gridLineWidth(0)// Y 轴网格线宽度
+            .title(AATitle()
+                .text("收入"))//Y 轴标题
+        
+        let aaYAxis2 = AAYAxis()
+            .opposite(true)
+            .title(AATitle()
+                .text("支出"))
+        
+        let YAxisArr = [aaYAxis1,aaYAxis2]
+
+        let aaSeries = AASeries()
+            .animation(AAAnimation()
+                .duration(800)
+                .easing(AAChartAnimationType.bounce.rawValue))
+        
+        let aaColumn = AAColumn()
+            .grouping(false)
+            .borderWidth(0)
+            .borderRadius(5)
+        
+        let aaPlotOptions = AAPlotOptions()
+            .series(aaSeries)
+            .column(aaColumn)
+        
+        let aaSeriesElement1 = AASeriesElement()
+            .name("收入")
+            .color(gradientColorDic1)
+            .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9,7.0, 6.9, 9.5, 14.5,])
+        
+        let aaSeriesElement2 = AASeriesElement()
+            .name("支出")
+            .color(gradientColorDic2)
+            .data([-20.1, -14.1, -8.6, -2.5, -0.8, -5.7, -11.3, -17.0, -22.0, -24.8, -24.1, -20.1, -14.1, -8.6, -2.5])
+        
+        let aaSeriesArr = [aaSeriesElement1,aaSeriesElement2]
+        
+        let aaOptions = AAOptions()
+            .chart(aaChart)
+            .title(aaTitle)
+            .xAxis(aaXAxis)
+            .yAxis(YAxisArr)
+            .plotOptions(aaPlotOptions)
+            .series(aaSeriesArr)
+        return aaOptions
     }
     
     private func adjustTheXAxisLabels() -> AAOptions {
@@ -438,8 +440,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 .to(50)
                 .color("#acf08f"),
         ]
-    
-    aaOptions.yAxis?.plotBands(aaPlotBandsArr)
+    let aaYAxis = aaOptions.yAxis as? AAYAxis
+    aaYAxis?.plotBands(aaPlotBandsArr)
     
     return aaOptions
     }
@@ -511,9 +513,11 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         )
                     )
         ]
-        aaOptions.yAxis?.plotLines(aaPlotLinesArr)
-
-        return aaOptions
+    
+    let aaYAxis = aaOptions.yAxis as? AAYAxis
+    aaYAxis?.plotLines(aaPlotLinesArr)
+    
+    return aaOptions
     }
     
    private func customAATooltipWithJSFuntion() -> AAOptions {
@@ -757,29 +761,32 @@ function () {
             .color(AAColor.white)
             .width(1)
         
-        let aaLabels = AALabels()
-            .style(AAStyle()
-                .fontSize(10)
-                .fontWeight(.bold)
-                .color(AAColor.white)//轴文字颜色
-        )
+        let aaStyle = AAStyle()
+            .fontSize(10)
+            .fontWeight(.bold)
+            .color(AAColor.white)//轴文字颜色
         
        aaOptions.xAxis?
         .tickWidth(2)//X轴刻度线宽度
         .lineWidth(1.5)//X轴轴线宽度
         .lineColor(AAColor.white)//X轴轴线颜色
         .crosshair(aaCrosshair)
-        .labels(aaLabels)
+        .labels(AALabels()
+            .style(aaStyle)
+        )
         
-        aaOptions.yAxis?
+        let aaYAxis = aaOptions.yAxis as? AAYAxis
+
+        aaYAxis?
             .opposite(true)
             .tickWidth(2)
             .lineWidth(1.5)//Y轴轴线颜色
             .lineColor(AAColor.white)//Y轴轴线颜色
             .gridLineWidth(0)//Y轴网格线宽度
             .crosshair(aaCrosshair)
-            .labels(aaLabels
+            .labels(AALabels()
                 .format("{value} ℃")//给y轴添加单位
+                .style(aaStyle)
         )
         
         return aaOptions;

@@ -184,7 +184,7 @@ public class AAChartModel: AAObject {
     public var tooltipValueSuffix: String?  //浮动提示框单位后缀
     public var tooltipCrosshairs: Bool?     //是否显示准星线(默认显示)
     public var colorsTheme: [Any]?          //图表主题颜色数组
-    public var series: [[String: Any]]?     //图表的数据数组
+    public var series: [AASeriesElement]?     //图表的数据数组
     public var legendEnabled: Bool?         //是否显示图例
     public var legendLayout: AAChartLegendlLayoutType?//图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
     public var legendAlign: AAChartLegendAlignType?//设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
@@ -458,11 +458,7 @@ public class AAChartModel: AAObject {
     
     @discardableResult
     public func series(_ prop: [AASeriesElement]) -> AAChartModel {
-        var seriesElementsArr = [[String: Any]]()
-        prop.forEach { (aaSeriesElement) in
-           seriesElementsArr.append(aaSeriesElement.toDic()!)
-        }
-        series = seriesElementsArr
+        series = prop
         return self
     }
     

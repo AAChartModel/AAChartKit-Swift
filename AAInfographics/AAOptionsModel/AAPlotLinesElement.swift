@@ -38,7 +38,7 @@ public class AAPlotLinesElement: AAObject {
     private var width: Float?
     private var value: Float?
     private var zIndex: Int?
-    private var label: [String: AnyObject]?
+    private var label: AALabel?
     
     @discardableResult
     public func color(_ prop: Any) -> AAPlotLinesElement {
@@ -72,11 +72,11 @@ public class AAPlotLinesElement: AAObject {
     
     @discardableResult
     public func label(_ prop: AALabel) -> AAPlotLinesElement {
-        label = prop.toDic()!
+        label = prop
         return self
     }
     
-    public  override init() {
+    public override init() {
     }
 
 }

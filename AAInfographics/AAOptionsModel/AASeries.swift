@@ -44,55 +44,55 @@ public class AASeries: AAObject {
     private var shadow: AAShadow?
     
     @discardableResult
-    func borderRadius(_ prop: Float?) -> AASeries {
+    public func borderRadius(_ prop: Float?) -> AASeries {
         borderRadius = prop
         return self
     }
     
     @discardableResult
-    func marker(_ prop: AAMarker) -> AASeries {
+    public func marker(_ prop: AAMarker) -> AASeries {
         marker = prop
         return self
     }
     
     @discardableResult
-    func stacking(_ prop: String?) -> AASeries {
+    public func stacking(_ prop: String?) -> AASeries {
         stacking = prop
         return self
     }
     
     @discardableResult
-    func animation(_ prop: AAAnimation) -> AASeries {
+    public func animation(_ prop: AAAnimation) -> AASeries {
         animation = prop
         return self
     }
     
     @discardableResult
-    func keys(_ prop: Array<String>) -> AASeries {
+    public func keys(_ prop: Array<String>) -> AASeries {
         keys = prop
         return self
     }
     
     @discardableResult
-    func colorByPoint(_ prop: Bool?) -> AASeries {
+    public func colorByPoint(_ prop: Bool?) -> AASeries {
         colorByPoint = prop
         return self
     }
     
     @discardableResult
-    func connectNulls(_ prop: Bool?) -> AASeries {
+    public func connectNulls(_ prop: Bool?) -> AASeries {
         connectNulls = prop
         return self
     }
     
     @discardableResult
-    func events(_ prop: Dictionary<String, Any>?) -> AASeries {
+    public func events(_ prop: Dictionary<String, Any>?) -> AASeries {
         events = prop
         return self
     }
     
     @discardableResult
-    func shadow(_ prop: AAShadow) -> AASeries {
+    public func shadow(_ prop: AAShadow) -> AASeries {
         shadow = prop
         return self
     }

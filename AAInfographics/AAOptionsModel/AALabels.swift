@@ -44,7 +44,7 @@ public class AALabels: AAObject {
     private var rotation: Float?//轴标签的旋转角度 默认是：0.
     private var staggerLines: Int?//只针对水平轴有效，定义轴标签显示行数。
     private var step: Int?//显示 n 的倍数标签，例如设置为 2 则表示标签间隔一个轴标签显示。默认情况下，为了避免轴标签被覆盖，该参数会根据情况自动计算。可以通过设置此参数为 1 来阻止自动计算。
-    private var style: [String: AnyObject]?//轴标签的 CSS 样式
+    private var style: AAStyle?//轴标签的 CSS 样式
     private var x: Float?//相对于坐标轴刻度线的水平偏移。 默认是：0.
     private var y: Float?//相对于坐标轴刻度线的垂直平偏移。 默认是：null.
     private var useHTML: Bool?//HTML渲染
@@ -119,7 +119,7 @@ public class AALabels: AAObject {
     
     @discardableResult
     public func style(_ prop: AAStyle) -> AALabels {
-        style = prop.toDic()!
+        style = prop
         return self
     }
     

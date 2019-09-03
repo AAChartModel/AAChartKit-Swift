@@ -37,76 +37,76 @@ public class AAOptions: AAObject {
     var title: AATitle?
     var subtitle: AASubtitle?
     var xAxis: AAXAxis?
-    var yAxis: AAYAxis?
+    var yAxis: Any?
     var tooltip: AATooltip?
     var plotOptions: AAPlotOptions?
-    var series: [[String : Any]]?
+    var series: [AASeriesElement]?
     var legend: AALegend?
     var colors: Array<Any>?
     var touchEventEnabled: Bool?
     
     @discardableResult
-    func chart(_ prop: AAChart?) -> AAOptions {
+    public func chart(_ prop: AAChart?) -> AAOptions {
         chart = prop
         return self
     }
     
     @discardableResult
-    func title(_ prop: AATitle?) -> AAOptions {
+    public func title(_ prop: AATitle?) -> AAOptions {
         title = prop
         return self
     }
     
     @discardableResult
-    func subtitle(_ prop: AASubtitle?) -> AAOptions {
+    public func subtitle(_ prop: AASubtitle?) -> AAOptions {
         subtitle = prop
         return self
     }
     
     @discardableResult
-    func xAxis(_ prop: AAXAxis?) -> AAOptions {
+    public func xAxis(_ prop: AAXAxis?) -> AAOptions {
         xAxis = prop
         return self
     }
     
     @discardableResult
-    func yAxis(_ prop: AAYAxis?) -> AAOptions {
+    public func yAxis(_ prop: Any?) -> AAOptions {
         yAxis = prop
         return self
     }
     
     @discardableResult
-    func tooltip(_ prop: AATooltip?) -> AAOptions {
+    public func tooltip(_ prop: AATooltip?) -> AAOptions {
         tooltip = prop
         return self
     }
     
     @discardableResult
-    func plotOptions(_ prop: AAPlotOptions?) -> AAOptions {
+    public func plotOptions(_ prop: AAPlotOptions?) -> AAOptions {
         plotOptions = prop
         return self
     }
     
     @discardableResult
-    func series(_ prop: [[String : Any]]?) -> AAOptions {
+    public func series(_ prop: [AASeriesElement]?) -> AAOptions {
         series = prop
         return self
     }
     
     @discardableResult
-    func legend(_ prop: AALegend?) -> AAOptions {
+    public func legend(_ prop: AALegend?) -> AAOptions {
         legend = prop
         return self
     }
     
     @discardableResult
-    func colors(_ prop: Array<Any>?) -> AAOptions {
+    public func colors(_ prop: Array<Any>?) -> AAOptions {
         colors = prop
         return self
     }
     
     @discardableResult
-    func touchEventEnabled(_ prop: Bool?) -> AAOptions {
+    public func touchEventEnabled(_ prop: Bool?) -> AAOptions {
         touchEventEnabled = prop
         return self
     }

@@ -50,7 +50,7 @@ public class AAXAxis: AAObject {
     private var visible: Bool? //用于设置 x 轴以及 x 轴文字是否显示
     private var startOnTick: Bool? //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. 默认是：false.
     private var tickInterval: Int? //x轴刻度点间隔数(设置每隔几个点显示一个 X轴的内容:
-    private var crosshair: [String: Any]?  //准星线样式设置
+    private var crosshair: AACrosshair?  //准星线样式设置
     private var tickmarkPlacement: String? //本参数只对分类轴有效。 当值为 on 时刻度线将在分类上方显示；当值为 between 时，刻度线将在两个分类中间显示。当 tickInterval 为 1 时，默认是 between，其他情况默认是 on。 默认是：null.
     private var tickWidth: Float? //坐标轴刻度线的宽度，设置为 0 时则不显示刻度线
     private var tickLength: Float?//坐标轴刻度线的长度。 默认是：10.
@@ -160,7 +160,7 @@ public class AAXAxis: AAObject {
     
     @discardableResult
     public func crosshair(_ prop: AACrosshair?) -> AAXAxis {
-        crosshair = prop?.toDic()
+        crosshair = prop
         return self
     }
     

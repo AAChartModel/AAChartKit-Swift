@@ -42,43 +42,43 @@ public class AATitle: AAObject {
     var userHTML: Bool?
     
     @discardableResult
-    func text(_ prop: String?) -> AATitle {
+    public func text(_ prop: String?) -> AATitle {
         text = prop
         return self
     }
     
     @discardableResult
-    func style(_ prop: AAStyle?) -> AATitle {
+    public func style(_ prop: AAStyle?) -> AATitle {
         style = prop
         return self
     }
     
     @discardableResult
-    func align(_ prop: AAChartLegendAlignType?) -> AATitle {
+    public func align(_ prop: AAChartLegendAlignType?) -> AATitle {
         align = prop?.rawValue
         return self
     }
     
     @discardableResult
-    func verticalAlign(_ prop: AAChartLegendVerticalAlignType?) -> AATitle {
+    public func verticalAlign(_ prop: AAChartLegendVerticalAlignType?) -> AATitle {
         verticalAlign = prop?.rawValue
         return self
     }
     
     @discardableResult
-    func x(_ prop: Float?) -> AATitle {
+    public func x(_ prop: Float?) -> AATitle {
         x = prop
         return self
     }
     
     @discardableResult
-    func y(_ prop: Float?) -> AATitle {
+    public func y(_ prop: Float?) -> AATitle {
         y = prop
         return self
     }
     
     @discardableResult
-    func userHTML(_ prop: Bool?) -> AATitle {
+    public func userHTML(_ prop: Bool?) -> AATitle {
         userHTML = prop
         return self
     }

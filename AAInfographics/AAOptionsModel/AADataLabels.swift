@@ -34,7 +34,7 @@ import UIKit
 
 public class AADataLabels: AAObject {
     private var enabled: Bool?
-    private var style: [String:Any]?
+    private var style: AAStyle?
     private var format: String?
     private var rotation: Float?
     private var allowOverlap: Bool?
@@ -58,7 +58,7 @@ public class AADataLabels: AAObject {
     
     @discardableResult
     public func style(_ prop: AAStyle?) -> AADataLabels {
-        style = prop?.toDic()!
+        style = prop
         return self
     }
     

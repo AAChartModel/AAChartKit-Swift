@@ -374,7 +374,9 @@ function () {
 """#)
         
         let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions.yAxis?.labels(aaYAxisLabels)
+        let aaYAxis = aaOptions.yAxis as? AAYAxis
+
+        aaYAxis?.labels(aaYAxisLabels)
 
         return aaOptions
     }
@@ -422,7 +424,8 @@ function () {
 """#)
         
         let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
-        aaOptions.yAxis?
+        let aaYAxis = aaOptions.yAxis as? AAYAxis
+        aaYAxis?
             .opposite(true)
             .tickWidth(2)
             .lineWidth(1.5)//Y轴轴线颜色

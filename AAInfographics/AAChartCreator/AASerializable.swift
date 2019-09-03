@@ -38,27 +38,42 @@ public protocol AAJSONRepresentable {
 }
 
 public protocol AASerializable: AAJSONRepresentable {
-
 }
 
 public class AAObject: AASerializable  {
 }
 
 public extension AASerializable {
+    
     var JSONRepresentation: AnyObject {
         var representation = [String: AnyObject]()
         
         let mirrorChildren = Mirror(reflecting: self).children
         
         for case let (label?, value) in mirrorChildren {
-//            print("propery name：\(label)     property value：\(value)")
             switch value {
             case let value as AAObject: do {
+//                print("🦁propery name：\(label)     property value：\(value)")
 //                print("To be saved value：\(value.JSONRepresentation)")
                 representation[label] = value.JSONRepresentation
                 }
                 
+            case let value as [AAObject]: do {
+//                print("l🐯propery name：\(label)     property value：\(value)")
+                var aaObjectArr = [AnyObject]()
+                
+                let valueCount = value.count
+                for i in 0 ..< valueCount {
+                    let aaObject = value[i]
+                    let aaObjectDic = aaObject.toDic()
+                    aaObjectArr.insert(aaObjectDic as AnyObject, at: i)
+                }
+                
+                representation[label] = aaObjectArr as AnyObject
+                }
+                
             case let value as NSObject: do {
+//                  print("🐱propery name：\(label)     property value：\(value)")
                 representation[label] = value
                 }
                 

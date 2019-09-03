@@ -45,61 +45,61 @@ public class AAPlotOptions: AAObject {
     var series: AASeries?
     
     @discardableResult
-    func column(_ prop: AAColumn) -> AAPlotOptions {
+    public func column(_ prop: AAColumn) -> AAPlotOptions {
         column = prop
         return self
     }
     
     @discardableResult
-    func line(_ prop: AALine) -> AAPlotOptions {
+    public func line(_ prop: AALine) -> AAPlotOptions {
         line = prop
         return self
     }
     
     @discardableResult
-    func pie(_ prop: AAPie) -> AAPlotOptions {
+    public func pie(_ prop: AAPie) -> AAPlotOptions {
         pie = prop
         return self
     }
     
     @discardableResult
-    func bar(_ prop: AABar) -> AAPlotOptions {
+    public func bar(_ prop: AABar) -> AAPlotOptions {
         bar = prop
         return self
     }
     
     @discardableResult
-    func spline(_ prop: AASpline) -> AAPlotOptions {
+    public func spline(_ prop: AASpline) -> AAPlotOptions {
         spline = prop
         return self
     }
     
     @discardableResult
-    func area(_ prop: AAArea) -> AAPlotOptions {
+    public func area(_ prop: AAArea) -> AAPlotOptions {
         area = prop
         return self
     }
     
     @discardableResult
-    func areaspline(_ prop: AAAreaspline) -> AAPlotOptions {
+    public func areaspline(_ prop: AAAreaspline) -> AAPlotOptions {
         areaspline = prop
         return self
     }
     
     @discardableResult
-    func columnrange(_ prop: AAColumnrange) -> AAPlotOptions {
+    public func columnrange(_ prop: AAColumnrange) -> AAPlotOptions {
         columnrange = prop
         return self
     }
     
     @discardableResult
-    func arearange(_ prop: AAArearange) -> AAPlotOptions {
+    public func arearange(_ prop: AAArearange) -> AAPlotOptions {
         arearange = prop
         return self
     }
     
     @discardableResult
-    func series(_ prop: AASeries) -> AAPlotOptions {
+    public func series(_ prop: AASeries) -> AAPlotOptions {
         series = prop
         return self
     }
@@ -126,79 +126,79 @@ public class AAColumn: AAObject {
     private var yAxis: Float?
     
     @discardableResult
-    func name(_ prop: String) -> AAColumn {
+    public func name(_ prop: String) -> AAColumn {
         name = prop
         return self
     }
     
     @discardableResult
-    func data(_ prop: Array<Any>) -> AAColumn {
+    public func data(_ prop: Array<Any>) -> AAColumn {
         data = prop
         return self
     }
     
     @discardableResult
-    func color(_ prop: String) -> AAColumn {
+    public func color(_ prop: String) -> AAColumn {
         color = prop
         return self
     }
     
     @discardableResult
-    func grouping(_ prop: Bool?) -> AAColumn {
+    public func grouping(_ prop: Bool?) -> AAColumn {
         grouping = prop
         return self
     }
     
     @discardableResult
-    func pointPadding(_ prop: Float?) -> AAColumn {
+    public func pointPadding(_ prop: Float?) -> AAColumn {
         pointPadding = prop
         return self
     }
     
     @discardableResult
-    func pointPlacement(_ prop: Float?) -> AAColumn {
+    public func pointPlacement(_ prop: Float?) -> AAColumn {
         pointPlacement = prop
         return self
     }
     
     @discardableResult
-    func groupPadding(_ prop: Float?) -> AAColumn {
+    public func groupPadding(_ prop: Float?) -> AAColumn {
         groupPadding = prop
         return self
     }
     
     @discardableResult
-    func borderWidth(_ prop: Float?) -> AAColumn {
+    public func borderWidth(_ prop: Float?) -> AAColumn {
         borderWidth = prop
         return self
     }
     
     @discardableResult
-    func colorByPoint(_ prop: Bool?) -> AAColumn {
+    public func colorByPoint(_ prop: Bool?) -> AAColumn {
         colorByPoint = prop
         return self
     }
     
     @discardableResult
-    func dataLabels(_ prop: AADataLabels) -> AAColumn {
+    public func dataLabels(_ prop: AADataLabels) -> AAColumn {
         dataLabels = prop
         return self
     }
     
     @discardableResult
-    func stacking(_ prop: String) -> AAColumn {
+    public func stacking(_ prop: String) -> AAColumn {
         stacking = prop
         return self
     }
     
     @discardableResult
-    func borderRadius(_ prop: Int?) -> AAColumn {
+    public func borderRadius(_ prop: Int?) -> AAColumn {
         borderRadius = prop
         return self
     }
     
     @discardableResult
-    func yAxis(_ prop: Float?) -> AAColumn {
+    public func yAxis(_ prop: Float?) -> AAColumn {
         yAxis = prop
         return self
     }
@@ -225,79 +225,79 @@ public class AABar: AAObject {
     private var yAxis: Float?
     
     @discardableResult
-    func name(_ prop: String) -> AABar {
+    public func name(_ prop: String) -> AABar {
         name = prop
         return self
     }
     
     @discardableResult
-    func data(_ prop: Array<Any>) -> AABar {
+    public func data(_ prop: Array<Any>) -> AABar {
         data = prop
         return self
     }
     
     @discardableResult
-    func color(_ prop: String) -> AABar {
+    public func color(_ prop: String) -> AABar {
         color = prop
         return self
     }
     
     @discardableResult
-    func grouping(_ prop: Bool?) -> AABar {
+    public func grouping(_ prop: Bool?) -> AABar {
         grouping = prop
         return self
     }
     
     @discardableResult
-    func pointPadding(_ prop: Float?) -> AABar {
+    public func pointPadding(_ prop: Float?) -> AABar {
         pointPadding = prop
         return self
     }
     
     @discardableResult
-    func pointPlacement(_ prop: Float?) -> AABar {
+    public func pointPlacement(_ prop: Float?) -> AABar {
         pointPlacement = prop
         return self
     }
     
     @discardableResult
-    func groupPadding(_ prop: Float?) -> AABar {
+    public func groupPadding(_ prop: Float?) -> AABar {
         groupPadding = prop
         return self
     }
     
     @discardableResult
-    func borderWidth(_ prop: Float?) -> AABar {
+    public func borderWidth(_ prop: Float?) -> AABar {
         borderWidth = prop
         return self
     }
     
     @discardableResult
-    func colorByPoint(_ prop: Bool?) -> AABar {
+    public func colorByPoint(_ prop: Bool?) -> AABar {
         colorByPoint = prop
         return self
     }
     
     @discardableResult
-    func dataLabels(_ prop: AADataLabels) -> AABar {
+    public func dataLabels(_ prop: AADataLabels) -> AABar {
         dataLabels = prop
         return self
     }
     
     @discardableResult
-    func stacking(_ prop: String) -> AABar {
+    public func stacking(_ prop: String) -> AABar {
         stacking = prop
         return self
     }
     
     @discardableResult
-    func borderRadius(_ prop: Int?) -> AABar {
+    public func borderRadius(_ prop: Int?) -> AABar {
         borderRadius = prop
         return self
     }
     
     @discardableResult
-    func yAxis(_ prop: Float?) -> AABar {
+    public func yAxis(_ prop: Float?) -> AABar {
         yAxis = prop
         return self
     }
@@ -312,7 +312,7 @@ public class AALine: AAObject {
     var dataLabels: AADataLabels?
     
     @discardableResult
-    func dataLabels(_ prop: AADataLabels) -> AALine {
+    public func dataLabels(_ prop: AADataLabels) -> AALine {
         dataLabels = prop
         return self
     }
@@ -326,7 +326,7 @@ public class AASpline: AAObject {
     var dataLabels: AADataLabels?
     
     @discardableResult
-    func dataLabels(_ prop: AADataLabels) -> AASpline {
+    public func dataLabels(_ prop: AADataLabels) -> AASpline {
         dataLabels = prop
         return self
     }
@@ -340,7 +340,7 @@ public class AAArea: AAObject {
     var dataLabels: AADataLabels?
     
     @discardableResult
-    func dataLabels(_ prop: AADataLabels) -> AAArea {
+    public func dataLabels(_ prop: AADataLabels) -> AAArea {
         dataLabels = prop
         return self
     }
@@ -376,55 +376,55 @@ public class AAPie: AAObject {
     var center: Float?
     
     @discardableResult
-    func dataLabels(_ prop: AADataLabels) -> AAPie {
+    public func dataLabels(_ prop: AADataLabels) -> AAPie {
         dataLabels = prop
         return self
     }
     
     @discardableResult
-    func size(_ prop: Float?) -> AAPie {
+    public func size(_ prop: Float?) -> AAPie {
         size = prop
         return self
     }
     
     @discardableResult
-    func allowPointSelect(_ prop: Bool?) -> AAPie {
+    public func allowPointSelect(_ prop: Bool?) -> AAPie {
         allowPointSelect = prop
         return self
     }
     
     @discardableResult
-    func cursor(_ prop: String) -> AAPie {
+    public func cursor(_ prop: String) -> AAPie {
         cursor = prop
         return self
     }
     
     @discardableResult
-    func showInLegend(_ prop: Bool?) -> AAPie {
+    public func showInLegend(_ prop: Bool?) -> AAPie {
         showInLegend = prop
         return self
     }
     
     @discardableResult
-    func startAngle(_ prop: Float?) -> AAPie {
+    public func startAngle(_ prop: Float?) -> AAPie {
         startAngle = prop
         return self
     }
     
     @discardableResult
-    func endAngle(_ prop: Float?) -> AAPie {
+    public func endAngle(_ prop: Float?) -> AAPie {
         endAngle = prop
         return self
     }
     
     @discardableResult
-    func depth(_ prop: Float?) -> AAPie {
+    public func depth(_ prop: Float?) -> AAPie {
         depth = prop
         return self
     }
     
     @discardableResult
-    func center(_ prop: Float?) -> AAPie {
+    public func center(_ prop: Float?) -> AAPie {
         center = prop
         return self
     }

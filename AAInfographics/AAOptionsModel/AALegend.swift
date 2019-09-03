@@ -40,7 +40,7 @@ public class AALegend: AAObject {
     private var borderColor: String?
     private var borderWidth: Float?
     private var itemMarginTop: Float? //图例的每一项的顶部外边距，单位px。 默认是：0.
-    private var itemStyle: [String: Any]?
+    private var itemStyle: AAItemStyle?
     private var x: Float?
     private var y: Float?
     
@@ -88,7 +88,7 @@ public class AALegend: AAObject {
     
     @discardableResult
     public func itemStyle(_ prop: AAItemStyle?) -> AALegend {
-        itemStyle = prop?.toDic()
+        itemStyle = prop
         return self
     }
     
