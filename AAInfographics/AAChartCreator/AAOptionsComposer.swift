@@ -38,41 +38,41 @@ class AAOptionsComposer: NSObject {
         aaChartModel: AAChartModel
         ) -> AAOptions {
         let aaChart = AAChart()
-            .type(aaChartModel.chartType!)//绘图类型
-            .inverted(aaChartModel.inverted)//设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
-            .backgroundColor(aaChartModel.backgroundColor)//设置图表的背景色(包含透明度的设置)
-            .pinchType(aaChartModel.zoomType?.rawValue)//设置手势缩放方向
-            .panning(true)//设置手势缩放后是否可平移
-            .polar(aaChartModel.polar)//是否极化图表(开启极坐标模式)
-            .marginLeft(aaChartModel.marginLeft)//图表左边距
-            .marginRight(aaChartModel.marginRight)//图表右边距
+            .type(aaChartModel.chartType!) //绘图类型
+            .inverted(aaChartModel.inverted) //设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
+            .backgroundColor(aaChartModel.backgroundColor) //设置图表的背景色(包含透明度的设置)
+            .pinchType(aaChartModel.zoomType?.rawValue) //设置手势缩放方向
+            .panning(true) //设置手势缩放后是否可平移
+            .polar(aaChartModel.polar) //是否极化图表(开启极坐标模式)
+            .marginLeft(aaChartModel.marginLeft) //图表左边距
+            .marginRight(aaChartModel.marginRight) //图表右边距
         
         let aaTitle = AATitle()
-            .text(aaChartModel.title)//标题文本内容
+            .text(aaChartModel.title) //标题文本内容
             .style(AAStyle()
-                .color(aaChartModel.titleFontColor)//Title font color
-                .fontSize(aaChartModel.titleFontSize!)//Title font size
-                .fontWeight(aaChartModel.titleFontWeight)//Title font weight
+                .color(aaChartModel.titleFontColor) //Title font color
+                .fontSize(aaChartModel.titleFontSize!) //Title font size
+                .fontWeight(aaChartModel.titleFontWeight) //Title font weight
         )
         
         let aaSubtitle = AASubtitle()
-            .text(aaChartModel.subtitle)//副标题内容
-            .align(aaChartModel.subtitleAlign)//图表副标题文本水平对齐方式。可选的值有 “left”，”center“和“right”。 默认是：center.
+            .text(aaChartModel.subtitle) //副标题内容
+            .align(aaChartModel.subtitleAlign) //图表副标题文本水平对齐方式。可选的值有 “left”，”center“和“right”。 默认是：center.
             .style(AAStyle()
-                .color(aaChartModel.subtitleFontColor)//Subtitle font color
-                .fontSize(aaChartModel.subtitleFontSize!)//Subtitle font size
-                .fontWeight(aaChartModel.subtitleFontWeight)//Subtitle font weight
+                .color(aaChartModel.subtitleFontColor) //Subtitle font color
+                .fontSize(aaChartModel.subtitleFontSize!) //Subtitle font size
+                .fontWeight(aaChartModel.subtitleFontWeight) //Subtitle font weight
         )
         
         let aaTooltip = AATooltip()
-            .enabled(aaChartModel.tooltipEnabled)//启用浮动提示框
-            .shared(true)//多组数据共享一个浮动提示框
-            .crosshairs(true)//启用准星线
-            .valueSuffix(aaChartModel.tooltipValueSuffix)//浮动提示框的单位名称后缀
+            .enabled(aaChartModel.tooltipEnabled) //启用浮动提示框
+            .shared(true) //多组数据共享一个浮动提示框
+            .crosshairs(true) //启用准星线
+            .valueSuffix(aaChartModel.tooltipValueSuffix) //浮动提示框的单位名称后缀
         
         let aaPlotOptions = AAPlotOptions()
             .series(AASeries()
-                .stacking(aaChartModel.stacking?.rawValue)//设置是否百分比堆叠显示图形
+                .stacking(aaChartModel.stacking?.rawValue) //设置是否百分比堆叠显示图形
         )
         
         if (aaChartModel.animationType != .linear) {
@@ -87,7 +87,7 @@ class AAOptionsComposer: NSObject {
         configureAAPlotOptionsDataLabels(aaPlotOptions, aaChartModel)
         
         let aaLegend = AALegend()
-            .enabled(aaChartModel.legendEnabled)//是否显示 legend
+            .enabled(aaChartModel.legendEnabled) //是否显示 legend
             .itemStyle(AAItemStyle()
                 .color(aaChartModel.axesTextColor ?? "#000000")
         ) //默认图例的文字颜色和X轴文字颜色一样
@@ -100,8 +100,8 @@ class AAOptionsComposer: NSObject {
             .plotOptions(aaPlotOptions)
             .legend(aaLegend)
             .series(aaChartModel.series)
-            .colors(aaChartModel.colorsTheme)//设置颜色主题
-            .touchEventEnabled(aaChartModel.touchEventEnabled)//是否支持点击事件
+            .colors(aaChartModel.colorsTheme) //设置颜色主题
+            .touchEventEnabled(aaChartModel.touchEventEnabled) //是否支持点击事件
         
         configureAxisContentAndStyle(aaOptions, aaChartModel)
         
@@ -121,12 +121,12 @@ class AAOptionsComposer: NSObject {
             || chartType == .spline
             || chartType == .scatter {
             let aaMarker = AAMarker()
-                .radius(aaChartModel.markerRadius)//曲线连接点半径，默认是4
-                .symbol(aaChartModel.symbol?.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                .radius(aaChartModel.markerRadius) //曲线连接点半径，默认是4
+                .symbol(aaChartModel.symbol?.rawValue) //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
             if (aaChartModel.symbolStyle == .innerBlank) {
-                aaMarker.fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
-                    .lineWidth(2.0)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                    .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                aaMarker.fillColor("#ffffff") //点的填充色(用来设置折线连接点的填充色)
+                    .lineWidth(2.0) //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                    .lineColor("") //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
             } else if (aaChartModel.symbolStyle == .borderBlank) {
                 aaMarker.lineWidth(2.0)
                     .lineColor(aaChartModel.backgroundColor)
@@ -216,7 +216,7 @@ class AAOptionsComposer: NSObject {
 
             let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled
             let aaXAxisLabels = AALabels()
-                .enabled(aaXAxisLabelsEnabled)//设置 x 轴是否显示文字
+                .enabled(aaXAxisLabelsEnabled) //设置 x 轴是否显示文字
             if aaXAxisLabelsEnabled == true {
                 aaXAxisLabels.style(
                     AAStyle()
@@ -227,9 +227,9 @@ class AAOptionsComposer: NSObject {
             let aaXAxis = AAXAxis()
                 .labels(aaXAxisLabels)
                 .reversed(aaChartModel.xAxisReversed)
-                .gridLineWidth(aaChartModel.xAxisGridLineWidth)//x轴网格线宽度
+                .gridLineWidth(aaChartModel.xAxisGridLineWidth) //x轴网格线宽度
                 .categories(aaChartModel.categories)
-                .visible(aaChartModel.xAxisVisible)//x轴是否可见
+                .visible(aaChartModel.xAxisVisible) //x轴是否可见
                 .tickInterval(aaChartModel.xAxisTickInterval) //x轴坐标点间隔数
             
             let aaYAxisLabelsEnabled = aaChartModel.yAxisLabelsEnabled
@@ -243,17 +243,19 @@ class AAOptionsComposer: NSObject {
             }
             
             let aaYAxis = AAYAxis()
-                .labels(aaYAxisLabels)//设置 y 轴文字
-                .min(aaChartModel.yAxisMin)//设置 y 轴最小值,最小值等于零就不能显示负值了
-                .max(aaChartModel.yAxisMax)//y轴最大值
-                .allowDecimals(aaChartModel.yAxisAllowDecimals)//是否允许显示小数
+                .labels(aaYAxisLabels) //设置 y 轴文字
+                .min(aaChartModel.yAxisMin) //设置 y 轴最小值,最小值等于零就不能显示负值了
+                .max(aaChartModel.yAxisMax) //y轴最大值
+                .allowDecimals(aaChartModel.yAxisAllowDecimals) //是否允许显示小数
                 .reversed(aaChartModel.yAxisReversed)
-                .gridLineWidth(aaChartModel.yAxisGridLineWidth)//y轴网格线宽度
-                .lineWidth(aaChartModel.yAxisLineWidth)//设置 y轴轴线的宽度,为0即是隐藏 y轴轴线
+                .gridLineWidth(aaChartModel.yAxisGridLineWidth) //y轴网格线宽度
+                .lineWidth(aaChartModel.yAxisLineWidth) //设置 y轴轴线的宽度,为0即是隐藏 y轴轴线
                 .visible(aaChartModel.yAxisVisible)
                 .title(AATitle()
-                        .text(aaChartModel.yAxisTitle)
-                 )//y 轴标题
+                    .text(aaChartModel.yAxisTitle) //y 轴标题
+                    .style(AAStyle()
+                        .color(aaChartModel.axesTextColor)
+                    ))
             
             aaOptions.xAxis(aaXAxis)
                 .yAxis(aaYAxis)
