@@ -108,7 +108,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
                     ,
                 ])
         
-        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .formatter("""
@@ -157,7 +157,7 @@ function () {
                 ,
                 ])
         
-        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .enabled(true)
@@ -203,7 +203,7 @@ function () {
                     ,
                 ])
         
-        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .formatter(#"""
@@ -265,7 +265,7 @@ function () {
                     ,
                 ])
         
-        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .formatter(#"""
@@ -320,7 +320,7 @@ function () {
             + "最小值: {point.low}<br/>"
         )
         
-        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .headerFormat("<em>实验号码： {point.key}</em><br/>")
@@ -373,7 +373,7 @@ function () {
     }
 """#)
         
-        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaYAxis = aaOptions.yAxis as? AAYAxis
 
         aaYAxis?.labels(aaYAxisLabels)
@@ -423,7 +423,7 @@ function () {
     }
 """#)
         
-        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         let aaYAxis = aaOptions.yAxis as? AAYAxis
         aaYAxis?
             .opposite(true)
@@ -472,7 +472,7 @@ function () {
         )
         
         /*Custom Tooltip Style --- 自定义图表浮动提示框样式及内容*/
-        let aaOptions = AAOptionsComposer.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
         aaOptions.tooltip?
             .shared(false)
             .formatter(#"""

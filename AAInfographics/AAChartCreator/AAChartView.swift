@@ -241,7 +241,7 @@ extension AAChartView {
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
-        let options = AAOptionsComposer.configureAAOptions(aaChartModel: chartModel)
+        let options = AAOptionsConstructor.configureAAOptions(aaChartModel: chartModel)
         aa_drawChartWithChartOptions(options)
     }
     
@@ -256,7 +256,7 @@ extension AAChartView {
     ///
     /// - Parameter chartModel: The instance object of chart model
     public func aa_refreshChartWholeContentWithChartModel(_ chartModel: AAChartModel) {
-        let options = AAOptionsComposer.configureAAOptions(aaChartModel: chartModel)
+        let options = AAOptionsConstructor.configureAAOptions(aaChartModel: chartModel)
         aa_refreshChartWholeContentWithChartOptions(options)
     }
     

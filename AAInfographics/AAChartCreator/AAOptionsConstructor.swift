@@ -32,7 +32,7 @@
 
 import UIKit
 
-class AAOptionsComposer: NSObject {
+class AAOptionsConstructor: NSObject {
     
     public static func configureAAOptions(
         aaChartModel: AAChartModel
