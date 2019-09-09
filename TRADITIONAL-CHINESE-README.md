@@ -370,47 +370,57 @@ symbol | AAChartSymbolType | 預定義的圖表曲線連接點的樣式類型.�
 
 * ### AAChartModel 所有屬性列表說明
 ```swift
-private var animationType: String?       //動畫類型
-private var animationDuration: Int?      //動畫時間
-private var title: String?               //標題內容
-private var subtitle: String?            //副標題內容
-private var chartType: String?           //圖表類型
-private var stacking: String?            //堆積樣式
-private var symbol: String?              //折線曲線連接點的類型："circle", "square", "diamond", "triangle","triangle-down"，默認是"circle"
-private var symbolStyle: String?         //折線或者曲線的連接點是否為空心的
-private var zoomType: String?            //縮放類型 AAChartZoomTypeX表示可沿著 x 軸進行手勢縮放
-private var inverted: Bool?              //x 軸是否翻轉(垂直)
-private var xAxisReversed: Bool?         //x 軸翻轉
-private var yAxisReversed: Bool?         //y 軸翻轉
-private var gradientColorEnable: Bool?   //是否要為漸變色
-private var polar: Bool?                 //是否極化圖形(變為雷達圖)
-private var marginLeft: Float?           //圖表左邊距
-private var marginRight: Float?          //圖表右邊距
-private var dataLabelEnabled: Bool?      //是否顯示數據
-private var xAxisLabelsEnabled: Bool?    //x 軸是否顯示數據
-private var categories: [String]?        //x 軸是否顯示數據
-private var xAxisGridLineWidth: Float?   //x 軸網格線的寬度
-private var xAxisVisible: Bool?          //x 軸是否顯示
-private var yAxisVisible: Bool?          //y 軸是否顯示
-private var yAxisLabelsEnabled: Bool?    //y 軸是否顯示數據
-private var yAxisTitle: String?          //y 軸標題
-private var yAxisLineWidth: Float?       //y 軸軸線的寬度
-private var yAxisGridLineWidth: Float?   //y 軸網格線的寬度
-private var tooltipEnabled: Bool?        //是否顯示浮動提示框(默認顯示)
-private var tooltipValueSuffix: String?  //浮動提示框單位後綴
-private var tooltipCrosshairs: Bool?     //是否顯示準星線(默認顯示)
-private var colorsTheme: [Any]?          //圖表主題顏色數組
-private var series: [[String: Any]]?     //圖表的數據數組
-private var legendEnabled: Bool?         //是否顯示圖例
-private var legendLayout: String?        //圖例數據項的布局。布局類型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默認是：horizontal.
-private var legendAlign: String?         //設定圖例在圖表區中的水平對齊方式，合法值有left，center 和 right。
-private var legendVerticalAlign: String? //設定圖例在圖表區中的垂直對齊方式，合法值有 top，middle 和 bottom。垂直位置可以通過 y 選項做進壹步設定。
-private var backgroundColor: String?     //圖表背景色
-private var borderRadius: Int?           //柱狀圖長條圖頭部圓角半徑(可用於設置頭部的形狀,僅對條形圖,柱狀圖有效)
-private var markerRadius: Int?           //折線連接點的半徑長度
-private var titleColor: String?          //標題顏色
-private var subTitleColor: String?       //副標題顏色
-private var axisColor: String?           //x 軸和 y 軸文字顏色
+public var animationType: AAChartAnimationType?        //動畫類型
+public var animationDuration: Int?                     //動畫時間
+public var title: String?                              //標題內容
+public var titleFontColor: String?                     //標題字體顏色
+public var titleFontSize: Float?                       //標題字體大小
+public var titleFontWeight: AAChartFontWeightType?     //標題字體粗細
+public var subtitle: String?                           //副標題內容
+public var subtitleAlign: String?                      //副標題文本水平對齊方式
+public var subtitleFontColor: String?                  //副標題字體顏色
+public var subtitleFontSize: Float?                    //副標題字體大小
+public var subtitleFontWeight: AAChartFontWeightType?  //副標題字體粗細
+public var axesTextColor: String?                      //x 軸和 y 軸文字顏色
+public var chartType: AAChartType?                     //圖表類型
+public var stacking: AAChartStackingType?              //堆積樣式
+public var symbol: AAChartSymbolType?                  //折線曲線連接點的類型："circle", "square", "diamond", "triangle","triangle-down"，默認是"circle"
+public var symbolStyle: AAChartSymbolStyleType?        //折線或者曲線的連接點是否為空心的
+public var zoomType: AAChartZoomType?                  //縮放類型 AAChartZoomTypeX表示可沿著 x 軸進行手勢縮放
+public var inverted: Bool?                             //x 軸是否翻轉(垂直)
+public var xAxisReversed: Bool?                        //x 軸翻轉
+public var yAxisReversed: Bool?                        //y 軸翻轉
+public var polar: Bool?                                //是否極化圖形(變為雷達圖)
+public var marginLeft: Float?                          //圖表左邊距
+public var marginRight: Float?                         //圖表右邊距
+public var marginBottom: Float?                        //圖表底部邊距
+public var dataLabelsEnabled: Bool?                    //數據標簽是否顯示
+public var dataLabelsFontColor: String?                //數據標簽的字體顏色
+public var dataLabelsFontSize: Float?                  //數據標簽的字體大小
+public var dataLabelsFontWeight: AAChartFontWeightType?//數據標簽的字體粗細
+public var xAxisLabelsEnabled: Bool?                   //x 軸是否顯示數據
+public var categories: [String]?                       //x 軸是否顯示數據
+public var xAxisGridLineWidth: Float?                  //x 軸網格線的寬度
+public var xAxisVisible: Bool?                         //x 軸是否顯示
+public var xAxisTickInterval: Int?                     //x 軸刻度線間隔
+public var yAxisVisible: Bool?                         //y 軸是否顯示
+public var yAxisLabelsEnabled: Bool?                   //y 軸是否顯示數據
+public var yAxisTitle: String?                         //y 軸標題
+public var yAxisLineWidth: Float?                      //y 軸軸線的寬度
+public var yAxisMin: Float?                            //y 軸起始位置的最小值
+public var yAxisMax: Float?                            //y 軸結束位置的最大值
+public var yAxisAllowDecimals: Bool?                   //y 軸是否允許小數
+public var yAxisGridLineWidth: Float?                  //y 軸網格線的寬度
+public var tooltipEnabled: Bool?                       //是否顯示浮動提示框(默認顯示)
+public var tooltipValueSuffix: String?                 //浮動提示框單位後綴
+public var tooltipCrosshairs: Bool?                    //是否顯示準星線(默認顯示)
+public var colorsTheme: [Any]?                         //圖表主題顏色數組
+public var series: [AASeriesElement]?                  //圖表的數據數組
+public var legendEnabled: Bool?                        //是否顯示圖例
+public var backgroundColor: Any?                       //圖表背景色
+public var borderRadius: Int?                          //柱狀圖長條圖頭部圓角半徑(可用於設置頭部的形狀,僅對條形圖,柱狀圖有效)
+public var markerRadius: Int?                          //折線連接點的半徑長度
+public var touchEventEnabled: Bool?                    //是否支持觸摸事件回調
 ```
 
 ## 附言
