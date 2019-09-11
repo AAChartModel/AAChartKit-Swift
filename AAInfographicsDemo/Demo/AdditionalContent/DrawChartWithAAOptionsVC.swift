@@ -48,7 +48,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
     
     private func configureAAOptions() -> AAOptions {
         switch self.chartType {
-        case 0: return setUpOptions0()
+        case 0: return configureLegendStyle()
         case 1: return setUpOptions1()
         case 2: return setUpOptions2()
         case 3: return configureChartWithBackgroundImage()
@@ -84,23 +84,51 @@ class DrawChartWithAAOptionsVC: UIViewController {
         return aaChartView
     }
     
-    private func setUpOptions0() -> AAOptions {
+    private func configureLegendStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
-            .chartType(.area)//图形类型
-            .axesTextColor(AAColor.white)
-            .title("")//图形标题
-            .subtitle("")//图形副标题
-            .dataLabelsEnabled(false)//是否显示数字
-            .tooltipValueSuffix("℃")//浮动提示框单位后缀
-            .animationType(.bounce)//图形渲染动画类型为"bounce"
+            .title("")
+            .chartType(.areaspline)
+            .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
+            .dataLabelsEnabled(false)
+            .colorsTheme([
+                AAGradientColor.oceanBlue,
+                AAGradientColor.sanguine,
+                AAGradientColor.lusciousLime,
+                AAGradientColor.mysticMauve
+                ])
+            .symbol(.circle)
+            .symbolStyle(.innerBlank)
+            .stacking(.normal)
             .series([
                 AASeriesElement()
-                    .name("Tokyo")
-                    .fillColor(AAGradientColor.berrySmoothie)
-                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                    ,
+                    .name("Tokyo Hot")
+                    .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])                ,
+                AASeriesElement()
+                    .name("Berlin Hot")
+                    .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
+                ,
+                AASeriesElement()
+                    .name("New York Hot")
+                    .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
+                ,
+                AASeriesElement()
+                    .name("London Hot")
+                    .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
+                ,
                 ])
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        aaOptions.legend!
+            .itemMarginTop(20)
+            .symbolRadius(10)//图标圆角
+            .symbolHeight(20)//标志高度
+            .symbolWidth(20)//图标宽度
+            .align(.right)
+            .layout(.vertical)
+            .verticalAlign(.top)
+            .itemStyle(AAItemStyle()
+                .color(AAColor.red)
+                .fontSize(20)
+                .fontWeight(.bold))
         
         return aaOptions
     }
@@ -774,6 +802,7 @@ function () {
         .labels(AALabels()
             .style(aaStyle)
         )
+        
         
         let aaYAxis = aaOptions.yAxis as? AAYAxis
 

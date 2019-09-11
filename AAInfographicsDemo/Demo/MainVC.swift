@@ -158,7 +158,7 @@ class MainVC: UIViewController {
             
             /*通过options字典来绘制图表*/
             [
-                "Custom Chart  Sample One",
+                "configureLegendStyle",
                 "Custom Chart  Sample Two",
                 "Custom Chart  Sample three",
                 "Custom Chart  Sample 4",
