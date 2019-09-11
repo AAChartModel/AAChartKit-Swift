@@ -59,10 +59,7 @@ class CommonChartVC: UIViewController {
         setUpTheSegmentControls()
         
         setUpAAChartView()
-        
- 
-        
-    }
+        }
     
    private func setUpAAChartView() {
         aaChartView = AAChartView()
@@ -114,107 +111,119 @@ class CommonChartVC: UIViewController {
         aaChartView!.aa_drawChartWithChartModel(aaChartModel!)
     }
     
-    
-    
-    func configureTheStyleForDifferentTypeChart() {
-        
+   private func configureTheStyleForDifferentTypeChart() {
         if (chartType == .area && step == true)
             || (chartType == .line && step == true) {
-            aaChartModel?.series([
-                AASeriesElement()
-                    .name("Berlin")
-                    .data([149.9, 171.5, 106.4, 129.2, 144.0, 176.0, 135.6, 188.5, 276.4, 214.1, 95.6, 54.4])
-                    .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
-                    ,
-                AASeriesElement()
-                    .name("New York")
-                    .data([83.6, 78.8, 188.5, 93.4, 106.0, 84.5, 105.0, 104.3, 131.2, 153.5, 226.6, 192.3])
-                    .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
-                    ,
-                AASeriesElement()
-                    .name("Tokyo")
-                    .data([48.9, 38.8, 19.3, 41.4, 47.0, 28.3, 59.0, 69.6, 52.4, 65.2, 53.3, 72.2])
-                    .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
-                    ,
-                ])
-            
+            configureStepAreaChartAndStepLineChartStyle()
         } else if chartType == .column
             || chartType == .bar {
-            aaChartModel?
-                .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
-                .legendEnabled(true)
-                .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
-                .animationType(.bounce)
-                .animationDuration(1200)
+            configureColumnChartAndBarChartStyle()
         } else if chartType == .area
             || chartType == .areaspline {
-            aaChartModel?
-                .symbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
-                .animationType(.easeOutQuart)
-                .legendEnabled(true)
-                .markerRadius(5)
-                .symbol(.circle)
-            
-            if chartType == .areaspline {
-                let gradientColorDic = AAGradientColor.linearGradient(
-                    direction: .toBottomRight,
-                    startColor: "rgba(138,43,226,1)",
-                    endColor: "rgba(30,144,255,1)"//颜色字符串设置支持十六进制类型和 rgba 类型
-                )
-                aaChartModel?
-                    .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
-                    .series([
-                        AASeriesElement()
-                            .name("Tokyo Hot")
-                            .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
-                            .color(gradientColorDic)
-                            ,
-                        AASeriesElement()
-                            .name("Berlin Hot")
-                            .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
-                            ,
-                        AASeriesElement()
-                            .name("New York Hot")
-                            .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
-                            ,
-                        AASeriesElement()
-                            .name("London Hot")
-                            .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
-                            ,
-                        ])
-            }
-            
+            configureAreaChartAndAreasplineChartStyle()
         } else if chartType == .line
             || chartType == .spline {
-            aaChartModel?
-                .symbolStyle(.borderBlank)//设置折线连接点样式为:边缘白色
-                .markerRadius(6)
-            if chartType == .spline {
-                aaChartModel?
-                    .animationType(.swingFromTo)
-                    .series([
-                        AASeriesElement()
-                            .name("Tokyo")
-                            .data([50, 320, 230, 370, 230, 400,])
-                            ,
-                        AASeriesElement()
-                            .name("New York")
-                            .data([80, 390, 210, 340, 240, 350,])
-                            ,
-                        AASeriesElement()
-                            .name("Berlin")
-                            .data([100, 370, 180, 280, 260, 300,])
-                            ,
-                        AASeriesElement()
-                            .name("London")
-                            .data([130, 350, 160, 310, 250, 268,])
-                            ,
-                        ])
-            }
+            configureLineChartAndSplineChartStyle()
         }
     }
     
-    func setUpTheSegmentControls() {
+    private func configureStepAreaChartAndStepLineChartStyle() {
+        aaChartModel?.series([
+            AASeriesElement()
+                .name("Berlin")
+                .data([149.9, 171.5, 106.4, 129.2, 144.0, 176.0, 135.6, 188.5, 276.4, 214.1, 95.6, 54.4])
+                .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
+            ,
+            AASeriesElement()
+                .name("New York")
+                .data([83.6, 78.8, 188.5, 93.4, 106.0, 84.5, 105.0, 104.3, 131.2, 153.5, 226.6, 192.3])
+                .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
+            ,
+            AASeriesElement()
+                .name("Tokyo")
+                .data([48.9, 38.8, 19.3, 41.4, 47.0, 28.3, 59.0, 69.6, 52.4, 65.2, 53.3, 72.2])
+                .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
+            ,
+            ])
+    }
+    
+    private func configureColumnChartAndBarChartStyle() {
+        aaChartModel?
+            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+            .legendEnabled(true)
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .animationType(.bounce)
+            .animationDuration(1200)
+    }
+    
+    private func configureAreaChartAndAreasplineChartStyle() {
+        aaChartModel?
+            .symbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
+            .animationType(.easeOutQuart)
+            .legendEnabled(true)
+            .markerRadius(5)
+            .symbol(.circle)
+        
+        if chartType == .areaspline {
+            let gradientColorDic = AAGradientColor.linearGradient(
+                direction: .toBottomRight,
+                startColor: "rgba(138,43,226,1)",
+                endColor: "rgba(30,144,255,1)"//颜色字符串设置支持十六进制类型和 rgba 类型
+            )
+            aaChartModel?
+                .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
+                .series([
+                    AASeriesElement()
+                        .name("Tokyo Hot")
+                        .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
+                        .color(gradientColorDic)
+                    ,
+                    AASeriesElement()
+                        .name("Berlin Hot")
+                        .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
+                    ,
+                    AASeriesElement()
+                        .name("New York Hot")
+                        .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
+                    ,
+                    AASeriesElement()
+                        .name("London Hot")
+                        .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
+                    ,
+                    ])
+        }
+    }
+
+    
+    private func configureLineChartAndSplineChartStyle() {
+        aaChartModel?
+            .symbolStyle(.borderBlank)//设置折线连接点样式为:边缘白色
+            .markerRadius(6)
+        if chartType == .spline {
+            aaChartModel?
+                .animationType(.swingFromTo)
+                .series([
+                    AASeriesElement()
+                        .name("Tokyo")
+                        .data([50, 320, 230, 370, 230, 400,])
+                    ,
+                    AASeriesElement()
+                        .name("New York")
+                        .data([80, 390, 210, 340, 240, 350,])
+                    ,
+                    AASeriesElement()
+                        .name("Berlin")
+                        .data([100, 370, 180, 280, 260, 300,])
+                    ,
+                    AASeriesElement()
+                        .name("London")
+                        .data([130, 350, 160, 310, 250, 268,])
+                    ,
+                    ])
+        }
+    }
+    
+   private func setUpTheSegmentControls() {
         let segmentedNamesArr:[[String]]
         let typeLabelNamesArr:[String]
         
@@ -306,7 +315,7 @@ class CommonChartVC: UIViewController {
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
-    func setUpTheSwitches() {
+    private func setUpTheSwitches() {
         let nameArr: [String]
         let switchWidth: CGFloat
         
@@ -370,18 +379,15 @@ class CommonChartVC: UIViewController {
             break
         }
         
-    
-        
         aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
-    func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
+   private func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
         return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
                        green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
                        blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
                        alpha: 1.0)
     }
-    
 }
 
 extension CommonChartVC: AAChartViewDelegate {
