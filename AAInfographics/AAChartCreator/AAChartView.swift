@@ -49,12 +49,12 @@ public class AAMoveOverEventMessageModel: NSObject {
     var index: Int?
 }
 
-public class AAChartView: UIView {
+public class AAChartView: WKWebView {
     public var delegate: AAChartViewDelegate?
     
     public var scrollEnabled: Bool? {
         willSet {
-            wkWebView?.scrollView.isScrollEnabled = newValue!
+            self.scrollView.isScrollEnabled = newValue!
         }
     }
     
@@ -62,8 +62,8 @@ public class AAChartView: UIView {
         willSet {
             if newValue! == true {
                 backgroundColor = .clear
-                wkWebView?.backgroundColor = .clear
-                wkWebView?.isOpaque = false
+                self.backgroundColor = .clear
+                self.isOpaque = false
             }
         }
     }
@@ -97,61 +97,23 @@ public class AAChartView: UIView {
         }
     }
     
-    private var wkWebView: WKWebView?
     private var optionsJson: String?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUpBasicView()
+    override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
+        super.init(frame: frame, configuration: configuration)
+        self.backgroundColor = .white
+        self.uiDelegate = self
+        self.navigationDelegate = self
     }
     
-    private func setUpBasicView() {
-        contentWidth = 0
-        contentHeight = 0
-        let userContentController = WKUserContentController()
-        userContentController.add(self as WKScriptMessageHandler, name: kUserContentMessageNameMouseOver)
-        let configuration = WKWebViewConfiguration()
-        configuration.userContentController = userContentController
-        
-        wkWebView = WKWebView.init(frame: .zero, configuration: configuration)
-        wkWebView?.backgroundColor = .white
-        wkWebView?.uiDelegate = self
-        wkWebView?.navigationDelegate = self
-        addSubview(wkWebView!)
-        wkWebView?.translatesAutoresizingMaskIntoConstraints = false
-        wkWebView?.superview!.addConstraints(configureTheConstraintArray(childView: wkWebView!,
-                                                                         fatherView: self))
-    }
+   convenience public init() {
+    let userContentController = WKUserContentController()
+    let configuration = WKWebViewConfiguration()
+    configuration.userContentController = userContentController
     
-    private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
-        return [NSLayoutConstraint(item: childView,
-                                   attribute: .left,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .left,
-                                   multiplier: 1,
-                                   constant: 0),
-                NSLayoutConstraint(item: childView,
-                                   attribute: .right,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .right,
-                                   multiplier: 1,
-                                   constant: 0),
-                NSLayoutConstraint(item: childView,
-                                   attribute: .top,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .top,
-                                   multiplier: 1,
-                                   constant: 0),
-                NSLayoutConstraint(item: childView,
-                                   attribute: .bottom,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .bottom,
-                                   multiplier: 1,
-                                   constant: 0)]
+    self.init(frame: .zero, configuration: configuration)
+    
+    configuration.userContentController.add(self, name: kUserContentMessageNameMouseOver)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -163,7 +125,7 @@ public class AAChartView: UIView {
     }
     
     private func evaluateJavaScriptWithFunctionNameString (_ jsString: String) {
-        wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
+        self.evaluateJavaScript(jsString, completionHandler: { (item, error) in
             if error != nil {
                 let objcError = error! as NSError
                 let errorUserInfo = objcError.userInfo
@@ -237,7 +199,7 @@ extension AAChartView {
                       inDirectory: "AAJSFiles.bundle")
             let urlStr = NSURL.fileURL(withPath: path!)
             let urlRequest = NSURLRequest(url: urlStr) as URLRequest
-            wkWebView?.load(urlRequest)
+            self.load(urlRequest)
         } else {
             configureTheJavaScriptStringWithOptions(options)
             drawChart()
