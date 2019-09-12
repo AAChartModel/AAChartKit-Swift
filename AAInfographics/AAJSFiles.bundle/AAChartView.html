@@ -23,7 +23,7 @@
         <div id="container" style="width:100%; height: 100%;"></div>
         <script>
             var aaGlobalChart;
-            function loadTheHighChartView(sender, receivedWidth, receivedHeight,isWKWebView) {
+            function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
                 var aaOptions = JSON.parse(sender);
                 var o = document.getElementById('container'); //获得元素
                 if (receivedWidth != 0) {
@@ -47,7 +47,7 @@
                 Highcharts.setOptions(globalOptions);
 
                 if (aaOptions.plotOptions) {
-                    configurePlotOptions(aaOptions,isWKWebView);
+                    configurePlotOptions(aaOptions);
                 }
                 
                 configureOptionsFormatters(aaOptions);
@@ -55,7 +55,7 @@
                 aaGlobalChart = Highcharts.chart('container', aaOptions);
             };
 
-        function configurePlotOptions(aaOptions,isWKWebView) {
+        function configurePlotOptions(aaOptions) {
             var aaPlotOptions = aaOptions.plotOptions;
             var animation = aaPlotOptions.series.animation;
             if (animation) {
@@ -65,11 +65,11 @@
             
             // 添加鼠标事件
             if (aaOptions.touchEventEnabled == true && aaPlotOptions.series) {
-                configureChartTouchEvent(aaPlotOptions,isWKWebView);
+                configureChartTouchEvent(aaPlotOptions);
             }
         }
         
-        function configureChartTouchEvent(aaPlotOptions,isWKWebView) {
+        function configureChartTouchEvent(aaPlotOptions) {
             var mouseOverFunc = function(){
                 //console.log(this)
                 var message = {
@@ -80,36 +80,15 @@
                     offset:{plotX:this.plotX,plotY:this.plotY},
                     index: this.index,
                 };
-                if (isWKWebView == true) {
-                    window.webkit.messageHandlers.mouseover.postMessage(message);
-                } else {
-                    var messageStr = JSON.stringify(message);
-                    uiWebViewLoadURL("mouseover://?"+ messageStr);
-                }
-                
+            window.webkit.messageHandlers.mouseover.postMessage(message);
             };
             
-            var pointEvents = {
-                point:{
-                    events:{
-                        mouseOver: mouseOverFunc,
-                    }
+            var seriesPoint = {
+                events:{
+                    mouseOver: mouseOverFunc,
                 }
-            }
-            aaPlotOptions.series = Object.assign(pointEvents,aaPlotOptions.series)
-        }
-        
-        function uiWebViewLoadURL(url) {
-            var iFrame;
-            iFrame = document.createElement("iframe");
-            iFrame.setAttribute("src", url);
-            iFrame.setAttribute("style", "display:none;");
-            iFrame.setAttribute("height", "0px");
-            iFrame.setAttribute("width", "0px");
-            iFrame.setAttribute("frameborder", "0");
-            document.body.appendChild(iFrame);
-            iFrame.parentNode.removeChild(iFrame);
-            iFrame = null;
+            };
+            aaPlotOptions.series.point = seriesPoint;
         }
 
         function configureOptionsFormatters(aaOptions) {

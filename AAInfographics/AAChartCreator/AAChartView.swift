@@ -112,7 +112,6 @@ public class AAChartView: UIView {
     private func setUpBasicView() {
         contentWidth = 0
         contentHeight = 0
-        //        backgroundColor =  .white
         if #available(iOS 9.0, *) {
             let userContentController = WKUserContentController()
             userContentController.add(self as WKScriptMessageHandler, name: kUserContentMessageNameMouseOver)
@@ -205,13 +204,10 @@ public class AAChartView: UIView {
         var modelJsonStr = chartOptions.toJSON()!
         modelJsonStr = modelJsonStr.replacingOccurrences(of: "\n", with: "") as String
         
-        let isWKWebView = (wkWebView != nil)
-        
-        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f', '%d');",
+        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');",
                                                           modelJsonStr,
                                                           contentWidth ?? 0,
-                                                          contentHeight ?? 0,
-                                                          isWKWebView)
+                                                          contentHeight ?? 0)
         optionsJson = jsString as String;
     }
 }
