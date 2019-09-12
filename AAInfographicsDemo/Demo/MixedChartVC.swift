@@ -747,6 +747,16 @@ class MixedChartVC: UIViewController {
         pieElementDic.setValue(false, forKey: "showInLegend")
         pieElementDic.setValue(["enabled": false], forKey: "dataLabels")
         
+        let aaPieElementDic = AAPie()
+            .center([100,80])
+            .size(100)
+            .showInLegend(false)
+            .dataLabels(
+                AADataLabels()
+                    .enabled(false))
+            .toDic()!
+
+        
         return AAChartModel()
             .stacking(.normal)
             .colorsTheme([AAGradientColor.oceanBlue,

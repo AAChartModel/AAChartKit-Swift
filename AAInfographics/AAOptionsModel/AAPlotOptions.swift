@@ -373,7 +373,7 @@ public class AAPie: AAObject {
     var startAngle: Float?
     var endAngle: Float?
     var depth: Float?
-    var center: Float?
+    var center: [Int]?
     
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AAPie {
@@ -424,7 +424,7 @@ public class AAPie: AAObject {
     }
     
     @discardableResult
-    public func center(_ prop: Float?) -> AAPie {
+    public func center(_ prop: [Int]?) -> AAPie {
         center = prop
         return self
     }

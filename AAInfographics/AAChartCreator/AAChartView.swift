@@ -56,9 +56,6 @@ public class AAChartView: UIView {
         willSet {
             if #available(iOS 9.0, *) {
                 wkWebView?.scrollView.isScrollEnabled = newValue!
-            } else {
-                // Fallback on earlier versions
-                uiWebView?.scrollView.isScrollEnabled = newValue!
             }
         }
     }
@@ -70,10 +67,6 @@ public class AAChartView: UIView {
                 if #available(iOS 9.0, *) {
                     wkWebView?.backgroundColor = .clear
                     wkWebView?.isOpaque = false
-                } else {
-                    // Fallback on earlier versions
-                    uiWebView?.backgroundColor = .clear
-                    uiWebView?.isOpaque = false
                 }
             }
         }
@@ -109,7 +102,6 @@ public class AAChartView: UIView {
     }
     
     private var wkWebView: WKWebView?
-    private var uiWebView: UIWebView?
     private var optionsJson: String?
     
     override init(frame: CGRect) {
@@ -134,15 +126,6 @@ public class AAChartView: UIView {
             addSubview(wkWebView!)
             wkWebView?.translatesAutoresizingMaskIntoConstraints = false
             wkWebView?.superview!.addConstraints(configureTheConstraintArray(childView: wkWebView!,
-                                                                             fatherView: self))
-        } else {
-            // Fallback on earlier versions
-            uiWebView = UIWebView()
-            uiWebView?.backgroundColor = .white
-            uiWebView?.delegate = self
-            addSubview(uiWebView!)
-            uiWebView?.translatesAutoresizingMaskIntoConstraints = false
-            uiWebView?.superview!.addConstraints(configureTheConstraintArray(childView: uiWebView!,
                                                                              fatherView: self))
         }
     }
@@ -215,9 +198,6 @@ public class AAChartView: UIView {
                     print(errorInfo)
                 }
             })
-        } else {
-            // Fallback on earlier versions
-            uiWebView?.stringByEvaluatingJavaScript(from: jsString)
         }
     }
     
@@ -271,9 +251,6 @@ extension AAChartView {
             let urlRequest = NSURLRequest(url: urlStr) as URLRequest
             if #available(iOS 9.0, *) {
                 wkWebView?.load(urlRequest)
-            } else {
-                // Fallback on earlier versions
-                uiWebView?.loadRequest(urlRequest)
             }
         } else {
             configureTheJavaScriptStringWithOptions(options)
@@ -350,28 +327,6 @@ extension AAChartView: WKScriptMessageHandler {
             let eventMessageModel = getEventMessageModel(messageBody: messageBody)
             self.delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
         }
-    }
-}
-
-extension AAChartView: UIWebViewDelegate {
-    open func webViewDidFinishLoad(_ webView: UIWebView) {
-        drawChart()
-        self.delegate?.aaChartViewDidFinishedLoad?(self)
-    }
-    
-    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        let URL = request.url
-        let scheme = URL?.scheme
-        if scheme == kUserContentMessageNameMouseOver {
-            var messageStr = URL?.absoluteString
-            messageStr = messageStr?.replacingOccurrences(of: "mouseover://?", with: "")
-            let decodedMessageStr = (messageStr?.removingPercentEncoding)!
-            let messageBody = getDictionary(jsonString: decodedMessageStr)
-            let eventMessageModel = getEventMessageModel(messageBody: messageBody)
-            self.delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
-            return false
-        }
-        return true
     }
 }
 
