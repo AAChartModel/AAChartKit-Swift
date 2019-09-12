@@ -54,9 +54,7 @@ public class AAChartView: UIView {
     
     public var scrollEnabled: Bool? {
         willSet {
-            if #available(iOS 9.0, *) {
-                wkWebView?.scrollView.isScrollEnabled = newValue!
-            }
+            wkWebView?.scrollView.isScrollEnabled = newValue!
         }
     }
     
@@ -64,10 +62,8 @@ public class AAChartView: UIView {
         willSet {
             if newValue! == true {
                 backgroundColor = .clear
-                if #available(iOS 9.0, *) {
-                    wkWebView?.backgroundColor = .clear
-                    wkWebView?.isOpaque = false
-                }
+                wkWebView?.backgroundColor = .clear
+                wkWebView?.isOpaque = false
             }
         }
     }
@@ -112,21 +108,19 @@ public class AAChartView: UIView {
     private func setUpBasicView() {
         contentWidth = 0
         contentHeight = 0
-        if #available(iOS 9.0, *) {
-            let userContentController = WKUserContentController()
-            userContentController.add(self as WKScriptMessageHandler, name: kUserContentMessageNameMouseOver)
-            let configuration = WKWebViewConfiguration()
-            configuration.userContentController = userContentController
-            
-            wkWebView = WKWebView.init(frame: .zero, configuration: configuration)
-            wkWebView?.backgroundColor = .white
-            wkWebView?.uiDelegate = self
-            wkWebView?.navigationDelegate = self
-            addSubview(wkWebView!)
-            wkWebView?.translatesAutoresizingMaskIntoConstraints = false
-            wkWebView?.superview!.addConstraints(configureTheConstraintArray(childView: wkWebView!,
-                                                                             fatherView: self))
-        }
+        let userContentController = WKUserContentController()
+        userContentController.add(self as WKScriptMessageHandler, name: kUserContentMessageNameMouseOver)
+        let configuration = WKWebViewConfiguration()
+        configuration.userContentController = userContentController
+        
+        wkWebView = WKWebView.init(frame: .zero, configuration: configuration)
+        wkWebView?.backgroundColor = .white
+        wkWebView?.uiDelegate = self
+        wkWebView?.navigationDelegate = self
+        addSubview(wkWebView!)
+        wkWebView?.translatesAutoresizingMaskIntoConstraints = false
+        wkWebView?.superview!.addConstraints(configureTheConstraintArray(childView: wkWebView!,
+                                                                         fatherView: self))
     }
     
     private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
@@ -169,35 +163,33 @@ public class AAChartView: UIView {
     }
     
     private func evaluateJavaScriptWithFunctionNameString (_ jsString: String) {
-        if #available(iOS 9.0, *) {
-            wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
-                if error != nil {
-                    let objcError = error! as NSError
-                    let errorUserInfo = objcError.userInfo
-                    
-                    let errorInfo =
-                    """
-                    
-                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
-                    ==========================================================================================
-                    ------------------------------------------------------------------------------------------
-                    code = \(objcError.code);
-                    domain = \(objcError.domain);
-                    userInfo =     {
-                    NSLocalizedDescription = "A JavaScript exception occurred";
-                    WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
-                    WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
-                    WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
-                    WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
-                    ------------------------------------------------------------------------------------------
-                    ==========================================================================================
-                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
-                    
-                    """
-                    print(errorInfo)
-                }
-            })
-        }
+        wkWebView?.evaluateJavaScript(jsString, completionHandler: { (item, error) in
+            if error != nil {
+                let objcError = error! as NSError
+                let errorUserInfo = objcError.userInfo
+                
+                let errorInfo =
+                """
+                
+                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
+                ==========================================================================================
+                ------------------------------------------------------------------------------------------
+                code = \(objcError.code);
+                domain = \(objcError.domain);
+                userInfo =     {
+                NSLocalizedDescription = "A JavaScript exception occurred";
+                WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
+                WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
+                WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
+                WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
+                ------------------------------------------------------------------------------------------
+                ==========================================================================================
+                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!! WARNING☠️☠️💀☠️☠️
+                
+                """
+                print(errorInfo)
+            }
+        })
     }
     
     private func configureTheJavaScriptStringWithOptions(_ chartOptions: AAOptions) {
@@ -245,9 +237,7 @@ extension AAChartView {
                       inDirectory: "AAJSFiles.bundle")
             let urlStr = NSURL.fileURL(withPath: path!)
             let urlRequest = NSURLRequest(url: urlStr) as URLRequest
-            if #available(iOS 9.0, *) {
-                wkWebView?.load(urlRequest)
-            }
+            wkWebView?.load(urlRequest)
         } else {
             configureTheJavaScriptStringWithOptions(options)
             drawChart()
@@ -347,3 +337,4 @@ extension AAChartView {
         return [String: Any]()
     }
 }
+
