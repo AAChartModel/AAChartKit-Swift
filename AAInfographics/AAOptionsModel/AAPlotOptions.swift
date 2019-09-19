@@ -112,7 +112,7 @@ public class AAPlotOptions: AAObject {
 
 public class AAColumn: AAObject {
     private var name: String?
-    private var data: Array<Any>?
+    private var data: [Any]?
     private var color: String?
     private var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. 默认是：true.
     private var pointPadding: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
@@ -132,7 +132,7 @@ public class AAColumn: AAObject {
     }
     
     @discardableResult
-    public func data(_ prop: Array<Any>) -> AAColumn {
+    public func data(_ prop: [Any]) -> AAColumn {
         data = prop
         return self
     }
@@ -211,7 +211,7 @@ public class AAColumn: AAObject {
 
 public class AABar: AAObject {
     private var name: String?
-    private var data: Array<Any>?
+    private var data: [Any]?
     private var color: String?
     private var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. 默认是：true.
     private var pointPadding: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
@@ -231,7 +231,7 @@ public class AABar: AAObject {
     }
     
     @discardableResult
-    public func data(_ prop: Array<Any>) -> AABar {
+    public func data(_ prop: [Any]) -> AABar {
         data = prop
         return self
     }

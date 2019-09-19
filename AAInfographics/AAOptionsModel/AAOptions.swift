@@ -42,7 +42,7 @@ public class AAOptions: AAObject {
     var plotOptions: AAPlotOptions?
     var series: [AASeriesElement]?
     var legend: AALegend?
-    var colors: Array<Any>?
+    var colors: [Any]?
     var touchEventEnabled: Bool?
     
     @discardableResult
@@ -100,7 +100,7 @@ public class AAOptions: AAObject {
     }
     
     @discardableResult
-    public func colors(_ prop: Array<Any>?) -> AAOptions {
+    public func colors(_ prop: [Any]?) -> AAOptions {
         colors = prop
         return self
     }

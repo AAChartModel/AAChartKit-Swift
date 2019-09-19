@@ -34,10 +34,10 @@
 import UIKit
 
 class CommonChartVC: UIViewController {
-    public var chartType: AAChartType?
+    public var chartType: AAChartType!
     public var step: Bool?
-    private var aaChartModel: AAChartModel?
-    private var aaChartView: AAChartView?
+    private var aaChartModel: AAChartModel!
+    private var aaChartView: AAChartView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -85,7 +85,7 @@ class CommonChartVC: UIViewController {
             .dataLabelsEnabled(false)//是否显示数字
             .tooltipValueSuffix("℃")//浮动提示框单位后缀
             .animationType(.bounce)//图形渲染动画类型为"bounce"
-            .backgroundColor("#22324c")//若要使图表背景色为透明色,可将 backgroundColor 设置为 "rgba(0,0,0,0)" 或 "rgba(0,0,0,0)". 同时确保 aaChartView?.isClearBackgroundColor = true
+            .backgroundColor("#22324c")//若要使图表背景色为透明色,可将 backgroundColor 设置为 "rgba(0,0,0,0)" 或 "#00000000". 同时确保 aaChartView!.isClearBackgroundColor = true
             .touchEventEnabled(true)
             .series([
                 AASeriesElement()
@@ -128,7 +128,7 @@ class CommonChartVC: UIViewController {
     }
     
     private func configureStepAreaChartAndStepLineChartStyle() {
-        aaChartModel?.series([
+        aaChartModel!.series([
             AASeriesElement()
                 .name("Berlin")
                 .data([149.9, 171.5, 106.4, 129.2, 144.0, 176.0, 135.6, 188.5, 276.4, 214.1, 95.6, 54.4])
@@ -148,7 +148,7 @@ class CommonChartVC: UIViewController {
     }
     
     private func configureColumnChartAndBarChartStyle() {
-        aaChartModel?
+        aaChartModel!
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .legendEnabled(true)
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
@@ -157,7 +157,7 @@ class CommonChartVC: UIViewController {
     }
     
     private func configureAreaChartAndAreasplineChartStyle() {
-        aaChartModel?
+        aaChartModel!
             .symbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
             .animationType(.easeOutQuart)
             .legendEnabled(true)
@@ -170,7 +170,7 @@ class CommonChartVC: UIViewController {
                 startColor: "rgba(138,43,226,1)",
                 endColor: "rgba(30,144,255,1)"//颜色字符串设置支持十六进制类型和 rgba 类型
             )
-            aaChartModel?
+            aaChartModel!
                 .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
                 .series([
                     AASeriesElement()
@@ -196,11 +196,11 @@ class CommonChartVC: UIViewController {
 
     
     private func configureLineChartAndSplineChartStyle() {
-        aaChartModel?
+        aaChartModel!
             .symbolStyle(.borderBlank)//设置折线连接点样式为:边缘白色
             .markerRadius(6)
         if chartType == .spline {
-            aaChartModel?
+            aaChartModel!
                 .animationType(.swingFromTo)
                 .series([
                     AASeriesElement()
@@ -293,12 +293,12 @@ class CommonChartVC: UIViewController {
                 .normal,
                 .percent
             ]
-            aaChartModel?.stacking(stackingArr[segmentedControl.selectedSegmentIndex])
+            aaChartModel!.stacking(stackingArr[segmentedControl.selectedSegmentIndex])
             
         case 1:
             if chartType == .column || chartType == .bar {
                 let borderRadiusArr = [0,10,100]
-                aaChartModel?.borderRadius(borderRadiusArr[segmentedControl.selectedSegmentIndex])
+                aaChartModel!.borderRadius(borderRadiusArr[segmentedControl.selectedSegmentIndex])
             } else {
                 let symbolArr = [
                     AAChartSymbolType.circle,
@@ -307,12 +307,12 @@ class CommonChartVC: UIViewController {
                     .triangle,
                     .triangleDown
                 ]
-                aaChartModel?.symbol(symbolArr[segmentedControl.selectedSegmentIndex])
+                aaChartModel!.symbol(symbolArr[segmentedControl.selectedSegmentIndex])
             }
             
         default: break
         }
-        aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
+        aaChartView!.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
     private func setUpTheSwitches() {
@@ -369,17 +369,17 @@ class CommonChartVC: UIViewController {
     
     @objc func switchDidChange(switchView:UISwitch) {
         switch switchView.tag {
-        case 0: aaChartModel?.xAxisReversed(switchView.isOn)
-        case 1: aaChartModel?.yAxisReversed(switchView.isOn)
-        case 2: aaChartModel?.inverted(switchView.isOn)
-        case 3: aaChartModel?.polar(switchView.isOn)
-        case 4: aaChartModel?.dataLabelsEnabled(switchView.isOn)
-        case 5: aaChartModel?.markerRadius(switchView.isOn ? 0 : 5)//折线连接点半径长度,为0时相当于没有折线连接点
+        case 0: aaChartModel!.xAxisReversed(switchView.isOn)
+        case 1: aaChartModel!.yAxisReversed(switchView.isOn)
+        case 2: aaChartModel!.inverted(switchView.isOn)
+        case 3: aaChartModel!.polar(switchView.isOn)
+        case 4: aaChartModel!.dataLabelsEnabled(switchView.isOn)
+        case 5: aaChartModel!.markerRadius(switchView.isOn ? 0 : 5)//折线连接点半径长度,为0时相当于没有折线连接点
         default:
             break
         }
         
-        aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
+        aaChartView!.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
     }
     
    private func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {

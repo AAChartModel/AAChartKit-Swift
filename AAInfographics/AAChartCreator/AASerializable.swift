@@ -66,7 +66,7 @@ public extension AASerializable {
                 for i in 0 ..< valueCount {
                     let aaObject = value[i]
                     let aaObjectDic = aaObject.toDic()
-                    aaObjectArr.insert(aaObjectDic as AnyObject, at: i)
+                    aaObjectArr.append(aaObjectDic as AnyObject)
                 }
                 
                 representation[label] = aaObjectArr as AnyObject

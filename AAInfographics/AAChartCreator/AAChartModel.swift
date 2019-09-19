@@ -349,19 +349,19 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
-    public func dataLabelsFontColor(prop: String) -> AAChartModel {
+    public func dataLabelsFontColor(_ prop: String) -> AAChartModel {
     dataLabelsFontColor = prop
     return self
     }
     
     @discardableResult
-    public func dataLabelsFontSize(prop: Float?) -> AAChartModel {
+    public func dataLabelsFontSize(_ prop: Float?) -> AAChartModel {
     dataLabelsFontSize = prop
     return self
     }
     
     @discardableResult
-    public func dataLabelsFontWeight(prop: AAChartFontWeightType) -> AAChartModel {
+    public func dataLabelsFontWeight(_ prop: AAChartFontWeightType) -> AAChartModel {
     dataLabelsFontWeight = prop
     return self
     }
@@ -482,7 +482,7 @@ public class AAChartModel: AAObject {
     
     
     public override init() {
-        backgroundColor        = "#ffffff"
+        backgroundColor        = AAColor.white
         animationType          = AAChartAnimationType.easeInQuad
         animationDuration      = 800 //以毫秒为单位
         chartType              = AAChartType.line
@@ -501,13 +501,13 @@ public class AAChartModel: AAObject {
         legendEnabled          = true
         borderRadius           = 0 //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
         markerRadius           = 5 //折线连接点的半径长度,如果设置默认值为0,那么这样就相当于不显示了
-        titleFontColor         = "#000000" //标题字体颜色为黑色
+        titleFontColor         = AAColor.black //标题字体颜色为黑色
         titleFontWeight        = AAChartFontWeightType.regular //常规字体
         titleFontSize          = 11
-        subtitleFontColor      = "#000000" //副标题字体颜色为黑色
+        subtitleFontColor      = AAColor.black //副标题字体颜色为黑色
         subtitleFontWeight     = AAChartFontWeightType.regular //常规字体
         subtitleFontSize       = 9
-        dataLabelsFontColor    = "#000000" //数据标签默认颜色为黑色
+        dataLabelsFontColor    = AAColor.black //数据标签默认颜色为黑色
         dataLabelsFontWeight   = AAChartFontWeightType.bold //图表的数据字体为粗体
         dataLabelsFontSize     = 10
         yAxisTitle             = ""

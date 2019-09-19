@@ -48,6 +48,8 @@ public class AATooltip: AAObject {
     private var shared: Bool?
     private var crosshairs: Bool?
     private var valueSuffix: String?
+    private var followTouchMove: Bool?
+    
     
     @discardableResult
     public func backgroundColor(_ prop: String?) -> AATooltip {
@@ -138,6 +140,12 @@ public class AATooltip: AAObject {
     @discardableResult
     public func valueSuffix(_ prop: String?) -> AATooltip {
         valueSuffix = prop
+        return self
+    }
+    
+    @discardableResult
+    public func followTouchMove(_ prop: Bool?) -> AATooltip {
+        followTouchMove = prop
         return self
     }
     
