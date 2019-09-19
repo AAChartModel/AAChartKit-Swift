@@ -237,8 +237,8 @@
 				2749914C210D90B5003D18C2 /* AASeriesElement.swift */,
 				4415476C231A1F9100382DAD /* AAOptionsConstructor.swift */,
 				2749914D210D90B5003D18C2 /* AASerializable.swift */,
-				44143D3521A17F2300D44657 /* AAGradientColor.swift */,
 				272BBE7721A258C200DBE69D /* AAColor.swift */,
+				44143D3521A17F2300D44657 /* AAGradientColor.swift */,
 				27DB49A5227381C300B7926B /* AAEasyTool.swift */,
 			);
 			path = AAChartCreator;
@@ -260,24 +260,24 @@
 		445353BF22631AB3009FA12A /* AAOptionsModel */ = {
 			isa = PBXGroup;
 			children = (
-				445353C022631B0E009FA12A /* AAPlotBandsElement.swift */,
-				445353C222631B48009FA12A /* AAPlotLinesElement.swift */,
+				44154762231A1B4800382DAD /* AAOptions.swift */,
+				4415475C231A194000382DAD /* AAChart.swift */,
+				44154764231A1BEB00382DAD /* AATitle.swift */,
+				44154766231A1D0200382DAD /* AASubtitle.swift */,
+				27DB49A32273767000B7926B /* AATooltip.swift */,
+				4415476A231A1E8200382DAD /* AAPlotOptions.swift */,
+				44154768231A1D5600382DAD /* AASeries.swift */,
+				4415475A231A18C500382DAD /* AAAnimation.swift */,
+				44154760231A1AE100382DAD /* AAMarker.swift */,
+				446809DB22C3806E00BAE647 /* AALegend.swift */,
 				4454E46A22DF1A4F00E01944 /* AALabel.swift */,
 				4454E46822DF15AE00E01944 /* AALabels.swift */,
 				440839A0226AD2B600645263 /* AADataLabels.swift */,
-				27DB49A32273767000B7926B /* AATooltip.swift */,
-				446809DB22C3806E00BAE647 /* AALegend.swift */,
 				446809DD22C3809000BAE647 /* AAXAxis.swift */,
 				446809DF22C380A000BAE647 /* AAYAxis.swift */,
-				4415475A231A18C500382DAD /* AAAnimation.swift */,
 				4415475E231A1A4000382DAD /* AACrosshair.swift */,
-				4415475C231A194000382DAD /* AAChart.swift */,
-				44154760231A1AE100382DAD /* AAMarker.swift */,
-				44154762231A1B4800382DAD /* AAOptions.swift */,
-				44154764231A1BEB00382DAD /* AATitle.swift */,
-				44154766231A1D0200382DAD /* AASubtitle.swift */,
-				44154768231A1D5600382DAD /* AASeries.swift */,
-				4415476A231A1E8200382DAD /* AAPlotOptions.swift */,
+				445353C022631B0E009FA12A /* AAPlotBandsElement.swift */,
+				445353C222631B48009FA12A /* AAPlotLinesElement.swift */,
 			);
 			path = AAOptionsModel;
 			sourceTree = "<group>";
