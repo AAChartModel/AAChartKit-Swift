@@ -224,6 +224,7 @@
 			children = (
 				278C54F51EE947DF00770B97 /* AAChartCreator */,
 				445353BF22631AB3009FA12A /* AAOptionsModel */,
+				441AF0B92334699100F0D39D /* AATool */,
 				27499097210D7B2E003D18C2 /* AAJSFiles.bundle */,
 			);
 			path = AAInfographics;
@@ -237,9 +238,6 @@
 				2749914C210D90B5003D18C2 /* AASeriesElement.swift */,
 				4415476C231A1F9100382DAD /* AAOptionsConstructor.swift */,
 				2749914D210D90B5003D18C2 /* AASerializable.swift */,
-				272BBE7721A258C200DBE69D /* AAColor.swift */,
-				44143D3521A17F2300D44657 /* AAGradientColor.swift */,
-				27DB49A5227381C300B7926B /* AAJSStringPurer.swift */,
 			);
 			path = AAChartCreator;
 			sourceTree = "<group>";
@@ -255,6 +253,16 @@
 				275BB8D720CFA6DB00DE1991 /* AdditionalContent */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		441AF0B92334699100F0D39D /* AATool */ = {
+			isa = PBXGroup;
+			children = (
+				272BBE7721A258C200DBE69D /* AAColor.swift */,
+				44143D3521A17F2300D44657 /* AAGradientColor.swift */,
+				27DB49A5227381C300B7926B /* AAJSStringPurer.swift */,
+			);
+			path = AATool;
 			sourceTree = "<group>";
 		};
 		445353BF22631AB3009FA12A /* AAOptionsModel */ = {
