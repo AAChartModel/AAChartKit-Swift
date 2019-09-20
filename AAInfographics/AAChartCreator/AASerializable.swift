@@ -43,8 +43,14 @@ public protocol AASerializable: AAJSONRepresentable {
 public class AAObject: AASerializable  {
 }
 
+public extension AAObject {
+    var classNameString: String {
+        let nameClass: AnyClass! = object_getClass(self)
+        return NSStringFromClass(nameClass)
+    }
+}
+
 public extension AASerializable {
-    
     var JSONRepresentation: AnyObject {
         var representation = [String: AnyObject]()
         

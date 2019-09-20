@@ -111,18 +111,33 @@
         }
         
         function onlyRefreshTheChartDataWithSeries(receivedSeries) {
-            var receivedSeriesElementArr = JSON.parse(receivedSeries);
-            
-            for (var i = 0; i < receivedSeriesElementArr.length; i++) {
-                var receivedSeriesData = receivedSeriesElementArr[i].data;
+            var receivedSeriesArr = JSON.parse(receivedSeries);
+            var seriesArrLength = receivedSeriesArr.length;
+            for (var i = 0; i < seriesArrLength; i++) {
+                var receivedSeriesElementData = receivedSeriesArr[i].data;
                 // 获取series
-                var chartSeries = aaGlobalChart.series[i];
+                var seriesElement = aaGlobalChart.series[i];
                 // 执行只刷新数据的函数
-                chartSeries.setData(receivedSeriesData);
+                seriesElement.setData(receivedSeriesElementData);
             }
         }
         
-        //pragma mark -- setter method 适应内容https://code.hcharts.cn/highcharts/4YM0a8
+        function updateChart(optionsStr, redraw) {
+            var options = JSON.parse(optionsStr);
+            aaGlobalChart.update(options,redraw);
+        }
+        
+        function addPointToChartSeries(elementIndex, optionsStr, redraw, shift, animation) {
+            var options = JSON.parse(optionsStr);
+            var redrawBool = (redraw == "true") ? true:false;
+            var shiftBool = (shift == "true") ? true:false;
+            var animationBool = (animation == "true") ? true:false;
+            
+            var seriesElement = aaGlobalChart.series[elementIndex];
+            seriesElement.addPoint(options, redrawBool, shiftBool, animationBool);
+        }
+        
+        //pragma mark -- setter method
         function setTheChartViewContentWidth(receivedWidth) {
             var container = document.getElementById('container'); //获得元素
             container.style.width = receivedWidth; //设置宽度
@@ -137,23 +152,23 @@
         
         function setChartSeriesHidden(hidden) {
             for (var i = 0; i < aaGlobalChart.series.length; i++) {
-                var series = aaGlobalChart.series[i];
+                var seriesElement = aaGlobalChart.series[i];
                 if (hidden == true) {
-                    series.hide()
+                    seriesElement.hide();
                 } else {
-                    series.show()
+                    seriesElement.show();
                 }
             }
         }
         
         function showTheSeriesElementContentWithIndex(elementIndex) {
-            var series = aaGlobalChart.series[elementIndex];
-            series.show()
+            var seriesElement = aaGlobalChart.series[elementIndex];
+            seriesElement.show();
         }
         
         function hideTheSeriesElementContentWithIndex(elementIndex) {
-            var series = aaGlobalChart.series[elementIndex];
-            series.hide()
+            var seriesElement = aaGlobalChart.series[elementIndex];
+            seriesElement.hide();
         }
         
         function evaluateTheJavaScriptStringFunction(jsStringFunction) {
@@ -162,6 +177,4 @@
         
             </script>
     </body>
-    
 </html>
-

@@ -220,6 +220,54 @@ extension AAChartView {
         drawChart()
     }
     
+    public func aa_updateChart(options: AAObject, redraw: Bool) {
+        var classNameStr = options.classNameString
+        if classNameStr.contains(".") {
+            classNameStr = classNameStr.components(separatedBy: ".")[1];
+        }
+       
+        classNameStr = classNameStr.replacingOccurrences(of: "AA", with: "")
+
+        //convert fisrt character to be lowercase string
+        let firstChar = classNameStr.prefix(1)
+        let lowercaseFirstChar = firstChar.lowercased()
+        let index = classNameStr.index(classNameStr.startIndex, offsetBy: 1)
+        classNameStr = String(classNameStr.suffix(from: index))
+        let finalClassNameStr = lowercaseFirstChar + classNameStr
+        
+        let optionsDic = options.toDic()
+        let finalOptionsDic: [String : Any] = [finalClassNameStr: optionsDic as Any]
+        
+        let optionsStr = getJSONStringFromDictionary(dictionary: finalOptionsDic)
+        let javaScriptStr = "updateChart('\(optionsStr)','\(redraw)')"
+        evaluateJavaScriptWithFunctionNameString(javaScriptStr)
+    }
+    
+    public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any) {
+        aa_addPointToChartSeriesElement(elementIndex: elementIndex, options: options, shift: true)
+    }
+    
+    public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any,  shift: Bool) {
+        aa_addPointToChartSeriesElement(elementIndex: elementIndex, options: options, redraw: true, shift: shift, animation: true)
+    }
+
+    public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any, redraw: Bool, shift: Bool, animation: Bool) {
+        var optionsStr = ""
+        if options is Int || options is Float || options is Double {
+            optionsStr = "\(options)"
+        } else if options is Array<Any> {
+            optionsStr = self.getJSONStringFromArray(array: options as! Array<Any>)
+            optionsStr = optionsStr.replacingOccurrences(of: "\n", with: "")
+        } else {
+            let aaOption: AAObject = options as! AAObject
+            optionsStr = aaOption.toJSON()!
+            optionsStr = optionsStr.replacingOccurrences(of: "\n", with: "")
+        }
+    
+        let javaScriptStr = "addPointToChartSeries('\(elementIndex)','\(optionsStr)','\(redraw)','\(shift)','\(animation)')"
+        evaluateJavaScriptWithFunctionNameString(javaScriptStr)
+    }
+    
     /// Show the series element content with index
     ///
     /// - Parameter elementIndex: elementIndex element index
@@ -289,14 +337,46 @@ extension AAChartView {
         eventMessageModel.index = messageBody["index"] as? Int
         return eventMessageModel
     }
+}
+
+extension AAChartView {
+     func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
+        if (!JSONSerialization.isValidJSONObject(dictionary)) {
+            print("String object is not valid Dictionary JSON String")
+            return ""
+        }
+        let data : Data = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
+        let JSONString = String(data: data, encoding: String.Encoding.utf8)
+        return JSONString! as String
+    }
     
-    func getDictionary(jsonString:String) -> [String: Any] {
+    func getJSONStringFromArray(array: Array<Any>) -> String {
+        if (!JSONSerialization.isValidJSONObject(array)) {
+            print("String object is not valid Array JSON String")
+            return ""
+        }
+        let data : Data! = try? JSONSerialization.data(withJSONObject: array, options: [])
+        let JSONString = String(data: data, encoding: String.Encoding.utf8)
+        return JSONString! as String
+        
+    }
+    
+    func getDictionaryFromJSONString(jsonString:String) -> [String: Any] {
         let jsonData:Data = jsonString.data(using: .utf8)!
         let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
         if dict != nil {
             return dict as! [String: Any]
         }
         return [String: Any]()
+    }
+    
+    func getArrayFromJSONString(jsonString:String) -> [Any]{
+        let jsonData:Data = jsonString.data(using: .utf8)!
+        let array = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
+        if array != nil {
+            return array as! [Any]
+        }
+        return [Any]()
     }
 }
 
