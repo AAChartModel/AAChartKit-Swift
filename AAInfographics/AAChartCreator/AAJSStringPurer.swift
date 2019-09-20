@@ -32,7 +32,7 @@
 
 import UIKit
 
-public class AAEasyTool {
+public class AAJSStringPurer {
      public static func pureJavaScriptFunctionString(_ jsFunctionStr: String) -> String {
         var pureJSFunctionStr = jsFunctionStr
         pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "'", with: "\"")
