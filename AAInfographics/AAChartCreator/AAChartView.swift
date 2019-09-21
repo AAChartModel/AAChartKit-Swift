@@ -207,9 +207,7 @@ extension AAChartView {
     }
     
     public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartModelSeries: [[String: AnyObject]]) {
-        let jsonData = try! JSONSerialization.data(withJSONObject: chartModelSeries,
-                                                   options: JSONSerialization.WritingOptions.prettyPrinted)
-        var str = String(data: jsonData, encoding: String.Encoding.utf8)!
+        var str = getJSONStringFromArray(array: chartModelSeries)
         str = str.replacingOccurrences(of: "\n", with: "") as String
         let jsStr = "onlyRefreshTheChartDataWithSeries('\(str)');"
         evaluateJavaScriptWithFunctionNameString(jsStr)
@@ -255,8 +253,8 @@ extension AAChartView {
         var optionsStr = ""
         if options is Int || options is Float || options is Double {
             optionsStr = "\(options)"
-        } else if options is Array<Any> {
-            optionsStr = self.getJSONStringFromArray(array: options as! Array<Any>)
+        } else if options is [Any] {
+            optionsStr = self.getJSONStringFromArray(array: options as! [Any])
             optionsStr = optionsStr.replacingOccurrences(of: "\n", with: "")
         } else {
             let aaOption: AAObject = options as! AAObject
@@ -341,28 +339,30 @@ extension AAChartView {
 
 extension AAChartView {
      func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
-        if (!JSONSerialization.isValidJSONObject(dictionary)) {
+        if !JSONSerialization.isValidJSONObject(dictionary) {
             print("String object is not valid Dictionary JSON String")
             return ""
         }
-        let data : Data = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
-        let JSONString = String(data: data, encoding: String.Encoding.utf8)
+        
+        let data: Data = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
+        let JSONString = String(data: data, encoding: .utf8)
         return JSONString! as String
     }
     
-    func getJSONStringFromArray(array: Array<Any>) -> String {
-        if (!JSONSerialization.isValidJSONObject(array)) {
+    func getJSONStringFromArray(array: [Any]) -> String {
+        if !JSONSerialization.isValidJSONObject(array) {
             print("String object is not valid Array JSON String")
             return ""
         }
-        let data : Data! = try? JSONSerialization.data(withJSONObject: array, options: [])
-        let JSONString = String(data: data, encoding: String.Encoding.utf8)
+        
+        let data: Data = try! JSONSerialization.data(withJSONObject: array, options: [])
+        let JSONString = String(data: data, encoding: .utf8)
         return JSONString! as String
         
     }
     
-    func getDictionaryFromJSONString(jsonString:String) -> [String: Any] {
-        let jsonData:Data = jsonString.data(using: .utf8)!
+    func getDictionaryFromJSONString(jsonString: String) -> [String: Any] {
+        let jsonData: Data = jsonString.data(using: .utf8)!
         let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
         if dict != nil {
             return dict as! [String: Any]
@@ -370,8 +370,8 @@ extension AAChartView {
         return [String: Any]()
     }
     
-    func getArrayFromJSONString(jsonString:String) -> [Any]{
-        let jsonData:Data = jsonString.data(using: .utf8)!
+    func getArrayFromJSONString(jsonString: String) -> [Any] {
+        let jsonData: Data = jsonString.data(using: .utf8)!
         let array = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
         if array != nil {
             return array as! [Any]
