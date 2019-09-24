@@ -150,7 +150,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
             jsFunctionStr = configureFirstSecondThirdStackLabelJSFunctionString()
         }
         //图表加载完成后调用,避免WebView还没有获得JavaScript上下文,致使调用失败
-        self.aaChartView!.evaluateJavaScriptStringFunction(JSFunctionString: jsFunctionStr)
+        self.aaChartView!.aa_evaluateJavaScriptStringFunction(jsFunctionStr)
     }
 
     

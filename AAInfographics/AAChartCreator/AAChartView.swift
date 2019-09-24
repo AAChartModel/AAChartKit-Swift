@@ -61,9 +61,11 @@ public class AAChartView: WKWebView {
     public var isClearBackgroundColor: Bool? {
         willSet {
             if newValue! == true {
-                backgroundColor = .clear
                 self.backgroundColor = .clear
                 self.isOpaque = false
+            } else {
+                self.backgroundColor = .white
+                self.isOpaque = true
             }
         }
     }
@@ -237,8 +239,8 @@ extension AAChartView {
         let finalOptionsDic: [String : Any] = [finalClassNameStr: optionsDic as Any]
         
         let optionsStr = getJSONStringFromDictionary(dictionary: finalOptionsDic)
-        let javaScriptStr = "updateChart('\(optionsStr)','\(redraw)')"
-        evaluateJavaScriptWithFunctionNameString(javaScriptStr)
+        let jsStr = "updateChart('\(optionsStr)','\(redraw)')"
+        evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
     public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any) {
@@ -266,6 +268,18 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(javaScriptStr)
     }
     
+    public func aa_addElementToChartSeries(element: AASeriesElement) {
+        let elementJson = element.toJSON()
+        let pureElementJsonStr = AAJSStringPurer.pureJavaScriptFunctionString(elementJson!)
+        let jsStr = "addElementToChartSeriesWithElement('\(pureElementJsonStr)')"
+        evaluateJavaScriptWithFunctionNameString(jsStr)
+    }
+    
+    public func aa_removeElementFromChartSeries(elementIndex: Int) {
+        let jsStr = "removeElementFromChartSeriesWithElementIndex('\(elementIndex)')"
+        evaluateJavaScriptWithFunctionNameString(jsStr)
+    }
+    
     /// Show the series element content with index
     ///
     /// - Parameter elementIndex: elementIndex element index
@@ -285,7 +299,7 @@ extension AAChartView {
     ///  Evaluate JavaScript string function body
     ///
     /// - Parameter JSFunctionBodyString: JavaScript function body string
-    public func evaluateJavaScriptStringFunction(JSFunctionString: String) {
+    public func aa_evaluateJavaScriptStringFunction(_ JSFunctionString: String) {
         if optionsJson != nil {
             let pureJSFunctionStr = AAJSStringPurer.pureJavaScriptFunctionString(JSFunctionString)
             let jsFunctionNameStr = "evaluateTheJavaScriptStringFunction('\(pureJSFunctionStr)')"
@@ -325,7 +339,7 @@ extension AAChartView: WKScriptMessageHandler {
 }
 
 extension AAChartView {
-    func getEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
+   private func getEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
         let eventMessageModel = AAMoveOverEventMessageModel()
         eventMessageModel.name = messageBody["name"] as? String
         eventMessageModel.x = messageBody["x"] as? Float
@@ -338,6 +352,7 @@ extension AAChartView {
 }
 
 extension AAChartView {
+    
      func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
         if !JSONSerialization.isValidJSONObject(dictionary) {
             print("String object is not valid Dictionary JSON String")
@@ -358,7 +373,6 @@ extension AAChartView {
         let data: Data = try! JSONSerialization.data(withJSONObject: array, options: [])
         let JSONString = String(data: data, encoding: .utf8)
         return JSONString! as String
-        
     }
     
     func getDictionaryFromJSONString(jsonString: String) -> [String: Any] {
