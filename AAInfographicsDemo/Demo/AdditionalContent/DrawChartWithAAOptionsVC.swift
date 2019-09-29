@@ -356,73 +356,73 @@ class DrawChartWithAAOptionsVC: UIViewController {
     }
     
     private func setUpOptions1() -> AAOptions {
-        let aaOptions = [
-                "chart": [
-                    "type": "gauge"
-                ],
-                "pane": [
-                    "startAngle": -150,
-                    "endAngle": 150
-                ],
-                "yAxis": [
-                    "min": 0,
-                    "max": 100,
-                    "plotBands": [
-                        [
-                            "from": 0,
-                            "to": 60,
-                            "color": "#FF0000",
-                            "outerRadius": "105%",
-                            "thickness": "5%"
-                        ]]
-                ],
-                "series": [[
-                    "data": [80]
-                    ]]
-                ] as NSMutableDictionary
-        return AAOptions()
+        let aaChartModel = AAChartModel()
+            .chartType(.gauge)
+            .yAxisMin(0)
+            .yAxisMax(100)
+            .series([
+                AASeriesElement()
+                .data([80]
+                )])
+        
+        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        
+        aaOptions.pane(
+            AAPane()
+            .startAngle(-150)
+            .endAngle(150)
+        )
+        
+        let aaYAxis = aaOptions.yAxis as? AAYAxis
+        aaYAxis?.plotBands([
+            AAPlotBandsElement()
+                .from(0)
+                .to(60)
+                .color("#FF0000")
+                .outerRadius("105%")
+                .thickness("5%")
+        
+        ])
+        return aaOptions
     }
     
     private func setUpOptions2() -> AAOptions {
-        let aaOptions = [
-            "chart": [
-                "type": "gauge",
-            ],
-            "title": [
-                "text": "速度仪"
-            ],
-            "pane": [
-                "startAngle": -150,
-                "endAngle": 150,
-            ],
-            // the value axis
-            "yAxis": [
-                "min": 0,
-                "max": 200,
-                
-                "title": [
-                    "text": "km/h"
-                ],
-                "plotBands": [[
-                    "from": 0,
-                    "to": 120,
-                    "color": "#ffc069"
-                    ], [
-                        "from": 120,
-                        "to": 160,
-                        "color": "#fe117c"
-                    ], [
-                        "from": 160,
-                        "to": 200,
-                        "color": "#06caf4"
-                    ]]
-            ],
-            "series": [[
-                "name": "Speed",
-                "data": [80],
-                ]]
-            ] as NSMutableDictionary
-        return AAOptions()
+        let aaChartModel = AAChartModel()
+                 .chartType(.gauge)
+                 .yAxisMin(0)
+                 .yAxisMax(100)
+                 .yAxisTitle("km/h")
+                 .series([
+                     AASeriesElement()
+                     .name("Speed")
+                     .data([80]
+                     )])
+             
+             let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        
+        aaOptions.pane(
+              AAPane()
+              .startAngle(-150)
+              .endAngle(150)
+          )
+          
+          let aaYAxis = aaOptions.yAxis as? AAYAxis
+          aaYAxis?.plotBands([
+              AAPlotBandsElement()
+                  .from(0)
+                  .to(120)
+                  .color("#BC2B44"),
+              AAPlotBandsElement()
+                  .from(120)
+                  .to(160)
+                  .color("#EC6444"),
+              AAPlotBandsElement()
+                  .from(160)
+                  .to(200)
+                  .color("#f19742"),
+          ])
+        
+        return aaOptions
     }
     
    private func configureAAPlotBandsForChart() -> AAOptions {

@@ -42,6 +42,7 @@ public class AAOptions: AAObject {
     var plotOptions: AAPlotOptions?
     var series: [AASeriesElement]?
     var legend: AALegend?
+    var pane: AAPane?
     var colors: [Any]?
     var touchEventEnabled: Bool?
     
@@ -96,6 +97,12 @@ public class AAOptions: AAObject {
     @discardableResult
     public func legend(_ prop: AALegend?) -> AAOptions {
         legend = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pane(_ prop: AAPane?) -> AAOptions {
+        pane = prop
         return self
     }
     

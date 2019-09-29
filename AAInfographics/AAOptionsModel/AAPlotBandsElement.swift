@@ -41,6 +41,9 @@ public class AAPlotBandsElement: AAObject {
     private var className: String?
     private var label: AALabel?
     private var zIndex: Int?
+    private var outerRadius: String?
+    private var thickness: String?
+    
     
     @discardableResult
     public func from(_ prop: Float) -> AAPlotBandsElement {
@@ -87,6 +90,18 @@ public class AAPlotBandsElement: AAObject {
     @discardableResult
     public func zIndex(_ prop: Int) -> AAPlotBandsElement {
         zIndex = prop
+        return self
+    }
+    
+    @discardableResult
+    public func outerRadius(_ prop: String) -> AAPlotBandsElement {
+        outerRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func thickness(_ prop: String) -> AAPlotBandsElement {
+        thickness = prop
         return self
     }
     
