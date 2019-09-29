@@ -185,6 +185,7 @@ class MainVC: UIViewController {
                 "自定义Y轴文字",
                 "自定义Y轴文字2",
                 "自定义分组堆积柱状图tooltip内容",
+                "双 X 轴镜像图表"
             ]
         ]
         

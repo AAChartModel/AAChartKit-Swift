@@ -39,6 +39,7 @@ public class AAXAxis: AAObject {
     private var reversed: Bool?
     private var lineWidth: Float?  //x轴轴线宽度
     private var lineColor: String? //x轴轴线线颜色
+    private var linkedTo: Int?
     private var max: Float?  //x轴最大值
     private var min: Float? //x轴最小值（设置为0就不会有负数）
     private var tickColor: String? //x轴轴线下方刻度线颜色
@@ -48,6 +49,8 @@ public class AAXAxis: AAObject {
     private var offset: Float? //x轴垂直偏移
     public var labels: AALabels? //用于设置 x 轴文字相关的
     private var visible: Bool? //用于设置 x 轴以及 x 轴文字是否显示
+    private var opposite: Bool? //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。 默认是：false.
+
     private var startOnTick: Bool? //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. 默认是：false.
     private var tickInterval: Int? //x轴刻度点间隔数(设置每隔几个点显示一个 X轴的内容:
     private var crosshair: AACrosshair?  //准星线样式设置
@@ -89,6 +92,12 @@ public class AAXAxis: AAObject {
     @discardableResult
     public func lineColor(_ prop: String?) -> AAXAxis {
         lineColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func linkedTo(_ prop: Int?) -> AAXAxis {
+        linkedTo = prop
         return self
     }
     
@@ -143,6 +152,12 @@ public class AAXAxis: AAObject {
     @discardableResult
     public func visible(_ prop: Bool?) -> AAXAxis {
         visible = prop
+        return self
+    }
+    
+    @discardableResult
+    public func opposite(_ prop: Bool?) -> AAXAxis {
+        opposite = prop
         return self
     }
     
