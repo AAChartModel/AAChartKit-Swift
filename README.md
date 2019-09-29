@@ -1,4 +1,6 @@
- ![AAInfographics-LOGO](https://raw.githubusercontent.com/AAChartModel/loadHtmlCssJsDemo-master/master/AAInfographics/AAInfographics-LOGO.png)
+ ![AAInfographics-LOGO]( https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/AAInfographics-Logo.png)
+ 
+
 # AAInfographics
  
 [![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/) </br>
