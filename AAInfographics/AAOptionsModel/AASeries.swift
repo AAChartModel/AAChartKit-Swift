@@ -37,10 +37,10 @@ public class AASeries: AAObject {
     private var marker: AAMarker?
     private var stacking: String?
     private var animation: AAAnimation?
-    private var keys: Array<String>?
+    private var keys: [String]?
     private var colorByPoint: Bool? //决定了图表是否给每个数据列或每个点分配一个颜色，默认值是 false， 即默认是给每个数据类分配颜色，
     private var connectNulls: Bool? //设置折线是否断点重连
-    private var events: Dictionary<String, Any>?
+    private var events: [String: Any]?
     private var shadow: AAShadow?
     
     @discardableResult
@@ -68,7 +68,7 @@ public class AASeries: AAObject {
     }
     
     @discardableResult
-    public func keys(_ prop: Array<String>) -> AASeries {
+    public func keys(_ prop: [String]) -> AASeries {
         keys = prop
         return self
     }
@@ -86,7 +86,7 @@ public class AASeries: AAObject {
     }
     
     @discardableResult
-    public func events(_ prop: Dictionary<String, Any>?) -> AASeries {
+    public func events(_ prop: [String: Any]?) -> AASeries {
         events = prop
         return self
     }

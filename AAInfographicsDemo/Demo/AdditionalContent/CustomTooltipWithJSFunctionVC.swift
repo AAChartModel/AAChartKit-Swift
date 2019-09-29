@@ -519,7 +519,7 @@ function () {
         "95-99", "100 + "]
 
         let aaXAxis1 = AAXAxis()
-        .reversed(true)
+            .reversed(true)
             .categories(aaCategories)
             .labels(
                 AALabels()
@@ -549,21 +549,15 @@ function () {
             .min( -4000000)
             .max( 4000000)
         
-        let aaSeries = AASeries()
-            .animation(
-                AAAnimation()
-                .duration(800)
-                .easing(AAChartAnimationType.bounce.rawValue))
-            .stacking(AAChartStackingType.normal.rawValue)
-        
-        let aaColumn = AAColumn()
-            .grouping(false)
-            .borderWidth(0)
-            .borderRadius(5)
-        
         let aaPlotOptions = AAPlotOptions()
-            .series(aaSeries)
-            .column(aaColumn)
+            .series(
+                AASeries()
+                .animation(
+                   AAAnimation()
+                    .duration(800)
+                    .easing(AAChartAnimationType.bounce.rawValue)
+                )
+                .stacking(AAChartStackingType.normal.rawValue))
         
         let aaTooltip = AATooltip()
             .enabled(true)
