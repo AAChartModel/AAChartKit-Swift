@@ -225,25 +225,30 @@ public class AAOptionsConstructor {
              || chartType == .areasplinerange
              || chartType == .boxplot
              || chartType == .waterfall
-             || chartType == .polygon ) {
-
-            let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled
-            let aaXAxisLabels = AALabels()
-                .enabled(aaXAxisLabelsEnabled) //设置 x 轴是否显示文字
-            if aaXAxisLabelsEnabled == true {
-                aaXAxisLabels.style(
-                    AAStyle()
-                    .color(aaChartModel.axesTextColor)
-                )
-            }
+             || chartType == .polygon
+             || chartType == .gauge) {
             
-            let aaXAxis = AAXAxis()
-                .labels(aaXAxisLabels)
-                .reversed(aaChartModel.xAxisReversed)
-                .gridLineWidth(aaChartModel.xAxisGridLineWidth) //x轴网格线宽度
-                .categories(aaChartModel.categories)
-                .visible(aaChartModel.xAxisVisible) //x轴是否可见
-                .tickInterval(aaChartModel.xAxisTickInterval) //x轴坐标点间隔数
+            if chartType != .gauge {
+                  let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled
+                  let aaXAxisLabels = AALabels()
+                      .enabled(aaXAxisLabelsEnabled) //设置 x 轴是否显示文字
+                  if aaXAxisLabelsEnabled == true {
+                      aaXAxisLabels.style(
+                          AAStyle()
+                          .color(aaChartModel.axesTextColor)
+                      )
+                  }
+                  
+                  let aaXAxis = AAXAxis()
+                      .labels(aaXAxisLabels)
+                      .reversed(aaChartModel.xAxisReversed)
+                      .gridLineWidth(aaChartModel.xAxisGridLineWidth) //x轴网格线宽度
+                      .categories(aaChartModel.categories)
+                      .visible(aaChartModel.xAxisVisible) //x轴是否可见
+                      .tickInterval(aaChartModel.xAxisTickInterval) //x轴坐标点间隔数
+                  
+                   aaOptions.xAxis(aaXAxis)
+              }
             
             let aaYAxisLabelsEnabled = aaChartModel.yAxisLabelsEnabled
             let aaYAxisLabels = AALabels()
@@ -270,8 +275,7 @@ public class AAOptionsConstructor {
                         .color(aaChartModel.axesTextColor)
                     ))
             
-            aaOptions.xAxis(aaXAxis)
-                .yAxis(aaYAxis)
+            aaOptions.yAxis(aaYAxis)
         }
     }
     

@@ -360,6 +360,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .chartType(.gauge)
             .yAxisMin(0)
             .yAxisMax(100)
+            .backgroundColor(["#555555"])
             .series([
                 AASeriesElement()
                 .data([80]
@@ -373,8 +374,11 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .endAngle(150)
         )
         
+        aaOptions.tooltip?.crosshairs(false)
         let aaYAxis = aaOptions.yAxis as? AAYAxis
-        aaYAxis?.plotBands([
+        aaYAxis?
+            .gridLineColor(AAColor.white)
+            .plotBands([
             AAPlotBandsElement()
                 .from(0)
                 .to(60)
@@ -389,8 +393,9 @@ class DrawChartWithAAOptionsVC: UIViewController {
     private func setUpOptions2() -> AAOptions {
         let aaChartModel = AAChartModel()
                  .chartType(.gauge)
+                 .backgroundColor(["#555555"])
                  .yAxisMin(0)
-                 .yAxisMax(100)
+                 .yAxisMax(200)
                  .yAxisTitle("km/h")
                  .series([
                      AASeriesElement()
@@ -405,21 +410,24 @@ class DrawChartWithAAOptionsVC: UIViewController {
               .startAngle(-150)
               .endAngle(150)
           )
-          
+        
+          aaOptions.tooltip?.crosshairs(false)
           let aaYAxis = aaOptions.yAxis as? AAYAxis
-          aaYAxis?.plotBands([
+          aaYAxis?
+            .gridLineColor(AAColor.white)
+            .plotBands([
               AAPlotBandsElement()
                   .from(0)
                   .to(120)
-                  .color("#BC2B44"),
+                  .color("#1e90ff"),
               AAPlotBandsElement()
                   .from(120)
                   .to(160)
-                  .color("#EC6444"),
+                  .color("#ef476f"),
               AAPlotBandsElement()
                   .from(160)
                   .to(200)
-                  .color("#f19742"),
+                  .color("#ffd066"),
           ])
         
         return aaOptions
