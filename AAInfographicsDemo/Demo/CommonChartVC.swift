@@ -152,7 +152,7 @@ class CommonChartVC: UIViewController {
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .legendEnabled(true)
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
-            .animationType(.bounce)
+            .animationType(.easeOutCubic)
             .animationDuration(1200)
     }
     
@@ -391,7 +391,7 @@ class CommonChartVC: UIViewController {
 }
 
 extension CommonChartVC: AAChartViewDelegate {
-    open func aaChartViewDidFinishedLoad() {
+    open func aaChartViewDidFinishedLoad(_ aaChartView: AAChartView) {
        print("🙂🙂🙂, AAChartView Did Finished Load!!!")
     }
     

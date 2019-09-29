@@ -119,7 +119,10 @@ public class AAOptionsConstructor {
             || chartType == .areaspline
             || chartType == .line
             || chartType == .spline
-            || chartType == .scatter {
+            || chartType == .scatter
+            || chartType == .arearange
+            || chartType == .areasplinerange
+            || chartType == .polygon {
             let aaMarker = AAMarker()
                 .radius(aaChartModel.markerRadius) //曲线连接点半径，默认是4
                 .symbol(aaChartModel.symbol?.rawValue) //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
@@ -208,11 +211,21 @@ public class AAOptionsConstructor {
         _ aaChartModel: AAChartModel
         ) {
         let chartType = aaChartModel.chartType
-        
-        //x 轴和 Y 轴的相关配置,扇形图、金字塔图和漏斗图则不需要设置 X 轴和 Y 轴的相关内容
-        if (   chartType != .pie
-            && chartType != .pyramid
-            && chartType != .funnel) {
+        //x 轴和 Y 轴的相关配置,扇形图、金字塔图、漏斗图 和 仪表、表盘图则不需要设置 X 轴和 Y 轴的相关内容
+        if (    chartType == .column
+             || chartType == .bar
+             || chartType == .area
+             || chartType == .areaspline
+             || chartType == .line
+             || chartType == .spline
+             || chartType == .scatter
+             || chartType == .bubble
+             || chartType == .columnrange
+             || chartType == .arearange
+             || chartType == .areasplinerange
+             || chartType == .boxplot
+             || chartType == .waterfall
+             || chartType == .polygon ) {
 
             let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled
             let aaXAxisLabels = AALabels()

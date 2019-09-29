@@ -86,6 +86,7 @@ public enum AAChartType: String {
     case boxplot
     case waterfall
     case polygon
+    case gauge
 }
 
 public enum AAChartSubtitleAlignType: String {
