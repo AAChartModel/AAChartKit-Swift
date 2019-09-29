@@ -37,7 +37,9 @@ public class AAOptions: AAObject {
     var title: AATitle?
     var subtitle: AASubtitle?
     var xAxis: AAXAxis?
-    var yAxis: Any?
+    var yAxis: AAYAxis?
+    var xAxisArray: [AAXAxis]?
+    var yAxisArray: [AAYAxis]?
     var tooltip: AATooltip?
     var plotOptions: AAPlotOptions?
     var series: [AASeriesElement]?
@@ -71,8 +73,20 @@ public class AAOptions: AAObject {
     }
     
     @discardableResult
-    public func yAxis(_ prop: Any?) -> AAOptions {
+    public func yAxis(_ prop: AAYAxis?) -> AAOptions {
         yAxis = prop
+        return self
+    }
+    
+    @discardableResult
+    public func xAxisArray(_ prop: [AAXAxis]?) -> AAOptions {
+        xAxisArray = prop
+        return self
+    }
+    
+    @discardableResult
+    public func yAxisArray(_ prop: [AAYAxis]?) -> AAOptions {
+        yAxisArray = prop
         return self
     }
     

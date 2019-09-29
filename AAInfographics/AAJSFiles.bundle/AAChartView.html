@@ -25,6 +25,14 @@
             var aaGlobalChart;
             function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
                 var aaOptions = JSON.parse(sender);
+                if (aaOptions.xAxisArray) {
+                    aaOptions.xAxis = aaOptions.xAxisArray
+                }
+                
+                if (aaOptions.yAxisArray) {
+                    aaOptions.yAxis = aaOptions.yAxisArray
+                }
+                
                 var o = document.getElementById('container'); //获得元素
                 if (receivedWidth != 0) {
                     o.style.width = receivedWidth; //设置宽度

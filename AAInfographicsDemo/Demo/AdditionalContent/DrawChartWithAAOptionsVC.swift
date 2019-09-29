@@ -184,8 +184,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         //坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。
         //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。
         //默认是：false.
-        let aaYAxis = aaOptions.yAxis as? AAYAxis
-        aaYAxis?.opposite(true)
+        aaOptions.yAxis?.opposite(true)
         return aaOptions
     }
     
@@ -205,8 +204,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         )
         
         let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
-        let aaYAxis = aaOptions.yAxis as? AAYAxis
-        aaYAxis?.min(1000)
+        aaOptions.yAxis?.min(1000)
         return aaOptions
     }
     
@@ -279,7 +277,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .chart(aaChart)
             .title(aaTitle)
             .xAxis(aaXAxis)
-            .yAxis(YAxisArr)
+            .yAxisArray(YAxisArr)
             .plotOptions(aaPlotOptions)
             .series(aaSeriesArr)
         return aaOptions
@@ -375,8 +373,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         )
         
         aaOptions.tooltip?.crosshairs(false)
-        let aaYAxis = aaOptions.yAxis as? AAYAxis
-        aaYAxis?
+        aaOptions.yAxis?
             .gridLineColor(AAColor.white)
             .plotBands([
             AAPlotBandsElement()
@@ -412,8 +409,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
           )
         
           aaOptions.tooltip?.crosshairs(false)
-          let aaYAxis = aaOptions.yAxis as? AAYAxis
-          aaYAxis?
+          aaOptions.yAxis?
             .gridLineColor(AAColor.white)
             .plotBands([
               AAPlotBandsElement()
@@ -476,8 +472,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 .to(50)
                 .color("#acf08f"),
         ]
-    let aaYAxis = aaOptions.yAxis as? AAYAxis
-    aaYAxis?.plotBands(aaPlotBandsArr)
+    aaOptions.yAxis?.plotBands(aaPlotBandsArr)
     
     return aaOptions
     }
@@ -550,8 +545,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     )
         ]
     
-    let aaYAxis = aaOptions.yAxis as? AAYAxis
-    aaYAxis?.plotLines(aaPlotLinesArr)
+    aaOptions.yAxis?.plotLines(aaPlotLinesArr)
     
     return aaOptions
     }
@@ -811,10 +805,7 @@ function () {
             .style(aaStyle)
         )
         
-        
-        let aaYAxis = aaOptions.yAxis as? AAYAxis
-
-        aaYAxis?
+        aaOptions.yAxis?
             .opposite(true)
             .tickWidth(2)
             .lineWidth(1.5)//Y轴轴线颜色
