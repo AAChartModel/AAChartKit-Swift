@@ -503,7 +503,7 @@ to be
 
 ## Source Code⛓
 
-Language Version | Project Name | Source Code Link |
+Language Version | Project Name | Target Platform | Source Code Link |
 ------------ | ------------- | ------------- | ------------- |
 Swift | AAInfographics |  iOS |https://github.com/AAChartModel/AAChartKit-Swift |
 Objective C | AAChartKit | iOS | https://github.com/AAChartModel/AAChartKit |
