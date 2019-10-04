@@ -504,7 +504,7 @@ to be
 ## Source Code⛓
 
 Language Version | Project Name | Source Code Link |
------------- | ------------- | ------------- |
+------------ | ------------- | ------------- | ------------- |
 Swift | AAInfographics |  iOS |https://github.com/AAChartModel/AAChartKit-Swift |
 Objective C | AAChartKit | iOS | https://github.com/AAChartModel/AAChartKit |
 Kotlin | AAInfographics | Android | https://github.com/AAChartModel/AAChartCore-Kotlin |
