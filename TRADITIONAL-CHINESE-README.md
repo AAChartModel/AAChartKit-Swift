@@ -488,8 +488,10 @@ public var touchEventEnabled: Bool?                    //是否支持觸摸事�
 ## 源代碼⛓
 語言版本 |  項目名稱 | 源代碼鏈接|
 ------------ | ------------- | ------------- |
-Swift | AAInfographics | https://github.com/AAChartModel/AAChartKit-Swift |
-Objective C | AAChartKit | https://github.com/AAChartModel/AAChartKit |
+Swift | AAInfographics |  iOS |https://github.com/AAChartModel/AAChartKit-Swift |
+Objective C | AAChartKit | iOS | https://github.com/AAChartModel/AAChartKit |
+Kotlin | AAInfographics | Android | https://github.com/AAChartModel/AAChartCore-Kotlin |
+Java | AAChartCore | Android | https://github.com/AAChartModel/AAChartCore |
 
 ## 許可證
 
