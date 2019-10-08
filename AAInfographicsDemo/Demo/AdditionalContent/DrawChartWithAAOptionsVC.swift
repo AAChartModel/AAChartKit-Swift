@@ -167,14 +167,18 @@ class DrawChartWithAAOptionsVC: UIViewController {
     
     private func yAxisOnTheRightSideChart() -> AAOptions  {
         let aaChartModel = AAChartModel()
-            .chartType(.column)//图表类型
-            .title("Y轴在右侧的柱状图📊")//图表主标题
-            .subtitle("设置 aaOptions.yAxis.opposite = YES 即可")//图表副标题
+            .chartType(.line)//图表类型
+            .title("yAxis on the right side 📈")//图表主标题
+            .subtitle("set aaOptions.yAxis.opposite = YES")//图表副标题
+            .symbolStyle(.borderBlank)
+            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+            .markerRadius(8)
             .series([
                 AASeriesElement()
                     .name("2020")
-                    .color(AAGradientColor.cottonCandy)
-                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2,])
+                    .lineWidth(5.5)
+                    .color(AAGradientColor.sanguine)
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                 
                 ]
         )
