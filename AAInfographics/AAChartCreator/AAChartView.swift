@@ -171,27 +171,31 @@ public class AAChartView: WKWebView {
 extension AAChartView {
     /// Function of drawing chart view
     ///
-    /// - Parameter aaChartModel: The instance object of chart model
+    /// - Parameter aaChartModel: The instance object of AAChartModel
     public func aa_drawChartWithChartModel(_ aaChartModel: AAChartModel) {
         let options = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aa_drawChartWithChartOptions(options)
     }
     
-    /// Function of only refresh the chart data
+    /// Function of only refresh the chart data after the chart has been rendered
     ///
-    /// - Parameter chartModel: The instance object of chart model
+    /// - Parameter chartModel: chart model series  array
     public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [[String: AnyObject]]) {
         aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartModelSeries)
     }
     
-    ///  Function of refreshing whole chart view content
+    ///  Function of refreshing whole chart view content after the chart has been rendered
     ///
-    /// - Parameter aaChartModel: The instance object of chart model
+    /// - Parameter aaChartModel: The instance object of AAChartModel
     public func aa_refreshChartWholeContentWithChartModel(_ aaChartModel: AAChartModel) {
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aa_refreshChartWholeContentWithChartOptions(aaOptions)
     }
     
+    
+    /// Function of drawing chart view
+    ///
+    /// - Parameter aaOoptions: The instance object of AAOptions model
     public func aa_drawChartWithChartOptions(_ aaOoptions: AAOptions) {
         if optionsJson == nil {
             configureTheJavaScriptStringWithOptions(aaOoptions)
@@ -208,6 +212,10 @@ extension AAChartView {
         }
     }
     
+    
+    /// Function of only refresh the chart data after the chart has been rendered
+    ///
+    /// - Parameter chartModelSeries: chart model series  array
     public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartModelSeries: [[String: AnyObject]]) {
         var str = getJSONStringFromArray(array: chartModelSeries)
         str = str.replacingOccurrences(of: "\n", with: "") as String
@@ -215,11 +223,26 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
+    
+    ///  Function of refreshing whole chart view content after the chart has been rendered
+    ///
+    /// - Parameter aaOptions: The instance object of AAOptions model
     public func aa_refreshChartWholeContentWithChartOptions(_ aaOptions: AAOptions) {
         configureTheJavaScriptStringWithOptions(aaOptions)
         drawChart()
     }
     
+    /// A common chart update function
+    /// (you can update any chart element) to open, close, delete, add, resize, reformat, etc. elements in the chart.
+    /// Refer to https://api.highcharts.com.cn/highcharts#Chart.update
+    ///
+    /// It should be noted that when updating the array configuration,
+    /// for example, when updating configuration attributes including arrays such as xAxis, yAxis, series, etc., the updated data will find existing objects based on id and update them. If no id is configured or passed If the id does not find the corresponding object, the first element of the array is updated. Please refer to this example for details.
+    ///
+    /// In a responsive configuration, the response of the different rules responsive.rules is actually calling chart.update, and the updated content is configured in chartOptions.
+    ///
+    /// - Parameter options: A configuration object for the new chart options as defined in the options section of the API.
+    /// - Parameter redraw: Whether to redraw after updating the chart, the default is true
     public func aa_updateChart(options: AAObject, redraw: Bool) {
         var classNameStr = options.classNameString
         if classNameStr.contains(".") {
@@ -243,14 +266,28 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
+    
+    ///Same as the function `func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any, redraw: Bool, shift: Bool, animation: Bool)`
+    ///
     public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any) {
         aa_addPointToChartSeriesElement(elementIndex: elementIndex, options: options, shift: true)
     }
     
+    ///Same as the function `func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any, redraw: Bool, shift: Bool, animation: Bool)`
+    ///
     public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any,  shift: Bool) {
         aa_addPointToChartSeriesElement(elementIndex: elementIndex, options: options, redraw: true, shift: shift, animation: true)
     }
-
+    
+    /// Add a new point to the data column after the chart has been rendered.
+    /// The new point can be the last point, or it can be placed in the corresponding position given the X value (first, middle position, depending on the x value)
+    /// Refer to https://api.highcharts.com.cn/highcharts#Series.addPoint
+    ///
+    /// - Parameter elementIndex: The specific series element
+    /// - Parameter options: The configuration of the data point can be a single value, indicating the y value of the data point; it can also be an array containing x and y values; it can also be an object containing detailed data point configuration. For detailed configuration, see series.data.
+    /// - Parameter redraw: The default is true, whether to redraw the icon after the operation is completed. When you need to add more than one point, it is highly recommended to set redraw to false and manually call chart.redraw() to redraw the chart after all operations have ended.
+    /// - Parameter shift: The default is false. When this property is true, adding a new point will delete the first point in the data column (that is, keep the total number of data points in the data column unchanged). This property is very useful in the inspection chart
+    /// - Parameter animation: The default is true, which means that when adding a point, it contains the default animation effect. This parameter can also be passed to the object form containing duration and easing. For details, refer to the animation related configuration.
     public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any, redraw: Bool, shift: Bool, animation: Bool) {
         var optionsStr = ""
         if options is Int || options is Float || options is Double {
@@ -268,6 +305,10 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(javaScriptStr)
     }
     
+    /// Add a new series element to the chart after the chart has been rendered.
+    /// Refer to https://api.highcharts.com.cn/highcharts#Chart.addSeries
+    ///
+    /// - Parameter element: chart series element
     public func aa_addElementToChartSeries(element: AASeriesElement) {
         let elementJson = element.toJSON()
         let pureElementJsonStr = AAJSStringPurer.pureJavaScriptFunctionString(elementJson!)
@@ -275,6 +316,10 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
+    /// Remove a specific series element from the chart after the chart has been rendered.
+    /// Refer to https://api.highcharts.com.cn/highcharts#Series.remove
+    ///
+    /// - Parameter elementIndex: chart series element index
     public func aa_removeElementFromChartSeries(elementIndex: Int) {
         let jsStr = "removeElementFromChartSeriesWithElementIndex('\(elementIndex)')"
         evaluateJavaScriptWithFunctionNameString(jsStr)
