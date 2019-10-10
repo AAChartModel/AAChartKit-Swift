@@ -111,19 +111,19 @@ public class AAPlotOptions: AAObject {
 }
 
 public class AAColumn: AAObject {
-    private var name: String?
-    private var data: [Any]?
-    private var color: String?
-    private var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. 默认是：true.
-    private var pointPadding: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
-    private var pointPlacement: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
-    private var groupPadding: Float?//Padding between each value groups, in x axis units. 默认是：0.2.
-    private var borderWidth: Float?
-    private var colorByPoint: Bool?//对每个不同的点设置颜色(当图表类型为 AAColumn 时,设置为 AAColumn 对象的属性,当图表类型为 bar 时,应该设置为 bar 对象的属性才有效)
-    private var dataLabels: AADataLabels?
-    private var stacking: String?
-    private var borderRadius: Int?
-    private var yAxis: Float?
+    public var name: String?
+    public var data: [Any]?
+    public var color: String?
+    public var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. 默认是：true.
+    public var pointPadding: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
+    public var pointPlacement: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
+    public var groupPadding: Float?//Padding between each value groups, in x axis units. 默认是：0.2.
+    public var borderWidth: Float?
+    public var colorByPoint: Bool?//对每个不同的点设置颜色(当图表类型为 AAColumn 时,设置为 AAColumn 对象的属性,当图表类型为 bar 时,应该设置为 bar 对象的属性才有效)
+    public var dataLabels: AADataLabels?
+    public var stacking: String?
+    public var borderRadius: Int?
+    public var yAxis: Float?
     
     @discardableResult
     public func name(_ prop: String) -> AAColumn {
@@ -210,19 +210,19 @@ public class AAColumn: AAObject {
 }
 
 public class AABar: AAObject {
-    private var name: String?
-    private var data: [Any]?
-    private var color: String?
-    private var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. 默认是：true.
-    private var pointPadding: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
-    private var pointPlacement: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
-    private var groupPadding: Float?//Padding between each value groups, in x axis units. 默认是：0.2.
-    private var borderWidth: Float?
-    private var colorByPoint: Bool?//对每个不同的点设置颜色(当图表类型为 AABar 时,设置为 AABar 对象的属性,当图表类型为 bar 时,应该设置为 bar 对象的属性才有效)
-    private var dataLabels: AADataLabels?
-    private var stacking: String?
-    private var borderRadius: Int?
-    private var yAxis: Float?
+    public var name: String?
+    public var data: [Any]?
+    public var color: String?
+    public var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. 默认是：true.
+    public var pointPadding: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
+    public var pointPlacement: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
+    public var groupPadding: Float?//Padding between each value groups, in x axis units. 默认是：0.2.
+    public var borderWidth: Float?
+    public var colorByPoint: Bool?//对每个不同的点设置颜色(当图表类型为 AABar 时,设置为 AABar 对象的属性,当图表类型为 bar 时,应该设置为 bar 对象的属性才有效)
+    public var dataLabels: AADataLabels?
+    public var stacking: String?
+    public var borderRadius: Int?
+    public var yAxis: Float?
     
     @discardableResult
     public func name(_ prop: String) -> AABar {

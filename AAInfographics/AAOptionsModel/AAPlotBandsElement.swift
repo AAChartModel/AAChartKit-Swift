@@ -33,16 +33,16 @@
 import UIKit
 
 public class AAPlotBandsElement: AAObject {
-    private var from: Float?
-    private var to: Float?
-    private var color: Any?
-    private var borderColor: String?
-    private var borderWidth: Float?
-    private var className: String?
-    private var label: AALabel?
-    private var zIndex: Int?
-    private var outerRadius: String?
-    private var thickness: String?
+    public var from: Float?
+    public var to: Float?
+    public var color: Any?
+    public var borderColor: String?
+    public var borderWidth: Float?
+    public var className: String?
+    public var label: AALabel?
+    public var zIndex: Int?
+    public var outerRadius: String?
+    public var thickness: String?
     
     
     @discardableResult

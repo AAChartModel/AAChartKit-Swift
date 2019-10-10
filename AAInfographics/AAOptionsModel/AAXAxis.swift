@@ -33,31 +33,31 @@
 import UIKit
 
 public class AAXAxis: AAObject {
-    private var plotBands: [AAPlotBandsElement]?
-    private var plotLines: [AAPlotLinesElement]?
-    private var categories: [String]?
-    private var reversed: Bool?
-    private var lineWidth: Float?  //x轴轴线宽度
-    private var lineColor: String? //x轴轴线线颜色
-    private var linkedTo: Int?
-    private var max: Float?  //x轴最大值
-    private var min: Float? //x轴最小值（设置为0就不会有负数）
-    private var tickColor: String? //x轴轴线下方刻度线颜色
-    private var gridLineWidth: Float?  //x轴网格线宽度
-    private var gridLineColor: String? //x轴网格线颜色
-    private var gridLineDashStyle: String? //x轴网格线样式
-    private var offset: Float? //x轴垂直偏移
+    public var plotBands: [AAPlotBandsElement]?
+    public var plotLines: [AAPlotLinesElement]?
+    public var categories: [String]?
+    public var reversed: Bool?
+    public var lineWidth: Float?  //x轴轴线宽度
+    public var lineColor: String? //x轴轴线线颜色
+    public var linkedTo: Int?
+    public var max: Float?  //x轴最大值
+    public var min: Float? //x轴最小值（设置为0就不会有负数）
+    public var tickColor: String? //x轴轴线下方刻度线颜色
+    public var gridLineWidth: Float?  //x轴网格线宽度
+    public var gridLineColor: String? //x轴网格线颜色
+    public var gridLineDashStyle: String? //x轴网格线样式
+    public var offset: Float? //x轴垂直偏移
     public var labels: AALabels? //用于设置 x 轴文字相关的
-    private var visible: Bool? //用于设置 x 轴以及 x 轴文字是否显示
-    private var opposite: Bool? //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。 默认是：false.
+    public var visible: Bool? //用于设置 x 轴以及 x 轴文字是否显示
+    public var opposite: Bool? //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。 默认是：false.
 
-    private var startOnTick: Bool? //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. 默认是：false.
-    private var tickInterval: Int? //x轴刻度点间隔数(设置每隔几个点显示一个 X轴的内容:
-    private var crosshair: AACrosshair?  //准星线样式设置
-    private var tickmarkPlacement: String? //本参数只对分类轴有效。 当值为 on 时刻度线将在分类上方显示；当值为 between 时，刻度线将在两个分类中间显示。当 tickInterval 为 1 时，默认是 between，其他情况默认是 on。 默认是：null.
-    private var tickWidth: Float? //坐标轴刻度线的宽度，设置为 0 时则不显示刻度线
-    private var tickLength: Float?//坐标轴刻度线的长度。 默认是：10.
-    private var tickPosition: String? //刻度线相对于轴线的位置，可用的值有 inside 和 outside，分别表示在轴线的内部和外部。 默认是：outside.
+    public var startOnTick: Bool? //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. 默认是：false.
+    public var tickInterval: Int? //x轴刻度点间隔数(设置每隔几个点显示一个 X轴的内容:
+    public var crosshair: AACrosshair?  //准星线样式设置
+    public var tickmarkPlacement: String? //本参数只对分类轴有效。 当值为 on 时刻度线将在分类上方显示；当值为 between 时，刻度线将在两个分类中间显示。当 tickInterval 为 1 时，默认是 between，其他情况默认是 on。 默认是：null.
+    public var tickWidth: Float? //坐标轴刻度线的宽度，设置为 0 时则不显示刻度线
+    public var tickLength: Float?//坐标轴刻度线的长度。 默认是：10.
+    public var tickPosition: String? //刻度线相对于轴线的位置，可用的值有 inside 和 outside，分别表示在轴线的内部和外部。 默认是：outside.
     
     @discardableResult
     public func plotBands(_ prop: [AAPlotBandsElement]?) -> AAXAxis {

@@ -33,12 +33,12 @@
 import UIKit
 
 public class AAPlotLinesElement: AAObject {
-    private var color: Any?
-    private var dashStyle: String?
-    private var width: Float?
-    private var value: Float?
-    private var zIndex: Int?
-    private var label: AALabel?
+    public var color: Any?
+    public var dashStyle: String?
+    public var width: Float?
+    public var value: Float?
+    public var zIndex: Int?
+    public var label: AALabel?
     
     @discardableResult
     public func color(_ prop: Any) -> AAPlotLinesElement {

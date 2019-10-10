@@ -32,15 +32,15 @@
 import UIKit
 
 public class AALabel: AAObject {
-    private var align :String?//轴标签的对齐方式，可用的值有 "left"、"center" 及 "right"。默认值是根据坐标轴的位置（在图表中的位置）即标签的旋转角度进行智能判断的。 默认是：center.
-    private var rotation: Float?//轴标签的旋转角度 默认是：0.
-    private var text: String?//文字
-    private var textAlign: String?//文字对齐
-    private var useHTML: Bool?//HTML渲染
-    private var verticalAlign: String?//竖直对齐
-    private var style: AAStyle?//轴标签的 CSS 样式
-    private var x: Float?//相对于坐标轴刻度线的水平偏移。 默认是：0.
-    private var y: Float?//相对于坐标轴刻度线的垂直平偏移。 默认是：null.
+    public var align :String?//轴标签的对齐方式，可用的值有 "left"、"center" 及 "right"。默认值是根据坐标轴的位置（在图表中的位置）即标签的旋转角度进行智能判断的。 默认是：center.
+    public var rotation: Float?//轴标签的旋转角度 默认是：0.
+    public var text: String?//文字
+    public var textAlign: String?//文字对齐
+    public var useHTML: Bool?//HTML渲染
+    public var verticalAlign: String?//竖直对齐
+    public var style: AAStyle?//轴标签的 CSS 样式
+    public var x: Float?//相对于坐标轴刻度线的水平偏移。 默认是：0.
+    public var y: Float?//相对于坐标轴刻度线的垂直平偏移。 默认是：null.
     
     @discardableResult
     public func align(_ prop: String) -> AALabel {

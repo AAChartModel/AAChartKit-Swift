@@ -33,11 +33,11 @@
 import UIKit
 
 public class AAPane: AAObject {
-    private var background: [AABackgroundElement]?
-    private var center: [String]?
-    private var endAngle: Float?
-    private var size: AnyObject?
-    private var startAngle: Float?
+    public var background: [AABackgroundElement]?
+    public var center: [String]?
+    public var endAngle: Float?
+    public var size: AnyObject?
+    public var startAngle: Float?
     
     
     @discardableResult
@@ -73,11 +73,11 @@ public class AAPane: AAObject {
 }
 
 public class AABackgroundElement: AAObject {
-    private var backgroundColor: AnyObject? //背景颜色
-    private var borderColor: String? //边框颜色
-    private var borderWidth: Float? //边框宽度
-    private var className: String?//类名
-    private var innerRadius: AnyObject?//内半径
-    private var outerRadius: AnyObject?//外半径
-    private var shape: String?
+    public var backgroundColor: AnyObject? //背景颜色
+    public var borderColor: String? //边框颜色
+    public var borderWidth: Float? //边框宽度
+    public var className: String?//类名
+    public var innerRadius: AnyObject?//内半径
+    public var outerRadius: AnyObject?//外半径
+    public var shape: String?
 }

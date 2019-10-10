@@ -33,15 +33,15 @@
 import UIKit
 
 public class AASeries: AAObject {
-    private var borderRadius: Float?
-    private var marker: AAMarker?
-    private var stacking: String?
-    private var animation: AAAnimation?
-    private var keys: [String]?
-    private var colorByPoint: Bool? //决定了图表是否给每个数据列或每个点分配一个颜色，默认值是 false， 即默认是给每个数据类分配颜色，
-    private var connectNulls: Bool? //设置折线是否断点重连
-    private var events: [String: Any]?
-    private var shadow: AAShadow?
+    public var borderRadius: Float?
+    public var marker: AAMarker?
+    public var stacking: String?
+    public var animation: AAAnimation?
+    public var keys: [String]?
+    public var colorByPoint: Bool? //决定了图表是否给每个数据列或每个点分配一个颜色，默认值是 false， 即默认是给每个数据类分配颜色，
+    public var connectNulls: Bool? //设置折线是否断点重连
+    public var events: [String: Any]?
+    public var shadow: AAShadow?
     
     @discardableResult
     public func borderRadius(_ prop: Float?) -> AASeries {

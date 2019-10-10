@@ -33,11 +33,11 @@
 import UIKit
 
 public class AAMarker: AAObject {
-    private var radius: Int?
-    private var symbol: String?
-    private var fillColor: String?
-    private var lineWidth: Float?
-    private var lineColor: Any?
+    public var radius: Int?
+    public var symbol: String?
+    public var fillColor: String?
+    public var lineWidth: Float?
+    public var lineColor: Any?
     
     @discardableResult
     public func radius(_ prop: Int?) -> AAMarker {

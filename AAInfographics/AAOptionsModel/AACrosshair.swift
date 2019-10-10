@@ -33,9 +33,9 @@
 import UIKit
 
 public class AACrosshair: AAObject {
-    private var dashStyle: String? //准星线样式
-    private var color: String?  //准星线颜色
-    private var width: Float?  //准星线宽度
+    public var dashStyle: String? //准星线样式
+    public var color: String?  //准星线颜色
+    public var width: Float?  //准星线宽度
     
     @discardableResult
     public func dashStyle(_ prop: AALineDashStyleType) -> AACrosshair {

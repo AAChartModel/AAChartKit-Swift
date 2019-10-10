@@ -33,22 +33,22 @@
 import UIKit 
 
 public class AATooltip: AAObject {
-    private var backgroundColor: String?
-    private var borderColor: String?
-    private var borderRadius: Float?
-    private var borderWidth: Float?
-    private var style: AAStyle?
-    private var enabled: Bool?
-    private var useHTML: Bool?
-    private var formatter: String?
-    private var headerFormat: String?
-    private var pointFormat: String?
-    private var footerFormat: String?
-    private var valueDecimals: Int?
-    private var shared: Bool?
-    private var crosshairs: Bool?
-    private var valueSuffix: String?
-    private var followTouchMove: Bool?
+    public var backgroundColor: String?
+    public var borderColor: String?
+    public var borderRadius: Float?
+    public var borderWidth: Float?
+    public var style: AAStyle?
+    public var enabled: Bool?
+    public var useHTML: Bool?
+    public var formatter: String?
+    public var headerFormat: String?
+    public var pointFormat: String?
+    public var footerFormat: String?
+    public var valueDecimals: Int?
+    public var shared: Bool?
+    public var crosshairs: Bool?
+    public var valueSuffix: String?
+    public var followTouchMove: Bool?
     
     
     @discardableResult

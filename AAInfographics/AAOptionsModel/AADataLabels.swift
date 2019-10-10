@@ -33,22 +33,22 @@
 import UIKit
 
 public class AADataLabels: AAObject {
-    private var enabled: Bool?
-    private var style: AAStyle?
-    private var format: String?
-    private var rotation: Float?
-    private var allowOverlap: Bool?
-    private var useHTML: Bool?
-    private var distance: Float?
-    private var verticalAlign: String?
-    private var x: Float?
-    private var y: Float?
-    private var color: String?
-    private var backgroundColor: String?
-    private var borderColor: String?
-    private var borderRadius: Float?
-    private var borderWidth: Float?
-    private var shape: String?
+    public var enabled: Bool?
+    public var style: AAStyle?
+    public var format: String?
+    public var rotation: Float?
+    public var allowOverlap: Bool?
+    public var useHTML: Bool?
+    public var distance: Float?
+    public var verticalAlign: String?
+    public var x: Float?
+    public var y: Float?
+    public var color: String?
+    public var backgroundColor: String?
+    public var borderColor: String?
+    public var borderRadius: Float?
+    public var borderWidth: Float?
+    public var shape: String?
     
     @discardableResult
     public func enabled(_ prop: Bool?) -> AADataLabels {
@@ -151,10 +151,10 @@ public class AADataLabels: AAObject {
 }
 
 public class AAStyle: AAObject {
-    private var color: String?
-    private var fontSize: String?
-    private var fontWeight: String?
-    private var textOutline: String?
+    public var color: String?
+    public var fontSize: String?
+    public var fontWeight: String?
+    public var textOutline: String?
     
     @discardableResult
     public func color(_ prop: String?) -> AAStyle {
