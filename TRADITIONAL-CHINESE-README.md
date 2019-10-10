@@ -251,12 +251,12 @@ extension CommonChartVC: AAChartViewDelegate {
   在監聽用戶交互事件時,獲取的事件信息`AAMoveOverEventMessageModel`共包含以下內容
   ```swift
 public class AAMoveOverEventMessageModel: NSObject {
-    var name: String?
-    var x: Float?
-    var y: Float?
-    var category: String?
-    var offset: [String: Any]?
-    var index: Int?
+    public var name: String?
+    public var x: Float?
+    public var y: Float?
+    public var category: String?
+    public var offset: [String: Any]?
+    public var index: Int?
 }
   ```
 
