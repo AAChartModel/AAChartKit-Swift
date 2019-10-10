@@ -33,13 +33,13 @@
 import UIKit
 
 public class AASubtitle: AAObject {
-    var text: String?
-    var style: AAStyle?
-    var align: String?
-    var verticalAlign: String?
-    var x: Float?
-    var y: Float?
-    var userHTML: Bool?
+    public var text: String?
+    public var style: AAStyle?
+    public var align: String?
+    public var verticalAlign: String?
+    public var x: Float?
+    public var y: Float?
+    public var userHTML: Bool?
     
     @discardableResult
     public func text(_ prop: String?) -> AASubtitle {

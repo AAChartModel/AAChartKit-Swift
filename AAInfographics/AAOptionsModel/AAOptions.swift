@@ -33,20 +33,20 @@
 import UIKit
 
 public class AAOptions: AAObject {
-    var chart: AAChart?
-    var title: AATitle?
-    var subtitle: AASubtitle?
-    var xAxis: AAXAxis?
-    var yAxis: AAYAxis?
-    var xAxisArray: [AAXAxis]?
-    var yAxisArray: [AAYAxis]?
-    var tooltip: AATooltip?
-    var plotOptions: AAPlotOptions?
-    var series: [AASeriesElement]?
-    var legend: AALegend?
-    var pane: AAPane?
-    var colors: [Any]?
-    var touchEventEnabled: Bool?
+    public var chart: AAChart?
+    public var title: AATitle?
+    public var subtitle: AASubtitle?
+    public var xAxis: AAXAxis?
+    public var yAxis: AAYAxis?
+    public var xAxisArray: [AAXAxis]?
+    public var yAxisArray: [AAYAxis]?
+    public var tooltip: AATooltip?
+    public var plotOptions: AAPlotOptions?
+    public var series: [AASeriesElement]?
+    public var legend: AALegend?
+    public var pane: AAPane?
+    public var colors: [Any]?
+    public var touchEventEnabled: Bool?
     
     @discardableResult
     public func chart(_ prop: AAChart?) -> AAOptions {

@@ -33,8 +33,8 @@
 import UIKit
 
 public class AAAnimation: AAObject {
-    var duration: Int?
-    var easing: Int?
+    public var duration: Int?
+    public var easing: Int?
     
     @discardableResult
     public func duration(_ prop: Int?) -> AAAnimation {

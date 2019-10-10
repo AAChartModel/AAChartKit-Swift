@@ -33,16 +33,16 @@
 import UIKit
 
 public class AAPlotOptions: AAObject {
-    var column: AAColumn?
-    var bar: AABar?
-    var line: AALine?
-    var spline: AASpline?
-    var area: AAArea?
-    var areaspline: AAAreaspline?
-    var pie: AAPie?
-    var columnrange: AAColumnrange?
-    var arearange: AAArearange?
-    var series: AASeries?
+    public var column: AAColumn?
+    public var bar: AABar?
+    public var line: AALine?
+    public var spline: AASpline?
+    public var area: AAArea?
+    public var areaspline: AAAreaspline?
+    public var pie: AAPie?
+    public var columnrange: AAColumnrange?
+    public var arearange: AAArearange?
+    public var series: AASeries?
     
     @discardableResult
     public func column(_ prop: AAColumn) -> AAPlotOptions {
@@ -309,7 +309,7 @@ public class AABar: AAObject {
 
 
 public class AALine: AAObject {
-    var dataLabels: AADataLabels?
+    public var dataLabels: AADataLabels?
     
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AALine {
@@ -323,7 +323,7 @@ public class AALine: AAObject {
 }
 
 public class AASpline: AAObject {
-    var dataLabels: AADataLabels?
+    public var dataLabels: AADataLabels?
     
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AASpline {
@@ -337,7 +337,7 @@ public class AASpline: AAObject {
 }
 
 public class AAArea: AAObject {
-    var dataLabels: AADataLabels?
+    public var dataLabels: AADataLabels?
     
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AAArea {
@@ -365,15 +365,15 @@ public class AAAreaspline: AAObject {
 }
 
 public class AAPie: AAObject {
-    var dataLabels:AADataLabels?
-    var size: Float?
-    var allowPointSelect: Bool?
-    var cursor: String?
-    var showInLegend: Bool?
-    var startAngle: Float?
-    var endAngle: Float?
-    var depth: Float?
-    var center: [Int]?
+    public var dataLabels:AADataLabels?
+    public var size: Float?
+    public var allowPointSelect: Bool?
+    public var cursor: String?
+    public var showInLegend: Bool?
+    public var startAngle: Float?
+    public var endAngle: Float?
+    public var depth: Float?
+    public var center: [Int]?
     
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AAPie {

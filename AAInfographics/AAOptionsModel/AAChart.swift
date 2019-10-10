@@ -33,17 +33,17 @@
 import UIKit
 
 public class AAChart: AAObject {
-    var type: String?
-    var backgroundColor: Any?
-    var plotBackgroundImage: String?
-    var pinchType: String?
-    var panning: Bool?
-    var panKey: String?
-    var polar: Bool?
-    var animation: AAAnimation?
-    var inverted: Bool?
-    var marginLeft: Float?
-    var marginRight: Float?
+    public var type: String?
+    public var backgroundColor: Any?
+    public var plotBackgroundImage: String?
+    public var pinchType: String?
+    public var panning: Bool?
+    public var panKey: String?
+    public var polar: Bool?
+    public var animation: AAAnimation?
+    public var inverted: Bool?
+    public var marginLeft: Float?
+    public var marginRight: Float?
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AAChart {
