@@ -34,8 +34,8 @@ import UIKit
 
 public class AAOptionsConstructor {
     
-    public static func configureAAOptions(
-        aaChartModel: AAChartModel
+    public static func configureChartOptions(
+        _ aaChartModel: AAChartModel
         ) -> AAOptions {
         let aaChart = AAChart()
             .type(aaChartModel.chartType!) //绘图类型
@@ -83,8 +83,8 @@ public class AAOptionsConstructor {
             )
         }
         
-        configureAAPlotOptionsMarkerStyle(aaChartModel, aaPlotOptions)
-        configureAAPlotOptionsDataLabels(aaPlotOptions, aaChartModel)
+        configurePlotOptionsMarkerStyle(aaChartModel, aaPlotOptions)
+        configurePlotOptionsDataLabels(aaPlotOptions, aaChartModel)
         
         let aaLegend = AALegend()
             .enabled(aaChartModel.legendEnabled) //是否显示 legend
@@ -108,13 +108,13 @@ public class AAOptionsConstructor {
         return aaOptions
     }
     
-    private static func configureAAPlotOptionsMarkerStyle(
+    private static func configurePlotOptionsMarkerStyle(
         _ aaChartModel: AAChartModel,
         _ aaPlotOptions: AAPlotOptions
         ) {
         let chartType = aaChartModel.chartType!
         
-        //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图)才有数据点标记
+        //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图、散点图、折线范围填充图、曲线范围填充图、多边形图)才有数据点标记
         if     chartType == .area
             || chartType == .areaspline
             || chartType == .line
@@ -127,11 +127,13 @@ public class AAOptionsConstructor {
                 .radius(aaChartModel.markerRadius) //曲线连接点半径，默认是4
                 .symbol(aaChartModel.symbol?.rawValue) //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
             if (aaChartModel.symbolStyle == .innerBlank) {
-                aaMarker.fillColor("#ffffff") //点的填充色(用来设置折线连接点的填充色)
+                aaMarker
+                    .fillColor("#ffffff") //点的填充色(用来设置折线连接点的填充色)
                     .lineWidth(2.0) //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                     .lineColor("") //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
             } else if (aaChartModel.symbolStyle == .borderBlank) {
-                aaMarker.lineWidth(2.0)
+                aaMarker
+                    .lineWidth(2.0)
                     .lineColor(aaChartModel.backgroundColor)
             }
             let aaSeries = aaPlotOptions.series
@@ -140,7 +142,7 @@ public class AAOptionsConstructor {
     }
     
 
-    private static  func configureAAPlotOptionsDataLabels(
+    private static  func configurePlotOptionsDataLabels(
         _ aaPlotOptions: AAPlotOptions,
         _ aaChartModel: AAChartModel
         ) {

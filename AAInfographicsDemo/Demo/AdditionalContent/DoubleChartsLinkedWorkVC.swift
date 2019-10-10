@@ -81,7 +81,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
                     ,
                 ])
     
-    let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel1)
+    let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel1)
     aaOptions.xAxis?
         .crosshair(AACrosshair()
             .dashStyle(AALineDashStyleType.longDashDot)

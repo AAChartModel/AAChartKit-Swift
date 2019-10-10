@@ -156,8 +156,8 @@ public class AAChartView: WKWebView {
         })
     }
     
-    private func configureTheJavaScriptStringWithOptions(_ chartOptions: AAOptions) {
-        var modelJsonStr = chartOptions.toJSON()!
+    private func configureTheJavaScriptStringWithOptions(_ aaOptions: AAOptions) {
+        var modelJsonStr = aaOptions.toJSON()!
         modelJsonStr = modelJsonStr.replacingOccurrences(of: "\n", with: "") as String
         
         let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');",
@@ -171,9 +171,9 @@ public class AAChartView: WKWebView {
 extension AAChartView {
     /// Function of drawing chart view
     ///
-    /// - Parameter chartModel: The instance object of chart model
-    public func aa_drawChartWithChartModel(_ chartModel: AAChartModel) {
-        let options = AAOptionsConstructor.configureAAOptions(aaChartModel: chartModel)
+    /// - Parameter aaChartModel: The instance object of chart model
+    public func aa_drawChartWithChartModel(_ aaChartModel: AAChartModel) {
+        let options = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aa_drawChartWithChartOptions(options)
     }
     
@@ -186,15 +186,15 @@ extension AAChartView {
     
     ///  Function of refreshing whole chart view content
     ///
-    /// - Parameter chartModel: The instance object of chart model
-    public func aa_refreshChartWholeContentWithChartModel(_ chartModel: AAChartModel) {
-        let options = AAOptionsConstructor.configureAAOptions(aaChartModel: chartModel)
-        aa_refreshChartWholeContentWithChartOptions(options)
+    /// - Parameter aaChartModel: The instance object of chart model
+    public func aa_refreshChartWholeContentWithChartModel(_ aaChartModel: AAChartModel) {
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        aa_refreshChartWholeContentWithChartOptions(aaOptions)
     }
     
-    public func aa_drawChartWithChartOptions(_ options: AAOptions) {
+    public func aa_drawChartWithChartOptions(_ aaOoptions: AAOptions) {
         if optionsJson == nil {
-            configureTheJavaScriptStringWithOptions(options)
+            configureTheJavaScriptStringWithOptions(aaOoptions)
             let path = Bundle(for: self.classForCoder)
                 .path(forResource: "AAChartView",
                       ofType: "html",
@@ -203,7 +203,7 @@ extension AAChartView {
             let urlRequest = NSURLRequest(url: urlStr) as URLRequest
             self.load(urlRequest)
         } else {
-            configureTheJavaScriptStringWithOptions(options)
+            configureTheJavaScriptStringWithOptions(aaOoptions)
             drawChart()
         }
     }
@@ -215,8 +215,8 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
-    public func aa_refreshChartWholeContentWithChartOptions(_ options: AAOptions) {
-        configureTheJavaScriptStringWithOptions(options)
+    public func aa_refreshChartWholeContentWithChartOptions(_ aaOptions: AAOptions) {
+        configureTheJavaScriptStringWithOptions(aaOptions)
         drawChart()
     }
     

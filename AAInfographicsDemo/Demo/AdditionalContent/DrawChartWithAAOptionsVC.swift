@@ -116,7 +116,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
                 ,
                 ])
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.legend!
             .itemMarginTop(20)
             .symbolRadius(10)//图标圆角
@@ -159,7 +159,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
     aaOptions.chart?.plotBackgroundImage("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg")
         
         return aaOptions
@@ -183,7 +183,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，
         //坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。
         //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。
@@ -207,7 +207,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.yAxis?.min(1000)
         return aaOptions
     }
@@ -316,7 +316,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
         aaOptions.xAxis?
             .tickInterval(3)
@@ -344,7 +344,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         //    * 关于 `pointPadding`
         //https://api.highcharts.com.cn/highcharts#plotOptions.column.groupPadding
         //
@@ -368,7 +368,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 .data([80]
                 )])
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
         aaOptions.pane(
             AAPane()
@@ -404,7 +404,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                      .data([80]
                      )])
              
-             let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+             let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
         aaOptions.pane(
               AAPane()
@@ -449,7 +449,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .lineWidth(10)
                     ,
                 ])
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         let aaPlotBandsArr = [
             AAPlotBandsElement()
                 .from(0)
@@ -502,7 +502,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         ])
                     ,
                 ])
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
         
         let aaPlotLinesArr = [
@@ -609,7 +609,7 @@ function () {
                     )
         
         
-    let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+    let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
     aaOptions.tooltip(aaTooltip)
     
         return aaOptions
@@ -659,7 +659,7 @@ function () {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         let aaCrosshair = AACrosshair()
             .dashStyle(.longDashDot)
             .color(AAColor.red)
@@ -703,7 +703,7 @@ function () {
                 ]
             );
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)
         return aaOptions
     }
@@ -742,7 +742,7 @@ function () {
                 ]
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)
     
         return aaOptions
@@ -780,7 +780,7 @@ function () {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
                 ])
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.plotOptions?.areaspline?.dataLabels?
             .enabled(true)
             .style(AAStyle()
@@ -848,7 +848,7 @@ function () {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
                 ])
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         let aaPlotBandsArr = [
             AAPlotBandsElement()
                 .from(-0.25)//值域颜色带X轴起始值

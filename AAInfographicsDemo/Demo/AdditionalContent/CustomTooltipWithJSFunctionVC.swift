@@ -109,7 +109,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
                     ,
                 ])
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .formatter("""
@@ -158,7 +158,7 @@ function () {
                 ,
                 ])
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .enabled(true)
@@ -204,7 +204,7 @@ function () {
                     ,
                 ])
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .formatter(#"""
@@ -266,7 +266,7 @@ function () {
                     ,
                 ])
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .formatter(#"""
@@ -321,7 +321,7 @@ function () {
             + "最小值: {point.low}<br/>"
         )
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
             .useHTML(true)
             .headerFormat("<em>实验号码： {point.key}</em><br/>")
@@ -374,7 +374,7 @@ function () {
     }
 """#)
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.yAxis?.labels(aaYAxisLabels)
 
         return aaOptions
@@ -395,7 +395,7 @@ function () {
                     .name("Tokyo Hot")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
-                    .data([229.9, 771.5, 1106.4, 1129.2, 6644.0, 1176.0, 8835.6, 148.5, 8816.4, 6694.1, 7795.6, 9954.4])
+                    .data([1])
                 ,
                 ])
         
@@ -422,7 +422,7 @@ function () {
     }
 """#)
         
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.yAxis?
             .opposite(true)
             .tickWidth(2)
@@ -470,7 +470,7 @@ function () {
         )
         
         /*Custom Tooltip Style --- 自定义图表浮动提示框样式及内容*/
-        let aaOptions = AAOptionsConstructor.configureAAOptions(aaChartModel: aaChartModel)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
             .shared(false)
             .formatter(#"""

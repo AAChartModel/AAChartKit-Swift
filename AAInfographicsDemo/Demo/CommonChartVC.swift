@@ -340,7 +340,7 @@ class CommonChartVC: UIViewController {
             switchWidth = (view.frame.size.width - 40) / 6
         }
         
-        for  i in 0..<nameArr.count {
+        for  i in 0 ..< nameArr.count {
             let uiSwitch = UISwitch()
             uiSwitch.frame = CGRect(x: switchWidth * CGFloat(i) + 20,
                                     y: view.frame.size.height - 70,

@@ -484,11 +484,11 @@ public class AAChartModel: AAObject {
     
     public override init() {
         backgroundColor        = AAColor.white
-        animationType          = AAChartAnimationType.easeInQuad
+        animationType          = .easeInQuad
         animationDuration      = 800 //以毫秒为单位
-        chartType              = AAChartType.line
-        stacking               = AAChartStackingType.none
-        zoomType               = AAChartZoomType.none //默认禁用手势缩放
+        chartType              = .line
+        stacking               = Optional.none
+        zoomType               = Optional.none //默认禁用手势缩放
         colorsTheme            = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
         dataLabelsEnabled      = true
         tooltipEnabled         = true
@@ -503,13 +503,13 @@ public class AAChartModel: AAObject {
         borderRadius           = 0 //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效,设置为1000时,柱形图或者条形图头部为楔形)
         markerRadius           = 5 //折线连接点的半径长度,如果设置默认值为0,那么这样就相当于不显示了
         titleFontColor         = AAColor.black //标题字体颜色为黑色
-        titleFontWeight        = AAChartFontWeightType.regular //常规字体
+        titleFontWeight        = .regular //常规字体
         titleFontSize          = 11
         subtitleFontColor      = AAColor.black //副标题字体颜色为黑色
-        subtitleFontWeight     = AAChartFontWeightType.regular //常规字体
+        subtitleFontWeight     = .regular //常规字体
         subtitleFontSize       = 9
         dataLabelsFontColor    = AAColor.black //数据标签默认颜色为黑色
-        dataLabelsFontWeight   = AAChartFontWeightType.bold //图表的数据字体为粗体
+        dataLabelsFontWeight   = .bold //图表的数据字体为粗体
         dataLabelsFontSize     = 10
         yAxisTitle             = ""
         
