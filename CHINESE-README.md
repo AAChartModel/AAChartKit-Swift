@@ -425,35 +425,6 @@ public var markerRadius: Int?                          //折线连接点的半�
 public var touchEventEnabled: Bool?                    //是否支持触摸事件回调
 ```
 
-## 附言
-
-在 `AAInfographics` 数据可视化图形框架的初始设计中,为提升`.js`文件的加载速度,故将所依赖的`.js`文件放置在本地.然而由于本项目功能较多,故放置于本地的附加`JavaScript`文件库体积有一定大小,整个`AAJSFiles`文件夹下所有的`.js`文件体积合计共有`250KB左右`(当然在工程打包压缩之后实际大小远小于此),若对工程文件体积大小较为敏感的使用者,可使用以下建议的替代方案
-1.  删除在本`AAInfographics`项目文件中,`AAJSFiles`文件夹下的`4`项`.js`文件.需要被删除的文件名称如下
-* AAHighchartsLibrary.js
-* AAHighchartsMore.js
-* AAFunnel.js
-2.  将`AAChartView.html`文件中的以下内容
-``` html
-<script src="AAHighchartsLib.js">
-</script>
-<script src="AAHighchartsMore.js">
-</script>
-<script src="AAFunnel.js">
-</script>
-```
-替换为
-``` html
-<script src="https://img.hcharts.cn/highcharts/highcharts.js">
-</script>
-<script src="https://img.hcharts.cn/highcharts/highcharts-more.js">
-</script>
-<script src="https://img.hcharts.cn/highcharts/modules/funnel.js">
-</script>
-``` 
-即可.
-
-此方案是将原本加载放置在本地的`.js`依赖文件改为了加载放置在网络上的`.js`文件,减小了本地文件大小,但有可能会有一定的网络延迟(`0.5s以内`),所以建议`AAInfographics`用户可根据自己的实际项目的开发需要,酌情选择最终是否使用本替代方案.
-
 ## 作者
 
 ![](https://avatars1.githubusercontent.com/u/16357599?s=40&v=4)An An
