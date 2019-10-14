@@ -175,7 +175,10 @@ class MainVC: UIViewController {
                 "configureXAxisLabelsFontColorAndFontSizeWithHTMLString",
                 "configure_DataLabels_XAXis_YAxis_Legend_Style",
                 "configureXAxisPlotBand",
+                "configureDoubleYAxisChartOptions",
+                "configureTripleYAxesMixedChart",
             ],
+            
             [
                 "简单字符串拼接",
                 "自定义不同单位后缀",

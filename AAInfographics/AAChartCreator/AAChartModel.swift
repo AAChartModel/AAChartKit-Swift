@@ -89,8 +89,16 @@ public enum AAChartType: String {
     case gauge
 }
 
-public enum AAChartSubtitleAlignType: String {
+public enum AAChartLayoutType: String {
+    case horizontal, vertical
+}
+
+public enum AAChartAlignType: String {
     case left, center, right
+}
+
+public enum AAChartVerticalAlignType: String {
+    case top, middle, bottom
 }
 
 public enum AAChartZoomType: String {

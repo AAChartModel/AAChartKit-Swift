@@ -343,7 +343,7 @@ extension AAChartView {
     
     ///  Evaluate JavaScript string function body
     ///
-    /// - Parameter JSFunctionBodyString: JavaScript function body string
+    /// - Parameter JSFunctionBodyString: valid JavaScript function body string
     public func aa_evaluateJavaScriptStringFunction(_ JSFunctionString: String) {
         if optionsJson != nil {
             let pureJSFunctionStr = AAJSStringPurer.pureJavaScriptFunctionString(JSFunctionString)

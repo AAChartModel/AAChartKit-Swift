@@ -65,6 +65,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 14: return configureXAxisLabelsFontColorAndFontSizeWithHTMLString()
         case 15: return configure_DataLabels_XAXis_YAxis_Legend_Style()
         case 16: return configureXAxisPlotBand()
+        case 17: return configureDoubleYAxisChartOptions()
+        case 18: return configureTripleYAxesMixedChart()
         default:
             return AAOptions()
         }
@@ -701,7 +703,7 @@ function () {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     ,
                 ]
-            );
+            )
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)
@@ -873,6 +875,208 @@ function () {
 
         return aaOptions
     }
+    
+    private func configureDoubleYAxisChartOptions() -> AAOptions {
+            let aaTitle = AATitle()
+            .text("")
+                
+            let aaXAxis = AAXAxis()
+            .visible(true)
+            .min(0)
+            .categories([
+            "Java", "Swift", "Python", "Ruby", "PHP", "Go","C",
+            "C#", "C++", "Perl", "R", "MATLAB", "SQL"])
+            
+            let aaYAxisTitleStyle = AAStyle()
+              .color("#1e90ff")//Title font color
+              .fontSize(14)//Title font size
+              .fontWeight(.bold)//Title font weight
+              .textOutline("0px 0px contrast")
+            
+            let aaYAxisLabels = AALabels()
+               .enabled(true)//设置 y 轴是否显示数字
+               .format("{value:.,0f}mm")//让y轴的值完整显示 而不是100000显示为100k,同时单位后缀为°C
+               .style(AAStyle()
+                      .color("#ff0000")//yAxis Label font color
+                      .fontSize(15)//yAxis Label font size
+                .fontWeight(.bold)//yAxis Label font weight
+                         )
+            
+            let yAxisOne = AAYAxis()
+            .visible(true)
+            .labels(aaYAxisLabels)
+            .title(AATitle()
+                      .text("冬季降雨量")
+                      .style(aaYAxisTitleStyle))
+            .opposite(true)
+            
+
+            let yAxisTwo = AAYAxis()
+            .visible(true)
+            .labels(aaYAxisLabels)
+            .title(AATitle()
+                      .text("夏季降雨量")
+                      .style(aaYAxisTitleStyle))
+            
+            let aaTooltip = AATooltip()
+            .enabled(true)
+            .shared(true)
+            
+            let gradientColorDic1 = AAGradientColor.linearGradient(
+                  direction: .toTop,
+                  startColor: "#f54ea2",
+                  endColor: "#ff7676"//颜色字符串设置支持十六进制类型和 rgba 类型
+              )
+            
+            let gradientColorDic2 = AAGradientColor.linearGradient(
+                  direction: .toTop,
+                  startColor: "#17ead9",
+                  endColor: "#6078ea"//颜色字符串设置支持十六进制类型和 rgba 类型
+                   )
+            
+            let aaMarker = AAMarker()
+            .radius(7)//曲线连接点半径，默认是4
+            .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+            .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
+            .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+            .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+            
+        let element1 = AASeriesElement()
+            .name("2017")
+            .type(.areaspline)
+        //          .borderRadius(4)
+            .color(gradientColorDic1)
+            .marker(aaMarker)
+            .yAxis(1)
+            .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+        
+        let element2 = AASeriesElement()
+            .name("2018")
+            .type(.column)
+            .color(gradientColorDic2)
+            .yAxis(0)
+            .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+            
+            let aaOptions = AAOptions()
+            .title(aaTitle)
+            .xAxis(aaXAxis)
+            .yAxisArray([yAxisOne,yAxisTwo])
+            .tooltip(aaTooltip)
+            .series([element1,element2])
+            
+            return aaOptions
+        }
+    
+    private func configureTripleYAxesMixedChart() -> AAOptions {
+        let colorsThemeArr = ["red","mediumspringgreen","deepskyblue",]
+        
+        let aaTitle = AATitle()
+        .text("东京月平均天气数据")
+        
+        let aaSubtitle = AASubtitle()
+        .text("数据来源: WorldClimate.com")
+            
+        let aaXAxis = AAXAxis()
+        .visible(true)
+        .min(0)
+        .categories(["一月", "二月", "三月", "四月", "五月", "六月",
+                         "七月", "八月", "九月", "十月", "十一月", "十二月"])
+        
+        let yAxis1 = AAYAxis()
+        .visible(true)
+        .gridLineWidth(0)
+        .labels(AALabels()
+                   .enabled(true)//设置 y 轴是否显示数字
+                   .format("{value}°C")
+                   .style(AAStyle()
+                             .color(colorsThemeArr[0])//yAxis Label font color
+                  ))
+        .title(AATitle()
+            .text("温度")
+            .style(AAStyle()
+                .color(colorsThemeArr[0])))
+        .opposite(true)
+        
+
+        let yAxis2 = AAYAxis()
+        .visible(true)
+        .gridLineWidth(0)
+        .labels(AALabels()
+            .enabled(true)//设置 y 轴是否显示数字
+            .format("{value}°mm")
+            .style(AAStyle()
+                .color(colorsThemeArr[1])//yAxis Label font color
+        ))
+        .title(AATitle()
+            .text("降雨量")
+            .style(AAStyle()
+            .color(colorsThemeArr[1])))
+        
+        let yAxis3 = AAYAxis()
+        .visible(true)
+        .gridLineWidth(0)
+        .labels(AALabels()
+            .enabled(true)//设置 y 轴是否显示数字
+            .format("{value}°mb")
+            .style(AAStyle()
+                .color(colorsThemeArr[2])//yAxis Label font color
+         ))
+         .title(AATitle()
+            .text("海平面气压")
+            .style(AAStyle()
+            .color(colorsThemeArr[2])))
+        
+        let aaTooltip = AATooltip()
+        .enabled(true)
+        .shared(true)
+        
+        let aaLegend = AALegend()
+        .enabled(true)
+        .layout(.vertical)
+        .align(.center)
+        .x(80)
+        .verticalAlign(.top)
+        .y(55)
+        
+        let element1 = AASeriesElement()
+        .name("降雨量")
+        .type(.column)
+        .yAxis(1)
+        .data([49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
+        .tooltip(AATooltip()
+            .valueSuffix(" mm"))
+        
+        let element2 = AASeriesElement()
+        .name("海平面气压")
+        .type(.spline)
+        .yAxis(2)
+        .data([1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7])
+        .dashStyle(.shortDot)
+        .tooltip(AATooltip()
+            .valueSuffix(" mb"))
+        
+        let element3 = AASeriesElement()
+        .name("温度")
+        .type(.spline)
+        .yAxis(0)
+        .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+        .tooltip(AATooltip()
+            .valueSuffix(" ℃"))
+        
+        let aaOptions = AAOptions()
+        .title(aaTitle)
+        .subtitle(aaSubtitle)
+        .colors(colorsThemeArr)
+        .xAxis(aaXAxis)
+        .yAxisArray([yAxis1,yAxis2,yAxis3])
+        .tooltip(aaTooltip)
+        .legend(aaLegend)
+        .series([element1,element2,element3])
+        
+        return aaOptions
+    }
+
+
 }
 
 

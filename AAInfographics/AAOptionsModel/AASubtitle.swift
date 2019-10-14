@@ -60,7 +60,7 @@ public class AASubtitle: AAObject {
     }
     
     @discardableResult
-    public func verticalAlign(_ prop: AAChartLegendVerticalAlignType?) -> AASubtitle {
+    public func verticalAlign(_ prop: AAChartVerticalAlignType?) -> AASubtitle {
         verticalAlign = prop?.rawValue
         return self
     }

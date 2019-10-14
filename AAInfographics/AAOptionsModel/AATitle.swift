@@ -54,13 +54,13 @@ public class AATitle: AAObject {
     }
     
     @discardableResult
-    public func align(_ prop: AAChartLegendAlignType?) -> AATitle {
+    public func align(_ prop: AAChartAlignType?) -> AATitle {
         align = prop?.rawValue
         return self
     }
     
     @discardableResult
-    public func verticalAlign(_ prop: AAChartLegendVerticalAlignType?) -> AATitle {
+    public func verticalAlign(_ prop: AAChartVerticalAlignType?) -> AATitle {
         verticalAlign = prop?.rawValue
         return self
     }
