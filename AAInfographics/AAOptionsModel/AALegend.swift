@@ -48,6 +48,7 @@ public class AALegend: AAObject {
     public var symbolWidth: Float?
     public var x: Float?
     public var y: Float?
+    public var floating: Bool?
     
     @discardableResult
     public func layout(_ prop: AAChartLayoutType?) -> AALegend {
@@ -130,6 +131,12 @@ public class AALegend: AAObject {
     @discardableResult
     public func y(_ prop: Float?) -> AALegend {
         y = prop
+        return self
+    }
+    
+    @discardableResult
+    public func floating(_ prop: Bool?) -> AALegend {
+        floating = prop
         return self
     }
     

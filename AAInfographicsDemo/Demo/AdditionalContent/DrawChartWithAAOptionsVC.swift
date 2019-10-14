@@ -989,14 +989,13 @@ function () {
                    .enabled(true)//设置 y 轴是否显示数字
                    .format("{value}°C")
                    .style(AAStyle()
-                             .color(colorsThemeArr[0])//yAxis Label font color
+                             .color(colorsThemeArr[2])//yAxis Label font color
                   ))
         .title(AATitle()
             .text("温度")
             .style(AAStyle()
-                .color(colorsThemeArr[0])))
+                .color(colorsThemeArr[2])))
         .opposite(true)
-        
 
         let yAxis2 = AAYAxis()
         .visible(true)
@@ -1005,12 +1004,12 @@ function () {
             .enabled(true)//设置 y 轴是否显示数字
             .format("{value}°mm")
             .style(AAStyle()
-                .color(colorsThemeArr[1])//yAxis Label font color
+                .color(colorsThemeArr[0])//yAxis Label font color
         ))
         .title(AATitle()
             .text("降雨量")
             .style(AAStyle()
-            .color(colorsThemeArr[1])))
+            .color(colorsThemeArr[0])))
         
         let yAxis3 = AAYAxis()
         .visible(true)
@@ -1019,12 +1018,14 @@ function () {
             .enabled(true)//设置 y 轴是否显示数字
             .format("{value}°mb")
             .style(AAStyle()
-                .color(colorsThemeArr[2])//yAxis Label font color
+                .color(colorsThemeArr[1])//yAxis Label font color
          ))
          .title(AATitle()
             .text("海平面气压")
             .style(AAStyle()
-            .color(colorsThemeArr[2])))
+            .color(colorsThemeArr[1])))
+         .opposite(true)
+
         
         let aaTooltip = AATooltip()
         .enabled(true)
@@ -1032,8 +1033,9 @@ function () {
         
         let aaLegend = AALegend()
         .enabled(true)
+        .floating(true)
         .layout(.vertical)
-        .align(.center)
+        .align(.left)
         .x(80)
         .verticalAlign(.top)
         .y(55)
@@ -1048,7 +1050,7 @@ function () {
         
         let element2 = AASeriesElement()
         .name("海平面气压")
-        .type(.spline)
+        .type(.line)
         .yAxis(2)
         .data([1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7])
         .dashStyle(.shortDot)
@@ -1057,7 +1059,7 @@ function () {
         
         let element3 = AASeriesElement()
         .name("温度")
-        .type(.spline)
+        .type(.line)
         .yAxis(0)
         .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
         .tooltip(AATooltip()
@@ -1071,7 +1073,7 @@ function () {
         .yAxisArray([yAxis1,yAxis2,yAxis3])
         .tooltip(aaTooltip)
         .legend(aaLegend)
-        .series([element1,element2,element3])
+        .series([element1,element2,element3,])
         
         return aaOptions
     }
