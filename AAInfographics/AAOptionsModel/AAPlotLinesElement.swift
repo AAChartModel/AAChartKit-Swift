@@ -47,7 +47,7 @@ public class AAPlotLinesElement: AAObject {
     }
     
     @discardableResult
-    public func dashStyle(_ prop: AALineDashStyleType) -> AAPlotLinesElement {
+    public func dashStyle(_ prop: AAChartLineDashStyleType) -> AAPlotLinesElement {
         dashStyle = prop.rawValue
         return self
     }

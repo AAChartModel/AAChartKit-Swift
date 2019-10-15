@@ -124,7 +124,7 @@
     }
     
     @discardableResult
-    public func dashStyle(_ prop: AALineDashStyleType) -> AASeriesElement {
+    public func dashStyle(_ prop: AAChartLineDashStyleType) -> AASeriesElement {
         dashStyle = prop.rawValue
         return self
     }

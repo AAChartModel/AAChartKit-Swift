@@ -244,7 +244,7 @@ class CustomStyleChartVC: UIViewController {
                     .color(AAGradientColor.freshPapaya)
                     .lineWidth(5)
                     .zones([["value": 8],
-                            ["dashStyle": AALineDashStyleType.dot.rawValue]
+                            ["dashStyle": AAChartLineDashStyleType.dot.rawValue]
                         ]),
                 AASeriesElement()
                     .name("所有专业")

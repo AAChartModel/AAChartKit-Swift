@@ -40,7 +40,7 @@ public class AAYAxis: AAObject {
     public var reversed: Bool?
     public var gridLineWidth: Float? // y 轴网格线宽度
     public var gridLineColor: String?  // y 轴网格线颜色
-    public var gridLineDashStyle: AALineDashStyleType? //网格线线条样式，所有可用的线条样式参考：Highcharts线条样式
+    public var gridLineDashStyle: AAChartLineDashStyleType? //网格线线条样式，所有可用的线条样式参考：Highcharts线条样式
     public var alternateGridColor: String?  //backcolor of every other grid line area
     public var gridLineInterpolation: String? //Polar charts only. Whether the grid lines should draw as a polygon with straight lines between categories, or as circles. Can be either circle or polygon. 默认是：null.
     public var labels: AALabels? //用于设置 y 轴文字相关的
@@ -104,7 +104,7 @@ public class AAYAxis: AAObject {
     }
     
     @discardableResult
-    public func gridLineDashStyle(_ prop: AALineDashStyleType?) -> AAYAxis {
+    public func gridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> AAYAxis {
         gridLineDashStyle = prop
         return self
     }

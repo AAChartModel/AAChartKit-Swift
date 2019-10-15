@@ -125,13 +125,13 @@ public class AAOptionsConstructor {
             || chartType == .polygon {
             let aaMarker = AAMarker()
                 .radius(aaChartModel.markerRadius) //曲线连接点半径，默认是4
-                .symbol(aaChartModel.symbol?.rawValue) //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-            if (aaChartModel.symbolStyle == .innerBlank) {
+                .symbol(aaChartModel.markerSymbol?.rawValue) //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+            if (aaChartModel.markerSymbolStyle == .innerBlank) {
                 aaMarker
                     .fillColor("#ffffff") //点的填充色(用来设置折线连接点的填充色)
                     .lineWidth(2.0) //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                     .lineColor("") //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
-            } else if (aaChartModel.symbolStyle == .borderBlank) {
+            } else if (aaChartModel.markerSymbolStyle == .borderBlank) {
                 aaMarker
                     .lineWidth(2.0)
                     .lineColor(aaChartModel.backgroundColor)

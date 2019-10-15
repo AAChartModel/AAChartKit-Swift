@@ -38,7 +38,7 @@ public class AACrosshair: AAObject {
     public var width: Float?  //准星线宽度
     
     @discardableResult
-    public func dashStyle(_ prop: AALineDashStyleType) -> AACrosshair {
+    public func dashStyle(_ prop: AAChartLineDashStyleType) -> AACrosshair {
         dashStyle = prop.rawValue
         return self
     }
