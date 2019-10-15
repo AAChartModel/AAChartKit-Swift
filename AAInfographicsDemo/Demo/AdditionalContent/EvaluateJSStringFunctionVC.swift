@@ -67,7 +67,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
         if self.sampleChartTypeIndex == 0 || self.sampleChartTypeIndex == 1 {
             aaChartModel
                 .chartType(.line)//图形类型
-                .symbolStyle(.borderBlank)
+                .markerSymbolStyle(.borderBlank)
                 .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
                 .series([
                     AASeriesElement()

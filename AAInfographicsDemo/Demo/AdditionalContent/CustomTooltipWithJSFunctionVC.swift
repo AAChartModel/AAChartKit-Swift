@@ -81,7 +81,7 @@ class CustomTooltipWithJSFunctionVC: UIViewController {
             .chartType(.area)//图形类型
             .title("近三个月金价起伏周期图")//图表主标题
             .subtitle("金价(元/克)")//图表副标题
-            .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .categories([
                 "10-01","10-02","10-03","10-04","10-05","10-06","10-07","10-08","10-09","10-10","10-11",
@@ -139,7 +139,7 @@ function () {
             .chartType(.area)//图形类型
             .title("2014 ~ 2020 汪星人生存指数")//图表主标题
             .subtitle("数据来源：www.无任何可靠依据.com")//图表副标题
-            .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .colorsTheme(["#1e90ff","#ef476f",])
             .dataLabelsEnabled(false)
             .stacking(.normal)
@@ -182,7 +182,7 @@ function () {
             .chartType(.line)//图形类型
             .title("")//图表主标题
             .subtitle("")//图表副标题
-            .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .categories(["临床一期","临床二期","临床三期"])
             .series([
@@ -234,7 +234,7 @@ function () {
             .chartType(.areaspline)//图形类型
             .title("")//图表主标题
             .subtitle("")//图表副标题
-            .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
             .stacking(.normal)
@@ -342,7 +342,7 @@ function () {
             .chartType(.line)//图形类型
             .title("")//图表主标题
             .subtitle("")//图表副标题
-            .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
             .stacking(.normal)
@@ -385,7 +385,7 @@ function () {
             .chartType(.line)//图形类型
             .title("")//图表主标题
             .subtitle("")//图表副标题
-            .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
             .stacking(.normal)

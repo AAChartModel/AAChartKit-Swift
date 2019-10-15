@@ -181,7 +181,7 @@ class MixedChartVC: UIViewController {
             .subtitle("")//图形副标题
             .chartType(.line)
             .dataLabelsEnabled(false)
-            .symbolStyle(.borderBlank)
+            .markerSymbolStyle(.borderBlank)
             .series([
                 AASeriesElement()
                     .name("Temperature")
@@ -333,8 +333,8 @@ class MixedChartVC: UIViewController {
         return AAChartModel()
             .dataLabelsEnabled(false)//是否显示数字
             .chartType(.scatter)
-            .symbolStyle(.innerBlank)
-            .symbol(.circle)
+            .markerSymbolStyle(.innerBlank)
+            .markerSymbol(.circle)
             .markerRadius(10)
             .series([
                 AASeriesElement()
@@ -802,7 +802,7 @@ class MixedChartVC: UIViewController {
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .legendEnabled(false)
             .dataLabelsEnabled(false)
-            .symbolStyle(.borderBlank)
+            .markerSymbolStyle(.borderBlank)
             .series([
                 AASeriesElement()
                     .data([7.0, 6.9, 9.5, 9.6, 13.9, 14.5, 18.3, 18.2, 21.5, 25.2, 26.5, 23.3])

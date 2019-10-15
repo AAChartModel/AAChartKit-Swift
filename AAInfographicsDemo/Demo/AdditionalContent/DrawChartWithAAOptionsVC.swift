@@ -98,8 +98,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 AAGradientColor.lusciousLime,
                 AAGradientColor.mysticMauve
                 ])
-            .symbol(.circle)
-            .symbolStyle(.innerBlank)
+            .markerSymbol(.circle)
+            .markerSymbolStyle(.innerBlank)
             .stacking(.normal)
             .series([
                 AASeriesElement()
@@ -172,7 +172,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .chartType(.line)//图表类型
             .title("yAxis on the right side 📈")//图表主标题
             .subtitle("set aaOptions.yAxis.opposite = YES")//图表副标题
-            .symbolStyle(.borderBlank)
+            .markerSymbolStyle(.borderBlank)
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .markerRadius(8)
             .series([
@@ -561,7 +561,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .chartType(.area)//图形类型
             .title("近三个月金价起伏周期图")//图表主标题
             .subtitle("金价(元/克)")//图表副标题
-            .symbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .categories([
                 "10-01","10-02","10-03","10-04","10-05","10-06","10-07","10-08","10-09","10-10","10-11",
@@ -836,7 +836,7 @@ function () {
             .yAxisTitle("")
             .yAxisGridLineWidth(0)
             .markerRadius(8)
-            .symbolStyle(.innerBlank)
+            .markerSymbolStyle(.innerBlank)
             .series([
                 AASeriesElement()
                     .name("New York Hot")

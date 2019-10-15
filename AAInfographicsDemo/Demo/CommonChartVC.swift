@@ -158,11 +158,11 @@ class CommonChartVC: UIViewController {
     
     private func configureAreaChartAndAreasplineChartStyle() {
         aaChartModel!
-            .symbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
+            .markerSymbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
             .animationType(.easeOutQuart)
             .legendEnabled(true)
             .markerRadius(5)
-            .symbol(.circle)
+            .markerSymbol(.circle)
         
         if chartType == .areaspline {
             let gradientColorDic = AAGradientColor.linearGradient(
@@ -197,7 +197,7 @@ class CommonChartVC: UIViewController {
     
     private func configureLineChartAndSplineChartStyle() {
         aaChartModel!
-            .symbolStyle(.borderBlank)//设置折线连接点样式为:边缘白色
+            .markerSymbolStyle(.borderBlank)//设置折线连接点样式为:边缘白色
             .markerRadius(6)
         if chartType == .spline {
             aaChartModel!
@@ -307,7 +307,7 @@ class CommonChartVC: UIViewController {
                     .triangle,
                     .triangleDown
                 ]
-                aaChartModel!.symbol(symbolArr[segmentedControl.selectedSegmentIndex])
+                aaChartModel!.markerSymbol(symbolArr[segmentedControl.selectedSegmentIndex])
             }
             
         default: break

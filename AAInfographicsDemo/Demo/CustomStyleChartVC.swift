@@ -338,7 +338,7 @@ class CustomStyleChartVC: UIViewController {
             .title("STEP LINE CHART")//图形标题
             .subtitle("2020/08/08")//图形副标题
             .dataLabelsEnabled(false)//是否显示数字
-            .symbolStyle(.borderBlank)//折线连接点样式
+            .markerSymbolStyle(.borderBlank)//折线连接点样式
             .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
             .series([
                 AASeriesElement()
@@ -364,7 +364,7 @@ class CustomStyleChartVC: UIViewController {
             .title("STEP AREA CHART")//图形标题
             .subtitle("2020/08/08")//图形副标题
             .dataLabelsEnabled(false)//是否显示数字
-            .symbolStyle(.innerBlank)//折线连接点样式
+            .markerSymbolStyle(.innerBlank)//折线连接点样式
             .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
             .series([
                 AASeriesElement()
@@ -443,7 +443,7 @@ class CustomStyleChartVC: UIViewController {
             .chartType(.spline)
             .legendEnabled(false)//隐藏图例(底部可点按的小圆点)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
-            .symbolStyle(.innerBlank)
+            .markerSymbolStyle(.innerBlank)
             .markerRadius(8)
             .dataLabelsEnabled(false)
             .series([
@@ -540,8 +540,8 @@ class CustomStyleChartVC: UIViewController {
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .yAxisTitle("")
             .markerRadius(8)//marker点半径为8个像素
-            .symbolStyle(.innerBlank)//marker点为空心效果
-            .symbol(.circle)//marker点为圆形点○
+            .markerSymbolStyle(.innerBlank)//marker点为空心效果
+            .markerSymbol(.circle)//marker点为圆形点○
             .legendEnabled(false)
             .dataLabelsEnabled(false)
             .series([
@@ -636,8 +636,8 @@ class CustomStyleChartVC: UIViewController {
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","July", "Aug", "Spe", "Oct", "Nov", "Dec"])
             .dataLabelsEnabled(false)//是否显示值
             .markerRadius(8)
-            .symbol(.circle)
-            .symbolStyle(.innerBlank)
+            .markerSymbol(.circle)
+            .markerSymbolStyle(.innerBlank)
             .legendEnabled(false)
             .series([
                 AASeriesElement()

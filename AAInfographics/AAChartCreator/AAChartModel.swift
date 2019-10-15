@@ -274,13 +274,19 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
-    public func symbol(_ prop: AAChartSymbolType) -> AAChartModel {
+    public func markerRadius(_ prop: Int) -> AAChartModel {
+        markerRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func markerSymbol(_ prop: AAChartSymbolType) -> AAChartModel {
         markerSymbol = prop
         return self
     }
     
     @discardableResult
-    public func symbolStyle(_ prop: AAChartSymbolStyleType) -> AAChartModel {
+    public func markerSymbolStyle(_ prop: AAChartSymbolStyleType) -> AAChartModel {
         markerSymbolStyle = prop
         return self
     }
@@ -474,12 +480,6 @@ public class AAChartModel: AAObject {
     @discardableResult
     public func borderRadius(_ prop: Int) -> AAChartModel {
         borderRadius = prop
-        return self
-    }
-    
-    @discardableResult
-    public func markerRadius(_ prop: Int) -> AAChartModel {
-        markerRadius = prop
         return self
     }
     

@@ -194,8 +194,8 @@ class SpecialChartVC: UIViewController {
             .titleFontColor(AAColor.white)
             .axesTextColor(AAColor.white)
             .yAxisTitle("kg")
-            .symbol(.circle)
-            .symbolStyle(.innerBlank)
+            .markerSymbol(.circle)
+            .markerSymbolStyle(.innerBlank)
             .markerRadius(9)
             .backgroundColor("#22324c")
             .dataLabelsEnabled(false)
@@ -801,7 +801,7 @@ class SpecialChartVC: UIViewController {
             .title("STEP LINE CHART")//图形标题
             .subtitle("2020/08/08")//图形副标题
             .dataLabelsEnabled(false)//是否显示数字
-            .symbolStyle(.borderBlank)//折线连接点样式
+            .markerSymbolStyle(.borderBlank)//折线连接点样式
             .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
             .series([
                 AASeriesElement()
@@ -829,7 +829,7 @@ class SpecialChartVC: UIViewController {
             .title("STEP AREA CHART")//图形标题
             .subtitle("2049/08/08")//图形副标题
             .dataLabelsEnabled(false)//是否显示数字
-            .symbolStyle(.innerBlank)//折线连接点样式
+            .markerSymbolStyle(.innerBlank)//折线连接点样式
             .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
             .series([
                 AASeriesElement()
