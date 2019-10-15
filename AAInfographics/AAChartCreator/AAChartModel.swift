@@ -359,20 +359,20 @@ public class AAChartModel: AAObject {
     
     @discardableResult
     public func dataLabelsFontColor(_ prop: String) -> AAChartModel {
-    dataLabelsFontColor = prop
-    return self
+        dataLabelsFontColor = prop
+        return self
     }
     
     @discardableResult
     public func dataLabelsFontSize(_ prop: Float?) -> AAChartModel {
-    dataLabelsFontSize = prop
-    return self
+        dataLabelsFontSize = prop
+        return self
     }
     
     @discardableResult
     public func dataLabelsFontWeight(_ prop: AAChartFontWeightType) -> AAChartModel {
-    dataLabelsFontWeight = prop
-    return self
+        dataLabelsFontWeight = prop
+        return self
     }
     
     @discardableResult
@@ -425,20 +425,20 @@ public class AAChartModel: AAObject {
     
     @discardableResult
     public func yAxisMin(_ prop: Float) -> AAChartModel {
-    yAxisMin = prop
-    return self
+        yAxisMin = prop
+        return self
     }
     
     @discardableResult
     public func yAxisMax(_ prop: Float) -> AAChartModel {
-    yAxisMax = prop
-    return self
+        yAxisMax = prop
+        return self
     }
     
     @discardableResult
     public func yAxisAllowDecimals(_ prop: Bool) -> AAChartModel {
-    yAxisAllowDecimals = prop
-    return self
+        yAxisAllowDecimals = prop
+        return self
     }
     
     @discardableResult
