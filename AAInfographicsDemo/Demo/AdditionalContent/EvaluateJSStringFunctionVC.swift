@@ -138,7 +138,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
         
     }
     
-    func aaChartViewDidFinishedLoad (_ aaChartView: AAChartView) {
+    func aaChartViewDidFinishLoad (_ aaChartView: AAChartView) {
         print("🚀🚀🚀AAChartView did finished load")
         
         var jsFunctionStr:String

@@ -391,7 +391,7 @@ class CommonChartVC: UIViewController {
 }
 
 extension CommonChartVC: AAChartViewDelegate {
-    open func aaChartViewDidFinishedLoad(_ aaChartView: AAChartView) {
+    open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
        print("🙂🙂🙂, AAChartView Did Finished Load!!!")
     }
     
