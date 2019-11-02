@@ -67,6 +67,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 16: return configureXAxisPlotBand()
         case 17: return configureDoubleYAxisChartOptions()
         case 18: return configureTripleYAxesMixedChart()
+        case 19: return configureDoubleYAxesAndColumnLineMixedChart()
         default:
             return AAOptions()
         }
@@ -1077,7 +1078,157 @@ function () {
         
         return aaOptions
     }
+    
+    private func configureDoubleYAxesAndColumnLineMixedChart() -> AAOptions {
+            let stopsArr = [
+                [0.0, "rgba(156,107,211,0.5)"],//颜色字符串设置支持十六进制类型和 rgba 类型
+                [0.2, "rgba(156,107,211,0.3)"],
+                [1.0, "rgba(156,107,211,0)"]];
+               
+            let gradientColorDic1 = AAGradientColor.linearGradient(
+                   direction: .toBottom,
+                   stops: stopsArr)
+            
+           let gradientColorDic2 = AAGradientColor.linearGradient(
+                   direction: .toBottom,
+                   startColor: "#956FD4",
+                   endColor: "#3EACE5"//颜色字符串设置支持十六进制类型和 rgba 类型
+                                  )
+            
+            let category = ["市区","万州","江北","南岸","北碚","綦南","长寿","永川","璧山","江津",
+                            "城口","大足","垫江","丰都","奉节","合川","江津区","开州","南川","彭水",
+                            "黔江","石柱","铜梁","潼南","巫山","巫溪","武隆","秀山","酉阳","云阳",
+                            "忠县","川东","检修"];
+            let goalValuesArr = [18092,20728,24045,28348,32808
+                            ,36097,39867,44715,48444,50415
+                            ,56061,62677,59521,67560,18092,20728,24045,28348,32808
+                            ,36097,39867,44715,48444,50415,36097,39867,44715,48444,50415
+                            ,50061,32677,49521,32808];
+            let realValuesArr = [4600,5000,5500,6500,7500
+                            ,8500,9900,12500,14000,21500
+                            ,23200,24450,25250,33300,4600,5000,5500,6500,7500
+                            ,8500,9900,22500,14000,21500,8500,9900,12500,14000,21500
+                            ,23200,24450,25250,7500];
+            var rateValuesArr = [Float]()
+            
+            for i in 0 ..< 33 {
+                let goalValue = goalValuesArr[i]
+                let realValue = realValuesArr[i]
+                let rateValue = Float(realValue) / Float(goalValue)
+                rateValuesArr.append(rateValue)
+            }
+                        
+                let aaChart = AAChart()
+                 .backgroundColor("#191E40");
+                 
+                 let aaTitle = AATitle()
+                 .text("");
+                 
+                 let aaLabels = AALabels()
+                 .enabled(true)
+                 .style(AAStyle()
+                           .color(AAColor.lightGray));
+                     
+                 let aaXAxis = AAXAxis()
+                 .visible(true)
+                 .labels(aaLabels)
+                 .min(0)
+                 .categories(category);
+                 
+                 let aaYAxisTitleStyle = AAStyle()
+                   .color("#1e90ff")//Title font color
+                   .fontSize(14)//Title font size
+                    .fontWeight(AAChartFontWeightType.bold)//Title font weight
+                   .textOutline("0px 0px contrast");
 
+                 let yAxis1 = AAYAxis()
+                 .visible(true)
+                 .labels(aaLabels)
+                 .gridLineWidth(0)
+                 .title(AATitle()
+                           .text("已贯通 / 计划贯通")
+                           .style(aaYAxisTitleStyle));
+                 
+                  let yAxis2 = AAYAxis()
+                     .visible(true)
+                     .labels(aaLabels)
+                     .gridLineWidth(0)
+                     .title(AATitle()
+                               .text("贯通率")
+                               .style(aaYAxisTitleStyle))
+                     .opposite(true);
+                 
+                 let aaTooltip = AATooltip()
+                 .enabled(true)
+                 .shared(true);
+                 
+                 let aaPlotOptions = AAPlotOptions()
+                 .series(AASeries()
+                            .animation(AAAnimation()
+                                .easing(0)
+                                .duration(1000)))
+                 .column(AAColumn()
+                     .grouping(false)
+                     .pointPadding(0)
+                     .pointPlacement((0))
+                            );
+                 
+                 let aaLegend = AALegend()
+                  .enabled(true)
+                  .itemStyle(AAItemStyle()
+                                .color(AAColor.lightGray))
+                  .floating(true)
+                  .layout(.horizontal)
+                  .align(.left)
+                  .x(30)
+                  .verticalAlign(.top)
+                  .y(10);
+                 
+                 let goalValuesElement = AASeriesElement()
+                 .name("计划贯通")
+                 .type(.column)
+                 .borderWidth(0)
+                 .color(gradientColorDic1)
+                 .yAxis(0)
+                 .data(goalValuesArr);
+                 
+                 let realValuesElement = AASeriesElement()
+                 .name("已贯通")
+                 .type(.column)
+                 .borderWidth(0)
+                 .color(gradientColorDic2)
+                 .yAxis(0)
+                 .data(realValuesArr);
+                 
+                 let rateValuesElement = AASeriesElement()
+                   .name("贯通率")
+                    .type(.spline)
+                   .marker(AAMarker()
+                              .radius(7)//曲线连接点半径，默认是4
+                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                              .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
+                              .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                              .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                              )
+                   .color("#F02FC2")
+                   .yAxis(1)
+                   .data(rateValuesArr);
+                 
+                 let aaOptions = AAOptions()
+                 .chart(aaChart)
+                 .title(aaTitle)
+                 .xAxis(aaXAxis)
+                 .yAxisArray([yAxis1,yAxis2])
+                 .tooltip(aaTooltip)
+                 .plotOptions(aaPlotOptions)
+                 .legend(aaLegend)
+                 .series([
+                    goalValuesElement,
+                    realValuesElement,
+                    rateValuesElement])
+                 ;
+                 return aaOptions;
+    }
 
 }
 

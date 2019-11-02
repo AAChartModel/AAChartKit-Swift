@@ -177,6 +177,7 @@ class MainVC: UIViewController {
                 "configureXAxisPlotBand",
                 "configureDoubleYAxisChartOptions",
                 "configureTripleYAxesMixedChart",
+                "Double Y Axes And Column Line Mixed Chart双Y轴柱形曲线混合图",
             ],
             
             [
