@@ -31,7 +31,7 @@
 
 import UIKit
 
-class CustomTooltipWithJSFunctionVC: UIViewController {
+class JSFormatterFunctionVC: UIViewController {
     private var aaChartModel: AAChartModel?
     private var aaChartView: AAChartView?
     public var selectedIndex: Int?

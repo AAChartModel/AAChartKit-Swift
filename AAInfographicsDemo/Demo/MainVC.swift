@@ -473,7 +473,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         case 10:
             /*Custom Tooltip With JavaScript Function */
-            let vc = CustomTooltipWithJSFunctionVC()
+            let vc = JSFormatterFunctionVC()
             vc.selectedIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         default:
