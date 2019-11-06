@@ -27,7 +27,7 @@
  * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
  *
  *********************************************************************************
-
+ 
  */
 import UIKit
 
@@ -98,7 +98,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 AAGradientColor.sanguine,
                 AAGradientColor.lusciousLime,
                 AAGradientColor.mysticMauve
-                ])
+            ])
             .markerSymbol(.circle)
             .markerSymbolStyle(.innerBlank)
             .stacking(.normal)
@@ -118,7 +118,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .name("London Hot")
                     .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
                 ,
-                ])
+            ])
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.legend!
             .itemMarginTop(20)
@@ -157,13 +157,12 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         ["C"     , 24],
                         ["C#"    , 888],
                         ["C++"   , 66],
-                        ])
-                
+                    ])
                 ]
         )
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-    aaOptions.chart?.plotBackgroundImage("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg")
+        aaOptions.chart?.plotBackgroundImage("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg")
         
         return aaOptions
     }
@@ -236,10 +235,11 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .style(AAStyle()
                 .color("#000000")
                 .fontSize(12.0))
-
+        
         let aaXAxis = AAXAxis()
             .categories([
-            "一月", "二月", "三月", "四月", "五月", "六月","七月", "八月", "九月", "十月", "十一月", "十二月"
+                "一月", "二月", "三月", "四月", "五月", "六月",
+                "七月", "八月", "九月", "十月", "十一月", "十二月"
             ])
         
         let aaYAxis1 = AAYAxis()
@@ -253,7 +253,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 .text("支出"))
         
         let YAxisArr = [aaYAxis1,aaYAxis2]
-
+        
         let aaSeries = AASeries()
             .animation(AAAnimation()
                 .duration(800)
@@ -296,10 +296,11 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .title("")
             .subtitle("")
             .colorsTheme(["#ffc069","#fe117c","#06caf4","#7dffc0"])
-            .categories(["January", "February", "March", "April", "May", "June",
-                         "July", "August", "Septembel", "October", "November", "December",
-                         "January", "February", "March", "April", "May", "June",
-                         "July", "August", "Septembel", "October", "November", "December",])
+            .categories([
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "Septembel", "October", "November", "December",
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "Septembel", "October", "November", "December",])
             .dataLabelsEnabled(false)
             .legendEnabled(false)
             .series([
@@ -307,14 +308,15 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .name("2020")
                     .color(AAGradientColor.sanguine)
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    ,
+                ,
                 AASeriesElement()
                     .name("2021")
                     .color(AAGradientColor.deepSea)
-                    .data([NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
-                           NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
-                           0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    ,
+                    .data([
+                        NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                        NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
+                        0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+                ,
                 
                 ]
         )
@@ -325,10 +327,10 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .tickInterval(3)
             .labels(AALabels()
                 .autoRotation([-10, -20, -30, -40, -50, -60, -70, -80, -90] as AnyObject))
-       
+        
         return aaOptions
     }
-
+    
     private func adjustGroupPaddingBetweenColumns() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)
@@ -368,75 +370,75 @@ class DrawChartWithAAOptionsVC: UIViewController {
             .backgroundColor(["#555555"])
             .series([
                 AASeriesElement()
-                .data([80]
+                    .data([80]
                 )])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
         aaOptions.pane(
             AAPane()
-            .startAngle(-150)
-            .endAngle(150)
+                .startAngle(-150)
+                .endAngle(150)
         )
         
         aaOptions.tooltip?.crosshairs(false)
         aaOptions.yAxis?
             .gridLineColor(AAColor.white)
             .plotBands([
-            AAPlotBandsElement()
-                .from(0)
-                .to(60)
-                .color("#FF0000")
-                .outerRadius("105%")
-                .thickness("5%")
-        
-        ])
+                AAPlotBandsElement()
+                    .from(0)
+                    .to(60)
+                    .color("#FF0000")
+                    .outerRadius("105%")
+                    .thickness("5%")
+                
+            ])
         return aaOptions
     }
     
     private func setUpOptions2() -> AAOptions {
         let aaChartModel = AAChartModel()
-                 .chartType(.gauge)
-                 .backgroundColor(["#555555"])
-                 .yAxisMin(0)
-                 .yAxisMax(200)
-                 .yAxisTitle("km/h")
-                 .series([
-                     AASeriesElement()
-                     .name("Speed")
-                     .data([80]
-                     )])
-             
-             let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+            .chartType(.gauge)
+            .backgroundColor(["#555555"])
+            .yAxisMin(0)
+            .yAxisMax(200)
+            .yAxisTitle("km/h")
+            .series([
+                AASeriesElement()
+                    .name("Speed")
+                    .data([80]
+                )])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
         aaOptions.pane(
-              AAPane()
-              .startAngle(-150)
-              .endAngle(150)
-          )
+            AAPane()
+                .startAngle(-150)
+                .endAngle(150)
+        )
         
-          aaOptions.tooltip?.crosshairs(false)
-          aaOptions.yAxis?
+        aaOptions.tooltip?.crosshairs(false)
+        aaOptions.yAxis?
             .gridLineColor(AAColor.white)
             .plotBands([
-              AAPlotBandsElement()
-                  .from(0)
-                  .to(120)
-                  .color("#1e90ff"),
-              AAPlotBandsElement()
-                  .from(120)
-                  .to(160)
-                  .color("#ef476f"),
-              AAPlotBandsElement()
-                  .from(160)
-                  .to(200)
-                  .color("#ffd066"),
-          ])
+                AAPlotBandsElement()
+                    .from(0)
+                    .to(120)
+                    .color("#1e90ff"),
+                AAPlotBandsElement()
+                    .from(120)
+                    .to(160)
+                    .color("#ef476f"),
+                AAPlotBandsElement()
+                    .from(160)
+                    .to(200)
+                    .color("#ffd066"),
+            ])
         
         return aaOptions
     }
     
-   private func configureAAPlotBandsForChart() -> AAOptions {
+    private func configureAAPlotBandsForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("")
             .chartType(.spline)//图形类型
@@ -450,8 +452,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     .color(AAColor.white)
                     .lineWidth(10)
-                    ,
-                ])
+                ,
+            ])
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         let aaPlotBandsArr = [
             AAPlotBandsElement()
@@ -479,12 +481,12 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 .to(50)
                 .color("#acf08f"),
         ]
-    aaOptions.yAxis?.plotBands(aaPlotBandsArr)
-    
-    return aaOptions
+        aaOptions.yAxis?.plotBands(aaPlotBandsArr)
+        
+        return aaOptions
     }
     
-   private func configureAAPlotLinesForChart() -> AAOptions {
+    private func configureAAPlotLinesForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("")
             .chartType(.areaspline)//图形类型chartOptions.toDic()!
@@ -502,9 +504,9 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         ["value": 24, "color": "#ef476f"],
                         ["value": 36, "color": "#04d69f"],
                         ["color": "#ffd066"]
-                        ])
-                    ,
-                ])
+                    ])
+                ,
+            ])
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
         
@@ -520,10 +522,10 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .style(AAStyle()
                         .color("#1e90ff")
                         .fontWeight(.bold)
-                        )
-                )
+                    )
+            )
             ,
-        
+            
             AAPlotLinesElement()
                 .color("#ef476f")
                 .dashStyle(.longDashDot)
@@ -534,10 +536,10 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .style(AAStyle()
                         .color("#ef476f")
                         .fontWeight(.bold)
-                        )
                     )
-        ,
-        
+            )
+            ,
+            
             AAPlotLinesElement()
                 .color("#04d69f")
                 .dashStyle(.longDash)
@@ -548,16 +550,16 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .style(AAStyle()
                         .color("#04d69f")
                         .fontWeight(.bold)
-                        )
                     )
+            )
         ]
-    
-    aaOptions.yAxis?.plotLines(aaPlotLinesArr)
-    
-    return aaOptions
+        
+        aaOptions.yAxis?.plotLines(aaPlotLinesArr)
+        
+        return aaOptions
     }
     
-   private func customAATooltipWithJSFuntion() -> AAOptions {
+    private func customAATooltipWithJSFuntion() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
             .title("近三个月金价起伏周期图")//图表主标题
@@ -580,15 +582,16 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .lineWidth(3)
                     .color("#FFD700"/*纯金色*/)
                     .fillOpacity(0.5)
-                    .data([1.51, 6.7, 0.94, 1.44, 1.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
-                           4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.51, 12.7, 0.94, 1.44,
-                           18.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46,
-                           3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.33, 4.68, 1.31, 1.10, 13.9, 1.10, 1.16, 1.67,
-                           2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05,
-                           2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
-                           5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48])
-                    ,
-                ])
+                    .data([
+                        1.51, 6.7, 0.94, 1.44, 1.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
+                        4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.51, 12.7, 0.94, 1.44,
+                        18.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46,
+                        3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.33, 4.68, 1.31, 1.10, 13.9, 1.10, 1.16, 1.67,
+                        2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05,
+                        2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
+                        5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48])
+                ,
+            ])
         
         let aaTooltip = AATooltip()
             .useHTML(true)
@@ -607,14 +610,14 @@ function () {
             .backgroundColor("#000000")
             .borderColor("#000000")
             .style(AAStyle()
-                    .color("#FFD700")
-                    .fontSize(12)
-                    )
+                .color("#FFD700")
+                .fontSize(12)
+        )
         
         
-    let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-    aaOptions.tooltip(aaTooltip)
-    
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        aaOptions.tooltip(aaTooltip)
+        
         return aaOptions
     }
     
@@ -657,7 +660,7 @@ function () {
                         [12488256, 14.4],
                         [12489120,   15],
                         [12489984, 13.6]
-                        ])
+                    ])
                 
                 ]
         )
@@ -672,7 +675,7 @@ function () {
         
         return aaOptions
     }
-
+    
     private func configureXAxisLabelsFontColorWithHTMLString() -> AAOptions {
         let categories = [
             "<font color=\\\"#CC0066\\\">孤岛危机<\\/font>",
@@ -689,7 +692,7 @@ function () {
             "<font color=\\\"#CC99090\\\">全战三国<\\/font>",
         ]
         
-           let aaChartModel = AAChartModel()
+        let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .title("")
             .subtitle("")
@@ -702,9 +705,9 @@ function () {
                     .name("Berlin Hot")
                     .color(AAGradientColor.mysticMauve)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                    ,
+                ,
                 ]
-            )
+        )
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)
@@ -713,20 +716,20 @@ function () {
     
     private func configureXAxisLabelsFontColorAndFontSizeWithHTMLString() -> AAOptions {
         let categories = [
-        "<span style=\\\"color:#CC0066;font-weight:bold;font-size:10px\\\">使命召唤</span>",
-        "<span style=\\\"color:#CC0033;font-weight:bold;font-size:11px\\\">荣誉勋章</span>",
-        "<span style=\\\"color:#FF0066;font-weight:bold;font-size:12px\\\">狙击精英</span>",
-        "<span style=\\\"color:#66FF99;font-weight:bold;font-size:13px\\\">神秘海域</span>",
-        "<span style=\\\"color:#00FF00;font-weight:bold;font-size:14px\\\">美国末日</span>",
-        "<span style=\\\"color:#00CC00;font-weight:bold;font-size:15px\\\">巫师狂猎</span>",
-        "<span style=\\\"color:#666FF;font-weight:bold;font-size:15px\\\">孤岛危机</span>",
-        "<span style=\\\"color:#000CC;font-weight:bold;font-size:14px\\\">地狱边境</span>",
-        "<span style=\\\"color:#9933CC;font-weight:bold;font-size:13px\\\">忍者之印</span>",
-        "<span style=\\\"color:#FFCC99;font-weight:bold;font-size:12px\\\">合金装备</span>",
-        "<span style=\\\"color:#FFCC00;font-weight:bold;font-size:11px\\\">全战三国</span>",
-        "<span style=\\\"color:#CC99090;font-weight:bold;font-size:10px\\\">死亡搁浅</span>",
+            "<span style=\\\"color:#CC0066;font-weight:bold;font-size:10px\\\">使命召唤</span>",
+            "<span style=\\\"color:#CC0033;font-weight:bold;font-size:11px\\\">荣誉勋章</span>",
+            "<span style=\\\"color:#FF0066;font-weight:bold;font-size:12px\\\">狙击精英</span>",
+            "<span style=\\\"color:#66FF99;font-weight:bold;font-size:13px\\\">神秘海域</span>",
+            "<span style=\\\"color:#00FF00;font-weight:bold;font-size:14px\\\">美国末日</span>",
+            "<span style=\\\"color:#00CC00;font-weight:bold;font-size:15px\\\">巫师狂猎</span>",
+            "<span style=\\\"color:#666FF;font-weight:bold;font-size:15px\\\">孤岛危机</span>",
+            "<span style=\\\"color:#000CC;font-weight:bold;font-size:14px\\\">地狱边境</span>",
+            "<span style=\\\"color:#9933CC;font-weight:bold;font-size:13px\\\">忍者之印</span>",
+            "<span style=\\\"color:#FFCC99;font-weight:bold;font-size:12px\\\">合金装备</span>",
+            "<span style=\\\"color:#FFCC00;font-weight:bold;font-size:11px\\\">全战三国</span>",
+            "<span style=\\\"color:#CC99090;font-weight:bold;font-size:10px\\\">死亡搁浅</span>",
         ]
-
+        
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .title("")
@@ -741,13 +744,13 @@ function () {
                     .name("Berlin Hot")
                     .color(AAGradientColor.deepSea)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                    ,
+                ,
                 ]
         )
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)
-    
+        
         return aaOptions
     }
     
@@ -781,7 +784,7 @@ function () {
                     .lineWidth(7)
                     .fillColor(fillColorGradientColor)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.plotOptions?.areaspline?.dataLabels?
@@ -803,13 +806,13 @@ function () {
             .fontWeight(.bold)
             .color(AAColor.white)//轴文字颜色
         
-       aaOptions.xAxis?
-        .tickWidth(2)//X轴刻度线宽度
-        .lineWidth(1.5)//X轴轴线宽度
-        .lineColor(AAColor.white)//X轴轴线颜色
-        .crosshair(aaCrosshair)
-        .labels(AALabels()
-            .style(aaStyle)
+        aaOptions.xAxis?
+            .tickWidth(2)//X轴刻度线宽度
+            .lineWidth(1.5)//X轴轴线宽度
+            .lineColor(AAColor.white)//X轴轴线颜色
+            .crosshair(aaCrosshair)
+            .labels(AALabels()
+                .style(aaStyle)
         )
         
         aaOptions.yAxis?
@@ -824,7 +827,7 @@ function () {
                 .style(aaStyle)
         )
         
-        return aaOptions;
+        return aaOptions
     }
     
     private func configureXAxisPlotBand() -> AAOptions {
@@ -832,8 +835,10 @@ function () {
             .chartType(.areaspline)
             .title("")
             .subtitle("")
-            .categories(["一月", "二月", "三月", "四月", "五月", "六月",
-                         "七月", "八月", "九月", "十月", "十一月", "十二月"])
+            .categories([
+                "一月", "二月", "三月", "四月", "五月", "六月",
+                "七月", "八月", "九月", "十月", "十一月", "十二月"
+            ])
             .yAxisTitle("")
             .yAxisGridLineWidth(0)
             .markerRadius(8)
@@ -849,7 +854,7 @@ function () {
                     .name("Berlin Hot")
                     .color("#25547c")
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         let aaPlotBandsArr = [
@@ -873,79 +878,80 @@ function () {
             ,        ]
         
         aaOptions.xAxis?.plotBands(aaPlotBandsArr)
-
+        
         return aaOptions
     }
     
     private func configureDoubleYAxisChartOptions() -> AAOptions {
-            let aaTitle = AATitle()
+        let aaTitle = AATitle()
             .text("")
-                
-            let aaXAxis = AAXAxis()
+        
+        let aaXAxis = AAXAxis()
             .visible(true)
             .min(0)
             .categories([
-            "Java", "Swift", "Python", "Ruby", "PHP", "Go","C",
-            "C#", "C++", "Perl", "R", "MATLAB", "SQL"])
-            
-            let aaYAxisTitleStyle = AAStyle()
-              .color("#1e90ff")//Title font color
-              .fontSize(14)//Title font size
-              .fontWeight(.bold)//Title font weight
-              .textOutline("0px 0px contrast")
-            
-            let aaYAxisLabels = AALabels()
-               .enabled(true)//设置 y 轴是否显示数字
-               .format("{value:.,0f}mm")//让y轴的值完整显示 而不是100000显示为100k,同时单位后缀为°C
-               .style(AAStyle()
-                      .color("#ff0000")//yAxis Label font color
-                      .fontSize(15)//yAxis Label font size
+                "Java", "Swift", "Python", "Ruby", "PHP", "Go","C",
+                "C#", "C++", "Perl", "R", "MATLAB", "SQL"
+            ])
+        
+        let aaYAxisTitleStyle = AAStyle()
+            .color("#1e90ff")//Title font color
+            .fontSize(14)//Title font size
+            .fontWeight(.bold)//Title font weight
+            .textOutline("0px 0px contrast")
+        
+        let aaYAxisLabels = AALabels()
+            .enabled(true)//设置 y 轴是否显示数字
+            .format("{value:.,0f}mm")//让y轴的值完整显示 而不是100000显示为100k,同时单位后缀为°C
+            .style(AAStyle()
+                .color("#ff0000")//yAxis Label font color
+                .fontSize(15)//yAxis Label font size
                 .fontWeight(.bold)//yAxis Label font weight
-                         )
-            
-            let yAxisOne = AAYAxis()
+        )
+        
+        let yAxisOne = AAYAxis()
             .visible(true)
             .labels(aaYAxisLabels)
             .title(AATitle()
-                      .text("冬季降雨量")
-                      .style(aaYAxisTitleStyle))
+                .text("冬季降雨量")
+                .style(aaYAxisTitleStyle))
             .opposite(true)
-            
-
-            let yAxisTwo = AAYAxis()
+        
+        
+        let yAxisTwo = AAYAxis()
             .visible(true)
             .labels(aaYAxisLabels)
             .title(AATitle()
-                      .text("夏季降雨量")
-                      .style(aaYAxisTitleStyle))
-            
-            let aaTooltip = AATooltip()
+                .text("夏季降雨量")
+                .style(aaYAxisTitleStyle))
+        
+        let aaTooltip = AATooltip()
             .enabled(true)
             .shared(true)
-            
-            let gradientColorDic1 = AAGradientColor.linearGradient(
-                  direction: .toTop,
-                  startColor: "#f54ea2",
-                  endColor: "#ff7676"//颜色字符串设置支持十六进制类型和 rgba 类型
-              )
-            
-            let gradientColorDic2 = AAGradientColor.linearGradient(
-                  direction: .toTop,
-                  startColor: "#17ead9",
-                  endColor: "#6078ea"//颜色字符串设置支持十六进制类型和 rgba 类型
-                   )
-            
-            let aaMarker = AAMarker()
+        
+        let gradientColorDic1 = AAGradientColor.linearGradient(
+            direction: .toTop,
+            startColor: "#f54ea2",
+            endColor: "#ff7676"//颜色字符串设置支持十六进制类型和 rgba 类型
+        )
+        
+        let gradientColorDic2 = AAGradientColor.linearGradient(
+            direction: .toTop,
+            startColor: "#17ead9",
+            endColor: "#6078ea"//颜色字符串设置支持十六进制类型和 rgba 类型
+        )
+        
+        let aaMarker = AAMarker()
             .radius(7)//曲线连接点半径，默认是4
             .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
             .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
             .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
             .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
-            
+        
         let element1 = AASeriesElement()
             .name("2017")
             .type(.areaspline)
-        //          .borderRadius(4)
+            //          .borderRadius(4)
             .color(gradientColorDic1)
             .marker(aaMarker)
             .yAxis(1)
@@ -957,279 +963,295 @@ function () {
             .color(gradientColorDic2)
             .yAxis(0)
             .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-            
-            let aaOptions = AAOptions()
+        
+        let aaOptions = AAOptions()
             .title(aaTitle)
             .xAxis(aaXAxis)
             .yAxisArray([yAxisOne,yAxisTwo])
             .tooltip(aaTooltip)
             .series([element1,element2])
-            
-            return aaOptions
-        }
+        
+        return aaOptions
+    }
     
     private func configureTripleYAxesMixedChart() -> AAOptions {
-        let colorsThemeArr = ["red","mediumspringgreen","deepskyblue",]
+        let colorsThemeArr = [
+            "red",
+            "mediumspringgreen",
+            "deepskyblue",
+        ]
         
         let aaTitle = AATitle()
-        .text("东京月平均天气数据")
+            .text("东京月平均天气数据")
         
         let aaSubtitle = AASubtitle()
-        .text("数据来源: WorldClimate.com")
-            
+            .text("数据来源: WorldClimate.com")
+        
         let aaXAxis = AAXAxis()
-        .visible(true)
-        .min(0)
-        .categories(["一月", "二月", "三月", "四月", "五月", "六月",
-                         "七月", "八月", "九月", "十月", "十一月", "十二月"])
+            .visible(true)
+            .min(0)
+            .categories([
+                "一月", "二月", "三月", "四月", "五月", "六月",
+                "七月", "八月", "九月", "十月", "十一月", "十二月"
+            ])
         
         let yAxis1 = AAYAxis()
-        .visible(true)
-        .gridLineWidth(0)
-        .labels(AALabels()
-                   .enabled(true)//设置 y 轴是否显示数字
-                   .format("{value}°C")
-                   .style(AAStyle()
-                             .color(colorsThemeArr[2])//yAxis Label font color
-                  ))
-        .title(AATitle()
-            .text("温度")
-            .style(AAStyle()
-                .color(colorsThemeArr[2])))
-        .opposite(true)
-
+            .visible(true)
+            .gridLineWidth(0)
+            .labels(AALabels()
+                .enabled(true)//设置 y 轴是否显示数字
+                .format("{value}°C")
+                .style(AAStyle()
+                    .color(colorsThemeArr[2])//yAxis Label font color
+            ))
+            .title(AATitle()
+                .text("温度")
+                .style(AAStyle()
+                    .color(colorsThemeArr[2])))
+            .opposite(true)
+        
         let yAxis2 = AAYAxis()
-        .visible(true)
-        .gridLineWidth(0)
-        .labels(AALabels()
-            .enabled(true)//设置 y 轴是否显示数字
-            .format("{value}°mm")
-            .style(AAStyle()
-                .color(colorsThemeArr[0])//yAxis Label font color
-        ))
-        .title(AATitle()
-            .text("降雨量")
-            .style(AAStyle()
-            .color(colorsThemeArr[0])))
+            .visible(true)
+            .gridLineWidth(0)
+            .labels(AALabels()
+                .enabled(true)//设置 y 轴是否显示数字
+                .format("{value}°mm")
+                .style(AAStyle()
+                    .color(colorsThemeArr[0])//yAxis Label font color
+            ))
+            .title(AATitle()
+                .text("降雨量")
+                .style(AAStyle()
+                    .color(colorsThemeArr[0])))
         
         let yAxis3 = AAYAxis()
-        .visible(true)
-        .gridLineWidth(0)
-        .labels(AALabels()
-            .enabled(true)//设置 y 轴是否显示数字
-            .format("{value}°mb")
-            .style(AAStyle()
-                .color(colorsThemeArr[1])//yAxis Label font color
-         ))
-         .title(AATitle()
-            .text("海平面气压")
-            .style(AAStyle()
-            .color(colorsThemeArr[1])))
-         .opposite(true)
-
+            .visible(true)
+            .gridLineWidth(0)
+            .labels(AALabels()
+                .enabled(true)//设置 y 轴是否显示数字
+                .format("{value}°mb")
+                .style(AAStyle()
+                    .color(colorsThemeArr[1])//yAxis Label font color
+            ))
+            .title(AATitle()
+                .text("海平面气压")
+                .style(AAStyle()
+                    .color(colorsThemeArr[1])))
+            .opposite(true)
+        
         
         let aaTooltip = AATooltip()
-        .enabled(true)
-        .shared(true)
+            .enabled(true)
+            .shared(true)
         
         let aaLegend = AALegend()
-        .enabled(true)
-        .floating(true)
-        .layout(.vertical)
-        .align(.left)
-        .x(80)
-        .verticalAlign(.top)
-        .y(55)
+            .enabled(true)
+            .floating(true)
+            .layout(.vertical)
+            .align(.left)
+            .x(80)
+            .verticalAlign(.top)
+            .y(55)
         
         let element1 = AASeriesElement()
-        .name("降雨量")
-        .type(.column)
-        .yAxis(1)
-        .data([49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
-        .tooltip(AATooltip()
-            .valueSuffix(" mm"))
+            .name("降雨量")
+            .type(.column)
+            .yAxis(1)
+            .data([49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
+            .tooltip(AATooltip()
+                .valueSuffix(" mm"))
         
         let element2 = AASeriesElement()
-        .name("海平面气压")
-        .type(.line)
-        .yAxis(2)
-        .data([1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7])
-        .dashStyle(.shortDot)
-        .tooltip(AATooltip()
-            .valueSuffix(" mb"))
+            .name("海平面气压")
+            .type(.line)
+            .yAxis(2)
+            .data([1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7])
+            .dashStyle(.shortDot)
+            .tooltip(AATooltip()
+                .valueSuffix(" mb"))
         
         let element3 = AASeriesElement()
-        .name("温度")
-        .type(.line)
-        .yAxis(0)
-        .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-        .tooltip(AATooltip()
-            .valueSuffix(" ℃"))
+            .name("温度")
+            .type(.line)
+            .yAxis(0)
+            .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+            .tooltip(AATooltip()
+                .valueSuffix(" ℃"))
         
         let aaOptions = AAOptions()
-        .title(aaTitle)
-        .subtitle(aaSubtitle)
-        .colors(colorsThemeArr)
-        .xAxis(aaXAxis)
-        .yAxisArray([yAxis1,yAxis2,yAxis3])
-        .tooltip(aaTooltip)
-        .legend(aaLegend)
-        .series([element1,element2,element3,])
+            .title(aaTitle)
+            .subtitle(aaSubtitle)
+            .colors(colorsThemeArr)
+            .xAxis(aaXAxis)
+            .yAxisArray([yAxis1,yAxis2,yAxis3])
+            .tooltip(aaTooltip)
+            .legend(aaLegend)
+            .series([element1,element2,element3,])
         
         return aaOptions
     }
     
     private func configureDoubleYAxesAndColumnLineMixedChart() -> AAOptions {
-            let stopsArr = [
-                [0.0, "rgba(156,107,211,0.5)"],//颜色字符串设置支持十六进制类型和 rgba 类型
-                [0.2, "rgba(156,107,211,0.3)"],
-                [1.0, "rgba(156,107,211,0)"]];
-               
-            let gradientColorDic1 = AAGradientColor.linearGradient(
-                   direction: .toBottom,
-                   stops: stopsArr)
-            
-           let gradientColorDic2 = AAGradientColor.linearGradient(
-                   direction: .toBottom,
-                   startColor: "#956FD4",
-                   endColor: "#3EACE5"//颜色字符串设置支持十六进制类型和 rgba 类型
-                                  )
-            
-            let category = ["市区","万州","江北","南岸","北碚","綦南","长寿","永川","璧山","江津",
-                            "城口","大足","垫江","丰都","奉节","合川","江津区","开州","南川","彭水",
-                            "黔江","石柱","铜梁","潼南","巫山","巫溪","武隆","秀山","酉阳","云阳",
-                            "忠县","川东","检修"];
-            let goalValuesArr = [18092,20728,24045,28348,32808
-                            ,36097,39867,44715,48444,50415
-                            ,56061,62677,59521,67560,18092,20728,24045,28348,32808
-                            ,36097,39867,44715,48444,50415,36097,39867,44715,48444,50415
-                            ,50061,32677,49521,32808];
-            let realValuesArr = [4600,5000,5500,6500,7500
-                            ,8500,9900,12500,14000,21500
-                            ,23200,24450,25250,33300,4600,5000,5500,6500,7500
-                            ,8500,9900,22500,14000,21500,8500,9900,12500,14000,21500
-                            ,23200,24450,25250,7500];
-            var rateValuesArr = [Float]()
-            
-            for i in 0 ..< 33 {
-                let goalValue = goalValuesArr[i]
-                let realValue = realValuesArr[i]
-                let rateValue = Float(realValue) / Float(goalValue)
-                rateValuesArr.append(rateValue)
-            }
-                        
-                let aaChart = AAChart()
-                 .backgroundColor("#191E40");
-                 
-                 let aaTitle = AATitle()
-                 .text("");
-                 
-                 let aaLabels = AALabels()
-                 .enabled(true)
-                 .style(AAStyle()
-                           .color(AAColor.lightGray));
-                     
-                 let aaXAxis = AAXAxis()
-                 .visible(true)
-                 .labels(aaLabels)
-                 .min(0)
-                 .categories(category);
-                 
-                 let aaYAxisTitleStyle = AAStyle()
-                   .color("#1e90ff")//Title font color
-                   .fontSize(14)//Title font size
-                    .fontWeight(AAChartFontWeightType.bold)//Title font weight
-                   .textOutline("0px 0px contrast");
-
-                 let yAxis1 = AAYAxis()
-                 .visible(true)
-                 .labels(aaLabels)
-                 .gridLineWidth(0)
-                 .title(AATitle()
-                           .text("已贯通 / 计划贯通")
-                           .style(aaYAxisTitleStyle));
-                 
-                  let yAxis2 = AAYAxis()
-                     .visible(true)
-                     .labels(aaLabels)
-                     .gridLineWidth(0)
-                     .title(AATitle()
-                               .text("贯通率")
-                               .style(aaYAxisTitleStyle))
-                     .opposite(true);
-                 
-                 let aaTooltip = AATooltip()
-                 .enabled(true)
-                 .shared(true);
-                 
-                 let aaPlotOptions = AAPlotOptions()
-                 .series(AASeries()
-                            .animation(AAAnimation()
-                                .easing(0)
-                                .duration(1000)))
-                 .column(AAColumn()
-                     .grouping(false)
-                     .pointPadding(0)
-                     .pointPlacement((0))
-                            );
-                 
-                 let aaLegend = AALegend()
-                  .enabled(true)
-                  .itemStyle(AAItemStyle()
-                                .color(AAColor.lightGray))
-                  .floating(true)
-                  .layout(.horizontal)
-                  .align(.left)
-                  .x(30)
-                  .verticalAlign(.top)
-                  .y(10);
-                 
-                 let goalValuesElement = AASeriesElement()
-                 .name("计划贯通")
-                 .type(.column)
-                 .borderWidth(0)
-                 .color(gradientColorDic1)
-                 .yAxis(0)
-                 .data(goalValuesArr);
-                 
-                 let realValuesElement = AASeriesElement()
-                 .name("已贯通")
-                 .type(.column)
-                 .borderWidth(0)
-                 .color(gradientColorDic2)
-                 .yAxis(0)
-                 .data(realValuesArr);
-                 
-                 let rateValuesElement = AASeriesElement()
-                   .name("贯通率")
-                    .type(.spline)
-                   .marker(AAMarker()
-                              .radius(7)//曲线连接点半径，默认是4
-                              .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                              .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
-                              .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                              .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
-                              )
-                   .color("#F02FC2")
-                   .yAxis(1)
-                   .data(rateValuesArr);
-                 
-                 let aaOptions = AAOptions()
-                 .chart(aaChart)
-                 .title(aaTitle)
-                 .xAxis(aaXAxis)
-                 .yAxisArray([yAxis1,yAxis2])
-                 .tooltip(aaTooltip)
-                 .plotOptions(aaPlotOptions)
-                 .legend(aaLegend)
-                 .series([
-                    goalValuesElement,
-                    realValuesElement,
-                    rateValuesElement])
-                 ;
-                 return aaOptions;
+        let stopsArr = [
+            [0.0, "rgba(156,107,211,0.5)"],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.2, "rgba(156,107,211,0.3)"],
+            [1.0, "rgba(156,107,211,0)"]
+        ]
+        
+        let gradientColorDic1 = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            stops: stopsArr)
+        
+        let gradientColorDic2 = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            startColor: "#956FD4",
+            endColor: "#3EACE5"//颜色字符串设置支持十六进制类型和 rgba 类型
+        )
+        
+        let category = [
+            "市区","万州","江北","南岸","北碚","綦南","长寿","永川","璧山","江津",
+            "城口","大足","垫江","丰都","奉节","合川","江津区","开州","南川","彭水",
+            "黔江","石柱","铜梁","潼南","巫山","巫溪","武隆","秀山","酉阳","云阳",
+            "忠县","川东","检修"
+        ]
+        
+        let goalValuesArr = [
+            18092,20728,24045,28348,32808
+            ,36097,39867,44715,48444,50415
+            ,56061,62677,59521,67560,18092,20728,24045,28348,32808
+            ,36097,39867,44715,48444,50415,36097,39867,44715,48444,50415
+            ,50061,32677,49521,32808
+        ]
+        
+        let realValuesArr = [
+            4600,5000,5500,6500,7500
+            ,8500,9900,12500,14000,21500
+            ,23200,24450,25250,33300,4600,5000,5500,6500,7500
+            ,8500,9900,22500,14000,21500,8500,9900,12500,14000,21500
+            ,23200,24450,25250,7500
+        ]
+        
+        var rateValuesArr = [Float]()
+        
+        for i in 0 ..< 33 {
+            let goalValue = goalValuesArr[i]
+            let realValue = realValuesArr[i]
+            let rateValue = Float(realValue) / Float(goalValue)
+            rateValuesArr.append(rateValue)
+        }
+        
+        let aaChart = AAChart()
+            .backgroundColor("#191E40")
+        
+        let aaTitle = AATitle()
+            .text("")
+        
+        let aaLabels = AALabels()
+            .enabled(true)
+            .style(AAStyle()
+                .color(AAColor.lightGray))
+        
+        let aaXAxis = AAXAxis()
+            .visible(true)
+            .labels(aaLabels)
+            .min(0)
+            .categories(category)
+        
+        let aaYAxisTitleStyle = AAStyle()
+            .color("#1e90ff")//Title font color
+            .fontSize(14)//Title font size
+            .fontWeight(AAChartFontWeightType.bold)//Title font weight
+            .textOutline("0px 0px contrast")
+        
+        let yAxis1 = AAYAxis()
+            .visible(true)
+            .labels(aaLabels)
+            .gridLineWidth(0)
+            .title(AATitle()
+                .text("已贯通 / 计划贯通")
+                .style(aaYAxisTitleStyle))
+        
+        let yAxis2 = AAYAxis()
+            .visible(true)
+            .labels(aaLabels)
+            .gridLineWidth(0)
+            .title(AATitle()
+                .text("贯通率")
+                .style(aaYAxisTitleStyle))
+            .opposite(true)
+        
+        let aaTooltip = AATooltip()
+            .enabled(true)
+            .shared(true)
+        
+        let aaPlotOptions = AAPlotOptions()
+            .series(AASeries()
+                .animation(AAAnimation()
+                    .easing(0)
+                    .duration(1000)))
+            .column(AAColumn()
+                .grouping(false)
+                .pointPadding(0)
+                .pointPlacement((0))
+        )
+        
+        let aaLegend = AALegend()
+            .enabled(true)
+            .itemStyle(AAItemStyle()
+                .color(AAColor.lightGray))
+            .floating(true)
+            .layout(.horizontal)
+            .align(.left)
+            .x(30)
+            .verticalAlign(.top)
+            .y(10)
+        
+        let goalValuesElement = AASeriesElement()
+            .name("计划贯通")
+            .type(.column)
+            .borderWidth(0)
+            .color(gradientColorDic1)
+            .yAxis(0)
+            .data(goalValuesArr)
+        
+        let realValuesElement = AASeriesElement()
+            .name("已贯通")
+            .type(.column)
+            .borderWidth(0)
+            .color(gradientColorDic2)
+            .yAxis(0)
+            .data(realValuesArr)
+        
+        let rateValuesElement = AASeriesElement()
+            .name("贯通率")
+            .type(.spline)
+            .marker(AAMarker()
+                .radius(7)//曲线连接点半径，默认是4
+                .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
+                .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+        )
+            .color("#F02FC2")
+            .yAxis(1)
+            .data(rateValuesArr)
+        
+        let aaOptions = AAOptions()
+            .chart(aaChart)
+            .title(aaTitle)
+            .xAxis(aaXAxis)
+            .yAxisArray([yAxis1,yAxis2])
+            .tooltip(aaTooltip)
+            .plotOptions(aaPlotOptions)
+            .legend(aaLegend)
+            .series([
+                goalValuesElement,
+                realValuesElement,
+                rateValuesElement])
+        
+        return aaOptions
     }
-
+    
 }
 
 
