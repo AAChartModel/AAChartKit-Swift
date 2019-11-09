@@ -144,7 +144,7 @@ public class AAChartModel: AAObject {
     public var titleFontSize: Float?                       //标题字体大小
     public var titleFontWeight: AAChartFontWeightType?     //标题字体粗细
     public var subtitle: String?                           //副标题内容
-    public var subtitleAlign: String?                      //副标题文本水平对齐方式
+    public var subtitleAlign: AAChartAlignType?            //副标题文本水平对齐方式
     public var subtitleFontColor: String?                  //副标题字体颜色
     public var subtitleFontSize: Float?                    //副标题字体大小
     public var subtitleFontWeight: AAChartFontWeightType?  //副标题字体粗细
@@ -232,7 +232,7 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
-    public func subtitleAlign(_ prop: String) -> AAChartModel {
+    public func subtitleAlign(_ prop: AAChartAlignType) -> AAChartModel {
         subtitleAlign = prop
         return self
     }

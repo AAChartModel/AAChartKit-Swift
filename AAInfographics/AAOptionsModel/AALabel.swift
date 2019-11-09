@@ -43,8 +43,8 @@ public class AALabel: AAObject {
     public var y: Float?//相对于坐标轴刻度线的垂直平偏移。 默认是：null.
     
     @discardableResult
-    public func align(_ prop: String) -> AALabel {
-        align = prop
+    public func align(_ prop: AAChartAlignType) -> AALabel {
+        align = prop.rawValue
         return self
     }
     
