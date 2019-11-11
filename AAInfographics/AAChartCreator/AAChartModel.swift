@@ -87,6 +87,7 @@ public enum AAChartType: String {
     case waterfall
     case polygon
     case gauge
+    case errorbar
 }
 
 public enum AAChartLayoutType: String {

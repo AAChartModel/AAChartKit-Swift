@@ -78,6 +78,7 @@ class SpecialChartVC: UIViewController {
         case .waterfall: return configureWaterfallChart()
         case .pyramid: return configurePyramidChart()
         case .funnel: return configureFunnelChart()
+        case .errorbar: return configureErrobarChart()
         default: return configureColumnChart()
         }
     }
@@ -769,8 +770,10 @@ class SpecialChartVC: UIViewController {
             .title("TEMPERATURE VARIATION BY MONTH")
             .subtitle("observed in Gotham city")
             .yAxisTitle("℃")
-            .categories(["January", "February", "March", "April", "May", "June",
-                         "July", "August", "September", "October", "November", "December"])
+            .categories([
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ])
             .dataLabelsEnabled(true)
             .inverted(true)//x 轴是否垂直翻转
             .series([
@@ -950,6 +953,30 @@ class SpecialChartVC: UIViewController {
                         ])
                     ,
                 ])
+    }
+    
+    private func configureErrobarChart() -> AAChartModel {
+        return AAChartModel()
+            .yAxisTitle("")
+            .categories([
+                "一月", "二月", "三月", "四月", "五月", "六月",
+                "七月", "八月", "九月", "十月", "十一月", "十二月"
+            ])
+            .series([
+                AASeriesElement()
+                    .name("降水")
+                    .type(.column)
+                    .data([49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
+                ,
+                AASeriesElement()
+                    .name("降雨误差")
+                    .type(.errorbar)
+                    .lineWidth(2.5)
+                    .color(AAColor.red)
+                    .data([[48, 51], [68, 73], [92, 110], [128, 136], [140, 150], [171, 179], [135, 143], [142, 149], [204, 220], [189, 199], [95, 110], [52, 56]])
+                    .tooltip(AATooltip()
+                            .pointFormat("(误差范围: {point.low}-{point.high} mm)<br/>"))
+            ])
     }
 }
 

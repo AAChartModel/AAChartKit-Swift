@@ -84,6 +84,7 @@ class MainVC: UIViewController {
                 "Waterfall Chart--- 瀑布图",
                 "Pyramid Chart---金字塔图",
                 "Funnel Chart---漏斗图",
+                "Error Bar Chart---误差图",
             ],
             /*一些仅仅通过AAChartModel自定义风格样式图表*/
             [
@@ -234,6 +235,7 @@ class MainVC: UIViewController {
                 AAChartType.waterfall,
                 AAChartType.pyramid,
                 AAChartType.funnel,
+                AAChartType.errorbar,
                 ],
             [//Empty Array,just for holding place
             ],
