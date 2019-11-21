@@ -161,9 +161,9 @@ public class AAChartModel: AAObject {
     public var crosshairs: Bool?            //Enable or disable the crosshairs
     public var gradientColorEnable: Bool?   //Enable or disable the gradient color
     public var polar: Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
-    public var marginLeft: Float?
-    public var marginRight: Float?
-    public var marginBottom: Float?
+    public var marginLeft: Float?           //Chart left margin
+    public var marginRight: Float?          //Chart right margin
+    public var marginBottom: Float?         //Chart bottom margin
     public var dataLabelsEnabled: Bool?     //Enable or disable the data labels. Defaults to false
     public var dataLabelsFontColor: String? //The data labels font color
     public var dataLabelsFontSize: Float?   //The data labels font size
@@ -171,9 +171,9 @@ public class AAChartModel: AAObject {
     public var xAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
     public var categories: Array<String>?   //Set new categories for the axis
     public var xAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area.Defaults to 0
-    public var xAxisVisible: Bool?
-    public var xAxisTickInterval: Int?
-    public var yAxisVisible: Bool?
+    public var xAxisVisible: Bool?          //Show the x axis or not
+    public var xAxisTickInterval: Int?      //Custom x axis tick interval,It is useful when the x categories array is too long to show all of them
+    public var yAxisVisible: Bool?          //Show the y axis or not
     public var yAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
     public var yAxisTitle: String?          //The actual text of the axis title
     public var yAxisLineWidth: Float?       //The width of y axis line
@@ -181,9 +181,9 @@ public class AAChartModel: AAObject {
     public var yAxisMin: Float?             //The y axis mini value
     public var yAxisMax: Float?             //The y axis max value
     public var yAxisAllowDecimals: Bool?    //The y axis values label allow decimals or not
-    public var tooltipEnabled: Bool?
-    public var tooltipValueSuffix: String?
-    public var tooltipCrosshairs: Bool?
+    public var tooltipEnabled: Bool?        //Show the tooltip or not
+    public var tooltipValueSuffix: String?  //Custom tooltip value unit suffix
+    public var tooltipCrosshairs: Bool?     //Show tooltip crosshair or not
     public var colorsTheme: Array<Any>?     //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to: ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
     public var series: Array<Any>?          //An array of all the chart's series
     public var legendEnabled: Bool?         //Enable or disable the legend. Defaults to true
