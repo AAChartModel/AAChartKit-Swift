@@ -36,11 +36,11 @@
     public var name: String?               //The name of the series as shown in the legend, tooltip etc.
     public var data: [Any]?                //An array of data points for the series
     public var color: Any?                 //The main color or the series. In line type series it applies to the line and the point markers unless otherwise specified. In bar type series it applies to the bars unless a color is specified per point. The default value is pulled from the options.colors array.
-    public var lineWidth: Float?           //折线图、曲线图、直方折线图、折线填充图、曲线填充图、直方折线填充图的线条宽度
-    public var borderWidth: Float?         //柱形图、条形图、扇形图等图形的描边宽度
-    public var borderColor: String?        //柱形图、条形图、扇形图等图形的描边颜色
-    public var fillColor: Any?             //折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色
-    public var fillOpacity: Float?         //折线填充图、曲线填充图、直方折线填充图等填充图类型的填充颜色透明度 Fill opacity for the area. Note that when you set an explicit fillColor, the fillOpacity is not applied. Instead, you should define the opacity in the fillColor with an rgba color definition. 默认是：0.75. https://api.hcharts.cn/highcharts#plotOptions.area.fillOpacity
+    public var lineWidth: Float?           //The line width, It is only valid for line, spline, area, areaspline, arearange and arearangespline chart types
+    public var borderWidth: Float?         //The border width, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
+    public var borderColor: String?        //The border color, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
+    public var fillColor: Any?             //The fill color, It is only valid for area, areaspline, arearange and arearangespline chart types
+    public var fillOpacity: Float?         //The fill opacity, It is only valid for area, areaspline, arearange and arearangespline chart types. Note that when you set an explicit fillColor, the fillOpacity is not applied. Instead, you should define the opacity in the fillColor with an rgba color definition. Deafualt value：0.75.
     public var threshold: Float?           //The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
     public var negativeColor: String?      //The color for the parts of the graph or points that are below the threshold
     public var dashStyle: String?          //A name for the dash style to use for the graph. Applies only to series type having a graph, like line, spline, area and scatter in case it has a lineWidth.
@@ -51,7 +51,7 @@
     public var colorByPoint: Bool?         //When using automatic point colors pulled from the `options.colors` collection, this option determines whether the chart should receive one color per series or one color per point.
     public var allowPointSelect: Bool?     //Allow this series' points to be selected by clicking on the markers, bars or pie slices
     public var zIndex: Int?                //Define the visual z index of the series.
-    public var innerSize: String?          //内部圆环半径大小占比(内部圆环半径/扇形图半径)
+    public var innerSize: String?          //The innder size for pie chart
     public var shadow: Any?
     public var zones: [Any]?
     public var stack: String?

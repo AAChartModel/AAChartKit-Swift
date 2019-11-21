@@ -138,57 +138,59 @@ public enum AAChartLineDashStyleType: String {
 
 
 public class AAChartModel: AAObject {
-    public var animationType: AAChartAnimationType?        //动画类型
-    public var animationDuration: Int?                     //动画时间
-    public var title: String?                              //标题内容
-    public var titleFontColor: String?                     //标题字体颜色
-    public var titleFontSize: Float?                       //标题字体大小
-    public var titleFontWeight: AAChartFontWeightType?     //标题字体粗细
-    public var subtitle: String?                           //副标题内容
-    public var subtitleAlign: AAChartAlignType?            //副标题文本水平对齐方式
-    public var subtitleFontColor: String?                  //副标题字体颜色
-    public var subtitleFontSize: Float?                    //副标题字体大小
-    public var subtitleFontWeight: AAChartFontWeightType?  //副标题字体粗细
-    public var axesTextColor: String?                      //x 轴和 y 轴文字颜色
-    public var chartType: AAChartType?                     //图表类型
-    public var stacking: AAChartStackingType?              //堆积样式
-    public var markerRadius: Int?                          //折线连接点的半径长度
-    public var markerSymbol: AAChartSymbolType?            //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-    public var markerSymbolStyle: AAChartSymbolStyleType?  //折线或者曲线的连接点是否为空心的
-    public var zoomType: AAChartZoomType?                  //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
-    public var inverted: Bool?                             //x 轴是否翻转(垂直)
-    public var xAxisReversed: Bool?                        //x 轴翻转
-    public var yAxisReversed: Bool?                        //y 轴翻转
-    public var polar: Bool?                                //是否极化图形(变为雷达图)
-    public var marginLeft: Float?                          //图表左边距
-    public var marginRight: Float?                         //图表右边距
-    public var marginBottom: Float?                        //图表底部边距
-    public var dataLabelsEnabled: Bool?                    //数据标签是否显示
-    public var dataLabelsFontColor: String?                //数据标签的字体颜色
-    public var dataLabelsFontSize: Float?                  //数据标签的字体大小
-    public var dataLabelsFontWeight: AAChartFontWeightType?//数据标签的字体粗细
-    public var xAxisLabelsEnabled: Bool?                   //x 轴是否显示数据
-    public var categories: [String]?                       //x 轴是否显示数据
-    public var xAxisGridLineWidth: Float?                  //x 轴网格线的宽度
-    public var xAxisVisible: Bool?                         //x 轴是否显示
-    public var xAxisTickInterval: Int?                     //x 轴刻度线间隔
-    public var yAxisVisible: Bool?                         //y 轴是否显示
-    public var yAxisLabelsEnabled: Bool?                   //y 轴是否显示数据
-    public var yAxisTitle: String?                         //y 轴标题
-    public var yAxisLineWidth: Float?                      //y 轴轴线的宽度
-    public var yAxisMin: Float?                            //y 轴起始位置的最小值
-    public var yAxisMax: Float?                            //y 轴结束位置的最大值
-    public var yAxisAllowDecimals: Bool?                   //y 轴是否允许小数
-    public var yAxisGridLineWidth: Float?                  //y 轴网格线的宽度
-    public var tooltipEnabled: Bool?                       //是否显示浮动提示框(默认显示)
-    public var tooltipValueSuffix: String?                 //浮动提示框单位后缀
-    public var tooltipCrosshairs: Bool?                    //是否显示准星线(默认显示)
-    public var colorsTheme: [Any]?                         //图表主题颜色数组
-    public var series: [AASeriesElement]?                  //图表的数据数组
-    public var legendEnabled: Bool?                        //是否显示图例
-    public var backgroundColor: Any?                       //图表背景色
-    public var borderRadius: Int?                          //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
-    public var touchEventEnabled: Bool?                    //是否支持触摸事件回调
+    public var animationType: AAChartAnimationType? //The type of chart animation
+    public var animationDuration: Int?      //The chart rendering animation duration
+    public var title: String?               //The chart title
+    public var titleFontColor: String?      //The chart title font color
+    public var titleFontSize: Float?        //The chart title font size
+    public var titleFontWeight: AAChartFontWeightType? //The chart font weight
+    public var subtitle: String?            //The chart subtitle
+    public var subtitleAlign: AAChartAlignType?//The chart subtitle text align style
+    public var subtitleFontColor: String?   //The chart subtitle font color
+    public var subtitleFontSize: Float?     //The chart subtitle font size
+    public var subtitleFontWeight: AAChartFontWeightType?   //The chart subtitle font weight
+    public var axesTextColor: String?       //The labels font color of chart x axis and y axis
+    public var chartType: AAChartType?      //The default series type for the chart. Can be any of the chart types listed under `AAChartType`. Defaults to line
+    public var stacking: AAChartStackingType? //Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order
+    public var markerSymbol: AAChartSymbolType?   //A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down"
+    public var markerSymbolStyle: AAChartSymbolStyleType?
+    public var zoomType: AAChartZoomType?   //Decides in what dimensions the user can zoom by dragging the mouse. Can be one of x, y or xy
+    public var inverted: Bool?              //Whether to invert the axes so that the x axis is vertical and y axis is horizontal. When true, the x axis is reversed by default. If a bar series is present in the chart, it will be inverted automatically.Inverting the chart doesn't have an effect if there are no cartesian series in the chart, or if the chart is polar.Defaults to false
+    public var xAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
+    public var yAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
+    public var crosshairs: Bool?            //Enable or disable the crosshairs
+    public var gradientColorEnable: Bool?   //Enable or disable the gradient color
+    public var polar: Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
+    public var marginLeft: Float?
+    public var marginRight: Float?
+    public var marginBottom: Float?
+    public var dataLabelsEnabled: Bool?     //Enable or disable the data labels. Defaults to false
+    public var dataLabelsFontColor: String? //The data labels font color
+    public var dataLabelsFontSize: Float?   //The data labels font size
+    public var dataLabelsFontWeight: AAChartFontWeightType?//The data labels font weight
+    public var xAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
+    public var categories: Array<String>?   //Set new categories for the axis
+    public var xAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area.Defaults to 0
+    public var xAxisVisible: Bool?
+    public var xAxisTickInterval: Int?
+    public var yAxisVisible: Bool?
+    public var yAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
+    public var yAxisTitle: String?          //The actual text of the axis title
+    public var yAxisLineWidth: Float?       //The width of y axis line
+    public var yAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area. Defaults to 1
+    public var yAxisMin: Float?             //The y axis mini value
+    public var yAxisMax: Float?             //The y axis max value
+    public var yAxisAllowDecimals: Bool?    //The y axis values label allow decimals or not
+    public var tooltipEnabled: Bool?
+    public var tooltipValueSuffix: String?
+    public var tooltipCrosshairs: Bool?
+    public var colorsTheme: Array<Any>?     //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to: ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
+    public var series: Array<Any>?          //An array of all the chart's series
+    public var legendEnabled: Bool?         //Enable or disable the legend. Defaults to true
+    public var backgroundColor: Any?        //The background color or gradient for the outer chart area. Defaults to #FFFFFF
+    public var borderRadius: Int?           //The corner radius of the outer chart border. Defaults to 0
+    public var markerRadius: Int?           //The radius of the point marker. Defaults to 4
+    public var touchEventEnabled: Bool?     //Support touch event call back or not
     
     @discardableResult
     public func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
