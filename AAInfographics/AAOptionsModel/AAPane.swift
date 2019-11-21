@@ -69,7 +69,10 @@ public class AAPane: AAObject {
         startAngle = prop
         return self
     }
-
+    
+    public override init() {
+        
+    }
 }
 
 public class AABackgroundElement: AAObject {
@@ -80,4 +83,8 @@ public class AABackgroundElement: AAObject {
     public var innerRadius: AnyObject?//内半径
     public var outerRadius: AnyObject?//外半径
     public var shape: String?
+    
+    public override init() {
+        
+    }
 }
