@@ -241,6 +241,9 @@ public class AADataElement: AAObject {
         marker = prop
         return self
     }
+    
+    public override init() {
+    }
 }
 
 public class AAShadow: AAObject {
@@ -278,6 +281,9 @@ public class AAShadow: AAObject {
     public func width(_ prop: Float) -> AAShadow {
         width = prop
         return self
+    }
+    
+    public override init() {
     }
 }
 
