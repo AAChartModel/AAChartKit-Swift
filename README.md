@@ -425,18 +425,17 @@ public var title: String?               //The chart title
 public var titleFontColor: String?      //The chart title font color
 public var titleFontSize: Float?        //The chart title font size
 public var titleFontWeight: AAChartFontWeightType? //The chart font weight
-
 public var subtitle: String?            //The chart subtitle
-public var subtitleAlign: String?       //The chart subtitle text align style
+public var subtitleAlign: AAChartAlignType?//The chart subtitle text align style
 public var subtitleFontColor: String?   //The chart subtitle font color
 public var subtitleFontSize: Float?     //The chart subtitle font size
 public var subtitleFontWeight: AAChartFontWeightType?   //The chart subtitle font weight
 public var axesTextColor: String?       //The labels font color of chart x axis and y axis
 public var chartType: AAChartType?      //The default series type for the chart. Can be any of the chart types listed under `AAChartType`. Defaults to line
 public var stacking: AAChartStackingType? //Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order
-public var symbol: AAChartSymbolType?   //A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down"
-public var symbolStyle: AAChartSymbolStyleType?
-public var zoomType: AAChartZoomType?            //Decides in what dimensions the user can zoom by dragging the mouse. Can be one of x, y or xy
+public var markerSymbol: AAChartSymbolType?   //A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down"
+public var markerSymbolStyle: AAChartSymbolStyleType?
+public var zoomType: AAChartZoomType?   //Decides in what dimensions the user can zoom by dragging the mouse. Can be one of x, y or xy
 public var inverted: Bool?              //Whether to invert the axes so that the x axis is vertical and y axis is horizontal. When true, the x axis is reversed by default. If a bar series is present in the chart, it will be inverted automatically.Inverting the chart doesn't have an effect if there are no cartesian series in the chart, or if the chart is polar.Defaults to false
 public var xAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
 public var yAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false

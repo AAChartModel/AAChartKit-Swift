@@ -388,15 +388,15 @@ public var titleFontColor: String?                     //标题字体颜色
 public var titleFontSize: Float?                       //标题字体大小
 public var titleFontWeight: AAChartFontWeightType?     //标题字体粗细
 public var subtitle: String?                           //副标题内容
-public var subtitleAlign: String?                      //副标题文本水平对齐方式
+public var subtitleAlign: AAChartAlignType?            //副标题文本水平对齐方式
 public var subtitleFontColor: String?                  //副标题字体颜色
 public var subtitleFontSize: Float?                    //副标题字体大小
 public var subtitleFontWeight: AAChartFontWeightType?  //副标题字体粗细
 public var axesTextColor: String?                      //x 轴和 y 轴文字颜色
 public var chartType: AAChartType?                     //图表类型
 public var stacking: AAChartStackingType?              //堆积样式
-public var symbol: AAChartSymbolType?                  //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-public var symbolStyle: AAChartSymbolStyleType?        //折线或者曲线的连接点是否为空心的
+public var markerSymbol: AAChartSymbolType?            //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+public var markerSymbolStyle: AAChartSymbolStyleType?  //折线或者曲线的连接点是否为空心的
 public var zoomType: AAChartZoomType?                  //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
 public var inverted: Bool?                             //x 轴是否翻转(垂直)
 public var xAxisReversed: Bool?                        //x 轴翻转
