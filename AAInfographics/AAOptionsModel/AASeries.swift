@@ -56,8 +56,8 @@ public class AASeries: AAObject {
     }
     
     @discardableResult
-    public func stacking(_ prop: String?) -> AASeries {
-        stacking = prop
+    public func stacking(_ prop: AAChartStackingType?) -> AASeries {
+        stacking = prop?.rawValue
         return self
     }
     

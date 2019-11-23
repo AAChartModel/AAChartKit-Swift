@@ -257,7 +257,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         let aaSeries = AASeries()
             .animation(AAAnimation()
                 .duration(800)
-                .easing(AAChartAnimationType.bounce.rawValue))
+                .easing(.bounce))
         
         let aaColumn = AAColumn()
             .grouping(false)
@@ -1187,7 +1187,7 @@ function () {
         let aaPlotOptions = AAPlotOptions()
             .series(AASeries()
                 .animation(AAAnimation()
-                    .easing(0)
+                    .easing(.easeTo)
                     .duration(1000)))
             .column(AAColumn()
                 .grouping(false)

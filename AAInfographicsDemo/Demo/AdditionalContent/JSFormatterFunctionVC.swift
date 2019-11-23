@@ -139,24 +139,25 @@ function () {
     
     private func customAreaChartTooltipStyleWithFormatterFunction2() -> AAOptions {
         let aaChartModel = AAChartModel()
-            .chartType(.area)//图形类型
+            .chartType(.areaspline)//图形类型
             .title("2014 ~ 2020 汪星人生存指数")//图表主标题
             .subtitle("数据来源：www.无任何可靠依据.com")//图表副标题
-            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
-            .colorsTheme(["#1e90ff","#ef476f",])
+            .markerSymbolStyle(.innerBlank)
+            .colorsTheme([
+                AAGradientColor.oceanBlue,
+                AAGradientColor.sanguine,
+            ])
             .dataLabelsEnabled(false)
             .stacking(.normal)
             .series([
                 AASeriesElement()
                     .name("🐶狗子")
                     .lineWidth(5.0)
-                    .fillOpacity(0.4)
                     .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
                 ,
                 AASeriesElement()
                     .name("🌲树木")
                     .lineWidth(5.0)
-                    .fillOpacity(0.4)
                     .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
                 ,
                 ])
@@ -398,7 +399,7 @@ function () {
                     .name("Tokyo Hot")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
-                    .data([1])
+                    .data([229.9, 771.5, 1106.4, 1129.2, 6644.0, 1176.0, 8835.6, 148.5, 8816.4, 6694.1, 7795.6, 9954.4])
                 ,
                 ])
         
@@ -558,9 +559,9 @@ function () {
                 .animation(
                    AAAnimation()
                     .duration(800)
-                    .easing(AAChartAnimationType.bounce.rawValue)
+                    .easing(AAChartAnimationType.bounce)
                 )
-                .stacking(AAChartStackingType.normal.rawValue))
+                .stacking(AAChartStackingType.normal))
         
         let aaTooltip = AATooltip()
             .enabled(true)

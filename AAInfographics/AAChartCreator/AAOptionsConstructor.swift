@@ -72,13 +72,13 @@ public class AAOptionsConstructor {
         
         let aaPlotOptions = AAPlotOptions()
             .series(AASeries()
-                .stacking(aaChartModel.stacking?.rawValue) //设置是否百分比堆叠显示图形
+                .stacking(aaChartModel.stacking) //设置是否百分比堆叠显示图形
         )
         
         if (aaChartModel.animationType != .linear) {
             aaPlotOptions
                 .series?.animation(AAAnimation()
-                    .easing(aaChartModel.animationType?.rawValue)
+                    .easing(aaChartModel.animationType)
                     .duration(aaChartModel.animationDuration)
             )
         }
