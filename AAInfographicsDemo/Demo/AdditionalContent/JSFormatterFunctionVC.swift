@@ -57,6 +57,7 @@ class JSFormatterFunctionVC: UIViewController {
         case 6: return customYAxisLabels2()
         case 7: return customStackedAndGroupedColumnChartTooltip()
         case 8: return customDoubleXAxesChart()
+        case 9: return customArearangeChartTooltip()
         default:
             return AAOptions()
         }
@@ -595,6 +596,83 @@ function () {
             .series([aaSeriesElement1,aaSeriesElement2])
         
         return aaOptions
+    }
+    
+    private func customArearangeChartTooltip() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
+            .subtitle("virtual data")
+            .chartType(.arearange)
+            .markerSymbolStyle(.innerBlank)
+            .series([
+                AASeriesElement()
+                    .name("Range")
+                    .color("#1E90FF")
+                    .type(.arearange)
+                    .lineWidth(0)
+                    .fillOpacity(0.3)
+                    .data([
+                        [12464064, 14.3, 27.7],
+                        [12464928, 14.5, 27.8],
+                        [12465792, 15.5, 29.6],
+                        [12466656, 16.7, 30.7],
+                        [12467520, 16.5, 25.0],
+                        [12468384, 17.8, 25.7],
+                        [12469248, 13.5, 24.8],
+                        [12470112, 10.5, 21.4],
+                        [12470976, 9.2,  23.8],
+                        [12471840, 11.6, 21.8],
+                        [12472704, 10.7, 23.7],
+                        [12473568, 11.0, 23.3],
+                        [12474432, 11.6, 23.7],
+                        [12475296, 11.8, 20.7],
+                        [12476160, 12.6, 22.4],
+                        [12477024, 13.6, 19.6],
+                        [12477888, 11.4, 22.6],
+                        [12478752, 13.2, 25.0],
+                        [12479616, 14.2, 21.6],
+                        [12480480, 13.1, 17.1],
+                        [12481344, 12.2, 15.5],
+                        [12482208, 12.0, 20.8],
+                        [12483072, 12.0, 17.1],
+                        [12483936, 12.7, 18.3],
+                        [12484800, 12.4, 19.4],
+                        [12485664, 12.6, 19.9],
+                        [12486528, 11.9, 20.2],
+                        [12487392, 11.0, 19.3],
+                        [12488256, 10.8, 17.8],
+                        [12489120, 11.8, 18.5],
+                        [12489984, 10.8, 16.1]
+                        ])
+                    .zIndex(0)
+                    ,
+                ])
+        
+          let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+                aaOptions.tooltip?
+                    .useHTML(true)
+                    .formatter("""
+        function () {
+            let myPointOptions = this.points[0].point.options;
+            let xValue = myPointOptions.x;
+            let lowValue = myPointOptions.low;
+            let highValue = myPointOptions.high;
+            let titleStr = '🌕 this is my custom tooltip description text content <br>';
+            let xValueStr = '🌖 this is x value  : ' + xValue + '<br>';
+            let lowValueStr = ' 🌗 this is low value  : ' + lowValue + '<br>';
+            let highValueStr = '🌘 this is high value : ' + highValue + '<br>';
+            let tooltipDescStr =  titleStr + xValueStr + lowValueStr + highValueStr;
+            return tooltipDescStr;
+        }
+        """)
+                    .backgroundColor("#000000")
+                    .borderColor("#000000")
+                    .style(AAStyle()
+                        .color("#FFD700")
+                        .fontSize(12)
+                )
+                
+                return aaOptions
     }
 
 }

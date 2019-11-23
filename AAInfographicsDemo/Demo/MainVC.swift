@@ -194,17 +194,18 @@ class MainVC: UIViewController {
                 "configureTripleYAxesMixedChart",
                 "Double Y Axes And Column Line Mixed Chart双Y轴柱形曲线混合图",
             ],
-            
+            /*Custom Tooltip With JavaScript Formatter Function */
             [
                 "简单字符串拼接",
                 "自定义不同单位后缀",
                 "值为0时,在tooltip中不显示",
                 "自定义多彩颜色文字",
                 "自定义箱线图的浮动提示框头部内容",
-                "自定义Y轴文字",
+                "自定义Y轴文字1",
                 "自定义Y轴文字2",
                 "自定义分组堆积柱状图tooltip内容",
-                "双 X 轴镜像图表"
+                "Double X Axes Mirror Chart---双 X 轴镜像图表",
+                "custom Arearange Chart Tooltip---自定义面积范围图浮动提示框"
             ]
         ]
         
@@ -303,8 +304,8 @@ class MainVC: UIViewController {
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.backgroundColor = .white
-        myTableView.rowHeight = 40
-        myTableView.sectionHeaderHeight = 35
+        myTableView.rowHeight = 45
+        myTableView.sectionHeaderHeight = 45
         view.addSubview(myTableView)
         
         myTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -375,7 +376,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         let sectionTitleLabel = UILabel()
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
-        sectionTitleLabel.font = .boldSystemFont(ofSize: 14)
+        sectionTitleLabel.font = .boldSystemFont(ofSize: 17)
         sectionTitleLabel.textAlignment = .center
         view.addSubview(sectionTitleLabel)
         
@@ -395,8 +396,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         let cellTitle = chartTypeTitleArr[indexPath.section][indexPath.row]
         cell?.textLabel?.numberOfLines = 0
         cell?.textLabel?.text = cellTitle
-        cell?.textLabel?.font = .systemFont(ofSize: 13)
-        cell?.textLabel?.textColor = .darkGray
+        cell?.textLabel?.font = .systemFont(ofSize: 16)
+        cell?.textLabel?.textColor = .black
         cell?.accessoryType = .disclosureIndicator
         return cell
     }
@@ -474,7 +475,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             vc.chartType = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         case 10:
-            /*Custom Tooltip With JavaScript Function */
+            /*Custom Tooltip With JavaScript Formatter Function */
             let vc = JSFormatterFunctionVC()
             vc.selectedIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
