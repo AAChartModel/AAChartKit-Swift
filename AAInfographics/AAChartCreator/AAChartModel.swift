@@ -501,7 +501,6 @@ public class AAChartModel: AAObject {
         stacking               = Optional.none
         zoomType               = Optional.none //默认禁用手势缩放
         colorsTheme            = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
-        dataLabelsEnabled      = true
         tooltipEnabled         = true
         tooltipCrosshairs      = true
         xAxisLabelsEnabled     = true
