@@ -1256,13 +1256,13 @@ function () {
     
     private func configureDoubleYAxesMarketDepthChart() -> AAOptions {
         let aaChart = AAChart()
-            .type(.area);
+            .type(.area)
         
         let aaTitle = AATitle()
-            .text("ETH-BTC 市场深度图");
+            .text("ETH-BTC 市场深度图")
         
         let aaSubtitle = AASubtitle()
-            .text("数据来源: https://github.com/AAChartModel");
+            .text("数据来源: https://github.com/AAChartModel")
         
         let aaXAxis = AAXAxis()
             .visible(true)
@@ -1290,7 +1290,7 @@ function () {
                 .enabled(true)//设置 y 轴是否显示数字
                 .align("left")
                 .x(8)
-        );
+        )
         
         let yAxis2 = AAYAxis()
             .opposite(true)
@@ -1306,7 +1306,7 @@ function () {
                 .enabled(true)//设置 y 轴是否显示数字
                 .align("right")
                 .x(-8)
-        );
+        )
         
         let aaTooltip = AATooltip()
             .enabled(true)
@@ -1316,7 +1316,7 @@ function () {
             .valueDecimals(2)
         
         let aaLegend = AALegend()
-            .enabled(false);
+            .enabled(false)
         
         let element1 = AASeriesElement()
             .name("Bids")
@@ -1343,7 +1343,7 @@ function () {
                 [0.159,  80.584064],
                 [0.16,   81.58156],
                 [0.1608, 83.38156]
-            ]);
+            ])
         
         let element2 = AASeriesElement()
             .name("Asks")
@@ -1370,7 +1370,7 @@ function () {
                 [0.1454, 10.035642],
                 [0.148,  9.326642],
                 [0.1522, 3.76317]
-            ]);
+            ])
         
         let aaOptions = AAOptions()
             .chart(aaChart)
