@@ -1276,7 +1276,6 @@ function () {
                         .text("实际价格")
                         .rotation(90))
             ])
-        ;
         
         let yAxis1 = AAYAxis()
             .visible(true)
@@ -1315,7 +1314,6 @@ function () {
                 "<span style=\"font-size=10px;\">Price: {point.key}</span><br/>"
             ))
             .valueDecimals(2)
-        ;
         
         let aaLegend = AALegend()
             .enabled(false);
@@ -1383,7 +1381,6 @@ function () {
             .tooltip(aaTooltip)
             .legend(aaLegend)
             .series([element1,element2])
-        ;
         return aaOptions;
     }
     
