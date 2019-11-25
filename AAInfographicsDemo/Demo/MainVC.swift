@@ -193,7 +193,8 @@ class MainVC: UIViewController {
                 "configureDoubleYAxisChartOptions",
                 "configureTripleYAxesMixedChart",
                 "Double Y Axes And Column Line Mixed Chart双Y轴柱形曲线混合图",
-                "Double Y Axes Market Depth Chart || 双Y轴市场深度图"
+                "Double Y Axes Market Depth Chart || 双Y轴市场深度图",
+                "custom Area Chart Tooltip Style Like HTML Table || 自定义区域填充图浮动提示框为 HTML 表格样式"
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
             [
