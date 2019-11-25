@@ -1267,9 +1267,10 @@ function () {
             .visible(true)
             .plotLines([
                 AAPlotLinesElement()
-                    .color("#888")
+                    .color(AAColor.red)
                     .value(0.1523)
-                    .width(1)
+                    .width(1.1)
+                    .dashStyle(.longDashDotDot)
                     .label(AALabel()
                         .text("实际价格")
                         .rotation(90))
@@ -1283,6 +1284,8 @@ function () {
             .tickLength(5)
             .tickPosition("inside")
             .gridLineWidth(1)
+            .title(AATitle()
+                .text(""))
             .labels(AALabels()
                 .enabled(true)//设置 y 轴是否显示数字
                 .align("left")
@@ -1297,6 +1300,8 @@ function () {
             .tickLength(5)
             .tickPosition("inside")
             .gridLineWidth(0)
+            .title(AATitle()
+                 .text(""))
             .labels(AALabels()
                 .enabled(true)//设置 y 轴是否显示数字
                 .align("right")
@@ -1305,7 +1310,9 @@ function () {
         
         let aaTooltip = AATooltip()
             .enabled(true)
-            //            .headerFormat(#"<span style="font-size=10px;">Price: {point.key}</span><br/>"#)
+            .headerFormat(AAJSStringPurer.pureJavaScriptFunctionString("""
+                <span style="font-size=10px;">Price: {point.key}</span><br/>
+"""))
             .valueDecimals(2)
         ;
         
@@ -1314,7 +1321,7 @@ function () {
         
         let element1 = AASeriesElement()
             .name("Bids")
-            .color("#03a7a8")
+            .color("#04d69f")
             .step(true)
             .data([
                 [0.1524, 0.948665],
@@ -1341,7 +1348,7 @@ function () {
         
         let element2 = AASeriesElement()
             .name("Asks")
-            .color("#fc5857")
+            .color("#1e90ff")
             .step(true)
             .data([
                 [0.1435, 242.521842],
