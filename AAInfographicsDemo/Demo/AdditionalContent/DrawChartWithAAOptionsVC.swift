@@ -1311,9 +1311,9 @@ function () {
         
         let aaTooltip = AATooltip()
             .enabled(true)
-            .headerFormat(AAJSStringPurer.pureJavaScriptFunctionString("""
-                <span style="font-size=10px;">Price: {point.key}</span><br/>
-"""))
+            .headerFormat(AAJSStringPurer.pureJavaScriptFunctionString(
+                "<span style=\"font-size=10px;\">Price: {point.key}</span><br/>"
+            ))
             .valueDecimals(2)
         ;
         
@@ -1425,23 +1425,14 @@ function () {
                 ,
             ])
         
-        let pointFormat1 = """
- <tr><td style="color: {series.color}">{series.name}: </td>
- """
-        
-        let pointFormat2 = """
-<td style="text-align: right"><b>{point.y}EUR</b></td></tr>
-"""
-        
-        let pointFormat = AAJSStringPurer.pureJavaScriptFunctionString(pointFormat1 + pointFormat2)
-        
-        
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
             .shared(true)
             .useHTML(true)
             .headerFormat("<small>{point.key}</small><table>")
-            .pointFormat(pointFormat)
+            .pointFormat(AAJSStringPurer.pureJavaScriptFunctionString(
+                "<tr><td style=\"color: {series.color}\">{series.name}: </td>"
+                    + "<td style=\"text-align: right\"><b>{point.y}EUR</b></td></tr>"))
             .footerFormat("</table>")
         
         return aaOptions
