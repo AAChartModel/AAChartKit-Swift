@@ -559,9 +559,9 @@ function () {
                 .animation(
                    AAAnimation()
                     .duration(800)
-                    .easing(AAChartAnimationType.bounce)
+                    .easing(.bounce)
                 )
-                .stacking(AAChartStackingType.normal))
+                .stacking(.normal))
         
         let aaTooltip = AATooltip()
             .enabled(true)
