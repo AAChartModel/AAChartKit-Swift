@@ -53,7 +53,7 @@ class MainVC: UIViewController {
                   "Rendering Animation types ---渲染动画示例",
                   "Hide Or Show Chart Series---隐藏或显示内容",
                   "Evaluate JS String Function---执行js函数",
-                  "Draw Chart With Options Dictionary---通过Options绘图",
+                  "Draw Chart With AAOptions---通过Options绘图",
                   "Custom Tooltip With JS Function ---通过JS函数自定义Tooltip",
               ]
         
