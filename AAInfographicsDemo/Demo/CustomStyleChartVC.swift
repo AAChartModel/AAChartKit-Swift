@@ -87,6 +87,7 @@ class CustomStyleChartVC: UIViewController {
         case 22: return configureQuadrangleRadarChart()
         case 23: return configurePentagonRadarChart()
         case 24: return configureHexagonRadarChart()
+        case 25: return drawLineChartWithPointsCoordinates()
         default:
             return configureTriangleRadarChart()
         }
@@ -773,5 +774,18 @@ class CustomStyleChartVC: UIViewController {
                 AASeriesElement()
                     .data([3.0,3.0,3.0,3.0,3.0,3.0,]),
                 ])
+    }
+    
+    private func drawLineChartWithPointsCoordinates() -> AAChartModel {
+        return AAChartModel()
+            .chartType(.line)
+            .title("Draw Line Chart With Points Coordinates")
+            .markerSymbolStyle(.borderBlank)
+            .markerRadius(7)
+            .series([
+                AASeriesElement()
+                    .name("Blue Dot")
+                    .data([[10,20],[15,30] ,[27,52],[43,78]])
+            ])
     }
 }

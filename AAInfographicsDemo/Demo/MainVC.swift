@@ -46,7 +46,7 @@ class MainVC: UIViewController {
         sectionTitleArr = [
                   "Basic Type Chart --- 基础类型图表",
                   "Special Type Chart --- 特殊类型图表",
-                  "Some Custom Style---一些自定义风格样式图表",
+                  "Custom Style Chart---一些自定义风格样式图表",
                   "Mixed Chart --- 混合图形",
                   "Only Refresh data ---单纯刷新数据",
                   "Double Chart View---同时显示多个图表",
@@ -112,7 +112,8 @@ class MainVC: UIViewController {
              "Triangle Radar Chart---三角形雷达图",
              "Quadrangle Radar Chart---四角形雷达图",
              "Pentagon Radar Chart---五角形雷达图",
-             "Hexagon Radar Chart----六角形雷达图"
+             "Hexagon Radar Chart----六角形雷达图",
+             "Draw Line Chart With Points Coordinates----通过点坐标来绘制折线图"
             ],
             /*Mixed Chart---混合图*/
             [
