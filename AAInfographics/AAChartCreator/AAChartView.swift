@@ -159,12 +159,7 @@ public class AAChartView: WKWebView {
     private func configureTheJavaScriptStringWithOptions(_ aaOptions: AAOptions) {
         var modelJsonStr = aaOptions.toJSON()!
         modelJsonStr = modelJsonStr.replacingOccurrences(of: "\n", with: "") as String
-        
-        let jsString = NSString.localizedStringWithFormat("loadTheHighChartView('%@','%f','%f');",
-                                                          modelJsonStr,
-                                                          contentWidth ?? 0,
-                                                          contentHeight ?? 0)
-        optionsJson = jsString as String;
+        optionsJson = "loadTheHighChartView('\(modelJsonStr)','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
     }
 }
 
