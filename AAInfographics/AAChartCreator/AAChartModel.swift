@@ -498,8 +498,8 @@ public class AAChartModel: AAObject {
         animationType          = .easeInQuad
         animationDuration      = 800 //以毫秒为单位
         chartType              = .line
-        stacking               = Optional.none
-        zoomType               = Optional.none //默认禁用手势缩放
+        stacking               = AAChartStackingType.none
+        zoomType               = AAChartZoomType.none //默认禁用手势缩放
         colorsTheme            = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
         tooltipEnabled         = true
         tooltipCrosshairs      = true
