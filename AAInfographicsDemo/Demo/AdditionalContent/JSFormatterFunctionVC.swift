@@ -470,8 +470,7 @@ function () {
                     .data([3,0,4, 4,3,])
                     .stack("female")
                     ,
-                ]
-        )
+                ])
         
         /*Custom Tooltip Style --- 自定义图表浮动提示框样式及内容*/
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)

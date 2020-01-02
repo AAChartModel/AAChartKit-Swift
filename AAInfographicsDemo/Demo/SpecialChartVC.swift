@@ -315,8 +315,7 @@ class SpecialChartVC: UIViewController {
                         [180.3, 83.2], [180.3, 83.2]
                         ])
                 
-                ]
-        )
+                ])
     }
     
     private func configureArearangeChart() -> AAChartModel {
@@ -708,8 +707,7 @@ class SpecialChartVC: UIViewController {
                         [14199012, 1.3,  2.5],
                         [14199876, 1.6,  4.2]
                         ])
-                ]
-        )
+                ])
     }
     
     private func configureAreasplinerangeChart() -> AAChartModel {
@@ -793,8 +791,7 @@ class SpecialChartVC: UIViewController {
                         [-5.2, 10.4],
                         [-13.5, 9.8]
                         ])
-                ]
-        )
+                ])
     }
     
     private func configureStepLineChart() -> AAChartModel {
@@ -911,8 +908,7 @@ class SpecialChartVC: UIViewController {
                             "isSum": true,
                             "color": "#04d69f"
                         ]])
-                    ]
-        )
+                    ])
     }
     
     private func configurePyramidChart() -> AAChartModel {

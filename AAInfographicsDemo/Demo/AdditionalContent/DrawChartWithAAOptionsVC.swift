@@ -160,8 +160,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         ["C#"    , 888],
                         ["C++"   , 66],
                     ])
-                ]
-        )
+                ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.chart?.plotBackgroundImage("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg")
@@ -184,8 +183,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .color(AAGradientColor.sanguine)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                 
-                ]
-        )
+                ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，
@@ -208,8 +206,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .data([1003.9, 1004.2, 1005.7, 1008.5, 1011.9, 1015.2,])
                     .color(AAGradientColor.sanguine)
                 
-                ]
-        )
+                ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.yAxis?.min(1000)
@@ -320,8 +317,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
                 ,
                 
-                ]
-        )
+                ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
@@ -348,8 +344,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .color(AAGradientColor.coastalBreeze)
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                 
-                ]
-        )
+                ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         //    * 关于 `pointPadding`
@@ -664,8 +659,7 @@ function () {
                         [12489984, 13.6]
                     ])
                 
-                ]
-        )
+                ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         let aaCrosshair = AACrosshair()
@@ -708,8 +702,7 @@ function () {
                     .color(AAGradientColor.mysticMauve)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                 ,
-                ]
-        )
+                ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)
@@ -747,8 +740,7 @@ function () {
                     .color(AAGradientColor.deepSea)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                 ,
-                ]
-        )
+                ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)

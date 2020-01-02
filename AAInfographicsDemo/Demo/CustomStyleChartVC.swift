@@ -211,8 +211,7 @@ class CustomStyleChartVC: UIViewController {
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9,
                            9.6, 7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3,])
                     .colorByPoint(true)
-                ]
-        )
+                ])
     }
     
     private func configureDiscontinuousDataChart() -> AAChartModel {
@@ -297,8 +296,7 @@ class CustomStyleChartVC: UIViewController {
                     .name("2021")
                     .data([111,83,187,163,151,191,173,157,143,131,121,113,97,93])
                     .color(AAGradientColor.sanguine),
-                ]
-        )
+                ])
     }
     
     private func configrueWithMinusNumberChart() -> AAChartModel {
@@ -328,8 +326,7 @@ class CustomStyleChartVC: UIViewController {
                 AASeriesElement()
                     .name("2020")
                     .data([0, (-4.5), (-0.9), 5.5, (-1.9), 1.3, (-2.8), 0, (-1.7), 0, 3, 0, ]),
-                ]
-        )
+                ])
     }
     
     private func configureStepLineChart() -> AAChartModel {
@@ -354,8 +351,7 @@ class CustomStyleChartVC: UIViewController {
                     .name("Tokyo")
                     .data([120, 132, 101, 134, 90, 230, 210])
                     .step("left"),//折线连接点靠左边👈
-                ]
-        )
+                ])
     }
     
     private func configureStepAreaChart() -> AAChartModel {
@@ -383,8 +379,7 @@ class CustomStyleChartVC: UIViewController {
                     .data([120, 132, 101, 134, 90, 230, 210])
                     .step((true))//设置折线样式为直方折线,连接点位置默认靠左👈
                 ,
-                ]
-        )
+                ])
     }
     
     private func configureNightingaleRoseChart() -> AAChartModel {
@@ -403,8 +398,7 @@ class CustomStyleChartVC: UIViewController {
                 AASeriesElement()
                     .name("东京")
                     .data([7.0, 6.9, 9.5, 9.6, 13.9, 14.5, 18.3, 18.2, 21.5, 25.2, 26.5, 23.3]),
-                ]
-        )
+                ])
     }
     
     private func configureCustomSingleDataLabelChart() -> AAChartModel {
@@ -421,8 +415,8 @@ class CustomStyleChartVC: UIViewController {
                         .fontWeight(.bold)
                         .color(AAColor.red)
                         .textOutline("1px 1px contrast")
-                )
-        )
+            ))
+            .toDic()!
         
         return AAChartModel()
             .title("单独自定义某个指定数据元素的DataLabel")
@@ -431,9 +425,8 @@ class CustomStyleChartVC: UIViewController {
             .series([
                 AASeriesElement()
                     .name("货币")
-                    .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, dataElement.toDic()!, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67]),
-                ]
-        )
+                    .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, dataElement, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67]),
+                ])
     }
     
     private func configureChartWithShadowStyle() -> AAChartModel {
@@ -463,15 +456,14 @@ class CustomStyleChartVC: UIViewController {
     }
     
     private func configureColorfulGradientAreaChart() -> AAChartModel {
-        let stopsArr = [
-            [0.0, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.5, "#FF14d4"],
-            [1.0, "#0bf8f5"]
-        ]
-        
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toRight,
-            stops: stopsArr)
+            stops: [
+                [0.0, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
+                [0.5, "#FF14d4"],
+                [1.0, "#0bf8f5"]
+            ]
+        )
         
         return AAChartModel()
             .chartType(.areaspline)
@@ -489,22 +481,20 @@ class CustomStyleChartVC: UIViewController {
                     .name("Tokyo Hot")
                     .color(gradientColorDic1)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-                ]
-        )
+                ])
     }
     
     private func configureColorfulGradientSplineChart() -> AAChartModel {
-        let stopsArr = [
-            [0.00, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.25, "#FF14d4"],
-            [0.50, "#0bf8f5"],
-            [0.75, "#F33c52"],
-            [1.00, "#1904dd"],
-        ]
-        
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toRight,
-            stops: stopsArr)
+            stops: [
+                [0.00, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
+                [0.25, "#FF14d4"],
+                [0.50, "#0bf8f5"],
+                [0.75, "#F33c52"],
+                [1.00, "#1904dd"],
+            ]
+        )
         
         return AAChartModel()
             .chartType(.spline)
@@ -522,8 +512,7 @@ class CustomStyleChartVC: UIViewController {
                     .lineWidth(13)
                     .color(gradientColorDic1)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-                ]
-        )
+                ])
     }
     
     private func configureGradientColorAreasplineChart() -> AAChartModel {
@@ -552,33 +541,31 @@ class CustomStyleChartVC: UIViewController {
                     .color(AAColor.rgbaColor(220, 20, 60, 1))//猩红色, alpha 透明度 1
                     .fillColor(gradientColorDic1)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-                ]
-        )
+                ])
     }
     
     private func configureSpecialStyleMarkerOfSingleDataElementChart() -> AAChartModel {
-        let stopsArr = [
-            [0.00, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.25, "#FF14d4"],
-            [0.50, "#0bf8f5"],
-            [0.75, "#F33c52"],
-            [1.00, "#1904dd"],
-        ]
-        
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toRight,
-            stops: stopsArr)
+            stops: [
+                [0.00, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
+                [0.25, "#FF14d4"],
+                [0.50, "#0bf8f5"],
+                [0.75, "#F33c52"],
+                [1.00, "#1904dd"],
+            ]
+        )
         
         let singleSpecialData = AADataElement()
-            .marker(
-                AAMarker()
+            .marker(AAMarker()
                 .radius(8)//曲线连接点半径
                 .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
                 .fillColor("#FFFFFF")//点的填充色(用来设置折线连接点的填充色)
                 .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                 .lineColor("#FF0000")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
-            )
+        )
             .y(26.5)
+            .toDic()!
         
         return AAChartModel()
             .chartType(.spline)
@@ -594,15 +581,16 @@ class CustomStyleChartVC: UIViewController {
                 AASeriesElement()
                     .name("Virtual Data")
                     .lineWidth(6)
-                    .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData.toDic()!, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     .color(gradientColorDic1)
-                ])
+            ])
     }
     
     private func configureSpecialStyleColumnOfSingleDataElementChart() -> AAChartModel {
         let singleSpecialData = AADataElement()
             .color(AAGradientColor.freshPapaya)
             .y(49.5)
+            .toDic()!
         
         return AAChartModel()
             .chartType(.column)
@@ -617,9 +605,9 @@ class CustomStyleChartVC: UIViewController {
                 AASeriesElement()
                     .name("Virtual Data")
                     .lineWidth(6)
-                    .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData.toDic()!, 5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData, 5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
                     .color(AAGradientColor.oceanBlue)
-                ])
+            ])
     }
     
     private func configureAreaChartThreshold() -> AAChartModel {
@@ -690,7 +678,7 @@ class CustomStyleChartVC: UIViewController {
             .stacking(.normal)
             .markerRadius(8)
             .dataLabelsEnabled(false)
-            .series([element1,element2,element3,element4])
+            .series([element1, element2, element3, element4])
     }
     
     //refer to online sample https://jshare.com.cn/github/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-marker-symbol/
