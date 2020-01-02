@@ -162,12 +162,10 @@ class OnlyRefreshChartDataVC: UIViewController {
         let chartSeriesArr = [
             AASeriesElement()
                 .name("2017")
-                .data(randomNumArrA as! [Any])
-                .toDic()!,
+                .data(randomNumArrA as! [Any]),
             AASeriesElement()
                 .name("2018")
                 .data(randomNumArrB as! [Any])
-                .toDic()!
         ]
         
         aaChartView?.aa_onlyRefreshTheChartDataWithChartModelSeries(chartSeriesArr)

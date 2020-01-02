@@ -175,8 +175,16 @@ extension AAChartView {
     /// Function of only refresh the chart data after the chart has been rendered
     ///
     /// - Parameter chartModel: chart model series  array
-    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [[String: AnyObject]]) {
+    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [AASeriesElement]) {
         aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartModelSeries)
+    }
+    
+    /// Function of only refresh the chart data after the chart has been rendered
+    ///
+    /// - Parameter chartModel: chart model series  array
+    /// - Parameter animation: enable animation effect or not
+    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [AASeriesElement], animation: Bool) {
+        aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartModelSeries, animation: animation)
     }
     
     ///  Function of refreshing whole chart view content after the chart has been rendered
@@ -211,12 +219,25 @@ extension AAChartView {
     /// Function of only refresh the chart data after the chart has been rendered
     ///
     /// - Parameter chartModelSeries: chart model series  array
-    public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartModelSeries: [[String: AnyObject]]) {
-        var str = getJSONStringFromArray(array: chartModelSeries)
-        str = str.replacingOccurrences(of: "\n", with: "") as String
-        let jsStr = "onlyRefreshTheChartDataWithSeries('\(str)');"
-        evaluateJavaScriptWithFunctionNameString(jsStr)
+    public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartModelSeries: [AASeriesElement]) {
+      aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartModelSeries, animation: true)
     }
+    
+    /// Function of only refresh the chart data after the chart has been rendered
+    ///
+    /// - Parameter chartModelSeries: chart model series  array
+    /// - Parameter animation: enable animation effect or not
+    public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartModelSeries: [AASeriesElement], animation: Bool) {
+        var seriesElementDicArr = [[String: AnyObject]]()
+        chartModelSeries.forEach { (aaSeriesElement) in
+            seriesElementDicArr.append(aaSeriesElement.toDic()!)
+        }
+        
+         var str = getJSONStringFromArray(array: seriesElementDicArr)
+         str = str.replacingOccurrences(of: "\n", with: "") as String
+         let jsStr = "onlyRefreshTheChartDataWithSeries('\(str)','\(animation)');"
+         evaluateJavaScriptWithFunctionNameString(jsStr)
+     }
     
     
     ///  Function of refreshing whole chart view content after the chart has been rendered
@@ -395,7 +416,7 @@ extension AAChartView {
     
      func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
         if !JSONSerialization.isValidJSONObject(dictionary) {
-            print("String object is not valid Dictionary JSON String")
+            print("❌ String object is not valid Dictionary JSON String")
             return ""
         }
         
@@ -406,7 +427,7 @@ extension AAChartView {
     
     func getJSONStringFromArray(array: [Any]) -> String {
         if !JSONSerialization.isValidJSONObject(array) {
-            print("String object is not valid Array JSON String")
+            print("❌ String object is not valid Array JSON String")
             return ""
         }
         
