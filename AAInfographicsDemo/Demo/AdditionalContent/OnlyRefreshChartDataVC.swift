@@ -113,38 +113,41 @@ class OnlyRefreshChartDataVC: UIViewController {
             
             aaChartModel?
                 .series(self.configureSeriesDataArray())
-        } else if chartType == .area
-            || chartType == .areaspline {
+        }  else if chartType == .scatter {
+            aaChartModel?
+            .markerRadius(8)
+                .markerSymbol(.circle)
+                .series(self.configureSeriesDataArray())
+        } else {
             aaChartModel?
                 .markerRadius(0)
                 .markerSymbolStyle(.innerBlank)
                 .series([
                     AASeriesElement()
                         .name("Tokyo")
+                    .lineWidth(5)
                         .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                         .step(step!)
                     ,
                     AASeriesElement()
                         .name("New York")
+                        .lineWidth(5)
                         .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
                         .step(step!)
                     ,
                     AASeriesElement()
                         .name("Tokyo")
+                        .lineWidth(5)
                         .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
                         .step(step!)
                     ,
                     AASeriesElement()
                         .name("Berlin")
+                        .lineWidth(5)
                         .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
                         .step(step!)
                     ,
                 ])
-        } else if chartType == .scatter {
-            aaChartModel?
-            .markerRadius(8)
-                .markerSymbol(.circle)
-                .series(self.configureSeriesDataArray())
         }
 
         
@@ -160,7 +163,7 @@ class OnlyRefreshChartDataVC: UIViewController {
                 .pointPadding(0.0)
             
         }
-        
+        aaOptions.tooltip?.shared(false)
         
         aaChartView?.aa_drawChartWithChartOptions(aaOptions)
             }
@@ -189,7 +192,7 @@ class OnlyRefreshChartDataVC: UIViewController {
         var y1 = 0.0
         var y2 = 0.0
         let Q = arc4random() % 38
-        for  x in 0 ..< 35 {
+        for  x in 0 ..< 40 {
             y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1 ;
             y2 = cos(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 3.0 * 0.01 - 1;
             randomNumArrA.add(y1)
