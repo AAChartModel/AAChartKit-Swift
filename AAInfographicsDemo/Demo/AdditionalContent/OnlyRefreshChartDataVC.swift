@@ -58,7 +58,7 @@ class OnlyRefreshChartDataVC: UIViewController {
         setUpRefreshingChartTimer()
     }
 
-   private func setUpTheAAChartView() {
+    private func setUpTheAAChartView() {
         let chartViewWidth  = view.frame.size.width
         let chartViewHeight = view.frame.size.height - 60
         
@@ -72,75 +72,105 @@ class OnlyRefreshChartDataVC: UIViewController {
         aaChartView?.contentHeight = chartViewHeight - 20
         view.addSubview(aaChartView!)
         
+        
+        let gradientColorDic1 = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            startColor: "#00BFFF",
+            endColor: "#00FA9A"//颜色字符串设置支持十六进制类型和 rgba 类型
+        )
+        
+        let gradientColorDic2 = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            startColor: "rgba(138,43,226,1)",
+            endColor: "rgba(30,144,255,1)"//颜色字符串设置支持十六进制类型和 rgba 类型
+        )
+        
         aaChartModel = AAChartModel()
             .chartType(chartType!)//图形类型
-            .title("CYBERPUNK")//图形标题
-            .subtitle("2077/08/08")//图形副标题
+            .title("")//图形标题
             .dataLabelsEnabled(false)//是否显示数字
-            .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
-            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .colorsTheme([
+                gradientColorDic1,
+                AAGradientColor.sanguine,
+                gradientColorDic2,
+                AAGradientColor.wroughtIron
+            ])
+            .legendEnabled(true)
+            .yAxisVisible(false)
+            .xAxisVisible(false)
             .stacking(.normal)
-        
-        if chartType == .area
-            || chartType == .areaspline {
-            let gradientColorDic = AAGradientColor.linearGradient(
-                direction: .toBottom,
-                startColor: "#00BFFF",
-                endColor: "#00FA9A"//颜色字符串设置支持十六进制类型和 rgba 类型
-            )
+
+
+        if aaChartModel?.chartType == .column
+            || aaChartModel?.chartType == .bar {
+            if aaChartModel?.chartType == .column {
+                aaChartModel?
+                    .borderRadius(10)
+            } else {
+                aaChartModel?
+                    .borderRadius(50)
+            }
             
             aaChartModel?
+                .series(self.configureSeriesDataArray())
+        } else if chartType == .area
+            || chartType == .areaspline {
+            aaChartModel?
                 .markerRadius(0)
+                .markerSymbolStyle(.innerBlank)
                 .series([
                     AASeriesElement()
                         .name("Tokyo")
                         .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                        .color(gradientColorDic)
                         .step(step!)
-                        ,
+                    ,
                     AASeriesElement()
                         .name("New York")
                         .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
                         .step(step!)
-                        ,
-                    ])
-            aaChartModel?.markerSymbolStyle(.innerBlank)
-        } else {
-            let gradientColorDic = AAGradientColor.linearGradient(
-                direction: .toBottom,
-                startColor: "rgba(138,43,226,1)",
-                endColor: "rgba(30,144,255,1)"//颜色字符串设置支持十六进制类型和 rgba 类型
-            )
-            
-            aaChartModel?
-                .series([
+                    ,
                     AASeriesElement()
                         .name("Tokyo")
                         .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                        .color(gradientColorDic)
                         .step(step!)
-                        ,
+                    ,
                     AASeriesElement()
                         .name("Berlin")
                         .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
                         .step(step!)
-                        ,
-                    ])
-            if step! != true {
-                aaChartModel?.markerSymbolStyle(.borderBlank)
-                .markerRadius(7)
-            }
+                    ,
+                ])
+        } else if chartType == .scatter {
+            aaChartModel?
+            .markerRadius(8)
+                .markerSymbol(.circle)
+                .series(self.configureSeriesDataArray())
+        }
+
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel!)
+        
+        if aaChartModel?.chartType == .column {
+            aaOptions.plotOptions?.column?
+                .groupPadding(0.0)
+//                .pointPadding(0.0)
+        } else if aaChartModel?.chartType == .bar {
+            aaOptions.plotOptions?.bar?
+                .groupPadding(0.0)
+                .pointPadding(0.0)
+            
         }
         
-        aaChartView?.aa_drawChartWithChartModel(aaChartModel!)
-    }
+        
+        aaChartView?.aa_drawChartWithChartOptions(aaOptions)
+            }
     
    private func setUpRefreshingChartTimer() {
         //延时3秒执行
         let time: TimeInterval = 2.0
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             print("1 秒后输出")
-            self.timer = Timer.scheduledTimer(timeInterval: 1,
+            self.timer = Timer.scheduledTimer(timeInterval: 0.8,
                                               target: self,
                                               selector: #selector(self.onlyRefreshTheChartData),
                                               userInfo: nil,
@@ -150,13 +180,20 @@ class OnlyRefreshChartDataVC: UIViewController {
     }
     
     @objc func onlyRefreshTheChartData() {
+        aaChartView?.aa_onlyRefreshTheChartDataWithChartOptionsSeries(self.configureSeriesDataArray())
+    }
+    
+    private func configureSeriesDataArray() -> [AASeriesElement] {
         let randomNumArrA = NSMutableArray()
         let randomNumArrB = NSMutableArray()
-        for  _ in 0..<12 {
-            let randomA = arc4random()%20
-            randomNumArrA.add(randomA)
-            let randomB = arc4random()%15
-            randomNumArrB.add(randomB)
+        var y1 = 0.0
+        var y2 = 0.0
+        let Q = arc4random() % 38
+        for  x in 0 ..< 35 {
+            y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1 ;
+            y2 = cos(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 3.0 * 0.01 - 1;
+            randomNumArrA.add(y1)
+            randomNumArrB.add(y2)
         }
         
         let chartSeriesArr = [
@@ -165,10 +202,15 @@ class OnlyRefreshChartDataVC: UIViewController {
                 .data(randomNumArrA as! [Any]),
             AASeriesElement()
                 .name("2018")
+                .data(randomNumArrB as! [Any]),
+            AASeriesElement()
+                .name("2019")
+                .data(randomNumArrA as! [Any]),
+            AASeriesElement()
+                .name("2018")
                 .data(randomNumArrB as! [Any])
         ]
-        
-        aaChartView?.aa_onlyRefreshTheChartDataWithChartModelSeries(chartSeriesArr)
+        return chartSeriesArr
     }
     
 }

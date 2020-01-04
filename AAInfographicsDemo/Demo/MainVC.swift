@@ -139,6 +139,8 @@ class MainVC: UIViewController {
                "Step Line Chart--- 直方折线图",
                "Line Chart---折线图",
                "Spline Chart---曲线图",
+               "Scatter Chart---曲线图",
+
             ],
             /*同时显示多个图表*/
             [
@@ -258,7 +260,7 @@ class MainVC: UIViewController {
                 "PieMixeLineMixedColumn",
                 "LineChartWithShadow"
             ],
-            
+            /*单纯刷新数据*/
             [
                 AAChartType.column,
                 AAChartType.bar,
@@ -268,6 +270,7 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.line,
                 AAChartType.spline,
+                AAChartType.scatter
                 ],
             [//Empty Array,just for holding place
             ],
