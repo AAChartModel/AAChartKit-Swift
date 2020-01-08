@@ -42,8 +42,11 @@ public class AAChart: AAObject {
     public var polar: Bool?
     public var animation: AAAnimation?
     public var inverted: Bool?
-    public var marginLeft: Float?
-    public var marginRight: Float?
+    public var margin: [Float]? //图表外边缘和绘图区域之间的边距。 数组中的数字分别表示顶部，右侧，底部和左侧 ([👆,👉,👇,👈])。 也可以使用 marginTop，marginRight，marginBottom 和 marginLeft 来设置某一个方向的边距。
+    public var marginTop: Float?//👆
+    public var marginRight: Float? //👉
+    public var marginBottom: Float? //👇
+    public var marginLeft: Float? //👈
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AAChart {
@@ -100,14 +103,32 @@ public class AAChart: AAObject {
     }
     
     @discardableResult
-    public func marginLeft(_ prop: Float?) -> AAChart {
-        marginLeft = prop
+    public func margin(_ prop: [Float]?) -> AAChart {
+        margin = prop
+        return self
+    }
+    
+    @discardableResult
+    public func marginTop(_ prop: Float?) -> AAChart {
+        marginTop = prop
         return self
     }
     
     @discardableResult
     public func marginRight(_ prop: Float?) -> AAChart {
         marginRight = prop
+        return self
+    }
+    
+    @discardableResult
+    public func marginBottom(_ prop: Float?) -> AAChart {
+        marginBottom = prop
+        return self
+    }
+    
+    @discardableResult
+    public func marginLeft(_ prop: Float?) -> AAChart {
+        marginLeft = prop
         return self
     }
     
