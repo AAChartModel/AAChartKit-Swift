@@ -21,7 +21,6 @@
                 if (aaOptions.xAxisArray) {
                     aaOptions.xAxis = aaOptions.xAxisArray
                 }
-                
                 if (aaOptions.yAxisArray) {
                     aaOptions.yAxis = aaOptions.yAxisArray
                 }
@@ -71,14 +70,17 @@
         }
         
         function configureChartTouchEvent(aaPlotOptions) {
-            var mouseOverFunc = function(){
+            var mouseOverFunc = function() {
                 //console.log(this)
                 var message = {
                     name: this.series.name,
                     y :this.y,
                     x: this.x,
-                    category:this.category,
-                    offset:{plotX:this.plotX,plotY:this.plotY},
+                    category: this.category,
+                    offset: {
+                        plotX: this.plotX,
+                        plotY: this.plotY
+                    },
                     index: this.index,
                 };
             window.webkit.messageHandlers.mouseover.postMessage(message);
@@ -122,7 +124,7 @@
                 seriesElement.setData(receivedSeriesElementData, false);
             }
             
-            var animationBool = (animation == "true") ? true : false;
+            var animationBool = (animation == "true") ? true:false;
             aaGlobalChart.redraw(animationBool);
         }
         
