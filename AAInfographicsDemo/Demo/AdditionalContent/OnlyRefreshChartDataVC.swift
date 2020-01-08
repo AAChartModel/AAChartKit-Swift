@@ -38,6 +38,7 @@ class OnlyRefreshChartDataVC: UIViewController {
     private var aaChartModel: AAChartModel?
     private var aaChartView: AAChartView?
     private var timer: Timer?
+    private var updateTimes: Int = 0
     
     private var myBasicValue:Int?
     
@@ -184,6 +185,8 @@ class OnlyRefreshChartDataVC: UIViewController {
     
     @objc func onlyRefreshTheChartData() {
         aaChartView?.aa_onlyRefreshTheChartDataWithChartOptionsSeries(self.configureSeriesDataArray())
+        updateTimes += 1
+        print("⏲定时器正在刷新, 刷新次数为: \(updateTimes) ")
     }
     
     private func configureSeriesDataArray() -> [AASeriesElement] {
