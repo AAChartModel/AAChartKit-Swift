@@ -38,8 +38,8 @@ public class AASeries: AAObject {
     public var stacking: String?
     public var animation: AAAnimation?
     public var keys: [String]?
-    public var colorByPoint: Bool? //决定了图表是否给每个数据列或每个点分配一个颜色，默认值是 false， 即默认是给每个数据类分配颜色，
-    public var connectNulls: Bool? //设置折线是否断点重连
+    public var colorByPoint: Bool?
+    public var connectNulls: Bool? //Whether reconnects the broken line of the chart
     public var events: [String: Any]?
     public var shadow: AAShadow?
     

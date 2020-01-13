@@ -33,31 +33,31 @@
 import UIKit
 
 public class AAXAxis: AAObject {
-    public var plotBands: [AAPlotBandsElement]?
+ public var plotBands: [AAPlotBandsElement]?
     public var plotLines: [AAPlotLinesElement]?
     public var categories: [String]?
     public var reversed: Bool?
-    public var lineWidth: Float?  //x轴轴线宽度
-    public var lineColor: String? //x轴轴线线颜色
+    public var lineWidth: Float? // x-axis line width
+    public var lineColor: String? // x-axis line color
     public var linkedTo: Int?
-    public var max: Float?  //x轴最大值
-    public var min: Float? //x轴最小值（设置为0就不会有负数）
-    public var tickColor: String? //x轴轴线下方刻度线颜色
-    public var gridLineWidth: Float?  //x轴网格线宽度
-    public var gridLineColor: String? //x轴网格线颜色
-    public var gridLineDashStyle: String? //x轴网格线样式
-    public var offset: Float? //x轴垂直偏移
-    public var labels: AALabels? //用于设置 x 轴文字相关的
-    public var visible: Bool? //用于设置 x 轴以及 x 轴文字是否显示
-    public var opposite: Bool? //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。 默认是：false.
+    public var max: Float? // x-axis maximum
+    public var min: Float? // x-axis minimum  (set to 0, there will be no negative numbers)
+    public var tickColor: String? // Color of tick mark below x axis
+    public var gridLineWidth: Float? // x-axis grid line width
+    public var gridLineColor: String? // x-axis grid line color
+    public var gridLineDashStyle: String? // x-axis grid line style
+    public var offset: Float? // x-axis vertical offset
+    public var labels: AALabels? // Used to set the x-axis text related
+    public var visible: Bool? // Used to set whether the x-axis and x-axis text are displayed
+    public var opposite: Bool? // Whether to display the coordinate axis on the opposite surface. By default, the x axis is displayed below the chart, the y axis is on the left, the coordinate axis is displayed on the opposite surface, and the x axis is displayed on the top. The axis is displayed on the right (that is, the coordinate axis is displayed on the opposite side). This configuration is generally used for multi-axis display, and in Highstock, the y-axis is displayed on the opposite side by default. The default is: false.
 
-    public var startOnTick: Bool? //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. 默认是：false.
-    public var tickInterval: Int? //x轴刻度点间隔数(设置每隔几个点显示一个 X轴的内容:
-    public var crosshair: AACrosshair?  //准星线样式设置
-    public var tickmarkPlacement: String? //本参数只对分类轴有效。 当值为 on 时刻度线将在分类上方显示；当值为 between 时，刻度线将在两个分类中间显示。当 tickInterval 为 1 时，默认是 between，其他情况默认是 on。 默认是：null.
-    public var tickWidth: Float? //坐标轴刻度线的宽度，设置为 0 时则不显示刻度线
-    public var tickLength: Float?//坐标轴刻度线的长度。 默认是：10.
-    public var tickPosition: String? //刻度线相对于轴线的位置，可用的值有 inside 和 outside，分别表示在轴线的内部和外部。 默认是：outside.
+    public var startOnTick: Bool? // Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. The default is false.
+    public var tickInterval: Int? // Number of ticks on the x axis (set the X axis content every few points:
+    public var crosshair: AACrosshair? // Focus line style settings
+    public var tickmarkPlacement: String? // This parameter is only valid for the classification axis. When the value is on, the tick mark will be displayed above the classification; when the value is between, the tick mark will be displayed between the two classifications. When tickInterval is 1, the default is between, otherwise it is on. The default is: null.
+    public var tickWidth: Float? // The width of the axis tick marks. When set to 0, tick marks are not displayed.
+    public var tickLength: Float? /// The length of the axis tick marks. The default is: 10.
+    public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
     
     @discardableResult
     public func plotBands(_ prop: [AAPlotBandsElement]?) -> AAXAxis {

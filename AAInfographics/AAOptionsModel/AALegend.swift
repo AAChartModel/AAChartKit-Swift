@@ -33,14 +33,14 @@
 import UIKit
 
 public class AALegend: AAObject {
-    public var layout: String? //图例数据项的布局。布局类型： "horizontal" 或 "vertical" 即水平布局和垂直布局 默认是：horizontal.
-    public var align: String? //设定图例在图表区中的水平对齐方式，合法值有left，center 和 right。
-    public var verticalAlign: String? //设定图例在图表区中的垂直对齐方式，合法值有 top，middle 和 bottom。垂直位置可以通过 y 选项做进一步设定。
+    public var layout: String? //The layout of the legend data items. Layout type: "horizontal" or "vertical" ie horizontal and vertical layout The default is: "horizontal".
+    public var align: String? //Set the horizontal alignment of the legend in the chart area. Legal values are "left", "center", and "right".  The default is: "center".
+    public var verticalAlign: String? //Set the vertical alignment of the legend in the chart area. Legal values are "top", "middle", and "bottom". The vertical position can be further set by the y option.The default is: "bottom".
     public var enabled: Bool?
     public var borderColor: String?
     public var borderWidth: Float?
-    public var itemMarginTop: Float? //图例的每一项的顶部外边距，单位px。 默认是：0.
-    public var itemMarginBottom: Float?
+    public var itemMarginTop: Float? //The top margin of each item of the legend, in px. The default is: 0.
+    public var itemMarginBottom: Float?//The bottom margin of each item of the legend, in px. The default is: 0.
     public var itemStyle: AAItemStyle?
     public var symbolHeight: Float?
     public var symbolPadding: Float?

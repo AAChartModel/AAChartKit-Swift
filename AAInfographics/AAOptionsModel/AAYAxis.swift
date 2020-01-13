@@ -36,30 +36,30 @@ public class AAYAxis: AAObject {
     public var title: AATitle?
     public var plotBands: [AAPlotBandsElement]?
     public var plotLines: [AAPlotLinesElement]?
-    public var categories:[String]?
+    public var categories: [String]?
     public var reversed: Bool?
-    public var gridLineWidth: Float? // y 轴网格线宽度
-    public var gridLineColor: String?  // y 轴网格线颜色
-    public var gridLineDashStyle: AAChartLineDashStyleType? //网格线线条样式，所有可用的线条样式参考：Highcharts线条样式
-    public var alternateGridColor: String?  //backcolor of every other grid line area
-    public var gridLineInterpolation: String? //Polar charts only. Whether the grid lines should draw as a polygon with straight lines between categories, or as circles. Can be either circle or polygon. 默认是：null.
-    public var labels: AALabels? //用于设置 y 轴文字相关的
-    public var lineWidth: Float?  // y 轴线宽度
-    public var lineColor: String? // y 轴线颜色
-    public var offset: Float? // y 轴线水平偏移
-    public var allowDecimals: Bool?  //y轴是否允许显示小数
-    public var max: Float?  //y轴最大值
-    public var min: Float?  //y轴最小值（设置为0就不会有负数）
-    //private var minPadding:   //Padding of the min value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the lowest data value to appear on the edge of the plot area. 默认是：0.05.
-    public var tickPositions: [Any]? //自定义Y轴坐标（如：[0, 25, 50, 75 , 100]）
-    public var visible: Bool?  //y轴是否允许显示
-    public var opposite: Bool? //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。 默认是：false.
+    public var gridLineWidth: Float? // y-axis grid line width
+    public var gridLineColor: String? // y-axis grid line color
+    public var gridLineDashStyle: AAChartLineDashStyleType? // Grid line line style, all available line style references: Highcharts line style
+    public var alternateGridColor: String? // backcolor of every other grid line area
+    public var gridLineInterpolation: String? // Polar charts only. Whether the grid lines should draw as a polygon with straight lines between categories, or as circles. Can be either circle or polygon. The default is: null.
+    public var labels: AALabels? // Used to set the y-axis text related
+    public var lineWidth: Float? // y-axis width
+    public var lineColor: String? // y--axis line color
+    public var offset: Float? // y-axis horizontal offset
+    public var allowDecimals: Bool? // Does the y-axis allow decimals to be displayed?
+    public var max: Float? // y-axis maximum
+    public var min: Float? // y-axis minimum  (set to 0, there will be no negative numbers)
+    // private var minPadding: // Padding of the min value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the lowest data value to appear on the edge of the plot area. The default is: 0.05.
+    public var tickPositions: [Any]? // Custom Y-axis coordinates (eg: [0, 25, 50, 75, 100])
+    public var visible: Bool? // Whether the y-axis is allowed to display
+    public var opposite: Bool? // Whether to display the coordinate axis on the opposite surface. By default, the x axis is displayed below the chart, the y axis is on the left, the coordinate axis is displayed on the opposite surface, and the x axis is displayed on the top. The axis is displayed on the right (that is, the coordinate axis is displayed on the opposite side). This configuration is generally used for multi-axis display, and in Highstock, the y-axis is displayed on the opposite side by default. The default is: false.
     public var tickInterval: Int?
-    public var crosshair: AACrosshair?  //准星线样式设置
+    public var crosshair: AACrosshair? // Crosshair (focus line) style settings
     public var stackLabels: [String: Any]?
-    public var tickWidth: Float? //坐标轴刻度线的宽度，设置为 0 时则不显示刻度线
-    public var tickLength: Float? //坐标轴刻度线的长度。 默认是：10.
-    public var tickPosition: String? //刻度线相对于轴线的位置，可用的值有 inside 和 outside，分别表示在轴线的内部和外部。 默认是：outside.
+    public var tickWidth: Float? // The width of the axis tick marks. When set to 0, tick marks are not displayed.
+    public var tickLength: Float? // The length of the axis tick marks. The default is: 10.
+    public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
     
     @discardableResult
     public func title(_ prop:AATitle?) -> AAYAxis {

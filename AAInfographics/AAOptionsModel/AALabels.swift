@@ -33,21 +33,21 @@
 import UIKit
 
 public class AALabels: AAObject {
-    public var align :String?//轴标签的对齐方式，可用的值有 "left"、"center" 及 "right"。默认值是根据坐标轴的位置（在图表中的位置）即标签的旋转角度进行智能判断的。 默认是：center.
-    public var autoRotation: AnyObject? //只针对水平轴有效，允许在防止轴标签重叠时自动旋转轴标签的角度。当空间足够时，轴标签不会被旋转。当图表变小时（主要是宽度变小） ，轴标签开始旋转对应的角度，然后会依次删除间隔的轴标签并尝试旋转数组中的角度。可以通过将此参数设置为 false 来关闭轴标签旋转（这将导致标签自动换行）。 默认是：[-45].
-    public var autoRotationLimit: Float?//当每个分类的宽度比该参数的值大很多（像素）时，轴标签将不会被自动旋转，而是以换行的形式展示轴标签。 当轴标签包含多个短词时换行展示轴标签可以使得轴标签有足够的空间，所以设置合理的自动旋转下限是非常有意义的。 默认是：80.
-    public var distance: Float?//只针对极地图有效，定义周标签与绘图区边缘的距离。 默认是：15.
-    public var enabled: Bool?//是否显示坐标轴标签 默认是：true.
-    public var format: String?//坐标轴格式化字符串。 默认是：{value}.
-    public var formatter: String?//坐标轴格式化字符串。 默认是：{value}.
-    public var padding: Float?//轴标签的内间距，作用是保证轴标签之间有空隙。 默认是：5.
-    public var rotation: Float?//轴标签的旋转角度 默认是：0.
-    public var staggerLines: Int?//只针对水平轴有效，定义轴标签显示行数。
-    public var step: Int?//显示 n 的倍数标签，例如设置为 2 则表示标签间隔一个轴标签显示。默认情况下，为了避免轴标签被覆盖，该参数会根据情况自动计算。可以通过设置此参数为 1 来阻止自动计算。
-    public var style: AAStyle?//轴标签的 CSS 样式
-    public var x: Float?//相对于坐标轴刻度线的水平偏移。 默认是：0.
-    public var y: Float?//相对于坐标轴刻度线的垂直平偏移。 默认是：null.
-    public var useHTML: Bool?//HTML渲染
+    public var align: String? // Alignment of axis labels. Available values ​​are "left", "center", and "right". The default value is intelligently judged based on the position of the coordinate axis (position in the chart), that is, the rotation angle of the label. The default is: center.
+    public var autoRotation: AnyObject? // Only valid for horizontal axis, allowing to automatically rotate the angle of the axis label when preventing axis labels from overlapping. When there is enough space, the axis labels will not be rotated. When the chart becomes smaller (mainly the width becomes smaller), the axis labels start to rotate by the corresponding angle, and then the spaced axis labels are deleted in order and try to rotate the angle in the array. You can turn off axis label rotation by setting this parameter to false (this will cause the labels to wrap automatically). The default is: [-45].
+    public var autoRotationLimit: Float? // When the width of each category is much larger than the value of this parameter (pixels), the axis labels will not be automatically rotated, but the axis labels will be displayed in a new line. When the axis label contains multiple short words, displaying the axis label in a new line can make the axis label have enough space, so it is very meaningful to set a reasonable automatic rotation lower limit. The default is: 80.
+    public var distance: Float? // Only valid for polar maps, defines the distance between the week label and the edge of the drawing area. The default is: 15.
+    public var enabled: Bool? // Whether axis labels are displayed. The default is: true.
+    public var format: String? /// Axis format string. The default is: {value}.
+    public var formatter: String? // The axis format string. The default is: {value}.
+    public var padding: Float? // The inner spacing of the axis labels, which is used to ensure that there is a gap between the axis labels. The default is: 5.
+    public var rotation: Float? // The rotation angle of the axis label The default is: 0.
+    public var staggerLines: Int? // Only valid for the horizontal axis, define the number of lines displayed on the axis label.
+    public var step: Int? // Display multiple labels of n. For example, setting to 2 means that the labels are displayed one axis label apart. By default, in order to avoid the axis labels being overwritten, this parameter is automatically calculated according to the situation. You can prevent automatic calculations by setting this parameter to 1.
+    public var style: AAStyle? // CSS style for axis labels
+    public var x: Float? // The horizontal offset from the axis axis tick marks. The default is: 0.
+    public var y: Float? // The vertical flat offset from the axis axis tick marks. The default is: null.
+    public var useHTML: Bool? // HTML rendering
     
     @discardableResult
     public func align(_ prop: String) -> AALabels {
