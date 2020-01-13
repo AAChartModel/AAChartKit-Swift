@@ -412,7 +412,7 @@ public class AAGradientColor  {
         let linearGradient = linearGradientDirectionDictionary(direction: direction)
         return [
             "linearGradient": linearGradient,
-            "stops": stops //颜色字符串设置支持十六进制类型和 rgba 类型
+            "stops": stops 
         ]
     }
     

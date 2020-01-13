@@ -38,17 +38,17 @@ public class AAOptionsConstructor {
         _ aaChartModel: AAChartModel
         ) -> AAOptions {
         let aaChart = AAChart()
-            .type(aaChartModel.chartType!) //绘图类型
-            .inverted(aaChartModel.inverted) //设置是否反转坐标轴，使X轴垂直，Y轴水平。 如果值为 true，则 x 轴默认是 倒置 的。 如果图表中出现条形图系列，则会自动反转
-            .backgroundColor(aaChartModel.backgroundColor) //设置图表的背景色(包含透明度的设置)
-            .pinchType(aaChartModel.zoomType?.rawValue) //设置手势缩放方向
-            .panning(true) //设置手势缩放后是否可平移
-            .polar(aaChartModel.polar) //是否极化图表(开启极坐标模式)
-            .marginLeft(aaChartModel.marginLeft) //图表左边距
-            .marginRight(aaChartModel.marginRight) //图表右边距
+            .type(aaChartModel.chartType!)
+            .inverted(aaChartModel.inverted)
+            .backgroundColor(aaChartModel.backgroundColor)
+            .pinchType(aaChartModel.zoomType?.rawValue) //Set gesture zoom direction
+            .panning(true) //Set whether gestures can be panned after zooming
+            .polar(aaChartModel.polar) //Whether to polarize the chart (turn on polar mode)
+            .marginLeft(aaChartModel.marginLeft)
+            .marginRight(aaChartModel.marginRight)
         
         let aaTitle = AATitle()
-            .text(aaChartModel.title) //标题文本内容
+            .text(aaChartModel.title) //Title text content
             .style(AAStyle()
                 .color(aaChartModel.titleFontColor) //Title font color
                 .fontSize(aaChartModel.titleFontSize!) //Title font size
@@ -56,8 +56,8 @@ public class AAOptionsConstructor {
         )
         
         let aaSubtitle = AASubtitle()
-            .text(aaChartModel.subtitle) //副标题内容
-            .align(aaChartModel.subtitleAlign) //图表副标题文本水平对齐方式。可选的值有 “left”，”center“和“right”。 默认是：center.
+            .text(aaChartModel.subtitle) //Subtitle text content
+            .align(aaChartModel.subtitleAlign) // The horizontal alignment of the chart subtitle text. Possible values are "left", "center", and "right". The default is: "center".
             .style(AAStyle()
                 .color(aaChartModel.subtitleFontColor) //Subtitle font color
                 .fontSize(aaChartModel.subtitleFontSize!) //Subtitle font size
@@ -65,14 +65,14 @@ public class AAOptionsConstructor {
         )
         
         let aaTooltip = AATooltip()
-            .enabled(aaChartModel.tooltipEnabled) //启用浮动提示框
-            .shared(true) //多组数据共享一个浮动提示框
-            .crosshairs(true) //启用准星线
-            .valueSuffix(aaChartModel.tooltipValueSuffix) //浮动提示框的单位名称后缀
+            .enabled(aaChartModel.tooltipEnabled)
+            .shared(true) //Multiple groups of data share the same tooltip
+            .crosshairs(true) //Enable crosshair
+            .valueSuffix(aaChartModel.tooltipValueSuffix)
         
         let aaPlotOptions = AAPlotOptions()
             .series(AASeries()
-                .stacking(aaChartModel.stacking) //设置是否百分比堆叠显示图形
+                .stacking(aaChartModel.stacking)
         )
         
         if (aaChartModel.animationType != .linear) {
@@ -87,10 +87,10 @@ public class AAOptionsConstructor {
         configurePlotOptionsDataLabels(aaPlotOptions, aaChartModel)
         
         let aaLegend = AALegend()
-            .enabled(aaChartModel.legendEnabled) //是否显示 legend
+            .enabled(aaChartModel.legendEnabled)
             .itemStyle(AAItemStyle()
                 .color(aaChartModel.axesTextColor ?? "#000000")
-        ) //默认图例的文字颜色和X轴文字颜色一样
+        ) //The default legend text color is the same as the X-axis text color
         
         let aaOptions = AAOptions()
             .chart(aaChart)
@@ -100,8 +100,8 @@ public class AAOptionsConstructor {
             .plotOptions(aaPlotOptions)
             .legend(aaLegend)
             .series(aaChartModel.series)
-            .colors(aaChartModel.colorsTheme) //设置颜色主题
-            .touchEventEnabled(aaChartModel.touchEventEnabled) //是否支持点击事件
+            .colors(aaChartModel.colorsTheme)
+            .touchEventEnabled(aaChartModel.touchEventEnabled)
         
         configureAxisContentAndStyle(aaOptions, aaChartModel)
         
@@ -114,7 +114,7 @@ public class AAOptionsConstructor {
         ) {
         let chartType = aaChartModel.chartType!
         
-        //数据点标记相关配置，只有线性图(折线图、曲线图、折线区域填充图、曲线区域填充图、散点图、折线范围填充图、曲线范围填充图、多边形图)才有数据点标记
+        //Data point markers related configuration. Only linear graphs have data point markers.
         if     chartType == .area
             || chartType == .areaspline
             || chartType == .line
@@ -124,13 +124,13 @@ public class AAOptionsConstructor {
             || chartType == .areasplinerange
             || chartType == .polygon {
             let aaMarker = AAMarker()
-                .radius(aaChartModel.markerRadius) //曲线连接点半径，默认是4
-                .symbol(aaChartModel.markerSymbol?.rawValue) //曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                .radius(aaChartModel.markerRadius) //Curve connection point radius, default is 4
+                .symbol(aaChartModel.markerSymbol?.rawValue) //Curve connection point type: "circle", "square", "diamond", "triangle", "triangle-down", the default is "circle"
             if (aaChartModel.markerSymbolStyle == .innerBlank) {
                 aaMarker
-                    .fillColor("#ffffff") //点的填充色(用来设置折线连接点的填充色)
-                    .lineWidth(2.0) //外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                    .lineColor("") //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                    .fillColor("#ffffff") //The fill color of the point (used to set the fill color of the polyline connection point)
+                    .lineWidth(2.0) //The width of the outer line (used to set the width of the outline stroke of the polyline connection point)
+                    .lineColor("") //The color of the outer edge (used to set the outline stroke color of the polyline connection point. When the value is an empty string, the color of the data point or data column is taken by default)
             } else if (aaChartModel.markerSymbolStyle == .borderBlank) {
                 aaMarker
                     .lineWidth(2.0)
@@ -211,73 +211,73 @@ public class AAOptionsConstructor {
     private static func configureAxisContentAndStyle(
         _ aaOptions: AAOptions,
         _ aaChartModel: AAChartModel
-        ) {
+    ) {
         let chartType = aaChartModel.chartType
-        //x 轴和 Y 轴的相关配置,扇形图、金字塔图、漏斗图 和 仪表、表盘图则不需要设置 X 轴和 Y 轴的相关内容
-        if (    chartType == .column
-             || chartType == .bar
-             || chartType == .area
-             || chartType == .areaspline
-             || chartType == .line
-             || chartType == .spline
-             || chartType == .scatter
-             || chartType == .bubble
-             || chartType == .columnrange
-             || chartType == .arearange
-             || chartType == .areasplinerange
-             || chartType == .boxplot
-             || chartType == .waterfall
-             || chartType == .polygon
-             || chartType == .gauge) {
+        //The related configuration of the x-axis and the Y-axis, the fan, pyramid, funnel, and meter and dial charts do not need to set the relevant content of the X-axis and Y-axis
+        if (chartType == .column
+            || chartType == .bar
+            || chartType == .area
+            || chartType == .areaspline
+            || chartType == .line
+            || chartType == .spline
+            || chartType == .scatter
+            || chartType == .bubble
+            || chartType == .columnrange
+            || chartType == .arearange
+            || chartType == .areasplinerange
+            || chartType == .boxplot
+            || chartType == .waterfall
+            || chartType == .polygon
+            || chartType == .gauge) {
             
             if chartType != .gauge {
-                  let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled
-                  let aaXAxisLabels = AALabels()
-                      .enabled(aaXAxisLabelsEnabled) //设置 x 轴是否显示文字
-                  if aaXAxisLabelsEnabled == true {
-                      aaXAxisLabels.style(
-                          AAStyle()
-                          .color(aaChartModel.axesTextColor)
-                      )
-                  }
-                  
-                  let aaXAxis = AAXAxis()
-                      .labels(aaXAxisLabels)
-                      .reversed(aaChartModel.xAxisReversed)
-                      .gridLineWidth(aaChartModel.xAxisGridLineWidth) //x轴网格线宽度
-                      .categories(aaChartModel.categories)
-                      .visible(aaChartModel.xAxisVisible) //x轴是否可见
-                      .tickInterval(aaChartModel.xAxisTickInterval) //x轴坐标点间隔数
-                  
-                   aaOptions.xAxis(aaXAxis)
-              }
+                let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled
+                let aaXAxisLabels = AALabels ()
+                    .enabled (aaXAxisLabelsEnabled) //Set whether the x-axis displays text
+                if aaXAxisLabelsEnabled == true {
+                    aaXAxisLabels.style (
+                        AAStyle ()
+                            .color (aaChartModel.axesTextColor)
+                    )
+                }
+                
+                let aaXAxis = AAXAxis ()
+                    .labels (aaXAxisLabels)
+                    .reversed (aaChartModel.xAxisReversed)
+                    .gridLineWidth (aaChartModel.xAxisGridLineWidth) //x-axis grid line width
+                    .categories (aaChartModel.categories)
+                    .visible (aaChartModel.xAxisVisible) //whether the x axis is visible
+                    .tickInterval (aaChartModel.xAxisTickInterval) //Number of x-axis coordinate point intervals
+                
+                aaOptions.xAxis (aaXAxis)
+            }
             
             let aaYAxisLabelsEnabled = aaChartModel.yAxisLabelsEnabled
-            let aaYAxisLabels = AALabels()
-                .enabled(aaChartModel.yAxisLabelsEnabled)
+            let aaYAxisLabels = AALabels ()
+                .enabled (aaChartModel.yAxisLabelsEnabled)
             if aaYAxisLabelsEnabled == true {
-                aaYAxisLabels.style(
-                    AAStyle()
-                    .color(aaChartModel.axesTextColor)
+                aaYAxisLabels.style (
+                    AAStyle ()
+                        .color (aaChartModel.axesTextColor)
                 )
             }
             
-            let aaYAxis = AAYAxis()
-                .labels(aaYAxisLabels) //设置 y 轴文字
-                .min(aaChartModel.yAxisMin) //设置 y 轴最小值,最小值等于零就不能显示负值了
-                .max(aaChartModel.yAxisMax) //y轴最大值
-                .allowDecimals(aaChartModel.yAxisAllowDecimals) //是否允许显示小数
-                .reversed(aaChartModel.yAxisReversed)
-                .gridLineWidth(aaChartModel.yAxisGridLineWidth) //y轴网格线宽度
-                .lineWidth(aaChartModel.yAxisLineWidth) //设置 y轴轴线的宽度,为0即是隐藏 y轴轴线
-                .visible(aaChartModel.yAxisVisible)
-                .title(AATitle()
-                    .text(aaChartModel.yAxisTitle) //y 轴标题
-                    .style(AAStyle()
-                        .color(aaChartModel.axesTextColor)
-                    ))
+            let aaYAxis = AAYAxis ()
+                .labels (aaYAxisLabels) //Set the y-axis text
+                .min (aaChartModel.yAxisMin) //Set the minimum value of the y-axis. If the minimum value is equal to zero, negative values ​​cannot be displayed.
+                .max (aaChartModel.yAxisMax) //Maximum y-axis
+                .allowDecimals (aaChartModel.yAxisAllowDecimals) //Whether to display decimals
+                .reversed (aaChartModel.yAxisReversed)
+                .gridLineWidth (aaChartModel.yAxisGridLineWidth) //y-axis grid line width
+                .lineWidth (aaChartModel.yAxisLineWidth) //Set the width of the y-axis axis, which is 0 to hide the y-axis axis
+                .visible (aaChartModel.yAxisVisible)
+                .title (AATitle ()
+                    .text (aaChartModel.yAxisTitle) //y axis title
+                    .style (AAStyle ()
+                        .color (aaChartModel.axesTextColor)
+                ))
             
-            aaOptions.yAxis(aaYAxis)
+            aaOptions.yAxis (aaYAxis)
         }
     }
     
