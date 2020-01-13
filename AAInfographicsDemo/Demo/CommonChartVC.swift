@@ -69,23 +69,22 @@ class CommonChartVC: UIViewController {
                                     y: 60,
                                     width: chartViewWidth,
                                     height: chartViewHeight)
-        ///AAChartView的内容高度(内容高度默认和 AAChartView 等高)
+        /// AAChartView content height (the content height defaults to the same height as AAChartView)
         aaChartView!.contentHeight = chartViewHeight - 20
         view.addSubview(aaChartView!)
-        aaChartView!.scrollEnabled = false//禁止图表内容滚动
+        aaChartView!.scrollEnabled = false//Disable chart content scrolling
         aaChartView!.isClearBackgroundColor = true
         aaChartView!.delegate = self as AAChartViewDelegate
         
         aaChartModel = AAChartModel()
-            .chartType(chartType!)//图形类型
-            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//主题颜色数组
+            .chartType(chartType!)
+            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
             .axesTextColor(AAColor.white)
-            .title("")//图形标题
-            .subtitle("")//图形副标题
-            .dataLabelsEnabled(false)//是否显示数字
-            .tooltipValueSuffix("℃")//浮动提示框单位后缀
-            .animationType(.bounce)//图形渲染动画类型为"bounce"
-            .backgroundColor("#22324c")//若要使图表背景色为透明色,可将 backgroundColor 设置为 "rgba(0,0,0,0)" 或 "#00000000". 同时确保 aaChartView!.isClearBackgroundColor = true
+            .title("")
+            .dataLabelsEnabled(false)
+            .tooltipValueSuffix("℃")
+            .animationType(.bounce)
+            .backgroundColor("#22324c")//To make the chart background color transparent, set backgroundColor to "rgba (0,0,0,0)" or "# 00000000". Also make sure `aaChartView!.IsClearBackgroundColor = true`
             .touchEventEnabled(true)
             .series([
                 AASeriesElement()
@@ -132,17 +131,17 @@ class CommonChartVC: UIViewController {
             AASeriesElement()
                 .name("Berlin")
                 .data([149.9, 171.5, 106.4, 129.2, 144.0, 176.0, 135.6, 188.5, 276.4, 214.1, 95.6, 54.4])
-                .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
+                .step(true)//Set the polyline style to a histogram, and the connection point position is left by default
             ,
             AASeriesElement()
                 .name("New York")
                 .data([83.6, 78.8, 188.5, 93.4, 106.0, 84.5, 105.0, 104.3, 131.2, 153.5, 226.6, 192.3])
-                .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
+                .step(true)
             ,
             AASeriesElement()
                 .name("Tokyo")
                 .data([48.9, 38.8, 19.3, 41.4, 47.0, 28.3, 59.0, 69.6, 52.4, 65.2, 53.3, 72.2])
-                .step(true)//设置折线样式为直方折线,连接点位置默认靠左👈
+                .step(true)
             ,
             ])
     }
@@ -158,7 +157,7 @@ class CommonChartVC: UIViewController {
     
     private func configureAreaChartAndAreasplineChartStyle() {
         aaChartModel!
-            .markerSymbolStyle(.innerBlank)//设置折线连接点样式为:内部白色
+            .markerSymbolStyle(.innerBlank)//Set the polyline connection point style to: white inside
             .animationType(.easeOutQuart)
             .legendEnabled(true)
             .markerRadius(5)
@@ -168,10 +167,10 @@ class CommonChartVC: UIViewController {
             let gradientColorDic = AAGradientColor.linearGradient(
                 direction: .toBottomRight,
                 startColor: "rgba(138,43,226,1)",
-                endColor: "rgba(30,144,255,1)"//颜色字符串设置支持十六进制类型和 rgba 类型
+                endColor: "rgba(30,144,255,1)"//Color string settings support hexadecimal and rgba types
             )
             aaChartModel!
-                .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
+                .animationType(.easeFrom)//Set chart rendering animation type to EaseFrom
                 .series([
                     AASeriesElement()
                         .name("Tokyo Hot")
@@ -197,7 +196,7 @@ class CommonChartVC: UIViewController {
     
     private func configureLineChartAndSplineChartStyle() {
         aaChartModel!
-            .markerSymbolStyle(.borderBlank)//设置折线连接点样式为:边缘白色
+            .markerSymbolStyle(.borderBlank)//Set the polyline connection point style to: white edge
             .markerRadius(6)
         if chartType == .spline {
             aaChartModel!
@@ -374,7 +373,7 @@ class CommonChartVC: UIViewController {
         case 2: aaChartModel!.inverted(switchView.isOn)
         case 3: aaChartModel!.polar(switchView.isOn)
         case 4: aaChartModel!.dataLabelsEnabled(switchView.isOn)
-        case 5: aaChartModel!.markerRadius(switchView.isOn ? 0 : 5)//折线连接点半径长度,为0时相当于没有折线连接点
+        case 5: aaChartModel!.markerRadius(switchView.isOn ? 0 : 5)//Polyline connection point radius length.A value of 0 is equivalent to no polyline connection point.
         default:
             break
         }

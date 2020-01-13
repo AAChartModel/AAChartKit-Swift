@@ -58,7 +58,7 @@ class MainVC: UIViewController {
               ]
         
         chartTypeTitleArr = [
-            /*基础类型图表*/
+            /*Basic types chart*/
             [
                 "Column Chart---柱形图",
                 "Bar Chart---条形图",
@@ -69,7 +69,7 @@ class MainVC: UIViewController {
                 "Line Chart---折线图",
                 "Spline Chart---曲线图",
             ],
-            /*特殊类型图表*/
+            /*Special types chart*/
             [
                 "Polar Chart---极地图",
                 "Pie Chart---扇形图",
@@ -86,7 +86,7 @@ class MainVC: UIViewController {
                 "Funnel Chart---漏斗图",
                 "Error Bar Chart---误差图",
             ],
-            /*一些仅仅通过AAChartModel自定义风格样式图表*/
+            /*Custom chart style by AAChartModel*/
             [
              "Colorful Column Chart---多彩条形图",
              "Colorful Gradient Color Chart---多彩颜色渐变条形图",
@@ -115,7 +115,7 @@ class MainVC: UIViewController {
              "Hexagon Radar Chart----六角形雷达图",
              "Draw Line Chart With Points Coordinates----通过点坐标来绘制折线图"
             ],
-            /*Mixed Chart---混合图*/
+            /*Mixed Chart*/
             [
                 "Arearange Mixed Line---面积范围均线图",
                 "Columnrange Mixed Line---柱形范围图混合折线图",
@@ -130,7 +130,7 @@ class MainVC: UIViewController {
                 "Pie Mixed Line Mixed Column---扇形折线柱形混合图",
                 "Line Chart With Shadow---带有阴影效果的折线图"
             ],
-            /*单纯刷新数据*/
+            /*Only update chart data*/
             [  "Column Chart---柱形图",
                "Bar Chart---条形图",
                "Area Chart---折线填充图",
@@ -142,12 +142,12 @@ class MainVC: UIViewController {
                "Scatter Chart---曲线图",
 
             ],
-            /*同时显示多个图表*/
+            /*Show double chart as the same time*/
             [
                 "在同一个页面同时添加多个 AAChartView",
                 " Double Charts Linkedwork 双表联动",
             ],
-            /*动画类型示例*/
+            /*Animation types*/
             [  "Column Chart---柱形图",
                "Bar Chart---条形图",
                "Area Chart---折线填充图",
@@ -157,7 +157,7 @@ class MainVC: UIViewController {
                "Line Chart---折线图",
                "Spline Chart---曲线图",
             ],
-            /*隐藏或显示 Series*/
+            /*Hide or show the chart series element*/
             [  "Column Chart---柱形图",
                "Bar Chart---条形图",
                "Area Chart---折线填充图",
@@ -167,14 +167,14 @@ class MainVC: UIViewController {
                "Line Chart---折线图",
                "Spline Chart---曲线图",
             ],
-            /*执行由 JavaScript 字符串映射转换成的 js function 函数*/
+            /*Evaluate JavaScript function string*/
             [
                 "Custom Chart DataLabel Sample One",
                 "Custom Chart DataLabel Sample Two",
-                "Custom Chart StackLabel Sample "
+                "Custom Chart StackLabel Sample ",
             ],
             
-            /*通过options字典来绘制图表*/
+            /*Draw Chart with AAOptions*/
             [
                 "configureLegendStyle",
                 "Custom Chart  Sample Two",
@@ -215,7 +215,7 @@ class MainVC: UIViewController {
         ]
         
         chartTypeArr = [
-            /*基础类型图表*/
+            /*Basic types chart*/
             [
                 AAChartType.column,
                 AAChartType.bar,
@@ -226,7 +226,7 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.spline,
                 ],
-            /*特殊类型图表*/
+            /*Special Types chart*/
             [
                 AAChartType.column,
                 AAChartType.pie,
@@ -245,7 +245,7 @@ class MainVC: UIViewController {
                 ],
             [//Empty Array,just for holding place
             ],
-            /*Mixed Chart---混合图*/
+            /*Mixed Chart*/
             [
                 "arearangeMixedLine",
                 "columnrangeMixedLine",
@@ -260,7 +260,7 @@ class MainVC: UIViewController {
                 "PieMixeLineMixedColumn",
                 "LineChartWithShadow"
             ],
-            /*单纯刷新数据*/
+            /*Only update chart data*/
             [
                 AAChartType.column,
                 AAChartType.bar,
@@ -315,7 +315,7 @@ class MainVC: UIViewController {
         view.addSubview(myTableView)
         
         myTableView.translatesAutoresizingMaskIntoConstraints = false
-        myTableView.superview!.addConstraints(configureTheConstraintArray(childView: myTableView, fatherView: view))//Note:父控件添加约束
+        myTableView.superview!.addConstraints(configureTheConstraintArray(childView: myTableView, fatherView: view))
     }
  
    private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
