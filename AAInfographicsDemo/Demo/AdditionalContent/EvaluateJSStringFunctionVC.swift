@@ -150,7 +150,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
     
     func aaChartViewDidFinishLoad (_ aaChartView: AAChartView) {
         print("🚀🚀🚀AAChartView did finished load")
-        
+                
         var jsFunctionStr:String
         if self.sampleChartTypeIndex == 0 {
             jsFunctionStr = configureMaxMiniDataLabelJSFunctionString()
@@ -159,20 +159,13 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
         } else if self.sampleChartTypeIndex == 2 {
             jsFunctionStr = configureFirstSecondThirdStackLabelJSFunctionString()
         } else {
-            jsFunctionStr = configureDragChartOnXAxisJSFunctionString()
+            //https://jshare.com.cn/jianshu/ZBrzXx
+            self.aaChartView.aa_updateXAxisExtremes(min: 0, max: 3)
+            return
         }
         //图表加载完成后调用,避免WebView还没有获得JavaScript上下文,致使调用失败
         self.aaChartView!.aa_evaluateJavaScriptStringFunction(jsFunctionStr)
     }
-    
-    //https://jshare.com.cn/jianshu/ZBrzXx
-    func configureDragChartOnXAxisJSFunctionString() -> String {
-        let jsFunctionStr = """
-        aaGlobalChart.xAxis[0].setExtremes(0, 2);
-        """
-        return jsFunctionStr
-    }
-
     
     func configureMaxMiniDataLabelJSFunctionString() -> String {
         //refer to highcharts sample  https://jshare.com.cn/hcharts.cn/hhhhov
