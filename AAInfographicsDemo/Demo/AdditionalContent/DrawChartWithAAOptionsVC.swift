@@ -198,7 +198,6 @@ class DrawChartWithAAOptionsVC: UIViewController {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
             .title("")//图表主标题
-            .subtitle("")//图表副标题
             .borderRadius(5)
             .series([
                 AASeriesElement()
@@ -293,7 +292,6 @@ class DrawChartWithAAOptionsVC: UIViewController {
         let aaChartModel = AAChartModel()
             .chartType(.column)
             .title("")
-            .subtitle("")
             .colorsTheme(["#ffc069","#fe117c","#06caf4","#7dffc0"])
             .categories([
                 "January", "February", "March", "April", "May", "June",
@@ -333,7 +331,6 @@ class DrawChartWithAAOptionsVC: UIViewController {
         let aaChartModel = AAChartModel()
             .chartType(.column)
             .title("")
-            .subtitle("")
             .categories(["January", "February", "March", "April", "May", "June",
                          "July", "August", "Septembel", "October", "November", "December"])
             .dataLabelsEnabled(false)
@@ -691,7 +688,6 @@ function () {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .title("")
-            .subtitle("")
             .stacking(.normal)
             .categories(categories)
             .dataLabelsEnabled(false)
@@ -728,7 +724,6 @@ function () {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .title("")
-            .subtitle("")
             .stacking(.normal)
             .yAxisVisible(false)
             .categories(categories)
@@ -764,7 +759,6 @@ function () {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .title("")
-            .subtitle("")
             .backgroundColor(backgroundColorGradientColor)
             .yAxisVisible(true)
             .yAxisTitle("")
@@ -828,7 +822,6 @@ function () {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .title("")
-            .subtitle("")
             .categories([
                 "一月", "二月", "三月", "四月", "五月", "六月",
                 "七月", "八月", "九月", "十月", "十一月", "十二月"
@@ -1379,7 +1372,6 @@ function () {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
             .title("")//图表主标题
-            .subtitle("")//图表副标题
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])

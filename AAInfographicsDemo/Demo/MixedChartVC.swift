@@ -178,7 +178,6 @@ class MixedChartVC: UIViewController {
         return AAChartModel()
             .colorsTheme(["#1e90ff","#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",])//主题颜色数组
             .title("")//图形标题
-            .subtitle("")//图形副标题
             .chartType(.line)
             .dataLabelsEnabled(false)
             .markerSymbolStyle(.borderBlank)

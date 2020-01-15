@@ -419,7 +419,6 @@ class CustomStyleChartVC: UIViewController {
         
         return AAChartModel()
             .title("单独自定义某个指定数据元素的DataLabel")
-            .subtitle("")
             .colorsTheme([AAGradientColor.mysticMauve])
             .series([
                 AASeriesElement()
@@ -431,7 +430,6 @@ class CustomStyleChartVC: UIViewController {
     private func configureChartWithShadowStyle() -> AAChartModel {
         return AAChartModel()
             .title("")
-            .subtitle("")
             .yAxisVisible(false)
             .chartType(.spline)
             .legendEnabled(false)//隐藏图例(底部可点按的小圆点)
@@ -467,7 +465,6 @@ class CustomStyleChartVC: UIViewController {
         return AAChartModel()
             .chartType(.areaspline)
             .title("")
-            .subtitle("")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .yAxisTitle("")
@@ -498,7 +495,6 @@ class CustomStyleChartVC: UIViewController {
         return AAChartModel()
             .chartType(.spline)
             .title("")
-            .subtitle("")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .yAxisTitle("")
@@ -524,7 +520,6 @@ class CustomStyleChartVC: UIViewController {
         return AAChartModel()
             .chartType(.areaspline)
             .title("")
-            .subtitle("")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .yAxisTitle("")
@@ -671,7 +666,6 @@ class CustomStyleChartVC: UIViewController {
         return AAChartModel()
             .chartType(.scatter)
             .title("")
-            .subtitle("")
             .yAxisTitle("")
             .yAxisGridLineWidth(0)
             .stacking(.normal)
