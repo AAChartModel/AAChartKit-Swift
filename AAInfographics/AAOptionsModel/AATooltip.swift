@@ -48,8 +48,8 @@ public class AATooltip: AAObject {
     public var shared: Bool?
     public var crosshairs: Bool?
     public var valueSuffix: String?
-    public var followTouchMove: Bool?
-    
+    public var followTouchMove: Bool?//https://api.highcharts.com.cn/highcharts#chart.panning
+        
     
     @discardableResult
     public func backgroundColor(_ prop: String?) -> AATooltip {

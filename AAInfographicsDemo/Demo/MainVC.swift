@@ -172,6 +172,7 @@ class MainVC: UIViewController {
                 "Custom Chart DataLabel Sample One",
                 "Custom Chart DataLabel Sample Two",
                 "Custom Chart StackLabel Sample ",
+                "Support Dragging Chart On X Axis",
             ],
             
             /*Draw Chart with AAOptions*/
