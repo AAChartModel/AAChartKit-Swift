@@ -33,7 +33,7 @@
 import UIKit
 
 public class AAXAxis: AAObject {
- public var plotBands: [AAPlotBandsElement]?
+    public var plotBands: [AAPlotBandsElement]?
     public var plotLines: [AAPlotLinesElement]?
     public var categories: [String]?
     public var reversed: Bool?
