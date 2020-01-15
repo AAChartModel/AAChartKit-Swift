@@ -282,17 +282,26 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(jsStr)
     }
     
-    
-    ///Same as the function `func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any, redraw: Bool, shift: Bool, animation: Bool)`
-    ///
     public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any) {
-        aa_addPointToChartSeriesElement(elementIndex: elementIndex, options: options, shift: true)
+        aa_addPointToChartSeriesElement(
+            elementIndex: elementIndex,
+            options: options,
+            shift: true
+        )
     }
     
-    ///Same as the function `func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any, redraw: Bool, shift: Bool, animation: Bool)`
-    ///
-    public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any,  shift: Bool) {
-        aa_addPointToChartSeriesElement(elementIndex: elementIndex, options: options, redraw: true, shift: shift, animation: true)
+    public func aa_addPointToChartSeriesElement(
+        elementIndex: Int,
+        options: Any,
+        shift: Bool
+    ) {
+        aa_addPointToChartSeriesElement(
+            elementIndex: elementIndex,
+            options: options,
+            redraw: true,
+            shift: shift,
+            animation: true
+        )
     }
     
     /// Add a new point to the data column after the chart has been rendered.
@@ -304,7 +313,13 @@ extension AAChartView {
     /// - Parameter redraw: The default is true, whether to redraw the icon after the operation is completed. When you need to add more than one point, it is highly recommended to set redraw to false and manually call chart.redraw() to redraw the chart after all operations have ended.
     /// - Parameter shift: The default is false. When this property is true, adding a new point will delete the first point in the data column (that is, keep the total number of data points in the data column unchanged). This property is very useful in the inspection chart
     /// - Parameter animation: The default is true, which means that when adding a point, it contains the default animation effect. This parameter can also be passed to the object form containing duration and easing. For details, refer to the animation related configuration.
-    public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any, redraw: Bool, shift: Bool, animation: Bool) {
+    public func aa_addPointToChartSeriesElement(
+        elementIndex: Int,
+        options: Any,
+        redraw: Bool,
+        shift: Bool,
+        animation: Bool
+    ) {
         var optionsStr = ""
         if options is Int || options is Float || options is Double {
             optionsStr = "\(options)"
@@ -371,13 +386,29 @@ extension AAChartView {
 
 
 extension AAChartView: WKUIDelegate {
-    open func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-        let alert = UIAlertController(title: "FBI WARNING", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+    open func webView(
+        _ webView: WKWebView,
+        runJavaScriptAlertPanelWithMessage message: String,
+        initiatedByFrame frame: WKFrameInfo,
+        completionHandler: @escaping () -> Void
+    ) {
+        let alert = UIAlertController(
+            title: "FBI WARNING",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(
+            title: "Okay",
+            style: .default,
+            handler: { (action) in
             completionHandler()
         }))
         let rootVC = UIApplication.shared.keyWindow?.rootViewController
-        rootVC!.present(alert, animated: true, completion: nil)
+        rootVC!.present(
+            alert,
+            animated: true,
+            completion: nil
+        )
         print(message)
     }
 }
