@@ -142,6 +142,11 @@
             seriesElement.addPoint(options, redrawBool, shiftBool, animationBool);
         }
         
+        function redrawWithAnimation(animation) {
+            let animationBool = (animation == "true") ? true:false;
+            aaGlobalChart.redraw(animationBool);
+        }
+        
         //pragma mark -- setter method
         function setTheChartViewContentWidth(receivedWidth) {
             let container = document.getElementById('container');
