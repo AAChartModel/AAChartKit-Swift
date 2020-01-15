@@ -336,6 +336,26 @@ extension AAChartView {
         evaluateJavaScriptWithFunctionNameString(javaScriptStr)
     }
     
+    /// Add a new group of points to the data column after the chart has been rendered.
+    ///
+    public func aa_addPointsToChartSeriesArray(
+        optionsArr: [Any],
+        shift: Bool = true,
+        animation: Bool = true
+    ) {
+        for (index, options) in optionsArr.enumerated() {
+            aa_addPointToChartSeriesElement(
+                elementIndex: index,
+                options: options,
+                redraw: false,
+                shift: shift,
+                animation: false
+            )
+        }
+        
+        aa_redraw(animation: animation)
+    }
+    
     /// Add a new series element to the chart after the chart has been rendered.
     /// Refer to https://api.highcharts.com.cn/highcharts#Chart.addSeries
     ///
@@ -381,6 +401,37 @@ extension AAChartView {
             let jsFunctionNameStr = "evaluateTheJavaScriptStringFunction('\(pureJSFunctionStr)')"
             evaluateJavaScriptWithFunctionNameString(jsFunctionNameStr)
         }
+    }
+    
+    /// Update the X axis categories of chart
+    /// - Parameters:
+    ///   - categories: The X axis categories array
+    ///   - redraw: Redraw whole chart or not
+    public func aa_updateXAxisCategories(_ categories: [String], redraw: Bool = true) {
+        var originalJsArrStr = ""
+        for categoryElement in categories {
+            originalJsArrStr += "'\(categoryElement)',"
+        }
+        let finalJSArrStr = "[\(originalJsArrStr)]"
+        
+        let jsFuntionStr = "aaGlobalChart.xAxis[0].setCategories(\(finalJSArrStr),\(redraw));)"
+        evaluateJavaScriptWithFunctionNameString(jsFuntionStr)
+    }
+    
+    /// Update the X axis Extremes
+    /// - Parameters:
+    ///   - min: X axis minimum
+    ///   - max: X axis maximum
+    public func aa_updateXAxisExtremes(min: Int, max: Int) {
+        let jsStr = "aaGlobalChart.xAxis[0].setExtremes(\(min), \(max))"
+        evaluateJavaScriptWithFunctionNameString(jsStr)
+    }
+    
+    /// Redraw chart view
+    /// - Parameter animation: Have animation effect or not
+    public func aa_redraw(animation: Bool = true) {
+        let jsStr = "redrawWithAnimation('\(animation)')"
+        evaluateJavaScriptWithFunctionNameString(jsStr)
     }
 }
 
