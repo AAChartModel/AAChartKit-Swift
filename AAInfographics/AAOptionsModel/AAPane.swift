@@ -41,16 +41,16 @@ public class AAPane: AAObject {
     
     
     @discardableResult
-      public func background(_ prop: [AABackgroundElement]) -> AAPane {
-          background = prop
-          return self
-      }
+    public func background(_ prop: [AABackgroundElement]) -> AAPane {
+        background = prop
+        return self
+    }
     
     @discardableResult
-     public func center(_ prop: [String]) -> AAPane {
-         center = prop
-         return self
-     }
+    public func center(_ prop: [String]) -> AAPane {
+        center = prop
+        return self
+    }
     
     @discardableResult
     public func endAngle(_ prop: Float) -> AAPane {
