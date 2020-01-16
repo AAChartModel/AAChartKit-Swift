@@ -74,7 +74,7 @@ public class AAChartView: WKWebView {
         willSet {
             if optionsJson != nil {
                 let jsStr = "setChartSeriesHidden('\(newValue!)')"
-                evaluateJavaScriptWithFunctionNameString(jsStr)
+                safeEvaluateJavaScriptString(jsStr)
             }
         }
     }
@@ -84,7 +84,7 @@ public class AAChartView: WKWebView {
         willSet {
             if optionsJson != nil {
                 let jsStr = "setTheChartViewContentWidth('\(newValue!)')"
-                evaluateJavaScriptWithFunctionNameString(jsStr)
+                safeEvaluateJavaScriptString(jsStr)
             }
         }
     }
@@ -94,7 +94,7 @@ public class AAChartView: WKWebView {
         willSet {
             if optionsJson != nil {
                 let jsStr = "setTheChartViewContentHeight('\(newValue!)')"
-                evaluateJavaScriptWithFunctionNameString(jsStr)
+                safeEvaluateJavaScriptString(jsStr)
             }
         }
     }
@@ -123,10 +123,10 @@ public class AAChartView: WKWebView {
     }
     
     private func drawChart() {
-        evaluateJavaScriptWithFunctionNameString(optionsJson!)
+        safeEvaluateJavaScriptString(optionsJson!)
     }
     
-    private func evaluateJavaScriptWithFunctionNameString (_ jsString: String) {
+    private func safeEvaluateJavaScriptString (_ jsString: String) {
         self.evaluateJavaScript(jsString, completionHandler: { (item, error) in
             if error != nil {
                 let objcError = error! as NSError
@@ -236,7 +236,7 @@ extension AAChartView {
          var str = getJSONStringFromArray(array: seriesElementDicArr)
          str = str.replacingOccurrences(of: "\n", with: "") as String
          let jsStr = "onlyRefreshTheChartDataWithSeries('\(str)','\(animation)');"
-         evaluateJavaScriptWithFunctionNameString(jsStr)
+         safeEvaluateJavaScriptString(jsStr)
      }
     
     
@@ -279,7 +279,7 @@ extension AAChartView {
         
         let optionsStr = getJSONStringFromDictionary(dictionary: finalOptionsDic)
         let jsStr = "updateChart('\(optionsStr)','\(redraw)')"
-        evaluateJavaScriptWithFunctionNameString(jsStr)
+        safeEvaluateJavaScriptString(jsStr)
     }
     
     public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any) {
@@ -333,7 +333,7 @@ extension AAChartView {
         }
     
         let javaScriptStr = "addPointToChartSeries('\(elementIndex)','\(optionsStr)','\(redraw)','\(shift)','\(animation)')"
-        evaluateJavaScriptWithFunctionNameString(javaScriptStr)
+        safeEvaluateJavaScriptString(javaScriptStr)
     }
     
     /// Add a new group of points to the data column after the chart has been rendered.
@@ -364,7 +364,7 @@ extension AAChartView {
         let elementJson = element.toJSON()
         let pureElementJsonStr = AAJSStringPurer.pureJavaScriptFunctionString(elementJson!)
         let jsStr = "addElementToChartSeriesWithElement('\(pureElementJsonStr)')"
-        evaluateJavaScriptWithFunctionNameString(jsStr)
+        safeEvaluateJavaScriptString(jsStr)
     }
     
     /// Remove a specific series element from the chart after the chart has been rendered.
@@ -373,7 +373,7 @@ extension AAChartView {
     /// - Parameter elementIndex: chart series element index
     public func aa_removeElementFromChartSeries(elementIndex: Int) {
         let jsStr = "removeElementFromChartSeriesWithElementIndex('\(elementIndex)')"
-        evaluateJavaScriptWithFunctionNameString(jsStr)
+        safeEvaluateJavaScriptString(jsStr)
     }
     
     /// Show the series element content with index
@@ -381,7 +381,7 @@ extension AAChartView {
     /// - Parameter elementIndex: elementIndex element index
     public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
         let jsStr = "showTheSeriesElementContentWithIndex('\(elementIndex)');"
-        evaluateJavaScriptWithFunctionNameString(jsStr)
+        safeEvaluateJavaScriptString(jsStr)
     }
     
     ///  Hide the series element content with index
@@ -389,7 +389,7 @@ extension AAChartView {
     /// - Parameter elementIndex: element index
     public func aa_hideTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
         let jsStr = "hideTheSeriesElementContentWithIndex('\(elementIndex)');"
-        evaluateJavaScriptWithFunctionNameString(jsStr as String)
+        safeEvaluateJavaScriptString(jsStr as String)
     }
     
     ///  Evaluate JavaScript string function body
@@ -399,7 +399,7 @@ extension AAChartView {
         if optionsJson != nil {
             let pureJSFunctionStr = AAJSStringPurer.pureJavaScriptFunctionString(JSFunctionString)
             let jsFunctionNameStr = "evaluateTheJavaScriptStringFunction('\(pureJSFunctionStr)')"
-            evaluateJavaScriptWithFunctionNameString(jsFunctionNameStr)
+            safeEvaluateJavaScriptString(jsFunctionNameStr)
         }
     }
     
@@ -415,7 +415,7 @@ extension AAChartView {
         let finalJSArrStr = "[\(originalJsArrStr)]"
         
         let jsFuntionStr = "aaGlobalChart.xAxis[0].setCategories(\(finalJSArrStr),\(redraw));)"
-        evaluateJavaScriptWithFunctionNameString(jsFuntionStr)
+        safeEvaluateJavaScriptString(jsFuntionStr)
     }
     
     /// Update the X axis Extremes
@@ -424,14 +424,14 @@ extension AAChartView {
     ///   - max: X axis maximum
     public func aa_updateXAxisExtremes(min: Int, max: Int) {
         let jsStr = "aaGlobalChart.xAxis[0].setExtremes(\(min), \(max))"
-        evaluateJavaScriptWithFunctionNameString(jsStr)
+        safeEvaluateJavaScriptString(jsStr)
     }
     
     /// Redraw chart view
     /// - Parameter animation: Have animation effect or not
     public func aa_redraw(animation: Bool = true) {
         let jsStr = "redrawWithAnimation('\(animation)')"
-        evaluateJavaScriptWithFunctionNameString(jsStr)
+        safeEvaluateJavaScriptString(jsStr)
     }
 }
 
