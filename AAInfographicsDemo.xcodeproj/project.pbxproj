@@ -42,7 +42,6 @@
 		44154767231A1D0200382DAD /* AASubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44154766231A1D0200382DAD /* AASubtitle.swift */; };
 		44154769231A1D5600382DAD /* AASeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44154768231A1D5600382DAD /* AASeries.swift */; };
 		4415476B231A1E8200382DAD /* AAPlotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415476A231A1E8200382DAD /* AAPlotOptions.swift */; };
-		4415476D231A1F9100382DAD /* AAOptionsConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4415476C231A1F9100382DAD /* AAOptionsConstructor.swift */; };
 		4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */; };
 		442FA90D2340597200CF3BDF /* AAPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442FA90C2340597200CF3BDF /* AAPane.swift */; };
 		445353C122631B0E009FA12A /* AAPlotBandsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445353C022631B0E009FA12A /* AAPlotBandsElement.swift */; };
@@ -116,7 +115,6 @@
 		44154766231A1D0200382DAD /* AASubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASubtitle.swift; sourceTree = "<group>"; };
 		44154768231A1D5600382DAD /* AASeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASeries.swift; sourceTree = "<group>"; };
 		4415476A231A1E8200382DAD /* AAPlotOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotOptions.swift; sourceTree = "<group>"; };
-		4415476C231A1F9100382DAD /* AAOptionsConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsConstructor.swift; sourceTree = "<group>"; };
 		4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleChartVC.swift; sourceTree = "<group>"; };
 		442FA90C2340597200CF3BDF /* AAPane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPane.swift; sourceTree = "<group>"; };
 		445353C022631B0E009FA12A /* AAPlotBandsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPlotBandsElement.swift; sourceTree = "<group>"; };
@@ -243,7 +241,7 @@
 				2749914E210D90B5003D18C2 /* AAChartView.swift */,
 				2749914B210D90B5003D18C2 /* AAChartModel.swift */,
 				2749914C210D90B5003D18C2 /* AASeriesElement.swift */,
-				4415476C231A1F9100382DAD /* AAOptionsConstructor.swift */,
+				44154762231A1B4800382DAD /* AAOptions.swift */,
 				2749914D210D90B5003D18C2 /* AASerializable.swift */,
 			);
 			path = AAChartCreator;
@@ -275,7 +273,6 @@
 		445353BF22631AB3009FA12A /* AAOptionsModel */ = {
 			isa = PBXGroup;
 			children = (
-				44154762231A1B4800382DAD /* AAOptions.swift */,
 				4415475C231A194000382DAD /* AAChart.swift */,
 				44154764231A1BEB00382DAD /* AATitle.swift */,
 				44154766231A1D0200382DAD /* AASubtitle.swift */,
@@ -453,7 +450,6 @@
 				4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */,
 				44143D3621A17F2300D44657 /* AAGradientColor.swift in Sources */,
 				276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */,
-				4415476D231A1F9100382DAD /* AAOptionsConstructor.swift in Sources */,
 				44154763231A1B4800382DAD /* AAOptions.swift in Sources */,
 				4415475B231A18C500382DAD /* AAAnimation.swift in Sources */,
 				4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */,
