@@ -122,7 +122,7 @@ public class AAColumn: AAObject {
     public var colorByPoint: Bool?//对每个不同的点设置颜色(当图表类型为 AAColumn 时,设置为 AAColumn 对象的属性,当图表类型为 bar 时,应该设置为 bar 对象的属性才有效)
     public var dataLabels: AADataLabels?
     public var stacking: String?
-    public var borderRadius: Int?
+    public var borderRadius: Float?
     public var yAxis: Float?
     
     @discardableResult
@@ -192,7 +192,7 @@ public class AAColumn: AAObject {
     }
     
     @discardableResult
-    public func borderRadius(_ prop: Int?) -> AAColumn {
+    public func borderRadius(_ prop: Float?) -> AAColumn {
         borderRadius = prop
         return self
     }
@@ -221,7 +221,7 @@ public class AABar: AAObject {
     public var colorByPoint: Bool?//对每个不同的点设置颜色(当图表类型为 AABar 时,设置为 AABar 对象的属性,当图表类型为 bar 时,应该设置为 bar 对象的属性才有效)
     public var dataLabels: AADataLabels?
     public var stacking: String?
-    public var borderRadius: Int?
+    public var borderRadius: Float?
     public var yAxis: Float?
     
     @discardableResult
@@ -291,7 +291,7 @@ public class AABar: AAObject {
     }
     
     @discardableResult
-    public func borderRadius(_ prop: Int?) -> AABar {
+    public func borderRadius(_ prop: Float?) -> AABar {
         borderRadius = prop
         return self
     }

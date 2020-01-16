@@ -296,7 +296,7 @@ class CommonChartVC: UIViewController {
             
         case 1:
             if chartType == .column || chartType == .bar {
-                let borderRadiusArr = [0,10,100]
+                let borderRadiusArr: [Float] = [0,10,100]
                 aaChartModel!.borderRadius(borderRadiusArr[segmentedControl.selectedSegmentIndex])
             } else {
                 let symbolArr = [
