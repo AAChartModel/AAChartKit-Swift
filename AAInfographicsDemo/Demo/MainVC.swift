@@ -55,6 +55,7 @@ class MainVC: UIViewController {
                   "Evaluate JS String Function---执行js函数",
                   "Draw Chart With AAOptions---通过Options绘图",
                   "Custom Tooltip With JS Function ---通过JS函数自定义Tooltip",
+                  "Scrolling update chart data ---滚动刷新图表数据",
               ]
         
         chartTypeTitleArr = [
@@ -139,8 +140,7 @@ class MainVC: UIViewController {
                "Step Line Chart--- 直方折线图",
                "Line Chart---折线图",
                "Spline Chart---曲线图",
-               "Scatter Chart---曲线图",
-
+               "Scatter Chart---散点图",
             ],
             /*Show double chart as the same time*/
             [
@@ -212,7 +212,18 @@ class MainVC: UIViewController {
                 "自定义分组堆积柱状图tooltip内容",
                 "Double X Axes Mirror Chart---双 X 轴镜像图表",
                 "custom Arearange Chart Tooltip---自定义面积范围图浮动提示框"
-            ]
+            ],
+            /*Scrolling update chart data*/
+            [  "Column Chart---柱形图",
+               "Bar Chart---条形图",
+               "Area Chart---折线填充图",
+               "Areaspline Chart---曲线填充图",
+               "Step Area Chart--- 直方折线填充图",
+               "Step Line Chart--- 直方折线图",
+               "Line Chart---折线图",
+               "Spline Chart---曲线图",
+               "Scatter Chart---散点图",
+            ],
         ]
         
         chartTypeArr = [
@@ -299,6 +310,20 @@ class MainVC: UIViewController {
             ],
             [//Empty Array,just for holding place
             ],
+            [//Empty Array,just for holding place
+             ],
+            /*Scrolling update chart data*/
+            [
+                AAChartType.column,
+                AAChartType.bar,
+                AAChartType.area,
+                AAChartType.areaspline,
+                AAChartType.area,
+                AAChartType.line,
+                AAChartType.line,
+                AAChartType.spline,
+                AAChartType.scatter
+                ],
         ]
         
         view.backgroundColor = .white
@@ -485,6 +510,15 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             /*Custom Tooltip With JavaScript Formatter Function */
             let vc = JSFormatterFunctionVC()
             vc.selectedIndex = indexPath.row
+            navigationController?.pushViewController(vc, animated: true)
+        case 11:
+            /*Scrolling update Chart Data Dynamiclly*/
+            let vc = ScrollingUpdateDataVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            vc.step = false
+            if indexPath.row == 4 || indexPath.row == 5 {
+                vc.step = true
+            }
             navigationController?.pushViewController(vc, animated: true)
         default:
             break
