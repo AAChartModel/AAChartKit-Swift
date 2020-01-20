@@ -96,7 +96,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
                     "闪<br>客",
                     "忍<br>者<br>之<br>印"
                     ])
-                .zoomType(.x)
+                .zoomType(.x)//‼️ 重要属性,需要支持 X 轴横向滚动
                 .yAxisMax(650)
                 .series([
                     AASeriesElement()
