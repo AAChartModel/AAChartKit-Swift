@@ -32,7 +32,7 @@
 
 import UIKit
 
-class ChartSeriesHideOrShowVC: UIViewController {
+class HideOrShowChartSeriesVC: UIViewController {
     public var chartType: AAChartType?
     public var step: Bool?
     private var aaChartView: AAChartView?

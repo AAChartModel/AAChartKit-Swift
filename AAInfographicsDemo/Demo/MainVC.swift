@@ -489,7 +489,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         case 7:
             /*Hide Or Show Chart Series Element*/
-            let vc = ChartSeriesHideOrShowVC()
+            let vc = HideOrShowChartSeriesVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             vc.step = false
             if indexPath.row == 4 || indexPath.row == 5 {
