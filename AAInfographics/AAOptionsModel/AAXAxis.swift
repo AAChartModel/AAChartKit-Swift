@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AAXAxis: AAObject {
     public var plotBands: [AAPlotBandsElement]?

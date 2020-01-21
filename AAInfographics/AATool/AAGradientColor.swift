@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public enum AALinearGradientDirection: Int {
     case toTop = 0       //⇧⇧⇧⇧⇧⇧

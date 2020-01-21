@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AAJSStringPurer {
      public static func pureJavaScriptFunctionString(_ jsFunctionStr: String) -> String {

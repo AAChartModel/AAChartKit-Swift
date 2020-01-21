@@ -30,7 +30,7 @@
  
  */
 
-import UIKit 
+import Foundation 
 
 public class AATooltip: AAObject {
     public var backgroundColor: String?

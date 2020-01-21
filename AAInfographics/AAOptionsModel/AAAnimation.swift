@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AAAnimation: AAObject {
     public var duration: Int?

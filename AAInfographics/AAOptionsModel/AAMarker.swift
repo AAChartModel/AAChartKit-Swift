@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AAMarker: AAObject {
     public var radius: Float?

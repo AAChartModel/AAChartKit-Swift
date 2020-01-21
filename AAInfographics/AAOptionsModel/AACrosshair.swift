@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AACrosshair: AAObject {
     public var dashStyle: String?

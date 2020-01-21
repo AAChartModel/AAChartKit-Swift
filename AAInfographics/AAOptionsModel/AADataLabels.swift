@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AADataLabels: AAObject {
     public var enabled: Bool?

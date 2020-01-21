@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AAPlotOptions: AAObject {
     public var column: AAColumn?

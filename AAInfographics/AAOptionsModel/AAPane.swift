@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AAPane: AAObject {
     public var background: [AABackgroundElement]?

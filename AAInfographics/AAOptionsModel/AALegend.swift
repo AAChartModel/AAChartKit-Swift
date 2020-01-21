@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AALegend: AAObject {
     public var layout: String? //The layout of the legend data items. Layout type: "horizontal" or "vertical" ie horizontal and vertical layout The default is: "horizontal".

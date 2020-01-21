@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AAOptions: AAObject {
     public var chart: AAChart?

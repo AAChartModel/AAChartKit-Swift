@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AASubtitle: AAObject {
     public var text: String?

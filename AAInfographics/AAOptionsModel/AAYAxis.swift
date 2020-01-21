@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AAYAxis: AAObject {
     public var title: AATitle?

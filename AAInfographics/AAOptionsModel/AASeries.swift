@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AASeries: AAObject {
     public var borderRadius: Float?

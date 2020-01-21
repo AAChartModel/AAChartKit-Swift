@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AAPlotLinesElement: AAObject {
     public var color: Any?

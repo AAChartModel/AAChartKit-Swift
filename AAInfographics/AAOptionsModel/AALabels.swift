@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import Foundation
 
 public class AALabels: AAObject {
     public var align: String? // Alignment of axis labels. Available values ​​are "left", "center", and "right". The default value is intelligently judged based on the position of the coordinate axis (position in the chart), that is, the rotation angle of the label. The default is: center.
