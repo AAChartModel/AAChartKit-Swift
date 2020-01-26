@@ -38,7 +38,8 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     private var aaChartView2 = AAChartView()
     private var aaChartModel2 = AAChartModel()
     private var colorsArr: [String]?
-
+    private var selectedColor: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -46,17 +47,17 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
         setUpTheAAChartViewTwo()
     }
     
-   private func setUpTheAAChartViewOne() {
+    private func setUpTheAAChartViewOne() {
         let chartViewWidth  = view.frame.size.width
         let screenHeight = view.frame.size.height - 60
         
         aaChartView1.frame = CGRect(x: 0,
-                                   y: 60,
-                                   width: chartViewWidth,
-                                   height: screenHeight / 2)
+                                    y: 60,
+                                    width: chartViewWidth,
+                                    height: screenHeight / 2 - 80)
         aaChartView1.scrollEnabled = false
         aaChartView1.delegate = self
-        aaChartView1.contentHeight = (screenHeight / 2) - 20
+//        aaChartView1.contentHeight = (screenHeight / 2) - 20
         view.addSubview(aaChartView1)
         
         colorsArr = ["#fe117c","#ffc069","#06caf4","#7dffc0","#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
@@ -71,39 +72,42 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             .touchEventEnabled(true)
             .tooltipEnabled(false)
             .borderRadius(3)
+            .inverted(true)
             .yAxisReversed(true)
             .categories(colorsArr!)
             .series([
                 AASeriesElement()
                     .colorByPoint(true)
                     .data(getRandomNumbersArr(numbers: 9))
-                    ,
-                ])
-    
-    let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel1)
-    aaOptions.xAxis?
-        .crosshair(AACrosshair()
-            .dashStyle(AAChartLineDashStyleType.longDashDot)
-            .color(AAColor.black)
-            .width(1)
-    )
-
-    aaChartView1.aa_drawChartWithChartOptions(aaOptions)
+                ,
+            ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel1)
+        aaOptions.xAxis?
+            .crosshair(
+                AACrosshair()
+                    .dashStyle(AAChartLineDashStyleType.longDashDot)
+                    .color(AAColor.black)
+                    .width(1)
+        )
+        aaOptions.plotOptions?.column?.groupPadding(0)
+        
+        aaChartView1.aa_drawChartWithChartOptions(aaOptions)
     }
     
-   private func setUpTheAAChartViewTwo() {
+    private func setUpTheAAChartViewTwo() {
         let chartViewWidth  = view.frame.size.width
         let screenHeight = view.frame.size.height - 60
         
         aaChartView2.frame = CGRect(x:0,
-                                    y:screenHeight / 2 + 60,
+                                    y:screenHeight / 2 + 60 - 80,
                                     width:chartViewWidth,
-                                    height:screenHeight / 2)
+                                    height:screenHeight / 2 + 80)
         aaChartView2.scrollEnabled = false
         view.addSubview(aaChartView2)
         
         aaChartModel2
-            .chartType(.area)//图形类型
+            .chartType(.column)//图形类型
             .animationType(.easeOutQuart)//图形渲染动画类型为"bounce"
             .title("")//图形标题
             .dataLabelsEnabled(false)//是否显示数字
@@ -111,46 +115,29 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             .markerSymbolStyle(.innerBlank)
             .legendEnabled(false)
             .tooltipEnabled(false)
-            .categories([
-                "孤<br>岛<br>危<br>机",
-                "使<br>命<br>召<br>唤",
-                "荣<br>誉<br>勋<br>章",
-                "狙<br>击<br>精<br>英",
-                "神<br>秘<br>海<br>域",
-                "最<br>后<br>生<br>还<br>者",
-                "巫<br>师<br>3<br>狂<br>猎",
-                "对<br>马<br>之<br>魂",
-                "蝙<br>蝠<br>侠<br>阿<br>甘<br>骑<br>士<br> .",
-                "地<br>狱<br>边<br>境",
-                "闪<br>客",
-                "忍<br>者<br>之<br>印"
-                ])
             .series([
                 AASeriesElement()
                     .color("#fe117c")
                     .data(getRandomNumbersArr(numbers: 12))
-                    ,
-                ])
+                ,
+            ])
         
-        aaChartView2.aa_drawChartWithChartModel(aaChartModel2)
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel2)
+        aaOptions.plotOptions?.column?.groupPadding(0)
         
+        aaChartView2.aa_drawChartWithChartOptions(aaOptions)
     }
     
     func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
-        let selectedColor: String = colorsArr?[moveOverEventMessage.index ?? 0] ?? "#ff000"
-        let data = getRandomNumbersArr(numbers: 12)
-        aaChartModel2.series([
-            AASeriesElement()
-                .name("Tokyo")
-                .lineWidth(3.5)
-                .color(selectedColor)
-                .data(data)
-                ,
-            ])
-        aaChartView2.aa_refreshChartWholeContentWithChartModel(aaChartModel2)
+        selectedColor = colorsArr?[moveOverEventMessage.index ?? 0] ?? "#ff000"
+        
+        aaChartView2.aa_onlyRefreshTheChartDataWithChartModelSeries(
+            [AASeriesElement()
+                .data(configureSeriesDataArray())]
+        )
     }
     
-   private func getRandomNumbersArr(numbers: Int) -> [Float] {
+    private func getRandomNumbersArr(numbers: Int) -> [Float] {
         let randomNumArr = NSMutableArray()
         for _ in 0..<numbers {
             print(Float(arc4random() % 100))
@@ -158,6 +145,20 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
         }
         return randomNumArr as! [Float]
     }
-
-
+    
+    private func configureSeriesDataArray() -> [Any] {
+        let randomNumArrA = NSMutableArray()
+        var y1 = 0.0
+        let Q = arc4random() % 38
+        for  x in 0 ..< 40 {
+            y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1 ;
+            randomNumArrA.add(
+                AADataElement()
+                    .color(selectedColor as Any)
+                    .y(Float(y1)))
+        }
+        return randomNumArrA as! [Any]
+    }
+    
+    
 }
