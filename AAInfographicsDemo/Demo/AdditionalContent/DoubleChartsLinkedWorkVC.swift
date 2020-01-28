@@ -139,7 +139,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     
     private func getRandomNumbersArr(numbers: Int) -> [Float] {
         let randomNumArr = NSMutableArray()
-        for _ in 0..<numbers {
+        for _ in 0 ..< numbers {
             print(Float(arc4random() % 100))
             randomNumArr.add(Float(arc4random() % 1000 + 500))
         }
