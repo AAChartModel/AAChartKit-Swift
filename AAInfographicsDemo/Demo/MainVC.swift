@@ -429,7 +429,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         cell?.textLabel?.numberOfLines = 0
         cell?.textLabel?.text = cellTitle
         cell?.textLabel?.font = .systemFont(ofSize: 16)
-        cell?.textLabel?.textColor = .black
         cell?.accessoryType = .disclosureIndicator
         return cell
     }
