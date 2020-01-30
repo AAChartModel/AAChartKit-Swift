@@ -58,6 +58,8 @@ class JSFormatterFunctionVC: UIViewController {
         case 7: return customStackedAndGroupedColumnChartTooltip()
         case 8: return customDoubleXAxesChart()
         case 9: return customArearangeChartTooltip()
+        case 10: return customLineChartOriginalPointPositionByConfiguringXAxisFormatterAndTooltipFormatter()
+        case 11: return customTooltipWhichDataSourceComeFromOutSideRatherThanSeries()
         default:
             return AAOptions()
         }
@@ -670,5 +672,182 @@ function () {
                 
                 return aaOptions
     }
-
+    
+    private func customLineChartOriginalPointPositionByConfiguringXAxisFormatterAndTooltipFormatter() -> AAOptions {
+        let categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        
+        let categoryJSArrStr = javaScriptArrayStringWithSwiftArray(categories)
+        
+        let tooltipFormatter = """
+        function () {
+        return  'The value for <b>' + \(categoryJSArrStr)[this.x] +
+        '</b> is <b>' + this.y + '</b> ' + "℃";
+        }
+        """
+        
+        let xAxisLabelsFormatter = """
+        function () {
+        return \(categoryJSArrStr)[this.value];
+        }
+        """
+        
+        let aaChartModel = AAChartModel()
+            .chartType(.line)
+            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
+            .axesTextColor(AAColor.white)
+            .title("")
+            .dataLabelsEnabled(false)
+            .tooltipValueSuffix("℃")
+            .animationType(.bounce)
+            .backgroundColor("#22324c")//To make the chart background color transparent, set backgroundColor to "rgba (0,0,0,0)" or "# 00000000". Also make sure `aaChartView!.IsClearBackgroundColor = true`
+            .touchEventEnabled(true)
+            .series([
+                AASeriesElement()
+                    .name("Tokyo")
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+                ,
+                AASeriesElement()
+                    .name("New York")
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+                ,
+                AASeriesElement()
+                    .name("Berlin")
+                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
+                ,
+                AASeriesElement()
+                    .name("London")
+                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
+                ,
+            ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.tooltip?
+            .useHTML(true)
+            .formatter(tooltipFormatter)
+        
+        aaOptions.xAxis?.labels?
+            .formatter(xAxisLabelsFormatter)
+        
+        return aaOptions
+    }
+    
+    private func customTooltipWhichDataSourceComeFromOutSideRatherThanSeries() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.column)//图表类型
+            .title("")
+            .yAxisTitle("")//设置 Y 轴标题
+            .yAxisLineWidth(1)//Y轴轴线线宽为0即是隐藏Y轴轴线
+            .yAxisGridLineWidth(1)//y轴横向分割线宽度为1(为0即是隐藏分割线)
+            .xAxisGridLineWidth(1)//x轴横向分割线宽度为1(为0即是隐藏分割线)
+            .colorsTheme(["#FFD700"/*纯金色*/])
+            .categories(["一月", "二月", "三月", "四月", "五月", "六月",
+                         "七月", "八月", "九月", "十月", "十一月", "十二月"])
+            .yAxisMax(110)
+            .series([
+                AASeriesElement()
+                    .name("2017")
+                    .data([55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, ]),
+            ])
+        
+        let 看近时长数组 = [70, 69, 95, 14, 18, 21, 25, 26, 23, 18, 13, 96]
+        let 看中时长数组 = [20, 80, 57, 11, 17, 22, 24, 24, 20, 14, 86, 25]
+        let 看远时长数组 = [90, 60, 35, 84, 13, 17, 18, 17, 14, 90, 39, 10]
+        
+        var 总时长数组 = [Float]()
+        
+        for i in 0 ..< 12 {
+            let 单个总时长 = 看近时长数组[i] + 看中时长数组[i] + 看远时长数组[i]
+            总时长数组.append(Float(单个总时长))
+        }
+        
+        let 有效时长数组 = [39, 42, 57, 85, 19, 15, 17, 16, 14, 13, 66, 48]
+        
+        let 切换次数数组 = [
+            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random()%10, arc4random()%10, arc4random()%10,
+        ]
+        
+        let 停止次数数组 = [
+            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random()%10, arc4random()%10, arc4random()%10,
+        ]
+        
+        let 干预次数数组 = [
+            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random()%10, arc4random()%10, arc4random()%10,
+        ]
+        
+        let 总时长JS数组 = javaScriptArrayStringWithSwiftArray(总时长数组)
+        let 有效时长JS数组 = javaScriptArrayStringWithSwiftArray(有效时长数组)
+        let 看近时长JS数组 = javaScriptArrayStringWithSwiftArray(看近时长数组)
+        let 看中时长JS数组 = javaScriptArrayStringWithSwiftArray(看中时长数组)
+        let 看远时长JS数组 = javaScriptArrayStringWithSwiftArray(看远时长数组)
+        let 切换次数JS数组 = javaScriptArrayStringWithSwiftArray(切换次数数组)
+        let 停止次数JS数组 = javaScriptArrayStringWithSwiftArray(停止次数数组)
+        let 干预次数JS数组 = javaScriptArrayStringWithSwiftArray(干预次数数组)
+        
+        let jsFormatterStr = """
+        function () {
+        let 总时长数组 = \(总时长JS数组);
+        let 有效时长数组 = \(有效时长JS数组);
+        let 看近时长数组 = \(看近时长JS数组);
+        let 看中时长数组 = \(看中时长JS数组);
+        let 看远时长数组 = \(看远时长JS数组);
+        let 切换次数数组 = \(切换次数JS数组);
+        let 停止次数数组 = \(停止次数JS数组);
+        let 干预次数数组 = \(干预次数JS数组);
+        let 时间单位后缀 = "min<br/>";
+        let 频率单位后缀 = "次<br/>";
+        
+        let 单个总时长字符串 = "总时长: &nbsp &nbsp" + 总时长数组[this.point.index] + 时间单位后缀;
+        let 单个有效时长字符串 = "有效时长: &nbsp" + 有效时长数组[this.point.index] + 时间单位后缀;
+        let 单个看近时长字符串 = "看近时长: &nbsp" + 看近时长数组[this.point.index] + 时间单位后缀;
+        let 单个看中时长字符串 = "看中时长: &nbsp" + 看中时长数组[this.point.index] + 时间单位后缀;
+        let 单个看远时长字符串 = "看远时长: &nbsp" + 看远时长数组[this.point.index] + 时间单位后缀;
+        let 单个切换次数字符串 = "切换次数: &nbsp" + 切换次数数组[this.point.index] + 频率单位后缀;
+        let 单个停止次数字符串 = "停止次数: &nbsp" + 停止次数数组[this.point.index] + 频率单位后缀;
+        let 单个干预次数字符串 = "干预次数: &nbsp" + 干预次数数组[this.point.index] + 频率单位后缀;
+        
+        let wholeContentString =  单个总时长字符串 + 单个有效时长字符串 + 单个看近时长字符串 + 单个看中时长字符串 + 单个看远时长字符串 + 单个切换次数字符串 + 单个停止次数字符串 + 单个干预次数字符串;
+        
+        return wholeContentString;
+        }
+        """
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.tooltip?
+            //‼️以 this.point.index 这种方式获取选中的点的索引必须设置 tooltip 的 shared 为 false
+            //‼️共享时是 this.points (由多个 point 组成的 points 数组)
+            //‼️非共享时是 this.point 单个 point 对象
+            .shared(false)
+            .useHTML(true)
+            .formatter(jsFormatterStr)
+            .backgroundColor("#000000")//黑色背景色
+            .borderColor("#FFD700")//边缘颜色纯金色
+            .style(AAStyle()
+                    .color("#FFD700")//文字颜色纯金色
+                    .fontSize(12)
+        )
+        
+        return aaOptions
+    }
+    
+    
+    private func javaScriptArrayStringWithSwiftArray(_ swiftArray: [Any]) -> String {
+        var originalJsArrStr = ""
+        for element in swiftArray {
+            originalJsArrStr = originalJsArrStr + "'\(element)',"
+        }
+        
+        let finalJSArrStr = "[\(originalJsArrStr)]"
+        return finalJSArrStr
+    }
 }

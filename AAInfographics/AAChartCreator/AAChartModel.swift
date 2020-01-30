@@ -433,6 +433,12 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
+    public func yAxisLineWidth(_ prop: Float) -> AAChartModel {
+        yAxisLineWidth = prop
+        return self
+    }
+    
+    @discardableResult
     public func yAxisMin(_ prop: Float) -> AAChartModel {
         yAxisMin = prop
         return self

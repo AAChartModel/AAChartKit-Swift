@@ -211,7 +211,9 @@ class MainVC: UIViewController {
                 "自定义Y轴文字2",
                 "自定义分组堆积柱状图tooltip内容",
                 "Double X Axes Mirror Chart---双 X 轴镜像图表",
-                "custom Arearange Chart Tooltip---自定义面积范围图浮动提示框"
+                "custom Arearange Chart Tooltip---自定义面积范围图浮动提示框",
+                "调整折线图的 X 轴左边距",
+                "通过来自外部的数据源来自定义 tooltip (而非常规的来自图表的 series)",
             ],
             /*Scrolling update chart data*/
             [  "Column Chart---柱形图",
