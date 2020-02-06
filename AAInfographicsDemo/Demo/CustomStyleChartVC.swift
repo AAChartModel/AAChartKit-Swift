@@ -270,9 +270,9 @@ class CustomStyleChartVC: UIViewController {
     private func configureTheRandomColorArray(colorsNumber: Int) -> [Any] {
         let colorStringArr = NSMutableArray()
         for _ in 0 ..< colorsNumber {
-            let R = (arc4random() % 256)
-            let G = (arc4random() % 256)
-            let B = (arc4random() % 256)
+            let R = arc4random() % 256
+            let G = arc4random() % 256
+            let B = arc4random() % 256
             let rgbaColorStr = "rgba(\(R),\(G),\(B),0.9)"
             colorStringArr.add(rgbaColorStr)
         }
