@@ -764,24 +764,24 @@ function () {
         let 有效时长数组 = [39, 42, 57, 85, 19, 15, 17, 16, 14, 13, 66, 48]
         
         let 切换次数数组 = [
-            arc4random()%10, arc4random()%10, arc4random()%10,
-            arc4random()%10, arc4random()%10, arc4random()%10,
-            arc4random()%10, arc4random()%10, arc4random()%10,
-            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
         ]
         
         let 停止次数数组 = [
-            arc4random()%10, arc4random()%10, arc4random()%10,
-            arc4random()%10, arc4random()%10, arc4random()%10,
-            arc4random()%10, arc4random()%10, arc4random()%10,
-            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
         ]
         
         let 干预次数数组 = [
-            arc4random()%10, arc4random()%10, arc4random()%10,
-            arc4random()%10, arc4random()%10, arc4random()%10,
-            arc4random()%10, arc4random()%10, arc4random()%10,
-            arc4random()%10, arc4random()%10, arc4random()%10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
+            arc4random() % 10, arc4random() % 10, arc4random() % 10,
         ]
         
         let 总时长JS数组 = javaScriptArrayStringWithSwiftArray(总时长数组)
