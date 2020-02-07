@@ -190,31 +190,31 @@ class OnlyRefreshChartDataVC: UIViewController {
     }
     
     private func configureSeriesDataArray() -> [AASeriesElement] {
-        let randomNumArrA = NSMutableArray()
-        let randomNumArrB = NSMutableArray()
+        var randomNumArrA = [Any]()
+        var randomNumArrB = [Any]()
         var y1 = 0.0
         var y2 = 0.0
         let Q = arc4random() % 38
         for  x in 0 ..< 40 {
             y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1 ;
             y2 = cos(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 3.0 * 0.01 - 1;
-            randomNumArrA.add(y1)
-            randomNumArrB.add(y2)
+            randomNumArrA.append(y1)
+            randomNumArrB.append(y2)
         }
         
         let chartSeriesArr = [
             AASeriesElement()
                 .name("2017")
-                .data(randomNumArrA as! [Any]),
+                .data(randomNumArrA),
             AASeriesElement()
                 .name("2018")
-                .data(randomNumArrB as! [Any]),
+                .data(randomNumArrB),
             AASeriesElement()
                 .name("2019")
-                .data(randomNumArrA as! [Any]),
+                .data(randomNumArrA),
             AASeriesElement()
                 .name("2018")
-                .data(randomNumArrB as! [Any])
+                .data(randomNumArrB)
         ]
         return chartSeriesArr
     }
