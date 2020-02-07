@@ -147,17 +147,17 @@ class ScrollingUpdateDataVC: UIViewController {
     }
     
     private func configureSeriesDataArray() -> [AASeriesElement] {
-        let randomNumArrA = NSMutableArray()
-        let randomNumArrB = NSMutableArray()
+        var randomNumArrA = [Any]()
+        var randomNumArrB = [Any]()
         var y1 = 0.0
         var y2 = 0.0
         globalQ = Int(arc4random() % 38)
-        globalX = 28
+        globalX = 29
         for  x in 0 ..< globalX {
             y1 = sin(Double(globalQ) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1
             y2 = cos(Double(globalQ) * (Double(x) * Double.pi / 180)) + Double(x) * 3.0 * 0.01 - 1
-            randomNumArrA.add(y1)
-            randomNumArrB.add(y2)
+            randomNumArrA.append(y1)
+            randomNumArrB.append(y2)
         }
         
         
@@ -165,23 +165,60 @@ class ScrollingUpdateDataVC: UIViewController {
             AASeriesElement()
                 .name("2019")
                 .lineWidth(5)
-                .data(randomNumArrA as! [Any]),
+                .data(randomNumArrA),
             AASeriesElement()
                 .name("2018")
                 .lineWidth(5)
-                .data(randomNumArrB as! [Any])
+                .data(randomNumArrB)
         ]
         return chartSeriesArr
     }
     
     private func configurePointsOptionsArray() -> [Any] {
         
-        let y1 = sin(Double(globalQ) * (Double(globalX) * Double.pi / 180)) + Double(globalX) * 2.0 * 0.01 - 1
-        let y2 = cos(Double(globalQ) * (Double(globalX) * Double.pi / 180)) + Double(globalX) * 3.0 * 0.01 - 1
+        let y0 = sin(Double(globalQ) * (Double(globalX) * Double.pi / 180)) + Double(globalX) * 2.0 * 0.01 - 1
+        let y1 = cos(Double(globalQ) * (Double(globalX) * Double.pi / 180)) + Double(globalX) * 3.0 * 0.01 - 1
+        
+        var options0: Any = 0
+        var options1: Any = 0
+        
+        if self.chartType != .bar && self.chartType != .column {
+            options0 = AADataElement()
+                .y(Float(y0))
+                .dataLabels(AADataLabels()
+                    .enabled(true)
+                    .color("deepskyblue")
+                    .format("{y:.2f} 英镑"))
+                .marker(AAMarker()
+                    .radius(8)//曲线连接点半径
+                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                    .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
+                    .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                    //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                    .lineColor("deepskyblue")
+            )
+            
+            options1 = AADataElement()
+                .y(Float(y1))
+                .dataLabels(AADataLabels()
+                    .enabled(true)
+                    .color("red")
+                    .format("{y:.2f} 美元"))
+                .marker(AAMarker()
+                    .radius(8)
+                    .symbol((AAChartSymbolType.diamond.rawValue))
+                    .fillColor(AAColor.white)
+                    .lineWidth(5)
+                    .lineColor("red")
+            )
+        } else {
+            options0 = y0
+            options1 = y1
+        }
         
         globalX = globalX + 1
-
-        return [y1, y2]
+        
+        return [options0, options1]
     }
     
 }
