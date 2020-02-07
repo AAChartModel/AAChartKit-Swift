@@ -414,7 +414,7 @@ class CustomStyleChartVC: UIViewController {
                     .enabled(true)
                     .format("{y} 美元🇺🇸💲")
                     .x(3)
-                    .verticalAlign("middle")
+                    .verticalAlign(.middle)
                     .style(AAStyle()
                         .fontSize(20)
                         .fontWeight(.bold)
@@ -782,10 +782,16 @@ class CustomStyleChartVC: UIViewController {
             startColor: "rgba(255,215,0,0.1)",//gold color, alpha: 0.1
             endColor: "rgba(255,215,0, 0.6)"// gold color, alpha: 0.6
         )
-        
-        let formatStr = ("<img src=\"https://www.highcharts.com/samples/graphics/sun.png\""
-            + "<span style=\"color:#FFFFFF;font-weight:thin;font-size:25px\">{y}</span>"
-            + "<span style=\"color:#FFFFFF;font-weight:thin;font-size:17px\"> m</span>")
+
+        let formatStr = """
+<img src=https://www.highcharts.com/samples/graphics/sun.png><span style=color:#FFFFFF;font-weight:thin;font-size:25px>{y}</span><span style=color:#FFFFFF;font-weight:thin;font-size:17px> m</span>
+"""
+//        Same as the follow
+//        let formatStr = (
+//            "<img src=https://www.highcharts.com/samples/graphics/sun.png><span"
+//                + "style=color:#FFFFFF;font-weight:thin;font-size:25px>{y}</span><span"
+//                + "style=color:#FFFFFF;font-weight:thin;font-size:17px> m</span>"
+//        )
 
         let singleSpecialData = AADataElement()
             .dataLabels(AADataLabels()
@@ -797,10 +803,10 @@ class CustomStyleChartVC: UIViewController {
                     .color(AAColor.white)
                     .fontSize(16))
                 .y(-35)
-                //            .align(.center)
-                //            .verticalAlign(.top)
-                //                       .overflow("none")
-                //                       .crop(false)
+                .align(.center)
+                .verticalAlign(.top)
+                .overflow("none")
+                .crop(false)
         )
             .y(26.5)
             .toDic()!
