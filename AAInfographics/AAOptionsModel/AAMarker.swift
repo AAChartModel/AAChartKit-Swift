@@ -38,6 +38,7 @@ public class AAMarker: AAObject {
     public var fillColor: String?
     public var lineWidth: Float?
     public var lineColor: Any?
+    public var states: AAMarkerStates?
     
     @discardableResult
     public func radius(_ prop: Float?) -> AAMarker {
@@ -69,7 +70,54 @@ public class AAMarker: AAObject {
         return self
     }
     
+    @discardableResult
+    public func states(_ prop: AAMarkerStates?) -> AAMarker {
+        states = prop
+        return self
+    }
+    
     public override init() {
         
+    }
+}
+
+public class AAMarkerStates: AAObject {
+    var hover: AAMarkerHover?
+    
+    @discardableResult
+    public func hover(_ prop: AAMarkerHover) -> AAMarkerStates {
+        hover = prop
+        return self
+    }
+}
+
+public class AAMarkerHover: AAObject {
+    var fillColor: String?
+    var lineColor: String?
+    var lineWidth: Float?
+    var radius: Float?
+    
+    @discardableResult
+    public func fillColor(_ prop: String) -> AAMarkerHover {
+        fillColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineColor(_ prop: String) -> AAMarkerHover {
+        lineColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineWidth(_ prop: Float) -> AAMarkerHover {
+        lineWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func radius(_ prop: Float) -> AAMarkerHover {
+        radius = prop
+        return self
     }
 }

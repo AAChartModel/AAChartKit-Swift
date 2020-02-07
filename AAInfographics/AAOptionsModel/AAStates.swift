@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AAStates: AAObject {
+public class AAStates: AAObject {
     var hover: AAHover?
     var select: AASelect?
     
@@ -25,7 +25,7 @@ class AAStates: AAObject {
     }
 }
 
-class AAHover: AAObject {
+public class AAHover: AAObject {
     var borderColor: String?
     var brightness: Float?
     var color: String?
@@ -56,7 +56,7 @@ class AAHover: AAObject {
     }
 }
 
-class AASelect: AAObject {
+public class AASelect: AAObject {
     var borderColor: String?
     var color: String?
     var halo: AAHalo?
@@ -80,13 +80,13 @@ class AASelect: AAObject {
     }
 }
 
-class AAHalo: AAObject {
-    var attributes: [String: AnyObject]?
+public class AAHalo: AAObject {
+    var attributes: [String: Any]?
     var opacity: Float?
     var size: Float?
     
     @discardableResult
-    public func attributes(_ prop: [String: AnyObject]) -> AAHalo {
+    public func attributes(_ prop: [String: Any]) -> AAHalo {
         attributes = prop
         return self
     }

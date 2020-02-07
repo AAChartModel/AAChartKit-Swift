@@ -48,6 +48,7 @@
     public var dataLabels: AADataLabels?  //Individual data label for each point. The options are the same as the ones for `plotOptions.series.dataLabels`.
     public var marker: AAMarker?      //Enable or disable the point marker. If null, the markers are hidden when the data is dense, and shown for more widespread data points.
     public var step: Any?                  //Whether to apply steps to the line. Possible values are left, center and right.
+    public var states: AAStates?
     public var colorByPoint: Bool?         //When using automatic point colors pulled from the `options.colors` collection, this option determines whether the chart should receive one color per series or one color per point.
     public var allowPointSelect: Bool?     //Allow this series' points to be selected by clicking on the markers, bars or pie slices
     public var zIndex: Int?                //Define the visual z index of the series.
@@ -150,6 +151,12 @@
     @discardableResult
     public func step(_ prop: Any) -> AASeriesElement {
         step = prop
+        return self
+    }
+    
+    @discardableResult
+    public func states(_ prop: AAStates) -> AASeriesElement {
+        states = prop
         return self
     }
     

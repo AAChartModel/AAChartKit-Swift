@@ -88,6 +88,12 @@ class CustomStyleChartVC: UIViewController {
         case 23: return configurePentagonRadarChart()
         case 24: return configureHexagonRadarChart()
         case 25: return drawLineChartWithPointsCoordinates()
+        case 26: return customSpecialStyleDataLabelOfSingleDataElementChart()
+        case 27: return customBarChartHoverColorAndSelectColor()
+        case 28: return customChartHoverAndSelectHaloStyle()
+        case 29: return customSplineChartMarkerStatesHoverStyle()
+        case 30: return customNormalStackingChartDataLabelsContentAndStyle()
+            
         default:
             return configureTriangleRadarChart()
         }
@@ -769,4 +775,202 @@ class CustomStyleChartVC: UIViewController {
                     .data([[10,20],[15,30] ,[27,52],[43,78]])
             ])
     }
+    
+    private func customSpecialStyleDataLabelOfSingleDataElementChart() -> AAChartModel  {
+        let gradientColorDic1 = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            startColor: "rgba(255,215,0,0.1)",//gold color, alpha: 0.1
+            endColor: "rgba(255,215,0, 0.6)"// gold color, alpha: 0.6
+        )
+        
+        let formatStr = ("<img src=\"https://www.highcharts.com/samples/graphics/sun.png\""
+            + "<span style=\"color:#FFFFFF;font-weight:thin;font-size:25px\">{y}</span>"
+            + "<span style=\"color:#FFFFFF;font-weight:thin;font-size:17px\"> m</span>")
+
+        let singleSpecialData = AADataElement()
+            .dataLabels(AADataLabels()
+                .enabled(true)
+                .useHTML(true)
+                .format(formatStr)
+                .style(AAStyle()
+                    .fontWeight(.bold)
+                    .color(AAColor.white)
+                    .fontSize(16))
+                .y(-35)
+                //            .align(.center)
+                //            .verticalAlign(.top)
+                //                       .overflow("none")
+                //                       .crop(false)
+        )
+            .y(26.5)
+            .toDic()!
+        
+        return AAChartModel()
+            .chartType(.areaspline)
+            .title("")
+            .backgroundColor("#4b2b7f")
+            .yAxisTitle("")//设置Y轴标题
+            .dataLabelsEnabled(false)//是否显示值
+            .tooltipEnabled(true)
+            .markerRadius(0)
+            .xAxisVisible(false)
+            .yAxisVisible(false)
+            .series([
+                AASeriesElement()
+                    .name("Virtual Data")
+                    .lineWidth(6)
+                    .color("rgba(255,215,0,1)")
+                    .fillColor(gradientColorDic1)// gold color, alpha: 1.0
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+            ])
+    }
+        
+    private func customBarChartHoverColorAndSelectColor() -> AAChartModel  {
+        return AAChartModel()
+            .chartType(.bar)
+            .title("Custom Bar Chart select color")
+            .yAxisTitle("")
+            .yAxisReversed(true)
+            .xAxisReversed(true)
+            .series([
+                AASeriesElement()
+                    .name("ElementOne")
+                    .data([211,183,157,133,111,91,73,57,43,31,21,13,7,3])
+                    .allowPointSelect(true)
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .color("rgba(220,20,60,1)"))//猩红色, alpha 透明度 1
+                        .select(AASelect()
+                            .color(AAColor.red)))
+            ])
+    }
+
+    private func customChartHoverAndSelectHaloStyle() -> AAChartModel  {
+        return AAChartModel()
+            .chartType(.line)
+            .title("Custom Chart Hover And Select Halo Style")
+            .colorsTheme([AAColor.red])
+            .yAxisTitle("")
+            .yAxisReversed(true)
+            .xAxisReversed(true)
+            .markerRadius(20)
+            .series([
+                AASeriesElement()
+                    .name("ElementOne")
+                    .data([211,183,157,133,111,91,73,57,43,31,21,13,7,3])
+                    .allowPointSelect(true)
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .halo(AAHalo()
+                                .size(130)
+                                .opacity(0.8)
+                                .attributes([
+                                    "stroke-width":50,
+                                    "fill":"#00BFFF",
+                                    "stroke":"#00FA9A"
+                                ]))
+                    )
+                        .select(AASelect()
+                            .halo(AAHalo()
+                                .size(130)
+                                .opacity(1.0)
+                                .attributes([
+                                    "stroke-width":150,
+                                    "fill":"rgba(138,43,226,1)",
+                                    "stroke":"rgba(30,144,255,1)"
+                                ]))
+                    ))
+            ])
+    }
+
+    private func customSplineChartMarkerStatesHoverStyle() -> AAChartModel  {
+        return AAChartModel()
+            .chartType(.areaspline)
+            .title("Custom Spline Chart Marker States Hover Style")
+            .categories(["一月", "二月", "三月", "四月", "五月", "六月",
+                         "七月", "八月", "九月", "十月", "十一月", "十二月"])
+            .yAxisTitle("")
+            .markerRadius(8.0)//marker点半径为8个像素
+            .yAxisLineWidth(0)
+            .yAxisGridLineWidth(0)
+            .legendEnabled(false)
+            .series([
+                AASeriesElement()
+                    .name("Tokyo Hot")
+                    .lineWidth(5.0)
+                    .color("rgba(220,20,60,1)")//猩红色, alpha 透明度 1
+                    .marker(AAMarker()
+                        .states(AAMarkerStates()
+                            .hover(AAMarkerHover()
+                                .fillColor(AAColor.white)
+                                .radius(40)
+                                .lineColor(AAColor.green)
+                                .lineWidth(20))
+                    ))
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
+            ])
+    }
+
+    private func customNormalStackingChartDataLabelsContentAndStyle() -> AAChartModel  {
+        let categories = [
+            "孤岛危机",
+            "使命召唤",
+            "荣誉勋章",
+            "狙击精英",
+            "神秘海域",
+            "最后生还者",
+            "巫师3狂猎",
+            "对马之魂",
+            "死亡搁浅",
+            "地狱边境",
+            "闪客",
+            "忍者之印"
+        ]
+        
+        let colorsTheme = [
+            "#fe117c",
+            "#ffc069",
+            "#06caf4",
+            "#7dffc0"
+        ]
+        
+        let element1 = AASeriesElement()
+            .name("2017")
+            .dataLabels(AADataLabels()
+                .enabled(true)
+                .y(-10)
+                .format("{total} mm")
+                .color(AAColor.red)
+                .shape("callout")
+                .backgroundColor(AAColor.white)
+                .borderColor(AAColor.red)
+                .borderRadius(1)
+                .borderWidth(1)
+        )
+            .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+        
+        
+        let element2 = AASeriesElement()
+            .name("2018")
+            .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+        let element3 = AASeriesElement()
+            .name("2019")
+            .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
+        let element4 = AASeriesElement()
+            .name("2020")
+            .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
+                
+        return AAChartModel()
+            .chartType(.column)
+            .title("")
+            .stacking(.normal)
+            .yAxisTitle("")
+            .yAxisGridLineWidth(0)
+            .markerRadius(0)
+            .categories(categories)
+            .colorsTheme(colorsTheme)
+            .series([element1, element2, element3, element4])
+    }
+
+
 }
