@@ -101,7 +101,7 @@ class ScrollingUpdateDataVC: UIViewController {
                 .markerSymbolStyle(.borderBlank)
             
             if step == true {
-                for element in (aaChartModel?.series)! {
+                for element: AASeriesElement in (aaChartModel?.series as! [AASeriesElement]) {
                     element.step(true)
                 }
             }

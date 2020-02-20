@@ -120,6 +120,7 @@ class MainVC: UIViewController {
                 "custom Line Chart Chart Hover And Select Halo Style",
                 "custom Spline Chart Marker States Hover Style",
                 "customNormalStackingChartDataLabelsContentAndStyle---自定义堆积柱状图 DataLabels 的内容及样式",
+                "upsideDownPyramidChart---倒立的金字塔图",
             ],
             /*Mixed Chart*/
             [

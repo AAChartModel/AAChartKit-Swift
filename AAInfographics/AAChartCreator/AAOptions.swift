@@ -42,7 +42,7 @@ public class AAOptions: AAObject {
     public var yAxisArray: [AAYAxis]?
     public var tooltip: AATooltip?
     public var plotOptions: AAPlotOptions?
-    public var series: [AASeriesElement]?
+    public var series: [Any]?
     public var legend: AALegend?
     public var pane: AAPane?
     public var colors: [Any]?
@@ -103,7 +103,7 @@ public class AAOptions: AAObject {
     }
     
     @discardableResult
-    public func series(_ prop: [AASeriesElement]?) -> AAOptions {
+    public func series(_ prop: [Any]?) -> AAOptions {
         series = prop
         return self
     }

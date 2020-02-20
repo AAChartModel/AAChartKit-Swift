@@ -93,6 +93,7 @@ class CustomStyleChartVC: UIViewController {
         case 28: return customChartHoverAndSelectHaloStyle()
         case 29: return customSplineChartMarkerStatesHoverStyle()
         case 30: return customNormalStackingChartDataLabelsContentAndStyle()
+        case 31: return upsideDownPyramidChart()
             
         default:
             return configureTriangleRadarChart()
@@ -978,5 +979,25 @@ class CustomStyleChartVC: UIViewController {
             .series([element1, element2, element3, element4])
     }
 
+    private func upsideDownPyramidChart() -> AAChartModel {
+        let pyramid = [
+            "name": 20,
+            "data": [
+                ["swift",      11850],
+                ["Objective-C",12379],
+                ["JavaScript", 14286],
+                ["Go",         15552],
+                ["Python",     18654],
+            ],
+            "reversed": false
+            ] as [String : Any]
+        
+        return AAChartModel()
+            .chartType(.pyramid)
+            .title("THE HEAT OF PROGRAM LANGUAGE")
+            .subtitle("virtual data")
+            .yAxisTitle("℃")
+            .series([pyramid])
+    }
 
 }
