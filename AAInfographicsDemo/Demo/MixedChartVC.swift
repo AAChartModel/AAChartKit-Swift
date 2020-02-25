@@ -718,79 +718,74 @@ class MixedChartVC: UIViewController {
     }
     
     private func configurePieMixedLineMixedColumnChart() -> AAChartModel {
-        let pieElement = AASeriesElement()
+        let columnElement1 = AASeriesElement()
+            .name("Anna")
+            .type(.column)
+            .data([3, 2, 1, 3, 4])
+        
+        let columnElement2 = AASeriesElement()
+            .name("Babara")
+            .type(.column)
+            .data([2, 3, 5, 7, 6])
+        
+        let columnElement3 = AASeriesElement()
+            .name("Cortana")
+            .type(.column)
+            .data([4, 3, 3, 9, 0])
+        
+        let lineElement = AASeriesElement()
+            .name("average value")
+            .type(.line)
+            .data([3, 2.67, 3, 6.33, 3.33])
+            .marker(
+                AAMarker()
+                    .fillColor("#1E90FF")
+                    .lineWidth(2.0)
+                    .lineColor(AAColor.white)
+        )
+        
+        let pieElement = AAPie()
             .type(.pie)
-            .name("Total cosume")
+            .center([100,80])
+            .size(100)
+            .showInLegend(true)
+            .dataLabels(
+                AADataLabels()
+                    .enabled(false))
             .data([
                 AADataElement()
                     .name("Ada")
                     .y(13.0)
                     .color(AAGradientColor.oceanBlue)
-                    .toDic()!,
+                    ,
                 AADataElement()
                     .name("Bob")
                     .y(13.0)
                     .color(AAGradientColor.sanguine)
-                    .toDic()!,
+                    ,
                 AADataElement()
                     .name("Coco")
                     .y(13.0)
                     .color(AAGradientColor.purpleLake)
-                    .toDic()!
-                ])
+            ])
         
-        let pieElementDic:NSMutableDictionary = NSMutableDictionary.init(dictionary: pieElement.toDic()!)
-        pieElementDic.setValue([100, 80], forKey: "center")
-        pieElementDic.setValue(100, forKey: "size")
-        pieElementDic.setValue(false, forKey: "showInLegend")
-        pieElementDic.setValue(["enabled": false], forKey: "dataLabels")
-        
-        let aaPieElementDic = AAPie()
-            .center([100,80])
-            .size(100)
-            .showInLegend(false)
-            .dataLabels(
-                AADataLabels()
-                    .enabled(false))
-            .toDic()!
-
+        let aaSeriesArr = [
+            columnElement1,
+            columnElement2,
+            columnElement3,
+            lineElement,
+            pieElement,
+        ]
         
         return AAChartModel()
             .stacking(.normal)
-            .colorsTheme([AAGradientColor.oceanBlue,
-                          AAGradientColor.sanguine,
-                          AAGradientColor.purpleLake])
+            .colorsTheme([
+                AAGradientColor.oceanBlue,
+                AAGradientColor.sanguine,
+                AAGradientColor.purpleLake
+            ])
             .dataLabelsEnabled(false)
-            .series([
-                AASeriesElement()
-                    .name("Anna")
-                    .type(.column)
-                    .data([3, 2, 1, 3, 4])
-                    ,
-                AASeriesElement()
-                    .name("Babara")
-                    .type(.column)
-                    .data([2, 3, 5, 7, 6])
-                    ,
-                AASeriesElement()
-                    .name("Cortana")
-                    .type(.column)
-                    .data([4, 3, 3, 9, 0])
-                    ,
-                AASeriesElement()
-                    .name("average value")
-                    .type(.line)
-                    .data([3, 2.67, 3, 6.33, 3.33])
-                    .marker(
-                        AAMarker()
-                            .fillColor("#1E90FF")
-                            .lineWidth(2.0)
-                            .lineColor(AAColor.white)
-                    )
-                    ,
-                
-//                pieElementDic as! Dictionary<String, Any>
-                ])
+            .series(aaSeriesArr)
     }
     
     private func configureLineChartWithShadow() -> AAChartModel {

@@ -365,6 +365,8 @@ public class AAAreaspline: AAObject {
 }
 
 public class AAPie: AAObject {
+    public var type: String?
+    public var data: [Any]?
     public var dataLabels:AADataLabels?
     public var size: Float?
     public var allowPointSelect: Bool?
@@ -374,6 +376,18 @@ public class AAPie: AAObject {
     public var endAngle: Float?
     public var depth: Float?
     public var center: [Int]?
+    
+    @discardableResult
+    public func type(_ prop: AAChartType) -> AAPie {
+        type = prop.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func data(_ prop: [Any]) -> AAPie {
+        data = prop
+        return self
+    }
     
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AAPie {
