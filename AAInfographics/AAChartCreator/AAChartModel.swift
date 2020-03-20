@@ -191,6 +191,7 @@ public class AAChartModel: AAObject {
     public var borderRadius: Float?           //The corner radius of the outer chart border. Defaults to 0
     public var markerRadius: Float?           //The radius of the point marker. Defaults to 4
     public var touchEventEnabled: Bool?     //Support touch event call back or not
+    public var scrollablePlotArea: AAScrollablePlotArea?    //Scroll properties if supported
     
     @discardableResult
     public func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
@@ -495,6 +496,12 @@ public class AAChartModel: AAObject {
     @discardableResult
     public func touchEventEnabled(_ prop: Bool) -> AAChartModel {
         touchEventEnabled = prop
+        return self
+    }
+    
+    @discardableResult
+    public func scrollablePlotArea(_ prop: AAScrollablePlotArea) -> AAChartModel {
+        scrollablePlotArea = prop
         return self
     }
     

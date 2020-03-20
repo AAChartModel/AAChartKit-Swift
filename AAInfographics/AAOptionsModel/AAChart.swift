@@ -47,6 +47,7 @@ public class AAChart: AAObject {
     public var marginRight: Float? //👉
     public var marginBottom: Float? //👇
     public var marginLeft: Float? //👈
+    public var scrollablePlotArea: AAScrollablePlotArea?
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AAChart {
@@ -129,6 +130,12 @@ public class AAChart: AAObject {
     @discardableResult
     public func marginLeft(_ prop: Float?) -> AAChart {
         marginLeft = prop
+        return self
+    }
+    
+    @discardableResult
+    public func scrollablePlotArea(_ prop: AAScrollablePlotArea?) -> AAChart {
+        scrollablePlotArea = prop
         return self
     }
     
