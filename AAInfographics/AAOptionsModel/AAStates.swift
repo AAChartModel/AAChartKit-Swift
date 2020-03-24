@@ -26,10 +26,17 @@ public class AAStates: AAObject {
 }
 
 public class AAHover: AAObject {
+    var enabled: Bool?
     var borderColor: String?
     var brightness: Float?
     var color: String?
     var halo: AAHalo?
+    
+    @discardableResult
+    public func enabled(_ prop: Bool) -> AAHover {
+        enabled = prop
+        return self
+    }
     
     @discardableResult
     public func borderColor(_ prop: String) -> AAHover {
