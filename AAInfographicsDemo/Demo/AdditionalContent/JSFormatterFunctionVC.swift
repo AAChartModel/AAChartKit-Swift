@@ -841,7 +841,7 @@ function () {
         return aaOptions
     }
     
-    
+    //Convert Swift array to be JavaScript array
     private func javaScriptArrayStringWithSwiftArray(_ swiftArray: [Any]) -> String {
         var originalJsArrStr = ""
         for element in swiftArray {
