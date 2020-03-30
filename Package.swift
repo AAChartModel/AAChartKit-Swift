@@ -11,7 +11,8 @@ let package = Package(
      ],
      targets: [
         .target(
-               name: "AAInfographics"
+               name: "AAInfographics",
+               path: "AAInfographics"
         )
      ]
  )
