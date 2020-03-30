@@ -152,6 +152,7 @@ public class AAOptionsConstructor {
             .polar(aaChartModel.polar) //Whether to polarize the chart (turn on polar mode)
             .marginLeft(aaChartModel.marginLeft)
             .marginRight(aaChartModel.marginRight)
+            .scrollablePlotArea(aaChartModel.scrollablePlotArea)
         
         let aaTitle = AATitle()
             .text(aaChartModel.title) //Title text content
