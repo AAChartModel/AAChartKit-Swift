@@ -133,8 +133,8 @@ public class AAXAxis: AAObject {
     }
     
     @discardableResult
-    public func gridLineDashStyle(_ prop: String?) -> AAXAxis {
-        gridLineDashStyle = prop
+    public func gridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> AAXAxis {
+        gridLineDashStyle = prop?.rawValue
         return self
     }
     
