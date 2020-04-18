@@ -94,7 +94,7 @@ to your project Podfile.
             .animationType(.bounce)
             .title("TITLE")//The chart title
             .subtitle("subtitle")//The chart subtitle
-            .dataLabelEnabled(false) //Enable or disable the data labels. Defaults to false
+            .dataLabelsEnabled(false) //Enable or disable the data labels. Defaults to false
             .tooltipValueSuffix("USD")//the value suffix of the chart tooltip
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
