@@ -33,8 +33,8 @@
 import Foundation
 
 public class AAStates: AAObject {
-    var hover: AAHover?
-    var select: AASelect?
+    public var hover: AAHover?
+    public var select: AASelect?
     
     @discardableResult
     public func hover(_ prop: AAHover) -> AAStates {
@@ -50,11 +50,11 @@ public class AAStates: AAObject {
 }
 
 public class AAHover: AAObject {
-    var enabled: Bool?
-    var borderColor: String?
-    var brightness: Float?
-    var color: String?
-    var halo: AAHalo?
+    public var enabled: Bool?
+    public var borderColor: String?
+    public var brightness: Float?
+    public var color: String?
+    public var halo: AAHalo?
     
     @discardableResult
     public func enabled(_ prop: Bool) -> AAHover {
@@ -88,9 +88,9 @@ public class AAHover: AAObject {
 }
 
 public class AASelect: AAObject {
-    var borderColor: String?
-    var color: String?
-    var halo: AAHalo?
+    public var borderColor: String?
+    public var color: String?
+    public var halo: AAHalo?
     
     @discardableResult
     public func borderColor(_ prop: String) -> AASelect {
@@ -112,9 +112,9 @@ public class AASelect: AAObject {
 }
 
 public class AAHalo: AAObject {
-    var attributes: [String: Any]?
-    var opacity: Float?
-    var size: Float?
+    public var attributes: [String: Any]?
+    public var opacity: Float?
+    public var size: Float?
     
     @discardableResult
     public func attributes(_ prop: [String: Any]) -> AAHalo {

@@ -82,7 +82,7 @@ public class AAMarker: AAObject {
 }
 
 public class AAMarkerStates: AAObject {
-    var hover: AAMarkerHover?
+    public var hover: AAMarkerHover?
     
     @discardableResult
     public func hover(_ prop: AAMarkerHover) -> AAMarkerStates {
@@ -92,10 +92,10 @@ public class AAMarkerStates: AAObject {
 }
 
 public class AAMarkerHover: AAObject {
-    var fillColor: String?
-    var lineColor: String?
-    var lineWidth: Float?
-    var radius: Float?
+    public var fillColor: String?
+    public var lineColor: String?
+    public var lineWidth: Float?
+    public var radius: Float?
     
     @discardableResult
     public func fillColor(_ prop: String) -> AAMarkerHover {
