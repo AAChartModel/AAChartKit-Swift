@@ -98,8 +98,8 @@ pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.
 
 1. 創建視圖*AAChartView*
 ```swift
-        CGFloat chartViewWidth  = self.view.frame.size.width
-        CGFloat chartViewHeight = self.view.frame.size.height
+        let chartViewWidth  = self.view.frame.size.width
+        let chartViewHeight = self.view.frame.size.height
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
         // 設置 aaChartView 的內容高度(content height)
