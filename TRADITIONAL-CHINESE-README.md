@@ -83,7 +83,7 @@
 pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
 
 ```
- 到妳的 **Podfile**文件當中.
+ 到妳的 **Podfile** 文件當中.
  
 2. 在終端中運行命令 `pod install` or `pod update`.
 3. 導入頭文件  `AAInfographics`.
