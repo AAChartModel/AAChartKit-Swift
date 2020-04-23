@@ -483,7 +483,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
     private func configureAAPlotLinesForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("")
-            .chartType(.areaspline)//图形类型chartOptions.toDic()!
+            .chartType(.areaspline)
             .dataLabelsEnabled(false)
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .legendEnabled(false)
