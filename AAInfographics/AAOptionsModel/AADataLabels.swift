@@ -193,7 +193,7 @@ public class AAStyle: AAObject {
     @discardableResult
     public func fontSize(_ prop: Float?) -> AAStyle {
         if prop != nil {
-            fontSize = "\(String(describing: prop))px"
+            fontSize = "\(prop!)px"
         }
         return self
     }
