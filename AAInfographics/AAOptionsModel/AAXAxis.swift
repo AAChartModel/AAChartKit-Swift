@@ -33,6 +33,7 @@
 import Foundation
 
 public class AAXAxis: AAObject {
+    public var type: String?
     public var plotBands: [AAPlotBandsElement]?
     public var plotLines: [AAPlotLinesElement]?
     public var categories: [String]?
@@ -59,6 +60,12 @@ public class AAXAxis: AAObject {
     public var tickLength: Float? /// The length of the axis tick marks. The default is: 10.
     public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
     public var minRange: Int?
+    
+    @discardableResult
+    public func type(_ prop: String?) -> AAXAxis {
+        type = prop
+        return self
+    }
     
     @discardableResult
     public func plotBands(_ prop: [AAPlotBandsElement]?) -> AAXAxis {

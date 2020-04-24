@@ -56,6 +56,7 @@ class MainVC: UIViewController {
                   "Draw Chart With AAOptions---通过Options绘图",
                   "Custom Tooltip With JS Function ---通过JS函数自定义Tooltip",
                   "Scrolling update chart data ---滚动刷新图表数据",
+                  "Scrollable chart ---可滚动的图表",
               ]
         
         chartTypeTitleArr = [
@@ -232,6 +233,17 @@ class MainVC: UIViewController {
                "Spline Chart---曲线图",
                "Scatter Chart---散点图",
             ],
+            /*Scrollable  chart */
+            [  "Column Chart---柱形图",
+               "Bar Chart---条形图",
+               "Area Chart---折线填充图",
+               "Areaspline Chart---曲线填充图",
+               "Step Area Chart--- 直方折线填充图",
+               "Step Line Chart--- 直方折线图",
+               "Line Chart---折线图",
+               "Spline Chart---曲线图",
+               "Scatter Chart---散点图",
+            ],
         ]
         
         chartTypeArr = [
@@ -332,6 +344,18 @@ class MainVC: UIViewController {
                 AAChartType.spline,
                 AAChartType.scatter
                 ],
+            /*Scrollable chart*/
+            [
+                AAChartType.column,
+                AAChartType.bar,
+                AAChartType.area,
+                AAChartType.areaspline,
+                AAChartType.area,
+                AAChartType.line,
+                AAChartType.line,
+                AAChartType.spline,
+                AAChartType.scatter
+            ],
         ]
         
         view.backgroundColor = .white
@@ -523,6 +547,14 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             let vc = ScrollingUpdateDataVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             vc.step = false
+            if indexPath.row == 4 || indexPath.row == 5 {
+                vc.step = true
+            }
+            navigationController?.pushViewController(vc, animated: true)
+        case 12:
+            /*Scrollable Charts*/
+            let vc = ScrollableChartVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true
             }
