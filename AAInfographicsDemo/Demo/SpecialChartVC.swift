@@ -114,14 +114,18 @@ class SpecialChartVC: UIViewController {
                 AASeriesElement()
                     .name("Language market shares")
                     .innerSize("20%")//内部圆环半径大小占比(内部圆环半径/扇形图半径),
-                    .allowPointSelect(false)
+                    .allowPointSelect(true)
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .enabled(false)//禁用点击区块之后出现的半透明遮罩层
+                    ))
                     .data([
                         ["Java"  ,67],
                         ["Swift",999],
                         ["Python",83],
                         ["OC"    ,11],
                         ["Go"    ,30],
-                        ])
+                    ])
                 ,
                 ]
     )
