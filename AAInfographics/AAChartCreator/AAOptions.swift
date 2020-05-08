@@ -158,7 +158,7 @@ public class AAOptionsConstructor {
             .text(aaChartModel.title) //Title text content
             .style(AAStyle()
                 .color(aaChartModel.titleFontColor) //Title font color
-                .fontSize(aaChartModel.titleFontSize!) //Title font size
+                .fontSize(aaChartModel.titleFontSize) //Title font size
                 .fontWeight(aaChartModel.titleFontWeight) //Title font weight
         )
         
@@ -167,7 +167,7 @@ public class AAOptionsConstructor {
             .align(aaChartModel.subtitleAlign) // The horizontal alignment of the chart subtitle text. Possible values are "left", "center", and "right". The default is: "center".
             .style(AAStyle()
                 .color(aaChartModel.subtitleFontColor) //Subtitle font color
-                .fontSize(aaChartModel.subtitleFontSize!) //Subtitle font size
+                .fontSize(aaChartModel.subtitleFontSize) //Subtitle font size
                 .fontWeight(aaChartModel.subtitleFontWeight) //Subtitle font weight
         )
         
@@ -261,7 +261,7 @@ public class AAOptionsConstructor {
             aaDataLabels = aaDataLabels
                 .style(AAStyle()
                     .color(aaChartModel.dataLabelsFontColor)
-                    .fontSize(aaChartModel.dataLabelsFontSize!)
+                    .fontSize(aaChartModel.dataLabelsFontSize)
                     .fontWeight(aaChartModel.dataLabelsFontWeight)
             )
         }

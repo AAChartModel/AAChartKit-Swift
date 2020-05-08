@@ -522,20 +522,10 @@ public class AAChartModel: AAObject {
         yAxisLabelsEnabled     = true
         yAxisLineWidth         = 0
         yAxisGridLineWidth     = 0.6
+        yAxisTitle             = ""
         legendEnabled          = true
         borderRadius           = 0
         markerRadius           = 5 //The radius of the polyline connection point. If the default value is set to 0, then this is equivalent to not displaying.
-        titleFontColor         = AAColor.black
-        titleFontWeight        = .regular
-        titleFontSize          = 11
-        subtitleFontColor      = AAColor.black
-        subtitleFontWeight     = .regular
-        subtitleFontSize       = 9
-        dataLabelsFontColor    = AAColor.black
-        dataLabelsFontWeight   = .bold
-        dataLabelsFontSize     = 10
-        yAxisTitle             = ""
-        
     }
     
 }
