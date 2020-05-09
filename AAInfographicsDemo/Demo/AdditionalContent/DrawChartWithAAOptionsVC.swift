@@ -49,8 +49,8 @@ class DrawChartWithAAOptionsVC: UIViewController {
     private func configureAAOptions() -> AAOptions {
         switch self.chartType {
         case 0: return configureLegendStyle()
-        case 1: return setUpOptions1()
-        case 2: return setUpOptions2()
+        case 1: return simpleGaugeChart()
+        case 2: return gaugeChartWithPlotBand()
         case 3: return configureChartWithBackgroundImage()
         case 4: return yAxisOnTheRightSideChart()
         case 5: return adjustYAxisMinValueForChart()
@@ -357,7 +357,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         return aaOptions
     }
     
-    private func setUpOptions1() -> AAOptions {
+    private func simpleGaugeChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.gauge)
             .yAxisMin(0)
@@ -391,7 +391,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         return aaOptions
     }
     
-    private func setUpOptions2() -> AAOptions {
+    private func gaugeChartWithPlotBand() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.gauge)
             .backgroundColor(["#555555"])
