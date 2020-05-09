@@ -56,6 +56,7 @@ class MainVC: UIViewController {
                   "Draw Chart With AAOptions---通过Options绘图",
                   "Custom Tooltip With JS Function ---通过JS函数自定义Tooltip",
                   "Scrolling update chart data ---滚动刷新图表数据",
+                  "Scrollable chart ---可滚动的图表",
               ]
         
         chartTypeTitleArr = [
@@ -95,7 +96,7 @@ class MainVC: UIViewController {
                 "Mixed Line Chart---虚实线混合折线图",
                 "Random Colors Colorful Column Chart---随机颜色的多彩柱形图",
                 "Gradient Color Bar Chart---颜色渐变条形图",
-                "With Dividing Line---带有阈值分割线区域图",
+                "Stacking polar chart---百分比堆积效果的极地图",
                 "Area Chart with minus--带有负数的区域填充图",
                 "Step Line Chart--直方折线图",
                 "Step Area Chart--直方折线填充图",
@@ -192,8 +193,8 @@ class MainVC: UIViewController {
                 "Mirror Chart",
                 "Adjust The XAxis Labels",
                 "Adjust GroupPadding Between Columns",
-                "configureAAPlotBandsForChart",
-                "configureAAPlotLinesForChart",
+                "configureAAPlotBandsForChart || 值域颜色分割带🎀",
+                "configureAAPlotLinesForChart || 值域颜色分割线🧶",
                 "customAATooltipWithJSFuntion",
                 "customXAxisCrosshairStyle",
                 "configureXAxisLabelsFontColorWithHTMLString",
@@ -204,7 +205,8 @@ class MainVC: UIViewController {
                 "configureTripleYAxesMixedChart || 三重 Y 轴混合图",
                 "Double Y Axes And Column Line Mixed Chart || 双 Y 轴柱形曲线混合图",
                 "Double Y Axes Market Depth Chart || 双 Y 轴市场深度图",
-                "custom Area Chart Tooltip Style Like HTML Table || 自定义区域填充图浮动提示框为 HTML 表格样式"
+                "custom Area Chart Tooltip Style Like HTML Table || 自定义区域填充图浮动提示框为 HTML 表格样式",
+                "custom Axes Grid Line Style || 自定义 X 轴和 Y 轴网格线的样式"
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
             [
@@ -222,6 +224,17 @@ class MainVC: UIViewController {
                 "通过来自外部的数据源来自定义 tooltip (而非常规的来自图表的 series)",
             ],
             /*Scrolling update chart data*/
+            [  "Column Chart---柱形图",
+               "Bar Chart---条形图",
+               "Area Chart---折线填充图",
+               "Areaspline Chart---曲线填充图",
+               "Step Area Chart--- 直方折线填充图",
+               "Step Line Chart--- 直方折线图",
+               "Line Chart---折线图",
+               "Spline Chart---曲线图",
+               "Scatter Chart---散点图",
+            ],
+            /*Scrollable  chart */
             [  "Column Chart---柱形图",
                "Bar Chart---条形图",
                "Area Chart---折线填充图",
@@ -332,6 +345,18 @@ class MainVC: UIViewController {
                 AAChartType.spline,
                 AAChartType.scatter
                 ],
+            /*Scrollable chart*/
+            [
+                AAChartType.column,
+                AAChartType.bar,
+                AAChartType.area,
+                AAChartType.areaspline,
+                AAChartType.area,
+                AAChartType.line,
+                AAChartType.line,
+                AAChartType.spline,
+                AAChartType.scatter
+            ],
         ]
         
         view.backgroundColor = .white
@@ -523,6 +548,14 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             let vc = ScrollingUpdateDataVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             vc.step = false
+            if indexPath.row == 4 || indexPath.row == 5 {
+                vc.step = true
+            }
+            navigationController?.pushViewController(vc, animated: true)
+        case 12:
+            /*Scrollable Charts*/
+            let vc = ScrollableChartVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true
             }

@@ -70,6 +70,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 19: return configureDoubleYAxesAndColumnLineMixedChart()
         case 20: return configureDoubleYAxesMarketDepthChart()
         case 21: return customAreaChartTooltipStyleLikeHTMLTable()
+        case 22: return customAxesGridLineStyle()
         default:
             return AAOptions()
         }
@@ -483,7 +484,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
     private func configureAAPlotLinesForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("")
-            .chartType(.areaspline)//图形类型chartOptions.toDic()!
+            .chartType(.areaspline)
             .dataLabelsEnabled(false)
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
             .legendEnabled(false)
@@ -1416,6 +1417,38 @@ function () {
         return aaOptions
     }
     
+    
+    private func customAxesGridLineStyle() -> AAOptions  {
+        let aaChartModel = AAChartModel()
+            .chartType(.line)//图表类型
+            .title("custom Axes Grid Line Style")//图表主标题
+            .markerSymbolStyle(.borderBlank)
+            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+            .markerRadius(8)
+            .series([
+                AASeriesElement()
+                    .name("2020")
+                    .lineWidth(5.5)
+                    .color(AAGradientColor.sanguine)
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+                
+                ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+    
+        aaOptions.yAxis?
+            .opposite(true)
+            .gridLineDashStyle(.shortDashDot)
+            .gridLineWidth(3)
+            .gridLineColor(AAColor.lightGray)
+        
+        aaOptions.xAxis?
+        .gridLineDashStyle(.shortDashDotDot)
+        .gridLineWidth(3)
+        .gridLineColor(AAColor.gray)
+        
+        return aaOptions
+    }
 }
 
 

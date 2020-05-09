@@ -40,7 +40,7 @@ public class AAYAxis: AAObject {
     public var reversed: Bool?
     public var gridLineWidth: Float? // y-axis grid line width
     public var gridLineColor: String? // y-axis grid line color
-    public var gridLineDashStyle: AAChartLineDashStyleType? // Grid line line style, all available line style references: Highcharts line style
+    public var gridLineDashStyle: String? // Grid line line style, all available line style references: Highcharts line style
     public var alternateGridColor: String? // backcolor of every other grid line area
     public var gridLineInterpolation: String? // Polar charts only. Whether the grid lines should draw as a polygon with straight lines between categories, or as circles. Can be either circle or polygon. The default is: null.
     public var labels: AALabels? // Used to set the y-axis text related
@@ -105,7 +105,7 @@ public class AAYAxis: AAObject {
     
     @discardableResult
     public func gridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> AAYAxis {
-        gridLineDashStyle = prop
+        gridLineDashStyle = prop?.rawValue
         return self
     }
     

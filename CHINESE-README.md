@@ -94,7 +94,7 @@
 pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
 
 ```
- 到你的 **Podfile**文件当中.
+ 到你的 **Podfile** 文件当中.
  
 2. 在终端中运行命令 `pod install` or `pod update`.
 3. 导入头文件  `AAInfographics`.
@@ -109,8 +109,8 @@ pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.
 
 1. 创建视图*AAChartView*
 ```swift
-        CGFloat chartViewWidth  = self.view.frame.size.width
-        CGFloat chartViewHeight = self.view.frame.size.height
+        let chartViewWidth  = self.view.frame.size.width
+        let chartViewHeight = self.view.frame.size.height
         aaChartView = AAChartView()
         aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
         // 设置 aaChartView 的内容高度(content height)
