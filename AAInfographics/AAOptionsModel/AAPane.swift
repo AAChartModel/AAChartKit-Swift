@@ -84,6 +84,48 @@ public class AABackgroundElement: AAObject {
     public var outerRadius: AnyObject?//外半径
     public var shape: String?
     
+    @discardableResult
+    public func backgroundColor(_ prop: AnyObject) -> AABackgroundElement {
+        backgroundColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderColor(_ prop: String) -> AABackgroundElement {
+        borderColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderWidth(_ prop: Float) -> AABackgroundElement {
+        borderWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func className(_ prop: String) -> AABackgroundElement {
+        className = prop
+        return self
+    }
+    
+    @discardableResult
+    public func innerRadius(_ prop: AnyObject) -> AABackgroundElement {
+        innerRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func outerRadius(_ prop: AnyObject) -> AABackgroundElement {
+        outerRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func shape(_ prop: String) -> AABackgroundElement {
+        shape = prop
+        return self
+    }
+    
     public override init() {
         
     }
