@@ -950,9 +950,16 @@ class SpecialChartVC: UIViewController {
                         ["JavaScript", 13569],
                         ["Go",         15221],
                         ["Python",     16298],
-                        ])
-                    ,
-                ])
+                    ])
+                    .dataLabels(AADataLabels()
+                        .inside(true)
+                        .verticalAlign(.middle)
+                        .color(AAColor.black)
+                        .style(AAStyle()
+                            .fontSize(20)
+                            .textOutline("0px 0px contrast")))
+                ,
+            ])
     }
     
     private func configureErrobarChart() -> AAChartModel {
