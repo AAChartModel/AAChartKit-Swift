@@ -198,10 +198,10 @@ extension AAChartView {
     
     /// Function of drawing chart view
     ///
-    /// - Parameter aaOoptions: The instance object of AAOptions model
-    public func aa_drawChartWithChartOptions(_ aaOoptions: AAOptions) {
+    /// - Parameter aaOptions: The instance object of AAOptions model
+    public func aa_drawChartWithChartOptions(_ aaOptions: AAOptions) {
         if optionsJson == nil {
-            configureTheJavaScriptStringWithOptions(aaOoptions)
+            configureTheJavaScriptStringWithOptions(aaOptions)
             let path = Bundle(for: self.classForCoder)
                 .path(forResource: "AAChartView",
                       ofType: "html",
@@ -210,7 +210,7 @@ extension AAChartView {
             let urlRequest = NSURLRequest(url: urlStr) as URLRequest
             self.load(urlRequest)
         } else {
-            configureTheJavaScriptStringWithOptions(aaOoptions)
+            configureTheJavaScriptStringWithOptions(aaOptions)
             drawChart()
         }
     }
@@ -414,8 +414,8 @@ extension AAChartView {
         }
         let finalJSArrStr = "[\(originalJsArrStr)]"
         
-        let jsFuntionStr = "aaGlobalChart.xAxis[0].setCategories(\(finalJSArrStr),\(redraw));)"
-        safeEvaluateJavaScriptString(jsFuntionStr)
+        let jsFunctionStr = "aaGlobalChart.xAxis[0].setCategories(\(finalJSArrStr),\(redraw));)"
+        safeEvaluateJavaScriptString(jsFunctionStr)
     }
     
     /// Update the X axis Extremes
