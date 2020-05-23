@@ -52,6 +52,7 @@
     public var colorByPoint: Bool?         //When using automatic point colors pulled from the `options.colors` collection, this option determines whether the chart should receive one color per series or one color per point.
     public var allowPointSelect: Bool?     //Allow this series' points to be selected by clicking on the markers, bars or pie slices
     public var zIndex: Int?                //Define the visual z index of the series.
+    public var size: Any?          //The innder size for pie chart
     public var innerSize: String?          //The innder size for pie chart
     public var shadow: Any?
     public var zones: [Any]?
@@ -175,6 +176,12 @@
     @discardableResult
     public func zIndex(_ prop: Int) -> AASeriesElement {
         zIndex = prop
+        return self
+    }
+    
+    @discardableResult
+    public func size(_ prop: Any) -> AASeriesElement {
+        size = prop
         return self
     }
     

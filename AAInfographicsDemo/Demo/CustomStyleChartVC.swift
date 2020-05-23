@@ -94,6 +94,7 @@ class CustomStyleChartVC: UIViewController {
         case 29: return customSplineChartMarkerStatesHoverStyle()
         case 30: return customNormalStackingChartDataLabelsContentAndStyle()
         case 31: return upsideDownPyramidChart()
+        case 32: return doubleLayerPieChart()
             
         default:
             return configureTriangleRadarChart()
@@ -1027,6 +1028,43 @@ class CustomStyleChartVC: UIViewController {
             .subtitle("virtual data")
             .yAxisTitle("℃")
             .series([pyramid])
+    }
+    
+    private func doubleLayerPieChart() -> AAChartModel {
+        return AAChartModel()
+            .chartType(.pie)
+            .title("浏览器市场占比历史对比")
+            .subtitle("无任何可靠依据的虚拟数据")
+            .dataLabelsEnabled(true)//是否直接显示扇形图数据
+            .yAxisTitle("摄氏度")
+            .series([
+                AASeriesElement()
+                    .name("Past")
+                    .size("40%")//尺寸大小
+                    .innerSize("30%")//内部圆环半径大小占比
+                    .borderWidth(0)//描边的宽度
+                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
+                    .data([
+                        ["Firefox Past",   3336.2],
+                        ["Chrome Past",      26.8],
+                        ["Safari Past",      88.5],
+                        ["Opera Past",       46.0],
+                        ["Others Past",     223.0],
+                    ]),
+                AASeriesElement()
+                    .name("Now")
+                    .size("80%")//尺寸大小
+                    .innerSize("70%")//内部圆环半径大小占比
+                    .borderWidth(0)//描边的宽度
+                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
+                    .data([
+                        ["Firefox Now",    336.2],
+                        ["Chrome Now",    6926.8],
+                        ["Safari Now",     388.5],
+                        ["Opera Now",      446.0],
+                        ["Others Now",     223.0],
+                    ])
+            ])
     }
 
 }
