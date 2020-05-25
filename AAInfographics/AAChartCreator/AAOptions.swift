@@ -339,52 +339,52 @@ public class AAOptionsConstructor {
             
             if chartType != .gauge {
                 let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled
-                let aaXAxisLabels = AALabels ()
-                    .enabled (aaXAxisLabelsEnabled) //Set whether the x-axis displays text
+                let aaXAxisLabels = AALabels()
+                    .enabled(aaXAxisLabelsEnabled) //Set whether the x-axis displays text
                 if aaXAxisLabelsEnabled == true {
-                    aaXAxisLabels.style (
-                        AAStyle ()
-                            .color (aaChartModel.axesTextColor)
+                    aaXAxisLabels.style(
+                        AAStyle()
+                            .color(aaChartModel.axesTextColor)
                     )
                 }
                 
-                let aaXAxis = AAXAxis ()
-                    .labels (aaXAxisLabels)
-                    .reversed (aaChartModel.xAxisReversed)
-                    .gridLineWidth (aaChartModel.xAxisGridLineWidth) //x-axis grid line width
-                    .categories (aaChartModel.categories)
-                    .visible (aaChartModel.xAxisVisible) //whether the x axis is visible
-                    .tickInterval (aaChartModel.xAxisTickInterval) //Number of x-axis coordinate point intervals
+                let aaXAxis = AAXAxis()
+                    .labels(aaXAxisLabels)
+                    .reversed(aaChartModel.xAxisReversed)
+                    .gridLineWidth(aaChartModel.xAxisGridLineWidth) //x-axis grid line width
+                    .categories(aaChartModel.categories)
+                    .visible(aaChartModel.xAxisVisible) //whether the x axis is visible
+                    .tickInterval(aaChartModel.xAxisTickInterval) //Number of x-axis coordinate point intervals
                 
-                aaOptions.xAxis (aaXAxis)
+                aaOptions.xAxis(aaXAxis)
             }
             
             let aaYAxisLabelsEnabled = aaChartModel.yAxisLabelsEnabled
-            let aaYAxisLabels = AALabels ()
-                .enabled (aaChartModel.yAxisLabelsEnabled)
+            let aaYAxisLabels = AALabels()
+                .enabled(aaChartModel.yAxisLabelsEnabled)
             if aaYAxisLabelsEnabled == true {
-                aaYAxisLabels.style (
-                    AAStyle ()
-                        .color (aaChartModel.axesTextColor)
+                aaYAxisLabels.style(
+                    AAStyle()
+                        .color(aaChartModel.axesTextColor)
                 )
             }
             
-            let aaYAxis = AAYAxis ()
-                .labels (aaYAxisLabels) //Set the y-axis text
-                .min (aaChartModel.yAxisMin) //Set the minimum value of the y-axis. If the minimum value is equal to zero, negative values ​​cannot be displayed.
-                .max (aaChartModel.yAxisMax) //Maximum y-axis
-                .allowDecimals (aaChartModel.yAxisAllowDecimals) //Whether to display decimals
-                .reversed (aaChartModel.yAxisReversed)
-                .gridLineWidth (aaChartModel.yAxisGridLineWidth) //y-axis grid line width
-                .lineWidth (aaChartModel.yAxisLineWidth) //Set the width of the y-axis axis, which is 0 to hide the y-axis axis
-                .visible (aaChartModel.yAxisVisible)
-                .title (AATitle ()
-                    .text (aaChartModel.yAxisTitle) //y axis title
-                    .style (AAStyle ()
-                        .color (aaChartModel.axesTextColor)
+            let aaYAxis = AAYAxis()
+                .labels(aaYAxisLabels) //Set the y-axis text
+                .min(aaChartModel.yAxisMin) //Set the minimum value of the y-axis. If the minimum value is equal to zero, negative values ​​cannot be displayed.
+                .max(aaChartModel.yAxisMax) //Maximum y-axis
+                .allowDecimals(aaChartModel.yAxisAllowDecimals) //Whether to display decimals
+                .reversed(aaChartModel.yAxisReversed)
+                .gridLineWidth(aaChartModel.yAxisGridLineWidth) //y-axis grid line width
+                .lineWidth(aaChartModel.yAxisLineWidth) //Set the width of the y-axis axis, which is 0 to hide the y-axis axis
+                .visible(aaChartModel.yAxisVisible)
+                .title(AATitle()
+                    .text(aaChartModel.yAxisTitle) //y axis title
+                    .style(AAStyle()
+                        .color(aaChartModel.axesTextColor)
                 ))
             
-            aaOptions.yAxis (aaYAxis)
+            aaOptions.yAxis(aaYAxis)
         }
     }
     
