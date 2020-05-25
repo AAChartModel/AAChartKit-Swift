@@ -33,67 +33,67 @@ import Foundation
 
 public class AAColor {
     
-    public static var black: String {
+    public class var black: String {
         return "black"
     } // 0.0 white
     
-    public static var darkGray: String {
+    public class var darkGray: String {
         return "darkGray"
     } // 0.333 white
     
-    public static var lightGray: String {
+    public class var lightGray: String {
         return "lightGray"
     } // 0.667 white
     
-    public static var white: String {
+    public class var white: String {
         return "white"
     } // 1.0 white
     
-    public static var gray: String {
+    public class var gray: String {
         return "gray"
     } // 0.5 white
     
-    public static var red: String {
+    public class var red: String {
         return "red"
     } // 1.0, 0.0, 0.0 RGB
     
-    public static var green: String {
+    public class var green: String {
         return "green"
     } // 0.0, 1.0, 0.0 RGB
     
-    public static var blue: String {
+    public class var blue: String {
         return "blue"
     } // 0.0, 0.0, 1.0 RGB
     
-    public static var cyan: String {
+    public class var cyan: String {
         return "cyan"
     } // 0.0, 1.0, 1.0 RGB
     
-    public static var yellow: String {
+    public class var yellow: String {
         return "yellow"
     } // 1.0, 1.0, 0.0 RGB
     
-    public static var magenta: String {
+    public class var magenta: String {
         return "magenta"
     } // 1.0, 0.0, 1.0 RGB
     
-    public static var orange: String {
+    public class var orange: String {
         return "orange"
     } // 1.0, 0.5, 0.0 RGB
     
-    public static var purple: String {
+    public class var purple: String {
         return "purple"
     } // 0.5, 0.0, 0.5 RGB
     
-    public static var brown: String {
+    public class var brown: String {
         return "brown"
     } // 0.6, 0.4, 0.2 RGB
     
-    public static var clear: String {
+    public class var clear: String {
         return "#00000000"
     } // 0.0 white, 0.0 alpha
     
-    public static func rgbaColor(
+    public class func rgbaColor(
         _ red: Int,
         _ green: Int,
         _ blue: Int,
