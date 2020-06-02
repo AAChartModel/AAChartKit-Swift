@@ -71,6 +71,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 20: return configureDoubleYAxesMarketDepthChart()
         case 21: return customAreaChartTooltipStyleLikeHTMLTable()
         case 22: return customAxesGridLineStyle()
+        case 23: return customRadarChartStyle()
         default:
             return AAOptions()
         }
@@ -1446,6 +1447,43 @@ function () {
         .gridLineDashStyle(.shortDashDotDot)
         .gridLineWidth(3)
         .gridLineColor(AAColor.gray)
+        
+        return aaOptions
+    }
+    
+    private func customRadarChartStyle() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .title("")
+            .colorsTheme(["#5BCCC8"])
+            .chartType(.area)
+            .dataLabelsEnabled(false)
+            .xAxisVisible(true)
+            .yAxisVisible(true)
+            .yAxisLabelsEnabled(false)
+            .polar(true)
+            .markerRadius(8)
+            .markerSymbol(.circle)
+            .markerSymbolStyle(.borderBlank)
+            .legendEnabled(false)
+            .touchEventEnabled(false)
+            .categories(["智力感", "距离感", "成熟感"])
+            .series([
+                AASeriesElement()
+                    .data([86, 90, 65])
+                    .pointPlacement("on")
+            ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.yAxis?
+            .tickPositions([0, 25, 50, 75, 100])
+            .gridLineColor("#DDDDDD")
+            .gridLineWidth(1.0)
+            .gridLineDashStyle(.dash)
+        
+        aaOptions.xAxis?
+            .lineColor("#5BCCC8")
+            .lineWidth(0.5)
         
         return aaOptions
     }
