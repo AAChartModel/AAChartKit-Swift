@@ -58,7 +58,8 @@
     public var zones: [Any]?
     public var stack: String?
     public var tooltip: AATooltip?
-
+    public var pointPlacement: Any?
+    
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
         type = prop.rawValue
@@ -214,6 +215,13 @@
          tooltip = prop
          return self
      }
+    
+    @discardableResult
+    public func pointPlacement(_ prop: Any) -> AASeriesElement {
+        pointPlacement = prop
+        return self
+    }
+
 
     public  override init() {
     }   
