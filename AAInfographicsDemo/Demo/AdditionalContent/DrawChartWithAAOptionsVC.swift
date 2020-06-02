@@ -1467,26 +1467,52 @@ function () {
             .markerSymbolStyle(.borderBlank)
             .legendEnabled(false)
             .touchEventEnabled(false)
-            .categories(["智力感", "距离感", "成熟感"])
             .series([
                 AASeriesElement()
                     .data([86, 90, 65])
-                    .pointPlacement("on")
             ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
+        let categories = ["智力感", "距离感", "成熟感"]
+        let categoryJSArrStr = javaScriptArrayStringWithSwiftArray(categories)
+
+        let xAxisLabelsFormatter = """
+        function () {
+        return \(categoryJSArrStr)[this.value];
+        }
+        """
+        
         aaOptions.yAxis?
             .tickPositions([0, 25, 50, 75, 100])
             .gridLineColor("#DDDDDD")
-            .gridLineWidth(1.0)
+            .gridLineWidth(2.0)
             .gridLineDashStyle(.dash)
         
         aaOptions.xAxis?
             .lineColor("#5BCCC8")
-            .lineWidth(0.5)
+            .lineWidth(5)
+            .gridLineColor(AAColor.red)
+            .gridLineWidth(3)
+            .gridLineDashStyle(.longDashDotDot)
+            .tickPositions([0,1,2,0])
+        
+        aaOptions.xAxis?.labels?
+            
+        .formatter(xAxisLabelsFormatter)
         
         return aaOptions
+    }
+    
+    //Convert Swift array to be JavaScript array
+    private func javaScriptArrayStringWithSwiftArray(_ swiftArray: [Any]) -> String {
+        var originalJsArrStr = ""
+        for element in swiftArray {
+            originalJsArrStr = originalJsArrStr + "'\(element)',"
+        }
+        
+        let finalJSArrStr = "[\(originalJsArrStr)]"
+        return finalJSArrStr
     }
 }
 

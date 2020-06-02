@@ -59,6 +59,7 @@ public class AAXAxis: AAObject {
     public var tickWidth: Float? // The width of the axis tick marks. When set to 0, tick marks are not displayed.
     public var tickLength: Float? /// The length of the axis tick marks. The default is: 10.
     public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
+    public var tickPositions: [Any]? // Custom x-axis coordinates 
     public var minRange: Int?
     
     @discardableResult
@@ -214,6 +215,12 @@ public class AAXAxis: AAObject {
     @discardableResult
     public func minRange(_ prop: Int?) -> AAXAxis {
         minRange = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickPositions(_ prop: [Any]?) -> AAXAxis {
+        tickPositions = prop
         return self
     }
     
