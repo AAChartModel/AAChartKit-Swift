@@ -94,9 +94,9 @@ public class AAColor {
     } // 0.0 white, 0.0 alpha
     
     public class func rgbaColor(
-        _ red: Int,
-        _ green: Int,
-        _ blue: Int,
+        _ red: Float,
+        _ green: Float,
+        _ blue: Float,
         _ alpha: Float
         ) -> String {
         return "rgba(\(red),\(green),\(blue),\(alpha))"
