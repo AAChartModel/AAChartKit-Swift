@@ -453,22 +453,29 @@ public class AAColumnrange: AAObject {
     public var borderRadius: Float?//The color of the border surrounding each column or bar
     public var borderWidth: Float?//The corner radius of the border surrounding each column or bar. default：0
     public var dataLabels: AADataLabels?
+    public var grouping: Bool?
     
     @discardableResult
-    public func borderRadius(_ prop: Float) -> AAColumnrange {
+    public func borderRadius(_ prop: Float?) -> AAColumnrange {
         borderRadius = prop
         return self
     }
     
     @discardableResult
-    public func borderWidth(_ prop: Float) -> AAColumnrange {
+    public func borderWidth(_ prop: Float?) -> AAColumnrange {
         borderWidth = prop
         return self
     }
     
     @discardableResult
-    public func dataLabels(_ prop: AADataLabels) -> AAColumnrange {
+    public func dataLabels(_ prop: AADataLabels?) -> AAColumnrange {
         dataLabels = prop
+        return self
+    }
+    
+    @discardableResult
+    public func grouping(_ prop: Bool?) -> AAColumnrange {
+        grouping = prop
         return self
     }
     

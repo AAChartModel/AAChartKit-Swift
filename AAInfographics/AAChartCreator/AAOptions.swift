@@ -307,7 +307,7 @@ public class AAOptionsConstructor {
         case .columnrange:
             aaPlotOptions.columnrange(AAColumnrange()
                 .dataLabels(aaDataLabels)
-                .borderRadius(0)
+                .borderRadius(aaChartModel.borderRadius)
                 .borderWidth(0))
         case .arearange:
             aaPlotOptions.arearange(AAArearange().dataLabels(aaDataLabels))
