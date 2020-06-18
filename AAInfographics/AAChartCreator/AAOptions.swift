@@ -144,10 +144,10 @@ public class AAOptionsConstructor {
         _ aaChartModel: AAChartModel
         ) -> AAOptions {
         let aaChart = AAChart()
-            .type(aaChartModel.chartType!)
+            .type(aaChartModel.chartType)
             .inverted(aaChartModel.inverted)
             .backgroundColor(aaChartModel.backgroundColor)
-            .pinchType(aaChartModel.zoomType?.rawValue) //Set gesture zoom direction
+            .pinchType(aaChartModel.zoomType) //Set gesture zoom direction
             .panning(true) //Set whether gestures can be panned after zooming
             .polar(aaChartModel.polar) //Whether to polarize the chart (turn on polar mode)
             .marginLeft(aaChartModel.marginLeft)
@@ -196,7 +196,7 @@ public class AAOptionsConstructor {
         let aaLegend = AALegend()
             .enabled(aaChartModel.legendEnabled)
             .itemStyle(AAItemStyle()
-                .color(aaChartModel.axesTextColor ?? "#000000")
+                .color(aaChartModel.axesTextColor)
         ) //The default legend text color is the same as the X-axis text color
         
         let aaOptions = AAOptions()

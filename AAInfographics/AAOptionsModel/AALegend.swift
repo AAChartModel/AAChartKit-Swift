@@ -154,31 +154,33 @@ public class AAItemStyle: AAObject {
     public var fontWeight: AAChartFontWeightType?
     
     @discardableResult
-    public func color(_ prop: String) -> AAItemStyle {
+    public func color(_ prop: String?) -> AAItemStyle {
         color = prop
         return self
     }
     
     @discardableResult
-    public func cursor(_ prop: String) -> AAItemStyle {
+    public func cursor(_ prop: String?) -> AAItemStyle {
         cursor = prop
         return self
     }
     
     @discardableResult
-    public func pointer(_ prop: String) -> AAItemStyle {
+    public func pointer(_ prop: String?) -> AAItemStyle {
         pointer = prop
         return self
     }
     
     @discardableResult
-    public func fontSize(_ prop: Float) -> AAItemStyle {
-        fontSize = "\(prop)px"
+    public func fontSize(_ prop: Float?) -> AAItemStyle {
+        if (prop != nil) {
+            fontSize = "\(prop!)px"
+        }
         return self
     }
     
     @discardableResult
-    public func fontWeight(_ prop: AAChartFontWeightType) -> AAItemStyle {
+    public func fontWeight(_ prop: AAChartFontWeightType?) -> AAItemStyle {
         fontWeight = prop
         return self
     }

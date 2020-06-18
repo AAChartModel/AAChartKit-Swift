@@ -50,8 +50,8 @@ public class AAChart: AAObject {
     public var scrollablePlotArea: AAScrollablePlotArea?
     
     @discardableResult
-    public func type(_ prop: AAChartType) -> AAChart {
-        type = prop.rawValue
+    public func type(_ prop: AAChartType?) -> AAChart {
+        type = prop?.rawValue
         return self
     }
     
@@ -62,14 +62,14 @@ public class AAChart: AAObject {
     }
     
     @discardableResult
-    public func plotBackgroundImage(_ prop: String) -> AAChart {
+    public func plotBackgroundImage(_ prop: String?) -> AAChart {
         plotBackgroundImage = prop
         return self
     }
     
     @discardableResult
-    public func pinchType(_ prop: String?) -> AAChart {
-        pinchType = prop
+    public func pinchType(_ prop: AAChartZoomType?) -> AAChart {
+        pinchType = prop?.rawValue
         return self
     }
     
@@ -80,7 +80,7 @@ public class AAChart: AAObject {
     }
     
     @discardableResult
-    public func panKey(_ prop: String) -> AAChart {
+    public func panKey(_ prop: String?) -> AAChart {
         panKey = prop
         return self
     }
@@ -92,7 +92,7 @@ public class AAChart: AAObject {
     }
     
     @discardableResult
-    public func animation(_ prop: AAAnimation) -> AAChart {
+    public func animation(_ prop: AAAnimation?) -> AAChart {
         animation = prop
         return self
     }
