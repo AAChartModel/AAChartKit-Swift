@@ -157,8 +157,7 @@ public class AAChartView: WKWebView {
     }
     
     private func configureTheJavaScriptStringWithOptions(_ aaOptions: AAOptions) {
-        var modelJsonStr = aaOptions.toJSON()!
-        modelJsonStr = modelJsonStr.replacingOccurrences(of: "\n", with: "") as String
+        let modelJsonStr = aaOptions.toJSON()!
         optionsJson = "loadTheHighChartView('\(modelJsonStr)','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
     }
 }
@@ -233,8 +232,7 @@ extension AAChartView {
             seriesElementDicArr.append(aaSeriesElement.toDic()!)
         }
         
-         var str = getJSONStringFromArray(array: seriesElementDicArr)
-         str = str.replacingOccurrences(of: "\n", with: "") as String
+         let str = getJSONStringFromArray(array: seriesElementDicArr)
          let jsStr = "onlyRefreshTheChartDataWithSeries('\(str)','\(animation)');"
          safeEvaluateJavaScriptString(jsStr)
      }
@@ -325,11 +323,9 @@ extension AAChartView {
             optionsStr = "\(options)"
         } else if options is [Any] {
             optionsStr = self.getJSONStringFromArray(array: options as! [Any])
-            optionsStr = optionsStr.replacingOccurrences(of: "\n", with: "")
         } else {
             let aaOption: AAObject = options as! AAObject
             optionsStr = aaOption.toJSON()!
-            optionsStr = optionsStr.replacingOccurrences(of: "\n", with: "")
         }
     
         let javaScriptStr = "addPointToChartSeries('\(elementIndex)','\(optionsStr)','\(redraw)','\(shift)','\(animation)')"
