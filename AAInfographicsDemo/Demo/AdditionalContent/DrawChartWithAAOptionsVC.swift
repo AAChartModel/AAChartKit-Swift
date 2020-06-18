@@ -72,6 +72,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 21: return customAreaChartTooltipStyleLikeHTMLTable()
         case 22: return customAxesGridLineStyle()
         case 23: return customRadarChartStyle()
+        case 24: return customColumnrangeChartStyle()
         default:
             return AAOptions()
         }
@@ -1500,6 +1501,68 @@ function () {
         aaOptions.xAxis?.labels?
             
         .formatter(xAxisLabelsFormatter)
+        
+        return aaOptions
+    }
+    
+    private func customColumnrangeChartStyle() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.columnrange)
+            .title("TEMPERATURE VARIATION BY MONTH")
+            .subtitle("observed in Gotham city")
+            .yAxisTitle("℃")
+            .colorsTheme(["#fe117c","#06caf4",])//Colors theme
+            .borderRadius(6)
+            .categories([
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ])
+            .series([
+                AASeriesElement()
+                    .name("temperature1")
+                    .data([
+                        [-9.7,  9.4],
+                        [-8.7,  6.5],
+                        [-3.5,  9.4],
+                        [-1.4, 19.9],
+                        [0.0,  22.6],
+                        [2.9,  29.5],
+                        [-9.7,  9.4],
+                        [-8.7,  6.5],
+                        [-3.5,  9.4],
+                        [-1.4, 19.9],
+                        [0.0,  22.6],
+                        [2.9,  29.5],
+                    ]),
+                AASeriesElement()
+                    .name("temperature2")
+                    .data([
+                        [9.2,  30.7],
+                        [7.3,  26.5],
+                        [4.4,  18.0],
+                        [-3.1, 11.4],
+                        [-5.2, 10.4],
+                        [-13.5, 9.8],
+                        [9.2,  30.7],
+                        [7.3,  26.5],
+                        [4.4,  18.0],
+                        [-3.1, 11.4],
+                        [-5.2, 10.4],
+                        [-13.5, 9.8]
+                    ]),
+            ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        //    *  关于 `pointPadding`
+        //https://api.highcharts.com.cn/highcharts#plotOptions.column.groupPadding
+        //
+        //    * 关于 `pointPadding`
+        //https://api.highcharts.com.cn/highcharts#plotOptions.column.pointPadding
+        
+        aaOptions.plotOptions?.columnrange?
+            .grouping(false)
+            .groupPadding(0.003)
         
         return aaOptions
     }

@@ -208,7 +208,9 @@ class MainVC: UIViewController {
                 "Double Y Axes Market Depth Chart || 双 Y 轴市场深度图",
                 "custom Area Chart Tooltip Style Like HTML Table || 自定义区域填充图浮动提示框为 HTML 表格样式",
                 "custom Axes Grid Line Style || 自定义 X 轴和 Y 轴网格线的样式",
-                "custom Radar Chart Style || 自定义雷达图样式"
+                "custom Radar Chart Style || 自定义雷达图样式",
+                "customColumnrangeChartStyle---自定义柱形范围图样式"
+
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
             [
