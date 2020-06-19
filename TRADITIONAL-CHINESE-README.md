@@ -1,5 +1,6 @@
-    ![AAInfographics-LOGO]( https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/AAInfographics-Logo.png)
-  # AAInfographics
+ ![AAInfographics-LOGO]( https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAInfographics/AAInfographics-Logo.png)
+ 
+ # AAInfographics
 
    
   [![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/) </br>
@@ -244,7 +245,8 @@
 
   ### 支持監聽用戶點擊事件及單指滑動事件
 
-    可通過給 AAChartView 實例對象設置代理方法,來實現監聽用戶的點擊事件和單指滑動事件
+   可通過給 AAChartView 實例對象設置代理方法,來實現監聽用戶的點擊事件和單指滑動事件
+    
    ```swift
     //設置 AAChartView 事件代理
     aaChartView!.delegate = self as AAChartViewDelegate
@@ -257,9 +259,9 @@
           print("🔥selected point series element name: \(moveOverEventMessage.name ?? "")")
       }
   }
-    ```
-
-    在監聽用戶交互事件時,獲取的事件信息`AAMoveOverEventMessageModel`共包含以下內容
+  ```
+  
+   在監聽用戶交互事件時,獲取的事件信息`AAMoveOverEventMessageModel`共包含以下內容
     ```swift
   public class AAMoveOverEventMessageModel: NSObject {
       public var name: String?
