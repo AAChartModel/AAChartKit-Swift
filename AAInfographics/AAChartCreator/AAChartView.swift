@@ -439,24 +439,25 @@ extension AAChartView: WKUIDelegate {
         initiatedByFrame frame: WKFrameInfo,
         completionHandler: @escaping () -> Void
     ) {
-        let alert = UIAlertController(
+        let alertController = UIAlertController(
             title: "FBI WARNING",
             message: message,
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(
+        alertController.addAction(UIAlertAction(
             title: "Okay",
             style: .default,
-            handler: { (action) in
+            handler: { _ in
             completionHandler()
         }))
-        let rootVC = UIApplication.shared.keyWindow?.rootViewController
-        rootVC!.present(
-            alert,
+
+        let alertHelperController = UIViewController()
+        self.addSubview(alertHelperController.view)
+        
+        alertHelperController.present(
+            alertController,
             animated: true,
-            completion: nil
-        )
-        print(message)
+            completion: nil)
     }
 }
 
