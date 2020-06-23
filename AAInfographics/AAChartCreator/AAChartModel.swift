@@ -172,7 +172,7 @@ public class AAChartModel: AAObject {
     public var categories: Array<String>?   //Set new categories for the axis
     public var xAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area.Defaults to 0
     public var xAxisVisible: Bool?          //Show the x axis or not
-    public var xAxisTickInterval: Int?      //Custom x axis tick interval,It is useful when the x categories array is too long to show all of them
+    public var xAxisTickInterval: Float?      //Custom x axis tick interval,It is useful when the x categories array is too long to show all of them
     public var yAxisVisible: Bool?          //Show the y axis or not
     public var yAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
     public var yAxisTitle: String?          //The actual text of the axis title
@@ -410,7 +410,7 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
-    public func xAxisTickInterval(_ prop: Int) -> AAChartModel {
+    public func xAxisTickInterval(_ prop: Float) -> AAChartModel {
         xAxisTickInterval = prop
         return self
     }

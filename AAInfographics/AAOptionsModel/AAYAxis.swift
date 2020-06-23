@@ -54,7 +54,7 @@ public class AAYAxis: AAObject {
     public var tickPositions: [Any]? // Custom Y-axis coordinates (eg: [0, 25, 50, 75, 100])
     public var visible: Bool? // Whether the y-axis is allowed to display
     public var opposite: Bool? // Whether to display the coordinate axis on the opposite surface. By default, the x axis is displayed below the chart, the y axis is on the left, the coordinate axis is displayed on the opposite surface, and the x axis is displayed on the top. The axis is displayed on the right (that is, the coordinate axis is displayed on the opposite side). This configuration is generally used for multi-axis display, and in Highstock, the y-axis is displayed on the opposite side by default. The default is: false.
-    public var tickInterval: Int?
+    public var tickInterval: Float?
     public var crosshair: AACrosshair? // Crosshair (focus line) style settings
     public var stackLabels: [String: Any]?
     public var tickWidth: Float? // The width of the axis tick marks. When set to 0, tick marks are not displayed.
@@ -182,7 +182,7 @@ public class AAYAxis: AAObject {
     }
     
     @discardableResult
-    public func tickInterval(_ prop: Int?) -> AAYAxis {
+    public func tickInterval(_ prop: Float?) -> AAYAxis {
         tickInterval = prop
         return self
     }
