@@ -128,6 +128,8 @@ public class AAChartView: WKWebView {
     
     private func safeEvaluateJavaScriptString (_ jsString: String) {
         self.evaluateJavaScript(jsString, completionHandler: { (item, error) in
+            
+            #if DEBUG
             if error != nil {
                 let objcError = error! as NSError
                 let errorUserInfo = objcError.userInfo
@@ -153,11 +155,26 @@ public class AAChartView: WKWebView {
                 """
                 print(errorInfo)
             }
+            #endif
+            
         })
     }
     
     private func configureTheJavaScriptStringWithOptions(_ aaOptions: AAOptions) {
         let modelJsonStr = aaOptions.toJSON()!
+        
+        #if DEBUG
+        let modelJsonDic = aaOptions.toDic()!
+        let data = try? JSONSerialization.data(withJSONObject: modelJsonDic, options: .prettyPrinted)
+        if data != nil {
+            let prettyPrintedModelJson = String(data: data!, encoding: String.Encoding.utf8)
+            print("""
+                -----------🖨🖨🖨 console log AAOptions JSON information of AAChartView 🖨🖨🖨-----------:
+                \(prettyPrintedModelJson!)
+                """)
+        }
+        #endif
+        
         optionsJson = "loadTheHighChartView('\(modelJsonStr)','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
     }
 }
