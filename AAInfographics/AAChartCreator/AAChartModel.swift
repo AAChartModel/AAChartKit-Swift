@@ -507,7 +507,8 @@ public class AAChartModel: AAObject {
     
     
     public override init() {
-        backgroundColor        = AAColor.white
+        title                  = ""
+        subtitle               = ""
         animationType          = .easeInQuad
         animationDuration      = 800 //In milliseconds
         chartType              = .line

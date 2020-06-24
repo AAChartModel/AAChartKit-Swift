@@ -156,20 +156,27 @@ public class AAOptionsConstructor {
         
         let aaTitle = AATitle()
             .text(aaChartModel.title) //Title text content
-            .style(AAStyle()
+        
+        if aaChartModel.title != "" {
+            aaTitle.style(AAStyle()
                 .color(aaChartModel.titleFontColor) //Title font color
                 .fontSize(aaChartModel.titleFontSize) //Title font size
                 .fontWeight(aaChartModel.titleFontWeight) //Title font weight
-        )
+            )
+        }
         
-        let aaSubtitle = AASubtitle()
-            .text(aaChartModel.subtitle) //Subtitle text content
-            .align(aaChartModel.subtitleAlign) // The horizontal alignment of the chart subtitle text. Possible values are "left", "center", and "right". The default is: "center".
-            .style(AAStyle()
-                .color(aaChartModel.subtitleFontColor) //Subtitle font color
-                .fontSize(aaChartModel.subtitleFontSize) //Subtitle font size
-                .fontWeight(aaChartModel.subtitleFontWeight) //Subtitle font weight
-        )
+        var aaSubtitle: AASubtitle?
+        if aaChartModel.subtitle != "" {
+            aaSubtitle = AASubtitle()
+                .text(aaChartModel.subtitle) //Subtitle text content
+                .align(aaChartModel.subtitleAlign) // The horizontal alignment of the chart subtitle text. Possible values are "left", "center", and "right". The default is: "center".
+                .style(AAStyle()
+                    .color(aaChartModel.subtitleFontColor) //Subtitle font color
+                    .fontSize(aaChartModel.subtitleFontSize) //Subtitle font size
+                    .fontWeight(aaChartModel.subtitleFontWeight) //Subtitle font weight
+            )
+        }
+        
         
         let aaTooltip = AATooltip()
             .enabled(aaChartModel.tooltipEnabled)
