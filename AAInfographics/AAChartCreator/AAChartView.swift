@@ -49,8 +49,26 @@ public class AAMoveOverEventMessageModel: NSObject {
     public var index: Int?
 }
 
+//Refer to: https://stackoverflow.com/questions/26383031/wkwebview-causes-my-view-controller-to-leak
+class AALeakAvoider : NSObject, WKScriptMessageHandler {
+    weak var delegate : WKScriptMessageHandler?
+    
+    init(delegate:WKScriptMessageHandler) {
+        self.delegate = delegate
+        super.init()
+    }
+    
+    func userContentController(
+        _ userContentController: WKUserContentController,
+        didReceive message: WKScriptMessage
+    ) {
+        self.delegate?.userContentController(userContentController, didReceive: message)
+    }
+}
+
+
 public class AAChartView: WKWebView {
-    public var delegate: AAChartViewDelegate?
+    public weak var delegate: AAChartViewDelegate?
     
     public var scrollEnabled: Bool? {
         willSet {
@@ -100,6 +118,7 @@ public class AAChartView: WKWebView {
     }
     
     private var optionsJson: String?
+    private var userContentController:WKUserContentController?
     
     override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
@@ -108,14 +127,14 @@ public class AAChartView: WKWebView {
         self.navigationDelegate = self
     }
     
-   convenience public init() {
-    let userContentController = WKUserContentController()
-    let configuration = WKWebViewConfiguration()
-    configuration.userContentController = userContentController
-    
-    self.init(frame: .zero, configuration: configuration)
-    
-    configuration.userContentController.add(self, name: kUserContentMessageNameMouseOver)
+    convenience public init() {
+        let configuration = WKWebViewConfiguration()
+        configuration.userContentController = WKUserContentController()
+        
+        self.init(frame: .zero, configuration: configuration)
+        
+        configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
+        self.userContentController = configuration.userContentController
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -177,6 +196,11 @@ public class AAChartView: WKWebView {
         
         optionsJson = "loadTheHighChartView('\(modelJsonStr)','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
     }
+
+    deinit {
+        self.userContentController?.removeScriptMessageHandler(forName: kUserContentMessageNameMouseOver)
+    }
+
 }
 
 extension AAChartView {
