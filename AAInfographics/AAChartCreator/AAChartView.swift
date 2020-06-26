@@ -119,6 +119,7 @@ public class AAChartView: WKWebView {
     
     private var optionsJson: String?
     private var userContentController:WKUserContentController?
+    private var touchEventEnabled = false
     
     override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
@@ -130,10 +131,8 @@ public class AAChartView: WKWebView {
     convenience public init() {
         let configuration = WKWebViewConfiguration()
         configuration.userContentController = WKUserContentController()
-        
         self.init(frame: .zero, configuration: configuration)
         
-        configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
         self.userContentController = configuration.userContentController
     }
     
@@ -181,6 +180,13 @@ public class AAChartView: WKWebView {
     
     private func configureTheJavaScriptStringWithOptions(_ aaOptions: AAOptions) {
         let modelJsonStr = aaOptions.toJSON()!
+        
+        if     aaOptions.touchEventEnabled == true
+            && self.touchEventEnabled == false {
+            
+            self.touchEventEnabled = true
+            configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
+        }
         
         #if DEBUG
         let modelJsonDic = aaOptions.toDic()!
