@@ -118,7 +118,6 @@ public class AAChartView: WKWebView {
     }
     
     private var optionsJson: String?
-    private var userContentController:WKUserContentController?
     private var touchEventEnabled = false
     
     override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
@@ -132,8 +131,6 @@ public class AAChartView: WKWebView {
         let configuration = WKWebViewConfiguration()
         configuration.userContentController = WKUserContentController()
         self.init(frame: .zero, configuration: configuration)
-        
-        self.userContentController = configuration.userContentController
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -185,7 +182,7 @@ public class AAChartView: WKWebView {
             && self.touchEventEnabled == false {
             
             self.touchEventEnabled = true
-            configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
+            self.configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
         }
         
         #if DEBUG
@@ -204,7 +201,7 @@ public class AAChartView: WKWebView {
     }
 
     deinit {
-        self.userContentController?.removeScriptMessageHandler(forName: kUserContentMessageNameMouseOver)
+        self.configuration.userContentController.removeScriptMessageHandler(forName: kUserContentMessageNameMouseOver)
     }
 
 }
