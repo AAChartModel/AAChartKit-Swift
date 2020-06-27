@@ -42,6 +42,8 @@ public class AASeries: AAObject {
     public var connectNulls: Bool? //Whether reconnects the broken line of the chart
     public var events: [String: Any]?
     public var shadow: AAShadow?
+    public var dataLabels: AADataLabels?
+
     
     @discardableResult
     public func borderRadius(_ prop: Float?) -> AASeries {
@@ -94,6 +96,12 @@ public class AASeries: AAObject {
     @discardableResult
     public func shadow(_ prop: AAShadow) -> AASeries {
         shadow = prop
+        return self
+    }
+    
+    @discardableResult
+    public func dataLabels(_ prop: AADataLabels) -> AASeries {
+        dataLabels = prop
         return self
     }
     

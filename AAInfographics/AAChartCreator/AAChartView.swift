@@ -302,23 +302,29 @@ extension AAChartView {
     /// - Parameter options: A configuration object for the new chart options as defined in the options section of the API.
     /// - Parameter redraw: Whether to redraw after updating the chart, the default is true
     public func aa_updateChart(options: AAObject, redraw: Bool) {
-        var classNameStr = options.classNameString
-        if classNameStr.contains(".") {
-            classNameStr = classNameStr.components(separatedBy: ".")[1];
-        }
-       
-        classNameStr = classNameStr.replacingOccurrences(of: "AA", with: "")
-
-        //convert fisrt character to be lowercase string
-        let firstChar = classNameStr.prefix(1)
-        let lowercaseFirstChar = firstChar.lowercased()
-        let index = classNameStr.index(classNameStr.startIndex, offsetBy: 1)
-        classNameStr = String(classNameStr.suffix(from: index))
-        let finalClassNameStr = lowercaseFirstChar + classNameStr
-        
+        let isOptionsClass: Bool = options is AAOptions
         let optionsDic = options.toDic()
-        let finalOptionsDic: [String : Any] = [finalClassNameStr: optionsDic as Any]
+        let finalOptionsDic: [String : Any]!
         
+        if isOptionsClass == true {
+            finalOptionsDic = optionsDic
+        } else {
+            var classNameStr = options.classNameString
+            if classNameStr.contains(".") {
+                classNameStr = classNameStr.components(separatedBy: ".")[1];
+            }
+            
+            classNameStr = classNameStr.replacingOccurrences(of: "AA", with: "")
+            
+            //convert fisrt character to be lowercase string
+            let firstChar = classNameStr.prefix(1)
+            let lowercaseFirstChar = firstChar.lowercased()
+            let index = classNameStr.index(classNameStr.startIndex, offsetBy: 1)
+            classNameStr = String(classNameStr.suffix(from: index))
+            let finalClassNameStr = lowercaseFirstChar + classNameStr
+            finalOptionsDic = [finalClassNameStr: optionsDic as Any]
+        }
+                
         let optionsStr = getJSONStringFromDictionary(dictionary: finalOptionsDic)
         let jsStr = "updateChart('\(optionsStr)','\(redraw)')"
         safeEvaluateJavaScriptString(jsStr)

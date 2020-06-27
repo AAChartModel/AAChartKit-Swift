@@ -13,6 +13,7 @@
 		27499150210D90B5003D18C2 /* AASeriesElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749914C210D90B5003D18C2 /* AASeriesElement.swift */; };
 		27499151210D90B5003D18C2 /* AASerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749914D210D90B5003D18C2 /* AASerializable.swift */; };
 		27499152210D90B5003D18C2 /* AAChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749914E210D90B5003D18C2 /* AAChartView.swift */; };
+		2763384524A7070F00143B9B /* DataSortingWithAnimationChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2763384424A7070F00143B9B /* DataSortingWithAnimationChartVC.swift */; };
 		276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A56FE22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift */; };
 		277066112452E99C00C4581D /* ScrollableChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277066102452E99C00C4581D /* ScrollableChartVC.swift */; };
 		2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */; };
@@ -83,6 +84,7 @@
 		2749914C210D90B5003D18C2 /* AASeriesElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AASeriesElement.swift; sourceTree = "<group>"; };
 		2749914D210D90B5003D18C2 /* AASerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AASerializable.swift; sourceTree = "<group>"; };
 		2749914E210D90B5003D18C2 /* AAChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartView.swift; sourceTree = "<group>"; };
+		2763384424A7070F00143B9B /* DataSortingWithAnimationChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSortingWithAnimationChartVC.swift; sourceTree = "<group>"; };
 		276A56FE22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleChartsLinkedWorkVC.swift; sourceTree = "<group>"; };
 		277066102452E99C00C4581D /* ScrollableChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableChartVC.swift; sourceTree = "<group>"; };
 		2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyRefreshChartDataVC.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				44EB70A622BCB606008FECE4 /* JSFormatterFunctionVC.swift */,
 				277066102452E99C00C4581D /* ScrollableChartVC.swift */,
 				449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */,
+				2763384424A7070F00143B9B /* DataSortingWithAnimationChartVC.swift */,
 			);
 			path = AdditionalContent;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				44154763231A1B4800382DAD /* AAOptions.swift in Sources */,
 				4415475B231A18C500382DAD /* AAAnimation.swift in Sources */,
 				4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */,
+				2763384524A7070F00143B9B /* DataSortingWithAnimationChartVC.swift in Sources */,
 				4454E46B22DF1A4F00E01944 /* AALabel.swift in Sources */,
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
 				445353C322631B48009FA12A /* AAPlotLinesElement.swift in Sources */,

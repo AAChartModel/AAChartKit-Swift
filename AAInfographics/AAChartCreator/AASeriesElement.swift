@@ -222,6 +222,12 @@
         pointPlacement = prop
         return self
     }
+    
+    @discardableResult
+    public func dataSorting(_ prop: AADataSorting) -> AASeriesElement {
+        dataSorting = prop
+        return self
+    }
 
 
     public  override init() {

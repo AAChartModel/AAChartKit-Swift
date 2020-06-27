@@ -57,6 +57,8 @@ class MainVC: UIViewController {
                   "Custom Tooltip With JS Function ---通过JS函数自定义Tooltip",
                   "Scrolling update chart data ---滚动刷新图表数据",
                   "Scrollable chart ---可滚动的图表",
+//                  "Scrollable chart ---可滚动的图表",
+                  "Data Sorting Chart With Animation---图表动态排序",
               ]
         
         chartTypeTitleArr = [
@@ -249,6 +251,17 @@ class MainVC: UIViewController {
                "Spline Chart---曲线图",
                "Scatter Chart---散点图",
             ],
+            /*Data Sorting With Animation Charts*/
+            [  "Column Chart---柱形图",
+               "Bar Chart---条形图",
+//               "Area Chart---折线填充图",
+//               "Areaspline Chart---曲线填充图",
+//               "Step Area Chart--- 直方折线填充图",
+//               "Step Line Chart--- 直方折线图",
+//               "Line Chart---折线图",
+//               "Spline Chart---曲线图",
+               "Scatter Chart---散点图",
+            ],
         ]
         
         chartTypeArr = [
@@ -359,6 +372,18 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.line,
                 AAChartType.spline,
+                AAChartType.scatter
+            ],
+            /*Data Sorting With Animation Charts*/
+            [
+                AAChartType.column,
+                AAChartType.bar,
+//                AAChartType.area,
+//                AAChartType.areaspline,
+//                AAChartType.area,
+//                AAChartType.line,
+//                AAChartType.line,
+//                AAChartType.spline,
                 AAChartType.scatter
             ],
         ]
@@ -563,6 +588,15 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true
             }
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 13:
+            /*Data Sorting With Animation Charts*/
+            let vc = DataSortingWithAnimationChartVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+                     if indexPath.row == 4 || indexPath.row == 5 {
+                         vc.step = true
+                     }
             navigationController?.pushViewController(vc, animated: true)
         default:
             break
