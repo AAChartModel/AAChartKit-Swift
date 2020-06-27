@@ -59,6 +59,7 @@
     public var stack: String?
     public var tooltip: AATooltip?
     public var pointPlacement: Any?
+    public var dataSorting: AADataSorting?
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
@@ -302,6 +303,26 @@ public class AAShadow: AAObject {
     @discardableResult
     public func width(_ prop: Float) -> AAShadow {
         width = prop
+        return self
+    }
+    
+    public override init() {
+    }
+}
+
+public class AADataSorting: AAObject {
+    public var enabled: Bool?
+    public var matchByName: Bool?
+    
+    @discardableResult
+    public func enabled(_ prop: Bool) -> AADataSorting {
+        enabled = prop
+        return self
+    }
+    
+    @discardableResult
+    public func matchByName(_ prop: Bool) -> AADataSorting {
+        matchByName = prop
         return self
     }
     
