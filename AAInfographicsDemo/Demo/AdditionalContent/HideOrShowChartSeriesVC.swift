@@ -63,17 +63,29 @@ class HideOrShowChartSeriesVC: UIViewController {
         aaChartView?.scrollEnabled = false
         view.addSubview(aaChartView!)
         
-        var  aaChartModel = AAChartModel()
-            .chartType(chartType!)//图形类型
-            .animationType(.bounce)//图形渲染动画类型为"bounce"
-            .title("CHART SERIES HIDE OR SHOW")//图形标题
-            .subtitle("2020/08/08")//图形副标题
-            .dataLabelsEnabled(false)//是否显示数字
-            .stacking(.normal)
-            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+    let aaChartModel = AAChartModel()
+        .chartType(chartType!)//图形类型
+        .animationType(.bounce)//图形渲染动画类型为"bounce"
+        .title("CHART SERIES HIDE OR SHOW")//图形标题
+        .subtitle("2020/08/08")//图形副标题
+        .dataLabelsEnabled(false)//是否显示数字
+        .stacking(.normal)
+        .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+        .scrollablePlotArea(
+            AAScrollablePlotArea()
+                .minWidth(1800)
+                .scrollPositionX(1))
         
         if chartType == .column || chartType == .bar {
-            aaChartModel = aaChartModel.series([
+            if chartType == .bar {
+                aaChartModel
+                    .scrollablePlotArea(
+                        AAScrollablePlotArea()
+                            .minHeight(1800)
+                            .scrollPositionX(1))
+            }
+            
+             aaChartModel.series([
                 AASeriesElement()
                     .name("Tokyo")
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
@@ -91,7 +103,7 @@ class HideOrShowChartSeriesVC: UIViewController {
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
                     ,])
         } else {
-            aaChartModel = aaChartModel
+             aaChartModel
                 .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
                 .series([
                 AASeriesElement()
