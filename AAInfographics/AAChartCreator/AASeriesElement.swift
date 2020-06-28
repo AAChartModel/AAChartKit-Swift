@@ -59,6 +59,7 @@
     public var stack: String?
     public var tooltip: AATooltip?
     public var pointPlacement: Any?
+    public var enableMouseTracking: Bool?
     public var dataSorting: AADataSorting?
     
     @discardableResult
@@ -220,6 +221,12 @@
     @discardableResult
     public func pointPlacement(_ prop: Any) -> AASeriesElement {
         pointPlacement = prop
+        return self
+    }
+    
+    @discardableResult
+    public func enableMouseTracking(_ prop: Bool) -> AASeriesElement {
+        enableMouseTracking = prop
         return self
     }
     

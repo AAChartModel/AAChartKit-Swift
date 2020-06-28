@@ -92,10 +92,17 @@ public class AAMarkerStates: AAObject {
 }
 
 public class AAMarkerHover: AAObject {
+    public var enabled: Bool?
     public var fillColor: String?
     public var lineColor: String?
     public var lineWidth: Float?
     public var radius: Float?
+    
+    @discardableResult
+    public func enabled(_ prop: Bool) -> AAMarkerHover {
+        enabled = prop
+        return self
+    }
     
     @discardableResult
     public func fillColor(_ prop: String) -> AAMarkerHover {
