@@ -75,79 +75,75 @@ class DataSortingWithAnimationChartVC: UIViewController {
             AAGradientColor.eveningDelight,
         ];
         
-        
-        
         let aaOptions = AAOptions()
-        .colors(colorArr)
-        .chart(AAChart()
-            .type(self.chartType)
+            .colors(colorArr)
+            .chart(AAChart()
+                .type(self.chartType)
         )
-        .title(AATitle()
-                  .text("Popular Gradient Colors In Different Years"))
-        .xAxis(AAXAxis()
-                  .visible(true)
-                  .reversed(true)
-                  .type("category")
-                  )
-        .yAxis(AAYAxis()
-                  .visible(true)
-                  .title((AATitle()
-                            .text("Gradient Colors Hot")))
-            )
-        .legend(AALegend()
-                   .enabled(true)
-            .align(.center)
-            .layout(.vertical)
-            .verticalAlign(.top)
-                   .y(10)
-                   )
-        .tooltip(AATooltip()
-                    .enabled(true)
-                    )
-        .plotOptions(AAPlotOptions()
-                        .series(AASeries()
-                                   .dataLabels(AADataLabels()
-                                                  .enabled(true)
-                                                  .style(AAStyle()
-                                                            .fontSize(12)))
-                                   ))
-        .series([
-            AASeriesElement()
-            .name("2020 Year")
-            .colorByPoint(true)
-            .dataSorting(AADataSorting()
-                            .enabled(true)
-                            .matchByName(true))
-            .data(randomDataArray())
-                   ]);
+            .title(AATitle()
+                .text("Popular Gradient Colors In Different Years"))
+            .xAxis(AAXAxis()
+                .visible(true)
+                .reversed(true)
+                .type("category")
+        )
+            .yAxis(AAYAxis()
+                .visible(true)
+                .title((AATitle()
+                    .text("Gradient Colors Hot")))
+        )
+            .legend(AALegend()
+                .enabled(true)
+                .align(.center)
+                .layout(.vertical)
+                .verticalAlign(.top)
+                .y(10)
+        )
+            .tooltip(AATooltip()
+                .enabled(true)
+        )
+            .plotOptions(AAPlotOptions()
+                .series(AASeries()
+                    .dataLabels(AADataLabels()
+                        .enabled(true)
+                        .inside(true)//DataLabels是否在条形图的长条内部
+                        .style(AAStyle()
+                            .color(AAColor.white)
+                            .fontWeight(.bold)
+                            .fontSize(11)
+                            .textOutline("none")//文字轮廓描边
+                    ))
+            ))
+            .series([
+                AASeriesElement()
+                    .name("2020 Year")
+                    .colorByPoint(true)
+                    .dataSorting(AADataSorting()
+                        .enabled(true)
+                        .matchByName(true))
+                    .data(randomDataArray())
+            ]);
         
         if (aaOptions.chart?.type == AAChartType.column.rawValue) {
             aaOptions.plotOptions?
-            .column(AAColumn()
-                       .pointPadding(0)
-                       .groupPadding(0.005));
-        } else if (aaOptions.chart?.type == AAChartType.bar.rawValue) {
-//            aaOptions.yAxis?.opposite(true)
-            
-            aaOptions.plotOptions?
-            .bar(AABar()
+                .column(AAColumn()
                     .pointPadding(0)
                     .groupPadding(0.005))
-            .series?
-            .dataLabels(AADataLabels()
-                           .enabled(true)
+                .series?
+                .dataLabels?.verticalAlign(.bottom)
+        } else if (aaOptions.chart?.type == AAChartType.bar.rawValue) {
+            aaOptions.plotOptions?
+                .bar(AABar()
+                    .pointPadding(0)
+                    .groupPadding(0.005))
+                .series?
+                .dataLabels?
                 .align(.left)//DataLabels水平对齐位置
-                           .inside(true)//DataLabels是否在条形图的长条内部
-                           .style(AAStyle()
-                                     .color(AAColor.white)
-                            .fontWeight(.bold)
-                                     .fontSize(11)
-                                     .textOutline("none")//文字轮廓描边
-                                     ));
         } else if (aaOptions.chart?.type == AAChartType.scatter.rawValue) {
             aaOptions.plotOptions?.series?
-            .marker(AAMarker()
-                       .radius(15));
+                .marker(AAMarker()
+                    .radius(15))
+                .dataLabels?.verticalAlign(.middle);
         }
         
         return aaOptions;
