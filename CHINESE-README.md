@@ -317,7 +317,13 @@ function () {
 * 添加值域分割数据列分区 `zones 🧱`
 ![plotLinesChart](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/seriesZonesChart.png)
 
+### 支持图表数据的动态滚动刷新
 
+<div  >
+   <img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/scrollingUpdateColumnChart.gif.gif' >
+   <img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/scrollingUpdateLineChart.gif.gif' >
+   <img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/scrollingUpdateStepAreaChart.gif.gif' >
+</div>
 
 ### 支持图表数据的动态排序
 
