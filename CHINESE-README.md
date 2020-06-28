@@ -317,7 +317,17 @@ function () {
 * 添加值域分割数据列分区 `zones 🧱`
 ![plotLinesChart](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/seriesZonesChart.png)
 
+### 支持图表数据的动态排序
 
+<div width="49%">
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/DataSortingBarChart.gif' >
+
+<div width="49%">
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/DataSortingColumnChart.png' height="49%">
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/DataSortingScatterChart.png' height="49%">
+</div>
+
+</div>
 
 ### 当前已支持的图表类型有十种以上,说明如下
 
