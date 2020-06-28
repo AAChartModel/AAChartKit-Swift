@@ -321,14 +321,13 @@ function () {
 
 ### 支持图表数据的动态排序
 
-<div width="30%">
+<div width="30%" height="350">
 <img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/DataSortingBarChart.gif' >
-
-<div width="60%">
-<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/DataSortingColumnChart.gif' height="49%">
-<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/DataSortingScatterChart.gif' height="49%">
 </div>
 
+<div width="60%" height="350">
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/DataSortingColumnChart.gif' height="49%">
+<img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/DataSortingScatterChart.gif' height="49%">
 </div>
 
 ### 当前已支持的图表类型有十种以上,说明如下
