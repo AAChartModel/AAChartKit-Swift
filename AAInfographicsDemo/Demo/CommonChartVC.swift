@@ -235,11 +235,11 @@ class CommonChartVC: UIViewController {
                 ["Square corners",
                  "Rounded corners",
                  "Wedge"]
-            ];
+            ]
             typeLabelNamesArr = [
                 "Stacking Type Selection",
                 "Corners Style Type Selection"
-            ];
+            ]
         } else {
             segmentedNamesArr = [
                 ["No stacking",
@@ -250,11 +250,11 @@ class CommonChartVC: UIViewController {
                  "Diamond",
                  "Triangle",
                  "Triangle-down"]
-            ];
+            ]
             typeLabelNamesArr = [
                 "Stacking Type Selection",
                 "Chart Symbol Type Selection"
-            ];
+            ]
         }
         
         for  i in 0 ..< segmentedNamesArr.count {
@@ -263,7 +263,7 @@ class CommonChartVC: UIViewController {
                                    y: 40.0 * CGFloat(i) + (view.frame.size.height - 145),
                                    width: view.frame.size.width - 40,
                                    height: 20)
-            segment.tag = i;
+            segment.tag = i
             segment.tintColor = .red
             segment.selectedSegmentIndex = 0
             segment.addTarget(self,
@@ -346,7 +346,7 @@ class CommonChartVC: UIViewController {
                                     width: switchWidth,
                                     height: 20)
             uiSwitch.isOn = false
-            uiSwitch.tag = i;
+            uiSwitch.tag = i
             uiSwitch.onTintColor = .red
             uiSwitch.addTarget(self,
                                action: #selector(switchDidChange(switchView:)),
@@ -393,22 +393,22 @@ extension CommonChartVC: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
        print("🙂🙂🙂, AAChartView Did Finished Load!!!")
     }
-    
+
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
         print(
             """
-            
+
             selected point series element name: \(moveOverEventMessage.name ?? "")
             🔥🔥🔥WARNING!!!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!!!!! WARNING🔥🔥🔥
             ==========================================================================================
             ------------------------------------------------------------------------------------------
             user finger moved over!!!,get the move over event message: {
-            category = \(String(describing: moveOverEventMessage.category));
-            index = \(String(describing: moveOverEventMessage.index));
-            name = \(String(describing: moveOverEventMessage.name));
-            offset = \(String(describing: moveOverEventMessage.offset));
-            x = \(String(describing: moveOverEventMessage.x));
-            y = \(String(describing: moveOverEventMessage.y));
+            category = \(String(describing: moveOverEventMessage.category))
+            index = \(String(describing: moveOverEventMessage.index))
+            name = \(String(describing: moveOverEventMessage.name))
+            offset = \(String(describing: moveOverEventMessage.offset))
+            x = \(String(describing: moveOverEventMessage.x))
+            y = \(String(describing: moveOverEventMessage.y))
             }
             +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             """
