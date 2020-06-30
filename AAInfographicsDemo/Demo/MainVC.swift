@@ -503,7 +503,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             /*Basic Type Charts*/
-            let vc = CommonChartVC()
+            let vc = BasicChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true

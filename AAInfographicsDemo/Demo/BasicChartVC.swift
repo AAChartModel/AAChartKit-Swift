@@ -33,7 +33,7 @@
 
 import UIKit
 
-class CommonChartVC: UIViewController {
+class BasicChartVC: UIViewController {
     public var chartType: AAChartType!
     public var step: Bool?
     private var aaChartModel: AAChartModel!
@@ -389,7 +389,7 @@ class CommonChartVC: UIViewController {
     }
 }
 
-extension CommonChartVC: AAChartViewDelegate {
+extension BasicChartVC: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
        print("🙂🙂🙂, AAChartView Did Finished Load!!!")
     }
