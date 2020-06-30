@@ -479,6 +479,34 @@ extension AAChartView {
         let jsStr = "redrawWithAnimation('\(animation)')"
         safeEvaluateJavaScriptString(jsStr)
     }
+    
+    
+    /// Set the chart view content be adaptive to screen rotation with default animation effect
+    public func aa_adaptiveScreenRotation() {
+        let aaAnimation = AAAnimation()
+            .duration(800)
+            .easing(.easeOutQuart)
+        aa_adaptiveScreenRotationWithAnimation(aaAnimation)
+    }
+
+    /// Set the chart view content be adaptive to screen rotation with custom animation effect
+    /// Refer to https://api.highcharts.com.cn/highcharts#Chart.setSize
+    ///
+    /// - Parameter animation: The instance object of AAAnimation
+    public func aa_adaptiveScreenRotationWithAnimation(_ animation: AAAnimation) {
+        NotificationCenter.default.addObserver(
+            forName: UIDevice.orientationDidChangeNotification,
+            object: nil,
+            queue: nil) { [weak self] _ in
+                self?.handleDeviceOrientationChangeEventWithAnimation(animation)
+        }
+    }
+    
+    private func handleDeviceOrientationChangeEventWithAnimation(_ animation: AAAnimation) {
+        let animationJsonStr = animation.toJSON()!
+        let jsFuncStr = "changeChartSize('\(self.frame.size.width)','\(self.frame.size.height)','\(animationJsonStr)')"
+        self.safeEvaluateJavaScriptString(jsFuncStr)
+    }
 }
 
 
