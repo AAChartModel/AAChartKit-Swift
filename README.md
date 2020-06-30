@@ -332,7 +332,7 @@ you can get the customized tooltip style chart like this👇
    <img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/scrollingUpdateStepAreaChart.gif' >
 </div>
 
-### Support data sroting with animation effect
+### Support data sorting with animation effect
 
 <div  align="center">
    <img src='https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/DataSortingColumnChart.gif' >
