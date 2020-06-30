@@ -89,6 +89,7 @@ class DataSortingWithAnimationChartVC: UIViewController {
         )
             .yAxis(AAYAxis()
                 .visible(true)
+                .gridLineWidth(0)
                 .title((AATitle()
                     .text("Gradient Colors Hot")))
         )
