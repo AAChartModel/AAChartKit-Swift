@@ -31,7 +31,6 @@
  */
 
  public class AASeriesElement: AAObject {
-    
     public var type: String?               //A chart type series. If the type option is not specified, it is inherited from `chart.type`.
     public var name: String?               //The name of the series as shown in the legend, tooltip etc.
     public var data: [Any]?                //An array of data points for the series
@@ -42,18 +41,18 @@
     public var fillColor: Any?             //The fill color, It is only valid for area, areaspline, arearange and arearangespline chart types
     public var fillOpacity: Float?         //The fill opacity, It is only valid for area, areaspline, arearange and arearangespline chart types. Note that when you set an explicit fillColor, the fillOpacity is not applied. Instead, you should define the opacity in the fillColor with an rgba color definition. Deafualt value：0.75.
     public var threshold: Float?           //The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
-    public var negativeColor: Any?      //The color for the parts of the graph or points that are below the threshold
-    public var negativeFillColor: Any? //A separate color for the negative part of the area.
+    public var negativeColor: Any?         //The color for the parts of the graph or points that are below the threshold
+    public var negativeFillColor: Any?     //A separate color for the negative part of the area.
     public var dashStyle: String?          //A name for the dash style to use for the graph. Applies only to series type having a graph, like line, spline, area and scatter in case it has a lineWidth.
     public var yAxis: Int?
-    public var dataLabels: AADataLabels?  //Individual data label for each point. The options are the same as the ones for `plotOptions.series.dataLabels`.
-    public var marker: AAMarker?      //Enable or disable the point marker. If null, the markers are hidden when the data is dense, and shown for more widespread data points.
+    public var dataLabels: AADataLabels?   //Individual data label for each point. The options are the same as the ones for `plotOptions.series.dataLabels`.
+    public var marker: AAMarker?           //Enable or disable the point marker. If null, the markers are hidden when the data is dense, and shown for more widespread data points.
     public var step: Any?                  //Whether to apply steps to the line. Possible values are left, center and right.
     public var states: AAStates?
     public var colorByPoint: Bool?         //When using automatic point colors pulled from the `options.colors` collection, this option determines whether the chart should receive one color per series or one color per point.
     public var allowPointSelect: Bool?     //Allow this series' points to be selected by clicking on the markers, bars or pie slices
     public var zIndex: Int?                //Define the visual z index of the series.
-    public var size: Any?          //The innder size for pie chart
+    public var size: Any?                  //The innder size for pie chart
     public var innerSize: String?          //The innder size for pie chart
     public var shadow: Any?
     public var zones: [Any]?
