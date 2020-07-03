@@ -1628,6 +1628,7 @@ function () {
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
         aaOptions.xAxis?
+            .tickInterval(1)
             .lineWidth(0)//避免多边形外环之外有额外套了一层无用的外环
             .gridLineColor(AAColor.rgbaColor(30, 144, 255, 0.6))
             .crosshair(AACrosshair()
