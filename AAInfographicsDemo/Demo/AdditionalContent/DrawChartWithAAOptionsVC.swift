@@ -73,6 +73,12 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 22: return customAxesGridLineStyle()
         case 23: return customRadarChartStyle()
         case 24: return customColumnrangeChartStyle()
+        case 25: return customXAxisLabelsBeImages()//自定义曲线面积图 X 轴 labels 为一组图片🖼
+        case 26: return configureTriangleRadarChart()//带有颜色标志带的三角形雷达图
+        case 27: return configureQuadrangleRadarChart()//带有颜色标志带的四角形雷达图
+        case 28: return configurePentagonRadarChart()//带有颜色标志带的五角形雷达图
+        case 29: return configureHexagonRadarChart()//带有颜色标志带的六角形雷达图
+            
         default:
             return AAOptions()
         }
@@ -1566,6 +1572,222 @@ function () {
         
         return aaOptions
     }
+    
+     private func customXAxisLabelsBeImages() -> AAOptions {
+        let imageLinkStrArr = [
+            "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197582.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
+            "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197604.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
+            "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197507.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
+            "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197571.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
+            "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197408.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
+            "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197375.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
+            "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197374.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
+            "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197484.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>"
+        ]
+        
+        let aaChartModel = AAChartModel()
+            .chartType(.areaspline)
+            .stacking(.normal)
+        .yAxisVisible(false)
+        .categories(imageLinkStrArr)
+        .markerRadius(0)
+        .series([
+            AASeriesElement()
+            .name("Berlin Hot")
+                .color(AAGradientColor.sanguine)
+            .data([7.0, 6.9, 2.5, 14.5, 13.2, 18.2, 29.5, 21.5, ]),
+        ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        aaOptions.xAxis?.labels?.useHTML = true;
+        return aaOptions
+    }
+    
+    //三角形雷达图
+    private func configureTriangleRadarChart() -> AAOptions  {
+        let aaChartModel = AAChartModel()
+            .chartType(.area)
+            .backgroundColor(AAColor.white)
+            .markerRadius(0)
+            .yAxisMax(25)
+            .yAxisGridLineWidth(1)
+            .polar(true)
+            .legendEnabled(false)
+            .tooltipEnabled(false)
+            .xAxisGridLineWidth(1)
+            .yAxisGridLineWidth(1)
+            .series([
+                AASeriesElement()
+                    .color(AAColor.white)
+                    .fillOpacity(0.01)
+                    .dataLabels(AADataLabels()
+                        .color(AAColor.rgbaColor(30, 144, 255, 1.0)))
+                    .data([17.0, 16.9, 12.5,]),
+            ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.xAxis?
+            .lineWidth(0)//避免多边形外环之外有额外套了一层无用的外环
+            .gridLineColor(AAColor.rgbaColor(30, 144, 255, 0.6))
+            .crosshair(AACrosshair()
+                .width(1.5)
+                .color(AAColor.white)
+                .dashStyle(.longDashDotDot))
+        
+        aaOptions.yAxis?
+            .gridLineInterpolation("polygon")
+            .lineWidth(0)
+            .gridLineColor(AAColor.rgbaColor(30, 144, 255, 1.0))
+            .crosshair(AACrosshair()
+                .width(1.5)
+                .color(AAColor.white)
+                .dashStyle(.longDashDotDot))
+            .tickPositions([5,10,15,20,25,])
+        
+        let aaPlotBandsArr = [
+            AAPlotBandsElement()
+                .from(0)
+                .to(5)
+                .color(AAColor.rgbaColor(30, 144, 255, 1.0)),
+            AAPlotBandsElement()
+                .from(5)
+                .to(10)
+                .color(AAColor.rgbaColor(30, 144, 255, 0.8)),
+            AAPlotBandsElement()
+                .from(10)
+                .to(15)
+                .color(AAColor.rgbaColor(30, 144, 255, 0.6)),
+            AAPlotBandsElement()
+                .from(15)
+                .to(20)
+                .color(AAColor.rgbaColor(30, 144, 255, 0.4)),
+            AAPlotBandsElement()
+                .from(20)
+                .to(25)
+                .color(AAColor.rgbaColor(30, 144, 255, 0.2)),
+        ]
+        
+        let aaYAxis = aaOptions.yAxis
+        aaYAxis?.plotBands = aaPlotBandsArr
+        return aaOptions
+    }
+    
+    //四边形雷达图
+    private func configureQuadrangleRadarChart() -> AAOptions   {
+        let aaOptions: AAOptions = configureTriangleRadarChart()
+        aaOptions.yAxis?.plotBands = [
+            AAPlotBandsElement()
+                .from(0)
+                .to(5)
+                .color(AAColor.rgbaColor(255, 0, 0, 1.0)),
+            AAPlotBandsElement()
+                .from(5)
+                .to(10)
+                .color(AAColor.rgbaColor(255, 0, 0, 0.8)),
+            AAPlotBandsElement()
+                .from(10)
+                .to(15)
+                .color(AAColor.rgbaColor(255, 0, 0, 0.6)),
+            AAPlotBandsElement()
+                .from(15)
+                .to(20)
+                .color(AAColor.rgbaColor(255, 0, 0, 0.4)),
+            AAPlotBandsElement()
+                .from(20)
+                .to(25)
+                .color(AAColor.rgbaColor(255, 0, 0, 0.2)),
+        ]
+        
+        aaOptions.xAxis?.gridLineColor = AAColor.rgbaColor(255, 0, 0, 0.6)
+        aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(255, 0, 0, 1.0)
+        
+        let element = aaOptions.series![0] as! AASeriesElement
+        element.data([17.0, 16.9, 12.5, 14.5,])
+            .dataLabels(AADataLabels()
+                .color(AAColor.rgbaColor(255, 0, 0, 1.0)))
+        
+        
+        return aaOptions
+    }
+    
+    //五边形雷达图
+    private func configurePentagonRadarChart() -> AAOptions   {
+        let aaOptions = configureTriangleRadarChart()
+        aaOptions.yAxis?.plotBands = [
+            AAPlotBandsElement()
+                .from(0)
+                .to(5)
+                .color(AAColor.rgbaColor(255, 215, 0, 1.0)),
+            AAPlotBandsElement()
+                .from(5)
+                .to(10)
+                .color(AAColor.rgbaColor(255, 215, 0, 0.8)),
+            AAPlotBandsElement()
+                .from(10)
+                .to(15)
+                .color(AAColor.rgbaColor(255, 215, 0, 0.6)),
+            AAPlotBandsElement()
+                .from(15)
+                .to(20)
+                .color(AAColor.rgbaColor(255, 215, 0, 0.4)),
+            AAPlotBandsElement()
+                .from(20)
+                .to(25)
+                .color(AAColor.rgbaColor(255, 215, 0, 0.2)),
+        ]
+        
+        aaOptions.xAxis?.gridLineColor = AAColor.rgbaColor(255, 215, 0, 0.6)
+        aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(255, 215, 0, 1.0)
+        
+        let element = aaOptions.series![0] as! AASeriesElement
+        element.data([17.0, 16.9, 12.5, 14.5, 18.2,])
+            .dataLabels(AADataLabels()
+                .color(AAColor.rgbaColor(255, 215, 0, 1.0)))
+        
+        
+        return aaOptions
+    }
+    
+    //六边形雷达图
+    private func configureHexagonRadarChart() -> AAOptions   {
+        let aaOptions = configureTriangleRadarChart()
+        aaOptions.yAxis?.plotBands = [
+            AAPlotBandsElement()
+                .from(0)
+                .to(5)
+                .color(AAColor.rgbaColor(50, 205, 50, 1.0)),
+            AAPlotBandsElement()
+                .from(5)
+                .to(10)
+                .color(AAColor.rgbaColor(50, 205, 50, 0.8)),
+            AAPlotBandsElement()
+                .from(10)
+                .to(15)
+                .color(AAColor.rgbaColor(50, 205, 50, 0.6)),
+            AAPlotBandsElement()
+                .from(15)
+                .to(20)
+                .color(AAColor.rgbaColor(50, 205, 50, 0.4)),
+            AAPlotBandsElement()
+                .from(20)
+                .to(25)
+                .color(AAColor.rgbaColor(50, 205, 50, 0.2)),
+        ]
+        
+        aaOptions.xAxis?.gridLineColor = AAColor.rgbaColor(50, 205, 50, 0.6)
+        aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(50, 205, 50, 1.0)
+        
+        let element = aaOptions.series![0] as! AASeriesElement
+        element.data([17.0, 16.9, 12.5, 14.5, 18.2, 21.5,])
+            .dataLabels(AADataLabels()
+                .color(AAColor.rgbaColor(50, 205, 50, 1.0)))
+        
+        
+        return aaOptions
+    }
+    
+    
     
     //Convert Swift array to be JavaScript array
     private func javaScriptArrayStringWithSwiftArray(_ swiftArray: [Any]) -> String {

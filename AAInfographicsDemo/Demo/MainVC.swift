@@ -217,7 +217,12 @@ class MainVC: UIViewController {
                 "custom Area Chart Tooltip Style Like HTML Table || 自定义区域填充图浮动提示框为 HTML 表格样式",
                 "custom Axes Grid Line Style || 自定义 X 轴和 Y 轴网格线的样式",
                 "custom Radar Chart Style || 自定义雷达图样式",
-                "customColumnrangeChartStyle---自定义柱形范围图样式"
+                "customColumnrangeChartStyle---自定义柱形范围图样式",
+                "self customXAxisLabelsBeImages---自定义曲线面积图 X 轴 labels 为一组图片🖼",
+                "Triangle Radar Chart With PlotBands---带有颜色标志带的三角形雷达图",
+                "Quadrangle Radar Chart With PlotBands---带有颜色标志带的四角形雷达图",
+                "Pentagon Radar Chart With PlotBands---带有颜色标志带的五角形雷达图",
+                "Hexagon Radar Char With PlotBands----带有颜色标志带的六角形雷达图",
 
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
