@@ -1014,24 +1014,23 @@ class CustomStyleChartVC: UIViewController {
     }
 
     private func upsideDownPyramidChart() -> AAChartModel {
-        let pyramid = [
-            "name": 20,
-            "data": [
-                ["swift",      11850],
-                ["Objective-C",12379],
-                ["JavaScript", 14286],
-                ["Go",         15552],
-                ["Python",     18654],
-            ],
-            "reversed": false
-            ] as [String : Any]
-        
         return AAChartModel()
             .chartType(.pyramid)
             .title("THE HEAT OF PROGRAM LANGUAGE")
             .subtitle("virtual data")
             .yAxisTitle("℃")
-            .series([pyramid])
+            .series([
+                AASeriesElement()
+                .name("2020")
+                .reversed(false)
+                .data([
+                    ["swift",      11850],
+                    ["Objective-C",12379],
+                    ["JavaScript", 14286],
+                    ["Go",         15552],
+                    ["Python",     18654],
+                ])
+            ])
     }
     
     private func doubleLayerPieChart() -> AAChartModel {

@@ -61,6 +61,7 @@
     public var pointPlacement: Any?
     public var enableMouseTracking: Bool?
     public var dataSorting: AADataSorting?
+    public var reversed: Bool?//Only useful for pyramid chart and funnel chart
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
@@ -241,7 +242,12 @@
         dataSorting = prop
         return self
     }
-
+    
+    @discardableResult
+    public func reversed(_ prop: Bool) -> AASeriesElement {
+        reversed = prop
+        return self
+    }
 
     public  override init() {
     }   
