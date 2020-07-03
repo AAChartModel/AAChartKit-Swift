@@ -98,7 +98,8 @@ class CustomStyleChartVC: UIViewController {
         case 33: return disableSomeOfLinesMouseTrackingEffect()
         case 34: return configureColorfulShadowSplineChart()
         case 35: return configureColorfulDataLabelsStepLineChart()
-        case 36: return disableSplineChartMarkerHoverEffect()
+        case 36: return configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart()
+        case 37: return disableSplineChartMarkerHoverEffect()
             
         default:
             return configureTriangleRadarChart()
@@ -1154,7 +1155,7 @@ class CustomStyleChartVC: UIViewController {
                         .width(8.0)
                         .color("#04d69f")
                 ),
-            ]);
+            ])
     }
     
     // GitHub issue https://github.com/AAChartModel/AAChartKit/issues/905
@@ -1212,6 +1213,108 @@ class CustomStyleChartVC: UIViewController {
             ])
     }
     
+    // GitHub issue https://github.com/AAChartModel/AAChartKit-Swift/issues/223
+    private func configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart() -> AAChartModel {
+        let blueStopsArr = [
+            [0.0, AAColor.rgbaColor(30, 144, 255, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AAColor.rgbaColor(30, 144, 255, 0.2)],
+            [1.0, AAColor.rgbaColor(30, 144, 255, 0.0)]
+        ]
+        let gradientBlueColorDic = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            stops: blueStopsArr
+        )
+        
+        let redStopsArr = [
+            [0.0, AAColor.rgbaColor(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AAColor.rgbaColor(255, 0, 0, 0.2)],
+            [1.0, AAColor.rgbaColor(255, 0, 0, 0.0)]
+        ]
+        let gradientRedColorDic = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            stops: redStopsArr
+        )
+        
+        
+        let goldStopsArr = [
+            [0.0, AAColor.rgbaColor(255, 215, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AAColor.rgbaColor(255, 215, 0, 0.2)],
+            [1.0, AAColor.rgbaColor(255, 215, 0, 0.0)]
+        ]
+        let gradientGoldColorDic = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            stops: goldStopsArr
+        )
+        
+        
+        let greenStopsArr = [
+            [0.0, AAColor.rgbaColor(50, 205, 50, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AAColor.rgbaColor(50, 205, 50, 0.2)],
+            [1.0, AAColor.rgbaColor(50, 205, 50, 0.0)]
+        ]
+        let gradientGreenColorDic = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            stops: greenStopsArr
+        )
+        
+        
+        return AAChartModel()
+            .chartType(.area)
+            .yAxisVisible(false)
+            .stacking(.normal)
+            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f"])
+            .markerSymbol(.circle)
+            .markerRadius(5)
+            .dataLabelsEnabled(true)
+            .markerSymbolStyle(.innerBlank)
+            .series([
+                AASeriesElement()
+                    .name("2017")
+                    .fillColor(gradientBlueColorDic)
+                    .lineWidth(6)
+                    .step((true))
+                    .dataLabels(AADataLabels()
+                        .style(AAStyle()
+                            .color("#1e90ff")
+                            .fontSize(11)
+                    ))
+                    .data([2.10, 2.54, 2.78, 3.62, 4.41, 4.09, 3.83, 4.47, 4.20, 3.94, 3.80, 3.58, 3.19, 4.30, 3.69, 3.52, 3.02, 3.30]),
+                AASeriesElement()
+                    .name("2018")
+                    .fillColor(gradientRedColorDic)
+                    .lineWidth(6)
+                    .step((true))
+                    .dataLabels(AADataLabels()
+                        .style(AAStyle()
+                            .color("#ef476f")
+                            .fontSize(11)
+                    ))
+                    .data([1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28]),
+                AASeriesElement()
+                    .name("2019")
+                    .fillColor(gradientGoldColorDic)
+                    .lineWidth(6)
+                    .step((true))
+                    .dataLabels(AADataLabels()
+                        .style(AAStyle()
+                            .color("#ffd066")
+                            .fontSize(11)
+                    ))
+                    .data([1.16, 1.67, 2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05, 2.18, 3.24]),
+                AASeriesElement()
+                    .name("2020")
+                    .fillColor(gradientGreenColorDic)
+                    .lineWidth(6)
+                    .step((true))
+                    .dataLabels(AADataLabels()
+                        .style(AAStyle()
+                            .color("#04d69f")
+                            .fontSize(11)
+                    ))
+                    .data([5.59, 3.09, 4.09, 6.14, 5.33, 6.05, 5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.22, 5.77, 6.19, 5.68, 4.33, 5.48]),
+            ])
+    }
+    
     // Refer to https://api.highcharts.com.cn/highcharts#plotOptions.spline.marker.states.hover.enabled
     private func disableSplineChartMarkerHoverEffect() -> AAChartModel {
         return AAChartModel()
@@ -1238,7 +1341,7 @@ class CustomStyleChartVC: UIViewController {
                         )
                 )
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-            ]);
+            ])
     }
 
 }
