@@ -74,10 +74,11 @@ class DrawChartWithAAOptionsVC: UIViewController {
         case 23: return customRadarChartStyle()
         case 24: return customColumnrangeChartStyle()
         case 25: return customXAxisLabelsBeImages()//自定义曲线面积图 X 轴 labels 为一组图片🖼
-        case 26: return configureTriangleRadarChart()//带有颜色标志带的三角形雷达图
-        case 27: return configureQuadrangleRadarChart()//带有颜色标志带的四角形雷达图
-        case 28: return configurePentagonRadarChart()//带有颜色标志带的五角形雷达图
-        case 29: return configureHexagonRadarChart()//带有颜色标志带的六角形雷达图
+        case 26: return configureTriangleRadarChart()//带有颜色标志带の三角形雷达图
+        case 27: return configureQuadrangleRadarChart()//带有颜色标志带の四角形雷达图
+        case 28: return configurePentagonRadarChart()//带有颜色标志带の五角形雷达图
+        case 29: return configureHexagonRadarChart()//带有颜色标志带の六角形雷达图
+        case 30: return configureSpiderWebRadarChart()//带有颜色标志带の🕸蜘蛛网状雷达图
             
         default:
             return AAOptions()
@@ -195,9 +196,9 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-        //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表的下方显示，y 轴是在左方，
+        //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表の下方显示，y 轴是在左方，
         //坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。
-        //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示的。
+        //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示の。
         //默认是：false.
         aaOptions.yAxis?.opposite(true)
         return aaOptions
@@ -519,7 +520,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 .dashStyle(.longDashDotDot)//样式：Dash,Dot,Solid等,默认Solid
                 .width((1.0)) //标示线粗细
                 .value((12)) //所在位置
-                .zIndex((1)) //层叠,标示线在图表中显示的层叠级别，值越大，显示越向前
+                .zIndex((1)) //层叠,标示线在图表中显示の层叠级别，值越大，显示越向前
                 .label(AALabel()
                     .text("PLOT LINES ONE")
                     .style(AAStyle()
@@ -858,7 +859,7 @@ function () {
                 .from(-0.25)//值域颜色带X轴起始值
                 .to(4.75)//值域颜色带X轴结束值
                 .color("#ef476f66")//值域颜色带填充色
-                .zIndex(0)//层叠,标示线在图表中显示的层叠级别，值越大，显示越向前
+                .zIndex(0)//层叠,标示线在图表中显示の层叠级别，值越大，显示越向前
             ,
             AAPlotBandsElement()
                 .from(4.75)
@@ -898,7 +899,7 @@ function () {
         
         let aaYAxisLabels = AALabels()
             .enabled(true)//设置 y 轴是否显示数字
-            .format("{value:.,0f}mm")//让y轴的值完整显示 而不是100000显示为100k,同时单位后缀为°C
+            .format("{value:.,0f}mm")//让y轴の值完整显示 而不是100000显示为100k,同时单位后缀为°C
             .style(AAStyle()
                 .color("#ff0000")//yAxis Label font color
                 .fontSize(15)//yAxis Label font size
@@ -940,9 +941,9 @@ function () {
         let aaMarker = AAMarker()
             .radius(7)//曲线连接点半径，默认是4
             .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-            .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
-            .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-            .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+            .fillColor("#ffffff")//点の填充色(用来设置折线连接点の填充色)
+            .lineWidth(3)//外沿线の宽度(用来设置折线连接点の轮廓描边の宽度)
+            .lineColor("")//外沿线の颜色(用来设置折线连接点の轮廓描边颜色，当值为空字符串时，默认取数据点或数据列の颜色)
         
         let element1 = AASeriesElement()
             .name("2017")
@@ -1224,9 +1225,9 @@ function () {
             .marker(AAMarker()
                 .radius(7)//曲线连接点半径，默认是4
                 .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
-                .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                .fillColor("#ffffff")//点の填充色(用来设置折线连接点の填充色)
+                .lineWidth(3)//外沿线の宽度(用来设置折线连接点の轮廓描边の宽度)
+                .lineColor("")//外沿线の颜色(用来设置折线连接点の轮廓描边颜色，当值为空字符串时，默认取数据点或数据列の颜色)
         )
             .color("#F02FC2")
             .yAxis(1)
@@ -1616,6 +1617,7 @@ function () {
             .tooltipEnabled(false)
             .xAxisGridLineWidth(1)
             .yAxisGridLineWidth(1)
+            .dataLabelsEnabled(true)
             .series([
                 AASeriesElement()
                     .color(AAColor.white)
@@ -1629,7 +1631,7 @@ function () {
         
         aaOptions.xAxis?
             .tickInterval(1)
-            .lineWidth(0)//避免多边形外环之外有额外套了一层无用的外环
+            .lineWidth(0)//避免多边形外环之外有额外套了一层无用の外环
             .gridLineColor(AAColor.rgbaColor(30, 144, 255, 0.6))
             .crosshair(AACrosshair()
                 .width(1.5)
@@ -1788,6 +1790,43 @@ function () {
         return aaOptions
     }
     
+    //🕸蜘蛛网状雷达图
+    private func configureSpiderWebRadarChart() -> AAOptions   {
+        let aaOptions = configureTriangleRadarChart()
+        aaOptions.yAxis?.plotBands = [
+            AAPlotBandsElement()
+                .from(0)
+                .to(5)
+                .color(AAColor.rgbaColor(138, 43, 226, 1.0)),
+            AAPlotBandsElement()
+                .from(5)
+                .to(10)
+                .color(AAColor.rgbaColor(138, 43, 226,  0.8)),
+            AAPlotBandsElement()
+                .from(10)
+                .to(15)
+                .color(AAColor.rgbaColor(138, 43, 226,  0.6)),
+            AAPlotBandsElement()
+                .from(15)
+                .to(20)
+                .color(AAColor.rgbaColor(138, 43, 226, 0.4)),
+            AAPlotBandsElement()
+                .from(20)
+                .to(25)
+                .color(AAColor.rgbaColor(138, 43, 226, 0.2)),
+        ]
+        
+        aaOptions.xAxis?.gridLineColor = AAColor.rgbaColor(138, 43, 226,  0.6)
+        aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(138, 43, 226,  1.0)
+        
+        let element = aaOptions.series![0] as! AASeriesElement
+        element.data([2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24])
+            .dataLabels(AADataLabels()
+                .color(AAColor.rgbaColor(138, 43, 226, 1.0)))
+        
+        
+        return aaOptions
+    }
     
     
     //Convert Swift array to be JavaScript array

@@ -223,6 +223,7 @@ class MainVC: UIViewController {
                 "Quadrangle Radar Chart With PlotBands---带有颜色标志带的四角形雷达图",
                 "Pentagon Radar Chart With PlotBands---带有颜色标志带的五角形雷达图",
                 "Hexagon Radar Char With PlotBands----带有颜色标志带的六角形雷达图",
+                "Spider Web Radar Chart With PlotBands----带有颜色标志带の🕸蜘蛛网状雷达图",
 
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
