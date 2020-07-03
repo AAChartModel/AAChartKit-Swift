@@ -56,8 +56,8 @@ class MainVC: UIViewController {
                   "Draw Chart With AAOptions---通过Options绘图",
                   "Custom Tooltip With JS Function ---通过JS函数自定义Tooltip",
                   "Scrolling update chart data ---滚动刷新图表数据",
-                  "Scrollable chart ---可滚动的图表",
-//                  "Scrollable chart ---可滚动的图表",
+                  "Scrollable chart ---可滚动の图表",
+//                  "Scrollable chart ---可滚动の图表",
                   "Data Sorting Chart With Animation---图表动态排序",
               ]
         
@@ -94,12 +94,12 @@ class MainVC: UIViewController {
             [
                 "Colorful Column Chart---多彩条形图",
                 "Colorful Gradient Color Chart---多彩颜色渐变条形图",
-                "Discontinuous Data Chart---数值不连续的图表",
+                "Discontinuous Data Chart---数值不连续の图表",
                 "Mixed Line Chart---虚实线混合折线图",
-                "Random Colors Colorful Column Chart---随机颜色的多彩柱形图",
+                "Random Colors Colorful Column Chart---随机颜色の多彩柱形图",
                 "Gradient Color Bar Chart---颜色渐变条形图",
-                "Stacking polar chart---百分比堆积效果的极地图",
-                "Area Chart with minus--带有负数的区域填充图",
+                "Stacking polar chart---百分比堆积效果の极地图",
+                "Area Chart with minus--带有负数の区域填充图",
                 "Step Line Chart--直方折线图",
                 "Step Area Chart--直方折线填充图",
                 "Nightingale Rose Chart---南丁格尔玫瑰图",
@@ -111,8 +111,8 @@ class MainVC: UIViewController {
                 "Special Style Marker Of Single Data Element Chart",
                 "Special Style Column Of Single Data Element Chart",
                 "configure Area Chart Threshold---自定义阈值",
-                "custom Scatter Chart Marker Symbol Content---自定义散点图的标志点内容",
-                "custom Line Chart Marker Symbol Content---自定义折线图的标志点内容",
+                "custom Scatter Chart Marker Symbol Content---自定义散点图の标志点内容",
+                "custom Line Chart Marker Symbol Content---自定义折线图の标志点内容",
                 "Triangle Radar Chart---三角形雷达图",
                 "Quadrangle Radar Chart---四角形雷达图",
                 "Pentagon Radar Chart---五角形雷达图",
@@ -122,14 +122,14 @@ class MainVC: UIViewController {
                 "custom Bar Chart Hover Color and Select Color---自定义条形图手指滑动颜色和单个长条被选中颜色",
                 "custom Line Chart Chart Hover And Select Halo Style",
                 "custom Spline Chart Marker States Hover Style",
-                "customNormalStackingChartDataLabelsContentAndStyle---自定义堆积柱状图 DataLabels 的内容及样式",
-                "upsideDownPyramidChart---倒立的金字塔图",
+                "customNormalStackingChartDataLabelsContentAndStyle---自定义堆积柱状图 DataLabels の内容及样式",
+                "upsideDownPyramidChart---倒立の金字塔图",
                 "doubleLayerPieChart---双层嵌套扇形图",
                 "disableSomeOfLinesMouseTrackingEffect---针对部分数据列关闭鼠标或手指跟踪行为",
-                "configureColorfulShadowChart---彩色阴影效果的曲线图",
-                "configureColorfulDataLabelsStepLineChart---彩色 DataLabels 的直方折线图",
-                "configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart---彩色渐变效果且彩色 DataLabels 的直方折线填充图",
-                "disableSplineChartMarkerHoverEffect---禁用曲线图的手指滑动 marker 点的光圈变化放大的效果"
+                "configureColorfulShadowChart---彩色阴影效果の曲线图",
+                "configureColorfulDataLabelsStepLineChart---彩色 DataLabels の直方折线图",
+                "configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart---彩色渐变效果且彩色 DataLabels の直方折线填充图",
+                "disableSplineChartMarkerHoverEffect---禁用曲线图の手指滑动 marker 点の光圈变化放大の效果"
             ],
             /*Mixed Chart*/
             [
@@ -144,7 +144,7 @@ class MainVC: UIViewController {
                 "Polar Chart Mixed---极地混合图",
                 "Column Mixed Scatter---柱形图混合散点图",
                 "Pie Mixed Line Mixed Column---扇形折线柱形混合图",
-                "Line Chart With Shadow---带有阴影效果的折线图",
+                "Line Chart With Shadow---带有阴影效果の折线图",
                 "Negative Color Mixed Areaspline chart---基准线以下异色混合曲线填充图",
             ],
             /*Only update chart data*/
@@ -215,14 +215,14 @@ class MainVC: UIViewController {
                 "Double Y Axes And Column Line Mixed Chart || 双 Y 轴柱形曲线混合图",
                 "Double Y Axes Market Depth Chart || 双 Y 轴市场深度图",
                 "custom Area Chart Tooltip Style Like HTML Table || 自定义区域填充图浮动提示框为 HTML 表格样式",
-                "custom Axes Grid Line Style || 自定义 X 轴和 Y 轴网格线的样式",
+                "custom Axes Grid Line Style || 自定义 X 轴和 Y 轴网格线の样式",
                 "custom Radar Chart Style || 自定义雷达图样式",
                 "customColumnrangeChartStyle---自定义柱形范围图样式",
                 "self customXAxisLabelsBeImages---自定义曲线面积图 X 轴 labels 为一组图片🖼",
-                "Triangle Radar Chart With PlotBands---带有颜色标志带的三角形雷达图",
-                "Quadrangle Radar Chart With PlotBands---带有颜色标志带的四角形雷达图",
-                "Pentagon Radar Chart With PlotBands---带有颜色标志带的五角形雷达图",
-                "Hexagon Radar Char With PlotBands----带有颜色标志带的六角形雷达图",
+                "Triangle Radar Chart With PlotBands---带有颜色标志带の三角形雷达图",
+                "Quadrangle Radar Chart With PlotBands---带有颜色标志带の四角形雷达图",
+                "Pentagon Radar Chart With PlotBands---带有颜色标志带の五角形雷达图",
+                "Hexagon Radar Char With PlotBands----带有颜色标志带の六角形雷达图",
                 "Spider Web Radar Chart With PlotBands----带有颜色标志带の🕸蜘蛛网状雷达图",
 
             ],
@@ -232,14 +232,14 @@ class MainVC: UIViewController {
                 "自定义不同单位后缀",
                 "值为0时,在tooltip中不显示",
                 "自定义多彩颜色文字",
-                "自定义箱线图的浮动提示框头部内容",
+                "自定义箱线图の浮动提示框头部内容",
                 "自定义Y轴文字1",
                 "自定义Y轴文字2",
                 "自定义分组堆积柱状图tooltip内容",
                 "Double X Axes Mirror Chart---双 X 轴镜像图表",
                 "custom Arearange Chart Tooltip---自定义面积范围图浮动提示框",
-                "调整折线图的 X 轴左边距",
-                "通过来自外部的数据源来自定义 tooltip (而非常规的来自图表的 series)",
+                "调整折线图の X 轴左边距",
+                "通过来自外部の数据源来自定义 tooltip (而非常规の来自图表の series)",
             ],
             /*Scrolling update chart data*/
             [  "Column Chart---柱形图",
@@ -482,7 +482,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         
         let sectionTitleLabel = UILabel()
         sectionTitleLabel.text = sectionTitleArr[section]
-        sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花的淡紫色
+        sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花の淡紫色
         sectionTitleLabel.font = .boldSystemFont(ofSize: 17)
         sectionTitleLabel.textAlignment = .center
         view.addSubview(sectionTitleLabel)
