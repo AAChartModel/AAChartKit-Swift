@@ -89,6 +89,10 @@ public class AAMarkerStates: AAObject {
         hover = prop
         return self
     }
+    
+    public override init() {
+        
+    }
 }
 
 public class AAMarkerHover: AAObject {
@@ -126,5 +130,9 @@ public class AAMarkerHover: AAObject {
     public func radius(_ prop: Float) -> AAMarkerHover {
         radius = prop
         return self
+    }
+    
+    public override init() {
+        
     }
 }
