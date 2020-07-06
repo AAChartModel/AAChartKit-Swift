@@ -758,12 +758,12 @@ class MixedChartVC: UIViewController {
                     .name("Ada")
                     .y(13.0)
                     .color(AAGradientColor.oceanBlue)
-                    ,
+                ,
                 AADataElement()
                     .name("Bob")
                     .y(13.0)
                     .color(AAGradientColor.sanguine)
-                    ,
+                ,
                 AADataElement()
                     .name("Coco")
                     .y(13.0)
@@ -808,13 +808,13 @@ class MixedChartVC: UIViewController {
                             .opacity(0.1)
                             .width(9.0)
                             .color(AAColor.red)
-                    )
-                ])
+                )
+            ])
     }
     
     //GitHub issue https://github.com/AAChartModel/AAChartKit/issues/921
     private func configureNegativeColorMixedAreasplineChart() -> AAChartModel {
-         let blueStopsArr = [
+        let blueStopsArr = [
             [0.0, AAColor.rgbaColor(30, 144, 255, 0.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
             [0.5, AAColor.rgbaColor(30, 144, 255, 0.0)],
             [1.0, AAColor.rgbaColor(30, 144, 255, 0.6)]
@@ -824,8 +824,8 @@ class MixedChartVC: UIViewController {
             direction: .toTop,
             stops: blueStopsArr
         )
-
-         let redStopsArr = [
+        
+        let redStopsArr = [
             [0.0, AAColor.rgbaColor(255, 0, 0, 0.6)],//颜色字符串设置支持十六进制类型和 rgba 类型
             [0.5, AAColor.rgbaColor(255, 0, 0, 0.0)],
             [1.0, AAColor.rgbaColor(255, 0, 0, 0.0)]
@@ -835,30 +835,30 @@ class MixedChartVC: UIViewController {
             direction: .toTop,
             stops: redStopsArr
         )
-      
+        
         
         return AAChartModel()
             .chartType(.areaspline)
-        .legendEnabled(false)
-        .dataLabelsEnabled(false)
-        .markerRadius(5)
+            .legendEnabled(false)
+            .dataLabelsEnabled(false)
+            .markerRadius(5)
             .markerSymbolStyle(.innerBlank)
-        .yAxisGridLineWidth(0)
-        .series([
-            AASeriesElement()
-            .name("Column")
-            .data([
-                7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6,
-                -7.0, -6.9, -2.5, -14.5, -18.2, -21.5, -5.2, -26.5, -23.3, -45.3, -13.9, -9.6,
-                     ])
-            .lineWidth(5)
-            .color(AAColor.rgbaColor(30, 144, 255, 1.0))
-            .negativeColor(AAColor.rgbaColor(255, 0, 0, 1.0))
-            .fillColor(gradientBlueColorDic)
-            .negativeFillColor(gradientRedColorDic)
-            .threshold(0)//default:0
-            ,
-                   ])
+            .yAxisGridLineWidth(0)
+            .series([
+                AASeriesElement()
+                    .name("Column")
+                    .data([
+                        7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6,
+                        -7.0, -6.9, -2.5, -14.5, -18.2, -21.5, -5.2, -26.5, -23.3, -45.3, -13.9, -9.6,
+                    ])
+                    .lineWidth(5)
+                    .color(AAColor.rgbaColor(30, 144, 255, 1.0))
+                    .negativeColor(AAColor.rgbaColor(255, 0, 0, 1.0))
+                    .fillColor(gradientBlueColorDic)
+                    .negativeFillColor(gradientRedColorDic)
+                    .threshold(0)//default:0
+                ,
+            ])
     }
 
 
