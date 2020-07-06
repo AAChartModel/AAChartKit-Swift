@@ -77,6 +77,7 @@ public class AAPlotLinesElement: AAObject {
     }
     
     public override init() {
+        
     }
 
 }

@@ -97,6 +97,7 @@ public class AALabel: AAObject {
     }
     
     public override init() {
+        
     }
     
 }

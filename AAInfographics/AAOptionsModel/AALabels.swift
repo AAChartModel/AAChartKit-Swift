@@ -142,5 +142,6 @@ public class AALabels: AAObject {
     }
     
     public override init() {
+        
     }
 }

@@ -291,6 +291,7 @@ public class AADataElement: AAObject {
     }
     
     public override init() {
+        
     }
 }
 
@@ -332,6 +333,7 @@ public class AAShadow: AAObject {
     }
     
     public override init() {
+        
     }
 }
 
@@ -352,6 +354,7 @@ public class AADataSorting: AAObject {
     }
     
     public override init() {
+        
     }
 }
 

@@ -106,6 +106,7 @@ public class AAPlotBandsElement: AAObject {
     }
     
     public override init() {
+        
     }   
 
 }
