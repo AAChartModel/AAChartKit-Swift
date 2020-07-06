@@ -47,6 +47,10 @@ public class AAStates: AAObject {
         select = prop
         return self
     }
+    
+    public override init() {
+        
+    }
 }
 
 public class AAHover: AAObject {
@@ -85,6 +89,10 @@ public class AAHover: AAObject {
         halo = prop
         return self
     }
+    
+    public override init() {
+        
+    }
 }
 
 public class AASelect: AAObject {
@@ -109,6 +117,10 @@ public class AASelect: AAObject {
         halo = prop
         return self
     }
+    
+    public override init() {
+        
+    }
 }
 
 public class AAHalo: AAObject {
@@ -132,5 +144,9 @@ public class AAHalo: AAObject {
     public func size(_ prop: Float) -> AAHalo {
         size = prop
         return self
+    }
+    
+    public override init() {
+        
     }
 }
