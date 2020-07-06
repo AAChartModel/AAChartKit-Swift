@@ -170,7 +170,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         ["C#"    , 888],
                         ["C++"   , 66],
                     ])
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.chart?.plotBackgroundImage("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2859216016,2109779587&fm=27&gp=0.jpg")
@@ -192,8 +192,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .lineWidth(5.5)
                     .color(AAGradientColor.sanguine)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表の下方显示，y 轴是在左方，
@@ -214,8 +213,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .name("2020")
                     .data([1003.9, 1004.2, 1005.7, 1008.5, 1011.9, 1015.2,])
                     .color(AAGradientColor.sanguine)
-                
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.yAxis?.min(1000)
@@ -325,7 +323,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                         0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
                 ,
                 
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
@@ -351,7 +349,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
                     .color(AAGradientColor.coastalBreeze)
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                 
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         //    * 关于 `pointPadding`
@@ -666,7 +664,7 @@ function () {
                         [12489984, 13.6]
                     ])
                 
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         let aaCrosshair = AACrosshair()
@@ -708,7 +706,7 @@ function () {
                     .color(AAGradientColor.mysticMauve)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                 ,
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)
@@ -745,7 +743,7 @@ function () {
                     .color(AAGradientColor.deepSea)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                 ,
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)
@@ -1296,7 +1294,7 @@ function () {
             .tickPosition("inside")
             .gridLineWidth(0)
             .title(AATitle()
-                 .text(""))
+                .text(""))
             .labels(AALabels()
                 .enabled(true)//设置 y 轴是否显示数字
                 .align("right")
@@ -1374,10 +1372,10 @@ function () {
             .tooltip(aaTooltip)
             .legend(aaLegend)
             .series([element1,element2])
-        return aaOptions;
+        return aaOptions
     }
     
-// Chart Sample Online:   https://jshare.com.cn/highcharts/hhhhG1
+    // Chart Sample Online:   https://jshare.com.cn/highcharts/hhhhG1
     private func customAreaChartTooltipStyleLikeHTMLTable() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
@@ -1420,7 +1418,7 @@ function () {
             .useHTML(true)
             .headerFormat("<small>{point.key}</small><table>")
             .pointFormat("<tr><td style=\\\"color: {series.color}\\\">{series.name}: </td>"
-            + "<td style=\\\"text-align: right\\\"><b>{point.y}EUR</b></td></tr>")
+                + "<td style=\\\"text-align: right\\\"><b>{point.y}EUR</b></td></tr>")
             .footerFormat("</table>")
         
         return aaOptions
@@ -1440,11 +1438,10 @@ function () {
                     .lineWidth(5.5)
                     .color(AAGradientColor.sanguine)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-    
+        
         aaOptions.yAxis?
             .opposite(true)
             .gridLineDashStyle(.shortDashDot)
@@ -1452,14 +1449,14 @@ function () {
             .gridLineColor(AAColor.lightGray)
         
         aaOptions.xAxis?
-        .gridLineDashStyle(.shortDashDotDot)
-        .gridLineWidth(3)
-        .gridLineColor(AAColor.gray)
+            .gridLineDashStyle(.shortDashDotDot)
+            .gridLineWidth(3)
+            .gridLineColor(AAColor.gray)
         
         return aaOptions
     }
     
-// https://github.com/AAChartModel/AAChartKit-Swift/issues/213
+    // https://github.com/AAChartModel/AAChartKit-Swift/issues/213
     private func customRadarChartStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("")
@@ -1484,7 +1481,7 @@ function () {
         
         let categories = ["智力感", "距离感", "成熟感"]
         let categoryJSArrStr = javaScriptArrayStringWithSwiftArray(categories)
-
+        
         let xAxisLabelsFormatter = """
         function () {
         return \(categoryJSArrStr)[this.value];
@@ -1507,7 +1504,7 @@ function () {
         
         aaOptions.xAxis?.labels?
             
-        .formatter(xAxisLabelsFormatter)
+            .formatter(xAxisLabelsFormatter)
         
         return aaOptions
     }
@@ -1574,7 +1571,7 @@ function () {
         return aaOptions
     }
     
-     private func customXAxisLabelsBeImages() -> AAOptions {
+    private func customXAxisLabelsBeImages() -> AAOptions {
         let imageLinkStrArr = [
             "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197582.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
             "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197604.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
@@ -1589,18 +1586,18 @@ function () {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .stacking(.normal)
-        .yAxisVisible(false)
-        .categories(imageLinkStrArr)
-        .markerRadius(0)
-        .series([
-            AASeriesElement()
-            .name("Berlin Hot")
-                .color(AAGradientColor.sanguine)
-            .data([7.0, 6.9, 2.5, 14.5, 13.2, 18.2, 29.5, 21.5, ]),
-        ])
+            .yAxisVisible(false)
+            .categories(imageLinkStrArr)
+            .markerRadius(0)
+            .series([
+                AASeriesElement()
+                    .name("Berlin Hot")
+                    .color(AAGradientColor.sanguine)
+                    .data([7.0, 6.9, 2.5, 14.5, 13.2, 18.2, 29.5, 21.5, ]),
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-        aaOptions.xAxis?.labels?.useHTML = true;
+        aaOptions.xAxis?.labels?.useHTML = true
         return aaOptions
     }
     
