@@ -31,37 +31,15 @@
 
 import UIKit
 
-class CustomStyleChartVC: UIViewController {
-    open var chartType: Int!
-    open var aaChartModel: AAChartModel!
-    open var aaChartView: AAChartView!
+class CustomStyleChartVC: AABaseChartVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        
-        setUpAAChartView()
+
     }
     
-    private func setUpAAChartView() {
-        aaChartView = AAChartView()
-        let chartWidth = view.frame.size.width
-        let chartHeight = view.frame.size.height
-        aaChartView!.frame = CGRect(x: 0,
-                                    y: 60,
-                                    width: chartWidth,
-                                    height: chartHeight)
-        aaChartView!.contentHeight = view.frame.size.height - 80
-        view.addSubview(aaChartView!)
-        aaChartView!.scrollEnabled = false
-        
-        aaChartModel = configureTheAAChartModel()
-        aaChartView!.aa_drawChartWithChartModel(aaChartModel!)
-    }
-    
-    private func configureTheAAChartModel() -> AAChartModel {
-        switch chartType {
+    override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
+        switch selectedIndex {
         case 0:  return configureColorfulBarChart()
         case 1:  return configureColorfulGradientColorBarChart()
         case 2:  return configureDiscontinuousDataChart()

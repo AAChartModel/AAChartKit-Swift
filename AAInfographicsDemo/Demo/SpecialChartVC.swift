@@ -32,67 +32,15 @@
 
 import UIKit
 
-class SpecialChartVC: UIViewController {
-    public var chartType: AAChartType!
-    public var aaChartModel: AAChartModel!
-    public var aaChartView: AAChartView!
-    
+class SpecialChartVC: AABaseChartVC {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        title = chartType!.rawValue
-        
-        setUpAAChartView()
+
     }
     
-    private func setUpAAChartView() {
-        aaChartView = AAChartView()
-        aaChartView!.scrollEnabled = false
-        aaChartView.aa_adaptiveScreenRotation()
-        view.addSubview(aaChartView!)
-        
-        aaChartView?.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addConstraints(configureTheConstraintArray(childView: aaChartView!,
-                                                             fatherView: self.view))
-        
-        aaChartModel = configureTheAAChartModel(chartType!)
-        aaChartView!.aa_drawChartWithChartModel(aaChartModel!)
-    }
-    
-    private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
-        return [NSLayoutConstraint(item: childView,
-                                   attribute: .left,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .left,
-                                   multiplier: 1,
-                                   constant: 0),
-                NSLayoutConstraint(item: childView,
-                                   attribute: .right,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .right,
-                                   multiplier: 1,
-                                   constant: 0),
-                NSLayoutConstraint(item: childView,
-                                   attribute: .top,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .top,
-                                   multiplier: 1,
-                                   constant: 0),
-                NSLayoutConstraint(item: childView,
-                                   attribute: .bottom,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .bottom,
-                                   multiplier: 1,
-                                   constant: 0)]
-    }
-    
-   private func configureTheAAChartModel(_ chartTypeStr:AAChartType) -> AAChartModel {
-        switch chartTypeStr {
+    override func chartConfigurationWithSelectedChartType(_ selectedChartType: AAChartType) -> Any? {
+       switch selectedChartType {
         case .column: return configureColumnChart()
         case .pie: return configurePieChart()
         case .bubble: return configureBubbleChart()

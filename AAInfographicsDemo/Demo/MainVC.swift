@@ -525,12 +525,15 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 1:
             /*Special Type Charts*/
             let vc = SpecialChartVC()
-            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            vc.selectedIndex = indexPath.row
+//            vc.selectedChartType = (chartTypeArr[indexPath.section][indexPath.row] as? AAChartType)!
+            vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
         case 2:
             /*Mixed Type Charts*/
             let vc = CustomStyleChartVC()
-            vc.chartType = indexPath.row
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = self.chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             /*Mixed Type Charts*/
