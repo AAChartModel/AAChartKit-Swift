@@ -40,7 +40,7 @@ public class AASeries: AAObject {
     public var keys: [String]?
     public var colorByPoint: Bool?
     public var connectNulls: Bool? //Whether reconnects the broken line of the chart
-    public var events: [String: Any]?
+    public var events: AAEvents?
     public var shadow: AAShadow?
     public var dataLabels: AADataLabels?
 
@@ -88,7 +88,7 @@ public class AASeries: AAObject {
     }
     
     @discardableResult
-    public func events(_ prop: [String: Any]?) -> AASeries {
+    public func events(_ prop: AAEvents?) -> AASeries {
         events = prop
         return self
     }
@@ -102,6 +102,23 @@ public class AASeries: AAObject {
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AASeries {
         dataLabels = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
+public class AAEvents: AAObject {
+    public var legendItemClick: String?
+
+    
+    @discardableResult
+    public func legendItemClick(_ prop: String?) -> AAEvents {
+        if prop != nil {
+            legendItemClick = AAJSStringPurer.pureJavaScriptFunctionString(prop!)
+        }
         return self
     }
     

@@ -132,6 +132,15 @@ class DrawChartWithAAOptionsVC: UIViewController {
                 ,
             ])
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.plotOptions?.series?.events = AAEvents()
+            .legendItemClick(#"""
+            function() {
+              return false;
+            }
+"""#)
+        
+        
         aaOptions.legend!
             .itemMarginTop(20)
             .symbolRadius(10)//图标圆角
