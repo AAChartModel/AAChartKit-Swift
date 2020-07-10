@@ -34,7 +34,8 @@ import Foundation
 
 public class AAJSStringPurer {
      public static func pureJavaScriptFunctionString(_ jsFunctionStr: String) -> String {
-        var pureJSFunctionStr = jsFunctionStr
+        //https://stackoverflow.com/questions/34334232/why-does-function-not-work-but-function-does-chrome-devtools-node
+        var pureJSFunctionStr = "(\(jsFunctionStr))"
         pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "'", with: "\"")
         pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\0", with: "")
         pureJSFunctionStr = pureJSFunctionStr.replacingOccurrences(of: "\n", with: "")

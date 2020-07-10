@@ -240,6 +240,10 @@ class MainVC: UIViewController {
                 "custom Arearange Chart Tooltip---自定义面积范围图浮动提示框",
                 "调整折线图の X 轴左边距",
                 "通过来自外部の数据源来自定义 tooltip (而非常规の来自图表の series)",
+                "custom Spider Chart Style---自定义蜘蛛图🕷🕸样式",
+                "customize Every DataLabel Singlely By DataLabels Formatter---通过 DataLabels 的 formatter 函数来实现单个数据标签🏷自定义",
+                "custom XAxis Labels Be Images---自定义柱形图 X 轴 labels 为一组图片🖼",
+                "custom Legend Item Click Event---自定义图例点击事件🖱"
             ],
             /*Scrolling update chart data*/
             [  "Column Chart---柱形图",

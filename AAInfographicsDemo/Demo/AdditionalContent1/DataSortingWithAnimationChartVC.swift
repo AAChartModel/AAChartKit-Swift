@@ -73,7 +73,7 @@ class DataSortingWithAnimationChartVC: UIViewController {
             AAGradientColor.deepSea,
             AAGradientColor.coastalBreeze,
             AAGradientColor.eveningDelight,
-        ];
+        ]
         
         let aaOptions = AAOptions()
             .colors(colorArr)
