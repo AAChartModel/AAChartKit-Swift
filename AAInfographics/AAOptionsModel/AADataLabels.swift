@@ -37,6 +37,7 @@ public class AADataLabels: AAObject {
     public var align: String?
     public var style: AAStyle?
     public var format: String?
+    public var formatter: String?
     public var rotation: Float?
     public var allowOverlap: Bool?
     public var useHTML: Bool?
@@ -75,6 +76,14 @@ public class AADataLabels: AAObject {
     @discardableResult
     public func format(_ prop: String?) -> AADataLabels {
         format = prop
+        return self
+    }
+    
+    @discardableResult
+    public func formatter(_ prop: String?) -> AADataLabels {
+        if prop != nil {
+            formatter = AAJSStringPurer.pureJavaScriptFunctionString(prop!)
+        }
         return self
     }
     
