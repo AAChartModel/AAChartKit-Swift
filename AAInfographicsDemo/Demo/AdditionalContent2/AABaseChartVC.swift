@@ -35,11 +35,14 @@ class AABaseChartVC: UIViewController {
     var navigationItemTitleArr: [Any]?
     var selectedIndex: Int = 0
     var aaChartView: AAChartView?
+    var topConstraint: NSLayoutConstraint?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = .white
+        adaptiveScreenRotation()
         setupTitle()
         setupNextTypeChartButton()
         setupChartView()
@@ -82,43 +85,108 @@ class AABaseChartVC: UIViewController {
         view.addSubview(aaChartView!)
         
         aaChartView?.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 11.0, *) {
+            aaChartView?.scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         self.view.addConstraints(configureTheConstraintArray(childView: aaChartView!,
                                                              fatherView: self.view))
         
         drawChartWithChartConfiguration()
     }
       
-      private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
-          return [NSLayoutConstraint(item: childView,
-                                     attribute: .left,
-                                     relatedBy: .equal,
-                                     toItem: fatherView,
-                                     attribute: .left,
-                                     multiplier: 1,
-                                     constant: 0),
-                  NSLayoutConstraint(item: childView,
-                                     attribute: .right,
-                                     relatedBy: .equal,
-                                     toItem: fatherView,
-                                     attribute: .right,
-                                     multiplier: 1,
-                                     constant: 0),
-                  NSLayoutConstraint(item: childView,
-                                     attribute: .top,
-                                     relatedBy: .equal,
-                                     toItem: fatherView,
-                                     attribute: .top,
-                                     multiplier: 1,
-                                     constant: 0),
-                  NSLayoutConstraint(item: childView,
-                                     attribute: .bottom,
-                                     relatedBy: .equal,
-                                     toItem: fatherView,
-                                     attribute: .bottom,
-                                     multiplier: 1,
-                                     constant: 0)]
+    private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
+        let hairPhone = isHairPhoneScreen()
+
+        var topConstraintConstant = 0
+          // 如果statusBarFrame为CGRectZero,说明状态栏是隐藏的
+        let statusBarFrame = UIApplication.shared.statusBarFrame
+          let istatusHiden = (statusBarFrame.size.height == 0);
+
+          if (hairPhone == true) {
+              topConstraintConstant = 88;
+              if (istatusHiden == true) {
+                  topConstraintConstant -= 44;
+              }
+          } else {
+              topConstraintConstant = 64;
+              if (istatusHiden == true) {
+                  topConstraintConstant -= 20;
+              }
+          }
+        
+        topConstraint = NSLayoutConstraint(item: childView,
+                                           attribute: .top,
+                                           relatedBy: .equal,
+                                           toItem: fatherView,
+                                           attribute: .top,
+                                           multiplier: 1,
+                                           constant: CGFloat(topConstraintConstant))
+                
+        return [NSLayoutConstraint(item: childView,
+                                   attribute: .left,
+                                   relatedBy: .equal,
+                                   toItem: fatherView,
+                                   attribute: .left,
+                                   multiplier: 1,
+                                   constant: 0),
+                NSLayoutConstraint(item: childView,
+                                   attribute: .right,
+                                   relatedBy: .equal,
+                                   toItem: fatherView,
+                                   attribute: .right,
+                                   multiplier: 1,
+                                   constant: 0),
+                topConstraint!,
+                NSLayoutConstraint(item: childView,
+                                   attribute: .bottom,
+                                   relatedBy: .equal,
+                                   toItem: fatherView,
+                                   attribute: .bottom,
+                                   multiplier: 1,
+                                   constant: 0)]
+    }
+    
+    func isHairPhoneScreen() -> Bool {
+        guard #available(iOS 11.0, *) else {
+            return false
+        }
+        
+        let isX = UIApplication.shared.windows[0].safeAreaInsets.bottom > 0
+        print("是不是刘海屏呢--->\(isX)")
+        return isX
+    }
+    
+    public func adaptiveScreenRotation() {
+          NotificationCenter.default.addObserver(
+              forName: UIDevice.orientationDidChangeNotification,
+              object: nil,
+              queue: nil) { [weak self] _ in
+                  self?.handleDeviceOrientationChangeEvent()
+          }
       }
       
+    //屏幕旋转后动态调整 autolayout 布局参数
+    private func handleDeviceOrientationChangeEvent() {
+        let orientation = UIApplication.shared.statusBarOrientation
+        
+        if (   orientation == UIInterfaceOrientation.portrait
+            || orientation == UIInterfaceOrientation.portraitUpsideDown) {
+            let hairPhone = isHairPhoneScreen()
+            if (hairPhone == true) {
+                self.topConstraint!.constant = 88;
+            } else {
+                self.topConstraint!.constant = 64;
+            }
+        } else {
+            self.topConstraint!.constant = 44;
+        }
+        
+        self.view.layoutSubviews()
+        self.view.layoutIfNeeded()
+    }
+
     
     func drawChartWithChartConfiguration() {
         var chartConfiguration =  chartConfigurationWithSelectedIndex(self.selectedIndex)
