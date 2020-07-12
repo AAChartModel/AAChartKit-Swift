@@ -32,18 +32,18 @@
 import UIKit
 
 class JSFormatterFunctionVC: AABaseChartVC {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return customAreaChartTooltipStyleWithFormatterFunction1()
-        case 1: return customAreaChartTooltipStyleWithFormatterFunction2()
-        case 2: return customAreaChartTooltipStyleWithFormatterFunction3()
-        case 3: return customAreaChartTooltipStyleWithFormatterFunction4()
+        case 0: return customAreaChartTooltipStyleWithSimpleFormatString()
+        case 1: return customAreaChartTooltipStyleWithDifferentUnitSuffix()
+        case 2: return customAreaChartTooltipStyleWithColorfulHtmlLabels()
+        case 3: return customLineChartTooltipStyleWhenValueBeZeroDoNotShow()
         case 4: return customBoxplotTooltipContent()
         case 5: return customYAxisLabels()
         case 6: return customYAxisLabels2()
@@ -61,7 +61,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
         }
     }
     
-    private func customAreaChartTooltipStyleWithFormatterFunction1() -> AAOptions {
+    private func customAreaChartTooltipStyleWithSimpleFormatString() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
             .title("近三个月金价起伏周期图")//图表主标题
@@ -93,8 +93,8 @@ class JSFormatterFunctionVC: AABaseChartVC {
                         2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
                         5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48
                     ])
-                    ,
-                ])
+                ,
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
@@ -121,7 +121,7 @@ function () {
         return aaOptions
     }
     
-    private func customAreaChartTooltipStyleWithFormatterFunction2() -> AAOptions {
+    private func customAreaChartTooltipStyleWithDifferentUnitSuffix() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
             .title("2014 ~ 2020 汪星人生存指数")//图表主标题
@@ -144,7 +144,7 @@ function () {
                     .lineWidth(5.0)
                     .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
                 ,
-                ])
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
@@ -165,58 +165,7 @@ function () {
         return aaOptions
     }
     
-    private func customAreaChartTooltipStyleWithFormatterFunction3() -> AAOptions {
-        let aaChartModel = AAChartModel()
-            .chartType(.line)//图形类型
-            .title("")//图表主标题
-            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
-            .dataLabelsEnabled(false)
-            .categories(["临床一期","临床二期","临床三期"])
-            .series([
-                AASeriesElement()
-                    .name("上市")
-                    .data([0,0,7])
-                    ,
-                AASeriesElement()
-                    .name("中止")
-                    .data([4,5,1])
-                    ,
-                AASeriesElement()
-                    .name("无进展")
-                    .data([2,0,1])
-                    ,
-                AASeriesElement()
-                    .name("进行中")
-                    .data([3,5,2])
-                    ,
-                ])
-        
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-        aaOptions.tooltip?
-            .useHTML(true)
-            .formatter(#"""
-function () {
-        let colorDot0 = '<span style=\"' + 'color:red; font-size:13px\"' + '>◉</span> ';
-        let colorDot1 = '<span style=\"' + 'color:mediumspringgreen; font-size:13px\"' + '>◉</span> ';
-        let colorDot2 = '<span style=\"' + 'color:deepskyblue; font-size:13px\"' + '>◉</span> ';
-        let colorDot3 = '<span style=\"' + 'color:sandybrown; font-size:13px\"' + '>◉</span> ';
-        let colorDotArr = [colorDot0, colorDot1, colorDot2, colorDot3];
-        let wholeContentString = this.points[0].x + '<br/>';
-        for (let i = 0;i < 4;i++) {
-            let yValue = this.points[i].y;
-            if (yValue != 0) {
-                let prefixStr = colorDotArr[i];
-                wholeContentString += prefixStr + this.points[i].series.name + ': ' + this.points[i].y + '<br/>';
-            }
-        }
-        return wholeContentString;
-    }
-"""#)
-        
-        return aaOptions
-    }
-    
-    private func customAreaChartTooltipStyleWithFormatterFunction4() -> AAOptions {
+    private func customAreaChartTooltipStyleWithColorfulHtmlLabels() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
             .title("")//图表主标题
@@ -231,26 +180,26 @@ function () {
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
-                    ,
+                ,
                 AASeriesElement()
                     .name("Berlin Hot")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
-                    ,
+                ,
                 AASeriesElement()
                     .name("New York Hot")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
-                    ,
+                ,
                 AASeriesElement()
                     .name("London Hot")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
-                    ,
-                ])
+                ,
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.tooltip?
@@ -273,6 +222,57 @@ function () {
 """#)
             .backgroundColor("#050505")
             .borderColor("#050505")
+        
+        return aaOptions
+    }
+    
+    private func customLineChartTooltipStyleWhenValueBeZeroDoNotShow() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.line)//图形类型
+            .title("")//图表主标题
+            .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
+            .dataLabelsEnabled(false)
+            .categories(["临床一期","临床二期","临床三期"])
+            .series([
+                AASeriesElement()
+                    .name("上市")
+                    .data([0,0,7])
+                ,
+                AASeriesElement()
+                    .name("中止")
+                    .data([4,5,1])
+                ,
+                AASeriesElement()
+                    .name("无进展")
+                    .data([2,0,1])
+                ,
+                AASeriesElement()
+                    .name("进行中")
+                    .data([3,5,2])
+                ,
+            ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        aaOptions.tooltip?
+            .useHTML(true)
+            .formatter(#"""
+    function () {
+            let colorDot0 = '<span style=\"' + 'color:red; font-size:13px\"' + '>◉</span> ';
+            let colorDot1 = '<span style=\"' + 'color:mediumspringgreen; font-size:13px\"' + '>◉</span> ';
+            let colorDot2 = '<span style=\"' + 'color:deepskyblue; font-size:13px\"' + '>◉</span> ';
+            let colorDot3 = '<span style=\"' + 'color:sandybrown; font-size:13px\"' + '>◉</span> ';
+            let colorDotArr = [colorDot0, colorDot1, colorDot2, colorDot3];
+            let wholeContentString = this.points[0].x + '<br/>';
+            for (let i = 0;i < 4;i++) {
+                let yValue = this.points[i].y;
+                if (yValue != 0) {
+                    let prefixStr = colorDotArr[i];
+                    wholeContentString += prefixStr + this.points[i].series.name + ': ' + this.points[i].y + '<br/>';
+                }
+            }
+            return wholeContentString;
+        }
+    """#)
         
         return aaOptions
     }
