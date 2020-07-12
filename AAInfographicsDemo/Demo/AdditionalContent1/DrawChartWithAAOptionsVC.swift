@@ -31,23 +31,15 @@
  */
 import UIKit
 
-class DrawChartWithAAOptionsVC: UIViewController {
-    private var aaChartModel: AAChartModel?
-    private var aaChartView: AAChartView?
-    public var chartType: Int?
+class DrawChartWithAAOptionsVC: AABaseChartVC {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
-        self.title = "DrawChartWithAAOptions"
-        
-        let aaChartView = setUpChartView()
-        let aaOptions = configureAAOptions()
-        
-        aaChartView.aa_drawChartWithChartOptions(aaOptions)
+
     }
     
-    private func configureAAOptions() -> AAOptions {
-        switch self.chartType {
+    override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
+        switch selectedIndex {
         case 0: return configureLegendStyle()
         case 1: return simpleGaugeChart()
         case 2: return gaugeChartWithPlotBand()
@@ -84,20 +76,7 @@ class DrawChartWithAAOptionsVC: UIViewController {
             return AAOptions()
         }
     }
-    
-    private func setUpChartView() -> AAChartView {
-        let aaChartView = AAChartView()
-        let chartWidth = view.frame.size.width
-        let chartHeight = view.frame.size.height
-        aaChartView.frame = CGRect(x: 0,
-                                   y: 60,
-                                   width: chartWidth,
-                                   height: chartHeight)
-        aaChartView.contentHeight = view.frame.size.height - 80
-        view.addSubview(aaChartView)
-        aaChartView.scrollEnabled = false
-        return aaChartView
-    }
+
     
     private func configureLegendStyle() -> AAOptions {
         let aaChartModel = AAChartModel()

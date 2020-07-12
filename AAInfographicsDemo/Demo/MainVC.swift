@@ -54,7 +54,7 @@ class MainVC: UIViewController {
                   "Hide Or Show Chart Series---隐藏或显示内容",
                   "Evaluate JS String Function---执行js函数",
                   "Draw Chart With AAOptions---通过Options绘图",
-                  "Custom Tooltip With JS Function ---通过JS函数自定义Tooltip",
+                  "JS Function For AAOptionns ---通过带有 JS 函数的 Options 绘图",
                   "Scrolling update chart data ---滚动刷新图表数据",
                   "Scrollable chart ---可滚动の图表",
 //                  "Scrollable chart ---可滚动の图表",
@@ -585,12 +585,14 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 9:
             /*Draw Chart With AAOptions Instance Object*/
             let vc = DrawChartWithAAOptionsVC()
-            vc.chartType = indexPath.row
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = self.chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
         case 10:
             /*Custom Tooltip With JavaScript Formatter Function */
             let vc = JSFormatterFunctionVC()
             vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = self.chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
         case 11:
             /*Scrolling update Chart Data Dynamiclly*/

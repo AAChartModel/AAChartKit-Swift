@@ -31,23 +31,15 @@
 
 import UIKit
 
-class JSFormatterFunctionVC: UIViewController {
-    private var aaChartModel: AAChartModel?
-    private var aaChartView: AAChartView?
-    public var selectedIndex: Int?
+class JSFormatterFunctionVC: AABaseChartVC {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
-        self.title = "JS Function Formatter"
-        
-        let aaChartView = setUpChartView()
-        let aaOptions = configureAAOptions()
-        
-        aaChartView.aa_drawChartWithChartOptions(aaOptions)
+
     }
     
-    private func configureAAOptions() -> AAOptions {
-        switch self.selectedIndex {
+    override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
+        switch selectedIndex {
         case 0: return customAreaChartTooltipStyleWithFormatterFunction1()
         case 1: return customAreaChartTooltipStyleWithFormatterFunction2()
         case 2: return customAreaChartTooltipStyleWithFormatterFunction3()
@@ -67,20 +59,6 @@ class JSFormatterFunctionVC: UIViewController {
         default:
             return AAOptions()
         }
-    }
-    
-    private func setUpChartView() -> AAChartView {
-        let aaChartView = AAChartView()
-        let chartWidth = view.frame.size.width
-        let chartHeight = view.frame.size.height
-        aaChartView.frame = CGRect(x: 0,
-                                   y: 60,
-                                   width: chartWidth,
-                                   height: chartHeight)
-        aaChartView.contentHeight = view.frame.size.height - 80
-        view.addSubview(aaChartView)
-        aaChartView.scrollEnabled = false
-        return aaChartView
     }
     
     private func customAreaChartTooltipStyleWithFormatterFunction1() -> AAOptions {
