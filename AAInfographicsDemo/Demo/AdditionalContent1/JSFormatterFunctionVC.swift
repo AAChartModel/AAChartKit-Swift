@@ -921,18 +921,6 @@ function () {
 
     // Refer to the issue https://github.com/AAChartModel/AAChartKit/issues/589
     private func customizeEveryDataLabelSinglelyByDataLabelsFormatter() -> AAOptions  {
-        let unitArr = ["美元", "欧元", "人民币", "日元", "韩元", "越南盾", "港币", ]
-        let dataArr = [7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2]
-        
-        let unitJSArrStr = javaScriptArrayStringWithSwiftArray(unitArr)
-        //单组 serie 图表, 获取选中的点的索引是 this.point.index ,多组并且共享提示框,则是this.points[0].index
-        let dataLabelsFormatter = """
-        function () {
-        return this.y + \(unitJSArrStr)[this.point.index];
-        }
-        """
-        
-        
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图表类型
             .dataLabelsEnabled(true)
@@ -943,7 +931,7 @@ function () {
             .categories(["美国🇺🇸","欧洲🇪🇺","中国🇨🇳","日本🇯🇵","韩国🇰🇷","越南🇻🇳","中国香港🇭🇰",])
             .series([
                 AASeriesElement()
-                    .data(dataArr),
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2]),
             ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
@@ -952,6 +940,14 @@ function () {
         aaOptions.tooltip?.shared = true
         
         
+        let unitArr = ["美元", "欧元", "人民币", "日元", "韩元", "越南盾", "港币", ]
+        let unitJSArrStr = javaScriptArrayStringWithSwiftArray(unitArr)
+        //单组 serie 图表, 获取选中的点的索引是 this.point.index ,多组并且共享提示框,则是this.points[0].index
+        let dataLabelsFormatter = """
+        function () {
+        return this.y + \(unitJSArrStr)[this.point.index];
+        }
+        """
         
         let aaDatalabels = AADataLabels()
             .style(AAStyle()
