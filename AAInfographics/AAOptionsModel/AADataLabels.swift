@@ -184,7 +184,7 @@ public class AADataLabels: AAObject {
     }
     
     public override init() {
-        
+        enabled = true
     }
 }
 
