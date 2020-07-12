@@ -44,22 +44,22 @@ class MainVC: UIViewController {
         title = "AAInfographics"
         
         sectionTitleArr = [
-                  "Basic Type Chart --- 基础类型图表",
-                  "Special Type Chart --- 特殊类型图表",
-                  "Custom Style Chart---一些自定义风格样式图表",
-                  "Mixed Chart --- 混合图形",
-                  "Only Refresh data ---单纯刷新数据",
-                  "Double Chart View---同时显示多个图表",
-                  "Rendering Animation types ---渲染动画示例",
-                  "Hide Or Show Chart Series---隐藏或显示内容",
-                  "Evaluate JS String Function---执行js函数",
-                  "Draw Chart With AAOptions---通过Options绘图",
-                  "JS Function For AAOptionns ---通过带有 JS 函数的 Options 绘图",
-                  "Scrolling update chart data ---滚动刷新图表数据",
-                  "Scrollable chart ---可滚动の图表",
-//                  "Scrollable chart ---可滚动の图表",
-                  "Data Sorting Chart With Animation---图表动态排序",
-              ]
+            "Basic Type Chart --- 基础类型图表",
+            "Special Type Chart --- 特殊类型图表",
+            "Custom Style Chart---一些自定义风格样式图表",
+            "Mixed Chart --- 混合图形",
+            "Only Refresh data ---单纯刷新数据",
+            "Double Chart View---同时显示多个图表",
+            "Rendering Animation types ---渲染动画示例",
+            "Hide Or Show Chart Series---隐藏或显示内容",
+            "Evaluate JS String Function---执行js函数",
+            "Draw Chart With AAOptions---通过Options绘图",
+            "JS Function For AAOptionns ---通过带有 JS 函数的 Options 绘图",
+            "Scrolling update chart data ---滚动刷新图表数据",
+            "Scrollable chart ---可滚动の图表",
+            //                  "Scrollable chart ---可滚动の图表",
+            "Data Sorting Chart With Animation---图表动态排序",
+        ]
         
         chartTypeTitleArr = [
             /*Basic types chart*/
