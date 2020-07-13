@@ -80,11 +80,9 @@ class BasicChartVC: UIViewController {
             .chartType(chartType!)
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
             .axesTextColor(AAColor.white)
-            .title("")
             .dataLabelsEnabled(false)
             .tooltipValueSuffix("℃")
             .animationType(.bounce)
-            .backgroundColor("#22324c")//To make the chart background color transparent, set backgroundColor to "rgba (0,0,0,0)" or "# 00000000". Also make sure `aaChartView!.IsClearBackgroundColor = true`
             .touchEventEnabled(true)
             .series([
                 AASeriesElement()
