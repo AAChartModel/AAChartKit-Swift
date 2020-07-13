@@ -55,7 +55,7 @@
     public var size: Any?                  //The innder size for pie chart
     public var innerSize: String?          //The innder size for pie chart
     public var shadow: Any?
-    public var zones: [Any]?
+    public var zones: [AAZonesElement]?
     public var stack: String?
     public var tooltip: AATooltip?
     public var pointPlacement: Any?
@@ -208,7 +208,7 @@
     }
     
     @discardableResult
-    public func zones(_ prop: [Any]) -> AASeriesElement {
+    public func zones(_ prop: [AAZonesElement]) -> AASeriesElement {
         zones = prop
         return self
     }
@@ -329,6 +329,34 @@ public class AAShadow: AAObject {
     @discardableResult
     public func width(_ prop: Float) -> AAShadow {
         width = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
+public class AAZonesElement: AAObject {
+    public var value: Float?
+    public var color: String?
+    public var dashStyle: String?
+
+    @discardableResult
+    public func value(_ prop: Float) -> AAZonesElement {
+        value = prop
+        return self
+    }
+    
+    @discardableResult
+    public func color(_ prop: String) -> AAZonesElement {
+        color = prop
+        return self
+    }
+    
+    @discardableResult
+    public func dashStyle(_ prop: AAChartLineDashStyleType) -> AAZonesElement {
+        dashStyle = prop.rawValue
         return self
     }
     

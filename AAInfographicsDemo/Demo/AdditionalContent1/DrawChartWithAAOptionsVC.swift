@@ -490,10 +490,18 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                     .fillOpacity(0.5)
                     .lineWidth(10)
                     .zones([
-                        ["value": 12, "color": "#1e90ff"],
-                        ["value": 24, "color": "#ef476f"],
-                        ["value": 36, "color": "#04d69f"],
-                        ["color": "#ffd066"]
+                        AAZonesElement()
+                            .value(12)
+                            .color("#1e90ff"),
+                        AAZonesElement()
+                            .value(24)
+                            .color("#ef476f"),
+                        AAZonesElement()
+                            .value(36)
+                            .color("#04d69f"),
+                        AAZonesElement()
+                            .color("#ffd066"),
+                        
                     ])
                 ,
             ])

@@ -233,9 +233,11 @@ class CustomStyleChartVC: AABaseChartVC {
                     //    .zoneAxis("x")
                     .color(AAGradientColor.freshPapaya)
                     .lineWidth(5)
-                    .zones([["value": 8],
-                            ["dashStyle": AAChartLineDashStyleType.dot.rawValue]
-                        ]),
+                    .zones([
+                        AAZonesElement()
+                            .value(8)
+                            .dashStyle(.dot)
+                    ]),
                 AASeriesElement()
                     .name("所有专业")
                     .color(AAGradientColor.pixieDust)
