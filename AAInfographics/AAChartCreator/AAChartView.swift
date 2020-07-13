@@ -138,45 +138,52 @@ public class AAChartView: WKWebView {
     }
     
     private func drawChart() {
-        safeEvaluateJavaScriptString(optionsJson!)
+        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
+        safeEvaluateJavaScriptString(jsStr)
     }
     
     private func safeEvaluateJavaScriptString (_ jsString: String) {
-        self.evaluateJavaScript(jsString, completionHandler: { (item, error) in
-            
+        if self.optionsJson != nil {
+            self.evaluateJavaScript(jsString, completionHandler: { (item, error) in
+                #if DEBUG
+                if error != nil {
+                    let objcError = error! as NSError
+                    let errorUserInfo = objcError.userInfo
+                    
+                    let errorInfo =
+                    """
+                    
+                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
+                    ==========================================================================================
+                    ------------------------------------------------------------------------------------------
+                    code = \(objcError.code);
+                    domain = \(objcError.domain);
+                    userInfo =     {
+                    NSLocalizedDescription = "A JavaScript exception occurred";
+                    WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
+                    WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
+                    WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
+                    WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
+                    ------------------------------------------------------------------------------------------
+                    ==========================================================================================
+                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
+                    
+                    """
+                    print(errorInfo)
+                }
+                #endif
+            })
+        } else {
             #if DEBUG
-            if error != nil {
-                let objcError = error! as NSError
-                let errorUserInfo = objcError.userInfo
-                
-                let errorInfo =
-                """
-                
-                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
-                ==========================================================================================
-                ------------------------------------------------------------------------------------------
-                code = \(objcError.code);
-                domain = \(objcError.domain);
-                userInfo =     {
-                NSLocalizedDescription = "A JavaScript exception occurred";
-                WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
-                WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
-                WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
-                WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
-                ------------------------------------------------------------------------------------------
-                ==========================================================================================
-                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
-                
-                """
-                print(errorInfo)
-            }
+            print("💀💀💀AAChartView did not finish loading!!!")
             #endif
-            
-        })
+        }
     }
     
-    private func configureTheJavaScriptStringWithOptions(_ aaOptions: AAOptions) {
-        let modelJsonStr = aaOptions.toJSON()!
+    private func configureOptionsJsonStringWithAAOptions(_ aaOptions: AAOptions) {
+        if self.isClearBackgroundColor == true {
+            aaOptions.chart?.backgroundColor = "rgba(0,0,0,0)"
+        }
         
         if     aaOptions.touchEventEnabled == true
             && self.touchEventEnabled == false {
@@ -197,11 +204,16 @@ public class AAChartView: WKWebView {
         }
         #endif
         
-        optionsJson = "loadTheHighChartView('\(modelJsonStr)','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
+        optionsJson = aaOptions.toJSON()!
     }
+    
 
     deinit {
-        self.configuration.userContentController.removeScriptMessageHandler(forName: kUserContentMessageNameMouseOver)
+        self.configuration.userContentController.removeAllUserScripts()
+        NotificationCenter.default.removeObserver(self)
+        #if DEBUG
+        print("👻👻👻 AAChartView was destroyed!!!")
+        #endif
     }
 
 }
@@ -244,7 +256,7 @@ extension AAChartView {
     /// - Parameter aaOptions: The instance object of AAOptions model
     public func aa_drawChartWithChartOptions(_ aaOptions: AAOptions) {
         if optionsJson == nil {
-            configureTheJavaScriptStringWithOptions(aaOptions)
+            configureOptionsJsonStringWithAAOptions(aaOptions)
             let path = Bundle(for: self.classForCoder)
                 .path(forResource: "AAChartView",
                       ofType: "html",
@@ -253,7 +265,7 @@ extension AAChartView {
             let urlRequest = NSURLRequest(url: urlStr) as URLRequest
             self.load(urlRequest)
         } else {
-            configureTheJavaScriptStringWithOptions(aaOptions)
+            configureOptionsJsonStringWithAAOptions(aaOptions)
             drawChart()
         }
     }
@@ -286,7 +298,7 @@ extension AAChartView {
     ///
     /// - Parameter aaOptions: The instance object of AAOptions model
     public func aa_refreshChartWholeContentWithChartOptions(_ aaOptions: AAOptions) {
-        configureTheJavaScriptStringWithOptions(aaOptions)
+        configureOptionsJsonStringWithAAOptions(aaOptions)
         drawChart()
     }
     
