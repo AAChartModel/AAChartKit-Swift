@@ -143,41 +143,42 @@ public class AAChartView: WKWebView {
     }
     
     private func safeEvaluateJavaScriptString (_ jsString: String) {
-        if self.optionsJson != nil {
-            self.evaluateJavaScript(jsString, completionHandler: { (item, error) in
-                #if DEBUG
-                if error != nil {
-                    let objcError = error! as NSError
-                    let errorUserInfo = objcError.userInfo
-                    
-                    let errorInfo =
-                    """
-                    
-                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
-                    ==========================================================================================
-                    ------------------------------------------------------------------------------------------
-                    code = \(objcError.code);
-                    domain = \(objcError.domain);
-                    userInfo =     {
-                    NSLocalizedDescription = "A JavaScript exception occurred";
-                    WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
-                    WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
-                    WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
-                    WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
-                    ------------------------------------------------------------------------------------------
-                    ==========================================================================================
-                    ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
-                    
-                    """
-                    print(errorInfo)
-                }
-                #endif
-            })
-        } else {
+        if self.optionsJson == nil {
             #if DEBUG
             print("💀💀💀AAChartView did not finish loading!!!")
             #endif
+            return
         }
+        
+        self.evaluateJavaScript(jsString, completionHandler: { (item, error) in
+            #if DEBUG
+            if error != nil {
+                let objcError = error! as NSError
+                let errorUserInfo = objcError.userInfo
+                
+                let errorInfo =
+                """
+                
+                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
+                ==========================================================================================
+                ------------------------------------------------------------------------------------------
+                code = \(objcError.code);
+                domain = \(objcError.domain);
+                userInfo =     {
+                NSLocalizedDescription = "A JavaScript exception occurred";
+                WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
+                WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
+                WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
+                WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
+                ------------------------------------------------------------------------------------------
+                ==========================================================================================
+                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
+                
+                """
+                print(errorInfo)
+            }
+            #endif
+        })
     }
     
     private func configureOptionsJsonStringWithAAOptions(_ aaOptions: AAOptions) {
