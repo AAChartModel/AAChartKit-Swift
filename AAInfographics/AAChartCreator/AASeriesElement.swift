@@ -54,7 +54,7 @@
     public var zIndex: Int?                //Define the visual z index of the series.
     public var size: Any?                  //The innder size for pie chart
     public var innerSize: String?          //The innder size for pie chart
-    public var shadow: Any?
+    public var shadow: AAShadow?
     public var zones: [AAZonesElement]?
     public var stack: String?
     public var tooltip: AATooltip?
@@ -203,7 +203,7 @@
     
     @discardableResult
     public func shadow(_ prop: AAShadow) -> AASeriesElement {
-        shadow = prop.toDic()!
+        shadow = prop
         return self
     }
     
