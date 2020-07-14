@@ -10,12 +10,12 @@ import UIKit
 
 class DataSortingWithAnimationChartVC: UIViewController {
     public var chartType: AAChartType?
-      public var step: Bool?
-    open var aaChartModel: AAChartModel!
-    open var aaChartView: AAChartView!
+    public var step: Bool?
+    public var aaChartModel: AAChartModel!
+    public var aaChartView: AAChartView!
     private var timer: Timer?
     private var globalInt: Int = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +48,7 @@ class DataSortingWithAnimationChartVC: UIViewController {
         aaChartView.aa_drawChartWithChartOptions(aaOptions)
     }
     
-
+    
     private func configuraDataSortingChartOptions() -> AAOptions {
         let colorArr = [
             AAGradientColor.oceanBlue,
@@ -152,29 +152,29 @@ class DataSortingWithAnimationChartVC: UIViewController {
     
     private func randomDataArray() -> [Any] {
         let gradientColorNamesArr = [
-             "oceanBlue",
-             "sanguine",
-             "lusciousLime",
-             "purpleLake",
-             "freshPapaya",
-             "ultramarine",
-             "pinkSugar",
-             "lemonDrizzle",
-             "victoriaPurple",
-             "springGreens",
-             "mysticMauve",
-             "reflexSilver",
-             "newLeaf",
-             "cottonCandy",
-             "pixieDust",
-             "fizzyPeach",
-             "sweetDream",
-             "firebrick",
-             "wroughtIron",
-             "deepSea",
-             "coastalBreeze",
-             "eveningDelight",
-         ]
+            "oceanBlue",
+            "sanguine",
+            "lusciousLime",
+            "purpleLake",
+            "freshPapaya",
+            "ultramarine",
+            "pinkSugar",
+            "lemonDrizzle",
+            "victoriaPurple",
+            "springGreens",
+            "mysticMauve",
+            "reflexSilver",
+            "newLeaf",
+            "cottonCandy",
+            "pixieDust",
+            "fizzyPeach",
+            "sweetDream",
+            "firebrick",
+            "wroughtIron",
+            "deepSea",
+            "coastalBreeze",
+            "eveningDelight",
+        ]
         
         let dataArr = NSMutableArray()
         for  element: String in gradientColorNamesArr {
@@ -187,35 +187,35 @@ class DataSortingWithAnimationChartVC: UIViewController {
         return dataArr as! [Any]
     }
     
-
+    
     private func setUpRefreshingChartTimer() {
-         //延时3秒执行
-         let time: TimeInterval = 2.0
-         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
-             print("⌚️⌚️⌚️⌚️⌚️ \(time) 秒后输出")
-             self.timer = Timer.scheduledTimer(timeInterval: time,
-                                               target: self,
-                                               selector: #selector(self.timerRepeatWork),
-                                               userInfo: nil,
-                                               repeats: true)
-             self.timer?.fire()
-         }
-     }
-     
-     @objc func timerRepeatWork() {
+        //延时3秒执行
+        let time: TimeInterval = 2.0
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
+            print("⌚️⌚️⌚️⌚️⌚️ \(time) 秒后输出")
+            self.timer = Timer.scheduledTimer(timeInterval: time,
+                                              target: self,
+                                              selector: #selector(self.timerRepeatWork),
+                                              userInfo: nil,
+                                              repeats: true)
+            self.timer?.fire()
+        }
+    }
+    
+    @objc func timerRepeatWork() {
         print("⌚️⌚️⌚️⌚️⌚️ 定时器第 \(self.globalInt) 次输出")
-
+        
         self.globalInt += 1
-
+        
         let year = "\(2020 + self.globalInt) Year"
         let aaOptions = AAOptions()
-        .series([
-        AASeriesElement()
-            .name(year)
-            .data(self.randomDataArray())
-        ])
+            .series([
+                AASeriesElement()
+                    .name(year)
+                    .data(self.randomDataArray())
+            ])
         
         self.aaChartView.aa_updateChart(options: aaOptions, redraw: true)
-     }
+    }
     
 }
