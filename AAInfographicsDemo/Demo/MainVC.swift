@@ -598,7 +598,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 11:
             /*Scrolling update Chart Data Dynamiclly*/
             let vc = ScrollingUpdateDataVC()
-            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             vc.step = false
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true
