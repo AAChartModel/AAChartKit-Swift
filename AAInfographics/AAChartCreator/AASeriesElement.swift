@@ -56,12 +56,13 @@
     public var innerSize: String?          //The innder size for pie chart
     public var shadow: AAShadow?
     public var zones: [AAZonesElement]?
+    public var zoneAxis: String?           //Defines the Axis on which the zones are applied. defalut value：y.
     public var stack: String?
     public var tooltip: AATooltip?
     public var pointPlacement: Any?
     public var enableMouseTracking: Bool?
     public var dataSorting: AADataSorting?
-    public var reversed: Bool?//Only useful for pyramid chart and funnel chart
+    public var reversed: Bool?             //Only useful for pyramid chart and funnel chart
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
@@ -210,6 +211,12 @@
     @discardableResult
     public func zones(_ prop: [AAZonesElement]) -> AASeriesElement {
         zones = prop
+        return self
+    }
+    
+    @discardableResult
+    public func zoneAxis(_ prop: String) -> AASeriesElement {
+        zoneAxis = prop
         return self
     }
     

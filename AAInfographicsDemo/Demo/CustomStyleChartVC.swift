@@ -230,7 +230,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 AASeriesElement()
                     .name("本专业")
                     .data([45,88,49,43,65,56,47,28,49,44,89,55])
-                    //    .zoneAxis("x")
+                    .zoneAxis("x")
                     .color(AAGradientColor.freshPapaya)
                     .lineWidth(5)
                     .zones([
