@@ -113,6 +113,7 @@ class SpecialChartVC: AABaseChartVC {
             .title("AACHARTKIT BUBBLES")
             .subtitle("JUST FOR FUN")
             .yAxisTitle("℃")
+            .yAxisGridLineWidth(0)
             .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
             .series([
                 AASeriesElement()
@@ -175,6 +176,7 @@ class SpecialChartVC: AABaseChartVC {
             .titleFontColor(AAColor.white)
             .axesTextColor(AAColor.white)
             .yAxisTitle("kg")
+            .yAxisGridLineWidth(0)
             .markerSymbol(.circle)
             .markerSymbolStyle(.innerBlank)
             .markerRadius(9)
