@@ -1670,7 +1670,7 @@ function () {
     }
     
     //四边形雷达图
-    private func configureQuadrangleRadarChart() -> AAOptions   {
+    private func configureQuadrangleRadarChart() -> AAOptions {
         let aaOptions: AAOptions = configureTriangleRadarChart()
         aaOptions.yAxis?.plotBands = [
             AAPlotBandsElement()
@@ -1699,7 +1699,8 @@ function () {
         aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(255, 0, 0, 1.0)
         
         let element = aaOptions.series![0] as! AASeriesElement
-        element.data([17.0, 16.9, 12.5, 14.5,])
+        element
+            .data([17.0, 16.9, 12.5, 14.5,])
             .dataLabels(AADataLabels()
                 .color(AAColor.rgbaColor(255, 0, 0, 1.0)))
         
@@ -1708,7 +1709,7 @@ function () {
     }
     
     //五边形雷达图
-    private func configurePentagonRadarChart() -> AAOptions   {
+    private func configurePentagonRadarChart() -> AAOptions {
         let aaOptions = configureTriangleRadarChart()
         aaOptions.yAxis?.plotBands = [
             AAPlotBandsElement()
@@ -1737,7 +1738,8 @@ function () {
         aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(255, 215, 0, 1.0)
         
         let element = aaOptions.series![0] as! AASeriesElement
-        element.data([17.0, 16.9, 12.5, 14.5, 18.2,])
+        element
+            .data([17.0, 16.9, 12.5, 14.5, 18.2,])
             .dataLabels(AADataLabels()
                 .color(AAColor.rgbaColor(255, 215, 0, 1.0)))
         
@@ -1746,7 +1748,7 @@ function () {
     }
     
     //六边形雷达图
-    private func configureHexagonRadarChart() -> AAOptions   {
+    private func configureHexagonRadarChart() -> AAOptions {
         let aaOptions = configureTriangleRadarChart()
         aaOptions.yAxis?.plotBands = [
             AAPlotBandsElement()
@@ -1775,7 +1777,8 @@ function () {
         aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(50, 205, 50, 1.0)
         
         let element = aaOptions.series![0] as! AASeriesElement
-        element.data([17.0, 16.9, 12.5, 14.5, 18.2, 21.5,])
+        element
+            .data([17.0, 16.9, 12.5, 14.5, 18.2, 21.5,])
             .dataLabels(AADataLabels()
                 .color(AAColor.rgbaColor(50, 205, 50, 1.0)))
         
@@ -1784,7 +1787,7 @@ function () {
     }
     
     //🕸蜘蛛网状雷达图
-    private func configureSpiderWebRadarChart() -> AAOptions   {
+    private func configureSpiderWebRadarChart() -> AAOptions {
         let aaOptions = configureTriangleRadarChart()
         aaOptions.yAxis?.plotBands = [
             AAPlotBandsElement()
@@ -1813,7 +1816,8 @@ function () {
         aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(138, 43, 226,  1.0)
         
         let element = aaOptions.series![0] as! AASeriesElement
-        element.data([2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24])
+        element
+            .data([2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24])
             .dataLabels(AADataLabels()
                 .color(AAColor.rgbaColor(138, 43, 226, 1.0)))
         
