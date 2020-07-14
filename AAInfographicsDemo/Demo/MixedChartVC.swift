@@ -31,38 +31,15 @@
 
 import UIKit
 
-class MixedChartVC: UIViewController {
-    open var chartType: String!
-    open var aaChartModel: AAChartModel!
-    open var aaChartView: AAChartView!
+class MixedChartVC: AABaseChartVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        title = chartType
-        
-        setUpAAChartView()
     }
-    
-   private func setUpAAChartView() {
-        aaChartView = AAChartView()
-        let chartWidth = view.frame.size.width
-        let chartHeight = view.frame.size.height
-        aaChartView!.frame = CGRect(x: 0,
-                                    y: 60,
-                                    width: chartWidth,
-                                    height: chartHeight)
-        aaChartView!.contentHeight = view.frame.size.height - 80
-        view.addSubview(aaChartView!)
-        aaChartView!.scrollEnabled = false
-        
-        aaChartModel = configureTheAAChartModel(chartType!)
-        aaChartView!.aa_drawChartWithChartModel(aaChartModel!)
-    }
-    
-   private func configureTheAAChartModel(_ chartTypeStr:String) -> AAChartModel {
-        switch chartTypeStr {
+ 
+    override func chartConfigurationWithSelectedChartTypeString(_ selectedChartTypeStr: String) -> Any? {
+        switch selectedChartTypeStr {
         case "arearangeMixedLine":return configureArearangeMixedLineChart()
         case "columnrangeMixedLine":return configureColumnrangeMixedLineChart()
         case "stackingColumnMixedLine":return configureStackingColumnMixedLineChart()

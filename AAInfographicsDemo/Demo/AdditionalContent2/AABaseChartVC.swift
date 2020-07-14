@@ -192,7 +192,13 @@ class AABaseChartVC: UIViewController {
         var chartConfiguration =  chartConfigurationWithSelectedIndex(self.selectedIndex)
         if chartConfiguration == nil {
             let selectedChartType = self.navigationItemTitleArr?[self.selectedIndex]
-            chartConfiguration = chartConfigurationWithSelectedChartType(selectedChartType as! AAChartType)
+            if selectedChartType != nil && ((selectedChartType as? AAChartType) != nil) {
+                chartConfiguration = chartConfigurationWithSelectedChartType(selectedChartType as! AAChartType)
+            }
+        }
+        if chartConfiguration == nil {
+            let selectedChartTypeStr = self.navigationItemTitleArr?[self.selectedIndex]
+            chartConfiguration = chartConfigurationWithSelectedChartTypeString(selectedChartTypeStr as! String)
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
@@ -209,7 +215,13 @@ class AABaseChartVC: UIViewController {
         var chartConfiguration =  chartConfigurationWithSelectedIndex(self.selectedIndex)
         if chartConfiguration == nil {
             let selectedChartType = self.navigationItemTitleArr?[self.selectedIndex]
-            chartConfiguration = chartConfigurationWithSelectedChartType(selectedChartType as! AAChartType)
+            if selectedChartType != nil && ((selectedChartType as? AAChartType) != nil) {
+                chartConfiguration = chartConfigurationWithSelectedChartType(selectedChartType as! AAChartType)
+            }
+        }
+        if chartConfiguration == nil {
+            let selectedChartTypeStr = self.navigationItemTitleArr?[self.selectedIndex]
+            chartConfiguration = chartConfigurationWithSelectedChartTypeString(selectedChartTypeStr as! String)
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
@@ -227,6 +239,10 @@ class AABaseChartVC: UIViewController {
     }
     
     func chartConfigurationWithSelectedChartType(_ selectedChartType: AAChartType) -> Any? {
+        return nil
+    }
+    
+    func chartConfigurationWithSelectedChartTypeString(_ selectedChartTypeStr: String) -> Any? {
         return nil
     }
 

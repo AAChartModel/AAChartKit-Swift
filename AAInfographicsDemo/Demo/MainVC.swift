@@ -538,7 +538,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 3:
             /*Mixed Type Charts*/
             let vc = MixedChartVC()
-            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? String
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
         case 4:
             /*Only Refresh Chart Data Dynamiclly*/
