@@ -221,7 +221,6 @@ class CustomStyleChartVC: AABaseChartVC {
     private func configureMixedLineChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.line)
-            .title("")
             .subtitle("虚拟数据")
             .categories(["Java","Swift","Python","Ruby", "PHP","Go","C","C#","C++","Perl","R","MATLAB","SQL"])
             .yAxisTitle("摄氏度")
@@ -293,7 +292,6 @@ class CustomStyleChartVC: AABaseChartVC {
     
     private func configureStackingPolarColumnChart() -> AAChartModel {
         return AAChartModel()
-            .title("")
             .chartType(.column)
             .axesTextColor(AAColor.white)
             .dataLabelsEnabled(false)
@@ -451,7 +449,6 @@ class CustomStyleChartVC: AABaseChartVC {
     
     private func configureChartWithShadowStyle() -> AAChartModel {
         return AAChartModel()
-            .title("")
             .yAxisVisible(false)
             .chartType(.spline)
             .legendEnabled(false)//隐藏图例(底部可点按的小圆点)
@@ -486,7 +483,6 @@ class CustomStyleChartVC: AABaseChartVC {
         
         return AAChartModel()
             .chartType(.areaspline)
-            .title("")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .yAxisTitle("")
@@ -516,7 +512,6 @@ class CustomStyleChartVC: AABaseChartVC {
         
         return AAChartModel()
             .chartType(.spline)
-            .title("")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .yAxisTitle("")
@@ -541,7 +536,6 @@ class CustomStyleChartVC: AABaseChartVC {
         
         return AAChartModel()
             .chartType(.areaspline)
-            .title("")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .yAxisTitle("")
@@ -585,7 +579,6 @@ class CustomStyleChartVC: AABaseChartVC {
         
         return AAChartModel()
             .chartType(.spline)
-            .title("")
             .backgroundColor("#4b2b7f")
             .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(false)//是否显示值
@@ -610,7 +603,6 @@ class CustomStyleChartVC: AABaseChartVC {
         
         return AAChartModel()
             .chartType(.column)
-            .title("")
             .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(false)//是否显示值
             .tooltipEnabled(false)
@@ -635,7 +627,6 @@ class CustomStyleChartVC: AABaseChartVC {
         
         return AAChartModel()
             .chartType(.area)
-            .title("")
             .yAxisTitle("")//设置Y轴标题
             .yAxisGridLineWidth(0)
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","July", "Aug", "Spe", "Oct", "Nov", "Dec"])
@@ -687,7 +678,6 @@ class CustomStyleChartVC: AABaseChartVC {
         
         return AAChartModel()
             .chartType(.scatter)
-            .title("")
             .yAxisTitle("")
             .yAxisGridLineWidth(0)
             .stacking(.normal)
@@ -829,7 +819,6 @@ class CustomStyleChartVC: AABaseChartVC {
         
         return AAChartModel()
             .chartType(.areaspline)
-            .title("")
             .backgroundColor("#4b2b7f")
             .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(false)//是否显示值
@@ -984,7 +973,6 @@ class CustomStyleChartVC: AABaseChartVC {
                 
         return AAChartModel()
             .chartType(.column)
-            .title("")
             .stacking(.normal)
             .yAxisTitle("")
             .yAxisGridLineWidth(0)
