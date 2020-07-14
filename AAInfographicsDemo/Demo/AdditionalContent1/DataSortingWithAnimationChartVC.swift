@@ -8,20 +8,15 @@
 
 import UIKit
 
-class DataSortingWithAnimationChartVC: UIViewController {
-    public var chartType: AAChartType?
+class DataSortingWithAnimationChartVC: AABaseChartVC {
     public var step: Bool?
     public var aaChartModel: AAChartModel!
-    public var aaChartView: AAChartView!
     private var timer: Timer?
     private var globalInt: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        
-        setUpAAChartView()
+            
         setUpRefreshingChartTimer()
     }
     
@@ -31,25 +26,8 @@ class DataSortingWithAnimationChartVC: UIViewController {
         timer?.invalidate()
         timer = nil
     }
-    
-    private func setUpAAChartView() {
-        aaChartView = AAChartView()
-        let chartWidth = view.frame.size.width
-        let chartHeight = view.frame.size.height
-        aaChartView!.frame = CGRect(x: 0,
-                                    y: 60,
-                                    width: chartWidth,
-                                    height: chartHeight)
-        aaChartView!.contentHeight = view.frame.size.height - 80
-        view.addSubview(aaChartView!)
-        aaChartView!.scrollEnabled = false
-        
-        let aaOptions = configuraDataSortingChartOptions()
-        aaChartView.aa_drawChartWithChartOptions(aaOptions)
-    }
-    
-    
-    private func configuraDataSortingChartOptions() -> AAOptions {
+
+    override func chartConfigurationWithSelectedChartType(_ selectedChartType: AAChartType) -> Any? {
         let colorArr = [
             AAGradientColor.oceanBlue,
             AAGradientColor.sanguine,
@@ -78,7 +56,7 @@ class DataSortingWithAnimationChartVC: UIViewController {
         let aaOptions = AAOptions()
             .colors(colorArr)
             .chart(AAChart()
-                .type(self.chartType)
+                .type(selectedChartType)
         )
             .title(AATitle()
                 .text("Popular Gradient Colors In Different Years"))
@@ -215,7 +193,7 @@ class DataSortingWithAnimationChartVC: UIViewController {
                     .data(self.randomDataArray())
             ])
         
-        self.aaChartView.aa_updateChart(options: aaOptions, redraw: true)
+        self.aaChartView!.aa_updateChart(options: aaOptions, redraw: true)
     }
     
 }

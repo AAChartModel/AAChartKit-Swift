@@ -617,8 +617,9 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 13:
             /*Data Sorting With Animation Charts*/
             let vc = DataSortingWithAnimationChartVC()
-            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
-                     if indexPath.row == 4 || indexPath.row == 5 {
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
+            if indexPath.row == 4 || indexPath.row == 5 {
                          vc.step = true
                      }
             navigationController?.pushViewController(vc, animated: true)
