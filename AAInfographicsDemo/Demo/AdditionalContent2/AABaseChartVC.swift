@@ -81,6 +81,7 @@ class AABaseChartVC: UIViewController {
     private func setupChartView() {
         aaChartView = AAChartView()
         aaChartView!.scrollEnabled = false
+        aaChartView!.delegate = self as AAChartViewDelegate
         aaChartView!.aa_adaptiveScreenRotation()
         view.addSubview(aaChartView!)
         
@@ -247,3 +248,34 @@ class AABaseChartVC: UIViewController {
     }
 
 }
+
+extension AABaseChartVC: AAChartViewDelegate {
+    open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
+       print("🚀🚀🚀, AAChartView Did Finished Load!!!")
+    }
+
+    open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
+        print(
+            """
+            
+            selected point series element name: \(moveOverEventMessage.name ?? "")
+            👌👌👌WARNING!!!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!!!!! WARNING👌👌👌
+            || ==========================================================================================
+            || ------------------------------------------------------------------------------------------
+            || user finger moved over!!!,get the move over event message: {
+            || category = \(String(describing: moveOverEventMessage.category))
+            || index = \(String(describing: moveOverEventMessage.index))
+            || name = \(String(describing: moveOverEventMessage.name))
+            || offset = \(String(describing: moveOverEventMessage.offset))
+            || x = \(String(describing: moveOverEventMessage.x))
+            || y = \(String(describing: moveOverEventMessage.y))
+            || }
+            || ------------------------------------------------------------------------------------------
+            || ==========================================================================================
+            
+            
+            """
+        )
+    }
+}
+
