@@ -608,7 +608,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 12:
             /*Scrollable Charts*/
             let vc = ScrollableChartVC()
-            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true
             }
