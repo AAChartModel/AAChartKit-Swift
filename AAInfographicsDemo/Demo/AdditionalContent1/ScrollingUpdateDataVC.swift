@@ -70,7 +70,6 @@ class ScrollingUpdateDataVC: AABaseChartVC {
         
         let aaChartModel = AAChartModel()
             .chartType(selectedChartType)//图形类型
-            .title("")//图形标题
             .dataLabelsEnabled(false)//是否显示数字
             .colorsTheme([
                 gradientColorDic1,

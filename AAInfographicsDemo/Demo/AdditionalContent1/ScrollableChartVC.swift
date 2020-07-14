@@ -54,7 +54,6 @@ class ScrollableChartVC: AABaseChartVC {
         
         let aaChartModel = AAChartModel()
             .chartType(selectedChartType)
-            .title("")
             .stacking(.normal)
             .dataLabelsEnabled(false)
             .colorsTheme([gradientColorDic1,gradientColorDic2])

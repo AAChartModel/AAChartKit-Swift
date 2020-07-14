@@ -168,7 +168,6 @@ function () {
     private func customAreaChartTooltipStyleWithColorfulHtmlLabels() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
-            .title("")//图表主标题
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
@@ -229,7 +228,6 @@ function () {
     private func customLineChartTooltipStyleWhenValueBeZeroDoNotShow() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
-            .title("")//图表主标题
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .categories(["临床一期","临床二期","临床三期"])
@@ -326,7 +324,6 @@ function () {
     private func customYAxisLabels() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
-            .title("")//图表主标题
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
@@ -368,7 +365,6 @@ function () {
     private func customYAxisLabels2() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
-            .title("")//图表主标题
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
@@ -677,7 +673,6 @@ function () {
             .chartType(.line)
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
             .axesTextColor(AAColor.white)
-            .title("")
             .dataLabelsEnabled(false)
             .tooltipValueSuffix("℃")
             .animationType(.bounce)
@@ -717,7 +712,6 @@ function () {
     private func customTooltipWhichDataSourceComeFromOutSideRatherThanSeries() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
-            .title("")
             .yAxisTitle("")//设置 Y 轴标题
             .yAxisLineWidth(1)//Y轴轴线线宽为0即是隐藏Y轴轴线
             .yAxisGridLineWidth(1)//y轴横向分割线宽度为1(为0即是隐藏分割线)

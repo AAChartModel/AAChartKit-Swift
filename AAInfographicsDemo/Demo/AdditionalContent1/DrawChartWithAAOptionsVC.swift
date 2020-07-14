@@ -80,7 +80,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     
     private func configureLegendStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
-            .title("")
             .chartType(.areaspline)
             .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
             .dataLabelsEnabled(false)
@@ -194,7 +193,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     private func adjustYAxisMinValueForChart() -> AAOptions  {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
-            .title("")//图表主标题
             .borderRadius(5)
             .series([
                 AASeriesElement()
@@ -287,7 +285,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     private func adjustTheXAxisLabels() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)
-            .title("")
             .colorsTheme(["#ffc069","#fe117c","#06caf4","#7dffc0"])
             .categories([
                 "January", "February", "March", "April", "May", "June",
@@ -326,7 +323,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     private func adjustGroupPaddingBetweenColumns() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)
-            .title("")
             .categories(["January", "February", "March", "April", "May", "June",
                          "July", "August", "Septembel", "October", "November", "December"])
             .dataLabelsEnabled(false)
@@ -430,7 +426,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     
     private func configureAAPlotBandsForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
-            .title("")
             .chartType(.spline)//图形类型
             .dataLabelsEnabled(false)
             .markerRadius(0)
@@ -478,7 +473,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     
     private func configureAAPlotLinesForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
-            .title("")
             .chartType(.areaspline)
             .dataLabelsEnabled(false)
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
@@ -691,7 +685,6 @@ function () {
         
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
-            .title("")
             .stacking(.normal)
             .categories(categories)
             .dataLabelsEnabled(false)
@@ -727,7 +720,6 @@ function () {
         
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
-            .title("")
             .stacking(.normal)
             .yAxisVisible(false)
             .categories(categories)
@@ -762,7 +754,6 @@ function () {
         
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
-            .title("")
             .backgroundColor(backgroundColorGradientColor)
             .yAxisVisible(true)
             .yAxisTitle("")
@@ -825,7 +816,6 @@ function () {
     private func configureXAxisPlotBand() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
-            .title("")
             .categories([
                 "一月", "二月", "三月", "四月", "五月", "六月",
                 "七月", "八月", "九月", "十月", "十一月", "十二月"
@@ -1375,7 +1365,6 @@ function () {
     private func customAreaChartTooltipStyleLikeHTMLTable() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
-            .title("")//图表主标题
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
@@ -1455,7 +1444,6 @@ function () {
     // https://github.com/AAChartModel/AAChartKit-Swift/issues/213
     private func customRadarChartStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
-            .title("")
             .colorsTheme(["#5BCCC8"])
             .chartType(.area)
             .dataLabelsEnabled(false)
