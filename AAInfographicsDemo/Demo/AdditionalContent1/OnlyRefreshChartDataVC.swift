@@ -32,11 +32,8 @@
 
 import UIKit
 
-class OnlyRefreshChartDataVC: UIViewController {
-    public var chartType: AAChartType?
+class OnlyRefreshChartDataVC: AABaseChartVC {
     public var step: Bool?
-    private var aaChartModel: AAChartModel?
-    private var aaChartView: AAChartView?
     private var timer: Timer?
     private var updateTimes: Int = 0
     
@@ -51,29 +48,10 @@ class OnlyRefreshChartDataVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
-        title = "ONLY REFRESH CHART DATA"
-        
-        setUpTheAAChartView()
         setUpRefreshingChartTimer()
     }
 
-    private func setUpTheAAChartView() {
-        let chartViewWidth  = view.frame.size.width
-        let chartViewHeight = view.frame.size.height - 60
-        
-        aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x: 0,
-                                    y: 60,
-                                    width: chartViewWidth,
-                                    height: chartViewHeight)
-        aaChartView?.scrollEnabled = false
-        ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
-        aaChartView?.contentHeight = chartViewHeight - 20
-        view.addSubview(aaChartView!)
-        
-        
+    override func chartConfigurationWithSelectedChartType(_ selectedChartType: AAChartType) -> Any? {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toBottom,
             startColor: "#00BFFF",
@@ -86,8 +64,8 @@ class OnlyRefreshChartDataVC: UIViewController {
             endColor: "rgba(30,144,255,1)"//颜色字符串设置支持十六进制类型和 rgba 类型
         )
         
-        aaChartModel = AAChartModel()
-            .chartType(chartType!)//图形类型
+        let aaChartModel = AAChartModel()
+            .chartType(selectedChartType)//图形类型
             .title("")//图形标题
             .dataLabelsEnabled(false)//是否显示数字
             .colorsTheme([
@@ -100,33 +78,33 @@ class OnlyRefreshChartDataVC: UIViewController {
             .yAxisVisible(false)
             .xAxisVisible(false)
             .stacking(.normal)
-
-
-        if aaChartModel?.chartType == .column
-            || aaChartModel?.chartType == .bar {
-            if aaChartModel?.chartType == .column {
-                aaChartModel?
+        
+        
+        if selectedChartType == .column
+            || selectedChartType == .bar {
+            if selectedChartType == .column {
+                aaChartModel
                     .borderRadius(10)
             } else {
-                aaChartModel?
+                aaChartModel
                     .borderRadius(50)
             }
             
-            aaChartModel?
+            aaChartModel
                 .series(self.configureSeriesDataArray())
-        }  else if chartType == .scatter {
-            aaChartModel?
-            .markerRadius(8)
+        }  else if selectedChartType == .scatter {
+            aaChartModel
+                .markerRadius(8)
                 .markerSymbol(.circle)
                 .series(self.configureSeriesDataArray())
         } else {
-            aaChartModel?
+            aaChartModel
                 .markerRadius(0)
                 .markerSymbolStyle(.innerBlank)
                 .series([
                     AASeriesElement()
                         .name("Tokyo")
-                    .lineWidth(5)
+                        .lineWidth(5)
                         .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                         .step(step!)
                     ,
@@ -150,15 +128,15 @@ class OnlyRefreshChartDataVC: UIViewController {
                     ,
                 ])
         }
-
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel!)
         
-        if aaChartModel?.chartType == .column {
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        if aaChartModel.chartType == .column {
             aaOptions.plotOptions?.column?
                 .groupPadding(0.0)
-//                .pointPadding(0.0)
-        } else if aaChartModel?.chartType == .bar {
+              //.pointPadding(0.0)
+        } else if aaChartModel.chartType == .bar {
             aaOptions.plotOptions?.bar?
                 .groupPadding(0.0)
                 .pointPadding(0.0)
@@ -166,8 +144,8 @@ class OnlyRefreshChartDataVC: UIViewController {
         }
         aaOptions.tooltip?.shared(false)
         
-        aaChartView?.aa_drawChartWithChartOptions(aaOptions)
-            }
+        return aaOptions
+    }
     
    private func setUpRefreshingChartTimer() {
         //延时3秒执行

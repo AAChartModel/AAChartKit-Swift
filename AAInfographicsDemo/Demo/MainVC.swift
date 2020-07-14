@@ -526,7 +526,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             /*Special Type Charts*/
             let vc = SpecialChartVC()
             vc.selectedIndex = indexPath.row
-//            vc.selectedChartType = (chartTypeArr[indexPath.section][indexPath.row] as? AAChartType)!
             vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
         case 2:
@@ -544,7 +543,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 4:
             /*Only Refresh Chart Data Dynamiclly*/
             let vc = OnlyRefreshChartDataVC()
-            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             vc.step = false
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true
