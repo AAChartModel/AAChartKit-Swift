@@ -20,20 +20,20 @@
         <script>
             let aaGlobalChart;
             function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
-                let aaOptions = JSON.parse(sender);
-                if (aaOptions.xAxisArray) {
-                    aaOptions.xAxis = aaOptions.xAxisArray
-                }
-                if (aaOptions.yAxisArray) {
-                    aaOptions.yAxis = aaOptions.yAxisArray
-                }
-                
                 let container = document.getElementById('container');
                 if (receivedWidth != 0) {
                     container.style.width = receivedWidth;
                 }
                 if(receivedHeight != 0) {
                     container.style.height = receivedHeight;
+                }
+                
+                let aaOptions = JSON.parse(sender);
+                if (aaOptions.xAxisArray) {
+                    aaOptions.xAxis = aaOptions.xAxisArray
+                }
+                if (aaOptions.yAxisArray) {
+                    aaOptions.yAxis = aaOptions.yAxisArray
                 }
                 
                 aaOptions.credits = {
