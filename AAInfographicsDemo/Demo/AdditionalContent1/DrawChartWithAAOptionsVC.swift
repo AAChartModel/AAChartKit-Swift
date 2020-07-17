@@ -83,6 +83,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .chartType(.areaspline)
             .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
             .dataLabelsEnabled(false)
+            .zoomType(.x)
             .colorsTheme([
                 AAGradientColor.oceanBlue,
                 AAGradientColor.sanguine,
@@ -95,30 +96,23 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .series([
                 AASeriesElement()
                     .name("Tokyo Hot")
-                    .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])                ,
+                    .data([45000000, 43000000, 50000000, 55000000, 58000000, 62000000, 83000000, 39000000, 56000000, 67000000, 50000000, 34000000, 50000000, 67000000, 58000000, 29000000, 46000000, 23000000, 47000000, 46000000, 38000000, 56000000, 48000000, 36000000])                ,
                 AASeriesElement()
                     .name("Berlin Hot")
-                    .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
+                    .data([38000000, 31000000, 32000000, 32000000, 64000000, 66000000, 86000000, 47000000, 52000000, 75000000, 52000000, 56000000, 54000000, 60000000, 46000000, 63000000, 54000000, 51000000, 58000000, 64000000, 60000000, 45000000, 36000000, 67000000])
                 ,
                 AASeriesElement()
                     .name("New York Hot")
-                    .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
+                    .data([46000000, 32000000, 53000000, 58000000, 86000000, 68000000, 85000000, 73000000, 69000000, 71000000, 91000000, 74000000, 60000000, 50000000, 39000000, 67000000, 55000000, 49000000, 65000000, 45000000, 64000000, 47000000, 63000000, 64000000])
                 ,
                 AASeriesElement()
                     .name("London Hot")
-                    .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
+                    .data([60000000, 51000000, 52000000, 53000000, 64000000, 84000000, 65000000, 68000000, 63000000, 47000000, 72000000, 60000000, 65000000, 74000000, 66000000, 65000000, 71000000, 59000000, 65000000, 77000000, 52000000, 53000000, 58000000, 53000000])
                 ,
             ])
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-        
-        aaOptions.plotOptions?.series?.events = AAEvents()
-            .legendItemClick(#"""
-            function() {
-              return false;
-            }
-"""#)
-        
-        
+        aaOptions.yAxis?.labels?.format = "{value} $";//给y轴添加单位
+
         aaOptions.legend!
             .itemMarginTop(20)
             .symbolRadius(10)//图标圆角
@@ -131,6 +125,19 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                 .color(AAColor.red)
                 .fontSize(20)
                 .fontWeight(.bold))
+        
+        //禁用图例点击事件
+        aaOptions.plotOptions?.series?.events = AAEvents()
+            .legendItemClick(#"""
+                    function() {
+                      return false;
+                    }
+        """#)
+        
+        aaOptions.defaultOptions(
+            AALang()
+                .resetZoom("重置缩放比例")
+                .thousandsSep(","))
         
         return aaOptions
     }

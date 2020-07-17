@@ -46,6 +46,7 @@ public class AAOptions: AAObject {
     public var legend: AALegend?
     public var pane: AAPane?
     public var colors: [Any]?
+    public var defaultOptions: AALang?
     public var touchEventEnabled: Bool?
     
     @discardableResult
@@ -123,6 +124,12 @@ public class AAOptions: AAObject {
     @discardableResult
     public func colors(_ prop: [Any]?) -> AAOptions {
         colors = prop
+        return self
+    }
+    
+    @discardableResult
+    public func defaultOptions(_ prop: AALang?) -> AAOptions {
+        defaultOptions = prop
         return self
     }
     

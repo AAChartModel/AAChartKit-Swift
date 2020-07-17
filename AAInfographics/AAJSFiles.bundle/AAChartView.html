@@ -42,13 +42,11 @@
                 
                 //Global options(you can configure chart themes by it)
                 //refer to https://api.hcharts.cn/highcharts#Highcharts.setOptions
-                let globalOptions = {
-                    lang: {
-                        thousandsSep: ",",
-                        resetZoom: "ResetZoom"
-                    }
-                };
-                Highcharts.setOptions(globalOptions);
+                if (aaOptions.defaultOptions) {
+                    Highcharts.setOptions({
+                        lang: aaOptions.defaultOptions
+                    });
+                }
 
                 if (aaOptions.plotOptions) {
                     configurePlotOptions(aaOptions);
