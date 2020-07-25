@@ -262,6 +262,7 @@
 
 public class AADataElement: AAObject {
     public var name: String?
+    public var x: Float?
     public var y: Float?
     public var color: Any?
     public var dataLabels: AADataLabels?
@@ -270,6 +271,12 @@ public class AADataElement: AAObject {
     @discardableResult
     public func name(_ prop: String) -> AADataElement {
         name = prop
+        return self
+    }
+    
+    @discardableResult
+    public func x(_ prop: Float) -> AADataElement {
+        x = prop
         return self
     }
     
