@@ -46,6 +46,7 @@ public class AAOptions: AAObject {
     public var legend: AALegend?
     public var pane: AAPane?
     public var colors: [Any]?
+    public var credits: AACredits?
     public var defaultOptions: AALang?
     public var touchEventEnabled: Bool?
     
@@ -128,6 +129,12 @@ public class AAOptions: AAObject {
     }
     
     @discardableResult
+    public func credits(_ prop: AACredits?) -> AAOptions {
+        credits = prop
+        return self
+    }
+    
+    @discardableResult
     public func defaultOptions(_ prop: AALang?) -> AAOptions {
         defaultOptions = prop
         return self
@@ -140,7 +147,9 @@ public class AAOptions: AAObject {
     }
     
     public override init() {
-        
+        let aaCredits = AACredits()
+        aaCredits.enabled = false
+        credits = aaCredits
     }
 }
 

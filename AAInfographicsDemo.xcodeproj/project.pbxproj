@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27065A5A24C198E700D872EB /* AALang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27065A5924C198E700D872EB /* AALang.swift */; };
+		27065A5C24C1A7A400D872EB /* AACredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27065A5B24C1A7A400D872EB /* AACredits.swift */; };
 		272BBE7821A258C200DBE69D /* AAColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272BBE7721A258C200DBE69D /* AAColor.swift */; };
 		27499098210D7B2E003D18C2 /* AAJSFiles.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 27499097210D7B2E003D18C2 /* AAJSFiles.bundle */; };
 		2749914F210D90B5003D18C2 /* AAChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749914B210D90B5003D18C2 /* AAChartModel.swift */; };
@@ -81,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		27065A5924C198E700D872EB /* AALang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALang.swift; sourceTree = "<group>"; };
+		27065A5B24C1A7A400D872EB /* AACredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACredits.swift; sourceTree = "<group>"; };
 		272BBE7721A258C200DBE69D /* AAColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAColor.swift; sourceTree = "<group>"; };
 		27499097210D7B2E003D18C2 /* AAJSFiles.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AAJSFiles.bundle; sourceTree = "<group>"; };
 		2749914B210D90B5003D18C2 /* AAChartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartModel.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				445353C222631B48009FA12A /* AAPlotLinesElement.swift */,
 				FFACB2212424497B00FDAB0B /* AAScrollablePlotArea.swift */,
 				27065A5924C198E700D872EB /* AALang.swift */,
+				27065A5B24C1A7A400D872EB /* AACredits.swift */,
 			);
 			path = AAOptionsModel;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				44154769231A1D5600382DAD /* AASeries.swift in Sources */,
 				442FA90D2340597200CF3BDF /* AAPane.swift in Sources */,
 				27065A5A24C198E700D872EB /* AALang.swift in Sources */,
+				27065A5C24C1A7A400D872EB /* AACredits.swift in Sources */,
 				449A0ED62377149D009F8FE1 /* ScrollingUpdateDataVC.swift in Sources */,
 				27499152210D90B5003D18C2 /* AAChartView.swift in Sources */,
 				447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */,

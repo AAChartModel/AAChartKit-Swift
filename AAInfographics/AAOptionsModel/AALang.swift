@@ -37,13 +37,13 @@ public class AALang: AAObject {
     public var thousandsSep: String?
     
     @discardableResult
-    public func resetZoom(_ prop: String) -> AALang {
+    public func resetZoom(_ prop: String?) -> AALang {
         resetZoom = prop
         return self
     }
     
     @discardableResult
-    public func thousandsSep(_ prop: String) -> AALang {
+    public func thousandsSep(_ prop: String?) -> AALang {
         thousandsSep = prop
         return self
     }
