@@ -65,7 +65,6 @@
                 animation.easing = configureTheChartAnimationEasingType(animationEasingType);
             }
             
-            // configure chart touch event
             if (aaOptions.touchEventEnabled == true && aaPlotOptions.series) {
                 configureChartTouchEvent(aaPlotOptions);
             }
@@ -73,7 +72,6 @@
         
         function configureChartTouchEvent(aaPlotOptions) {
             let mouseOverFunc = function() {
-                //console.log(this)
                 let message = {
                     name: this.series.name,
                     y :this.y,
@@ -162,7 +160,6 @@
             aaGlobalChart.redraw(animationBool);
         }
         
-        //pragma mark -- setter method
         function setTheChartViewContentWidth(receivedWidth) {
             let container = document.getElementById('container');
             container.style.width = receivedWidth;
