@@ -464,7 +464,6 @@ public var inverted: Bool?              //Whether to invert the axes so that the
 public var xAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
 public var yAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
 public var crosshairs: Bool?            //Enable or disable the crosshairs
-public var gradientColorEnable: Bool?   //Enable or disable the gradient color
 public var polar: Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
 public var marginLeft: Float?
 public var marginRight: Float?
