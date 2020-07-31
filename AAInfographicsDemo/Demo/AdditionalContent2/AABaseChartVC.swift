@@ -231,6 +231,14 @@ class AABaseChartVC: UIViewController {
         } else if (chartConfiguration is AAOptions) {
             let aaOptions = chartConfiguration as! AAOptions;
             aaOptions.touchEventEnabled = true;
+            aaOptions.credits?
+                .enabled(true)
+                .text("https://github.com/AAChartModel/AAChartKit")
+                .href("https://github.com/AAChartModel/AAChartKit")
+                .style(AAStyle()
+                    .color(AAColor.red)
+                    .fontSize(9))
+            self.aaChartView?.scrollEnabled = true
             self.aaChartView?.aa_refreshChartWholeContentWithChartOptions(aaOptions)
         }
     }
