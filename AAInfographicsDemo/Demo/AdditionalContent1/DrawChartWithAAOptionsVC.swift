@@ -1821,6 +1821,7 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/230
     private func disableMixedChartInactiveAnimationEffect() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)
