@@ -224,7 +224,7 @@ class MainVC: UIViewController {
                 "Pentagon Radar Chart With PlotBands---带有颜色标志带の五角形雷达图",
                 "Hexagon Radar Char With PlotBands----带有颜色标志带の六角形雷达图",
                 "Spider Web Radar Chart With PlotBands----带有颜色标志带の🕸蜘蛛网状雷达图",
-
+                "Disable Mixed Chart Inactive Animation Effect----禁用混合图表的 inactive 动画效果",
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
             [

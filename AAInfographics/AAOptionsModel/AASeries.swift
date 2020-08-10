@@ -43,6 +43,7 @@ public class AASeries: AAObject {
     public var events: AAEvents?
     public var shadow: AAShadow?
     public var dataLabels: AADataLabels?
+    public var states: AAStates?
 
     
     @discardableResult
@@ -102,6 +103,12 @@ public class AASeries: AAObject {
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AASeries {
         dataLabels = prop
+        return self
+    }
+    
+    @discardableResult
+    public func states(_ prop: AAStates) -> AASeries {
+        states = prop
         return self
     }
     

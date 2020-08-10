@@ -71,12 +71,13 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 28: return configurePentagonRadarChart()//带有颜色标志带の五角形雷达图
         case 29: return configureHexagonRadarChart()//带有颜色标志带の六角形雷达图
         case 30: return configureSpiderWebRadarChart()//带有颜色标志带の🕸蜘蛛网状雷达图
+        case 31: return disableMixedChartInactiveAnimationEffect()//禁用混合图表的 inactive 动画效果
+
             
         default:
             return AAOptions()
         }
     }
-
     
     private func configureLegendStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
@@ -1816,6 +1817,40 @@ function () {
             .dataLabels(AADataLabels()
                 .color(AAColor.rgbaColor(138, 43, 226, 1.0)))
         
+        
+        return aaOptions
+    }
+    
+    private func disableMixedChartInactiveAnimationEffect() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.line)
+            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
+            .series([
+                AASeriesElement()
+                    .name("New York")
+                    .type(.line)
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+                    ,
+                AASeriesElement()
+                    .name("Berlin")
+                    .type(.line)
+                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
+                    ,
+                AASeriesElement()
+                    .name("London")
+                    .type(.area)
+                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
+                    ,
+                ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.tooltip?.shared(false)
+        
+        aaOptions.plotOptions?.series?
+            .states(AAStates()
+                .inactive(AAInactive()
+                    .enabled(false)))
         
         return aaOptions
     }
