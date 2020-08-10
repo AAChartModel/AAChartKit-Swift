@@ -331,7 +331,7 @@ function () {
             .markerRadius(8)
             .series([
                 AASeriesElement()
-                    .name("Tokyo Hot")
+                    .name("Scores")
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
@@ -343,15 +343,15 @@ function () {
 function () {
         let yValue = this.value;
         if (yValue >= 200) {
-            return "极佳";
+            return "Excellent";
         } else if (yValue >= 150 && yValue < 200) {
-            return "非常棒";
+            return "Very Good";
         } else if (yValue >= 100 && yValue < 150) {
-            return "相当棒";
+            return "Good";
         } else if (yValue >= 50 && yValue < 100) {
-            return "还不错";
+            return "Not Bad";
         } else {
-            return "一般";
+            return "Just So So";
         }
     }
 """#)
