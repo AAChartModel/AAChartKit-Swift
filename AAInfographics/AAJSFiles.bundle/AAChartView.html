@@ -90,9 +90,13 @@
         }
 
         function configureOptionsFormatters(aaOptions) {
-            if (aaOptions.tooltip
-                && aaOptions.tooltip.formatter) {
-                aaOptions.tooltip.formatter = eval(aaOptions.tooltip.formatter);
+            if (aaOptions.tooltip) {
+                if (aaOptions.tooltip.formatter) {
+                    aaOptions.tooltip.formatter = eval(aaOptions.tooltip.formatter);
+                }
+                if (aaOptions.tooltip.positioner) {
+                    aaOptions.tooltip.positioner = eval(aaOptions.tooltip.positioner);
+                }
             }
 
             if (aaOptions.xAxis

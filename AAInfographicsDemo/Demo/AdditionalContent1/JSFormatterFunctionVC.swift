@@ -56,6 +56,9 @@ class JSFormatterFunctionVC: AABaseChartVC {
         case 13: return customizeEveryDataLabelSinglelyByDataLabelsFormatter()
         case 14: return customXAxisLabelsBeImages()
         case 15: return customLegendItemClickEvent()
+        case 16: return customTooltipPostionerFunction()
+        case 17: return fixedTooltipPositionByCustomPositionerFunction()
+            
         default:
             return AAOptions()
         }
@@ -1148,4 +1151,67 @@ function(event) {
         
         return aaOptions
     }
+    
+    // https://github.com/AAChartModel/AAChartKit-Swift/issues/233
+    private func customTooltipPostionerFunction() -> AAOptions {
+        let categories = [
+            "孤岛危机",
+            "使命召唤",
+            "荣誉勋章",
+            "狙击精英",
+            "神秘海域",
+            "最后生还者",
+            "巫师3狂猎",
+            "对马之魂",
+            "死亡搁浅",
+            "地狱边境",
+            "闪客",
+            "忍者之印"
+        ]
+        
+        let aaChartModel = AAChartModel()
+            .chartType(.column)
+            .yAxisTitle("")
+            .yAxisGridLineWidth(0)
+            .categories(categories)
+            .series([
+                AASeriesElement()
+                    .name("单机大作")
+                    .color(AAColor.red)
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.tooltip?
+            .shadow(false)
+            .positioner("""
+            function (labelWidth, labelHeight, point) {
+                return {
+                 x : point.plotX,
+                 y : 20
+                };
+            }
+            """)
+        
+        return aaOptions
+    }
+    
+        
+    private func fixedTooltipPositionByCustomPositionerFunction() -> AAOptions {
+        let aaOptions = customTooltipPostionerFunction()
+        
+        aaOptions.tooltip?
+            .positioner("""
+            function (labelWidth, labelHeight, point) {
+                return {
+                 x : 50,
+                 y : 50
+                };
+            }
+            """)
+        
+        return aaOptions
+    }
+    
+    
 }
