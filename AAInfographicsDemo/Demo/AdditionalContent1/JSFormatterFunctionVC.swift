@@ -966,7 +966,8 @@ function () {
         return aaOptions
     }
 
-//
+    // Refer to GitHub issue: https://github.com/AAChartModel/AAChartKit/issues/938
+    // Refer to online chart sample: https://www.highcharts.com/demo/column-comparison
     private func customXAxisLabelsBeImages() -> AAOptions {
          let nameArr = [
             "South Korea",
