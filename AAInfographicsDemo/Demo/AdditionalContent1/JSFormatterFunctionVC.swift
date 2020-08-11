@@ -657,7 +657,7 @@ function () {
     private func customLineChartOriginalPointPositionByConfiguringXAxisFormatterAndTooltipFormatter() -> AAOptions {
         let categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         
-        let categoryJSArrStr = javaScriptArrayStringWithSwiftArray(categories)
+        let categoryJSArrStr = categories.toJSArray()
         
         let tooltipFormatter = """
         function () {
@@ -763,14 +763,14 @@ function () {
             arc4random() % 10, arc4random() % 10, arc4random() % 10,
         ]
         
-        let 总时长JS数组 = javaScriptArrayStringWithSwiftArray(总时长数组)
-        let 有效时长JS数组 = javaScriptArrayStringWithSwiftArray(有效时长数组)
-        let 看近时长JS数组 = javaScriptArrayStringWithSwiftArray(看近时长数组)
-        let 看中时长JS数组 = javaScriptArrayStringWithSwiftArray(看中时长数组)
-        let 看远时长JS数组 = javaScriptArrayStringWithSwiftArray(看远时长数组)
-        let 切换次数JS数组 = javaScriptArrayStringWithSwiftArray(切换次数数组)
-        let 停止次数JS数组 = javaScriptArrayStringWithSwiftArray(停止次数数组)
-        let 干预次数JS数组 = javaScriptArrayStringWithSwiftArray(干预次数数组)
+        let 总时长JS数组 = 总时长数组.toJSArray()
+        let 有效时长JS数组 = 有效时长数组.toJSArray()
+        let 看近时长JS数组 = 看近时长数组.toJSArray()
+        let 看中时长JS数组 = 看中时长数组.toJSArray()
+        let 看远时长JS数组 = 看远时长数组.toJSArray()
+        let 切换次数JS数组 = 切换次数数组.toJSArray()
+        let 停止次数JS数组 = 停止次数数组.toJSArray()
+        let 干预次数JS数组 = 干预次数数组.toJSArray()
         
         let jsFormatterStr = """
         function () {
@@ -819,18 +819,6 @@ function () {
         
         return aaOptions
     }
-    
-    //Convert Swift array to be JavaScript array
-    private func javaScriptArrayStringWithSwiftArray(_ swiftArray: [Any]) -> String {
-        var originalJsArrStr = ""
-        for element in swiftArray {
-            originalJsArrStr = originalJsArrStr + "'\(element)',"
-        }
-        
-        let finalJSArrStr = "[\(originalJsArrStr)]"
-        return finalJSArrStr
-    }
-    
 
     //https://github.com/AAChartModel/AAChartKit/issues/852 自定义蜘蛛🕷图样式
     private func customSpiderChartStyle() -> AAOptions {
@@ -844,7 +832,7 @@ function () {
             "不动销金额占比",
             "停采金额占比",
         ]
-        let categoryJSArrStr = javaScriptArrayStringWithSwiftArray(categoryArr)
+        let categoryJSArrStr = categoryArr.toJSArray()
         
         let xAxisLabelsFormatter = """
         function () {
@@ -938,7 +926,7 @@ function () {
         
         
         let unitArr = ["美元", "欧元", "人民币", "日元", "韩元", "越南盾", "港币", ]
-        let unitJSArrStr = javaScriptArrayStringWithSwiftArray(unitArr)
+        let unitJSArrStr = unitArr.toJSArray()
         //单组 serie 图表, 获取选中的点的索引是 this.point.index ,多组并且共享提示框,则是this.points[0].index
         let dataLabelsFormatter = """
         function () {
@@ -1017,7 +1005,7 @@ function () {
                     .colorByPoint(true)
             ])
 
-         let imageLinkFlagJSArrStr = javaScriptArrayStringWithSwiftArray(imageLinkFlagArr)
+        let imageLinkFlagJSArrStr = imageLinkFlagArr.toJSArray()
          let xLabelsFormatter = """
 function () {
     let imageFlag = \(imageLinkFlagJSArrStr)[this.pos];
