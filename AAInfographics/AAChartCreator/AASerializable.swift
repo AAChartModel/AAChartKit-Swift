@@ -59,13 +59,10 @@ public extension AASerializable {
         for case let (label?, value) in mirrorChildren {
             switch value {
             case let value as AAObject: do {
-//                print("🦁propery name：\(label)     property value：\(value)")
-//                print("To be saved value：\(value.JSONRepresentation)")
                 representation[label] = value.JSONRepresentation
                 }
                 
             case let value as [AAObject]: do {
-//                print("l🐯propery name：\(label)     property value：\(value)")
                 var aaObjectArr = [AnyObject]()
                 
                 let valueCount = value.count
@@ -79,7 +76,6 @@ public extension AASerializable {
                 }
                 
             case let value as NSObject: do {
-//                  print("🐱propery name：\(label)     property value：\(value)")
                 representation[label] = value
                 }
                 
