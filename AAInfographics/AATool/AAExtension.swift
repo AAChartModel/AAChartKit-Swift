@@ -32,6 +32,27 @@
 
 import UIKit
 
+public extension String {
+    
+    func toPureJSString() -> String {
+        //https://stackoverflow.com/questions/34334232/why-does-function-not-work-but-function-does-chrome-devtools-node
+        var pureJSStr = "(\(self))"
+        pureJSStr = pureJSStr.replacingOccurrences(of: "'", with: "\"")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\0", with: "")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\n", with: "")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\\", with: "\\\\")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\"", with: "\\\"")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\n", with: "\\n")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\r", with: "\\r")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{000C}", with: "\\f")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
+        return pureJSStr
+    }
+
+}
+
+
 public extension Array {
     
     //Convert Swift array to be JavaScript array
@@ -44,4 +65,8 @@ public extension Array {
         let finalJSArrStr = "[\(originalJsArrStr)]"
         return finalJSArrStr
     }
+    
 }
+
+
+

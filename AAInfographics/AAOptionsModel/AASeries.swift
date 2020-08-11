@@ -124,7 +124,7 @@ public class AAEvents: AAObject {
     @discardableResult
     public func legendItemClick(_ prop: String?) -> AAEvents {
         if prop != nil {
-            legendItemClick = AAJSStringPurer.pureJavaScriptFunctionString(prop!)
+            legendItemClick = prop!.toPureJSString()
         }
         return self
     }

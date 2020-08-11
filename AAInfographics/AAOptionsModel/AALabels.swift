@@ -87,9 +87,7 @@ public class AALabels: AAObject {
     
     @discardableResult
     public func formatter(_ prop: String) -> AALabels {
-        var pureJSFunctionStr = "(\(prop))"
-        pureJSFunctionStr = AAJSStringPurer.pureJavaScriptFunctionString(pureJSFunctionStr)
-        formatter = pureJSFunctionStr
+        formatter = prop.toPureJSString()
         return self
     }
     

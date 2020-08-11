@@ -32,7 +32,6 @@
 		278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55131EE948C900770B97 /* AnimationTypeVC.swift */; };
 		279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */; };
 		27DB49A42273767000B7926B /* AATooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB49A32273767000B7926B /* AATooltip.swift */; };
-		27DB49A6227381C300B7926B /* AAJSStringPurer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DB49A5227381C300B7926B /* AAJSStringPurer.swift */; };
 		27E475F924B83AE200690657 /* AABaseChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E475F824B83AE200690657 /* AABaseChartVC.swift */; };
 		27FADB8620D6569000FED960 /* HideOrShowChartSeriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FADB8520D6569000FED960 /* HideOrShowChartSeriesVC.swift */; };
 		440839A1226AD2B600645263 /* AADataLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440839A0226AD2B600645263 /* AADataLabels.swift */; };
@@ -57,7 +56,7 @@
 		446809DE22C3809000BAE647 /* AAXAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446809DD22C3809000BAE647 /* AAXAxis.swift */; };
 		446809E022C380A000BAE647 /* AAYAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446809DF22C380A000BAE647 /* AAYAxis.swift */; };
 		447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */; };
-		448330B624E23DED00368A30 /* AAStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448330B524E23DED00368A30 /* AAStringExtension.swift */; };
+		448330B624E23DED00368A30 /* AAExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448330B524E23DED00368A30 /* AAExtension.swift */; };
 		4486C50823D7516300B54849 /* AAStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486C50723D7516300B54849 /* AAStates.swift */; };
 		449A0ED62377149D009F8FE1 /* ScrollingUpdateDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */; };
 		44EB70A722BCB606008FECE4 /* JSFormatterFunctionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EB70A622BCB606008FECE4 /* JSFormatterFunctionVC.swift */; };
@@ -113,7 +112,6 @@
 		278C55131EE948C900770B97 /* AnimationTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeVC.swift; sourceTree = "<group>"; };
 		279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowManyChartViewVC.swift; sourceTree = "<group>"; };
 		27DB49A32273767000B7926B /* AATooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AATooltip.swift; sourceTree = "<group>"; };
-		27DB49A5227381C300B7926B /* AAJSStringPurer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAJSStringPurer.swift; sourceTree = "<group>"; };
 		27E475F824B83AE200690657 /* AABaseChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABaseChartVC.swift; sourceTree = "<group>"; };
 		27FADB8520D6569000FED960 /* HideOrShowChartSeriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideOrShowChartSeriesVC.swift; sourceTree = "<group>"; };
 		440839A0226AD2B600645263 /* AADataLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADataLabels.swift; sourceTree = "<group>"; };
@@ -138,7 +136,7 @@
 		446809DD22C3809000BAE647 /* AAXAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAXAxis.swift; sourceTree = "<group>"; };
 		446809DF22C380A000BAE647 /* AAYAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAYAxis.swift; sourceTree = "<group>"; };
 		447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawChartWithAAOptionsVC.swift; sourceTree = "<group>"; };
-		448330B524E23DED00368A30 /* AAStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAStringExtension.swift; sourceTree = "<group>"; };
+		448330B524E23DED00368A30 /* AAExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAExtension.swift; sourceTree = "<group>"; };
 		4486C50723D7516300B54849 /* AAStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAStates.swift; sourceTree = "<group>"; };
 		4490BB372388E1AE005B9238 /* AAInfographicsDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AAInfographicsDemo.entitlements; sourceTree = "<group>"; };
 		449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingUpdateDataVC.swift; sourceTree = "<group>"; };
@@ -292,8 +290,7 @@
 			children = (
 				272BBE7721A258C200DBE69D /* AAColor.swift */,
 				44143D3521A17F2300D44657 /* AAGradientColor.swift */,
-				27DB49A5227381C300B7926B /* AAJSStringPurer.swift */,
-				448330B524E23DED00368A30 /* AAStringExtension.swift */,
+				448330B524E23DED00368A30 /* AAExtension.swift */,
 			);
 			path = AATool;
 			sourceTree = "<group>";
@@ -474,7 +471,6 @@
 				27DB49A42273767000B7926B /* AATooltip.swift in Sources */,
 				446809DC22C3806E00BAE647 /* AALegend.swift in Sources */,
 				4415475F231A1A4000382DAD /* AACrosshair.swift in Sources */,
-				27DB49A6227381C300B7926B /* AAJSStringPurer.swift in Sources */,
 				4415475D231A194000382DAD /* AAChart.swift in Sources */,
 				27499150210D90B5003D18C2 /* AASeriesElement.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
@@ -503,7 +499,7 @@
 				2749914F210D90B5003D18C2 /* AAChartModel.swift in Sources */,
 				278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */,
 				44154761231A1AE100382DAD /* AAMarker.swift in Sources */,
-				448330B624E23DED00368A30 /* AAStringExtension.swift in Sources */,
+				448330B624E23DED00368A30 /* AAExtension.swift in Sources */,
 				27FADB8620D6569000FED960 /* HideOrShowChartSeriesVC.swift in Sources */,
 				44EB70A722BCB606008FECE4 /* JSFormatterFunctionVC.swift in Sources */,
 				44154769231A1D5600382DAD /* AASeries.swift in Sources */,

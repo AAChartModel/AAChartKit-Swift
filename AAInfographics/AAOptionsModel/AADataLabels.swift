@@ -82,7 +82,7 @@ public class AADataLabels: AAObject {
     @discardableResult
     public func formatter(_ prop: String?) -> AADataLabels {
         if prop != nil {
-            formatter = AAJSStringPurer.pureJavaScriptFunctionString(prop!)
+            formatter = prop!.toPureJSString()
         }
         return self
     }

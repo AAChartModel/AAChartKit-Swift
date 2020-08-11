@@ -97,9 +97,7 @@ public class AATooltip: AAObject {
     
     @discardableResult
     public func formatter(_ prop: String) -> AATooltip {
-        var pureJSFunctionStr = "(\(prop))"
-        pureJSFunctionStr = AAJSStringPurer.pureJavaScriptFunctionString(pureJSFunctionStr)
-        formatter = pureJSFunctionStr
+        formatter = prop.toPureJSString()
         return self
     }
     
@@ -159,9 +157,7 @@ public class AATooltip: AAObject {
     
     @discardableResult
     public func positioner(_ prop: String) -> AATooltip {
-        var pureJSFunctionStr = "(\(prop))"
-        pureJSFunctionStr = AAJSStringPurer.pureJavaScriptFunctionString(pureJSFunctionStr)
-        positioner = pureJSFunctionStr
+        positioner = prop.toPureJSString()
         return self
     }
     
