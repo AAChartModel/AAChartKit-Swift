@@ -445,11 +445,11 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         
         let sectionTitleLabel = UILabel()
         sectionTitleLabel.frame = sectionHeaderView.bounds
+        sectionTitleLabel.autoresizingMask = [.flexibleWidth , .flexibleHeight]
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花の淡紫色
         sectionTitleLabel.font = .boldSystemFont(ofSize: 17)
         sectionTitleLabel.textAlignment = .center
-        sectionTitleLabel.autoresizingMask = [.flexibleWidth , .flexibleHeight]
         sectionHeaderView.addSubview(sectionTitleLabel)
         
         return sectionHeaderView
