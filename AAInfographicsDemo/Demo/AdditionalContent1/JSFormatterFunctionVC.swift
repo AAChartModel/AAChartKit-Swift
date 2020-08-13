@@ -58,6 +58,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
         case 15: return customLegendItemClickEvent()
         case 16: return customTooltipPostionerFunction()
         case 17: return fixedTooltipPositionByCustomPositionerFunction()
+        case 18: return disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction()
             
         default:
             return AAOptions()
@@ -1202,5 +1203,41 @@ function(event) {
         return aaOptions
     }
     
-    
+    //https://github.com/AAChartModel/AAChartKit/issues/967
+    private func disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction() -> AAOptions  {
+        let aaChartModel = AAChartModel()
+            .chartType(.bar)
+            .title("Custom Bar Chart select color")
+            .yAxisTitle("")
+            .yAxisReversed(true)
+            .xAxisReversed(true)
+            .series([
+                AASeriesElement()
+                    .name("ElementOne")
+                    .data([211,183,157,133,111,91,73,57,43,31,21,13,7,3])
+                    .allowPointSelect(true)
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .color(AAColor.yellow))
+                        .select(AASelect()
+                            .color(AAColor.red)))
+            ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.plotOptions?.series?
+            .point(AAPoint()
+                .events(AAPointEvents()
+                    .click("""
+                    function () {
+                        if (this.selected == true) {
+                            this.selected = false;
+                        }
+                        return;
+                    }
+                    """))
+        )
+
+        return aaOptions
+    }
 }

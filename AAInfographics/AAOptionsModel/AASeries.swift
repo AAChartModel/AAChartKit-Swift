@@ -44,6 +44,8 @@ public class AASeries: AAObject {
     public var shadow: AAShadow?
     public var dataLabels: AADataLabels?
     public var states: AAStates?
+    public var allowPointSelect: Bool?
+    public var point: AAPoint?
 
     
     @discardableResult
@@ -112,19 +114,58 @@ public class AASeries: AAObject {
         return self
     }
     
+    @discardableResult
+    public func point(_ prop: AAPoint) -> AASeries {
+        point = prop
+        return self
+    }
+    
     public override init() {
         
     }
 }
 
+
 public class AAEvents: AAObject {
     public var legendItemClick: String?
 
-    
     @discardableResult
     public func legendItemClick(_ prop: String?) -> AAEvents {
         if prop != nil {
             legendItemClick = prop!.toPureJSString()
+        }
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
+
+
+public class AAPoint: AAObject {
+    public var events: AAPointEvents?
+
+    @discardableResult
+    public func events(_ prop: AAPointEvents?) -> AAPoint {
+        events = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
+
+public class AAPointEvents: AAObject {
+    public var click: String?
+    
+    @discardableResult
+    public func click(_ prop: String?) -> AAPointEvents {
+        if prop != nil {
+            click = prop!.toPureJSString()
         }
         return self
     }
