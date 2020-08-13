@@ -37,7 +37,7 @@ class MainVC: UIViewController {
     private var sectionTitleArr = [String]()
     private var chartTypeTitleArr = [[String]]()
     private var chartTypeArr = [[Any]]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -273,12 +273,6 @@ class MainVC: UIViewController {
             /*Data Sorting With Animation Charts*/
             [  "Column Chart---柱形图",
                "Bar Chart---条形图",
-//               "Area Chart---折线填充图",
-//               "Areaspline Chart---曲线填充图",
-//               "Step Area Chart--- 直方折线填充图",
-//               "Step Line Chart--- 直方折线图",
-//               "Line Chart---折线图",
-//               "Spline Chart---曲线图",
                "Scatter Chart---散点图",
             ],
         ]
@@ -294,7 +288,7 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.line,
                 AAChartType.spline,
-                ],
+            ],
             /*Special Types chart*/
             [
                 AAChartType.column,
@@ -311,7 +305,7 @@ class MainVC: UIViewController {
                 AAChartType.pyramid,
                 AAChartType.funnel,
                 AAChartType.errorbar,
-                ],
+            ],
             [//Empty Array,just for holding place
             ],
             /*Mixed Chart*/
@@ -341,7 +335,7 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.spline,
                 AAChartType.scatter
-                ],
+            ],
             [//Empty Array,just for holding place
             ],
             [
@@ -353,7 +347,7 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.line,
                 AAChartType.spline,
-                ],
+            ],
             [
                 AAChartType.column,
                 AAChartType.bar,
@@ -363,13 +357,13 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.line,
                 AAChartType.spline,
-                ],
-            [//Empty Array,just for holding place
             ],
             [//Empty Array,just for holding place
             ],
             [//Empty Array,just for holding place
-             ],
+            ],
+            [//Empty Array,just for holding place
+            ],
             /*Scrolling update chart data*/
             [
                 AAChartType.column,
@@ -381,7 +375,7 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.spline,
                 AAChartType.scatter
-                ],
+            ],
             /*Scrollable chart*/
             [
                 AAChartType.column,
@@ -398,12 +392,6 @@ class MainVC: UIViewController {
             [
                 AAChartType.column,
                 AAChartType.bar,
-//                AAChartType.area,
-//                AAChartType.areaspline,
-//                AAChartType.area,
-//                AAChartType.line,
-//                AAChartType.line,
-//                AAChartType.spline,
                 AAChartType.scatter
             ],
         ]
@@ -413,19 +401,19 @@ class MainVC: UIViewController {
         setUpMainTableView()
     }
     
-   private func setUpMainTableView() {
+    private func setUpMainTableView() {
         let tableView = UITableView()
         tableView.frame = self.view.bounds
+        tableView.autoresizingMask = [.flexibleWidth , .flexibleHeight]
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .white
         tableView.rowHeight = 45
         tableView.sectionHeaderHeight = 45
-        tableView.autoresizingMask = [.flexibleWidth , .flexibleHeight]
         view.addSubview(tableView)
     }
     
-   private func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
+    private func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
         return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
                        green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
                        blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
@@ -492,24 +480,28 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
+            
         case 1:
             /*Special Type Charts*/
             let vc = SpecialChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
+            
         case 2:
             /*Mixed Type Charts*/
             let vc = CustomStyleChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = self.chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
+            
         case 3:
             /*Mixed Type Charts*/
             let vc = MixedChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
+            
         case 4:
             /*Only Refresh Chart Data Dynamiclly*/
             let vc = OnlyRefreshChartDataVC()
@@ -520,6 +512,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
+            
         case 5:
             /*Show Many Charts In the Same View*/
             if indexPath.row == 0 {
@@ -529,7 +522,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 let vc = DoubleChartsLinkedWorkVC()
                 navigationController?.pushViewController(vc, animated: true)
             }
-         
+            
         case 6:
             /*Chart Rendering Animation Types*/
             let vc = AnimationTypeVC()
@@ -539,6 +532,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
+            
         case 7:
             /*Hide Or Show Chart Series Element*/
             let vc = HideOrShowChartSeriesVC()
@@ -548,23 +542,27 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
+            
         case 8:
             /*Evaluate JavaScript String Function*/
             let vc = EvaluateJSStringFunctionVC()
             vc.sampleChartTypeIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
+            
         case 9:
             /*Draw Chart With AAOptions Instance Object*/
             let vc = DrawChartWithAAOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = self.chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
+            
         case 10:
             /*Custom Tooltip With JavaScript Formatter Function */
             let vc = JSFormatterFunctionVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = self.chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
+            
         case 11:
             /*Scrolling update Chart Data Dynamiclly*/
             let vc = ScrollingUpdateDataVC()
@@ -575,6 +573,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
                 vc.step = true
             }
             navigationController?.pushViewController(vc, animated: true)
+            
         case 12:
             /*Scrollable Charts*/
             let vc = ScrollableChartVC()
@@ -591,9 +590,10 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             if indexPath.row == 4 || indexPath.row == 5 {
-                         vc.step = true
-                     }
+                vc.step = true
+            }
             navigationController?.pushViewController(vc, animated: true)
+            
         default:
             break
         }
