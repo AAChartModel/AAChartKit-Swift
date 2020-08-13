@@ -414,47 +414,15 @@ class MainVC: UIViewController {
     }
     
    private func setUpMainTableView() {
-        let myTableView = UITableView()
-        myTableView.delegate = self
-        myTableView.dataSource = self
-        myTableView.backgroundColor = .white
-        myTableView.rowHeight = 45
-        myTableView.sectionHeaderHeight = 45
-        view.addSubview(myTableView)
-        
-        myTableView.translatesAutoresizingMaskIntoConstraints = false
-        myTableView.superview!.addConstraints(configureTheConstraintArray(childView: myTableView, fatherView: view))
-    }
- 
-   private func configureTheConstraintArray(childView: UIView, fatherView: UIView) -> [NSLayoutConstraint] {
-        return [NSLayoutConstraint(item: childView,
-                                   attribute: .left,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .left,
-                                   multiplier: 1.0,
-                                   constant: 0),
-                NSLayoutConstraint(item: childView,
-                                   attribute: .right,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .right,
-                                   multiplier: 1.0,
-                                   constant: 0),
-                NSLayoutConstraint(item: childView,
-                                   attribute: .top,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .top,
-                                   multiplier: 1.0,
-                                   constant: 0),
-                NSLayoutConstraint(item: childView,
-                                   attribute: .bottom,
-                                   relatedBy: .equal,
-                                   toItem: fatherView,
-                                   attribute: .bottom,
-                                   multiplier: 1.0,
-                                   constant: 0)]
+        let tableView = UITableView()
+        tableView.frame = self.view.bounds
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .white
+        tableView.rowHeight = 45
+        tableView.sectionHeaderHeight = 45
+        tableView.autoresizingMask = [.flexibleWidth , .flexibleHeight]
+        view.addSubview(tableView)
     }
     
    private func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
@@ -484,20 +452,19 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = kRGBColorFromHex(rgbValue: 0xF5F5F5)//白烟
+        let sectionHeaderView = UIView()
+        sectionHeaderView.backgroundColor = kRGBColorFromHex(rgbValue: 0xF5F5F5)//白烟
         
         let sectionTitleLabel = UILabel()
+        sectionTitleLabel.frame = sectionHeaderView.bounds
         sectionTitleLabel.text = sectionTitleArr[section]
         sectionTitleLabel.textColor =  kRGBColorFromHex(rgbValue: 0x7B68EE)//熏衣草花の淡紫色
         sectionTitleLabel.font = .boldSystemFont(ofSize: 17)
         sectionTitleLabel.textAlignment = .center
-        view.addSubview(sectionTitleLabel)
+        sectionTitleLabel.autoresizingMask = [.flexibleWidth , .flexibleHeight]
+        sectionHeaderView.addSubview(sectionTitleLabel)
         
-        sectionTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        sectionTitleLabel.superview!.addConstraints(configureTheConstraintArray(childView: sectionTitleLabel, fatherView: view))
-        
-        return view
+        return sectionHeaderView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
