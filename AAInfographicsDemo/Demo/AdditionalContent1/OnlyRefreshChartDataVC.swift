@@ -173,8 +173,8 @@ class OnlyRefreshChartDataVC: AABaseChartVC {
         var y2 = 0.0
         let Q = arc4random() % 38
         for  x in 0 ..< 40 {
-            y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1 ;
-            y2 = cos(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 3.0 * 0.01 - 1;
+            y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1
+            y2 = cos(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 3.0 * 0.01 - 1
             randomNumArrA.append(y1)
             randomNumArrB.append(y2)
         }

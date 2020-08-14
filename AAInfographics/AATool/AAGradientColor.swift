@@ -430,21 +430,21 @@ public class AAGradientColor  {
         ) -> [String : Int] {
         switch direction {
         case .toTop:
-            return ["x1":0, "y1":1, "x2":0, "y2":0];
+            return ["x1":0, "y1":1, "x2":0, "y2":0]
         case .toBottom:
-            return ["x1":0, "y1":0, "x2":0, "y2":1];
+            return ["x1":0, "y1":0, "x2":0, "y2":1]
         case .toLeft:
-            return ["x1":1, "y1":0, "x2":0, "y2":0];
+            return ["x1":1, "y1":0, "x2":0, "y2":0]
         case .toRight:
-            return ["x1":0, "y1":0, "x2":1, "y2":0];
+            return ["x1":0, "y1":0, "x2":1, "y2":0]
         case .toTopLeft:
-            return ["x1":1, "y1":1, "x2":0, "y2":0];
+            return ["x1":1, "y1":1, "x2":0, "y2":0]
         case .toTopRight:
-            return ["x1":0, "y1":1, "x2":1, "y2":0];
+            return ["x1":0, "y1":1, "x2":1, "y2":0]
         case .toBottomLeft:
-            return ["x1":1, "y1":0, "x2":0, "y2":1];
+            return ["x1":1, "y1":0, "x2":0, "y2":1]
         case .toBottomRight:
-            return ["x1":0, "y1":0, "x2":1, "y2":1];
+            return ["x1":0, "y1":0, "x2":1, "y2":1]
         }
     }
 }

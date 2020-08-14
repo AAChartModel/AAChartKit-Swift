@@ -101,7 +101,7 @@ class DataSortingWithAnimationChartVC: AABaseChartVC {
                         .enabled(true)
                         .matchByName(true))
                     .data(randomDataArray())
-            ]);
+            ])
         
         if (aaOptions.chart?.type == AAChartType.column.rawValue) {
             aaOptions.plotOptions?
@@ -122,10 +122,10 @@ class DataSortingWithAnimationChartVC: AABaseChartVC {
             aaOptions.plotOptions?.series?
                 .marker(AAMarker()
                     .radius(15))
-                .dataLabels?.verticalAlign(.middle);
+                .dataLabels?.verticalAlign(.middle)
         }
         
-        return aaOptions;
+        return aaOptions
     }
     
     private func randomDataArray() -> [Any] {

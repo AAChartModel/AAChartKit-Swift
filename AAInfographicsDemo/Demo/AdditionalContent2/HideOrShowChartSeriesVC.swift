@@ -144,9 +144,9 @@ class HideOrShowChartSeriesVC: UIViewController {
              "show Three",
              "show Four",
              ]
-        ];
+        ]
         let typeLabelNameArr = ["HIDE CHART SERIES",
-                                "SHOW CHART SERIES"];
+                                "SHOW CHART SERIES"]
         
         for  i in 0..<segmentedNamesArray.count {
             let segment = UISegmentedControl.init(items: segmentedNamesArray[i])
@@ -154,7 +154,7 @@ class HideOrShowChartSeriesVC: UIViewController {
                                    y: 40.0 * CGFloat(i) + (view.frame.size.height - 145),
                                    width: view.frame.size.width-40,
                                    height: 20)
-            segment.tag = i;
+            segment.tag = i
             segment.tintColor = .red
             segment.selectedSegmentIndex = 0
             segment.addTarget(self,

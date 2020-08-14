@@ -149,7 +149,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
         var y1 = 0.0
         let Q = arc4random() % 38
         for  x in 0 ..< 40 {
-            y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1 ;
+            y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1 
             randomNumArrA.add(
                 AADataElement()
                     .color(selectedColor as Any)

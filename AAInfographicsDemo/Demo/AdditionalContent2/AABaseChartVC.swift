@@ -66,7 +66,7 @@ class AABaseChartVC: UIViewController {
         if (self.selectedIndex == self.navigationItemTitleArr!.count - 1) {
             self.title = "❗️This is the last chart❗️"
          } else {
-             self.selectedIndex = self.selectedIndex + 1;
+             self.selectedIndex = self.selectedIndex + 1
             let chartType = self.navigationItemTitleArr?[self.selectedIndex]
             if chartType is String {
                 self.title = chartType as? String
@@ -103,17 +103,17 @@ class AABaseChartVC: UIViewController {
         var topConstraintConstant = 0
           // 如果statusBarFrame为CGRectZero,说明状态栏是隐藏的
         let statusBarFrame = UIApplication.shared.statusBarFrame
-          let istatusHiden = (statusBarFrame.size.height == 0);
+          let istatusHiden = (statusBarFrame.size.height == 0)
 
           if (hairPhone == true) {
-              topConstraintConstant = 88;
+              topConstraintConstant = 88
               if (istatusHiden == true) {
-                  topConstraintConstant -= 44;
+                  topConstraintConstant -= 44
               }
           } else {
-              topConstraintConstant = 64;
+              topConstraintConstant = 64
               if (istatusHiden == true) {
-                  topConstraintConstant -= 20;
+                  topConstraintConstant -= 20
               }
           }
         
@@ -176,12 +176,12 @@ class AABaseChartVC: UIViewController {
             || orientation == UIInterfaceOrientation.portraitUpsideDown) {
             let hairPhone = isHairPhoneScreen()
             if (hairPhone == true) {
-                self.topConstraint!.constant = 88;
+                self.topConstraint!.constant = 88
             } else {
-                self.topConstraint!.constant = 64;
+                self.topConstraint!.constant = 64
             }
         } else {
-            self.topConstraint!.constant = 44;
+            self.topConstraint!.constant = 44
         }
         
         self.view.layoutSubviews()
@@ -203,11 +203,11 @@ class AABaseChartVC: UIViewController {
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
-            aaChartModel.touchEventEnabled = true;
+            aaChartModel.touchEventEnabled = true
             self.aaChartView?.aa_drawChartWithChartModel(aaChartModel)
         } else if (chartConfiguration is AAOptions) {
-            let aaOptions = chartConfiguration as! AAOptions;
-            aaOptions.touchEventEnabled = true;
+            let aaOptions = chartConfiguration as! AAOptions
+            aaOptions.touchEventEnabled = true
             self.aaChartView?.aa_drawChartWithChartOptions(aaOptions)
         }
     }
@@ -226,11 +226,11 @@ class AABaseChartVC: UIViewController {
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
-            aaChartModel.touchEventEnabled = true;
+            aaChartModel.touchEventEnabled = true
             self.aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel)
         } else if (chartConfiguration is AAOptions) {
-            let aaOptions = chartConfiguration as! AAOptions;
-            aaOptions.touchEventEnabled = true;
+            let aaOptions = chartConfiguration as! AAOptions
+            aaOptions.touchEventEnabled = true
             aaOptions.credits?
                 .enabled(true)
                 .text("https://github.com/AAChartModel/AAChartKit")
