@@ -166,9 +166,8 @@ public class AAOptionsConstructor {
             .pinchType(aaChartModel.zoomType) //Set gesture zoom direction
             .panning(true) //Set whether gestures can be panned after zooming
             .polar(aaChartModel.polar) //Whether to polarize the chart (turn on polar mode)
-            .marginLeft(aaChartModel.marginLeft)
-            .marginRight(aaChartModel.marginRight)
             .scrollablePlotArea(aaChartModel.scrollablePlotArea)
+        aaChart.margin = aaChartModel.margin
         
         let aaTitle = AATitle()
             .text(aaChartModel.title) //Title text content

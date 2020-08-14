@@ -160,9 +160,7 @@ public class AAChartModel: AAObject {
     public var yAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
     public var crosshairs: Bool?            //Enable or disable the crosshairs
     public var polar: Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
-    public var marginLeft: Float?           //Chart left margin
-    public var marginRight: Float?          //Chart right margin
-    public var marginBottom: Float?         //Chart bottom margin
+    public var margin: [Float]?
     public var dataLabelsEnabled: Bool?     //Enable or disable the data labels. Defaults to false
     public var dataLabelsFontColor: String? //The data labels font color
     public var dataLabelsFontSize: Float?   //The data labels font size
@@ -343,20 +341,8 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
-    public func marginLeft(_ prop: Float) -> AAChartModel {
-        marginLeft = prop
-        return self
-    }
-    
-    @discardableResult
-    public func marginRight(_ prop: Float) -> AAChartModel {
-        marginRight = prop
-        return self
-    }
-    
-    @discardableResult
-    public func marginBottom(_ prop: Float) -> AAChartModel {
-        marginBottom = prop
+    public func margin(top: Float = 0, right: Float = 0, bottom: Float = 0, left: Float = 0) -> AAChartModel {
+        margin = [top,right,bottom,left]
         return self
     }
     

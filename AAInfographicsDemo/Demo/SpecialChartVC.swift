@@ -66,8 +66,7 @@ class SpecialChartVC: AABaseChartVC {
             .dataLabelsEnabled(false)
             .categories(["January", "February", "March", "April", "May", "June",
                          "July", "August", "September", "October", "November", "December"])
-            .marginLeft(50)
-            .marginRight(30)
+            .margin(right: 30, left: 50)
             .series([
                 AASeriesElement()
                     .name("2018")

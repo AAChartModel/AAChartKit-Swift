@@ -85,6 +85,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
             .dataLabelsEnabled(false)
             .zoomType(.x)
+            .margin(top: 100, right: 100, bottom: 100, left: 100)
             .colorsTheme([
                 AAGradientColor.oceanBlue,
                 AAGradientColor.sanguine,
