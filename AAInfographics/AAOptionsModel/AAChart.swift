@@ -104,8 +104,8 @@ public class AAChart: AAObject {
     }
     
     @discardableResult
-    public func margin(_ prop: [Float]?) -> AAChart {
-        margin = prop
+    public func margin(top: Float = 0, right: Float = 0, bottom: Float = 0, left: Float = 0) -> AAChart {
+        margin = [top,right,bottom,left]
         return self
     }
     
