@@ -40,7 +40,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return customAreaChartTooltipStyleWithSimpleFormatString()
+        case 0: return customAreasplineChartTooltipStyleByDivWithCSS()
         case 1: return customAreaChartTooltipStyleWithDifferentUnitSuffix()
         case 2: return customAreaChartTooltipStyleWithColorfulHtmlLabels()
         case 3: return customLineChartTooltipStyleWhenValueBeZeroDoNotShow()
@@ -59,6 +59,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
         case 16: return customTooltipPostionerFunction()
         case 17: return fixedTooltipPositionByCustomPositionerFunction()
         case 18: return disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction()
+        case 19: return customAreasplineChartTooltipStyleByDivWithCSS()
             
         default:
             return AAOptions()
@@ -1217,6 +1218,96 @@ function(event) {
                     """))
         )
 
+        return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/970
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/239
+    //通过自定义 div 的 css 样式来自定义复杂效果的 tooltip 浮动提示框
+    private func customAreasplineChartTooltipStyleByDivWithCSS() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.areaspline)//图形类型
+            .stacking(.normal)
+            .categories([
+                "10-01","10-02","10-03","10-04","10-05","10-06","10-07","10-08","10-09","10-10","10-11",
+                "10-12","10-13","10-14","10-15","10-16","10-17","10-18","10-19","10-20","10-21","10-22",
+                "10-23","10-024","10-25","10-26","10-27","10-28","10-29","10-30","10-31","11-01","11-02",
+                "11-03","11-04","11-05","11-06","11-07","11-08","11-09","11-10","11-11","11-12","11-13",
+                "11-14","11-15","11-16","11-17","11-18","11-19","11-20","11-21","11-22","11-23","11-024",
+                "11-25","11-26","11-27","11-28","11-29","11-30","12-01","12-02","12-03","12-04","12-05",
+                "12-06","12-07","12-08","12-09","12-10","12-11","12-12","12-13","12-14","12-15","12-16",
+                "12-17","12-18","12-19","12-20","12-21","12-22","12-23","12-024","12-25","12-26","12-27",
+                "12-28","12-29","12-30"])
+            .series([
+                AASeriesElement()
+                    .name("黄金上涨")
+                    .lineWidth(3)
+                    .color("#FFD700"/*纯金色*/)
+                    .fillOpacity(0.5)
+                    .data([
+                        1.51, 6.7, 0.94, 1.44, 1.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
+                        4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.51, 12.7, 0.94, 1.44,
+                        18.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46,
+                        3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.33, 4.68, 1.31, 1.10, 13.9, 1.10, 1.16, 1.67,
+                        2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05,
+                        2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
+                        5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48
+                    ])
+                ,
+                AASeriesElement()
+                    .name("房价下跌")
+                    .lineWidth(3)
+                    .color("#ffc069")
+                    .fillOpacity(0.5)
+                    .data([
+                        1.51, 6.7, 0.94, 1.44, 1.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
+                        4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.51, 12.7, 0.94, 1.44,
+                        18.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46,
+                        3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.33, 4.68, 1.31, 1.10, 13.9, 1.10, 1.16, 1.67,
+                        2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05,
+                        2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
+                        5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48
+                    ])
+                ,
+            ])
+        
+        //https://zhidao.baidu.com/question/301691908.html
+        //https://jshare.com.cn/highcharts/hhhhGc
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.tooltip?
+            .useHTML(true)
+            .padding(0)
+            .borderWidth(0)
+            .formatter(#"""
+            function () {
+                var box1Text = "&nbsp 2021-" + this.x + this.points[0].series.name + this.y;
+                var box2Text = "&nbsp 2021-" + this.x + this.points[1].series.name + this.y;
+                
+                return '<style>\
+                div{margin:0;padding:0}\
+                #container{width:300px;height:40px;border:80px;marigin:}\
+                #container .box1{width:150px;height:40px;float:left;background:red;line-height:40px;color:#fff}\
+                #container .box2{width:150px;height:40px;float:right;background:green;line-height:40px;color:#fff}\
+                </style>\
+                <div id=\"container\">'
+                +
+                '<div class=\"box1\">' + box1Text + '</div>'
+                +
+                '<div class=\"box2\">' + box2Text + '</div>'
+                +
+                '</div>';
+            }
+            """#)
+        
+        //禁用图例点击事件
+        aaOptions.plotOptions?.series?.events = AAEvents()
+            .legendItemClick(#"""
+                        function() {
+                          return false;
+                        }
+            """#)
+        
         return aaOptions
     }
 }
