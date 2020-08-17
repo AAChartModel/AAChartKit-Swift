@@ -34,7 +34,7 @@ import UIKit
 
 public extension String {
     
-    func toPureJSString() -> String {
+    func aa_toPureJSString() -> String {
         //https://stackoverflow.com/questions/34334232/why-does-function-not-work-but-function-does-chrome-devtools-node
         var pureJSStr = "(\(self))"
         pureJSStr = pureJSStr.replacingOccurrences(of: "'", with: "\"")
@@ -56,7 +56,7 @@ public extension String {
 public extension Array {
     
     //Convert Swift array to be JavaScript array
-    func toJSArray() -> String {
+    func aa_toJSArray() -> String {
         var originalJsArrStr = ""
         for element in self {
             originalJsArrStr = originalJsArrStr + "'\(element)',"

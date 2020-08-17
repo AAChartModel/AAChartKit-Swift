@@ -132,7 +132,7 @@ public class AAEvents: AAObject {
     @discardableResult
     public func legendItemClick(_ prop: String?) -> AAEvents {
         if prop != nil {
-            legendItemClick = prop!.toPureJSString()
+            legendItemClick = prop!.aa_toPureJSString()
         }
         return self
     }
@@ -170,7 +170,7 @@ public class AAPointEvents: AAObject {
     @discardableResult
     public func click(_ prop: String?) -> AAPointEvents {
         if prop != nil {
-            click = prop!.toPureJSString()
+            click = prop!.aa_toPureJSString()
         }
         return self
     }
@@ -178,7 +178,7 @@ public class AAPointEvents: AAObject {
     @discardableResult
     public func mouseOver(_ prop: String?) -> AAPointEvents {
         if prop != nil {
-            mouseOver = prop!.toPureJSString()
+            mouseOver = prop!.aa_toPureJSString()
         }
         return self
     }
@@ -186,7 +186,7 @@ public class AAPointEvents: AAObject {
     @discardableResult
     public func remove(_ prop: String?) -> AAPointEvents {
         if prop != nil {
-            remove = prop!.toPureJSString()
+            remove = prop!.aa_toPureJSString()
         }
         return self
     }
@@ -194,7 +194,7 @@ public class AAPointEvents: AAObject {
     @discardableResult
     public func select(_ prop: String?) -> AAPointEvents {
         if prop != nil {
-            select = prop!.toPureJSString()
+            select = prop!.aa_toPureJSString()
         }
         return self
     }
@@ -202,7 +202,7 @@ public class AAPointEvents: AAObject {
     @discardableResult
     public func unselect(_ prop: String?) -> AAPointEvents {
         if prop != nil {
-            unselect = prop!.toPureJSString()
+            unselect = prop!.aa_toPureJSString()
         }
         return self
     }
@@ -210,7 +210,7 @@ public class AAPointEvents: AAObject {
     @discardableResult
     public func update(_ prop: String?) -> AAPointEvents {
         if prop != nil {
-            update = prop!.toPureJSString()
+            update = prop!.aa_toPureJSString()
         }
         return self
     }

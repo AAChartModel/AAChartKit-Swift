@@ -97,7 +97,7 @@ public class AATooltip: AAObject {
     
     @discardableResult
     public func formatter(_ prop: String) -> AATooltip {
-        formatter = prop.toPureJSString()
+        formatter = prop.aa_toPureJSString()
         return self
     }
     
@@ -157,7 +157,7 @@ public class AATooltip: AAObject {
     
     @discardableResult
     public func positioner(_ prop: String) -> AATooltip {
-        positioner = prop.toPureJSString()
+        positioner = prop.aa_toPureJSString()
         return self
     }
     

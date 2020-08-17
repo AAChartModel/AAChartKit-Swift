@@ -87,7 +87,7 @@ public class AALabels: AAObject {
     
     @discardableResult
     public func formatter(_ prop: String) -> AALabels {
-        formatter = prop.toPureJSString()
+        formatter = prop.aa_toPureJSString()
         return self
     }
     

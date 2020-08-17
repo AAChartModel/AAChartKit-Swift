@@ -421,7 +421,7 @@ extension AAChartView {
     /// - Parameter element: chart series element
     public func aa_addElementToChartSeries(element: AASeriesElement) {
         let elementJson = element.toJSON()!
-        let pureElementJsonStr = elementJson.toPureJSString()
+        let pureElementJsonStr = elementJson.aa_toPureJSString()
         let jsStr = "addElementToChartSeriesWithElement('\(pureElementJsonStr)')"
         safeEvaluateJavaScriptString(jsStr)
     }
@@ -456,7 +456,7 @@ extension AAChartView {
     /// - Parameter JSFunctionBodyString: valid JavaScript function body string
     public func aa_evaluateJavaScriptStringFunction(_ JSFunctionString: String) {
         if optionsJson != nil {
-            let pureJSFunctionStr = JSFunctionString.toPureJSString()
+            let pureJSFunctionStr = JSFunctionString.aa_toPureJSString()
             let jsFunctionNameStr = "evaluateTheJavaScriptStringFunction('\(pureJSFunctionStr)')"
             safeEvaluateJavaScriptString(jsFunctionNameStr)
         }
