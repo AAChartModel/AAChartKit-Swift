@@ -706,7 +706,6 @@ function () {
             .yAxisTitle("")//设置 Y 轴标题
             .yAxisLineWidth(1)//Y轴轴线线宽为0即是隐藏Y轴轴线
             .yAxisGridLineWidth(1)//y轴横向分割线宽度为1(为0即是隐藏分割线)
-            .xAxisGridLineWidth(1)//x轴横向分割线宽度为1(为0即是隐藏分割线)
             .colorsTheme(["#FFD700"/*纯金色*/])
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
