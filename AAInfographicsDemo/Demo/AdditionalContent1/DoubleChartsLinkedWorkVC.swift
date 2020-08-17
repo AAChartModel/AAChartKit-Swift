@@ -82,13 +82,13 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel1)
+        
         aaOptions.xAxis?
-            .crosshair(
-                AACrosshair()
-                    .dashStyle(AAChartLineDashStyleType.longDashDot)
-                    .color(AAColor.black)
-                    .width(1)
-        )
+            .crosshair(AACrosshair()
+                .dashStyle(AAChartLineDashStyleType.longDashDot)
+                .color(AAColor.black)
+                .width(1))
+        
         aaOptions.plotOptions?.column?.groupPadding(0)
         
         aaChartView1.aa_drawChartWithChartOptions(aaOptions)
@@ -129,10 +129,10 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
         selectedColor = colorsArr?[moveOverEventMessage.index ?? 0] ?? "#ff000"
         
-        aaChartView2.aa_onlyRefreshTheChartDataWithChartModelSeries(
-            [AASeriesElement()
-                .data(configureSeriesDataArray())]
-        )
+        aaChartView2.aa_onlyRefreshTheChartDataWithChartModelSeries([
+            AASeriesElement()
+                .data(configureSeriesDataArray())
+            ])
     }
     
     private func getRandomNumbersArr(numbers: Int) -> [Float] {
