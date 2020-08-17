@@ -117,10 +117,7 @@ function () {
             .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
             .backgroundColor("#000000")
             .borderColor("#000000")
-            .style(AAStyle()
-                .color("#FFD700")
-                .fontSize(12)
-        )
+            .style(AAStyle(color: "#FFD700", fontSize: 12))
         
         return aaOptions
     }
@@ -317,10 +314,7 @@ function () {
             .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
             .backgroundColor("#000000")
             .borderColor("#000000")
-            .style(AAStyle()
-                .color("#1e90ff")
-                .fontSize(12)
-        )
+            .style(AAStyle(color: "#1e90ff", fontSize: 12))
         
         return aaOptions
     }
@@ -384,11 +378,7 @@ function () {
                 ])
         
         let aaYAxisLabels = AALabels()
-            .style(AAStyle()
-                .fontSize(10)
-                .fontWeight(.bold)
-                .color(AAColor.gray)//Y轴文字颜色
-            )
+            .style(AAStyle(color: AAColor.gray, fontSize: 10, weight: .bold))
             .formatter(#"""
 function () {
         let yValue = this.value;
@@ -496,16 +486,15 @@ function () {
                 .fontSize(12.0))
         
         let aaCategories = ["0-4", "5-9", "10-14", "15-19",
-        "20-24", "25-29", "30-34", "35-39", "40-44",
-        "45-49", "50-54", "55-59", "60-64", "65-69",
-        "70-74", "75-79", "80-84", "85-89", "90-94",
-        "95-99", "100 + "]
-
+                            "20-24", "25-29", "30-34", "35-39", "40-44",
+                            "45-49", "50-54", "55-59", "60-64", "65-69",
+                            "70-74", "75-79", "80-84", "85-89", "90-94",
+                            "95-99", "100 + "]
+        
         let aaXAxis1 = AAXAxis()
             .reversed(true)
             .categories(aaCategories)
-            .labels(
-                AALabels()
+            .labels(AALabels()
                 .step(1))
         
         let aaXAxis2 = AAXAxis()
@@ -513,17 +502,14 @@ function () {
             .opposite(true)
             .categories(aaCategories)
             .linkedTo(0)
-            .labels(
-                AALabels()
-                  .step(1))
+            .labels(AALabels()
+                .step(1))
         
         let aaYAxis = AAYAxis()
             .gridLineWidth(0)// Y 轴网格线宽度
-            .title(
-                AATitle()
+            .title(AATitle()
                 .text(""))//Y 轴标题
-            .labels(
-                AALabels()
+            .labels(AALabels()
                 .formatter("""
 function () {
     return (Math.abs(this.value) / 1000000) + 'M';
@@ -533,13 +519,10 @@ function () {
             .max( 4000000)
         
         let aaPlotOptions = AAPlotOptions()
-            .series(
-                AASeries()
-                .animation(
-                   AAAnimation()
+            .series(AASeries()
+                .animation(AAAnimation()
                     .duration(800)
-                    .easing(.bounce)
-                )
+                    .easing(.bounce))
                 .stacking(.normal))
         
         let aaTooltip = AATooltip()
@@ -555,17 +538,21 @@ function () {
         let aaSeriesElement1 = AASeriesElement()
             .name("Men")
             .color(gradientColorDic1)
-            .data([-1746181, -1884428, -2089758, -2222362, -2537431, -2507081, -2443179,
-            -2664537, -3556505, -3680231, -3143062, -2721122, -2229181, -2227768,
-            -2176300, -1329968, -836804, -354784, -90569, -28367, -3878])
+            .data([
+                -1746181, -1884428, -2089758, -2222362, -2537431, -2507081, -2443179,
+                -2664537, -3556505, -3680231, -3143062, -2721122, -2229181, -2227768,
+                -2176300, -1329968, -836804, -354784, -90569, -28367, -3878
+            ])
         
         let aaSeriesElement2 = AASeriesElement()
             .name("Women")
             .color(gradientColorDic2)
-            .data([1656154, 1787564, 1981671, 2108575, 2403438, 2366003, 2301402, 2519874,
-            3360596, 3493473, 3050775, 2759560, 2304444, 2426504, 2568938, 1785638,
-            1447162, 1005011, 330870, 130632, 21208])
-                
+            .data([
+                1656154, 1787564, 1981671, 2108575, 2403438, 2366003, 2301402, 2519874,
+                3360596, 3493473, 3050775, 2759560, 2304444, 2426504, 2568938, 1785638,
+                1447162, 1005011, 330870, 130632, 21208
+            ])
+        
         let aaOptions = AAOptions()
             .chart(aaChart)
             .title(aaTitle)
@@ -813,10 +800,7 @@ function () {
             .formatter(jsFormatterStr)
             .backgroundColor("#000000")//黑色背景色
             .borderColor("#FFD700")//边缘颜色纯金色
-            .style(AAStyle()
-                    .color("#FFD700")//文字颜色纯金色
-                    .fontSize(12)
-        )
+            .style(AAStyle(color: "#FFD700", fontSize: 12))
         
         return aaOptions
     }
@@ -936,19 +920,15 @@ function () {
         """
         
         let aaDatalabels = AADataLabels()
-            .style(AAStyle()
-                .fontSize(10)
-                .fontWeight(.bold)
-                .color(AAColor.red)
-                .textOutline("1px 1px contrast"))
+            .style(AAStyle(color: AAColor.red, fontSize: 10, weight: .bold))
             .formatter(dataLabelsFormatter)
             .backgroundColor(AAColor.white)// white color
             .borderColor(AAColor.red)// red color
             .borderRadius(1.5)
             .borderWidth(1.3)
             .x(3)
-            .verticalAlign(.middle)
             .y(-20)
+            .verticalAlign(.middle)
         
         aaOptions.plotOptions?.series?.dataLabels = aaDatalabels
         
