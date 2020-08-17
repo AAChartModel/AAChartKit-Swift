@@ -1473,7 +1473,7 @@ function () {
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
         let categories = ["智力感", "距离感", "成熟感"]
-        let categoryJSArrStr = javaScriptArrayStringWithSwiftArray(categories)
+        let categoryJSArrStr = categories.aa_toJSArray()
         
         let xAxisLabelsFormatter = """
         function () {
@@ -1856,18 +1856,7 @@ function () {
         
         return aaOptions
     }
-    
-    
-    //Convert Swift array to be JavaScript array
-    private func javaScriptArrayStringWithSwiftArray(_ swiftArray: [Any]) -> String {
-        var originalJsArrStr = ""
-        for element in swiftArray {
-            originalJsArrStr = originalJsArrStr + "'\(element)',"
-        }
-        
-        let finalJSArrStr = "[\(originalJsArrStr)]"
-        return finalJSArrStr
-    }
+
 }
 
 
