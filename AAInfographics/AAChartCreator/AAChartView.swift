@@ -284,7 +284,7 @@ extension AAChartView {
     /// - Parameter chartOptionsSeries: chart options series  array
     /// - Parameter animation: enable animation effect or not
     public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartOptionsSeries: [AASeriesElement], animation: Bool) {
-        var seriesElementDicArr = [[String: AnyObject]]()
+        var seriesElementDicArr = [[String: Any]]()
         chartOptionsSeries.forEach { (aaSeriesElement) in
             seriesElementDicArr.append(aaSeriesElement.toDic()!)
         }

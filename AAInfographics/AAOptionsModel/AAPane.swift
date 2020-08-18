@@ -36,7 +36,7 @@ public class AAPane: AAObject {
     public var background: [AABackgroundElement]?
     public var center: [String]?
     public var endAngle: Float?
-    public var size: AnyObject?
+    public var size: Any?
     public var startAngle: Float?
     
     
@@ -59,7 +59,7 @@ public class AAPane: AAObject {
     }
     
     @discardableResult
-    public func size(_ prop: AnyObject) -> AAPane {
+    public func size(_ prop: Any) -> AAPane {
         size = prop
         return self
     }
@@ -76,16 +76,16 @@ public class AAPane: AAObject {
 }
 
 public class AABackgroundElement: AAObject {
-    public var backgroundColor: AnyObject? //背景颜色
+    public var backgroundColor: Any? //背景颜色
     public var borderColor: String? //边框颜色
     public var borderWidth: Float? //边框宽度
     public var className: String?//类名
-    public var innerRadius: AnyObject?//内半径
-    public var outerRadius: AnyObject?//外半径
+    public var innerRadius: Any?//内半径
+    public var outerRadius: Any?//外半径
     public var shape: String?
     
     @discardableResult
-    public func backgroundColor(_ prop: AnyObject) -> AABackgroundElement {
+    public func backgroundColor(_ prop: Any) -> AABackgroundElement {
         backgroundColor = prop
         return self
     }
@@ -109,13 +109,13 @@ public class AABackgroundElement: AAObject {
     }
     
     @discardableResult
-    public func innerRadius(_ prop: AnyObject) -> AABackgroundElement {
+    public func innerRadius(_ prop: Any) -> AABackgroundElement {
         innerRadius = prop
         return self
     }
     
     @discardableResult
-    public func outerRadius(_ prop: AnyObject) -> AABackgroundElement {
+    public func outerRadius(_ prop: Any) -> AABackgroundElement {
         outerRadius = prop
         return self
     }

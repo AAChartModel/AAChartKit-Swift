@@ -34,7 +34,7 @@
 import Foundation
 
 public protocol AAJSONRepresentable {
-    var JSONRepresentation: AnyObject { get }
+    var JSONRepresentation: Any { get }
 }
 
 public protocol AASerializable: AAJSONRepresentable {
@@ -51,8 +51,8 @@ public extension AAObject {
 }
 
 public extension AASerializable {
-    var JSONRepresentation: AnyObject {
-        var representation = [String: AnyObject]()
+    var JSONRepresentation: Any {
+        var representation = [String: Any]()
         
         let mirrorChildren = Mirror(reflecting: self).children
         
@@ -63,16 +63,16 @@ public extension AASerializable {
                 }
                 
             case let value as [AAObject]: do {
-                var aaObjectArr = [AnyObject]()
+                var aaObjectArr = [Any]()
                 
                 let valueCount = value.count
                 for i in 0 ..< valueCount {
                     let aaObject = value[i]
                     let aaObjectDic = aaObject.toDic()
-                    aaObjectArr.append(aaObjectDic as AnyObject)
+                    aaObjectArr.append(aaObjectDic as Any)
                 }
                 
-                representation[label] = aaObjectArr as AnyObject
+                representation[label] = aaObjectArr
                 }
                 
             case let value as NSObject: do {
@@ -85,13 +85,13 @@ public extension AASerializable {
             }
         }
         
-        return representation as AnyObject
+        return representation as Any
     }
 }
 
 public extension AASerializable {
-    func toDic() -> [String: AnyObject]? {
-        let dic = JSONRepresentation as? [String: AnyObject]
+    func toDic() -> [String: Any]? {
+        let dic = JSONRepresentation as? [String: Any]
         return dic
     }
     
