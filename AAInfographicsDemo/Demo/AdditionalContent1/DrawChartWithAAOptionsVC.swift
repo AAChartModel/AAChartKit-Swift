@@ -567,6 +567,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .subtitle("金价(元/克)")//图表副标题
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
+            .zoomType(.x)
             .categories([
                 "10-01","10-02","10-03","10-04","10-05","10-06","10-07","10-08","10-09","10-10","10-11",
                 "10-12","10-13","10-14","10-15","10-16","10-17","10-18","10-19","10-20","10-21","10-22",
@@ -595,6 +596,10 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+                
+        aaOptions.chart?
+            .resetZoomButton(AAResetZoomButton()
+                .theme(["display": "none"]))//隐藏图表缩放后的默认显示的缩放按钮
 
         aaOptions.tooltip?
             .useHTML(true)

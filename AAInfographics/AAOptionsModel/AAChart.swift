@@ -48,6 +48,7 @@ public class AAChart: AAObject {
     public var marginBottom: Float? //👇
     public var marginLeft: Float? //👈
     public var scrollablePlotArea: AAScrollablePlotArea?
+    public var resetZoomButton: AAResetZoomButton?
     
     @discardableResult
     public func type(_ prop: AAChartType?) -> AAChart {
@@ -136,6 +137,40 @@ public class AAChart: AAObject {
     @discardableResult
     public func scrollablePlotArea(_ prop: AAScrollablePlotArea?) -> AAChart {
         scrollablePlotArea = prop
+        return self
+    }
+    
+    @discardableResult
+    public func resetZoomButton(_ prop: AAResetZoomButton?) -> AAChart {
+        resetZoomButton = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
+public class AAResetZoomButton: AAObject {
+    public var position: AAPosition?
+    public var relativeTo: String?
+    public var theme: [String: Any]?
+    
+    @discardableResult
+    public func position(_ prop: AAPosition?) -> AAResetZoomButton {
+        position = prop
+        return self
+    }
+    
+    @discardableResult
+    public func relativeTo(_ prop: String?) -> AAResetZoomButton {
+        relativeTo = prop
+        return self
+    }
+    
+    @discardableResult
+    public func theme(_ prop: [String: Any]?) -> AAResetZoomButton {
+        theme = prop
         return self
     }
     
