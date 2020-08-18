@@ -594,7 +594,9 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                 ,
             ])
         
-        let aaTooltip = AATooltip()
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+
+        aaOptions.tooltip?
             .useHTML(true)
             .formatter("""
 function () {
@@ -610,14 +612,7 @@ function () {
             .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
             .backgroundColor("#000000")
             .borderColor("#000000")
-            .style(AAStyle()
-                .color("#FFD700")
-                .fontSize(12)
-        )
-        
-        
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-        aaOptions.tooltip(aaTooltip)
+            .style(AAStyle(color: "#FFD700", fontSize: 12))
         
         return aaOptions
     }
