@@ -33,8 +33,8 @@
 import Foundation
 
 public class AAPlotBandsElement: AAObject {
-    public var from: Float?
-    public var to: Float?
+    public var from: Double?
+    public var to: Double?
     public var color: Any?
     public var borderColor: String?
     public var borderWidth: Float?
@@ -46,13 +46,13 @@ public class AAPlotBandsElement: AAObject {
     
     
     @discardableResult
-    public func from(_ prop: Float) -> AAPlotBandsElement {
+    public func from(_ prop: Double) -> AAPlotBandsElement {
         from = prop
         return self
     }
     
     @discardableResult
-    public func to(_ prop: Float) -> AAPlotBandsElement {
+    public func to(_ prop: Double) -> AAPlotBandsElement {
         to = prop
         return self
     }
