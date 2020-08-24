@@ -175,8 +175,8 @@ public class AAChartModel: AAObject {
     public var yAxisTitle: String?          //The actual text of the axis title
     public var yAxisLineWidth: Float?       //The width of y axis line
     public var yAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area. Defaults to 1
-    public var yAxisMin: Float?             //The y axis mini value
-    public var yAxisMax: Float?             //The y axis max value
+    public var yAxisMin: Double?             //The y axis mini value
+    public var yAxisMax: Double?             //The y axis max value
     public var yAxisAllowDecimals: Bool?    //The y axis values label allow decimals or not
     public var tooltipEnabled: Bool?        //Show the tooltip or not
     public var tooltipValueSuffix: String?  //Custom tooltip value unit suffix
@@ -425,13 +425,13 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
-    public func yAxisMin(_ prop: Float) -> AAChartModel {
+    public func yAxisMin(_ prop: Double) -> AAChartModel {
         yAxisMin = prop
         return self
     }
     
     @discardableResult
-    public func yAxisMax(_ prop: Float) -> AAChartModel {
+    public func yAxisMax(_ prop: Double) -> AAChartModel {
         yAxisMax = prop
         return self
     }

@@ -352,12 +352,12 @@ public class AAShadow: AAObject {
 }
 
 public class AAZonesElement: AAObject {
-    public var value: Float?
+    public var value: Double?
     public var color: String?
     public var dashStyle: String?
 
     @discardableResult
-    public func value(_ prop: Float) -> AAZonesElement {
+    public func value(_ prop: Double) -> AAZonesElement {
         value = prop
         return self
     }

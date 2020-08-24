@@ -48,8 +48,8 @@ public class AAYAxis: AAObject {
     public var lineColor: String? // y--axis line color
     public var offset: Float? // y-axis horizontal offset
     public var allowDecimals: Bool? // Does the y-axis allow decimals to be displayed?
-    public var max: Float? // y-axis maximum
-    public var min: Float? // y-axis minimum  (set to 0, there will be no negative numbers)
+    public var max: Double? // y-axis maximum
+    public var min: Double? // y-axis minimum  (set to 0, there will be no negative numbers)
     // private var minPadding: // Padding of the min value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the lowest data value to appear on the edge of the plot area. The default is: 0.05.
     public var tickPositions: [Any]? // Custom Y-axis coordinates (eg: [0, 25, 50, 75, 100])
     public var visible: Bool? // Whether the y-axis is allowed to display
@@ -152,13 +152,13 @@ public class AAYAxis: AAObject {
     }
     
     @discardableResult
-    public func max(_ prop: Float?) -> AAYAxis {
+    public func max(_ prop: Double?) -> AAYAxis {
         max = prop
         return self
     }
     
     @discardableResult
-    public func min(_ prop: Float?) -> AAYAxis {
+    public func min(_ prop: Double?) -> AAYAxis {
         min = prop
         return self
     }

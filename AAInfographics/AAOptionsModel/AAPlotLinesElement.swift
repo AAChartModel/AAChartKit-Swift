@@ -36,7 +36,7 @@ public class AAPlotLinesElement: AAObject {
     public var color: Any?
     public var dashStyle: String?
     public var width: Float?
-    public var value: Float?
+    public var value: Double?
     public var zIndex: Int?
     public var label: AALabel?
     
@@ -59,7 +59,7 @@ public class AAPlotLinesElement: AAObject {
     }
     
     @discardableResult
-    public func value(_ prop: Float) -> AAPlotLinesElement {
+    public func value(_ prop: Double) -> AAPlotLinesElement {
         value = prop
         return self
     }
