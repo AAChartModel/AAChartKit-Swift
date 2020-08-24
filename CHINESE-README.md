@@ -270,6 +270,11 @@ public class AAMoveOverEventMessageModel: NSObject {
     public var index: Int?
 }
   ```
+  
+  监听用户点击事件可实现多种多样的自定义功能. 例如可通过用户点击事件回调来实现**双表联动**, 示例效果如下
+  
+  ![doubleChartsLinkage](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/doubleChartsLinkage.gif)
+
 
 
 ### 支持通过`JavaScript` 函数来自定义 `AATooltip`视图显示效果
@@ -421,9 +426,7 @@ public var inverted: Bool?                             //x 轴是否翻转(垂�
 public var xAxisReversed: Bool?                        //x 轴翻转
 public var yAxisReversed: Bool?                        //y 轴翻转
 public var polar: Bool?                                //是否极化图形(变为雷达图)
-public var marginLeft: Float?                          //图表左边距
-public var marginRight: Float?                         //图表右边距
-public var marginBottom: Float?                        //图表底部边距
+public var margin: [Float]?                            //图表外边缘和绘图区域之间的边距. 数组中的数字分别表示顶部，右侧，底部和左侧
 public var dataLabelsEnabled: Bool?                    //数据标签是否显示
 public var dataLabelsFontColor: String?                //数据标签的字体颜色
 public var dataLabelsFontSize: Float?                  //数据标签的字体大小
@@ -534,10 +537,10 @@ Java | AAChartCore | Android | https://github.com/AAChartModel/AAChartCore |
 - [x] 支持渲染极地图
 - [x] 支持渲染折线直方图
 - [x] 支持渲染折线直方填充图
-- [ ] 支持渲染矩形树状层级关系图
-- [ ] 支持渲染活动刻度仪表图
-- [ ] 支持为图形添加点击事件回调
-- [ ] 支持图形实时刷新纯数据并动态滚动
+- [x] 支持渲染矩形树状层级关系图
+- [x] 支持渲染活动刻度仪表图
+- [x] 支持为图形添加点击事件回调
+- [x] 支持图形实时刷新纯数据并动态滚动
 - [ ] 支持已渲染图形生成图片文件
 - [ ] 支持生成图片文件保存至系统相册
 

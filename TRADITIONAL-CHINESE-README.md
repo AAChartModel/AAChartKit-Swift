@@ -272,6 +272,10 @@
       public var index: Int?
   }
     ```
+    
+   監聽用戶點擊事件可實現多種多樣的自定義功能. 例如可通過用戶點擊事件回調來實現**雙表聯動**, 示例效果如下
+    
+    ![doubleChartsLinkage](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/doubleChartsLinkage.gif)
 
 
   ### 支持通過`JavaScript` 函數來自定義 `AATooltip`視圖顯示效果
@@ -407,9 +411,7 @@
   public var xAxisReversed: Bool?                        //x 軸翻轉
   public var yAxisReversed: Bool?                        //y 軸翻轉
   public var polar: Bool?                                //是否極化圖形(變為雷達圖)
-  public var marginLeft: Float?                          //圖表左邊距
-  public var marginRight: Float?                         //圖表右邊距
-  public var marginBottom: Float?                        //圖表底部邊距
+  public var margin: [Float]?                            //圖表外邊緣和繪圖區域之間的邊. 數組中的數字分別表示頂部，右側，底部和左側
   public var dataLabelsEnabled: Bool?                    //數據標簽是否顯示
   public var dataLabelsFontColor: String?                //數據標簽的字體顏色
   public var dataLabelsFontSize: Float?                  //數據標簽的字體大小
@@ -520,10 +522,10 @@
   - [x] 支持渲染極地圖
   - [x] 支持渲染折線直方圖
   - [x] 支持渲染折線直方填充圖
-  - [ ] 支持渲染矩形樹狀層級關系圖
-  - [ ] 支持渲染活動刻度儀表圖
-  - [ ] 支持為圖形添加點擊事件回調
-  - [ ] 支持圖形實時刷新純數據並動態滾動
+  - [x] 支持渲染矩形樹狀層級關系圖
+  - [x] 支持渲染活動刻度儀表圖
+  - [x] 支持為圖形添加點擊事件回調
+  - [x] 支持圖形實時刷新純數據並動態滾動
   - [ ] 支持已渲染圖形生成圖片文件
   - [ ] 支持生成圖片文件保存至系統相冊
 

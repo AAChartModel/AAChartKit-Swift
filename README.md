@@ -247,6 +247,10 @@ public class AAMoveOverEventMessageModel: NSObject {
 }
 ```
 
+Monitoring user click events can achieve a variety of custom functions. For example, you can implement **Double Charts Linkage** through user click event callbacks. The example effects are as follows
+
+![doubleChartsLinkage](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/doubleChartsLinkage.gif)
+
 
 ### Support for custom the style of chart `AATooltip` through `JavaScript` function
 
@@ -465,9 +469,7 @@ public var xAxisReversed: Bool?         //Whether to reverse the axis so that th
 public var yAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
 public var crosshairs: Bool?            //Enable or disable the crosshairs
 public var polar: Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
-public var marginLeft: Float?
-public var marginRight: Float?
-public var marginBottom: Float?
+public var margin: [Float]?
 public var dataLabelsEnabled: Bool?     //Enable or disable the data labels. Defaults to false
 public var dataLabelsFontColor: String? //The data labels font color
 public var dataLabelsFontSize: Float?   //The data labels font size
@@ -574,10 +576,10 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 - [x] Support rendering the polar chart
 - [x] Support rendering the step line chart
 - [x] Support rendering the step area chart
-- [ ] Support rendering the rectangular tree hierarchy diagrams
-- [ ] Support rendering the circular progress bar chart 
-- [ ] Support adding clicked event callbacks for graphics
-- [ ] Support graphics to refresh pure data in real time and scroll dynamically
+- [x] Support rendering the rectangular tree hierarchy diagrams
+- [x] Support rendering the circular progress bar chart 
+- [x] Support adding clicked event callbacks for graphics
+- [x] Support graphics to refresh pure data in real time and scroll dynamically
 - [ ] Support rendered graphics to generate image files
 - [ ] Support generating image files saved to the system album
 
