@@ -457,20 +457,20 @@ public class AAPie: AAObject {
 }
 
 public class AABubble: AAObject {
-    public var minSize: Float?
-    public var maxSize: Float?
+    public var minSize: Any? // (String | Number)
+    public var maxSize: Any? // (String | Number)
     public var zMin: Float?
     public var zMax: Float?
     public var dataLabels:AADataLabels?
     
     @discardableResult
-    public func minSize(_ prop: Float?) -> AABubble {
+    public func minSize(_ prop: Any?) -> AABubble {
         minSize = prop
         return self
     }
     
     @discardableResult
-    public func maxSize(_ prop: Float?) -> AABubble {
+    public func maxSize(_ prop: Any?) -> AABubble {
         maxSize = prop
         return self
     }

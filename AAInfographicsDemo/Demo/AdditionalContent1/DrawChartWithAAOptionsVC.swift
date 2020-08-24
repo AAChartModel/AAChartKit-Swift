@@ -1858,6 +1858,7 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/242
     private func adjustBubbleChartMinAndMax() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.bubble)
