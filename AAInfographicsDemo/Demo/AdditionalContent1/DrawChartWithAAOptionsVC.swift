@@ -72,6 +72,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 29: return configureHexagonRadarChart()//带有颜色标志带の六角形雷达图
         case 30: return configureSpiderWebRadarChart()//带有颜色标志带の🕸蜘蛛网状雷达图
         case 31: return disableMixedChartInactiveAnimationEffect()//禁用混合图表的 inactive 动画效果
+        case 32: return adjustBubbleChartMinAndMax()//调整气泡图的 min 和 max 相关属性
 
             
         default:
@@ -1853,6 +1854,45 @@ function () {
             .states(AAStates()
                 .inactive(AAInactive()
                     .enabled(false)))
+        
+        return aaOptions
+    }
+    
+    private func adjustBubbleChartMinAndMax() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.bubble)
+            .title("AACHARTKIT BUBBLES")
+            .subtitle("JUST FOR FUN")
+            .yAxisTitle("℃")
+            .yAxisGridLineWidth(0)
+            .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
+            .series([
+                AASeriesElement()
+                    .name("BubbleOne")
+                    .data([
+                        [97, 36, 50],
+                        [94, 74, 50],
+                        [68, 76, 50],
+                        [64, 87, 50],
+                        [68, 27, 49],
+                        [74, 99, 51],
+                        [71, 93, 55],
+                        [51, 69, 60],
+                        [38, 23, 50],
+                        [57, 86, 50],
+                        [33, 24, 51]
+                    ])
+                ]
+        )
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.plotOptions?
+            .bubble(AABubble()
+                .minSize(0)
+                .maxSize(100)
+                .zMin(0)
+                .zMax(100))
         
         return aaOptions
     }
