@@ -40,6 +40,7 @@ public class AAPlotOptions: AAObject {
     public var area: AAArea?
     public var areaspline: AAAreaspline?
     public var pie: AAPie?
+    public var bubble: AABubble?
     public var columnrange: AAColumnrange?
     public var arearange: AAArearange?
     public var series: AASeries?
@@ -51,20 +52,14 @@ public class AAPlotOptions: AAObject {
     }
     
     @discardableResult
-    public func line(_ prop: AALine) -> AAPlotOptions {
-        line = prop
-        return self
-    }
-    
-    @discardableResult
-    public func pie(_ prop: AAPie) -> AAPlotOptions {
-        pie = prop
-        return self
-    }
-    
-    @discardableResult
     public func bar(_ prop: AABar) -> AAPlotOptions {
         bar = prop
+        return self
+    }
+    
+    @discardableResult
+    public func line(_ prop: AALine) -> AAPlotOptions {
+        line = prop
         return self
     }
     
@@ -83,6 +78,18 @@ public class AAPlotOptions: AAObject {
     @discardableResult
     public func areaspline(_ prop: AAAreaspline) -> AAPlotOptions {
         areaspline = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pie(_ prop: AAPie) -> AAPlotOptions {
+        pie = prop
+        return self
+    }
+    
+    @discardableResult
+    public func bubble(_ prop: AABubble) -> AAPlotOptions {
+        bubble = prop
         return self
     }
     
@@ -447,6 +454,48 @@ public class AAPie: AAObject {
         
     }
     
+}
+
+public class AABubble: AAObject {
+    public var minSize: Float?
+    public var maxSize: Float?
+    public var zMin: Float?
+    public var zMax: Float?
+    public var dataLabels:AADataLabels?
+    
+    @discardableResult
+    public func minSize(_ prop: Float?) -> AABubble {
+        minSize = prop
+        return self
+    }
+    
+    @discardableResult
+    public func maxSize(_ prop: Float?) -> AABubble {
+        maxSize = prop
+        return self
+    }
+    
+    @discardableResult
+    public func zMin(_ prop: Float?) -> AABubble {
+        zMin = prop
+        return self
+    }
+    
+    @discardableResult
+    public func zMax(_ prop: Float?) -> AABubble {
+        zMax = prop
+        return self
+    }
+    
+    @discardableResult
+    public func dataLabels(_ prop: AADataLabels?) -> AABubble {
+        dataLabels = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
 }
 
 public class AAColumnrange: AAObject {

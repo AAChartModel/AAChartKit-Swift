@@ -52,8 +52,9 @@
     public var colorByPoint: Bool?         //When using automatic point colors pulled from the `options.colors` collection, this option determines whether the chart should receive one color per series or one color per point.
     public var allowPointSelect: Bool?     //Allow this series' points to be selected by clicking on the markers, bars or pie slices
     public var zIndex: Int?                //Define the visual z index of the series.
-    public var size: Any?                  //The innder size for pie chart
-    public var innerSize: String?          //The innder size for pie chart
+    public var size: Any?                  //The innder size for pie chart (String | Number)
+    public var innerSize: Any?             //The innder size for pie chart (String | Number)
+    public var minSize: Any?               //The minimum size for a pie in response to auto margins, Only useful for pie, bubble, funnel, Pyramid (String | Number)
     public var shadow: AAShadow?
     public var zones: [AAZonesElement]?
     public var zoneAxis: String?           //Defines the Axis on which the zones are applied. defalut value：y.
@@ -197,11 +198,17 @@
     }
     
     @discardableResult
-    public func innerSize(_ prop: String) -> AASeriesElement {
+    public func innerSize(_ prop: Any) -> AASeriesElement {
         innerSize = prop
         return self
     }
     
+    @discardableResult
+    public func minSize(_ prop: Any) -> AASeriesElement {
+        minSize = prop
+        return self
+    }
+        
     @discardableResult
     public func shadow(_ prop: AAShadow) -> AASeriesElement {
         shadow = prop
