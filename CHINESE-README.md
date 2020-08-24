@@ -448,7 +448,7 @@ public var tooltipEnabled: Bool?                       //是否显示浮动提�
 public var tooltipValueSuffix: String?                 //浮动提示框单位后缀
 public var tooltipCrosshairs: Bool?                    //是否显示准星线(默认显示)
 public var colorsTheme: [Any]?                         //图表主题颜色数组
-public var series: [AASeriesElement]?                  //图表的数据数组
+public var series: [Any]?                              //图表的数据数组
 public var legendEnabled: Bool?                        //是否显示图例
 public var backgroundColor: Any?                       //图表背景色
 public var borderRadius: Int?                          //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)

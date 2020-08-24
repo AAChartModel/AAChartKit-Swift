@@ -433,7 +433,7 @@
   public var tooltipValueSuffix: String?                 //浮動提示框單位後綴
   public var tooltipCrosshairs: Bool?                    //是否顯示準星線(默認顯示)
   public var colorsTheme: [Any]?                         //圖表主題顏色數組
-  public var series: [AASeriesElement]?                  //圖表的數據數組
+  public var series: [Any]?                              //圖表的數據數組
   public var legendEnabled: Bool?                        //是否顯示圖例
   public var backgroundColor: Any?                       //圖表背景色
   public var borderRadius: Int?                          //柱狀圖長條圖頭部圓角半徑(可用於設置頭部的形狀,僅對條形圖,柱狀圖有效)

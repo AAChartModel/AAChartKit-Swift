@@ -475,7 +475,7 @@ public var dataLabelsFontColor: String? //The data labels font color
 public var dataLabelsFontSize: Float?   //The data labels font size
 public var dataLabelsFontWeight: AAChartFontWeightType?//The data labels font weight
 public var xAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
-public var categories: Array<String>?   //Set new categories for the axis
+public var categories: [String]?        //Set new categories for the axis
 public var xAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area.Defaults to 0
 public var xAxisVisible: Bool?
 public var xAxisTickInterval: Int?
@@ -490,8 +490,8 @@ public var yAxisAllowDecimals: Bool?    //The y axis values label allow decimals
 public var tooltipEnabled: Bool?
 public var tooltipValueSuffix: String?
 public var tooltipCrosshairs: Bool?
-public var colorsTheme: Array<Any>?     //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to: ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
-public var series: Array<Any>?          //An array of all the chart's series
+public var colorsTheme: [Any]?          //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to: ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
+public var series: [Any]?               //An array of all the chart's series
 public var legendEnabled: Bool?         //Enable or disable the legend. Defaults to true
 public var backgroundColor: Any?        //The background color or gradient for the outer chart area. Defaults to #FFFFFF
 public var borderRadius: Int?           //The corner radius of the outer chart border. Defaults to 0
