@@ -197,6 +197,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示の。
         //默认是：false.
         aaOptions.yAxis?.opposite(true)
+        
         return aaOptions
     }
     
@@ -213,6 +214,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.yAxis?.min(1000)
+        
         return aaOptions
     }
     
@@ -289,6 +291,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .yAxisArray(YAxisArr)
             .plotOptions(aaPlotOptions)
             .series(aaSeriesArr)
+        
         return aaOptions
     }
     
@@ -389,6 +392,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                     .thickness("5%")
                 
             ])
+        
         return aaOptions
     }
     
@@ -709,6 +713,7 @@ function () {
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML(true)
+        
         return aaOptions
     }
     
@@ -1368,6 +1373,7 @@ function () {
             .tooltip(aaTooltip)
             .legend(aaLegend)
             .series([element1,element2])
+        
         return aaOptions
     }
     
@@ -1497,7 +1503,6 @@ function () {
             .tickPositions([0,1,2,0])
         
         aaOptions.xAxis?.labels?
-            
             .formatter(xAxisLabelsFormatter)
         
         return aaOptions
@@ -1592,6 +1597,7 @@ function () {
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.xAxis?.labels?.useHTML = true
+        
         return aaOptions
     }
     
@@ -1664,6 +1670,7 @@ function () {
         
         let aaYAxis = aaOptions.yAxis
         aaYAxis?.plotBands = aaPlotBandsArr
+        
         return aaOptions
     }
     
@@ -1701,7 +1708,6 @@ function () {
             .data([17.0, 16.9, 12.5, 14.5,])
             .dataLabels(AADataLabels()
                 .color(AAColor.rgbaColor(255, 0, 0, 1.0)))
-        
         
         return aaOptions
     }
@@ -1741,7 +1747,6 @@ function () {
             .dataLabels(AADataLabels()
                 .color(AAColor.rgbaColor(255, 215, 0, 1.0)))
         
-        
         return aaOptions
     }
     
@@ -1780,7 +1785,6 @@ function () {
             .dataLabels(AADataLabels()
                 .color(AAColor.rgbaColor(50, 205, 50, 1.0)))
         
-        
         return aaOptions
     }
     
@@ -1818,7 +1822,6 @@ function () {
             .data([2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24])
             .dataLabels(AADataLabels()
                 .color(AAColor.rgbaColor(138, 43, 226, 1.0)))
-        
         
         return aaOptions
     }
