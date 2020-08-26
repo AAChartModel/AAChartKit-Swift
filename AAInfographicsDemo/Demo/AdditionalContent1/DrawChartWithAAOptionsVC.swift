@@ -73,6 +73,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 30: return configureSpiderWebRadarChart()//带有颜色标志带の🕸蜘蛛网状雷达图
         case 31: return disableMixedChartInactiveAnimationEffect()//禁用混合图表的 inactive 动画效果
         case 32: return adjustBubbleChartMinAndMax()//调整气泡图的 min 和 max 相关属性
+        case 33: return doubleLayerHalfPieChart()//双层嵌套的玉阕图
             
         default:
             return AAOptions()
@@ -1890,6 +1891,52 @@ function () {
                 .maxSize(100)
                 .zMin(0)
                 .zMax(100))
+        
+        return aaOptions
+    }
+    
+//    https://github.com/AAChartModel/AAChartKit-Swift/issues/244
+    private func doubleLayerHalfPieChart() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.pie)
+            .title("浏览器市场占比历史对比")
+            .subtitle("无任何可靠依据的虚拟数据")
+            .dataLabelsEnabled(false)//是否直接显示扇形图数据
+            .yAxisTitle("摄氏度")
+            .series([
+                AASeriesElement()
+                    .name("Past")
+                    .size("40%")//尺寸大小
+                    .innerSize("30%")//内部圆环半径大小占比
+                    .borderWidth(0)//描边的宽度
+                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
+                    .data([
+                        ["Firefox Past",   3336.2],
+                        ["Chrome Past",      26.8],
+                        ["Safari Past",      88.5],
+                        ["Opera Past",       46.0],
+                        ["Others Past",     223.0],
+                    ]),
+                AASeriesElement()
+                    .name("Now")
+                    .size("80%")//尺寸大小
+                    .innerSize("70%")//内部圆环半径大小占比
+                    .borderWidth(0)//描边的宽度
+                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
+                    .data([
+                        ["Firefox Now",    336.2],
+                        ["Chrome Now",    6926.8],
+                        ["Safari Now",     388.5],
+                        ["Opera Now",      446.0],
+                        ["Others Now",     223.0],
+                    ])
+            ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        
+        aaOptions.plotOptions?.pie?
+                .startAngle(-90)
+                .endAngle(90)
         
         return aaOptions
     }

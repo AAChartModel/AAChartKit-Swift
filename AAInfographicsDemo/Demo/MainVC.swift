@@ -226,6 +226,7 @@ class MainVC: UIViewController {
                 "Spider Web Radar Chart With PlotBands----带有颜色标志带の🕸蜘蛛网状雷达图",
                 "Disable Mixed Chart Inactive Animation Effect----禁用混合图表的 inactive 动画效果",
                 "Adjust Bubble Chart Min And Max----调整气泡图的 min 和 max 相关属性",
+                "doubleLayerHalfPieChart---双层嵌套的玉阕图",
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
             [
