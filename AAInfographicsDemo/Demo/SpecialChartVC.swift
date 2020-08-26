@@ -33,14 +33,14 @@
 import UIKit
 
 class SpecialChartVC: AABaseChartVC {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func chartConfigurationWithSelectedChartType(_ selectedChartType: AAChartType) -> Any? {
-       switch selectedChartType {
+        switch selectedChartType {
         case .column: return configureColumnChart()
         case .pie: return configurePieChart()
         case .bubble: return configureBubbleChart()
@@ -59,7 +59,7 @@ class SpecialChartVC: AABaseChartVC {
         }
     }
     
-   private func configureColumnChart() -> AAChartModel {
+    private func configureColumnChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.column)
             .polar(true)
@@ -73,11 +73,10 @@ class SpecialChartVC: AABaseChartVC {
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                     .colorByPoint(true)
                 
-                ]
-    )
+            ])
     }
     
-   private func configurePieChart() -> AAChartModel {
+    private func configurePieChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.pie)
             .backgroundColor(AAColor.white)
@@ -101,12 +100,10 @@ class SpecialChartVC: AABaseChartVC {
                         ["OC"    ,11],
                         ["Go"    ,30],
                     ])
-                ,
-                ]
-    )
+            ])
     }
     
-   private func configureBubbleChart() -> AAChartModel {
+    private func configureBubbleChart() -> AAChartModel {
         return AAChartModel()
             .chartType(.bubble)
             .title("AACHARTKIT BUBBLES")
@@ -129,7 +126,7 @@ class SpecialChartVC: AABaseChartVC {
                         [38, 23, 33],
                         [57, 86, 31],
                         [33, 24, 22]
-                        ])
+                    ])
                 ,
                 AASeriesElement()
                     .name("BubbleTwo")
@@ -145,7 +142,7 @@ class SpecialChartVC: AABaseChartVC {
                         [15, 67, 48],
                         [54, 25, 81],
                         [55, 66, 11]
-                        ])
+                    ])
                 ,
                 AASeriesElement()
                     .name("BubbleThree")
@@ -161,11 +158,9 @@ class SpecialChartVC: AABaseChartVC {
                         [64, 12, 55],
                         [30, 77, 82],
                         [88, 66, 13]
-                        ])
+                    ])
                 ,
-                ]
-    )
-        
+            ])
     }
     
     private func configureScatterChart() -> AAChartModel {
@@ -238,7 +233,7 @@ class SpecialChartVC: AABaseChartVC {
                         [156.2, 60.0], [149.9, 46.8], [169.5, 57.3], [160.0, 64.1], [175.3, 63.6],
                         [169.5, 67.3], [160.0, 75.5], [172.7, 68.2], [162.6, 61.4], [157.5, 76.8],
                         [176.5, 71.8], [164.4, 55.5], [160.7, 48.6], [174.0, 66.4], [163.8, 67.3]
-                        ])
+                    ])
                 ,
                 AASeriesElement()
                     .name("Male")
@@ -294,9 +289,8 @@ class SpecialChartVC: AABaseChartVC {
                         [180.3, 73.2], [167.6, 76.3], [183.0, 65.9], [183.0, 90.9], [179.1, 89.1],
                         [170.2, 62.3], [177.8, 82.7], [179.1, 79.1], [190.5, 98.2], [177.8, 84.1],
                         [180.3, 83.2], [180.3, 83.2]
-                        ])
-                
-                ])
+                    ])
+            ])
     }
     
     private func configureArearangeChart() -> AAChartModel {
@@ -687,8 +681,8 @@ class SpecialChartVC: AABaseChartVC {
                         [14198148, 5.2,  2.4],
                         [14199012, 1.3,  2.5],
                         [14199876, 1.6,  4.2]
-                        ])
-                ])
+                    ])
+            ])
     }
     
     private func configureAreasplinerangeChart() -> AAChartModel {
@@ -809,8 +803,8 @@ class SpecialChartVC: AABaseChartVC {
                         [-3.1, 11.4],
                         [-5.2, 10.4],
                         [-13.5, 9.8]
-                        ])
-                ])
+                    ])
+            ])
     }
     
     private func configureStepLineChart() -> AAChartModel {
@@ -827,18 +821,18 @@ class SpecialChartVC: AABaseChartVC {
                     .name("Berlin")
                     .data([450, 432, 401, 454, 590, 530, 510])
                     .step("right")//设置折线样式为直方折线,折线连接点位置靠右👉
-                    ,
+                ,
                 AASeriesElement()
                     .name("New York")
                     .data([220, 282, 201, 234, 290, 430, 410])
                     .step("center")//设置折线样式为直方折线,折线连接点位置居中
-                    ,
+                ,
                 AASeriesElement()
                     .name("Tokyo")
                     .data([120, 132, 101, 134, 90, 230, 210])
                     .step("left")//设置折线样式为直方折线,折线连接点位置靠左👈
-                    ,
-                ])
+                ,
+            ])
     }
     
     private func configureStepAreaChart() -> AAChartModel {
@@ -855,18 +849,18 @@ class SpecialChartVC: AABaseChartVC {
                     .name("Berlin")
                     .data([450, 432, 401, 454, 590, 530, 510])
                     .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
-                    ,
+                ,
                 AASeriesElement()
                     .name("New York")
                     .data([220, 282, 201, 234, 290, 430, 410])
                     .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
-                    ,
+                ,
                 AASeriesElement()
                     .name("Tokyo")
                     .data([120, 132, 101, 134, 90, 230, 210])
                     .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
-                    ,
-                ])
+                ,
+            ])
     }
     
     private func configureBoxplotChart() -> AAChartModel {
@@ -887,9 +881,8 @@ class SpecialChartVC: AABaseChartVC {
                         [714, 762, 817, 870, 918],
                         [724, 802, 806, 871, 950],
                         [834, 836, 864, 882, 910]
-                        ])
-                    ,
-                ])
+                    ])
+            ])
     }
     
     private func configureWaterfallChart() -> AAChartModel {
@@ -927,7 +920,7 @@ class SpecialChartVC: AABaseChartVC {
                             "isSum": true,
                             "color": "#04d69f"
                         ]])
-                    ])
+            ])
     }
     
     private func configurePyramidChart() -> AAChartModel {
@@ -945,9 +938,9 @@ class SpecialChartVC: AABaseChartVC {
                         ["JavaScript", 14286],
                         ["Go",         15552],
                         ["Python",     18654],
-                        ])
-                    ,
-                ])
+                    ])
+                ,
+            ])
     }
     
     private func configureFunnelChart() -> AAChartModel {
@@ -997,7 +990,7 @@ class SpecialChartVC: AABaseChartVC {
                     .color(AAColor.red)
                     .data([[48, 51], [68, 73], [92, 110], [128, 136], [140, 150], [171, 179], [135, 143], [142, 149], [204, 220], [189, 199], [95, 110], [52, 56]])
                     .tooltip(AATooltip()
-                            .pointFormat("(误差范围: {point.low}-{point.high} mm)<br/>"))
+                        .pointFormat("(误差范围: {point.low}-{point.high} mm)<br/>"))
             ])
     }
 }
