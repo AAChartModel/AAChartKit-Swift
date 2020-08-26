@@ -32,10 +32,10 @@
 import UIKit
 
 class DrawChartWithAAOptionsVC: AABaseChartVC {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
@@ -73,7 +73,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 30: return configureSpiderWebRadarChart()//带有颜色标志带の🕸蜘蛛网状雷达图
         case 31: return disableMixedChartInactiveAnimationEffect()//禁用混合图表的 inactive 动画效果
         case 32: return adjustBubbleChartMinAndMax()//调整气泡图的 min 和 max 相关属性
-
             
         default:
             return AAOptions()
@@ -115,7 +114,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             ])
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         aaOptions.yAxis?.labels?.format = "{value} $";//给y轴添加单位
-
+        
         aaOptions.legend!
             .itemMarginTop(20)
             .symbolRadius(10)//图标圆角
@@ -175,7 +174,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func yAxisOnTheRightSideChart() -> AAOptions  {
+    private func yAxisOnTheRightSideChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图表类型
             .title("yAxis on the right side 📈")//图表主标题
@@ -201,7 +200,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func adjustYAxisMinValueForChart() -> AAOptions  {
+    private func adjustYAxisMinValueForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
             .borderRadius(5)
@@ -320,7 +319,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                         NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
                         0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
                 ,
-                
             ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
@@ -374,11 +372,9 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
-        aaOptions.pane(
-            AAPane()
-                .startAngle(-150)
-                .endAngle(150)
-        )
+        aaOptions.pane(AAPane()
+            .startAngle(-150)
+            .endAngle(150))
         
         aaOptions.tooltip?.crosshairs(false)
         aaOptions.yAxis?
@@ -390,7 +386,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                     .color("#FF0000")
                     .outerRadius("105%")
                     .thickness("5%")
-                
             ])
         
         return aaOptions
@@ -411,11 +406,9 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
-        aaOptions.pane(
-            AAPane()
-                .startAngle(-150)
-                .endAngle(150)
-        )
+        aaOptions.pane(AAPane()
+            .startAngle(-150)
+            .endAngle(150))
         
         aaOptions.tooltip?.crosshairs(false)
         aaOptions.yAxis?
@@ -601,11 +594,11 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-                
+        
         aaOptions.chart?
             .resetZoomButton(AAResetZoomButton()
                 .theme(["display": "none"]))//隐藏图表缩放后的默认显示的缩放按钮
-
+        
         aaOptions.tooltip?
             .useHTML(true)
             .formatter("""
@@ -1426,7 +1419,7 @@ function () {
     }
     
     
-    private func customAxesGridLineStyle() -> AAOptions  {
+    private func customAxesGridLineStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图表类型
             .title("custom Axes Grid Line Style")//图表主标题
@@ -1602,7 +1595,7 @@ function () {
     }
     
     //三角形雷达图
-    private func configureTriangleRadarChart() -> AAOptions  {
+    private func configureTriangleRadarChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)
             .backgroundColor(AAColor.white)
@@ -1836,18 +1829,18 @@ function () {
                     .name("New York")
                     .type(.line)
                     .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    ,
+                ,
                 AASeriesElement()
                     .name("Berlin")
                     .type(.line)
                     .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                    ,
+                ,
                 AASeriesElement()
                     .name("London")
                     .type(.area)
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                    ,
-                ])
+                ,
+            ])
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
         
@@ -1900,7 +1893,7 @@ function () {
         
         return aaOptions
     }
-
+    
 }
 
 
