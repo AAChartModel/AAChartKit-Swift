@@ -37,7 +37,7 @@ class MixedChartVC: AABaseChartVC {
         super.viewDidLoad()
         
     }
- 
+    
     override func chartConfigurationWithSelectedChartTypeString(_ selectedChartTypeStr: String) -> Any? {
         switch selectedChartTypeStr {
         case "arearangeMixedLine":return configureArearangeMixedLineChart()
@@ -99,15 +99,13 @@ class MixedChartVC: AABaseChartVC {
                         [12488256, 14.4],
                         [12489120,   15],
                         [12489984, 13.6]
-                        ])
+                    ])
                     .zIndex(1)
-                    .marker(
-                        AAMarker()
-                            .radius(5)
-                            .fillColor("#1E90FF")
-                            .lineWidth(2.0)
-                    )
-                    ,
+                    .marker(AAMarker()
+                        .radius(5)
+                        .fillColor("#1E90FF")
+                        .lineWidth(2.0))
+                ,
                 AASeriesElement()
                     .name("Range")
                     .color("#1E90FF")
@@ -146,10 +144,10 @@ class MixedChartVC: AABaseChartVC {
                         [12488256, 10.8, 17.8],
                         [12489120, 11.8, 18.5],
                         [12489984, 10.8, 16.1]
-                        ])
+                    ])
                     .zIndex(0)
-                    ,
-                ])
+                ,
+            ])
     }
     
     private func configureColumnrangeMixedLineChart() -> AAChartModel {
@@ -175,25 +173,25 @@ class MixedChartVC: AABaseChartVC {
                         [(-3.1),11.4],
                         [(-5.2),10.4],
                         [(-9.9),16.8]
-                        ])
-                    ,
+                    ])
+                ,
                 AASeriesElement()
                     .name("Tokyo")
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    ,
+                ,
                 AASeriesElement()
                     .name("New York")
                     .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    ,
+                ,
                 AASeriesElement()
                     .name("Berlin")
                     .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                    ,
+                ,
                 AASeriesElement()
                     .name("London")
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                    ,
-                ])
+                ,
+            ])
     }
     
     private func configureStackingColumnMixedLineChart() -> AAChartModel {
@@ -218,9 +216,8 @@ class MixedChartVC: AABaseChartVC {
                             .color(AAColor.red)
                             .fontSize(11)
                         )
-                    )
-                    ,
-                
+                )
+                ,
                 AASeriesElement()
                     .name("老用户")
                     .data([198.66, 330.81, 151.95, 160.12, 222.56, 229.05, 128.53, 250.91, 224.47, 473.99, 126.85, 260.50])
@@ -230,9 +227,8 @@ class MixedChartVC: AABaseChartVC {
                             .color(AAColor.green)
                             .fontSize(11)
                         )
-                    )
-                    ,
-                
+                )
+                ,
                 AASeriesElement()
                     .name("总量")
                     .type(.line)
@@ -243,9 +239,9 @@ class MixedChartVC: AABaseChartVC {
                             .color(AAColor.blue)
                             .fontSize(15)
                         )
-                    )
-                    ,
-                ])
+                )
+                ,
+            ])
     }
     
     private func configureDashStyleTypesMixedChart() -> AAChartModel {
@@ -259,32 +255,32 @@ class MixedChartVC: AABaseChartVC {
                     .name("Solid")
                     .lineWidth(3)
                     .data([50, 320, 230, 370, 230, 400,])
-                    ,
+                ,
                 AASeriesElement()
                     .name("Dash")
                     .lineWidth(3)
                     .dashStyle(.dash)
                     .data([50, 320, 230, 370, 230, 400,])
-                    ,
+                ,
                 AASeriesElement()
                     .name("DashDot")
                     .lineWidth(3)
                     .dashStyle(.dashDot)
                     .data([50, 320, 230, 370, 230, 400,])
-                    ,
+                ,
                 AASeriesElement()
                     .name("LongDash")
                     .lineWidth(3)
                     .dashStyle(.longDash)
                     .data([50, 320, 230, 370, 230, 400,])
-                    ,
+                ,
                 AASeriesElement()
                     .name("LongDashDot")
                     .lineWidth(3)
                     .dashStyle(.longDashDot)
                     .data([50, 320, 230, 370, 230, 400,])
-                    ,
-                ])
+                ,
+            ])
     }
     
     private func configureNegativeColorMixedChart() -> AAChartModel {
@@ -300,8 +296,8 @@ class MixedChartVC: AABaseChartVC {
                     .color("#0088FF")
                     .negativeColor("#FF0000")
                     .threshold(4)//default:0
-                    ,
-                ])
+                ,
+            ])
     }
     
     private func configureScatterMixedLineChart() -> AAChartModel {
@@ -515,15 +511,18 @@ class MixedChartVC: AABaseChartVC {
                         [0.070095, 3.213817],
                         [0.52707,  3.952681],
                         [0.116163, 3.129283]
-                        ])
+                    ])
                     .color("#0088FF")
-                    ,
+                ,
                 AASeriesElement()
                     .type(.line)
                     .name("线性回归线")
-                    .data([[0.014, 3.078], [0.969, 4.655]])
+                    .data([
+                        [0.014, 3.078],
+                        [0.969, 4.655]
+                    ])
                     .color("#FF0000")
-                ])
+            ])
     }
     
     private func configureNegativeColorMixedBubbleChart() -> AAChartModel {
@@ -553,12 +552,12 @@ class MixedChartVC: AABaseChartVC {
                         [6,3,0],[6,4,0],[6,5,0],[6,6,0],[6,7,0],[6,8,0],[6,9,0],[6,10,1],[6,11,0],[6,12,2],
                         [6,13,1],[6,14,3],[6,15,4],[6,16,0],[6,17,0],[6,18,0],[6,19,0],[6,20,1],[6,21,2],
                         [6,22,2],[6,23,6]
-                        ])
+                    ])
                     .color("#0088FF")
                     .negativeColor("#FF0000")
                     .threshold(4)//default:0
-                    ,
-                ])
+                ,
+            ])
     }
     
     private func configurePolygonMixedScatterChart() -> AAChartModel {
@@ -570,7 +569,7 @@ class MixedChartVC: AABaseChartVC {
                     .data([[153, 42], [149, 46], [149, 55], [152, 60], [159, 70], [170, 77], [180, 70],
                            [180, 60], [173, 52], [166, 45]])
                     .color("rgba(119, 152, 191, 0.5)")
-                    ,
+                ,
                 AASeriesElement()
                     .name("实际值")
                     .type(.scatter)
@@ -627,10 +626,10 @@ class MixedChartVC: AABaseChartVC {
                         [156.2, 60.0], [149.9, 46.8], [169.5, 57.3], [160.0, 64.1], [175.3, 63.6],
                         [169.5, 67.3], [160.0, 75.5], [172.7, 68.2], [162.6, 61.4], [157.5, 76.8],
                         [176.5, 71.8], [164.4, 55.5], [160.7, 48.6], [174.0, 66.4], [163.8, 67.3]
-                        ])
+                    ])
                     .color("#ff0000")
-                    ,
-                ])
+                ,
+            ])
     }
     
     private func configurePolarChartMixedChart() -> AAChartModel {
@@ -642,18 +641,18 @@ class MixedChartVC: AABaseChartVC {
                     .name("Column")
                     .type(.column)
                     .data([8, 7, 6, 5, 4, 3, 2, 1])
-                    ,
+                ,
                 AASeriesElement()
                     .name("Line")
                     .type(.line)
                     .data([1, 2, 3, 4, 5, 6, 7, 8])
-                    ,
+                ,
                 AASeriesElement()
                     .name("Area")
                     .type(.area)
                     .data([1, 8, 2, 7, 3, 6, 4, 5])
-                    ,
-                ])
+                ,
+            ])
     }
     
     private func configureColumnMixedScatterChart() -> AAChartModel {
@@ -672,7 +671,7 @@ class MixedChartVC: AABaseChartVC {
                         3,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
                         2,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
                         1])
-                    ,
+                ,
                 AASeriesElement()
                     .name("Scatter")
                     .type(.scatter)
@@ -683,15 +682,13 @@ class MixedChartVC: AABaseChartVC {
                            2.9, 2.5, 2.8, 3.3, 2.7, 3, 2.9, 3, 3, 2.5, 2.9, 2.5, 3.6, 3.2, 2.7, 3, 2.5, 2.8, 3.2, 3, 3.8, 2.6, 2.2, 3.2, 2.8,
                            2.8, 2.7, 3.3, 3.2, 2.8, 3, 2.8, 3, 2.8, 3.8, 2.8, 2.8, 2.6, 3, 3.4, 3.1, 3, 3.1, 3.1, 3.1, 2.7, 3.2, 3.3, 3, 2.5,
                            3, 3.4, 3])
-                    .marker(
-                        AAMarker()
-                            .radius(5)
-                            .symbol("circle")
-                            .fillColor("#1E90FF")
-                            .lineWidth(2.0)
-                            .lineColor(AAColor.red)
-                    )
-                ])
+                    .marker(AAMarker()
+                        .radius(5)
+                        .symbol("circle")
+                        .fillColor("#1E90FF")
+                        .lineWidth(2.0)
+                        .lineColor(AAColor.red))
+            ])
     }
     
     private func configurePieMixedLineMixedColumnChart() -> AAChartModel {
@@ -714,12 +711,10 @@ class MixedChartVC: AABaseChartVC {
             .name("average value")
             .type(.line)
             .data([3, 2.67, 3, 6.33, 3.33])
-            .marker(
-                AAMarker()
-                    .fillColor("#1E90FF")
-                    .lineWidth(2.0)
-                    .lineColor(AAColor.white)
-        )
+            .marker(AAMarker()
+                .fillColor("#1E90FF")
+                .lineWidth(2.0)
+                .lineColor(AAColor.white))
         
         let pieElement = AAPie()
             .type(.pie)
@@ -836,6 +831,5 @@ class MixedChartVC: AABaseChartVC {
                 ,
             ])
     }
-
-
+    
 }
