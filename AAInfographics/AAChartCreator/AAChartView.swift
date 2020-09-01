@@ -570,11 +570,30 @@ extension AAChartView: WKScriptMessageHandler {
 }
 
 extension AAChartView {
-   private func getEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
+    private func getEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
         let eventMessageModel = AAMoveOverEventMessageModel()
         eventMessageModel.name = messageBody["name"] as? String
-        eventMessageModel.x = messageBody["x"] as? Float
-        eventMessageModel.y = messageBody["y"] as? Float
+        let x = messageBody["x"]
+        if x is String {
+            eventMessageModel.x = Float(x as! String)
+        } else if x is Int {
+            eventMessageModel.x = Float(x as! Int)
+        } else if x is Float {
+            eventMessageModel.x = (x as! Float)
+        } else if x is Double {
+            eventMessageModel.x = Float(x as! Double)
+        }
+        
+        let y = messageBody["y"]
+        if y is String {
+            eventMessageModel.y = Float(y as! String)
+        } else if y is Int {
+            eventMessageModel.y = Float(y as! Int)
+        } else if y is Float {
+            eventMessageModel.y = (y as! Float)
+        } else if y is Double {
+            eventMessageModel.y = Float(y as! Double)
+        }
         eventMessageModel.category = messageBody["category"] as? String
         eventMessageModel.offset = messageBody["offset"] as? [String: Any]
         eventMessageModel.index = messageBody["index"] as? Int
