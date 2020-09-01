@@ -153,11 +153,12 @@ class BasicChartVC: UIViewController {
     
     private func configureAreaChartAndAreasplineChartStyle() {
         aaChartModel!
-            .markerSymbolStyle(.innerBlank)//Set the polyline connection point style to: white inside
             .animationType(.easeOutQuart)
-            .legendEnabled(true)
+            .markerSymbolStyle(.innerBlank)//Set the polyline connection point style to: white inside
             .markerRadius(5)
             .markerSymbol(.circle)
+            .categories(["Java", "Swift", "Python", "Ruby", "PHP", "Go","C", "C#", "C++", "Perl", "R", "MATLAB", "SQL"])
+            .legendEnabled(true)
         
         if chartType == .areaspline {
             let gradientColorDic = AAGradientColor.linearGradient(
@@ -194,6 +195,8 @@ class BasicChartVC: UIViewController {
         aaChartModel!
             .markerSymbolStyle(.borderBlank)//Set the polyline connection point style to: white edge
             .markerRadius(6)
+            .categories(["Java", "Swift", "Python", "Ruby", "PHP", "Go","C", "C#", "C++", "Perl", "R", "MATLAB", "SQL"])
+
         if chartType == .spline {
             aaChartModel!
                 .animationType(.swingFromTo)
