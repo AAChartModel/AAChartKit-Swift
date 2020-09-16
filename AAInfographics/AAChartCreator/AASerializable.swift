@@ -33,15 +33,11 @@
 
 import Foundation
 
-public protocol AAJSONRepresentable {
-    var JSONRepresentation: Any { get }
+public protocol AASerializable {
+    var JSONRepresentation: [String: Any] { get }
 }
 
-public protocol AASerializable: AAJSONRepresentable {
-}
-
-public class AAObject: AASerializable  {
-}
+public class AAObject: AASerializable { }
 
 public extension AAObject {
     var classNameString: String {
@@ -51,7 +47,7 @@ public extension AAObject {
 }
 
 public extension AASerializable {
-    var JSONRepresentation: Any {
+    var JSONRepresentation: [String: Any] {
         var representation = [String: Any]()
         
         let mirrorChildren = Mirror(reflecting: self).children
@@ -84,15 +80,13 @@ public extension AASerializable {
                 break
             }
         }
-        
-        return representation as Any
+        return representation
     }
 }
 
 public extension AASerializable {
     func toDic() -> [String: Any]? {
-        let dic = JSONRepresentation as? [String: Any]
-        return dic
+        return JSONRepresentation
     }
     
     func toJSON() -> String? {
