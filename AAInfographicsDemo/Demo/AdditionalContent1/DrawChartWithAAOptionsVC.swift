@@ -74,6 +74,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 31: return disableMixedChartInactiveAnimationEffect()//禁用混合图表的 inactive 动画效果
         case 32: return adjustBubbleChartMinAndMax()//调整气泡图的 min 和 max 相关属性
         case 33: return doubleLayerHalfPieChart()//双层嵌套的玉阕图
+        case 34: return customLineChartDataLabelsFormat()//自定义曲线图的 DataLabels 的 format 属性
             
         default:
             return AAOptions()
@@ -1937,6 +1938,26 @@ function () {
         aaOptions.plotOptions?.pie?
                 .startAngle(-90)
                 .endAngle(90)
+        
+        return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/260
+    private func customLineChartDataLabelsFormat() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .dataLabelsEnabled(true)
+            .series([
+                AASeriesElement()
+                    .data([
+                        ["测试 1", 100],
+                        ["测试 2", 130],
+                        ["测试 3", 120],
+                    ])
+            ])
+        
+        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        aaOptions.plotOptions?.series?.dataLabels?
+            .format("{point.name}")
         
         return aaOptions
     }
