@@ -262,8 +262,7 @@
   ```
   
    在監聽用戶交互事件時,獲取的事件信息`AAMoveOverEventMessageModel`共包含以下內容
-   
- ```swift
+    ```swift
   public class AAMoveOverEventMessageModel: NSObject {
       public var name: String?
       public var x: Float?
@@ -272,11 +271,11 @@
       public var offset: [String: Any]?
       public var index: Int?
   }
- ```
+    ```
     
    監聽用戶點擊事件可實現多種多樣的自定義功能. 例如可通過用戶點擊事件回調來實現**雙表聯動**, 示例效果如下
     
-   ![doubleChartsLinkage](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/doubleChartsLinkage.gif)
+    ![doubleChartsLinkage](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/doubleChartsLinkage.gif)
 
 
   ### 支持通過`JavaScript` 函數來自定義 `AATooltip`視圖顯示效果

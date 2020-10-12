@@ -173,6 +173,7 @@ public class AAChartModel: AAObject {
     public var yAxisVisible: Bool?          //Show the y axis or not
     public var yAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
     public var yAxisTitle: String?          //The actual text of the axis title
+    public var xAxisTitle: String?          //The actual text of the axis title
     public var yAxisLineWidth: Float?       //The width of y axis line
     public var yAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area. Defaults to 1
     public var yAxisMin: Double?            //The y axis mini value
@@ -417,6 +418,12 @@ public class AAChartModel: AAObject {
         yAxisTitle = prop
         return self
     }
+
+    @discardableResult
+    public func xAxisTitle(_ prop: String) -> AAChartModel {
+        xAxisTitle = prop
+        return self
+    }
     
     @discardableResult
     public func yAxisLineWidth(_ prop: Float) -> AAChartModel {
@@ -509,6 +516,7 @@ public class AAChartModel: AAObject {
         yAxisLineWidth         = 0
         yAxisGridLineWidth     = 0.6
         yAxisTitle             = ""
+        xAxisTitle             = ""
         legendEnabled          = true
         borderRadius           = 0
         markerRadius           = 5 //The radius of the polyline connection point. If the default value is set to 0, then this is equivalent to not displaying.
