@@ -44,6 +44,7 @@ public class AAXAxis: AAObject {
     public var max: Float? // x-axis maximum
     public var min: Float? // x-axis minimum  (set to 0, there will be no negative numbers)
     public var tickColor: String? // Color of tick mark below x axis
+    public var title: AATitle?
     public var gridLineWidth: Float? // x-axis grid line width
     public var gridLineColor: String? // x-axis grid line color
     public var gridLineDashStyle: String? // x-axis grid line style
@@ -61,6 +62,12 @@ public class AAXAxis: AAObject {
     public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
     public var tickPositions: [Any]? // Custom x-axis coordinates 
     public var minRange: Int?
+
+    @discardableResult
+    public func title(_ prop:AATitle?) -> AAXAxis {
+        title = prop
+        return self
+    }
     
     @discardableResult
     public func type(_ prop: String?) -> AAXAxis {

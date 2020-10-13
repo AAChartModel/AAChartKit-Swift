@@ -366,6 +366,12 @@ public class AAOptionsConstructor {
                     .categories(aaChartModel.categories)
                     .visible(aaChartModel.xAxisVisible) //whether the x axis is visible
                     .tickInterval(aaChartModel.xAxisTickInterval) //Number of x-axis coordinate point intervals
+		    		.title(AATitle()
+                    .text(aaChartModel.xAxisTitle) //y axis title
+                    .style(AAStyle()
+                        .color(aaChartModel.axesTextColor)
+                ))
+
                 
                 aaOptions.xAxis(aaXAxis)
             }
