@@ -47,6 +47,11 @@ public class AAChart: AAObject {
     public var marginRight: Float? //👉
     public var marginBottom: Float? //👇
     public var marginLeft: Float? //👈
+    public var spacing: [Float]? //The distance between the outer edge of the chart and the content, like title or legend, or axis title and labels if present. The numbers in the array designate top, right, bottom and left ([👆, 👉, 👇, 👈]) respectively. Use the options spacingTop, spacingRight, spacingBottom and spacingLeft options for shorthand setting of one option. Defaults to [10, 10, 15, 10].
+    public var spacingTop: Float? //👆
+    public var spacingRight: Float? //👉
+    public var spacingBottom: Float? //👇
+    public var spacingLeft: Float? //👈
     public var scrollablePlotArea: AAScrollablePlotArea?
     public var resetZoomButton: AAResetZoomButton?
     
@@ -131,6 +136,36 @@ public class AAChart: AAObject {
     @discardableResult
     public func marginLeft(_ prop: Float?) -> AAChart {
         marginLeft = prop
+        return self
+    }
+    
+    @discardableResult
+    public func spacing(top: Float = 0, right: Float = 0, bottom: Float = 0, left: Float = 0) -> AAChart {
+        spacing = [top,right,bottom,left]
+        return self
+    }
+    
+    @discardableResult
+    public func spacingTop(_ prop: Float?) -> AAChart {
+        spacingTop = prop
+        return self
+    }
+    
+    @discardableResult
+    public func spacingRight(_ prop: Float?) -> AAChart {
+        spacingRight = prop
+        return self
+    }
+    
+    @discardableResult
+    public func spacingBottom(_ prop: Float?) -> AAChart {
+        spacingBottom = prop
+        return self
+    }
+    
+    @discardableResult
+    public func spacingLeft(_ prop: Float?) -> AAChart {
+        spacingLeft = prop
         return self
     }
     
