@@ -41,7 +41,7 @@ public class AADataLabels: AAObject {
     public var rotation: Float?
     public var allowOverlap: Bool?
     public var useHTML: Bool?
-    public var distance: Float?
+    public var distance: Any?
     public var verticalAlign: String?
     public var x: Float?
     public var y: Float?
@@ -106,7 +106,7 @@ public class AADataLabels: AAObject {
     }
     
     @discardableResult
-    public func distance(_ prop: Float?) -> AADataLabels {
+    public func distance(_ prop: Any?) -> AADataLabels {
         distance = prop
         return self
     }
