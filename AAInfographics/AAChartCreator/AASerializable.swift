@@ -33,15 +33,7 @@
 
 import Foundation
 
-public protocol AAJSONRepresentable {
-    var JSONRepresentation: Any { get }
-}
-
-public protocol AASerializable: AAJSONRepresentable {
-}
-
-public class AAObject: AASerializable  {
-}
+public class AAObject { }
 
 public extension AAObject {
     var classNameString: String {
@@ -50,18 +42,18 @@ public extension AAObject {
     }
 }
 
-public extension AASerializable {
-    var JSONRepresentation: Any {
+
+public extension AAObject {
+    func toDic() -> [String: Any]? {
         var representation = [String: Any]()
         
         let mirrorChildren = Mirror(reflecting: self).children
-        
         for case let (label?, value) in mirrorChildren {
             switch value {
             case let value as AAObject: do {
-                representation[label] = value.JSONRepresentation
-                }
-                
+                representation[label] = value.toDic()
+            }
+            
             case let value as [AAObject]: do {
                 var aaObjectArr = [Any]()
                 
@@ -73,31 +65,25 @@ public extension AASerializable {
                 }
                 
                 representation[label] = aaObjectArr
-                }
-                
+            }
+            
             case let value as NSObject: do {
                 representation[label] = value
-                }
-                
+            }
+            
             default:
                 // Ignore any unserializable properties
                 break
             }
         }
         
-        return representation as Any
+        return representation as [String: Any]?
     }
-}
-
-public extension AASerializable {
-    func toDic() -> [String: Any]? {
-        let dic = JSONRepresentation as? [String: Any]
-        return dic
-    }
+    
     
     func toJSON() -> String? {
         do {
-            let data = try JSONSerialization.data(withJSONObject: JSONRepresentation, options: [])
+            let data = try JSONSerialization.data(withJSONObject: toDic() as Any, options: [])
             let jsonStr = String(data: data, encoding: String.Encoding.utf8)
             return jsonStr
         } catch {
