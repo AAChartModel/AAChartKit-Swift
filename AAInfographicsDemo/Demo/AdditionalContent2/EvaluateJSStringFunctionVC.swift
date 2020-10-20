@@ -138,7 +138,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
                         ,
                     ])
             
-            let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+            let aaOptions = aaChartModel.aa_toAAOptions()
             aaOptions.tooltip?.followTouchMove(false)
             aaOptions.xAxis?.minRange(2)
             

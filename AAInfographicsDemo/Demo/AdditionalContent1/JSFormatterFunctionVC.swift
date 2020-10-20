@@ -101,7 +101,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
                 ,
             ])
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.tooltip?
             .useHTML(true)
             .formatter("""
@@ -148,7 +148,7 @@ function () {
                 ,
             ])
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.tooltip?
             .useHTML(true)
             .enabled(true)
@@ -202,7 +202,7 @@ function () {
                 ,
             ])
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.tooltip?
             .useHTML(true)
             .formatter(#"""
@@ -252,7 +252,7 @@ function () {
                 ,
             ])
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.tooltip?
             .useHTML(true)
             .formatter(#"""
@@ -307,7 +307,7 @@ function () {
             + "最小值: {point.low}<br/>"
         )
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.tooltip?
             .useHTML(true)
             .headerFormat("<em>实验号码： {point.key}</em><br/>")
@@ -355,7 +355,7 @@ function () {
     }
 """#)
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.yAxis?.labels(aaYAxisLabels)
 
         return aaOptions
@@ -397,7 +397,7 @@ function () {
     }
 """#)
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.yAxis?
             .opposite(true)
             .tickWidth(2)
@@ -444,7 +444,7 @@ function () {
                 ])
         
         /*Custom Tooltip Style --- 自定义图表浮动提示框样式及内容*/
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.tooltip?
             .shared(false)
             .formatter(#"""
@@ -616,7 +616,7 @@ function () {
                     ,
                 ])
         
-          let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+          let aaOptions = aaChartModel.aa_toAAOptions()
                 aaOptions.tooltip?
                     .useHTML(true)
                     .formatter("""
@@ -689,7 +689,7 @@ function () {
                 ,
             ])
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.tooltip?
             .useHTML(true)
@@ -789,7 +789,7 @@ function () {
         }
         """
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.tooltip?
             //‼️以 this.point.index 这种方式获取选中的点的索引必须设置 tooltip 的 shared 为 false
@@ -844,7 +844,7 @@ function () {
                     .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, ]),
             ])
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.chart?
             .marginLeft(80)
@@ -904,7 +904,7 @@ function () {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2]),
             ])
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.yAxis?.gridLineDashStyle = AAChartLineDashStyleType.longDash.rawValue//设置Y轴的网格线样式为 AAChartLineDashStyleTypeLongDash
         
         aaOptions.tooltip?.shared = true
@@ -996,7 +996,7 @@ function () {
 """
 
         //    https://api.highcharts.com.cn/highcharts#xAxis.labels.formatter
-         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+         let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.xAxis?.labels?
         .useHTML(true)
         .formatter(xLabelsFormatter)
@@ -1062,7 +1062,7 @@ function () {
                     .name("2020")
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
             ])
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.legend?
             .enabled(true)
@@ -1150,7 +1150,7 @@ function(event) {
                     .color(AAColor.red)
                     .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])])
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.tooltip?
             .shadow(false)
@@ -1203,7 +1203,7 @@ function(event) {
                             .color(AAColor.red)))
             ])
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.plotOptions?.series?
             .point(AAPoint()
@@ -1273,7 +1273,7 @@ function(event) {
         
         //https://zhidao.baidu.com/question/301691908.html
         //https://jshare.com.cn/highcharts/hhhhGc
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.tooltip?
             .useHTML(true)

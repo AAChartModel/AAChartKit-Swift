@@ -129,7 +129,7 @@ class OnlyRefreshChartDataVC: AABaseChartVC {
         }
         
         
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         if aaChartModel.chartType == .column {
             aaOptions.plotOptions?.column?

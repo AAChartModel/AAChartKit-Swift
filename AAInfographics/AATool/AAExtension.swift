@@ -69,4 +69,13 @@ public extension Array {
 }
 
 
+public extension AAChartModel {
+    
+    //Convert AAChartModel to be AAOptions
+    func aa_toAAOptions() -> AAOptions {
+        return AAOptionsConstructor.configureChartOptions(self)
+    }
+}
+
+
 

@@ -224,8 +224,8 @@ extension AAChartView {
     ///
     /// - Parameter aaChartModel: The instance object of AAChartModel
     public func aa_drawChartWithChartModel(_ aaChartModel: AAChartModel) {
-        let options = AAOptionsConstructor.configureChartOptions(aaChartModel)
-        aa_drawChartWithChartOptions(options)
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aa_drawChartWithChartOptions(aaOptions)
     }
     
     /// Function of only refresh the chart data after the chart has been rendered
@@ -247,7 +247,7 @@ extension AAChartView {
     ///
     /// - Parameter aaChartModel: The instance object of AAChartModel
     public func aa_refreshChartWholeContentWithChartModel(_ aaChartModel: AAChartModel) {
-        let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aa_refreshChartWholeContentWithChartOptions(aaOptions)
     }
     
