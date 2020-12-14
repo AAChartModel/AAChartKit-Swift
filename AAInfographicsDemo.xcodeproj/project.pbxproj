@@ -61,6 +61,9 @@
 		4486C50823D7516300B54849 /* AAStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486C50723D7516300B54849 /* AAStates.swift */; };
 		449A0ED62377149D009F8FE1 /* ScrollingUpdateDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */; };
 		44EB70A722BCB606008FECE4 /* JSFormatterFunctionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EB70A622BCB606008FECE4 /* JSFormatterFunctionVC.swift */; };
+		D01D701B2587EE730093C01F /* ProjectBundlePathLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */; };
+		D01D701C2587EE730093C01F /* ProjectBundlePathLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */; };
+		D01D701D2587EE730093C01F /* ProjectBundlePathLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */; };
 		FFACB2222424497B00FDAB0B /* AAScrollablePlotArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACB2212424497B00FDAB0B /* AAScrollablePlotArea.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +146,8 @@
 		4490BB372388E1AE005B9238 /* AAInfographicsDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AAInfographicsDemo.entitlements; sourceTree = "<group>"; };
 		449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingUpdateDataVC.swift; sourceTree = "<group>"; };
 		44EB70A622BCB606008FECE4 /* JSFormatterFunctionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFormatterFunctionVC.swift; sourceTree = "<group>"; };
+		D01D700D2587ECF70093C01F /* PackageBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageBundlePathLoader.swift; sourceTree = "<group>"; };
+		D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBundlePathLoader.swift; sourceTree = "<group>"; };
 		FFACB2212424497B00FDAB0B /* AAScrollablePlotArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAScrollablePlotArea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +251,8 @@
 				445353BF22631AB3009FA12A /* AAOptionsModel */,
 				441AF0B92334699100F0D39D /* AATool */,
 				27499097210D7B2E003D18C2 /* AAJSFiles.bundle */,
+				D01D700D2587ECF70093C01F /* PackageBundlePathLoader.swift */,
+				D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */,
 			);
 			path = AAInfographics;
 			sourceTree = SOURCE_ROOT;
@@ -390,12 +397,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "An An";
 				TargetAttributes = {
 					278C54AD1EE9472300770B97 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = BPAYP34L8N;
+						DevelopmentTeam = 8C6BR8Z66W;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
@@ -475,6 +482,7 @@
 				446809DC22C3806E00BAE647 /* AALegend.swift in Sources */,
 				4415475F231A1A4000382DAD /* AACrosshair.swift in Sources */,
 				4415475D231A194000382DAD /* AAChart.swift in Sources */,
+				D01D701B2587EE730093C01F /* ProjectBundlePathLoader.swift in Sources */,
 				27499150210D90B5003D18C2 /* AASeriesElement.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
 				4454E46922DF15AE00E01944 /* AALabels.swift in Sources */,
@@ -522,6 +530,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01D701C2587EE730093C01F /* ProjectBundlePathLoader.swift in Sources */,
 				278C54C71EE9472300770B97 /* AAInfographicsDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01D701D2587EE730093C01F /* ProjectBundlePathLoader.swift in Sources */,
 				278C54D21EE9472300770B97 /* AAInfographicsDemoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +605,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -619,7 +630,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -655,6 +666,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -673,7 +685,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -688,9 +700,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AAInfographicsDemo/AAInfographicsDemo.entitlements;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = BPAYP34L8N;
+				DEVELOPMENT_TEAM = 8C6BR8Z66W;
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -705,9 +717,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AAInfographicsDemo/AAInfographicsDemo.entitlements;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = BPAYP34L8N;
+				DEVELOPMENT_TEAM = 8C6BR8Z66W;
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
