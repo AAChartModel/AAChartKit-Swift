@@ -258,7 +258,7 @@ extension AAChartView {
     public func aa_drawChartWithChartOptions(_ aaOptions: AAOptions) {
         if optionsJson == nil {
             configureOptionsJsonStringWithAAOptions(aaOptions)
-            let path = Bundle(for: self.classForCoder)
+            let path = BundlePathLoader()
                 .path(forResource: "AAChartView",
                       ofType: "html",
                       inDirectory: "AAJSFiles.bundle")
