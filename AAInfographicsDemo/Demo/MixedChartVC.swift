@@ -214,9 +214,7 @@ class MixedChartVC: AABaseChartVC {
                         .enabled(true)
                         .style(AAStyle()
                             .color(AAColor.red)
-                            .fontSize(11)
-                        )
-                )
+                            .fontSize(11)))
                 ,
                 AASeriesElement()
                     .name("老用户")
@@ -225,9 +223,7 @@ class MixedChartVC: AABaseChartVC {
                         .enabled(true)
                         .style(AAStyle()
                             .color(AAColor.green)
-                            .fontSize(11)
-                        )
-                )
+                            .fontSize(11)))
                 ,
                 AASeriesElement()
                     .name("总量")
@@ -237,9 +233,7 @@ class MixedChartVC: AABaseChartVC {
                         .enabled(true)
                         .style(AAStyle()
                             .color(AAColor.blue)
-                            .fontSize(15)
-                        )
-                )
+                            .fontSize(15)))
                 ,
             ])
     }
