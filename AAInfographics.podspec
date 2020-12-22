@@ -25,8 +25,8 @@ Pod::Spec.new do |s|
     s.authors       = {'An An' => '2236368544@qq.com'}
     s.platform      = :ios, '9.0'
     s.source        = {:git => 'https://github.com/AAChartModel/AAChartKit-Swift.git', :tag => s.version}
-    s.source_files  = 'AAInfographics', 'AAInfographics/**/*.{swift}'
-    s.exclude_files = 'AAInfographics', 'AAInfographics/**/PackageBundlePathLoader.swift'
+    s.source_files  = 'AAInfographics/**/*.{swift}'
+    s.exclude_files = 'AAInfographics/**/PackageBundlePathLoader.swift'
     s.resources     = "AAInfographics/AAJSFiles.bundle"
     s.requires_arc  = true
     s.swift_version = '5.0'
