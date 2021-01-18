@@ -37,6 +37,7 @@ let kUserContentMessageNameMouseOver = "mouseover"
 
 @objc public protocol AAChartViewDelegate: NSObjectProtocol {
     @objc optional func aaChartViewDidFinishLoad (_ aaChartView: AAChartView)
+    @objc optional func aaChartViewDidFinishEvaluate (_ aaChartView: AAChartView)
     @objc optional func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel)
 }
 
@@ -178,6 +179,8 @@ public class AAChartView: WKWebView {
                 print(errorInfo)
             }
             #endif
+
+            self.delegate?.aaChartViewDidFinishEvaluate?(self)
         })
     }
     
