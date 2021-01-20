@@ -141,13 +141,21 @@ public class AAChartModel: AAObject {
     public var animationType: AAChartAnimationType? //The type of chart animation
     public var animationDuration: Int?      //The chart rendering animation duration
     public var title: String?               //The chart title
+    public var titleStyle: AAStyle?         //The chart title style
+    @available(*, unavailable, message: "`titleFontColor` was removed, please use titleStyle instead of it")
     public var titleFontColor: String?      //The chart title font color
+    @available(*, unavailable, message: "`titleFontSize` was removed, please use titleStyle instead of it")
     public var titleFontSize: Float?        //The chart title font size
+    @available(*, unavailable, message: "`titleFontWeight` was removed, please use titleStyle instead of it")
     public var titleFontWeight: AAChartFontWeightType? //The chart font weight
     public var subtitle: String?            //The chart subtitle
     public var subtitleAlign: AAChartAlignType?//The chart subtitle text align style
+    public var subtitleStyle: AAStyle?         //The chart subtitle style
+    @available(*, unavailable, message: "`subtitleFontColor` was removed, please use subtitleStyle instead of it")
     public var subtitleFontColor: String?   //The chart subtitle font color
+    @available(*, unavailable, message: "`subtitleFontSize` was removed, please use subtitleStyle instead of it")
     public var subtitleFontSize: Float?     //The chart subtitle font size
+    @available(*, unavailable, message: "`subtitleFontWeight` was removed, please use subtitleStyle instead of it")
     public var subtitleFontWeight: AAChartFontWeightType?   //The chart subtitle font weight
     public var axesTextColor: String?       //The labels font color of chart x axis and y axis
     public var chartType: AAChartType?      //The default series type for the chart. Can be any of the chart types listed under `AAChartType`. Defaults to line
@@ -162,8 +170,12 @@ public class AAChartModel: AAObject {
     public var polar: Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
     public var margin: [Float]?
     public var dataLabelsEnabled: Bool?     //Enable or disable the data labels. Defaults to false
+    public var dataLabelsStyle: AAStyle?    //The data labels style
+    @available(*, unavailable, message: "`dataLabelsFontColor` was removed, please use dataLabelsStyle instead of it")
     public var dataLabelsFontColor: String? //The data labels font color
+    @available(*, unavailable, message: "`dataLabelsFontSize` was removed, please use dataLabelsStyle instead of it")
     public var dataLabelsFontSize: Float?   //The data labels font size
+    @available(*, unavailable, message: "`dataLabelsFontWeight` was removed, please use dataLabelsStyle instead of it")
     public var dataLabelsFontWeight: AAChartFontWeightType?//The data labels font weight
     public var xAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
     public var categories: [String]?        //Set new categories for the axis
@@ -210,20 +222,26 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
+    public func titleStyle(_ prop: AAStyle) -> AAChartModel {
+        titleStyle = prop
+        return self
+    }
+    
+    @available(*, unavailable, message: "`titleFontColor` was removed, please use titleStyle instead of it")
     public func titleFontColor(_ prop: String) -> AAChartModel {
-        titleFontColor = prop
+//        titleFontColor = prop
         return self
     }
     
-    @discardableResult
+    @available(*, unavailable, message: "`titleFontSize` was removed, please use titleStyle instead of it")
     public func titleFontSize(_ prop: Float?) -> AAChartModel {
-        titleFontSize = prop
+//        titleFontSize = prop
         return self
     }
     
-    @discardableResult
+    @available(*, unavailable, message: "`titleFontWeight` was removed, please use titleStyle instead of it")
     public func titleFontWeight(_ prop: AAChartFontWeightType) -> AAChartModel {
-        titleFontWeight = prop
+//        titleFontWeight = prop
         return self
     }
     
@@ -240,20 +258,26 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
+    public func subtitleStyle(_ prop: AAStyle) -> AAChartModel {
+        subtitleStyle = prop
+        return self
+    }
+    
+    @available(*, unavailable, message: "`subtitleFontColor` was removed, please use subtitleStyle instead of it")
     public func subtitleFontColor(_ prop: String) -> AAChartModel {
-        subtitleFontColor = prop
+//        subtitleFontColor = prop
         return self
     }
     
-    @discardableResult
+    @available(*, unavailable, message: "`subtitleFontSize` was removed, please use subtitleStyle instead of it")
     public func subtitleFontSize(_ prop: Float?) -> AAChartModel {
-        subtitleFontSize = prop
+//        subtitleFontSize = prop
         return self
     }
     
-    @discardableResult
+    @available(*, unavailable, message: "`subtitleFontWeight` was removed, please use subtitleStyle instead of it")
     public func subtitleFontWeight(_ prop: AAChartFontWeightType) -> AAChartModel {
-        subtitleFontWeight = prop
+//        subtitleFontWeight = prop
         return self
     }
     
@@ -354,20 +378,26 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
+    public func dataLabelsStyle(_ prop: AAStyle) -> AAChartModel {
+        dataLabelsStyle = prop
+        return self
+    }
+    
+    @available(*, unavailable, message: "`dataLabelsFontColor` was removed, please use dataLabelsStyle instead of it")
     public func dataLabelsFontColor(_ prop: String) -> AAChartModel {
-        dataLabelsFontColor = prop
+//        dataLabelsFontColor = prop
         return self
     }
     
-    @discardableResult
+    @available(*, unavailable, message: "`dataLabelsFontSize` was removed, please use dataLabelsStyle instead of it")
     public func dataLabelsFontSize(_ prop: Float?) -> AAChartModel {
-        dataLabelsFontSize = prop
+//        dataLabelsFontSize = prop
         return self
     }
     
-    @discardableResult
+    @available(*, unavailable, message: "`dataLabelsFontWeight` was removed, please use dataLabelsStyle instead of it")
     public func dataLabelsFontWeight(_ prop: AAChartFontWeightType) -> AAChartModel {
-        dataLabelsFontWeight = prop
+//        dataLabelsFontWeight = prop
         return self
     }
     

@@ -173,11 +173,7 @@ public class AAOptionsConstructor {
             .text(aaChartModel.title) //Title text content
         
         if aaChartModel.title != "" {
-            aaTitle.style(AAStyle()
-                .color(aaChartModel.titleFontColor) //Title font color
-                .fontSize(aaChartModel.titleFontSize) //Title font size
-                .fontWeight(aaChartModel.titleFontWeight) //Title font weight
-            )
+            aaTitle.style(aaChartModel.titleStyle)
         }
         
         var aaSubtitle: AASubtitle?
@@ -185,11 +181,7 @@ public class AAOptionsConstructor {
             aaSubtitle = AASubtitle()
                 .text(aaChartModel.subtitle) //Subtitle text content
                 .align(aaChartModel.subtitleAlign) // The horizontal alignment of the chart subtitle text. Possible values are "left", "center", and "right". The default is: "center".
-                .style(AAStyle()
-                    .color(aaChartModel.subtitleFontColor) //Subtitle font color
-                    .fontSize(aaChartModel.subtitleFontSize) //Subtitle font size
-                    .fontWeight(aaChartModel.subtitleFontWeight) //Subtitle font weight
-            )
+                .style(aaChartModel.subtitleStyle)
         }
         
         
@@ -281,11 +273,7 @@ public class AAOptionsConstructor {
         .enabled(aaChartModel.dataLabelsEnabled)
         if (aaChartModel.dataLabelsEnabled == true) {
              aaDataLabels
-                .style(AAStyle()
-                    .color(aaChartModel.dataLabelsFontColor)
-                    .fontSize(aaChartModel.dataLabelsFontSize)
-                    .fontWeight(aaChartModel.dataLabelsFontWeight)
-            )
+                .style(aaChartModel.dataLabelsStyle)
         }
         
         switch chartType {
