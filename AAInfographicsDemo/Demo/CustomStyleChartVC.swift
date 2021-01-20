@@ -782,7 +782,7 @@ class CustomStyleChartVC: AABaseChartVC {
             ])
     }
     
-    private func customSpecialStyleDataLabelOfSingleDataElementChart() -> AAChartModel  {
+    private func customSpecialStyleDataLabelOfSingleDataElementChart() -> AAChartModel {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toBottom,
             startColor: "rgba(255,215,0,0.1)",//gold color, alpha: 0.1
@@ -836,7 +836,7 @@ class CustomStyleChartVC: AABaseChartVC {
             ])
     }
         
-    private func customBarChartHoverColorAndSelectColor() -> AAChartModel  {
+    private func customBarChartHoverColorAndSelectColor() -> AAChartModel {
         return AAChartModel()
             .chartType(.bar)
             .title("Custom Bar Chart select color")
@@ -856,7 +856,7 @@ class CustomStyleChartVC: AABaseChartVC {
             ])
     }
 
-    private func customChartHoverAndSelectHaloStyle() -> AAChartModel  {
+    private func customChartHoverAndSelectHaloStyle() -> AAChartModel {
         return AAChartModel()
             .chartType(.line)
             .title("Custom Chart Hover And Select Halo Style")
@@ -894,7 +894,7 @@ class CustomStyleChartVC: AABaseChartVC {
             ])
     }
 
-    private func customSplineChartMarkerStatesHoverStyle() -> AAChartModel  {
+    private func customSplineChartMarkerStatesHoverStyle() -> AAChartModel {
         return AAChartModel()
             .chartType(.areaspline)
             .title("Custom Spline Chart Marker States Hover Style")
@@ -922,7 +922,7 @@ class CustomStyleChartVC: AABaseChartVC {
             ])
     }
 
-    private func customNormalStackingChartDataLabelsContentAndStyle() -> AAChartModel  {
+    private func customNormalStackingChartDataLabelsContentAndStyle() -> AAChartModel {
         let categories = [
             "孤岛危机",
             "使命召唤",
