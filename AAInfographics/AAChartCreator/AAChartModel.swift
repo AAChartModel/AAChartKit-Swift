@@ -494,7 +494,7 @@ public class AAChartModel: AAObject {
     
     @available(*, unavailable, message: "please use titleStyle instead of it")
     public func titleFontWeight(_ prop: AAChartFontWeightType) -> AAChartModel {
-        titleFontWeight = prop
+//        titleFontWeight = prop
         return self
     }
     
