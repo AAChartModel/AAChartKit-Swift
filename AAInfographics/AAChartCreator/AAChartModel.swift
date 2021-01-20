@@ -186,27 +186,6 @@ public class AAChartModel: AAObject {
     public var scrollablePlotArea: AAScrollablePlotArea?    //Scroll properties if supported
     
 
-    @available(*, unavailable, message: "please use titleStyle instead of it")
-    public var titleFontColor: String?      //The chart title font color
-    @available(*, unavailable, message: "please use titleStyle instead of it")
-    public var titleFontSize: Float?        //The chart title font size
-    @available(*, unavailable, message: "please use titleStyle instead of it")
-    public var titleFontWeight: AAChartFontWeightType? //The chart font weight
-
-    @available(*, unavailable, message: "please use subtitleStyle instead of it")
-    public var subtitleFontColor: String?   //The chart subtitle font color
-    @available(*, unavailable, message: "please use subtitleStyle instead of it")
-    public var subtitleFontSize: Float?     //The chart subtitle font size
-    @available(*, unavailable, message: "please use subtitleStyle instead of it")
-    public var subtitleFontWeight: AAChartFontWeightType?   //The chart subtitle font weight
-
-    @available(*, unavailable, message: "please use dataLabelsStyle instead of it")
-    public var dataLabelsFontColor: String? //The data labels font color
-    @available(*, unavailable, message: "please use dataLabelsStyle instead of it")
-    public var dataLabelsFontSize: Float?   //The data labels font size
-    @available(*, unavailable, message: "please use dataLabelsStyle instead of it")
-    public var dataLabelsFontWeight: AAChartFontWeightType?//The data labels font weight
-
     @discardableResult
     public func animationType(_ prop: AAChartAnimationType) -> AAChartModel {
         animationType = prop
@@ -478,6 +457,53 @@ public class AAChartModel: AAObject {
         return self
     }
     
+
+    public override init() {
+        title                  = ""
+        subtitle               = ""
+        animationType          = .easeInQuad
+        animationDuration      = 800 //In milliseconds
+        chartType              = .line
+        stacking               = AAChartStackingType.none
+        zoomType               = AAChartZoomType.none //Disable gesture zoom by default
+        colorsTheme            = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
+        tooltipEnabled         = true
+        tooltipCrosshairs      = true
+        xAxisLabelsEnabled     = true
+        xAxisVisible           = true
+        yAxisVisible           = true
+        yAxisLabelsEnabled     = true
+        yAxisLineWidth         = 0
+        yAxisGridLineWidth     = 0.6
+        yAxisTitle             = ""
+        xAxisTitle             = ""
+        legendEnabled          = true
+        borderRadius           = 0
+        markerRadius           = 5 //The radius of the polyline connection point. If the default value is set to 0, then this is equivalent to not displaying.
+    }
+    
+    
+
+    @available(*, unavailable, message: "please use titleStyle instead of it")
+    public var titleFontColor: String?      //The chart title font color
+    @available(*, unavailable, message: "please use titleStyle instead of it")
+    public var titleFontSize: Float?        //The chart title font size
+    @available(*, unavailable, message: "please use titleStyle instead of it")
+    public var titleFontWeight: AAChartFontWeightType? //The chart font weight
+
+    @available(*, unavailable, message: "please use subtitleStyle instead of it")
+    public var subtitleFontColor: String?   //The chart subtitle font color
+    @available(*, unavailable, message: "please use subtitleStyle instead of it")
+    public var subtitleFontSize: Float?     //The chart subtitle font size
+    @available(*, unavailable, message: "please use subtitleStyle instead of it")
+    public var subtitleFontWeight: AAChartFontWeightType?   //The chart subtitle font weight
+
+    @available(*, unavailable, message: "please use dataLabelsStyle instead of it")
+    public var dataLabelsFontColor: String? //The data labels font color
+    @available(*, unavailable, message: "please use dataLabelsStyle instead of it")
+    public var dataLabelsFontSize: Float?   //The data labels font size
+    @available(*, unavailable, message: "please use dataLabelsStyle instead of it")
+    public var dataLabelsFontWeight: AAChartFontWeightType?//The data labels font weight
     
     
     @available(*, unavailable, message: "please use titleStyle instead of it")
@@ -535,30 +561,6 @@ public class AAChartModel: AAObject {
 //        dataLabelsFontWeight = prop
         return self
     }
-    
-    
-    public override init() {
-        title                  = ""
-        subtitle               = ""
-        animationType          = .easeInQuad
-        animationDuration      = 800 //In milliseconds
-        chartType              = .line
-        stacking               = AAChartStackingType.none
-        zoomType               = AAChartZoomType.none //Disable gesture zoom by default
-        colorsTheme            = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
-        tooltipEnabled         = true
-        tooltipCrosshairs      = true
-        xAxisLabelsEnabled     = true
-        xAxisVisible           = true
-        yAxisVisible           = true
-        yAxisLabelsEnabled     = true
-        yAxisLineWidth         = 0
-        yAxisGridLineWidth     = 0.6
-        yAxisTitle             = ""
-        xAxisTitle             = ""
-        legendEnabled          = true
-        borderRadius           = 0
-        markerRadius           = 5 //The radius of the polyline connection point. If the default value is set to 0, then this is equivalent to not displaying.
-    }
+
     
 }
