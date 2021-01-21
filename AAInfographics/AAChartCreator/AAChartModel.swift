@@ -144,7 +144,7 @@ public class AAChartModel: AAObject {
     public var titleStyle: AAStyle?         //The chart title style
     public var subtitle: String?            //The chart subtitle
     public var subtitleAlign: AAChartAlignType?//The chart subtitle text align style
-    public var subtitleStyle: AAStyle?         //The chart subtitle style
+    public var subtitleStyle: AAStyle?      //The chart subtitle style
     public var axesTextColor: String?       //The labels font color of chart x axis and y axis
     public var chartType: AAChartType?      //The default series type for the chart. Can be any of the chart types listed under `AAChartType`. Defaults to line
     public var stacking: AAChartStackingType? //Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order
@@ -209,7 +209,6 @@ public class AAChartModel: AAObject {
         titleStyle = prop
         return self
     }
-    
     
     @discardableResult
     public func subtitle(_ prop: String) -> AAChartModel {
