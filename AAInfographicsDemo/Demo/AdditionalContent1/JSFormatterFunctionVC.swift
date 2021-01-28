@@ -40,7 +40,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return customAreasplineChartTooltipStyleByDivWithCSS()
+        case 0: return customAreaChartTooltipStyleWithSimpleFormatString()
         case 1: return customAreaChartTooltipStyleWithDifferentUnitSuffix()
         case 2: return customAreaChartTooltipStyleWithColorfulHtmlLabels()
         case 3: return customLineChartTooltipStyleWhenValueBeZeroDoNotShow()
