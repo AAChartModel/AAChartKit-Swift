@@ -429,6 +429,7 @@ class CustomStyleChartVC: AABaseChartVC {
                     .format("{y} 美元🇺🇸💲")
                     .x(3)
                     .verticalAlign(.middle)
+                    .style(AAStyle(color: AAColor.red, fontSize: 20, weight: .bold, outline: "1px 1px contrast"))
                     .style(AAStyle()
                         .fontSize(20)
                         .fontWeight(.bold)

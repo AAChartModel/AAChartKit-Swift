@@ -931,8 +931,7 @@ function () {
             .borderColor(AAColor.red)// red color
             .borderRadius(1.5)
             .borderWidth(1.3)
-            .x(3)
-            .y(-20)
+            .x(3).y(-20)
             .verticalAlign(.middle)
         
         aaOptions.plotOptions?.series?.dataLabels = aaDatalabels
