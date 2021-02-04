@@ -1152,7 +1152,8 @@ function(event) {
                 AASeriesElement()
                     .name("单机大作")
                     .color(AAColor.red)
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])])
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+            ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
         
