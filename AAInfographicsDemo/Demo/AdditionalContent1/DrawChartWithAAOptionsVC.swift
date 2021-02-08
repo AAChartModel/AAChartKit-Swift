@@ -1041,9 +1041,8 @@ function () {
             .floating(true)
             .layout(.vertical)
             .align(.left)
-            .x(80)
+            .x(80).y(55)
             .verticalAlign(.top)
-            .y(55)
         
         let element1 = AASeriesElement()
             .name("降雨量")
@@ -1194,9 +1193,9 @@ function () {
             .floating(true)
             .layout(.horizontal)
             .align(.left)
-            .x(30)
+            .x(30).y(10)
             .verticalAlign(.top)
-            .y(10)
+            
         
         let goalValuesElement = AASeriesElement()
             .name("计划贯通")

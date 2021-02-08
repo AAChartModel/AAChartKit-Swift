@@ -40,7 +40,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return customAreasplineChartTooltipStyleByDivWithCSS()
+        case 0: return customAreaChartTooltipStyleWithSimpleFormatString()
         case 1: return customAreaChartTooltipStyleWithDifferentUnitSuffix()
         case 2: return customAreaChartTooltipStyleWithColorfulHtmlLabels()
         case 3: return customLineChartTooltipStyleWhenValueBeZeroDoNotShow()
@@ -164,6 +164,14 @@ function () {
     }
 """#)
         
+        //禁用图例点击事件
+        aaOptions.plotOptions?.series?.events = AAEvents()
+            .legendItemClick(#"""
+                        function() {
+                          return false;
+                        }
+            """#)
+        
         return aaOptions
     }
     
@@ -207,18 +215,18 @@ function () {
             .useHTML(true)
             .formatter(#"""
 function () {
-        let colorsArr = ["mediumspringgreen", "deepskyblue", "red", "sandybrown"];
-        let wholeContentString ='<span style=\"' + 'color:lightGray; font-size:13px\"' + '>◉ Time: ' + this.x + ' year</span><br/>';
-        for (let i = 0;i < 4;i++) {
+        let wholeContentStr ='<span style=\"' + 'color:lightGray; font-size:13px\"' + '>◉ Time: ' + this.x + ' year</span><br/>';
+        let length = this.points.length;
+        for (let i = 0; i < length; i++) {
             let thisPoint = this.points[i];
             let yValue = thisPoint.y;
             if (yValue != 0) {
-                let spanStyleStartStr = '<span style=\"' + 'color:'+ colorsArr[i] + '; font-size:13px\"' + '>◉ ';
+                let spanStyleStartStr = '<span style=\"' + 'color:'+ thisPoint.color + '; font-size:13px\"' + '>◉ ';
                 let spanStyleEndStr = '</span> <br/>';
-                wholeContentString += spanStyleStartStr + thisPoint.series.name + ': ' + thisPoint.y + '℃' + spanStyleEndStr;
+                wholeContentStr += spanStyleStartStr + thisPoint.series.name + ': ' + thisPoint.y + '℃' + spanStyleEndStr;
             }
         }
-        return wholeContentString;
+        return wholeContentStr;
     }
 """#)
             .backgroundColor("#050505")
@@ -257,21 +265,18 @@ function () {
             .useHTML(true)
             .formatter(#"""
     function () {
-            let colorDot0 = '<span style=\"' + 'color:red; font-size:13px\"' + '>◉</span> ';
-            let colorDot1 = '<span style=\"' + 'color:mediumspringgreen; font-size:13px\"' + '>◉</span> ';
-            let colorDot2 = '<span style=\"' + 'color:deepskyblue; font-size:13px\"' + '>◉</span> ';
-            let colorDot3 = '<span style=\"' + 'color:sandybrown; font-size:13px\"' + '>◉</span> ';
-            let colorDotArr = [colorDot0, colorDot1, colorDot2, colorDot3];
-            let wholeContentString = this.points[0].x + '<br/>';
-            for (let i = 0;i < 4;i++) {
-                let yValue = this.points[i].y;
-                if (yValue != 0) {
-                    let prefixStr = colorDotArr[i];
-                    wholeContentString += prefixStr + this.points[i].series.name + ': ' + this.points[i].y + '<br/>';
-                }
+        let wholeContentStr = this.points[0].x + '<br/>';
+        let length = this.points.length;
+        for (let i = 0; i < length; i++) {
+            let thisPoint = this.points[i];
+            let yValue = thisPoint.y;
+            if (yValue != 0) {
+                let prefixStr = '<span style=\"' + 'color:'+ thisPoint.color + '; font-size:13px\"' + '>◉ ';
+                wholeContentStr += prefixStr + thisPoint.series.name + ': ' + yValue + '<br/>';
             }
-            return wholeContentString;
         }
+        return wholeContentStr;
+    }
     """#)
         
         return aaOptions
@@ -928,8 +933,7 @@ function () {
             .borderColor(AAColor.red)// red color
             .borderRadius(1.5)
             .borderWidth(1.3)
-            .x(3)
-            .y(-20)
+            .x(3).y(-20)
             .verticalAlign(.middle)
         
         aaOptions.plotOptions?.series?.dataLabels = aaDatalabels
@@ -1150,7 +1154,8 @@ function(event) {
                 AASeriesElement()
                     .name("单机大作")
                     .color(AAColor.red)
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])])
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+            ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
         

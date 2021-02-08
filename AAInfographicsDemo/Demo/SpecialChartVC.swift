@@ -167,7 +167,7 @@ class SpecialChartVC: AABaseChartVC {
         return AAChartModel()
             .chartType(.scatter)
             .title("Height and weight distribution by sex")
-            .titleFontColor(AAColor.white)
+            .titleStyle(AAStyle(color: AAColor.white))
             .axesTextColor(AAColor.white)
             .yAxisTitle("kg")
             .yAxisGridLineWidth(0)

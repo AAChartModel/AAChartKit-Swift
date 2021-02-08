@@ -158,7 +158,7 @@ public class AAOptionsConstructor {
     
     public static func configureChartOptions(
         _ aaChartModel: AAChartModel
-        ) -> AAOptions {
+    ) -> AAOptions {
         let aaChart = AAChart()
             .type(aaChartModel.chartType)
             .inverted(aaChartModel.inverted)
@@ -173,11 +173,7 @@ public class AAOptionsConstructor {
             .text(aaChartModel.title) //Title text content
         
         if aaChartModel.title != "" {
-            aaTitle.style(AAStyle()
-                .color(aaChartModel.titleFontColor) //Title font color
-                .fontSize(aaChartModel.titleFontSize) //Title font size
-                .fontWeight(aaChartModel.titleFontWeight) //Title font weight
-            )
+            aaTitle.style(aaChartModel.titleStyle)
         }
         
         var aaSubtitle: AASubtitle?
@@ -185,11 +181,7 @@ public class AAOptionsConstructor {
             aaSubtitle = AASubtitle()
                 .text(aaChartModel.subtitle) //Subtitle text content
                 .align(aaChartModel.subtitleAlign) // The horizontal alignment of the chart subtitle text. Possible values are "left", "center", and "right". The default is: "center".
-                .style(AAStyle()
-                    .color(aaChartModel.subtitleFontColor) //Subtitle font color
-                    .fontSize(aaChartModel.subtitleFontSize) //Subtitle font size
-                    .fontWeight(aaChartModel.subtitleFontWeight) //Subtitle font weight
-            )
+                .style(aaChartModel.subtitleStyle)
         }
         
         
@@ -201,15 +193,13 @@ public class AAOptionsConstructor {
         
         let aaPlotOptions = AAPlotOptions()
             .series(AASeries()
-                .stacking(aaChartModel.stacking)
-        )
+                        .stacking(aaChartModel.stacking))
         
         if (aaChartModel.animationType != .linear) {
-            aaPlotOptions
-                .series?.animation(AAAnimation()
-                    .easing(aaChartModel.animationType)
-                    .duration(aaChartModel.animationDuration)
-            )
+            aaPlotOptions.series?
+                .animation(AAAnimation()
+                            .easing(aaChartModel.animationType)
+                            .duration(aaChartModel.animationDuration))
         }
         
         configurePlotOptionsMarkerStyle(aaChartModel, aaPlotOptions)
@@ -218,8 +208,7 @@ public class AAOptionsConstructor {
         let aaLegend = AALegend()
             .enabled(aaChartModel.legendEnabled)
             .itemStyle(AAItemStyle()
-                .color(aaChartModel.axesTextColor)
-        ) //The default legend text color is the same as the X-axis text color
+                        .color(aaChartModel.axesTextColor)) //The default legend text color is the same as the X-axis text color
         
         let aaOptions = AAOptions()
             .chart(aaChart)
@@ -240,7 +229,7 @@ public class AAOptionsConstructor {
     private static func configurePlotOptionsMarkerStyle(
         _ aaChartModel: AAChartModel,
         _ aaPlotOptions: AAPlotOptions
-        ) {
+    ) {
         let chartType = aaChartModel.chartType!
         
         //Data point markers related configuration. Only linear graphs have data point markers.
@@ -270,22 +259,18 @@ public class AAOptionsConstructor {
         }
     }
     
-
+    
     private static  func configurePlotOptionsDataLabels(
         _ aaPlotOptions: AAPlotOptions,
         _ aaChartModel: AAChartModel
-        ) {
+    ) {
         let chartType = aaChartModel.chartType!
         
         let aaDataLabels = AADataLabels()
-        .enabled(aaChartModel.dataLabelsEnabled)
+            .enabled(aaChartModel.dataLabelsEnabled)
         if (aaChartModel.dataLabelsEnabled == true) {
-             aaDataLabels
-                .style(AAStyle()
-                    .color(aaChartModel.dataLabelsFontColor)
-                    .fontSize(aaChartModel.dataLabelsFontSize)
-                    .fontWeight(aaChartModel.dataLabelsFontWeight)
-            )
+            aaDataLabels
+                .style(aaChartModel.dataLabelsStyle)
         }
         
         switch chartType {
@@ -317,10 +302,11 @@ public class AAOptionsConstructor {
             }
             aaPlotOptions.pie(aaPie)
         case .columnrange:
-            aaPlotOptions.columnrange(AAColumnrange()
-                .borderRadius(aaChartModel.borderRadius)
-                .borderWidth(0))
-
+            aaPlotOptions
+                .columnrange(AAColumnrange()
+                              .borderRadius(aaChartModel.borderRadius)
+                              .borderWidth(0))
+            
         default: break
         }
         aaPlotOptions.series?.dataLabels(aaDataLabels)
@@ -332,7 +318,7 @@ public class AAOptionsConstructor {
     ) {
         let chartType = aaChartModel.chartType
         //The related configuration of the x-axis and the Y-axis, the fan, pyramid, funnel, and meter and dial charts do not need to set the relevant content of the X-axis and Y-axis
-        if (chartType == .column
+        if (   chartType == .column
             || chartType == .bar
             || chartType == .area
             || chartType == .areaspline
@@ -353,10 +339,9 @@ public class AAOptionsConstructor {
                 let aaXAxisLabels = AALabels()
                     .enabled(aaXAxisLabelsEnabled) //Set whether the x-axis displays text
                 if aaXAxisLabelsEnabled == true {
-                    aaXAxisLabels.style(
-                        AAStyle()
-                            .color(aaChartModel.axesTextColor)
-                    )
+                    aaXAxisLabels
+                        .style(AAStyle()
+                                .color(aaChartModel.axesTextColor))
                 }
                 
                 let aaXAxis = AAXAxis()
@@ -366,12 +351,11 @@ public class AAOptionsConstructor {
                     .categories(aaChartModel.categories)
                     .visible(aaChartModel.xAxisVisible) //whether the x axis is visible
                     .tickInterval(aaChartModel.xAxisTickInterval) //Number of x-axis coordinate point intervals
-		    		.title(AATitle()
-                    .text(aaChartModel.xAxisTitle) //y axis title
-                    .style(AAStyle()
-                        .color(aaChartModel.axesTextColor)
-                ))
-
+                    .title(AATitle()
+                            .text(aaChartModel.xAxisTitle) //y axis title
+                            .style(AAStyle()
+                                    .color(aaChartModel.axesTextColor)))
+                
                 
                 aaOptions.xAxis(aaXAxis)
             }
@@ -380,10 +364,9 @@ public class AAOptionsConstructor {
             let aaYAxisLabels = AALabels()
                 .enabled(aaChartModel.yAxisLabelsEnabled)
             if aaYAxisLabelsEnabled == true {
-                aaYAxisLabels.style(
-                    AAStyle()
-                        .color(aaChartModel.axesTextColor)
-                )
+                aaYAxisLabels
+                    .style(AAStyle()
+                            .color(aaChartModel.axesTextColor))
             }
             
             let aaYAxis = AAYAxis()
@@ -396,10 +379,9 @@ public class AAOptionsConstructor {
                 .lineWidth(aaChartModel.yAxisLineWidth) //Set the width of the y-axis axis, which is 0 to hide the y-axis axis
                 .visible(aaChartModel.yAxisVisible)
                 .title(AATitle()
-                    .text(aaChartModel.yAxisTitle) //y axis title
-                    .style(AAStyle()
-                        .color(aaChartModel.axesTextColor)
-                ))
+                        .text(aaChartModel.yAxisTitle) //y axis title
+                        .style(AAStyle()
+                                .color(aaChartModel.axesTextColor)))
             
             aaOptions.yAxis(aaYAxis)
         }
