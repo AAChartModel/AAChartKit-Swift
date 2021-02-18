@@ -60,6 +60,8 @@ class JSFormatterFunctionVC: AABaseChartVC {
         case 17: return fixedTooltipPositionByCustomPositionerFunction()
         case 18: return disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction()
         case 19: return customAreasplineChartTooltipStyleByDivWithCSS()
+        case 20: return configureTheAxesLabelsFormattersOfDoubleYAxesChart()
+        case 21: return makePieChartShow0Data()
             
         default:
             return AAOptions()
@@ -1316,5 +1318,167 @@ function(event) {
             """#)
         
         return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/901
+    //https://github.com/AAChartModel/AAChartKit/issues/952
+    func configureTheAxesLabelsFormattersOfDoubleYAxesChart() -> AAOptions {
+        let aaChart = AAChart()
+            .backgroundColor(AAColor.white)
+        
+        let aaTitle = AATitle()
+            .text("")
+        
+        let aaXAxis = AAXAxis()
+            .visible(true)
+            .min(0)
+            .categories([
+                "Java", "Swift", "Python", "Ruby", "PHP", "Go","C",
+                "C#", "C++", "Perl", "R", "MATLAB", "SQL"
+            ])
+        
+        let aaPlotOptions = AAPlotOptions()
+            .series(AASeries()
+                        .marker(AAMarker()
+                                    .radius(7)//曲线连接点半径，默认是4
+                                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                                    .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
+                                    .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                                    .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                        ))
+        
+        let yAxis1 = AAYAxis()
+            .visible(true)
+            .lineWidth(1)
+            .tickPositions([0, 50, 100, 150, 200])
+            .labels(AALabels()
+                        .enabled(true)
+                        .style(AAStyle()
+                                .color("DodgerBlue"))
+                        .formatter("""
+function () {
+            let yValue = this.value;
+            if (yValue >= 200) {
+                return "极佳";
+            } else if (yValue >= 150 && yValue < 200) {
+                return "非常棒";
+            } else if (yValue >= 100 && yValue < 150) {
+                return "相当棒";
+            } else if (yValue >= 50 && yValue < 100) {
+                return "还不错";
+            } else {
+                return "一般";
+            }
+        }
+"""))
+            .gridLineWidth(0)
+            .title(AATitle()
+                    .text("中文")
+                    .style(AAStyle(color: "DodgerBlue", fontSize: 14, weight: .bold)))
+        
+        let yAxis2 = AAYAxis()
+            .visible(true)
+            .lineWidth(1)
+            .tickPositions([0, 50, 100, 150, 200])
+            .labels(AALabels()
+                        .enabled(true)
+                        .style(AAStyle()
+                                .color(AAColor.red))
+                        .formatter("""
+function () {
+        let yValue = this.value;
+        if (yValue >= 200) {
+            return "Awesome";
+        } else if (yValue >= 150 && yValue < 200) {
+            return "Great";
+        } else if (yValue >= 100 && yValue < 150) {
+            return "Very Good";
+        } else if (yValue >= 50 && yValue < 100) {
+            return "Not Bad";
+        } else {
+            return "Just So So";
+        }
+    }
+"""))
+            .gridLineWidth(0)
+            .title(AATitle()
+                    .text("ENGLISH")
+                    .style(AAStyle(color: AAColor.red, fontSize: 14, weight: .bold)))
+            .opposite(true)
+        
+        let aaTooltip = AATooltip()
+            .enabled(true)
+            .shared(true)
+        
+        let seriesArr = [
+            AASeriesElement()
+                .name("2020")
+                .type(.spline)
+                .lineWidth(7)
+                .color(AAGradientColor.deepSea)
+                .yAxis(1)
+                .data([
+                    0, 71.5, 106.4, 129.2, 144.0, 176.0,
+                    135.6, 148.5, 216.4, 194.1, 95.6, 54.4
+                ]),
+            AASeriesElement()
+                .name("2021")
+                .type(.spline)
+                .lineWidth(7)
+                .color(AAGradientColor.sanguine)
+                .yAxis(0)
+                .data([
+                    135.6, 148.5, 216.4, 194.1, 95.6, 54.4,
+                    0, 71.5, 106.4, 129.2, 144.0, 176.0
+                ])
+        ]
+        
+        let aaOptions = AAOptions()
+            .chart(aaChart)
+            .title(aaTitle)
+            .plotOptions(aaPlotOptions)
+            .xAxis(aaXAxis)
+            .yAxisArray([yAxis1,yAxis2])
+            .tooltip(aaTooltip)
+            .series(seriesArr)
+        
+        return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1042
+    func makePieChartShow0Data() -> AAOptions {
+        let dataArr = [
+            ["y":1,
+             "isZero":true,
+             "name": "One",
+            ],
+            ["y":1,
+             "isZero":true,
+             "name": "Two",
+            ],
+            ["y":1,
+             "isZero":true,
+             "name": "Three",
+            ]
+        ]
+        
+        return AAOptions()
+            .title(AATitle()
+                    .text(""))
+            .chart(AAChart()
+                    .type(.pie))
+            .series([
+                AASeriesElement()
+                    .name("ZeroDataPie")
+                    .data(dataArr)
+                    .tooltip(AATooltip()
+                                .shared(false)
+                                .pointFormatter(#"""
+                                function() {
+                                return "<span style='color:" + this.color + "'> ◉ </span>" + this.series.name + ": <b>" + (this.options.isZero ? 0 : this.y) + "</b><br/>";
+                                        }
+                                """#)
+                    )
+            ])
     }
 }

@@ -51,6 +51,7 @@ public class AATooltip: AAObject {
     public var followTouchMove: Bool?//https://api.highcharts.com.cn/highcharts#chart.panning
     public var shadow: Bool?
     public var padding: Float?
+    public var pointFormatter: String?
     public var positioner: String?
         
     
@@ -159,6 +160,12 @@ public class AATooltip: AAObject {
     @discardableResult
     public func padding(_ prop: Float?) -> AATooltip {
         padding = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pointFormatter(_ prop: String) -> AATooltip {
+        pointFormatter = prop.aa_toPureJSString()
         return self
     }
     
