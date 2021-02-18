@@ -1475,8 +1475,8 @@ function () {
                                 .shared(false)
                                 .pointFormatter(#"""
                                 function() {
-                                return "<span style='color:" + this.color + "'> ◉ </span>" + this.series.name + ": <b>" + (this.options.isZero ? 0 : this.y) + "</b><br/>";
-                                        }
+                                return "<span style=\'color:" + this.color + "\'> ◉ </span>" + this.series.name + ": <b>" + (this.options.isZero ? 0 : this.y) + "</b><br/>";
+                                                }
                                 """#)
                     )
             ])
