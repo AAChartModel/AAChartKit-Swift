@@ -47,7 +47,7 @@ class CustomStyleChartVC: AABaseChartVC {
         case 4:  return configureColorfulColumnChart()
         case 5:  return configureGradientColorBarChart()
         case 6:  return configureStackingPolarColumnChart()
-        case 7:  return configrueWithMinusNumberChart()
+        case 7:  return configureWithMinusNumberChart()
         case 8:  return configureStepLineChart()
         case 9:  return configureStepAreaChart()
         case 10: return configureNightingaleRoseChart()
@@ -317,7 +317,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 ])
     }
     
-    private func configrueWithMinusNumberChart() -> AAChartModel {
+    private func configureWithMinusNumberChart() -> AAChartModel {
         AAChartModel()
             .chartType(.area)
             .title("带有负数的区域填充图")
@@ -458,7 +458,7 @@ class CustomStyleChartVC: AABaseChartVC {
             .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
-                    .name("Tokoyo")
+                    .name("Tokyo")
                     .lineWidth(8.0)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     .shadow(AAShadow()
@@ -811,8 +811,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 .align(.center)
                 .verticalAlign(.top)
                 .overflow("none")
-                .crop(false)
-        )
+                .crop(false))
             .y(26.5)
             .toDic()!
         

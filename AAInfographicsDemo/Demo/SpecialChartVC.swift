@@ -54,7 +54,7 @@ class SpecialChartVC: AABaseChartVC {
         case .waterfall: return configureWaterfallChart()
         case .pyramid: return configurePyramidChart()
         case .funnel: return configureFunnelChart()
-        case .errorbar: return configureErrobarChart()
+        case .errorbar: return configureErrorbarChart()
         default: return configureColumnChart()
         }
     }
@@ -968,7 +968,7 @@ class SpecialChartVC: AABaseChartVC {
             ])
     }
     
-    private func configureErrobarChart() -> AAChartModel {
+    private func configureErrorbarChart() -> AAChartModel {
         AAChartModel()
             .yAxisTitle("")
             .categories([

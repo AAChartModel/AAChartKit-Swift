@@ -327,7 +327,7 @@ class MainVC: UIViewController {
                 "polygonMixedScatter",
                 "polarChartMixed",
                 "columnMixedScatter",
-                "PieMixeLineMixedColumn",
+                "PieMixedLineMixedColumn",
                 "LineChartWithShadow",
                 "NegativeColorMixedAreasplineChart"
             ],

@@ -50,7 +50,7 @@ class MixedChartVC: AABaseChartVC {
         case "polygonMixedScatter":return configurePolygonMixedScatterChart()
         case "polarChartMixed":return configurePolarChartMixedChart()
         case "columnMixedScatter":return configureColumnMixedScatterChart()
-        case "PieMixeLineMixedColumn":return configurePieMixedLineMixedColumnChart()
+        case "PieMixedLineMixedColumn":return configurePieMixedLineMixedColumnChart()
         case "LineChartWithShadow":return configureLineChartWithShadow()
         case "NegativeColorMixedAreasplineChart": return configureNegativeColorMixedAreasplineChart()
         default: return configureArearangeMixedLineChart()
