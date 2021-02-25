@@ -34,63 +34,63 @@ import Foundation
 public class AAColor {
     
     public class var black: String {
-        return "black"
+        "black"
     } // 0.0 white
     
     public class var darkGray: String {
-        return "darkGray"
+        "darkGray"
     } // 0.333 white
     
     public class var lightGray: String {
-        return "lightGray"
+        "lightGray"
     } // 0.667 white
     
     public class var white: String {
-        return "white"
+        "white"
     } // 1.0 white
     
     public class var gray: String {
-        return "gray"
+        "gray"
     } // 0.5 white
     
     public class var red: String {
-        return "red"
+        "red"
     } // 1.0, 0.0, 0.0 RGB
     
     public class var green: String {
-        return "green"
+        "green"
     } // 0.0, 1.0, 0.0 RGB
     
     public class var blue: String {
-        return "blue"
+        "blue"
     } // 0.0, 0.0, 1.0 RGB
     
     public class var cyan: String {
-        return "cyan"
+        "cyan"
     } // 0.0, 1.0, 1.0 RGB
     
     public class var yellow: String {
-        return "yellow"
+        "yellow"
     } // 1.0, 1.0, 0.0 RGB
     
     public class var magenta: String {
-        return "magenta"
+        "magenta"
     } // 1.0, 0.0, 1.0 RGB
     
     public class var orange: String {
-        return "orange"
+        "orange"
     } // 1.0, 0.5, 0.0 RGB
     
     public class var purple: String {
-        return "purple"
+        "purple"
     } // 0.5, 0.0, 0.5 RGB
     
     public class var brown: String {
-        return "brown"
+        "brown"
     } // 0.6, 0.4, 0.2 RGB
     
     public class var clear: String {
-        return "#00000000"
+        "#00000000"
     } // 0.0 white, 0.0 alpha
     
     public class func rgbaColor(
@@ -99,7 +99,7 @@ public class AAColor {
         _ blue: Int,
         _ alpha: Float = 1
         ) -> String {
-        return "rgba(\(red),\(green),\(blue),\(alpha))"
+        "rgba(\(red),\(green),\(blue),\(alpha))"
     }
 }
 

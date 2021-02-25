@@ -49,7 +49,7 @@ public extension String {
         pureJSStr = pureJSStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
         return pureJSStr
     }
-
+    
 }
 
 
@@ -62,8 +62,7 @@ public extension Array {
             originalJsArrStr = originalJsArrStr + "'\(element)',"
         }
         
-        let finalJSArrStr = "[\(originalJsArrStr)]"
-        return finalJSArrStr
+        return "[\(originalJsArrStr)]"
     }
     
 }
@@ -73,7 +72,7 @@ public extension AAChartModel {
     
     //Convert AAChartModel to be AAOptions
     func aa_toAAOptions() -> AAOptions {
-        return AAOptionsConstructor.configureChartOptions(self)
+        AAOptionsConstructor.configureChartOptions(self)
     }
 }
 
