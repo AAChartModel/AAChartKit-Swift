@@ -171,6 +171,7 @@ public class AAChartView: WKWebView {
                 WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
                 WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
                 WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
+                }
                 ------------------------------------------------------------------------------------------
                 ==========================================================================================
                 ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
@@ -269,8 +270,7 @@ extension AAChartView {
             let urlRequest = NSURLRequest(url: urlStr) as URLRequest
             self.load(urlRequest)
         } else {
-            configureOptionsJsonStringWithAAOptions(aaOptions)
-            drawChart()
+            aa_refreshChartWholeContentWithChartOptions(aaOptions)
         }
     }
     
