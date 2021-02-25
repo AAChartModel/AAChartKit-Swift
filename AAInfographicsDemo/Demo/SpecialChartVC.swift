@@ -60,7 +60,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureColumnChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .polar(true)
             .dataLabelsEnabled(false)
@@ -77,7 +77,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configurePieChart() -> AAChartModel {
-        return AAChartModel()
+         AAChartModel()
             .chartType(.pie)
             .backgroundColor(AAColor.white)
             .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
@@ -104,7 +104,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureBubbleChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.bubble)
             .title("AACHARTKIT BUBBLES")
             .subtitle("JUST FOR FUN")
@@ -164,7 +164,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureScatterChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.scatter)
             .title("Height and weight distribution by sex")
             .titleStyle(AAStyle(color: AAColor.white))
@@ -197,7 +197,7 @@ class SpecialChartVC: AABaseChartVC {
                         [162.0, 54.7], [166.0, 53.2], [174.0, 75.7], [172.7, 61.1], [167.6, 55.7],
                         [151.1, 48.7], [164.5, 52.3], [163.5, 50.0], [152.0, 59.3], [169.0, 62.5],
                         [164.0, 55.7], [161.2, 54.8], [155.0, 45.9], [170.0, 70.6], [176.2, 67.2],
-                        [170.0, 69.4], [162.5, 58.2], [170.3, 64.8], [164.1, 71.6], [169.5, 52.8],
+                        [170.0, 69.4], [162.5, 58.2], [170.3, 64.8], [164.1, 71.6], [169.5, 52.8],ƒ
                         [163.2, 59.8], [154.5, 49.0], [159.8, 50.0], [173.2, 69.2], [170.0, 55.9],
                         [161.4, 63.4], [169.0, 58.2], [166.2, 58.6], [159.4, 45.7], [162.5, 52.2],
                         [159.0, 48.6], [162.8, 57.8], [159.0, 55.6], [179.8, 66.8], [162.9, 59.4],
@@ -294,10 +294,10 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureArearangeChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.arearange)
             .title("Twilight Hall day temperature fluctuation map")
-            .subtitle("real-time monitoring data")
+        .subtitle("real-time monitoring data")
             .yAxisTitle("℃")
             .dataLabelsEnabled(false)
             .series([
@@ -776,7 +776,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureColumnrangeChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.columnrange)
             .title("TEMPERATURE VARIATION BY MONTH")
             .subtitle("observed in Gotham city")
@@ -808,7 +808,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureStepLineChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)//图形类型
             .animationType(.easeOutCubic)//图形渲染动画类型为"easeOutCubic"
             .title("STEP LINE CHART")//图形标题
@@ -836,7 +836,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureStepAreaChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.area)//图形类型
             .animationType(.easeOutCubic)//图形渲染动画类型为"easeOutCubic"
             .title("STEP AREA CHART")//图形标题
@@ -864,7 +864,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureBoxplotChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.boxplot)
             .title("BOXPLOT CHART")
             .subtitle("virtual data")
@@ -886,7 +886,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureWaterfallChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.waterfall)
             .title("WATERFALL CHART")
             .subtitle("virtual data")
@@ -924,7 +924,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configurePyramidChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.pyramid)
             .title("THE HEAT OF PROGRAM LANGUAGE")
             .subtitle("virtual data")
@@ -944,7 +944,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureFunnelChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.funnel)
             .title("THE HEAT OF PROGRAM LANGUAGE")
             .subtitle("virtual data")
@@ -971,7 +971,7 @@ class SpecialChartVC: AABaseChartVC {
     }
     
     private func configureErrobarChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .yAxisTitle("")
             .categories([
                 "一月", "二月", "三月", "四月", "五月", "六月",

@@ -205,7 +205,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureDiscontinuousDataChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(true)//是否显示值
@@ -219,7 +219,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureMixedLineChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)
             .subtitle("虚拟数据")
             .categories(["Java","Swift","Python","Ruby", "PHP","Go","C","C#","C++","Perl","R","MATLAB","SQL"])
@@ -246,7 +246,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
 
     private func configureColorfulColumnChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .title("Colorful Column Chart")
             .subtitle("single data array colorful column chart")
@@ -272,7 +272,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureGradientColorBarChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.bar)
             .title("Bar Chart")
             .subtitle("gradient color bar")
@@ -291,7 +291,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureStackingPolarColumnChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .axesTextColor(AAColor.white)
             .dataLabelsEnabled(false)
@@ -319,7 +319,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configrueWithMinusNumberChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.area)
             .title("带有负数的区域填充图")
             .markerRadius(0)//设置折线连接点宽度为0,即是隐藏连接点
@@ -349,7 +349,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureStepLineChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)//图形类型
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .title("STEP LINE CHART")//图形标题
@@ -374,7 +374,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureStepAreaChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.area)//图形类型
             .animationType(.bounce)//图形渲染动画类型为"bounce"
             .title("STEP AREA CHART")//图形标题
@@ -402,7 +402,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureNightingaleRoseChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .title("南丁格尔玫瑰图")
             .subtitle("极地图中的一种")
             .yAxisTitle("cm")
@@ -449,7 +449,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureChartWithShadowStyle() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .yAxisVisible(false)
             .chartType(.spline)
             .legendEnabled(false)//隐藏图例(底部可点按的小圆点)
@@ -695,7 +695,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
 
     private func configureTriangleRadarChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.area)
             .dataLabelsEnabled(false)
             .xAxisVisible(false)
@@ -714,7 +714,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureQuadrangleRadarChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.area)
             .dataLabelsEnabled(false)
             .xAxisVisible(false)
@@ -733,7 +733,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configurePentagonRadarChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.area)
             .dataLabelsEnabled(false)
             .xAxisVisible(false)
@@ -752,7 +752,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func configureHexagonRadarChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.area)
             .dataLabelsEnabled(false)
             .xAxisVisible(false)
@@ -771,7 +771,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func drawLineChartWithPointsCoordinates() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)
             .title("Draw Line Chart With Points Coordinates")
             .markerSymbolStyle(.borderBlank)
@@ -838,7 +838,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
         
     private func customBarChartHoverColorAndSelectColor() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.bar)
             .title("Custom Bar Chart select color")
             .yAxisTitle("")
@@ -858,7 +858,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
 
     private func customChartHoverAndSelectHaloStyle() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)
             .title("Custom Chart Hover And Select Halo Style")
             .colorsTheme([AAColor.red])
@@ -896,7 +896,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
 
     private func customSplineChartMarkerStatesHoverStyle() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.areaspline)
             .title("Custom Spline Chart Marker States Hover Style")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
@@ -984,7 +984,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
 
     private func upsideDownPyramidChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.pyramid)
             .title("THE HEAT OF PROGRAM LANGUAGE")
             .subtitle("virtual data")
@@ -1004,7 +1004,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     private func doubleLayerPieChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.pie)
             .title("浏览器市场占比历史对比")
             .subtitle("无任何可靠依据的虚拟数据")
@@ -1042,7 +1042,7 @@ class CustomStyleChartVC: AABaseChartVC {
     
     //GitHub issue https://github.com/AAChartModel/AAChartKit/issues/903
     private func disableSomeOfLinesMouseTrackingEffect() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)//图表类型
             .tooltipValueSuffix("万元")//设置浮动提示框单位后缀
             .yAxisTitle("万元")//设置 Y 轴标题
@@ -1071,7 +1071,7 @@ class CustomStyleChartVC: AABaseChartVC {
     
     // GitHub issue https://github.com/AAChartModel/AAChartKit/issues/904
     private func configureColorfulShadowSplineChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.spline)
             .yAxisVisible(false)
             .stacking(.normal)
@@ -1129,7 +1129,7 @@ class CustomStyleChartVC: AABaseChartVC {
     
     // GitHub issue https://github.com/AAChartModel/AAChartKit/issues/905
     private func configureColorfulDataLabelsStepLineChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)
             .yAxisVisible(false)
             .stacking(.normal)
@@ -1274,7 +1274,7 @@ class CustomStyleChartVC: AABaseChartVC {
     
     // Refer to https://api.highcharts.com.cn/highcharts#plotOptions.spline.marker.states.hover.enabled
     private func disableSplineChartMarkerHoverEffect() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.spline)
             .title("Disable Spline Chart Marker Hover Effect")
             .categories([
@@ -1293,10 +1293,7 @@ class CustomStyleChartVC: AABaseChartVC {
                     .marker(AAMarker()
                         .states(AAMarkerStates()
                             .hover(AAMarkerHover()
-                                .enabled(false)
-                            )
-                        )
-                )
+                                .enabled(false))))
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
             ])
     }

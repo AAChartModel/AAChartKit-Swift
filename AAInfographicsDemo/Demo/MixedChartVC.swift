@@ -151,7 +151,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configureColumnrangeMixedLineChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .colorsTheme(["#1e90ff","#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",])//主题颜色数组
             .chartType(.line)
             .dataLabelsEnabled(false)
@@ -195,7 +195,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configureStackingColumnMixedLineChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .title("16年1月-16年11月充值客单分析")//图形标题
             .subtitle("BY MICVS")//图形副标题
             .chartType(.column)
@@ -239,7 +239,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configureDashStyleTypesMixedChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.spline)//图形类型
             .dataLabelsEnabled(false)//是否显示数字
             .stacking(.normal)
@@ -278,7 +278,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configureNegativeColorMixedChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .dataLabelsEnabled(false)//是否显示数字
             .series([
                 AASeriesElement()
@@ -295,7 +295,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configureScatterMixedLineChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .dataLabelsEnabled(false)//是否显示数字
             .chartType(.scatter)
             .markerSymbolStyle(.innerBlank)
@@ -520,7 +520,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configureNegativeColorMixedBubbleChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .categories(["Saturday", "Friday", "Thursday","Wednesday", "Tuesday", "Monday", "Sunday"])
             .series([
                 AASeriesElement()
@@ -555,7 +555,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configurePolygonMixedScatterChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .series([
                 AASeriesElement()
                     .name("目标")
@@ -627,7 +627,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configurePolarChartMixedChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .polar(true)
             .series([
@@ -650,7 +650,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configureColumnMixedScatterChart() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .xAxisReversed(true)
             .series([
                 AASeriesElement()
@@ -755,7 +755,7 @@ class MixedChartVC: AABaseChartVC {
     }
     
     private func configureLineChartWithShadow() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)
             .title("Line Chart With Shadow")
             .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
