@@ -46,6 +46,8 @@ public class AASeries: AAObject {
     public var states: AAStates?
     public var allowPointSelect: Bool?
     public var point: AAPoint?
+    public var pointPadding: Float?
+    public var groupPadding: Float?
 
     
     @discardableResult
@@ -117,6 +119,18 @@ public class AASeries: AAObject {
     @discardableResult
     public func point(_ prop: AAPoint) -> AASeries {
         point = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pointPadding(_ prop: Float?) -> AASeries {
+        pointPadding = prop
+        return self
+    }
+    
+    @discardableResult
+    public func groupPadding(_ prop: Float?) -> AASeries {
+        groupPadding = prop
         return self
     }
     
