@@ -346,7 +346,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                     .name("2020")
                     .color(AAGradientColor.coastalBreeze)
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                
             ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
@@ -447,7 +446,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     .color(AAColor.white)
                     .lineWidth(10)
-                ,
             ])
         let aaOptions = aaChartModel.aa_toAAOptions()
         let aaPlotBandsArr = [
@@ -505,9 +503,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                             .color("#04d69f"),
                         AAZonesElement()
                             .color("#ffd066"),
-                        
                     ])
-                ,
             ])
         let aaOptions = aaChartModel.aa_toAAOptions()
         
@@ -523,11 +519,8 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                     .text("PLOT LINES ONE")
                     .style(AAStyle()
                         .color("#1e90ff")
-                        .fontWeight(.bold)
-                    )
-            )
+                        .fontWeight(.bold)))
             ,
-            
             AAPlotLinesElement()
                 .color("#ef476f")
                 .dashStyle(.longDashDot)
@@ -537,11 +530,8 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                     .text("PLOT LINES TWO")
                     .style(AAStyle()
                         .color("#ef476f")
-                        .fontWeight(.bold)
-                    )
-            )
+                        .fontWeight(.bold)))
             ,
-            
             AAPlotLinesElement()
                 .color("#04d69f")
                 .dashStyle(.longDash)
@@ -551,9 +541,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                     .text("PLOT LINES THREE")
                     .style(AAStyle()
                         .color("#04d69f")
-                        .fontWeight(.bold)
-                    )
-            )
+                        .fontWeight(.bold)))
         ]
         
         aaOptions.yAxis?.plotLines(aaPlotLinesArr)
@@ -593,7 +581,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                         2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05,
                         2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
                         5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48])
-                ,
             ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
@@ -663,16 +650,14 @@ function () {
                         [12489120,   15],
                         [12489984, 13.6]
                     ])
-                
             ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
-        let aaCrosshair = AACrosshair()
-            .dashStyle(.longDashDot)
-            .color(AAColor.red)
-            .width(1)
-        
-        aaOptions.xAxis?.crosshair(aaCrosshair)
+        aaOptions.xAxis?
+            .crosshair(AACrosshair()
+                .dashStyle(.longDashDot)
+                .color(AAColor.red)
+                .width(1))
         
         return aaOptions
     }
@@ -704,7 +689,6 @@ function () {
                     .name("Berlin Hot")
                     .color(AAGradientColor.mysticMauve)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                ,
             ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
@@ -741,7 +725,6 @@ function () {
                     .name("Berlin Hot")
                     .color(AAGradientColor.deepSea)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-                ,
             ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
@@ -806,8 +789,7 @@ function () {
             .lineColor(AAColor.white)//X轴轴线颜色
             .crosshair(aaCrosshair)
             .labels(AALabels()
-                .style(aaStyle)
-        )
+                .style(aaStyle))
         
         aaOptions.yAxis?
             .opposite(true)
@@ -818,8 +800,7 @@ function () {
             .crosshair(aaCrosshair)
             .labels(AALabels()
                 .format("{value} ℃")//给y轴添加单位
-                .style(aaStyle)
-        )
+                .style(aaStyle))
         
         return aaOptions
     }
@@ -867,7 +848,8 @@ function () {
                 .to(11.25)
                 .color("#04d69f66")
                 .zIndex(0)
-            ,        ]
+            ,
+        ]
         
         aaOptions.xAxis?.plotBands(aaPlotBandsArr)
         
@@ -1183,8 +1165,7 @@ function () {
             .column(AAColumn()
                 .grouping(false)
                 .pointPadding(0)
-                .pointPlacement((0))
-        )
+                .pointPlacement((0)))
         
         let aaLegend = AALegend()
             .enabled(true)
@@ -1278,8 +1259,7 @@ function () {
             .labels(AALabels()
                 .enabled(true)//设置 y 轴是否显示数字
                 .align("left")
-                .x(8)
-        )
+                .x(8))
         
         let yAxis2 = AAYAxis()
             .opposite(true)
@@ -1294,8 +1274,7 @@ function () {
             .labels(AALabels()
                 .enabled(true)//设置 y 轴是否显示数字
                 .align("right")
-                .x(-8)
-        )
+                .x(-8))
         
         let aaTooltip = AATooltip()
             .enabled(true)
@@ -1881,8 +1860,7 @@ function () {
                         [57, 86, 50],
                         [33, 24, 51]
                     ])
-                ]
-        )
+            ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
         

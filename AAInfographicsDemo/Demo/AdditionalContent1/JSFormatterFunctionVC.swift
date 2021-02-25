@@ -100,7 +100,6 @@ class JSFormatterFunctionVC: AABaseChartVC {
                         2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
                         5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48
                     ])
-                ,
             ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
@@ -382,7 +381,6 @@ function () {
                     .lineWidth(5.0)
                     .fillOpacity(0.4)
                     .data([229.9, 771.5, 1106.4, 1129.2, 6644.0, 1176.0, 8835.6, 148.5, 8816.4, 6694.1, 7795.6, 9954.4])
-                ,
                 ])
         
         let aaYAxisLabels = AALabels()
@@ -622,7 +620,6 @@ function () {
                         [12489984, 10.8, 16.1]
                         ])
                     .zIndex(0)
-                    ,
                 ])
         
           let aaOptions = aaChartModel.aa_toAAOptions()
@@ -644,10 +641,7 @@ function () {
         """)
                     .backgroundColor("#000000")
                     .borderColor("#000000")
-                    .style(AAStyle()
-                        .color("#FFD700")
-                        .fontSize(12)
-                )
+                    .style(AAStyle(color: "#FFD700", fontSize: 12))
                 
                 return aaOptions
     }
@@ -723,7 +717,7 @@ function () {
             .series([
                 AASeriesElement()
                     .name("2017")
-                    .data([55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, ]),
+                    .data([55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, ])
             ])
         
         let 看近时长数组 = [70, 69, 95, 14, 18, 21, 25, 26, 23, 18, 13, 96]
@@ -862,8 +856,7 @@ function () {
         aaOptions.xAxis?
             .lineWidth(0)//避免多边形外环之外有额外套了一层无用的外环
             .labels?
-            .style(AAStyle()
-                .color(AAColor.black))
+            .style(AAStyle(color: AAColor.black))
             .formatter(xAxisLabelsFormatter)
         
         aaOptions.yAxis?
@@ -910,7 +903,7 @@ function () {
             .categories(["美国🇺🇸","欧洲🇪🇺","中国🇨🇳","日本🇯🇵","韩国🇰🇷","越南🇻🇳","中国香港🇭🇰",])
             .series([
                 AASeriesElement()
-                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2]),
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2])
             ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
@@ -1338,13 +1331,13 @@ function(event) {
             ])
         
         let aaPlotOptions = AAPlotOptions()
-            .series(AASeries()
+                .series(AASeries()
                         .marker(AAMarker()
-                                    .radius(7)//曲线连接点半径，默认是4
-                                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                                    .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
-                                    .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                                    .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                                .radius(7)//曲线连接点半径，默认是4
+                                .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                                .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
+                                .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                                .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
                         ))
         
         let yAxis1 = AAYAxis()
@@ -1481,8 +1474,7 @@ function () {
                                 function() {
                                 return "<span style=\'color:" + this.color + "\'> ◉ </span>" + this.series.name + ": <b>" + (this.options.isZero ? 0 : this.y) + "</b><br/>";
                                                 }
-                                """#)
-                    )
+                                """#))
             ])
     }
 }
