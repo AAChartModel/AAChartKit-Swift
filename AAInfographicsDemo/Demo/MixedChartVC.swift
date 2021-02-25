@@ -212,18 +212,14 @@ class MixedChartVC: AABaseChartVC {
                     .data([82.89, 67.54, 62.07, 59.43, 67.02, 67.09, 35.66, 71.78, 81.61, 78.85, 79.12, 72.30])
                     .dataLabels(AADataLabels()
                         .enabled(true)
-                        .style(AAStyle()
-                            .color(AAColor.red)
-                            .fontSize(11)))
+                        .style(AAStyle(color: AAColor.red, fontSize: 11)))
                 ,
                 AASeriesElement()
                     .name("老用户")
                     .data([198.66, 330.81, 151.95, 160.12, 222.56, 229.05, 128.53, 250.91, 224.47, 473.99, 126.85, 260.50])
                     .dataLabels(AADataLabels()
                         .enabled(true)
-                        .style(AAStyle()
-                            .color(AAColor.green)
-                            .fontSize(11)))
+                        .style(AAStyle(color: AAColor.green, fontSize: 11)))
                 ,
                 AASeriesElement()
                     .name("总量")
@@ -231,9 +227,7 @@ class MixedChartVC: AABaseChartVC {
                     .data([281.55, 398.35, 214.02, 219.55, 289.57, 296.14, 164.18, 322.69, 306.08, 552.84, 205.97, 332.79])
                     .dataLabels(AADataLabels()
                         .enabled(true)
-                        .style(AAStyle()
-                            .color(AAColor.blue)
-                            .fontSize(15)))
+                        .style(AAStyle(color: AAColor.blue, fontSize: 15)))
                 ,
             ])
     }
@@ -290,7 +284,6 @@ class MixedChartVC: AABaseChartVC {
                     .color("#0088FF")
                     .negativeColor("#FF0000")
                     .threshold(4)//default:0
-                ,
             ])
     }
     
@@ -550,7 +543,6 @@ class MixedChartVC: AABaseChartVC {
                     .color("#0088FF")
                     .negativeColor("#FF0000")
                     .threshold(4)//default:0
-                ,
             ])
     }
     
