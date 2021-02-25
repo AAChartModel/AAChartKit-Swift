@@ -56,7 +56,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
         case 13: return customizeEveryDataLabelSinglelyByDataLabelsFormatter()
         case 14: return customXAxisLabelsBeImages()
         case 15: return customLegendItemClickEvent()
-        case 16: return customTooltipPostionerFunction()
+        case 16: return customTooltipPositionerFunction()
         case 17: return fixedTooltipPositionByCustomPositionerFunction()
         case 18: return disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction()
         case 19: return customAreasplineChartTooltipStyleByDivWithCSS()
@@ -914,14 +914,14 @@ function () {
         
         let unitArr = ["美元", "欧元", "人民币", "日元", "韩元", "越南盾", "港币", ]
         let unitJSArrStr = unitArr.aa_toJSArray()
-        //单组 serie 图表, 获取选中的点的索引是 this.point.index ,多组并且共享提示框,则是this.points[0].index
+        //单组 series 图表, 获取选中的点的索引是 this.point.index ,多组并且共享提示框,则是this.points[0].index
         let dataLabelsFormatter = """
         function () {
         return this.y + \(unitJSArrStr)[this.point.index];
         }
         """
         
-        let aaDatalabels = AADataLabels()
+        let aaDataLabels = AADataLabels()
             .style(AAStyle(color: AAColor.red, fontSize: 10, weight: .bold))
             .formatter(dataLabelsFormatter)
             .backgroundColor(AAColor.white)// white color
@@ -931,7 +931,7 @@ function () {
             .x(3).y(-20)
             .verticalAlign(.middle)
         
-        aaOptions.plotOptions?.series?.dataLabels = aaDatalabels
+        aaOptions.plotOptions?.series?.dataLabels = aaDataLabels
         
         return aaOptions
     }
@@ -1042,7 +1042,7 @@ function () {
     //4. 其他情况，按默认处理：
     //显示 --> 隐藏；
     //隐藏 --> 显示；
-    //Customized legengItemClick Event online: http://code.hcharts.cn/rencht/hhhhLv/share
+    //Customized legendItemClick Event online: http://code.hcharts.cn/rencht/hhhhLv/share
     private func customLegendItemClickEvent() -> AAOptions  {
         let aaChartModel = AAChartModel()
             .chartType(.column)
@@ -1076,11 +1076,11 @@ function () {
         aaOptions.plotOptions?.series?.events = AAEvents()
             .legendItemClick(#"""
 function(event) {
-    function getVisibleMode(series, serieName) {
+    function getVisibleMode(series, seriesName) {
         var allVisible = true;
         var allHidden = true;
         for (var i = 0; i < series.length; i++) {
-            if (series[i].name == serieName)
+            if (series[i].name == seriesName)
                 continue;
             allVisible &= series[i].visible;
             allHidden &= (!series[i].visible);
@@ -1101,16 +1101,16 @@ function(event) {
     else if (mode == 'all-visible') {
         var seriesLength = series.length;
         for (var i = 0; i < seriesLength; i++) {
-            var serie = series[i];
-            serie.hide();
+            var series = series[i];
+            series.hide();
         }
         this.show();
     }
     else if (mode == 'all-hidden') {
         var seriesLength = series.length;
         for (var i = 0; i < seriesLength; i++) {
-            var serie = series[i];
-            serie.show();
+            var series = series[i];
+            series.show();
         }
     }
     else {
@@ -1124,7 +1124,7 @@ function(event) {
     }
     
     // https://github.com/AAChartModel/AAChartKit-Swift/issues/233
-    private func customTooltipPostionerFunction() -> AAOptions {
+    private func customTooltipPositionerFunction() -> AAOptions {
         let categories = [
             "孤岛危机",
             "使命召唤",
@@ -1170,7 +1170,7 @@ function(event) {
     
         
     private func fixedTooltipPositionByCustomPositionerFunction() -> AAOptions {
-        let aaOptions = customTooltipPostionerFunction()
+        let aaOptions = customTooltipPositionerFunction()
         
         aaOptions.tooltip?
             .positioner("""

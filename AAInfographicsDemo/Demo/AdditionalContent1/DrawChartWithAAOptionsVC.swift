@@ -303,9 +303,9 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .colorsTheme(["#ffc069","#fe117c","#06caf4","#7dffc0"])
             .categories([
                 "January", "February", "March", "April", "May", "June",
-                "July", "August", "Septembel", "October", "November", "December",
+                "July", "August", "September", "October", "November", "December",
                 "January", "February", "March", "April", "May", "June",
-                "July", "August", "Septembel", "October", "November", "December",])
+                "July", "August", "September", "October", "November", "December",])
             .dataLabelsEnabled(false)
             .legendEnabled(false)
             .series([
@@ -338,7 +338,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         let aaChartModel = AAChartModel()
             .chartType(.column)
             .categories(["January", "February", "March", "April", "May", "June",
-                         "July", "August", "Septembel", "October", "November", "December"])
+                         "July", "August", "September", "October", "November", "December"])
             .dataLabelsEnabled(false)
             .legendEnabled(false)
             .series([
@@ -1066,9 +1066,9 @@ function () {
     
     private func configureDoubleYAxesAndColumnLineMixedChart() -> AAOptions {
         let stopsArr = [
-            [0.0, "rgba(156,107,211,0.5)"],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.2, "rgba(156,107,211,0.3)"],
-            [1.0, "rgba(156,107,211,0)"]
+            [0.0, AAColor.rgbaColor(156,107,211,0.5)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.2, AAColor.rgbaColor(156,107,211,0.3)],
+            [1.0, AAColor.rgbaColor(156,107,211,0)]
         ]
         
         let gradientColorDic1 = AAGradientColor.linearGradient(
@@ -1219,7 +1219,8 @@ function () {
             .series([
                 goalValuesElement,
                 realValuesElement,
-                rateValuesElement])
+                rateValuesElement
+            ])
         
         return aaOptions
     }
