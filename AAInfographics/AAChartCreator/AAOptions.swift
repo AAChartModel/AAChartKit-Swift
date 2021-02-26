@@ -318,7 +318,7 @@ public class AAOptionsConstructor {
     ) {
         let aaChartType = aaChartModel.chartType
         //The related configuration of the x-axis and the Y-axis, the fan, pyramid, funnel, and meter and dial charts do not need to set the relevant content of the X-axis and Y-axis
-        if (   aaChartType == .column
+        if     aaChartType == .column
             || aaChartType == .bar
             || aaChartType == .area
             || aaChartType == .areaspline
@@ -332,7 +332,7 @@ public class AAOptionsConstructor {
             || aaChartType == .boxplot
             || aaChartType == .waterfall
             || aaChartType == .polygon
-            || aaChartType == .gauge) {
+            || aaChartType == .gauge {
             
             if aaChartType != .gauge {
                 let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled
