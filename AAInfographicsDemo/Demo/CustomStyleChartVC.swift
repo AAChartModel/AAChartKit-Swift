@@ -428,13 +428,7 @@ class CustomStyleChartVC: AABaseChartVC {
                     .format("{y} 美元🇺🇸💲")
                     .x(3)
                     .verticalAlign(.middle)
-                    .style(AAStyle(color: AAColor.red, fontSize: 20, weight: .bold, outline: "1px 1px contrast"))
-                    .style(AAStyle()
-                        .fontSize(20)
-                        .fontWeight(.bold)
-                        .color(AAColor.red)
-                        .textOutline("1px 1px contrast")
-            ))
+                    .style(AAStyle(color: AAColor.red, fontSize: 20, weight: .bold, outline: "1px 1px contrast")))
             .toDic()!
         
         return AAChartModel()
@@ -444,7 +438,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 AASeriesElement()
                     .name("货币")
                     .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, dataElement, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
-                ])
+            ])
     }
     
     private func configureChartWithShadowStyle() -> AAChartModel {
