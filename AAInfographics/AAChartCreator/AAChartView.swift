@@ -476,7 +476,7 @@ extension AAChartView {
         }
         let finalJSArrStr = "[\(originalJsArrStr)]"
         
-        let jsFunctionStr = "aaGlobalChart.xAxis[0].setCategories(\(finalJSArrStr),\(redraw));)"
+        let jsFunctionStr = "aaGlobalChart.xAxis[0].setCategories(\(finalJSArrStr),\(redraw));"
         safeEvaluateJavaScriptString(jsFunctionStr)
     }
     
