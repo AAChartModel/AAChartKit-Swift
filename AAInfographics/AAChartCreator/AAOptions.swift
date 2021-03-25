@@ -188,7 +188,6 @@ public class AAOptionsConstructor {
         let aaTooltip = AATooltip()
             .enabled(aaChartModel.tooltipEnabled)
             .shared(true) //Multiple groups of data share the same tooltip
-            .crosshairs(true) //Enable crosshair
             .valueSuffix(aaChartModel.tooltipValueSuffix)
         
         let aaPlotOptions = AAPlotOptions()

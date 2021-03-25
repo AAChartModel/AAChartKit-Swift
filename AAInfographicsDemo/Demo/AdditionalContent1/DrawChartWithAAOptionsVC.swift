@@ -385,7 +385,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .startAngle(-150)
             .endAngle(150))
         
-        aaOptions.tooltip?.crosshairs(false)
         aaOptions.yAxis?
             .gridLineColor(AAColor.white)
             .plotBands([
@@ -419,7 +418,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .startAngle(-150)
             .endAngle(150))
         
-        aaOptions.tooltip?.crosshairs(false)
         aaOptions.yAxis?
             .gridLineColor(AAColor.white)
             .plotBands([

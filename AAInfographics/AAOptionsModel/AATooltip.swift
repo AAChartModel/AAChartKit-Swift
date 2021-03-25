@@ -46,7 +46,6 @@ public class AATooltip: AAObject {
     public var footerFormat: String?
     public var valueDecimals: Int?
     public var shared: Bool?
-    public var crosshairs: Bool?
     public var valueSuffix: String?
     public var followTouchMove: Bool?//https://api.highcharts.com.cn/highcharts#chart.panning
     public var shadow: Bool?
@@ -134,12 +133,6 @@ public class AATooltip: AAObject {
     }
     
     @discardableResult
-    public func crosshairs(_ prop: Bool?) -> AATooltip {
-        crosshairs = prop
-        return self
-    }
-    
-    @discardableResult
     public func valueSuffix(_ prop: String?) -> AATooltip {
         valueSuffix = prop
         return self
@@ -178,6 +171,5 @@ public class AATooltip: AAObject {
     public override init() {
         enabled = true
         shared = true
-        crosshairs = true
     }
 }
