@@ -470,12 +470,7 @@ extension AAChartView {
     ///   - categories: The X axis categories array
     ///   - redraw: Redraw whole chart or not
     public func aa_updateXAxisCategories(_ categories: [String], redraw: Bool = true) {
-        var originalJsArrStr = ""
-        for categoryElement in categories {
-            originalJsArrStr += "'\(categoryElement)',"
-        }
-        let finalJSArrStr = "[\(originalJsArrStr)]"
-        
+        let finalJSArrStr = categories.aa_toJSArray()
         let jsFunctionStr = "aaGlobalChart.xAxis[0].setCategories(\(finalJSArrStr),\(redraw));"
         safeEvaluateJavaScriptString(jsFunctionStr)
     }
