@@ -116,8 +116,15 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                 ,
             ])
         let aaOptions = aaChartModel.aa_toAAOptions()
-        aaOptions.yAxis?.labels?.format = "{value} $";//给y轴添加单位
         
+        //修改 X 轴文字标签样式
+        aaOptions.xAxis?.labels?.style?
+            .color(AAColor.red)
+            .fontSize(18)
+            .fontWeight(.bold)
+        
+        aaOptions.yAxis?.labels?.format = "{value} $";//给y轴添加单位
+                        
         aaOptions.legend!
             .itemMarginTop(20)
             .symbolRadius(10)//图标圆角
