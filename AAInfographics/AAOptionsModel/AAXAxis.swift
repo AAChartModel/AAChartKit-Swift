@@ -77,6 +77,12 @@ public class AAXAxis: AAObject {
     }
     
     @discardableResult
+    public func dateTimeLabelFormats(_ prop: AADateTimeLabelFormats?) -> AAXAxis {
+        dateTimeLabelFormats = prop
+        return self
+    }
+    
+    @discardableResult
     public func plotBands(_ prop: [AAPlotBandsElement]?) -> AAXAxis {
         plotBands = prop
         return self
