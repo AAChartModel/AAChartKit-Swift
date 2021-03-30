@@ -46,6 +46,10 @@ public class AASeries: AAObject {
     public var states: AAStates?
     public var allowPointSelect: Bool?
     public var point: AAPoint?
+    public var pointInterval: Float?
+    public var pointIntervalUnit: String?
+    public var pointPlacement: Any? //String | Number
+    public var pointStart: Float?
     public var pointPadding: Float?
     public var groupPadding: Float?
 
@@ -57,7 +61,7 @@ public class AASeries: AAObject {
     }
     
     @discardableResult
-    public func marker(_ prop: AAMarker) -> AASeries {
+    public func marker(_ prop: AAMarker?) -> AASeries {
         marker = prop
         return self
     }
@@ -69,13 +73,13 @@ public class AASeries: AAObject {
     }
     
     @discardableResult
-    public func animation(_ prop: AAAnimation) -> AASeries {
+    public func animation(_ prop: AAAnimation?) -> AASeries {
         animation = prop
         return self
     }
     
     @discardableResult
-    public func keys(_ prop: [String]) -> AASeries {
+    public func keys(_ prop: [String]?) -> AASeries {
         keys = prop
         return self
     }
@@ -99,26 +103,50 @@ public class AASeries: AAObject {
     }
     
     @discardableResult
-    public func shadow(_ prop: AAShadow) -> AASeries {
+    public func shadow(_ prop: AAShadow?) -> AASeries {
         shadow = prop
         return self
     }
     
     @discardableResult
-    public func dataLabels(_ prop: AADataLabels) -> AASeries {
+    public func dataLabels(_ prop: AADataLabels?) -> AASeries {
         dataLabels = prop
         return self
     }
     
     @discardableResult
-    public func states(_ prop: AAStates) -> AASeries {
+    public func states(_ prop: AAStates?) -> AASeries {
         states = prop
         return self
     }
     
     @discardableResult
-    public func point(_ prop: AAPoint) -> AASeries {
+    public func point(_ prop: AAPoint?) -> AASeries {
         point = prop
+        return self
+    }
+
+    @discardableResult
+    public func pointInterval(_ prop: Float?) -> AASeries {
+        pointInterval = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pointIntervalUnit(_ prop: String?) -> AASeries {
+        pointIntervalUnit = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pointPlacement(_ prop: Any?) -> AASeries {
+        pointPlacement = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pointStart(_ prop: Float?) -> AASeries {
+        pointStart = prop
         return self
     }
     
