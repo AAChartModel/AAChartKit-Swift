@@ -119,9 +119,18 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         
         //修改 X 轴文字标签样式
         aaOptions.xAxis?.labels?.style?
-            .color(AAColor.red)
+            .color(AAColor.green)
             .fontSize(18)
             .fontWeight(.bold)
+        
+        //https://jshare.com.cn/highcharts/hhhhf0
+        aaOptions.xAxis?
+            .type("dateTime")
+            .dateTimeLabelFormats(
+                AADateTimeLabelFormats()
+                    .day("%e of %b"))
+        
+        aaOptions.plotOptions?.series?.pointInterval(24 * 3600 * 1000 )
         
         aaOptions.yAxis?.labels?.format = "{value} $";//给y轴添加单位
                         
