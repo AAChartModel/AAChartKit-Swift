@@ -667,7 +667,7 @@ function () {
         let aaChartModel = AAChartModel()
             .chartType(.line)
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
-            .axesTextColor(AAColor.white)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.white))
             .dataLabelsEnabled(false)
             .tooltipValueSuffix("℃")
             .animationType(.bounce)

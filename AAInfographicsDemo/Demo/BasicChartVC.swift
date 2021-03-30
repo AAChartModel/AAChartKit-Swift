@@ -77,7 +77,7 @@ class BasicChartVC: UIViewController {
         aaChartModel = AAChartModel()
             .chartType(chartType!)
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
-            .axesTextColor(AAColor.white)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.white))
             .dataLabelsEnabled(false)
             .tooltipValueSuffix("℃")
             .animationType(.bounce)

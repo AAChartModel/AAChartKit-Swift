@@ -98,6 +98,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .markerSymbol(.circle)
             .markerSymbolStyle(.innerBlank)
             .stacking(.normal)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.purple, fontSize: 18, weight: .bold))
             .series([
                 AASeriesElement()
                     .name("Tokyo Hot")
@@ -116,12 +117,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                 ,
             ])
         let aaOptions = aaChartModel.aa_toAAOptions()
-        
-        //修改 X 轴文字标签样式
-        aaOptions.xAxis?.labels?.style?
-            .color(AAColor.green)
-            .fontSize(18)
-            .fontWeight(.bold)
         
         //https://jshare.com.cn/highcharts/hhhhf0
         aaOptions.xAxis?
@@ -767,7 +762,7 @@ function () {
             .yAxisTitle("")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .markerRadius(0)
-            .axesTextColor(AAColor.white)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.white))
             .series([
                 AASeriesElement()
                     .name("Berlin Hot")

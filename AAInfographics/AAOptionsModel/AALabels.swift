@@ -116,7 +116,7 @@ public class AALabels: AAObject {
     }
     
     @discardableResult
-    public func style(_ prop: AAStyle) -> AALabels {
+    public func style(_ prop: AAStyle?) -> AALabels {
         style = prop
         return self
     }
