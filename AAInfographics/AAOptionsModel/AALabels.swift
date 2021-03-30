@@ -50,25 +50,25 @@ public class AALabels: AAObject {
     public var useHTML: Bool? // HTML rendering
     
     @discardableResult
-    public func align(_ prop: String) -> AALabels {
+    public func align(_ prop: String?) -> AALabels {
         align = prop
         return self
     }
     
     @discardableResult
-    public func autoRotation(_ prop: Any) -> AALabels {
+    public func autoRotation(_ prop: Any?) -> AALabels {
         autoRotation = prop
         return self
     }
     
     @discardableResult
-    public func autoRotationLimit(_ prop: Float) -> AALabels {
+    public func autoRotationLimit(_ prop: Float?) -> AALabels {
         autoRotationLimit = prop
         return self
     }
     
     @discardableResult
-    public func distance(_ prop: Float) -> AALabels {
+    public func distance(_ prop: Float?) -> AALabels {
         distance = prop
         return self
     }
@@ -80,37 +80,37 @@ public class AALabels: AAObject {
     }
     
     @discardableResult
-    public func format(_ prop: String) -> AALabels {
+    public func format(_ prop: String?) -> AALabels {
         format = prop
         return self
     }
     
     @discardableResult
-    public func formatter(_ prop: String) -> AALabels {
-        formatter = prop.aa_toPureJSString()
+    public func formatter(_ prop: String?) -> AALabels {
+        formatter = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
-    public func padding(_ prop: Float) -> AALabels {
+    public func padding(_ prop: Float?) -> AALabels {
         padding = prop
         return self
     }
     
     @discardableResult
-    public func rotation(_ prop: Float) -> AALabels {
+    public func rotation(_ prop: Float?) -> AALabels {
         rotation = prop
         return self
     }
     
     @discardableResult
-    public func staggerLines(_ prop: Int) -> AALabels {
+    public func staggerLines(_ prop: Int?) -> AALabels {
         staggerLines = prop
         return self
     }
     
     @discardableResult
-    public func step(_ prop: Int) -> AALabels {
+    public func step(_ prop: Int?) -> AALabels {
         step = prop
         return self
     }
@@ -122,19 +122,19 @@ public class AALabels: AAObject {
     }
     
     @discardableResult
-    public func x(_ prop: Float) -> AALabels {
+    public func x(_ prop: Float?) -> AALabels {
         x = prop
         return self
     }
     
     @discardableResult
-    public func y(_ prop: Float) -> AALabels {
+    public func y(_ prop: Float?) -> AALabels {
         y = prop
         return self
     }
     
     @discardableResult
-    public func useHTML(_ prop: Bool) -> AALabels {
+    public func useHTML(_ prop: Bool?) -> AALabels {
         useHTML = prop
         return self
     }
