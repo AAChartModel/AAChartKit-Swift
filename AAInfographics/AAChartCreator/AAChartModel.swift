@@ -176,7 +176,6 @@ public class AAChartModel: AAObject {
     public var yAxisAllowDecimals: Bool?    //The y axis values label allow decimals or not
     public var tooltipEnabled: Bool?        //Show the tooltip or not
     public var tooltipValueSuffix: String?  //Custom tooltip value unit suffix
-    public var tooltipCrosshairs: Bool?     //Show tooltip crosshair or not
     public var colorsTheme: [Any]?          //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to: ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
     public var series: [Any]?               //An array of all the chart's series
     public var legendEnabled: Bool?         //Enable or disable the legend. Defaults to true
@@ -292,12 +291,6 @@ public class AAChartModel: AAObject {
     @discardableResult
     public func tooltipValueSuffix(_ prop: String) -> AAChartModel {
         tooltipValueSuffix = prop
-        return self
-    }
-    
-    @discardableResult
-    public func tooltipCrosshairs(_ prop: Bool) -> AAChartModel {
-        tooltipCrosshairs = prop
         return self
     }
     
@@ -474,7 +467,6 @@ public class AAChartModel: AAObject {
         zoomType               = AAChartZoomType.none //Disable gesture zoom by default
         colorsTheme            = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
         tooltipEnabled         = true
-        tooltipCrosshairs      = true
         xAxisLabelsEnabled     = true
         xAxisVisible           = true
         yAxisVisible           = true
