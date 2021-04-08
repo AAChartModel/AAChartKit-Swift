@@ -128,6 +128,14 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         aaOptions.plotOptions?.series?.pointInterval(24 * 3600 * 1000 )
         
         aaOptions.yAxis?.labels?.format = "{value} $";//给y轴添加单位
+        
+        aaOptions.yAxis?
+            .crosshair(
+                AACrosshair()
+                    .color(AAColor.red)
+                    .dashStyle(.longDashDotDot)
+                    .width(2)
+            )
                         
         aaOptions.legend!
             .itemMarginTop(20)
