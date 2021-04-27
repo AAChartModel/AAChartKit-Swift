@@ -192,7 +192,7 @@ class CustomStyleChartVC: AABaseChartVC {
             .categories(gradientColorNamesArr)
             .colorsTheme(gradientColorArr as [Any])
             .stacking(.percent)
-            .axesTextColor(AAColor.white)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.white))
             .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
@@ -292,7 +292,7 @@ class CustomStyleChartVC: AABaseChartVC {
     private func configureStackingPolarColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
-            .axesTextColor(AAColor.white)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.white))
             .dataLabelsEnabled(false)
             .backgroundColor("#22324c")//To make the chart background color transparent, set backgroundColor to "rgba (0,0,0,0)" or "# 00000000". Also make sure `aaChartView!.IsClearBackgroundColor = true`
             .polar(true)

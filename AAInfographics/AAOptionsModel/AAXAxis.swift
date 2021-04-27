@@ -34,6 +34,7 @@ import Foundation
 
 public class AAXAxis: AAObject {
     public var type: String?
+    public var dateTimeLabelFormats: AADateTimeLabelFormats?
     public var plotBands: [AAPlotBandsElement]?
     public var plotLines: [AAPlotLinesElement]?
     public var categories: [String]?
@@ -72,6 +73,12 @@ public class AAXAxis: AAObject {
     @discardableResult
     public func type(_ prop: String?) -> AAXAxis {
         type = prop
+        return self
+    }
+    
+    @discardableResult
+    public func dateTimeLabelFormats(_ prop: AADateTimeLabelFormats?) -> AAXAxis {
+        dateTimeLabelFormats = prop
         return self
     }
     
@@ -235,5 +242,69 @@ public class AAXAxis: AAObject {
         
     }
 
+}
+
+
+public class AADateTimeLabelFormats: AAObject {
+    public var millisecond: String?
+    public var second: String?
+    public var minute: String?
+    public var hour: String?
+    public var day: String?
+    public var week: String?
+    public var month: String?
+    public var year: String?
+    
+    @discardableResult
+    public func millisecond(_ prop: String?) -> AADateTimeLabelFormats {
+        millisecond = prop
+        return self
+    }
+    
+    @discardableResult
+    public func second(_ prop: String?) -> AADateTimeLabelFormats {
+        second = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minute(_ prop: String?) -> AADateTimeLabelFormats {
+        minute = prop
+        return self
+    }
+    
+    @discardableResult
+    public func hour(_ prop: String?) -> AADateTimeLabelFormats {
+        hour = prop
+        return self
+    }
+    
+    @discardableResult
+    public func day(_ prop: String?) -> AADateTimeLabelFormats {
+        day = prop
+        return self
+    }
+    
+    @discardableResult
+    public func week(_ prop: String?) -> AADateTimeLabelFormats {
+        week = prop
+        return self
+    }
+    
+    @discardableResult
+    public func month(_ prop: String?) -> AADateTimeLabelFormats {
+        month = prop
+        return self
+    }
+    
+    @discardableResult
+    public func year(_ prop: String?) -> AADateTimeLabelFormats {
+        year = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
 }
 

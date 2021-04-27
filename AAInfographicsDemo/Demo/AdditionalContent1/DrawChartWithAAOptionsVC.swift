@@ -98,6 +98,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .markerSymbol(.circle)
             .markerSymbolStyle(.innerBlank)
             .stacking(.normal)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.purple, fontSize: 18, weight: .bold))
             .series([
                 AASeriesElement()
                     .name("Tokyo Hot")
@@ -116,8 +117,26 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                 ,
             ])
         let aaOptions = aaChartModel.aa_toAAOptions()
+        
+        //https://jshare.com.cn/highcharts/hhhhf0
+        aaOptions.xAxis?
+            .type("dateTime")
+            .dateTimeLabelFormats(
+                AADateTimeLabelFormats()
+                    .day("%e of %b"))
+        
+        aaOptions.plotOptions?.series?.pointInterval(24 * 3600 * 1000 )
+        
         aaOptions.yAxis?.labels?.format = "{value} $";//给y轴添加单位
         
+        aaOptions.yAxis?
+            .crosshair(
+                AACrosshair()
+                    .color(AAColor.red)
+                    .dashStyle(.longDashDotDot)
+                    .width(2)
+            )
+                        
         aaOptions.legend!
             .itemMarginTop(20)
             .symbolRadius(10)//图标圆角
@@ -378,7 +397,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .startAngle(-150)
             .endAngle(150))
         
-        aaOptions.tooltip?.crosshairs(false)
         aaOptions.yAxis?
             .gridLineColor(AAColor.white)
             .plotBands([
@@ -412,7 +430,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .startAngle(-150)
             .endAngle(150))
         
-        aaOptions.tooltip?.crosshairs(false)
         aaOptions.yAxis?
             .gridLineColor(AAColor.white)
             .plotBands([
@@ -753,7 +770,7 @@ function () {
             .yAxisTitle("")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .markerRadius(0)
-            .axesTextColor(AAColor.white)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.white))
             .series([
                 AASeriesElement()
                     .name("Berlin Hot")

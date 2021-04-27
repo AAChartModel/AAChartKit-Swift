@@ -188,7 +188,6 @@ public class AAOptionsConstructor {
         let aaTooltip = AATooltip()
             .enabled(aaChartModel.tooltipEnabled)
             .shared(true) //Multiple groups of data share the same tooltip
-            .crosshairs(true) //Enable crosshair
             .valueSuffix(aaChartModel.tooltipValueSuffix)
         
         let aaPlotOptions = AAPlotOptions()
@@ -207,8 +206,6 @@ public class AAOptionsConstructor {
         
         let aaLegend = AALegend()
             .enabled(aaChartModel.legendEnabled)
-            .itemStyle(AAItemStyle()
-                        .color(aaChartModel.axesTextColor)) //The default legend text color is the same as the X-axis text color
         
         let aaOptions = AAOptions()
             .chart(aaChart)
@@ -340,8 +337,7 @@ public class AAOptionsConstructor {
                     .enabled(aaXAxisLabelsEnabled) //Set whether the x-axis displays text
                 if aaXAxisLabelsEnabled == true {
                     aaXAxisLabels
-                        .style(AAStyle()
-                                .color(aaChartModel.axesTextColor))
+                        .style(aaChartModel.xAxisLabelsStyle)
                 }
                 
                 let aaXAxis = AAXAxis()
@@ -352,11 +348,8 @@ public class AAOptionsConstructor {
                     .visible(aaChartModel.xAxisVisible) //whether the x axis is visible
                     .tickInterval(aaChartModel.xAxisTickInterval) //Number of x-axis coordinate point intervals
                     .title(AATitle()
-                            .text(aaChartModel.xAxisTitle) //y axis title
-                            .style(AAStyle()
-                                    .color(aaChartModel.axesTextColor)))
-                
-                
+                            .text(aaChartModel.xAxisTitle)) //y axis title
+                                            
                 aaOptions.xAxis(aaXAxis)
             }
             
@@ -365,8 +358,7 @@ public class AAOptionsConstructor {
                 .enabled(aaChartModel.yAxisLabelsEnabled)
             if aaYAxisLabelsEnabled == true {
                 aaYAxisLabels
-                    .style(AAStyle()
-                            .color(aaChartModel.axesTextColor))
+                    .style(aaChartModel.yAxisLabelsStyle)
             }
             
             let aaYAxis = AAYAxis()
@@ -379,9 +371,7 @@ public class AAOptionsConstructor {
                 .lineWidth(aaChartModel.yAxisLineWidth) //Set the width of the y-axis axis, which is 0 to hide the y-axis axis
                 .visible(aaChartModel.yAxisVisible)
                 .title(AATitle()
-                        .text(aaChartModel.yAxisTitle) //y axis title
-                        .style(AAStyle()
-                                .color(aaChartModel.axesTextColor)))
+                        .text(aaChartModel.yAxisTitle)) //y axis title
             
             aaOptions.yAxis(aaYAxis)
         }
