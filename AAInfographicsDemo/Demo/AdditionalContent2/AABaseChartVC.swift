@@ -31,6 +31,7 @@
 
 import UIKit
 
+@available(macCatalyst 13.0, *)
 class AABaseChartVC: UIViewController {
     var navigationItemTitleArr: [Any]?
     var selectedIndex: Int = 0
@@ -257,6 +258,7 @@ class AABaseChartVC: UIViewController {
 
 }
 
+@available(macCatalyst 13.0, *)
 extension AABaseChartVC: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
        print("🚀🚀🚀, AAChartView Did Finished Load!!!")
