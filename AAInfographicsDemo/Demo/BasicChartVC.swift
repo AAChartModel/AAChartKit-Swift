@@ -33,6 +33,7 @@
 
 import UIKit
 
+@available(macCatalyst 13.0, *)
 class BasicChartVC: UIViewController {
     public var chartType: AAChartType!
     public var step: Bool?
@@ -392,6 +393,7 @@ class BasicChartVC: UIViewController {
     }
 }
 
+@available(macCatalyst 13.0, *)
 extension BasicChartVC: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
        print("🙂🙂🙂, AAChartView Did Finished Load!!!")

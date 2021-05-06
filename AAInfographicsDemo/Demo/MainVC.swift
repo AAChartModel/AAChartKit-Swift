@@ -33,6 +33,7 @@
 import UIKit
 
 
+@available(macCatalyst 13.0, *)
 class MainVC: UIViewController {
     private var sectionTitleArr = [String]()
     private var chartTypeTitleArr = [[String]]()
@@ -428,6 +429,7 @@ class MainVC: UIViewController {
     }
 }
 
+@available(macCatalyst 13.0, *)
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return chartTypeTitleArr.count
