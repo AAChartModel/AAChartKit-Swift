@@ -70,23 +70,23 @@
         }
         
         function configureChartTouchEvent(aaPlotOptions) {
-            var mouseOverFunc = function() {
-                var message = {
+            let mouseOverFunc = function () {
+                let message = {
                     name: this.series.name,
                     y: this.y,
                     x: this.x,
-                    category:this.category,
+                    category: this.category,
                     offset: {plotX: this.plotX, plotY: this.plotY},
                     index: this.index,
                 };
                 window.webkit.messageHandlers.mouseover.postMessage(message);
             };
-            
-            if (aaPlotOptions.series.point) {// set property directlly for series point
+
+            if (aaPlotOptions.series.point) {// set property directly for series point
                 aaPlotOptions.series.point.events.mouseOver = mouseOverFunc;
             } else {// creat a new series point object instance
-                var seriesPoint = {
-                    events:{
+                let seriesPoint = {
+                    events: {
                         mouseOver: mouseOverFunc,
                     }
                 };
@@ -103,7 +103,7 @@
                 seriesElement.setData(receivedSeriesElementData, false);
             }
             
-            let animationBool = (animation == "true") ? true:false;
+            let animationBool = (animation === "true");
             aaGlobalChart.redraw(animationBool);
         }
         
@@ -114,16 +114,16 @@
         
         function addPointToChartSeries(elementIndex, optionsStr, redraw, shift, animation) {
             let options = JSON.parse(optionsStr);
-            let redrawBool = (redraw == "true") ? true:false;
-            let shiftBool = (shift == "true") ? true:false;
-            let animationBool = (animation == "true") ? true:false;
+            let redrawBool = (redraw === "true");
+            let shiftBool = (shift === "true");
+            let animationBool = (animation === "true");
             
             let seriesElement = aaGlobalChart.series[elementIndex];
             seriesElement.addPoint(options, redrawBool, shiftBool, animationBool);
         }
         
         function redrawWithAnimation(animation) {
-            let animationBool = (animation == "true") ? true:false;
+            let animationBool = (animation === "true");
             aaGlobalChart.redraw(animationBool);
         }
         
@@ -143,7 +143,7 @@
             let seriesLength = aaGlobalChart.series.length;
             for (let i = 0; i < seriesLength; i++) {
                 let seriesElement = aaGlobalChart.series[i];
-                if (hidden == "true") {
+                if (hidden === "true") {
                     seriesElement.hide();
                 } else {
                     seriesElement.show();
