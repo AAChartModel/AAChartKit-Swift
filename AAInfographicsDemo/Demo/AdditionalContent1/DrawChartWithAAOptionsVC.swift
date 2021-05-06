@@ -136,6 +136,12 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                     .dashStyle(.longDashDotDot)
                     .width(2)
             )
+        
+        //https://github.com/AAChartModel/AAChartKit-Swift/issues/298
+        aaOptions.yAxis?
+            .gridLineWidth(30)
+            .gridLineColor(AAColor.rgbaColor(68, 170, 213, 0.2))
+            .labels?.style(AAStyle(color: "DodgerBlue"))
                         
         aaOptions.legend!
             .itemMarginTop(20)
