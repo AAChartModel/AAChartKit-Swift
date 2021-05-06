@@ -27,15 +27,15 @@
                 if(receivedHeight != 0) {
                     container.style.height = receivedHeight;
                 }
-                
-                var aaOptions = JSON.parse(sender, function (key, value) {
-                  if (   typeof(value) == 'string'
-                      && value.indexOf('function') != -1) {
-                     return eval(value)
-                  }
-                   return value;
+
+                let aaOptions = JSON.parse(sender, function (key, value) {
+                    if (typeof (value) == 'string'
+                        && value.indexOf('function') !== -1) {
+                        return eval(value)
+                    }
+                    return value;
                 });
-                
+
                 if (aaOptions.defaultOptions) {
                     Highcharts.setOptions({
                         lang: aaOptions.defaultOptions
