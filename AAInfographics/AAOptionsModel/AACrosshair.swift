@@ -35,7 +35,8 @@ import Foundation
 public class AACrosshair: AAObject {
     public var dashStyle: String?
     public var color: String?
-    public var width: Float?  
+    public var width: Float?
+    public var zIndex: Int?
     
     @discardableResult
     public func dashStyle(_ prop: AAChartLineDashStyleType) -> AACrosshair {
@@ -52,6 +53,12 @@ public class AACrosshair: AAObject {
     @discardableResult
     public func width(_ prop: Float) -> AACrosshair {
         width = prop
+        return self
+    }
+    
+    @discardableResult
+    public func zIndex(_ prop: Int) -> AACrosshair {
+        zIndex = prop
         return self
     }
     
