@@ -1989,24 +1989,40 @@ function () {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/299
     private func customAreaChartYAxisLabelsAndGridLineStyle() -> AAOptions {
+        let categories = ["17.04","21.04","25.04","29.04","03.05","07.05","11.05", ""]
+        
+        let categoryJSArrStr = categories.aa_toJSArray()
+        
+        let tooltipFormatter = """
+        function () {
+        return  'The value for <b>' + \(categoryJSArrStr)[this.x] +
+        '</b> is <b>' + this.y + '</b> ' + "℃";
+        }
+        """
+        
+        let xAxisLabelsFormatter = """
+        function () {
+        return \(categoryJSArrStr)[this.value];
+        }
+        """
+        
         let model = AAChartModel()
             .chartType(.line)
             .animationType(.easeInSine)
             .colorsTheme(["#047BFF"])
-            .categories(["17.04","21.04","25.04","29.04","03.05","07.05","11.05"])
             .legendEnabled(false)
             .yAxisAllowDecimals(true)
             .series([
                 AASeriesElement()
                     .type(.area)
-                    .data([11.17, 12.35, 12.35, 12.35, 12.35, 12.35, 12.35])
-                    .lineWidth(2)
+                    .data([11.17, 12.35, 12.35, 12.35, 12.35, 12.35, 12.35, 13])
+                    .lineWidth(6)
                     .marker(
                         AAMarker()
                             .lineColor("#047BFF")
                             .fillColor("#FFFFFF")
-                            .lineWidth(2)
-                            .radius(3)
+                            .lineWidth(4)
+                            .radius(8)
                     )
                     .fillColor(AAGradientColor.linearGradient(
                                 direction: .toBottom,
@@ -2019,6 +2035,8 @@ function () {
             ])
         
         let aaOptions = model.aa_toAAOptions()
+        
+        aaOptions.chart?.marginRight = 0
         
         let gridLineWidth: Float = 20.0
         
@@ -2033,7 +2051,15 @@ function () {
             .tickPosition("inside")
             .tickWidth(1)
             .tickmarkPlacement("on")
+            .tickInterval(1)
             .offset(gridLineWidth / 2)
+        
+        aaOptions.tooltip?
+            .useHTML(true)
+            .formatter(tooltipFormatter)
+        
+        aaOptions.xAxis?.labels?
+            .formatter(xAxisLabelsFormatter)
 
         
         return aaOptions
