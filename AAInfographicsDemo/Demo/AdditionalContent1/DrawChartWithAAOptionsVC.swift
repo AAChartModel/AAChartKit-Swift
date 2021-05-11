@@ -1988,7 +1988,7 @@ function () {
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/299
-    private func customAreaChartYAxisLabelsAndGridLineStyle() ->AAOptions {
+    private func customAreaChartYAxisLabelsAndGridLineStyle() -> AAOptions {
         let model = AAChartModel()
             .chartType(.line)
             .animationType(.easeInSine)
