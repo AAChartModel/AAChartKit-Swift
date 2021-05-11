@@ -2032,6 +2032,7 @@ function () {
         aaOptions.xAxis?
             .tickPosition("inside")
             .tickWidth(1)
+            .tickmarkPlacement("on")
             .offset(gridLineWidth / 2)
 
         
