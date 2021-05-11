@@ -178,7 +178,7 @@ class SpecialChartVC: AABaseChartVC {
             .series([
                 AASeriesElement()
                     .name("Female")
-                    .color(AAColor.rgbaColor(223,83,83,1))
+                    .color(AARgba(223,83,83,1))
                     .data([
                         [161.2, 51.6], [167.5, 59.0], [159.5, 49.2], [157.0, 63.0], [155.8, 53.6],
                         [170.0, 59.0], [159.1, 47.6], [166.0, 69.8], [176.2, 66.8], [160.2, 75.2],
@@ -236,7 +236,7 @@ class SpecialChartVC: AABaseChartVC {
                 ,
                 AASeriesElement()
                     .name("Male")
-                    .color(AAColor.rgbaColor(119,152,191,1))
+                    .color(AARgba(119,152,191,1))
                     .data([
                         [174.0, 65.6], [175.3, 71.8], [193.5, 80.7], [186.5, 72.6], [187.2, 78.8],
                         [181.5, 74.8], [184.0, 86.4], [184.5, 78.4], [175.0, 62.0], [184.0, 81.6],
@@ -686,9 +686,9 @@ class SpecialChartVC: AABaseChartVC {
     
     private func configureAreasplinerangeChart() -> AAChartModel {
         let redStopsArr = [
-            [0.0, AAColor.rgbaColor(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AAColor.rgbaColor(255, 0, 0, 0.2)],
-            [1.0, AAColor.rgbaColor(255, 0, 0, 0.0)]
+            [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AARgba(255, 0, 0, 0.2)],
+            [1.0, AARgba(255, 0, 0, 0.0)]
         ]
         let gradientRedColorDic = AAGradientColor.linearGradient(
             direction: .toBottom,

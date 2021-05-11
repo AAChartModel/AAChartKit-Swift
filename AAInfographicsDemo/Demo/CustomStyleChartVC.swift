@@ -541,7 +541,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 AASeriesElement()
                     .name("Tokyo Hot")
                     .lineWidth(5.0)
-                    .color(AAColor.rgbaColor(220, 20, 60, 1))//猩红色, alpha 透明度 1
+                    .color(AARgba(220, 20, 60, 1))//猩红色, alpha 透明度 1
                     .fillColor(gradientColorDic1)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
                 ])
@@ -1169,9 +1169,9 @@ class CustomStyleChartVC: AABaseChartVC {
     // GitHub issue https://github.com/AAChartModel/AAChartKit-Swift/issues/223
     private func configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart() -> AAChartModel {
         let blueStopsArr = [
-            [0.0, AAColor.rgbaColor(30, 144, 255, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AAColor.rgbaColor(30, 144, 255, 0.2)],
-            [1.0, AAColor.rgbaColor(30, 144, 255, 0.0)]
+            [0.0, AARgba(30, 144, 255, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AARgba(30, 144, 255, 0.2)],
+            [1.0, AARgba(30, 144, 255, 0.0)]
         ]
         let gradientBlueColorDic = AAGradientColor.linearGradient(
             direction: .toBottom,
@@ -1179,9 +1179,9 @@ class CustomStyleChartVC: AABaseChartVC {
         )
         
         let redStopsArr = [
-            [0.0, AAColor.rgbaColor(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AAColor.rgbaColor(255, 0, 0, 0.2)],
-            [1.0, AAColor.rgbaColor(255, 0, 0, 0.0)]
+            [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AARgba(255, 0, 0, 0.2)],
+            [1.0, AARgba(255, 0, 0, 0.0)]
         ]
         let gradientRedColorDic = AAGradientColor.linearGradient(
             direction: .toBottom,
@@ -1190,9 +1190,9 @@ class CustomStyleChartVC: AABaseChartVC {
         
         
         let goldStopsArr = [
-            [0.0, AAColor.rgbaColor(255, 215, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AAColor.rgbaColor(255, 215, 0, 0.2)],
-            [1.0, AAColor.rgbaColor(255, 215, 0, 0.0)]
+            [0.0, AARgba(255, 215, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AARgba(255, 215, 0, 0.2)],
+            [1.0, AARgba(255, 215, 0, 0.0)]
         ]
         let gradientGoldColorDic = AAGradientColor.linearGradient(
             direction: .toBottom,
@@ -1201,9 +1201,9 @@ class CustomStyleChartVC: AABaseChartVC {
         
         
         let greenStopsArr = [
-            [0.0, AAColor.rgbaColor(50, 205, 50, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AAColor.rgbaColor(50, 205, 50, 0.2)],
-            [1.0, AAColor.rgbaColor(50, 205, 50, 0.0)]
+            [0.0, AARgba(50, 205, 50, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AARgba(50, 205, 50, 0.2)],
+            [1.0, AARgba(50, 205, 50, 0.0)]
         ]
         let gradientGreenColorDic = AAGradientColor.linearGradient(
             direction: .toBottom,

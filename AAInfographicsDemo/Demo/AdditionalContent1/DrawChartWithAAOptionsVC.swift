@@ -144,7 +144,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         //https://github.com/AAChartModel/AAChartKit-Swift/issues/298
         aaOptions.yAxis?
             .gridLineWidth(30)
-            .gridLineColor(AAColor.rgbaColor(68, 170, 213, 0.2))
+            .gridLineColor(AARgba(68, 170, 213, 0.2))
             .labels?.style(AAStyle(color: "DodgerBlue"))
                         
         aaOptions.legend!
@@ -1093,9 +1093,9 @@ function () {
     
     private func configureDoubleYAxesAndColumnLineMixedChart() -> AAOptions {
         let stopsArr = [
-            [0.0, AAColor.rgbaColor(156,107,211,0.5)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.2, AAColor.rgbaColor(156,107,211,0.3)],
-            [1.0, AAColor.rgbaColor(156,107,211,0)]
+            [0.0, AARgba(156,107,211,0.5)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.2, AARgba(156,107,211,0.3)],
+            [1.0, AARgba(156,107,211,0)]
         ]
         
         let gradientColorDic1 = AAGradientColor.linearGradient(
@@ -1622,7 +1622,7 @@ function () {
                     .color(AAColor.white)
                     .fillOpacity(0.01)
                     .dataLabels(AADataLabels()
-                        .color(AAColor.rgbaColor(30, 144, 255, 1.0)))
+                        .color(AARgba(30, 144, 255, 1.0)))
                     .data([17.0, 16.9, 12.5,]),
             ])
         
@@ -1631,7 +1631,7 @@ function () {
         aaOptions.xAxis?
             .tickInterval(1)
             .lineWidth(0)//避免多边形外环之外有额外套了一层无用の外环
-            .gridLineColor(AAColor.rgbaColor(30, 144, 255, 0.6))
+            .gridLineColor(AARgba(30, 144, 255, 0.6))
             .crosshair(AACrosshair()
                 .width(1.5)
                 .color(AAColor.white)
@@ -1640,7 +1640,7 @@ function () {
         aaOptions.yAxis?
             .gridLineInterpolation("polygon")
             .lineWidth(0)
-            .gridLineColor(AAColor.rgbaColor(30, 144, 255, 1.0))
+            .gridLineColor(AARgba(30, 144, 255, 1.0))
             .crosshair(AACrosshair()
                 .width(1.5)
                 .color(AAColor.white)
@@ -1651,23 +1651,23 @@ function () {
             AAPlotBandsElement()
                 .from(0)
                 .to(5)
-                .color(AAColor.rgbaColor(30, 144, 255, 1.0)),
+                .color(AARgba(30, 144, 255, 1.0)),
             AAPlotBandsElement()
                 .from(5)
                 .to(10)
-                .color(AAColor.rgbaColor(30, 144, 255, 0.8)),
+                .color(AARgba(30, 144, 255, 0.8)),
             AAPlotBandsElement()
                 .from(10)
                 .to(15)
-                .color(AAColor.rgbaColor(30, 144, 255, 0.6)),
+                .color(AARgba(30, 144, 255, 0.6)),
             AAPlotBandsElement()
                 .from(15)
                 .to(20)
-                .color(AAColor.rgbaColor(30, 144, 255, 0.4)),
+                .color(AARgba(30, 144, 255, 0.4)),
             AAPlotBandsElement()
                 .from(20)
                 .to(25)
-                .color(AAColor.rgbaColor(30, 144, 255, 0.2)),
+                .color(AARgba(30, 144, 255, 0.2)),
         ]
         
         let aaYAxis = aaOptions.yAxis
@@ -1683,33 +1683,33 @@ function () {
             AAPlotBandsElement()
                 .from(0)
                 .to(5)
-                .color(AAColor.rgbaColor(255, 0, 0, 1.0)),
+                .color(AARgba(255, 0, 0, 1.0)),
             AAPlotBandsElement()
                 .from(5)
                 .to(10)
-                .color(AAColor.rgbaColor(255, 0, 0, 0.8)),
+                .color(AARgba(255, 0, 0, 0.8)),
             AAPlotBandsElement()
                 .from(10)
                 .to(15)
-                .color(AAColor.rgbaColor(255, 0, 0, 0.6)),
+                .color(AARgba(255, 0, 0, 0.6)),
             AAPlotBandsElement()
                 .from(15)
                 .to(20)
-                .color(AAColor.rgbaColor(255, 0, 0, 0.4)),
+                .color(AARgba(255, 0, 0, 0.4)),
             AAPlotBandsElement()
                 .from(20)
                 .to(25)
-                .color(AAColor.rgbaColor(255, 0, 0, 0.2)),
+                .color(AARgba(255, 0, 0, 0.2)),
         ]
         
-        aaOptions.xAxis?.gridLineColor = AAColor.rgbaColor(255, 0, 0, 0.6)
-        aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(255, 0, 0, 1.0)
+        aaOptions.xAxis?.gridLineColor = AARgba(255, 0, 0, 0.6)
+        aaOptions.yAxis?.gridLineColor = AARgba(255, 0, 0, 1.0)
         
         let element = aaOptions.series![0] as! AASeriesElement
         element
             .data([17.0, 16.9, 12.5, 14.5,])
             .dataLabels(AADataLabels()
-                .color(AAColor.rgbaColor(255, 0, 0, 1.0)))
+                .color(AARgba(255, 0, 0, 1.0)))
         
         return aaOptions
     }
@@ -1721,33 +1721,33 @@ function () {
             AAPlotBandsElement()
                 .from(0)
                 .to(5)
-                .color(AAColor.rgbaColor(255, 215, 0, 1.0)),
+                .color(AARgba(255, 215, 0, 1.0)),
             AAPlotBandsElement()
                 .from(5)
                 .to(10)
-                .color(AAColor.rgbaColor(255, 215, 0, 0.8)),
+                .color(AARgba(255, 215, 0, 0.8)),
             AAPlotBandsElement()
                 .from(10)
                 .to(15)
-                .color(AAColor.rgbaColor(255, 215, 0, 0.6)),
+                .color(AARgba(255, 215, 0, 0.6)),
             AAPlotBandsElement()
                 .from(15)
                 .to(20)
-                .color(AAColor.rgbaColor(255, 215, 0, 0.4)),
+                .color(AARgba(255, 215, 0, 0.4)),
             AAPlotBandsElement()
                 .from(20)
                 .to(25)
-                .color(AAColor.rgbaColor(255, 215, 0, 0.2)),
+                .color(AARgba(255, 215, 0, 0.2)),
         ]
         
-        aaOptions.xAxis?.gridLineColor = AAColor.rgbaColor(255, 215, 0, 0.6)
-        aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(255, 215, 0, 1.0)
+        aaOptions.xAxis?.gridLineColor = AARgba(255, 215, 0, 0.6)
+        aaOptions.yAxis?.gridLineColor = AARgba(255, 215, 0, 1.0)
         
         let element = aaOptions.series![0] as! AASeriesElement
         element
             .data([17.0, 16.9, 12.5, 14.5, 18.2,])
             .dataLabels(AADataLabels()
-                .color(AAColor.rgbaColor(255, 215, 0, 1.0)))
+                .color(AARgba(255, 215, 0, 1.0)))
         
         return aaOptions
     }
@@ -1759,33 +1759,33 @@ function () {
             AAPlotBandsElement()
                 .from(0)
                 .to(5)
-                .color(AAColor.rgbaColor(50, 205, 50, 1.0)),
+                .color(AARgba(50, 205, 50, 1.0)),
             AAPlotBandsElement()
                 .from(5)
                 .to(10)
-                .color(AAColor.rgbaColor(50, 205, 50, 0.8)),
+                .color(AARgba(50, 205, 50, 0.8)),
             AAPlotBandsElement()
                 .from(10)
                 .to(15)
-                .color(AAColor.rgbaColor(50, 205, 50, 0.6)),
+                .color(AARgba(50, 205, 50, 0.6)),
             AAPlotBandsElement()
                 .from(15)
                 .to(20)
-                .color(AAColor.rgbaColor(50, 205, 50, 0.4)),
+                .color(AARgba(50, 205, 50, 0.4)),
             AAPlotBandsElement()
                 .from(20)
                 .to(25)
-                .color(AAColor.rgbaColor(50, 205, 50, 0.2)),
+                .color(AARgba(50, 205, 50, 0.2)),
         ]
         
-        aaOptions.xAxis?.gridLineColor = AAColor.rgbaColor(50, 205, 50, 0.6)
-        aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(50, 205, 50, 1.0)
+        aaOptions.xAxis?.gridLineColor = AARgba(50, 205, 50, 0.6)
+        aaOptions.yAxis?.gridLineColor = AARgba(50, 205, 50, 1.0)
         
         let element = aaOptions.series![0] as! AASeriesElement
         element
             .data([17.0, 16.9, 12.5, 14.5, 18.2, 21.5,])
             .dataLabels(AADataLabels()
-                .color(AAColor.rgbaColor(50, 205, 50, 1.0)))
+                .color(AARgba(50, 205, 50, 1.0)))
         
         return aaOptions
     }
@@ -1797,33 +1797,33 @@ function () {
             AAPlotBandsElement()
                 .from(0)
                 .to(5)
-                .color(AAColor.rgbaColor(138, 43, 226, 1.0)),
+                .color(AARgba(138, 43, 226, 1.0)),
             AAPlotBandsElement()
                 .from(5)
                 .to(10)
-                .color(AAColor.rgbaColor(138, 43, 226,  0.8)),
+                .color(AARgba(138, 43, 226,  0.8)),
             AAPlotBandsElement()
                 .from(10)
                 .to(15)
-                .color(AAColor.rgbaColor(138, 43, 226,  0.6)),
+                .color(AARgba(138, 43, 226,  0.6)),
             AAPlotBandsElement()
                 .from(15)
                 .to(20)
-                .color(AAColor.rgbaColor(138, 43, 226, 0.4)),
+                .color(AARgba(138, 43, 226, 0.4)),
             AAPlotBandsElement()
                 .from(20)
                 .to(25)
-                .color(AAColor.rgbaColor(138, 43, 226, 0.2)),
+                .color(AARgba(138, 43, 226, 0.2)),
         ]
         
-        aaOptions.xAxis?.gridLineColor = AAColor.rgbaColor(138, 43, 226,  0.6)
-        aaOptions.yAxis?.gridLineColor = AAColor.rgbaColor(138, 43, 226,  1.0)
+        aaOptions.xAxis?.gridLineColor = AARgba(138, 43, 226,  0.6)
+        aaOptions.yAxis?.gridLineColor = AARgba(138, 43, 226,  1.0)
         
         let element = aaOptions.series![0] as! AASeriesElement
         element
             .data([2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24])
             .dataLabels(AADataLabels()
-                .color(AAColor.rgbaColor(138, 43, 226, 1.0)))
+                .color(AARgba(138, 43, 226, 1.0)))
         
         return aaOptions
     }
