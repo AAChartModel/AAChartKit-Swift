@@ -76,7 +76,8 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 33: return doubleLayerHalfPieChart()//双层嵌套的玉阕图
         case 34: return customLineChartDataLabelsFormat()//自定义曲线图的 DataLabels 的 format 属性
         case 35: return customLineChartDataLabelsFormat2()//自定义曲线图的 DataLabels 的 format 属性(更简易方法)
-            
+        case 36: return customAreaChartYAxisLabelsAndGridLineStyle()//自定义曲线填充图图的 Y 轴 的 Labels 和 网格线样式
+
         default:
             return AAOptions()
         }
@@ -1982,6 +1983,57 @@ function () {
         let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.plotOptions?.series?.dataLabels?
             .format("{x}")
+        
+        return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/299
+    private func customAreaChartYAxisLabelsAndGridLineStyle() ->AAOptions {
+        let model = AAChartModel()
+            .chartType(.line)
+            .animationType(.easeInSine)
+            .colorsTheme(["#047BFF"])
+            .categories(["17.04","21.04","25.04","29.04","03.05","07.05","11.05"])
+            .legendEnabled(false)
+            .yAxisAllowDecimals(true)
+            .series([
+                AASeriesElement()
+                    .type(.area)
+                    .data([11.17, 12.35, 12.35, 12.35, 12.35, 12.35, 12.35])
+                    .lineWidth(2)
+                    .marker(
+                        AAMarker()
+                            .lineColor("#047BFF")
+                            .fillColor("#FFFFFF")
+                            .lineWidth(2)
+                            .radius(3)
+                    )
+                    .fillColor(AAGradientColor.linearGradient(
+                                direction: .toBottom,
+                                startColor: "#047BFFB3",
+                                endColor: "#047BFF00"
+                    ))
+                    .borderColor("#047BFF")
+                    .allowPointSelect(false)
+
+            ])
+        
+        let aaOptions = model.aa_toAAOptions()
+        
+        let gridLineWidth: Float = 20.0
+        
+        aaOptions
+            .yAxis?
+            .gridLineWidth(gridLineWidth)
+            .gridLineColor("#EAF4FF")
+            .tickPositions([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
+            .labels?.style(AAStyle(color: "DodgerBlue"))
+        
+        aaOptions.xAxis?
+            .tickPosition("inside")
+            .tickWidth(1)
+            .offset(gridLineWidth / 2)
+
         
         return aaOptions
     }

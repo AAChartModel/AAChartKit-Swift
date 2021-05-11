@@ -230,6 +230,7 @@ class MainVC: UIViewController {
                 "doubleLayerHalfPieChart---双层嵌套的玉阕图",
                 "customLineChartDataLabelsFormat---自定义曲线图的 DataLabels 的 format 属性",
                 "customLineChartDataLabelsFormat2---自定义曲线图的 DataLabels 的 format 属性2(更简易方法)",
+                "customAreaChartYAxisLabelsAndGridLineStyle---自定义曲线填充图图的 Y 轴 的 Labels 和 网格线样式",
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
             [
