@@ -59,8 +59,8 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
         view.addSubview(aaChartView)
         
         let  aaChartModel = AAChartModel()
-            .title("执行由 JavaScript 字符串映射转换成的 js function 函数")//图形标题
-            .subtitle("巧妙地将JavaScript字符串转换为function并执行")//图形副标题
+//            .title("执行由 JavaScript 字符串映射转换成的 js function 函数")//图形标题
+//            .subtitle("巧妙地将JavaScript字符串转换为function并执行")//图形副标题
             .dataLabelsEnabled(true)//是否显示数字
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         
