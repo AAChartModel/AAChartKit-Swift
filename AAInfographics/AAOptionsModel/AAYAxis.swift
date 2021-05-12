@@ -56,6 +56,7 @@ public class AAYAxis: AAObject {
     public var opposite: Bool? // Whether to display the coordinate axis on the opposite surface. By default, the x axis is displayed below the chart, the y axis is on the left, the coordinate axis is displayed on the opposite surface, and the x axis is displayed on the top. The axis is displayed on the right (that is, the coordinate axis is displayed on the opposite side). This configuration is generally used for multi-axis display, and in Highstock, the y-axis is displayed on the opposite side by default. The default is: false.
     public var startOnTick: Bool? //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. The default is: false.
     public var endOnTick: Bool?
+    public var tickAmount: Int?
     public var tickInterval: Float?
     public var crosshair: AACrosshair? // Crosshair (focus line) style settings
     public var stackLabels: [String: Any]?
@@ -192,6 +193,12 @@ public class AAYAxis: AAObject {
     @discardableResult
     public func endOnTick(_ prop: Bool?) -> AAYAxis {
         endOnTick = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickAmount(_ prop: Int?) -> AAYAxis {
+        tickAmount = prop
         return self
     }
     
