@@ -2006,6 +2006,13 @@ function () {
         }
         """
         
+        let tickAmount = 6
+        
+        let myChartViewHeight = view.frame.size.height - 64
+        
+        let finalGridLineWidth = Float(myChartViewHeight) / Float(tickAmount * 2)
+        
+        
         let model = AAChartModel()
             .chartType(.line)
             .animationType(.easeInSine)
@@ -2036,15 +2043,15 @@ function () {
         
         let aaOptions = model.aa_toAAOptions()
         
-        aaOptions.chart?.marginRight = 0
-        
-        let gridLineWidth: Float = 20.0
-        
+        aaOptions.chart?
+            .marginRight(0)
+            .marginTop(50)
+                
         aaOptions
             .yAxis?
-            .gridLineWidth(gridLineWidth)
+            .gridLineWidth(finalGridLineWidth)
             .gridLineColor("#EAF4FF")
-            .tickPositions([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
+            .tickAmount(tickAmount)
             .labels?.style(AAStyle(color: "DodgerBlue"))
         
         aaOptions.xAxis?
@@ -2052,7 +2059,7 @@ function () {
             .tickWidth(1)
             .tickmarkPlacement("on")
             .tickInterval(1)
-            .offset(gridLineWidth / 2)
+            .offset(finalGridLineWidth / 2)
         
         aaOptions.tooltip?
             .useHTML(true)
