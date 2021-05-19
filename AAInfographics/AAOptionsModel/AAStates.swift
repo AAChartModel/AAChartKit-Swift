@@ -66,7 +66,9 @@ public class AAHover: AAObject {
     public var brightness: Float?
     public var color: String?
     public var halo: AAHalo?
-    
+    public var lineWidth: Float?
+    public var lineWidthPlus: Float?
+
     @discardableResult
     public func enabled(_ prop: Bool) -> AAHover {
         enabled = prop
@@ -94,6 +96,18 @@ public class AAHover: AAObject {
     @discardableResult
     public func halo(_ prop: AAHalo) -> AAHover {
         halo = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineWidth(_ prop: Float) -> AAHover {
+        lineWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineWidthPlus(_ prop: Float) -> AAHover {
+        lineWidthPlus = prop
         return self
     }
     
