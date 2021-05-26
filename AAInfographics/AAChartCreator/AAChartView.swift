@@ -121,22 +121,24 @@ public class AAChartView: WKWebView {
     private var optionsJson: String?
     private var touchEventEnabled = false
     
+    
     override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
-        self.backgroundColor = .white
         self.uiDelegate = self
         self.navigationDelegate = self
     }
     
     convenience public init() {
         let configuration = WKWebViewConfiguration()
-        configuration.userContentController = WKUserContentController()
         self.init(frame: .zero, configuration: configuration)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required public convenience init?(coder aDecoder: NSCoder) {
+        let configuration = WKWebViewConfiguration()
+        self.init(frame: .zero, configuration: configuration)
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
+   
     
     private func drawChart() {
         let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
