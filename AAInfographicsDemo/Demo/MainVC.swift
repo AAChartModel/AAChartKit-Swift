@@ -60,6 +60,7 @@ class MainVC: UIViewController {
             "Scrollable chart ---可滚动の图表",
             //                  "Scrollable chart ---可滚动の图表",
             "Data Sorting Chart With Animation---图表动态排序",
+            "XIB AAChartView---在 XIB 中创建 AAChartView",
         ]
         
         chartTypeTitleArr = [
@@ -284,6 +285,8 @@ class MainVC: UIViewController {
                "Bar Chart---条形图",
                "Scatter Chart---散点图",
             ],
+            /*XIB AAChartView*/
+            ["XIB AAChartView---在 XIB 中创建 AAChartView"]
         ]
         
         chartTypeArr = [
@@ -402,6 +405,8 @@ class MainVC: UIViewController {
                 AAChartType.column,
                 AAChartType.bar,
                 AAChartType.scatter
+            ],
+            [//Empty Array,just for holding place
             ],
         ]
         
@@ -602,6 +607,13 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true
             }
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 14:
+            /*Special Type Charts*/
+            let vc = TestAAChartViewForXibVC()
+//            vc.selectedIndex = indexPath.row
+//            vc.navigationItemTitleArr = self.chartTypeArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
             
         default:
