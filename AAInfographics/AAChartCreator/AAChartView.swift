@@ -30,7 +30,11 @@
  
  */
 
+#if os(iOS)
 import UIKit
+#else
+import AppKit
+#endif
 import WebKit
 
 let kUserContentMessageNameMouseOver = "mouseover"
@@ -73,12 +77,17 @@ public class AAChartView: WKWebView {
     
     public var scrollEnabled: Bool? {
         willSet {
+            #if os(iOS)
             self.scrollView.isScrollEnabled = newValue!
+            #else
+            self.scrollEnabled = newValue!
+            #endif
         }
     }
     
     public var isClearBackgroundColor: Bool? {
         willSet {
+            #if os(iOS)
             if newValue! == true {
                 self.backgroundColor = .clear
                 self.isOpaque = false
@@ -86,6 +95,15 @@ public class AAChartView: WKWebView {
                 self.backgroundColor = .white
                 self.isOpaque = true
             }
+            #else
+            if newValue! == true {
+                self.layer?.backgroundColor = .clear
+                self.layer?.isOpaque = false
+            } else {
+                self.layer?.backgroundColor = .white
+                self.layer?.isOpaque = true
+            }
+            #endif
         }
     }
     
@@ -493,7 +511,7 @@ extension AAChartView {
         safeEvaluateJavaScriptString(jsStr)
     }
     
-    
+    #if os(iOS)
     /// Set the chart view content be adaptive to screen rotation with default animation effect
     public func aa_adaptiveScreenRotation() {
         let aaAnimation = AAAnimation()
@@ -514,6 +532,7 @@ extension AAChartView {
                 self?.handleDeviceOrientationChangeEventWithAnimation(animation)
         }
     }
+    #endif
     
     private func handleDeviceOrientationChangeEventWithAnimation(_ animation: AAAnimation) {
         let animationJsonStr = animation.toJSON()!
@@ -530,6 +549,7 @@ extension AAChartView: WKUIDelegate {
         initiatedByFrame frame: WKFrameInfo,
         completionHandler: @escaping () -> Void
     ) {
+        #if os(iOS)
         let alertController = UIAlertController(
             title: "FBI WARNING",
             message: message,
@@ -544,11 +564,20 @@ extension AAChartView: WKUIDelegate {
 
         let alertHelperController = UIViewController()
         self.addSubview(alertHelperController.view)
-        
+
         alertHelperController.present(
             alertController,
             animated: true,
-            completion: nil)
+            completion: nil
+        )
+        #else
+        let alert = NSAlert()
+        alert.messageText = "FBI WARNING"
+        alert.informativeText = message
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Okay")
+        _ = alert.runModal() == .alertFirstButtonReturn
+        #endif
     }
 }
 
