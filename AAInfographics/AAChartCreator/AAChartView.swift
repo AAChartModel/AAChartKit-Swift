@@ -32,7 +32,7 @@
 
 #if os(iOS)
 import UIKit
-#else
+#elseif os(macOS)
 import AppKit
 #endif
 import WebKit
@@ -79,7 +79,7 @@ public class AAChartView: WKWebView {
         willSet {
             #if os(iOS)
             self.scrollView.isScrollEnabled = newValue!
-            #else
+            #elseif os(macOS)
             self.scrollEnabled = newValue!
             #endif
         }
@@ -95,7 +95,7 @@ public class AAChartView: WKWebView {
                 self.backgroundColor = .white
                 self.isOpaque = true
             }
-            #else
+            #elseif os(macOS)
             if newValue! == true {
                 self.layer?.backgroundColor = .clear
                 self.layer?.isOpaque = false
@@ -570,11 +570,11 @@ extension AAChartView: WKUIDelegate {
             animated: true,
             completion: nil
         )
-        #else
+        #elseif os(macOS)
         let alert = NSAlert()
+        alert.alertStyle = .warning
         alert.messageText = "FBI WARNING"
         alert.informativeText = message
-        alert.alertStyle = .warning
         alert.addButton(withTitle: "Okay")
         _ = alert.runModal() == .alertFirstButtonReturn
         #endif
