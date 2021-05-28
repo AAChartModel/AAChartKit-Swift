@@ -42,7 +42,7 @@ class AABaseChartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
         adaptiveScreenRotation()
         setupTitle()
         setupNextTypeChartButton()
@@ -50,9 +50,9 @@ class AABaseChartVC: UIViewController {
     }
     
     func setupTitle() {
-        let chartType = self.navigationItemTitleArr?[self.selectedIndex]
+        let chartType = navigationItemTitleArr?[selectedIndex]
         
-        self.title = "\(chartType ?? "") Chart"
+        title = "\(chartType ?? "") Chart"
     }
     
     func setupNextTypeChartButton() {
@@ -60,22 +60,22 @@ class AABaseChartVC: UIViewController {
                                            style: .plain,
                                            target: self,
                                            action: #selector(monitorTap))
-        self.navigationItem.rightBarButtonItem = barItem
+        navigationItem.rightBarButtonItem = barItem
     }
     
     @objc func monitorTap() {
-        if (self.selectedIndex == self.navigationItemTitleArr!.count - 1) {
-            self.title = "❗️This is the last chart❗️"
+        if (selectedIndex == navigationItemTitleArr!.count - 1) {
+            title = "❗️This is the last chart❗️"
          } else {
-             self.selectedIndex = self.selectedIndex + 1
-            let chartType = self.navigationItemTitleArr?[self.selectedIndex]
+             selectedIndex = selectedIndex + 1
+            let chartType = navigationItemTitleArr?[selectedIndex]
             if chartType is String {
-                self.title = chartType as? String
+                title = chartType as? String
             } else if chartType is AAChartType {
                 let originalTitle = chartType as! AAChartType
-                self.title = originalTitle.rawValue
+                title = originalTitle.rawValue
             }
-            self.refreshChartWithChartConfiguration()
+            refreshChartWithChartConfiguration()
          }
     }
     
@@ -92,8 +92,8 @@ class AABaseChartVC: UIViewController {
         } else {
             // Fallback on earlier versions
         }
-        self.view.addConstraints(configureTheConstraintArray(childView: aaChartView!,
-                                                             fatherView: self.view))
+        view.addConstraints(configureTheConstraintArray(childView: aaChartView!,
+                                                             fatherView: view))
         
         drawChartWithChartConfiguration()
     }
@@ -177,58 +177,58 @@ class AABaseChartVC: UIViewController {
             || orientation == UIInterfaceOrientation.portraitUpsideDown) {
             let hairPhone = isHairPhoneScreen()
             if (hairPhone == true) {
-                self.topConstraint!.constant = 88
+                topConstraint!.constant = 88
             } else {
-                self.topConstraint!.constant = 64
+                topConstraint!.constant = 64
             }
         } else {
-            self.topConstraint!.constant = 44
+            topConstraint!.constant = 44
         }
         
-        self.view.layoutSubviews()
-        self.view.layoutIfNeeded()
+        view.layoutSubviews()
+        view.layoutIfNeeded()
     }
 
     
     func drawChartWithChartConfiguration() {
-        var chartConfiguration =  chartConfigurationWithSelectedIndex(self.selectedIndex)
+        var chartConfiguration =  chartConfigurationWithSelectedIndex(selectedIndex)
         if chartConfiguration == nil {
-            let selectedChartType = self.navigationItemTitleArr?[self.selectedIndex]
+            let selectedChartType = navigationItemTitleArr?[selectedIndex]
             if selectedChartType != nil && ((selectedChartType as? AAChartType) != nil) {
                 chartConfiguration = chartConfigurationWithSelectedChartType(selectedChartType as! AAChartType)
             }
         }
         if chartConfiguration == nil {
-            let selectedChartTypeStr = self.navigationItemTitleArr?[self.selectedIndex]
+            let selectedChartTypeStr = navigationItemTitleArr?[selectedIndex]
             chartConfiguration = chartConfigurationWithSelectedChartTypeString(selectedChartTypeStr as! String)
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
             aaChartModel.touchEventEnabled = true
-            self.aaChartView?.aa_drawChartWithChartModel(aaChartModel)
+            aaChartView?.aa_drawChartWithChartModel(aaChartModel)
         } else if (chartConfiguration is AAOptions) {
             let aaOptions = chartConfiguration as! AAOptions
             aaOptions.touchEventEnabled = true
-            self.aaChartView?.aa_drawChartWithChartOptions(aaOptions)
+            aaChartView?.aa_drawChartWithChartOptions(aaOptions)
         }
     }
     
     func refreshChartWithChartConfiguration() {
-        var chartConfiguration =  chartConfigurationWithSelectedIndex(self.selectedIndex)
+        var chartConfiguration =  chartConfigurationWithSelectedIndex(selectedIndex)
         if chartConfiguration == nil {
-            let selectedChartType = self.navigationItemTitleArr?[self.selectedIndex]
+            let selectedChartType = navigationItemTitleArr?[selectedIndex]
             if selectedChartType != nil && ((selectedChartType as? AAChartType) != nil) {
                 chartConfiguration = chartConfigurationWithSelectedChartType(selectedChartType as! AAChartType)
             }
         }
         if chartConfiguration == nil {
-            let selectedChartTypeStr = self.navigationItemTitleArr?[self.selectedIndex]
+            let selectedChartTypeStr = navigationItemTitleArr?[selectedIndex]
             chartConfiguration = chartConfigurationWithSelectedChartTypeString(selectedChartTypeStr as! String)
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
             aaChartModel.touchEventEnabled = true
-            self.aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel)
+            aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel)
         } else if (chartConfiguration is AAOptions) {
             let aaOptions = chartConfiguration as! AAOptions
             aaOptions.touchEventEnabled = true
@@ -239,8 +239,8 @@ class AABaseChartVC: UIViewController {
                 .style(AAStyle()
                     .color(AAColor.red)
                     .fontSize(9))
-            self.aaChartView?.scrollEnabled = true
-            self.aaChartView?.aa_refreshChartWholeContentWithChartOptions(aaOptions)
+            aaChartView?.scrollEnabled = true
+            aaChartView?.aa_refreshChartWholeContentWithChartOptions(aaOptions)
         }
     }
     

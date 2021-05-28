@@ -176,19 +176,19 @@ class DataSortingWithAnimationChartVC: AABaseChartVC {
     }
     
     @objc func timerRepeatWork() {
-        print("⌚️⌚️⌚️⌚️⌚️ 定时器第 \(self.globalInt) 次输出")
+        print("⌚️⌚️⌚️⌚️⌚️ 定时器第 \(globalInt) 次输出")
         
-        self.globalInt += 1
+        globalInt += 1
         
-        let year = "\(2020 + self.globalInt) Year"
+        let year = "\(2020 + globalInt) Year"
         let aaOptions = AAOptions()
             .series([
                 AASeriesElement()
                     .name(year)
-                    .data(self.randomDataArray())
+                    .data(randomDataArray())
             ])
         
-        self.aaChartView!.aa_updateChart(options: aaOptions, redraw: true)
+        aaChartView!.aa_updateChart(options: aaOptions, redraw: true)
     }
     
 }

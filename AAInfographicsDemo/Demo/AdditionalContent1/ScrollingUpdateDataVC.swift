@@ -78,7 +78,7 @@ class ScrollingUpdateDataVC: AABaseChartVC {
             .legendEnabled(true)
             .yAxisVisible(false)
             .xAxisVisible(false)
-            .series(self.configureSeriesDataArray())
+            .series(configureSeriesDataArray())
         
         self.aaChartModel = aaChartModel
         
@@ -184,7 +184,7 @@ class ScrollingUpdateDataVC: AABaseChartVC {
         var options0: Any = 0
         var options1: Any = 0
         
-        if self.aaChartModel?.chartType != .bar && self.aaChartModel?.chartType != .column {
+        if aaChartModel?.chartType != .bar && aaChartModel?.chartType != .column {
             options0 = AADataElement()
                 .y(Float(y0))
                 .dataLabels(AADataLabels()

@@ -90,12 +90,12 @@ class ScrollableChartVC: AABaseChartVC {
             AASeriesElement()
                 .name("2019")
                 .lineWidth(5)
-                .step(self.step ?? false)
+                .step(step ?? false)
                 .data(randomNumArrA),
             AASeriesElement()
                 .name("2018")
                 .lineWidth(5)
-                .step(self.step ?? false)
+                .step(step ?? false)
                 .data(randomNumArrB)
         ]
         return chartSeriesArr

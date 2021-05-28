@@ -39,7 +39,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        view.backgroundColor = .white
 
         setUpTheAAChartViewOne()
     }
@@ -64,7 +64,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
             .dataLabelsEnabled(true)//是否显示数字
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
         
-        if self.sampleChartTypeIndex == 0 || self.sampleChartTypeIndex == 1 {
+        if sampleChartTypeIndex == 0 || sampleChartTypeIndex == 1 {
             aaChartModel
                 .chartType(.line)//图形类型
                 .markerSymbolStyle(.borderBlank)
@@ -152,19 +152,19 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
         print("🚀🚀🚀AAChartView did finished load")
                 
         var jsFunctionStr:String
-        if self.sampleChartTypeIndex == 0 {
+        if sampleChartTypeIndex == 0 {
             jsFunctionStr = configureMaxMiniDataLabelJSFunctionString()
-        } else if self.sampleChartTypeIndex == 1 {
+        } else if sampleChartTypeIndex == 1 {
             jsFunctionStr = configureFirstSecondThirdDataLabelJSFunctionString()
-        } else if self.sampleChartTypeIndex == 2 {
+        } else if sampleChartTypeIndex == 2 {
             jsFunctionStr = configureFirstSecondThirdStackLabelJSFunctionString()
         } else {
             //https://jshare.com.cn/jianshu/ZBrzXx
-            self.aaChartView.aa_updateXAxisExtremes(min: 0, max: 3)
+            aaChartView.aa_updateXAxisExtremes(min: 0, max: 3)
             return
         }
         //图表加载完成后调用,避免WebView还没有获得JavaScript上下文,致使调用失败
-        self.aaChartView!.aa_evaluateJavaScriptStringFunction(jsFunctionStr)
+        aaChartView.aa_evaluateJavaScriptStringFunction(jsFunctionStr)
     }
     
     func configureMaxMiniDataLabelJSFunctionString() -> String {
