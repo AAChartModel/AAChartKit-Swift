@@ -74,7 +74,8 @@ class AALeakAvoider : NSObject, WKScriptMessageHandler {
 
 public class AAChartView: WKWebView {
     public weak var delegate: AAChartViewDelegate?
-    
+  
+    // MARK: - Setter Method
     public var scrollEnabled: Bool? {
         willSet {
             #if os(iOS)
@@ -140,6 +141,7 @@ public class AAChartView: WKWebView {
     private var touchEventEnabled = false
     
     
+    // MARK: - Initialization
     override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
         self.uiDelegate = self
@@ -243,6 +245,8 @@ public class AAChartView: WKWebView {
 
 }
 
+
+// MARK: - Configure Chart View Content With AAChartModel
 extension AAChartView {
     /// Function of drawing chart view
     ///
@@ -274,8 +278,10 @@ extension AAChartView {
         let aaOptions = aaChartModel.aa_toAAOptions()
         aa_refreshChartWholeContentWithChartOptions(aaOptions)
     }
-    
-    
+}
+
+// MARK: - Configure Chart View Content With AAOptions
+extension AAChartView {
     /// Function of drawing chart view
     ///
     /// - Parameter aaOptions: The instance object of AAOptions model
@@ -293,7 +299,6 @@ extension AAChartView {
             aa_refreshChartWholeContentWithChartOptions(aaOptions)
         }
     }
-    
     
     /// Function of only refresh the chart data after the chart has been rendered
     ///
@@ -317,7 +322,6 @@ extension AAChartView {
          safeEvaluateJavaScriptString(jsStr)
      }
     
-    
     ///  Function of refreshing whole chart view content after the chart has been rendered
     ///
     /// - Parameter aaOptions: The instance object of AAOptions model
@@ -325,7 +329,10 @@ extension AAChartView {
         configureOptionsJsonStringWithAAOptions(aaOptions)
         drawChart()
     }
-    
+}
+
+// MARK: - Addtional update Chart View Content methods
+extension AAChartView {
     /// A common chart update function
     /// (you can update any chart element) to open, close, delete, add, resize, reformat, etc. elements in the chart.
     /// Refer to https://api.highcharts.com.cn/highcharts#Chart.update
@@ -532,16 +539,16 @@ extension AAChartView {
                 self?.handleDeviceOrientationChangeEventWithAnimation(animation)
         }
     }
-    #endif
     
     private func handleDeviceOrientationChangeEventWithAnimation(_ animation: AAAnimation) {
         let animationJsonStr = animation.toJSON()!
         let jsFuncStr = "changeChartSize('\(self.frame.size.width)','\(self.frame.size.height)','\(animationJsonStr)')"
         self.safeEvaluateJavaScriptString(jsFuncStr)
     }
+    #endif
 }
 
-
+// MARK: - WKUIDelegate
 extension AAChartView: WKUIDelegate {
     open func webView(
         _ webView: WKWebView,
@@ -581,6 +588,7 @@ extension AAChartView: WKUIDelegate {
     }
 }
 
+// MARK: - WKNavigationDelegate
 extension AAChartView:  WKNavigationDelegate {
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         drawChart()
@@ -588,6 +596,7 @@ extension AAChartView:  WKNavigationDelegate {
     }
 }
 
+// MARK: - WKScriptMessageHandler
 extension AAChartView: WKScriptMessageHandler {
     open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == kUserContentMessageNameMouseOver {
@@ -630,6 +639,7 @@ extension AAChartView {
     }
 }
 
+// MARK: - JSONSerialization
 extension AAChartView {
     
      func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
