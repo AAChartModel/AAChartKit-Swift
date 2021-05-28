@@ -67,7 +67,7 @@ class AALeakAvoider : NSObject, WKScriptMessageHandler {
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage
     ) {
-        self.delegate?.userContentController(userContentController, didReceive: message)
+        delegate?.userContentController(userContentController, didReceive: message)
     }
 }
 
@@ -79,9 +79,9 @@ public class AAChartView: WKWebView {
     public var scrollEnabled: Bool? {
         willSet {
             #if os(iOS)
-            self.scrollView.isScrollEnabled = newValue!
+            scrollView.isScrollEnabled = newValue!
             #elseif os(macOS)
-            self.scrollEnabled = newValue!
+            scrollEnabled = newValue!
             #endif
         }
     }
@@ -90,19 +90,19 @@ public class AAChartView: WKWebView {
         willSet {
             #if os(iOS)
             if newValue! == true {
-                self.backgroundColor = .clear
-                self.isOpaque = false
+                backgroundColor = .clear
+                isOpaque = false
             } else {
-                self.backgroundColor = .white
-                self.isOpaque = true
+                backgroundColor = .white
+                isOpaque = true
             }
             #elseif os(macOS)
             if newValue! == true {
-                self.layer?.backgroundColor = .clear
-                self.layer?.isOpaque = false
+                layer?.backgroundColor = .clear
+                layer?.isOpaque = false
             } else {
-                self.layer?.backgroundColor = .white
-                self.layer?.isOpaque = true
+                layer?.backgroundColor = .white
+                layer?.isOpaque = true
             }
             #endif
         }
@@ -144,8 +144,8 @@ public class AAChartView: WKWebView {
     // MARK: - Initialization
     override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
-        self.uiDelegate = self
-        self.navigationDelegate = self
+        uiDelegate = self
+        navigationDelegate = self
     }
     
     convenience public init() {
@@ -156,7 +156,7 @@ public class AAChartView: WKWebView {
     required public convenience init?(coder aDecoder: NSCoder) {
         let configuration = WKWebViewConfiguration()
         self.init(frame: .zero, configuration: configuration)
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
     }
    
     
@@ -166,14 +166,14 @@ public class AAChartView: WKWebView {
     }
     
     private func safeEvaluateJavaScriptString (_ jsString: String) {
-        if self.optionsJson == nil {
+        if optionsJson == nil {
             #if DEBUG
             print("💀💀💀AAChartView did not finish loading!!!")
             #endif
             return
         }
         
-        self.evaluateJavaScript(jsString, completionHandler: { (item, error) in
+        evaluateJavaScript(jsString, completionHandler: { (item, error) in
             #if DEBUG
             if error != nil {
                 let objcError = error! as NSError
@@ -208,15 +208,14 @@ public class AAChartView: WKWebView {
     }
     
     private func configureOptionsJsonStringWithAAOptions(_ aaOptions: AAOptions) {
-        if self.isClearBackgroundColor == true {
+        if isClearBackgroundColor == true {
             aaOptions.chart?.backgroundColor = "rgba(0,0,0,0)"
         }
         
         if     aaOptions.touchEventEnabled == true
-            && self.touchEventEnabled == false {
-            
-            self.touchEventEnabled = true
-            self.configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
+            && touchEventEnabled == false {
+            touchEventEnabled = true
+            configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
         }
         
         #if DEBUG
@@ -236,7 +235,7 @@ public class AAChartView: WKWebView {
     
 
     deinit {
-        self.configuration.userContentController.removeAllUserScripts()
+        configuration.userContentController.removeAllUserScripts()
         NotificationCenter.default.removeObserver(self)
         #if DEBUG
         print("👻👻👻 AAChartView was destroyed!!!")
@@ -294,7 +293,7 @@ extension AAChartView {
                       inDirectory: "AAJSFiles.bundle")
             let urlStr = NSURL.fileURL(withPath: path!)
             let urlRequest = NSURLRequest(url: urlStr) as URLRequest
-            self.load(urlRequest)
+            load(urlRequest)
         } else {
             aa_refreshChartWholeContentWithChartOptions(aaOptions)
         }
@@ -415,7 +414,7 @@ extension AAChartView {
         if options is Int || options is Float || options is Double {
             optionsStr = "\(options)"
         } else if options is [Any] {
-            optionsStr = self.getJSONStringFromArray(array: options as! [Any])
+            optionsStr = getJSONStringFromArray(array: options as! [Any])
         } else {
             let aaOption: AAObject = options as! AAObject
             optionsStr = aaOption.toJSON()!
@@ -542,8 +541,8 @@ extension AAChartView {
     
     private func handleDeviceOrientationChangeEventWithAnimation(_ animation: AAAnimation) {
         let animationJsonStr = animation.toJSON()!
-        let jsFuncStr = "changeChartSize('\(self.frame.size.width)','\(self.frame.size.height)','\(animationJsonStr)')"
-        self.safeEvaluateJavaScriptString(jsFuncStr)
+        let jsFuncStr = "changeChartSize('\(frame.size.width)','\(frame.size.height)','\(animationJsonStr)')"
+        safeEvaluateJavaScriptString(jsFuncStr)
     }
     #endif
 }
@@ -570,7 +569,7 @@ extension AAChartView: WKUIDelegate {
         }))
 
         let alertHelperController = UIViewController()
-        self.addSubview(alertHelperController.view)
+        addSubview(alertHelperController.view)
 
         alertHelperController.present(
             alertController,
@@ -592,7 +591,7 @@ extension AAChartView: WKUIDelegate {
 extension AAChartView:  WKNavigationDelegate {
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         drawChart()
-        self.delegate?.aaChartViewDidFinishLoad?(self)
+        delegate?.aaChartViewDidFinishLoad?(self)
     }
 }
 
@@ -602,7 +601,7 @@ extension AAChartView: WKScriptMessageHandler {
         if message.name == kUserContentMessageNameMouseOver {
             let messageBody = message.body as! [String: Any]
             let eventMessageModel = getEventMessageModel(messageBody: messageBody)
-            self.delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
+            delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
         }
     }
 }
