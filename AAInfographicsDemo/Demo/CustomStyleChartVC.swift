@@ -245,7 +245,19 @@ class CustomStyleChartVC: AABaseChartVC {
     }
 
     private func configureColorfulColumnChart() -> AAChartModel {
-        AAChartModel()
+        func configureTheRandomColorArray(colorsNumber: Int) -> [Any] {
+            let colorStringArr = NSMutableArray()
+            for _ in 0 ..< colorsNumber {
+                let R = arc4random() % 256
+                let G = arc4random() % 256
+                let B = arc4random() % 256
+                let rgbaColorStr = "rgba(\(R),\(G),\(B),0.9)"
+                colorStringArr.add(rgbaColorStr)
+            }
+            return colorStringArr as! [Any]
+        }
+        
+        return AAChartModel()
             .chartType(.column)
             .title("Colorful Column Chart")
             .subtitle("single data array colorful column chart")
@@ -255,21 +267,9 @@ class CustomStyleChartVC: AABaseChartVC {
                     .name("ElementOne")
                     .data([211,183,157,133,111,91,73,57,43,31,21,13,7,3])
                     .colorByPoint(true)//When using automatic point colors pulled from the options.colors collection, this option determines whether the chart should receive one color per series or one color per point. Default Value：false.
-                ])
+            ])
     }
-    
-    private func configureTheRandomColorArray(colorsNumber: Int) -> [Any] {
-        let colorStringArr = NSMutableArray()
-        for _ in 0 ..< colorsNumber {
-            let R = arc4random() % 256
-            let G = arc4random() % 256
-            let B = arc4random() % 256
-            let rgbaColorStr = "rgba(\(R),\(G),\(B),0.9)"
-            colorStringArr.add(rgbaColorStr)
-        }
-        return colorStringArr as! [Any]
-    }
-    
+        
     private func configureGradientColorBarChart() -> AAChartModel {
         AAChartModel()
             .chartType(.bar)
