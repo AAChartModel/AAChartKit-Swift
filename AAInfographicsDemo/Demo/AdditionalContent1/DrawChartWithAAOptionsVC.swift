@@ -119,33 +119,40 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             ])
         let aaOptions = aaChartModel.aa_toAAOptions()
         
-        //https://jshare.com.cn/highcharts/hhhhf0
-        aaOptions.xAxis?
-            .type("dateTime")
-            .dateTimeLabelFormats(
-                AADateTimeLabelFormats()
-                    .day("%e of %b"))
-        
         aaOptions.plotOptions?.series?.pointInterval(24 * 3600 * 1000 )
-        
         
         let aaCrosshair = AACrosshair()
             .color("#FFD700")//pure gold color
             .dashStyle(.longDashDotDot)
             .width(2)
             .zIndex(10)
-        
+                
         aaOptions.xAxis?.crosshair(aaCrosshair)
         aaOptions.yAxis?.crosshair(aaCrosshair)
         
         aaOptions.yAxis?.labels?.format = "{value} $";//给y轴添加单位
 
+        //https://jshare.com.cn/highcharts/hhhhf0
+        aaOptions.xAxis?
+            .type("dateTime")
+            .dateTimeLabelFormats(
+                AADateTimeLabelFormats()
+                    .day("%e of %b"))
+                    
+        //https://github.com/AAChartModel/AAChartKit-Swift/issues/306
+        aaOptions.xAxis?
+            .gridLineColor(AAColor.darkGray)
+            .gridLineWidth(1)
+            .minorGridLineColor(AAColor.lightGray)
+            .minorGridLineWidth(0.5)
+            .minorTickInterval("auto")
         
-        //https://github.com/AAChartModel/AAChartKit-Swift/issues/298
         aaOptions.yAxis?
-            .gridLineWidth(30)
-            .gridLineColor(AARgba(68, 170, 213, 0.2))
-            .labels?.style(AAStyle(color: "DodgerBlue"))
+            .gridLineColor(AAColor.darkGray)
+            .gridLineWidth(1)
+            .minorGridLineColor(AAColor.lightGray)
+            .minorGridLineWidth(0.5)
+            .minorTickInterval("auto")
                         
         aaOptions.legend!
             .itemMarginTop(20)

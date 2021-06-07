@@ -44,6 +44,21 @@ public class AAXAxis: AAObject {
     public var linkedTo: Int?
     public var max: Float? // x-axis maximum
     public var min: Float? // x-axis minimum  (set to 0, there will be no negative numbers)
+    public var minRange: Int?
+    public var minTickInterval: Int? //The minimum tick interval allowed in axis values. For example on zooming in on an axis with daily data, this can be used to prevent the axis from showing hours. Defaults to the closest distance between two points on the axis.
+    public var minorGridLineColor: String? //Color of the minor, secondary grid lines.
+    public var minorGridLineDashStyle: String? //The dash or dot style of the minor grid lines.
+    public var minorGridLineWidth: Float? //Width of the minor, secondary grid lines.
+    public var minorTickColor: String? //Color for the minor tick marks.
+    public var minorTickInterval: Any?/*Specific tick interval in axis units for the minor ticks. On a linear axis, if "auto", the minor tick interval is calculated as a fifth of the tickInterval. If null or undefined, minor ticks are not shown.
+     
+     On logarithmic axes, the unit is the power of the value. For example, setting the minorTickInterval to 1 puts one tick on each of 0.1, 1, 10, 100 etc. Setting the minorTickInterval to 0.1 produces 9 ticks between 1 and 10, 10 and 100 etc.
+
+    If user settings dictate minor ticks to become too dense, they don't make sense, and will be ignored to prevent performance problems.*/
+    public var minorTickLength: Float? //The pixel length of the minor tick marks.
+    public var minorTickPosition: String? //The position of the minor tick marks relative to the axis line. Can be one of inside and outside. Defaults to outside.
+    public var minorTickWidth: Float? //The pixel width of the minor tick mark.
+    
     public var tickColor: String? // Color of tick mark below x axis
     public var title: AATitle?
     public var gridLineWidth: Float? // x-axis grid line width
@@ -63,7 +78,6 @@ public class AAXAxis: AAObject {
     public var tickLength: Float? /// The length of the axis tick marks. The default is: 10.
     public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
     public var tickPositions: [Any]? // Custom x-axis coordinates 
-    public var minRange: Int?
 
     @discardableResult
     public func title(_ prop:AATitle?) -> AAXAxis {
@@ -134,6 +148,66 @@ public class AAXAxis: AAObject {
     @discardableResult
     public func min(_ prop: Float?) -> AAXAxis {
         min = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minRange(_ prop: Int?) -> AAXAxis {
+        minRange = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minTickInterval(_ prop: Int?) -> AAXAxis {
+        minTickInterval = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorGridLineColor(_ prop: String?) -> AAXAxis {
+        minorGridLineColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorGridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> AAXAxis {
+        minorGridLineDashStyle = prop?.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func minorGridLineWidth(_ prop: Float?) -> AAXAxis {
+        minorGridLineWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickColor(_ prop: String?) -> AAXAxis {
+        minorTickColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickInterval(_ prop: Any?) -> AAXAxis {
+        minorTickInterval = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickLength(_ prop: Float?) -> AAXAxis {
+        minorTickLength = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickPosition(_ prop: String?) -> AAXAxis {
+        minorTickPosition = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickWidth(_ prop: Float?) -> AAXAxis {
+        minorTickWidth = prop
         return self
     }
     
@@ -230,12 +304,6 @@ public class AAXAxis: AAObject {
     @discardableResult
     public func tickPosition(_ prop: String?) -> AAXAxis {
         tickPosition = prop
-        return self
-    }
-    
-    @discardableResult
-    public func minRange(_ prop: Int?) -> AAXAxis {
-        minRange = prop
         return self
     }
     
