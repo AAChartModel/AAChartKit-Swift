@@ -224,32 +224,6 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func yAxisOnTheRightSideChart() -> AAOptions {
-        let aaChartModel = AAChartModel()
-            .chartType(.line)//图表类型
-            .title("yAxis on the right side 📈")//图表主标题
-            .subtitle("set aaOptions.yAxis.opposite = YES")//图表副标题
-            .markerSymbolStyle(.borderBlank)
-            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
-            .markerRadius(8)
-            .series([
-                AASeriesElement()
-                    .name("2020")
-                    .lineWidth(5.5)
-                    .color(AAGradientColor.sanguine)
-                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
-            ])
-        
-        let aaOptions = aaChartModel.aa_toAAOptions()
-        //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表の下方显示，y 轴是在左方，
-        //坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。
-        //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示の。
-        //默认是：false.
-        aaOptions.yAxis?.opposite(true)
-        
-        return aaOptions
-    }
-    
     private func adjustYAxisMinValueForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
@@ -1920,53 +1894,6 @@ function () {
         return aaOptions
     }
     
-//    https://github.com/AAChartModel/AAChartKit-Swift/issues/244
-    private func doubleLayerHalfPieChart() -> AAOptions {
-        let aaChartModel = AAChartModel()
-            .chartType(.pie)
-            .title("浏览器市场占比历史对比")
-            .subtitle("无任何可靠依据的虚拟数据")
-            .dataLabelsEnabled(false)//是否直接显示扇形图数据
-            .yAxisTitle("摄氏度")
-            .series([
-                AASeriesElement()
-                    .name("Past")
-                    .size("40%")//尺寸大小
-                    .innerSize("30%")//内部圆环半径大小占比
-                    .borderWidth(0)//描边的宽度
-                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
-                    .data([
-                        ["Firefox Past",   3336.2],
-                        ["Chrome Past",      26.8],
-                        ["Safari Past",      88.5],
-                        ["Opera Past",       46.0],
-                        ["Others Past",     223.0],
-                    ]),
-                AASeriesElement()
-                    .name("Now")
-                    .size("80%")//尺寸大小
-                    .innerSize("70%")//内部圆环半径大小占比
-                    .borderWidth(0)//描边的宽度
-                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
-                    .data([
-                        ["Firefox Now",    336.2],
-                        ["Chrome Now",    6926.8],
-                        ["Safari Now",     388.5],
-                        ["Opera Now",      446.0],
-                        ["Others Now",     223.0],
-                    ])
-            ])
-        
-        let aaOptions = aaChartModel.aa_toAAOptions()
-        
-        aaOptions.plotOptions?.pie?
-                .startAngle(-90)
-                .endAngle(90)
-        
-        return aaOptions
-    }
-    
-    
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/260
     private func customLineChartDataLabelsFormat() -> AAOptions {
         let aaChartModel = AAChartModel()
@@ -2500,6 +2427,77 @@ function () {
         return aaOptions;
     }
     
+    private func yAxisOnTheRightSideChart() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.line)//图表类型
+            .title("yAxis on the right side 📈")//图表主标题
+            .subtitle("set aaOptions.yAxis.opposite = YES")//图表副标题
+            .markerSymbolStyle(.borderBlank)
+            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+            .markerRadius(8)
+            .series([
+                AASeriesElement()
+                    .name("2020")
+                    .lineWidth(5.5)
+                    .color(AAGradientColor.sanguine)
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        //是否将坐标轴显示在对立面，默认情况下 x 轴是在图表の下方显示，y 轴是在左方，
+        //坐标轴显示在对立面后，x 轴是在上方显示，y 轴是在右方显示（即坐标轴会显示在对立面）。
+        //该配置一般是用于多坐标轴区分展示，另外在 Highstock 中，y 轴默认是在对立面显示の。
+        //默认是：false.
+        aaOptions.yAxis?.opposite(true)
+        
+        return aaOptions
+    }
+    
+    //    https://github.com/AAChartModel/AAChartKit-Swift/issues/244
+    private func doubleLayerHalfPieChart() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.pie)
+            .title("浏览器市场占比历史对比")
+            .subtitle("无任何可靠依据的虚拟数据")
+            .dataLabelsEnabled(false)//是否直接显示扇形图数据
+            .yAxisTitle("摄氏度")
+            .series([
+                AASeriesElement()
+                    .name("Past")
+                    .size("40%")//尺寸大小
+                    .innerSize("30%")//内部圆环半径大小占比
+                    .borderWidth(0)//描边的宽度
+                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
+                    .data([
+                        ["Firefox Past",   3336.2],
+                        ["Chrome Past",      26.8],
+                        ["Safari Past",      88.5],
+                        ["Opera Past",       46.0],
+                        ["Others Past",     223.0],
+                    ]),
+                AASeriesElement()
+                    .name("Now")
+                    .size("80%")//尺寸大小
+                    .innerSize("70%")//内部圆环半径大小占比
+                    .borderWidth(0)//描边的宽度
+                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
+                    .data([
+                        ["Firefox Now",    336.2],
+                        ["Chrome Now",    6926.8],
+                        ["Safari Now",     388.5],
+                        ["Opera Now",      446.0],
+                        ["Others Now",     223.0],
+                    ])
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        
+        aaOptions.plotOptions?.pie?
+            .startAngle(-90)
+            .endAngle(90)
+        
+        return aaOptions
+    }
     
     //https://github.com/AAChartModel/AAChartKit/issues/987
     //headerFormat 参考链接: https://api.highcharts.com.cn/highcharts#tooltip.headerFormat
