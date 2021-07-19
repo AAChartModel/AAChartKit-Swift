@@ -40,16 +40,17 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return configureLegendStyle()
-        case 1: return simpleGaugeChart()
-        case 2: return gaugeChartWithPlotBand()
-        case 3: return configureChartWithBackgroundImage()
-        case 4: return customAreaChartYAxisLabelsAndGridLineStyle()//自定义曲线填充图图的 Y 轴 的 Labels 和 网格线样式
-        case 5: return adjustYAxisMinValueForChart()
-        case 6: return configureTheMirrorColumnChart()
-        case 7: return adjustTheXAxisLabels()
-        case 8: return adjustGroupPaddingBetweenColumns()
-        case 9: return configureAAPlotBandsForChart()
+        case  0: return configureLegendStyle()
+        case  1: return simpleGaugeChart()
+        case  2: return gaugeChartWithPlotBand()
+        case  3: return configureChartWithBackgroundImage()
+        case  4: return customAreaChartYAxisLabelsAndGridLineStyle()//自定义曲线填充图图的 Y 轴 的 Labels 和 网格线样式
+        case  5: return adjustYAxisMinValueForChart()
+        case  6: return configureTheMirrorColumnChart()
+        case  7: return adjustTheXAxisLabels()
+        case  8: return adjustGroupPaddingBetweenColumns()
+        case  9: return configureAAPlotBandsForChart()
+            
         case 10: return configureAAPlotLinesForChart()
         case 11: return customAATooltipWithJSFuntion()
         case 12: return customXAxisCrosshairStyle()
