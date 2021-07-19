@@ -44,7 +44,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 1: return simpleGaugeChart()
         case 2: return gaugeChartWithPlotBand()
         case 3: return configureChartWithBackgroundImage()
-        case 4: return yAxisOnTheRightSideChart()
+        case 4: return customAreaChartYAxisLabelsAndGridLineStyle()//自定义曲线填充图图的 Y 轴 的 Labels 和 网格线样式
         case 5: return adjustYAxisMinValueForChart()
         case 6: return configureTheMirrorColumnChart()
         case 7: return adjustTheXAxisLabels()
@@ -71,12 +71,23 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 28: return configurePentagonRadarChart()//带有颜色标志带の五角形雷达图
         case 29: return configureHexagonRadarChart()//带有颜色标志带の六角形雷达图
         case 30: return configureSpiderWebRadarChart()//带有颜色标志带の🕸蜘蛛网状雷达图
-        case 31: return disableMixedChartInactiveAnimationEffect()//禁用混合图表的 inactive 动画效果
-        case 32: return adjustBubbleChartMinAndMax()//调整气泡图的 min 和 max 相关属性
-        case 33: return doubleLayerHalfPieChart()//双层嵌套的玉阕图
-        case 34: return customLineChartDataLabelsFormat()//自定义曲线图的 DataLabels 的 format 属性
-        case 35: return customLineChartDataLabelsFormat2()//自定义曲线图的 DataLabels 的 format 属性(更简易方法)
-        case 36: return customAreaChartYAxisLabelsAndGridLineStyle()//自定义曲线填充图图的 Y 轴 的 Labels 和 网格线样式
+        
+        case 31: return configureComplicatedCustomAreasplineChart()//复杂自定义曲线填充图 1
+        case 32: return configureComplicatedCustomAreasplineChart2()//复杂自定义曲线填充图 2
+        case 33: return configureComplicatedCustomAreasplineChart3()//复杂自定义曲线填充图 3
+        case 34: return yAxisOnTheRightSideChart()//y轴在右侧的图表
+        case 35: return doubleLayerHalfPieChart()//双层嵌套的玉阕图
+        case 36: return customAreasplineChartTooltipContentWithHeaderFormat()//通过 tooltip 的 headerFormat 属性来自定义 曲线填充图的 to
+        case 37: return customAreaChartTooltipStyleWithTotalValueHeader()//浮动提示框 header 显示总值信息
+        case 38: return configureYAxisLabelsNumericSymbolsMagnitudeOfAerasplineChart()//自定义 Y 轴的 Labels 国际单位符基数及国际单位符
+        case 39: return timeDataWithIrregularIntervalsChart()//X 轴时间不连续的折线图
+        case 40: return logarithmicAxisLineChart()//对数轴折线图📈
+        case 41: return logarithmicAxisScatterChart()//对数轴散点图
+        
+        case 42: return disableMixedChartInactiveAnimationEffect()//禁用混合图表的 inactive 动画效果
+        case 43: return adjustBubbleChartMinAndMax()//调整气泡图的 min 和 max 相关属性
+        case 44: return customLineChartDataLabelsFormat()//自定义曲线图的 DataLabels 的 format 属性
+        case 45: return customLineChartDataLabelsFormat2()//自定义曲线图的 DataLabels 的 format 属性(更简易方法)
 
         default:
             return AAOptions()
@@ -2077,6 +2088,788 @@ function () {
 
         
         return aaOptions
+    }
+    
+    
+    private func configureComplicatedCustomAreasplineChart() -> AAOptions {
+        let aaChart = AAChart()
+            .type(.areaspline)
+            .backgroundColor(AAColor.black);
+        
+        let aaTitle = AATitle()
+            .text("");
+        
+        let aaXAxis = AAXAxis()
+            .categories([
+                "一月", "二月", "三月", "四月", "五月", "六月",
+                "七月", "八月", "九月", "十月", "十一月", "十二月"
+            ])
+            .tickWidth(0)//X轴刻度线宽度
+            .lineWidth(1.5)//X轴轴线宽度
+            .lineColor(AAColor.white)//X轴轴线颜色
+            .gridLineColor(AAColor.white)
+            .gridLineWidth(0.5)//X轴网格线宽度
+            .gridLineDashStyle(.dash)
+            .labels(AALabels()
+                    .style(AAStyle()
+                            .color(AAColor.white))//X轴文字颜色
+            );
+        
+        let aaYAXis = AAYAxis()
+            .title(AATitle()
+                    .text(""))
+            .tickPositions([0, 20, 40, 60, 80, 100])
+            .lineWidth(1.5)//Y轴轴线颜色
+            .lineColor(AAColor.white)//Y轴轴线颜色
+            .gridLineWidth(0)//Y轴网格线宽度
+            .gridLineDashStyle(.dash)
+            .labels(AALabels()
+                    .format("{value} %")//给y轴添加单位
+                    .style(AAStyle()
+                            .color(AAColor.white))//Y轴文字颜色
+            )
+        
+        
+        let aaPlotOptions = AAPlotOptions()
+            .series(AASeries()
+                    .marker(AAMarker()
+                            .symbol(AAChartSymbolType.circle.rawValue)
+                            .radius(0)));
+        
+        let aaLegend = AALegend()
+            .enabled(true)
+            .itemStyle(AAItemStyle()
+                        .color(AAColor.white))
+            .align(.left)//设置图例位于水平方向上的右侧
+            .layout(.horizontal)//设置图例排列方式为垂直排布
+            .verticalAlign(.top)//设置图例位于竖直方向上的顶部
+        
+        let blueStopsArr = [
+            [0.0, AARgba(30, 144, 255, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AARgba(30, 144, 255, 0.2)],
+            [1.0, AARgba(30, 144, 255, 0.0)]
+        ]
+        let gradientBlueColorDic = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            stops: blueStopsArr
+        )
+        
+        let redStopsArr = [
+            [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AARgba(255, 0, 0, 0.2)],
+            [1.0, AARgba(255, 0, 0, 0.0)]
+        ];
+        let gradientRedColorDic = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            stops: redStopsArr
+        )
+        
+        let singleSpecialData1 = AADataElement()
+            .marker(
+                AAMarker()
+                    .radius(8)//曲线连接点半径
+                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                    .fillColor("#FFFFFF")//点的填充色(用来设置折线连接点的填充色)
+                    .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                    //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                    .lineColor("#1e90ff")
+            )
+            .dataLabels(
+                AADataLabels()
+                    .enabled(true)
+                    .useHTML(true)
+                    .backgroundColor("#1e90ff")
+                    .borderRadius(5)
+                    .shape("callout")
+                    .format("{point.category}<br>{series.name}: {point.y} %")
+                    .style(AAStyle()
+                            .fontWeight(.bold)
+                            .color(AAColor.white)
+                            .fontSize(16)
+                            .fontWeight(.thin))
+                    .y((-75))
+                    .align(.center)
+                    .verticalAlign(.top)
+                    .overflow("none")
+                    .crop(false)
+            )
+            .y(51.5)
+            .toDic()!
+        
+        let singleSpecialData2 = AADataElement()
+            .marker(
+                AAMarker()
+                    .radius(8)//曲线连接点半径
+                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                    .fillColor("#FFFFFF")//点的填充色(用来设置折线连接点的填充色)
+                    .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                    //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                    .lineColor("#ef476f")
+            )
+            .dataLabels(
+                AADataLabels()
+                    .enabled(true)
+                    .useHTML(true)
+                    .backgroundColor(AAColor.red)
+                    .borderRadius(5)
+                    .shape("callout")
+                    .format("{point.category}<br>{series.name}: {point.y} %")
+                    .style(AAStyle()
+                            .fontWeight(.bold)
+                            .color(AAColor.white)
+                            .fontSize(16)
+                            .fontWeight(.thin))
+                    .y((-75))
+                    .align(.center)
+                    .verticalAlign(.top)
+                    .overflow("none")
+                    .crop(false)
+            )
+            .y(26.5)
+            .toDic()!
+
+        
+        let aaSeriesArr = [
+            AASeriesElement()
+                .name("空气湿度")
+                .fillColor(gradientBlueColorDic)
+                .lineWidth(6)
+                .data([17.0, 16.9, 8.5, 34.5, 28.2, singleSpecialData1, 15.2, 56.5, 33.3, 85.3, 23.9, 29.6]),
+            AASeriesElement()
+                .name("土壤湿度")
+                .fillColor(gradientRedColorDic)
+                .lineWidth(6)
+                .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData2, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
+        ];
+        
+        let aaOptions = AAOptions()
+            .chart(aaChart)
+            .title(aaTitle)
+            .colors(["#1e90ff",AAColor.red,])
+            .xAxis(aaXAxis)
+            .yAxis(aaYAXis)
+            .plotOptions(aaPlotOptions)
+            .legend(aaLegend)
+            .series(aaSeriesArr)
+        ;
+        
+        return aaOptions;
+    }
+    
+    private func configureComplicatedCustomAreasplineChart2() -> AAOptions {
+        let aaOptions = configureComplicatedCustomAreasplineChart();
+        
+        aaOptions.chart!.backgroundColor = AAGradientColor.linearGradient(
+            direction: .toTop,
+            startColor: AARgba(113, 180, 185, 1.0),
+            endColor: AARgba(115, 183, 166, 1.0)
+        )
+        
+        aaOptions.colors = [
+            AARgba(204, 150, 103, 1.0),
+            AARgba(154, 243, 247, 1.0),
+        ];
+        
+        aaOptions.tooltip = AATooltip()
+            .shared(true)
+            .backgroundColor(AAColor.white)
+            .valueSuffix(" %");
+        
+        let aaDataLabelsStyle = AAStyle()
+            .fontWeight(.bold)
+            .color(AAColor.white)
+            .fontSize(16)
+            .fontWeight(.thin);
+        
+        let singleSpecialData1 = AADataElement()
+            .marker(
+                AAMarker()
+                    .radius(8)//曲线连接点半径
+                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                    .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
+                    .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                    //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                    .lineColor(AARgba(204, 150, 103, 1.0))
+            )
+            .dataLabels(
+                AADataLabels()
+                    .enabled(true)
+                    .allowOverlap(true)
+                    .useHTML(true)
+                    .backgroundColor(AARgba(219, 148, 111, 1.0))
+                    .borderRadius(10)
+                    .shape("callout")
+                    .format("{point.category}<br>{series.name}: {point.y} %")
+                    .style(aaDataLabelsStyle)
+                    .y((-75))
+                    .align(.center)
+                    .verticalAlign(.top)
+                    .overflow("none")
+                    .crop(false)
+            )
+            .y(51.5)
+            .toDic()!
+        
+        let singleSpecialData2 = AADataElement()
+            .marker(
+                AAMarker()
+                    .radius(8)//曲线连接点半径
+                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                    .fillColor("#FFFFFF")//点的填充色(用来设置折线连接点的填充色)
+                    .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                    //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                    .lineColor(AARgba(154, 243, 247, 1.0))
+            )
+            .dataLabels(
+                AADataLabels()
+                    .enabled(true)
+                    .allowOverlap(true)
+                    .useHTML(true)
+                    .backgroundColor(AARgba(65, 111, 166, 1.0))
+                    .borderRadius(10)
+                    .shape("callout")
+                    .format("{point.category}<br>{series.name}: {point.y} %")
+                    .style(aaDataLabelsStyle)
+                    .y((-75))
+                    .align(.center)
+                    .verticalAlign(.top)
+                    .overflow("none")
+                    .crop(false)
+            )
+            .y(26.5)
+            .toDic()!
+        
+        let aaSeriesArr = [
+            AASeriesElement()
+                .name("空气湿度")
+                .lineWidth(3)
+                .zoneAxis("x")
+                .zones([
+                    AAZonesElement()
+                        .value(5)
+                        .fillColor(
+                            AAGradientColor.linearGradient(
+                                direction: .toTop,
+                                stops: [
+                                    [0.0, AAColor.clear],//颜色字符串设置支持十六进制类型和 rgba 类型
+                                    [0.6, AARgba(219, 148, 111, 0.6)],
+                                    [1.0, AARgba(219, 148, 111, 1.0)]
+                                ])
+                        ),
+                    AAZonesElement()
+                        .fillColor(AAColor.clear),
+                ])
+                .data([17.0, 16.9, 8.5, 34.5, 28.2, singleSpecialData1, 15.2, 56.5, 33.3, 85.3, 23.9, 29.6]),
+            
+            AASeriesElement()
+                .name("土壤湿度")
+                .lineWidth(3)
+                .zoneAxis("x")
+                .zones([
+                    AAZonesElement()
+                        .value(5)
+                        .fillColor(AAGradientColor.linearGradient(
+                                    direction: .toTop,
+                                    stops: [
+                                        [0.0, AAColor.clear],//颜色字符串设置支持十六进制类型和 rgba 类型
+                                        [0.6, AARgba(65, 111, 166, 0.6)],
+                                        [1.0, AARgba(65, 111, 166, 1.0)]
+                                    ])),
+                    AAZonesElement()
+                        .fillColor(AAColor.clear),
+                ])
+                .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData2, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
+        ];
+        
+        aaOptions.series = aaSeriesArr;
+        
+        return aaOptions;
+    }
+    
+    private func configureComplicatedCustomAreasplineChart3() -> AAOptions {
+        let aaDataLabelsStyle = AAStyle()
+            .fontWeight(.bold)
+            .color(AAColor.white)
+            .fontSize(16)
+            .fontWeight(.thin);
+        
+        let singleSpecialData1 = AADataElement()
+            .marker(
+                AAMarker()
+                    .radius(8)//曲线连接点半径
+                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                    .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
+                    .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                    //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                    .lineColor(AARgba(204, 150, 103, 1.0))
+            )
+            .dataLabels(
+                AADataLabels()
+                    .enabled(true)
+                    .allowOverlap(true)
+                    .useHTML(true)
+                    .backgroundColor(AARgba(219, 148, 111, 1.0))
+                    .borderRadius(10)
+                    .shape("callout")
+                    .format("{point.category}<br>{series.name}: {point.y} %")
+                    .style(aaDataLabelsStyle)
+                    .y((-75))
+                    .align(.center)
+                    .verticalAlign(.top)
+                    .overflow("none")
+                    .crop(false)
+            )
+            .y(34.5)
+            .toDic()!
+
+        
+        let singleSpecialData2 = AADataElement()
+            .marker(
+                AAMarker()
+                    .radius(8)//曲线连接点半径
+                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                    .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
+                    .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                    //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                    .lineColor(AARgba(154, 243, 247, 1.0))
+            )
+            .dataLabels(
+                AADataLabels()
+                    .enabled(true)
+                    .allowOverlap(true)
+                    .useHTML(true)
+                    .backgroundColor(AARgba(65, 111, 166, 1.0))
+                    .borderRadius(10)
+                    .shape("callout")
+                    .format("{point.category}<br>{series.name}: {point.y} %")
+                    .style(aaDataLabelsStyle)
+                    .y((-75))
+                    .align(.center)
+                    .verticalAlign(.top)
+                    .overflow("none")
+                    .crop(false)
+            )
+            .y(14.5)
+            .toDic()!
+
+        
+        let aaSeriesArr = [
+            AASeriesElement()
+                .name("空气湿度")
+                .lineWidth(3)
+                .zoneAxis("x")
+                .zones([
+                    AAZonesElement()
+                        .value(3)
+                        .fillColor(AAColor.clear),
+                    AAZonesElement()
+                        .fillColor(AAGradientColor.linearGradient(
+                                    direction: .toTop,
+                                    stops: [
+                                        [0.0, AAColor.clear],//颜色字符串设置支持十六进制类型和 rgba 类型
+                                        [0.6, AARgba(65, 111, 166, 0.6)],
+                                        [1.0, AARgba(65, 111, 166, 1.0)]
+                                    ])),
+                ])
+                .data([17.0, 16.9, 8.5, singleSpecialData1, 28.2, 51.5, 15.2, 56.5, 33.3, 85.3, 23.9, 29.6]),
+            
+            AASeriesElement()
+                .name("土壤湿度")
+                .lineWidth(3)
+                .zoneAxis("x")
+                .zones([
+                    AAZonesElement()
+                        .value(3)
+                        .fillColor(AAColor.clear),
+                    AAZonesElement()
+                        .fillColor(AAGradientColor.linearGradient(
+                                    direction: .toTop,
+                                    stops: [
+                                        [0.0, AAColor.clear],//颜色字符串设置支持十六进制类型和 rgba 类型
+                                        [0.6, AARgba(65, 111, 166, 0.6)],
+                                        [1.0, AARgba(65, 111, 166, 1.0)]
+                                    ])),
+                ])
+                .data([7.0, 6.9, 2.5, singleSpecialData2, 18.2, 26.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
+        ];
+        
+        let aaOptions = configureComplicatedCustomAreasplineChart2();
+        
+        aaOptions.series = aaSeriesArr;
+        
+        return aaOptions;
+    }
+    
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/987
+    //headerFormat 参考链接: https://api.highcharts.com.cn/highcharts#tooltip.headerFormat
+    // \<span> 标签🏷 参考链接: https://www.w3school.com.cn/tags/tag_span.asp
+    private func customAreasplineChartTooltipContentWithHeaderFormat() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.areaspline)//图表类型
+            .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
+            .stacking(.normal)
+            .markerRadius(0)
+            .categories([
+                "01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
+                "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+                "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
+                "31"
+            ])
+            .yAxisVisible(false)
+            .markerRadius(0)
+            .series([
+                AASeriesElement()
+                    .name("客流")
+                    .lineWidth(5.0)
+                    .fillOpacity(0.4)
+                    .data([
+                        26, 27, 53, 41, 35, 55, 33, 42, 33, 63,
+                        40, 43, 36, 0,  0,  0,  0,  0,  0,  0,
+                        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+                        0
+                    ])
+            ]);
+        
+        let title = #"<span style="color:red;font-size:17px;font-weight:bold;">客流</span><br>"#
+        let week = "周一";
+        let time = "时间: 8.{point.x} (\(week)<br>";
+        let headerFormat = "\(title)\(time)" ;
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        
+        aaOptions.tooltip?
+            .useHTML(true)
+            .headerFormat(headerFormat)
+            .style(AAStyle(color: AAColor.white, fontSize: 14))
+            .backgroundColor("#050505")
+            .borderColor("#050505")
+        
+        //禁用图例点击事件
+        aaOptions.plotOptions?.series?.events = AAEvents()
+            .legendItemClick("""
+        function() {
+            return false;
+        }
+""");
+        
+        return aaOptions
+    }
+    
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1125
+    private func customAreaChartTooltipStyleWithTotalValueHeader() -> AAOptions {
+        let goldStopsArr = [
+            [0.0, AARgba(255, 215, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AARgba(255, 215, 0, 0.2)],
+            [1.0, AARgba(255, 215, 0, 0.0)]
+        ];
+        let gradientGoldColorDic = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            stops: goldStopsArr
+        )
+        
+        let greenStopsArr = [
+            [0.0, AARgba(50, 205, 50, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+            [0.6, AARgba(50, 205, 50, 0.2)],
+            [1.0, AARgba(50, 205, 50, 0.0)]
+        ];
+        let gradientGreenColorDic = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            stops: greenStopsArr
+        );
+        
+        let aaChartModel = AAChartModel()
+            .chartType(.area)//图表类型
+            .title("2021 年 10 月上海市猫与狗生存调查")//图表主标题
+            .subtitle("数据来源：www.无任何可靠依据.com")//图表副标题
+            .colorsTheme([
+                AARgba(255, 215, 0, 1.0),
+                AARgba(50, 205, 50, 1.0),
+            ])
+            .markerSymbolStyle(.innerBlank)//折线连接点样式为内部白色
+            .stacking(.normal)
+            .categories(["10-01","10-02","10-03","10-04","10-05","10-06","10-07","10-08",])
+            .series([
+                AASeriesElement()
+                    .lineWidth(6)
+                    .fillColor(gradientGoldColorDic)
+                    .name("🐶狗")
+                    .data([43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]),
+                AASeriesElement()
+                    .lineWidth(6)
+                    .fillColor(gradientGreenColorDic)
+                    .name("🐱猫")
+                    .data([24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]),
+            ]);
+        
+        let aaOptions = aaChartModel.aa_toAAOptions();
+        aaOptions.tooltip?
+            .useHTML(true)
+            .headerFormat("狗和猫的总数为:{point.total}<br/>")
+        ;
+        
+        return aaOptions;
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1208
+    private func configureYAxisLabelsNumericSymbolsMagnitudeOfAerasplineChart() -> AAOptions {
+        let gradientColorDic1 = AAGradientColor.linearGradient(
+            direction: .toBottom,
+            startColor: "#FC354C",
+            endColor: "#0ABFBC"
+        )
+        
+        let aaChartModel = AAChartModel()
+            .chartType(.areaspline)
+            .title("Numeric symbols magnitude")
+            .subtitle("Chinese and Japanese uses ten thousands (万) as numeric symbol")
+            .categories([
+                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "July", "Aug", "Spe", "Oct", "Nov", "Dec"
+            ])
+            .markerRadius(8.0)//marker点半径为8个像素
+            .markerSymbolStyle(.innerBlank)//marker点为空心效果
+            .markerSymbol(.circle)//marker点为圆形点○
+            .yAxisLineWidth(0)
+            .legendEnabled(false)
+            .series([
+                AASeriesElement()
+                    .name("Tokyo Hot")
+                    .lineWidth(7.0)
+                    .color(AAColor.red)//猩红色, alpha 透明度 1
+                    .fillColor(gradientColorDic1)
+                    .data([70000.0, 60000.9, 20000.5, 140000.5, 180000.2, 210000.5, 50000.2, 260000.5, 230000.3, 450000.3, 130000.9, 90000.6]),
+            ]);
+        
+        let aaOptions = aaChartModel.aa_toAAOptions();
+        
+        aaOptions.defaultOptions = AALang()
+            .numericSymbolMagnitude(10000) //国际单位符基数
+            .numericSymbols(["万","億"]) //国际单位符
+        
+        return aaOptions;
+    }
+    
+    //X 轴时间不连续的折线图
+    private func timeDataWithIrregularIntervalsChart() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.line)//图形类型
+            .title("Snow depth at Vikjafjellet, Norway")//图形标题
+            .subtitle("Irregular time data in AAChartKit")//图形副标题
+            .colorsTheme(["#fe117c","#ffc069","#06caf4",])
+            .dataLabelsEnabled(false)//是否显示数字
+            .markerSymbolStyle(.innerBlank)//折线连接点样式
+            .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
+            .series([
+                AASeriesElement()
+                    .name("Winter 2014-2015")
+                    .data([
+                        [AADateUTC(1970, 10, 25),    0],
+                        [AADateUTC(1970, 11,  6), 0.25],
+                        [AADateUTC(1970, 11, 20), 1.41],
+                        [AADateUTC(1970, 11, 25), 1.64],
+                        [AADateUTC(1971, 0,  4),   1.6],
+                        [AADateUTC(1971, 0, 17),  2.55],
+                        [AADateUTC(1971, 0, 24),  2.62],
+                        [AADateUTC(1971, 1,  4),   2.5],
+                        [AADateUTC(1971, 1, 14),  2.42],
+                        [AADateUTC(1971, 2,  6),  2.74],
+                        [AADateUTC(1971, 2, 14),  2.62],
+                        [AADateUTC(1971, 2, 24),   2.6],
+                        [AADateUTC(1971, 3,  1),  2.81],
+                        [AADateUTC(1971, 3, 11),  2.63],
+                        [AADateUTC(1971, 3, 27),  2.77],
+                        [AADateUTC(1971, 4,  4),  2.68],
+                        [AADateUTC(1971, 4,  9),  2.56],
+                        [AADateUTC(1971, 4, 14),  2.39],
+                        [AADateUTC(1971, 4, 19),   2.3],
+                        [AADateUTC(1971, 5,  4),     2],
+                        [AADateUTC(1971, 5,  9),  1.85],
+                        [AADateUTC(1971, 5, 14),  1.49],
+                        [AADateUTC(1971, 5, 19),  1.27],
+                        [AADateUTC(1971, 5, 24),  0.99],
+                        [AADateUTC(1971, 5, 29),  0.67],
+                        [AADateUTC(1971, 6,  3),  0.18],
+                        [AADateUTC(1971, 6,  4),     0]
+                    ]),
+                AASeriesElement()
+                    .name("Winter 2015-2016")
+                    .data([
+                        [AADateUTC(1970, 10,  9),    0],
+                        [AADateUTC(1970, 10, 15), 0.23],
+                        [AADateUTC(1970, 10, 20), 0.25],
+                        [AADateUTC(1970, 10, 25), 0.23],
+                        [AADateUTC(1970, 10, 30), 0.39],
+                        [AADateUTC(1970, 11,  5), 0.41],
+                        [AADateUTC(1970, 11, 10), 0.59],
+                        [AADateUTC(1970, 11, 15), 0.73],
+                        [AADateUTC(1970, 11, 20), 0.41],
+                        [AADateUTC(1970, 11, 25), 1.07],
+                        [AADateUTC(1970, 11, 30), 0.88],
+                        [AADateUTC(1971, 0,  5),  0.85],
+                        [AADateUTC(1971, 0, 11),  0.89],
+                        [AADateUTC(1971, 0, 17),  1.04],
+                        [AADateUTC(1971, 0, 20),  1.02],
+                        [AADateUTC(1971, 0, 25),  1.03],
+                        [AADateUTC(1971, 0, 30),  1.39],
+                        [AADateUTC(1971, 1,  5),  1.77],
+                        [AADateUTC(1971, 1, 26),  2.12],
+                        [AADateUTC(1971, 3, 19),   2.1],
+                        [AADateUTC(1971, 4,  9),   1.7],
+                        [AADateUTC(1971, 4, 29),  0.85],
+                        [AADateUTC(1971, 5,  7),     0]
+                    ]),
+                AASeriesElement()
+                    .name("Winter 2016-2017")
+                    .data([
+                        [AADateUTC(1970, 9, 15),     0],
+                        [AADateUTC(1970, 9, 31),  0.09],
+                        [AADateUTC(1970, 10,  7), 0.17],
+                        [AADateUTC(1970, 10, 10),  0.1],
+                        [AADateUTC(1970, 11, 10),  0.1],
+                        [AADateUTC(1970, 11, 13),  0.1],
+                        [AADateUTC(1970, 11, 16), 0.11],
+                        [AADateUTC(1970, 11, 19), 0.11],
+                        [AADateUTC(1970, 11, 22), 0.08],
+                        [AADateUTC(1970, 11, 25), 0.23],
+                        [AADateUTC(1970, 11, 28), 0.37],
+                        [AADateUTC(1971, 0, 16),  0.68],
+                        [AADateUTC(1971, 0, 19),  0.55],
+                        [AADateUTC(1971, 0, 22),   0.4],
+                        [AADateUTC(1971, 0, 25),   0.4],
+                        [AADateUTC(1971, 0, 28),  0.37],
+                        [AADateUTC(1971, 0, 31),  0.43],
+                        [AADateUTC(1971, 1,  4),  0.42],
+                        [AADateUTC(1971, 1,  7),  0.39],
+                        [AADateUTC(1971, 1, 10),  0.39],
+                        [AADateUTC(1971, 1, 13),  0.39],
+                        [AADateUTC(1971, 1, 16),  0.39],
+                        [AADateUTC(1971, 1, 19),  0.35],
+                        [AADateUTC(1971, 1, 22),  0.45],
+                        [AADateUTC(1971, 1, 25),  0.62],
+                        [AADateUTC(1971, 1, 28),  0.68],
+                        [AADateUTC(1971, 2,  4),  0.68],
+                        [AADateUTC(1971, 2,  7),  0.65],
+                        [AADateUTC(1971, 2, 10),  0.65],
+                        [AADateUTC(1971, 2, 13),  0.75],
+                        [AADateUTC(1971, 2, 16),  0.86],
+                        [AADateUTC(1971, 2, 19),  1.14],
+                        [AADateUTC(1971, 2, 22),   1.2],
+                        [AADateUTC(1971, 2, 25),  1.27],
+                        [AADateUTC(1971, 2, 27),  1.12],
+                        [AADateUTC(1971, 2, 30),  0.98],
+                        [AADateUTC(1971, 3,  3),  0.85],
+                        [AADateUTC(1971, 3,  6),  1.04],
+                        [AADateUTC(1971, 3,  9),  0.92],
+                        [AADateUTC(1971, 3, 12),  0.96],
+                        [AADateUTC(1971, 3, 15),  0.94],
+                        [AADateUTC(1971, 3, 18),  0.99],
+                        [AADateUTC(1971, 3, 21),  0.96],
+                        [AADateUTC(1971, 3, 24),  1.15],
+                        [AADateUTC(1971, 3, 27),  1.18],
+                        [AADateUTC(1971, 3, 30),  1.12],
+                        [AADateUTC(1971, 4,  3),  1.06],
+                        [AADateUTC(1971, 4,  6),  0.96],
+                        [AADateUTC(1971, 4,  9),  0.87],
+                        [AADateUTC(1971, 4, 12),  0.88],
+                        [AADateUTC(1971, 4, 15),  0.79],
+                        [AADateUTC(1971, 4, 18),  0.54],
+                        [AADateUTC(1971, 4, 21),  0.34],
+                        [AADateUTC(1971, 4, 25),     0]
+                    ]),
+            ]);
+        
+        let aaOptions = aaChartModel.aa_toAAOptions();
+        
+        aaOptions.xAxis?
+            .type(.datetime)
+            .dateTimeLabelFormats(AADateTimeLabelFormats()
+                                    .month("%e. %b")
+                                    .year("%b")
+            );
+        
+        return aaOptions;
+    }
+    
+    private func logarithmicAxisLineChart() -> AAOptions {
+        return AAOptions()
+            .title(AATitle()
+                    .text("Logarithmic Axis Chart"))
+            .chart(AAChart()
+                    .type(.line))
+            .xAxis(AAXAxis()
+                    .type(.logarithmic)
+                    .gridLineWidth(0.6))
+            .yAxis(AAYAxis()
+                    .type(.logarithmic)
+                    .minorTickInterval(0.1))
+            .tooltip(AATooltip()
+                        .enabled(true)
+                        .headerFormat("<b>{series.name}</b><br />")
+                        .pointFormat("x = {point.x}, y = {point.y}"))
+            .series([
+                AASeriesElement()
+                    .name("Tokyo Hot")
+                    .data([1, 2, 4, 8, 16, 32, 64, 128, 256, 512])
+            ]);
+    }
+    
+    private func logarithmicAxisScatterChart() -> AAOptions {
+        let aaMarker = AAMarker()
+            .radius(8)
+            .symbol(AAChartSymbolType.circle.rawValue)
+            .fillColor(AAColor.white)
+            .lineWidth(3)
+            .lineColor(AAColor.red);
+        
+        let scatterData = [
+            [550, 870], [738, 362], [719, 711], [547, 665], [595, 197], [332, 144],
+            [581, 555], [196, 862], [6,   837], [400, 924], [888, 148], [785, 730],
+            [374, 358], [440,  69], [704, 318], [646, 506], [238, 662], [233,  56],
+            [622, 572], [563, 903], [744, 672], [904, 646], [390, 325], [536, 491],
+            [676, 186], [467, 145], [790, 114], [437, 793], [853, 243], [947, 196],
+            [395, 728], [527, 148], [516, 675], [632, 562], [52,  552], [605, 580],
+            [790, 865], [156, 87],  [584, 290], [339, 921], [383, 633], [106, 373],
+            [762, 863], [424, 149], [608, 959], [574, 711], [468, 664], [268,  77],
+            [894, 850], [171, 102], [203, 565], [592, 549], [86,  486], [526, 244],
+            [323, 575], [488, 842], [401, 618], [148,  43], [828, 314], [554, 711],
+            [685, 868], [387, 435], [469, 828], [623, 506], [436, 184], [450, 156],
+            [805, 517], [465, 997], [728, 802], [231, 438], [935, 438], [519, 856],
+            [378, 579], [73,  765], [223, 219], [359, 317], [686, 742], [17,  790],
+            [20,   35], [410, 644], [984, 325], [503, 882], [900, 187], [578, 968],
+            [27,  718], [355, 704], [395, 332], [641, 548], [964, 374], [215, 472],
+            [323,  66], [882, 542], [671, 327], [650, 193], [828, 632], [760, 929],
+            [607, 335], [928, 826], [462, 598], [631, 411]
+        ];
+        
+        return AAOptions()
+            .title(AATitle()
+                    .text("Logarithmic Axis Scatter Chart"))
+            .chart(AAChart()
+                    .type(.scatter))
+            .xAxis(AAXAxis()
+                    .type(.logarithmic)
+                    .min(1)
+                    .max(1000)
+                    //                  .endOnTick(true)
+                    .tickInterval(1)
+                    .minorTickInterval(0.1)
+                    .gridLineWidth(1))
+            .yAxis(AAYAxis()
+                    .type(.logarithmic)
+                    .min(1)
+                    .max(1000)
+                    .tickInterval(1)
+                    .minorTickInterval(0.1)
+                    .gridLineWidth(1)
+                    .title(AATitle()
+                            .text("")))
+            .series([
+                AASeriesElement()
+                    .marker(aaMarker)
+                    .data(scatterData)
+            ])
     }
     
 }

@@ -360,7 +360,8 @@ public class AAShadow: AAObject {
 
 public class AAZonesElement: AAObject {
     public var value: Double?
-    public var color: String?
+    public var color: Any?
+    public var fillColor: Any?
     public var dashStyle: String?
 
     @discardableResult
@@ -370,8 +371,14 @@ public class AAZonesElement: AAObject {
     }
     
     @discardableResult
-    public func color(_ prop: String) -> AAZonesElement {
+    public func color(_ prop: Any) -> AAZonesElement {
         color = prop
+        return self
+    }
+    
+    @discardableResult
+    public func fillColor(_ prop: Any) -> AAZonesElement {
+        fillColor = prop
         return self
     }
     
