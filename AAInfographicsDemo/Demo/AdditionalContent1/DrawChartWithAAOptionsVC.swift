@@ -2850,7 +2850,7 @@ function () {
                     .type(.logarithmic)
                     .min(1)
                     .max(1000)
-                    //                  .endOnTick(true)
+                    .endOnTick(true)
                     .tickInterval(1)
                     .minorTickInterval(0.1)
                     .gridLineWidth(1))
