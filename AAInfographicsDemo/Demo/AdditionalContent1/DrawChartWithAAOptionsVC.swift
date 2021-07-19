@@ -141,7 +141,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         aaOptions.xAxis?.crosshair(aaCrosshair)
         aaOptions.yAxis?.crosshair(aaCrosshair)
         
-        aaOptions.yAxis?.labels?.format = "{value} $";//给y轴添加单位
+        aaOptions.yAxis?.labels?.format = "{value} $"//给y轴添加单位
 
         //https://jshare.com.cn/highcharts/hhhhf0
         aaOptions.xAxis?
@@ -2021,10 +2021,10 @@ function () {
     private func configureComplicatedCustomAreasplineChart() -> AAOptions {
         let aaChart = AAChart()
             .type(.areaspline)
-            .backgroundColor(AAColor.black);
+            .backgroundColor(AAColor.black)
         
         let aaTitle = AATitle()
-            .text("");
+            .text("")
         
         let aaXAxis = AAXAxis()
             .categories([
@@ -2040,7 +2040,7 @@ function () {
             .labels(AALabels()
                     .style(AAStyle()
                             .color(AAColor.white))//X轴文字颜色
-            );
+            )
         
         let aaYAXis = AAYAxis()
             .title(AATitle()
@@ -2061,7 +2061,7 @@ function () {
             .series(AASeries()
                     .marker(AAMarker()
                             .symbol(AAChartSymbolType.circle.rawValue)
-                            .radius(0)));
+                            .radius(0)))
         
         let aaLegend = AALegend()
             .enabled(true)
@@ -2085,7 +2085,7 @@ function () {
             [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
             [0.6, AARgba(255, 0, 0, 0.2)],
             [1.0, AARgba(255, 0, 0, 0.0)]
-        ];
+        ]
         let gradientRedColorDic = AAGradientColor.linearGradient(
             direction: .toBottom,
             stops: redStopsArr
@@ -2167,7 +2167,7 @@ function () {
                 .fillColor(gradientRedColorDic)
                 .lineWidth(6)
                 .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData2, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-        ];
+        ]
         
         let aaOptions = AAOptions()
             .chart(aaChart)
@@ -2178,13 +2178,13 @@ function () {
             .plotOptions(aaPlotOptions)
             .legend(aaLegend)
             .series(aaSeriesArr)
-        ;
         
-        return aaOptions;
+        
+        return aaOptions
     }
     
     private func configureComplicatedCustomAreasplineChart2() -> AAOptions {
-        let aaOptions = configureComplicatedCustomAreasplineChart();
+        let aaOptions = configureComplicatedCustomAreasplineChart()
         
         aaOptions.chart!.backgroundColor = AAGradientColor.linearGradient(
             direction: .toTop,
@@ -2195,18 +2195,18 @@ function () {
         aaOptions.colors = [
             AARgba(204, 150, 103, 1.0),
             AARgba(154, 243, 247, 1.0),
-        ];
+        ]
         
         aaOptions.tooltip = AATooltip()
             .shared(true)
             .backgroundColor(AAColor.white)
-            .valueSuffix(" %");
+            .valueSuffix(" %")
         
         let aaDataLabelsStyle = AAStyle()
             .fontWeight(.bold)
             .color(AAColor.white)
             .fontSize(16)
-            .fontWeight(.thin);
+            .fontWeight(.thin)
         
         let singleSpecialData1 = AADataElement()
             .marker(
@@ -2306,11 +2306,11 @@ function () {
                         .fillColor(AAColor.clear),
                 ])
                 .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData2, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-        ];
+        ]
         
-        aaOptions.series = aaSeriesArr;
+        aaOptions.series = aaSeriesArr
         
-        return aaOptions;
+        return aaOptions
     }
     
     private func configureComplicatedCustomAreasplineChart3() -> AAOptions {
@@ -2318,7 +2318,7 @@ function () {
             .fontWeight(.bold)
             .color(AAColor.white)
             .fontSize(16)
-            .fontWeight(.thin);
+            .fontWeight(.thin)
         
         let singleSpecialData1 = AADataElement()
             .marker(
@@ -2418,13 +2418,13 @@ function () {
                                     ])),
                 ])
                 .data([7.0, 6.9, 2.5, singleSpecialData2, 18.2, 26.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-        ];
+        ]
         
-        let aaOptions = configureComplicatedCustomAreasplineChart2();
+        let aaOptions = configureComplicatedCustomAreasplineChart2()
         
-        aaOptions.series = aaSeriesArr;
+        aaOptions.series = aaSeriesArr
         
-        return aaOptions;
+        return aaOptions
     }
     
     private func yAxisOnTheRightSideChart() -> AAOptions {
@@ -2527,12 +2527,12 @@ function () {
                         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
                         0
                     ])
-            ]);
+            ])
         
         let title = #"<span style="color:red;font-size:17px;font-weight:bold;">客流</span><br>"#
-        let week = "周一";
-        let time = "时间: 8.{point.x} (\(week)<br>";
-        let headerFormat = "\(title)\(time)" ;
+        let week = "周一"
+        let time = "时间: 8.{point.x} (\(week)<br>"
+        let headerFormat = "\(title)\(time)"
         
         let aaOptions = aaChartModel.aa_toAAOptions()
         
@@ -2549,7 +2549,7 @@ function () {
         function() {
             return false;
         }
-""");
+""")
         
         return aaOptions
     }
@@ -2561,7 +2561,7 @@ function () {
             [0.0, AARgba(255, 215, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
             [0.6, AARgba(255, 215, 0, 0.2)],
             [1.0, AARgba(255, 215, 0, 0.0)]
-        ];
+        ]
         let gradientGoldColorDic = AAGradientColor.linearGradient(
             direction: .toBottom,
             stops: goldStopsArr
@@ -2571,11 +2571,11 @@ function () {
             [0.0, AARgba(50, 205, 50, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
             [0.6, AARgba(50, 205, 50, 0.2)],
             [1.0, AARgba(50, 205, 50, 0.0)]
-        ];
+        ]
         let gradientGreenColorDic = AAGradientColor.linearGradient(
             direction: .toBottom,
             stops: greenStopsArr
-        );
+        )
         
         let aaChartModel = AAChartModel()
             .chartType(.area)//图表类型
@@ -2599,15 +2599,15 @@ function () {
                     .fillColor(gradientGreenColorDic)
                     .name("🐱猫")
                     .data([24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]),
-            ]);
+            ])
         
-        let aaOptions = aaChartModel.aa_toAAOptions();
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.tooltip?
             .useHTML(true)
             .headerFormat("狗和猫的总数为:{point.total}<br/>")
-        ;
         
-        return aaOptions;
+        
+        return aaOptions
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/1208
@@ -2638,15 +2638,15 @@ function () {
                     .color(AAColor.red)//猩红色, alpha 透明度 1
                     .fillColor(gradientColorDic1)
                     .data([70000.0, 60000.9, 20000.5, 140000.5, 180000.2, 210000.5, 50000.2, 260000.5, 230000.3, 450000.3, 130000.9, 90000.6]),
-            ]);
+            ])
         
-        let aaOptions = aaChartModel.aa_toAAOptions();
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.defaultOptions = AALang()
             .numericSymbolMagnitude(10000) //国际单位符基数
             .numericSymbols(["万","億"]) //国际单位符
         
-        return aaOptions;
+        return aaOptions
     }
     
     //X 轴时间不连续的折线图
@@ -2776,18 +2776,18 @@ function () {
                         [AADateUTC(1971, 4, 21),  0.34],
                         [AADateUTC(1971, 4, 25),     0]
                     ]),
-            ]);
+            ])
         
-        let aaOptions = aaChartModel.aa_toAAOptions();
+        let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.xAxis?
             .type(.datetime)
             .dateTimeLabelFormats(AADateTimeLabelFormats()
                                     .month("%e. %b")
                                     .year("%b")
-            );
+            )
         
-        return aaOptions;
+        return aaOptions
     }
     
     private func logarithmicAxisLineChart() -> AAOptions {
@@ -2810,7 +2810,7 @@ function () {
                 AASeriesElement()
                     .name("Tokyo Hot")
                     .data([1, 2, 4, 8, 16, 32, 64, 128, 256, 512])
-            ]);
+            ])
     }
     
     private func logarithmicAxisScatterChart() -> AAOptions {
@@ -2819,7 +2819,7 @@ function () {
             .symbol(AAChartSymbolType.circle.rawValue)
             .fillColor(AAColor.white)
             .lineWidth(3)
-            .lineColor(AAColor.red);
+            .lineColor(AAColor.red)
         
         let scatterData = [
             [550, 870], [738, 362], [719, 711], [547, 665], [595, 197], [332, 144],
@@ -2839,7 +2839,7 @@ function () {
             [27,  718], [355, 704], [395, 332], [641, 548], [964, 374], [215, 472],
             [323,  66], [882, 542], [671, 327], [650, 193], [828, 632], [760, 929],
             [607, 335], [928, 826], [462, 598], [631, 411]
-        ];
+        ]
         
         return AAOptions()
             .title(AATitle()
