@@ -62,7 +62,7 @@ class DataSortingWithAnimationChartVC: AABaseChartVC {
             .xAxis(AAXAxis()
                 .visible(true)
                 .reversed(true)
-                .type("category"))
+                .type(.category))
             .yAxis(AAYAxis()
                 .visible(true)
                 .gridLineWidth(0)

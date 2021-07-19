@@ -134,7 +134,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
 
         //https://jshare.com.cn/highcharts/hhhhf0
         aaOptions.xAxis?
-            .type("dateTime")
+            .type(.datetime)
             .dateTimeLabelFormats(
                 AADateTimeLabelFormats()
                     .day("%e of %b"))

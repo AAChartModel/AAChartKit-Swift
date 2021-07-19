@@ -34,6 +34,7 @@ import Foundation
 
 public class AAYAxis: AAObject {
     public var title: AATitle?
+    public var type: String?
     public var plotBands: [AAPlotBandsElement]?
     public var plotLines: [AAPlotLinesElement]?
     public var categories: [String]?
@@ -82,6 +83,12 @@ public class AAYAxis: AAObject {
     @discardableResult
     public func title(_ prop:AATitle?) -> AAYAxis {
         title = prop
+        return self
+    }
+    
+    @discardableResult
+    public func type(_ prop: AAChartAxisType?) -> AAYAxis {
+        type = prop?.rawValue
         return self
     }
     

@@ -32,7 +32,15 @@
 
 import Foundation
 
+public enum AAChartAxisType: String {
+    case linear
+    case logarithmic
+    case datetime
+    case category
+}
+
 public class AAXAxis: AAObject {
+    public var title: AATitle?
     public var type: String?
     public var dateTimeLabelFormats: AADateTimeLabelFormats?
     public var plotBands: [AAPlotBandsElement]?
@@ -60,7 +68,6 @@ public class AAXAxis: AAObject {
     public var minorTickWidth: Float? //The pixel width of the minor tick mark.
     
     public var tickColor: String? // Color of tick mark below x axis
-    public var title: AATitle?
     public var gridLineWidth: Float? // x-axis grid line width
     public var gridLineColor: String? // x-axis grid line color
     public var gridLineDashStyle: String? // x-axis grid line style
@@ -86,8 +93,8 @@ public class AAXAxis: AAObject {
     }
     
     @discardableResult
-    public func type(_ prop: String?) -> AAXAxis {
-        type = prop
+    public func type(_ prop: AAChartAxisType?) -> AAXAxis {
+        type = prop?.rawValue
         return self
     }
     
