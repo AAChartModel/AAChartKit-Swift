@@ -296,7 +296,7 @@ class SpecialChartVC: AABaseChartVC {
         AAChartModel()
             .chartType(.arearange)
             .title("Twilight Hall day temperature fluctuation map")
-        .subtitle("real-time monitoring data")
+            .subtitle("real-time monitoring data")
             .yAxisTitle("℃")
             .dataLabelsEnabled(false)
             .series([
