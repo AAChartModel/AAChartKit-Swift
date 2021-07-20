@@ -454,7 +454,7 @@ function () {
         aaOptions.tooltip?
             .shared(false)
             .formatter(#"""
-function () {
+            function () {
                 return '<b>'
                 + this.x
                 + '</b><br/>'
@@ -464,8 +464,8 @@ function () {
                 + '<br/>'
                 + 'Total: '
                 + this.point.stackTotal;
-     }
-"""#)
+            }
+            """#)
         
         return aaOptions
     }
@@ -1076,50 +1076,50 @@ function () {
         //自定义图例点击事件
         aaOptions.plotOptions?.series?.events = AAEvents()
             .legendItemClick(#"""
-function(event) {
-    function getVisibleMode(series, seriesName) {
-        var allVisible = true;
-        var allHidden = true;
-        for (var i = 0; i < series.length; i++) {
-            if (series[i].name == seriesName)
-                continue;
-            allVisible &= series[i].visible;
-            allHidden &= (!series[i].visible);
-        }
-        if (allVisible && !allHidden)
-            return 'all-visible';
-        if (allHidden && !allVisible)
-            return 'all-hidden';
-        return 'other-cases';
-    }
-
-    var series = this.chart.series;
-    var mode = getVisibleMode(series, this.name);
-    var enableDefault = false;
-    if (!this.visible) {
-        enableDefault = true;
-    }
-    else if (mode == 'all-visible') {
-        var seriesLength = series.length;
-        for (var i = 0; i < seriesLength; i++) {
-            var series = series[i];
-            series.hide();
-        }
-        this.show();
-    }
-    else if (mode == 'all-hidden') {
-        var seriesLength = series.length;
-        for (var i = 0; i < seriesLength; i++) {
-            var series = series[i];
-            series.show();
-        }
-    }
-    else {
-        enableDefault = true;
-    }
-    return enableDefault;
-}
-"""#)
+            function(event) {
+                function getVisibleMode(series, serieName) {
+                    var allVisible = true;
+                    var allHidden = true;
+                    for (var i = 0; i < series.length; i++) {
+                        if (series[i].name == serieName)
+                            continue;
+                        allVisible &= series[i].visible;
+                        allHidden &= (!series[i].visible);
+                    }
+                    if (allVisible && !allHidden)
+                        return 'all-visible';
+                    if (allHidden && !allVisible)
+                        return 'all-hidden';
+                    return 'other-cases';
+                }
+                
+                var series = this.chart.series;
+                var mode = getVisibleMode(series, this.name);
+                var enableDefault = false;
+                if (!this.visible) {
+                    enableDefault = true;
+                }
+                else if (mode == 'all-visible') {
+                    var seriesLength = series.length;
+                    for (var i = 0; i < seriesLength; i++) {
+                        var serie = series[i];
+                        serie.hide();
+                    }
+                    this.show();
+                }
+                else if (mode == 'all-hidden') {
+                    var seriesLength = series.length;
+                    for (var i = 0; i < seriesLength; i++) {
+                        var serie = series[i];
+                        serie.show();
+                    }
+                }
+                else {
+                    enableDefault = true;
+                }
+                return enableDefault;
+            }
+        """#)
         
         return aaOptions
     }
@@ -1352,21 +1352,21 @@ function(event) {
                         .style(AAStyle()
                                 .color("DodgerBlue"))
                         .formatter("""
-function () {
-            let yValue = this.value;
-            if (yValue >= 200) {
-                return "极佳";
-            } else if (yValue >= 150 && yValue < 200) {
-                return "非常棒";
-            } else if (yValue >= 100 && yValue < 150) {
-                return "相当棒";
-            } else if (yValue >= 50 && yValue < 100) {
-                return "还不错";
-            } else {
-                return "一般";
+            function () {
+                let yValue = this.value;
+                if (yValue >= 200) {
+                    return "极佳";
+                } else if (yValue >= 150 && yValue < 200) {
+                    return "非常棒";
+                } else if (yValue >= 100 && yValue < 150) {
+                    return "相当棒";
+                } else if (yValue >= 50 && yValue < 100) {
+                    return "还不错";
+                } else {
+                    return "一般";
+                }
             }
-        }
-"""))
+            """))
             .gridLineWidth(0)
             .title(AATitle()
                     .text("中文")
@@ -1383,21 +1383,21 @@ function () {
                         .style(AAStyle()
                                 .color(AAColor.red))
                         .formatter("""
-function () {
-        let yValue = this.value;
-        if (yValue >= 200) {
-            return "Awesome";
-        } else if (yValue >= 150 && yValue < 200) {
-            return "Great";
-        } else if (yValue >= 100 && yValue < 150) {
-            return "Very Good";
-        } else if (yValue >= 50 && yValue < 100) {
-            return "Not Bad";
-        } else {
-            return "Just So So";
-        }
-    }
-"""))
+            function () {
+                let yValue = this.value;
+                if (yValue >= 200) {
+                    return "Awesome";
+                } else if (yValue >= 150 && yValue < 200) {
+                    return "Great";
+                } else if (yValue >= 100 && yValue < 150) {
+                    return "Very Good";
+                } else if (yValue >= 50 && yValue < 100) {
+                    return "Not Bad";
+                } else {
+                    return "Just So So";
+                }
+            }
+           """))
             .gridLineWidth(0)
             .title(AATitle()
                     .text("ENGLISH")
@@ -1535,8 +1535,7 @@ function () {
                 return xAxisCategory;
             }
         }
-"""
-            )
+        """)
         
         return aaOptions
     }
