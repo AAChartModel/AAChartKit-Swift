@@ -2792,7 +2792,7 @@ function () {
     }
     
     private func logarithmicAxisLineChart() -> AAOptions {
-        return AAOptions()
+        AAOptions()
             .title(AATitle()
                     .text("Logarithmic Axis Chart"))
             .chart(AAChart()

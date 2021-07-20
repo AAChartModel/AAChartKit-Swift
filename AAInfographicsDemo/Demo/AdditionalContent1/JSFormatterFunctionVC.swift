@@ -1445,13 +1445,7 @@ function () {
     
     //https://github.com/AAChartModel/AAChartKit/issues/1042
     func makePieChartShow0Data() -> AAOptions {
-        let dataArr = [
-            ["y":1, "isZero":true, "name":"One"  ],
-            ["y":1, "isZero":true, "name":"Two"  ],
-            ["y":1, "isZero":true, "name":"Three"]
-        ]
-        
-        return AAOptions()
+        AAOptions()
             .title(AATitle()
                     .text(""))
             .chart(AAChart()
@@ -1459,13 +1453,21 @@ function () {
             .series([
                 AASeriesElement()
                     .name("ZeroDataPie")
-                    .data(dataArr)
+                    .data([
+                        ["y":1, "isZero":true, "name":"One"  ],
+                        ["y":1, "isZero":true, "name":"Two"  ],
+                        ["y":1, "isZero":true, "name":"Three"]
+                    ])
                     .tooltip(AATooltip()
                                 .shared(false)
                                 .pointFormatter(#"""
                                 function() {
-                                    return "<span style=\'color:" + this.color + "\'> ◉ </span>" + this.series.name + ": <b>" + (this.options.isZero ? 0 : this.y) + "</b><br/>";
-                                                }
+                                    return "<span style=\'color:" + this.color + "\'> ◉ </span>"
+                                    + this.series.name
+                                    + ": <b>"
+                                    + (this.options.isZero ? 0 : this.y)
+                                    + "</b><br/>";
+                                }
                                 """#))
             ])
     }
