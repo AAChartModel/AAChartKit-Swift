@@ -62,6 +62,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
         case 19: return customAreasplineChartTooltipStyleByDivWithCSS()
         case 20: return configureTheAxesLabelsFormattersOfDoubleYAxesChart()
         case 21: return makePieChartShow0Data()
+        case 22: return customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters()
             
         default:
             return AAOptions()
@@ -1477,4 +1478,67 @@ function () {
                                 """#))
             ])
     }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1217
+    func customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.bar)//图表类型
+            .title("春江花月夜")//图表主标题
+            .subtitle("张若虚")//图表副标题
+            .xAxisReversed(true)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.black))
+            .legendEnabled(false)
+            .categories([
+                "春江潮水连海平", "海上明月共潮生",
+                "滟滟随波千万里", "何处春江无月明",
+                "江流宛转绕芳甸", "月照花林皆似霰",
+                "空里流霜不觉飞", "汀上白沙看不见",
+                "江天一色无纤尘", "皎皎空中孤月轮",
+                "江畔何人初见月", "江月何年初照人",
+                "人生代代无穷已", "江月年年望相似",
+                "不知江月待何人", "但见长江送流水",
+                "白云一片去悠悠", "青枫浦上不胜愁",
+                "谁家今夜扁舟子", "何处相思明月楼",
+                "可怜楼上月裴回", "应照离人妆镜台",
+                "玉户帘中卷不去", "捣衣砧上拂还来",
+                "此时相望不相闻", "愿逐月华流照君",
+                "鸿雁长飞光不度", "鱼龙潜跃水成文",
+                "昨夜闲潭梦落花", "可怜春半不还家",
+                "江水流春去欲尽", "江潭落月复西斜",
+                "斜月沉沉藏海雾", "碣石潇湘无限路",
+                "不知乘月几人归", "落月摇情满江树",
+            ])
+            .series([
+                AASeriesElement()
+                    .lineWidth(1.5)
+                    .color(AAGradientColor.linearGradient(
+                        direction: .toTop,
+                        startColor: "#7052f4",
+                        endColor: "#00b0ff"
+                    ))
+                    .name("2018")
+                    .data([
+                        1.51, 3.7, 0.94, 1.44, 1.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
+                        4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.51, 2.7, 0.94, 1.44,
+                        3.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90,
+                    ])
+            ]);
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aaOptions.xAxis?.labels?
+            .formatter("""
+        function () {
+            let xAxisCategory = this.value;
+            if (xAxisCategory.length > 4) {
+                return xAxisCategory.substr(0, 4);
+            } else {
+                return xAxisCategory;
+            }
+        }
+"""
+            )
+        
+        return aaOptions
+    }
+
 }
