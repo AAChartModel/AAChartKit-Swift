@@ -276,7 +276,8 @@ public class AAOptionsConstructor {
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
             if (aaChartModel.polar == true) {
-                aaColumn.pointPadding(0)
+                aaColumn
+                    .pointPadding(0)
                     .groupPadding(0.005)
             }
             aaPlotOptions.column(aaColumn)
@@ -285,24 +286,25 @@ public class AAOptionsConstructor {
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
             if (aaChartModel.polar == true) {
-                aaBar.pointPadding(0)
+                aaBar
+                    .pointPadding(0)
                     .groupPadding(0.005)
             }
             aaPlotOptions.bar(aaBar)
         case .pie:
-            let aaPie = AAPie()
-                .allowPointSelect(true)
-                .cursor("pointer")
-                .showInLegend(true)
             if (aaChartModel.dataLabelsEnabled == true) {
                 aaDataLabels.format("<b>{point.name}</b>: {point.percentage:.1f} %")
             }
-            aaPlotOptions.pie(aaPie)
+            aaPlotOptions
+                .pie(AAPie()
+                         .allowPointSelect(true)
+                         .cursor("pointer")
+                         .showInLegend(true))
         case .columnrange:
             aaPlotOptions
                 .columnrange(AAColumnrange()
-                              .borderRadius(aaChartModel.borderRadius)
-                              .borderWidth(0))
+                                 .borderRadius(aaChartModel.borderRadius)
+                                 .borderWidth(0))
             
         default: break
         }
