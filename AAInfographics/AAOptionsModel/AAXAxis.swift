@@ -40,6 +40,7 @@ public enum AAChartAxisType: String {
 }
 
 public class AAXAxis: AAObject {
+    public var alternateGridColor: Any?
     public var title: AATitle?
     public var type: String?
     public var dateTimeLabelFormats: AADateTimeLabelFormats?
@@ -88,7 +89,13 @@ public class AAXAxis: AAObject {
     public var tickPositions: [Any]? // Custom x-axis coordinates 
 
     @discardableResult
-    public func title(_ prop:AATitle?) -> AAXAxis {
+    public func alternateGridColor(_ prop: Any?) -> AAXAxis {
+        alternateGridColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func title(_ prop: AATitle?) -> AAXAxis {
         title = prop
         return self
     }
