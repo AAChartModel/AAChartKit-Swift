@@ -225,6 +225,72 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/299
+    private func customAreaChartYAxisLabelsAndGridLineStyle() -> AAOptions {
+        let model = AAChartModel()
+            .chartType(.line)
+            .animationType(.easeInSine)
+            .colorsTheme(["#047BFF"])
+            .legendEnabled(false)
+            .yAxisAllowDecimals(true)
+            .series([
+                AASeriesElement()
+                    .type(.area)
+                    .data([11.17, 12.35, 12.35, 12.35, 12.35, 12.35, 12.35, 13])
+                    .lineWidth(6)
+                    .marker(
+                        AAMarker()
+                            .lineColor("#047BFF")
+                            .fillColor(AAColor.white)
+                            .lineWidth(4)
+                            .radius(8)
+                    )
+                    .fillColor(AAGradientColor.linearGradient(
+                                direction: .toBottom,
+                                startColor: "#047BFFB3",
+                                endColor: "#047BFF00"
+                    ))
+                    .borderColor("#047BFF")
+                    .allowPointSelect(false)
+
+            ])
+        
+        let aaOptions = model.aa_toAAOptions()
+        
+        aaOptions.chart?
+            .marginRight(0)
+            .marginTop(50)
+        
+        aaOptions.yAxis?
+            .allowDecimals(false)
+            .alternateGridColor("#EAF4FF")
+            .tickAmount(13)
+            .gridLineWidth(0)
+        
+        let categories = ["17.04","21.04","25.04","29.04","03.05","07.05","11.05", ""]
+        let categoryJSArrStr = categories.aa_toJSArray()
+
+        aaOptions.xAxis?.labels?
+            .formatter("""
+        function () {
+            return \(categoryJSArrStr)[this.value];
+        }
+        """)
+        
+        aaOptions.tooltip?
+            .useHTML(true)
+            .formatter("""
+        function () {
+            return  'The value for <b>'
+        + \(categoryJSArrStr)[this.x]
+        + '</b> is <b>' + this.y + '</b> '
+        + "℃";
+        }
+        """)
+        
+        return aaOptions
+    }
+    
     private func adjustYAxisMinValueForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
@@ -1821,185 +1887,6 @@ function () {
         return aaOptions
     }
     
-    //https://github.com/AAChartModel/AAChartKit-Swift/issues/230
-    private func disableMixedChartInactiveAnimationEffect() -> AAOptions {
-        let aaChartModel = AAChartModel()
-            .chartType(.line)
-            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
-            .series([
-                AASeriesElement()
-                    .name("New York")
-                    .type(.line)
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                ,
-                AASeriesElement()
-                    .name("Berlin")
-                    .type(.line)
-                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                ,
-                AASeriesElement()
-                    .name("London")
-                    .type(.area)
-                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                ,
-            ])
-        
-        let aaOptions = aaChartModel.aa_toAAOptions()
-        
-        aaOptions.tooltip?.shared(false)
-        
-        aaOptions.plotOptions?.series?
-            .states(AAStates()
-                .inactive(AAInactive()
-                    .enabled(false)))
-        
-        return aaOptions
-    }
-    
-    //https://github.com/AAChartModel/AAChartKit-Swift/issues/242
-    private func adjustBubbleChartMinAndMax() -> AAOptions {
-        let aaChartModel = AAChartModel()
-            .chartType(.bubble)
-            .title("AACHARTKIT BUBBLES")
-            .subtitle("JUST FOR FUN")
-            .yAxisTitle("℃")
-            .yAxisGridLineWidth(0)
-            .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
-            .series([
-                AASeriesElement()
-                    .name("BubbleOne")
-                    .data([
-                        [97, 36, 50],
-                        [94, 74, 50],
-                        [68, 76, 50],
-                        [64, 87, 50],
-                        [68, 27, 49],
-                        [74, 99, 51],
-                        [71, 93, 55],
-                        [51, 69, 60],
-                        [38, 23, 50],
-                        [57, 86, 50],
-                        [33, 24, 51]
-                    ])
-            ])
-        
-        let aaOptions = aaChartModel.aa_toAAOptions()
-        
-        aaOptions.plotOptions?
-            .bubble(AABubble()
-                .minSize(0)
-                .maxSize(100)
-                .zMin(0)
-                .zMax(100))
-        
-        return aaOptions
-    }
-    
-    //https://github.com/AAChartModel/AAChartKit-Swift/issues/260
-    private func customLineChartDataLabelsFormat() -> AAOptions {
-        let aaChartModel = AAChartModel()
-            .dataLabelsEnabled(true)
-            .series([
-                AASeriesElement()
-                    .data([
-                        ["测试 1", 100],
-                        ["测试 2", 130],
-                        ["测试 3", 120],
-                    ])
-            ])
-        
-        let aaOptions = aaChartModel.aa_toAAOptions()
-        aaOptions.plotOptions?.series?.dataLabels?
-            .format("{point.name}")
-        
-        return aaOptions
-    }
-    
-    //A more simple way to custom line chart dataLabels format
-    //https://github.com/AAChartModel/AAChartKit-Swift/issues/260
-    private func customLineChartDataLabelsFormat2() -> AAOptions {
-        let aaChartModel = AAChartModel()
-            .dataLabelsEnabled(true)
-            .categories(["测试 1", "测试 2", "测试 3", ])
-            .series([
-                AASeriesElement()
-                    .data([100, 130, 120])
-            ])
-        
-        let aaOptions = aaChartModel.aa_toAAOptions()
-        aaOptions.plotOptions?.series?.dataLabels?
-            .format("{x}")
-        
-        return aaOptions
-    }
-    
-    //https://github.com/AAChartModel/AAChartKit-Swift/issues/299
-    private func customAreaChartYAxisLabelsAndGridLineStyle() -> AAOptions {
-        let model = AAChartModel()
-            .chartType(.line)
-            .animationType(.easeInSine)
-            .colorsTheme(["#047BFF"])
-            .legendEnabled(false)
-            .yAxisAllowDecimals(true)
-            .series([
-                AASeriesElement()
-                    .type(.area)
-                    .data([11.17, 12.35, 12.35, 12.35, 12.35, 12.35, 12.35, 13])
-                    .lineWidth(6)
-                    .marker(
-                        AAMarker()
-                            .lineColor("#047BFF")
-                            .fillColor(AAColor.white)
-                            .lineWidth(4)
-                            .radius(8)
-                    )
-                    .fillColor(AAGradientColor.linearGradient(
-                                direction: .toBottom,
-                                startColor: "#047BFFB3",
-                                endColor: "#047BFF00"
-                    ))
-                    .borderColor("#047BFF")
-                    .allowPointSelect(false)
-
-            ])
-        
-        let aaOptions = model.aa_toAAOptions()
-        
-        aaOptions.chart?
-            .marginRight(0)
-            .marginTop(50)
-        
-        aaOptions.yAxis?
-            .allowDecimals(false)
-            .alternateGridColor("#EAF4FF")
-            .tickAmount(13)
-            .gridLineWidth(0)
-        
-        let categories = ["17.04","21.04","25.04","29.04","03.05","07.05","11.05", ""]
-        let categoryJSArrStr = categories.aa_toJSArray()
-
-        aaOptions.xAxis?.labels?
-            .formatter("""
-        function () {
-            return \(categoryJSArrStr)[this.value];
-        }
-        """)
-        
-        aaOptions.tooltip?
-            .useHTML(true)
-            .formatter("""
-        function () {
-            return  'The value for <b>'
-        + \(categoryJSArrStr)[this.x]
-        + '</b> is <b>' + this.y + '</b> '
-        + "℃";
-        }
-        """)
-        
-        return aaOptions
-    }
-    
-    
     private func configureComplicatedCustomAreasplineChart() -> AAOptions {
         let aaChart = AAChart()
             .type(.areaspline)
@@ -2850,6 +2737,118 @@ function () {
                     .marker(aaMarker)
                     .data(scatterData)
             ])
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/230
+    private func disableMixedChartInactiveAnimationEffect() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.line)
+            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
+            .series([
+                AASeriesElement()
+                    .name("New York")
+                    .type(.line)
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+                ,
+                AASeriesElement()
+                    .name("Berlin")
+                    .type(.line)
+                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
+                ,
+                AASeriesElement()
+                    .name("London")
+                    .type(.area)
+                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
+                ,
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        
+        aaOptions.tooltip?.shared(false)
+        
+        aaOptions.plotOptions?.series?
+            .states(AAStates()
+                .inactive(AAInactive()
+                    .enabled(false)))
+        
+        return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/242
+    private func adjustBubbleChartMinAndMax() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.bubble)
+            .title("AACHARTKIT BUBBLES")
+            .subtitle("JUST FOR FUN")
+            .yAxisTitle("℃")
+            .yAxisGridLineWidth(0)
+            .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
+            .series([
+                AASeriesElement()
+                    .name("BubbleOne")
+                    .data([
+                        [97, 36, 50],
+                        [94, 74, 50],
+                        [68, 76, 50],
+                        [64, 87, 50],
+                        [68, 27, 49],
+                        [74, 99, 51],
+                        [71, 93, 55],
+                        [51, 69, 60],
+                        [38, 23, 50],
+                        [57, 86, 50],
+                        [33, 24, 51]
+                    ])
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        
+        aaOptions.plotOptions?
+            .bubble(AABubble()
+                .minSize(0)
+                .maxSize(100)
+                .zMin(0)
+                .zMax(100))
+        
+        return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/260
+    private func customLineChartDataLabelsFormat() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .dataLabelsEnabled(true)
+            .series([
+                AASeriesElement()
+                    .data([
+                        ["测试 1", 100],
+                        ["测试 2", 130],
+                        ["测试 3", 120],
+                    ])
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aaOptions.plotOptions?.series?.dataLabels?
+            .format("{point.name}")
+        
+        return aaOptions
+    }
+    
+    //A more simple way to custom line chart dataLabels format
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/260
+    private func customLineChartDataLabelsFormat2() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .dataLabelsEnabled(true)
+            .categories(["测试 1", "测试 2", "测试 3", ])
+            .series([
+                AASeriesElement()
+                    .data([100, 130, 120])
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aaOptions.plotOptions?.series?.dataLabels?
+            .format("{x}")
+        
+        return aaOptions
     }
     
 }
