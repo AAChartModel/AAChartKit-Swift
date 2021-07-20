@@ -1935,30 +1935,6 @@ function () {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/299
     private func customAreaChartYAxisLabelsAndGridLineStyle() -> AAOptions {
-        let categories = ["17.04","21.04","25.04","29.04","03.05","07.05","11.05", ""]
-        
-        let categoryJSArrStr = categories.aa_toJSArray()
-        
-        let tooltipFormatter = """
-        function () {
-        return  'The value for <b>' + \(categoryJSArrStr)[this.x] +
-        '</b> is <b>' + this.y + '</b> ' + "℃";
-        }
-        """
-        
-        let xAxisLabelsFormatter = """
-        function () {
-        return \(categoryJSArrStr)[this.value];
-        }
-        """
-        
-        let tickAmount = 6
-        
-        let myChartViewHeight = view.frame.size.height - 64
-        
-        let finalGridLineWidth = Float(myChartViewHeight) / Float(tickAmount * 2)
-        
-        
         let model = AAChartModel()
             .chartType(.line)
             .animationType(.easeInSine)
@@ -1992,28 +1968,33 @@ function () {
         aaOptions.chart?
             .marginRight(0)
             .marginTop(50)
-                
-        aaOptions
-            .yAxis?
-            .gridLineWidth(finalGridLineWidth)
-            .gridLineColor("#EAF4FF")
-            .tickAmount(tickAmount)
-            .labels?.style(AAStyle(color: "DodgerBlue"))
         
-        aaOptions.xAxis?
-            .tickPosition("inside")
-            .tickWidth(1)
-            .tickmarkPlacement("on")
-            .tickInterval(1)
-            .offset(finalGridLineWidth / 2)
+        aaOptions.yAxis?
+            .allowDecimals(false)
+            .alternateGridColor("#EAF4FF")
+            .tickAmount(13)
+            .gridLineWidth(0)
+        
+        let categories = ["17.04","21.04","25.04","29.04","03.05","07.05","11.05", ""]
+        let categoryJSArrStr = categories.aa_toJSArray()
+
+        aaOptions.xAxis?.labels?
+            .formatter("""
+        function () {
+            return \(categoryJSArrStr)[this.value];
+        }
+        """)
         
         aaOptions.tooltip?
             .useHTML(true)
-            .formatter(tooltipFormatter)
-        
-        aaOptions.xAxis?.labels?
-            .formatter(xAxisLabelsFormatter)
-
+            .formatter("""
+        function () {
+            return  'The value for <b>'
+        + \(categoryJSArrStr)[this.x]
+        + '</b> is <b>' + this.y + '</b> '
+        + "℃";
+        }
+        """)
         
         return aaOptions
     }
