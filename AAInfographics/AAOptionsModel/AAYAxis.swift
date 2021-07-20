@@ -33,6 +33,7 @@
 import Foundation
 
 public class AAYAxis: AAObject {
+    public var alternateGridColor: Any?
     public var title: AATitle?
     public var type: String?
     public var dateTimeLabelFormats: AADateTimeLabelFormats?
@@ -43,7 +44,6 @@ public class AAYAxis: AAObject {
     public var gridLineWidth: Float? // y-axis grid line width
     public var gridLineColor: String? // y-axis grid line color
     public var gridLineDashStyle: String? // Grid line line style, all available line style references: Highcharts line style
-    public var alternateGridColor: String? // backcolor of every other grid line area
     public var gridLineInterpolation: String? // Polar charts only. Whether the grid lines should draw as a polygon with straight lines between categories, or as circles. Can be either circle or polygon. The default is: null.
     public var labels: AALabels? // Used to set the y-axis text related
     public var lineWidth: Float? // y-axis width
@@ -80,6 +80,11 @@ public class AAYAxis: AAObject {
     public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
     public var tickPositions: [Any]? // Custom Y-axis coordinates (eg: [0, 25, 50, 75, 100])
 
+    @discardableResult
+    public func alternateGridColor(_ prop: Any?) -> AAYAxis {
+        alternateGridColor = prop
+        return self
+    }
     
     @discardableResult
     public func title(_ prop:AATitle?) -> AAYAxis {
@@ -138,12 +143,6 @@ public class AAYAxis: AAObject {
     @discardableResult
     public func gridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> AAYAxis {
         gridLineDashStyle = prop?.rawValue
-        return self
-    }
-    
-    @discardableResult
-    public func alternateGridColor(_ prop: String?) -> AAYAxis {
-        alternateGridColor = prop
         return self
     }
     
