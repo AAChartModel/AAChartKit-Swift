@@ -282,7 +282,7 @@ class MixedChartVC: AABaseChartVC {
                            -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
                            -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,])
                     .color("#0088FF")
-                    .negativeColor("#FF0000")
+                    .negativeColor(AAColor.red)
                     .threshold(4)//default:0
             ])
     }
@@ -508,7 +508,7 @@ class MixedChartVC: AABaseChartVC {
                         [0.014, 3.078],
                         [0.969, 4.655]
                     ])
-                    .color("#FF0000")
+                    .color(AAColor.red)
             ])
     }
     
@@ -541,7 +541,7 @@ class MixedChartVC: AABaseChartVC {
                         [6,22,2],[6,23,6]
                     ])
                     .color("#0088FF")
-                    .negativeColor("#FF0000")
+                    .negativeColor(AAColor.red)
                     .threshold(4)//default:0
             ])
     }
@@ -613,7 +613,7 @@ class MixedChartVC: AABaseChartVC {
                         [169.5, 67.3], [160.0, 75.5], [172.7, 68.2], [162.6, 61.4], [157.5, 76.8],
                         [176.5, 71.8], [164.4, 55.5], [160.7, 48.6], [174.0, 66.4], [163.8, 67.3]
                     ])
-                    .color("#ff0000")
+                    .color(AAColor.red)
                 ,
             ])
     }

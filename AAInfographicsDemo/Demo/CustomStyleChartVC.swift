@@ -479,7 +479,7 @@ class CustomStyleChartVC: AABaseChartVC {
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .yAxisTitle("")
-            .backgroundColor("#FFFFFF")
+            .backgroundColor(AAColor.white)
             .markerRadius(0)
             .legendEnabled(false)
             .dataLabelsEnabled(false)
@@ -563,9 +563,9 @@ class CustomStyleChartVC: AABaseChartVC {
             .marker(AAMarker()
                 .radius(8)//曲线连接点半径
                 .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                .fillColor("#FFFFFF")//点的填充色(用来设置折线连接点的填充色)
+                .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
                 .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                .lineColor("#FF0000")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                .lineColor(AAColor.red)//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
         )
             .y(26.5)
             .toDic()!

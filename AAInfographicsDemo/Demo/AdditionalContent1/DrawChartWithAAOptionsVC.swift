@@ -261,7 +261,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         let aaTitle = AATitle()
             .text("正负镜像柱状图")
             .style(AAStyle()
-                .color("#000000")
+                .color(AAColor.black)
                 .fontSize(12.0))
         
         let aaXAxis = AAXAxis()
@@ -406,7 +406,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                 AAPlotBandsElement()
                     .from(0)
                     .to(60)
-                    .color("#FF0000")
+                    .color(AAColor.red)
                     .outerRadius("105%")
                     .thickness("5%")
             ])
@@ -623,8 +623,8 @@ function () {
         }
 """)
             .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
-            .backgroundColor("#000000")
-            .borderColor("#000000")
+            .backgroundColor(AAColor.black)
+            .borderColor(AAColor.black)
             .style(AAStyle(color: "#FFD700", fontSize: 12))
         
         return aaOptions
@@ -898,7 +898,7 @@ function () {
             .enabled(true)//设置 y 轴是否显示数字
             .format("{value:.,0f}mm")//让y轴の值完整显示 而不是100000显示为100k,同时单位后缀为°C
             .style(AAStyle()
-                .color("#ff0000")//yAxis Label font color
+                .color(AAColor.red)//yAxis Label font color
                 .fontSize(15)//yAxis Label font size
                 .fontWeight(.bold)//yAxis Label font weight
         )
@@ -938,7 +938,7 @@ function () {
         let aaMarker = AAMarker()
             .radius(7)//曲线连接点半径，默认是4
             .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-            .fillColor("#ffffff")//点の填充色(用来设置折线连接点の填充色)
+            .fillColor(AAColor.white)//点の填充色(用来设置折线连接点の填充色)
             .lineWidth(3)//外沿线の宽度(用来设置折线连接点の轮廓描边の宽度)
             .lineColor("")//外沿线の颜色(用来设置折线连接点の轮廓描边颜色，当值为空字符串时，默认取数据点或数据列の颜色)
         
@@ -1220,7 +1220,7 @@ function () {
             .marker(AAMarker()
                 .radius(7)//曲线连接点半径，默认是4
                 .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                .fillColor("#ffffff")//点の填充色(用来设置折线连接点の填充色)
+                .fillColor(AAColor.white)//点の填充色(用来设置折线连接点の填充色)
                 .lineWidth(3)//外沿线の宽度(用来设置折线连接点の轮廓描边の宽度)
                 .lineColor("")//外沿线の颜色(用来设置折线连接点の轮廓描边颜色，当值为空字符串时，默认取数据点或数据列の颜色)
         )
@@ -1973,7 +1973,7 @@ function () {
                     .marker(
                         AAMarker()
                             .lineColor("#047BFF")
-                            .fillColor("#FFFFFF")
+                            .fillColor(AAColor.white)
                             .lineWidth(4)
                             .radius(8)
                     )
@@ -2097,7 +2097,7 @@ function () {
                 AAMarker()
                     .radius(8)//曲线连接点半径
                     .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                    .fillColor("#FFFFFF")//点的填充色(用来设置折线连接点的填充色)
+                    .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
                     .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                     //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
                     .lineColor("#1e90ff")
@@ -2129,7 +2129,7 @@ function () {
                 AAMarker()
                     .radius(8)//曲线连接点半径
                     .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                    .fillColor("#FFFFFF")//点的填充色(用来设置折线连接点的填充色)
+                    .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
                     .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                     //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
                     .lineColor("#ef476f")
@@ -2243,7 +2243,7 @@ function () {
                 AAMarker()
                     .radius(8)//曲线连接点半径
                     .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                    .fillColor("#FFFFFF")//点的填充色(用来设置折线连接点的填充色)
+                    .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
                     .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                     //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
                     .lineColor(AARgba(154, 243, 247, 1.0))

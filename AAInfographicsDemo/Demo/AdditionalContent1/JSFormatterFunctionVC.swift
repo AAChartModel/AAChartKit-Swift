@@ -118,8 +118,8 @@ function () {
         }
 """)
             .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
-            .backgroundColor("#000000")
-            .borderColor("#000000")
+            .backgroundColor(AAColor.black)
+            .borderColor(AAColor.black)
             .style(AAStyle(color: "#FFD700", fontSize: 12))
         
         return aaOptions
@@ -320,8 +320,8 @@ function () {
             .headerFormat("<em>实验号码： {point.key}</em><br/>")
             .pointFormat(pointFormatStr)
             .valueDecimals(2)//设置取值精确到小数点后几位//设置取值精确到小数点后几位
-            .backgroundColor("#000000")
-            .borderColor("#000000")
+            .backgroundColor(AAColor.black)
+            .borderColor(AAColor.black)
             .style(AAStyle(color: "#1e90ff", fontSize: 12))
         
         return aaOptions
@@ -489,7 +489,7 @@ function () {
         let aaTitle = AATitle()
             .text("2015 年德国人口金字塔")
             .style(AAStyle()
-                .color("#000000")
+                .color(AAColor.black)
                 .fontSize(12.0))
         
         let aaCategories = [
@@ -640,8 +640,8 @@ function () {
             return tooltipDescStr;
         }
         """)
-                    .backgroundColor("#000000")
-                    .borderColor("#000000")
+                    .backgroundColor(AAColor.black)
+                    .borderColor(AAColor.black)
                     .style(AAStyle(color: "#FFD700", fontSize: 12))
                 
                 return aaOptions
@@ -802,7 +802,7 @@ function () {
             .shared(false)
             .useHTML(true)
             .formatter(jsFormatterStr)
-            .backgroundColor("#000000")//黑色背景色
+            .backgroundColor(AAColor.black)//黑色背景色
             .borderColor("#FFD700")//边缘颜色纯金色
             .style(AAStyle(color: "#FFD700", fontSize: 12))
         
@@ -1336,7 +1336,7 @@ function () {
                         .marker(AAMarker()
                                 .radius(7)//曲线连接点半径，默认是4
                                 .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                                .fillColor("#ffffff")//点的填充色(用来设置折线连接点的填充色)
+                                .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
                                 .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                                 .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
                         ))
