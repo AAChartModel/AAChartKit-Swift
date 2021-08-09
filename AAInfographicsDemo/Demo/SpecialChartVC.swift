@@ -895,31 +895,14 @@ class SpecialChartVC: AABaseChartVC {
                     .color("#ef476f")
                     .borderWidth(0)
                     .data([
-                        [
-                            "name": "启动资金",
-                            "y": 120000
-                        ], [
-                            "name": "产品收入",
-                            "y": 569000
-                        ], [
-                            "name": "服务收入",
-                            "y": 231000
-                        ], [
-                            "name": "正平衡",
-                            "isIntermediateSum": true,
-                            "color": "#ffd066"
-                        ], [
-                            "name": "固定成本",
-                            "y": -342000
-                        ], [
-                            "name": "可变成本",
-                            "y": -233000
-                        ], [
-                            "name": "余额",
-                            "isSum": true,
-                            "color": "#04d69f"
-                        ]
-                    ])
+                        ["name": "启动资金", "y": 120000],
+                        ["name": "产品收入", "y": 569000],
+                        ["name": "服务收入", "y": 231000],
+                        ["name": "正平衡" ,  "isIntermediateSum": true, "color": "#ffd066"],
+                        ["name": "固定成本", "y": -342000],
+                        ["name": "可变成本", "y": -233000],
+                        ["name": "余额",    "isSum": true, "color": "#04d69f"]
+                             ])
             ])
     }
     
