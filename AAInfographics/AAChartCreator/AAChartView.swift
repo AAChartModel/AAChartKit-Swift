@@ -39,12 +39,14 @@ import WebKit
 
 let kUserContentMessageNameMouseOver = "mouseover"
 
+@available(iOS 9.0, macCatalyst 13.0, *)
 @objc public protocol AAChartViewDelegate: NSObjectProtocol {
     @objc optional func aaChartViewDidFinishLoad (_ aaChartView: AAChartView)
     @objc optional func aaChartViewDidFinishEvaluate (_ aaChartView: AAChartView)
     @objc optional func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel)
 }
 
+@available(iOS 9.0, macCatalyst 13.0, *)
 public class AAMoveOverEventMessageModel: NSObject {
     public var name: String?
     public var x: Float?
@@ -55,6 +57,7 @@ public class AAMoveOverEventMessageModel: NSObject {
 }
 
 //Refer to: https://stackoverflow.com/questions/26383031/wkwebview-causes-my-view-controller-to-leak
+@available(iOS 9.0, macCatalyst 13.0, *)
 class AALeakAvoider : NSObject, WKScriptMessageHandler {
     weak var delegate : WKScriptMessageHandler?
     
@@ -71,7 +74,7 @@ class AALeakAvoider : NSObject, WKScriptMessageHandler {
     }
 }
 
-
+@available(iOS 9.0, macCatalyst 13.0, *)
 public class AAChartView: WKWebView {
     public weak var delegate: AAChartViewDelegate?
   
@@ -246,6 +249,7 @@ public class AAChartView: WKWebView {
 
 
 // MARK: - Configure Chart View Content With AAChartModel
+@available(iOS 9.0, macCatalyst 13.0, *)
 extension AAChartView {
     /// Function of drawing chart view
     ///
@@ -280,6 +284,7 @@ extension AAChartView {
 }
 
 // MARK: - Configure Chart View Content With AAOptions
+@available(iOS 9.0, macCatalyst 13.0, *)
 extension AAChartView {
     /// Function of drawing chart view
     ///
@@ -331,6 +336,7 @@ extension AAChartView {
 }
 
 // MARK: - Addtional update Chart View Content methods
+@available(iOS 9.0, macCatalyst 13.0, *)
 extension AAChartView {
     /// A common chart update function
     /// (you can update any chart element) to open, close, delete, add, resize, reformat, etc. elements in the chart.
@@ -548,6 +554,7 @@ extension AAChartView {
 }
 
 // MARK: - WKUIDelegate
+@available(iOS 9.0, macCatalyst 13.0, *)
 extension AAChartView: WKUIDelegate {
     open func webView(
         _ webView: WKWebView,
@@ -588,6 +595,7 @@ extension AAChartView: WKUIDelegate {
 }
 
 // MARK: - WKNavigationDelegate
+@available(iOS 9.0, macCatalyst 13.0, *)
 extension AAChartView:  WKNavigationDelegate {
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         drawChart()
@@ -596,6 +604,7 @@ extension AAChartView:  WKNavigationDelegate {
 }
 
 // MARK: - WKScriptMessageHandler
+@available(iOS 9.0, macCatalyst 13.0, *)
 extension AAChartView: WKScriptMessageHandler {
     open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == kUserContentMessageNameMouseOver {
@@ -606,6 +615,7 @@ extension AAChartView: WKScriptMessageHandler {
     }
 }
 
+@available(iOS 9.0, macCatalyst 13.0, *)
 extension AAChartView {
     private func getEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
         let eventMessageModel = AAMoveOverEventMessageModel()
@@ -639,6 +649,7 @@ extension AAChartView {
 }
 
 // MARK: - JSONSerialization
+@available(iOS 9.0, macCatalyst 13.0, *)
 extension AAChartView {
     
      func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
