@@ -35,6 +35,7 @@ import Foundation
 
 public class AAObject { }
 
+@available(iOS 9.0, macCatalyst 13.0, *)
 public extension AAObject {
     var classNameString: String {
         let nameClass: AnyClass! = object_getClass(self)
@@ -42,7 +43,7 @@ public extension AAObject {
     }
 }
 
-
+@available(iOS 9.0, macCatalyst 13.0, *)
 public extension AAObject {
     func toDic() -> [String: Any]? {
         var representation = [String: Any]()
