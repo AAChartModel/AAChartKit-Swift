@@ -32,6 +32,7 @@
 
 import UIKit
 
+@available(iOS 9.0, macCatalyst 13.0, *)
 class HideOrShowChartSeriesVC: UIViewController {
     public var chartType: AAChartType?
     public var step: Bool?

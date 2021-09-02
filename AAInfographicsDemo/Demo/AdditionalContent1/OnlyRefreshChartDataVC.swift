@@ -32,6 +32,7 @@
 
 import UIKit
 
+@available(iOS 9.0, macCatalyst 13.0, *)
 class OnlyRefreshChartDataVC: AABaseChartVC {
     public var step: Bool?
     private var timer: Timer?

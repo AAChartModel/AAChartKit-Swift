@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 9.0, macCatalyst 13.0, *)
 class TestAAChartViewForXibVC: UIViewController {
 
     @IBOutlet weak var aaChartView: AAChartView!

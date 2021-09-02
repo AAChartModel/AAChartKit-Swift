@@ -33,7 +33,7 @@
 
 import UIKit
 
-@available(macCatalyst 13.0, *)
+@available(iOS 9.0, macCatalyst 13.0, *)
 class BasicChartVC: UIViewController {
     public var chartType: AAChartType!
     public var step: Bool?

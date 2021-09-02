@@ -31,6 +31,7 @@
 
 import UIKit
 
+@available(iOS 9.0, macCatalyst 13.0, *)
 class ScrollingUpdateDataVC: AABaseChartVC {
     public var step: Bool?
     

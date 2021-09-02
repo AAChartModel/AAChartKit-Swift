@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@available(iOS 9.0, macCatalyst 13.0, *)
 class DataSortingWithAnimationChartVC: AABaseChartVC {
     public var step: Bool?
     public var aaChartModel: AAChartModel!

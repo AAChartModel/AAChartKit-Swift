@@ -32,8 +32,7 @@
 
 import UIKit
 
-
-@available(macCatalyst 13.0, *)
+@available(iOS 9.0, macCatalyst 13.0, *)
 class MainVC: UIViewController {
     private var sectionTitleArr = [String]()
     private var chartTypeTitleArr = [[String]]()

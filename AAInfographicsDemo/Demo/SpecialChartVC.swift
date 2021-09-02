@@ -32,6 +32,7 @@
 
 import UIKit
 
+@available(iOS 9.0, macCatalyst 13.0, *)
 class SpecialChartVC: AABaseChartVC {
     
     override func viewDidLoad() {

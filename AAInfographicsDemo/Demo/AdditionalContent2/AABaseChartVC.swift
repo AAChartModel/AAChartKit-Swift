@@ -31,7 +31,7 @@
 
 import UIKit
 
-@available(macCatalyst 13.0, *)
+@available(iOS 9.0, macCatalyst 13.0, *)
 class AABaseChartVC: UIViewController {
     var navigationItemTitleArr: [Any]?
     var selectedIndex: Int = 0
