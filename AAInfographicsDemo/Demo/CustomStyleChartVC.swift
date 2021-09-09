@@ -74,11 +74,14 @@ class CustomStyleChartVC: AABaseChartVC {
         case 30: return customNormalStackingChartDataLabelsContentAndStyle()
         case 31: return upsideDownPyramidChart()
         case 32: return doubleLayerPieChart()
-        case 33: return disableSomeOfLinesMouseTrackingEffect()
-        case 34: return configureColorfulShadowSplineChart()
-        case 35: return configureColorfulDataLabelsStepLineChart()
-        case 36: return configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart()
-        case 37: return disableSplineChartMarkerHoverEffect()
+        case 33: return doubleLayerDoubleColorsPieChart()
+        case 34: return disableSomeOfLinesMouseTrackingEffect()
+        case 35: return configureColorfulShadowSplineChart()
+        case 36: return configureColorfulDataLabelsStepLineChart()
+        case 37: return configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart()
+        case 38: return disableSplineChartMarkerHoverEffect()
+        case 39: return configureMaxAndMinDataLabelsForChart()
+        case 40: return customVerticalXAxisCategoriesLabelsByHTMLBreakLineTag()
             
         default:
             return configureTriangleRadarChart()
@@ -1024,6 +1027,69 @@ class CustomStyleChartVC: AABaseChartVC {
             ])
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/1234
+    private func doubleLayerDoubleColorsPieChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.pie)
+            .title("浏览器市场占比历史对比")
+            .subtitle("无任何可靠依据的虚拟数据")
+            .dataLabelsEnabled(false)//是否直接显示扇形图数据
+            .yAxisTitle("摄氏度")
+            .legendEnabled(true)
+            .series([
+                AASeriesElement()
+                    .name("Past")
+                    .colors([
+                        AARgba(255, 0, 0, 1.0),
+                        AARgba(255, 0, 0, 0.8),
+                        AARgba(255, 0, 0, 0.6),
+                        AARgba(255, 0, 0, 0.4),
+                        AARgba(255, 0, 0, 0.2),
+                    ])
+                    .dataLabels(AADataLabels()
+                        .enabled(false))
+                    .size("25%")//尺寸大小
+                    .innerSize("20%")//内部圆环半径大小占比
+                    .borderWidth(0)//描边的宽度
+                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
+                    .data([
+                        ["Firefox Past",   1336.2],
+                        ["Chrome Past",     126.8],
+                        ["Safari Past",     188.5],
+                        ["Opera Past",      146.0],
+                        ["Others Past",     223.0],
+                    ]),
+                
+                AASeriesElement()
+                    .name("Now")
+                    .colors([
+                        AARgba(30, 144, 255, 1.0),
+                        AARgba(30, 144, 255, 0.8),
+                        AARgba(30, 144, 255, 0.6),
+                        AARgba(30, 144, 255, 0.4),
+                        AARgba(30, 144, 255, 0.2),
+                    ])
+                    .dataLabels(AADataLabels()
+                        .enabled(true)
+                        .format("<b>{point.name}</b> <br> {point.percentage:.1f} %")
+                        .alignTo("plotEdges")
+                        .connectorShape("crookedLine")
+                        .crookDistance("90%")
+                        .style(AAStyle(color: AARgba(30, 144, 255, 1.0))))
+                    .size("40%")//尺寸大小
+                    .innerSize("80%")//内部圆环半径大小占比
+                    .borderWidth(0)//描边的宽度
+                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
+                    .data([
+                        ["Firefox Now",    926.8],
+                        ["Chrome Now",     336.2],
+                        ["Safari Now",     388.5],
+                        ["Opera Now",      446.0],
+                        ["Others Now",     223.0],
+                    ])
+            ])
+    }
+    
     //GitHub issue https://github.com/AAChartModel/AAChartKit/issues/903
     private func disableSomeOfLinesMouseTrackingEffect() -> AAChartModel {
         AAChartModel()
@@ -1275,6 +1341,82 @@ class CustomStyleChartVC: AABaseChartVC {
                             .hover(AAMarkerHover()
                                 .enabled(false))))
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+            ])
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1203
+    private func configureMaxAndMinDataLabelsForChart() -> AAChartModel {
+        let aaDataLabels = AADataLabels()
+            .enabled(true)
+            .format("{y} 美元")
+            .shape("callout")
+            .style(AAStyle(color: AAColor.red, fontSize: 15, weight: .bold))
+            .backgroundColor(AAColor.white)// white color
+            .borderColor(AAColor.red)// red color
+            .borderRadius(1.5)
+            .borderWidth(1.3)
+        
+        let minData = AADataElement()
+            .dataLabels(aaDataLabels)
+            .y(2.5)
+            .toDic()!
+        
+        let maxData = AADataElement()
+            .dataLabels(aaDataLabels)
+            .y(49.5)
+            .toDic()!
+        
+        return AAChartModel()
+            .chartType(.spline)
+            .dataLabelsEnabled(false)//是否显示值
+            .tooltipEnabled(false)
+            .markerRadius(0)
+            .xAxisVisible(false)
+            .yAxisVisible(false)
+            .series([
+                AASeriesElement()
+                    .name("Show The Max and Min values Data Labels")
+                    .lineWidth(7)
+                    .data([7.0, 6.9, minData, 14.5, 18.2, maxData, 5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
+                    .color(AAGradientColor.oceanBlue)
+            ])
+    }
+
+    //https://github.com/AAChartModel/AAChartKit/issues/1201
+    private func customVerticalXAxisCategoriesLabelsByHTMLBreakLineTag() -> AAChartModel {
+        AAChartModel()
+            .chartType(.area)
+            .categories([
+                "孤<br>岛<br>危<br>机",
+                "使<br>命<br>召<br>唤",
+                "荣<br>誉<br>勋<br>章",
+                "狙<br>击<br>精<br>英",
+                "神<br>秘<br>海<br>域",
+                "最<br>后<br>生<br>还<br>者",
+                "巫<br>师<br>3<br>狂<br>猎",
+                "对<br>马<br>之<br>魂",
+                "蝙<br>蝠<br>侠<br>阿<br>甘<br>骑<br>士<br>",
+                "地<br>狱<br>边<br>境",
+                "闪<br>客",
+                "忍<br>者<br>之<br>印"
+            ])
+            .tooltipEnabled(false)
+            .borderRadius(3)
+            .markerSymbolStyle(.innerBlank)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.black, fontSize: 16, weight: .bold))
+            .series([
+                AASeriesElement()
+                    .name("2017")
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]),
+                AASeriesElement()
+                    .name("2018")
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]),
+                AASeriesElement()
+                    .name("2019")
+                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]),
+                AASeriesElement()
+                    .name("2020")
+                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
             ])
     }
 

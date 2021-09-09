@@ -126,11 +126,14 @@ class MainVC: UIViewController {
                 "customNormalStackingChartDataLabelsContentAndStyle---自定义堆积柱状图 DataLabels の内容及样式",
                 "upsideDownPyramidChart---倒立の金字塔图",
                 "doubleLayerPieChart---双层嵌套扇形图",
+                "doubleLayerDoubleColorsPieChart---双层嵌套双颜色主题扇形图",
                 "disableSomeOfLinesMouseTrackingEffect---针对部分数据列关闭鼠标或手指跟踪行为",
                 "configureColorfulShadowChart---彩色阴影效果の曲线图",
                 "configureColorfulDataLabelsStepLineChart---彩色 DataLabels の直方折线图",
                 "configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart---彩色渐变效果且彩色 DataLabels の直方折线填充图",
-                "disableSplineChartMarkerHoverEffect---禁用曲线图の手指滑动 marker 点の光圈变化放大の效果"
+                "disableSplineChartMarkerHoverEffect---禁用曲线图の手指滑动 marker 点の光圈变化放大の效果",
+                "configureMaxAndMinDataLabelsForChart---为图表最大值最小值添加 DataLabels 标记",
+                "customVerticalXAxisCategoriesLabelsByHTMLBreakLineTag---通过 HTML 的换行标签来实现图表的 X 轴的 分类文字标签的换行效果",
             ],
             /*Mixed Chart*/
             [
