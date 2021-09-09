@@ -134,8 +134,10 @@ public class AAStyle: AAObject {
     }
 
     @discardableResult
-    public func padding(_ prop: String?) -> AAStyle {
-        padding = prop
+    public func padding(_ prop: Float?) -> AAStyle {
+        if prop != nil {
+            padding = "\(prop!)px"
+        }
         return self
     }
 

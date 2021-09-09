@@ -609,7 +609,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             .border("2px solid red")
             .opacity(1.0)
             .fontWeight(AAChartFontWeightType.bold)
-            .padding("6px")
+            .padding(6)
             .fontSize(16)
         
         let aaPlotLinesArr = [
