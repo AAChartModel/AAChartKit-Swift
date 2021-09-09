@@ -54,7 +54,16 @@ public class AADataLabels: AAObject {
     public var crop: Bool?
     public var inside: Bool?
     public var overflow: String?
-    
+    public var softConnector: Bool?
+    public var textPath: [String: Any]?
+    public var filter: [String: Any]?
+    public var connectorColor: String?
+    public var connectorPadding: Float?
+    public var connectorShape: String?
+    public var connectorWidth: Float?
+    public var crookDistance: String?
+    public var alignTo: String?
+
     @discardableResult
     public func enabled(_ prop: Bool?) -> AADataLabels {
         enabled = prop
@@ -183,6 +192,60 @@ public class AADataLabels: AAObject {
         return self
     }
     
+    @discardableResult
+    public func softConnector(_ prop: Bool?) -> AADataLabels {
+        softConnector = prop
+        return self
+    }
+    
+    @discardableResult
+    public func textPath(_ prop: [String: Any]?) -> AADataLabels {
+        textPath = prop
+        return self
+    }
+    
+    @discardableResult
+    public func filter(_ prop: [String: Any]?) -> AADataLabels {
+        filter = prop
+        return self
+    }
+    
+    @discardableResult
+    public func connectorColor(_ prop: String?) -> AADataLabels {
+        connectorColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func connectorPadding(_ prop: Float?) -> AADataLabels {
+        connectorPadding = prop
+        return self
+    }
+    
+    @discardableResult
+    public func connectorShape(_ prop: String?) -> AADataLabels {
+        connectorShape = prop
+        return self
+    }
+    
+    @discardableResult
+    public func connectorWidth(_ prop: Float?) -> AADataLabels {
+        connectorWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func crookDistance(_ prop: String?) -> AADataLabels {
+        crookDistance = prop
+        return self
+    }
+    
+    @discardableResult
+    public func alignTo(_ prop: String?) -> AADataLabels {
+        alignTo = prop
+        return self
+    }
+
     public override init() {
         enabled = true
     }
