@@ -594,6 +594,23 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
             ])
         let aaOptions = aaChartModel.aa_toAAOptions()
         
+        let aaStyle = AAStyle()
+            .color("#FFD700") //#FFD700(纯金色)
+            .backgroundColor(AAColor.black)
+            .borderRadius(5)
+            .border("6px solid #000000")
+            .opacity(1.0)
+            .fontWeight(AAChartFontWeightType.bold)
+        
+        let aaStyle1 = AAStyle()
+            .color(AAColor.red) //#FFD700(纯金色)
+            .backgroundColor(AAColor.black)
+            .borderRadius(5)
+            .border("2px solid red")
+            .opacity(1.0)
+            .fontWeight(AAChartFontWeightType.bold)
+            .padding("6px")
+            .fontSize(16)
         
         let aaPlotLinesArr = [
             AAPlotLinesElement()
@@ -603,32 +620,27 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                 .value((12)) //所在位置
                 .zIndex((1)) //层叠,标示线在图表中显示の层叠级别，值越大，显示越向前
                 .label(AALabel()
-                    .text("PLOT LINES ONE")
-                    .style(AAStyle()
-                        .color("#1e90ff")
-                        .fontWeight(.bold)))
-            ,
+                        .useHTML(true)
+                        .text("PLOT LINES ONE")
+                        .style(aaStyle1)),
             AAPlotLinesElement()
                 .color("#ef476f")
                 .dashStyle(.longDashDot)
                 .width((1))
                 .value((24))
                 .label(AALabel()
-                    .text("PLOT LINES TWO")
-                    .style(AAStyle()
-                        .color("#ef476f")
-                        .fontWeight(.bold)))
-            ,
+                        .useHTML(true)
+                        .text("PLOT LINES TWO")
+                        .style(aaStyle)),
             AAPlotLinesElement()
                 .color("#04d69f")
                 .dashStyle(.longDash)
                 .width((1))
                 .value((36))
                 .label(AALabel()
-                    .text("PLOT LINES THREE")
-                    .style(AAStyle()
-                        .color("#04d69f")
-                        .fontWeight(.bold)))
+                        .useHTML(true)
+                        .text("PLOT LINES THREE")
+                        .style(aaStyle)),
         ]
         
         aaOptions.yAxis?.plotLines(aaPlotLinesArr)
