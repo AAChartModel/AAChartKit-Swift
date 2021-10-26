@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AAInfographics
 
 let predefinedSymbol1 = AAChartSymbolType.triangle.rawValue
 let predefinedSymbol2 = AAChartSymbolType.circle.rawValue

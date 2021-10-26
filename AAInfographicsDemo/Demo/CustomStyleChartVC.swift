@@ -30,6 +30,7 @@
  */
 
 import UIKit
+import AAInfographics
 
 @available(iOS 9.0, macCatalyst 13.0, *)
 class CustomStyleChartVC: AABaseChartVC {
