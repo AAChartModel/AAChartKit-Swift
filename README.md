@@ -77,6 +77,18 @@ to your project Podfile.
 2. Run `pod install` or `pod update`.
 3. Import  `AAInfographics`.
 
+### Carthage
+
+1. Add following content
+```ruby
+github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 1.0
+
+```
+to your project Cartfile.
+
+2. Run `carthage bootstrap` or `carthage update`.
+3. Import  `AAInfographics`.
+
 ### Manually  (old school way)
 
 1. Download whole project demo of `AAInfographicsDemo`

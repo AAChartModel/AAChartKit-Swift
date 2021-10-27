@@ -99,6 +99,18 @@ pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.
 2. 在终端中运行命令 `pod install` or `pod update`.
 3. 导入头文件  `AAInfographics`.
 
+### 使用 Carthage
+
+1. 添加 
+```ruby
+github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 1.0
+
+```
+ 到你的 **Cartfile** 文件当中.
+ 
+2. 在终端中运行命令 `carthage bootstrap` or `carthage update`.
+3. 导入头文件  `AAInfographics`.
+
 ### 手动安装
 
 1. 下载 Demo  `AAInfographicsDemo`
