@@ -34,7 +34,7 @@
 
 * 🎮  **Interactive and animated**. The charts `animation` effect is exquisite, delicate, smooth and beautiful.
 
-* ⛓  **Chain programming**.  Supports `chain programming syntax` like *Masonry* .
+* ⛓  **Chain programming**.  Supports `chain programming syntax` like *SwiftUI* .
 
 * 🦋  **Minimalist**. `AAChartView + AAChartModel = Chart`. The AAChartKit follows a minimalist formula: Chart view + Chart model = The chart you want, just like the powerful and beautiful charts framework [AAChartKit](https://github.com/AAChartModel/AAChartKit).
 
