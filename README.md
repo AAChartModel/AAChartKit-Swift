@@ -267,7 +267,7 @@ Monitoring user click events can achieve a variety of custom functions. For exam
 ![doubleChartsLinkage](https://raw.githubusercontent.com/AAChartModel/Gallery/master/AAChartKit/doubleChartsLinkage.gif)
 
 
-### Support for custom the style of chart `AATooltip` through `JavaScript` function
+### Support for customizing the style of chart `AATooltip` through `JavaScript` function
 
 As we all know, AAInfographics support using HTML String.  Most of time, the `headerFormat` 、`pointFormat`、`footerFormat` HTML string is enough for customizing chart tooltip string content, However, sometimes the needs of APP is so weird to satified, in this time, you can even customize the chart tooltip style through `JavaScript` function. 
 
