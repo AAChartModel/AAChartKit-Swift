@@ -151,6 +151,7 @@ class MainVC: UIViewController {
                 "Pie Mixed Line Mixed Column---扇形折线柱形混合图",
                 "Line Chart With Shadow---带有阴影效果の折线图",
                 "Negative Color Mixed Areaspline chart---基准线以下异色混合曲线填充图",
+                "Aerasplinerange Mixed Columnrange Mixed Line Chart---曲线面积范围混合柱形范围混合折线图"
             ],
             /*Only update chart data*/
             [  "Column Chart---柱形图",
@@ -349,7 +350,8 @@ class MainVC: UIViewController {
                 "columnMixedScatter",
                 "PieMixedLineMixedColumn",
                 "LineChartWithShadow",
-                "NegativeColorMixedAreasplineChart"
+                "NegativeColorMixedAreasplineChart",
+                "AerasplinerangeMixedColumnrangeMixedLineChart"
             ],
             /*Only update chart data*/
             [

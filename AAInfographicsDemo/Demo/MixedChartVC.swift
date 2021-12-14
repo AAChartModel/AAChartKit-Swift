@@ -55,6 +55,7 @@ class MixedChartVC: AABaseChartVC {
         case "PieMixedLineMixedColumn":return configurePieMixedLineMixedColumnChart()
         case "LineChartWithShadow":return configureLineChartWithShadow()
         case "NegativeColorMixedAreasplineChart": return configureNegativeColorMixedAreasplineChart()
+        case "AerasplinerangeMixedColumnrangeMixedLineChart": return configureAerasplinerangeMixedColumnrangeMixedLineChart()
         default: return configureArearangeMixedLineChart()
         }
     }
@@ -807,5 +808,85 @@ class MixedChartVC: AABaseChartVC {
                     .threshold(0)//default:0
             ])
     }
+    
+    private func configureAerasplinerangeMixedColumnrangeMixedLineChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.line)
+            .dataLabelsEnabled(true)
+            .markerSymbol(.circle)
+            .markerSymbolStyle(.borderBlank)
+            .borderRadius(10)
+            .categories([
+                "流水线",
+                "机器加工",
+                "冲床",
+                "模具工",
+                "机器加工",
+                "仓库",
+                "维修工",
+                "质检员",
+            ])
+            .series([
+                AASeriesElement()
+                    .name("工资变化曲线")
+                    .type(.areasplinerange)
+                    .data([
+                        [3800, 5500],//流水线
+                        [ 4000, 6500],//机器加工
+                        [ 4000, 6800],//冲床
+                        [ 4000, 7500],//模具工
+                        [ 4200, 9000],//机器加工
+                        [ 3800, 6800],//仓库
+                        [ 5500, 7500],//维修工
+                        [ 5000, 7200],//质检员
+                    ])
+                ,
+                AASeriesElement()
+                    .name("工资变化棱形")
+                    .color(AAGradientColor.oceanBlue)
+                    .type(.columnrange)
+                    .data([
+                        [3800, 5500],//流水线
+                        [ 4000, 6500],//机器加工
+                        [ 4000, 6800],//冲床
+                        [ 4000, 7500],//模具工
+                        [ 4200, 9000],//机器加工
+                        [ 3800, 6800],//仓库
+                        [ 5500, 7500],//维修工
+                        [ 5000, 7200],//质检员
+                    ])
+                ,
+                AASeriesElement()
+                    .name("八月份均值")
+                    .lineWidth(8)
+                    .data([
+                        4000,//流水线
+                        4400,//机器加工
+                        4600,//冲床
+                        5200,//模具工
+                        5800,//机器加工
+                        5000,//仓库
+                        5500,//维修工
+                        5000,//质检员
+                    ])
+                ,
+                
+                AASeriesElement()
+                    .name("九月份均值")
+                    .lineWidth(8)
+                    .data([
+                        3868,//流水线
+                        4084,//机器加工
+                        4260,//冲床
+                        4586,//模具工
+                        5518,//机器加工
+                        5483,//仓库
+                        4962,//维修工
+                        5821,//质检员
+                    ])
+                ,
+            ])
+    }
+    
     
 }
