@@ -247,6 +247,7 @@ class MainVC: UIViewController {
                 "Adjust Bubble Chart Min And Max----调整气泡图的 min 和 max 相关属性",
                 "customLineChartDataLabelsFormat---自定义曲线图的 DataLabels 的 format 属性",
                 "customLineChartDataLabelsFormat2---自定义曲线图的 DataLabels 的 format 属性2(更简易方法)",
+                "complicatedScatterChart---复杂的自定义散点图"
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
             [

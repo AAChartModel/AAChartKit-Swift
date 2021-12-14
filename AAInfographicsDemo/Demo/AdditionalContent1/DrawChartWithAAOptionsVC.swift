@@ -91,6 +91,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 43: return adjustBubbleChartMinAndMax()//调整气泡图的 min 和 max 相关属性
         case 44: return customLineChartDataLabelsFormat()//自定义曲线图的 DataLabels 的 format 属性
         case 45: return customLineChartDataLabelsFormat2()//自定义曲线图的 DataLabels 的 format 属性(更简易方法)
+        case 46: return complicatedScatterChart()//复杂的自定义散点图
 
         default:
             return AAOptions()
@@ -2861,6 +2862,282 @@ function () {
         let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.plotOptions?.series?.dataLabels?
             .format("{x}")
+        
+        return aaOptions
+    }
+    
+    private func complicatedScatterChart() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .subtitle("Multiplier between base rate and charge rate")
+            .subtitleAlign(.left)
+            .subtitleStyle(AAStyle(color: AAColor.black))
+            .chartType(.scatter)
+            .yAxisGridLineWidth(0)
+            .markerSymbol(.circle)
+            .markerRadius(8)
+            .markerSymbolStyle(.borderBlank)
+            .dataLabelsEnabled(true)
+            .colorsTheme([AAColor.red, AAColor.orange, AAColor.green, AAColor.blue])
+            .series([
+                AASeriesElement()
+                    .name("Yingyun-SH")
+                    .data([
+                        AADataElement()
+                            .x(33).y(1.37)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Package")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(35).y(1.36)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Assembly worker")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(38).y(1.32)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Others")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(35).y(1.32)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("QC")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(47).y(1.19)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Welder")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        [ 33, 1.37],
+                        [ 35, 1.36],
+                        [ 38, 1.32],
+                        [ 35, 1.32],
+                        [ 47, 1.19],
+                    ])
+                ,
+                
+                AASeriesElement()
+                    .name("GI-SZ")
+                    .data([
+                        AADataElement()
+                            .x(38).y(1.37)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Grinder")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(38).y(1.37)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Paint/Blast worker")
+                                    .x(123)
+                            )
+                            .toDic()!,
+                        
+                        [ 38, 1.37],
+                        [ 38, 1.37],
+                    ])
+                ,
+                
+                AASeriesElement()
+                    .name("Engma-SZ")
+                    .data([
+                        AADataElement()
+                            .x(43).y(1.30)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Welder")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(40).y(1.33)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Grinder")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(40).y(1.33)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Paint/Blast worker")
+                                    .x(123)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(42).y(1.31)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Pipe Fitter")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(40).y(1.35)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("OH2 Operator")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        [ 43, 1.30],
+                        [ 40, 1.33],
+                        [ 40, 1.33],
+                        [ 42, 1.31],
+                        [ 40, 1.35],
+                    ])
+                ,
+                
+                AASeriesElement()
+                    .name("Weifu-SZ")
+                    .data([
+                        AADataElement()
+                            .x(41).y(1.15)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Grinder")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(44).y(1.11)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Paint/Blast worker")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        
+                        AADataElement()
+                            .x(41).y(1.12)
+                            .dataLabels(
+                                AADataLabels()
+                                    .enabled(true)
+                                    .format("Pipe Fitter")
+                                    .x(3)
+                                    .verticalAlign(.middle)
+                            )
+                            .toDic()!,
+                        [ 41, 1.15],
+                        [ 44, 1.11],
+                        [ 41, 1.12],
+                    ])
+                ,
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        
+        let aaPlotLinesArr = [
+            AAPlotLinesElement()
+                .color(AAColor.green)//颜色值
+                .dashStyle(.solid)//样式：Dash,Dot,Solid等,默认Solid
+                .width((4.0)) //标示线粗细
+                .value((1.28)) //所在位置
+                .zIndex((1)) //层叠,标示线在图表中显示の层叠级别，值越大，显示越向前
+                .label(AALabel()
+                        .text("Benchmark Mutiplier On Average (1.28)")
+                        .style(AAStyle()
+                                .color(AAColor.green)
+                                .fontWeight(.bold)))
+            ,
+            AAPlotLinesElement()
+                .color(AAColor.black)
+                .dashStyle(.solid)
+                .width((4))
+                .value((1.18))
+                .label(AALabel()
+                        .text("Current Multiplier on Average (1.18)")
+                        .style(AAStyle()
+                                .color(AAColor.black)
+                                .fontWeight(.bold)))
+            ,
+            
+        ]
+        
+        aaOptions.yAxis?.plotLines(aaPlotLinesArr)
+        
+        aaOptions.yAxis?.labels?.style(AAStyle(color: AAColor.black))
+        aaOptions.xAxis?.labels?.style(AAStyle(color: AAColor.black))
+        
+        aaOptions.xAxis?.tickWidth = 0
+        
+        aaOptions.yAxis?
+            .tickAmount(20)
+            .lineWidth(1)
+            .lineColor(AAColor.black)
+        
+        aaOptions.xAxis?
+            .lineWidth(1)
+            .lineColor(AAColor.black)
+            .min(10)
+            .max(50)
+            .tickInterval(5)
+        
+        aaOptions.legend!
+            .itemMarginTop(10)
+            .symbolRadius(10)//图标圆角
+            .symbolHeight(20)//标志高度
+            .symbolWidth(20)//图标宽度
+            .align(.right)
+            .layout(.vertical)
+            .verticalAlign(.top)
         
         return aaOptions
     }
