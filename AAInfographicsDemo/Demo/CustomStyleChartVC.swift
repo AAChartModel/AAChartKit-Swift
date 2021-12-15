@@ -83,6 +83,8 @@ class CustomStyleChartVC: AABaseChartVC {
         case 38: return disableSplineChartMarkerHoverEffect()
         case 39: return configureMaxAndMinDataLabelsForChart()
         case 40: return customVerticalXAxisCategoriesLabelsByHTMLBreakLineTag()
+        case 41: return noMoreGroupingAndOverlapEachOtherColumnChart()
+        case 42: return noMoreGroupingAndNestedColumnChart()
             
         default:
             return configureTriangleRadarChart()
@@ -1419,6 +1421,55 @@ class CustomStyleChartVC: AABaseChartVC {
                     .name("2020")
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
             ])
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1269
+    private func noMoreGroupingAndOverlapEachOtherColumnChart() -> AAChartModel {
+        return AAChartModel()
+            .chartType(.column)
+            .categories(["11/23","11/24", "11/25","11/26","11/27","11/28","11/29"])
+//            .yAxisTickPositions([0,10,20,30,40,50])
+            .yAxisMax(50)
+            .yAxisMin(0)
+            .borderRadius(5)
+            .series([
+                AAColumn()
+                    .name("总做题")
+                    .color("#D8D8D8")
+                    .data([30, 20, 28, 40, 42 ,48, 50])
+                    .grouping(false)
+                ,
+                AAColumn()
+                    .name("正确做题")
+                    .color("#00D9CD")
+                    .data([28, 18, 26, 40, 40, 46, 39])
+            ]);
+    }
+
+    //https://github.com/AAChartModel/AAChartKit/issues/1271
+    private func noMoreGroupingAndNestedColumnChart() -> AAChartModel {
+        return AAChartModel()
+            .chartType(.column)
+            .categories(["11/23","11/24", "11/25","11/26","11/27","11/28","11/29"])
+//            .yAxisTickPositions([0,10,20,30,40,50])
+            .yAxisMax(50)
+            .yAxisMin(0)
+            .borderRadius(5)
+            .series([
+                AAColumn()
+                    .name("总目标")
+                    .color("DeepSkyBlue")
+                    .data([30, 20, 28, 40, 42 ,48, 50])
+                    .grouping(false)
+                    .pointPadding(0.05)
+                ,
+                AAColumn()
+                    .name("完成度")
+                    .color("#FF3030") //Firebrick1 color
+                    .data([28, 18, 26, 40, 40, 46, 39])
+                    .grouping(false)
+                    .pointPadding(0.2)
+            ]);
     }
 
 }
