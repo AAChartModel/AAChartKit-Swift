@@ -194,7 +194,7 @@ public class AAOptionsConstructor {
             .series(AASeries()
                         .stacking(aaChartModel.stacking))
         
-        if (aaChartModel.animationType != .linear) {
+        if aaChartModel.animationType != .linear {
             aaPlotOptions.series?
                 .animation(AAAnimation()
                             .easing(aaChartModel.animationType)
@@ -241,12 +241,12 @@ public class AAOptionsConstructor {
             let aaMarker = AAMarker()
                 .radius(aaChartModel.markerRadius) //Curve connection point radius, default is 4
                 .symbol(aaChartModel.markerSymbol?.rawValue) //Curve connection point type: "circle", "square", "diamond", "triangle", "triangle-down", the default is "circle"
-            if (aaChartModel.markerSymbolStyle == .innerBlank) {
+            if aaChartModel.markerSymbolStyle == .innerBlank {
                 aaMarker
                     .fillColor(AAColor.white) //The fill color of the point (used to set the fill color of the polyline connection point)
                     .lineWidth(0.4 * aaChartModel.markerRadius!) //The width of the outer line (used to set the width of the outline stroke of the polyline connection point)
                     .lineColor("") //The color of the outer edge (used to set the outline stroke color of the polyline connection point. When the value is an empty string, the color of the data point or data column is taken by default)
-            } else if (aaChartModel.markerSymbolStyle == .borderBlank) {
+            } else if aaChartModel.markerSymbolStyle == .borderBlank {
                 aaMarker
                     .lineWidth(2.0)
                     .lineColor(aaChartModel.backgroundColor)
@@ -257,7 +257,7 @@ public class AAOptionsConstructor {
     }
     
     
-    private static  func configurePlotOptionsDataLabels(
+    private static func configurePlotOptionsDataLabels(
         _ aaPlotOptions: AAPlotOptions,
         _ aaChartModel: AAChartModel
     ) {
