@@ -783,16 +783,12 @@ class CustomStyleChartVC: AABaseChartVC {
             startColor: "rgba(255,215,0,0.1)",//gold color, alpha: 0.1
             endColor: "rgba(255,215,0, 0.6)"// gold color, alpha: 0.6
         )
-
-        let formatStr = """
-<img src=https://www.highcharts.com/samples/graphics/sun.png><span style=color:#FFFFFF;font-weight:thin;font-size:25px>{y}</span><span style=color:#FFFFFF;font-weight:thin;font-size:17px> m</span>
-"""
-//        Same as the follow
-//        let formatStr = (
-//            "<img src=https://www.highcharts.com/samples/graphics/sun.png><span"
-//                + "style=color:#FFFFFF;font-weight:thin;font-size:25px>{y}</span><span"
-//                + "style=color:#FFFFFF;font-weight:thin;font-size:17px> m</span>"
-//        )
+        
+        let formatStr = (
+            "<img src=https://www.highcharts.com/samples/graphics/sun.png>"
+          + "<span style=color:#FFFFFF;font-weight:thin;font-size:25px>{y}</span>"
+          + "<span style=color:#FFFFFF;font-weight:thin;font-size:17px> m</span>"
+        )
 
         let singleSpecialData = AADataElement()
             .dataLabels(AADataLabels()
