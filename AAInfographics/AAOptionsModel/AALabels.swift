@@ -50,8 +50,8 @@ public class AALabels: AAObject {
     public var useHTML: Bool? // HTML rendering
     
     @discardableResult
-    public func align(_ prop: String?) -> AALabels {
-        align = prop
+    public func align(_ prop: AAChartAlignType?) -> AALabels {
+        align = prop?.rawValue
         return self
     }
     
