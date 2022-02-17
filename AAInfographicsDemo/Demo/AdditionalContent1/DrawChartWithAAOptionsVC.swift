@@ -769,13 +769,13 @@ function () {
             "<font color=\\\"#CC0066\\\">孤岛危机<\\/font>",
             "<font color=\\\"#CC0033\\\">使命召唤<\\/font>",
             "<font color=\\\"#FF0066\\\">荣誉勋章<\\/font>",
-            "<font color=\\\"##66FF99\\\">狙击精英<\\/font>",
+            "<font color=\\\"#66FF99\\\">狙击精英<\\/font>",
             "<font color=\\\"#00FF00\\\">神秘海域<\\/font>",
             "<font color=\\\"#00CC00\\\">美国末日<\\/font>",
             "<font color=\\\"#666FF\\\">巫师狂猎<\\/font>",
             "<font color=\\\"#000CC\\\">死亡搁浅<\\/font>",
             "<font color=\\\"#9933CC\\\">地狱边境<\\/font>",
-            "<font color=\\\"##FFCC99\\\">忍者之印<\\/font>",
+            "<font color=\\\"#FFCC99\\\">忍者之印<\\/font>",
             "<font color=\\\"#FFCC00\\\">合金装备<\\/font>",
             "<font color=\\\"#CC99090\\\">全战三国<\\/font>",
         ]
@@ -2416,7 +2416,7 @@ function () {
         
         let title = #"<span style="color:red;font-size:17px;font-weight:bold;">客流</span><br>"#
         let week = "周一"
-        let time = "时间: 8.{point.x} (\(week)<br>"
+        let time = "时间: 8.{point.x} (\(week))<br>"
         let headerFormat = "\(title)\(time)"
         
         let aaOptions = aaChartModel.aa_toAAOptions()
