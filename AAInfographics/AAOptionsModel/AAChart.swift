@@ -42,7 +42,7 @@ public class AAChart: AAObject {
     public var polar: Bool?
     public var animation: AAAnimation?
     public var inverted: Bool?
-    public var margin: [Float]? //Margin between the outer edge of the chart and the drawing area. The numbers in the array represent the top, right, bottom, and left ([👆, 👉, 👇, 👈]). You can also use marginTop, marginRight, marginBottom, and marginLeft to set the margins in a certain direction.
+    public var margin: [Any]? //Margin between the outer edge of the chart and the drawing area. The numbers in the array represent the top, right, bottom, and left ([👆, 👉, 👇, 👈]). You can also use marginTop, marginRight, marginBottom, and marginLeft to set the margins in a certain direction. Defaults to [null]
     public var marginTop: Float? //👆
     public var marginRight: Float? //👉
     public var marginBottom: Float? //👇
@@ -110,8 +110,18 @@ public class AAChart: AAObject {
     }
     
     @discardableResult
-    public func margin(top: Float = 0, right: Float = 0, bottom: Float = 0, left: Float = 0) -> AAChart {
-        margin = [top,right,bottom,left]
+    public func margin(
+        top: Any?,
+        right: Any?,
+        bottom: Any?,
+        left: Any?
+    ) -> AAChart {
+        margin = [
+            top ?? NSNull(),
+            right ?? NSNull(),
+            bottom ?? NSNull(),
+            left ?? NSNull()
+        ]
         return self
     }
     
@@ -140,7 +150,12 @@ public class AAChart: AAObject {
     }
     
     @discardableResult
-    public func spacing(top: Float = 0, right: Float = 0, bottom: Float = 0, left: Float = 0) -> AAChart {
+    public func spacing(
+        top: Float = 10,
+        right: Float = 10,
+        bottom: Float = 15,
+        left: Float = 10
+    ) -> AAChart {
         spacing = [top,right,bottom,left]
         return self
     }
