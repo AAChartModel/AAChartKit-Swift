@@ -111,16 +111,16 @@ public class AAChart: AAObject {
     
     @discardableResult
     public func margin(
-        top: Any?,
-        right: Any?,
-        bottom: Any?,
-        left: Any?
+        top: Any = NSNull(),
+        right: Any = NSNull(),
+        bottom: Any = NSNull(),
+        left: Any = NSNull()
     ) -> AAChart {
         margin = [
-            top ?? NSNull(),
-            right ?? NSNull(),
-            bottom ?? NSNull(),
-            left ?? NSNull()
+            top,
+            right,
+            bottom,
+            left
         ]
         return self
     }
