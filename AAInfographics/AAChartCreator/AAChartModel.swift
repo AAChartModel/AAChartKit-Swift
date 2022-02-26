@@ -172,6 +172,7 @@ public class AAChartModel: AAObject {
     public var yAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area. Defaults to 1
     public var yAxisMin: Double?            //The y axis mini value
     public var yAxisMax: Double?            //The y axis max value
+    public var yAxisTickPositions:[Any]?    //An array defining where the ticks are laid out on the axis. This overrides the default behaviour of tickPixelInterval and tickInterval.
     public var yAxisAllowDecimals: Bool?    //The y axis values label allow decimals or not
     public var tooltipEnabled: Bool?        //Show the tooltip or not
     public var tooltipValueSuffix: String?  //Custom tooltip value unit suffix
@@ -408,6 +409,12 @@ public class AAChartModel: AAObject {
     @discardableResult
     public func yAxisMax(_ prop: Double) -> AAChartModel {
         yAxisMax = prop
+        return self
+    }
+    
+    @discardableResult
+    public func yAxisTickPositions(_ prop: [Any]) -> AAChartModel {
+        yAxisTickPositions = prop
         return self
     }
     

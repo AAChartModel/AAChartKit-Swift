@@ -350,7 +350,7 @@ public class AAOptionsConstructor {
                     .visible(aaChartModel.xAxisVisible) //whether the x axis is visible
                     .tickInterval(aaChartModel.xAxisTickInterval) //Number of x-axis coordinate point intervals
                     .title(AATitle()
-                            .text(aaChartModel.xAxisTitle)) //y axis title
+                            .text(aaChartModel.xAxisTitle)) //x axis title
                                             
                 aaOptions.xAxis(aaXAxis)
             }
@@ -367,6 +367,7 @@ public class AAOptionsConstructor {
                 .labels(aaYAxisLabels) //Set the y-axis text
                 .min(aaChartModel.yAxisMin) //Set the minimum value of the y-axis. If the minimum value is equal to zero, negative values ​​cannot be displayed.
                 .max(aaChartModel.yAxisMax) //Maximum y-axis
+                .tickPositions(aaChartModel.yAxisTickPositions)
                 .allowDecimals(aaChartModel.yAxisAllowDecimals) //Whether to display decimals
                 .reversed(aaChartModel.yAxisReversed)
                 .gridLineWidth(aaChartModel.yAxisGridLineWidth) //y-axis grid line width
