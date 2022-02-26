@@ -48,6 +48,7 @@ class AnimationTypeVC: UIViewController {
         view.backgroundColor = .white
         
         chartAnimationTypeStringArr = [
+            "linear",
             "easeInQuad",
             "easeOutQuad",
             "easeInOutQuad",
@@ -85,6 +86,7 @@ class AnimationTypeVC: UIViewController {
         ]
         
         chartAnimationTypeArr = [
+            .linear,
             .easeInQuad,
             .easeOutQuad,
             .easeInOutQuad,
@@ -158,6 +160,8 @@ class AnimationTypeVC: UIViewController {
             .dataLabelsEnabled(false)//是否显示数字
             .markerRadius(5)//折线连接点半径长度,为0时相当于没有折线连接点
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .animationDuration(3000)
+
         
         if chartType == .area || chartType == .areaspline {
           aaChartModel?

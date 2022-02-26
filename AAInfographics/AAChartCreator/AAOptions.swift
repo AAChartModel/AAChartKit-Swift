@@ -194,12 +194,10 @@ public class AAOptionsConstructor {
             .series(AASeries()
                         .stacking(aaChartModel.stacking))
         
-        if aaChartModel.animationType != .linear {
-            aaPlotOptions.series?
-                .animation(AAAnimation()
-                            .easing(aaChartModel.animationType)
-                            .duration(aaChartModel.animationDuration))
-        }
+        aaPlotOptions.series?
+            .animation(AAAnimation()
+                        .easing(aaChartModel.animationType)
+                        .duration(aaChartModel.animationDuration))
         
         configurePlotOptionsMarkerStyle(aaChartModel, aaPlotOptions)
         configurePlotOptionsDataLabels(aaPlotOptions, aaChartModel)
