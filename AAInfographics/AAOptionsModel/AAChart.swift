@@ -109,6 +109,11 @@ public class AAChart: AAObject {
         return self
     }
     
+    public func margin(_ prop: [Any]?) -> AAChart {
+        margin = prop
+        return self
+    }
+    
     @discardableResult
     public func margin(
         top: Any = NSNull(),
@@ -156,7 +161,12 @@ public class AAChart: AAObject {
         bottom: Float = 15,
         left: Float = 10
     ) -> AAChart {
-        spacing = [top,right,bottom,left]
+        spacing = [
+            top,
+            right,
+            bottom,
+            left
+        ]
         return self
     }
     
@@ -199,6 +209,30 @@ public class AAChart: AAObject {
     public override init() {
         
     }
+}
+
+public func AAMargin(
+    left: Float,
+    right: Float
+) -> [Any]? {
+    return [
+        NSNull(),
+        right,
+        NSNull(),
+        left
+    ]
+}
+
+public func AAMargin(
+    top: Float,
+    bottom: Float
+) -> [Any]? {
+    return [
+        top,
+        NSNull(),
+        bottom,
+        NSNull()
+    ]
 }
 
 public class AAResetZoomButton: AAObject {

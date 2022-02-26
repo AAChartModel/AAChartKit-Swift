@@ -133,6 +133,7 @@ class CustomStyleChartVC: AABaseChartVC {
             .categories(colorsNameArr)
             .colorsTheme(colorsArr as [Any])
             .stacking(.percent)
+            .margin(AAMargin(left: 68, right: 0))
             .series([
                 AASeriesElement()
                     .name("Tokyo")
@@ -201,6 +202,7 @@ class CustomStyleChartVC: AABaseChartVC {
             .stacking(.percent)
             .xAxisLabelsStyle(AAStyle(color: AAColor.white))
             .dataLabelsEnabled(false)
+            .margin(AAMargin(top: 60, bottom: 60))
             .series([
                 AASeriesElement()
                     .name("2018")
