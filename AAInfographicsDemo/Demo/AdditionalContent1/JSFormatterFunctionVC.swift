@@ -944,7 +944,7 @@ function () {
     // Refer to GitHub issue: https://github.com/AAChartModel/AAChartKit/issues/938
     // Refer to online chart sample: https://www.highcharts.com/demo/column-comparison
     private func customXAxisLabelsBeImages() -> AAOptions {
-         let nameArr = [
+        let nameArr = [
             "South Korea",
             "Japan",
             "Australia",
@@ -954,8 +954,8 @@ function () {
             "Great Britain",
             "United States"
         ]
-
-         let colorArr = [
+        
+        let colorArr = [
             "rgb(201, 36, 39)",
             "rgb(201, 36, 39)",
             "rgb(0, 82, 180)",
@@ -965,9 +965,9 @@ function () {
             "rgb(0, 82, 180)",
             "rgb(215, 0, 38)"
         ]
-
-
-         let imageLinkFlagArr = [
+        
+        
+        let imageLinkFlagArr = [
             "197582",
             "197604",
             "197507",
@@ -977,7 +977,7 @@ function () {
             "197374",
             "197484"
         ]
-
+        
         let aaChartModel = AAChartModel()
             .chartType(.column)
             .title("Custom X Axis Labels Be Images")
@@ -991,27 +991,27 @@ function () {
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5])
                     .colorByPoint(true)
             ])
-
+        
         let imageLinkFlagJSArrStr = imageLinkFlagArr.aa_toJSArray()
-         let xLabelsFormatter = """
+        let xLabelsFormatter = """
 function () {
     let imageFlag = \(imageLinkFlagJSArrStr)[this.pos];
     let imageLink = "<span><img src=\"https://image.flaticon.com/icons/svg/197/" + imageFlag + ".svg\" style=\"width: 30px; height: 30px;\"/><br></span>";
     return imageLink;
 }
 """
-
-        //    https://api.highcharts.com.cn/highcharts#xAxis.labels.formatter
-         let aaOptions = aaChartModel.aa_toAAOptions()
-        aaOptions.xAxis?.labels?
-        .useHTML(true)
-        .formatter(xLabelsFormatter)
         
-
+        //    https://api.highcharts.com.cn/highcharts#xAxis.labels.formatter
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aaOptions.xAxis?.labels?
+            .useHTML(true)
+            .formatter(xLabelsFormatter)
+        
+        
         aaOptions.plotOptions?.column?.groupPadding(0.005)
-
+        
         //Custom tooltip style
-         let tooltipFormatter = """
+        let tooltipFormatter = """
 function () {
     let imageFlag = \(imageLinkFlagJSArrStr)[this.point.index];
     let imageLink = "<span><img src=\"https://image.flaticon.com/icons/svg/197/" + imageFlag + ".svg\" style=\"width: 30px; height: 30px;\"/><br></span>";
