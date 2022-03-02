@@ -799,9 +799,10 @@ function () {
         let aaOptions = aaChartModel.aa_toAAOptions()
         
         aaOptions.tooltip?
-            //‼️以 this.point.index 这种方式获取选中的点的索引必须设置 tooltip 的 shared 为 false
-            //‼️共享时是 this.points (由多个 point 组成的 points 数组)
-            //‼️非共享时是 this.point 单个 point 对象
+            //‼️‼️‼️
+            //以 this.point.index 这种方式获取选中的点的索引必须设置 tooltip 的 shared 为 false
+            //共享时是 this.points (由多个 point 组成的 points 数组)
+            //非共享时是 this.point (单个 point 对象)
             .shared(false)
             .useHTML(true)
             .formatter(jsFormatterStr)
@@ -835,10 +836,10 @@ function () {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图表类型
             .title("健康体检表")//图表主标题
-            .colorsTheme(["#fe117c","#ffc069",])//设置主体颜色数组
+            .colorsTheme(["#fe117c", "#ffc069",])//设置主体颜色数组
             .yAxisLineWidth(0)
             .yAxisGridLineWidth(1)//y轴横向分割线宽度为0(即是隐藏分割线)
-            //        .yAxisTickPositions([0, 5, 10, 15, 20, 25, 30, 35])
+            .yAxisTickPositions([0, 5, 10, 15, 20, 25, 30, 35])
             .markerRadius(5)
             .markerSymbol(.circle)
             .polar(true)
