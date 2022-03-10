@@ -712,6 +712,7 @@ function () {
         return aaOptions
     }
     
+    // https://github.com/AAChartModel/AAChartKit-Swift/issues/342
     private func customXAxisCrosshairStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图表类型
