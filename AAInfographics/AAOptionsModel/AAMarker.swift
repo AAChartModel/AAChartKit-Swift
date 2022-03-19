@@ -33,12 +33,19 @@
 import Foundation
 
 public class AAMarker: AAObject {
+    public var enabled: Bool?
     public var radius: Float?
     public var symbol: String?
     public var fillColor: String?
     public var lineWidth: Float?
     public var lineColor: Any?
     public var states: AAMarkerStates?
+    
+    @discardableResult
+    public func enabled(_ prop: Bool?) -> AAMarker {
+        enabled = prop
+        return self
+    }
     
     @discardableResult
     public func radius(_ prop: Float?) -> AAMarker {
@@ -77,7 +84,7 @@ public class AAMarker: AAObject {
     }
     
     public override init() {
-        
+        enabled = true
     }
 }
 

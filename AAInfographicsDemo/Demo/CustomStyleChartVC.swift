@@ -775,7 +775,14 @@ class CustomStyleChartVC: AABaseChartVC {
             .series([
                 AASeriesElement()
                     .name("Blue Dot")
-                    .data([[10,20],[15,30] ,[27,52],[43,78]])
+                    .data([
+                        [0, 200],
+                        [0, 300],
+                        [0, 400],
+                        [1, 100],
+                        [2, 120],
+                        [3, 130]
+                    ])
             ])
     }
     
