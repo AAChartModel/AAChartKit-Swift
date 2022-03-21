@@ -262,7 +262,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 let R = arc4random() % 256
                 let G = arc4random() % 256
                 let B = arc4random() % 256
-                let rgbaColorStr = "rgba(\(R),\(G),\(B),0.9)"
+                let rgbaColorStr = AARgba(Int(R), Int(G), Int(B), 0.9)
                 colorStringArr.add(rgbaColorStr)
             }
             return colorStringArr as! [Any]
@@ -534,8 +534,8 @@ class CustomStyleChartVC: AABaseChartVC {
     private func configureGradientColorAreasplineChart() -> AAChartModel {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toBottom,
-            startColor: "rgba(255,20,147,1)",//深粉色, alpha 透明度 1
-            endColor: "rgba(255,20,147,0.3)"//热情的粉红, alpha 透明度 0.3
+            startColor: AARgba(255, 20, 147, 1),//深粉色, alpha 透明度 1
+            endColor: AARgba(255, 20, 147, 0.3)//热情的粉红, alpha 透明度 0.3
         )
         
         return AAChartModel()
@@ -625,8 +625,8 @@ class CustomStyleChartVC: AABaseChartVC {
     private func configureAreaChartThreshold() -> AAChartModel {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toBottom,
-            startColor: "rgba(30, 144, 255,1)", //DodgerBlue, alpha 透明度 1
-            endColor: "rgba(30, 144, 255,0.1)"//DodgerBlue, alpha 透明度 0.1
+            startColor: AARgba(30, 144, 255, 1), //DodgerBlue, alpha 透明度 1
+            endColor: AARgba(30, 144, 255, 0.1)//DodgerBlue, alpha 透明度 0.1
         )
         
         return AAChartModel()
@@ -644,7 +644,7 @@ class CustomStyleChartVC: AABaseChartVC {
                     .threshold((-200))
                     .data([106.4, 129.2, 269.9, -100.5, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
                     .lineWidth(6)
-                    .color("rgba(30, 144, 255,1)")
+                    .color(AARgba(30, 144, 255,1))
                     .fillColor(gradientColorDic1)
                 ])
     }
@@ -791,8 +791,8 @@ class CustomStyleChartVC: AABaseChartVC {
     private func customSpecialStyleDataLabelOfSingleDataElementChart() -> AAChartModel {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toBottom,
-            startColor: "rgba(255,215,0,0.1)",//gold color, alpha: 0.1
-            endColor: "rgba(255,215,0, 0.6)"// gold color, alpha: 0.6
+            startColor: AARgba(255, 215, 0, 0.1),//gold color, alpha: 0.1
+            endColor: AARgba(255, 215, 0, 0.6)// gold color, alpha: 0.6
         )
         
         let formatStr = (
@@ -831,7 +831,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 AASeriesElement()
                     .name("Virtual Data")
                     .lineWidth(6)
-                    .color("rgba(255,215,0,1)")
+                    .color(AARgba(255, 215, 0, 1))
                     .fillColor(gradientColorDic1)// gold color, alpha: 1.0
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
             ])
@@ -851,7 +851,7 @@ class CustomStyleChartVC: AABaseChartVC {
                     .allowPointSelect(true)
                     .states(AAStates()
                         .hover(AAHover()
-                            .color("rgba(220,20,60,1)"))//猩红色, alpha 透明度 1
+                            .color(AARgba(220, 20, 60, 1)))//猩红色, alpha 透明度 1
                         .select(AASelect()
                             .color(AAColor.red)))
             ])
@@ -877,18 +877,18 @@ class CustomStyleChartVC: AABaseChartVC {
                                 .size(130)
                                 .opacity(0.8)
                                 .attributes([
-                                    "stroke-width":50,
-                                    "fill":"#00BFFF",
-                                    "stroke":"#00FA9A"
+                                    "stroke-width": 50,
+                                    "fill": "#00BFFF",
+                                    "stroke": "#00FA9A"
                                 ])))
                         .select(AASelect()
                             .halo(AAHalo()
                                 .size(130)
                                 .opacity(1.0)
                                 .attributes([
-                                    "stroke-width":150,
-                                    "fill":"rgba(138,43,226,1)",
-                                    "stroke":"rgba(30,144,255,1)"
+                                    "stroke-width": 150,
+                                    "fill": AARgba(138,43,226,1),
+                                    "stroke": AARgba(30,144,255,1)
                                 ]))))
             ])
     }
@@ -908,7 +908,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 AASeriesElement()
                     .name("Tokyo Hot")
                     .lineWidth(5.0)
-                    .color("rgba(220,20,60,1)")//猩红色, alpha 透明度 1
+                    .color(AARgba(220, 20, 60, 1))//猩红色, alpha 透明度 1
                     .marker(AAMarker()
                         .states(AAMarkerStates()
                             .hover(AAMarkerHover()
@@ -1345,7 +1345,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 AASeriesElement()
                     .name("Tokyo Hot")
                     .lineWidth(5.0)
-                    .color("rgba(220,20,60,1)")//猩红色, alpha 透明度 1
+                    .color(AARgba(220, 20, 60, 1))//猩红色, alpha 透明度 1
                     .marker(AAMarker()
                         .states(AAMarkerStates()
                             .hover(AAMarkerHover()
@@ -1510,11 +1510,11 @@ class CustomStyleChartVC: AABaseChartVC {
             .stacking(.normal)
             .title("Top Rounded Corners Stacking Column Chart")
             .colorsTheme([
-                AAGradientColor.linearGradient(startColor: "rgb(128, 255, 165)", endColor: "rgb(1, 191, 236)"),
-                AAGradientColor.linearGradient(startColor: "rgb(0, 221, 255)", endColor: "rgb(77, 119, 255)"),
-                AAGradientColor.linearGradient(startColor: "rgb(55, 162, 255)", endColor: "rgb(116, 21, 219)"),
-                AAGradientColor.linearGradient(startColor: "rgb(255, 0, 135)", endColor: "rgb(135, 0, 157)"),
-                AAGradientColor.linearGradient(startColor: "rgb(255, 191, 0)", endColor: "rgb(224, 62, 76)"),
+                AAGradientColor.linearGradient(startColor: AARgb(128, 255, 165), endColor: AARgb(1  , 191, 236)),
+                AAGradientColor.linearGradient(startColor: AARgb(0  , 221, 255), endColor: AARgb(77 , 119, 255)),
+                AAGradientColor.linearGradient(startColor: AARgb(55 , 162, 255), endColor: AARgb(116, 21 , 219)),
+                AAGradientColor.linearGradient(startColor: AARgb(255, 0  , 135), endColor: AARgb(135, 0  , 157)),
+                AAGradientColor.linearGradient(startColor: AARgb(255, 191, 0),   endColor: AARgb(224, 62 , 76)),
             ])
             .series([
                 AASeriesElement()
