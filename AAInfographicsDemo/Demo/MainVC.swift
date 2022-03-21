@@ -137,6 +137,8 @@ class MainVC: UIViewController {
                 "customVerticalXAxisCategoriesLabelsByHTMLBreakLineTag---通过 HTML 的换行标签来实现图表的 X 轴的 分类文字标签的换行效果",
                 "noMoreGroupingAndOverlapEachOtherColumnChart---不分组的相互重叠柱状图📊",
                 "noMoreGroupingAndNestedColumnChart---不分组的嵌套柱状图📊",
+                "topRoundedCornersStackingColumnChart---顶部为圆角的堆积柱状图📊",
+                "freeStyleRoundedCornersStackingColumnChart---各个圆角自由独立设置的堆积柱状图📊",
             ],
             /*Mixed Chart*/
             [
