@@ -112,3 +112,11 @@ public func AARgba(
     "rgba(\(red),\(green),\(blue),\(alpha))"
 }
 
+public func AARgb(
+    _ red: Int,
+    _ green: Int,
+    _ blue: Int
+    ) -> String  {
+    AARgba(red, green, blue)
+}
+
