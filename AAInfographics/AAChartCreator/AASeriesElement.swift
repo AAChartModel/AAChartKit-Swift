@@ -39,6 +39,11 @@
     public var lineWidth: Float?           //The line width, It is only valid for line, spline, area, areaspline, arearange and arearangespline chart types
     public var borderWidth: Float?         //The border width, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
     public var borderColor: String?        //The border color, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
+    public var borderRadius: Float?        //The corner radius of the border surrounding each column or bar.
+    public var borderRadiusTopLeft: Any?
+    public var borderRadiusTopRight: Any?
+    public var borderRadiusBottomLeft: Any?
+    public var borderRadiusBottomRight: Any?
     public var fillColor: Any?             //The fill color, It is only valid for area, areaspline, arearange and arearangespline chart types
     public var fillOpacity: Float?         //The fill opacity, It is only valid for area, areaspline, arearange and arearangespline chart types. Note that when you set an explicit fillColor, the fillOpacity is not applied. Instead, you should define the opacity in the fillColor with an rgba color definition. Deafualt value：0.75.
     public var threshold: Float?           //The threshold, also called zero level or base level. For line type series this is only used in conjunction with negativeColor. default：0.
@@ -101,7 +106,37 @@
         borderColor = prop
         return self
     }
-    
+     
+    @discardableResult
+    public func borderRadius(_ prop: Float) -> AASeriesElement {
+        borderRadius = prop
+        return self
+    }
+     
+    @discardableResult
+    public func borderRadiusTopLeft(_ prop: Any) -> AASeriesElement {
+        borderRadiusTopLeft = prop
+        return self
+    }
+     
+    @discardableResult
+    public func borderRadiusTopRight(_ prop: Any) -> AASeriesElement {
+        borderRadiusTopRight = prop
+        return self
+    }
+     
+    @discardableResult
+    public func borderRadiusBottomLeft(_ prop: Any) -> AASeriesElement {
+        borderRadiusBottomLeft = prop
+        return self
+    }
+     
+    @discardableResult
+    public func borderRadiusBottomRight(_ prop: Any) -> AASeriesElement {
+        borderRadiusBottomRight = prop
+        return self
+    }
+
     @discardableResult
     public func fillColor(_ prop: Any) -> AASeriesElement {
         fillColor = prop
