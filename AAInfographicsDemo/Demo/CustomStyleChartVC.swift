@@ -1450,7 +1450,7 @@ class CustomStyleChartVC: AABaseChartVC {
                     .name("正确做题")
                     .color("#00D9CD")
                     .data([28, 18, 26, 40, 40, 46, 39])
-            ]);
+            ])
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/1271
@@ -1476,7 +1476,7 @@ class CustomStyleChartVC: AABaseChartVC {
                     .data([28, 18, 26, 40, 40, 46, 39])
                     .grouping(false)
                     .pointPadding(0.2)
-            ]);
+            ])
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/842
@@ -1500,15 +1500,16 @@ class CustomStyleChartVC: AABaseChartVC {
                 AASeriesElement()
                     .name("Beijing Hot")
                     .data([1.16, 1.67, 2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05, 2.18, 3.24]),
-            ]);
+            ])
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/323
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/346
     private func freeStyleRoundedCornersStackingColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .stacking(.normal)
-            .title("Top Rounded Corners Stacking Column Chart")
+            .title("Free-Style Rounded Corners Stacking Column Chart")
             .colorsTheme([
                 AAGradientColor.linearGradient(startColor: AARgb(128, 255, 165), endColor: AARgb(1  , 191, 236)),
                 AAGradientColor.linearGradient(startColor: AARgb(0  , 221, 255), endColor: AARgb(77 , 119, 255)),
@@ -1545,7 +1546,7 @@ class CustomStyleChartVC: AABaseChartVC {
                     .name("NewYork Hot")
                     .borderRadius(20)
                     .data([2.10, 2.54, 2.78, 3.62, 4.41, 4.09, 3.83, 4.47, 4.20, 3.94, 3.80, 3.58, 3.19, 4.30, 3.69, 3.52, 3.02, 3.30]),
-            ]);
+            ])
     }
     
     
