@@ -1508,14 +1508,14 @@ class CustomStyleChartVC: AABaseChartVC {
     private func freeStyleRoundedCornersStackingColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
-            .stacking(.normal)
+            .stacking(.percent)
             .title("Free-Style Rounded Corners Stacking Column Chart")
             .colorsTheme([
                 AAGradientColor.linearGradient(startColor: AARgb(128, 255, 165), endColor: AARgb(1  , 191, 236)),
                 AAGradientColor.linearGradient(startColor: AARgb(0  , 221, 255), endColor: AARgb(77 , 119, 255)),
                 AAGradientColor.linearGradient(startColor: AARgb(55 , 162, 255), endColor: AARgb(116, 21 , 219)),
                 AAGradientColor.linearGradient(startColor: AARgb(255, 0  , 135), endColor: AARgb(135, 0  , 157)),
-                AAGradientColor.linearGradient(startColor: AARgb(255, 191, 0),   endColor: AARgb(224, 62 , 76)),
+                AAGradientColor.linearGradient(startColor: AARgb(255, 191, 0  ), endColor: AARgb(224, 62 , 76 )),
             ])
             .series([
                 AASeriesElement()
@@ -1533,13 +1533,13 @@ class CustomStyleChartVC: AABaseChartVC {
                 AASeriesElement()
                     .name("Beijing Hot")
                     .borderRadiusTopLeft("50%")
-                    .borderRadiusTopRight("50%")
+                    .borderRadiusBottomRight("50%")
                     .data([1.16, 1.67, 2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05, 2.18, 3.24]),
                 
                 AASeriesElement()
                     .name("London Hot")
+                    .borderRadiusTopRight("50%")
                     .borderRadiusBottomLeft("50%")
-                    .borderRadiusBottomRight("50%")
                     .data([5.59, 3.09, 4.09, 6.14, 5.33, 6.05, 5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.22, 5.77, 6.19, 5.68, 4.33, 5.48]),
                 
                 AASeriesElement()
