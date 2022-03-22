@@ -1505,6 +1505,7 @@ class CustomStyleChartVC: AABaseChartVC {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/323
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/346
+    //https://github.com/highcharts/rounded-corners
     private func freeStyleRoundedCornersStackingColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
