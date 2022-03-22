@@ -30,15 +30,15 @@
  
  */
 
- public class AASeriesElement: AAObject {
+public class AASeriesElement: AAObject {
     public var type: String?               //A chart type series. If the type option is not specified, it is inherited from `chart.type`.
     public var name: String?               //The name of the series as shown in the legend, tooltip etc.
     public var data: [Any]?                //An array of data points for the series
     public var color: Any?                 //The main color or the series. In line type series it applies to the line and the point markers unless otherwise specified. In bar type series it applies to the bars unless a color is specified per point. The default value is pulled from the options.colors array.
     public var colors: [Any]?
     public var lineWidth: Float?           //The line width, It is only valid for line, spline, area, areaspline, arearange and arearangespline chart types
-    public var borderWidth: Float?         //The border width, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
     public var borderColor: String?        //The border color, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
+    public var borderWidth: Float?         //The border width, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
     public var borderRadius: Float?        //The corner radius of the border surrounding each column or bar.
     public var borderRadiusTopLeft: Any?
     public var borderRadiusTopRight: Any?
@@ -96,47 +96,47 @@
     }
     
     @discardableResult
-    public func borderWidth(_ prop: Float) -> AASeriesElement {
-        borderWidth = prop
-        return self
-    }
-    
-    @discardableResult
     public func borderColor(_ prop: String) -> AASeriesElement {
         borderColor = prop
         return self
     }
-     
+    
+    @discardableResult
+    public func borderWidth(_ prop: Float) -> AASeriesElement {
+        borderWidth = prop
+        return self
+    }
+        
     @discardableResult
     public func borderRadius(_ prop: Float) -> AASeriesElement {
         borderRadius = prop
         return self
     }
-     
+    
     @discardableResult
     public func borderRadiusTopLeft(_ prop: Any) -> AASeriesElement {
         borderRadiusTopLeft = prop
         return self
     }
-     
+    
     @discardableResult
     public func borderRadiusTopRight(_ prop: Any) -> AASeriesElement {
         borderRadiusTopRight = prop
         return self
     }
-     
+    
     @discardableResult
     public func borderRadiusBottomLeft(_ prop: Any) -> AASeriesElement {
         borderRadiusBottomLeft = prop
         return self
     }
-     
+    
     @discardableResult
     public func borderRadiusBottomRight(_ prop: Any) -> AASeriesElement {
         borderRadiusBottomRight = prop
         return self
     }
-
+    
     @discardableResult
     public func fillColor(_ prop: Any) -> AASeriesElement {
         fillColor = prop
@@ -250,7 +250,7 @@
         minSize = prop
         return self
     }
-        
+    
     @discardableResult
     public func shadow(_ prop: AAShadow) -> AASeriesElement {
         shadow = prop
@@ -276,10 +276,10 @@
     }
     
     @discardableResult
-     public func tooltip(_ prop: AATooltip) -> AASeriesElement {
-         tooltip = prop
-         return self
-     }
+    public func tooltip(_ prop: AATooltip) -> AASeriesElement {
+        tooltip = prop
+        return self
+    }
     
     @discardableResult
     public func pointPlacement(_ prop: Any) -> AASeriesElement {
@@ -304,9 +304,9 @@
         reversed = prop
         return self
     }
-
+    
     public  override init() {
-    }   
+    }
 }
 
 public class AADataElement: AAObject {
