@@ -31,9 +31,6 @@
 		448330B824E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448330B724E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift */; };
 		449A0ED62377149D009F8FE1 /* ScrollingUpdateDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */; };
 		44EB70A722BCB606008FECE4 /* JSFormatterFunctionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EB70A622BCB606008FECE4 /* JSFormatterFunctionVC.swift */; };
-		840AC397280CFFA200B10289 /* AAAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AC396280CFFA200B10289 /* AAAxis.swift */; };
-		840AC398280CFFA200B10289 /* AAAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AC396280CFFA200B10289 /* AAAxis.swift */; };
-		840AC399280CFFA200B10289 /* AAAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AC396280CFFA200B10289 /* AAAxis.swift */; };
 		840AC39A280CFFA200B10289 /* AAAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AC396280CFFA200B10289 /* AAAxis.swift */; };
 		848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */; };
 		848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */; };
@@ -584,7 +581,6 @@
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
 				448330B824E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift in Sources */,
 				27E475F924B83AE200690657 /* AABaseChartVC.swift in Sources */,
-				840AC397280CFFA200B10289 /* AAAxis.swift in Sources */,
 				277066112452E99C00C4581D /* ScrollableChartVC.swift in Sources */,
 				2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */,
 				27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */,
@@ -603,7 +599,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				840AC398280CFFA200B10289 /* AAAxis.swift in Sources */,
 				278C54C71EE9472300770B97 /* AAInfographicsDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,7 +607,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				840AC399280CFFA200B10289 /* AAAxis.swift in Sources */,
 				278C54D21EE9472300770B97 /* AAInfographicsDemoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

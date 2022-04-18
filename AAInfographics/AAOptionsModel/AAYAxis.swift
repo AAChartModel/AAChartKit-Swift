@@ -30,9 +30,11 @@
  
  */
 
+
 import Foundation
 
 public class AAYAxis: AAAxis {
+    
     public var stackLabels: [String: Any]?
     @discardableResult
     public func stackLabels(_ prop: [String: Any]?) -> AAYAxis {
@@ -40,7 +42,14 @@ public class AAYAxis: AAAxis {
         return self
     }
     ///----------------------------------------------------------
+
     
+    @discardableResult
+    public func allowDecimals(_ prop: Bool?) -> AAYAxis {
+        allowDecimals = prop
+        return self
+    }
+
     @discardableResult
     public func alternateGridColor(_ prop: Any?) -> AAYAxis {
         alternateGridColor = prop
@@ -48,7 +57,13 @@ public class AAYAxis: AAAxis {
     }
     
     @discardableResult
-    public func title(_ prop:AATitle?) -> AAYAxis {
+    public func crosshair(_ prop: AACrosshair?) -> AAYAxis {
+        crosshair = prop
+        return self
+    }
+    
+    @discardableResult
+    public func title(_ prop: AATitle?) -> AAYAxis {
         title = prop
         return self
     }
@@ -66,13 +81,13 @@ public class AAYAxis: AAAxis {
     }
     
     @discardableResult
-    public func plotBands(_ prop: [AAPlotBandsElement]) -> AAYAxis {
+    public func plotBands(_ prop: [AAPlotBandsElement]?) -> AAYAxis {
         plotBands = prop
         return self
     }
     
     @discardableResult
-    public func plotLines(_ prop: [AAPlotLinesElement]) -> AAYAxis {
+    public func plotLines(_ prop: [AAPlotLinesElement]?) -> AAYAxis {
         plotLines = prop
         return self
     }
@@ -90,36 +105,6 @@ public class AAYAxis: AAAxis {
     }
     
     @discardableResult
-    public func gridLineWidth(_ prop: Float?) -> AAYAxis {
-        gridLineWidth = prop
-        return self
-    }
-    
-    @discardableResult
-    public func gridLineColor(_ prop: String?) -> AAYAxis {
-        gridLineColor = prop
-        return self
-    }
-    
-    @discardableResult
-    public func gridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> AAYAxis {
-        gridLineDashStyle = prop?.rawValue
-        return self
-    }
-    
-    @discardableResult
-    public func gridLineInterpolation(_ prop: String?) -> AAYAxis {
-        gridLineInterpolation = prop
-        return self
-    }
-    
-    @discardableResult
-    public func labels(_ prop: AALabels?) -> AAYAxis {
-        labels = prop
-        return self
-    }
-    
-    @discardableResult
     public func lineWidth(_ prop: Float?) -> AAYAxis {
         lineWidth = prop
         return self
@@ -132,26 +117,26 @@ public class AAYAxis: AAAxis {
     }
     
     @discardableResult
-    public func offset(_ prop: Float?) -> AAYAxis {
-        offset = prop
+    public func linkedTo(_ prop: Int?) -> AAYAxis {
+        linkedTo = prop
         return self
     }
     
     @discardableResult
-    public func allowDecimals(_ prop: Bool?) -> AAYAxis {
-        allowDecimals = prop
-        return self
-    }
-    
-    @discardableResult
-    public func max(_ prop: Float?) -> AAYAxis {
+    public func max(_ prop: Double?) -> AAYAxis {
         max = prop
         return self
     }
     
     @discardableResult
-    public func min(_ prop: Float?) -> AAYAxis {
+    public func min(_ prop: Double?) -> AAYAxis {
         min = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minRange(_ prop: Int?) -> AAYAxis {
+        minRange = prop
         return self
     }
     
@@ -210,6 +195,42 @@ public class AAYAxis: AAAxis {
     }
     
     @discardableResult
+    public func gridLineWidth(_ prop: Float?) -> AAYAxis {
+        gridLineWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func gridLineColor(_ prop: String?) -> AAYAxis {
+        gridLineColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func gridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> AAYAxis {
+        gridLineDashStyle = prop?.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func gridLineInterpolation(_ prop: String?) -> AAYAxis {
+        gridLineInterpolation = prop
+        return self
+    }
+    
+    @discardableResult
+    public func offset(_ prop: Float?) -> AAYAxis {
+        offset = prop
+        return self
+    }
+    
+    @discardableResult
+    public func labels(_ prop: AALabels?) -> AAYAxis {
+        labels = prop
+        return self
+    }
+    
+    @discardableResult
     public func visible(_ prop: Bool?) -> AAYAxis {
         visible = prop
         return self
@@ -234,6 +255,12 @@ public class AAYAxis: AAAxis {
     }
     
     @discardableResult
+    public func tickColor(_ prop: String?) -> AAYAxis {
+        tickColor = prop
+        return self
+    }
+    
+    @discardableResult
     public func tickAmount(_ prop: Int?) -> AAYAxis {
         tickAmount = prop
         return self
@@ -246,8 +273,8 @@ public class AAYAxis: AAAxis {
     }
     
     @discardableResult
-    public func crosshair(_ prop: AACrosshair?) -> AAYAxis {
-        crosshair = prop
+    public func tickmarkPlacement(_ prop: String?) -> AAYAxis {
+        tickmarkPlacement = prop
         return self
     }
     
@@ -278,4 +305,5 @@ public class AAYAxis: AAAxis {
     public override init() {
         
     }
+
 }

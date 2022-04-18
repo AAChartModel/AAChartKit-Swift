@@ -115,13 +115,13 @@ public class AAXAxis: AAAxis {
     }
     
     @discardableResult
-    public func max(_ prop: Float?) -> AAXAxis {
+    public func max(_ prop: Double?) -> AAXAxis {
         max = prop
         return self
     }
     
     @discardableResult
-    public func min(_ prop: Float?) -> AAXAxis {
+    public func min(_ prop: Double?) -> AAXAxis {
         min = prop
         return self
     }

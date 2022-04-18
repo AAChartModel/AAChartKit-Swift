@@ -52,8 +52,8 @@ public class AAAxis: AAObject {
     public var lineWidth: Float? // x-axis line width
     public var lineColor: String? // x-axis line color
     public var linkedTo: Int?
-    public var max: Float? // x-axis maximum
-    public var min: Float? // x-axis minimum  (set to 0, there will be no negative numbers)
+    public var max: Double? // x-axis maximum
+    public var min: Double? // x-axis minimum  (set to 0, there will be no negative numbers)
     public var minRange: Int?
     public var minTickInterval: Int? //The minimum tick interval allowed in axis values. For example on zooming in on an axis with daily data, this can be used to prevent the axis from showing hours. Defaults to the closest distance between two points on the axis.
     public var minorGridLineColor: String? //Color of the minor, secondary grid lines.
