@@ -42,6 +42,7 @@ public enum AAChartAxisType: String {
 public class AAAxis: AAObject {
     public var allowDecimals: Bool?
     public var alternateGridColor: Any?
+    public var crosshair: AACrosshair? // Focus line style settings
     public var title: AATitle?
     public var type: String?
     public var dateTimeLabelFormats: AADateTimeLabelFormats?
@@ -69,7 +70,6 @@ public class AAAxis: AAObject {
     public var minorTickPosition: String? //The position of the minor tick marks relative to the axis line. Can be one of inside and outside. Defaults to outside.
     public var minorTickWidth: Float? //The pixel width of the minor tick mark.
     
-    public var tickColor: String? // Color of tick mark below x axis
     public var gridLineWidth: Float? // x-axis grid line width
     public var gridLineColor: String? // x-axis grid line color
     public var gridLineDashStyle: String? // x-axis grid line style
@@ -81,9 +81,9 @@ public class AAAxis: AAObject {
 
     public var startOnTick: Bool? // Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. The default is false.
     public var endOnTick: Bool?// Whether to force the axis to end on a tick. Use this option with the minPadding option to control the axis end. The default is false.
+    public var tickColor: String? // Color of tick mark below x axis
     public var tickAmount: Int?
     public var tickInterval: Float? // Number of ticks on the x axis (set the X axis content every few points:
-    public var crosshair: AACrosshair? // Focus line style settings
     public var tickmarkPlacement: String? // This parameter is only valid for the classification axis. When the value is on, the tick mark will be displayed above the classification; when the value is between, the tick mark will be displayed between the two classifications. When tickInterval is 1, the default is between, otherwise it is on. The default is: null.
     public var tickWidth: Float? // The width of the axis tick marks. When set to 0, tick marks are not displayed.
     public var tickLength: Float? /// The length of the axis tick marks. The default is: 10.
