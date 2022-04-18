@@ -35,11 +35,22 @@ import Foundation
 
 
 public class AAXAxis: AAAxis {
-
+    
+    @discardableResult
+    public func allowDecimals(_ prop: Bool?) -> AAXAxis {
+        allowDecimals = prop
+        return self
+    }
 
     @discardableResult
     public func alternateGridColor(_ prop: Any?) -> AAXAxis {
         alternateGridColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func crosshair(_ prop: AACrosshair?) -> AAXAxis {
+        crosshair = prop
         return self
     }
     
@@ -176,12 +187,6 @@ public class AAXAxis: AAAxis {
     }
     
     @discardableResult
-    public func tickColor(_ prop: String?) -> AAXAxis {
-        tickColor = prop
-        return self
-    }
-    
-    @discardableResult
     public func gridLineWidth(_ prop: Float?) -> AAXAxis {
         gridLineWidth = prop
         return self
@@ -196,6 +201,12 @@ public class AAXAxis: AAAxis {
     @discardableResult
     public func gridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> AAXAxis {
         gridLineDashStyle = prop?.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func gridLineInterpolation(_ prop: String?) -> AAXAxis {
+        gridLineInterpolation = prop
         return self
     }
     
@@ -236,6 +247,12 @@ public class AAXAxis: AAAxis {
     }
     
     @discardableResult
+    public func tickColor(_ prop: String?) -> AAXAxis {
+        tickColor = prop
+        return self
+    }
+    
+    @discardableResult
     public func tickAmount(_ prop: Int?) -> AAXAxis {
         tickAmount = prop
         return self
@@ -244,12 +261,6 @@ public class AAXAxis: AAAxis {
     @discardableResult
     public func tickInterval(_ prop: Float?) -> AAXAxis {
         tickInterval = prop
-        return self
-    }
-    
-    @discardableResult
-    public func crosshair(_ prop: AACrosshair?) -> AAXAxis {
-        crosshair = prop
         return self
     }
     
