@@ -32,54 +32,15 @@
 
 import Foundation
 
-public class AAYAxis: AAObject {
-    public var alternateGridColor: Any?
-    public var title: AATitle?
-    public var type: String?
-    public var dateTimeLabelFormats: AADateTimeLabelFormats?
-    public var plotBands: [AAPlotBandsElement]?
-    public var plotLines: [AAPlotLinesElement]?
-    public var categories: [String]?
-    public var reversed: Bool?
-    public var gridLineWidth: Float? // y-axis grid line width
-    public var gridLineColor: String? // y-axis grid line color
-    public var gridLineDashStyle: String? // Grid line line style, all available line style references: Highcharts line style
-    public var gridLineInterpolation: String? // Polar charts only. Whether the grid lines should draw as a polygon with straight lines between categories, or as circles. Can be either circle or polygon. The default is: null.
-    public var labels: AALabels? // Used to set the y-axis text related
-    public var lineWidth: Float? // y-axis width
-    public var lineColor: String? // y--axis line color
-    public var offset: Float? // y-axis horizontal offset
-    public var allowDecimals: Bool? // Does the y-axis allow decimals to be displayed?
-    public var max: Double? // y-axis maximum
-    public var min: Double? // y-axis minimum  (set to 0, there will be no negative numbers)
-    // private var minPadding: // Padding of the min value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the lowest data value to appear on the edge of the plot area. The default is: 0.05.
-    public var minTickInterval: Int? //The minimum tick interval allowed in axis values. For example on zooming in on an axis with daily data, this can be used to prevent the axis from showing hours. Defaults to the closest distance between two points on the axis.
-    public var minorGridLineColor: String? //Color of the minor, secondary grid lines.
-    public var minorGridLineDashStyle: String? //The dash or dot style of the minor grid lines.
-    public var minorGridLineWidth: Float? //Width of the minor, secondary grid lines.
-    public var minorTickColor: String? //Color for the minor tick marks.
-    public var minorTickInterval: Any?/*Specific tick interval in axis units for the minor ticks. On a linear axis, if "auto", the minor tick interval is calculated as a fifth of the tickInterval. If null or undefined, minor ticks are not shown.
-     
-     On logarithmic axes, the unit is the power of the value. For example, setting the minorTickInterval to 1 puts one tick on each of 0.1, 1, 10, 100 etc. Setting the minorTickInterval to 0.1 produces 9 ticks between 1 and 10, 10 and 100 etc.
-
-    If user settings dictate minor ticks to become too dense, they don't make sense, and will be ignored to prevent performance problems.*/
-    public var minorTickLength: Float? //The pixel length of the minor tick marks.
-    public var minorTickPosition: String? //The position of the minor tick marks relative to the axis line. Can be one of inside and outside. Defaults to outside.
-    public var minorTickWidth: Float? //The pixel width of the minor tick mark.
-    
-    public var visible: Bool? // Whether the y-axis is allowed to display
-    public var opposite: Bool? // Whether to display the coordinate axis on the opposite surface. By default, the x axis is displayed below the chart, the y axis is on the left, the coordinate axis is displayed on the opposite surface, and the x axis is displayed on the top. The axis is displayed on the right (that is, the coordinate axis is displayed on the opposite side). This configuration is generally used for multi-axis display, and in Highstock, the y-axis is displayed on the opposite side by default. The default is: false.
-    public var startOnTick: Bool? //Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. The default is: false.
-    public var endOnTick: Bool?
-    public var tickAmount: Int?
-    public var tickInterval: Float?
-    public var crosshair: AACrosshair? // Crosshair (focus line) style settings
+public class AAYAxis: AAAxis {
     public var stackLabels: [String: Any]?
-    public var tickWidth: Float? // The width of the axis tick marks. When set to 0, tick marks are not displayed.
-    public var tickLength: Float? // The length of the axis tick marks. The default is: 10.
-    public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
-    public var tickPositions: [Any]? // Custom Y-axis coordinates (eg: [0, 25, 50, 75, 100])
-
+    @discardableResult
+    public func stackLabels(_ prop: [String: Any]?) -> AAYAxis {
+        stackLabels = prop
+        return self
+    }
+    ///----------------------------------------------------------
+    
     @discardableResult
     public func alternateGridColor(_ prop: Any?) -> AAYAxis {
         alternateGridColor = prop
@@ -183,13 +144,13 @@ public class AAYAxis: AAObject {
     }
     
     @discardableResult
-    public func max(_ prop: Double?) -> AAYAxis {
+    public func max(_ prop: Float?) -> AAYAxis {
         max = prop
         return self
     }
     
     @discardableResult
-    public func min(_ prop: Double?) -> AAYAxis {
+    public func min(_ prop: Float?) -> AAYAxis {
         min = prop
         return self
     }
@@ -287,12 +248,6 @@ public class AAYAxis: AAObject {
     @discardableResult
     public func crosshair(_ prop: AACrosshair?) -> AAYAxis {
         crosshair = prop
-        return self
-    }
-    
-    @discardableResult
-    public func stackLabels(_ prop: [String: Any]?) -> AAYAxis {
-        stackLabels = prop
         return self
     }
     
