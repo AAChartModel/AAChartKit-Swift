@@ -34,8 +34,8 @@
 import Foundation
 
 public class AAYAxis: AAAxis {
-    
     public var stackLabels: [String: Any]?
+    
     @discardableResult
     public func stackLabels(_ prop: [String: Any]?) -> AAYAxis {
         stackLabels = prop

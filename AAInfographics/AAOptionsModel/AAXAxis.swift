@@ -32,10 +32,7 @@
 
 import Foundation
 
-
-
 public class AAXAxis: AAAxis {
-    
     @discardableResult
     public func allowDecimals(_ prop: Bool?) -> AAXAxis {
         allowDecimals = prop
