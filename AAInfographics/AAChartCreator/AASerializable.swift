@@ -45,16 +45,13 @@ public extension AAObject {
 
 @available(iOS 9.0, macCatalyst 13.0, *)
 public extension AAObject {
-    func toDic() -> [String: Any]? {
-        var representation = [String: Any]()
-        
-        let mirrorChildren = Mirror(reflecting: self).children
+    fileprivate func loopForMirrorChildren(_ mirrorChildren: Mirror.Children, _ representation: inout [String : Any]) {
         for case let (label?, value) in mirrorChildren {
             switch value {
             case let value as AAObject: do {
                 representation[label] = value.toDic()
             }
-            
+                
             case let value as [AAObject]: do {
                 var aaObjectArr = [Any]()
                 
@@ -67,15 +64,27 @@ public extension AAObject {
                 
                 representation[label] = aaObjectArr
             }
-            
+                
             case let value as NSObject: do {
                 representation[label] = value
             }
-            
+                
             default:
                 // Ignore any unserializable properties
                 break
             }
+        }
+    }
+    
+    func toDic() -> [String: Any]? {
+        var representation = [String: Any]()
+        
+        let mirrorChildren = Mirror(reflecting: self).children
+        loopForMirrorChildren(mirrorChildren, &representation)
+        
+        let superMirrorChildren = Mirror(reflecting: self).superclassMirror?.children
+        if superMirrorChildren?.count ?? 0 > 0 {
+            loopForMirrorChildren(superMirrorChildren!, &representation)
         }
         
         return representation as [String: Any]?
