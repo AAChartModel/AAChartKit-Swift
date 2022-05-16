@@ -64,8 +64,9 @@ class JSFormatterFunctionVC: AABaseChartVC {
         case 19: return customAreasplineChartTooltipStyleByDivWithCSS()
         case 20: return configureTheAxesLabelsFormattersOfDoubleYAxesChart()
         case 21: return configureTheAxesLabelsFormattersOfDoubleYAxesChart2()
-        case 22: return makePieChartShow0Data()
-        case 23: return customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters()
+        case 22: return configureTheAxesLabelsFormattersOfDoubleYAxesChart3()
+        case 23: return makePieChartShow0Data()
+        case 24: return customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters()
             
         default:
             return AAOptions()
@@ -1515,6 +1516,127 @@ function () {
                     return formattedYValue;
                 }
                """)
+            )
+            .gridLineWidth(0)
+            .title(AATitle()
+                .text("以『万』为单位")
+                .style(AAStyle(color: AAColor.red, fontSize: 14, weight: .bold)))
+            .opposite(true)
+        
+        let aaTooltip = AATooltip()
+            .enabled(true)
+            .shared(true)
+        
+        let seriesArr = [
+            AASeriesElement()
+                .name("2020")
+                .type(.spline)
+                .lineWidth(7)
+                .color(AAGradientColor.deepSea)
+                .yAxis(1)
+                .data([
+                    0, 71.5, 106.4, 129.2, 144.0, 176.0,
+                    135.6, 148.5, 216.4, 194.1, 95.6, 54.4
+                ]),
+            AASeriesElement()
+                .name("2021")
+                .type(.spline)
+                .lineWidth(7)
+                .color(AAGradientColor.sanguine)
+                .yAxis(0)
+                .data([
+                    135.6, 148.5, 216.4, 194.1, 95.6, 54.4,
+                    0, 71.5, 106.4, 129.2, 144.0, 176.0
+                ])
+        ]
+        
+        let aaOptions = AAOptions()
+            .chart(aaChart)
+            .title(aaTitle)
+            .plotOptions(aaPlotOptions)
+            .xAxis(aaXAxis)
+            .yAxisArray([yAxis1,yAxis2])
+            .tooltip(aaTooltip)
+            .series(seriesArr)
+        
+        return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1324
+    //https://github.com/AAChartModel/AAChartKit/issues/1330
+    func configureTheAxesLabelsFormattersOfDoubleYAxesChart3() -> AAOptions {
+        let aaChart = AAChart()
+            .backgroundColor(AAColor.white)
+        
+        let aaTitle = AATitle()
+            .text("")
+        
+        let aaXAxis = AAXAxis()
+            .visible(true)
+            .min(0)
+            .categories([
+                "Java", "Swift", "Python", "Ruby", "PHP", "Go","C",
+                "C#", "C++", "Perl", "R", "MATLAB", "SQL"
+            ])
+        
+        let aaPlotOptions = AAPlotOptions()
+            .series(AASeries()
+                .marker(AAMarker()
+                    .radius(7)//曲线连接点半径，默认是4
+                    .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                    .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
+                    .lineWidth(3)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                    .lineColor("")//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                ))
+        
+        let yAxis1 = AAYAxis()
+            .visible(true)
+            .lineWidth(1)
+            .startOnTick(false)
+            .endOnTick(false)
+            .tickPositions([0, 50, 100, 150, 200])
+            .labels(AALabels()
+                .enabled(true)
+                .style(AAStyle()
+                    .color("DodgerBlue"))
+                    .formatter("""
+                function () {
+                    var yValue = this.value;
+                    var unitStr = '千';
+                    if (yValue == 0) {
+                        unitStr = '';
+                    }
+                    var formattedYValue = (yValue / 1000).toFixed(3) + unitStr;
+                    return formattedYValue;
+                }
+               """)//Y轴文字数值为 0 的时候, 不显示单位
+            )
+            .gridLineWidth(0)
+            .title(AATitle()
+                .text(#"以「千」为单位"#)
+                .style(AAStyle(color: "DodgerBlue", fontSize: 14, weight: .bold)))
+        
+        let yAxis2 = AAYAxis()
+            .visible(true)
+            .lineWidth(1)
+            .startOnTick(false)
+            .endOnTick(false)
+            .tickPositions([0, 50, 100, 150, 200])
+            .labels(AALabels()
+                .enabled(true)
+                .style(AAStyle()
+                    .color(AAColor.red))
+                    .formatter("""
+                function () {
+                    var yValue = this.value;
+                    var unitStr = '万';
+                    if (yValue == 0) {
+                        unitStr = '';
+                    }
+                    var formattedYValue = (yValue / 10000).toFixed(4) + unitStr;
+                    return formattedYValue;
+                }
+               """)//Y轴文字数值为 0 的时候, 不显示单位
             )
             .gridLineWidth(0)
             .title(AATitle()
