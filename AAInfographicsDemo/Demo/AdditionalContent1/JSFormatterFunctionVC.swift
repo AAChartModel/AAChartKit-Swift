@@ -73,6 +73,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
         }
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/569
     private func customAreaChartTooltipStyleWithSimpleFormatString() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
@@ -130,6 +131,8 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/647
+    //https://github.com/AAChartModel/AAChartKit/issues/891
     private func customAreaChartTooltipStyleWithDifferentUnitSuffix() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
@@ -182,6 +185,7 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/653
     private func customAreaChartTooltipStyleWithColorfulHtmlLabels() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
@@ -242,6 +246,7 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/651
     private func customLineChartTooltipStyleWhenValueBeZeroDoNotShow() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
@@ -310,6 +315,10 @@ function () {
                         ])
                     ,
                 ])
+        
+        //https://jshare.com.cn/demos/hhhhiQ
+        //https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/tooltip/footerformat/
+        //pointFormat: '' + // eslint-disable-line no-dupe-keys
         let pointFormatStr = (
             "◉</span> <b> {series.name}</b><br/>"
             + "最大值: {point.high}<br/>"
@@ -332,6 +341,7 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/675
     private func customYAxisLabels() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
@@ -421,6 +431,7 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/685
     private func customStackedAndGroupedColumnChartTooltip() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("Total fruit consumtion, grouped by gender")
@@ -475,6 +486,7 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/780
     private func customDoubleXAxesChart() -> AAOptions {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toTop,
@@ -579,6 +591,7 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/781
     private func customArearangeChartTooltip() -> AAOptions {
         let aaChartModel = AAChartModel()
             .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
@@ -652,6 +665,8 @@ function () {
                 return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/577
+    //https://github.com/AAChartModel/AAChartKit/issues/937
     private func customLineChartOriginalPointPositionByConfiguringXAxisFormatterAndTooltipFormatter() -> AAOptions {
         let categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         
@@ -710,6 +725,7 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit/issues/826
     private func customTooltipWhichDataSourceComeFromOutSideRatherThanSeries() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
