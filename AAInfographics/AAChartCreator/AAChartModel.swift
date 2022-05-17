@@ -69,25 +69,25 @@
 }
 
 public enum AAChartType: String {
-    case column
-    case bar
-    case area
-    case areaspline
-    case line
-    case spline
-    case scatter
-    case pie
-    case bubble
-    case pyramid
-    case funnel
-    case columnrange
-    case arearange
-    case areasplinerange
-    case boxplot
-    case waterfall
-    case polygon
-    case gauge
-    case errorbar
+    case column          //Column series display one column per value along an X axis.
+    case bar             //A bar series is a special type of column series where the columns are horizontal.
+    case area            //The area series type.
+    case areaspline      //The area spline series is an area series where the graph between the points is smoothed into a spline.
+    case line            //A line series displays information as a series of data points connected by straight line segments.
+    case spline          //A spline series is a special type of line series, where the segments between the data points are smoothed.
+    case scatter         //A scatter plot uses cartesian coordinates to display values for two variables for a set of data.
+    case pie             //A pie chart is a circular graphic which is divided into slices to illustrate numerical proportion.
+    case bubble          //A bubble series is a three dimensional series type where each point renders an X, Y and Z value. Each points is drawn as a bubble where the position along the X and Y axes mark the X and Y values, and the size of the bubble relates to the Z value.
+    case pyramid         //A pyramid series is a special type of funnel, without neck and reversed by default.
+    case funnel          //Funnel charts are a type of chart often used to visualize stages in a sales project, where the top are the initial stages with the most clients. It requires that the modules/funnel.js file is loaded.
+    case columnrange     //The column range is a cartesian series type with higher and lower Y values along an X axis. To display horizontal bars, set chart.inverted to true.
+    case arearange       //The area range series is a carteseian series with higher and lower values for each point along an X axis, where the area between the values is shaded.
+    case areasplinerange //The area spline range is a cartesian series type with higher and lower Y values along an X axis. The area inside the range is colored, and the graph outlining the area is a smoothed spline.
+    case boxplot         //A box plot is a convenient way of depicting groups of data through their five-number summaries: the smallest observation (sample minimum), lower quartile (Q1), median (Q2), upper quartile (Q3), and largest observation (sample maximum).
+    case waterfall       //A waterfall chart displays sequentially introduced positive or negative values in cumulative columns.
+    case polygon         //A polygon series can be used to draw any freeform shape in the cartesian coordinate system. A fill is applied with the color option, and stroke is applied through lineWidth and lineColor options.
+    case gauge           //Gauges are circular plots displaying one or more values with a dial pointing to values along the perimeter.
+    case errorbar        //Error bars are a graphical representation of the variability of data and are used on graphs to indicate the error, or uncertainty in a reported measurement.
 }
 
 public enum AAChartLayoutType: String {
@@ -111,7 +111,11 @@ public enum AAChartStackingType: String {
 }
 
 public enum AAChartSymbolType: String {
-    case circle, square, diamond, triangle, triangleDown  = "triangle-down"
+    case circle,   //◉ ◉ ◉
+    case square,   //■ ■ ■
+    case diamond,  //◆ ◆ ◆
+    case triangle, //▲ ▲ ▲
+    case triangleDown  = "triangle-down" //▼ ▼ ▼
 }
 
 public enum AAChartSymbolStyleType: String {
@@ -123,17 +127,16 @@ public enum AAChartFontWeightType: String {
 }
 
 public enum AAChartLineDashStyleType: String {
-    case solid
-    case shortDash
-    case shortDot
-    case shortDashDot
-    case shortDashDotDot
-    case dot
-    case dash
-    case longDash
-    case dashDot
-    case longDashDot
-    case longDashDotDot
+    case solid           //———————————————————————————————————
+    case shortDash       //— — — — — — — — — — — — — — — — — —
+    case shortDashDot    //—.—.—.—.—.—.—.—.—.—.—.—.—.—.—.—.—.—.
+    case shortDashDotDot //—..—..—..—..—..—..—..—..—..—..—..—..
+    case dot             //...................................
+    case dash            //—— —— —— —— —— —— —— —— —— —— —— ——
+    case longDash        //——— ——— ——— ——— ——— ——— ——— ——— ———
+    case dashDot         //——.——.——.——.——.——.——.——.——.——.——.——.
+    case longDashDot     //———.———.———.———.———.———.———.———.———.
+    case longDashDotDot  //———..———..———..———..———..———..———..
 }
 
 
