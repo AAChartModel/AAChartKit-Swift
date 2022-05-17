@@ -129,14 +129,14 @@ public enum AAChartFontWeightType: String {
 public enum AAChartLineDashStyleType: String {
     case solid           //———————————————————————————————————
     case shortDash       //— — — — — — — — — — — — — — — — — —
-    case shortDashDot    //—.—.—.—.—.—.—.—.—.—.—.—.—.—.—.—.—.—.
-    case shortDashDotDot //—..—..—..—..—..—..—..—..—..—..—..—..
-    case dot             //...................................
+    case shortDashDot    //—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧
+    case shortDashDotDot //—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧
+    case dot             //‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧
     case dash            //—— —— —— —— —— —— —— —— —— —— —— ——
     case longDash        //——— ——— ——— ——— ——— ——— ——— ——— ———
-    case dashDot         //——.——.——.——.——.——.——.——.——.——.——.——.
-    case longDashDot     //———.———.———.———.———.———.———.———.———.
-    case longDashDotDot  //———..———..———..———..———..———..———..
+    case dashDot         //——‧——‧——‧——‧——‧——‧——‧——‧——‧——‧——‧——‧
+    case longDashDot     //———‧———‧———‧———‧———‧———‧———‧———‧———‧
+    case longDashDotDot  //———‧‧———‧‧———‧‧———‧‧———‧‧———‧‧———‧‧
 }
 
 
