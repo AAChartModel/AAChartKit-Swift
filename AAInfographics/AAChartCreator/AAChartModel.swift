@@ -111,10 +111,10 @@ public enum AAChartStackingType: String {
 }
 
 public enum AAChartSymbolType: String {
-    case circle,   //◉ ◉ ◉
-    case square,   //■ ■ ■
-    case diamond,  //◆ ◆ ◆
-    case triangle, //▲ ▲ ▲
+    case circle   //◉ ◉ ◉
+    case square   //■ ■ ■
+    case diamond  //◆ ◆ ◆
+    case triangle //▲ ▲ ▲
     case triangleDown  = "triangle-down" //▼ ▼ ▼
 }
 
