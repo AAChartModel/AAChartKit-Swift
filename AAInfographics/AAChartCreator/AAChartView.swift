@@ -652,7 +652,7 @@ extension AAChartView {
 @available(iOS 9.0, macCatalyst 13.0, *)
 extension AAChartView {
     
-     func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
+    func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
         if !JSONSerialization.isValidJSONObject(dictionary) {
             print("❌ String object is not valid Dictionary JSON String")
             return ""
