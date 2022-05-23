@@ -305,7 +305,7 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
-    public func margin(_ prop: [Any]?) -> AAChartModel {
+    public func margin(_ prop: [Any?]?) -> AAChartModel {
         margin = prop
         return self
     }
