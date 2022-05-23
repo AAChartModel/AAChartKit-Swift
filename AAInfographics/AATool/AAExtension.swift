@@ -30,7 +30,6 @@
  
  */
 
-import UIKit
 
 public extension AAStyle {
     convenience init(color : String?) {

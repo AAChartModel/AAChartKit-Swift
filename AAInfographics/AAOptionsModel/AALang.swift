@@ -30,7 +30,6 @@
  
  */
 
-import UIKit
 
 public class AALang: AAObject {
     public var noData: String?

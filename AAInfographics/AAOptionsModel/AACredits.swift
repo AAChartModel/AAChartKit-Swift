@@ -30,7 +30,6 @@
  
  */
 
-import UIKit
 
 public class AACredits: AAObject {
     public var enabled: Bool?
