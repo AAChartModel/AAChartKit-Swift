@@ -148,7 +148,7 @@ class AnimationTypeVC: UIViewController {
                                     y: 60,
                                     width: chartViewWidth,
                                     height: chartViewHeight)
-        aaChartView?.scrollEnabled = false
+        aaChartView?.isScrollEnabled = false
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
         aaChartView?.contentHeight = chartViewHeight - 20
         view.addSubview(aaChartView!)

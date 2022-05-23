@@ -72,7 +72,7 @@ class BasicChartVC: UIViewController {
                                     width: chartViewWidth,
                                     height: chartViewHeight)
         view.addSubview(aaChartView!)
-        aaChartView!.scrollEnabled = false//Disable chart content scrolling
+        aaChartView!.isScrollEnabled = false//Disable chart content scrolling
         aaChartView!.isClearBackgroundColor = true
         aaChartView!.delegate = self as AAChartViewDelegate
         

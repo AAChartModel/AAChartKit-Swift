@@ -57,7 +57,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
                                     y: 60,
                                     width: chartViewWidth,
                                     height: screenHeight / 2 - 80)
-        aaChartView1.scrollEnabled = false
+        aaChartView1.isScrollEnabled = false
         aaChartView1.delegate = self
 //        aaChartView1.contentHeight = (screenHeight / 2) - 20
         view.addSubview(aaChartView1)
@@ -104,7 +104,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
                                     y:screenHeight / 2 + 60 - 80,
                                     width:chartViewWidth,
                                     height:screenHeight / 2 + 80)
-        aaChartView2.scrollEnabled = false
+        aaChartView2.isScrollEnabled = false
         view.addSubview(aaChartView2)
         
         aaChartModel2

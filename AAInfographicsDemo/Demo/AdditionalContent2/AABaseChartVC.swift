@@ -82,7 +82,7 @@ class AABaseChartVC: UIViewController {
     
     private func setupChartView() {
         aaChartView = AAChartView()
-        aaChartView!.scrollEnabled = false
+        aaChartView!.isScrollEnabled = false
         aaChartView!.delegate = self as AAChartViewDelegate
         aaChartView!.aa_adaptiveScreenRotation()
         view.addSubview(aaChartView!)
@@ -240,7 +240,7 @@ class AABaseChartVC: UIViewController {
                 .style(AAStyle()
                     .color(AAColor.red)
                     .fontSize(9))
-            aaChartView?.scrollEnabled = true
+            aaChartView?.isScrollEnabled = true
             aaChartView?.aa_refreshChartWholeContentWithChartOptions(aaOptions)
         }
     }

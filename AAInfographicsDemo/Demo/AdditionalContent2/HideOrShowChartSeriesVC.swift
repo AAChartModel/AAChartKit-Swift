@@ -62,7 +62,7 @@ class HideOrShowChartSeriesVC: UIViewController {
                                     height: chartViewHeight)
         ///AAChartViewd的内容高度(内容高度默认和 AAChartView 等高)
         aaChartView?.contentHeight = chartViewHeight - 20
-        aaChartView?.scrollEnabled = false
+        aaChartView?.isScrollEnabled = false
         view.addSubview(aaChartView!)
         
     let aaChartModel = AAChartModel()

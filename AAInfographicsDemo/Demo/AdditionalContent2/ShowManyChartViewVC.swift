@@ -56,7 +56,7 @@ class ShowManyChartViewVC: UIViewController {
                                    y: 60,
                                    width: chartViewWidth,
                                    height: screenHeight / 2)
-        aaChartView.scrollEnabled = false
+        aaChartView.isScrollEnabled = false
         aaChartView.contentHeight = (screenHeight / 2) - 20
         view.addSubview(aaChartView)
         
@@ -100,7 +100,7 @@ class ShowManyChartViewVC: UIViewController {
                                     y:screenHeight / 2 + 60,
                                     width:chartViewWidth,
                                     height:screenHeight / 2)
-        aaChartView2.scrollEnabled = false
+        aaChartView2.isScrollEnabled = false
         view.addSubview(aaChartView2)
         
         let  aaChartModel2 = AAChartModel()

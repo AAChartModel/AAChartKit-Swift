@@ -55,7 +55,7 @@ class EvaluateJSStringFunctionVC: UIViewController, AAChartViewDelegate {
                                    y: 60,
                                    width: chartViewWidth,
                                    height: screenHeight)
-        aaChartView.scrollEnabled = false
+        aaChartView.isScrollEnabled = false
         aaChartView.contentHeight = screenHeight - 20
         aaChartView.delegate = self
         view.addSubview(aaChartView)
