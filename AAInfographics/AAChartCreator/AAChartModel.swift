@@ -158,7 +158,7 @@ public class AAChartModel: AAObject {
     public var xAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
     public var yAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
     public var polar: Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
-    public var margin: [Any]?
+    public var margin: [Any?]?
     public var dataLabelsEnabled: Bool?     //Enable or disable the data labels. Defaults to false
     public var dataLabelsStyle: AAStyle?    //The data labels style
     public var xAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
@@ -312,12 +312,12 @@ public class AAChartModel: AAObject {
     
     @discardableResult
     public func margin(
-        top: Any = NSNull(),
-        right: Any = NSNull(),
-        bottom: Any = NSNull(),
-        left: Any = NSNull()
+        top: Any? = nil,
+        right: Any? = nil,
+        bottom: Any? = nil,
+        left: Any? = nil
     ) -> AAChartModel {
-        margin = [
+        margin =  [
             top,
             right,
             bottom,
