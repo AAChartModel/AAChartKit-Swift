@@ -4,7 +4,8 @@ import PackageDescription
 let package = Package(
      name: "AAInfographics",
      platforms: [
-         .iOS(.v9)
+         .iOS(.v9),
+         .macOS(.v10_11)
      ],
      products: [
          .library(name: "AAInfographics", targets: ["AAInfographics"])
