@@ -3,7 +3,7 @@
 //  AAInfographicsDemo
 //
 //  Created by Aleksandar Vacić on 2020/12/15.
-//  Copyright © 2022 Aleksandar Vacić. All rights reserved.
+//  Copyright © 2022 An An. All rights reserved.
 //*************** ...... SOURCE CODE ...... ***************
 //***...................................................***
 //*** https://github.com/AAChartModel/AAChartKit        ***
