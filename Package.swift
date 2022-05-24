@@ -13,7 +13,7 @@ let package = Package(
         .target(
 			name: "AAInfographics",
 			path: "AAInfographics",
-            exclude: ["Info.plist"],
+            exclude: ["Info.plist", "ProjectBundlePathLoader.swift"],
 			resources: [
 				.copy("AAJSFiles.bundle")
 			]
