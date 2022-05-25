@@ -124,7 +124,10 @@ github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 1.0
         let chartViewWidth  = self.view.frame.size.width
         let chartViewHeight = self.view.frame.size.height
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
+        aaChartView?.frame = CGRect(x: 0,
+                                    y: 60,
+                                    width: chartViewWidth,
+                                    height: chartViewHeight)
         // 设置 aaChartView 的内容高度(content height)
         // aaChartView?.contentHeight = self.view.frame.size.height
         self.view.addSubview(aaChartView!)
@@ -387,7 +390,27 @@ enum AAChartZoomType: String {
 }
 ```
 
-NOTE:例如,设置了`AAChartModel`的缩放属性`zoomType`为`AAChartZoomType.X`,并且将图表进行了手势放大之后,这时候如果想要左右滑动图表,可以使用 **双指点按** 屏幕中的`AAChartView`视图区域进行 **左右拖动** 即可.同时屏幕的右上角会自动出现一个标题为 **"恢复缩放"** 的按钮,点击恢复缩放,图表大小和位置将会回归到原初的样式.
+
+NOTE:例如,设置了`AAChartModel`的缩放属性`zoomType`为`AAChartZoomType.X`,并且将图表进行了 X 轴水平方向手势放大之后,这时候如果想要左右滑动图表,可以使用 **双指点按** 屏幕中的`AAChartView`视图区域进行 **左右拖动** 即可.同时屏幕的右上角会自动出现一个标题为 **"恢复缩放"** 的按钮,点击恢复缩放,图表大小和位置将会回归到原初的样式.
+
+
+### 当前已支持的图表线条类型共有十一种,说明如下
+
+```swift
+public enum AAChartLineDashStyleType: String {
+    case solid           //———————————————————————————————————
+    case shortDash       //— — — — — — — — — — — — — — — — — —
+    case shortDot        //ⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈ
+    case shortDashDot    //—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧
+    case shortDashDotDot //—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧
+    case dot             //‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧
+    case dash            //—— —— —— —— —— —— —— —— —— —— —— ——
+    case longDash        //——— ——— ——— ——— ——— ——— ——— ——— ———
+    case dashDot         //——‧——‧——‧——‧——‧——‧——‧——‧——‧——‧——‧——‧
+    case longDashDot     //———‧———‧———‧———‧———‧———‧———‧———‧———‧
+    case longDashDotDot  //———‧‧———‧‧———‧‧———‧‧———‧‧———‧‧———‧‧
+}
+```
 
 ### 当前已支持的图表渲染动画类型有三十种以上
 
@@ -417,55 +440,59 @@ symbol | AAChartSymbolType | 预定义的图表曲线连接点的样式类型.�
 
 * ### AAChartModel 所有属性列表说明
 ```swift
-public var animationType: AAChartAnimationType?        //动画类型
-public var animationDuration: Int?                     //动画时间
-public var title: String?                              //标题内容
-public var titleFontColor: String?                     //标题字体颜色
-public var titleFontSize: Float?                       //标题字体大小
-public var titleFontWeight: AAChartFontWeightType?     //标题字体粗细
-public var subtitle: String?                           //副标题内容
-public var subtitleAlign: AAChartAlignType?            //副标题文本水平对齐方式
-public var subtitleFontColor: String?                  //副标题字体颜色
-public var subtitleFontSize: Float?                    //副标题字体大小
-public var subtitleFontWeight: AAChartFontWeightType?  //副标题字体粗细
-public var axesTextColor: String?                      //x 轴和 y 轴文字颜色
-public var chartType: AAChartType?                     //图表类型
-public var stacking: AAChartStackingType?              //堆积样式
-public var markerSymbol: AAChartSymbolType?            //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-public var markerSymbolStyle: AAChartSymbolStyleType?  //折线或者曲线的连接点是否为空心的
-public var zoomType: AAChartZoomType?                  //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
-public var inverted: Bool?                             //x 轴是否翻转(垂直)
-public var xAxisReversed: Bool?                        //x 轴翻转
-public var yAxisReversed: Bool?                        //y 轴翻转
-public var polar: Bool?                                //是否极化图形(变为雷达图)
-public var margin: [Float]?                            //图表外边缘和绘图区域之间的边距. 数组中的数字分别表示顶部，右侧，底部和左侧
-public var dataLabelsEnabled: Bool?                    //数据标签是否显示
-public var dataLabelsFontColor: String?                //数据标签的字体颜色
-public var dataLabelsFontSize: Float?                  //数据标签的字体大小
-public var dataLabelsFontWeight: AAChartFontWeightType?//数据标签的字体粗细
-public var xAxisLabelsEnabled: Bool?                   //x 轴是否显示数据
-public var categories: [String]?                       //x 轴是否显示数据
-public var xAxisGridLineWidth: Float?                  //x 轴网格线的宽度
-public var xAxisVisible: Bool?                         //x 轴是否显示
-public var xAxisTickInterval: Int?                     //x 轴刻度线间隔
-public var yAxisVisible: Bool?                         //y 轴是否显示
-public var yAxisLabelsEnabled: Bool?                   //y 轴是否显示数据
-public var yAxisTitle: String?                         //y 轴标题
-public var yAxisLineWidth: Float?                      //y 轴轴线的宽度
-public var yAxisMin: Float?                            //y 轴起始位置的最小值
-public var yAxisMax: Float?                            //y 轴结束位置的最大值
-public var yAxisAllowDecimals: Bool?                   //y 轴是否允许小数
-public var yAxisGridLineWidth: Float?                  //y 轴网格线的宽度
-public var tooltipEnabled: Bool?                       //是否显示浮动提示框(默认显示)
-public var tooltipValueSuffix: String?                 //浮动提示框单位后缀
-public var tooltipCrosshairs: Bool?                    //是否显示准星线(默认显示)
-public var colorsTheme: [Any]?                         //图表主题颜色数组
-public var series: [Any]?                              //图表的数据数组
-public var legendEnabled: Bool?                        //是否显示图例
-public var backgroundColor: Any?                       //图表背景色
-public var borderRadius: Int?                          //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
-public var markerRadius: Int?                          //折线连接点的半径长度
-public var touchEventEnabled: Bool?                    //是否支持触摸事件回调
+public class AAChartModel: AAObject {
+    public var animationType: AAChartAnimationType?        //动画类型
+    public var animationDuration: Int?                     //动画时间
+    public var title: String?                              //标题内容
+    public var titleFontColor: String?                     //标题字体颜色
+    public var titleFontSize: Float?                       //标题字体大小
+    public var titleFontWeight: AAChartFontWeightType?     //标题字体粗细
+    public var subtitle: String?                           //副标题内容
+    public var subtitleAlign: AAChartAlignType?            //副标题文本水平对齐方式
+    public var subtitleFontColor: String?                  //副标题字体颜色
+    public var subtitleFontSize: Float?                    //副标题字体大小
+    public var subtitleFontWeight: AAChartFontWeightType?  //副标题字体粗细
+    public var axesTextColor: String?                      //x 轴和 y 轴文字颜色
+    public var chartType: AAChartType?                     //图表类型
+    public var stacking: AAChartStackingType?              //堆积样式
+    public var markerSymbol: AAChartSymbolType?            //折线曲线连接点的类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+    public var markerSymbolStyle: AAChartSymbolStyleType?  //折线或者曲线的连接点是否为空心的
+    public var zoomType: AAChartZoomType?                  //缩放类型 AAChartZoomTypeX表示可沿着 x 轴进行手势缩放
+    public var inverted: Bool?                             //x 轴是否翻转(垂直)
+    public var xAxisReversed: Bool?                        //x 轴翻转
+    public var yAxisReversed: Bool?                        //y 轴翻转
+    public var polar: Bool?                                //是否极化图形(变为雷达图)
+    public var margin: [Float]?                            //图表外边缘和绘图区域之间的边距. 数组中的数字分别表示顶部，右侧，底部和左侧
+    public var dataLabelsEnabled: Bool?                    //数据标签是否显示
+    public var dataLabelsFontColor: String?                //数据标签的字体颜色
+    public var dataLabelsFontSize: Float?                  //数据标签的字体大小
+    public var dataLabelsFontWeight: AAChartFontWeightType?//数据标签的字体粗细
+    public var xAxisLabelsEnabled: Bool?                   //x 轴是否显示数据
+    public var categories: [String]?                       //x 轴是否显示数据
+    public var xAxisGridLineWidth: Float?                  //x 轴网格线的宽度
+    public var xAxisVisible: Bool?                         //x 轴是否显示
+    public var xAxisTickInterval: Int?                     //x 轴刻度线间隔
+    public var yAxisVisible: Bool?                         //y 轴是否显示
+    public var yAxisLabelsEnabled: Bool?                   //y 轴是否显示数据
+    public var yAxisTitle: String?                         //y 轴标题
+    public var yAxisLineWidth: Float?                      //y 轴轴线的宽度
+    public var yAxisMin: Float?                            //y 轴起始位置的最小值
+    public var yAxisMax: Float?                            //y 轴结束位置的最大值
+    public var yAxisAllowDecimals: Bool?                   //y 轴是否允许小数
+    public var yAxisGridLineWidth: Float?                  //y 轴网格线的宽度
+    public var tooltipEnabled: Bool?                       //是否显示浮动提示框(默认显示)
+    public var tooltipValueSuffix: String?                 //浮动提示框单位后缀
+    public var tooltipCrosshairs: Bool?                    //是否显示准星线(默认显示)
+    public var colorsTheme: [Any]?                         //图表主题颜色数组
+    public var series: [Any]?                              //图表的数据数组
+    public var legendEnabled: Bool?                        //是否显示图例
+    public var backgroundColor: Any?                       //图表背景色
+    public var borderRadius: Int?                          //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
+    public var markerRadius: Int?                          //折线连接点的半径长度
+
+    ...
+    ...  
+}
 ```
 
 ## 作者
@@ -552,6 +579,7 @@ Java | AAChartCore | Android | https://github.com/AAChartModel/AAChartCore |
 - [x] 支持渲染矩形树状层级关系图
 - [x] 支持渲染活动刻度仪表图
 - [x] 支持为图形添加点击事件回调
+- [x] 支持为图形添加手指✋🏻或鼠标🖱滑过的事件回调
 - [x] 支持图形实时刷新纯数据并动态滚动
 - [ ] 支持已渲染图形生成图片文件
 - [ ] 支持生成图片文件保存至系统相册
