@@ -489,6 +489,8 @@ public class AAChartModel: AAObject {
     public var backgroundColor: Any?                       //图表背景色
     public var borderRadius: Int?                          //柱状图长条图头部圆角半径(可用于设置头部的形状,仅对条形图,柱状图有效)
     public var markerRadius: Int?                          //折线连接点的半径长度
+    public var touchEventEnabled: Bool?                    //是否支持触摸事件回调
+    public var scrollablePlotArea: AAScrollablePlotArea?   //设置图表纵向或横向的滚动效果
 
     ...
     ...  
