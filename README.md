@@ -631,7 +631,7 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 - [x] Support rendering the rectangular tree hierarchy diagrams
 - [x] Support rendering the circular progress bar chart 
 - [x] Support adding clicked event callbacks for graphics
-- [x] Support adding finger or mouse move over event callbacks for graphics
+- [x] Support adding finger✋🏻 or mouse🖱 move over event callbacks for graphics
 - [x] Support graphics to refresh pure data in real time and scroll dynamically
 - [ ] Support rendered graphics to generate image files
 - [ ] Support generating image files saved to the system album
