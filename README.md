@@ -102,7 +102,10 @@ to your project Cartfile.
         let chartViewWidth  = self.view.frame.size.width
         let chartViewHeight = self.view.frame.size.height
         aaChartView = AAChartView()
-        aaChartView?.frame = CGRect(x:0,y:0,width:chartViewWidth,height:chartViewHeight)
+        aaChartView?.frame = CGRect(x: 0,
+                                    y: 60,
+                                    width: chartViewWidth,
+                                    height: chartViewHeight)
         // set the content height of aachartView
         // aaChartView?.contentHeight = self.view.frame.size.height
         self.view.addSubview(aaChartView!)
@@ -111,7 +114,7 @@ to your project Cartfile.
 
 ``` swift
         let aaChartModel = AAChartModel()
-            .chartType(.column)//Can be any of the chart types listed under `AAChartType`.
+            .chartType(.area)//Can be any of the chart types listed under `AAChartType`.
             .animationType(.bounce)
             .title("TITLE")//The chart title
             .subtitle("subtitle")//The chart subtitle
@@ -362,24 +365,26 @@ you can get the customized tooltip style chart like this👇
 ### Supported chart type for now
 
 ```swift
-enum AAChartType: String {
-    case column          = "column"          //column chart
-    case bar             = "bar"             //bar chart 
-    case area            = "area"            //area chart 
-    case areaspline      = "areaspline"      //areaspline chart
-    case line            = "line"            //line chart
-    case spline          = "spline"          //spline chart
-    case scatter         = "scatter"         //scatter chart 
-    case pie             = "pie"             //pie chart
-    case bubble          = "bubble"          //bubble chart  
-    case pyramid         = "pyramid"         //pyramid chart
-    case funnel          = "funnel"          //funnel chart
-    case columnrange     = "columnrange"     //column range chart
-    case arearange       = "arearange"       //area range chart
-    case areasplinerange = "areasplinerange" //area spline range chart
-    case boxplot         = "boxplot"         //boxplot chart
-    case waterfall       = "waterfall"       //waterfall chart
-    case polygon         = "polygon"         //polygon chart
+public enum AAChartType: String {
+    case column          //Column series display one column per value along an X axis.
+    case bar             //A bar series is a special type of column series where the columns are horizontal.
+    case area            //The area series type.
+    case areaspline      //The area spline series is an area series where the graph between the points is smoothed into a spline.
+    case line            //A line series displays information as a series of data points connected by straight line segments.
+    case spline          //A spline series is a special type of line series, where the segments between the data points are smoothed.
+    case scatter         //A scatter plot uses cartesian coordinates to display values for two variables for a set of data.
+    case pie             //A pie chart is a circular graphic which is divided into slices to illustrate numerical proportion.
+    case bubble          //A bubble series is a three dimensional series type where each point renders an X, Y and Z value. Each points is drawn as a bubble where the position along the X and Y axes mark the X and Y values, and the size of the bubble relates to the Z value.
+    case pyramid         //A pyramid series is a special type of funnel, without neck and reversed by default.
+    case funnel          //Funnel charts are a type of chart often used to visualize stages in a sales project, where the top are the initial stages with the most clients. It requires that the modules/funnel.js file is loaded.
+    case columnrange     //The column range is a cartesian series type with higher and lower Y values along an X axis. To display horizontal bars, set chart.inverted to true.
+    case arearange       //The area range series is a carteseian series with higher and lower values for each point along an X axis, where the area between the values is shaded.
+    case areasplinerange //The area spline range is a cartesian series type with higher and lower Y values along an X axis. The area inside the range is colored, and the graph outlining the area is a smoothed spline.
+    case boxplot         //A box plot is a convenient way of depicting groups of data through their five-number summaries: the smallest observation (sample minimum), lower quartile (Q1), median (Q2), upper quartile (Q3), and largest observation (sample maximum).
+    case waterfall       //A waterfall chart displays sequentially introduced positive or negative values in cumulative columns.
+    case polygon         //A polygon series can be used to draw any freeform shape in the cartesian coordinate system. A fill is applied with the color option, and stroke is applied through lineWidth and lineColor options.
+    case gauge           //Gauges are circular plots displaying one or more values with a dial pointing to values along the perimeter.
+    case errorbar        //Error bars are a graphical representation of the variability of data and are used on graphs to indicate the error, or uncertainty in a reported measurement.
 }
 ```
 
@@ -390,6 +395,23 @@ enum AAChartZoomType: String {
     case x    = "x"
     case y    = "y"
     case xy   = "xy"
+}
+```
+
+### Suppported line dash style types for now
+```swift
+public enum AAChartLineDashStyleType: String {
+    case solid           //———————————————————————————————————
+    case shortDash       //— — — — — — — — — — — — — — — — — —
+    case shortDot        //ⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈⵈ
+    case shortDashDot    //—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧—‧
+    case shortDashDotDot //—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧—‧‧
+    case dot             //‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧‧
+    case dash            //—— —— —— —— —— —— —— —— —— —— —— ——
+    case longDash        //——— ——— ——— ——— ——— ——— ——— ——— ———
+    case dashDot         //——‧——‧——‧——‧——‧——‧——‧——‧——‧——‧——‧——‧
+    case longDashDot     //———‧———‧———‧———‧———‧———‧———‧———‧———‧
+    case longDashDotDot  //———‧‧———‧‧———‧‧———‧‧———‧‧———‧‧———‧‧
 }
 ```
 
@@ -470,7 +492,6 @@ public class AAChartModel: AAObject {
     public var subtitle: String?            //The chart subtitle
     public var subtitleAlign: AAChartAlignType?//The chart subtitle text align style
     public var subtitleStyle: AAStyle?      //The chart subtitle style
-    public var axesTextColor: String?       //The labels font color of chart x axis and y axis
     public var chartType: AAChartType?      //The default series type for the chart. Can be any of the chart types listed under `AAChartType`. Defaults to line
     public var stacking: AAChartStackingType? //Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order
     public var markerSymbol: AAChartSymbolType?   //A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down"
@@ -479,28 +500,29 @@ public class AAChartModel: AAObject {
     public var inverted: Bool?              //Whether to invert the axes so that the x axis is vertical and y axis is horizontal. When true, the x axis is reversed by default. If a bar series is present in the chart, it will be inverted automatically.Inverting the chart doesn't have an effect if there are no cartesian series in the chart, or if the chart is polar.Defaults to false
     public var xAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
     public var yAxisReversed: Bool?         //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the x axis is reversed by default. Defaults to false
-    public var crosshairs: Bool?            //Enable or disable the crosshairs
     public var polar: Bool?                 //When true, cartesian charts like line, spline, area and column are transformed into the polar coordinate system. Requires `AAHighchartsMore.js`. Defaults to false
-    public var margin: [Float]?
+    public var margin: [Any?]?
     public var dataLabelsEnabled: Bool?     //Enable or disable the data labels. Defaults to false
     public var dataLabelsStyle: AAStyle?    //The data labels style
     public var xAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
+    public var xAxisLabelsStyle: AAStyle?   //The x axis labels style
     public var categories: [String]?        //Set new categories for the axis
     public var xAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area.Defaults to 0
     public var xAxisVisible: Bool?          //Show the x axis or not
     public var xAxisTickInterval: Float?    //Custom x axis tick interval,It is useful when the x categories array is too long to show all of them
     public var yAxisVisible: Bool?          //Show the y axis or not
     public var yAxisLabelsEnabled: Bool?    //Enable or disable the axis labels. Defaults to true
+    public var yAxisLabelsStyle: AAStyle?   //The y axis labels style
     public var yAxisTitle: String?          //The actual text of the axis title
     public var xAxisTitle: String?          //The actual text of the axis title
     public var yAxisLineWidth: Float?       //The width of y axis line
     public var yAxisGridLineWidth: Float?   //The width of the grid lines extending the ticks across the plot area. Defaults to 1
     public var yAxisMin: Double?            //The y axis mini value
     public var yAxisMax: Double?            //The y axis max value
+    public var yAxisTickPositions:[Any]?    //An array defining where the ticks are laid out on the axis. This overrides the default behaviour of tickPixelInterval and tickInterval.
     public var yAxisAllowDecimals: Bool?    //The y axis values label allow decimals or not
     public var tooltipEnabled: Bool?        //Show the tooltip or not
     public var tooltipValueSuffix: String?  //Custom tooltip value unit suffix
-    public var tooltipCrosshairs: Bool?     //Show tooltip crosshair or not
     public var colorsTheme: [Any]?          //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to: ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
     public var series: [Any]?               //An array of all the chart's series
     public var legendEnabled: Bool?         //Enable or disable the legend. Defaults to true
@@ -509,6 +531,7 @@ public class AAChartModel: AAObject {
     public var markerRadius: Float?         //The radius of the point marker. Defaults to 4
     public var touchEventEnabled: Bool?     //Support touch event call back or not
     public var scrollablePlotArea: AAScrollablePlotArea?    //Scroll properties if supported
+ 
     ...
     ...  
 }
@@ -608,6 +631,7 @@ AAInfographics is available under the MIT license. See the [LICENSE](https://git
 - [x] Support rendering the rectangular tree hierarchy diagrams
 - [x] Support rendering the circular progress bar chart 
 - [x] Support adding clicked event callbacks for graphics
+- [x] Support adding finger or mouse move over event callbacks for graphics
 - [x] Support graphics to refresh pure data in real time and scroll dynamically
 - [ ] Support rendered graphics to generate image files
 - [ ] Support generating image files saved to the system album
