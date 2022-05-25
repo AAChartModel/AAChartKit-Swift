@@ -79,15 +79,14 @@ public class AAChartView: WKWebView {
     public weak var delegate: AAChartViewDelegate?
   
     // MARK: - Setter Method
+    #if os(iOS)
     public var isScrollEnabled: Bool? {
         willSet {
-            #if os(iOS)
             scrollView.isScrollEnabled = newValue!
-            #elseif os(macOS)
-            scrollEnabled = newValue!
-            #endif
         }
     }
+    #endif
+
     
     public var isClearBackgroundColor: Bool? {
         willSet {
