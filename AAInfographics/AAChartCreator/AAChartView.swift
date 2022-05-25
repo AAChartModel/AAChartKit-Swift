@@ -88,7 +88,7 @@ public class AAChartView: WKWebView {
     public weak var delegate: AAChartViewDelegate? {
         set {
             _delegate = newValue
-            if ((newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:clickEventMessage:)))) != nil) {
+            if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:clickEventMessage:))) != nil {
                 addClickEventMessageHandler()
             }
             if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:moveOverEventMessage:))) != nil {
