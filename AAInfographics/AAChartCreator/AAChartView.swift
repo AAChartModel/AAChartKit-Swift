@@ -84,14 +84,19 @@ class AALeakAvoider : NSObject, WKScriptMessageHandler {
 
 @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
 public class AAChartView: WKWebView {
+    private var clickEventEnabled: Bool?
+    private var touchEventEnabled: Bool?
+    
     private weak var _delegate: AAChartViewDelegate?
     public weak var delegate: AAChartViewDelegate? {
         set {
             _delegate = newValue
             if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:clickEventMessage:))) != nil {
+                clickEventEnabled = true
                 addClickEventMessageHandler()
             }
             if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:moveOverEventMessage:))) != nil {
+                touchEventEnabled = true
                 addMouseOverEventMessageHandler()
             }
         }
@@ -236,6 +241,13 @@ public class AAChartView: WKWebView {
     private func configureOptionsJsonStringWithAAOptions(_ aaOptions: AAOptions) {
         if isClearBackgroundColor == true {
             aaOptions.chart?.backgroundColor = "rgba(0,0,0,0)"
+        }
+        
+        if clickEventEnabled == true {
+            aaOptions.clickEventEnabled = true
+        }
+        if touchEventEnabled == true {
+            aaOptions.touchEventEnabled = true
         }
         
 //        if     aaOptions.touchEventEnabled == true
