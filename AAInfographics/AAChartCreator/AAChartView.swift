@@ -168,8 +168,6 @@ public class AAChartView: WKWebView {
     }
     
     private var optionsJson: String?
-    private var touchEventEnabled = false
-    
     
     // MARK: - Initialization
     override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
