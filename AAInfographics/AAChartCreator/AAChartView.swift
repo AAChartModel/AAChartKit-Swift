@@ -37,17 +37,19 @@ import AppKit
 #endif
 import WebKit
 
+let kUserContentMessageNameClick = "click"
 let kUserContentMessageNameMouseOver = "mouseover"
 
 @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
 @objc public protocol AAChartViewDelegate: NSObjectProtocol {
-    @objc optional func aaChartViewDidFinishLoad (_ aaChartView: AAChartView)
-    @objc optional func aaChartViewDidFinishEvaluate (_ aaChartView: AAChartView)
+    @objc optional func aaChartViewDidFinishLoad(_ aaChartView: AAChartView)
+    @objc optional func aaChartViewDidFinishEvaluate(_ aaChartView: AAChartView)
+    @objc optional func aaChartView(_ aaChartView: AAChartView, clickEventMessage: AAClickEventMessageModel)
     @objc optional func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel)
 }
 
 @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
-public class AAMoveOverEventMessageModel: NSObject {
+public class AAEventMessageModel: NSObject {
     public var name: String?
     public var x: Float?
     public var y: Float?
@@ -55,6 +57,12 @@ public class AAMoveOverEventMessageModel: NSObject {
     public var offset: [String: Any]?
     public var index: Int?
 }
+
+@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+public class AAClickEventMessageModel: AAEventMessageModel {}
+
+@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+public class AAMoveOverEventMessageModel: AAEventMessageModel {}
 
 //Refer to: https://stackoverflow.com/questions/26383031/wkwebview-causes-my-view-controller-to-leak
 @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
@@ -76,7 +84,22 @@ class AALeakAvoider : NSObject, WKScriptMessageHandler {
 
 @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
 public class AAChartView: WKWebView {
-    public weak var delegate: AAChartViewDelegate?
+    private weak var _delegate: AAChartViewDelegate?
+    public weak var delegate: AAChartViewDelegate? {
+        set {
+            _delegate = newValue
+            if ((newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:clickEventMessage:)))) != nil) {
+                addClickEventMessageHandler()
+            }
+            if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:moveOverEventMessage:))) != nil {
+                addMouseOverEventMessageHandler()
+            }
+        }
+        get {
+            return _delegate
+        }
+        
+    }
   
     // MARK: - Setter Method
     #if os(iOS)
@@ -168,6 +191,7 @@ public class AAChartView: WKWebView {
     }
     
     private func safeEvaluateJavaScriptString (_ jsString: String) {
+        
         if optionsJson == nil {
             #if DEBUG
             print("💀💀💀AAChartView did not finish loading!!!")
@@ -214,11 +238,11 @@ public class AAChartView: WKWebView {
             aaOptions.chart?.backgroundColor = "rgba(0,0,0,0)"
         }
         
-        if     aaOptions.touchEventEnabled == true
-            && touchEventEnabled == false {
-            touchEventEnabled = true
-            configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
-        }
+//        if     aaOptions.touchEventEnabled == true
+//            && touchEventEnabled == false {
+//            touchEventEnabled = true
+//            addMouseOverEventMessageHandler()
+//        }
         
         #if DEBUG
         let modelJsonDic = aaOptions.toDic()!
@@ -233,6 +257,14 @@ public class AAChartView: WKWebView {
         #endif
         
         optionsJson = aaOptions.toJSON()!
+    }
+    
+    private func addClickEventMessageHandler() {
+        configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameClick)
+    }
+    
+    private func addMouseOverEventMessageHandler() {
+        configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
     }
     
 
@@ -606,9 +638,13 @@ extension AAChartView:  WKNavigationDelegate {
 @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
 extension AAChartView: WKScriptMessageHandler {
     open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if message.name == kUserContentMessageNameMouseOver {
+        if message.name == kUserContentMessageNameClick {
             let messageBody = message.body as! [String: Any]
-            let eventMessageModel = getEventMessageModel(messageBody: messageBody)
+            let eventMessageModel = getClickEventMessageModel(messageBody: messageBody)
+            delegate?.aaChartView?(self, clickEventMessage: eventMessageModel )
+        } else if message.name == kUserContentMessageNameMouseOver {
+            let messageBody = message.body as! [String: Any]
+            let eventMessageModel = getMoveOverEventMessageModel(messageBody: messageBody)
             delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
         }
     }
@@ -616,7 +652,37 @@ extension AAChartView: WKScriptMessageHandler {
 
 @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
 extension AAChartView {
-    private func getEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
+    private func getClickEventMessageModel(messageBody: [String: Any]) -> AAClickEventMessageModel {
+        let eventMessageModel = AAClickEventMessageModel()
+        eventMessageModel.name = messageBody["name"] as? String
+        let x = messageBody["x"]
+        if x is String {
+            eventMessageModel.x = Float(x as! String)
+        } else if x is Int {
+            eventMessageModel.x = Float(x as! Int)
+        } else if x is Float {
+            eventMessageModel.x = (x as! Float)
+        } else if x is Double {
+            eventMessageModel.x = Float(x as! Double)
+        }
+        
+        let y = messageBody["y"]
+        if y is String {
+            eventMessageModel.y = Float(y as! String)
+        } else if y is Int {
+            eventMessageModel.y = Float(y as! Int)
+        } else if y is Float {
+            eventMessageModel.y = (y as! Float)
+        } else if y is Double {
+            eventMessageModel.y = Float(y as! Double)
+        }
+        eventMessageModel.category = messageBody["category"] as? String
+        eventMessageModel.offset = messageBody["offset"] as? [String: Any]
+        eventMessageModel.index = messageBody["index"] as? Int
+        return eventMessageModel
+    }
+    
+    private func getMoveOverEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
         let eventMessageModel = AAMoveOverEventMessageModel()
         eventMessageModel.name = messageBody["name"] as? String
         let x = messageBody["x"]
