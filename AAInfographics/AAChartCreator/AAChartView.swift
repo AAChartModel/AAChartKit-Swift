@@ -653,37 +653,31 @@ extension AAChartView: WKScriptMessageHandler {
 @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
 extension AAChartView {
     private func getClickEventMessageModel(messageBody: [String: Any]) -> AAClickEventMessageModel {
-        let eventMessageModel = AAClickEventMessageModel()
-        eventMessageModel.name = messageBody["name"] as? String
-        let x = messageBody["x"]
-        if x is String {
-            eventMessageModel.x = Float(x as! String)
-        } else if x is Int {
-            eventMessageModel.x = Float(x as! Int)
-        } else if x is Float {
-            eventMessageModel.x = (x as! Float)
-        } else if x is Double {
-            eventMessageModel.x = Float(x as! Double)
-        }
-        
-        let y = messageBody["y"]
-        if y is String {
-            eventMessageModel.y = Float(y as! String)
-        } else if y is Int {
-            eventMessageModel.y = Float(y as! Int)
-        } else if y is Float {
-            eventMessageModel.y = (y as! Float)
-        } else if y is Double {
-            eventMessageModel.y = Float(y as! Double)
-        }
-        eventMessageModel.category = messageBody["category"] as? String
-        eventMessageModel.offset = messageBody["offset"] as? [String: Any]
-        eventMessageModel.index = messageBody["index"] as? Int
-        return eventMessageModel
+        let eventMessageModel = getEventMessageModel(messageBody: messageBody)
+        let clickMessageModel = AAClickEventMessageModel()
+        clickMessageModel.name = eventMessageModel.name
+        clickMessageModel.x = eventMessageModel.x
+        clickMessageModel.y = eventMessageModel.y
+        clickMessageModel.category = eventMessageModel.category
+        clickMessageModel.offset = eventMessageModel.offset
+        clickMessageModel.index = eventMessageModel.index
+        return clickMessageModel
     }
     
     private func getMoveOverEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
-        let eventMessageModel = AAMoveOverEventMessageModel()
+        let eventMessageModel = getEventMessageModel(messageBody: messageBody)
+        let moveOverMessageModel = AAMoveOverEventMessageModel()
+        moveOverMessageModel.name = eventMessageModel.name
+        moveOverMessageModel.x = eventMessageModel.x
+        moveOverMessageModel.y = eventMessageModel.y
+        moveOverMessageModel.category = eventMessageModel.category
+        moveOverMessageModel.offset = eventMessageModel.offset
+        moveOverMessageModel.index = eventMessageModel.index
+        return moveOverMessageModel
+    }
+    
+    private func getEventMessageModel(messageBody: [String: Any]) -> AAEventMessageModel {
+        let eventMessageModel = AAEventMessageModel()
         eventMessageModel.name = messageBody["name"] as? String
         let x = messageBody["x"]
         if x is String {
