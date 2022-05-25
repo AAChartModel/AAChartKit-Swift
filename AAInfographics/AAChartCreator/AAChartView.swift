@@ -84,7 +84,10 @@ public class AAChartView: WKWebView {
             #if os(iOS)
             scrollView.isScrollEnabled = newValue!
             #elseif os(macOS)
-            scrollEnabled = newValue!
+            //https://stackoverflow.com/questions/7020842/disable-rubber-band-scrolling-for-webview-in-lion
+            let mainScrollView = self.enclosingScrollView
+            mainScrollView?.verticalScrollElasticity = .none
+            mainScrollView?.horizontalScrollElasticity = .none
             #endif
         }
     }
