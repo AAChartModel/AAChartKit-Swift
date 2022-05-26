@@ -396,7 +396,7 @@ class BasicChartVC: UIViewController {
 @available(macCatalyst 13.0, *)
 extension BasicChartVC: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
-       print("🙂🙂🙂, AAChartView Did Finished Load!!!")
+       print("🚀🚀🚀, AAChartView Did Finished Load!!!")
     }
     
     open func aaChartView(_ aaChartView: AAChartView, clickEventMessage: AAClickEventMessageModel) {
