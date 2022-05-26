@@ -529,7 +529,6 @@ public class AAChartModel: AAObject {
     public var backgroundColor: Any?        //The background color or gradient for the outer chart area. Defaults to #FFFFFF
     public var borderRadius: Float?         //The corner radius of the outer chart border. Defaults to 0
     public var markerRadius: Float?         //The radius of the point marker. Defaults to 4
-    public var touchEventEnabled: Bool?     //Support touch event call back or not
     public var scrollablePlotArea: AAScrollablePlotArea?    //Scroll properties if supported
  
     ...
