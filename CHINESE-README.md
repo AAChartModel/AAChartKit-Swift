@@ -259,7 +259,7 @@ github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 1.0
 
 ### 支持监听用户点击事件及单指滑动事件
 
-  可通过给 AAChartView 实例对象设置代理方法,来实现监听用户的点击事件或者单指滑动事件
+  可通过给 AAChartView 实例对象设置代理方法,来实现监听用户的点击事件(click)或者单指掠过事件(move over)
  ```swift
     //设置 AAChartView 事件代理
     aaChartView!.delegate = self as AAChartViewDelegate
@@ -267,6 +267,7 @@ github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 1.0
 
     //实现对 AAChartView 事件代理的监听
 extension BasicChartVC: AAChartViewDelegate {
+    //监听用户的点击事件(click)
     open func aaChartView(_ aaChartView: AAChartView, clickEventMessage: AAClickEventMessageModel) {
         print(
             """
@@ -290,6 +291,7 @@ extension BasicChartVC: AAChartViewDelegate {
         )
     }
 
+    //监听用户的单指掠过事件(move over)
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
         print(
             """
@@ -315,7 +317,7 @@ extension BasicChartVC: AAChartViewDelegate {
 }
   ```
 
-  在监听用户交互事件时,获取的事件信息`AAMoveOverEventMessageModel`共包含以下内容
+  在监听用户交互事件时,获取的点击事件信息`AAClickEventMessageModel`和单指掠过事件信息`AAMoveOverEventMessageModel`, 内容如下:
   ```swift
     @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
     public class AAEventMessageModel: NSObject {
