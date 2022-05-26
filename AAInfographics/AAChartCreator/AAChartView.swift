@@ -93,11 +93,11 @@ public class AAChartView: WKWebView {
             assert(optionsJson == nil, "You should set the delegate before drawing the chart")//To Make sure the clickEventEnabled and touchEventEnabled properties are working correctly
 
             _delegate = newValue
-            if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:clickEventMessage:))) != nil {
+            if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:clickEventMessage:))) == true {
                 clickEventEnabled = true
                 addClickEventMessageHandler()
             }
-            if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:moveOverEventMessage:))) != nil {
+            if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:moveOverEventMessage:))) == true {
                 touchEventEnabled = true
                 addMouseOverEventMessageHandler()
             }
