@@ -235,15 +235,15 @@ if you want to refresh chart content,you should do something as follow.According
 
 ### Support user click events and move over events
 
-you can monitor the user cick or move over events message through implementing delegate function for AAChartView instance object
+you can monitor the user cick or finger move over events message through implementing delegate function for AAChartView instance object
 
 ```swift
  //Set AAChartView events delegate
  aaChartView!.delegate = self as AAChartViewDelegate
  
- 
 
- //implement AAChartView user touch events delegate function
+
+ //implement AAChartView user click or finger move over events delegate function
 extension BasicChartVC: AAChartViewDelegate {
     open func aaChartView(_ aaChartView: AAChartView, clickEventMessage: AAClickEventMessageModel) {
         print(
@@ -293,7 +293,7 @@ extension BasicChartVC: AAChartViewDelegate {
 }
 ```
 
-The received touch events message contain following content
+The received user click or finger move over events contain following content
 
 ```swift
 @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
