@@ -235,26 +235,69 @@ if you want to refresh chart content,you should do something as follow.According
 
 ### Support user click events and move over events
 
-you can monitor the user touch events message through implementing delegate function for AAChartView instance object
+you can monitor the user cick or move over events message through implementing delegate function for AAChartView instance object
 
 ```swift
  //Set AAChartView events delegate
  aaChartView!.delegate = self as AAChartViewDelegate
- //set AAChartModel support user touch event
- aaChartModel = aaChartModel!.touchEventEnabled(true)
+ 
+ 
 
  //implement AAChartView user touch events delegate function
-extension CommonChartVC: AAChartViewDelegate {
-   open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
-       print("🔥selected point series element name: \(moveOverEventMessage.name ?? "")")
-   }
+extension BasicChartVC: AAChartViewDelegate {
+    open func aaChartView(_ aaChartView: AAChartView, clickEventMessage: AAClickEventMessageModel) {
+        print(
+            """
+
+            clicked point series element name: \(clickEventMessage.name ?? "")
+            🖱🖱🖱WARNING!!!!!!!!!!!!!!!!!!!! Click Event Message !!!!!!!!!!!!!!!!!!!! WARNING🖱🖱🖱
+            ==========================================================================================
+            ------------------------------------------------------------------------------------------
+            user finger moved over!!!,get the move over event message: {
+            category = \(String(describing: clickEventMessage.category))
+            index = \(String(describing: clickEventMessage.index))
+            name = \(String(describing: clickEventMessage.name))
+            offset = \(String(describing: clickEventMessage.offset))
+            x = \(String(describing: clickEventMessage.x))
+            y = \(String(describing: clickEventMessage.y))
+            }
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            
+            
+            """
+        )
+    }
+
+    open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
+        print(
+            """
+
+            moved over point series element name: \(moveOverEventMessage.name ?? "")
+            ✋🏻✋🏻✋🏻✋🏻✋🏻WARNING!!!!!!!!!!!!!! Move Over Event Message !!!!!!!!!!!!!! WARNING✋🏻✋🏻✋🏻✋🏻✋🏻
+            ==========================================================================================
+            ------------------------------------------------------------------------------------------
+            user finger moved over!!!,get the move over event message: {
+            category = \(String(describing: moveOverEventMessage.category))
+            index = \(String(describing: moveOverEventMessage.index))
+            name = \(String(describing: moveOverEventMessage.name))
+            offset = \(String(describing: moveOverEventMessage.offset))
+            x = \(String(describing: moveOverEventMessage.x))
+            y = \(String(describing: moveOverEventMessage.y))
+            }
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            
+            
+            """
+        )
+    }
 }
 ```
 
 The received touch events message contain following content
 
 ```swift
-public class AAMoveOverEventMessageModel: NSObject {
+@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+public class AAEventMessageModel: NSObject {
     public var name: String?
     public var x: Float?
     public var y: Float?
@@ -262,6 +305,12 @@ public class AAMoveOverEventMessageModel: NSObject {
     public var offset: [String: Any]?
     public var index: Int?
 }
+
+@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+public class AAClickEventMessageModel: AAEventMessageModel {}
+
+@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+public class AAMoveOverEventMessageModel: AAEventMessageModel {}
 ```
 
 Monitoring user click events can achieve a variety of custom functions. For example, you can implement **Double Charts Linkage** through user click event callbacks. The example effects are as follows
