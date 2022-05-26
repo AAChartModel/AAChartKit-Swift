@@ -90,6 +90,8 @@ public class AAChartView: WKWebView {
     private weak var _delegate: AAChartViewDelegate?
     public weak var delegate: AAChartViewDelegate? {
         set {
+            assert(optionsJson == nil, "You should set the delegate before drawing the chart")//To Make sure the clickEventEnabled and touchEventEnabled properties are working correctly
+
             _delegate = newValue
             if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:clickEventMessage:))) != nil {
                 clickEventEnabled = true
