@@ -261,29 +261,77 @@ github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 1.0
 
   可通过给 AAChartView 实例对象设置代理方法,来实现监听用户的点击事件和单指滑动事件
  ```swift
-  //设置 AAChartView 事件代理
-  aaChartView!.delegate = self as AAChartViewDelegate
-  //设置 AAChartModel 支持触摸事件
-  aaChartModel = aaChartModel!.touchEventEnabled(true)
+    //设置 AAChartView 事件代理
+    aaChartView!.delegate = self as AAChartViewDelegate
 
-  //实现对 AAChartView 事件代理的监听
-extension CommonChartVC: AAChartViewDelegate {
+
+    //实现对 AAChartView 事件代理的监听
+extension BasicChartVC: AAChartViewDelegate {
+    open func aaChartView(_ aaChartView: AAChartView, clickEventMessage: AAClickEventMessageModel) {
+        print(
+            """
+
+            clicked point series element name: \(clickEventMessage.name ?? "")
+            🖱🖱🖱WARNING!!!!!!!!!!!!!!!!!!!! Click Event Message !!!!!!!!!!!!!!!!!!!! WARNING🖱🖱🖱
+            ==========================================================================================
+            ------------------------------------------------------------------------------------------
+            user finger moved over!!!,get the move over event message: {
+            category = \(String(describing: clickEventMessage.category))
+            index = \(String(describing: clickEventMessage.index))
+            name = \(String(describing: clickEventMessage.name))
+            offset = \(String(describing: clickEventMessage.offset))
+            x = \(String(describing: clickEventMessage.x))
+            y = \(String(describing: clickEventMessage.y))
+            }
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            
+            
+            """
+        )
+    }
+
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
-        print("🔥selected point series element name: \(moveOverEventMessage.name ?? "")")
+        print(
+            """
+
+            moved over point series element name: \(moveOverEventMessage.name ?? "")
+            ✋🏻✋🏻✋🏻✋🏻✋🏻WARNING!!!!!!!!!!!!!! Move Over Event Message !!!!!!!!!!!!!! WARNING✋🏻✋🏻✋🏻✋🏻✋🏻
+            ==========================================================================================
+            ------------------------------------------------------------------------------------------
+            user finger moved over!!!,get the move over event message: {
+            category = \(String(describing: moveOverEventMessage.category))
+            index = \(String(describing: moveOverEventMessage.index))
+            name = \(String(describing: moveOverEventMessage.name))
+            offset = \(String(describing: moveOverEventMessage.offset))
+            x = \(String(describing: moveOverEventMessage.x))
+            y = \(String(describing: moveOverEventMessage.y))
+            }
+            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            
+            
+            """
+        )
     }
 }
   ```
 
   在监听用户交互事件时,获取的事件信息`AAMoveOverEventMessageModel`共包含以下内容
   ```swift
-public class AAMoveOverEventMessageModel: NSObject {
-    public var name: String?
-    public var x: Float?
-    public var y: Float?
-    public var category: String?
-    public var offset: [String: Any]?
-    public var index: Int?
+    @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+    public class AAEventMessageModel: NSObject {
+        public var name: String?
+        public var x: Float?
+        public var y: Float?
+        public var category: String?
+        public var offset: [String: Any]?
+        public var index: Int?
 }
+
+    @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+    public class AAClickEventMessageModel: AAEventMessageModel {}
+
+    @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+    public class AAMoveOverEventMessageModel: AAEventMessageModel {}
   ```
   
   监听用户点击事件可实现多种多样的自定义功能. 例如可通过用户点击事件回调来实现**双表联动**, 示例效果如下
