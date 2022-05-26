@@ -186,7 +186,6 @@ public class AAChartModel: AAObject {
     public var backgroundColor: Any?        //The background color or gradient for the outer chart area. Defaults to #FFFFFF
     public var borderRadius: Float?         //The corner radius of the outer chart border. Defaults to 0
     public var markerRadius: Float?         //The radius of the point marker. Defaults to 4
-    public var touchEventEnabled: Bool?     //Support touch event call back or not
     public var scrollablePlotArea: AAScrollablePlotArea?    //Scroll properties if supported
     
 
@@ -471,12 +470,6 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
-    public func touchEventEnabled(_ prop: Bool) -> AAChartModel {
-        touchEventEnabled = prop
-        return self
-    }
-    
-    @discardableResult
     public func scrollablePlotArea(_ prop: AAScrollablePlotArea) -> AAChartModel {
         scrollablePlotArea = prop
         return self
@@ -532,7 +525,9 @@ public class AAChartModel: AAObject {
     @available(*, unavailable, message: "please use xAxisLabelsStyle or yAxisLabelsStyle instead of it")
     public var axesTextColor: String?       //The labels font color of chart x axis and y axis
 
-    
+    @available(*, unavailable, message: "This property is useless now, please remove it directly")
+    public var touchEventEnabled: Bool?     //Support touch event call back or not
+
     
     @available(*, unavailable, message: "please use titleStyle instead of it")
     public func titleFontColor(_ prop: String) -> AAChartModel {
@@ -593,6 +588,12 @@ public class AAChartModel: AAObject {
     @available(*, unavailable, message: "please use xAxisLabelsStyle or yAxisLabelsStyle instead of it")
     public func axesTextColor(_ prop: String) -> AAChartModel {
 //        axesTextColor = prop
+        return self
+    }
+    
+    @available(*, unavailable, message: "This setter function is useless now, please remove it directly")
+    public func touchEventEnabled(_ prop: Bool) -> AAChartModel {
+//        touchEventEnabled = prop
         return self
     }
 
