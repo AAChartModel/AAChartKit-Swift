@@ -450,7 +450,6 @@
   public var backgroundColor: Any?                       //圖表背景色
   public var borderRadius: Int?                          //柱狀圖長條圖頭部圓角半徑(可用於設置頭部的形狀,僅對條形圖,柱狀圖有效)
   public var markerRadius: Int?                          //折線連接點的半徑長度
-  public var touchEventEnabled: Bool?                    //是否支持觸摸事件回調
   ```
 
   ## 作者
