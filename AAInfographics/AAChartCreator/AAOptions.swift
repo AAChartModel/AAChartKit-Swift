@@ -142,16 +142,17 @@ public class AAOptions: AAObject {
         return self
     }
     
-    @discardableResult
-    public func touchEventEnabled(_ prop: Bool?) -> AAOptions {
-        touchEventEnabled = prop
-        return self
-    }
-    
     public override init() {
         let aaCredits = AACredits()
         aaCredits.enabled = false
         credits = aaCredits
+    }
+    
+    
+    @available(*, unavailable, message: "This setter function is useless now, please remove it directly")
+    public func touchEventEnabled(_ prop: Bool?) -> AAOptions {
+//        touchEventEnabled = prop
+        return self
     }
 }
 
