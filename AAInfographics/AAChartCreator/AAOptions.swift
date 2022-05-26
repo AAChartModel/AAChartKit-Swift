@@ -216,7 +216,6 @@ public class AAOptionsConstructor {
             .legend(aaLegend)
             .series(aaChartModel.series)
             .colors(aaChartModel.colorsTheme)
-            .touchEventEnabled(aaChartModel.touchEventEnabled)
         
         configureAxisContentAndStyle(aaOptions, aaChartModel)
         
