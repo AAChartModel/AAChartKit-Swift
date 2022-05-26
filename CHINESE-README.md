@@ -259,7 +259,7 @@ github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 1.0
 
 ### 支持监听用户点击事件及单指滑动事件
 
-  可通过给 AAChartView 实例对象设置代理方法,来实现监听用户的点击事件和单指滑动事件
+  可通过给 AAChartView 实例对象设置代理方法,来实现监听用户的点击事件或者单指滑动事件
  ```swift
     //设置 AAChartView 事件代理
     aaChartView!.delegate = self as AAChartViewDelegate
@@ -424,6 +424,8 @@ enum AAChartType: String {
     case boxplot         = "boxplot"         //箱线图
     case waterfall       = "waterfall"       //瀑布图
     case polygon         = "polygon"         //多边形图
+    case gauge           = "gauge"           //仪表图
+    case errorbar        = "errorbar"        //误差图
 }
 ```
 
