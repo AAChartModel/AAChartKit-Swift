@@ -693,7 +693,6 @@ function () {
             .tooltipValueSuffix("℃")
             .animationType(.bounce)
             .backgroundColor("#22324c")//To make the chart background color transparent, set backgroundColor to "rgba (0,0,0,0)" or "# 00000000". Also make sure `aaChartView!.IsClearBackgroundColor = true`
-            .touchEventEnabled(true)
             .series([
                 AASeriesElement()
                     .name("Tokyo")

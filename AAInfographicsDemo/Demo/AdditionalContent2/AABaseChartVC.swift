@@ -205,7 +205,6 @@ class AABaseChartVC: UIViewController {
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
-            aaChartModel.touchEventEnabled = true
             aaChartView?.aa_drawChartWithChartModel(aaChartModel)
         } else if (chartConfiguration is AAOptions) {
             let aaOptions = chartConfiguration as! AAOptions
@@ -228,7 +227,6 @@ class AABaseChartVC: UIViewController {
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
-            aaChartModel.touchEventEnabled = true
             aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel)
         } else if (chartConfiguration is AAOptions) {
             let aaOptions = chartConfiguration as! AAOptions

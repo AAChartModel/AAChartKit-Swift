@@ -83,7 +83,6 @@ class BasicChartVC: UIViewController {
             .dataLabelsEnabled(false)
             .tooltipValueSuffix("℃")
             .animationType(.bounce)
-            .touchEventEnabled(true)
             .series([
                 AASeriesElement()
                     .name("Tokyo")

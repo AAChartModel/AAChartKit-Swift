@@ -1549,7 +1549,6 @@ function () {
             .markerSymbol(.circle)
             .markerSymbolStyle(.borderBlank)
             .legendEnabled(false)
-            .touchEventEnabled(false)
             .series([
                 AASeriesElement()
                     .data([86, 90, 65])

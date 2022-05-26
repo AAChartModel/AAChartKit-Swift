@@ -70,7 +70,6 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             .dataLabelsEnabled(false)//是否显示数字
             .legendEnabled(false)
             .colorsTheme(colorsArr!)
-            .touchEventEnabled(true)
             .tooltipEnabled(false)
             .borderRadius(3)
             .inverted(true)
