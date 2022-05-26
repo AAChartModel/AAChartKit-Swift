@@ -250,12 +250,6 @@ public class AAChartView: WKWebView {
             aaOptions.touchEventEnabled = true
         }
         
-//        if     aaOptions.touchEventEnabled == true
-//            && touchEventEnabled == false {
-//            touchEventEnabled = true
-//            addMouseOverEventMessageHandler()
-//        }
-        
         #if DEBUG
         let modelJsonDic = aaOptions.toDic()!
         let data = try? JSONSerialization.data(withJSONObject: modelJsonDic, options: .prettyPrinted)
