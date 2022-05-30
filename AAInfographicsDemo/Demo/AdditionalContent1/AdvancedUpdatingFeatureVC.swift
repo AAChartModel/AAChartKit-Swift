@@ -33,7 +33,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 9.0, macCatalyst 13.0, *)
+@available(iOS 11.0, macCatalyst 13.1, *)
 class AdvancedUpdatingFeatureVC: BasicChartVC {
 
     override func viewDidLoad() {

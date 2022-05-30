@@ -35,7 +35,7 @@ import Foundation
 
 public class AAObject { }
 
-@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+@available(iOS 11.0, macCatalyst 13.1, macOS 10.13, *)
 public extension AAObject {
     var classNameString: String {
         let nameClass: AnyClass! = object_getClass(self)
@@ -43,7 +43,7 @@ public extension AAObject {
     }
 }
 
-@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
+@available(iOS 11.0, macCatalyst 13.1, macOS 10.13, *)
 public extension AAObject {
     fileprivate func loopForMirrorChildren(_ mirrorChildren: Mirror.Children, _ representation: inout [String : Any]) {
         for case let (label?, value) in mirrorChildren {

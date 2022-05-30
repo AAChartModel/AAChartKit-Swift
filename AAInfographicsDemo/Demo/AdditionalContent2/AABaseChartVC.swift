@@ -32,7 +32,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 9.0, macCatalyst 13.0, *)
+@available(iOS 11.0, macCatalyst 13.1, *)
 class AABaseChartVC: UIViewController {
     var navigationItemTitleArr: [Any]?
     var selectedIndex: Int = 0
@@ -257,7 +257,7 @@ class AABaseChartVC: UIViewController {
 
 }
 
-@available(macCatalyst 13.0, *)
+@available(macCatalyst 13.1, *)
 extension AABaseChartVC: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
        print("🚀🚀🚀, AAChartView Did Finished Load!!!")

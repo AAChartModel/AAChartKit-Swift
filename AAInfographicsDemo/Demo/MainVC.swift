@@ -33,7 +33,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 9.0, macCatalyst 13.0, *)
+@available(iOS 11.0, macCatalyst 13.1, *)
 class MainVC: UIViewController {
     private var sectionTitleArr = [String]()
     private var chartTypeTitleArr = [[String]]()
@@ -459,7 +459,7 @@ class MainVC: UIViewController {
     }
 }
 
-@available(macCatalyst 13.0, *)
+@available(macCatalyst 13.1, *)
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return chartTypeTitleArr.count

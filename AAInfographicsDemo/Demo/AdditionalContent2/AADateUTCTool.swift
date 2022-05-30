@@ -9,7 +9,7 @@
 import Foundation
 import JavaScriptCore
 
-@available(iOS 9.0, macCatalyst 13.0, *)
+@available(iOS 11.0, macCatalyst 13.1, *)
 public func AADateUTC(_ year: Int, _ month: Int, _ day: Int) -> Double {
     let context = JSContext()
     let jsStr = "function getDateUTC(year,month,day) {var timeInterval = Date.UTC(year,month,day);  return timeInterval}"
