@@ -319,7 +319,6 @@ extension BasicChartVC: AAChartViewDelegate {
 
   在监听用户交互事件时,获取的点击事件信息`AAClickEventMessageModel`和单指掠过事件信息`AAMoveOverEventMessageModel`, 内容如下:
   ```swift
-    @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
     public class AAEventMessageModel: NSObject {
         public var name: String?
         public var x: Float?
@@ -329,10 +328,8 @@ extension BasicChartVC: AAChartViewDelegate {
         public var index: Int?
 }
 
-    @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
     public class AAClickEventMessageModel: AAEventMessageModel {}
 
-    @available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
     public class AAMoveOverEventMessageModel: AAEventMessageModel {}
   ```
   
