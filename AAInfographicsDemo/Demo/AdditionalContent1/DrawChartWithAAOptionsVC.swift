@@ -136,6 +136,8 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         
         aaOptions.plotOptions?.series?.pointInterval(24 * 3600 * 1000 )
         
+        aaOptions.chart?.plotBackgroundColor = AAGradientColor.coastalBreeze
+        
         let aaCrosshair = AACrosshair()
             .color("#FFD700")//pure gold color
             .dashStyle(.longDashDotDot)

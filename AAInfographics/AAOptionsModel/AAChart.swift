@@ -35,6 +35,7 @@ import Foundation
 public class AAChart: AAObject {
     public var type: String?
     public var backgroundColor: Any?
+    public var plotBackgroundColor: Any?
     public var plotBackgroundImage: String?
     public var pinchType: String?
     public var panning: Bool?
@@ -66,6 +67,12 @@ public class AAChart: AAObject {
     @discardableResult
     public func backgroundColor(_ prop: Any?) -> AAChart {
         backgroundColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func plotBackgroundColor(_ prop: Any?) -> AAChart {
+        plotBackgroundColor = prop
         return self
     }
     
