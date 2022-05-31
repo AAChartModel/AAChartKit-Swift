@@ -77,14 +77,14 @@ extension CustomTouchEndEventCallback: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
        print("🚀🚀🚀, AAChartView Did Finished Load!!!")
         
-        let jsStr = #"""
+        let jsStr = """
         function handleTouchEndEvent() {
-            window.webkit.messageHandlers.touchEnd.postMessage("✋🏻✋🏻✋🏻✋🏻✋🏻手指离开了, 监听到手指离开了");
+            window.webkit.messageHandlers.\(kUserContentMessageNameChartTouchEnd).postMessage("✋🏻✋🏻✋🏻✋🏻✋🏻手指离开了, 监听到手指离开了");
         }
 
         let container = document.getElementById('container');
         container.addEventListener("touchend", handleTouchEndEvent, false);
-        """#
+        """
         
         aaChartView.evaluateJavaScript(jsStr) { (item, error) in
 #if DEBUG
