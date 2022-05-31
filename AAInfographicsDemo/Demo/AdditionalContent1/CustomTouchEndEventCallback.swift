@@ -78,13 +78,13 @@ extension CustomTouchEndEventCallback: AAChartViewDelegate {
        print("🚀🚀🚀, AAChartView Did Finished Load!!!")
         
         let jsStr = #"""
-function handleTouchEndEvent() {
-                window.webkit.messageHandlers.touchEnd.postMessage("成功了, 真的成功了");
+        function handleTouchEndEvent() {
+            window.webkit.messageHandlers.touchEnd.postMessage("✋🏻✋🏻✋🏻✋🏻✋🏻手指离开了, 监听到手指离开了");
+        }
 
-}
         let container = document.getElementById('container');
         container.addEventListener("touchend", handleTouchEndEvent, false);
-"""#
+        """#
         
         aaChartView.evaluateJavaScript(jsStr) { (item, error) in
 #if DEBUG
@@ -121,26 +121,7 @@ function handleTouchEndEvent() {
     }
     
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
-        print(
-            """
-
-            moved over point series element name: \(moveOverEventMessage.name ?? "")
-            ✋🏻✋🏻✋🏻✋🏻✋🏻WARNING!!!!!!!!!!!!!! Move Over Event Message !!!!!!!!!!!!!! WARNING✋🏻✋🏻✋🏻✋🏻✋🏻
-            ==========================================================================================
-            ------------------------------------------------------------------------------------------
-            user finger moved over!!!,get the move over event message: {
-            category = \(String(describing: moveOverEventMessage.category))
-            index = \(String(describing: moveOverEventMessage.index))
-            name = \(String(describing: moveOverEventMessage.name))
-            offset = \(String(describing: moveOverEventMessage.offset))
-            x = \(String(describing: moveOverEventMessage.x))
-            y = \(String(describing: moveOverEventMessage.y))
-            }
-            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            
-            
-            """
-        )
+        print("👌🏻moved over point series element name: \(moveOverEventMessage.name ?? "")")
     }
 
 }
