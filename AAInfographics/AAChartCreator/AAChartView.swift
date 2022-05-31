@@ -263,7 +263,7 @@ public class AAChartView: WKWebView {
         }
         if touchEventEnabled == true {
             aaOptions.touchEventEnabled = true
-            if clickEventEnabled == false {//避免重复调用配置方法
+            if clickEventEnabled != true {//避免重复调用配置方法
                 configurePlotOptionsSeriesPointEvents(aaOptions)
             }
         }
