@@ -12,7 +12,7 @@ import WebKit
 
 let kUserContentMessageNameChartTouchEnd = "touchEnd"
 
-class CustomTouchEndEventCallback: UIViewController, WKScriptMessageHandler {
+class CustomTouchEndEventCallback: UIViewController {
     private var aaChartView: AAChartView!
     
     override func viewDidLoad() {
@@ -62,15 +62,15 @@ class CustomTouchEndEventCallback: UIViewController, WKScriptMessageHandler {
         
         return aaOptions
     }
-    
-    
+}
+
+extension CustomTouchEndEventCallback: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == kUserContentMessageNameChartTouchEnd {
             let messageBody = message.body
             print("✋🏻✋🏻✋🏻✋🏻✋🏻" + (messageBody as! String))
         }
     }
-    
 }
 
 extension CustomTouchEndEventCallback: AAChartViewDelegate {
