@@ -37,7 +37,6 @@ class CustomTouchEndEventCallback: UIViewController, WKScriptMessageHandler {
                                     height: chartViewHeight)
         view.addSubview(aaChartView!)
         aaChartView!.isScrollEnabled = false//Disable chart content scrolling
-        aaChartView!.isClearBackgroundColor = true
         aaChartView!.delegate = self as AAChartViewDelegate
     }
     
@@ -119,29 +118,6 @@ function handleTouchEndEvent() {
             
         }
         
-    }
-    
-    open func aaChartView(_ aaChartView: AAChartView, clickEventMessage: AAClickEventMessageModel) {
-        print(
-            """
-
-            clicked point series element name: \(clickEventMessage.name ?? "")
-            🖱🖱🖱WARNING!!!!!!!!!!!!!!!!!!!! Click Event Message !!!!!!!!!!!!!!!!!!!! WARNING🖱🖱🖱
-            ==========================================================================================
-            ------------------------------------------------------------------------------------------
-            user finger moved over!!!,get the move over event message: {
-            category = \(String(describing: clickEventMessage.category))
-            index = \(String(describing: clickEventMessage.index))
-            name = \(String(describing: clickEventMessage.name))
-            offset = \(String(describing: clickEventMessage.offset))
-            x = \(String(describing: clickEventMessage.x))
-            y = \(String(describing: clickEventMessage.y))
-            }
-            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            
-            
-            """
-        )
     }
     
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
