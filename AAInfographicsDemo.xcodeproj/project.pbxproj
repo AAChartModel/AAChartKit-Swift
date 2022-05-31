@@ -238,8 +238,6 @@
 				449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */,
 				2763384424A7070F00143B9B /* DataSortingWithAnimationChartVC.swift */,
 				448330B724E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift */,
-				84DEA0D32845ADEB00D0206F /* CustomMouseOutEventCallback.swift */,
-				84DEA0D52845F5F200D0206F /* CustomSelectionEventCallback.swift */,
 				84DEA0D72846013F00D0206F /* CustomTouchEndEventCallback.swift */,
 			);
 			path = AdditionalContent1;
@@ -321,6 +319,7 @@
 				27766454207C55BE00F0A62C /* MixedChartVC.swift */,
 				275BB8D720CFA6DB00DE1991 /* AdditionalContent1 */,
 				27E475F724B2FB2E00690657 /* AdditionalContent2 */,
+				84DEA0D928460E9300D0206F /* BackUpContent */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -380,6 +379,15 @@
 				27E58D3626EA18B900A0709E /* AAStyle.swift */,
 			);
 			path = AAOptionsModel;
+			sourceTree = "<group>";
+		};
+		84DEA0D928460E9300D0206F /* BackUpContent */ = {
+			isa = PBXGroup;
+			children = (
+				84DEA0D32845ADEB00D0206F /* CustomMouseOutEventCallback.swift */,
+				84DEA0D52845F5F200D0206F /* CustomSelectionEventCallback.swift */,
+			);
+			path = BackUpContent;
 			sourceTree = "<group>";
 		};
 		ED0A032227281695000BF778 /* AAInfographics */ = {
