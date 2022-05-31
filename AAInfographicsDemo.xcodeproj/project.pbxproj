@@ -37,6 +37,7 @@
 		848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */; };
 		84AE6B1F26A58380001F0755 /* AADateUTCTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE6B1E26A58380001F0755 /* AADateUTCTool.swift */; };
 		84B68246266DB09100957FC5 /* AAChartSymbolConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B68245266DB09100957FC5 /* AAChartSymbolConstant.swift */; };
+		84DEA0D42845ADEB00D0206F /* CustomMouseOutEventCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEA0D32845ADEB00D0206F /* CustomMouseOutEventCallback.swift */; };
 		ED0A032527281695000BF778 /* AAInfographics.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0A032327281695000BF778 /* AAInfographics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED0A032827281695000BF778 /* AAInfographics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; };
 		ED0A032927281695000BF778 /* AAInfographics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -181,6 +182,7 @@
 		848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAAChartViewForXibVC.xib; sourceTree = "<group>"; };
 		84AE6B1E26A58380001F0755 /* AADateUTCTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADateUTCTool.swift; sourceTree = "<group>"; };
 		84B68245266DB09100957FC5 /* AAChartSymbolConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChartSymbolConstant.swift; sourceTree = "<group>"; };
+		84DEA0D32845ADEB00D0206F /* CustomMouseOutEventCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMouseOutEventCallback.swift; sourceTree = "<group>"; };
 		D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBundlePathLoader.swift; sourceTree = "<group>"; };
 		ED0A032127281695000BF778 /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A032327281695000BF778 /* AAInfographics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAInfographics.h; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */,
 				2763384424A7070F00143B9B /* DataSortingWithAnimationChartVC.swift */,
 				448330B724E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift */,
+				84DEA0D32845ADEB00D0206F /* CustomMouseOutEventCallback.swift */,
 			);
 			path = AdditionalContent1;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				84AE6B1F26A58380001F0755 /* AADateUTCTool.swift in Sources */,
 				44EB70A722BCB606008FECE4 /* JSFormatterFunctionVC.swift in Sources */,
 				84B68246266DB09100957FC5 /* AAChartSymbolConstant.swift in Sources */,
+				84DEA0D42845ADEB00D0206F /* CustomMouseOutEventCallback.swift in Sources */,
 				449A0ED62377149D009F8FE1 /* ScrollingUpdateDataVC.swift in Sources */,
 				447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */,
 				278C55141EE948C900770B97 /* BasicChartVC.swift in Sources */,
