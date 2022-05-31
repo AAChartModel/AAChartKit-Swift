@@ -33,7 +33,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 11.0, macCatalyst 13.1, *)
+@available(iOS 10.0, macCatalyst 13.1, *)
 class OnlyRefreshChartDataVC: AABaseChartVC {
     public var step: Bool?
     private var timer: Timer?

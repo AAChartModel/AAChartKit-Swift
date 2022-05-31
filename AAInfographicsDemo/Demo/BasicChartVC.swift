@@ -34,7 +34,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 11.0, macCatalyst 13.1, *)
+@available(iOS 10.0, macCatalyst 13.1, *)
 class BasicChartVC: UIViewController {
     public var chartType: AAChartType!
     public var step: Bool?

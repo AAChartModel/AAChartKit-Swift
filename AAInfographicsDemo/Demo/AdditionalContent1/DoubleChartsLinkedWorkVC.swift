@@ -33,7 +33,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 11.0, macCatalyst 13.1, *)
+@available(iOS 10.0, macCatalyst 13.1, *)
 class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     
     private var aaChartView1 = AAChartView()
