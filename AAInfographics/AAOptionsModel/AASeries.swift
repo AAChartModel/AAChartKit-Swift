@@ -211,7 +211,34 @@ public class AASeries: AAObject {
 
 
 public class AAEvents: AAObject {
+    public var click: String?
+    public var mouseOver: String?
+    public var mouseOut: String?
     public var legendItemClick: String?
+    
+    @discardableResult
+    public func click(_ prop: String?) -> AAEvents {
+        if prop != nil {
+            click = prop!.aa_toPureJSString()
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func mouseOver(_ prop: String?) -> AAEvents {
+        if prop != nil {
+            mouseOver = prop!.aa_toPureJSString()
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func mouseOut(_ prop: String?) -> AAEvents {
+        if prop != nil {
+            mouseOut = prop!.aa_toPureJSString()
+        }
+        return self
+    }
 
     @discardableResult
     public func legendItemClick(_ prop: String?) -> AAEvents {
@@ -246,6 +273,7 @@ public class AAPoint: AAObject {
 public class AAPointEvents: AAObject {
     public var click: String?
     public var mouseOver: String?
+    public var mouseOut: String?
     public var remove: String?
     public var select: String?
     public var unselect: String?
@@ -263,6 +291,14 @@ public class AAPointEvents: AAObject {
     public func mouseOver(_ prop: String?) -> AAPointEvents {
         if prop != nil {
             mouseOver = prop!.aa_toPureJSString()
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func mouseOut(_ prop: String?) -> AAPointEvents {
+        if prop != nil {
+            mouseOut = prop!.aa_toPureJSString()
         }
         return self
     }
