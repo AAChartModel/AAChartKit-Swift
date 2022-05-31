@@ -296,7 +296,6 @@ extension BasicChartVC: AAChartViewDelegate {
 The received user click or finger move over events contain following content
 
 ```swift
-@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
 public class AAEventMessageModel: NSObject {
     public var name: String?
     public var x: Float?
@@ -306,10 +305,8 @@ public class AAEventMessageModel: NSObject {
     public var index: Int?
 }
 
-@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
 public class AAClickEventMessageModel: AAEventMessageModel {}
 
-@available(iOS 9.0, macCatalyst 13.0, macOS 10.11, *)
 public class AAMoveOverEventMessageModel: AAEventMessageModel {}
 ```
 
