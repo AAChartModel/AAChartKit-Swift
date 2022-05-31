@@ -66,15 +66,15 @@ public class AAMoveOverEventMessageModel: AAEventMessageModel {}
 
 //Refer to: https://stackoverflow.com/questions/26383031/wkwebview-causes-my-view-controller-to-leak
 @available(iOS 11.0, macCatalyst 13.1, macOS 10.13, *)
-class AALeakAvoider : NSObject, WKScriptMessageHandler {
+public class AALeakAvoider : NSObject, WKScriptMessageHandler {
     weak var delegate : WKScriptMessageHandler?
     
-    init(delegate:WKScriptMessageHandler) {
+    public init(delegate:WKScriptMessageHandler) {
         self.delegate = delegate
         super.init()
     }
     
-    func userContentController(
+    public func userContentController(
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage
     ) {
