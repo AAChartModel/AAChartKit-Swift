@@ -54,6 +54,7 @@ public class AAChart: AAObject {
     public var spacingLeft: Float? //👈
     public var scrollablePlotArea: AAScrollablePlotArea?
     public var resetZoomButton: AAResetZoomButton?
+    public var zoomType: String?
     
     @discardableResult
     public func type(_ prop: AAChartType?) -> AAChart {
@@ -204,6 +205,12 @@ public class AAChart: AAObject {
     @discardableResult
     public func resetZoomButton(_ prop: AAResetZoomButton?) -> AAChart {
         resetZoomButton = prop
+        return self
+    }
+    
+    @discardableResult
+    public func zoomType(_ prop: AAChartZoomType?) -> AAChart {
+        zoomType = prop?.rawValue
         return self
     }
     
