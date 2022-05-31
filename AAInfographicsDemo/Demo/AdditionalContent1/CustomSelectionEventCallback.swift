@@ -50,7 +50,7 @@ class CustomSelectionEventCallback: UIViewController, WKScriptMessageHandler {
             .chartType(.column)
             .stacking(.normal)
             .title("Top Rounded Corners Stacking Column Chart")
-            .colorsTheme(["#fe117c", "#ffc069", "#06caf4",])
+            .colorsTheme(["#06caf4",])
             .series([
                 AASeriesElement()
                     .name("Tokyo Hot")
