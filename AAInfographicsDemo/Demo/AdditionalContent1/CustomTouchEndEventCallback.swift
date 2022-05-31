@@ -14,14 +14,14 @@ let kUserContentMessageNameChartTouchEnd = "touchEnd"
 
 class CustomTouchEndEventCallback: UIViewController, WKScriptMessageHandler {
     private var aaChartView: AAChartView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-
-       configureChartView()
-       configureChartViewCustomEventMessageHandler()
+        
+        configureChartView()
+        configureChartViewCustomEventMessageHandler()
         
         let aaOptions = topRoundedCornersStackingColumnChart()
         aaChartView.aa_drawChartWithChartOptions(aaOptions)
@@ -59,7 +59,7 @@ class CustomTouchEndEventCallback: UIViewController, WKScriptMessageHandler {
             ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
-            
+        
         return aaOptions
     }
     
@@ -67,7 +67,7 @@ class CustomTouchEndEventCallback: UIViewController, WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == kUserContentMessageNameChartTouchEnd {
             let messageBody = message.body
-            print(messageBody)
+            print("✋🏻✋🏻✋🏻✋🏻✋🏻" + (messageBody as! String))
         }
     }
     
@@ -75,13 +75,14 @@ class CustomTouchEndEventCallback: UIViewController, WKScriptMessageHandler {
 
 extension CustomTouchEndEventCallback: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
-       print("🚀🚀🚀, AAChartView Did Finished Load!!!")
+        print("🚀🚀🚀, AAChartView Did Finished Load!!!")
         
+        let touchEndMessage = "手指离开了, 监听到手指离开了"
         let jsStr = """
         function handleTouchEndEvent() {
-            window.webkit.messageHandlers.\(kUserContentMessageNameChartTouchEnd).postMessage("✋🏻✋🏻✋🏻✋🏻✋🏻手指离开了, 监听到手指离开了");
+            window.webkit.messageHandlers.\(kUserContentMessageNameChartTouchEnd).postMessage("\(touchEndMessage)");
         }
-
+        
         let container = document.getElementById('container');
         container.addEventListener("touchend", handleTouchEndEvent, false);
         """
@@ -123,7 +124,7 @@ extension CustomTouchEndEventCallback: AAChartViewDelegate {
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
         print("👌🏻moved over point series element name: \(moveOverEventMessage.name ?? "")")
     }
-
+    
 }
 
 
