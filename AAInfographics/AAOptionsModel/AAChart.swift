@@ -55,6 +55,7 @@ public class AAChart: AAObject {
     public var scrollablePlotArea: AAScrollablePlotArea?
     public var resetZoomButton: AAResetZoomButton?
     public var zoomType: String?
+    public var events: AAChartEvents?
     
     @discardableResult
     public func type(_ prop: AAChartType?) -> AAChart {
@@ -214,6 +215,12 @@ public class AAChart: AAObject {
         return self
     }
     
+    @discardableResult
+    public func events(_ prop: AAChartEvents?) -> AAChart {
+        events = prop
+        return self
+    }
+    
     public override init() {
         
     }
@@ -263,6 +270,22 @@ public class AAResetZoomButton: AAObject {
     @discardableResult
     public func theme(_ prop: [String: Any]?) -> AAResetZoomButton {
         theme = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
+public class AAChartEvents: AAObject {
+    public var selection: String?
+    
+    @discardableResult
+    public func selection(_ prop: String?) -> AAChartEvents {
+        if prop != nil {
+            selection = prop!.aa_toPureJSString()
+        }
         return self
     }
     
