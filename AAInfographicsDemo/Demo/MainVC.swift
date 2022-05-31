@@ -61,6 +61,7 @@ class MainVC: UIViewController {
             //                  "Scrollable chart ---可滚动の图表",
             "Data Sorting Chart With Animation---图表动态排序",
             "XIB AAChartView---在 XIB 中创建 AAChartView",
+            "Custom Chart Event Callback--自定义交互事件回调",
         ]
         
         chartTypeTitleArr = [
@@ -309,7 +310,9 @@ class MainVC: UIViewController {
                "Scatter Chart---散点图",
             ],
             /*XIB AAChartView*/
-            ["XIB AAChartView---在 XIB 中创建 AAChartView"]
+            ["XIB AAChartView---在 XIB 中创建 AAChartView"],
+            /*Custom event callback*/
+            ["自定义监听触摸结束事件---CustomTouchEndEventCallbackVC"]
         ]
         
         chartTypeArr = [
@@ -638,6 +641,11 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             let vc = TestAAChartViewForXibVC()
 //            vc.selectedIndex = indexPath.row
 //            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+          
+        case 15:
+            /*CustomTouchEndEventCallbackVCs*/
+            let vc = CustomTouchEndEventCallbackVC()
             navigationController?.pushViewController(vc, animated: true)
             
         default:
