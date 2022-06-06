@@ -286,7 +286,16 @@ public class AAResetZoomButton: AAObject {
 }
 
 public class AAChartEvents: AAObject {
+    public var load: String?
     public var selection: String?
+    
+    @discardableResult
+    public func load(_ prop: String?) -> AAChartEvents {
+        if prop != nil {
+            load = prop!.aa_toPureJSString()
+        }
+        return self
+    }
     
     @discardableResult
     public func selection(_ prop: String?) -> AAChartEvents {

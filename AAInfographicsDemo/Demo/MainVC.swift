@@ -281,6 +281,7 @@ class MainVC: UIViewController {
                 "configureTheAxesLabelsFormattersOfDoubleYAxesChart3---配置双 Y 轴图表的 Y 轴文字标签的 Formatter 函数 示例 3",
                 "makePieChartShow0Data---使饼图显示为 0 的数据",
                 "customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters---通过截取前四个字符来自定义 X 轴 labels",
+                "setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart---加载图表后将 crosshair 和 tooltip 设置到默认位置"
             ],
             /*Scrolling update chart data*/
             [  "Column Chart---柱形图",
