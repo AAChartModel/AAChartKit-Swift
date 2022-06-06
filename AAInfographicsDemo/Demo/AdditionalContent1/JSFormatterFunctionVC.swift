@@ -1840,20 +1840,21 @@ function () {
                 .width(2)
         )
         
-        let defaultSelectedIndex = 1
+        //默认选中的位置索引
+        let defaultSelectedIndex = 5
         
         //https://www.highcharts.com/forum/viewtopic.php?t=36508
         aaOptions.chart?.events(
             AAChartEvents()
                 .load("""
-function() {
-            var points = [],
+        function() {
+            let points = [],
                 chart = this,
                 series = chart.series,
-                len = series.length;
+                length = series.length;
                         
-            for (var i = 0; i < len; i++) {
-              var pointElement = series[i].data[\(defaultSelectedIndex)];
+            for (let i = 0; i < length; i++) {
+              let pointElement = series[i].data[\(defaultSelectedIndex)];
               points.push(pointElement);
             }
             chart.xAxis[0].drawCrosshair(null, points[0]);
