@@ -1843,6 +1843,7 @@ function () {
         //默认选中的位置索引
         let defaultSelectedIndex = 5
         
+        //https://api.highcharts.com/highcharts/chart.events.load
         //https://www.highcharts.com/forum/viewtopic.php?t=36508
         aaOptions.chart?.events(
             AAChartEvents()
