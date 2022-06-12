@@ -35,13 +35,13 @@ import AAInfographics
 
 @available(iOS 10.0, macCatalyst 13.1, *)
 class AdvancedUpdatingFeatureVC: BasicChartVC {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     
     override func segmentDidSelected(segmentedControl: UISegmentedControl) {
         var options: AAObject? = nil
@@ -100,24 +100,19 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
     
     override func switchDidChange(switchView: UISwitch) {
         var options: AAObject? = nil
-        
         let isOn = switchView.isOn
         
         switch switchView.tag {
         case 0:
             let aaXAxis = AAXAxis()
                 .reversed(isOn)
-            
-//            let aaChart = AAChart()
-//            aaChart.backgroundColor = AAGradientColor.springGreens
             options = aaXAxis
-        
+            
         case 1:
             let aaYAxis = AAYAxis()
                 .reversed(isOn)
             options = aaYAxis
             
-        
         case 2: if self.aaChartModel.chartType == AAChartType.bar {
             print("⚠️⚠️⚠️inverted is useless for Bar Chart")
         }
@@ -129,73 +124,72 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
         case 3:
             self.aaChartModel.polar = isOn
             let aaChart = AAChart()
-            .polar(isOn)
-            .inverted(self.aaChartModel.inverted)
+                .polar(isOn)
+                .inverted(self.aaChartModel.inverted)
             options = aaChart
-
+            
             if (self.aaChartModel.chartType == AAChartType.column) {
                 if (self.aaChartModel.polar == true) {
                     options = AAOptions()
-                    .chart(aaChart)
-                    .plotOptions(AAPlotOptions()
-                                    .column(AAColumn()
-                                               .pointPadding(0)
-                                               .groupPadding(0.005)))
+                        .chart(aaChart)
+                        .plotOptions(AAPlotOptions()
+                            .column(AAColumn()
+                                .pointPadding(0)
+                                .groupPadding(0.005)))
                 } else {
                     options = AAOptions()
-                    .chart(aaChart)
-                    .plotOptions(AAPlotOptions()
-                                    .column(AAColumn()
-                                               .pointPadding(0.1)
-                                               .groupPadding(0.2)))
+                        .chart(aaChart)
+                        .plotOptions(AAPlotOptions()
+                            .column(AAColumn()
+                                .pointPadding(0.1)
+                                .groupPadding(0.2)))
                 }
             } else if (self.aaChartModel.chartType == AAChartType.bar) {
                 if (self.aaChartModel.chartType == AAChartType.bar) {
                     if (self.aaChartModel.polar == true) {
                         options = AAOptions()
-                        .chart(aaChart)
-                        .plotOptions(AAPlotOptions()
-                                        .bar(AABar()
-                                                .pointPadding(0)
-                                                .groupPadding(0.005)))
+                            .chart(aaChart)
+                            .plotOptions(AAPlotOptions()
+                                .bar(AABar()
+                                    .pointPadding(0)
+                                    .groupPadding(0.005)))
                     } else {
                         options = AAOptions()
-                        .chart(aaChart)
-                        .plotOptions(AAPlotOptions()
-                                        .bar(AABar()
-                                                .pointPadding(0.1)
-                                                .groupPadding(0.2)))
+                            .chart(aaChart)
+                            .plotOptions(AAPlotOptions()
+                                .bar(AABar()
+                                    .pointPadding(0.1)
+                                    .groupPadding(0.2)))
                     }
                 }
             }
-        
+            
         case 4:
             let aaPlotOptions = AAPlotOptions()
-            .series(AASeries()
-                       .dataLabels(AADataLabels()
-                                      .enabled(isOn)))
+                .series(AASeries()
+                    .dataLabels(AADataLabels()
+                        .enabled(isOn)))
             options = aaPlotOptions
-        
-            break
+            
         case 5:
             let aaMarker = isOn ?
             AAMarker()
-            .enabled(false)
+                .enabled(false)
             :
             AAMarker()
-            .enabled(true)
-            .radius(5)
+                .enabled(true)
+                .radius(5)
             
             let aaPlotOptions = AAPlotOptions()
-            .series(AASeries()
-                       .marker(aaMarker))
+                .series(AASeries()
+                    .marker(aaMarker))
             options = aaPlotOptions
-        
+            
         default:
             break
         }
         
         aaChartView.aa_updateChart(options: options!, redraw: true)
     }
-
+    
 }
