@@ -38,8 +38,8 @@ import AAInfographics
 class BasicChartVC: UIViewController {
     public var chartType: AAChartType!
     public var step: Bool?
-    private var aaChartModel: AAChartModel!
-    private var aaChartView: AAChartView!
+    public var aaChartModel: AAChartModel!
+    public var aaChartView: AAChartView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

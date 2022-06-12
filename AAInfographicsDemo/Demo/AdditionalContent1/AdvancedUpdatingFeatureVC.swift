@@ -44,7 +44,57 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
 
     
     override func segmentDidSelected(segmentedControl: UISegmentedControl) {
+        var options: AAObject? = nil
+        let selectedSegmentIndex = segmentedControl.selectedSegmentIndex
         
+        switch segmentedControl.tag {
+        case 0:
+            let stackingArr = [
+                AAChartStackingType.none,
+                .normal,
+                .percent
+            ]
+            let stackingType = stackingArr[selectedSegmentIndex]
+            let aaPlotOptions = AAPlotOptions()
+                .series(AASeries()
+                    .stacking(stackingType))
+            options = aaPlotOptions
+            
+        case 1:
+            if chartType == .column || chartType == .bar {
+                let borderRadiusArr: [Float] = [0, 10, 100]
+                let borderRadius = borderRadiusArr[selectedSegmentIndex]
+                var aaPlotOptions: AAPlotOptions? = nil
+                if self.chartType == .column {
+                    aaPlotOptions = AAPlotOptions()
+                        .column(AAColumn()
+                            .borderRadius(borderRadius))
+                } else {
+                    aaPlotOptions = AAPlotOptions()
+                        .bar(AABar()
+                            .borderRadius(borderRadius))
+                }
+                options = aaPlotOptions
+                
+            } else {
+                let symbolArr = [
+                    AAChartSymbolType.circle,
+                    .square,
+                    .diamond,
+                    .triangle,
+                    .triangleDown
+                ]
+                let markerSymbol = symbolArr[selectedSegmentIndex]
+                let aaPlotOptions = AAPlotOptions()
+                    .series(AASeries()
+                        .marker(AAMarker()
+                            .symbol(markerSymbol.rawValue)))
+                options = aaPlotOptions
+            }
+            
+        default: break
+        }
+        aaChartView.aa_updateChart(options: options!, redraw: true)
     }
     
     

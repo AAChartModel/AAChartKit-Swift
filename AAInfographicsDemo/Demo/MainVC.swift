@@ -60,6 +60,7 @@ class MainVC: UIViewController {
             "Scrollable chart ---可滚动の图表",
             //                  "Scrollable chart ---可滚动の图表",
             "Data Sorting Chart With Animation---图表动态排序",
+            "Chart Options Advanced Updating---图表高级更新",
             "XIB AAChartView---在 XIB 中创建 AAChartView",
             "Custom Chart Event Callback--自定义交互事件回调",
         ]
@@ -310,10 +311,25 @@ class MainVC: UIViewController {
                "Bar Chart---条形图",
                "Scatter Chart---散点图",
             ],
+            /*Advanced Updating Feature*/
+            [
+                "Column Chart---柱形图",
+                "Bar Chart---条形图",
+                "Area Chart---折线填充图",
+                "Areaspline Chart---曲线填充图",
+                "Step Area Chart--- 直方折线填充图",
+                "Step Line Chart--- 直方折线图",
+                "Line Chart---折线图",
+                "Spline Chart---曲线图",
+            ],
             /*XIB AAChartView*/
-            ["XIB AAChartView---在 XIB 中创建 AAChartView"],
+            [
+                "XIB AAChartView---在 XIB 中创建 AAChartView"
+            ],
             /*Custom event callback*/
-            ["自定义监听触摸结束事件---CustomTouchEndEventCallbackVC"]
+            [
+                "自定义监听触摸结束事件---CustomTouchEndEventCallbackVC"
+            ]
         ]
         
         chartTypeArr = [
@@ -428,14 +444,29 @@ class MainVC: UIViewController {
                 AAChartType.spline,
                 AAChartType.scatter
             ],
+            
             /*Data Sorting With Animation Charts*/
             [
                 AAChartType.column,
                 AAChartType.bar,
                 AAChartType.scatter
             ],
+            /*Advanced Updating Feature*/
+            [
+                AAChartType.column,
+                AAChartType.bar,
+                AAChartType.area,
+                AAChartType.areaspline,
+                AAChartType.area,
+                AAChartType.line,
+                AAChartType.line,
+                AAChartType.spline,
+            ],
             [//Empty Array,just for holding place
             ],
+            [//Empty Array,just for holding place
+            ],
+            
         ]
         
         view.backgroundColor = .white
@@ -638,13 +669,22 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             
         case 14:
+            /*Advanced Updating Feature*/
+            let vc = AdvancedUpdatingFeatureVC()
+            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+            if indexPath.row == 4 || indexPath.row == 5 {
+                vc.step = true
+            }
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 15:
             /*Special Type Charts*/
             let vc = TestAAChartViewForXibVC()
 //            vc.selectedIndex = indexPath.row
 //            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
           
-        case 15:
+        case 16:
             /*CustomTouchEndEventCallbackVCs*/
             let vc = CustomTouchEndEventCallbackVC()
             navigationController?.pushViewController(vc, animated: true)
