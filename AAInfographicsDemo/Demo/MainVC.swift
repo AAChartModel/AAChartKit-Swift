@@ -141,6 +141,7 @@ class MainVC: UIViewController {
                 "noMoreGroupingAndNestedColumnChart---不分组的嵌套柱状图📊",
                 "topRoundedCornersStackingColumnChart---顶部为圆角的堆积柱状图📊",
                 "freeStyleRoundedCornersStackingColumnChart---各个圆角自由独立设置的堆积柱状图📊",
+                "customColumnChartBorderStyleAndStatesHoverColor---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色"
             ],
             /*Mixed Chart*/
             [
@@ -253,7 +254,8 @@ class MainVC: UIViewController {
                 "Adjust Bubble Chart Min And Max----调整气泡图的 min 和 max 相关属性",
                 "customLineChartDataLabelsFormat---自定义曲线图的 DataLabels 的 format 属性",
                 "customLineChartDataLabelsFormat2---自定义曲线图的 DataLabels 的 format 属性2(更简易方法)",
-                "complicatedScatterChart---复杂的自定义散点图"
+                "complicatedScatterChart---复杂的自定义散点图",
+                "customColumnrangeChartGroupStyleAndSeriesStatesHoverColor---自定义柱形范围图的 group 样式和手指掠过图表 series 元素时的柱形颜色"
             ],
             /*Custom Tooltip With JavaScript Formatter Function */
             [

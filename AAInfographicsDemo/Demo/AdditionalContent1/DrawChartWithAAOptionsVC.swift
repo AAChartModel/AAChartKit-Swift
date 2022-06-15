@@ -92,6 +92,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 44: return customLineChartDataLabelsFormat()//自定义曲线图的 DataLabels 的 format 属性
         case 45: return customLineChartDataLabelsFormat2()//自定义曲线图的 DataLabels 的 format 属性(更简易方法)
         case 46: return complicatedScatterChart()//复杂的自定义散点图
+        case 47: return customColumnrangeChartGroupStyleAndSeriesStatesHoverColor()
 
         default:
             return AAOptions()
@@ -3141,6 +3142,77 @@ function () {
             .align(.right)
             .layout(.vertical)
             .verticalAlign(.top)
+        
+        return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/365
+    private func customColumnrangeChartGroupStyleAndSeriesStatesHoverColor() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.columnrange)
+            .title("TEMPERATURE VARIATION BY MONTH")
+            .subtitle("observed in Gotham city")
+            .yAxisTitle("℃")
+            .colorsTheme([AAColor.darkGray, AAColor.lightGray])//Colors theme
+            .borderRadius(6)
+            .categories([
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ])
+            .series([
+                AASeriesElement()
+                    .name("temperature1")
+                    .data([
+                        [-9.7,  9.4],
+                        [-8.7,  6.5],
+                        [-3.5,  9.4],
+                        [-1.4, 19.9],
+                        [0.0,  22.6],
+                        [2.9,  29.5],
+                        [-9.7,  9.4],
+                        [-8.7,  6.5],
+                        [-3.5,  9.4],
+                        [-1.4, 19.9],
+                        [0.0,  22.6],
+                        [2.9,  29.5],
+                    ])
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .color(AAColor.red)
+                           )),
+                AASeriesElement()
+                    .name("temperature2")
+                    .data([
+                        [9.2,  30.7],
+                        [7.3,  26.5],
+                        [4.4,  18.0],
+                        [-3.1, 11.4],
+                        [-5.2, 10.4],
+                        [-13.5, 9.8],
+                        [9.2,  30.7],
+                        [7.3,  26.5],
+                        [4.4,  18.0],
+                        [-3.1, 11.4],
+                        [-5.2, 10.4],
+                        [-13.5, 9.8]
+                    ])
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .color("dodgerblue")// Dodgerblue／道奇藍／#1e90ff十六进制颜色代码
+                           )),
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        
+        //    *  关于 `pointPadding`
+        //https://api.highcharts.com.cn/highcharts#plotOptions.column.groupPadding
+        //
+        //    * 关于 `pointPadding`
+        //https://api.highcharts.com.cn/highcharts#plotOptions.column.pointPadding
+        
+        aaOptions.plotOptions?.columnrange?
+            .grouping(false)
+            .groupPadding(0.003)
         
         return aaOptions
     }
