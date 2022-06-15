@@ -1307,8 +1307,8 @@ function () {
             .borderWidth(0)
             .formatter(#"""
             function () {
-                var box1Text = "&nbsp 2021-" + this.x + this.points[0].series.name + this.y;
-                var box2Text = "&nbsp 2021-" + this.x + this.points[1].series.name + this.y;
+                let box1Text = "&nbsp 2021-" + this.x + this.points[0].series.name + this.y;
+                let box2Text = "&nbsp 2021-" + this.x + this.points[1].series.name + this.y;
                 
                 return '<style>\
                 div{margin:0;padding:0}\
@@ -1504,8 +1504,8 @@ function () {
                     .color("DodgerBlue"))
                     .formatter("""
                 function () {
-                    var yValue = this.value;
-                    var formattedYValue = (yValue / 1000).toFixed(3) + '千';
+                    let yValue = this.value;
+                    let formattedYValue = (yValue / 1000).toFixed(3) + '千';
                     return formattedYValue;
                 }
                """)
@@ -1527,8 +1527,8 @@ function () {
                     .color(AAColor.red))
                     .formatter("""
                 function () {
-                    var yValue = this.value;
-                    var formattedYValue = (yValue / 10000).toFixed(4) + '万';
+                    let yValue = this.value;
+                    let formattedYValue = (yValue / 10000).toFixed(4) + '万';
                     return formattedYValue;
                 }
                """)
@@ -1617,12 +1617,12 @@ function () {
                     .color("DodgerBlue"))
                     .formatter("""
                 function () {
-                    var yValue = this.value;
-                    var unitStr = '千';
+                    let yValue = this.value;
+                    let unitStr = '千';
                     if (yValue == 0) {
                         unitStr = '';
                     }
-                    var formattedYValue = (yValue / 1000).toFixed(3) + unitStr;
+                    let formattedYValue = (yValue / 1000).toFixed(3) + unitStr;
                     return formattedYValue;
                 }
                """)//Y轴文字数值为 0 的时候, 不显示单位
@@ -1644,12 +1644,12 @@ function () {
                     .color(AAColor.red))
                     .formatter("""
                 function () {
-                    var yValue = this.value;
-                    var unitStr = '万';
+                    let yValue = this.value;
+                    let unitStr = '万';
                     if (yValue == 0) {
                         unitStr = '';
                     }
-                    var formattedYValue = (yValue / 10000).toFixed(4) + unitStr;
+                    let formattedYValue = (yValue / 10000).toFixed(4) + unitStr;
                     return formattedYValue;
                 }
                """)//Y轴文字数值为 0 的时候, 不显示单位
