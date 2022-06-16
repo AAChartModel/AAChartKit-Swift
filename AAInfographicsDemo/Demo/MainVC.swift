@@ -257,7 +257,7 @@ class MainVC: UIViewController {
                 "complicatedScatterChart---复杂的自定义散点图",
                 "customColumnrangeChartGroupStyleAndSeriesStatesHoverColor---自定义柱形范围图的 group 样式和手指掠过图表 series 元素时的柱形颜色"
             ],
-            /*Custom Tooltip With JavaScript Formatter Function */
+            /*JavaScript Formatter Function */
             [
                 "customAreaChartTooltipStyleWithSimpleFormatString---简单字符串拼接",
                 "customAreaChartTooltipStyleWithDifferentUnitSuffix---自定义不同单位后缀",
@@ -284,7 +284,8 @@ class MainVC: UIViewController {
                 "configureTheAxesLabelsFormattersOfDoubleYAxesChart3---配置双 Y 轴图表的 Y 轴文字标签的 Formatter 函数 示例 3",
                 "makePieChartShow0Data---使饼图显示为 0 的数据",
                 "customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters---通过截取前四个字符来自定义 X 轴 labels",
-                "setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart---加载图表后将 crosshair 和 tooltip 设置到默认位置"
+                "setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart---加载图表后将 crosshair 和 tooltip 设置到默认位置",
+                "customColumnChartBorderStyleAndStatesHoverColor---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色(同时禁用 tooltip)"
             ],
             /*Scrolling update chart data*/
             [  "Column Chart---柱形图",

@@ -1556,7 +1556,6 @@ class CustomStyleChartVC: AABaseChartVC {
         AAChartModel()
             .chartType(.column)
             .stacking(.normal)
-            .title("Top Rounded Corners Stacking Column Chart")
             .colorsTheme([AAColor.darkGray, AAColor.lightGray])//Colors theme
             .categories([
                 "January", "February", "March", "April", "May", "June",
