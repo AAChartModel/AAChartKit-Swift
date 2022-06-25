@@ -128,7 +128,7 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
                 .inverted(self.aaChartModel.inverted)
             options = aaChart
             
-            if (self.aaChartModel.chartType == AAChartType.column) {
+            if self.aaChartModel.chartType == AAChartType.column {
                 if (self.aaChartModel.polar == true) {
                     options = AAOptions()
                         .chart(aaChart)
@@ -144,23 +144,21 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
                                 .pointPadding(0.1)
                                 .groupPadding(0.2)))
                 }
-            } else if (self.aaChartModel.chartType == AAChartType.bar) {
-                if (self.aaChartModel.chartType == AAChartType.bar) {
-                    if (self.aaChartModel.polar == true) {
-                        options = AAOptions()
-                            .chart(aaChart)
-                            .plotOptions(AAPlotOptions()
-                                .bar(AABar()
-                                    .pointPadding(0)
-                                    .groupPadding(0.005)))
-                    } else {
-                        options = AAOptions()
-                            .chart(aaChart)
-                            .plotOptions(AAPlotOptions()
-                                .bar(AABar()
-                                    .pointPadding(0.1)
-                                    .groupPadding(0.2)))
-                    }
+            } else if self.aaChartModel.chartType == AAChartType.bar {
+                if (self.aaChartModel.polar == true) {
+                    options = AAOptions()
+                        .chart(aaChart)
+                        .plotOptions(AAPlotOptions()
+                            .bar(AABar()
+                                .pointPadding(0)
+                                .groupPadding(0.005)))
+                } else {
+                    options = AAOptions()
+                        .chart(aaChart)
+                        .plotOptions(AAPlotOptions()
+                            .bar(AABar()
+                                .pointPadding(0.1)
+                                .groupPadding(0.2)))
                 }
             }
             
