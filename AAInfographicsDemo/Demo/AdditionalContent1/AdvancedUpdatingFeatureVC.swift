@@ -129,7 +129,7 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
             options = aaChart
             
             if self.aaChartModel.chartType == AAChartType.column {
-                if isOn == true {
+                if self.aaChartModel.polar == true {
                     options = AAOptions()
                         .chart(aaChart)
                         .plotOptions(AAPlotOptions()
@@ -145,7 +145,7 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
                                 .groupPadding(0.2)))
                 }
             } else if self.aaChartModel.chartType == AAChartType.bar {
-                if isOn == true {
+                if self.aaChartModel.polar == true {
                     options = AAOptions()
                         .chart(aaChart)
                         .plotOptions(AAPlotOptions()
