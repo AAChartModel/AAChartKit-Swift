@@ -1329,6 +1329,7 @@ class CustomStyleChartVC: AABaseChartVC {
             ])
     }
     
+    // https://github.com/AAChartModel/AAChartKit/issues/1318
     // Refer to https://api.highcharts.com.cn/highcharts#plotOptions.spline.marker.states.hover.enabled
     private func disableSplineChartMarkerHoverEffect() -> AAChartModel {
         AAChartModel()
