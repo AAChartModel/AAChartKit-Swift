@@ -245,15 +245,15 @@ class BasicChartVC: UIViewController {
                 ["No stacking",
                  "Normal stacking",
                  "Percent stacking"],
-                ["Circle",
-                 "Square",
-                 "Diamond",
-                 "Triangle",
-                 "Triangle-down"]
+                ["◉ ◉ ◉",
+                 "■ ■ ■",
+                 "◆ ◆ ◆",
+                 "▲ ▲ ▲",
+                 "▼ ▼ ▼"]
             ]
             typeLabelNamesArr = [
                 "Stacking Type Selection",
-                "Chart Symbol Type Selection"
+                "marker Symbols Type Selection"
             ]
         }
         
@@ -317,27 +317,19 @@ class BasicChartVC: UIViewController {
     }
     
     private func setUpTheSwitches() {
-        let nameArr: [String]
+        var nameArr = [
+            "xReversed",
+            "yReversed",
+            "xInverted",
+            "Polarization",
+            "DataShow"
+        ]
         let switchWidth: CGFloat
         
         if chartType == .column || chartType == .bar {
-            nameArr = [
-                "xReversed",
-                "yReversed",
-                "xInverted",
-                "Polarization",
-                "DataShow"
-            ]
             switchWidth = (view.frame.size.width - 40) / 5
         } else {
-            nameArr = [
-                "xReversed",
-                "yReversed",
-                "xInverted",
-                "Polarization",
-                "DataShow",
-                "HideMarker"
-            ]
+            nameArr.append("HideMarker")
             switchWidth = (view.frame.size.width - 40) / 6
         }
         
