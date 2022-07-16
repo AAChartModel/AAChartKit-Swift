@@ -62,7 +62,7 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
             
         case 1:
             if chartType == .column || chartType == .bar {
-                let borderRadiusArr: [Float] = [0, 10, 100]
+                let borderRadiusArr: [Float] = [1, 10, 100]
                 let borderRadius = borderRadiusArr[selectedSegmentIndex]
                 var aaPlotOptions: AAPlotOptions? = nil
                 if self.chartType == .column {
