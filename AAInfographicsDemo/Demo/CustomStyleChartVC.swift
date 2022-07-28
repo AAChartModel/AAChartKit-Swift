@@ -1597,7 +1597,6 @@ class CustomStyleChartVC: AABaseChartVC {
             .title("Custom Line Chart With Colorful Markers And Lines")
             .markerRadius(18.0)//marker点半径为8个像素
             .yAxisLineWidth(0)
-        //        .yAxisGridLineStyle(AALi)
             .legendEnabled(false)
             .series([
                 AASeriesElement()
@@ -1652,7 +1651,6 @@ class CustomStyleChartVC: AABaseChartVC {
             .markerRadius(25.0)//marker点半径为8个像素
             .markerSymbol(.circle)
             .yAxisLineWidth(0)
-        //        .yAxisGridLineStyle([AALineStyle styleWithWidth:0])
             .legendEnabled(true)
             .stacking(.normal)
             .series([
@@ -1826,7 +1824,6 @@ class CustomStyleChartVC: AABaseChartVC {
                 AASeriesElement()
                     .type(.line)
                     .enableMouseTracking(false)
-                //                .showInLegend(false)
                     .marker(AAMarker()
                         .enabled(false))
                     .states(AAStates()
@@ -1862,7 +1859,7 @@ class CustomStyleChartVC: AABaseChartVC {
                 .y(-10)
             
             let dataElementValue = Float(dataElement)
-            if (dataElementValue < 0) {
+            if dataElementValue < 0 {
                 let negativeDataElement = AADataElement()
                     .y((-dataElementValue))
                     .color(AAColor.green)
