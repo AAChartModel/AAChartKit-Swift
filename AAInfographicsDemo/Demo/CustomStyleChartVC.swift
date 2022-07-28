@@ -88,6 +88,11 @@ class CustomStyleChartVC: AABaseChartVC {
         case 43: return topRoundedCornersStackingColumnChart()
         case 44: return freeStyleRoundedCornersStackingColumnChart()
         case 45: return customColumnChartBorderStyleAndStatesHoverColor()
+            
+        case 46: return customLineChartWithColorfulMarkersAndLines()
+        case 47: return customLineChartWithColorfulMarkersAndLines2()
+        case 48: return drawLineChartWithPointsCoordinates()
+        case 49: return configureSpecialStyleColumnForNegativeDataMixedPositiveData()
 
         default:
             return configureTriangleRadarChart()
@@ -1584,5 +1589,311 @@ class CustomStyleChartVC: AABaseChartVC {
                     .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]),
             ])
     }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1291
+    private func customLineChartWithColorfulMarkersAndLines() -> AAChartModel {
+        return AAChartModel()
+            .chartType(.line)
+            .title("Custom Line Chart With Colorful Markers And Lines")
+            .markerRadius(18.0)//marker点半径为8个像素
+            .yAxisLineWidth(0)
+        //        .yAxisGridLineStyle(AALi)
+            .legendEnabled(false)
+            .series([
+                AASeriesElement()
+                    .name("Tokyo Hot")
+                    .lineWidth(5.0)
+                    .marker(AAMarker()
+                        .states(AAMarkerStates()
+                            .hover(AAMarkerHover()
+                                .radius(40)
+                                .lineWidth(5))))
+                    .data([
+                        2, 4, 8, 16, 32, 64, 128,
+                        AADataElement()
+                            .y(256.0)
+                            .color(AAColor.red)
+                            .toDic() as Any
+                    ])
+                    .zoneAxis("x")
+                    .zones([
+                        AAZonesElement()
+                            .value(1)
+                            .color(AAColor.red),
+                        AAZonesElement()
+                            .value(2)
+                            .color(AAColor.orange),
+                        AAZonesElement()
+                            .value(3)
+                            .color(AAColor.yellow),
+                        AAZonesElement()
+                            .value(4)
+                            .color(AAColor.green),
+                        AAZonesElement()
+                            .value(5)
+                            .color(AAColor.cyan),
+                        AAZonesElement()
+                            .value(6)
+                            .color(AAColor.blue),
+                        AAZonesElement()
+                            .value(7)
+                            .color(AAColor.purple),
+                    ])
+                ,
+            ])
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1291
+    //https://github.com/AAChartModel/AAChartKit/issues/1293
+    private func customLineChartWithColorfulMarkersAndLines2() -> AAChartModel {
+        return AAChartModel()
+            .chartType(.line)
+            .title("Custom Line Chart With Colorful Markers And Lines")
+            .markerRadius(25.0)//marker点半径为8个像素
+            .markerSymbol(.circle)
+            .yAxisLineWidth(0)
+        //        .yAxisGridLineStyle([AALineStyle styleWithWidth:0])
+            .legendEnabled(true)
+            .stacking(.normal)
+            .series([
+                AASeriesElement()
+                    .name(AAColor.blue)
+                    .lineWidth(20.0)
+                    .data([
+                        2048, 1024, 1024, 1024, 1024,
+                        AADataElement()
+                            .y(2048)
+                            .color(AARgba(30, 144, 255, 1.0))
+                            .toDic() as Any,
+                    ])
+                    .zoneAxis("x")
+                    .zones([
+                        AAZonesElement()
+                            .value(1)
+                            .color(AARgba(30, 144, 255, 1.0)),
+                        AAZonesElement()
+                            .value(2)
+                            .color(AARgba(30, 144, 255, 0.8)),
+                        AAZonesElement()
+                            .value(3)
+                            .color(AARgba(30, 144, 255, 0.6)),
+                        AAZonesElement()
+                            .value(4)
+                            .color(AARgba(30, 144, 255, 0.4)),
+                        AAZonesElement()
+                            .value(5)
+                            .color(AARgba(30, 144, 255, 0.2)),
+                    ])
+                ,
+                AASeriesElement()
+                    .name(AAColor.red)
+                    .lineWidth(20.0)
+                    .data([
+                        2048, 1024, 1024, 1024, 1024,
+                        AADataElement()
+                            .y(2048)
+                            .color(AARgba(255, 0, 0, 1.0))
+                            .toDic() as Any,
+                    ])
+                    .zoneAxis("x")
+                    .zones([
+                        AAZonesElement()
+                            .value(1)
+                            .color(AARgba(255, 0, 0, 1.0)),
+                        AAZonesElement()
+                            .value(2)
+                            .color(AARgba(255, 0, 0, 0.8)),
+                        AAZonesElement()
+                            .value(3)
+                            .color(AARgba(255, 0, 0, 0.6)),
+                        AAZonesElement()
+                            .value(4)
+                            .color(AARgba(255, 0, 0, 0.4)),
+                        AAZonesElement()
+                            .value(5)
+                            .color(AARgba(255, 0, 0, 0.2)),
+                    ])
+                ,
+                AASeriesElement()
+                    .name(AAColor.yellow)
+                    .lineWidth(20.0)
+                    .data([
+                        2048, 1024, 1024, 1024, 1024,
+                        AADataElement()
+                            .y(2048)
+                            .color(AARgba(255, 215, 0, 1.0))
+                            .toDic() as Any,
+                    ])
+                    .zoneAxis("x")
+                    .zones([
+                        AAZonesElement()
+                            .value(1)
+                            .color(AARgba(255, 215, 0, 1.0)),
+                        AAZonesElement()
+                            .value(2)
+                            .color(AARgba(255, 215, 0, 0.8)),
+                        AAZonesElement()
+                            .value(3)
+                            .color(AARgba(255, 215, 0, 0.6)),
+                        AAZonesElement()
+                            .value(4)
+                            .color(AARgba(255, 215, 0, 0.4)),
+                        AAZonesElement()
+                            .value(5)
+                            .color(AARgba(255, 215, 0, 0.2)),
+                    ])
+                ,
+                AASeriesElement()
+                    .name(AAColor.green)
+                    .lineWidth(20.0)
+                    .data([
+                        2048, 1024, 1024, 1024, 1024,
+                        AADataElement()
+                            .y(2048)
+                            .color(AARgba(50, 205, 50, 1.0))
+                            .toDic() as Any,
+                    ])
+                    .zoneAxis("x")
+                    .zones([
+                        AAZonesElement()
+                            .value(1)
+                            .color(AARgba(50, 205, 50, 1.0)),
+                        AAZonesElement()
+                            .value(2)
+                            .color(AARgba(50, 205, 50, 0.8)),
+                        AAZonesElement()
+                            .value(3)
+                            .color(AARgba(50, 205, 50, 0.6)),
+                        AAZonesElement()
+                            .value(4)
+                            .color(AARgba(50, 205, 50, 0.4)),
+                        AAZonesElement()
+                            .value(5)
+                            .color(AARgba(50, 205, 50, 0.2)),
+                    ])
+                ,
+                AASeriesElement()
+                    .name(AAColor.purple)
+                    .lineWidth(20.0)
+                    .data([
+                        2048, 1024, 1024, 1024, 1024,
+                        AADataElement()
+                            .y(2048)
+                            .color(AARgba(138, 43, 226, 1.0))
+                            .toDic() as Any,
+                    ])
+                    .zoneAxis("x")
+                    .zones([
+                        AAZonesElement()
+                            .value(1)
+                            .color(AARgba(138, 43, 226, 1.0)),
+                        AAZonesElement()
+                            .value(2)
+                            .color(AARgba(138, 43, 226, 0.8)),
+                        AAZonesElement()
+                            .value(3)
+                            .color(AARgba(138, 43, 226, 0.6)),
+                        AAZonesElement()
+                            .value(4)
+                            .color(AARgba(138, 43, 226, 0.4)),
+                        AAZonesElement()
+                            .value(5)
+                            .color(AARgba(138, 43, 226, 0.2)),
+                    ])
+                ,
+            ])
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1294
+    private func drawLineChartWithPointsCoordinates2() -> AAChartModel {
+        let dataArr = [
+            [0, 200],
+            [0, 300],
+            [0, 400],
+            [1, 100],
+            [2, 120],
+            [3, 130]
+        ]
+        
+        return AAChartModel()
+            .chartType(.scatter)
+            .title("Draw Line Chart With Points Coordinates")
+            .markerSymbol(.circle)
+            .markerSymbolStyle(.borderBlank)
+            .markerRadius(8)
+            .colorsTheme([AAColor.red])
+            .series([
+                AASeriesElement()
+                    .type(.line)
+                    .enableMouseTracking(false)
+                //                .showInLegend(false)
+                    .marker(AAMarker()
+                        .enabled(false))
+                    .states(AAStates()
+                        .inactive(AAInactive()
+                            .enabled(false)))
+                    .data(dataArr),
+                AASeriesElement()
+                    .name("Red Dot")
+                    .type(.scatter)
+                    .data(dataArr),
+            ])
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1351
+    private func configureSpecialStyleColumnForNegativeDataMixedPositiveData() -> AAChartModel {
+        let categoriesArr = [
+            "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑",
+            "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至", "小寒", "大寒"
+        ]
+        
+        let dataArr = [
+             -70, -69, -25, -145, -182, -215, -52, -265, -233, -453, -139, -96,
+             +70, +69, +25, +145, +182, +215, +52, +265, +233, +453, +139, +96,
+        ]
+        
+        var newDataArr = [[String: Any]]()
+        
+        dataArr.forEach { dataElement in
+            let aaDataLabels = AADataLabels()
+                .enabled(true)
+                .verticalAlign(.middle)
+                .x(0)
+                .y(-10)
+            
+            let dataElementValue = Float(dataElement)
+            if (dataElementValue < 0) {
+                let negativeDataElement = AADataElement()
+                    .y((-dataElementValue))
+                    .color(AAColor.green)
+                    .dataLabels(aaDataLabels
+                        .format("-{y} 美元")
+                        .style(AAStyle(color: AAColor.green, fontSize: 11, weight: .thin))
+                    )
+                newDataArr.append(negativeDataElement.toDic()!)
+            } else {
+                let positiveDataElement = AADataElement()
+                    .y((dataElementValue))
+                    .color(AAColor.red)
+                    .dataLabels(aaDataLabels
+                        .format("+{y} 美元")
+                        .style(AAStyle(color: AAColor.red, fontSize: 11, weight: .thin))
+                    )
+                newDataArr.append(positiveDataElement.toDic()!)
+            }
+        }
+        
+        return AAChartModel()
+            .chartType(.column)
+            .categories(categoriesArr)
+            .tooltipEnabled(false)
+            .yAxisVisible(false)
+            .series([
+                AASeriesElement()
+                    .name("虚构数据")
+                    .data(newDataArr)
+            ])
+    }
+
 
 }

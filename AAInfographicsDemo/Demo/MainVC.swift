@@ -141,7 +141,12 @@ class MainVC: UIViewController {
                 "noMoreGroupingAndNestedColumnChart---不分组的嵌套柱状图📊",
                 "topRoundedCornersStackingColumnChart---顶部为圆角的堆积柱状图📊",
                 "freeStyleRoundedCornersStackingColumnChart---各个圆角自由独立设置的堆积柱状图📊",
-                "customColumnChartBorderStyleAndStatesHoverColor---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色"
+                "customColumnChartBorderStyleAndStatesHoverColor---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色",
+                
+                "customLineChartWithColorfulMarkersAndLines---彩色连接点和连接线的折线图📈",
+                "customLineChartWithColorfulMarkersAndLines2---彩色连接点和连接线的多组折线的折线图📈",
+                "drawLineChartWithPointsCoordinates---通过点坐标来绘制折线图",
+                "configureSpecialStyleColumnForNegativeDataMixedPositiveData---为正负数混合的柱形图自定义特殊样式效果"
             ],
             /*Mixed Chart*/
             [
