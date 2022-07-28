@@ -91,7 +91,7 @@ class CustomStyleChartVC: AABaseChartVC {
             
         case 46: return customLineChartWithColorfulMarkersAndLines()
         case 47: return customLineChartWithColorfulMarkersAndLines2()
-        case 48: return drawLineChartWithPointsCoordinates()
+        case 48: return drawLineChartWithPointsCoordinates2()
         case 49: return configureSpecialStyleColumnForNegativeDataMixedPositiveData()
 
         default:
