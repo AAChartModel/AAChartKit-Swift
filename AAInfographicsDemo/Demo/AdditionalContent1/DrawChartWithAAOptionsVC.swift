@@ -139,6 +139,10 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         
         aaOptions.chart?.plotBackgroundColor = AAGradientColor.coastalBreeze
         
+        aaOptions.tooltip?
+            .backgroundColor(AAGradientColor.firebrick)
+            .style(AAStyle(color: AAColor.white))
+        
         let aaCrosshair = AACrosshair()
             .color("#FFD700")//pure gold color
             .dashStyle(.longDashDotDot)
@@ -174,7 +178,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                         
         aaOptions.legend!
             .itemMarginTop(20)
-            .symbolRadius(10)//图标圆角
+            .symbolRadius(0)//图标圆角
             .symbolHeight(20)//标志高度
             .symbolWidth(20)//图标宽度
             .align(.right)

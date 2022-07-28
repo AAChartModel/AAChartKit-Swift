@@ -33,7 +33,7 @@
 import Foundation 
 
 public class AATooltip: AAObject {
-    public var backgroundColor: String?
+    public var backgroundColor: Any?
     public var borderColor: String?
     public var borderRadius: Float?
     public var borderWidth: Float?
@@ -55,7 +55,7 @@ public class AATooltip: AAObject {
     public var dateTimeLabelFormats: AADateTimeLabelFormats?
     
     @discardableResult
-    public func backgroundColor(_ prop: String?) -> AATooltip {
+    public func backgroundColor(_ prop: Any?) -> AATooltip {
         backgroundColor = prop
         return self
     }
