@@ -79,7 +79,8 @@ class MainVC: UIViewController {
             ],
             /*Special types chart*/
             [
-                "Polar Chart---极地图",
+                "Polar Column Chart---极地图",
+                "Polar Bar Chart---径向条形图",
                 "Pie Chart---扇形图",
                 "Bubble Chart---气泡图",
                 "Scatter Chart---散点图",
@@ -357,6 +358,7 @@ class MainVC: UIViewController {
             /*Special Types chart*/
             [
                 AAChartType.column,
+                AAChartType.bar,
                 AAChartType.pie,
                 AAChartType.bubble,
                 AAChartType.scatter,

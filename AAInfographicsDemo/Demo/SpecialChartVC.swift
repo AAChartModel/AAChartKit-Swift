@@ -44,6 +44,7 @@ class SpecialChartVC: AABaseChartVC {
     override func chartConfigurationWithSelectedChartType(_ selectedChartType: AAChartType) -> Any? {
         switch selectedChartType {
         case .column: return configureColumnChart()
+        case .bar: return configurePolarBarChart()
         case .pie: return configurePieChart()
         case .bubble: return configureBubbleChart()
         case .scatter: return configureScatterChart()
@@ -66,6 +67,22 @@ class SpecialChartVC: AABaseChartVC {
     private func configureColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
+            .polar(true)
+            .dataLabelsEnabled(false)
+            .categories(["January", "February", "March", "April", "May", "June",
+                         "July", "August", "September", "October", "November", "December"])
+            .margin(right: 30, left: 50)
+            .series([
+                AASeriesElement()
+                    .name("2018")
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+                    .colorByPoint(true)
+            ])
+    }
+    
+    private func configurePolarBarChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.bar)
             .polar(true)
             .dataLabelsEnabled(false)
             .categories(["January", "February", "March", "April", "May", "June",
