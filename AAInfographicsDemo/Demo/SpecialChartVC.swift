@@ -57,6 +57,7 @@ class SpecialChartVC: AABaseChartVC {
         case .pyramid: return configurePyramidChart()
         case .funnel: return configureFunnelChart()
         case .errorbar: return configureErrorbarChart()
+        case .gauge : return configureGaugeChart()
         default: return configureColumnChart()
         }
     }
@@ -974,6 +975,24 @@ class SpecialChartVC: AABaseChartVC {
                     .data([[48, 51], [68, 73], [92, 110], [128, 136], [140, 150], [171, 179], [135, 143], [142, 149], [204, 220], [189, 199], [95, 110], [52, 56]])
                     .tooltip(AATooltip()
                         .pointFormat("(误差范围: {point.low}-{point.high} mm)<br/>"))
+            ])
+    }
+    
+    private func configureGaugeChart() -> AAChartModel {
+        AAChartModel()
+            .title("速度仪")
+            .yAxisTitle("km/h")
+            .yAxisMin(0)
+            .yAxisMax(1000)
+            .yAxisGridLineWidth(0)
+            .series([
+                AASeriesElement()
+                    .name("速度")
+                    .type(.gauge)
+                    .data([888])
+                    .color(AAColor.red)
+                    .tooltip(AATooltip()
+                        .valueSuffix("km/h"))
             ])
     }
 }

@@ -93,6 +93,7 @@ class MainVC: UIViewController {
                 "Pyramid Chart---金字塔图",
                 "Funnel Chart---漏斗图",
                 "Error Bar Chart---误差图",
+                "Gauge Chart---仪表图",
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -368,6 +369,7 @@ class MainVC: UIViewController {
                 AAChartType.pyramid,
                 AAChartType.funnel,
                 AAChartType.errorbar,
+                AAChartType.gauge,
             ],
             [//Empty Array,just for holding place
             ],
