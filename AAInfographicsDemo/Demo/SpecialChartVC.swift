@@ -58,6 +58,7 @@ class SpecialChartVC: AABaseChartVC {
         case .funnel: return configureFunnelChart()
         case .errorbar: return configureErrorbarChart()
         case .gauge : return configureGaugeChart()
+        case .polygon: return configurePolygonChart()
         default: return configureColumnChart()
         }
     }
@@ -993,6 +994,36 @@ class SpecialChartVC: AABaseChartVC {
                     .color(AAColor.red)
                     .tooltip(AATooltip()
                         .valueSuffix("km/h"))
+            ])
+    }
+    
+    private func configurePolygonChart() -> AAChartModel {
+        AAChartModel()
+            .title("多边形图")
+            .dataLabelsEnabled(false)
+            .markerRadius(7)
+            .markerSymbolStyle(.innerBlank)
+            .series([
+                AASeriesElement()
+                    .name("目标")
+                    .type(.polygon)
+                    .data([
+                        [153, 42], [149, 46], [149, 55],
+                        [152, 60], [159, 70], [170, 77],
+                        [180, 70], [180, 60], [173, 52],
+                        [166, 45]
+                    ])
+                    .lineWidth(6),
+                AASeriesElement()
+                    .name("实际完成")
+                    .type(.polygon)
+                    .data([
+                        [153 * 1.6, 42 * 1.6], [149 * 1.6, 46 * 1.6], [149 * 1.6, 55 * 1.6],
+                        [152 * 1.6, 60 * 1.6], [159 * 1.6, 70 * 1.6], [170 * 1.6, 77 * 1.6],
+                        [180 * 1.6, 70 * 1.6], [180 * 1.6, 60 * 1.6], [173 * 1.6, 52 * 1.6],
+                        [166 * 1.6, 45 * 1.6]
+                    ])
+                    .lineWidth(6)
             ])
     }
 }

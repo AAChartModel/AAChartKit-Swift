@@ -94,6 +94,7 @@ class MainVC: UIViewController {
                 "Funnel Chart---漏斗图",
                 "Error Bar Chart---误差图",
                 "Gauge Chart---仪表图",
+                "Polygon Chart---多边形图"
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -370,6 +371,7 @@ class MainVC: UIViewController {
                 AAChartType.funnel,
                 AAChartType.errorbar,
                 AAChartType.gauge,
+                AAChartType.polygon,
             ],
             [//Empty Array,just for holding place
             ],
