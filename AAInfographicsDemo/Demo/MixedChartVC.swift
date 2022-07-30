@@ -708,7 +708,7 @@ class MixedChartVC: AABaseChartVC {
         let pieElement = AAPie()
             .type(.pie)
             .center([100,80])
-            .size(100)
+            .size(150)
             .showInLegend(true)
             .dataLabels(
                 AADataLabels()
@@ -717,17 +717,17 @@ class MixedChartVC: AABaseChartVC {
                 AADataElement()
                     .name("Ada")
                     .y(13.0)
-                    .color(AAGradientColor.oceanBlue)
+                    .color(AAGradientColor.firebrick)
                 ,
                 AADataElement()
                     .name("Bob")
                     .y(13.0)
-                    .color(AAGradientColor.sanguine)
+                    .color(AAGradientColor.newLeaf)
                 ,
                 AADataElement()
                     .name("Coco")
                     .y(13.0)
-                    .color(AAGradientColor.purpleLake)
+                    .color(AAGradientColor.freshPapaya)
             ])
         
         let aaSeriesArr = [
@@ -740,11 +740,7 @@ class MixedChartVC: AABaseChartVC {
         
         return AAChartModel()
             .stacking(.normal)
-            .colorsTheme([
-                AAGradientColor.oceanBlue,
-                AAGradientColor.sanguine,
-                AAGradientColor.purpleLake
-            ])
+            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .dataLabelsEnabled(false)
             .series(aaSeriesArr)
     }
