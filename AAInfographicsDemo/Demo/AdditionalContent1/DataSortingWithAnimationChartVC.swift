@@ -11,7 +11,7 @@ import AAInfographics
 
 @available(iOS 10.0, macCatalyst 13.1, *)
 class DataSortingWithAnimationChartVC: AABaseChartVC {
-    public var step: Bool?
+    public var polar: Bool?
     public var aaChartModel: AAChartModel!
     private var timer: Timer?
     private var globalInt: Int = 0
@@ -58,6 +58,7 @@ class DataSortingWithAnimationChartVC: AABaseChartVC {
         let aaOptions = AAOptions()
             .colors(colorArr)
             .chart(AAChart()
+                .polar(polar)
                 .type(selectedChartType))
             .title(AATitle()
                 .text("Popular Gradient Colors In Different Years"))
@@ -69,7 +70,8 @@ class DataSortingWithAnimationChartVC: AABaseChartVC {
                 .visible(true)
                 .gridLineWidth(0)
                 .title((AATitle()
-                    .text("Gradient Colors Hot"))))
+//                    .text("Gradient Colors Hot")
+                )))
             .legend(AALegend()
                 .enabled(true)
                 .align(.center)
@@ -118,7 +120,7 @@ class DataSortingWithAnimationChartVC: AABaseChartVC {
         } else if (aaOptions.chart?.type == AAChartType.scatter.rawValue) {
             aaOptions.plotOptions?.series?
                 .marker(AAMarker()
-                    .radius(15))
+                    .radius(25))
                 .dataLabels?.verticalAlign(.middle)
         }
         
@@ -136,19 +138,19 @@ class DataSortingWithAnimationChartVC: AABaseChartVC {
             "pinkSugar",
             "lemonDrizzle",
             "victoriaPurple",
-            "springGreens",
-            "mysticMauve",
-            "reflexSilver",
-            "newLeaf",
-            "cottonCandy",
-            "pixieDust",
-            "fizzyPeach",
-            "sweetDream",
-            "firebrick",
-            "wroughtIron",
-            "deepSea",
-            "coastalBreeze",
-            "eveningDelight",
+//            "springGreens",
+//            "mysticMauve",
+//            "reflexSilver",
+//            "newLeaf",
+//            "cottonCandy",
+//            "pixieDust",
+//            "fizzyPeach",
+//            "sweetDream",
+//            "firebrick",
+//            "wroughtIron",
+//            "deepSea",
+//            "coastalBreeze",
+//            "eveningDelight",
         ]
         
         let dataArr = NSMutableArray()

@@ -79,7 +79,7 @@ class MainVC: UIViewController {
             ],
             /*Special types chart*/
             [
-                "Polar Column Chart---极地图",
+                "Polar Column Chart---玫瑰图",
                 "Polar Bar Chart---径向条形图",
                 "Pie Chart---扇形图",
                 "Bubble Chart---气泡图",
@@ -321,6 +321,9 @@ class MainVC: UIViewController {
             [  "Column Chart---柱形图",
                "Bar Chart---条形图",
                "Scatter Chart---散点图",
+               "Polar Column Chart---极化柱形图",
+               "Polar Bar Chart---极化条形图",
+               "Polar Scatter Chart---极化散点图",
             ],
             /*Advanced Updating Feature*/
             [
@@ -463,7 +466,10 @@ class MainVC: UIViewController {
             [
                 AAChartType.column,
                 AAChartType.bar,
-                AAChartType.scatter
+                AAChartType.scatter,
+                AAChartType.column,
+                AAChartType.bar,
+                AAChartType.scatter,
             ],
             /*Advanced Updating Feature*/
             [
@@ -684,8 +690,8 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             let vc = DataSortingWithAnimationChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
-            if indexPath.row == 4 || indexPath.row == 5 {
-                vc.step = true
+            if indexPath.row >= 3 {
+                vc.polar = true
             }
             navigationController?.pushViewController(vc, animated: true)
             
