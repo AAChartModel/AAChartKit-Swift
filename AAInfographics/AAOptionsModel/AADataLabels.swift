@@ -54,16 +54,16 @@ public class AADataLabels: AAObject {
     public var crop: Bool?
     public var inside: Bool?
     public var overflow: String?
+    public var filter: AAFilter?
+    public var textPath: AATextPath?
     public var softConnector: Bool?
-    public var textPath: [String: Any]?
-    public var filter: [String: Any]?
     public var connectorColor: String?
     public var connectorPadding: Float?
     public var connectorShape: String?
     public var connectorWidth: Float?
     public var crookDistance: String?
     public var alignTo: String?
-
+    
     @discardableResult
     public func enabled(_ prop: Bool?) -> AADataLabels {
         enabled = prop
@@ -197,14 +197,14 @@ public class AADataLabels: AAObject {
     }
     
     @discardableResult
-    public func textPath(_ prop: [String: Any]?) -> AADataLabels {
-        textPath = prop
+    public func filter(_ prop: AAFilter?) -> AADataLabels {
+        filter = prop
         return self
     }
     
     @discardableResult
-    public func filter(_ prop: [String: Any]?) -> AADataLabels {
-        filter = prop
+    public func textPath(_ prop: AATextPath?) -> AADataLabels {
+        textPath = prop
         return self
     }
     
@@ -243,10 +243,61 @@ public class AADataLabels: AAObject {
         alignTo = prop
         return self
     }
-
+    
     public override init() {
         enabled = true
     }
 }
+
+public class AAFilter: AAObject {
+    public var property: String?
+    public var `operator`: String?
+    public var value: Float?
+    
+    @discardableResult
+    public func property(_ prop: String?) -> AAFilter {
+        property = prop
+        return self
+    }
+    
+    @discardableResult
+    public func `operator`(_ prop: String?) -> AAFilter {
+        `operator` = prop
+        return self
+    }
+    
+    @discardableResult
+    public func value(_ prop: Float?) -> AAFilter {
+        value = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
+public class AATextPath: AAObject {
+    public var enabled: Bool?
+    public var attributes: [String: Any]?
+    public var value: Float?
+    
+    @discardableResult
+    public func enabled(_ prop: Bool?) -> AATextPath {
+        enabled = prop
+        return self
+    }
+    
+    @discardableResult
+    public func attributes(_ prop: [String: Any]?) -> AATextPath {
+        attributes = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
 
 
