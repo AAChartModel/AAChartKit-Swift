@@ -218,33 +218,25 @@ public class AAEvents: AAObject {
     
     @discardableResult
     public func click(_ prop: String?) -> AAEvents {
-        if prop != nil {
-            click = prop!.aa_toPureJSString()
-        }
+        click = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
     public func mouseOver(_ prop: String?) -> AAEvents {
-        if prop != nil {
-            mouseOver = prop!.aa_toPureJSString()
-        }
+        mouseOver = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
     public func mouseOut(_ prop: String?) -> AAEvents {
-        if prop != nil {
-            mouseOut = prop!.aa_toPureJSString()
-        }
+        mouseOut = prop?.aa_toPureJSString()
         return self
     }
 
     @discardableResult
     public func legendItemClick(_ prop: String?) -> AAEvents {
-        if prop != nil {
-            legendItemClick = prop!.aa_toPureJSString()
-        }
+        legendItemClick = prop?.aa_toPureJSString()
         return self
     }
     
@@ -281,57 +273,43 @@ public class AAPointEvents: AAObject {
 
     @discardableResult
     public func click(_ prop: String?) -> AAPointEvents {
-        if prop != nil {
-            click = prop!.aa_toPureJSString()
-        }
+        click = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
     public func mouseOver(_ prop: String?) -> AAPointEvents {
-        if prop != nil {
-            mouseOver = prop!.aa_toPureJSString()
-        }
+        mouseOver = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
     public func mouseOut(_ prop: String?) -> AAPointEvents {
-        if prop != nil {
-            mouseOut = prop!.aa_toPureJSString()
-        }
+        mouseOut = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
     public func remove(_ prop: String?) -> AAPointEvents {
-        if prop != nil {
-            remove = prop!.aa_toPureJSString()
-        }
+        remove = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
     public func select(_ prop: String?) -> AAPointEvents {
-        if prop != nil {
-            select = prop!.aa_toPureJSString()
-        }
+        select = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
     public func unselect(_ prop: String?) -> AAPointEvents {
-        if prop != nil {
-            unselect = prop!.aa_toPureJSString()
-        }
+        unselect = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
     public func update(_ prop: String?) -> AAPointEvents {
-        if prop != nil {
-            update = prop!.aa_toPureJSString()
-        }
+        update = prop?.aa_toPureJSString()
         return self
     }
     

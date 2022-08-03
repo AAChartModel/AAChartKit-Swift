@@ -291,17 +291,13 @@ public class AAChartEvents: AAObject {
     
     @discardableResult
     public func load(_ prop: String?) -> AAChartEvents {
-        if prop != nil {
-            load = prop!.aa_toPureJSString()
-        }
+        load = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
     public func selection(_ prop: String?) -> AAChartEvents {
-        if prop != nil {
-            selection = prop!.aa_toPureJSString()
-        }
+        selection = prop?.aa_toPureJSString()
         return self
     }
     
