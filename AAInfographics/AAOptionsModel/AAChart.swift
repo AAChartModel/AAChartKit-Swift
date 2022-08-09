@@ -57,6 +57,13 @@ public class AAChart: AAObject {
     public var resetZoomButton: AAResetZoomButton?
     public var zoomType: String?
     public var events: AAChartEvents?
+    public var height: Any?
+    
+    @discardableResult
+    public func height(_ prop: AAChartType?) -> AAChart {
+        height = prop?.rawValue
+        return self
+    }
     
     @discardableResult
     public func type(_ prop: AAChartType?) -> AAChart {
