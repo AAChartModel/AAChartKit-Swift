@@ -50,6 +50,7 @@ public class AASeriesElement: AAObject {
     public var negativeColor: Any?         //The color for the parts of the graph or points that are below the threshold
     public var negativeFillColor: Any?     //A separate color for the negative part of the area.
     public var dashStyle: String?          //A name for the dash style to use for the graph. Applies only to series type having a graph, like line, spline, area and scatter in case it has a lineWidth.
+    public var xAxis: Int?
     public var yAxis: Int?
     public var dataLabels: AADataLabels?   //Individual data label for each point. The options are the same as the ones for `plotOptions.series.dataLabels`.
     public var marker: AAMarker?           //Enable or disable the point marker. If null, the markers are hidden when the data is dense, and shown for more widespread data points.
@@ -182,6 +183,12 @@ public class AASeriesElement: AAObject {
     @discardableResult
     public func dashStyle(_ prop: AAChartLineDashStyleType) -> AASeriesElement {
         dashStyle = prop.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func xAxis(_ prop: Int) -> AASeriesElement {
+        xAxis = prop
         return self
     }
     
