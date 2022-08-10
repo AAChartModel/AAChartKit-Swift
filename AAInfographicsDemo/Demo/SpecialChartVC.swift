@@ -43,7 +43,7 @@ class SpecialChartVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedChartType(_ selectedChartType: AAChartType) -> Any? {
         switch selectedChartType {
-        case .column: return configureColumnChart()
+        case .column: return configurePolarColumnChart()
         case .bar: return configurePolarBarChart()
         case .line: return configurePolarLineChart()
         case .area: return configurePolarAreaChart()
@@ -65,7 +65,7 @@ class SpecialChartVC: AABaseChartVC {
         }
     }
     
-    private func configureColumnChart() -> AAChartModel {
+    private func configurePolarColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .polar(true)
