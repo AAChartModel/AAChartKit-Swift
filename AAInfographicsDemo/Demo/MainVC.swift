@@ -265,7 +265,7 @@ class MainVC: UIViewController {
                 "customLineChartDataLabelsFormat---自定义曲线图的 DataLabels 的 format 属性",
                 "customLineChartDataLabelsFormat2---自定义曲线图的 DataLabels 的 format 属性2(更简易方法)",
                 "complicatedScatterChart---复杂的自定义散点图",
-                "customColumnrangeChartGroupStyleAndSeriesStatesHoverColor---自定义柱形范围图的 group 样式和手指掠过图表 series 元素时的柱形颜色"
+                "customColumnrangeChartGroupStyleAndSeriesStatesHoverColor---自定义柱形范围图的 group 样式和手指掠过图表 series 元素时的柱形颜色",
             ],
             /*JavaScript Formatter Function */
             [
@@ -295,7 +295,8 @@ class MainVC: UIViewController {
                 "makePieChartShow0Data---使饼图显示为 0 的数据",
                 "customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters---通过截取前四个字符来自定义 X 轴 labels",
                 "setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart---加载图表后将 crosshair 和 tooltip 设置到默认位置",
-                "customColumnChartBorderStyleAndStatesHoverColor---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色(同时禁用 tooltip)"
+                "customColumnChartBorderStyleAndStatesHoverColor---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色(同时禁用 tooltip)",
+                "generalDrawingChart---自由绘图🎨"
             ],
             /*Scrolling update chart data*/
             [  "Column Chart---柱形图",
