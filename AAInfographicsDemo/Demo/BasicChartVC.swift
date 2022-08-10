@@ -399,7 +399,7 @@ extension BasicChartVC: AAChartViewDelegate {
             🖱🖱🖱WARNING!!!!!!!!!!!!!!!!!!!! Click Event Message !!!!!!!!!!!!!!!!!!!! WARNING🖱🖱🖱
             ==========================================================================================
             ------------------------------------------------------------------------------------------
-            user finger moved over!!!,get the move over event message: {
+            user finger CLICKED!!!,get the custom click event message: {
             category = \(String(describing: clickEventMessage.category))
             index = \(String(describing: clickEventMessage.index))
             name = \(String(describing: clickEventMessage.name))
@@ -422,7 +422,7 @@ extension BasicChartVC: AAChartViewDelegate {
             ✋🏻✋🏻✋🏻✋🏻✋🏻WARNING!!!!!!!!!!!!!! Move Over Event Message !!!!!!!!!!!!!! WARNING✋🏻✋🏻✋🏻✋🏻✋🏻
             ==========================================================================================
             ------------------------------------------------------------------------------------------
-            user finger moved over!!!,get the move over event message: {
+            user finger MOVED OVER!!!,get the move over event message: {
             category = \(String(describing: moveOverEventMessage.category))
             index = \(String(describing: moveOverEventMessage.index))
             name = \(String(describing: moveOverEventMessage.name))
