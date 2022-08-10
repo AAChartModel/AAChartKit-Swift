@@ -2321,9 +2321,7 @@ function () {
                             });
                         }
                     }
-"""#)
-                       )
-            )
+"""#)))
             .xAxis(AAXAxis()
                 .type(.datetime)
                 .minTickInterval(31536000000)
