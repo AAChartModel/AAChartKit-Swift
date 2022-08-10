@@ -296,7 +296,8 @@ class MainVC: UIViewController {
                 "customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters---通过截取前四个字符来自定义 X 轴 labels",
                 "setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart---加载图表后将 crosshair 和 tooltip 设置到默认位置",
                 "customColumnChartBorderStyleAndStatesHoverColor---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色(同时禁用 tooltip)",
-                "generalDrawingChart---自由绘图🎨"
+                "generalDrawingChart---自由绘图🎨",
+                "advancedTimeLineChart---高级时间线图"
             ],
             /*Scrolling update chart data*/
             [  "Column Chart---柱形图",
