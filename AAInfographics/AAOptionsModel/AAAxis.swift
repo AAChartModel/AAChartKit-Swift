@@ -90,6 +90,264 @@ public class AAAxis: AAObject {
     public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
     public var tickPositions: [Any]? // Custom x-axis coordinates
     
+    @discardableResult
+    public func allowDecimals(_ prop: Bool?) -> Self {
+        allowDecimals = prop
+        return self
+    }
+
+    @discardableResult
+    public func alternateGridColor(_ prop: Any?) -> Self {
+        alternateGridColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func crosshair(_ prop: AACrosshair?) -> Self {
+        crosshair = prop
+        return self
+    }
+    
+    @discardableResult
+    public func title(_ prop: AATitle?) -> Self {
+        title = prop
+        return self
+    }
+    
+    @discardableResult
+    public func type(_ prop: AAChartAxisType?) -> Self {
+        type = prop?.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func dateTimeLabelFormats(_ prop: AADateTimeLabelFormats?) -> Self {
+        dateTimeLabelFormats = prop
+        return self
+    }
+    
+    @discardableResult
+    public func plotBands(_ prop: [AAPlotBandsElement]?) -> Self {
+        plotBands = prop
+        return self
+    }
+    
+    @discardableResult
+    public func plotLines(_ prop: [AAPlotLinesElement]?) -> Self {
+        plotLines = prop
+        return self
+    }
+    
+    @discardableResult
+    public func categories(_ prop: [String]?) -> Self {
+        categories = prop
+        return self
+    }
+    
+    @discardableResult
+    public func reversed(_ prop: Bool?) -> Self {
+        reversed = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineWidth(_ prop: Float?) -> Self {
+        lineWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineColor(_ prop: String?) -> Self {
+        lineColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func linkedTo(_ prop: Int?) -> Self {
+        linkedTo = prop
+        return self
+    }
+    
+    @discardableResult
+    public func max(_ prop: Double?) -> Self {
+        max = prop
+        return self
+    }
+    
+    @discardableResult
+    public func min(_ prop: Double?) -> Self {
+        min = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minRange(_ prop: Int?) -> Self {
+        minRange = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minTickInterval(_ prop: Int?) -> Self {
+        minTickInterval = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorGridLineColor(_ prop: String?) -> Self {
+        minorGridLineColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorGridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> Self {
+        minorGridLineDashStyle = prop?.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func minorGridLineWidth(_ prop: Float?) -> Self {
+        minorGridLineWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickColor(_ prop: String?) -> Self {
+        minorTickColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickInterval(_ prop: Any?) -> Self {
+        minorTickInterval = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickLength(_ prop: Float?) -> Self {
+        minorTickLength = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickPosition(_ prop: String?) -> Self {
+        minorTickPosition = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTickWidth(_ prop: Float?) -> Self {
+        minorTickWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func gridLineWidth(_ prop: Float?) -> Self {
+        gridLineWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func gridLineColor(_ prop: String?) -> Self {
+        gridLineColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func gridLineDashStyle(_ prop: AAChartLineDashStyleType?) -> Self {
+        gridLineDashStyle = prop?.rawValue
+        return self
+    }
+    
+    @discardableResult
+    public func gridLineInterpolation(_ prop: String?) -> Self {
+        gridLineInterpolation = prop
+        return self
+    }
+    
+    @discardableResult
+    public func offset(_ prop: Float?) -> Self {
+        offset = prop
+        return self
+    }
+    
+    @discardableResult
+    public func labels(_ prop: AALabels?) -> Self {
+        labels = prop
+        return self
+    }
+    
+    @discardableResult
+    public func visible(_ prop: Bool?) -> Self {
+        visible = prop
+        return self
+    }
+    
+    @discardableResult
+    public func opposite(_ prop: Bool?) -> Self {
+        opposite = prop
+        return self
+    }
+    
+    @discardableResult
+    public func startOnTick(_ prop: Bool?) -> Self {
+        startOnTick = prop
+        return self
+    }
+    
+    @discardableResult
+    public func endOnTick(_ prop: Bool?) -> Self {
+        endOnTick = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickColor(_ prop: String?) -> Self {
+        tickColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickAmount(_ prop: Int?) -> Self {
+        tickAmount = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickInterval(_ prop: Float?) -> Self {
+        tickInterval = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickmarkPlacement(_ prop: String?) -> Self {
+        tickmarkPlacement = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickWidth(_ prop: Float?) -> Self {
+        tickWidth = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickLength(_ prop: Float?) -> Self {
+        tickLength = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickPosition(_ prop: String?) -> Self {
+        tickPosition = prop
+        return self
+    }
+    
+    @discardableResult
+    public func tickPositions(_ prop: [Any]?) -> Self {
+        tickPositions = prop
+        return self
+    }
+    
     public override init() {
         
     }
