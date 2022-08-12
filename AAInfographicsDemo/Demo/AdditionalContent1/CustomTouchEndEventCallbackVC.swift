@@ -81,6 +81,7 @@ extension CustomTouchEndEventCallbackVC: WKScriptMessageHandler {
     }
 }
 
+//https://github.com/AAChartModel/AAChartKit-Swift/issues/356
 extension CustomTouchEndEventCallbackVC: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
         print("🚀🚀🚀, AAChartView Did Finished Load!!!")
