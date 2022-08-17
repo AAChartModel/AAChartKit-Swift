@@ -30,11 +30,6 @@
  
  */
 
-#if os(iOS)
-import UIKit
-#elseif os(macOS)
-import AppKit
-#endif
 import WebKit
 
 let kUserContentMessageNameClick = "click"
