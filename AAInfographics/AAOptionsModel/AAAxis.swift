@@ -55,6 +55,8 @@ public class AAAxis: AAObject {
     public var linkedTo: Int?
     public var max: Double? // XOrY-axis maximum
     public var min: Double? // XOrY-axis minimum  (set to 0, there will be no negative numbers)
+    public var maxPadding: Float? //Padding of the max value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the highest data value to appear on the edge of the plot area. When the axis' max option is set or a max extreme is set using axis.setExtremes(), the maxPadding will be ignored. Defaults to 0.01.
+    public var minPadding: Float? //Padding of the min value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the lowest data value to appear on the edge of the plot area.  Defaults to 0.05
     public var minRange: Int?
     public var minTickInterval: Int? //The minimum tick interval allowed in axis values. For example on zooming in on an axis with daily data, this can be used to prevent the axis from showing hours. Defaults to the closest distance between two points on the axis.
     public var minorGridLineColor: String? //Color of the minor, secondary grid lines.
@@ -178,6 +180,18 @@ public class AAAxis: AAObject {
     @discardableResult
     public func min(_ prop: Double?) -> Self {
         min = prop
+        return self
+    }
+    
+    @discardableResult
+    public func maxPadding(_ prop: Float?) -> Self {
+        maxPadding = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minPadding(_ prop: Float?) -> Self {
+        minPadding = prop
         return self
     }
     
