@@ -74,6 +74,7 @@ public class AAAxis: AAObject {
     public var gridLineColor: String? // XOrY-axis grid line color
     public var gridLineDashStyle: String? // XOrY-axis grid line style
     public var gridLineInterpolation: String?
+    public var gridZIndex: Int?
     public var offset: Float? // XOrY-axis vertical offset
     public var labels: AALabels? // Used to set the XOrY-axis text related
     public var visible: Bool? // Used to set whether the XOrY-axis and XOrY-axis text are displayed
@@ -261,6 +262,12 @@ public class AAAxis: AAObject {
     @discardableResult
     public func gridLineInterpolation(_ prop: String?) -> Self {
         gridLineInterpolation = prop
+        return self
+    }
+    
+    @discardableResult
+    public func gridZIndex(_ prop: Int?) -> Self {
+        gridZIndex = prop
         return self
     }
     
