@@ -50,11 +50,11 @@ public class AAAxis: AAObject {
     public var plotLines: [AAPlotLinesElement]?
     public var categories: [String]?
     public var reversed: Bool?
-    public var lineWidth: Float? // x-axis line width
-    public var lineColor: String? // x-axis line color
+    public var lineWidth: Float? // XOrY-axis line width
+    public var lineColor: String? // XOrY-axis line color
     public var linkedTo: Int?
-    public var max: Double? // x-axis maximum
-    public var min: Double? // x-axis minimum  (set to 0, there will be no negative numbers)
+    public var max: Double? // XOrY-axis maximum
+    public var min: Double? // XOrY-axis minimum  (set to 0, there will be no negative numbers)
     public var minRange: Int?
     public var minTickInterval: Int? //The minimum tick interval allowed in axis values. For example on zooming in on an axis with daily data, this can be used to prevent the axis from showing hours. Defaults to the closest distance between two points on the axis.
     public var minorGridLineColor: String? //Color of the minor, secondary grid lines.
@@ -70,25 +70,25 @@ public class AAAxis: AAObject {
     public var minorTickPosition: String? //The position of the minor tick marks relative to the axis line. Can be one of inside and outside. Defaults to outside.
     public var minorTickWidth: Float? //The pixel width of the minor tick mark.
     
-    public var gridLineWidth: Float? // x-axis grid line width
-    public var gridLineColor: String? // x-axis grid line color
-    public var gridLineDashStyle: String? // x-axis grid line style
+    public var gridLineWidth: Float? // XOrY-axis grid line width
+    public var gridLineColor: String? // XOrY-axis grid line color
+    public var gridLineDashStyle: String? // XOrY-axis grid line style
     public var gridLineInterpolation: String?
-    public var offset: Float? // x-axis vertical offset
-    public var labels: AALabels? // Used to set the x-axis text related
-    public var visible: Bool? // Used to set whether the x-axis and x-axis text are displayed
-    public var opposite: Bool? // Whether to display the coordinate axis on the opposite surface. By default, the x axis is displayed below the chart, the y axis is on the left, the coordinate axis is displayed on the opposite surface, and the x axis is displayed on the top. The axis is displayed on the right (that is, the coordinate axis is displayed on the opposite side). This configuration is generally used for multi-axis display, and in Highstock, the y-axis is displayed on the opposite side by default. The default is: false.
+    public var offset: Float? // XOrY-axis vertical offset
+    public var labels: AALabels? // Used to set the XOrY-axis text related
+    public var visible: Bool? // Used to set whether the XOrY-axis and XOrY-axis text are displayed
+    public var opposite: Bool? // Whether to display the coordinate axis on the opposite surface. By default, the X or Y axis is displayed below the chart, the y axis is on the left, the coordinate axis is displayed on the opposite surface, and the X or Y axis is displayed on the top. The axis is displayed on the right (that is, the coordinate axis is displayed on the opposite side). This configuration is generally used for multi-axis display, and in Highstock, the y-axis is displayed on the opposite side by default. The default is: false.
 
     public var startOnTick: Bool? // Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. The default is false.
     public var endOnTick: Bool?// Whether to force the axis to end on a tick. Use this option with the minPadding option to control the axis end. The default is false.
-    public var tickColor: String? // Color of tick mark below x axis
+    public var tickColor: String? // Color of tick mark below X or Y axis
     public var tickAmount: Int?
-    public var tickInterval: Float? // Number of ticks on the x axis (set the X axis content every few points:
+    public var tickInterval: Float? // Number of ticks on the X or Y axis (set the X or Y axis content every few points:
     public var tickmarkPlacement: String? // This parameter is only valid for the classification axis. When the value is on, the tick mark will be displayed above the classification; when the value is between, the tick mark will be displayed between the two classifications. When tickInterval is 1, the default is between, otherwise it is on. The default is: null.
     public var tickWidth: Float? // The width of the axis tick marks. When set to 0, tick marks are not displayed.
     public var tickLength: Float? /// The length of the axis tick marks. The default is: 10.
     public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
-    public var tickPositions: [Any]? // Custom x-axis coordinates
+    public var tickPositions: [Any]? // Custom XOrY-axis coordinates
     
     @discardableResult
     public func allowDecimals(_ prop: Bool?) -> Self {
