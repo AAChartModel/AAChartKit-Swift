@@ -502,10 +502,10 @@ public class AAColumnrange: AAObject {
     public var borderRadius: Float?//The color of the border surrounding each column or bar
     public var borderWidth: Float?//The corner radius of the border surrounding each column or bar. default：0
     public var dataLabels: AADataLabels?
-    public var groupPadding: Float?//Padding between each value groups, in x axis units. 默认是：0.2.
+    public var groupPadding: Float?//Padding between each value groups, in x axis units. default：0.2.
     public var grouping: Bool?
-    public var pointPadding: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
-    public var pointPlacement: Float?//Padding between each column or bar, in x axis units. 默认是：0.1.
+    public var pointPadding: Float?//Padding between each column or bar, in x axis units. default：0.1.
+    public var pointPlacement: Float?//Padding between each column or bar, in x axis units. default：0.1.
     
     @discardableResult
     public func borderRadius(_ prop: Float?) -> AAColumnrange {
