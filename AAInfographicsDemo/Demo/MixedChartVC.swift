@@ -543,6 +543,9 @@ class MixedChartVC: AABaseChartVC {
                         [6,13,1],[6,14,3],[6,15,4],[6,16,0],[6,17,0],[6,18,0],[6,19,0],[6,20,1],[6,21,2],
                         [6,22,2],[6,23,6]
                     ])
+                    .marker(AAMarker()
+                        .lineColor(AAColor.yellow)
+                        .lineWidth(3))
                     .color("#0088FF")
                     .negativeColor(AAColor.red)
                     .threshold(4)//default:0
