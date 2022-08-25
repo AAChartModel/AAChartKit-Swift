@@ -95,8 +95,8 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 47: return customColumnrangeChartGroupStyleAndSeriesStatesHoverColor()
         case 48: return configureBoxplotChartWithSpecialStyle() //自定义盒须图特殊样式
         case 49: return configurePieChartWithSpecialStyleLegend()//自定义饼图的 legend 为特殊样式
-        case 50: return confgureBlinkMarkerChart()
-        case 51: return configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect()
+        case 50: return confgureBlinkMarkerChart()//带有闪烁特效 marker 的曲线图1
+        case 51: return configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect() //带有闪烁特效 marker 的曲线图2
 
         default:
             return AAOptions()
@@ -3225,6 +3225,7 @@ function () {
         return aaOptions
     }
 
+    //https://github.com/AAChartModel/AAChartKit/issues/1381
     private func configureBoxplotChartWithSpecialStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.boxplot)
