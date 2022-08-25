@@ -94,6 +94,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 46: return complicatedScatterChart()//复杂的自定义散点图
         case 47: return customColumnrangeChartGroupStyleAndSeriesStatesHoverColor()
         case 48: return configureBoxplotChartWithSpecialStyle() //自定义盒须图特殊样式
+        case 49: return configurePieChartWithSpecialStyleLegend()//自定义饼图的 legend 为特殊样式
 
         default:
             return AAOptions()
@@ -3261,6 +3262,38 @@ function () {
                 .whiskerLength("30%")
                 .whiskerWidth(3)
             )
+        
+        return aaOptions
+    }
+    
+    private func configurePieChartWithSpecialStyleLegend() -> AAOptions {
+         let aaChartModel = AAChartModel()
+            .chartType(.pie)
+            .backgroundColor(AAColor.white)
+            .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
+            .subtitle("virtual data")
+            .dataLabelsEnabled(true)//是否直接显示扇形图数据
+            .yAxisTitle("℃")
+            .series([
+                AASeriesElement()
+                    .name("Language market shares")
+                    .innerSize("20%")//内部圆环半径大小占比(内部圆环半径/扇形图半径),
+                    .allowPointSelect(true)
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .enabled(false)//禁用点击区块之后出现的半透明遮罩层
+                    ))
+                    .data([
+                        ["Java"  ,67],
+                        ["Swift",999],
+                        ["Python",83],
+                        ["OC"    ,11],
+                        ["Go"    ,30],
+                    ])
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aaOptions.legend?.labelFormat("{name} {y:.2f}%")
         
         return aaOptions
     }
