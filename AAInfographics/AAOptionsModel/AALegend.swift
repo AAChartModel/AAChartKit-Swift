@@ -42,6 +42,7 @@ public class AALegend: AAObject {
     public var itemMarginTop: Float? //The top margin of each item of the legend, in px. The default is: 0.
     public var itemMarginBottom: Float?//The bottom margin of each item of the legend, in px. The default is: 0.
     public var itemStyle: AAItemStyle?
+    public var itemWidth: Float?
     public var symbolHeight: Float?
     public var symbolPadding: Float?
     public var symbolRadius: Float?
@@ -96,6 +97,12 @@ public class AALegend: AAObject {
     @discardableResult
     public func itemStyle(_ prop: AAItemStyle?) -> AALegend {
         itemStyle = prop
+        return self
+    }
+    
+    @discardableResult
+    public func itemWidth(_ prop: Float?) -> AALegend {
+        itemWidth = prop
         return self
     }
     
