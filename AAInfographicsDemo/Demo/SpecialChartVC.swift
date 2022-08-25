@@ -163,10 +163,17 @@ class SpecialChartVC: AABaseChartVC {
             .subtitle("JUST FOR FUN")
             .yAxisTitle("℃")
             .yAxisGridLineWidth(0)
-            .colorsTheme(["#0c9674","#7dffc0","#d11b5f","#facd32","#ffffa0","#EA007B"])
+            .colorsTheme([
+                AAGradientColor.firebrick,
+                AAGradientColor.deepSea,
+                AAGradientColor.lemonDrizzle
+            ])
             .series([
                 AASeriesElement()
                     .name("BubbleOne")
+                    .marker(AAMarker()
+                        .lineColor(AAColor.red)
+                        .lineWidth(3))
                     .data([
                         [97, 36, 79],
                         [94, 74, 60],
@@ -183,6 +190,9 @@ class SpecialChartVC: AABaseChartVC {
                 ,
                 AASeriesElement()
                     .name("BubbleTwo")
+                    .marker(AAMarker()
+                        .lineColor(AAColor.blue)
+                        .lineWidth(3))
                     .data([
                         [25, 60, 87],
                         [2,  75, 59],
@@ -199,6 +209,9 @@ class SpecialChartVC: AABaseChartVC {
                 ,
                 AASeriesElement()
                     .name("BubbleThree")
+                    .marker(AAMarker()
+                        .lineColor(AAColor.yellow)
+                        .lineWidth(3))
                     .data([
                         [47, 47, 21],
                         [20, 12, 66],
