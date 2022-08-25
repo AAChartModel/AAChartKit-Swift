@@ -65,9 +65,8 @@ class SpecialChartVC: AABaseChartVC {
         }
     }
     
-    private func configurePolarColumnChart() -> AAChartModel {
+    private func configureBasePolarChart() -> AAChartModel {
         AAChartModel()
-            .chartType(.column)
             .polar(true)
             .dataLabelsEnabled(false)
             .categories(["January", "February", "March", "April", "May", "June",
@@ -79,54 +78,26 @@ class SpecialChartVC: AABaseChartVC {
                     .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
                     .colorByPoint(true)
             ])
+    }
+    
+    private func configurePolarColumnChart() -> AAChartModel {
+        configureBasePolarChart()
+            .chartType(.column)
     }
     
     private func configurePolarBarChart() -> AAChartModel {
-        AAChartModel()
+        configureBasePolarChart()
             .chartType(.bar)
-            .polar(true)
-            .dataLabelsEnabled(false)
-            .categories(["January", "February", "March", "April", "May", "June",
-                         "July", "August", "September", "October", "November", "December"])
-            .margin(right: 30, left: 50)
-            .series([
-                AASeriesElement()
-                    .name("2018")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .colorByPoint(true)
-            ])
     }
     
     private func configurePolarLineChart() -> AAChartModel {
-        AAChartModel()
+        configureBasePolarChart()
             .chartType(.line)
-            .polar(true)
-            .dataLabelsEnabled(false)
-            .categories(["January", "February", "March", "April", "May", "June",
-                         "July", "August", "September", "October", "November", "December"])
-            .margin(right: 30, left: 50)
-            .series([
-                AASeriesElement()
-                    .name("2018")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .colorByPoint(true)
-            ])
     }
     
     private func configurePolarAreaChart() -> AAChartModel {
-        AAChartModel()
+        configureBasePolarChart()
             .chartType(.area)
-            .polar(true)
-            .dataLabelsEnabled(false)
-            .categories(["January", "February", "March", "April", "May", "June",
-                         "July", "August", "September", "October", "November", "December"])
-            .margin(right: 30, left: 50)
-            .series([
-                AASeriesElement()
-                    .name("2018")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .colorByPoint(true)
-            ])
     }
     
     private func configurePieChart() -> AAChartModel {
