@@ -57,11 +57,17 @@ class AABaseChartVC: UIViewController {
     }
     
     func setupNextTypeChartButton() {
-        let barItem = UIBarButtonItem.init(title: "Next Chart",
+        let barItem = UIBarButtonItem.init(title: "➷",
                                            style: .plain,
                                            target: self,
                                            action: #selector(monitorTap))
+
         navigationItem.rightBarButtonItem = barItem
+        barItem.setTitleTextAttributes([
+            NSAttributedString.Key.foregroundColor: UIColor.red,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28, weight: .bold)
+        ], for: .normal)
+ 
     }
     
     @objc func monitorTap() {
