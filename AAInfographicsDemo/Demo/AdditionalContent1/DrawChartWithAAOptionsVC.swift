@@ -80,7 +80,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 33: return configureComplicatedCustomAreasplineChart3()//复杂自定义曲线填充图 3
         case 34: return yAxisOnTheRightSideChart()//y轴在右侧的图表
         case 35: return doubleLayerHalfPieChart()//双层嵌套的玉阕图
-        case 36: return customAreasplineChartTooltipContentWithHeaderFormat()//通过 tooltip 的 headerFormat 属性来自定义 曲线填充图的 to
+        case 36: return customAreasplineChartTooltipContentWithHeaderFormat()//通过 tooltip 的 headerFormat 属性来自定义 曲线填充图的 tooltip
         case 37: return customAreaChartTooltipStyleWithTotalValueHeader()//浮动提示框 header 显示总值信息
         case 38: return configureYAxisLabelsNumericSymbolsMagnitudeOfAerasplineChart()//自定义 Y 轴的 Labels 国际单位符基数及国际单位符
         case 39: return timeDataWithIrregularIntervalsChart()//X 轴时间不连续的折线图
