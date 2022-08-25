@@ -3293,7 +3293,7 @@ function () {
             ])
         
         let aaOptions = aaChartModel.aa_toAAOptions()
-        aaOptions.legend?.labelFormat("{name} {y:.2f}%")
+        aaOptions.legend?.labelFormat("{name} {percentage:.2f}%")
         
         return aaOptions
     }
