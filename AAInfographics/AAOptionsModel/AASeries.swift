@@ -270,6 +270,7 @@ public class AAPointEvents: AAObject {
     public var select: String?
     public var unselect: String?
     public var update: String?
+    public var legendItemClick: String? // Only for pie chart
 
     @discardableResult
     public func click(_ prop: String?) -> AAPointEvents {
@@ -310,6 +311,12 @@ public class AAPointEvents: AAObject {
     @discardableResult
     public func update(_ prop: String?) -> AAPointEvents {
         update = prop?.aa_toPureJSString()
+        return self
+    }
+    
+    @discardableResult
+    public func legendItemClick(_ prop: String?) -> AAPointEvents {
+        legendItemClick = prop?.aa_toPureJSString()
         return self
     }
     

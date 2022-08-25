@@ -3266,6 +3266,8 @@ function () {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/391
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/393
     private func configurePieChartWithSpecialStyleLegend() -> AAOptions {
          let aaChartModel = AAChartModel()
             .chartType(.pie)
@@ -3294,6 +3296,16 @@ function () {
         
         let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.legend?.labelFormat("{name} {percentage:.2f}%")
+        
+        //禁用饼图图例点击事件
+        aaOptions.plotOptions?.series?
+            .point(AAPoint()
+                .events(AAPointEvents()
+                    .legendItemClick(#"""
+                    function() {
+                      return false;
+                    }
+        """#)))
         
         return aaOptions
     }
