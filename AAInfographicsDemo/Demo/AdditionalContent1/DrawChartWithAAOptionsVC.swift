@@ -95,6 +95,8 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 47: return customColumnrangeChartGroupStyleAndSeriesStatesHoverColor()
         case 48: return configureBoxplotChartWithSpecialStyle() //自定义盒须图特殊样式
         case 49: return configurePieChartWithSpecialStyleLegend()//自定义饼图的 legend 为特殊样式
+        case 50: return confgureBlinkMarkerChart()
+        case 51: return configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect()
 
         default:
             return AAOptions()
@@ -3309,6 +3311,112 @@ function () {
         
         return aaOptions
     }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/394
+    //https://www.highcharts.com/forum/viewtopic.php?t=44985
+    func confgureBlinkMarkerChart() -> AAOptions {
+        let dataArr = [7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]
+        let selectedIndex = dataArr.count - 1
+        
+        return AAOptions()
+            .chart(AAChart()
+                .events(AAChartEvents()
+                    .load("""
+function() {
+        const chart = this;
+        const point = chart.series[0].points[\(selectedIndex)];
+        let big = true;
+        setInterval(() => {
+          big = !big;
+          point.update({
+            marker: {
+              radius: big ? 5 : 15
+            }
+          })
+        }, 500)
+      }
+""")))
+            .series([
+                AASeriesElement()
+                    .data(dataArr)
+                    .marker(AAMarker()
+                        .lineColor(AAColor.red)
+                        .lineWidth(3)
+                        .radius(10))
+            ])
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/394
+    //https://www.highcharts.com/forum/viewtopic.php?t=44985
+    private func configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect() -> AAOptions {
+        let gradientColorDic1 = AAGradientColor.linearGradient(
+            direction: .toRight,
+            stops: [
+                [0.00, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
+                [0.25, "#FF14d4"],
+                [0.50, "#0bf8f5"],
+                [0.75, "#F33c52"],
+                [1.00, "#1904dd"],
+            ]
+        )
+        
+        let singleSpecialData = AADataElement()
+            .marker(AAMarker()
+                .radius(8)//曲线连接点半径
+                .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
+                .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                .lineColor(AAColor.red)//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+        )
+            .y(45.3)
+            .toDic()!
+        
+        let dataArr = [7.0, 6.9, 2.5, 14.5, 18.2, 26.5, 5.2, 26.5, 23.3, singleSpecialData, 13.9, 9.6] as [Any]
+        
+        let aaChartModel = AAChartModel()
+            .chartType(.spline)
+            .backgroundColor("#4b2b7f")
+            .yAxisTitle("")//设置Y轴标题
+            .dataLabelsEnabled(false)//是否显示值
+            .tooltipEnabled(true)
+            .markerRadius(0)
+            .xAxisVisible(false)
+            .yAxisVisible(false)
+            .series([
+                AASeriesElement()
+                    .name("Virtual Data")
+                    .lineWidth(6)
+                    .data(dataArr)
+                    .color(gradientColorDic1)
+            ])
+        
+        let selectedIndex = dataArr.count - 3
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        
+        aaOptions.chart?.events(
+            AAChartEvents()
+                .load("""
+function() {
+        const chart = this;
+        const point = chart.series[0].points[\(selectedIndex)];
+        let big = true;
+        setInterval(() => {
+          big = !big;
+          point.update({
+            marker: {
+              radius: big ? 5 : 55,
+              fillColor: big ? "white": "red",
+              lineWidth: big ? 5 : 15,
+              lineColor: big ? "green": "yellow" ,
+            }
+          })
+        }, 500)
+      }
+"""))
+        return aaOptions
+    }
+
     
 }
 
