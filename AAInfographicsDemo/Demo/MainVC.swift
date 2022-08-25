@@ -267,6 +267,7 @@ class MainVC: UIViewController {
                 "customLineChartDataLabelsFormat2---自定义曲线图的 DataLabels 的 format 属性2(更简易方法)",
                 "complicatedScatterChart---复杂的自定义散点图",
                 "customColumnrangeChartGroupStyleAndSeriesStatesHoverColor---自定义柱形范围图的 group 样式和手指掠过图表 series 元素时的柱形颜色",
+                "configureBoxplotChartWithSpecialStyle---自定义盒须图特殊样式"
             ],
             /*JavaScript Formatter Function */
             [

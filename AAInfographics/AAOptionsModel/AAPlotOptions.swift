@@ -43,6 +43,7 @@ public class AAPlotOptions: AAObject {
     public var bubble: AABubble?
     public var columnrange: AAColumnrange?
     public var arearange: AAArearange?
+    public var boxplot: AABoxplot?
     public var series: AASeries?
     
     @discardableResult
@@ -102,6 +103,12 @@ public class AAPlotOptions: AAObject {
     @discardableResult
     public func arearange(_ prop: AAArearange) -> AAPlotOptions {
         arearange = prop
+        return self
+    }
+    
+    @discardableResult
+    public func boxplot(_ prop: AABoxplot) -> AAPlotOptions {
+        boxplot = prop
         return self
     }
     

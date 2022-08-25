@@ -93,6 +93,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         case 45: return customLineChartDataLabelsFormat2()//自定义曲线图的 DataLabels 的 format 属性(更简易方法)
         case 46: return complicatedScatterChart()//复杂的自定义散点图
         case 47: return customColumnrangeChartGroupStyleAndSeriesStatesHoverColor()
+        case 48: return configureBoxplotChartWithSpecialStyle() //自定义盒须图特殊样式
 
         default:
             return AAOptions()
@@ -3217,6 +3218,49 @@ function () {
         aaOptions.plotOptions?.columnrange?
             .grouping(false)
             .groupPadding(0.003)
+        
+        return aaOptions
+    }
+
+    private func configureBoxplotChartWithSpecialStyle() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.boxplot)
+            .title("BOXPLOT CHART")
+            .subtitle("virtual data")
+            .yAxisTitle("℃")
+            .yAxisVisible(true)
+            .series([
+                AASeriesElement()
+                    .name("Observed Data")
+                    .color("#ef476f")
+                    .fillColor("#04d69f")
+                    .data([
+                        [760, 801, 848, 895, 965],
+                        [733, 853, 939, 980, 1080],
+                        [714, 762, 817, 870, 918],
+                        [724, 802, 806, 871, 950],
+                        [834, 836, 864, 882, 910]
+                    ])
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+    
+        aaOptions.plotOptions?
+            .boxplot(AABoxplot()
+                .boxDashStyle(.dash)
+                .fillColor("#F0F0E0")
+                .lineWidth(2)
+                .medianColor("#0C5DA5")
+                .medianDashStyle(.shortDot)
+                .medianWidth(3)
+                .stemColor("#A63400")
+                .stemDashStyle(.dot)
+                .stemWidth(1)
+                .whiskerColor("#3D9200")
+                .whiskerDashStyle(.longDashDotDot)
+                .whiskerLength("30%")
+                .whiskerWidth(3)
+            )
         
         return aaOptions
     }
