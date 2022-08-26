@@ -3419,6 +3419,8 @@ function() {
         return aaOptions
     }
     
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/394
+    //https://echarts.apache.org/examples/zh/editor.html?c=scatter-effect
     private func configureScatterChartWithBlinkEffect() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.scatter)
