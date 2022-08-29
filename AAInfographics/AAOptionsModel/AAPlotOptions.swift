@@ -138,6 +138,9 @@ public class AAColumn: AAObject {
     public var stacking: String?
     public var borderRadius: Float?
     public var yAxis: Float?
+    public var pointWidth: Float?
+    public var maxPointWidth: Float?
+    public var minPointLength: Float?
     
     @discardableResult
     public func name(_ prop: String) -> AAColumn {
@@ -214,6 +217,24 @@ public class AAColumn: AAObject {
     @discardableResult
     public func yAxis(_ prop: Float?) -> AAColumn {
         yAxis = prop
+        return self
+    }
+
+    @discardableResult
+    public func pointWidth(_ prop: Float?) -> AAColumn {
+        pointWidth = prop
+        return self
+    }
+
+    @discardableResult
+    public func maxPointWidth(_ prop: Float?) -> AAColumn {
+        maxPointWidth = prop
+        return self
+    }
+
+    @discardableResult
+    public func minPointLength(_ prop: Float?) -> AAColumn {
+        minPointLength = prop
         return self
     }
     
