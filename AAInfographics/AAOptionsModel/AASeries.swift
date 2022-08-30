@@ -58,6 +58,9 @@ public class AASeries: AAObject {
     public var pointStart: Float?
     public var pointPadding: Float?
     public var groupPadding: Float?
+    public var pointWidth: Float?
+    public var maxPointWidth: Float?
+    public var minPointLength: Float?
 
     
     @discardableResult
@@ -201,6 +204,24 @@ public class AASeries: AAObject {
     @discardableResult
     public func groupPadding(_ prop: Float?) -> AASeries {
         groupPadding = prop
+        return self
+    }
+
+    @discardableResult
+    public func pointWidth(_ prop: Float?) -> AASeries {
+        pointWidth = prop
+        return self
+    }
+
+    @discardableResult
+    public func maxPointWidth(_ prop: Float?) -> AASeries {
+        maxPointWidth = prop
+        return self
+    }
+
+    @discardableResult
+    public func minPointLength(_ prop: Float?) -> AASeries {
+        minPointLength = prop
         return self
     }
     
