@@ -2668,10 +2668,12 @@ function () {
 
         let screenWidth = UIScreen.main.bounds.size.width
 
+        //https://stackoverflow.com/questions/16300026/highcharts-tooltip-get-position-and-change-class
         let positionerStr = """
-        function (labelWidth, labelHeight, point) {
-                let xPosition = point.plotX;
-                let maxXPosition = \(screenWidth) - 288;
+        function (tooltipWidth, tooltipHeight, point) {
+                const xPosition = point.plotX;
+                const tooltipRightMargin = 20;
+                const maxXPosition = \(screenWidth) - (tooltipWidth + tooltipRightMargin);
                 if (xPosition >= maxXPosition) {
                     xPosition = maxXPosition
                 }
