@@ -71,6 +71,7 @@ class JSFormatterFunctionVC: AABaseChartVC {
         case 26: return customColumnChartBorderStyleAndStatesHoverColor()
         case 27: return generalDrawingChart()
         case 28: return advancedTimeLineChart()
+        case 29: return customPlotAreaOutsideComlicatedTooltipStyle()
 
 
         default:
@@ -2563,7 +2564,138 @@ function () {
                         ["x": AADateUTC(2014, 10, 27), "y": 11, "name": "", "image": NSNull() ]
                     ])
                 ])
-}
+    }
+    
+    private func customPlotAreaOutsideComlicatedTooltipStyle() -> AAOptions {
+        let categoriesArr = [
+            "11 月 01 日",
+            "11 月 02 日",
+            "11 月 03 日",
+            "11 月 04 日",
+            "11 月 05 日",
+            "11 月 06 日",
+            "11 月 07 日",
+            "11 月 08 日",
+            "11 月 09 日",
+            
+            "11 月 10 日",
+            "11 月 11 日",
+            "11 月 12 日",
+            "11 月 13 日",
+            "11 月 14 日",
+            "11 月 15 日",
+            "11 月 16 日",
+            "11 月 17 日",
+            "11 月 18 日",
+            "11 月 19 日",
+
+            "11 月 20 日",
+            "11 月 21 日",
+            "11 月 22 日",
+            "11 月 23 日",
+            "11 月 24 日",
+            "11 月 25 日",
+            "11 月 26 日",
+            "11 月 27 日",
+            "11 月 28 日",
+            "11 月 29 日",
+            "11 月 30 日",
+            
+            "12 月 01 日",
+            "12 月 02 日",
+            "12 月 03 日",
+            "12 月 04 日",
+            "12 月 05 日",
+            "12 月 06 日",
+            "12 月 07 日",
+            "12 月 08 日",
+            "12 月 09 日",
+            
+            "12 月 10 日",
+            "12 月 11 日",
+            "12 月 12 日",
+            "12 月 13 日",
+            "12 月 14 日",
+            "12 月 15 日",
+            "12 月 16 日",
+            "12 月 17 日",
+            "12 月 18 日",
+            "12 月 19 日",
+
+            "12 月 20 日",
+            "12 月 21 日",
+            "12 月 22 日",
+            "12 月 23 日",
+            "12 月 24 日",
+            "12 月 25 日",
+            "12 月 26 日",
+            "12 月 27 日",
+            "12 月 28 日",
+            "12 月 29 日",
+            "12 月 30 日",
+            "12 月 31 日",
+        ]
+        
+        let aaChartModel = AAChartModel.init()
+        .chartType(AAChartType.column)
+        .categories(categoriesArr)
+        .series([
+            AASeriesElement.init()
+                .name("个人徒步数据统计")
+                .color(AARgba(235, 88, 40, 1.0))
+                .borderRadiusTopLeft(3)
+                .borderRadiusTopRight(3)
+                .data([
+                    1300.988, 900.699, 1000.089, 1100.965, 1000.534, 1400.523, 1800.254, 1900.377, 2100.523, 2500.256, 2600.555, 2800.366,
+                    1300.988, 900.699, 1000.089, 1100.965, 1000.534, 1400.523, 1800.254, 1900.377, 2100.523, 2500.256, 2600.555, 2800.366,
+                    1300.988, 900.699, 1000.089, 1100.965, 1000.534, 1400.523, 1800.254, 1900.377, 2100.523, 2500.256, 2600.555, 2800.366,
+                    1300.988, 900.699, 1000.089, 1100.965, 1000.534, 1400.523, 1800.254, 1900.377, 2100.523, 2500.256, 2600.555, 2800.366,
+                    1300.988, 900.699, 1000.089, 1100.965, 1000.534, 1400.523, 1800.254, 1900.377, 2100.523, 2500.256, 2600.555, 2800.366,
+                ]),
+        ])
+
+        let aaOptions = aaChartModel.aa_toAAOptions()
+
+        aaOptions.xAxis?
+            .crosshair(AACrosshair.init()
+                .color(AARgba(209, 209, 209, 1.0))
+                .dashStyle(AAChartLineDashStyleType.longDash)
+                .width(3))
+
+    //    aaOptions.yAxis
+    //        .top("30%")//https://api.highcharts.com/highcharts/yAxis.top
+    //        .height("70%")//https://api.highcharts.com/highcharts/yAxis.height
+
+        let screenWidth = UIScreen.main.bounds.size.width
+
+        let positionerStr = """
+        function (labelWidth, labelHeight, point) {
+                let xPosition = point.plotX;
+                let maxXPosition = \(screenWidth) - 288;
+                if (xPosition >= maxXPosition) {
+                    xPosition = maxXPosition
+                }
+                let position = {};
+                position["x"] = xPosition;
+                position["y"] = 50;
+                return position;
+            }
+        """
+
+        aaOptions.tooltip?
+            .useHTML(true)
+            .headerFormat("总计<br/>")
+            .pointFormat(#"<span style=\"color:black;font-weight:bold;font-size:38px\">{point.y} </span> 步<br/>"#)
+            .footerFormat("2020 年 {point.x} ")
+            .valueDecimals(2)//设置取值精确到小数点后几位
+            .backgroundColor(AARgba(242, 242, 242, 1.0))
+            .borderWidth(0)
+    //        .shape("square")
+            .style(AAStyle(color: AARgba(132, 132, 132, 1.0), fontSize: 28))
+            .positioner(positionerStr)
+
+        return aaOptions
+    }
 
 }
 
