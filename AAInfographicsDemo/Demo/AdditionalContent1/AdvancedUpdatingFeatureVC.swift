@@ -65,7 +65,7 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
                 let borderRadiusArr: [Float] = [1, 10, 100]
                 let borderRadius = borderRadiusArr[selectedSegmentIndex]
                 var aaPlotOptions: AAPlotOptions? = nil
-                if self.chartType == .column {
+                if chartType == .column {
                     aaPlotOptions = AAPlotOptions()
                         .column(AAColumn()
                             .borderRadius(borderRadius))
@@ -113,23 +113,23 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
                 .reversed(isOn)
             options = aaYAxis
             
-        case 2: if self.aaChartModel.chartType == AAChartType.bar {
+        case 2: if aaChartModel.chartType == AAChartType.bar {
             print("⚠️⚠️⚠️inverted is useless for Bar Chart")
         }
             let aaChart = AAChart()
                 .inverted(isOn)
-                .polar(self.aaChartModel.polar)
+                .polar(aaChartModel.polar)
             options = aaChart
             
         case 3:
-            self.aaChartModel.polar = isOn
+            aaChartModel.polar = isOn
             let aaChart = AAChart()
                 .polar(isOn)
-                .inverted(self.aaChartModel.inverted)
+                .inverted(aaChartModel.inverted)
             options = aaChart
             
-            if self.aaChartModel.chartType == AAChartType.column {
-                if self.aaChartModel.polar == true {
+            if aaChartModel.chartType == AAChartType.column {
+                if aaChartModel.polar == true {
                     options = AAOptions()
                         .chart(aaChart)
                         .plotOptions(AAPlotOptions()
@@ -144,8 +144,8 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
                                 .pointPadding(0.1)
                                 .groupPadding(0.2)))
                 }
-            } else if self.aaChartModel.chartType == AAChartType.bar {
-                if self.aaChartModel.polar == true {
+            } else if aaChartModel.chartType == AAChartType.bar {
+                if aaChartModel.polar == true {
                     options = AAOptions()
                         .chart(aaChart)
                         .plotOptions(AAPlotOptions()
