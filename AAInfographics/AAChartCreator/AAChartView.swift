@@ -98,7 +98,7 @@ public class AAChartView: WKWebView {
             }
         }
         get {
-            return _delegate
+            _delegate
         }
         
     }
@@ -311,14 +311,14 @@ extension AAChartView {
     
     /// Function of only refresh the chart data after the chart has been rendered
     ///
-    /// - Parameter chartModel: chart model series  array
+    /// - Parameter chartModelSeries: chart model series  array
     public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [AASeriesElement]) {
         aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartModelSeries)
     }
     
     /// Function of only refresh the chart data after the chart has been rendered
     ///
-    /// - Parameter chartModel: chart model series  array
+    /// - Parameter chartModelSeries: chart model series  array
     /// - Parameter animation: enable animation effect or not
     public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [AASeriesElement], animation: Bool) {
         aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartModelSeries, animation: animation)
@@ -538,7 +538,7 @@ extension AAChartView {
     
     ///  Evaluate JavaScript string function body
     ///
-    /// - Parameter JSFunctionBodyString: valid JavaScript function body string
+    /// - Parameter JSFunctionString: valid JavaScript function body string
     public func aa_evaluateJavaScriptStringFunction(_ JSFunctionString: String) {
         if optionsJson != nil {
             let pureJSFunctionStr = JSFunctionString.aa_toPureJSString()
