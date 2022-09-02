@@ -1594,7 +1594,7 @@ class CustomStyleChartVC: AABaseChartVC {
     
     //https://github.com/AAChartModel/AAChartKit/issues/1291
     private func customLineChartWithColorfulMarkersAndLines() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)
             .title("Custom Line Chart With Colorful Markers And Lines")
             .markerRadius(18.0)//marker点半径为8个像素
@@ -1647,7 +1647,7 @@ class CustomStyleChartVC: AABaseChartVC {
     //https://github.com/AAChartModel/AAChartKit/issues/1291
     //https://github.com/AAChartModel/AAChartKit/issues/1293
     private func customLineChartWithColorfulMarkersAndLines2() -> AAChartModel {
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)
             .title("Custom Line Chart With Colorful Markers And Lines")
             .markerRadius(25.0)//marker点半径为8个像素
