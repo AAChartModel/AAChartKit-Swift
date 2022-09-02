@@ -244,7 +244,7 @@ public func AAMargin(
     left: Float,
     right: Float
 ) -> [Any?]? {
-    return [
+    [
         nil,
         right,
         nil,
@@ -256,7 +256,7 @@ public func AAMargin(
     top: Float,
     bottom: Float
 ) -> [Any?]? {
-    return [
+    [
         top,
         nil,
         bottom,
