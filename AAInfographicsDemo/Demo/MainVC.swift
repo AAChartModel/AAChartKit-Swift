@@ -519,22 +519,22 @@ class MainVC: UIViewController {
         view.addSubview(tableView)
     }
     
-    private func kRGBColorFromHex(rgbValue: Int) -> (UIColor) {
-        return UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
-                       green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
-                       blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
-                       alpha: 1.0)
+    private func kRGBColorFromHex(rgbValue: Int) -> UIColor {
+        UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
+                green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
+                blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
+                alpha: 1.0)
     }
 }
 
 @available(macCatalyst 13.1, *)
 extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return chartTypeTitleArr.count
+        chartTypeTitleArr.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chartTypeTitleArr[section].count
+        chartTypeTitleArr[section].count
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
