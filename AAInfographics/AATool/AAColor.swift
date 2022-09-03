@@ -97,7 +97,7 @@ public class AAColor {
         _ red: Int,
         _ green: Int,
         _ blue: Int,
-        _ alpha: Float = 1
+        _ alpha: Float = 1.0
         ) -> String {
         "rgba(\(red),\(green),\(blue),\(alpha))"
     }
@@ -107,7 +107,7 @@ public func AARgba(
     _ red: Int,
     _ green: Int,
     _ blue: Int,
-    _ alpha: Float = 1
+    _ alpha: Float = 1.0
     ) -> String  {
     "rgba(\(red),\(green),\(blue),\(alpha))"
 }
