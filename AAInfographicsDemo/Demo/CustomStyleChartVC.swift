@@ -884,20 +884,18 @@ class CustomStyleChartVC: AABaseChartVC {
                             .halo(AAHalo()
                                 .size(130)
                                 .opacity(0.8)
-                                .attributes([
-                                    "stroke-width": 50,
-                                    "fill": "#00BFFF",
-                                    "stroke": "#00FA9A"
-                                ])))
-                        .select(AASelect()
-                            .halo(AAHalo()
-                                .size(130)
-                                .opacity(1.0)
-                                .attributes([
-                                    "stroke-width": 150,
-                                    "fill": AARgba(138,43,226,1),
-                                    "stroke": AARgba(30,144,255,1)
-                                ]))))
+                                .attributes(AASVGAttributes()
+                                    .strokeWidth(50)
+                                    .fill("#00BFFF")
+                                    .stroke("#00FA9A"))))
+                            .select(AASelect()
+                                .halo(AAHalo()
+                                    .size(130)
+                                    .opacity(1.0)
+                                    .attributes(AASVGAttributes()
+                                        .strokeWidth(150)
+                                        .fill(AARgba(138,43,226,1))
+                                        .stroke(AARgba(30,144,255,1))))))
             ])
     }
 

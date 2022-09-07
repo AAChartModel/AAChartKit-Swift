@@ -158,8 +158,8 @@ public class AAHalo: AAObject {
     public var size: Float?
     
     @discardableResult
-    public func attributes(_ prop: [String: Any]) -> AAHalo {
-        attributes = prop
+    public func attributes(_ prop: AASVGAttributes) -> AAHalo {
+        attributes = prop.toDictionaryProp()
         return self
     }
     
@@ -198,5 +198,47 @@ public class AAInactive: AAObject {
     
     public override init() {
         
+    }
+}
+
+public class AASVGAttributes: AAObject {
+    public var fill: String?
+    public var stroke: String?
+    public var strokeWidth: Float?
+    
+    @discardableResult
+    public func fill(_ prop: String?) -> AASVGAttributes {
+        fill = prop
+        return self
+    }
+    
+    @discardableResult
+    public func stroke(_ prop: String?) -> AASVGAttributes {
+        stroke = prop
+        return self
+    }
+    
+    @discardableResult
+    public func strokeWidth(_ prop: Float?) -> AASVGAttributes {
+        strokeWidth = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
+    
+    public func toDictionaryProp() -> [String: Any]? {
+        var dic = [String: Any]()
+        if let fill = fill {
+            dic["fill"] = fill
+        }
+        if let stroke = stroke {
+            dic["stroke"] = stroke
+        }
+        if let strokeWidth = strokeWidth {
+            dic["stroke-width"] = strokeWidth
+        }
+        return dic
     }
 }
