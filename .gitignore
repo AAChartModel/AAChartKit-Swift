@@ -69,3 +69,4 @@ iOSInjectionProject/
 
 # JetBrains
 .idea
+.build
