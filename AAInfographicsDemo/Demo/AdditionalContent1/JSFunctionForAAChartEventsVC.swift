@@ -16,7 +16,21 @@ class JSFunctionForAAChartEventsVC: AABaseChartVC {
 
         // Do any additional setup after loading the view.
     }
-    
+
+    override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
+        switch (selectedIndex) {
+        case 0: return setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart()
+        case 1: return generalDrawingChart()
+        case 2: return advancedTimeLineChart()
+        case 3: return configureBlinkMarkerChart()
+        case 4: return configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect()
+        case 5: return configureScatterChartWithBlinkEffect()
+        case 6: return automaticallyHideTooltipAfterItIsShown()
+        case 7: return dynamicHeightGridLineAreaChart()
+        default: return nil
+        }
+    }
+
 
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/345
     private func setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart() -> AAOptions {
@@ -744,7 +758,7 @@ function () {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/394
     //https://www.highcharts.com/forum/viewtopic.php?t=44985
-    func confgureBlinkMarkerChart() -> AAOptions {
+    func configureBlinkMarkerChart() -> AAOptions {
         let dataArr = [7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]
         let selectedIndex = dataArr.count - 1
         
@@ -1007,6 +1021,7 @@ function() {
         )
                 
         //https://api.highcharts.com/highcharts/chart.events.load
+        //设置 tooltip 自动隐藏的时间
         aaOptions.chart?.events(
             AAChartEvents()
                 .load("""
@@ -1016,7 +1031,6 @@ function() {
                     chart.tooltip,
                     'refresh',
                     function () {
-                        //设置 tooltip 自动隐藏的时间
                         chart.tooltip.hide(888);
                 });
             }
@@ -1052,7 +1066,7 @@ function() {
             .plotOptions(AAPlotOptions()
                 .scatter(AAScatter()
                     .lineWidth(2)
-                    .lineColor("dbe751")
+                    .lineColor("#dbe751")
                     .dashStyle(.longDash)
                     .enableMouseTracking(false)
                     .linkedTo("main")
@@ -1069,7 +1083,7 @@ function() {
                     .id("main")
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     .lineWidth(6)
-                    .color("dbe751")
+                    .color("#dbe751")
                     .fillOpacity(0.4)
                     .marker(AAMarker()
                         .enabled(false))
