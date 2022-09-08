@@ -531,6 +531,7 @@ class MainVC: UIViewController {
         tableView.backgroundColor = .white
         tableView.rowHeight = 45
         tableView.sectionHeaderHeight = 45
+        tableView.sectionIndexColor = .red
         view.addSubview(tableView)
     }
     
