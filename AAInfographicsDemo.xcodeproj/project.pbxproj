@@ -36,6 +36,7 @@
 		844614D7283C822E00E26DA4 /* ProjectBundlePathLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */; };
 		848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */; };
 		848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */; };
+		84A9FB7E28C9BC0E00240C11 /* AAScatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */; };
 		84AE6B1F26A58380001F0755 /* AADateUTCTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE6B1E26A58380001F0755 /* AADateUTCTool.swift */; };
 		84B68246266DB09100957FC5 /* AAChartSymbolConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B68245266DB09100957FC5 /* AAChartSymbolConstant.swift */; };
 		84DEA0D42845ADEB00D0206F /* CustomMouseOutEventCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEA0D32845ADEB00D0206F /* CustomMouseOutEventCallback.swift */; };
@@ -185,6 +186,7 @@
 		844614D3283C818D00E26DA4 /* PackageBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageBundlePathLoader.swift; sourceTree = "<group>"; };
 		848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAAChartViewForXibVC.swift; sourceTree = "<group>"; };
 		848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAAChartViewForXibVC.xib; sourceTree = "<group>"; };
+		84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAScatter.swift; sourceTree = "<group>"; };
 		84AE6B1E26A58380001F0755 /* AADateUTCTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADateUTCTool.swift; sourceTree = "<group>"; };
 		84B68245266DB09100957FC5 /* AAChartSymbolConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChartSymbolConstant.swift; sourceTree = "<group>"; };
 		84DEA0D32845ADEB00D0206F /* CustomMouseOutEventCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMouseOutEventCallback.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				27065A5B24C1A7A400D872EB /* AACredits.swift */,
 				27E58D3626EA18B900A0709E /* AAStyle.swift */,
 				84F8F66A28B714E000F41E6A /* AABoxplot.swift */,
+				84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */,
 			);
 			path = AAOptionsModel;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 			files = (
 				ED0A0347272816ED000BF778 /* AAScrollablePlotArea.swift in Sources */,
 				ED0A0349272816ED000BF778 /* AAMarker.swift in Sources */,
+				84A9FB7E28C9BC0E00240C11 /* AAScatter.swift in Sources */,
 				ED0A033F272816ED000BF778 /* AATitle.swift in Sources */,
 				ED0A034B272816F4000BF778 /* AAGradientColor.swift in Sources */,
 				84F8F66B28B714E000F41E6A /* AABoxplot.swift in Sources */,

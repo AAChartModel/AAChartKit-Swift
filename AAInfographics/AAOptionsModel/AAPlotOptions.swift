@@ -33,6 +33,7 @@
 import Foundation
 
 public class AAPlotOptions: AAObject {
+    public var series: AASeries?
     public var column: AAColumn?
     public var bar: AABar?
     public var line: AALine?
@@ -44,7 +45,13 @@ public class AAPlotOptions: AAObject {
     public var columnrange: AAColumnrange?
     public var arearange: AAArearange?
     public var boxplot: AABoxplot?
-    public var series: AASeries?
+    public var scatter: AAScatter?
+
+    @discardableResult
+    public func series(_ prop: AASeries) -> AAPlotOptions {
+        series = prop
+        return self
+    }
     
     @discardableResult
     public func column(_ prop: AAColumn) -> AAPlotOptions {
@@ -111,10 +118,10 @@ public class AAPlotOptions: AAObject {
         boxplot = prop
         return self
     }
-    
+
     @discardableResult
-    public func series(_ prop: AASeries) -> AAPlotOptions {
-        series = prop
+    public func scatter(_ prop: AAScatter) -> AAPlotOptions {
+        scatter = prop
         return self
     }
     
