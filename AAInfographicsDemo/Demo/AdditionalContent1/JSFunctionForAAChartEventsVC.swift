@@ -1025,4 +1025,55 @@ function() {
         return aaOptions
     }
 
+    //https://github.com/AAChartModel/AAChartKit/issues/1383
+    //https://www.highcharts.com/forum/viewtopic.php?t=49409
+    private func dynamicHeightGridLineAreaChart() -> AAOptions {
+        return AAOptions()
+            .title(AATitle()
+                .text("dynamicHeightGridLineAreaChart"))
+            .chart(AAChart()
+                .type(.scatter)
+                .events(AAChartEvents()
+                    .load("""
+                          function () {
+                             const chart = this;
+                             const mainSeries = chart.series[0];
+                             mainSeries.data.forEach((point, i) => {
+                               chart.addSeries({
+                                 data: [
+                                   [i, 0],
+                                   [i, point.y]
+                                 ]
+                               })
+                             })
+                             }
+                          """
+                    )))
+            .plotOptions(AAPlotOptions()
+                .scatter(AAScatter()
+                    .lineWidth(2)
+                    .lineColor("dbe751")
+                    .dashStyle(.longDash)
+                    .enableMouseTracking(false)
+                    .linkedTo("main")
+                    .states(AAStates()
+                        .inactive(AAInactive()
+                            .enabled(false)))
+                    .marker(AAMarker()
+                        .enabled(false))))
+            .yAxis(AAYAxis()
+                .gridLineWidth(0))
+            .series([
+                AASeriesElement()
+                    .type(.areaspline)
+                    .id("main")
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+                    .lineWidth(6)
+                    .color("dbe751")
+                    .fillOpacity(0.4)
+                    .marker(AAMarker()
+                        .enabled(false))
+                ])
+    }
+
 }
