@@ -72,6 +72,8 @@ public class AASeriesElement: AAObject {
     public var enableMouseTracking: Bool?
     public var dataSorting: AADataSorting?
     public var reversed: Bool?             //Only useful for pyramid chart and funnel chart
+    public var id: String?
+
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
@@ -316,6 +318,12 @@ public class AASeriesElement: AAObject {
     @discardableResult
     public func reversed(_ prop: Bool) -> AASeriesElement {
         reversed = prop
+        return self
+    }
+
+    @discardableResult
+    public func id(_ prop: String) -> AASeriesElement {
+        id = prop
         return self
     }
     
