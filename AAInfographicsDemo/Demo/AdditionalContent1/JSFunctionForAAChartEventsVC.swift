@@ -19,14 +19,14 @@ class JSFunctionForAAChartEventsVC: AABaseChartVC {
 
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch (selectedIndex) {
-        case 0: return setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart()
-        case 1: return generalDrawingChart()
-        case 2: return advancedTimeLineChart()
-        case 3: return configureBlinkMarkerChart()
-        case 4: return configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect()
-        case 5: return configureScatterChartWithBlinkEffect()
-        case 6: return automaticallyHideTooltipAfterItIsShown()
-        case 7: return dynamicHeightGridLineAreaChart()
+        case 0: return setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart() //图表加载完成后,设置默认的十字准星和数据提示框的位置
+        case 1: return generalDrawingChart() //自由绘图
+        case 2: return advancedTimeLineChart() //高级时间线图
+        case 3: return configureBlinkMarkerChart() //配置标记点闪烁特效
+        case 4: return configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect() //配置单个数据元素的特殊样式标记点的闪烁特效
+        case 5: return configureScatterChartWithBlinkEffect() //配置散点图的闪烁特效
+        case 6: return automaticallyHideTooltipAfterItIsShown() //浮动提示框显示一段时间后,自动隐藏
+        case 7: return dynamicHeightGridLineAreaChart() //动态高度网格线的区域填充图
         default: return nil
         }
     }
