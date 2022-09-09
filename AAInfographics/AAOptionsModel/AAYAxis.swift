@@ -41,7 +41,6 @@ public class AAYAxis: AAAxis {
         stackLabels = prop
         return self
     }
-    ///----------------------------------------------------------
 
     
     public override init() {
