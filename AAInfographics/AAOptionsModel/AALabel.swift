@@ -41,6 +41,8 @@ public class AALabel: AAObject {
     public var style: AAStyle? // CSS style for axis labels
     public var x: Float? // The horizontal offset from the axis axis tick marks. The default is: 0.
     public var y: Float? // The vertical flat offset from the axis axis tick marks. The default is: null.
+    public var format: String? // Format string for the axis label.
+    public var formatter: String? // Callback JavaScript function to format the label.
     
     @discardableResult
     public func align(_ prop: AAChartAlignType) -> AALabel {
@@ -61,8 +63,8 @@ public class AALabel: AAObject {
     }
     
     @discardableResult
-    public func textAlign(_ prop: String) -> AALabel {
-        textAlign = prop
+    public func textAlign(_ prop: AAChartAlignType) -> AALabel {
+        textAlign = prop.rawValue
         return self
     }
     
@@ -93,6 +95,18 @@ public class AALabel: AAObject {
     @discardableResult
     public func y(_ prop: Float) -> AALabel {
         y = prop
+        return self
+    }
+
+    @discardableResult
+    public func format(_ prop: String) -> AALabel {
+        format = prop
+        return self
+    }
+
+    @discardableResult
+    public func formatter(_ prop: String) -> AALabel {
+        formatter =  prop.aa_toPureJSString()
         return self
     }
     
