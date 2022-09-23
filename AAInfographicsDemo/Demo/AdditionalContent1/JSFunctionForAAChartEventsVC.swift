@@ -27,6 +27,8 @@ class JSFunctionForAAChartEventsVC: AABaseChartVC {
         case 5: return configureScatterChartWithBlinkEffect() //配置散点图的闪烁特效
         case 6: return automaticallyHideTooltipAfterItIsShown() //浮动提示框显示一段时间后,自动隐藏
         case 7: return dynamicHeightGridLineAreaChart() //动态高度网格线的区域填充图
+        case 8: return customizeYAxisPlotLinesLabelBeSpecialStyle() //自定义 Y 轴轴线上面的标签文字特殊样式
+
         default: return nil
         }
     }
@@ -1091,3 +1093,59 @@ function() {
     }
 
 }
+
+//https://github.com/AAChartModel/AAChartKit-Swift-Pro/issues/3
+//https://www.highcharts.com/forum/viewtopic.php?f=9&t=49492
+func customizeYAxisPlotLinesLabelBeSpecialStyle() -> AAOptions {
+    return AAOptions()
+        .chart(AAChart()
+            .events(AAChartEvents()
+                .load("""
+                    function () {
+                        const chart = this,
+                          ren = chart.renderer,
+                          plotLineLabel = chart.yAxis[0].plotLinesAndBands[0].label,
+                          {
+                            x: labelX,
+                            y: labelY,
+                            width: labelWidth,
+                            height: labelHeight
+                          } = plotLineLabel.getBBox(),
+                          x = labelX + labelWidth,
+                          y = labelY,
+                          lh = labelHeight,
+                          ll = 40;
+
+                        chart.customLabelTriangle = ren.path(['M', x - ll, y, x, y, x + lh, y + lh / 2, x, y + lh, x - ll, y + lh, 'Z']).attr({
+                          fill: '#a9a9ff',
+                        }).add().toFront();
+                    }
+                    """
+                     )))
+        .yAxis(AAYAxis()
+            .visible(true)
+            .lineWidth(2)
+            .plotLines([
+                AAPlotLinesElement()
+                    .value(6.5)
+                    .color("#a9a9ff")
+                    .width(2)
+                    .dashStyle(.dash)
+                    .label(AALabel()
+                        .useHTML(true)
+                        .textAlign(.center)
+                        .x(0).y(2)
+                        .formatter("""
+                                   function () {
+                                       return `<span style="padding: 2px 10px; display: block; color: white">${this.options.value}</span>`
+                                   }
+                                   """
+                                  ))
+            ]))
+        .series([
+            AASeriesElement()
+                .data([2, 5, 2, 3, 6])
+        ])
+}
+
+
