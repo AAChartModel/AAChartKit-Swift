@@ -583,7 +583,7 @@ function () {
                         .enabled(false)
                         .symbol(AAChartSymbolType.circle.rawValue)
                         .radius(2))
-//                    .fillOpacity(0.5)
+//                        .fillOpacity(0.5)
                 )
 //                .flags(AAFlags()
 //                    .tooltip(AATooltip()
@@ -592,7 +592,7 @@ function () {
             .series([
                 AASeriesElement()
                     .type(.line)
-    //                    .id("google-trends")
+                    .id("google-trends")
                     .dashStyle(.longDashDotDot)
                     .name("Google search for highcharts")
                     .data([
@@ -658,11 +658,11 @@ function () {
                         ["x": 1413453600000, "y": 98]
                     ])
                     .tooltip(AATooltip()
-    //                        .xDateFormat("%B %Y")
+//                            .xDateFormat("%B %Y")
                         .valueSuffix(" % of best month")),
                 AASeriesElement()
                     .name("收入")
-    //                .id("revenue")
+                    .id("revenue")
                     .type(.area)
                     .data([
                         [1257033600000,  2],
@@ -732,7 +732,7 @@ function () {
                 AASeriesElement()
                     .yAxis(1)
                     .name("Highsoft 员工")
-    //                .id("employees")
+                    .id("employees")
                     .type(.area)
                     .step("left")
                     .tooltip(AATooltip()
