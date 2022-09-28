@@ -61,6 +61,8 @@ class BasicChartVC: UIViewController {
         setUpTheSegmentControls()
         
         setUpAAChartView()
+
+
         }
     
    private func setUpAAChartView() {
