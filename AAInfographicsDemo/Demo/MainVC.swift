@@ -86,6 +86,7 @@ class MainVC: UIViewController {
             "Chart Options Advanced Updating | 图表高级更新",
             "XIB AAChartView | 在 XIB 中创建 AAChartView",
             "Custom Chart Event Callback | 自定义交互事件回调",
+            "JS Function For AAAxis Labels | 通过带有 JS 函数的自定义 AAAxis 的文字标签",
             "JS Function For AAChartEvents---通过 JSFunction 自定义 AAChartEvents 的事件",
         ]
         
@@ -378,6 +379,20 @@ class MainVC: UIViewController {
             [
                 "自定义监听触摸结束事件---CustomTouchEndEventCallbackVC"
             ],
+            /*JS Function For AAAXis Labels*/
+            [
+                "customYAxisLabels---自定义Y轴文字",
+                "customYAxisLabels2---自定义Y轴文字2",
+                "customAreaChartXAxisLabelsTextUnitSuffix1---自定义X轴文字单位后缀(通过 formatter 函数)",
+                "customAreaChartXAxisLabelsTextUnitSuffix2---自定义X轴文字单位后缀(不通过 formatter 函数)",
+                "configureTheAxesLabelsFormattersOfDoubleYAxesChart---配置双 Y 轴图表的 Y 轴文字标签的 Formatter 函数 示例 1",
+                "configureTheAxesLabelsFormattersOfDoubleYAxesChart2---配置双 Y 轴图表的 Y 轴文字标签的 Formatter 函数 示例 2",
+                "configureTheAxesLabelsFormattersOfDoubleYAxesChart3---配置双 Y 轴图表的 Y 轴文字标签的 Formatter 函数 示例 3",
+                "customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters---通过截取前四个字符来自定义 X 轴 labels",
+                "customSpiderChartStyle---自定义蜘蛛🕷🕸图样式",
+                "customizeEveryDataLabelSinglelyByDataLabelsFormatter---通过 DataLabels 的 formatter 函数来实现单个数据标签🏷自定义",
+                "customXAxisLabelsBeImages---自定义 X轴 labels 为一组图片",
+            ],
             /*JS Function For AAChartEvents*/
             [
                 "setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart---图表加载完成后设置 crosshair 和 tooltip 到默认位置",
@@ -530,6 +545,8 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.line,
                 AAChartType.spline,
+            ],
+            [//Empty Array,just for holding place
             ],
             [//Empty Array,just for holding place
             ],
@@ -794,6 +811,12 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
 
         case 17:
+            /*JS Function For AAAxis Labels*/
+            let vc = JSFunctionForAAAxisVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+        case 18:
             /*JS Function For AAChartEventsVC*/
             let vc = JSFunctionForAAChartEventsVC()
             vc.selectedIndex = indexPath.row
