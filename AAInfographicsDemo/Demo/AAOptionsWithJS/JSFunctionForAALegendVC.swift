@@ -9,12 +9,119 @@
 import UIKit
 import AAInfographics
 
-class JSFunctionForAALegendVC: UIViewController {
+class JSFunctionForAALegendVC: AABaseChartVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
+        switch (selectedIndex) {
+        case 0: return configureLegendStyle()
+        case 1: return configurePieChartWithSpecialStyleLegend()
+        case 2: return customLegendItemClickEvent()
+        default:
+            return nil
+        }
+    }
+    
+    private func configureLegendStyle() -> AAOptions {
+        let aaChartModel = AAChartModel()
+            .chartType(.areaspline)
+            .dataLabelsEnabled(false)
+            .margin(top: 100, right: 100, bottom: 100, left: 100)
+            .markerSymbol(.circle)
+            .markerSymbolStyle(.innerBlank)
+            .stacking(.normal)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.purple, fontSize: 18, weight: .bold))
+            .series([
+                AASeriesElement()
+                    .name("Tokyo Hot")
+                    .data([45000000, 43000000, 50000000, 55000000, 58000000, 62000000, 83000000, 39000000, 56000000, 67000000, 50000000, 34000000, 50000000, 67000000, 58000000, 29000000, 46000000, 23000000, 47000000, 46000000, 38000000, 56000000, 48000000, 36000000])                ,
+                AASeriesElement()
+                    .name("Berlin Hot")
+                    .data([38000000, 31000000, 32000000, 32000000, 64000000, 66000000, 86000000, 47000000, 52000000, 75000000, 52000000, 56000000, 54000000, 60000000, 46000000, 63000000, 54000000, 51000000, 58000000, 64000000, 60000000, 45000000, 36000000, 67000000])
+                ,
+                AASeriesElement()
+                    .name("New York Hot")
+                    .data([46000000, 32000000, 53000000, 58000000, 86000000, 68000000, 85000000, 73000000, 69000000, 71000000, 91000000, 74000000, 60000000, 50000000, 39000000, 67000000, 55000000, 49000000, 65000000, 45000000, 64000000, 47000000, 63000000, 64000000])
+                ,
+                AASeriesElement()
+                    .name("London Hot")
+                    .data([60000000, 51000000, 52000000, 53000000, 64000000, 84000000, 65000000, 68000000, 63000000, 47000000, 72000000, 60000000, 65000000, 74000000, 66000000, 65000000, 71000000, 59000000, 65000000, 77000000, 52000000, 53000000, 58000000, 53000000])
+                ,
+            ])
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        
+        aaOptions.legend?
+            .itemMarginTop(20)
+            .symbolRadius(0)//图标圆角
+            .symbolHeight(20)//标志高度
+            .symbolWidth(20)//图标宽度
+            .align(.right)
+            .layout(.vertical)
+            .verticalAlign(.top)
+            .itemStyle(AAItemStyle()
+                .color(AAColor.red)
+                .fontSize(20)
+                .fontWeight(.bold))
+        
+        //禁用图例点击事件
+        aaOptions.plotOptions?.series?.events = AAEvents()
+            .legendItemClick(#"""
+                    function() {
+                      return false;
+                    }
+        """#)
+
+        return aaOptions
+    }
+    
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/391
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/393
+    private func configurePieChartWithSpecialStyleLegend() -> AAOptions {
+         let aaChartModel = AAChartModel()
+            .chartType(.pie)
+            .backgroundColor(AAColor.white)
+            .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
+            .subtitle("virtual data")
+            .dataLabelsEnabled(true)//是否直接显示扇形图数据
+            .yAxisTitle("℃")
+            .series([
+                AASeriesElement()
+                    .name("Language market shares")
+                    .innerSize("20%")//内部圆环半径大小占比(内部圆环半径/扇形图半径),
+                    .allowPointSelect(true)
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .enabled(false)//禁用点击区块之后出现的半透明遮罩层
+                    ))
+                    .data([
+                        ["Java"  ,67],
+                        ["Swift",999],
+                        ["Python",83],
+                        ["OC"    ,11],
+                        ["Go"    ,30],
+                    ])
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aaOptions.legend?.labelFormat("{name} {percentage:.2f}%")
+        
+        //禁用饼图图例点击事件
+        aaOptions.plotOptions?.series?
+            .point(AAPoint()
+                .events(AAPointEvents()
+                    .legendItemClick(#"""
+                    function() {
+                      return false;
+                    }
+        """#)))
+        
+        return aaOptions
     }
     
 
