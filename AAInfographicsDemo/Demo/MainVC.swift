@@ -87,6 +87,7 @@ class MainVC: UIViewController {
             "XIB AAChartView | 在 XIB 中创建 AAChartView",
             "Custom Chart Event Callback | 自定义交互事件回调",
             "JS Function For AAAxis Labels | 通过带有 JS 函数的自定义 AAAxis 的文字标签",
+            "JS Function For AALegend | 通过带有 JS 函数的自定义 AALegend",
             "JS Function For AAChartEvents---通过 JSFunction 自定义 AAChartEvents 的事件",
         ]
         
@@ -393,6 +394,12 @@ class MainVC: UIViewController {
                 "customizeEveryDataLabelSinglelyByDataLabelsFormatter---通过 DataLabels 的 formatter 函数来实现单个数据标签🏷自定义",
                 "customXAxisLabelsBeImages---自定义 X轴 labels 为一组图片",
             ],
+            /*JS Function For AALegend*/
+            [
+                "configureLegendStyle---自定义 legend 样式",
+                "configurePieChartWithSpecialStyleLegend---自定义饼图 legend 样式",
+                "customLegendItemClickEvent---自定义图例 legend 的点击事件",
+            ],
             /*JS Function For AAChartEvents*/
             [
                 "setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart---图表加载完成后设置 crosshair 和 tooltip 到默认位置",
@@ -554,7 +561,8 @@ class MainVC: UIViewController {
             ],
             [//Empty Array,just for holding place
             ],
-            
+            [//Empty Array,just for holding place
+            ],
         ]
         
         view.backgroundColor = .white
@@ -817,11 +825,18 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
         case 18:
+            /*JS Function For AALegend*/
+            let vc = JSFunctionForAALegendVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+        case 19:
             /*JS Function For AAChartEventsVC*/
             let vc = JSFunctionForAAChartEventsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
+            
             
         default:
             break
