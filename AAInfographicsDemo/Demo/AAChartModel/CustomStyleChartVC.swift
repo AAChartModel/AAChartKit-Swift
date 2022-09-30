@@ -94,6 +94,7 @@ class CustomStyleChartVC: AABaseChartVC {
         case 48: return drawLineChartWithPointsCoordinates2()
         case 49: return configureSpecialStyleColumnForNegativeDataMixedPositiveData()
         case 50: return configureMultiLevelStopsArrGradientColorAreasplineMixedLineChart()
+        case 51: return connectNullsForSingleAASeriesElement()
 
 
         default:
@@ -1950,6 +1951,50 @@ class CustomStyleChartVC: AABaseChartVC {
                     .lineWidth(6)
                     .threshold(-4)
                     .data(randomNumArrA),
+            ])
+    }
+
+    //https://github.com/AAChartModel/AAChartKit/issues/1401
+    private func connectNullsForSingleAASeriesElement() -> AAChartModel {
+        let dataArr = [
+            0.45, NSNull(), NSNull(),
+            0.55, 0.58, 0.62, NSNull(), NSNull(),
+            0.56, 0.67, 0.50, 0.34, 0.50, NSNull(), NSNull(), NSNull(), NSNull(),
+            0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36, NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(),
+            0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53,
+        ] as [Any]
+
+        return AAChartModel()
+            .chartType(.spline)
+            .subtitle("虚拟数据")
+            .colorsTheme(["#1e90ff", "#ef476f", "#ffd066", "#04d69f"])
+            .yAxisTitle("摄氏度")
+            .dataLabelsEnabled(false)
+            .yAxisGridLineWidth(0)
+            .stacking(.normal)
+            .markerRadius(8)
+            .markerSymbolStyle(.borderBlank)
+            .series([
+                AASeriesElement()
+                    .name("Do NOT Connect Nulls")
+                    .lineWidth(5)
+                    .connectNulls(false)
+                    .data(dataArr),
+                AASeriesElement()
+                    .name("Connect Nulls")
+                    .lineWidth(5)
+                    .connectNulls(true)
+                    .data(dataArr),
+                AASeriesElement()
+                    .name("Do NOT Connect Nulls")
+                    .lineWidth(5)
+                    .connectNulls(false)
+                    .data(dataArr),
+                AASeriesElement()
+                    .name("Connect Nulls")
+                    .lineWidth(5)
+                    .connectNulls(true)
+                    .data(dataArr)
             ])
     }
 
