@@ -419,9 +419,9 @@
 			isa = PBXGroup;
 			children = (
 				44EB70A622BCB606008FECE4 /* JSFormatterFunctionVC.swift */,
-				8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */,
 				84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */,
 				84086B1528E44B19006BD30D /* JSFunctionForAALegendVC.swift */,
+				8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */,
 			);
 			path = AAOptionsWithJS;
 			sourceTree = "<group>";
