@@ -30,7 +30,7 @@
 		447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */; };
 		448330B824E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448330B724E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift */; };
 		449A0ED62377149D009F8FE1 /* ScrollingUpdateDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */; };
-		44EB70A722BCB606008FECE4 /* JSFormatterFunctionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EB70A622BCB606008FECE4 /* JSFormatterFunctionVC.swift */; };
+		44EB70A722BCB606008FECE4 /* JSFunctionForAATooltipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EB70A622BCB606008FECE4 /* JSFunctionForAATooltipVC.swift */; };
 		84086B1628E44B19006BD30D /* JSFunctionForAALegendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B1528E44B19006BD30D /* JSFunctionForAALegendVC.swift */; };
 		84086B1B28E45127006BD30D /* JSFunctionForAAAxisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */; };
 		84086B1E28E6C612006BD30D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B1C28E6C612006BD30D /* CustomTableViewCell.swift */; };
@@ -184,7 +184,7 @@
 		4486C50723D7516300B54849 /* AAStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAStates.swift; sourceTree = "<group>"; };
 		4490BB372388E1AE005B9238 /* AAInfographicsDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AAInfographicsDemo.entitlements; sourceTree = "<group>"; };
 		449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingUpdateDataVC.swift; sourceTree = "<group>"; };
-		44EB70A622BCB606008FECE4 /* JSFormatterFunctionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFormatterFunctionVC.swift; sourceTree = "<group>"; };
+		44EB70A622BCB606008FECE4 /* JSFunctionForAATooltipVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAATooltipVC.swift; sourceTree = "<group>"; };
 		84086B1528E44B19006BD30D /* JSFunctionForAALegendVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAALegendVC.swift; sourceTree = "<group>"; };
 		84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAAxisVC.swift; sourceTree = "<group>"; };
 		84086B1C28E6C612006BD30D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -418,7 +418,7 @@
 		84086B1928E45015006BD30D /* AAOptionsWithJS */ = {
 			isa = PBXGroup;
 			children = (
-				44EB70A622BCB606008FECE4 /* JSFormatterFunctionVC.swift */,
+				44EB70A622BCB606008FECE4 /* JSFunctionForAATooltipVC.swift */,
 				84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */,
 				84086B1528E44B19006BD30D /* JSFunctionForAALegendVC.swift */,
 				8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */,
@@ -656,7 +656,7 @@
 				84AE6B1F26A58380001F0755 /* AADateUTCTool.swift in Sources */,
 				84DEA0D62845F5F200D0206F /* CustomSelectionEventCallback.swift in Sources */,
 				84DEA0D82846013F00D0206F /* CustomTouchEndEventCallbackVC.swift in Sources */,
-				44EB70A722BCB606008FECE4 /* JSFormatterFunctionVC.swift in Sources */,
+				44EB70A722BCB606008FECE4 /* JSFunctionForAATooltipVC.swift in Sources */,
 				84B68246266DB09100957FC5 /* AAChartSymbolConstant.swift in Sources */,
 				84086B1628E44B19006BD30D /* JSFunctionForAALegendVC.swift in Sources */,
 				84DEA0D42845ADEB00D0206F /* CustomMouseOutEventCallback.swift in Sources */,

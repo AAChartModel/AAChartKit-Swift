@@ -763,7 +763,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             
         case 10:
             /*Custom Tooltip With JavaScript Formatter Function */
-            let vc = JSFormatterFunctionVC()
+            let vc = JSFunctionForAATooltipVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)

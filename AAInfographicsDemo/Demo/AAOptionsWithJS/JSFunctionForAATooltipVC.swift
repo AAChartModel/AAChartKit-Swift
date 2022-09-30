@@ -33,7 +33,7 @@ import UIKit
 import AAInfographics
 
 @available(iOS 10.0, macCatalyst 13.1, *)
-class JSFormatterFunctionVC: AABaseChartVC {
+class JSFunctionForAATooltipVC: AABaseChartVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
