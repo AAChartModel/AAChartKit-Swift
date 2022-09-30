@@ -73,6 +73,7 @@ public class AASeriesElement: AAObject {
     public var dataSorting: AADataSorting?
     public var reversed: Bool?             //Only useful for pyramid chart and funnel chart
     public var id: String?
+    public var connectNulls: Bool?         //Whether to connect a graph line across null points. default value：false.
 
     
     @discardableResult
@@ -324,6 +325,12 @@ public class AASeriesElement: AAObject {
     @discardableResult
     public func id(_ prop: String) -> AASeriesElement {
         id = prop
+        return self
+    }
+
+    @discardableResult
+    public func connectNulls(_ prop: Bool) -> AASeriesElement {
+        connectNulls = prop
         return self
     }
     
