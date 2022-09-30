@@ -1839,7 +1839,8 @@ function () {
         
         return aaOptions
     }
-
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1033
     private func customPlotAreaOutsideComlicatedTooltipStyle() -> AAOptions {
         let categoriesArr = [
             "11 月 01 日",
@@ -1910,11 +1911,11 @@ function () {
             "12 月 31 日",
         ]
         
-        let aaChartModel = AAChartModel.init()
+        let aaChartModel = AAChartModel()
         .chartType(AAChartType.column)
         .categories(categoriesArr)
         .series([
-            AASeriesElement.init()
+            AASeriesElement()
                 .name("个人徒步数据统计")
                 .color(AARgba(235, 88, 40, 1.0))
                 .borderRadiusTopLeft(3)
@@ -1931,7 +1932,7 @@ function () {
         let aaOptions = aaChartModel.aa_toAAOptions()
 
         aaOptions.xAxis?
-            .crosshair(AACrosshair.init()
+            .crosshair(AACrosshair()
                 .color(AARgba(209, 209, 209, 1.0))
                 .dashStyle(AAChartLineDashStyleType.longDash)
                 .width(3))
