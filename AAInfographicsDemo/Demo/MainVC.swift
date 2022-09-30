@@ -33,6 +33,8 @@
 import UIKit
 import AAInfographics
 
+let kCustomTableViewCell = "CustomTableViewCell"
+
 @available(iOS 10.0, macCatalyst 13.1, *)
 class MainVC: UIViewController {
     private var sectionTitleArr = [String]()
@@ -552,7 +554,7 @@ class MainVC: UIViewController {
         tableView.backgroundColor = .white
         tableView.sectionHeaderHeight = 45
         tableView.sectionIndexColor = .red
-        tableView.register(UINib.init(nibName: "CustomTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "CustomTableViewCell")
+        tableView.register(UINib.init(nibName: kCustomTableViewCell, bundle: Bundle.main), forCellReuseIdentifier: kCustomTableViewCell)
         view.addSubview(tableView)
     }
     
@@ -631,7 +633,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell") as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: kCustomTableViewCell) as! CustomTableViewCell
         cell.accessoryType = .disclosureIndicator
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = .white
@@ -784,8 +786,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 15:
             /*Special Type Charts*/
             let vc = TestAAChartViewForXibVC()
-//            vc.selectedIndex = indexPath.row
-//            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
           
         case 16:
