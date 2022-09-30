@@ -9,14 +9,31 @@
 import UIKit
 import AAInfographics
 
-class JSFunctionForAAAxisVC: UIViewController {
+class JSFunctionForAAAxisVC: AABaseChartVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+
+    override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
+        switch (selectedIndex) {
+        case 0: return customYAxisLabels()//自定义Y轴文字
+        case 1: return customYAxisLabels2()//自定义Y轴文字2
+        case 2: return customAreaChartXAxisLabelsTextUnitSuffix1()//自定义X轴文字单位后缀(通过 formatter 函数)
+        case 3: return customAreaChartXAxisLabelsTextUnitSuffix2()//自定义X轴文字单位后缀(不通过 formatter 函数)
+        case 4: return configureTheAxesLabelsFormattersOfDoubleYAxesChart()//配置双 Y 轴图表的 Y 轴文字标签的 Formatter 函数 示例 1
+        case 5: return configureTheAxesLabelsFormattersOfDoubleYAxesChart2()//配置双 Y 轴图表的 Y 轴文字标签的 Formatter 函数 示例 2
+        case 6: return configureTheAxesLabelsFormattersOfDoubleYAxesChart3()//配置双 Y 轴图表的 Y 轴文字标签的 Formatter 函数 示例 3
+        case 7: return customColumnChartXAxisLabelsTextByInterceptTheFirstFourCharacters()//通过截取前四个字符来自定义 X 轴 labels
+        case 8: return customSpiderChartStyle()//自定义蜘蛛🕷🕸图样式
+        case 9: return customizeEveryDataLabelSinglelyByDataLabelsFormatter()//通过 DataLabels 的 formatter 函数来实现单个数据标签🏷自定义
+        case 10: return customXAxisLabelsBeImages()//自定义 X轴 labels 为一组图片
+        default:
+            return nil
+        }
+    }
 
     
     //https://github.com/AAChartModel/AAChartKit/issues/675
@@ -108,230 +125,66 @@ function () {
 
         return aaOptions
     }
-    
-    //https://github.com/AAChartModel/AAChartKit/issues/852 自定义蜘蛛🕷图样式
-    private func customSpiderChartStyle() -> AAOptions {
-        let categoryArr = [
-            "周转天数(天)",
-            "订单满足率",
-            "订单履约时效",
-            "动销率",
-            "畅销商品缺货率",
-            "高库存金额占比",
-            "不动销金额占比",
-            "停采金额占比",
-        ]
-        let categoryJSArrStr = categoryArr.aa_toJSArray()
-        
-        let xAxisLabelsFormatter = """
-        function () {
-        return \(categoryJSArrStr)[this.value];
-        }
-        """;
-        
+
+    //Stupid method
+    private func customAreaChartXAxisLabelsTextUnitSuffix1() -> AAOptions {
+        let gradientColorDic1 = AAGradientColor.linearGradient(
+            direction: .toTop,
+            startColor: "#7052f4",
+            endColor: "#00b0ff"
+        )
+
         let aaChartModel = AAChartModel()
-            .chartType(.line)//图表类型
-            .title("健康体检表")//图表主标题
-            .colorsTheme(["#fe117c", "#ffc069",])//设置主体颜色数组
-            .yAxisLineWidth(0)
-            .yAxisGridLineWidth(1)//y轴横向分割线宽度为0(即是隐藏分割线)
-            .yAxisTickPositions([0, 5, 10, 15, 20, 25, 30, 35])
-            .markerRadius(5)
-            .markerSymbol(.circle)
-            .polar(true)
+            .chartType(.area)
+            .title("Custom X Axis Labels Text")
+            .subtitle("By Using JavaScript Formatter Function")
+            .markerSymbolStyle(.borderBlank)
+            .yAxisGridLineWidth(0)
             .series([
                 AASeriesElement()
-                    .name("本月得分")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5,]),
-                AASeriesElement()
-                    .name("上月得分")
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, ]),
+                    .lineWidth(1.5)
+                    .color("#00b0ff")
+                    .fillColor(gradientColorDic1)
+                    .name("2018")
+                    .data([
+                        1.51, 6.7, 0.94, 1.44, 1.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
+                        4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.51, 12.7, 0.94, 1.44,
+                        18.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46,
+                        3.46, 3.55, 3.50, 4.13, 2.58, 2.28,1.33, 4.68, 1.31, 1.10, 13.9, 1.10, 1.16, 1.67,
+                        2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3, 3.32, 3.07, 3.92, 3.05,
+                        2.18, 3.24,3.23, 3.15, 2.90, 1.81, 2.11, 2.43, 5.59, 3.09, 4.09, 6.14, 5.33, 6.05,
+                        5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.48,
+                    ])
             ])
-        
-        let aaOptions = aaChartModel.aa_toAAOptions()
-        
-        aaOptions.chart?
-            .marginLeft(80)
-            .marginRight(80)
-        
-        aaOptions.xAxis?
-            .lineWidth(0)//避免多边形外环之外有额外套了一层无用的外环
-            .labels?
-            .style(AAStyle(color: AAColor.black))
-            .formatter(xAxisLabelsFormatter)
-        
-        aaOptions.yAxis?
-            .gridLineInterpolation("polygon")//设置蜘蛛网🕸图表的网线为多边形
-            .labels(AALabels()
-                .style(AAStyle()
-                    .color(AAColor.black)))
-        
-        //设定图例项的CSS样式。只支持有关文本的CSS样式设定。
-        /* 默认是：{
-         "color": "#333333",
-         "cursor": "pointer",
-         "fontSize": "12px",
-         "fontWeight": "bold"
-         }
-         */
-        let aaItemStyle = AAItemStyle()
-            .color(AAColor.gray)//字体颜色
-            .cursor("pointer")//(在移动端这个属性没什么意义,其实不用设置)指定鼠标滑过数据列时鼠标的形状。当绑定了数据列点击事件时，可以将此参数设置为 "pointer"，用来提醒用户改数据列是可以点击的。
-            .fontSize(14)//字体大小
-            .fontWeight(.thin)//字体为细体字
-        
-        
-        aaOptions.legend?
-            .enabled(true)
-            .align(.center)//设置图例位于水平方向上的右侧
-            .layout(.horizontal)//设置图例排列方式为垂直排布
-            .verticalAlign(.top)//设置图例位于竖直方向上的顶部
-            .itemStyle(aaItemStyle)
-        
-        
-        return aaOptions
-    }
-    
-    
-    // Refer to the issue https://github.com/AAChartModel/AAChartKit/issues/589
-    private func customizeEveryDataLabelSinglelyByDataLabelsFormatter() -> AAOptions  {
-        let aaChartModel = AAChartModel()
-            .chartType(.areaspline)//图表类型
-            .dataLabelsEnabled(true)
-            .tooltipEnabled(false)
-            .colorsTheme([AAGradientColor.fizzyPeach])
-            .markerRadius(0)
-            .legendEnabled(false)
-            .categories(["美国🇺🇸","欧洲🇪🇺","中国🇨🇳","日本🇯🇵","韩国🇰🇷","越南🇻🇳","中国香港🇭🇰",])
-            .series([
-                AASeriesElement()
-                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2])
-            ])
-        
-        let aaOptions = aaChartModel.aa_toAAOptions()
-        aaOptions.yAxis?.gridLineDashStyle = AAChartLineDashStyleType.longDash.rawValue//设置Y轴的网格线样式为 AAChartLineDashStyleTypeLongDash
-        
-        aaOptions.tooltip?.shared = true
-        
-        
-        let unitArr = ["美元", "欧元", "人民币", "日元", "韩元", "越南盾", "港币", ]
-        let unitJSArrStr = unitArr.aa_toJSArray()
-        //单组 series 图表, 获取选中的点的索引是 this.point.index ,多组并且共享提示框,则是this.points[0].index
-        let dataLabelsFormatter = """
-        function () {
-        return this.y + \(unitJSArrStr)[this.point.index];
-        }
-        """
-        
-        let aaDataLabels = AADataLabels()
-            .style(AAStyle(color: AAColor.red, fontSize: 10, weight: .bold))
-            .formatter(dataLabelsFormatter)
-            .backgroundColor(AAColor.white)// white color
-            .borderColor(AAColor.red)// red color
-            .borderRadius(1.5)
-            .borderWidth(1.3)
-            .x(3).y(-20)
-            .verticalAlign(.middle)
-        
-        aaOptions.plotOptions?.series?.dataLabels = aaDataLabels
-        
-        return aaOptions
-    }
-    
-    
-    // Refer to GitHub issue: https://github.com/AAChartModel/AAChartKit/issues/938
-    // Refer to online chart sample: https://www.highcharts.com/demo/column-comparison
-    private func customXAxisLabelsBeImages() -> AAOptions {
-        let nameArr = [
-            "South Korea",
-            "Japan",
-            "Australia",
-            "Germany",
-            "Russia",
-            "China",
-            "Great Britain",
-            "United States"
-        ]
-        
-        let colorArr = [
-            "rgb(201, 36, 39)",
-            "rgb(201, 36, 39)",
-            "rgb(0, 82, 180)",
-            "rgb(0, 0, 0)",
-            "rgb(240, 240, 240)",
-            "rgb(255, 217, 68)",
-            "rgb(0, 82, 180)",
-            "rgb(215, 0, 38)"
-        ]
-        
-        
-        let imageLinkFlagArr = [
-            "197582",
-            "197604",
-            "197507",
-            "197571",
-            "197408",
-            "197375",
-            "197374",
-            "197484"
-        ]
-        
-        let aaChartModel = AAChartModel()
-            .chartType(.column)
-            .title("Custom X Axis Labels Be Images")
-            .subtitle("use HTML")
-            .categories(nameArr)
-            .colorsTheme(colorArr)
-            .borderRadius(5)
-            .series([
-                AASeriesElement()
-                    .name("AD 2020")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5])
-                    .colorByPoint(true)
-            ])
-        
-        let imageLinkFlagJSArrStr = imageLinkFlagArr.aa_toJSArray()
-        let xLabelsFormatter = """
-function () {
-    let imageFlag = \(imageLinkFlagJSArrStr)[this.pos];
-    let imageLink = "<span><img src=\"https://image.flaticon.com/icons/svg/197/" + imageFlag + ".svg\" style=\"width: 30px; height: 30px;\"/><br></span>";
-    return imageLink;
-}
-"""
-        
-        //    https://api.highcharts.com.cn/highcharts#xAxis.labels.formatter
+
         let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.xAxis?.labels?
-            .useHTML(true)
-            .formatter(xLabelsFormatter)
-        
-        
-        aaOptions.plotOptions?.column?.groupPadding(0.005)
-        
-        //Custom tooltip style
-        let tooltipFormatter = """
-function () {
-    let imageFlag = \(imageLinkFlagJSArrStr)[this.point.index];
-    let imageLink = "<span><img src=\"https://image.flaticon.com/icons/svg/197/" + imageFlag + ".svg\" style=\"width: 30px; height: 30px;\"/><br></span>";
-    return imageLink
-    + " 🌕 🌖 🌗 🌘 🌑 🌒 🌓 🌔 <br/> "
-    + " Support JavaScript Function Just Right Now !!! <br/> "
-    + " The Gold Price For <b>2020 "
-    +  this.x
-    + " </b> Is <b> "
-    +  this.y
-    + " </b> Dollars ";
-}
+                .formatter("""
+                           function () {
+                               const xValue = this.value;
+                               if (xValue%10 == 0) {
+                                   return xValue + " sec"
+                               } else {
+                                   return "";
+                               }
+                           }
 """
-        
-        aaOptions.tooltip?
-            .shared(false)
-            .useHTML(true)
-            .formatter(tooltipFormatter)
-        
+                )
+
         return aaOptions
     }
-    
+
+    //Smart method
+    private func customAreaChartXAxisLabelsTextUnitSuffix2() -> AAOptions {
+        let aaOptions = customAreaChartXAxisLabelsTextUnitSuffix1()
+        aaOptions.xAxis?
+                .labels(AALabels()
+                .step(10)
+                .format("{value} sec"))
+
+        return aaOptions
+    }
+
     
     //https://github.com/AAChartModel/AAChartKit/issues/901
     //https://github.com/AAChartModel/AAChartKit/issues/952
@@ -753,6 +606,230 @@ function () {
         }
         """)
         
+        return aaOptions
+    }
+
+
+    //https://github.com/AAChartModel/AAChartKit/issues/852 自定义蜘蛛🕷图样式
+    private func customSpiderChartStyle() -> AAOptions {
+        let categoryArr = [
+            "周转天数(天)",
+            "订单满足率",
+            "订单履约时效",
+            "动销率",
+            "畅销商品缺货率",
+            "高库存金额占比",
+            "不动销金额占比",
+            "停采金额占比",
+        ]
+        let categoryJSArrStr = categoryArr.aa_toJSArray()
+
+        let xAxisLabelsFormatter = """
+                                   function () {
+                                   return \(categoryJSArrStr)[this.value];
+                                   }
+                                   """;
+
+        let aaChartModel = AAChartModel()
+                .chartType(.line)//图表类型
+                .title("健康体检表")//图表主标题
+                .colorsTheme(["#fe117c", "#ffc069",])//设置主体颜色数组
+                .yAxisLineWidth(0)
+                .yAxisGridLineWidth(1)//y轴横向分割线宽度为0(即是隐藏分割线)
+                .yAxisTickPositions([0, 5, 10, 15, 20, 25, 30, 35])
+                .markerRadius(5)
+                .markerSymbol(.circle)
+                .polar(true)
+                .series([
+                    AASeriesElement()
+                            .name("本月得分")
+                            .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5,]),
+                    AASeriesElement()
+                            .name("上月得分")
+                            .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, ]),
+                ])
+
+        let aaOptions = aaChartModel.aa_toAAOptions()
+
+        aaOptions.chart?
+                .marginLeft(80)
+                .marginRight(80)
+
+        aaOptions.xAxis?
+                .lineWidth(0)//避免多边形外环之外有额外套了一层无用的外环
+                .labels?
+                .style(AAStyle(color: AAColor.black))
+                .formatter(xAxisLabelsFormatter)
+
+        aaOptions.yAxis?
+                .gridLineInterpolation("polygon")//设置蜘蛛网🕸图表的网线为多边形
+                .labels(AALabels()
+                        .style(AAStyle()
+                                .color(AAColor.black)))
+
+        //设定图例项的CSS样式。只支持有关文本的CSS样式设定。
+        /* 默认是：{
+         "color": "#333333",
+         "cursor": "pointer",
+         "fontSize": "12px",
+         "fontWeight": "bold"
+         }
+         */
+        let aaItemStyle = AAItemStyle()
+                .color(AAColor.gray)//字体颜色
+                .cursor("pointer")//(在移动端这个属性没什么意义,其实不用设置)指定鼠标滑过数据列时鼠标的形状。当绑定了数据列点击事件时，可以将此参数设置为 "pointer"，用来提醒用户改数据列是可以点击的。
+                .fontSize(14)//字体大小
+                .fontWeight(.thin)//字体为细体字
+
+
+        aaOptions.legend?
+                .enabled(true)
+                .align(.center)//设置图例位于水平方向上的右侧
+                .layout(.horizontal)//设置图例排列方式为垂直排布
+                .verticalAlign(.top)//设置图例位于竖直方向上的顶部
+                .itemStyle(aaItemStyle)
+
+
+        return aaOptions
+    }
+
+
+    // Refer to the issue https://github.com/AAChartModel/AAChartKit/issues/589
+    private func customizeEveryDataLabelSinglelyByDataLabelsFormatter() -> AAOptions  {
+        let aaChartModel = AAChartModel()
+                .chartType(.areaspline)//图表类型
+                .dataLabelsEnabled(true)
+                .tooltipEnabled(false)
+                .colorsTheme([AAGradientColor.fizzyPeach])
+                .markerRadius(0)
+                .legendEnabled(false)
+                .categories(["美国🇺🇸","欧洲🇪🇺","中国🇨🇳","日本🇯🇵","韩国🇰🇷","越南🇻🇳","中国香港🇭🇰",])
+                .series([
+                    AASeriesElement()
+                            .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2])
+                ])
+
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aaOptions.yAxis?.gridLineDashStyle = AAChartLineDashStyleType.longDash.rawValue//设置Y轴的网格线样式为 AAChartLineDashStyleTypeLongDash
+
+        aaOptions.tooltip?.shared = true
+
+
+        let unitArr = ["美元", "欧元", "人民币", "日元", "韩元", "越南盾", "港币", ]
+        let unitJSArrStr = unitArr.aa_toJSArray()
+        //单组 series 图表, 获取选中的点的索引是 this.point.index ,多组并且共享提示框,则是this.points[0].index
+        let dataLabelsFormatter = """
+                                  function () {
+                                  return this.y + \(unitJSArrStr)[this.point.index];
+                                  }
+                                  """
+
+        let aaDataLabels = AADataLabels()
+                .style(AAStyle(color: AAColor.red, fontSize: 10, weight: .bold))
+                .formatter(dataLabelsFormatter)
+                .backgroundColor(AAColor.white)// white color
+                .borderColor(AAColor.red)// red color
+                .borderRadius(1.5)
+                .borderWidth(1.3)
+                .x(3).y(-20)
+                .verticalAlign(.middle)
+
+        aaOptions.plotOptions?.series?.dataLabels = aaDataLabels
+
+        return aaOptions
+    }
+
+
+    // Refer to GitHub issue: https://github.com/AAChartModel/AAChartKit/issues/938
+    // Refer to online chart sample: https://www.highcharts.com/demo/column-comparison
+    private func customXAxisLabelsBeImages() -> AAOptions {
+        let nameArr = [
+            "South Korea",
+            "Japan",
+            "Australia",
+            "Germany",
+            "Russia",
+            "China",
+            "Great Britain",
+            "United States"
+        ]
+
+        let colorArr = [
+            "rgb(201, 36, 39)",
+            "rgb(201, 36, 39)",
+            "rgb(0, 82, 180)",
+            "rgb(0, 0, 0)",
+            "rgb(240, 240, 240)",
+            "rgb(255, 217, 68)",
+            "rgb(0, 82, 180)",
+            "rgb(215, 0, 38)"
+        ]
+
+
+        let imageLinkFlagArr = [
+            "197582",
+            "197604",
+            "197507",
+            "197571",
+            "197408",
+            "197375",
+            "197374",
+            "197484"
+        ]
+
+        let aaChartModel = AAChartModel()
+                .chartType(.column)
+                .title("Custom X Axis Labels Be Images")
+                .subtitle("use HTML")
+                .categories(nameArr)
+                .colorsTheme(colorArr)
+                .borderRadius(5)
+                .series([
+                    AASeriesElement()
+                            .name("AD 2020")
+                            .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5])
+                            .colorByPoint(true)
+                ])
+
+        let imageLinkFlagJSArrStr = imageLinkFlagArr.aa_toJSArray()
+        let xLabelsFormatter = """
+                               function () {
+                                   let imageFlag = \(imageLinkFlagJSArrStr)[this.pos];
+                                   let imageLink = "<span><img src=\"https://image.flaticon.com/icons/svg/197/" + imageFlag + ".svg\" style=\"width: 30px; height: 30px;\"/><br></span>";
+                                   return imageLink;
+                               }
+                               """
+
+        //    https://api.highcharts.com.cn/highcharts#xAxis.labels.formatter
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aaOptions.xAxis?.labels?
+                .useHTML(true)
+                .formatter(xLabelsFormatter)
+
+
+        aaOptions.plotOptions?.column?.groupPadding(0.005)
+
+        //Custom tooltip style
+        let tooltipFormatter = """
+                               function () {
+                                   let imageFlag = \(imageLinkFlagJSArrStr)[this.point.index];
+                                   let imageLink = "<span><img src=\"https://image.flaticon.com/icons/svg/197/" + imageFlag + ".svg\" style=\"width: 30px; height: 30px;\"/><br></span>";
+                                   return imageLink
+                                   + " 🌕 🌖 🌗 🌘 🌑 🌒 🌓 🌔 <br/> "
+                                   + " Support JavaScript Function Just Right Now !!! <br/> "
+                                   + " The Gold Price For <b>2020 "
+                                   +  this.x
+                                   + " </b> Is <b> "
+                                   +  this.y
+                                   + " </b> Dollars ";
+                               }
+                               """
+
+        aaOptions.tooltip?
+                .shared(false)
+                .useHTML(true)
+                .formatter(tooltipFormatter)
+
         return aaOptions
     }
 }
