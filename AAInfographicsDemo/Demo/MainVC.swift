@@ -89,6 +89,7 @@ class MainVC: UIViewController {
             "JS Function For AAAxis Labels | 通过带有 JS 函数的自定义 AAAxis 的文字标签",
             "JS Function For AALegend | 通过带有 JS 函数的自定义 AALegend",
             "JS Function For AAChartEvents---通过 JSFunction 自定义 AAChartEvents 的事件",
+            "JS Function For AAOptions---通过 JSFunction 自定义 AAOptions 内容",
         ]
         
         chartTypeTitleArr = [
@@ -400,6 +401,12 @@ class MainVC: UIViewController {
                 "dynamicHeightGridLineAreaChart---动态高度的网格线区域填充图",
                 "customizeYAxisPlotLinesLabelBeSpecialStyle---自定义 Y 轴轴线上面的标签文字特殊样式",
             ],
+            /*JS Function For AAOptions*/
+            [
+                "customDoubleXAxesChart---自定义双 X 轴图表",
+                "disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction---通过 Series 的 Point 的选中事件函数来禁用条形图反选效果",
+                "customizeEveryDataLabelSinglelyByDataLabelsFormatter---通过 formatter 来自定义单个 dataLabels 元素",
+            ]
 
         ]
         
@@ -540,6 +547,8 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.line,
                 AAChartType.spline,
+            ],
+            [//Empty Array,just for holding place
             ],
             [//Empty Array,just for holding place
             ],
@@ -821,6 +830,12 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 19:
             /*JS Function For AAChartEventsVC*/
             let vc = JSFunctionForAAChartEventsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+        case 20:
+            /*JS Function For AAOptions*/
+            let vc = JSFunctionForAAOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
