@@ -385,8 +385,8 @@ class MainVC: UIViewController {
             ],
             /*JS Function For AALegend*/
             [
-                "configureLegendStyle---自定义 legend 样式",
-                "configurePieChartWithSpecialStyleLegend---自定义饼图 legend 样式",
+                "disableLegendClickEventForNormalChart---禁用常规图表 legend 点击事件",
+                "disableLegendClickEventForPieChart---禁用饼图 legend 点击事件",
                 "customLegendItemClickEvent---自定义图例 legend 的点击事件",
             ],
             /*JS Function For AAChartEvents*/
