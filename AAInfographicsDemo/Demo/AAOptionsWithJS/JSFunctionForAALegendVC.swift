@@ -19,15 +19,15 @@ class JSFunctionForAALegendVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch (selectedIndex) {
-        case 0: return configureLegendStyle()
-        case 1: return configurePieChartWithSpecialStyleLegend()
+        case 0: return disableLegendClickEventForNormalChart()
+        case 1: return disableLegendClickEventForPieChart()
         case 2: return customLegendItemClickEvent()
         default:
             return nil
         }
     }
     
-    private func configureLegendStyle() -> AAOptions {
+    private func disableLegendClickEventForNormalChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .dataLabelsEnabled(false)
@@ -82,7 +82,7 @@ class JSFunctionForAALegendVC: AABaseChartVC {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/391
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/393
-    private func configurePieChartWithSpecialStyleLegend() -> AAOptions {
+    private func disableLegendClickEventForPieChart() -> AAOptions {
          let aaChartModel = AAChartModel()
             .chartType(.pie)
             .backgroundColor(AAColor.white)
