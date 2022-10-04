@@ -9,7 +9,7 @@
 import UIKit
 import AAInfographics
 
-class JSFunctionForAAOptionsVC: UIViewController {
+class JSFunctionForAAOptionsVC: AABaseChartVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,15 +18,15 @@ class JSFunctionForAAOptionsVC: UIViewController {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
+        switch (selectedIndex) {
+        case 0: return customDoubleXAxesChart()
+        case 1: return disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction()
+        case 2: return customizeEveryDataLabelSinglelyByDataLabelsFormatter()
+
+        default: return nil
+        }
+    }
     
     //https://github.com/AAChartModel/AAChartKit/issues/780
       private func customDoubleXAxesChart() -> AAOptions {
