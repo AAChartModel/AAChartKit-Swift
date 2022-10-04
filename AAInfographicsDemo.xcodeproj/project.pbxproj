@@ -35,6 +35,7 @@
 		84086B1B28E45127006BD30D /* JSFunctionForAAAxisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */; };
 		84086B1E28E6C612006BD30D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B1C28E6C612006BD30D /* CustomTableViewCell.swift */; };
 		84086B1F28E6C612006BD30D /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84086B1D28E6C612006BD30D /* CustomTableViewCell.xib */; };
+		84086B2128E6F499006BD30D /* JSFunctionForAAOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */; };
 		840AC39A280CFFA200B10289 /* AAAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AC396280CFFA200B10289 /* AAAxis.swift */; };
 		8418479928B8755900094106 /* JSFunctionForAAChartEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */; };
 		844614D7283C822E00E26DA4 /* ProjectBundlePathLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */; };
@@ -189,6 +190,7 @@
 		84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAAxisVC.swift; sourceTree = "<group>"; };
 		84086B1C28E6C612006BD30D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		84086B1D28E6C612006BD30D /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAOptionsVC.swift; sourceTree = "<group>"; };
 		840AC396280CFFA200B10289 /* AAAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAxis.swift; sourceTree = "<group>"; };
 		8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC.swift; sourceTree = "<group>"; };
 		844614D3283C818D00E26DA4 /* PackageBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageBundlePathLoader.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */,
 				84086B1528E44B19006BD30D /* JSFunctionForAALegendVC.swift */,
 				8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */,
+				84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */,
 			);
 			path = AAOptionsWithJS;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				278C55151EE948C900770B97 /* MainVC.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
 				4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */,
+				84086B2128E6F499006BD30D /* JSFunctionForAAOptionsVC.swift in Sources */,
 				84086B1B28E45127006BD30D /* JSFunctionForAAAxisVC.swift in Sources */,
 				276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */,
 				848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */,
