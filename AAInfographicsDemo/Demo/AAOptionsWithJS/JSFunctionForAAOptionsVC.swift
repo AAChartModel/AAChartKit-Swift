@@ -220,6 +220,8 @@ class JSFunctionForAAOptionsVC: AABaseChartVC {
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/404
     private func configureColorfulDataLabelsForPieChart() -> AAOptions {
         AAOptions()
+            .title(AATitle()
+                .text("Colorful DataLabels For Pie Chart"))
             .colors(["#0c9674", "#7dffc0", "#ff3333", "#facd32", "#ffffa0",
                      "#EA007B", "#fe117c", "#ffc069", "#06caf4", "#7dffc0"])
             .series([
