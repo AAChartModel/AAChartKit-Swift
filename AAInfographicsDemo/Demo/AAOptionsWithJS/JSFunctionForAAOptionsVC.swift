@@ -20,7 +20,7 @@ class JSFunctionForAAOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch (selectedIndex) {
-        case 0: return configureColorfulDataLabelsForPieChart()
+        case 0: return customDoubleXAxesChart()
         case 1: return disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction()
         case 2: return customizeEveryDataLabelSinglelyByDataLabelsFormatter()
         case 3: return configureColorfulDataLabelsForPieChart()
