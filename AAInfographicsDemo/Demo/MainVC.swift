@@ -406,6 +406,7 @@ class MainVC: UIViewController {
                 "customDoubleXAxesChart---自定义双 X 轴图表",
                 "disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction---通过 Series 的 Point 的选中事件函数来禁用条形图反选效果",
                 "customizeEveryDataLabelSinglelyByDataLabelsFormatter---通过 formatter 来自定义单个 dataLabels 元素",
+                "configureColorfulDataLabelsForPieChart---为饼图配置多彩 dataLabels"
             ]
 
         ]
