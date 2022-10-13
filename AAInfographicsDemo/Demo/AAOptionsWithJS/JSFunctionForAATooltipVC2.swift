@@ -18,7 +18,7 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
 
     //https://github.com/AAChartModel/AAChartKit/issues/1406
     //https://www.highcharts.com/forum/viewtopic.php?f=9&t=49629
-    override func customAAOptions() -> AAOptions? {
+    override func customAAOptions() -> AAOptions {
         let aaOptions = AAOptions()
             .chart(AAChart()
                 .type(.spline)
