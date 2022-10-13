@@ -47,6 +47,7 @@
 		84DEA0D42845ADEB00D0206F /* CustomMouseOutEventCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEA0D32845ADEB00D0206F /* CustomMouseOutEventCallback.swift */; };
 		84DEA0D62845F5F200D0206F /* CustomSelectionEventCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEA0D52845F5F200D0206F /* CustomSelectionEventCallback.swift */; };
 		84DEA0D82846013F00D0206F /* CustomTouchEndEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEA0D72846013F00D0206F /* CustomTouchEndEventCallbackVC.swift */; };
+		84DEB8A028F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB89F28F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift */; };
 		84F8F66B28B714E000F41E6A /* AABoxplot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F66A28B714E000F41E6A /* AABoxplot.swift */; };
 		ED0A032527281695000BF778 /* AAInfographics.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0A032327281695000BF778 /* AAInfographics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED0A032827281695000BF778 /* AAInfographics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; };
@@ -202,6 +203,7 @@
 		84DEA0D32845ADEB00D0206F /* CustomMouseOutEventCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMouseOutEventCallback.swift; sourceTree = "<group>"; };
 		84DEA0D52845F5F200D0206F /* CustomSelectionEventCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSelectionEventCallback.swift; sourceTree = "<group>"; };
 		84DEA0D72846013F00D0206F /* CustomTouchEndEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTouchEndEventCallbackVC.swift; sourceTree = "<group>"; };
+		84DEB89F28F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAATooltipVC2.swift; sourceTree = "<group>"; };
 		84F8F66A28B714E000F41E6A /* AABoxplot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABoxplot.swift; sourceTree = "<group>"; };
 		D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBundlePathLoader.swift; sourceTree = "<group>"; };
 		ED0A032127281695000BF778 /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -421,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				44EB70A622BCB606008FECE4 /* JSFunctionForAATooltipVC.swift */,
+				84DEB89F28F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift */,
 				84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */,
 				84086B1528E44B19006BD30D /* JSFunctionForAALegendVC.swift */,
 				8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */,
@@ -642,6 +645,7 @@
 				278C55151EE948C900770B97 /* MainVC.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
 				4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */,
+				84DEB8A028F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift in Sources */,
 				84086B2128E6F499006BD30D /* JSFunctionForAAOptionsVC.swift in Sources */,
 				84086B1B28E45127006BD30D /* JSFunctionForAAAxisVC.swift in Sources */,
 				276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */,
