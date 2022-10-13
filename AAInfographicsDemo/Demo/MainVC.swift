@@ -313,12 +313,7 @@ class MainVC: UIViewController {
                 "custom Arearange Chart Tooltip---自定义面积范围图浮动提示框",
                 "customLineChartOriginalPointPositionByConfiguringXAxisFormatterAndTooltipFormatter---调整折线图の X 轴左边距",
                 "customTooltipWhichDataSourceComeFromOutSideRatherThanSeries---通过来自外部の数据源来自定义 tooltip (而非常规の来自图表の series)",
-                "customTooltipPostionerFunction---自定义浮动提示框 positioner 函数",
-                "fixedTooltipPositionByCustomPositionerFunction---通过 Positioner 函数来实现一个位置固定的提示框",
                 "customAreasplineChartTooltipStyleByDivWithCSS---通过自定义 div 的 css 样式来自定义复杂效果的 tooltip 浮动提示框",
-                "makePieChartShow0Data---使饼图显示为 0 的数据",
-                "customColumnChartBorderStyleAndStatesHoverColor---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色(同时禁用 tooltip)",
-                "customPlotAreaOutsideComlicatedTooltipStyle"
             ],
             /*Scrolling update chart data*/
             [  "Column Chart---柱形图",
