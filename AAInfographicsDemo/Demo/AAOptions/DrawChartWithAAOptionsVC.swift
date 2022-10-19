@@ -2547,6 +2547,7 @@ function () {
     }
     
     //X 轴时间不连续的折线图
+    //https://github.com/AAChartModel/AAChartKit/issues/1220
     private func timeDataWithIrregularIntervalsChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
