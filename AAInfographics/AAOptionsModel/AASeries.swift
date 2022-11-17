@@ -42,7 +42,7 @@ public class AASeries: AAObject {
     public var borderRadiusBottomRight: Any?
     public var marker: AAMarker?
     public var stacking: String?
-    public var animation: AAAnimation?
+    public var animation: Any? //AAAnimation | Bool
     public var keys: [String]?
     public var colorByPoint: Bool?
     public var connectNulls: Bool? //Whether reconnects the broken line of the chart
@@ -119,6 +119,12 @@ public class AASeries: AAObject {
     
     @discardableResult
     public func animation(_ prop: AAAnimation?) -> AASeries {
+        animation = prop
+        return self
+    }
+    
+    @discardableResult
+    public func animation(_ prop: Bool?) -> AASeries {
         animation = prop
         return self
     }
