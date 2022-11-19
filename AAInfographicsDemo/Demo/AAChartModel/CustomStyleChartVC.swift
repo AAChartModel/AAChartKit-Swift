@@ -95,6 +95,7 @@ class CustomStyleChartVC: AABaseChartVC {
         case 49: return configureSpecialStyleColumnForNegativeDataMixedPositiveData()
         case 50: return configureMultiLevelStopsArrGradientColorAreasplineMixedLineChart()
         case 51: return connectNullsForSingleAASeriesElement()
+        case 52: return lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement()
 
 
         default:
@@ -1995,6 +1996,116 @@ class CustomStyleChartVC: AABaseChartVC {
                     .lineWidth(5)
                     .connectNulls(true)
                     .data(dataArr)
+            ])
+    }
+
+
+    //- (NSArray *)generateRandomNumberArrayWithLength:(NSUInteger)length
+
+    //                                     randomRange:(NSUInteger)randomRange
+    //                                          minNum:(NSUInteger)minNum {
+    //    NSMutableArray *randomNumArrA = [NSMutableArray array];
+    //    for (NSUInteger x = 0; x < length; x++) {
+    //        NSUInteger randomNum = arc4random() % randomRange + minNum;
+    //        [randomNumArrA addObject:@(randomNum)];
+    //    }
+    //    return randomNumArrA;
+    //}
+
+    private func generateRandomNumberArrayWithLength(_ length: Int,
+                                                     randomRange: Int,
+                                                     minNum: Int) -> [Any] {
+        var randomNumArrA = [Any]()
+        for x in 0 ..< length {
+            let randomNum = Int(arc4random()) % randomRange + minNum
+            randomNumArrA.append(randomNum)
+        }
+        return randomNumArrA
+    }
+
+    //- (NSArray *)generateRandomNumberMixedNullArrayWithLength:(NSUInteger)length
+
+    //                                              randomRange:(NSUInteger)randomRange
+    //                                                   minNum:(NSUInteger)minNum {
+    //    NSMutableArray *randomNumArrA = [NSMutableArray array];
+    //    for (NSUInteger x = 0; x < length; x++) {
+    //        if ((100 < x && x < 150) || (300 < x && x < 350)) {
+    //            NSUInteger randomNum = arc4random() % randomRange + minNum;
+    //            [randomNumArrA addObject:@(randomNum)];
+    //        } else {
+    //            [randomNumArrA addObject:NSNull.null];
+    //        }
+    //    }
+    //    return randomNumArrA;
+    //}
+
+    private func generateRandomNumberMixedNullArrayWithLength(_ length: Int,
+                                                              randomRange: Int,
+                                                              minNum: Int) -> [Any] {
+        var randomNumArrA = [Any]()
+        for x in 0 ..< length {
+            if (100 < x && x < 150) || (300 < x && x < 350) {
+                let randomNum = Int(arc4random()) % randomRange + minNum
+                randomNumArrA.append(randomNum)
+            } else {
+                randomNumArrA.append(NSNull())
+            }
+        }
+        return randomNumArrA
+    }
+
+    ////https://github.com/AAChartModel/AAChartKit/issues/1419
+    //- (AAChartModel *)lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement {
+    //    return AAChartModel.new
+    //        .chartTypeSet(AAChartTypeLine)
+    //        .backgroundColorSet(AAColor.blackColor)
+    //        .colorsThemeSet(@[@"#1e90ff",@"#04d69f",@"#ef476f",@"#ffd066",])
+    //        .dataLabelsEnabledSet(false)
+    //        .markerRadiusSet(@0)
+    //        .seriesSet(@[
+    //            AASeriesElement.new
+    //                .nameSet(@"2017")
+    //                .lineWidthSet(@6)
+    //                .dataSet([self generateRandomNumberMixedNullArrayWithLength:3550 randomRange:5 minNum:100]),
+    //            AASeriesElement.new
+    //                .nameSet(@"2018")
+    //                .lineWidthSet(@6)
+    //                .dataSet([self generateRandomNumberArrayWithLength:3550 randomRange:100 minNum:200]),
+    //            AASeriesElement.new
+    //                .nameSet(@"2019")
+    //                .lineWidthSet(@6)
+    //                .dataSet([self generateRandomNumberArrayWithLength:3550 randomRange:150 minNum:400]),
+    //            AASeriesElement.new
+    //                .nameSet(@"2020")
+    //                .lineWidthSet(@6)
+    //                .dataSet([self generateRandomNumberArrayWithLength:3550 randomRange:150 minNum:600]),
+    //        ]);
+    //}
+
+    private func lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement() -> AAChartModel {
+        return AAChartModel()
+            .chartType(.line)
+            .backgroundColor(AAColor.black)
+            .colorsTheme(["#1e90ff", "#04d69f", "#ef476f", "#ffd066"])
+            .dataLabelsEnabled(false)
+            .markerRadius(0)
+            .series([
+                AASeriesElement()
+                    .name("2017")
+                    .lineWidth(6)
+                    .data(generateRandomNumberMixedNullArrayWithLength(3550, randomRange: 5, minNum: 100)),
+                AASeriesElement()
+                    .name("2018")
+                    .lineWidth(6)
+                    .data(generateRandomNumberArrayWithLength(3550, randomRange: 100, minNum: 200)),
+                AASeriesElement()
+                    .name("2019")
+                    .lineWidth(6)
+                    .data(generateRandomNumberArrayWithLength(3550, randomRange: 150, minNum: 400)),
+                AASeriesElement()
+                    .name("2020")
+                    .lineWidth(6)
+                    .data(generateRandomNumberArrayWithLength(3550, randomRange: 150, minNum: 600)),
             ])
     }
 
