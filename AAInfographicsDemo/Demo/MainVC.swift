@@ -299,9 +299,6 @@ class MainVC: UIViewController {
                 "customColumnrangeChartGroupStyleAndSeriesStatesHoverColor---自定义柱形范围图的 group 样式和手指掠过图表 series 元素时的柱形颜色",
                 "configureBoxplotChartWithSpecialStyle---自定义盒须图特殊样式",
                 "configurePieChartWithSpecialStyleLegend---自定义饼图的 legend 为特殊样式",
-                "confgureBlinkMarkerChart---自定义闪烁 marker 样式",
-                "configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect---自定义闪烁 marker 样式2",
-                "configureScatterChartWithBlinkEffect---带有闪烁特效 marker 的散点图",
                 "disableAnimationForChart---禁用图表渲染动画"
             ],
             /*JavaScript Formatter Function */
