@@ -6,6 +6,8 @@
 import Foundation
 import AAInfographics
 
+
+class AreaChartOptionsComposer {
 //var chart = Highcharts.chart('container',{
 
 //    chart: {
@@ -51,7 +53,7 @@ import AAInfographics
 //    },
 //    series: [{
 //        name: '美国',
-//        data: [null, null, null, null, null, 6, 11, 32, 110, 235, 369, 640,
+//        data: [null, null, null, null, NSNull(), 6, 11, 32, 110, 235, 369, 640,
 //               1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
 //               27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
 //               26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
@@ -87,21 +89,21 @@ func basicAreaChart() -> AAOptions {
                             .formatter("function () { return this.value / 1000 + 'k'; }")))
             .tooltip(AATooltip()
                     .pointFormat("{series.name} 制造 <b>{point.y:,.0f}</b>枚弹头"))
-            .plotOptions(AAPlotOptions()
-                    .area(AAArea()
-                            .pointStart(1940)
-                            .marker(AAMarker()
-                                    .enabled(false)
-                                    .symbol(.circle)
-                                    .radius(2)
-                                    .states(AAStates()
-                                            .hover(AAHover()
-                                                    .enabled(true))))))
+//            .plotOptions(AAPlotOptions()
+//                    .area(AAArea()
+//                            .pointStart(1940)
+//                            .marker(AAMarker()
+//                                    .enabled(false)
+//                                    .symbol(.circle)
+//                                    .radius(2)
+//                                    .states(AAStates()
+//                                            .hover(AAHover()
+//                                                    .enabled(true))))))
             .series([
                 AASeriesElement()
                         .name("美国")
                         .data([
-                            null, null, null, null, null, 6, 11, 32, 110, 235, 369, 640,
+                            NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), 6, 11, 32, 110, 235, 369, 640,
                             1005, 1436, 2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,
                             27387, 29459, 31056, 31982, 32040, 31233, 29224, 27342, 26662,
                             26956, 27912, 28999, 28965, 27826, 25579, 25722, 24826, 24605,
@@ -112,7 +114,7 @@ func basicAreaChart() -> AAOptions {
                 AASeriesElement()
                         .name("苏联/俄罗斯")
                         .data([
-                            null, null, null, null, null, null, null, null, null, null,
+                            NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(),
                             5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
                             4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
                             15915, 17385, 19055, 21205, 23044, 25393, 27935, 30062, 32049,
@@ -239,27 +241,27 @@ func stackedAreaChart() -> AAOptions {
                     .text("全球各大洲人口增长历史及预测"))
             .subtitle(AASubtitle()
                     .text("数据来源: Wikipedia.org"))
-            .xAxis(AAXAxis()
-                    .categories(["1750", "1800", "1850", "1900", "1950", "1999", "2050"])
-                    .tickmarkPlacement(.on)
-                    .title(AATitle()
-                            .enabled(false)))
-            .yAxis(AAYAxis()
-                    .title(AATitle()
-                            .text("十亿"))
-                    .labels(AALabels()
-                            .formatter("function () { return this.value / 1000; }")))
-            .tooltip(AATooltip()
-                    .split(true)
-                    .valueSuffix(" 百万"))
-            .plotOptions(AAPlotOptions()
-                    .area(AAArea()
-                            .stacking(.normal)
-                            .lineColor("#666666")
-                            .lineWidth(1)
-                            .marker(AAMarker()
-                                    .lineWidth(1)
-                                    .lineColor("#666666"))))
+//            .xAxis(AAXAxis()
+//                    .categories(["1750", "1800", "1850", "1900", "1950", "1999", "2050"])
+//                    .tickmarkPlacement(.on)
+//                    .title(AATitle()
+//                            .enabled(false)))
+//            .yAxis(AAYAxis()
+//                    .title(AATitle()
+//                            .text("十亿"))
+//                    .labels(AALabels()
+//                            .formatter("function () { return this.value / 1000; }")))
+////            .tooltip(AATooltip()
+////                    .split(true)
+////                    .valueSuffix(" 百万"))
+//            .plotOptions(AAPlotOptions()
+//                    .area(AAArea()
+//                            .stacking(.normal)
+//                            .lineColor("#666666")
+//                            .lineWidth(1)
+//                            .marker(AAMarker()
+//                                    .lineWidth(1)
+//                                    .lineColor("#666666"))))
             .series([
                 AASeriesElement()
                         .name("亚洲")
@@ -343,25 +345,25 @@ func percentStackedAreaChart() -> AAOptions {
                     .text("全球各大洲人口占比"))
             .subtitle(AASubtitle()
                     .text("数据来源: Wikipedia.org"))
-            .xAxis(AAXAxis()
-                    .categories(["1750", "1800", "1850", "1900", "1950", "1999", "2050"])
-                    .tickmarkPlacement(.on)
-                    .title(AATitle()
-                            .enabled(false)))
-            .yAxis(AAYAxis()
-                    .title(AATitle()
-                            .text("百分比")))
-            .tooltip(AATooltip()
-                    .pointFormat("<span style=\"color:{series.color}\">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} 百万)<br/>")
-                    .shared(true))
-            .plotOptions(AAPlotOptions()
-                    .area(AAArea()
-                            .stacking(.percent)
-                            .lineColor("#ffffff")
-                            .lineWidth(1)
-                            .marker(AAMarker()
-                                    .lineWidth(1)
-                                    .lineColor("#ffffff"))))
+//            .xAxis(AAXAxis()
+//                    .categories(["1750", "1800", "1850", "1900", "1950", "1999", "2050"])
+//                    .tickmarkPlacement(.on)
+//                    .title(AATitle()
+//                            .enabled(false)))
+//            .yAxis(AAYAxis()
+//                    .title(AATitle()
+//                            .text("百分比")))
+//            .tooltip(AATooltip()
+//                    .pointFormat("<span style=\"color:{series.color}\">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} 百万)<br/>")
+//                    .shared(true))
+//            .plotOptions(AAPlotOptions()
+//                    .area(AAArea()
+//                            .stacking(.percent)
+//                            .lineColor("#ffffff")
+//                            .lineWidth(1)
+//                            .marker(AAMarker()
+//                                    .lineWidth(1)
+//                                    .lineColor("#ffffff"))))
             .series([
                 AASeriesElement()
                         .name("亚洲")
@@ -450,12 +452,12 @@ func areaWithMissingPointsChart() -> AAOptions {
                     .spacingBottom(30))
             .title(AATitle()
                     .text("小张和小潘家水果的消费情况 *"))
-            .subtitle(AASubtitle()
-                    .text("* 小潘家的香蕉消费未知")
-                    .floating(true)
-                    .align(.right)
-                    .verticalAlign(.bottom)
-                    .y(15))
+//            .subtitle(AASubtitle()
+//                    .text("* 小潘家的香蕉消费未知")
+//                    .floating(true)
+//                    .align(.right)
+//                    .verticalAlign(.bottom)
+//                    .y(15))
             .legend(AALegend()
                     .layout(.vertical)
                     .align(.left)
@@ -464,7 +466,8 @@ func areaWithMissingPointsChart() -> AAOptions {
                     .y(100)
                     .floating(true)
                     .borderWidth(1)
-                    .backgroundColor(AAColor.white))
+//                    .backgroundColor(AAColor.white)
+            )
             .xAxis(AAXAxis()
                     .categories(["苹果", "梨", "橘子", "香蕉", "葡萄", "李子", "草莓", "树莓"]))
             .yAxis(AAYAxis()
@@ -474,9 +477,9 @@ func areaWithMissingPointsChart() -> AAOptions {
                             .formatter("function () {return this.value;}")))
             .tooltip(AATooltip()
                     .formatter("function () {return '<b>' + this.series.name + '</b><br/>' + this.x + ': ' + this.y;}"))
-            .plotOptions(AAPlotOptions()
-                    .area(AAArea()
-                            .fillOpacity(0.5)))
+//            .plotOptions(AAPlotOptions()
+//                    .area(AAArea()
+//                            .fillOpacity(0.5)))
             .credits(AACredits()
                     .enabled(false))
             .series([
@@ -548,16 +551,17 @@ func invertedAreaChart() -> AAOptions {
                     .y(100)
                     .floating(true)
                     .borderWidth(1)
-                    .backgroundColor(AAColor.white))
+//                    .backgroundColor(AAColor.white)
+            )
             .xAxis(AAXAxis()
                     .categories(["周一", "周二", "周三", "周四", "周五", "周六", "周日"]))
             .yAxis(AAYAxis()
                     .title(AATitle()
                             .text("单位数量"))
                     .min(0))
-            .plotOptions(AAPlotOptions()
-                    .area(AAArea()
-                            .fillOpacity(0.5)))
+//            .plotOptions(AAPlotOptions()
+//                    .area(AAArea()
+//                            .fillOpacity(0.5)))
             .series([
                 AASeriesElement()
                         .name("小张")
@@ -633,7 +637,8 @@ func areasplineChart() -> AAOptions {
                     .y(100)
                     .floating(true)
                     .borderWidth(1)
-                    .backgroundColor(AAColor.white))
+//                    .backgroundColor(AAColor.white)
+            )
             .xAxis(AAXAxis()
                     .categories(["周一", "周二", "周三", "周四", "周五", "周六", "周日"])
                     .plotBands([
@@ -648,9 +653,9 @@ func areasplineChart() -> AAOptions {
             .tooltip(AATooltip()
                     .shared(true)
                     .valueSuffix(" 单位"))
-            .plotOptions(AAPlotOptions()
-                    .areaspline(AAAreaspline()
-                            .fillOpacity(0.5)))
+//            .plotOptions(AAPlotOptions()
+//                    .areaspline(AAAreaspline()
+//                            .fillOpacity(0.5)))
             .series([
                 AASeriesElement()
                         .name("小张")
@@ -956,12 +961,14 @@ func arearangeAndLineChart() {
                         .data(ranges)
                         .type(.arearange)
                         .lineWidth(0)
-                        .linkedTo(":previous")
+//                        .linkedTo(":previous")
                         .color(AAGradientColor.oceanBlue)
                         .fillOpacity(0.3)
                         .zIndex(0)
                         .marker(AAMarker()
                                 .enabled(false)),
             ])
+
+}
 
 }
