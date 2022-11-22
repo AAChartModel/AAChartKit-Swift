@@ -6,6 +6,8 @@
 import Foundation
 import AAInfographics
 
+
+class BarOrColumnChartOptionsComposer {
 //var chart = Highcharts.chart('container', {
 
 //    chart: {
@@ -75,34 +77,34 @@ func basicBarChart() -> AAOptions {
                     .text("各洲不同时间的人口条形图"))
             .subtitle(AASubtitle()
                     .text("数据来源: Wikipedia.org"))
-            .xAxis(AAXAxis()
-                    .categories(["非洲", "美洲", "亚洲", "欧洲", "大洋洲"])
-                    .title(AATitle()
-                            .text(nil)))
-            .yAxis(AAYAxis()
-                    .min(0)
-                    .title(AATitle()
-                            .text("人口总量 (百万)")
-                            .align(.high))
-                    .labels(AALabels()
-                            .overflow(.justify)))
-            .tooltip(AATooltip()
-                    .valueSuffix(" 百万"))
-            .plotOptions(AAPlotOptions()
-                    .bar(AABar()
-                            .dataLabels(AADataLabels()
-                                    .enabled(true)
-                                    .allowOverlap(true))))
-            .legend(AALegend()
-                    .layout(.vertical)
-                    .align(.right)
-                    .verticalAlign(.top)
-                    .x(-40)
-                    .y(100)
-                    .floating(true)
-                    .borderWidth(1)
-                    .backgroundColor(AAColor.white)
-                    .shadow(true))
+//            .xAxis(AAXAxis()
+//                    .categories(["非洲", "美洲", "亚洲", "欧洲", "大洋洲"])
+//                    .title(AATitle()
+//                            .text(nil)))
+//            .yAxis(AAYAxis()
+//                    .min(0)
+//                    .title(AATitle()
+//                            .text("人口总量 (百万)")
+//                            .align(.high))
+//                    .labels(AALabels()
+//                            .overflow(.justify)))
+//            .tooltip(AATooltip()
+//                    .valueSuffix(" 百万"))
+//            .plotOptions(AAPlotOptions()
+//                    .bar(AABar()
+//                            .dataLabels(AADataLabels()
+//                                    .enabled(true)
+//                                    .allowOverlap(true))))
+//            .legend(AALegend()
+//                    .layout(.vertical)
+//                    .align(.right)
+//                    .verticalAlign(.top)
+//                    .x(-40)
+//                    .y(100)
+//                    .floating(true)
+//                    .borderWidth(1)
+//                    .backgroundColor(AAColor.white)
+//                    .shadow(true))
             .series([
                 AASeriesElement()
                         .name("1800 年")
@@ -169,8 +171,8 @@ func stackingBarChart() -> AAOptions {
                     .min(0)
                     .title(AATitle()
                             .text("水果消费总量")))
-            .legend(AALegend()
-                    .reversed(true))
+//            .legend(AALegend()
+//                    .reversed(true))
             .plotOptions(AAPlotOptions()
                     .series(AASeries()
                             .stacking(.normal)))
@@ -262,10 +264,10 @@ func populationPyramidChart() -> AAOptions {
                     .type(.bar))
             .title(AATitle()
                     .text("2015 年德国人口金字塔"))
-            .subtitle(AASubtitle()
-                    .useHTML(true)
-                    .text("数据来源: <a href=\"http://populationpyramid.net/germany/2015/\">1950 ~ 2100 年世界人口金字塔</a>"))
-            .xAxis([
+//            .subtitle(AASubtitle()
+//                    .useHTML(true)
+//                    .text("数据来源: <a href=\"http://populationpyramid.net/germany/2015/\">1950 ~ 2100 年世界人口金字塔</a>"))
+            .xAxisArray([
                 AAXAxis()
                         .categories(["0-4", "5-9", "10-14", "15-19",
                                      "20-24", "25-29", "30-34", "35-39", "40-44",
@@ -530,41 +532,41 @@ func basicColumnChartWithStackedDataLabels() -> AAOptions {
                     .text("堆叠柱形图"))
             .xAxis(AAXAxis()
                     .categories(["苹果", "橘子", "梨", "葡萄", "香蕉"]))
-            .yAxis(AAYAxis()
-                    .min(0)
-                    .title(AATitle()
-                            .text("水果消费总量"))
-                    .stackLabels(AALabels()
-                            .enabled(true)
-                            .style(AAStyle()
-                                    .fontWeight(.bold)
-                                    .color("#000000"))))
-            .legend(AALegend()
-                    .align(.right)
-                    .x(-30)
-                    .verticalAlign(.top)
-                    .y(25)
-                    .floating(true)
-                    .backgroundColor(AAColor.white)
-                    .borderColor("#CCC")
-                    .borderWidth(1)
-                    .shadow(false))
-            .tooltip(AATooltip()
-                    .formatter(#"""
-                    function () {
-                        return '<b>' + this.x + '</b><br/>' +
-                            this.series.name + ': ' + this.y + '<br/>' +
-                            '总量: ' + this.point.stackTotal;
-                    }
-                    """#))
-            .plotOptions(AAPlotOptions()
-                    .column(AAColumn()
-                            .stacking(.normal)
-                            .dataLabels(AALabels()
-                                    .enabled(true)
-                                    .color(AAColor.white)
-                                    .style(AAStyle()
-                                            .textOutline("1px 1px black")))))
+//            .yAxis(AAYAxis()
+//                    .min(0)
+//                    .title(AATitle()
+//                            .text("水果消费总量"))
+//                    .stackLabels(AALabels()
+//                            .enabled(true)
+//                            .style(AAStyle()
+//                                    .fontWeight(.bold)
+//                                    .color("#000000"))))
+//            .legend(AALegend()
+//                    .align(.right)
+//                    .x(-30)
+//                    .verticalAlign(.top)
+//                    .y(25)
+//                    .floating(true)
+//                    .backgroundColor(AAColor.white)
+//                    .borderColor("#CCC")
+//                    .borderWidth(1)
+//                    .shadow(false))
+//            .tooltip(AATooltip()
+//                    .formatter(#"""
+//                    function () {
+//                        return '<b>' + this.x + '</b><br/>' +
+//                            this.series.name + ': ' + this.y + '<br/>' +
+//                            '总量: ' + this.point.stackTotal;
+//                    }
+//                    """#))
+//            .plotOptions(AAPlotOptions()
+//                    .column(AAColumn()
+//                            .stacking(.normal)
+//                            .dataLabels(AALabels()
+//                                    .enabled(true)
+//                                    .color(AAColor.white)
+//                                    .style(AAStyle()
+//                                            .textOutline("1px 1px black")))))
             .series([
                 AASeriesElement()
                         .name("小张")
@@ -635,22 +637,22 @@ func basicColumnChartWithStackedDataLabels2() -> AAOptions {
                     .text("按性别划分的水果消费总量"))
             .xAxis(AAXAxis()
                     .categories(["苹果", "橘子", "梨", "葡萄", "香蕉"]))
-            .yAxis(AAYAxis()
-                    .allowDecimals(false)
-                    .min(0)
-                    .title(AATitle()
-                            .text("水果数量")))
-            .tooltip(AATooltip()
-                    .formatter(#"""
-                    function () {
-                        return '<b>' + this.x + '</b><br/>' +
-                            this.series.name + ': ' + this.y + '<br/>' +
-                            '总量: ' + this.point.stackTotal;
-                    }
-                    """#))
-            .plotOptions(AAPlotOptions()
-                    .column(AAColumn()
-                            .stacking(.normal)))
+//            .yAxis(AAYAxis()
+//                    .allowDecimals(false)
+//                    .min(0)
+//                    .title(AATitle()
+//                            .text("水果数量")))
+//            .tooltip(AATooltip()
+//                    .formatter(#"""
+//                    function () {
+//                        return '<b>' + this.x + '</b><br/>' +
+//                            this.series.name + ': ' + this.y + '<br/>' +
+//                            '总量: ' + this.point.stackTotal;
+//                    }
+//                    """#))
+//            .plotOptions(AAPlotOptions()
+//                    .column(AAColumn()
+//                            .stacking(.normal)))
             .series([
                 AASeriesElement()
                         .name("小张")
@@ -730,9 +732,9 @@ func percentStackedColumnChart() -> AAOptions {
                     <br/>
                     """#)
                     .shared(true))
-            .plotOptions(AAPlotOptions()
-                    .column(AAColumn()
-                            .stacking(.percent)))
+//            .plotOptions(AAPlotOptions()
+//                    .column(AAColumn()
+//                            .stacking(.percent)))
             .series([
                 AASeriesElement()
                         .name("小张")
@@ -953,7 +955,7 @@ func columnChartWithNestedColumn() -> AAOptions {
                         "上海分部",
                         "北京分部",
                     ]))
-            .yAxis([
+            .yAxisArray([
                 AAYAxis()
                         .min(0)
                         .title(AATitle()
@@ -963,48 +965,48 @@ func columnChartWithNestedColumn() -> AAOptions {
                                 .text("利润 (millions)"))
                         .opposite(true),
             ])
-            .legend(AALegend()
-                    .shadow(false))
-            .tooltip(AATooltip()
-                    .shared(true))
-            .plotOptions(AAPlotOptions()
-                    .column(AAColumn()
-                            .grouping(false)
-                            .shadow(false)
-                            .borderWidth(0)))
+//            .legend(AALegend()
+//                    .shadow(false))
+//            .tooltip(AATooltip()
+//                    .shared(true))
+//            .plotOptions(AAPlotOptions()
+//                    .column(AAColumn()
+//                            .grouping(false)
+//                            .shadow(false)
+//                            .borderWidth(0)))
             .series([
-                AASeriesElement()
-                        .name("雇员")
-                        .color(AAGradientColor.deepSea)
-                        .data([150, 73, 20])
-                        .pointPadding(0.3)
-                        .pointPlacement(-0.2),
-                AASeriesElement()
-                        .name("优化的员工")
-                        .color(AAGradientColor.sanguine)
-                        .data([140, 90, 40])
-                        .pointPadding(0.4)
-                        .pointPlacement(-0.2),
-                AASeriesElement()
-                        .name("利润")
-                        .color(AAGradientColor.sunny)
-                        .data([183.6, 178.8, 198.5])
-                        .tooltip(AATooltip()
-                                .valuePrefix("$")
-                                .valueSuffix(" M"))
-                        .pointPadding(0.3)
-                        .pointPlacement(0.2)
-                        .yAxis(1),
-                AASeriesElement()
-                        .name("优化的利润")
-                        .color(AAGradientColor.lusciousLime)
-                        .data([203.6, 198.8, 208.5])
-                        .tooltip(AATooltip()
-                                .valuePrefix("$")
-                                .valueSuffix(" M"))
-                        .pointPadding(0.4)
-                        .pointPlacement(0.2)
-                        .yAxis(1),
+//                AASeriesElement()
+//                        .name("雇员")
+//                        .color(AAGradientColor.deepSea)
+//                        .data([150, 73, 20])
+//                        .pointPadding(0.3)
+//                        .pointPlacement(-0.2),
+//                AASeriesElement()
+//                        .name("优化的员工")
+//                        .color(AAGradientColor.sanguine)
+//                        .data([140, 90, 40])
+//                        .pointPadding(0.4)
+//                        .pointPlacement(-0.2),
+//                AASeriesElement()
+//                        .name("利润")
+//                        .color(AAGradientColor.sunny)
+//                        .data([183.6, 178.8, 198.5])
+//                        .tooltip(AATooltip()
+//                                .valuePrefix("$")
+//                                .valueSuffix(" M"))
+//                        .pointPadding(0.3)
+//                        .pointPlacement(0.2)
+//                        .yAxis(1),
+//                AASeriesElement()
+//                        .name("优化的利润")
+//                        .color(AAGradientColor.lusciousLime)
+//                        .data([203.6, 198.8, 208.5])
+//                        .tooltip(AATooltip()
+//                                .valuePrefix("$")
+//                                .valueSuffix(" M"))
+//                        .pointPadding(0.4)
+//                        .pointPlacement(0.2)
+//                        .yAxis(1),
             ])
 }
 
@@ -1110,7 +1112,7 @@ func columnRangeChart() -> AAOptions {
 
 
 
-
+}
 
 
 
