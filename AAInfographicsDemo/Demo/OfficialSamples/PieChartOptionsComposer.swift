@@ -80,7 +80,7 @@ static func basicPieChart() -> AAOptions {
         .plotOptions(AAPlotOptions()
             .pie(AAPie()
                 .allowPointSelect(true)
-                .cursor(.pointer)
+//                .cursor(.pointer)
                 .dataLabels(AADataLabels()
                     .enabled(true)
                     .format("<b>{point.name}</b>: {point.percentage:.1f} %")
@@ -166,7 +166,7 @@ static func basicPieChart() -> AAOptions {
             .plotOptions(AAPlotOptions()
                 .pie(AAPie()
                     .allowPointSelect(true)
-                    .cursor(.pointer)
+//                    .cursor(.pointer)
                     .dataLabels(AADataLabels()
                         .enabled(false))
                     .showInLegend(true)))
@@ -251,11 +251,13 @@ static func basicPieChart() -> AAOptions {
                         .distance(-50)
                         .style(AAStyle()
                             .fontWeight(.bold)
-                            .color(.white)
-                            .textShadow("0px 1px 2px black")))
+                            .color(AAColor.white)
+//                            .textShadow("0px 1px 2px black")
+                        ))
                     .startAngle(-90)
                     .endAngle(90)
-                    .center(["50%", "75%"])))
+//                    .center(["50%", "75%"])
+                ))
             .series([
                 AASeriesElement()
                     .name("浏览器占比")
@@ -338,7 +340,7 @@ static func basicPieChart() -> AAOptions {
             .plotOptions(AAPlotOptions()
                 .pie(AAPie()
                     .allowPointSelect(true)
-                    .cursor(.pointer)
+//                    .cursor(.pointer)
                     .dataLabels(AADataLabels()
                         .enabled(true)
                         .format("<b>{point.name}</b>: {point.percentage:.1f} %")
@@ -354,10 +356,10 @@ static func basicPieChart() -> AAOptions {
                         [
                             "Chrome",
                             12.8,
-                            AASliced()
-                                .sliced(true),
-                            AASelected()
-                                .selected(true)
+//                            AASliced()
+//                                .sliced(true),
+//                            AASelected()
+//                                .selected(true)
                         ],
                         ["Safari", 8.5],
                         ["Opera", 6.2],
@@ -429,7 +431,7 @@ static func basicPieChart() -> AAOptions {
             .plotOptions(AAPlotOptions()
                 .pie(AAPie()
                     .allowPointSelect(true)
-                    .cursor(.pointer)
+//                    .cursor(.pointer)
                     .dataLabels(AADataLabels()
                         .enabled(true)
                         .format("<b>{point.name}</b>: {point.percentage:.1f} %")
@@ -444,10 +446,10 @@ static func basicPieChart() -> AAOptions {
                         [
                             "Chrome",
                             12.8,
-                            AASliced()
-                                .sliced(true),
-                            AASelected()
-                                .selected(true)
+//                            AASliced()
+//                                .sliced(true),
+//                            AASelected()
+//                                .selected(true)
                         ],
                         ["Safari", 8.5],
                         ["Opera", 6.2],
@@ -528,22 +530,22 @@ static func basicPieChart() -> AAOptions {
 
     static func customPieChartTitlePosition() -> AAOptions {
         AAOptions()
-            .chart(AAChart()
-                .spacing([40, 0, 40, 0]))
+//            .chart(AAChart()
+//                .spacing([40, 0, 40, 0]))
             .title(AATitle()
-                .floating(true)
+//                .floating(true)
                 .text("圆心显示的标题"))
             .tooltip(AATooltip()
                 .pointFormat("{series.name}: <b>{point.percentage:.1f}%</b>"))
-            .plotOptions(AAPlotOptions()
-                .pie(AAPie()
-                    .allowPointSelect(true)
-                    .cursor(.pointer)
-                    .dataLabels(AADataLabels()
-                        .enabled(true)
-                        .format("<b>{point.name}</b>: {point.percentage:.1f} %")
-                        .style(AAStyle()
-                            .color(AAColor.white)))
+//            .plotOptions(AAPlotOptions()
+//                .pie(AAPie()
+//                    .allowPointSelect(true)
+////                    .cursor(.pointer)
+//                    .dataLabels(AADataLabels()
+//                        .enabled(true)
+//                        .format("<b>{point.name}</b>: {point.percentage:.1f} %")
+//                        .style(AAStyle()
+//                            .color(AAColor.white)))
 //                    .point(AAPlotOptionsElement()
 //                        .events(AAEvents()
 //                            .mouseOver("function(e) {  // 鼠标滑过时动态更新标题\
@@ -563,12 +565,12 @@ static func basicPieChart() -> AAOptions {
                         [
                             "Chrome",
                             12.8,
-                            AASliced()
-                                .sliced(true),
-                            AASelected()
-                                .selected(true),
-                            AAURL()
-                                .url("http://www.hcharts.cn")
+//                            AASliced()
+//                                .sliced(true),
+//                            AASelected()
+//                                .selected(true),
+//                            AAURL()
+//                                .url("http://www.hcharts.cn")
                         ],
                         ["Safari", 8.5],
                         ["Opera", 6.2],
