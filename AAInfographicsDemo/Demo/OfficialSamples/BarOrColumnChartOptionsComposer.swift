@@ -388,10 +388,10 @@ static func basicColumnChart() -> AAOptions {
                     .title(AATitle()
                             .text("降雨量 (mm)")))
             .tooltip(AATooltip()
-                    .headerFormat("<span style=\"font-size:10px\">{point.key}</span><table>")
-                    .pointFormat("<tr><td style=\"color:{series.color};padding:0\">{series.name}: </td>" +
-                            "<td style=\"padding:0\"><b>{point.y:.1f} mm</b></td></tr>")
-                    .footerFormat("</table>")
+                .headerFormat("<span style=\"font-size:10px\">{point.key}</span><table>".aa_toPureJSString())
+                    .pointFormat(("<tr><td style=\"color:{series.color};padding:0\">{series.name}: </td>" +
+                                  "<td style=\"padding:0\"><b>{point.y:.1f} mm</b></td></tr>").aa_toPureJSString())
+                        .footerFormat("</table>".aa_toPureJSString())
                     .shared(true)
                     .useHTML(true))
             .plotOptions(AAPlotOptions()
@@ -559,14 +559,14 @@ static func basicColumnChartWithStackedDataLabels() -> AAOptions {
 //                            '总量: ' + this.point.stackTotal;
 //                    }
 //                    """#))
-//            .plotOptions(AAPlotOptions()
-//                    .column(AAColumn()
-//                            .stacking(.normal)
-//                            .dataLabels(AALabels()
-//                                    .enabled(true)
-//                                    .color(AAColor.white)
-//                                    .style(AAStyle()
-//                                            .textOutline("1px 1px black")))))
+            .plotOptions(AAPlotOptions()
+                    .column(AAColumn()
+                            .stacking(.normal)
+                            .dataLabels(AADataLabels()
+                                    .enabled(true)
+                                    .color(AAColor.white)
+                                    .style(AAStyle()
+                                            .textOutline("1px 1px black")))))
             .series([
                 AASeriesElement()
                         .name("小张")
@@ -650,9 +650,9 @@ static func basicColumnChartWithStackedDataLabels2() -> AAOptions {
 //                            '总量: ' + this.point.stackTotal;
 //                    }
 //                    """#))
-//            .plotOptions(AAPlotOptions()
-//                    .column(AAColumn()
-//                            .stacking(.normal)))
+            .plotOptions(AAPlotOptions()
+                    .column(AAColumn()
+                            .stacking(.normal)))
             .series([
                 AASeriesElement()
                         .name("小张")
@@ -732,9 +732,9 @@ static func percentStackedColumnChart() -> AAOptions {
                     <br/>
                     """#)
                     .shared(true))
-//            .plotOptions(AAPlotOptions()
-//                    .column(AAColumn()
-//                            .stacking(.percent)))
+            .plotOptions(AAPlotOptions()
+                    .column(AAColumn()
+                            .stacking(.percent)))
             .series([
                 AASeriesElement()
                         .name("小张")
@@ -965,16 +965,16 @@ static func columnChartWithNestedColumn() -> AAOptions {
                                 .text("利润 (millions)"))
                         .opposite(true),
             ])
-//            .legend(AALegend()
-//                    .shadow(false))
-//            .tooltip(AATooltip()
-//                    .shared(true))
-//            .plotOptions(AAPlotOptions()
-//                    .column(AAColumn()
-//                            .grouping(false)
+            .legend(AALegend()
+                    .shadow(false))
+            .tooltip(AATooltip()
+                    .shared(true))
+            .plotOptions(AAPlotOptions()
+                    .column(AAColumn()
+                            .grouping(false)
 //                            .shadow(false)
-//                            .borderWidth(0)))
-            .series([
+                            .borderWidth(0)))
+//            .series([
 //                AASeriesElement()
 //                        .name("雇员")
 //                        .color(AAGradientColor.deepSea)
@@ -989,10 +989,10 @@ static func columnChartWithNestedColumn() -> AAOptions {
 //                        .pointPlacement(-0.2),
 //                AASeriesElement()
 //                        .name("利润")
-//                        .color(AAGradientColor.sunny)
+//                        .color(AAGradientColor.sweetDream)
 //                        .data([183.6, 178.8, 198.5])
 //                        .tooltip(AATooltip()
-//                                .valuePrefix("$")
+////                                .valuePrefix("$")
 //                                .valueSuffix(" M"))
 //                        .pointPadding(0.3)
 //                        .pointPlacement(0.2)
@@ -1002,12 +1002,12 @@ static func columnChartWithNestedColumn() -> AAOptions {
 //                        .color(AAGradientColor.lusciousLime)
 //                        .data([203.6, 198.8, 208.5])
 //                        .tooltip(AATooltip()
-//                                .valuePrefix("$")
+////                                .valuePrefix("$")
 //                                .valueSuffix(" M"))
 //                        .pointPadding(0.4)
 //                        .pointPlacement(0.2)
 //                        .yAxis(1),
-            ])
+//            ])
 }
 
 //var chart = Highcharts.chart('container', {
@@ -1065,49 +1065,51 @@ static func columnChartWithNestedColumn() -> AAOptions {
 //    }]
 //});
 
-static func columnRangeChart() -> AAOptions {
-    AAOptions()
+    static func columnRangeChart() -> AAOptions {
+        AAOptions()
             .chart(AAChart()
-                    .type(.columnrange))
+                .type(.columnrange))
             .title(AATitle()
-                    .text("每月温度变化范围"))
+                .text("每月温度变化范围"))
             .subtitle(AASubtitle()
-                    .text("2009 挪威某地"))
+                .text("2009 挪威某地"))
             .xAxis(AAXAxis()
-                    .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]))
+                .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]))
             .yAxis(AAYAxis()
-                    .title(AATitle()
-                            .text("温度 ( °C )")))
+                .title(AATitle()
+                    .text("温度 ( °C )")))
             .tooltip(AATooltip()
-                    .valueSuffix("°C"))
-//            .plotOptions(AAPlotOptions()
-//                    .columnrange(AAColumnrange()
-//                            .dataLabels(AADataLabels()
-//                                    .enabled(true)
-//                                    .formatter("function () {
-//                                        return this.y + '°C';
-//                                    }"))))
+                .valueSuffix("°C"))
+            .plotOptions(AAPlotOptions()
+                .columnrange(AAColumnrange()
+                    .dataLabels(AADataLabels()
+                        .enabled(true)
+                        .formatter(#"""
+function () {
+    return this.y + '°C';
+}
+"""#))))
             .legend(AALegend()
-                    .enabled(false))
+                .enabled(false))
             .series([
                 AASeriesElement()
-                        .name("温度")
-                        .data([
-                            [-9.7, 9.4],
-                            [-8.7, 6.5],
-                            [-3.5, 9.4],
-                            [-1.4, 19.9],
-                            [0.0, 22.6],
-                            [2.9, 29.5],
-                            [9.2, 30.7],
-                            [7.3, 26.5],
-                            [4.4, 18.0],
-                            [-3.1, 11.4],
-                            [-5.2, 10.4],
-                            [-13.5, 9.8],
-                        ]),
+                    .name("温度")
+                    .data([
+                        [-9.7, 9.4],
+                        [-8.7, 6.5],
+                        [-3.5, 9.4],
+                        [-1.4, 19.9],
+                        [0.0, 22.6],
+                        [2.9, 29.5],
+                        [9.2, 30.7],
+                        [7.3, 26.5],
+                        [4.4, 18.0],
+                        [-3.1, 11.4],
+                        [-5.2, 10.4],
+                        [-13.5, 9.8],
+                    ]),
             ])
-}
+    }
 
 
 
