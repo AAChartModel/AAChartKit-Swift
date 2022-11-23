@@ -54,6 +54,7 @@ public class AATooltip: AAObject {
     public var pointFormatter: String?
     public var positioner: String?
     public var dateTimeLabelFormats: AADateTimeLabelFormats?
+    public var split: Bool?
     
     @discardableResult
     public func backgroundColor(_ prop: Any?) -> AATooltip {
@@ -174,6 +175,13 @@ public class AATooltip: AAObject {
         dateTimeLabelFormats = prop
         return self
     }
+
+    @discardableResult
+    public func split(_ prop: Bool?) -> AATooltip {
+        split = prop
+        return self
+    }
+
     
     public override init() {
         enabled = true
