@@ -72,14 +72,14 @@ class AreaChartOptionsComposer {
 //    }]
 //});
 
-func basicAreaChart() -> AAOptions {
+static func basicAreaChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.area))
             .title(AATitle()
                     .text("美苏核武器库存量"))
             .subtitle(AASubtitle()
-                    .text("数据来源: <a href=\"https://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf\">thebulletin.metapress.com</a>"))
+                .text(((#"数据来源: <a href="https://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf">"# + #"thebulletin.metapress.com</a>"#).aa_toPureJSString())))
             .xAxis(AAXAxis()
                     .allowDecimals(false))
             .yAxis(AAYAxis()
@@ -151,7 +151,7 @@ func basicAreaChart() -> AAOptions {
 //    }]
 //});
 
-func areaWithNegativeValuesChart() -> AAOptions {
+static func areaWithNegativeValuesChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.area))
@@ -233,7 +233,7 @@ func areaWithNegativeValuesChart() -> AAOptions {
 //    }]
 //});
 
-func stackedAreaChart() -> AAOptions {
+static func stackedAreaChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.area))
@@ -241,12 +241,12 @@ func stackedAreaChart() -> AAOptions {
                     .text("全球各大洲人口增长历史及预测"))
             .subtitle(AASubtitle()
                     .text("数据来源: Wikipedia.org"))
-//            .xAxis(AAXAxis()
-//                    .categories(["1750", "1800", "1850", "1900", "1950", "1999", "2050"])
-//                    .tickmarkPlacement("on")
+            .xAxis(AAXAxis()
+                    .categories(["1750", "1800", "1850", "1900", "1950", "1999", "2050"])
+                    .tickmarkPlacement("on")
 //                    .title(AATitle()
 //                            .enabled(false))
-//            )
+            )
             .yAxis(AAYAxis()
                     .title(AATitle()
                             .text("十亿"))
@@ -338,7 +338,7 @@ func stackedAreaChart() -> AAOptions {
 //    }]
 //});
 
-func percentStackedAreaChart() -> AAOptions {
+static func percentStackedAreaChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.area))
@@ -346,16 +346,17 @@ func percentStackedAreaChart() -> AAOptions {
                     .text("全球各大洲人口占比"))
             .subtitle(AASubtitle()
                     .text("数据来源: Wikipedia.org"))
-//            .xAxis(AAXAxis()
-//                    .categories(["1750", "1800", "1850", "1900", "1950", "1999", "2050"])
-//                    .tickmarkPlacement("on")
+            .xAxis(AAXAxis()
+                    .categories(["1750", "1800", "1850", "1900", "1950", "1999", "2050"])
+                    .tickmarkPlacement("on")
 //                    .title(AATitle()
-//                            .enabled(false)))
+//                            .enabled(false))
+            )
             .yAxis(AAYAxis()
                     .title(AATitle()
                             .text("百分比")))
             .tooltip(AATooltip()
-                    .pointFormat("<span style=\"color:{series.color}\">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} 百万)<br/>")
+                .pointFormat(#"<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} 百万)<br/>"#.aa_toPureJSString())
                     .shared(true))
             .plotOptions(AAPlotOptions()
                     .area(AAArea()
@@ -446,7 +447,7 @@ func percentStackedAreaChart() -> AAOptions {
 //    }]
 //});
 
-func areaWithMissingPointsChart() -> AAOptions {
+static func areaWithMissingPointsChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.area)
@@ -537,7 +538,7 @@ func areaWithMissingPointsChart() -> AAOptions {
 //    }]
 //});
 
-func invertedAreaChart() -> AAOptions {
+static func invertedAreaChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.area)
@@ -624,7 +625,7 @@ func invertedAreaChart() -> AAOptions {
 //    }]
 //});
 
-func areasplineChart() -> AAOptions {
+static func areasplineChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.areaspline))
@@ -701,7 +702,7 @@ func areasplineChart() -> AAOptions {
 //    });
 //});
 
-func arearangeChart() -> AAOptions {
+static func arearangeChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.arearange)
@@ -1217,7 +1218,7 @@ func arearangeChart() -> AAOptions {
 //    }]
 //});
 
-func arearangeAndLineChart() {
+static func arearangeAndLineChart() -> AAOptions {
     // 气温范围，数据格式：[时间戳, 范围起始值, 范围结束值]
     let ranges = [
         [1246406400000, 14.3, 27.7],
@@ -1289,7 +1290,7 @@ func arearangeAndLineChart() {
     ]
 
     // 创建图表
-    AAOptions()
+    return AAOptions()
             .chart(AAChart()
                     .type(.spline))
             .title(AATitle()
