@@ -726,11 +726,8 @@ static func percentStackedColumnChart() -> AAOptions {
                     .title(AATitle()
                             .text("水果消费总量")))
             .tooltip(AATooltip()
-                    .pointFormat(#"""
-                    <span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b>
-                    ({point.percentage:.0f}%)
-                    <br/>
-                    """#)
+                .pointFormat((#"<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b>"# +
+                              #"({point.percentage:.0f}%)<br/>"#).aa_toPureJSString())
                     .shared(true))
             .plotOptions(AAPlotOptions()
                     .column(AAColumn()
@@ -831,7 +828,7 @@ static func columnChartWithRotatedLabels() -> AAOptions {
             .legend(AALegend()
                     .enabled(false))
             .tooltip(AATooltip()
-                    .pointFormat("人口总量: <b>{point.y:.1f} 百万</b>"))
+                .pointFormat("人口总量: <b>{point.y:.1f} 百万</b>".aa_toPureJSString()))
             .series([
                 AASeriesElement()
                         .name("总人口")
@@ -944,7 +941,42 @@ static func columnChartWithRotatedLabels() -> AAOptions {
 //});
 
 static func columnChartWithNestedColumn() -> AAOptions {
-    AAOptions()
+    let arr = [
+        AAColumn()
+            .name("雇员")
+            .color("rgba(165,170,217,1)")
+            .data([150, 73, 20])
+            .pointPadding(0.3)
+            .pointPlacement(-0.2),
+        AAColumn()
+            .name("优化的员工")
+            .color("rgba(126,86,134,.9)")
+            .data([140, 90, 40])
+            .pointPadding(0.4)
+            .pointPlacement(-0.2),
+        AAColumn()
+            .name("利润")
+            .color("rgba(248,161,63,1)")
+            .data([183.6, 178.8, 198.5])
+//            .tooltip(AATooltip()
+//                     //                                .valuePrefix("$")
+//                .valueSuffix(" M"))
+            .pointPadding(0.3)
+            .pointPlacement(0.2)
+            .yAxis(1),
+        AAColumn()
+            .name("优化的利润")
+            .color("rgba(186,60,61,.9)")
+            .data([203.6, 198.8, 208.5])
+//            .tooltip(AATooltip()
+//                     //                                .valuePrefix("$")
+//                .valueSuffix(" M"))
+            .pointPadding(0.4)
+            .pointPlacement(0.2)
+            .yAxis(1),
+    ]
+    
+    return AAOptions()
             .chart(AAChart()
                     .type(.column))
             .title(AATitle()
@@ -974,40 +1006,7 @@ static func columnChartWithNestedColumn() -> AAOptions {
                             .grouping(false)
 //                            .shadow(false)
                             .borderWidth(0)))
-//            .series([
-//                AASeriesElement()
-//                        .name("雇员")
-//                        .color(AAGradientColor.deepSea)
-//                        .data([150, 73, 20])
-//                        .pointPadding(0.3)
-//                        .pointPlacement(-0.2),
-//                AASeriesElement()
-//                        .name("优化的员工")
-//                        .color(AAGradientColor.sanguine)
-//                        .data([140, 90, 40])
-//                        .pointPadding(0.4)
-//                        .pointPlacement(-0.2),
-//                AASeriesElement()
-//                        .name("利润")
-//                        .color(AAGradientColor.sweetDream)
-//                        .data([183.6, 178.8, 198.5])
-//                        .tooltip(AATooltip()
-////                                .valuePrefix("$")
-//                                .valueSuffix(" M"))
-//                        .pointPadding(0.3)
-//                        .pointPlacement(0.2)
-//                        .yAxis(1),
-//                AASeriesElement()
-//                        .name("优化的利润")
-//                        .color(AAGradientColor.lusciousLime)
-//                        .data([203.6, 198.8, 208.5])
-//                        .tooltip(AATooltip()
-////                                .valuePrefix("$")
-//                                .valueSuffix(" M"))
-//                        .pointPadding(0.4)
-//                        .pointPlacement(0.2)
-//                        .yAxis(1),
-//            ])
+            .series(arr)
 }
 
 //var chart = Highcharts.chart('container', {
