@@ -51,6 +51,7 @@ public class AALegend: AAObject {
     public var y: Float?
     public var floating: Bool?
     public var labelFormat: String?
+    public var backgroundColor: Any?
     
     @discardableResult
     public func layout(_ prop: AAChartLayoutType?) -> AALegend {
@@ -151,6 +152,12 @@ public class AALegend: AAObject {
     @discardableResult
     public func labelFormat(_ prop: String?) -> AALegend {
         labelFormat = prop
+        return self
+    }
+
+    @discardableResult
+    public func backgroundColor(_ prop: Any?) -> AALegend {
+        backgroundColor = prop
         return self
     }
     
