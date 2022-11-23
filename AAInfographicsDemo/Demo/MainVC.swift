@@ -90,7 +90,8 @@ class MainVC: UIViewController {
             "JS Function For AALegend | 通过带有 JS 函数的自定义 AALegend",
             "JS Function For AAChartEvents---通过 JSFunction 自定义 AAChartEvents 的事件",
             "JS Function For AAOptions---通过 JSFunction 自定义 AAOptions 内容",
-            "Official Samples For Area Chart---折线填充图官方示例"
+            "Official Samples For Area Chart---折线📈填充图官方示例",
+            "Official Samples For Bar or Column Chart---条形图或柱状图📊官方示例",
         ]
         
         chartTypeTitleArr = [
@@ -414,7 +415,32 @@ class MainVC: UIViewController {
                 "areasplineChart---曲线面积图",
                 "arearangeChart---区域范围图",
                 "arearangeAndLineChart---区域范围图和折线图混合图",
-            ]
+            ],
+
+            //  case 0: return BarOrColumnChartOptionsComposer.basicBarChart()//基础柱状图
+            //        case 1: return BarOrColumnChartOptionsComposer.stackingBarChart()//堆积柱状图
+            //        case 2: return BarOrColumnChartOptionsComposer.populationPyramidChart()//人口金字塔图
+            //        case 3: return BarOrColumnChartOptionsComposer.basicColumnChart()//基础条形图
+            //        case 4: return BarOrColumnChartOptionsComposer.basicColumnChartWithNegativeValue()//带有负值的条形图
+            //        case 5: return BarOrColumnChartOptionsComposer.basicColumnChartWithStackedDataLabels()//带有数据标签的堆积条形图
+            //        case 6: return BarOrColumnChartOptionsComposer.basicColumnChartWithStackedDataLabels2()//带有数据标签的堆积条形图2
+            //        case 7: return BarOrColumnChartOptionsComposer.percentStackedColumnChart()//百分比堆积条形图
+            //        case 8: return BarOrColumnChartOptionsComposer.columnChartWithRotatedLabels()//带有旋转标签的条形图
+            //        case 9: return BarOrColumnChartOptionsComposer.columnChartWithNestedColumn()//嵌套条形图
+            //        case 10:return BarOrColumnChartOptionsComposer.columnRangeChart()//条形范围图
+            [
+                "basicBarChart---基础柱状图",
+                "stackingBarChart---堆积柱状图",
+                "populationPyramidChart---人口金字塔图",
+                "basicColumnChart---基础条形图",
+                "basicColumnChartWithNegativeValue---带有负值的条形图",
+                "basicColumnChartWithStackedDataLabels---带有数据标签的堆积条形图",
+                "basicColumnChartWithStackedDataLabels2---带有数据标签的堆积条形图2",
+                "percentStackedColumnChart---百分比堆积条形图",
+                "columnChartWithRotatedLabels---带有旋转标签的条形图",
+                "columnChartWithNestedColumn---嵌套条形图",
+                "columnRangeChart---条形范围图",
+            ],
 
         ]
         
@@ -853,6 +879,12 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 21:
             /*Official Samples For Area Chart*/
             let vc = OfficialAreaChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+        case 22:
+            /*Official Samples For Bar or Column Chart*/
+            let vc = OfficialBarOrColumnChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
