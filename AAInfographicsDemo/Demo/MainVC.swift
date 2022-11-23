@@ -90,6 +90,7 @@ class MainVC: UIViewController {
             "JS Function For AALegend | 通过带有 JS 函数的自定义 AALegend",
             "JS Function For AAChartEvents---通过 JSFunction 自定义 AAChartEvents 的事件",
             "JS Function For AAOptions---通过 JSFunction 自定义 AAOptions 内容",
+            "Official Samples For Area Chart---折线填充图官方示例"
         ]
         
         chartTypeTitleArr = [
@@ -401,6 +402,18 @@ class MainVC: UIViewController {
                 "disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction---通过 Series 的 Point 的选中事件函数来禁用条形图反选效果",
                 "customizeEveryDataLabelSinglelyByDataLabelsFormatter---通过 formatter 来自定义单个 dataLabels 元素",
                 "configureColorfulDataLabelsForPieChart---为饼图配置多彩 dataLabels"
+            ],
+            /*Official Samples For Area Chart*/
+            [
+                "basicAreaChart---基础面积图",
+                "areaWithNegativeValuesChart---带有负值的面积图",
+                "stackedAreaChart---堆积面积图",
+                "percentStackedAreaChart---百分比堆积面积图",
+                "areaWithMissingPointsChart---带有缺失点的面积图",
+                "invertedAreaChart---翻转面积图",
+                "areasplineChart---曲线面积图",
+                "arearangeChart---区域范围图",
+                "arearangeAndLineChart---区域范围图和折线图混合图",
             ]
 
         ]
@@ -542,6 +555,8 @@ class MainVC: UIViewController {
                 AAChartType.line,
                 AAChartType.line,
                 AAChartType.spline,
+            ],
+            [//Empty Array,just for holding place
             ],
             [//Empty Array,just for holding place
             ],
@@ -832,6 +847,12 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 20:
             /*JS Function For AAOptions*/
             let vc = JSFunctionForAAOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+        case 21:
+            /*Official Samples For Area Chart*/
+            let vc = OfficialAreaChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
