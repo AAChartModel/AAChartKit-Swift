@@ -583,7 +583,7 @@ class CustomStyleChartVC: AABaseChartVC {
         let singleSpecialData = AADataElement()
             .marker(AAMarker()
                 .radius(8)//曲线连接点半径
-                .symbol(AAChartSymbolType.circle.rawValue)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                .symbol(.circle)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
                 .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
                 .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
                 .lineColor(AAColor.red)//外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
