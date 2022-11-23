@@ -654,9 +654,9 @@ func areasplineChart() -> AAOptions {
             .tooltip(AATooltip()
                     .shared(true)
                     .valueSuffix(" 单位"))
-//            .plotOptions(AAPlotOptions()
-//                    .areaspline(AAAreaspline()
-//                            .fillOpacity(0.5)))
+            .plotOptions(AAPlotOptions()
+                    .areaspline(AAAreaspline()
+                            .fillOpacity(0.5)))
             .series([
                 AASeriesElement()
                         .name("小张")
