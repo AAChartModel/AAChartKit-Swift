@@ -60,6 +60,12 @@ public class AAMarker: AAObject {
     }
     
     @discardableResult
+    public func symbol(_ prop: AAChartSymbolType?) -> AAMarker {
+        symbol = prop?.rawValue
+        return self
+    }
+    
+    @discardableResult
     public func fillColor(_ prop: String?) -> AAMarker {
         fillColor = prop
         return self
