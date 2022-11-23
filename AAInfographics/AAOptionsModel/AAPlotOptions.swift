@@ -378,15 +378,50 @@ public class AASpline: AAObject {
     }
 }
 
-public class AAArea: AAObject {
-    public var dataLabels: AADataLabels?
-    
+public class AAArea: AASeries {
+    public var fillColor: String?
+    public var fillOpacity: Float?
+    public var negativeFillColor: String?
+    public var trackByArea: Bool?
+    public var lineColor: String?
+    public var lineWidth: Float?
+
     @discardableResult
-    public func dataLabels(_ prop: AADataLabels) -> AAArea {
-        dataLabels = prop
+    public func fillColor(_ prop: String) -> AAArea {
+        fillColor = prop
         return self
     }
-    
+
+    @discardableResult
+    public func fillOpacity(_ prop: Float) -> AAArea {
+        fillOpacity = prop
+        return self
+    }
+
+    @discardableResult
+    public func negativeFillColor(_ prop: String) -> AAArea {
+        negativeFillColor = prop
+        return self
+    }
+
+    @discardableResult
+    public func trackByArea(_ prop: Bool) -> AAArea {
+        trackByArea = prop
+        return self
+    }
+
+    @discardableResult
+    public func lineColor(_ prop: String) -> AAArea {
+        lineColor = prop
+        return self
+    }
+
+    @discardableResult
+    public func lineWidth(_ prop: Float) -> AAArea {
+        lineWidth = prop
+        return self
+    }
+
     public override init() {
         
     }
