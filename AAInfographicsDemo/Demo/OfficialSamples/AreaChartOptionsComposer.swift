@@ -31,7 +31,7 @@ class AreaChartOptionsComposer {
                     .pointStart(1940)
                     .marker(AAMarker()
                         .enabled(false)
-                        .symbol(AAChartSymbolType.circle.rawValue)
+                        .symbol(.circle)
                         .radius(2)
                         .states(AAMarkerStates()
                             .hover(AAMarkerHover()
