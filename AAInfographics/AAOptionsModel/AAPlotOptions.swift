@@ -427,12 +427,47 @@ public class AAArea: AASeries {
     }
 }
 
-public class AAAreaspline: AAObject {
-    public var dataLabels: AADataLabels?
-    
+public class AAAreaspline: AASeries {
+    public var fillColor: String?
+    public var fillOpacity: Float?
+    public var negativeFillColor: String?
+    public var trackByArea: Bool?
+    public var lineColor: String?
+    public var lineWidth: Float?
+
     @discardableResult
-    public func dataLabels(_ prop: AADataLabels) -> AAAreaspline {
-        dataLabels = prop
+    public func fillColor(_ prop: String) -> AAAreaspline {
+        fillColor = prop
+        return self
+    }
+
+    @discardableResult
+    public func fillOpacity(_ prop: Float) -> AAAreaspline {
+        fillOpacity = prop
+        return self
+    }
+
+    @discardableResult
+    public func negativeFillColor(_ prop: String) -> AAAreaspline {
+        negativeFillColor = prop
+        return self
+    }
+
+    @discardableResult
+    public func trackByArea(_ prop: Bool) -> AAAreaspline {
+        trackByArea = prop
+        return self
+    }
+
+    @discardableResult
+    public func lineColor(_ prop: String) -> AAAreaspline {
+        lineColor = prop
+        return self
+    }
+
+    @discardableResult
+    public func lineWidth(_ prop: Float) -> AAAreaspline {
+        lineWidth = prop
         return self
     }
     
