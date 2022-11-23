@@ -69,7 +69,7 @@ class BarOrColumnChartOptionsComposer {
 //    }]
 //});
 
-func basicBarChart() -> AAOptions {
+static func basicBarChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.bar))
@@ -88,23 +88,23 @@ func basicBarChart() -> AAOptions {
 //                            .align(.high))
 //                    .labels(AALabels()
 //                            .overflow(.justify)))
-//            .tooltip(AATooltip()
-//                    .valueSuffix(" 百万"))
-//            .plotOptions(AAPlotOptions()
-//                    .bar(AABar()
-//                            .dataLabels(AADataLabels()
-//                                    .enabled(true)
-//                                    .allowOverlap(true))))
-//            .legend(AALegend()
-//                    .layout(.vertical)
-//                    .align(.right)
-//                    .verticalAlign(.top)
-//                    .x(-40)
-//                    .y(100)
-//                    .floating(true)
-//                    .borderWidth(1)
-//                    .backgroundColor(AAColor.white)
-//                    .shadow(true))
+            .tooltip(AATooltip()
+                    .valueSuffix(" 百万"))
+            .plotOptions(AAPlotOptions()
+                    .bar(AABar()
+                            .dataLabels(AADataLabels()
+                                    .enabled(true)
+                                    .allowOverlap(true))))
+            .legend(AALegend()
+                    .layout(.vertical)
+                    .align(.right)
+                    .verticalAlign(.top)
+                    .x(-40)
+                    .y(100)
+                    .floating(true)
+                    .borderWidth(1)
+                    .backgroundColor(AAColor.white)
+                    .shadow(true))
             .series([
                 AASeriesElement()
                         .name("1800 年")
@@ -159,7 +159,7 @@ func basicBarChart() -> AAOptions {
 //    }]
 //});
 
-func stackingBarChart() -> AAOptions {
+static func stackingBarChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.bar))
@@ -171,8 +171,8 @@ func stackingBarChart() -> AAOptions {
                     .min(0)
                     .title(AATitle()
                             .text("水果消费总量")))
-//            .legend(AALegend()
-//                    .reversed(true))
+            .legend(AALegend()
+                    .reversed(true))
             .plotOptions(AAPlotOptions()
                     .series(AASeries()
                             .stacking(.normal)))
@@ -258,7 +258,7 @@ func stackingBarChart() -> AAOptions {
 //    }]
 //});
 
-func populationPyramidChart() -> AAOptions {
+static func populationPyramidChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.bar))
@@ -373,7 +373,7 @@ func populationPyramidChart() -> AAOptions {
 //    }]
 //});
 
-func basicColumnChart() -> AAOptions {
+static func basicColumnChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.column))
@@ -436,7 +436,7 @@ func basicColumnChart() -> AAOptions {
 //    }]
 //});
 
-func basicColumnChartWithNegativeValue() -> AAOptions {
+static func basicColumnChartWithNegativeValue() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.column))
@@ -524,7 +524,7 @@ func basicColumnChartWithNegativeValue() -> AAOptions {
 //    }]
 //});
 
-func basicColumnChartWithStackedDataLabels() -> AAOptions {
+static func basicColumnChartWithStackedDataLabels() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.column))
@@ -629,7 +629,7 @@ func basicColumnChartWithStackedDataLabels() -> AAOptions {
 //    }]
 //});
 
-func basicColumnChartWithStackedDataLabels2() -> AAOptions {
+static func basicColumnChartWithStackedDataLabels2() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.column))
@@ -713,7 +713,7 @@ func basicColumnChartWithStackedDataLabels2() -> AAOptions {
 //    }]
 //});
 
-func percentStackedColumnChart() -> AAOptions {
+static func percentStackedColumnChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.column))
@@ -812,7 +812,7 @@ func percentStackedColumnChart() -> AAOptions {
 //    }]
 //});
 
-func columnChartWithRotatedLabels() -> AAOptions {
+static func columnChartWithRotatedLabels() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.column))
@@ -943,7 +943,7 @@ func columnChartWithRotatedLabels() -> AAOptions {
 //    }]
 //});
 
-func columnChartWithNestedColumn() -> AAOptions {
+static func columnChartWithNestedColumn() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.column))
@@ -1065,7 +1065,7 @@ func columnChartWithNestedColumn() -> AAOptions {
 //    }]
 //});
 
-func columnRangeChart() -> AAOptions {
+static func columnRangeChart() -> AAOptions {
     AAOptions()
             .chart(AAChart()
                     .type(.columnrange))
