@@ -145,6 +145,12 @@ public class AASeries: AAObject {
     }
     
     @discardableResult
+    public func allowPointSelect(_ prop: Bool?) -> Self {
+        allowPointSelect = prop
+        return self
+    }
+    
+    @discardableResult
     public func point(_ prop: AAPoint?) -> Self {
         point = prop
         return self
