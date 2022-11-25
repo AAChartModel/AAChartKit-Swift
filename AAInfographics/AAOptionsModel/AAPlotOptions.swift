@@ -476,12 +476,12 @@ public class AAAreaspline: AASeries {
     }
 }
 
-public class AAPie: AAObject {
+public class AAPie: AASeries {
     public var type: String?
     public var data: [Any]?
-    public var dataLabels:AADataLabels?
+//    public var dataLabels:AADataLabels?
     public var size: Float?
-    public var allowPointSelect: Bool?
+//    public var allowPointSelect: Bool?
     public var cursor: String?
     public var showInLegend: Bool?
     public var startAngle: Float?
