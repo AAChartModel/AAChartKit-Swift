@@ -35,7 +35,7 @@ import Foundation
 public class AASeries: AAObject {
     public var borderColor: String?        //The border color, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
     public var borderWidth: Float?         //The border width, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
-    public var borderRadius: Float?        //The corner radius of the border surrounding each column or bar.
+//    public var borderRadius: Float?        //The corner radius of the border surrounding each column or bar.
     public var marker: AAMarker?
     public var stacking: String?
     public var animation: Any? //AAAnimation | Bool
@@ -72,11 +72,11 @@ public class AASeries: AAObject {
         return self
     }
     
-    @discardableResult
-    public func borderRadius(_ prop: Float?) -> Self {
-        borderRadius = prop
-        return self
-    }
+//    @discardableResult
+//    public func borderRadius(_ prop: Float?) -> Self {
+//        borderRadius = prop
+//        return self
+//    }
     
     @discardableResult
     public func marker(_ prop: AAMarker?) -> Self {
