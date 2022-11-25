@@ -527,7 +527,7 @@ static func basicPieChart() -> AAOptions {
     static func customPieChartTitlePosition() -> AAOptions {
         AAOptions()
             .chart(AAChart()
-                .spacing([40, 0, 40, 0]))
+                .spacing(top: 40, right: 0, bottom: 40, left: 0))
             .title(AATitle()
                 .floating(true)
                 .text("圆心显示的标题"))
