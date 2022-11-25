@@ -132,8 +132,6 @@ public class AAPlotOptions: AAObject {
 }
 
 
-
-
 public class AALine: AAObject {
     public var dataLabels: AADataLabels?
     

@@ -422,12 +422,8 @@
 		58603C3CC5DAE3EC08DAF5B8 /* OfficialSamples */ = {
 			isa = PBXGroup;
 			children = (
-				84F21857292DF373007AA726 /* OfficialAreaChartVC.swift */,
-				84F21859292E10DD007AA726 /* OfficialBarOrColumnChartVC.swift */,
-				5860339F7333DE51631C871D /* AreaChartOptionsComposer.swift */,
-				58603443E4FDDF32FE4E4F94 /* BarOrColumnChartOptionsComposer.swift */,
-				58603EE90A0888618D985466 /* PieChartOptionsComposer.swift */,
-				84BDF5A4293064DE00B9EC30 /* OfficialPieChartVC.swift */,
+				84BDF5AB2930AE1700B9EC30 /* ViewController */,
+				84BDF5AC2930AE2500B9EC30 /* Composer */,
 			);
 			path = OfficialSamples;
 			sourceTree = "<group>";
@@ -462,6 +458,26 @@
 				84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */,
 			);
 			path = AAOptionsWithJS;
+			sourceTree = "<group>";
+		};
+		84BDF5AB2930AE1700B9EC30 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84F21857292DF373007AA726 /* OfficialAreaChartVC.swift */,
+				84F21859292E10DD007AA726 /* OfficialBarOrColumnChartVC.swift */,
+				84BDF5A4293064DE00B9EC30 /* OfficialPieChartVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		84BDF5AC2930AE2500B9EC30 /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				5860339F7333DE51631C871D /* AreaChartOptionsComposer.swift */,
+				58603443E4FDDF32FE4E4F94 /* BarOrColumnChartOptionsComposer.swift */,
+				58603EE90A0888618D985466 /* PieChartOptionsComposer.swift */,
+			);
+			path = Composer;
 			sourceTree = "<group>";
 		};
 		84DEA0D928460E9300D0206F /* BackUpContent */ = {
