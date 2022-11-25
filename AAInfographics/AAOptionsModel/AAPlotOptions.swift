@@ -220,37 +220,37 @@ public class AAArea: AASeries {
     public var lineWidth: Float?
 
     @discardableResult
-    public func fillColor(_ prop: String) -> AAArea {
+    public func fillColor(_ prop: String) -> Self {
         fillColor = prop
         return self
     }
 
     @discardableResult
-    public func fillOpacity(_ prop: Float) -> AAArea {
+    public func fillOpacity(_ prop: Float) -> Self {
         fillOpacity = prop
         return self
     }
 
     @discardableResult
-    public func negativeFillColor(_ prop: String) -> AAArea {
+    public func negativeFillColor(_ prop: String) -> Self {
         negativeFillColor = prop
         return self
     }
 
     @discardableResult
-    public func trackByArea(_ prop: Bool) -> AAArea {
+    public func trackByArea(_ prop: Bool) -> Self {
         trackByArea = prop
         return self
     }
 
     @discardableResult
-    public func lineColor(_ prop: String) -> AAArea {
+    public func lineColor(_ prop: String) -> Self {
         lineColor = prop
         return self
     }
 
     @discardableResult
-    public func lineWidth(_ prop: Float) -> AAArea {
+    public func lineWidth(_ prop: Float) -> Self {
         lineWidth = prop
         return self
     }
@@ -260,49 +260,7 @@ public class AAArea: AASeries {
     }
 }
 
-public class AAAreaspline: AASeries {
-    public var fillColor: String?
-    public var fillOpacity: Float?
-    public var negativeFillColor: String?
-    public var trackByArea: Bool?
-    public var lineColor: String?
-    public var lineWidth: Float?
-
-    @discardableResult
-    public func fillColor(_ prop: String) -> AAAreaspline {
-        fillColor = prop
-        return self
-    }
-
-    @discardableResult
-    public func fillOpacity(_ prop: Float) -> AAAreaspline {
-        fillOpacity = prop
-        return self
-    }
-
-    @discardableResult
-    public func negativeFillColor(_ prop: String) -> AAAreaspline {
-        negativeFillColor = prop
-        return self
-    }
-
-    @discardableResult
-    public func trackByArea(_ prop: Bool) -> AAAreaspline {
-        trackByArea = prop
-        return self
-    }
-
-    @discardableResult
-    public func lineColor(_ prop: String) -> AAAreaspline {
-        lineColor = prop
-        return self
-    }
-
-    @discardableResult
-    public func lineWidth(_ prop: Float) -> AAAreaspline {
-        lineWidth = prop
-        return self
-    }
+public class AAAreaspline: AAArea {
     
     public override init() {
         
