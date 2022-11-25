@@ -1,16 +1,38 @@
 //
 // Created by AnAn on 2022/11/25.
 // Copyright (c) 2022 An An. All rights reserved.
-//
+//*************** ...... SOURCE CODE ...... ***************
+//***...................................................***
+//*** https://github.com/AAChartModel/AAChartKit        ***
+//*** https://github.com/AAChartModel/AAChartKit-Swift  ***
+//***...................................................***
+//*************** ...... SOURCE CODE ...... ***************
+
+/*
+ 
+ * -------------------------------------------------------------------------------
+ *
+ *  🌕 🌖 🌗 🌘  ❀❀❀   WARM TIPS!!!   ❀❀❀ 🌑 🌒 🌓 🌔
+ *
+ * Please contact me on GitHub,if there are any problems encountered in use.
+ * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
+ * -------------------------------------------------------------------------------
+ * And if you want to contribute for this project, please contact me as well
+ * GitHub        : https://github.com/AAChartModel
+ * StackOverflow : https://stackoverflow.com/users/12302132/codeforu
+ * JianShu       : https://www.jianshu.com/u/f1e6753d4254
+ * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
+ *
+ * -------------------------------------------------------------------------------
+ 
+ */
 
 import Foundation
 
 public class AAPie: AASeries {
     public var type: String?
     public var data: [Any]?
-//    public var dataLabels:AADataLabels?
     public var size: Float?
-//    public var allowPointSelect: Bool?
     public var cursor: String?
     public var showInLegend: Bool?
     public var startAngle: Float?
@@ -30,23 +52,11 @@ public class AAPie: AASeries {
         return self
     }
     
-//    @discardableResult
-//    public func dataLabels(_ prop: AADataLabels) -> AAPie {
-//        dataLabels = prop
-//        return self
-//    }
-    
     @discardableResult
     public func size(_ prop: Float?) -> AAPie {
         size = prop
         return self
     }
-    
-//    @discardableResult
-//    public func allowPointSelect(_ prop: Bool?) -> AAPie {
-//        allowPointSelect = prop
-//        return self
-//    }
     
     @discardableResult
     public func cursor(_ prop: String) -> AAPie {
