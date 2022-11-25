@@ -292,21 +292,24 @@ static func populationPyramidChart() -> AAOptions {
             .yAxis(AAYAxis()
                     .title(AATitle()
                             .text(nil))
-//                    .labels(AALabels()
-//                            .formatter("function () {
-//                                return (Math.abs(this.value) / 1000000) + 'M';
-//                            }"))
+                    .labels(AALabels()
+                            .formatter("""
+function () {
+return (Math.abs(this.value) / 1000000) + 'M';
+}
+"""))
                     .min(-4000000)
                     .max(4000000))
             .plotOptions(AAPlotOptions()
                     .series(AASeries()
                             .stacking(.normal)))
-//            .tooltip(AATooltip()
-//                    .formatter("function () {
-//                        return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
-//                            '人口: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
-//                    }"""
-//                     ))
+            .tooltip(AATooltip()
+                    .formatter("""
+function () {
+return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
+    '人口: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
+}
+"""))
             .series([
                 AASeriesElement()
                         .name("男")
@@ -551,14 +554,14 @@ static func basicColumnChartWithStackedDataLabels() -> AAOptions {
                     .borderColor("#CCC")
                     .borderWidth(1)
                     .shadow(false))
-//            .tooltip(AATooltip()
-//                    .formatter(#"""
-//                    function () {
-//                        return '<b>' + this.x + '</b><br/>' +
-//                            this.series.name + ': ' + this.y + '<br/>' +
-//                            '总量: ' + this.point.stackTotal;
-//                    }
-//                    """#))
+            .tooltip(AATooltip()
+                    .formatter(#"""
+                    function () {
+                        return '<b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            '总量: ' + this.point.stackTotal;
+                    }
+                    """#))
             .plotOptions(AAPlotOptions()
                     .column(AAColumn()
                             .stacking(.normal)
@@ -637,19 +640,19 @@ static func basicColumnChartWithStackedDataLabels2() -> AAOptions {
                     .text("按性别划分的水果消费总量"))
             .xAxis(AAXAxis()
                     .categories(["苹果", "橘子", "梨", "葡萄", "香蕉"]))
-//            .yAxis(AAYAxis()
-//                    .allowDecimals(false)
-//                    .min(0)
-//                    .title(AATitle()
-//                            .text("水果数量")))
-//            .tooltip(AATooltip()
-//                    .formatter(#"""
-//                    function () {
-//                        return '<b>' + this.x + '</b><br/>' +
-//                            this.series.name + ': ' + this.y + '<br/>' +
-//                            '总量: ' + this.point.stackTotal;
-//                    }
-//                    """#))
+            .yAxis(AAYAxis()
+                    .allowDecimals(false)
+                    .min(0)
+                    .title(AATitle()
+                            .text("水果数量")))
+            .tooltip(AATooltip()
+                    .formatter(#"""
+                    function () {
+                        return '<b>' + this.x + '</b><br/>' +
+                            this.series.name + ': ' + this.y + '<br/>' +
+                            '总量: ' + this.point.stackTotal;
+                    }
+                    """#))
             .plotOptions(AAPlotOptions()
                     .column(AAColumn()
                             .stacking(.normal)))
@@ -958,9 +961,9 @@ static func columnChartWithNestedColumn() -> AAOptions {
             .name("利润")
             .color("rgba(248,161,63,1)")
             .data([183.6, 178.8, 198.5])
-//            .tooltip(AATooltip()
-//                     //                                .valuePrefix("$")
-//                .valueSuffix(" M"))
+            .tooltip(AATooltip()
+//                                                     .valuePrefix("$")
+                .valueSuffix(" M"))
             .pointPadding(0.3)
             .pointPlacement(0.2)
             .yAxis(1),
@@ -968,9 +971,9 @@ static func columnChartWithNestedColumn() -> AAOptions {
             .name("优化的利润")
             .color("rgba(186,60,61,.9)")
             .data([203.6, 198.8, 208.5])
-//            .tooltip(AATooltip()
-//                     //                                .valuePrefix("$")
-//                .valueSuffix(" M"))
+            .tooltip(AATooltip()
+                     //                                .valuePrefix("$")
+                .valueSuffix(" M"))
             .pointPadding(0.4)
             .pointPlacement(0.2)
             .yAxis(1),
