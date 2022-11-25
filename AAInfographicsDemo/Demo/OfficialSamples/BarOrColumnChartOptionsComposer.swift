@@ -266,7 +266,7 @@ static func populationPyramidChart() -> AAOptions {
                     .text("2015 年德国人口金字塔"))
             .subtitle(AASubtitle()
                     .useHTML(true)
-                    .text("数据来源: <a href=\"http://populationpyramid.net/germany/2015/\">1950 ~ 2100 年世界人口金字塔</a>"))
+                    .text(#"数据来源: <a href="http://populationpyramid.net/germany/2015/">1950 ~ 2100 年世界人口金字塔</a>"#.aa_toPureJSString()))
             .xAxisArray([
                 AAXAxis()
                         .categories(["0-4", "5-9", "10-14", "15-19",
