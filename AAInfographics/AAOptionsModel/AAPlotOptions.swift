@@ -309,50 +309,6 @@ public class AAPie: AASeries {
     
 }
 
-public class AABubble: AAObject {
-    public var minSize: Any? // (String | Number)
-    public var maxSize: Any? // (String | Number)
-    public var zMin: Float?
-    public var zMax: Float?
-    public var dataLabels:AADataLabels?
-    
-    @discardableResult
-    public func minSize(_ prop: Any?) -> AABubble {
-        minSize = prop
-        return self
-    }
-    
-    @discardableResult
-    public func maxSize(_ prop: Any?) -> AABubble {
-        maxSize = prop
-        return self
-    }
-    
-    @discardableResult
-    public func zMin(_ prop: Float?) -> AABubble {
-        zMin = prop
-        return self
-    }
-    
-    @discardableResult
-    public func zMax(_ prop: Float?) -> AABubble {
-        zMax = prop
-        return self
-    }
-    
-    @discardableResult
-    public func dataLabels(_ prop: AADataLabels?) -> AABubble {
-        dataLabels = prop
-        return self
-    }
-    
-    public override init() {
-        
-    }
-}
-
-
-
 public class AAArearange: AAObject {
     public var dataLabels: AADataLabels?
     

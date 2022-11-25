@@ -33,15 +33,6 @@
 import Foundation
 
 public class AAScatter: AAObject {
-    
-    //        AAPropStatementAndPropSetFuncStatement(copy,   AAScatter, NSNumber *, lineWidth)
-    //        AAPropStatementAndPropSetFuncStatement(copy,   AAScatter, NSString *, lineColor)
-    //        AAPropStatementAndPropSetFuncStatement(copy,   AAScatter, NSString *, dashStyle)
-    //        AAPropStatementAndPropSetFuncStatement(copy,   AAScatter, id        , enableMouseTracking)
-    //        AAPropStatementAndPropSetFuncStatement(copy,   AAScatter, NSString *, linkedTo)
-    //        AAPropStatementAndPropSetFuncStatement(strong, AAScatter, AAStates *, states)
-    //        AAPropStatementAndPropSetFuncStatement(strong, AAScatter, AAMarker *, marker)
-    
     public var lineWidth: Float?
     public var lineColor: String?
     public var dashStyle: String?
@@ -95,6 +86,46 @@ public class AAScatter: AAObject {
     public override init() {
 
     }
+}
+
+public class AABubble: AAObject {
+    public var minSize: Any? // (String | Number)
+    public var maxSize: Any? // (String | Number)
+    public var zMin: Float?
+    public var zMax: Float?
+    public var dataLabels:AADataLabels?
     
+    @discardableResult
+    public func minSize(_ prop: Any?) -> AABubble {
+        minSize = prop
+        return self
+    }
     
+    @discardableResult
+    public func maxSize(_ prop: Any?) -> AABubble {
+        maxSize = prop
+        return self
+    }
+    
+    @discardableResult
+    public func zMin(_ prop: Float?) -> AABubble {
+        zMin = prop
+        return self
+    }
+    
+    @discardableResult
+    public func zMax(_ prop: Float?) -> AABubble {
+        zMax = prop
+        return self
+    }
+    
+    @discardableResult
+    public func dataLabels(_ prop: AADataLabels?) -> AABubble {
+        dataLabels = prop
+        return self
+    }
+    
+    public override init() {
+        
+    }
 }
