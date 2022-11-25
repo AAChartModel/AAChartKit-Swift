@@ -92,6 +92,7 @@ class MainVC: UIViewController {
             "JS Function For AAOptions---通过 JSFunction 自定义 AAOptions 内容",
             "Official Samples For Area Chart---折线📈填充图官方示例",
             "Official Samples For Bar or Column Chart---条形图或柱状图📊官方示例",
+            "Official Samples For Pie Chart---饼图🍕官方示例",
         ]
         
         chartTypeTitleArr = [
@@ -441,6 +442,23 @@ class MainVC: UIViewController {
                 "columnChartWithNestedColumn---嵌套条形图",
                 "columnRangeChart---条形范围图",
             ],
+
+            //    case 0: return PieChartOptionsComposer.basicPieChart()//基本饼状图
+            //        case 1: return PieChartOptionsComposer.basicPieChartWithLegend()//带有图例的基本饼状图
+            //        case 2: return PieChartOptionsComposer.basicPieChartWithGradientColor()//带有渐变色的基本饼状图
+            //        case 3: return PieChartOptionsComposer.basicPieChartWithGradientColor2()//带有渐变色的基本饼状图
+            //        case 4: return PieChartOptionsComposer.basicPieChartWithMonochromeColor()//带有单色的基本饼状图
+            //        case 5: return PieChartOptionsComposer.customPieChartTitlePosition()//自定义饼状图标题位置
+
+            [
+                "basicPieChart---基本饼状图",
+                "basicPieChartWithLegend---带有图例的基本饼状图",
+                "basicPieChartWithGradientColor---带有渐变色的基本饼状图",
+                "basicPieChartWithGradientColor2---带有渐变色的基本饼状图",
+                "basicPieChartWithMonochromeColor---带有单色的基本饼状图",
+                "customPieChartTitlePosition---自定义饼状图标题位置",
+            ],
+
 
         ]
         
@@ -888,7 +906,13 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
-            
+
+        case 23:
+            /*Official Samples For Pie Chart*/
+            let vc = OfficialPieChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
             
         default:
             break
