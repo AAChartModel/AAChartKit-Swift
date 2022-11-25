@@ -256,7 +256,7 @@ static func basicPieChart() -> AAOptions {
                         ))
                     .startAngle(-90)
                     .endAngle(90)
-//                    .center(["50%", "75%"])
+                    .center(["50%", "75%"])
                 ))
             .series([
                 AASeriesElement()
@@ -526,30 +526,32 @@ static func basicPieChart() -> AAOptions {
 
     static func customPieChartTitlePosition() -> AAOptions {
         AAOptions()
-//            .chart(AAChart()
-//                .spacing([40, 0, 40, 0]))
+            .chart(AAChart()
+                .spacing([40, 0, 40, 0]))
             .title(AATitle()
-//                .floating(true)
+                .floating(true)
                 .text("圆心显示的标题"))
             .tooltip(AATooltip()
                 .pointFormat("{series.name}: <b>{point.percentage:.1f}%</b>"))
-//            .plotOptions(AAPlotOptions()
-//                .pie(AAPie()
-//                    .allowPointSelect(true)
-////                    .cursor("pointer")
-//                    .dataLabels(AADataLabels()
-//                        .enabled(true)
-//                        .format("<b>{point.name}</b>: {point.percentage:.1f} %")
-//                        .style(AAStyle()
-//                            .color(AAColor.white)))
-//                    .point(AAPlotOptionsElement()
-//                        .events(AAEvents()
-//                            .mouseOver("function(e) {  // 鼠标滑过时动态更新标题\
-//                                        // 标题更新函数，API 地址：https://api.hcharts.cn/highcharts#Chart.setTitle\
-//                                        chart.setTitle({\
-//                                            text: e.target.name+ '\t'+ e.target.y + ' %'\
-//                                        });\
-//                                    }")))))
+            .plotOptions(AAPlotOptions()
+                .pie(AAPie()
+                    .allowPointSelect(true)
+                    .cursor("pointer")
+                    .dataLabels(AADataLabels()
+                        .enabled(true)
+                        .format("<b>{point.name}</b>: {point.percentage:.1f} %")
+                        .style(AAStyle()
+                            .color(AAColor.white)))
+                    .point(AAPoint()
+                        .events(AAPointEvents()
+                            .mouseOver("""
+                                       function(e) { 
+                                           chart.setTitle({
+                                               text: e.target.name+ '\\t'+ e.target.y + ' %'
+                                           });
+                                       }
+                                       """) // 鼠标滑过时动态更新标题, 标题更新函数，API 地址：https://api.hcharts.cn/highcharts#Chart.setTitle
+                        ))))
             .series([
                 AASeriesElement()
                     .type(.pie)
