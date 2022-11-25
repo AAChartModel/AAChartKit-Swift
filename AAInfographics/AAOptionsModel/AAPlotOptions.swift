@@ -136,18 +136,7 @@ public class AAColumn: AASeries {
     public var data: [Any]?
     public var color: String?
     public var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. default：true.
-//    public var pointPadding: Float?//Padding between each column or bar, in x axis units. default：0.1.
-//    public var pointPlacement: Float?//Padding between each column or bar, in x axis units. default：0.1.
-//    public var groupPadding: Float?//Padding between each value groups, in x axis units. default：0.2.
-//    public var borderWidth: Float?
-//    public var colorByPoint: Bool?//对每个不同的点设置颜色(当图表类型为 AAColumn 时,设置为 AAColumn 对象的属性,当图表类型为 bar 时,应该设置为 bar 对象的属性才有效)
-//    public var dataLabels: AADataLabels?
-//    public var stacking: String?
-//    public var borderRadius: Float?
     public var yAxis: Float?
-//    public var pointWidth: Float?
-//    public var maxPointWidth: Float?
-//    public var minPointLength: Float?
     
     @discardableResult
     public func name(_ prop: String) -> AAColumn {
@@ -172,78 +161,13 @@ public class AAColumn: AASeries {
         grouping = prop
         return self
     }
-    
-//    @discardableResult
-//    public func pointPadding(_ prop: Float?) -> AAColumn {
-//        pointPadding = prop
-//        return self
-//    }
-    
-    @discardableResult
-    public func pointPlacement(_ prop: Float?) -> AAColumn {
-        pointPlacement = prop
-        return self
-    }
-    
-//    @discardableResult
-//    public func groupPadding(_ prop: Float?) -> AAColumn {
-//        groupPadding = prop
-//        return self
-//    }
-//    
-//    @discardableResult
-//    public func borderWidth(_ prop: Float?) -> AAColumn {
-//        borderWidth = prop
-//        return self
-//    }
-//    
-//    @discardableResult
-//    public func colorByPoint(_ prop: Bool?) -> AAColumn {
-//        colorByPoint = prop
-//        return self
-//    }
-    
-    @discardableResult
-    public func dataLabels(_ prop: AADataLabels) -> AAColumn {
-        dataLabels = prop
-        return self
-    }
-    
-    @discardableResult
-    public func stacking(_ prop: String) -> AAColumn {
-        stacking = prop
-        return self
-    }
-    
-//    @discardableResult
-//    public func borderRadius(_ prop: Float?) -> AAColumn {
-//        borderRadius = prop
-//        return self
-//    }
-    
+
     @discardableResult
     public func yAxis(_ prop: Float?) -> AAColumn {
         yAxis = prop
         return self
     }
 
-//    @discardableResult
-//    public func pointWidth(_ prop: Float?) -> AAColumn {
-//        pointWidth = prop
-//        return self
-//    }
-//
-//    @discardableResult
-//    public func maxPointWidth(_ prop: Float?) -> AAColumn {
-//        maxPointWidth = prop
-//        return self
-//    }
-//
-//    @discardableResult
-//    public func minPointLength(_ prop: Float?) -> AAColumn {
-//        minPointLength = prop
-//        return self
-//    }
     
     public override init() {
         
@@ -501,11 +425,11 @@ public class AAPie: AASeries {
         return self
     }
     
-    @discardableResult
-    public func dataLabels(_ prop: AADataLabels) -> AAPie {
-        dataLabels = prop
-        return self
-    }
+//    @discardableResult
+//    public func dataLabels(_ prop: AADataLabels) -> AAPie {
+//        dataLabels = prop
+//        return self
+//    }
     
     @discardableResult
     public func size(_ prop: Float?) -> AAPie {
@@ -513,11 +437,11 @@ public class AAPie: AASeries {
         return self
     }
     
-    @discardableResult
-    public func allowPointSelect(_ prop: Bool?) -> AAPie {
-        allowPointSelect = prop
-        return self
-    }
+//    @discardableResult
+//    public func allowPointSelect(_ prop: Bool?) -> AAPie {
+//        allowPointSelect = prop
+//        return self
+//    }
     
     @discardableResult
     public func cursor(_ prop: String) -> AAPie {
