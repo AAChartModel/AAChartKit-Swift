@@ -487,7 +487,7 @@ public class AAPie: AASeries {
     public var startAngle: Float?
     public var endAngle: Float?
     public var depth: Float?
-    public var center: [Int]?
+    public var center: [Any]?
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AAPie {
@@ -551,6 +551,12 @@ public class AAPie: AASeries {
     
     @discardableResult
     public func center(_ prop: [Int]?) -> AAPie {
+        center = prop
+        return self
+    }
+    
+    @discardableResult
+    public func center(_ prop: [String]?) -> AAPie {
         center = prop
         return self
     }
