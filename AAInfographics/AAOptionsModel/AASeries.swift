@@ -61,6 +61,7 @@ public class AASeries: AAObject {
     public var pointWidth: Float?
     public var maxPointWidth: Float?
     public var minPointLength: Float?
+    public var tooltip: AATooltip?
 
     
     @discardableResult
@@ -228,6 +229,12 @@ public class AASeries: AAObject {
     @discardableResult
     public func minPointLength(_ prop: Float?) -> Self {
         minPointLength = prop
+        return self
+    }
+
+    @discardableResult
+    public func tooltip(_ prop: AATooltip?) -> Self {
+        tooltip = prop
         return self
     }
     
