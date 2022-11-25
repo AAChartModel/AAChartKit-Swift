@@ -46,6 +46,7 @@ public class AATooltip: AAObject {
     public var footerFormat: String?
     public var valueDecimals: Int?
     public var shared: Bool?
+    public var valuePrefix: String?
     public var valueSuffix: String?
     public var followPointer: Bool?
     public var followTouchMove: Bool?//https://api.highcharts.com.cn/highcharts#chart.panning
@@ -131,6 +132,12 @@ public class AATooltip: AAObject {
     @discardableResult
     public func shared(_ prop: Bool?) -> AATooltip {
         shared = prop
+        return self
+    }
+
+    @discardableResult
+    public func valuePrefix(_ prop: String?) -> AATooltip {
+        valuePrefix = prop
         return self
     }
     
