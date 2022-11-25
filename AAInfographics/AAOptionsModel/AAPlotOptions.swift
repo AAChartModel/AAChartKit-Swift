@@ -137,6 +137,10 @@ public class AAColumn: AASeries {
     public var color: String?
     public var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. default：true.
     public var yAxis: Float?
+    public var borderRadiusTopLeft: Any?
+    public var borderRadiusTopRight: Any?
+    public var borderRadiusBottomLeft: Any?
+    public var borderRadiusBottomRight: Any?
     
     @discardableResult
     public func name(_ prop: String) -> Self {
@@ -165,6 +169,30 @@ public class AAColumn: AASeries {
     @discardableResult
     public func yAxis(_ prop: Float?) -> Self {
         yAxis = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderRadiusTopLeft(_ prop: Any?) -> Self {
+        borderRadiusTopLeft = prop
+        return self
+    }
+     
+    @discardableResult
+    public func borderRadiusTopRight(_ prop: Any?) -> Self {
+        borderRadiusTopRight = prop
+        return self
+    }
+     
+    @discardableResult
+    public func borderRadiusBottomLeft(_ prop: Any?) -> Self {
+        borderRadiusBottomLeft = prop
+        return self
+    }
+     
+    @discardableResult
+    public func borderRadiusBottomRight(_ prop: Any?) -> Self {
+        borderRadiusBottomRight = prop
         return self
     }
 
