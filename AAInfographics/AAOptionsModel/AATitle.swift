@@ -40,6 +40,7 @@ public class AATitle: AAObject {
     public var x: Float?
     public var y: Float?
     public var userHTML: Bool?
+    public var floating: Bool?
     
     @discardableResult
     public func text(_ prop: String?) -> AATitle {
@@ -80,6 +81,12 @@ public class AATitle: AAObject {
     @discardableResult
     public func userHTML(_ prop: Bool?) -> AATitle {
         userHTML = prop
+        return self
+    }
+
+    @discardableResult
+    public func floating(_ prop: Bool?) -> AATitle {
+        floating = prop
         return self
     }
     
