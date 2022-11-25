@@ -80,7 +80,7 @@ static func basicPieChart() -> AAOptions {
         .plotOptions(AAPlotOptions()
             .pie(AAPie()
                 .allowPointSelect(true)
-//                .cursor(.pointer)
+                .cursor("pointer")
                 .dataLabels(AADataLabels()
                     .enabled(true)
                     .format("<b>{point.name}</b>: {point.percentage:.1f} %")
@@ -166,7 +166,7 @@ static func basicPieChart() -> AAOptions {
             .plotOptions(AAPlotOptions()
                 .pie(AAPie()
                     .allowPointSelect(true)
-//                    .cursor(.pointer)
+                    .cursor("pointer")
                     .dataLabels(AADataLabels()
                         .enabled(false))
                     .showInLegend(true)))
@@ -340,7 +340,7 @@ static func basicPieChart() -> AAOptions {
             .plotOptions(AAPlotOptions()
                 .pie(AAPie()
                     .allowPointSelect(true)
-//                    .cursor(.pointer)
+                    .cursor("pointer")
                     .dataLabels(AADataLabels()
                         .enabled(true)
                         .format("<b>{point.name}</b>: {point.percentage:.1f} %")
@@ -354,12 +354,10 @@ static func basicPieChart() -> AAOptions {
                         ["Firefox", 45.0],
                         ["IE", 26.8],
                         [
-                            "Chrome",
-                            12.8,
-//                            AASliced()
-//                                .sliced(true),
-//                            AASelected()
-//                                .selected(true)
+                           "name": "Chrome",
+                            "y": 12.8,
+                            "sliced": true,
+                            "selected": true
                         ],
                         ["Safari", 8.5],
                         ["Opera", 6.2],
@@ -431,7 +429,7 @@ static func basicPieChart() -> AAOptions {
             .plotOptions(AAPlotOptions()
                 .pie(AAPie()
                     .allowPointSelect(true)
-//                    .cursor(.pointer)
+                    .cursor("pointer")
                     .dataLabels(AADataLabels()
                         .enabled(true)
                         .format("<b>{point.name}</b>: {point.percentage:.1f} %")
@@ -444,12 +442,10 @@ static func basicPieChart() -> AAOptions {
                         ["Firefox", 45.0],
                         ["IE", 26.8],
                         [
-                            "Chrome",
-                            12.8,
-//                            AASliced()
-//                                .sliced(true),
-//                            AASelected()
-//                                .selected(true)
+                            "name": "Chrome",
+                            "y": 12.8,
+                            "sliced": true,
+                            "selected": true
                         ],
                         ["Safari", 8.5],
                         ["Opera", 6.2],
@@ -540,7 +536,7 @@ static func basicPieChart() -> AAOptions {
 //            .plotOptions(AAPlotOptions()
 //                .pie(AAPie()
 //                    .allowPointSelect(true)
-////                    .cursor(.pointer)
+////                    .cursor("pointer")
 //                    .dataLabels(AADataLabels()
 //                        .enabled(true)
 //                        .format("<b>{point.name}</b>: {point.percentage:.1f} %")
@@ -563,14 +559,11 @@ static func basicPieChart() -> AAOptions {
                         ["Firefox", 45.0, "http://bbs.hcharts.cn"],
                         ["IE", 26.8],
                         [
-                            "Chrome",
-                            12.8,
-//                            AASliced()
-//                                .sliced(true),
-//                            AASelected()
-//                                .selected(true),
-//                            AAURL()
-//                                .url("http://www.hcharts.cn")
+                            "name": "Chrome",
+                            "y": 12.8,
+                            "sliced": true,
+                            "selected": true,
+                            "url": "http://www.hcharts.cn"
                         ],
                         ["Safari", 8.5],
                         ["Opera", 6.2],
