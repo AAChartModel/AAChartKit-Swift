@@ -28,6 +28,7 @@ class JSFunctionForAAChartEventsVC: AABaseChartVC {
         case 6: return automaticallyHideTooltipAfterItIsShown() //浮动提示框显示一段时间后,自动隐藏
         case 7: return dynamicHeightGridLineAreaChart() //动态高度网格线的区域填充图
         case 8: return customizeYAxisPlotLinesLabelBeSpecialStyle() //自定义 Y 轴轴线上面的标签文字特殊样式
+        case 9: return configureECGStyleChart() //配置心电图样式的图表
 
         default: return nil
         }
@@ -1145,6 +1146,96 @@ func customizeYAxisPlotLinesLabelBeSpecialStyle() -> AAOptions {
         .series([
             AASeriesElement()
                 .data([2, 5, 2, 3, 6])
+        ])
+}
+
+//https://stackoverflow.com/questions/47392848/set-ecg-paper-like-grid-intervals-highcharts-js
+//- (AAOptions *)configureECGStyleChart {
+//    AAXAxis *axesOptions = AAXAxis.new
+//            .tickIntervalSet(@0.5)
+//            .minorTicksSet(@true)
+//            .minorTickIntervalSet(@0.1)
+//            .gridLineWidthSet(@1)
+//            .gridLineColorSet(@"red");
+//
+//    return AAOptions.new
+//            .titleSet(AATitle.new
+//                    .textSet(@"ECG Paper Style Chart"))
+//            .chartSet(AAChart.new
+//                    .eventsSet(AAChartEvents.new
+//                            .renderSet(@AAJSFunc((function () {
+//                                const chart = this;
+//                                const axes = chart.axes;
+//                                let showMinorTicks = true;
+//
+//                                // find if minor ticks are present on both axes
+//                                axes.forEach((a) => {
+//                                        if (Object.keys(a.minorTicks).length === 0) {
+//                                            showMinorTicks = false;
+//                                        }
+//                                });
+//
+//                                // hide/show ticks
+//                                axes.forEach((a) => {
+//                                        for (var key in a.minorTicks) {
+//                                            var mt = a.minorTicks[key].gridLine;
+//                                            showMinorTicks ? mt.show() : mt.hide();
+//                                        }
+//                                });
+//                            }))))
+//            )
+//            .xAxisSet(axesOptions)
+//            .yAxisSet((id)axesOptions)
+//            .seriesSet(@[
+//                    AASeriesElement.new
+//                            .dataSet(@[@1, @3, @4, @6, @1, @2, @2, @6, @1, @1, @1, @4, @6])
+//            ]);
+//
+//}
+
+//https://stackoverflow.com/questions/47392848/set-ecg-paper-like-grid-intervals-highcharts-js
+func configureECGStyleChart() -> AAOptions {
+    return AAOptions()
+        .title(AATitle()
+            .text("ECG Paper Style Chart"))
+        .chart(AAChart()
+            .events(AAChartEvents()
+                .render("""
+                    function () {
+                        const chart = this;
+                        const axes = chart.axes;
+                        let showMinorTicks = true;
+
+                        axes.forEach((a) => {
+                                if (Object.keys(a.minorTicks).length === 0) {
+                                    showMinorTicks = false;
+                                }
+                        });
+
+                        axes.forEach((a) => {
+                                for (var key in a.minorTicks) {
+                                    var mt = a.minorTicks[key].gridLine;
+                                    showMinorTicks ? mt.show() : mt.hide();
+                                }
+                        });
+                    }
+                    """
+                     )))
+        .xAxis(AAXAxis()
+            .tickInterval(0.5)
+            .minorTicks(true)
+            .minorTickInterval(0.1)
+            .gridLineWidth(1)
+            .gridLineColor("#ff0000"))
+        .yAxis(AAYAxis()
+            .tickInterval(0.5)
+            .minorTicks(true)
+            .minorTickInterval(0.1)
+            .gridLineWidth(1)
+            .gridLineColor("#ff0000"))
+        .series([
+            AASeriesElement()
+                .data([1, 3, 4, 6, 1, 2, 2, 6, 1, 1, 1, 4, 6])
         ])
 }
 
