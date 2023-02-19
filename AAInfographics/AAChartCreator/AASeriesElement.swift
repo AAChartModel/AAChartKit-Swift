@@ -74,6 +74,7 @@ public class AASeriesElement: AAObject {
     public var reversed: Bool?             //Only useful for pyramid chart and funnel chart
     public var id: String?
     public var connectNulls: Bool?         //Whether to connect a graph line across null points. default value：false.
+    public var enabledCrosshairs: Bool?
 
     
     @discardableResult
@@ -307,6 +308,12 @@ public class AASeriesElement: AAObject {
     @discardableResult
     public func enableMouseTracking(_ prop: Bool) -> AASeriesElement {
         enableMouseTracking = prop
+        return self
+    }
+    
+    @discardableResult
+    public func enabledCrosshairs(_ prop: Bool) -> AASeriesElement {
+        enabledCrosshairs = prop
         return self
     }
     
