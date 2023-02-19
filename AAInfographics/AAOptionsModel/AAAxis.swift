@@ -59,6 +59,7 @@ public class AAAxis: AAObject {
     public var minPadding: Float? //Padding of the min value relative to the length of the axis. A padding of 0.05 will make a 100px axis 5px longer. This is useful when you don't want the lowest data value to appear on the edge of the plot area.  Defaults to 0.05
     public var minRange: Int?
     public var minTickInterval: Int? //The minimum tick interval allowed in axis values. For example on zooming in on an axis with daily data, this can be used to prevent the axis from showing hours. Defaults to the closest distance between two points on the axis.
+    public var minorTicks: Bool?
     public var minorGridLineColor: String? //Color of the minor, secondary grid lines.
     public var minorGridLineDashStyle: String? //The dash or dot style of the minor grid lines.
     public var minorGridLineWidth: Float? //Width of the minor, secondary grid lines.
@@ -198,6 +199,12 @@ public class AAAxis: AAObject {
     @discardableResult
     public func minRange(_ prop: Int?) -> Self {
         minRange = prop
+        return self
+    }
+    
+    @discardableResult
+    public func minorTicks(_ prop: Bool?) -> Self {
+        minorTicks = prop
         return self
     }
     
