@@ -591,8 +591,11 @@ extension AAChartView {
             forName: UIDevice.orientationDidChangeNotification,
             object: nil,
             queue: nil) { [weak self] _ in
-                self?.handleDeviceOrientationChangeEventWithAnimation(animation)
-        }
+                //延迟0.1秒执行，防止屏幕旋转时，获取到的屏幕宽高不正确
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    self?.handleDeviceOrientationChangeEventWithAnimation(animation)
+                }
+            }
     }
     
     private func handleDeviceOrientationChangeEventWithAnimation(_ animation: AAAnimation) {
