@@ -293,11 +293,18 @@ public class AAResetZoomButton: AAObject {
 }
 
 public class AAChartEvents: AAObject {
+    public var click: String?
     public var load: String?
     public var redraw: String?
     public var render: String?
     public var selection: String?
 
+
+    @discardableResult
+    public func click(_ prop: String?) -> AAChartEvents {
+        click = prop?.aa_toPureJSString()
+        return self
+    }
     
     @discardableResult
     public func load(_ prop: String?) -> AAChartEvents {
