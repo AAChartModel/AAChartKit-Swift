@@ -398,6 +398,8 @@ class MainVC: UIViewController {
                 "dynamicHeightGridLineAreaChart---动态高度的网格线区域填充图",
                 "customizeYAxisPlotLinesLabelBeSpecialStyle---自定义 Y 轴轴线上面的标签文字特殊样式",
                 "configureECGStyleChart---配置心电图样式的图表",
+                "configureTheSizeOfTheSliceOfDonutAndPieChart---配置环形图和饼图的扇区大小",
+                "configurePlotBackgroundClickEvent---配置绘图区的点击事件",
             ],
             /*JS Function For AAOptions*/
             [
