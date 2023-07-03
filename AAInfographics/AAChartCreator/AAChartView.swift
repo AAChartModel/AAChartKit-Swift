@@ -32,9 +32,6 @@
 
 import WebKit
 
-let kUserContentMessageNameClick = "click"
-let kUserContentMessageNameMouseOver = "mouseover"
-
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 @objc public protocol AAChartViewDelegate: NSObjectProtocol {
     @objc optional func aaChartViewDidFinishLoad(_ aaChartView: AAChartView)
@@ -79,6 +76,9 @@ public class AALeakAvoider : NSObject, WKScriptMessageHandler {
 
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AAChartView: WKWebView {
+    let kUserContentMessageNameClick = "click"
+    let kUserContentMessageNameMouseOver = "mouseover"
+    
     private var clickEventEnabled: Bool?
     private var touchEventEnabled: Bool?
     
