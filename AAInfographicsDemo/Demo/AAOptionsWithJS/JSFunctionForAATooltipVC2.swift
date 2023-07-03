@@ -340,8 +340,8 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
                         </div>
                     `;
                 }
-                """)
-                .positioner("""
+                """#)
+                .positioner(#"""
                 function(labelWidth, labelHeight) {
                     const chart = this.chart,
                     point = chart.hoverPoint,
