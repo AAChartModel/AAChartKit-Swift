@@ -70,7 +70,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             .dataLabelsEnabled(false)//是否显示数字
             .legendEnabled(false)
             .colorsTheme(colorsArr!)
-            .tooltipEnabled(false)
+            .tooltipEnabled(true)
             .borderRadius(3)
             .inverted(true)
             .yAxisReversed(true)
@@ -113,7 +113,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             .markerRadius(4)//折线连接点半径长度,为0时相当于没有折线连接点
             .markerSymbolStyle(.innerBlank)
             .legendEnabled(false)
-            .tooltipEnabled(false)
+            .tooltipEnabled(true)
             .series([
                 AASeriesElement()
                     .color("#fe117c")
@@ -134,7 +134,32 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
             AASeriesElement()
                 .data(configureSeriesDataArray())
             ])
+        
+        //https://github.com/AAChartModel/AAChartKit-Swift/issues/434
+        let defaultSelectedIndex = moveOverEventMessage.index ?? 0
+        
+        let jsFunc = ("""
+                     function syncRefreshTooltip() {
+                            const points = [];
+                            const chart = aaGlobalChart;
+                            const series = chart.series;
+                            const length = series.length;
+                                       
+                            for (let i = 0; i < length; i++) {
+                                const pointElement = series[i].data[\(defaultSelectedIndex)];
+                                pointElement.onMouseOver();
+                                points.push(pointElement);
+                            }
+                            chart.xAxis[0].drawCrosshair(null, points[0]);
+                            chart.tooltip.refresh(points);
+                     }
+                     syncRefreshTooltip();
+""")
+        
+        //图表加载完成后调用,避免WebView还没有获得JavaScript上下文,致使调用失败
+        aaChartView2.evaluateJavaScript(jsFunc)
     }
+    
     
     private func getRandomNumbersArr(numbers: Int) -> [Float] {
         let randomNumArr = NSMutableArray()
