@@ -42,7 +42,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case  0: return customZIndexForChartSeriesElement()
+        case  0: return configureLegendStyle()
         case  1: return simpleGaugeChart()
         case  2: return gaugeChartWithPlotBand()
         case  3: return configureChartWithBackgroundImage()
@@ -3342,94 +3342,6 @@ function () {
         aaOptions.yAxis?.gridLineDashStyle(AAChartLineDashStyleType.longDash)//设置Y轴的网格线样式为 AAChartLineDashStyleTypeLongDash
         return aaOptions
     }
-
-    //自定义图表 AASeriesElement 的 zIndex 属性
-    //红色线条zindex=4,蓝色线条zindex=3，水平轴线(灰色的细线)zindex=2，红色线条下的填充部分(与红色线条独立，但使用同一个数据)zindex=1
-    private func customZIndexForChartSeriesElement() -> AAOptions {
-        let aaOptions = AAOptions()
-            .title(AATitle()
-                .text("Custom zIndex for chart series element"))
-            .xAxis(AAXAxis()
-                .categories([
-                    "January", "February", "March", "April", "May", "June",
-                    "July", "August", "September", "October", "November", "December"
-                ])
-                    .gridLineWidth(3)
-                    .gridLineColor(AAColor.gray)
-                    .gridLineDashStyle(.solid)
-                    .gridZIndex(2 + 3))
-            .yAxis(AAYAxis()
-                .min(0)
-                .title(AATitle()
-                    .text("Total fruit consumption")))
-            .legend(AALegend()
-                .enabled(true))
-            .series([
-                AASeriesElement()
-                    .type(.area)
-                    .name("Red Area")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .lineWidth(0)
-                    .fillColor(AAGradientColor.linearGradient(direction: .toBottom, startColor: "rgba(255,0,0,1)", endColor: "rgba(255,0,0,0)"))
-                    .zIndex(1),
-                AASeriesElement()
-                    .type(.line)
-                    .name("Red Line")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    .color(AAColor.red)
-                    .zIndex(4 + 10),
-                AASeriesElement()
-                    .type(.line)
-                    .name("Blue Line")
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    .color(AAColor.blue)
-                    .zIndex(3 + 11),
-                
-            ])
-        return aaOptions
-    }
-
-//Highcharts.chart('container', {
-//	chart: {
-//		type: 'area'
-//	},
-//	title: {
-//		text: 'A gridZIndex of 4 renders the grid lines above the graph'
-//	},
-//	xAxis: {
-//		categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-//		gridLineWidth: 1,
-//		gridZIndex: 4
-//	},
-//	series: [{
-//		data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-//	}]
-//});
-    
-    //将上面的代码转换成 Swift 代码
-    private func customZIndexForChartSeriesElement2() -> AAOptions {
-        let aaOptions = AAOptions()
-            .title(AATitle()
-                .text("A gridZIndex of 4 renders the grid lines above the graph"))
-            .xAxis(AAXAxis()
-                .categories([
-                    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-                ])
-                    .gridLineWidth(1)
-                    .gridZIndex(4))
-            .series([
-                AASeriesElement()
-                    .type(.area)
-                    .data([29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]),
-            ])
-        return aaOptions
-    }
-
-    
-
-
 }
-    
-
 
 
