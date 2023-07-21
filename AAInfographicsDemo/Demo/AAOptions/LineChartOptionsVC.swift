@@ -228,7 +228,9 @@ class LineChartOptionsVC: AABaseChartVC {
                                 .pointStart(1980)
                                 .pointInterval(5)
 //                                .lineWidth(4)
-                        ))
+                        )
+                        .spline(AASpline()
+                              .lineWidth(18)))
                 .colors([
                     "#FF0200",
                     "#7CB4EC",
@@ -287,7 +289,12 @@ class LineChartOptionsVC: AABaseChartVC {
     
     private func fancyLineChart() -> AAOptions {
        let aaOptions = fancySplineChart()
+        
         aaOptions.chart?.type(.line)
+        
+        aaOptions.plotOptions?
+            .line(AALine()
+                .lineWidth(9))
         
         return aaOptions
     }
