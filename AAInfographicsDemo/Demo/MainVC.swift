@@ -93,7 +93,9 @@ class MainVC: UIViewController {
             "Official Samples For Area Chart---折线📈填充图官方示例",
             "Official Samples For Bar or Column Chart---条形图或柱状图📊官方示例",
             "Official Samples For Pie Chart---饼图🍕官方示例",
-            "LineChartOptions--- 通过Options绘制折线图📈图"
+            "LineChartOptions--- 通过Options绘制折线📈图",
+            "AreaChartOptions--- 通过Options绘制折线填充图",
+
         ]
         
         chartTypeTitleArr = [
@@ -472,6 +474,15 @@ class MainVC: UIViewController {
                 "fancyLineChartWithInnerBlankMarkerSymbol---",
                 "fancySplineChartWithBorderBlankMarkerSymbol---",
                 "fancyLineChartWithBorderBlankMarkerSymbol---",
+            ],
+            
+            [
+                "configureComplicatedCustomAreasplineChart---复杂自定义曲线填充图 1",
+                "configureComplicatedCustomAreasplineChart2---复杂自定义曲线填充图 2",
+                "configureComplicatedCustomAreasplineChart3---复杂自定义曲线填充图 3",
+                "configureComplicatedCustomAreaChart---复杂自定义折线填充图 1",
+                "configureComplicatedCustomAreaChart2---复杂自定义折线填充图 2",
+                "configureComplicatedCustomAreaChart3---复杂自定义折线填充图 3",
             ],
 
 
@@ -928,9 +939,17 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
+            
         case 24:
             /*Line Chart Options*/
             let vc = LineChartOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 25:
+            /*Line Chart Options*/
+            let vc = AreaChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
