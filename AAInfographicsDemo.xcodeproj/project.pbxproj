@@ -33,6 +33,7 @@
 		44EB70A722BCB606008FECE4 /* JSFunctionForAATooltipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EB70A622BCB606008FECE4 /* JSFunctionForAATooltipVC.swift */; };
 		58603080BAE839A9CF7C8F73 /* BarOrColumnChartOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603443E4FDDF32FE4E4F94 /* BarOrColumnChartOptionsComposer.swift */; };
 		58603456B9A269D72A0F9656 /* PieChartOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603EE90A0888618D985466 /* PieChartOptionsComposer.swift */; };
+		586035AD1F2AA0AF6BFBDA7D /* LineChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860320C2A4B0800D56FF4E0 /* LineChartOptionsVC.swift */; };
 		5860368820ADD4DC745A2997 /* AreaChartOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860339F7333DE51631C871D /* AreaChartOptionsComposer.swift */; };
 		84086B1628E44B19006BD30D /* JSFunctionForAALegendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B1528E44B19006BD30D /* JSFunctionForAALegendVC.swift */; };
 		84086B1B28E45127006BD30D /* JSFunctionForAAAxisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */; };
@@ -195,6 +196,7 @@
 		4490BB372388E1AE005B9238 /* AAInfographicsDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AAInfographicsDemo.entitlements; sourceTree = "<group>"; };
 		449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingUpdateDataVC.swift; sourceTree = "<group>"; };
 		44EB70A622BCB606008FECE4 /* JSFunctionForAATooltipVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAATooltipVC.swift; sourceTree = "<group>"; };
+		5860320C2A4B0800D56FF4E0 /* LineChartOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartOptionsVC.swift; sourceTree = "<group>"; };
 		5860339874E0BA3EA9A9BA0D /* AAPie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPie.swift; sourceTree = "<group>"; };
 		5860339F7333DE51631C871D /* AreaChartOptionsComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaChartOptionsComposer.swift; sourceTree = "<group>"; };
 		58603443E4FDDF32FE4E4F94 /* BarOrColumnChartOptionsComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarOrColumnChartOptionsComposer.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */,
+				5860320C2A4B0800D56FF4E0 /* LineChartOptionsVC.swift */,
 			);
 			path = AAOptions;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				5860368820ADD4DC745A2997 /* AreaChartOptionsComposer.swift in Sources */,
 				58603080BAE839A9CF7C8F73 /* BarOrColumnChartOptionsComposer.swift in Sources */,
 				58603456B9A269D72A0F9656 /* PieChartOptionsComposer.swift in Sources */,
+				586035AD1F2AA0AF6BFBDA7D /* LineChartOptionsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

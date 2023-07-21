@@ -93,6 +93,7 @@ class MainVC: UIViewController {
             "Official Samples For Area Chart---折线📈填充图官方示例",
             "Official Samples For Bar or Column Chart---条形图或柱状图📊官方示例",
             "Official Samples For Pie Chart---饼图🍕官方示例",
+            "LineChartOptions--- 通过Options绘制折线图📈图"
         ]
         
         chartTypeTitleArr = [
@@ -461,6 +462,12 @@ class MainVC: UIViewController {
                 "basicPieChartWithGradientColor2---带有渐变色的基本饼状图",
                 "basicPieChartWithMonochromeColor---带有单色的基本饼状图",
                 "customPieChartTitlePosition---自定义饼状图标题位置",
+            ],
+            // case 0: return fancySplineChart()
+//            case 1: return fancyLineChart()
+            [
+                "fancySplineChart---花式曲线图",
+                "fancyLineChart---花式折线图",
             ],
 
 
@@ -914,6 +921,12 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 23:
             /*Official Samples For Pie Chart*/
             let vc = OfficialPieChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+        case 24:
+            /*Line Chart Options*/
+            let vc = LineChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
