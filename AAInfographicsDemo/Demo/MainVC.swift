@@ -468,6 +468,10 @@ class MainVC: UIViewController {
             [
                 "fancySplineChart---花式曲线图",
                 "fancyLineChart---花式折线图",
+                "fancySplineChartWithInnerBlankMarkerSymbol---",
+                "fancyLineChartWithInnerBlankMarkerSymbol---",
+                "fancySplineChartWithBorderBlankMarkerSymbol---",
+                "fancyLineChartWithBorderBlankMarkerSymbol---",
             ],
 
 
