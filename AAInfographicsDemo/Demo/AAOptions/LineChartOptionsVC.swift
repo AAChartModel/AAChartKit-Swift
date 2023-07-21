@@ -18,7 +18,10 @@ class LineChartOptionsVC: AABaseChartVC {
         switch selectedIndex {
         case 0: return fancySplineChart()
         case 1: return fancyLineChart()
-
+        case 2: return fancySplineChartWithInnerBlankMarkerSymbol()
+        case 3: return fancyLineChartWithInnerBlankMarkerSymbol()
+        case 4: return fancySplineChartWithBorderBlankMarkerSymbol()
+        case 5: return fancyLineChartWithBorderBlankMarkerSymbol()
 
         default:
             return AAOptions()
@@ -294,10 +297,81 @@ class LineChartOptionsVC: AABaseChartVC {
         
         aaOptions.plotOptions?
             .line(AALine()
-                .lineWidth(9))
+                .lineWidth(18))
         
         return aaOptions
     }
 
-
+    private func fancySplineChartWithInnerBlankMarkerSymbol() -> AAOptions {
+       let aaOptions = fancySplineChart()
+        
+        aaOptions.chart?.type(.spline)
+        
+        aaOptions.plotOptions(AAPlotOptions()
+            .series(AASeries()
+                    .marker(AAMarker()
+                            .enabled(true)
+                            .radius(30)
+                            .symbol(.circle)
+                            .fillColor("#1b1b1b")
+                            .lineWidth(8)
+                            .lineColor("")
+                            )
+                    .pointStart(1980)
+                    .pointInterval(4)
+            )
+            .spline(AASpline()
+                  .lineWidth(8)))
+        
+        return aaOptions
+    }
+    
+    private func fancyLineChartWithInnerBlankMarkerSymbol() -> AAOptions {
+       let aaOptions = fancySplineChartWithInnerBlankMarkerSymbol()
+        
+        aaOptions.chart?.type(.line)
+        
+        aaOptions.plotOptions?
+            .line(AALine()
+                .lineWidth(8))
+        
+        return aaOptions
+    }
+    
+    private func fancySplineChartWithBorderBlankMarkerSymbol() -> AAOptions {
+       let aaOptions = fancySplineChart()
+        
+        aaOptions.chart?.type(.spline)
+        
+        aaOptions.plotOptions(AAPlotOptions()
+            .series(AASeries()
+                    .marker(AAMarker()
+                            .enabled(true)
+                            .radius(30)
+                            .symbol(.circle)
+                            .fillColor("")
+                            .lineWidth(8)
+                            .lineColor(AAColor.white)
+                            )
+                    .pointStart(1980)
+                    .pointInterval(4)
+            )
+            .spline(AASpline()
+                  .lineWidth(8)))
+        
+        return aaOptions
+    }
+    
+    private func fancyLineChartWithBorderBlankMarkerSymbol() -> AAOptions {
+       let aaOptions = fancySplineChartWithBorderBlankMarkerSymbol()
+        
+        aaOptions.chart?.type(.line)
+        
+        aaOptions.plotOptions?
+            .line(AALine()
+                .lineWidth(8))
+        
+        return aaOptions
+    }
+    
     }
