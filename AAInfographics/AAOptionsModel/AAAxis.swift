@@ -91,9 +91,12 @@ public class AAAxis: AAObject {
     public var tickInterval: Float? // Number of ticks on the X or Y axis (set the X or Y axis content every few points:
     public var tickmarkPlacement: String? // This parameter is only valid for the classification axis. When the value is on, the tick mark will be displayed above the classification; when the value is between, the tick mark will be displayed between the two classifications. When tickInterval is 1, the default is between, otherwise it is on. The default is: null.
     public var tickWidth: Float? // The width of the axis tick marks. When set to 0, tick marks are not displayed.
-    public var tickLength: Float? /// The length of the axis tick marks. The default is: 10.
+    public var tickLength: Float? // The length of the axis tick marks. The default is: 10.
     public var tickPosition: String? // Position of the tick line relative to the axis line. Available values ​​are "inside" and "outside", which represent the inside and outside of the axis line, respectively. The default is: "outside".
     public var tickPositions: [Any]? // Custom XOrY-axis coordinates
+    public var height: Any? //number | string
+    public var top: Any? //number | string
+
     
     @discardableResult
     public func allowDecimals(_ prop: Bool?) -> Self {
@@ -380,6 +383,18 @@ public class AAAxis: AAObject {
     @discardableResult
     public func tickPositions(_ prop: [Any]?) -> Self {
         tickPositions = prop
+        return self
+    }
+    
+    @discardableResult
+    public func height(_ prop: Any?) -> Self {
+        height = prop
+        return self
+    }
+    
+    @discardableResult
+    public func top(_ prop: Any?) -> Self {
+        top = prop
         return self
     }
     
