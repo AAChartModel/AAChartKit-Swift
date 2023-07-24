@@ -228,10 +228,7 @@ class LineChartOptionsVC: AABaseChartVC {
                                         .symbol(.circle))
                                 .pointStart(1980)
                                 .pointInterval(5)
-//                                .lineWidth(4)
-                        )
-                        .spline(AASpline()
-                              .lineWidth(8)))
+                                .lineWidth(5)))
                 .colors([
                     "#FF0200",
                     "#7CB4EC",
@@ -292,11 +289,7 @@ class LineChartOptionsVC: AABaseChartVC {
        let aaOptions = fancySplineChart()
         
         aaOptions.chart?.type(.line)
-        
-        aaOptions.plotOptions?
-            .line(AALine()
-                .lineWidth(8))
-        
+ 
         return aaOptions
     }
 
@@ -305,21 +298,15 @@ class LineChartOptionsVC: AABaseChartVC {
         
         aaOptions.chart?.type(.spline)
         
-        aaOptions.plotOptions(AAPlotOptions()
-            .series(AASeries()
-                    .marker(AAMarker()
-                            .enabled(true)
-                            .radius(10)
-                            .symbol(.circle)
-                            .fillColor("#1b1b1b")
-                            .lineWidth(3)
-                            .lineColor("")
-                            )
-                    .pointStart(1980)
-                    .pointInterval(4)
+        aaOptions.plotOptions?.series?
+            .marker(AAMarker()
+                .enabled(true)
+                .radius(9)
+                .symbol(.circle)
+                .fillColor("#1b1b1b")
+                .lineWidth(5)
+                .lineColor("")
             )
-            .spline(AASpline()
-                  .lineWidth(3)))
         
         return aaOptions
     }
@@ -329,10 +316,6 @@ class LineChartOptionsVC: AABaseChartVC {
         
         aaOptions.chart?.type(.line)
         
-        aaOptions.plotOptions?
-            .line(AALine()
-                .lineWidth(3))
-        
         return aaOptions
     }
     
@@ -341,21 +324,15 @@ class LineChartOptionsVC: AABaseChartVC {
         
         aaOptions.chart?.type(.spline)
         
-        aaOptions.plotOptions(AAPlotOptions()
-            .series(AASeries()
-                    .marker(AAMarker()
-                            .enabled(true)
-                            .radius(10)
-                            .symbol(.circle)
-                            .fillColor("")
-                            .lineWidth(3)
-                            .lineColor(AAColor.white)
-                            )
-                    .pointStart(1980)
-                    .pointInterval(4)
-            )
-            .spline(AASpline()
-                  .lineWidth(3)))
+        aaOptions.plotOptions?.series?
+            .marker(AAMarker()
+                .enabled(true)
+                .radius(9)
+                .symbol(.circle)
+                .fillColor("")
+                .lineWidth(5)
+                .lineColor(AAColor.white)
+                )
         
         return aaOptions
     }
@@ -364,10 +341,6 @@ class LineChartOptionsVC: AABaseChartVC {
        let aaOptions = fancySplineChartWithBorderBlankMarkerSymbol()
         
         aaOptions.chart?.type(.line)
-        
-        aaOptions.plotOptions?
-            .line(AALine()
-                .lineWidth(3))
         
         return aaOptions
     }
