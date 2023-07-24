@@ -173,7 +173,6 @@ public class AAArea: AASeries {
     public var negativeFillColor: String?
     public var trackByArea: Bool?
     public var lineColor: String?
-    public var lineWidth: Float?
 
     @discardableResult
     public func fillColor(_ prop: String) -> Self {
@@ -202,12 +201,6 @@ public class AAArea: AASeries {
     @discardableResult
     public func lineColor(_ prop: String) -> Self {
         lineColor = prop
-        return self
-    }
-
-    @discardableResult
-    public func lineWidth(_ prop: Float) -> Self {
-        lineWidth = prop
         return self
     }
 

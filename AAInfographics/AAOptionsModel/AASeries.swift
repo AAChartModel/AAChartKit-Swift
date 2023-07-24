@@ -57,15 +57,17 @@ public class AASeries: AAObject {
     public var maxPointWidth: Float?
     public var minPointLength: Float?
     public var tooltip: AATooltip?
+    public var lineWidth: Float?
+    
 
     @discardableResult
-    public func borderColor(_ prop: String) -> Self {
+    public func borderColor(_ prop: String?) -> Self {
         borderColor = prop
         return self
     }
     
     @discardableResult
-    public func borderWidth(_ prop: Float) -> Self {
+    public func borderWidth(_ prop: Float?) -> Self {
         borderWidth = prop
         return self
     }
@@ -205,6 +207,12 @@ public class AASeries: AAObject {
     @discardableResult
     public func tooltip(_ prop: AATooltip?) -> Self {
         tooltip = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineWidth(_ prop: Float?) -> Self {
+        lineWidth = prop
         return self
     }
     
