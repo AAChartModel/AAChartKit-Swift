@@ -25,6 +25,9 @@ class AreaChartOptionsVC: AABaseChartVC {
         case 3: return configureComplicatedCustomAreaChart()//复杂自定义折线填充图 1
         case 4: return configureComplicatedCustomAreaChart2()//复杂自定义折线填充图 2
         case 5: return configureComplicatedCustomAreaChart3()//复杂自定义折线填充图 3
+        case 6: return configureComplicatedCustomStepAreaChart()//复杂自定义阶梯折线填充图 1
+        case 7: return configureComplicatedCustomStepAreaChart2()//复杂自定义阶梯折线填充图 2
+        case 8: return configureComplicatedCustomStepAreaChart3()//复杂自定义阶梯折线填充图 3
 
         default:
             return AAOptions()
@@ -463,6 +466,39 @@ class AreaChartOptionsVC: AABaseChartVC {
         let aaOptions = configureComplicatedCustomAreasplineChart3()
         
         aaOptions.chart?.type(.area)
+        
+        return aaOptions
+    }
+
+    private func configureComplicatedCustomStepAreaChart() -> AAOptions {
+        let aaOptions = configureComplicatedCustomAreaChart()
+    
+        aaOptions.series?.forEach({ seriesElement in
+            let aaSeriesElement = seriesElement as! AASeriesElement
+            aaSeriesElement.step(true)
+        })
+
+        return aaOptions
+    }
+
+    private func configureComplicatedCustomStepAreaChart2() -> AAOptions {
+        let aaOptions = configureComplicatedCustomAreaChart2()
+
+        aaOptions.series?.forEach({ seriesElement in
+            let aaSeriesElement = seriesElement as! AASeriesElement
+            aaSeriesElement.step(true)
+        })
+
+        return aaOptions
+    }
+
+    private func configureComplicatedCustomStepAreaChart3() -> AAOptions {
+        let aaOptions = configureComplicatedCustomAreaChart3()
+
+        aaOptions.series?.forEach({ seriesElement in
+            let aaSeriesElement = seriesElement as! AASeriesElement
+            aaSeriesElement.step(true)
+        })
         
         return aaOptions
     }
