@@ -93,8 +93,9 @@ class MainVC: UIViewController {
             "Official Samples For Area Chart---折线📈填充图官方示例",
             "Official Samples For Bar or Column Chart---条形图或柱状图📊官方示例",
             "Official Samples For Pie Chart---饼图🍕官方示例",
-            "LineChartOptions--- 通过Options绘制折线📈图",
-            "AreaChartOptions--- 通过Options绘制折线填充图",
+            "LineChartOptions--- 通过 Options 绘制折线📈图",
+            "AreaChartOptions--- 通过 Options 绘制折线填充图",
+            "MultiYAxesChartOptionsVC---通过 Options 绘制多 Y 轴图"
 
         ]
         
@@ -483,6 +484,9 @@ class MainVC: UIViewController {
                 "configureComplicatedCustomAreaChart---复杂自定义折线填充图 1",
                 "configureComplicatedCustomAreaChart2---复杂自定义折线填充图 2",
                 "configureComplicatedCustomAreaChart3---复杂自定义折线填充图 3",
+            ],
+            [
+            "doubleXAxesAndDoubleYAxesChart---"
             ],
 
 
@@ -948,8 +952,15 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             
         case 25:
-            /*Line Chart Options*/
+            /*Area Chart Options*/
             let vc = AreaChartOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 26:
+            /*Multi Y Axes Chart Options*/
+            let vc = MultiYAxesChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
