@@ -49,7 +49,8 @@ public class AAAxis: AAObject {
     public var plotBands: [AAPlotBandsElement]?
     public var plotLines: [AAPlotLinesElement]?
     public var categories: [String]?
-    public var reversed: Bool?
+    public var reversed: Bool? //Whether to reverse the axis so that the highest number is closest to the origin. If the chart is inverted, the XOrY-axis is reversed by default.
+    public var reversedStacks: Bool?
     public var lineWidth: Float? // XOrY-axis line width
     public var lineColor: String? // XOrY-axis line color
     public var linkedTo: Int?
@@ -151,6 +152,12 @@ public class AAAxis: AAObject {
     @discardableResult
     public func reversed(_ prop: Bool?) -> Self {
         reversed = prop
+        return self
+    }
+    
+    @discardableResult
+    public func reversedStacks(_ prop: Bool?) -> Self {
+        reversedStacks = prop
         return self
     }
     

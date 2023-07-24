@@ -195,7 +195,7 @@ class LineChartOptionsVC: AABaseChartVC {
                                 .color(AAColor.white)
                                 .fontWeight(.bold)))
                 .yAxis(AAYAxis()
-//                        .reversedStacks(true)
+                        .reversedStacks(true)
                         .gridLineWidth(0)
                         .tickInterval(1)
                         .startOnTick(false)
