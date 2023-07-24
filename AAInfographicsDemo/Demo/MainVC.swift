@@ -484,6 +484,9 @@ class MainVC: UIViewController {
                 "configureComplicatedCustomAreaChart---复杂自定义折线填充图 1",
                 "configureComplicatedCustomAreaChart2---复杂自定义折线填充图 2",
                 "configureComplicatedCustomAreaChart3---复杂自定义折线填充图 3",
+                "configureComplicatedCustomStepAreaChart---复杂自定义阶梯折线填充图 1",
+                "configureComplicatedCustomStepAreaChart2---复杂自定义阶梯折线填充图 2",
+                "configureComplicatedCustomStepAreaChart3---复杂自定义阶梯折线填充图 3",
             ],
             [
             "doubleXAxesAndDoubleYAxesChart---"
