@@ -233,7 +233,7 @@ class LineChartOptionsVC: AABaseChartVC {
 //                                .lineWidth(4)
                         )
                         .spline(AASpline()
-                              .lineWidth(18)))
+                              .lineWidth(8)))
                 .colors([
                     "#FF0200",
                     "#7CB4EC",
@@ -297,7 +297,7 @@ class LineChartOptionsVC: AABaseChartVC {
         
         aaOptions.plotOptions?
             .line(AALine()
-                .lineWidth(18))
+                .lineWidth(8))
         
         return aaOptions
     }
@@ -311,17 +311,17 @@ class LineChartOptionsVC: AABaseChartVC {
             .series(AASeries()
                     .marker(AAMarker()
                             .enabled(true)
-                            .radius(30)
+                            .radius(10)
                             .symbol(.circle)
                             .fillColor("#1b1b1b")
-                            .lineWidth(8)
+                            .lineWidth(3)
                             .lineColor("")
                             )
                     .pointStart(1980)
                     .pointInterval(4)
             )
             .spline(AASpline()
-                  .lineWidth(8)))
+                  .lineWidth(3)))
         
         return aaOptions
     }
@@ -333,7 +333,7 @@ class LineChartOptionsVC: AABaseChartVC {
         
         aaOptions.plotOptions?
             .line(AALine()
-                .lineWidth(8))
+                .lineWidth(3))
         
         return aaOptions
     }
@@ -347,17 +347,17 @@ class LineChartOptionsVC: AABaseChartVC {
             .series(AASeries()
                     .marker(AAMarker()
                             .enabled(true)
-                            .radius(30)
+                            .radius(10)
                             .symbol(.circle)
                             .fillColor("")
-                            .lineWidth(8)
+                            .lineWidth(3)
                             .lineColor(AAColor.white)
                             )
                     .pointStart(1980)
                     .pointInterval(4)
             )
             .spline(AASpline()
-                  .lineWidth(8)))
+                  .lineWidth(3)))
         
         return aaOptions
     }
@@ -369,7 +369,7 @@ class LineChartOptionsVC: AABaseChartVC {
         
         aaOptions.plotOptions?
             .line(AALine()
-                .lineWidth(8))
+                .lineWidth(3))
         
         return aaOptions
     }
