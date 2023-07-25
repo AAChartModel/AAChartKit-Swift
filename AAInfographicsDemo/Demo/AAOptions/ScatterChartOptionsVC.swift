@@ -10,22 +10,24 @@ import AAInfographics
 
 @available(iOS 10.0, macCatalyst 13.1, *)
 class ScatterChartOptionsVC: AABaseChartVC {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return boxPlotMixedScatterChartWithJitter()
-     
+        case 0: return scatterChartWithJitter()
+        case 1: return boxPlotMixedScatterChartWithJitter()
 
+            
+            
         default:
             return AAOptions()
         }
     }
-
+    
     //// Generate test data with discrete X values and continuous Y values.
     //const getTestData = x => {
     //    const off = 0.2 + 0.2 * Math.random();
@@ -108,35 +110,35 @@ class ScatterChartOptionsVC: AABaseChartVC {
             
             return testData
         }
-
-
+        
+        
         //Make all the colors semi-transparent so we can see overlapping dots
-//        let colors = [
-//
-//        ]
-
+        //        let colors = [
+        //
+        //        ]
+        
         return AAOptions()
             .chart(AAChart()
-                    .type(.scatter))
-//            .colors(colors)
+                .type(.scatter))
+        //            .colors(colors)
             .title(AATitle()
-                    .text("Scatter chart with jitter"))
+                .text("Scatter chart with jitter"))
             .xAxis(AAXAxis()
-                    .categories(["Run 1", "Run 2", "Run 3", "Run 4", "Run 5"]))
+                .categories(["Run 1", "Run 2", "Run 3", "Run 4", "Run 5"]))
             .yAxis(AAYAxis()
-                    .title(AATitle()
-                            .text("Measurements")))
+                .title(AATitle()
+                    .text("Measurements")))
             .plotOptions(AAPlotOptions()
-                            .scatter(AAScatter()
-                                        .showInLegend(false)
-                                        .jitter(AAJitter()
-                                                    .x(0.24)
-                                                    .y(0))
-                                        .marker(AAMarker()
-                                                    .radius(2)
-                                                    .symbol(.circle))
-                                        .tooltip(AATooltip()
-                                                    .pointFormat("Measurement: {point.y:.3f}"))))
+                .scatter(AAScatter()
+                    .showInLegend(false)
+                    .jitter(AAJitter()
+                        .x(0.24)
+                        .y(0))
+                        .marker(AAMarker()
+                            .radius(2)
+                            .symbol(.circle))
+                            .tooltip(AATooltip()
+                                .pointFormat("Measurement: {point.y:.3f}"))))
             .series([
                 AASeriesElement()
                     .name("Run 1")
@@ -154,9 +156,9 @@ class ScatterChartOptionsVC: AABaseChartVC {
                     .name("Run 5")
                     .data(getTestData(4))
             ])
-
+        
     }
-
+    
     //// Generate test data with continuous Y values.
     //function getExperimentData() {
     //    var data = [],
@@ -248,7 +250,7 @@ class ScatterChartOptionsVC: AABaseChartVC {
     //        }
     //    }]
     //});
-
+    
     private func boxPlotMixedScatterChartWithJitter() -> AAOptions {
         // Generate test data with continuous Y values.
         func getExperimentData() -> [Int] {
@@ -262,7 +264,7 @@ class ScatterChartOptionsVC: AABaseChartVC {
             
             return data
         }
-
+        
         func getBoxPlotData(values: [Int]) -> [String: Int] {
             let sorted = values.sorted()
             
@@ -274,7 +276,7 @@ class ScatterChartOptionsVC: AABaseChartVC {
                 "high": sorted.last ?? 0
             ]
         }
-
+        
         var experiments = [
             getExperimentData(),
             getExperimentData(),
@@ -282,55 +284,50 @@ class ScatterChartOptionsVC: AABaseChartVC {
             getExperimentData(),
             getExperimentData()
         ]
-
+        
         var scatterData = experiments.enumerated().flatMap { (x, data) in
             data.map { value in
                 [x, value]
             }
         }
-
+        
         var boxplotData = experiments.map { data in
             getBoxPlotData(values: data)
         }
-
-        // Example usage:
-        print(scatterData)
-        print(boxplotData)
-
-
+        
         return AAOptions()
             .title(AATitle()
-                    .text("Highcharts Box Plot and Jittered Scatter Plot"))
-//            .legend(AALegend()
-//                    .enabled(false))
+                .text("Highcharts Box Plot and Jittered Scatter Plot"))
+            .legend(AALegend()
+                .enabled(false))
             .xAxis(AAXAxis()
-                    .categories(["1", "2", "3", "4", "5"])
-                    .title(AATitle()
-                            .text("Experiment No.")))
+                .categories(["1", "2", "3", "4", "5"])
+                .title(AATitle()
+                    .text("Experiment No.")))
             .yAxis(AAYAxis()
-                    .title(AATitle()
-                            .text("Observations")))
+                .title(AATitle()
+                    .text("Observations")))
             .series([
                 AASeriesElement()
                     .type(.boxplot)
                     .name("Summary")
                     .data(boxplotData)
                     .tooltip(AATooltip()
-                                .headerFormat("<em>Experiment No {point.key}</em><br/>")),
+                        .headerFormat("<em>Experiment No {point.key}</em><br/>")),
                 AASeriesElement()
                     .name("Observation")
                     .type(.scatter)
                     .data(scatterData)
                     .jitter(AAJitter()
-                                .x(0.24))// Exact fit for box plot's groupPadding and pointPadding
+                        .x(0.24))// Exact fit for box plot's groupPadding and pointPadding
                     .marker(AAMarker()
-                                .radius(1))
+                        .radius(1))
                     .color("rgba(100, 100, 100, 0.5)")
                     .tooltip(AATooltip()
-                                .pointFormat("Value: {point.y}"))
-                ])
-
+                        .pointFormat("Value: {point.y}"))
+            ])
+        
     }
-
-
-    }
+    
+    
+}
