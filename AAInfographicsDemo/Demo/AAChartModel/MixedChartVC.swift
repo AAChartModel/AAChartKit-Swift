@@ -934,30 +934,44 @@ class MixedChartVC: AABaseChartVC {
             getBoxPlotData(values: data)
         }
         
+        //https://jshare.com.cn/demos/hhhhiQ
+        //https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/tooltip/footerformat/
+        
         return AAChartModel()
-            .title("AACharts Box Plot and Jittered Scatter Plot")
+            .title("AACharts 带有抖动的箱线混合散点图")
             .legendEnabled(false)
             .categories(["1", "2", "3", "4", "5"])
-            .xAxisTitle("Experiment No.")
-            .yAxisTitle("Observations")
+            .xAxisTitle("实验号码")
+            .yAxisTitle("观测值")
             .series([
                 AASeriesElement()
                     .type(.boxplot)
-                    .name("Summary")
+                    .name("总结")
                     .data(boxplotData)
+                    .color("#04d69f")
+                    .fillColor(AAColor.red)
                     .tooltip(AATooltip()
-                        .headerFormat("<em>Experiment No {point.key}</em><br/>")),
+                        .headerFormat("<em>实验号码： {point.key}</em><br/>")
+                        .pointFormat(
+                            "◉</span> <b> {series.name}</b><br/>"
+                            + "最大值: {point.high}<br/>"
+                            + "Q2: {point.q3}<br/>"
+                            + "中位数: {point.median}<br/>"
+                            + "Q1: {point.q1}<br/>"
+                            + "最小值: {point.low}<br/>")
+                        .valueDecimals(2))//设置取值精确到小数点后几位
+                ,
                 AASeriesElement()
-                    .name("Observation")
+                    .name("观测值")
                     .type(.scatter)
                     .data(scatterData)
                     .jitter(AAJitter()
                         .x(0.24))// Exact fit for box plot's groupPadding and pointPadding
                     .marker(AAMarker()
-                        .radius(1))
-                    .color("rgba(100, 100, 100, 0.5)")
+                        .radius(3))
+                    .color(AARgba(100, 100, 100, 0.5))
                     .tooltip(AATooltip()
-                        .pointFormat("Value: {point.y}"))
+                        .pointFormat("值: {point.y}"))
             ])
     }
     
