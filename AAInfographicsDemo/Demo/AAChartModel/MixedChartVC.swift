@@ -56,9 +56,12 @@ class MixedChartVC: AABaseChartVC {
         case "LineChartWithShadow":return configureLineChartWithShadow()
         case "NegativeColorMixedAreasplineChart": return configureNegativeColorMixedAreasplineChart()
         case "AerasplinerangeMixedColumnrangeMixedLineChart": return configureAerasplinerangeMixedColumnrangeMixedLineChart()
+        case "boxplotMixedScatterChartWithJitter": return boxplotMixedScatterChartWithJitter()
         default: return configureArearangeMixedLineChart()
         }
     }
+    
+    
     
     //http://jsfiddle.net/7L6n922w/1/
     private func configureArearangeMixedLineChart() -> AAChartModel {
@@ -884,6 +887,77 @@ class MixedChartVC: AABaseChartVC {
                         5821,//质检员
                     ])
                 ,
+            ])
+    }
+    
+    private func boxplotMixedScatterChartWithJitter() -> AAChartModel {
+        // Generate test data with continuous Y values.
+        func getExperimentData() -> [Int] {
+            var data = [Int]()
+            let off = 0.3 + 0.2 * Double.random(in: 0..<1)
+            
+            for _ in 0..<200 {
+                let y = Int(round(1000 * (off + (Double.random(in: 0..<1) - 0.5) * (Double.random(in: 0..<1) - 0.5))))
+                data.append(y)
+            }
+            
+            return data
+        }
+        
+        func getBoxPlotData(values: [Int]) -> [String: Int] {
+            let sorted = values.sorted()
+            
+            return [
+                "low": sorted.first ?? 0,
+                "q1": sorted[values.count / 4],
+                "median": sorted[values.count / 2],
+                "q3": sorted[3 * values.count / 4],
+                "high": sorted.last ?? 0
+            ]
+        }
+        
+        let experiments = [
+            getExperimentData(),
+            getExperimentData(),
+            getExperimentData(),
+            getExperimentData(),
+            getExperimentData()
+        ]
+        
+        let scatterData = experiments.enumerated().flatMap { (x, data) in
+            data.map { value in
+                [x, value]
+            }
+        }
+        
+        let boxplotData = experiments.map { data in
+            getBoxPlotData(values: data)
+        }
+        
+        return AAChartModel()
+            .title("Highcharts Box Plot and Jittered Scatter Plot")
+            .legendEnabled(false)
+            .categories(["1", "2", "3", "4", "5"])
+            .xAxisTitle("Experiment No.")
+            .yAxisTitle("Observations")
+            .series([
+                AASeriesElement()
+                    .type(.boxplot)
+                    .name("Summary")
+                    .data(boxplotData)
+                    .tooltip(AATooltip()
+                        .headerFormat("<em>Experiment No {point.key}</em><br/>")),
+                AASeriesElement()
+                    .name("Observation")
+                    .type(.scatter)
+                    .data(scatterData)
+                    .jitter(AAJitter()
+                        .x(0.24))// Exact fit for box plot's groupPadding and pointPadding
+                    .marker(AAMarker()
+                        .radius(1))
+                    .color("rgba(100, 100, 100, 0.5)")
+                    .tooltip(AATooltip()
+                        .pointFormat("Value: {point.y}"))
             ])
     }
     
