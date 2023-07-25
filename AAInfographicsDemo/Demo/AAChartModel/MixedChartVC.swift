@@ -935,7 +935,7 @@ class MixedChartVC: AABaseChartVC {
         }
         
         return AAChartModel()
-            .title("Highcharts Box Plot and Jittered Scatter Plot")
+            .title("AACharts Box Plot and Jittered Scatter Plot")
             .legendEnabled(false)
             .categories(["1", "2", "3", "4", "5"])
             .xAxisTitle("Experiment No.")
