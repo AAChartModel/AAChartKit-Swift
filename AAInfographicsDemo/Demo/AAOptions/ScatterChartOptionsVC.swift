@@ -18,7 +18,7 @@ class ScatterChartOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return scatterChartWithJitter()
+        case 0: return boxPlotMixedScatterChartWithJitter()
      
 
         default:
@@ -156,5 +156,174 @@ class ScatterChartOptionsVC: AABaseChartVC {
             ])
 
     }
+
+    //// Generate test data with continuous Y values.
+    //function getExperimentData() {
+    //    var data = [],
+    //        off = 0.3 + 0.2 * Math.random(),
+    //        i;
+    //    for (i = 0; i < 200; i++) {
+    //        data.push(
+    //            Math.round(1000 * (off + (Math.random() - 0.5) * (Math.random() - 0.5)))
+    //        );
+    //    }
+    //    return data;
+    //}
+    //
+    //function getBoxPlotData(values) {
+    //    var sorted = values.sort(function (a, b) {
+    //        return a - b;
+    //    });
+    //
+    //    return {
+    //        low: sorted[0],
+    //        q1: sorted[Math.round(values.length * 0.25)],
+    //        median: sorted[Math.round(values.length * 0.5)],
+    //        q3: sorted[Math.round(values.length * 0.75)],
+    //        high: sorted[sorted.length - 1]
+    //    };
+    //}
+    //
+    //var experiments = [
+    //    getExperimentData(),
+    //    getExperimentData(),
+    //    getExperimentData(),
+    //    getExperimentData(),
+    //    getExperimentData()
+    //];
+    //
+    //var scatterData = experiments
+    //    .reduce(function (acc, data, x) {
+    //        return acc.concat(data.map(function (value) {
+    //            return [x, value];
+    //        }));
+    //    }, []);
+    //
+    //var boxplotData = experiments
+    //    .map(getBoxPlotData);
+    //
+    //Highcharts.chart('container', {
+    //
+    //    title: {
+    //        text: 'Highcharts Box Plot and Jittered Scatter Plot'
+    //    },
+    //
+    //    legend: {
+    //        enabled: false
+    //    },
+    //
+    //    xAxis: {
+    //        categories: ['1', '2', '3', '4', '5'],
+    //        title: {
+    //            text: 'Experiment No.'
+    //        }
+    //    },
+    //
+    //    yAxis: {
+    //        title: {
+    //            text: 'Observations'
+    //        }
+    //    },
+    //
+    //    series: [{
+    //        type: 'boxplot',
+    //        name: 'Summary',
+    //        data: boxplotData,
+    //        tooltip: {
+    //            headerFormat: '<em>Experiment No {point.key}</em><br/>'
+    //        }
+    //    }, {
+    //        name: 'Observation',
+    //        type: 'scatter',
+    //        data: scatterData,
+    //        jitter: {
+    //            x: 0.24 // Exact fit for box plot's groupPadding and pointPadding
+    //        },
+    //        marker: {
+    //            radius: 1
+    //        },
+    //        color: 'rgba(100, 100, 100, 0.5)',
+    //        tooltip: {
+    //            pointFormat: 'Value: {point.y}'
+    //        }
+    //    }]
+    //});
+
+    private func boxPlotMixedScatterChartWithJitter() -> AAOptions {
+        //Generate test data with continuous Y values.
+        func getExperimentData() -> [Float] {
+            var data: [Float] = []
+            let off = 0.3 + 0.2 * Float.random(in: 0..<1)
+
+            for _ in 1...200 {
+                data.append(Float(Int(1000 * (off + (Float.random(in: 0..<1) - 0.5) * (Float.random(in: 0..<1) - 0.5)))))
+
+            }
+
+            return data
+        }
+
+        func getBoxPlotData(_ values: [Float]) -> [String : Float] {
+            let sorted = values.sorted()
+
+            return [
+                "low": sorted[0],
+                "q1": sorted[Int(Float(values.count) * 0.25)],
+                "median": sorted[Int(Float(values.count) * 0.5)],
+                "q3": sorted[Int(Float(values.count) * 0.75)],
+                "high": sorted[sorted.count - 1]
+            ]
+        }
+
+        let experiments = [
+            getExperimentData(),
+            getExperimentData(),
+            getExperimentData(),
+            getExperimentData(),
+            getExperimentData()
+        ]
+
+        let scatterData = experiments
+            .reduce(into: [[Float]]()) { (result, data) in
+                result.append(contentsOf: data.map { [Float(result.count), $0] })
+            }
+
+        let boxplotData = experiments
+            .map(getBoxPlotData)
+
+        return AAOptions()
+            .title(AATitle()
+                    .text("Highcharts Box Plot and Jittered Scatter Plot"))
+//            .legend(AALegend()
+//                    .enabled(false))
+            .xAxis(AAXAxis()
+                    .categories(["1", "2", "3", "4", "5"])
+                    .title(AATitle()
+                            .text("Experiment No.")))
+            .yAxis(AAYAxis()
+                    .title(AATitle()
+                            .text("Observations")))
+            .series([
+                AASeriesElement()
+                    .type(.boxplot)
+                    .name("Summary")
+                    .data(boxplotData)
+                    .tooltip(AATooltip()
+                                .headerFormat("<em>Experiment No {point.key}</em><br/>")),
+                AASeriesElement()
+                    .name("Observation")
+                    .type(.scatter)
+                    .data(scatterData)
+                    .jitter(AAJitter()
+                                .x(0.24))// Exact fit for box plot's groupPadding and pointPadding
+                    .marker(AAMarker()
+                                .radius(1))
+                    .color("rgba(100, 100, 100, 0.5)")
+                    .tooltip(AATooltip()
+                                .pointFormat("Value: {point.y}"))
+                ])
+
+    }
+
 
     }
