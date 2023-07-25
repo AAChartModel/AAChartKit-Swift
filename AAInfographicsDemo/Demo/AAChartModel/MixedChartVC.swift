@@ -948,7 +948,8 @@ class MixedChartVC: AABaseChartVC {
                     .type(.boxplot)
                     .name("总结")
                     .data(boxplotData)
-                    .color("#04d69f")
+                    .color(AAColor.yellow)
+                    .lineWidth(3)
                     .fillColor(AAColor.red)
                     .tooltip(AATooltip()
                         .headerFormat("<em>实验号码： {point.key}</em><br/>")
@@ -969,7 +970,7 @@ class MixedChartVC: AABaseChartVC {
                         .x(0.24))// Exact fit for box plot's groupPadding and pointPadding
                     .marker(AAMarker()
                         .radius(3))
-                    .color(AARgba(100, 100, 100, 0.5))
+                    .color("#04d69f")
                     .tooltip(AATooltip()
                         .pointFormat("值: {point.y}"))
             ])
