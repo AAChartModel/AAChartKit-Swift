@@ -493,7 +493,8 @@ class MainVC: UIViewController {
             "doubleXAxesAndDoubleYAxesChart---"
             ],
             [
-                "scatterChartWithJitter---"
+                "scatterChartWithJitter---",
+                "boxPlotMixedScatterChartWithJitter---"
             ]
 
 
