@@ -95,7 +95,8 @@ class MainVC: UIViewController {
             "Official Samples For Pie Chart---饼图🍕官方示例",
             "LineChartOptions--- 通过 Options 绘制折线📈图",
             "AreaChartOptions--- 通过 Options 绘制折线填充图",
-            "MultiYAxesChartOptionsVC---通过 Options 绘制多 Y 轴图"
+            "MultiYAxesChartOptionsVC---通过 Options 绘制多 Y 轴图",
+            "ScatterChartOptionsVC---通过 Options 绘制散点图",
 
         ]
         
@@ -491,6 +492,9 @@ class MainVC: UIViewController {
             [
             "doubleXAxesAndDoubleYAxesChart---"
             ],
+            [
+                "scatterChartWithJitter---"
+            ]
 
 
         ]
@@ -964,6 +968,13 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 26:
             /*Multi Y Axes Chart Options*/
             let vc = MultiYAxesChartOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+
+        case 27:
+            /*Scatter Chart Options*/
+            let vc = ScatterChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)

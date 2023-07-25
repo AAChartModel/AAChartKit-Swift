@@ -75,7 +75,7 @@ public class AASeriesElement: AAObject {
     public var id: String?
     public var connectNulls: Bool?         //Whether to connect a graph line across null points. default value：false.
     public var enabledCrosshairs: Bool?
-
+    public var jitter: AAJitter?           //Only useful for scatter chart and bubble chart
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
@@ -338,6 +338,12 @@ public class AASeriesElement: AAObject {
     @discardableResult
     public func connectNulls(_ prop: Bool) -> AASeriesElement {
         connectNulls = prop
+        return self
+    }
+
+    @discardableResult
+    public func jitter(_ prop: AAJitter) -> AASeriesElement {
+        jitter = prop
         return self
     }
     

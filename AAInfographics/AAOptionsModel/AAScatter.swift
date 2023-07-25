@@ -40,6 +40,9 @@ public class AAScatter: AAObject {
     public var linkedTo: String?
     public var states: AAStates?
     public var marker: AAMarker?
+    public var jitter: AAJitter?
+    public var showInLegend: Bool?
+    public var tooltip: AATooltip?
     
     @discardableResult
     public func lineWidth(_ prop: Float?) -> AAScatter {
@@ -83,6 +86,24 @@ public class AAScatter: AAObject {
         return self
     }
 
+    @discardableResult
+    public func jitter(_ prop: AAJitter?) -> AAScatter {
+        jitter = prop
+        return self
+    }
+
+    @discardableResult
+    public func showInLegend(_ prop: Bool?) -> AAScatter {
+        showInLegend = prop
+        return self
+    }
+
+    @discardableResult
+    public func tooltip(_ prop: AATooltip?) -> AAScatter {
+        tooltip = prop
+        return self
+    }
+
     public override init() {
 
     }
@@ -94,7 +115,8 @@ public class AABubble: AAObject {
     public var zMin: Float?
     public var zMax: Float?
     public var dataLabels:AADataLabels?
-    
+    public var jitter: AAJitter?
+
     @discardableResult
     public func minSize(_ prop: Any?) -> AABubble {
         minSize = prop
@@ -124,8 +146,35 @@ public class AABubble: AAObject {
         dataLabels = prop
         return self
     }
+
+    @discardableResult
+    public func jitter(_ prop: AAJitter?) -> AABubble {
+        jitter = prop
+        return self
+    }
     
     public override init() {
         
+    }
+}
+
+public class AAJitter: AAObject {
+    public var x: Float?
+    public var y: Float?
+
+    @discardableResult
+    public func x(_ prop: Float?) -> AAJitter {
+        x = prop
+        return self
+    }
+
+    @discardableResult
+    public func y(_ prop: Float?) -> AAJitter {
+        y = prop
+        return self
+    }
+
+    public override init() {
+
     }
 }
