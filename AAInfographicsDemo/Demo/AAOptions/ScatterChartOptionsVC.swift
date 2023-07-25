@@ -250,32 +250,32 @@ class ScatterChartOptionsVC: AABaseChartVC {
     //});
 
     private func boxPlotMixedScatterChartWithJitter() -> AAOptions {
-        //Generate test data with continuous Y values.
-        func getExperimentData() -> [Float] {
-            var data: [Float] = []
-            let off = 0.3 + 0.2 * Float.random(in: 0..<1)
-
-            for _ in 1...200 {
-                data.append(Float(Int(1000 * (off + (Float.random(in: 0..<1) - 0.5) * (Float.random(in: 0..<1) - 0.5)))))
-
+        // Generate test data with continuous Y values.
+        func getExperimentData() -> [Int] {
+            var data = [Int]()
+            let off = 0.3 + 0.2 * Double.random(in: 0..<1)
+            
+            for _ in 0..<200 {
+                let y = Int(round(1000 * (off + (Double.random(in: 0..<1) - 0.5) * (Double.random(in: 0..<1) - 0.5))))
+                data.append(y)
             }
-
+            
             return data
         }
 
-        func getBoxPlotData(_ values: [Float]) -> [String : Float] {
+        func getBoxPlotData(values: [Int]) -> [String: Int] {
             let sorted = values.sorted()
-
+            
             return [
-                "low": sorted[0],
-                "q1": sorted[Int(Float(values.count) * 0.25)],
-                "median": sorted[Int(Float(values.count) * 0.5)],
-                "q3": sorted[Int(Float(values.count) * 0.75)],
-                "high": sorted[sorted.count - 1]
+                "low": sorted.first ?? 0,
+                "q1": sorted[values.count / 4],
+                "median": sorted[values.count / 2],
+                "q3": sorted[3 * values.count / 4],
+                "high": sorted.last ?? 0
             ]
         }
 
-        let experiments = [
+        var experiments = [
             getExperimentData(),
             getExperimentData(),
             getExperimentData(),
@@ -283,13 +283,20 @@ class ScatterChartOptionsVC: AABaseChartVC {
             getExperimentData()
         ]
 
-        let scatterData = experiments
-            .reduce(into: [[Float]]()) { (result, data) in
-                result.append(contentsOf: data.map { [Float(result.count), $0] })
+        var scatterData = experiments.enumerated().flatMap { (x, data) in
+            data.map { value in
+                [x, value]
             }
+        }
 
-        let boxplotData = experiments
-            .map(getBoxPlotData)
+        var boxplotData = experiments.map { data in
+            getBoxPlotData(values: data)
+        }
+
+        // Example usage:
+        print(scatterData)
+        print(boxplotData)
+
 
         return AAOptions()
             .title(AATitle()
