@@ -890,6 +890,7 @@ class MixedChartVC: AABaseChartVC {
             ])
     }
     
+    //https://api.highcharts.com/highcharts/series.scatter.jitter
     private func boxplotMixedScatterChartWithJitter() -> AAChartModel {
         // Generate test data with continuous Y values.
         func getExperimentData() -> [Int] {
@@ -936,7 +937,6 @@ class MixedChartVC: AABaseChartVC {
         
         //https://jshare.com.cn/demos/hhhhiQ
         //https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/tooltip/footerformat/
-        
         return AAChartModel()
             .title("AACharts 带有抖动的箱线混合散点图")
             .legendEnabled(false)
