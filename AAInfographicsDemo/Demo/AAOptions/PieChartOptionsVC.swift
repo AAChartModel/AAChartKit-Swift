@@ -30,6 +30,9 @@ class PieChartOptionsVC: AABaseChartVC {
 
 
     //https://www.highcharts.com/demo/highcharts/pie-donut
+    //In Highcharts, pies can also be hollow, in which case they are commonly
+    //referred to as donut charts. This pie also has an inner chart, resulting
+    //in a hierarchical type of visualization.
     private func pieDonutChart() -> AAOptions {
         let colors = [
             AARgba(137, 78, 36),
@@ -260,12 +263,12 @@ class PieChartOptionsVC: AABaseChartVC {
             // add version data
             drillDataLen = (drilldownArr["data"]! as AnyObject).count
             for j in 0 ..< drillDataLen {
-                brightness = 0.2 - (Double(j) / Double(drillDataLen)) / 5
+                brightness = 0.6 - (Double(j) / Double(drillDataLen)) / 5
                 //输出查看 brightness的值是否正确
                 print("brightness: \(brightness)")
                 versionsData.append([
-                    "name": drilldownArr["categories"],
-                    "y": drilldownArr["data"],
+                    "name": (drilldownArr["categories"] as! [Any])[j],
+                    "y": (drilldownArr["data"] as! [Any])[j],
                     "color": configureAARgbaBrightness(color , brightness)
                 ])
             }
@@ -345,6 +348,7 @@ class PieChartOptionsVC: AABaseChartVC {
                 .align(.left))
             .subtitle(AASubtitle()
 //                .text("Source: <a href='http://statcounter.com' target='_blank'>statcounter.com</a>")
+                .text("http://statcounter.com")
                 .align(.left))
             .plotOptions(AAPlotOptions()
                 .pie(AAPie()
@@ -366,7 +370,7 @@ class PieChartOptionsVC: AABaseChartVC {
                     .size("80%")
                     .innerSize("60%")
                     .dataLabels(AADataLabels()
-                        .format(#"<b>{point.name}:</b> <span style="opacity: 0.5">{point.y}%</span>"#.aa_toPureJSString())
+                        .format(#"<b>{point.name}:<\/b> <span style=\\\"opacity: 0.5\\\">{point.y}%<\/span>"#)
                         .filter(AAFilter()
                             .property("y")
                             .operator(">")
