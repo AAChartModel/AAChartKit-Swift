@@ -241,12 +241,8 @@ class PieChartOptionsVC: AABaseChartVC {
         var versionsData = [Any]()
         let dataLen = data.count
 
-        var i = 0
-        var j = 0
         var drillDataLen = 0
         var brightness = 0.0
-        
-
 
         // Build the data arrays
         for i in 0 ..< dataLen {
