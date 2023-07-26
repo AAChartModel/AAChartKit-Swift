@@ -277,7 +277,7 @@ class ScatterChartOptionsVC: AABaseChartVC {
             ]
         }
         
-        var experiments = [
+        let experiments = [
             getExperimentData(),
             getExperimentData(),
             getExperimentData(),
@@ -285,13 +285,13 @@ class ScatterChartOptionsVC: AABaseChartVC {
             getExperimentData()
         ]
         
-        var scatterData = experiments.enumerated().flatMap { (x, data) in
+        let scatterData = experiments.enumerated().flatMap { (x, data) in
             data.map { value in
                 [x, value]
             }
         }
         
-        var boxplotData = experiments.map { data in
+        let boxplotData = experiments.map { data in
             getBoxPlotData(values: data)
         }
         
