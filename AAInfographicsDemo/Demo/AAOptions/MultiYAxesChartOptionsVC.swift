@@ -21,10 +21,6 @@ class MultiYAxesChartOptionsVC: AABaseChartVC {
         switch selectedIndex {
         case 0: return doubleXAxesAndDoubleYAxesChart()
         case 1: return disableGroupingBoxplotMixedScatterChart()
-//        case 2: return fancySplineChartWithInnerBlankMarkerSymbol()
-//        case 3: return fancyLineChartWithInnerBlankMarkerSymbol()
-//        case 4: return fancySplineChartWithBorderBlankMarkerSymbol()
-//        case 5: return fancyLineChartWithBorderBlankMarkerSymbol()
 
         default:
             return AAOptions()
@@ -284,6 +280,7 @@ class MultiYAxesChartOptionsVC: AABaseChartVC {
     //
     //});
 
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/440
     private func disableGroupingBoxplotMixedScatterChart() -> AAOptions {
         AAOptions()
             .chart(AAChart()
