@@ -69,6 +69,7 @@ public class AASeriesElement: AAObject {
     public var stack: String?
     public var tooltip: AATooltip?
     public var pointPlacement: Any?
+    public var pointPadding: Float?
     public var enableMouseTracking: Bool?
     public var dataSorting: AADataSorting?
     public var reversed: Bool?             //Only useful for pyramid chart and funnel chart
@@ -302,6 +303,12 @@ public class AASeriesElement: AAObject {
     @discardableResult
     public func pointPlacement(_ prop: Any) -> AASeriesElement {
         pointPlacement = prop
+        return self
+    }
+
+    @discardableResult
+    public func pointPadding(_ prop: Float) -> AASeriesElement {
+        pointPadding = prop
         return self
     }
     

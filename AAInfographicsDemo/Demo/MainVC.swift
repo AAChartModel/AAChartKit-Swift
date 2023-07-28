@@ -97,7 +97,8 @@ class MainVC: UIViewController {
             "AreaChartOptions--- 通过 Options 绘制折线填充图",
             "MultiYAxesChartOptionsVC---通过 Options 绘制多 Y 轴图",
             "ScatterChartOptionsVC---通过 Options 绘制散点图",
-            "PieChartOptionsVC---通过 Options 绘饼图"
+            "PieChartOptionsVC---通过 Options 绘饼图",
+            "ColumnChartOptionsVC---通过 Options 绘制条形图",
 
         ]
         
@@ -501,7 +502,11 @@ class MainVC: UIViewController {
             ],
             [
                 "pieDonutChart---",
+            ],
+            [
+                "disableGroupingColumnChart---",
             ]
+
 
 
         ]
@@ -990,6 +995,13 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 28:
             /*Pie Chart Options*/
             let vc = PieChartOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+
+        case 29:
+            /*Column Chart Options*/
+            let vc = ColumnChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)
