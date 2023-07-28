@@ -20,7 +20,7 @@ class ColumnChartOptionsVC: AABaseChartVC {
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
         case 0: return disableGroupingColumnChart()
-
+        case 1: return disableGroupingBarChart()
 
         default:
             return AAOptions()
@@ -159,5 +159,18 @@ class ColumnChartOptionsVC: AABaseChartVC {
             ])
         
     }
+    
+    private func disableGroupingBarChart() -> AAOptions {
+        let aaOptions = disableGroupingColumnChart()
+        
+        aaOptions.chart?.type(.bar)
+        aaOptions.plotOptions?
+            .bar((AABar()
+                .grouping(false)
+            ))
+        
+        return aaOptions
+    }
+
 
 }

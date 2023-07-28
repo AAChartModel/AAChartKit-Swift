@@ -505,6 +505,7 @@ class MainVC: UIViewController {
             ],
             [
                 "disableGroupingColumnChart---",
+                "disableGroupingBarChart---"
             ]
 
 
