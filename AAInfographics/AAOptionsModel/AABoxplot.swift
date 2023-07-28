@@ -35,10 +35,12 @@ import Foundation
 public class AABoxplot: AAObject {
     public var boxDashStyle: String?
     public var fillColor: Any?
+    public var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. default：true.
     public var lineWidth: Float?
     public var medianColor: String?
     public var medianDashStyle: String?
     public var medianWidth: Float?
+    public var pointRange: Float?
     public var stemColor: String?
     public var stemDashStyle: String?
     public var stemWidth: Float?
@@ -56,6 +58,12 @@ public class AABoxplot: AAObject {
     @discardableResult
     public func fillColor(_ prop: Any?) -> AABoxplot {
         fillColor = prop
+        return self
+    }
+    
+    @discardableResult
+    public func grouping(_ prop: Bool?) -> AABoxplot {
+        grouping = prop
         return self
     }
 
@@ -80,6 +88,12 @@ public class AABoxplot: AAObject {
     @discardableResult
     public func medianWidth(_ prop: Float?) -> AABoxplot {
         medianWidth = prop
+        return self
+    }
+
+    @discardableResult
+    public func pointRange(_ prop: Float?) -> AABoxplot {
+        pointRange = prop
         return self
     }
 

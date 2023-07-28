@@ -492,7 +492,8 @@ class MainVC: UIViewController {
                 "configureComplicatedCustomStepAreaChart3---复杂自定义阶梯折线填充图 3",
             ],
             [
-            "doubleXAxesAndDoubleYAxesChart---"
+                "doubleXAxesAndDoubleYAxesChart---",
+                "disableGroupingBoxplotMixedScatterChart---",
             ],
             [
                 "scatterChartWithJitter---",
