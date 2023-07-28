@@ -285,7 +285,7 @@ class MultiYAxesChartOptionsVC: AABaseChartVC {
     //});
 
     private func disableGroupingBoxplotMixedScatterChart() -> AAOptions {
-         AAOptions()
+        AAOptions()
             .chart(AAChart()
                 .type(.boxplot))
             .title(AATitle()
@@ -302,9 +302,9 @@ class MultiYAxesChartOptionsVC: AABaseChartVC {
             .tooltip(AATooltip()
                 .shared(true))
             .plotOptions(AAPlotOptions()
-                    .boxplot(AABoxplot()
-                        .grouping(false)
-                        .pointRange(1))
+                .boxplot(AABoxplot()
+                    .grouping(false)
+                    .pointRange(1))
                 .series(AASeries()
 //                    .grouping(false)
 //                    .pointRange(1)
@@ -374,8 +374,8 @@ class MultiYAxesChartOptionsVC: AABaseChartVC {
                         .lineColor(AAColor.blue))
                     .tooltip(AATooltip()
                         .pointFormat("Mean: {point.y}"))
-                ])
-
+            ])
+        
     }
 
 
