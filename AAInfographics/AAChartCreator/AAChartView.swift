@@ -105,7 +105,6 @@ public class AAChartView: WKWebView {
   
     // MARK: - Setter Method
     #if os(iOS)
-    @available(*, unavailable, message: "This property was renamed, please use isScrollEnabled instead of it")
     public var scrollEnabled: Bool?
     public var isScrollEnabled: Bool? {
         willSet {
