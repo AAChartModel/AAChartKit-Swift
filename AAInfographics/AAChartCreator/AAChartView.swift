@@ -283,6 +283,7 @@ public class AAChartView: WKWebView {
     }
     
     private func addMouseOverEventMessageHandler() {
+        configuration.userContentController.removeScriptMessageHandler(forName: kUserContentMessageNameMouseOver)
         configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
     }
     
