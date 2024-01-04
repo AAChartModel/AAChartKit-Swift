@@ -102,8 +102,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func createSecondViewController() -> UIViewController {
         // 创建第二个视图控制器
-        let secondVC = UIViewController()
-        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 1)
+        let secondVC = AAOptionsListVC()
+        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
 
         // 在这里添加第二个视图控制器的其他配置
 
