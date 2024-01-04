@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AAInfographics
 
 class PolarChartOptionsVC: AABaseChartVC {
 
