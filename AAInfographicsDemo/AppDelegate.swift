@@ -50,8 +50,98 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // 创建 UIWindow 实例
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        // 使用 createTabBarController 方法创建 UITabBarController
+        let tabBarController = createTabBarController()
+
+        // 将 UITabBarController 设置为根视图控制器
+        window?.rootViewController = tabBarController
+
+        // 设置窗口可见
+        window?.makeKeyAndVisible()
         return true
     }
+
+    //创建一个 UITabBarController
+    func createTabBarController() -> UITabBarController {
+        // 创建一个 UITabBarController
+        let tabBarController = UITabBarController()
+
+        // 创建一个数组来保存所有的视图控制器
+        var viewControllers = [UIViewController]()
+
+        let firstVC = createFirstNavigationController()
+        viewControllers.append(firstVC)
+
+        let secondVC =  createSecondNavigationController()
+        viewControllers.append(secondVC)
+
+        let thirdVC = createThirdNavigationController()
+        viewControllers.append(thirdVC)
+
+        // 将数组赋值给 UITabBarController
+        tabBarController.viewControllers = viewControllers
+
+        // 返回 UITabBarController
+        return tabBarController
+    }
+
+    func createFirstViewController() -> MainVC {
+        // 创建第一个视图控制器
+        let firstVC = MainVC()
+        firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+
+        // 在这里添加第一个视图控制器的其他配置
+
+        return firstVC
+    }
+    
+
+
+    func createSecondViewController() -> UIViewController {
+        // 创建第二个视图控制器
+        let secondVC = UIViewController()
+        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 1)
+
+        // 在这里添加第二个视图控制器的其他配置
+
+        return secondVC
+    }
+
+    func createThirdViewController() -> UIViewController {
+        // 创建第三个视图控制器
+        let thirdVC = UIViewController()
+        thirdVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+
+        // 在这里添加第三个视图控制器的其他配置
+
+        return thirdVC
+    }
+
+
+    // 创建导航控制器，并将第一个视图控制器设置为根视图控制器
+    func createFirstNavigationController() -> UINavigationController {
+        let firstViewController = createFirstViewController()
+        let navigationController = UINavigationController(rootViewController: firstViewController)
+        return navigationController
+    }
+
+    // 创建导航控制器，并将第二个视图控制器设置为根视图控制器
+    func createSecondNavigationController() -> UINavigationController {
+        let secondViewController = createSecondViewController()
+        let navigationController = UINavigationController(rootViewController: secondViewController)
+        return navigationController
+    }
+
+    // 创建导航控制器，并将第三个视图控制器设置为根视图控制器
+    func createThirdNavigationController() -> UINavigationController {
+        let thirdViewController = createThirdViewController()
+        let navigationController = UINavigationController(rootViewController: thirdViewController)
+        return navigationController
+    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
