@@ -112,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func createThirdViewController() -> UIViewController {
         // 创建第三个视图控制器
-        let thirdVC = UIViewController()
+        let thirdVC = AAOptionsWithJSListVC()
         thirdVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
 
         // 在这里添加第三个视图控制器的其他配置
