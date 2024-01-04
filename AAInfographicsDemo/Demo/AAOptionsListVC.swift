@@ -277,6 +277,7 @@ extension AAOptionsListVC: UITableViewDelegate, UITableViewDataSource {
             let vc = DrawChartWithAAOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
 
@@ -285,6 +286,7 @@ extension AAOptionsListVC: UITableViewDelegate, UITableViewDataSource {
             let vc = LineChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         case 2:
@@ -292,6 +294,7 @@ extension AAOptionsListVC: UITableViewDelegate, UITableViewDataSource {
             let vc = AreaChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         case 3:
@@ -299,6 +302,7 @@ extension AAOptionsListVC: UITableViewDelegate, UITableViewDataSource {
             let vc = MultiYAxesChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
         case 4:
@@ -306,6 +310,7 @@ extension AAOptionsListVC: UITableViewDelegate, UITableViewDataSource {
             let vc = ScatterChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         case 5:
@@ -313,6 +318,7 @@ extension AAOptionsListVC: UITableViewDelegate, UITableViewDataSource {
             let vc = PieChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
         case 6:
@@ -320,6 +326,7 @@ extension AAOptionsListVC: UITableViewDelegate, UITableViewDataSource {
             let vc = ColumnChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         default:
