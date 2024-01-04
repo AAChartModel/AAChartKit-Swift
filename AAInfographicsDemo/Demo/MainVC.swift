@@ -787,6 +787,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 4 || indexPath.row == 5 {
                 vc.step = true
             }
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         case 1:
@@ -794,6 +795,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             let vc = SpecialChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         case 2:
@@ -801,6 +803,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             let vc = CustomStyleChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         case 3:
@@ -808,6 +811,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             let vc = MixedChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         case 4:
