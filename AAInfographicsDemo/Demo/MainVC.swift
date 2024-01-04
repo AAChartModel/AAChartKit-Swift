@@ -93,6 +93,13 @@ class MainVC: UIViewController {
             "Official Samples For Area Chart---折线📈填充图官方示例",
             "Official Samples For Bar or Column Chart---条形图或柱状图📊官方示例",
             "Official Samples For Pie Chart---饼图🍕官方示例",
+            "LineChartOptions--- 通过 Options 绘制折线📈图",
+            "AreaChartOptions--- 通过 Options 绘制折线填充图",
+            "MultiYAxesChartOptionsVC---通过 Options 绘制多 Y 轴图",
+            "ScatterChartOptionsVC---通过 Options 绘制散点图",
+            "PieChartOptionsVC---通过 Options 绘饼图",
+            "ColumnChartOptionsVC---通过 Options 绘制条形图",
+
         ]
         
         chartTypeTitleArr = [
@@ -184,7 +191,8 @@ class MainVC: UIViewController {
                 "configureSpecialStyleColumnForNegativeDataMixedPositiveData---为正负数混合的柱形图自定义特殊样式效果",
                 "configureMultiLevelStopsArrGradientColorAreasplineMixedLineChart---多层次半透明渐变效果的曲线填充图混合折线图📈",
                 "connectNullsForSingleAASeriesElement---为单个 AASeriesElement 单独设置是否断点重连",
-                "lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement---测试有多组数据时, 数据量较大时, 不同组数据量差距较大时的折线图📈"
+                "lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement---测试有多组数据时, 数据量较大时, 不同组数据量差距较大时的折线图📈",
+                "customAreasplineChartWithColorfulGradientColorZones---彩色渐变色区域填充图",
 
             ],
             /*Mixed Chart*/
@@ -202,7 +210,8 @@ class MainVC: UIViewController {
                 "Pie Mixed Line Mixed Column---扇形折线柱形混合图",
                 "Line Chart With Shadow---带有阴影效果の折线图",
                 "Negative Color Mixed Areaspline chart---基准线以下异色混合曲线填充图",
-                "Aerasplinerange Mixed Columnrange Mixed Line Chart---曲线面积范围混合柱形范围混合折线图"
+                "Aerasplinerange Mixed Columnrange Mixed Line Chart---曲线面积范围混合柱形范围混合折线图",
+                "boxplot Mixed Scatter Chart With Jitter---带有抖动的箱线混合散点图",
             ],
             /*Only update chart data*/
             [  "Column Chart---柱形图",
@@ -398,6 +407,8 @@ class MainVC: UIViewController {
                 "dynamicHeightGridLineAreaChart---动态高度的网格线区域填充图",
                 "customizeYAxisPlotLinesLabelBeSpecialStyle---自定义 Y 轴轴线上面的标签文字特殊样式",
                 "configureECGStyleChart---配置心电图样式的图表",
+                "configureTheSizeOfTheSliceOfDonutAndPieChart---配置环形图和饼图的扇区大小",
+                "configurePlotBackgroundClickEvent---配置绘图区的点击事件",
             ],
             /*JS Function For AAOptions*/
             [
@@ -459,6 +470,44 @@ class MainVC: UIViewController {
                 "basicPieChartWithMonochromeColor---带有单色的基本饼状图",
                 "customPieChartTitlePosition---自定义饼状图标题位置",
             ],
+            // case 0: return fancySplineChart()
+//            case 1: return fancyLineChart()
+            [
+                "fancySplineChart---花式曲线图",
+                "fancyLineChart---花式折线图",
+                "fancySplineChartWithInnerBlankMarkerSymbol---",
+                "fancyLineChartWithInnerBlankMarkerSymbol---",
+                "fancySplineChartWithBorderBlankMarkerSymbol---",
+                "fancyLineChartWithBorderBlankMarkerSymbol---",
+            ],
+            
+            [
+                "configureComplicatedCustomAreasplineChart---复杂自定义曲线填充图 1",
+                "configureComplicatedCustomAreasplineChart2---复杂自定义曲线填充图 2",
+                "configureComplicatedCustomAreasplineChart3---复杂自定义曲线填充图 3",
+                "configureComplicatedCustomAreaChart---复杂自定义折线填充图 1",
+                "configureComplicatedCustomAreaChart2---复杂自定义折线填充图 2",
+                "configureComplicatedCustomAreaChart3---复杂自定义折线填充图 3",
+                "configureComplicatedCustomStepAreaChart---复杂自定义阶梯折线填充图 1",
+                "configureComplicatedCustomStepAreaChart2---复杂自定义阶梯折线填充图 2",
+                "configureComplicatedCustomStepAreaChart3---复杂自定义阶梯折线填充图 3",
+            ],
+            [
+                "doubleXAxesAndDoubleYAxesChart---",
+                "disableGroupingBoxplotMixedScatterChart---",
+            ],
+            [
+                "scatterChartWithJitter---",
+                "boxPlotMixedScatterChartWithJitter---"
+            ],
+            [
+                "pieDonutChart---",
+            ],
+            [
+                "disableGroupingColumnChart---",
+                "disableGroupingBarChart---"
+            ]
+
 
 
         ]
@@ -514,7 +563,8 @@ class MainVC: UIViewController {
                 "PieMixedLineMixedColumn",
                 "LineChartWithShadow",
                 "NegativeColorMixedAreasplineChart",
-                "AerasplinerangeMixedColumnrangeMixedLineChart"
+                "AerasplinerangeMixedColumnrangeMixedLineChart",
+                "boxplotMixedScatterChartWithJitter"
             ],
             /*Only update chart data*/
             [
@@ -911,6 +961,48 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
         case 23:
             /*Official Samples For Pie Chart*/
             let vc = OfficialPieChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 24:
+            /*Line Chart Options*/
+            let vc = LineChartOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 25:
+            /*Area Chart Options*/
+            let vc = AreaChartOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 26:
+            /*Multi Y Axes Chart Options*/
+            let vc = MultiYAxesChartOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+
+        case 27:
+            /*Scatter Chart Options*/
+            let vc = ScatterChartOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 28:
+            /*Pie Chart Options*/
+            let vc = PieChartOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            navigationController?.pushViewController(vc, animated: true)
+
+        case 29:
+            /*Column Chart Options*/
+            let vc = ColumnChartOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             navigationController?.pushViewController(vc, animated: true)

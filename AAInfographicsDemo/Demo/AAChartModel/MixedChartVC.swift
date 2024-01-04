@@ -56,9 +56,12 @@ class MixedChartVC: AABaseChartVC {
         case "LineChartWithShadow":return configureLineChartWithShadow()
         case "NegativeColorMixedAreasplineChart": return configureNegativeColorMixedAreasplineChart()
         case "AerasplinerangeMixedColumnrangeMixedLineChart": return configureAerasplinerangeMixedColumnrangeMixedLineChart()
+        case "boxplotMixedScatterChartWithJitter": return boxplotMixedScatterChartWithJitter()
         default: return configureArearangeMixedLineChart()
         }
     }
+    
+    
     
     //http://jsfiddle.net/7L6n922w/1/
     private func configureArearangeMixedLineChart() -> AAChartModel {
@@ -884,6 +887,92 @@ class MixedChartVC: AABaseChartVC {
                         5821,//质检员
                     ])
                 ,
+            ])
+    }
+    
+    //https://api.highcharts.com/highcharts/series.scatter.jitter
+    private func boxplotMixedScatterChartWithJitter() -> AAChartModel {
+        // Generate test data with continuous Y values.
+        func getExperimentData() -> [Int] {
+            var data = [Int]()
+            let off = 0.3 + 0.2 * Double.random(in: 0..<1)
+            
+            for _ in 0..<200 {
+                let y = Int(round(1000 * (off + (Double.random(in: 0..<1) - 0.5) * (Double.random(in: 0..<1) - 0.5))))
+                data.append(y)
+            }
+            
+            return data
+        }
+        
+        func getBoxPlotData(values: [Int]) -> [String: Int] {
+            let sorted = values.sorted()
+            
+            return [
+                "low": sorted.first ?? 0,
+                "q1": sorted[values.count / 4],
+                "median": sorted[values.count / 2],
+                "q3": sorted[3 * values.count / 4],
+                "high": sorted.last ?? 0
+            ]
+        }
+        
+        let experiments = [
+            getExperimentData(),
+            getExperimentData(),
+            getExperimentData(),
+            getExperimentData(),
+            getExperimentData()
+        ]
+        
+        let scatterData = experiments.enumerated().flatMap { (x, data) in
+            data.map { value in
+                [x, value]
+            }
+        }
+        
+        let boxplotData = experiments.map { data in
+            getBoxPlotData(values: data)
+        }
+        
+        //https://jshare.com.cn/demos/hhhhiQ
+        //https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/tooltip/footerformat/
+        return AAChartModel()
+            .title("AACharts 带有抖动的箱线混合散点图")
+            .legendEnabled(false)
+            .categories(["1", "2", "3", "4", "5"])
+            .xAxisTitle("实验号码")
+            .yAxisTitle("观测值")
+            .series([
+                AASeriesElement()
+                    .type(.boxplot)
+                    .name("总结")
+                    .data(boxplotData)
+                    .color("#04d69f")
+                    .lineWidth(3)
+                    .fillColor(AAColor.red)
+                    .tooltip(AATooltip()
+                        .headerFormat("<em>实验号码： {point.key}</em><br/>")
+                        .pointFormat(
+                            "◉</span> <b> {series.name}</b><br/>"
+                            + "最大值: {point.high}<br/>"
+                            + "Q2: {point.q3}<br/>"
+                            + "中位数: {point.median}<br/>"
+                            + "Q1: {point.q1}<br/>"
+                            + "最小值: {point.low}<br/>")
+                        .valueDecimals(2))//设置取值精确到小数点后几位
+                ,
+                AASeriesElement()
+                    .name("观测值")
+                    .type(.scatter)
+                    .data(scatterData)
+                    .jitter(AAJitter()
+                        .x(0.24))// Exact fit for box plot's groupPadding and pointPadding
+                    .marker(AAMarker()
+                        .radius(3))
+                    .color(AAColor.yellow)
+                    .tooltip(AATooltip()
+                        .pointFormat("值: {point.y}"))
             ])
     }
     

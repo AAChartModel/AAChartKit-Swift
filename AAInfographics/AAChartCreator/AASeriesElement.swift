@@ -69,13 +69,14 @@ public class AASeriesElement: AAObject {
     public var stack: String?
     public var tooltip: AATooltip?
     public var pointPlacement: Any?
+    public var pointPadding: Float?
     public var enableMouseTracking: Bool?
     public var dataSorting: AADataSorting?
     public var reversed: Bool?             //Only useful for pyramid chart and funnel chart
     public var id: String?
     public var connectNulls: Bool?         //Whether to connect a graph line across null points. default value：false.
     public var enabledCrosshairs: Bool?
-
+    public var jitter: AAJitter?           //Only useful for scatter chart and bubble chart
     
     @discardableResult
     public func type(_ prop: AAChartType) -> AASeriesElement {
@@ -304,6 +305,12 @@ public class AASeriesElement: AAObject {
         pointPlacement = prop
         return self
     }
+
+    @discardableResult
+    public func pointPadding(_ prop: Float) -> AASeriesElement {
+        pointPadding = prop
+        return self
+    }
     
     @discardableResult
     public func enableMouseTracking(_ prop: Bool) -> AASeriesElement {
@@ -338,6 +345,12 @@ public class AASeriesElement: AAObject {
     @discardableResult
     public func connectNulls(_ prop: Bool) -> AASeriesElement {
         connectNulls = prop
+        return self
+    }
+
+    @discardableResult
+    public func jitter(_ prop: AAJitter) -> AASeriesElement {
+        jitter = prop
         return self
     }
     

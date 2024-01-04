@@ -32,9 +32,6 @@
 
 import WebKit
 
-let kUserContentMessageNameClick = "click"
-let kUserContentMessageNameMouseOver = "mouseover"
-
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 @objc public protocol AAChartViewDelegate: NSObjectProtocol {
     @objc optional func aaChartViewDidFinishLoad(_ aaChartView: AAChartView)
@@ -79,6 +76,9 @@ public class AALeakAvoider : NSObject, WKScriptMessageHandler {
 
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AAChartView: WKWebView {
+    let kUserContentMessageNameClick = "click"
+    let kUserContentMessageNameMouseOver = "mouseover"
+    
     private var clickEventEnabled: Bool?
     private var touchEventEnabled: Bool?
     
@@ -105,8 +105,6 @@ public class AAChartView: WKWebView {
   
     // MARK: - Setter Method
     #if os(iOS)
-    @available(*, unavailable, message: "This property was renamed, please use isScrollEnabled instead of it")
-    public var scrollEnabled: Bool?
     public var isScrollEnabled: Bool? {
         willSet {
             scrollView.isScrollEnabled = newValue!
@@ -390,7 +388,7 @@ extension AAChartView {
 extension AAChartView {
     /// A common chart update function
     /// (you can update any chart element) to open, close, delete, add, resize, reformat, etc. elements in the chart.
-    /// Refer to https://api.highcharts.com.cn/highcharts#Chart.update
+    /// Refer to https://api.highcharts.com/highcharts#Chart.update
     ///
     /// It should be noted that when updating the array configuration,
     /// for example, when updating configuration attributes including arrays such as xAxis, yAxis, series, etc., the updated data will find existing objects based on id and update them. If no id is configured or passed If the id does not find the corresponding object, the first element of the array is updated. Please refer to this example for details.
@@ -452,7 +450,7 @@ extension AAChartView {
     
     /// Add a new point to the data column after the chart has been rendered.
     /// The new point can be the last point, or it can be placed in the corresponding position given the X value (first, middle position, depending on the x value)
-    /// Refer to https://api.highcharts.com.cn/highcharts#Series.addPoint
+    /// Refer to https://api.highcharts.com/highcharts#Series.addPoint
     ///
     /// - Parameter elementIndex: The specific series element
     /// - Parameter options: The configuration of the data point can be a single value, indicating the y value of the data point; it can also be an array containing x and y values; it can also be an object containing detailed data point configuration. For detailed configuration, see series.data.
@@ -501,7 +499,7 @@ extension AAChartView {
     }
     
     /// Add a new series element to the chart after the chart has been rendered.
-    /// Refer to https://api.highcharts.com.cn/highcharts#Chart.addSeries
+    /// Refer to https://api.highcharts.com/highcharts#Chart.addSeries
     ///
     /// - Parameter element: chart series element
     public func aa_addElementToChartSeries(element: AASeriesElement) {
@@ -512,7 +510,7 @@ extension AAChartView {
     }
     
     /// Remove a specific series element from the chart after the chart has been rendered.
-    /// Refer to https://api.highcharts.com.cn/highcharts#Series.remove
+    /// Refer to https://api.highcharts.com/highcharts#Series.remove
     ///
     /// - Parameter elementIndex: chart series element index
     public func aa_removeElementFromChartSeries(elementIndex: Int) {
@@ -583,7 +581,7 @@ extension AAChartView {
     }
 
     /// Set the chart view content be adaptive to screen rotation with custom animation effect
-    /// Refer to https://api.highcharts.com.cn/highcharts#Chart.setSize
+    /// Refer to https://api.highcharts.com/highcharts#Chart.setSize
     ///
     /// - Parameter animation: The instance object of AAAnimation
     public func aa_adaptiveScreenRotationWithAnimation(_ animation: AAAnimation) {
@@ -591,8 +589,11 @@ extension AAChartView {
             forName: UIDevice.orientationDidChangeNotification,
             object: nil,
             queue: nil) { [weak self] _ in
-                self?.handleDeviceOrientationChangeEventWithAnimation(animation)
-        }
+                //Delay execution by 0.01 seconds to prevent incorrect screen width and height obtained when the screen is rotated
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    self?.handleDeviceOrientationChangeEventWithAnimation(animation)
+                }
+            }
     }
     
     private func handleDeviceOrientationChangeEventWithAnimation(_ animation: AAAnimation) {

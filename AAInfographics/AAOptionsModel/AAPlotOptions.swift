@@ -134,10 +134,24 @@ public class AAPlotOptions: AAObject {
 
 public class AALine: AAObject {
     public var dataLabels: AADataLabels?
+    public var lineColor: String?
+    public var lineWidth: Float?
     
     @discardableResult
     public func dataLabels(_ prop: AADataLabels) -> AALine {
         dataLabels = prop
+        return self
+    }
+    
+    @discardableResult
+    public func lineColor(_ prop: String) -> Self {
+        lineColor = prop
+        return self
+    }
+
+    @discardableResult
+    public func lineWidth(_ prop: Float) -> Self {
+        lineWidth = prop
         return self
     }
     
@@ -146,14 +160,7 @@ public class AALine: AAObject {
     }
 }
 
-public class AASpline: AAObject {
-    public var dataLabels: AADataLabels?
-    
-    @discardableResult
-    public func dataLabels(_ prop: AADataLabels) -> AASpline {
-        dataLabels = prop
-        return self
-    }
+public class AASpline: AALine {
     
     public override init() {
         
@@ -166,7 +173,6 @@ public class AAArea: AASeries {
     public var negativeFillColor: String?
     public var trackByArea: Bool?
     public var lineColor: String?
-    public var lineWidth: Float?
 
     @discardableResult
     public func fillColor(_ prop: String) -> Self {
@@ -195,12 +201,6 @@ public class AAArea: AASeries {
     @discardableResult
     public func lineColor(_ prop: String) -> Self {
         lineColor = prop
-        return self
-    }
-
-    @discardableResult
-    public func lineWidth(_ prop: Float) -> Self {
-        lineWidth = prop
         return self
     }
 
