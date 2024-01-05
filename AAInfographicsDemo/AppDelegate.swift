@@ -81,6 +81,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let thirdVC = createThirdNavigationController()
         viewControllers.append(thirdVC)
 
+        let fourthVC = createFourthNavigationController()
+        viewControllers.append(fourthVC)
+
         // 将数组赋值给 UITabBarController
         tabBarController.viewControllers = viewControllers
 
@@ -120,6 +123,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return thirdVC
     }
 
+    func createFourthViewController() -> UIViewController {
+        // 创建第四个视图控制器
+        let fourthVC = OfficialSamplesListVC()
+        fourthVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 3)
+
+        // 在这里添加第四个视图控制器的其他配置
+
+        return fourthVC
+    }
+
 
     // 创建导航控制器，并将第一个视图控制器设置为根视图控制器
     func createFirstNavigationController() -> UINavigationController {
@@ -139,6 +152,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createThirdNavigationController() -> UINavigationController {
         let thirdViewController = createThirdViewController()
         let navigationController = UINavigationController(rootViewController: thirdViewController)
+        return navigationController
+    }
+
+    // 创建导航控制器，并将第四个视图控制器设置为根视图控制器
+    func createFourthNavigationController() -> UINavigationController {
+        let fourthViewController = createFourthViewController()
+        let navigationController = UINavigationController(rootViewController: fourthViewController)
         return navigationController
     }
 
