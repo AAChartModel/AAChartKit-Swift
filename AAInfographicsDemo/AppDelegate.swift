@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
 
         // 创建一个数组来保存所有的视图控制器
-        var viewControllers = [UIViewController]()
+        var viewControllers = [UINavigationController]()
 
         let firstVC = createFirstNavigationController()
         viewControllers.append(firstVC)
@@ -83,6 +83,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let fourthVC = createFourthNavigationController()
         viewControllers.append(fourthVC)
+
+        let fifthVC = createFifthNavigationController()
+        viewControllers.append(fifthVC)
 
         // 将数组赋值给 UITabBarController
         tabBarController.viewControllers = viewControllers
@@ -133,6 +136,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return fourthVC
     }
 
+    func createFifthViewController() -> UIViewController {
+        // 创建第五个视图控制器
+        let fifthVC = AdvancedFeaturesListVC()
+        fifthVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 4)
+
+        // 在这里添加第五个视图控制器的其他配置
+
+        return fifthVC
+    }
+
 
     // 创建导航控制器，并将第一个视图控制器设置为根视图控制器
     func createFirstNavigationController() -> UINavigationController {
@@ -159,6 +172,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createFourthNavigationController() -> UINavigationController {
         let fourthViewController = createFourthViewController()
         let navigationController = UINavigationController(rootViewController: fourthViewController)
+        return navigationController
+    }
+
+    // 创建导航控制器，并将第五个视图控制器设置为根视图控制器
+    func createFifthNavigationController() -> UINavigationController {
+        let fifthViewController = createFifthViewController()
+        let navigationController = UINavigationController(rootViewController: fifthViewController)
         return navigationController
     }
 
