@@ -660,6 +660,7 @@ class CustomStyleChartVC: AABaseChartVC {
     }
     
     //refer to online sample https://jshare.com.cn/github/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-marker-symbol/
+    //https://github.com/AAChartModel/AAChartKit/issues/703
     private func customScatterChartMarkerSymbolContent() -> AAChartModel {
         let element1 = AASeriesElement()
             .name("Predefined symbol")
