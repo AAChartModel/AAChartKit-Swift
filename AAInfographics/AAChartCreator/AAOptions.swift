@@ -274,14 +274,7 @@ public class AAOptionsConstructor {
         case .column:
             let aaColumn = AAColumn()
                 .borderWidth(0)
-//                .borderRadius(aaChartModel.borderRadius)
-            if aaChartModel.borderRadius is Float {
-                let borderRadius: Float = aaChartModel.borderRadius as! Float
-                aaColumn.borderRadius(borderRadius)
-            } else if aaChartModel.borderRadius is String {
-                let borderRadius: String = aaChartModel.borderRadius as! String
-                aaColumn.borderRadius(borderRadius)
-            }
+                .borderRadius(aaChartModel.borderRadius)
 
             if (aaChartModel.polar == true) {
                 aaColumn
@@ -289,23 +282,19 @@ public class AAOptionsConstructor {
                     .groupPadding(0.005)
             }
             aaPlotOptions.column(aaColumn)
+            
         case .bar:
             let aaBar = AABar()
                 .borderWidth(0)
-//                .borderRadius(aaChartModel.borderRadius)
-            if aaChartModel.borderRadius is Float {
-                let borderRadius: Float = aaChartModel.borderRadius as! Float
-                aaBar.borderRadius(borderRadius)
-            } else if aaChartModel.borderRadius is String {
-                let borderRadius: String = aaChartModel.borderRadius as! String
-                aaBar.borderRadius(borderRadius)
-            }
+                .borderRadius(aaChartModel.borderRadius)
+
             if (aaChartModel.polar == true) {
                 aaBar
                     .pointPadding(0)
                     .groupPadding(0.005)
             }
             aaPlotOptions.bar(aaBar)
+            
         case .pie:
             if (aaChartModel.dataLabelsEnabled == true) {
                 aaDataLabels.format("<b>{point.name}</b>: {point.percentage:.1f} %")
@@ -315,17 +304,12 @@ public class AAOptionsConstructor {
                          .allowPointSelect(true)
                          .cursor("pointer")
                          .showInLegend(true))
+            
         case .columnrange:
             let aaColumnrange = AAColumnrange()
                 .borderWidth(0)
-//                .borderRadius(aaChartModel.borderRadius)
-            if aaChartModel.borderRadius is Float {
-                let borderRadius: Float = aaChartModel.borderRadius as! Float
-                aaColumnrange.borderRadius(borderRadius)
-            } else if aaChartModel.borderRadius is String {
-                let borderRadius: String = aaChartModel.borderRadius as! String
-                aaColumnrange.borderRadius(borderRadius)
-            }
+                .borderRadius(aaChartModel.borderRadius)
+
             if (aaChartModel.polar == true) {
                 aaColumnrange
                     .pointPadding(0)

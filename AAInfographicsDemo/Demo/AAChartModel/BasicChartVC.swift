@@ -237,7 +237,8 @@ class BasicChartVC: UIViewController {
                 ["Square corners 🟥",
                  "Soft corners 🌼",
                  "Rounded corners 🔵",
-                 "Wedge 🔶"]
+//                 "Wedge 🔶"
+                ]
             ]
             typeLabelNamesArr = [
                 "Stacking Type Selection",
@@ -301,17 +302,9 @@ class BasicChartVC: UIViewController {
             
         case 1:
             if chartType == .column || chartType == .bar {
-//                let borderRadiusArr = [1, 10, "50%", 100] as [Any]
-//                let borderRadius = borderRadiusArr[selectedSegmentIndex]
-                if selectedSegmentIndex == 0 {
-                    aaChartModel!.borderRadius(1)
-                } else if selectedSegmentIndex == 1 {
-                    aaChartModel!.borderRadius(10)
-                } else if selectedSegmentIndex == 2 {
-                    aaChartModel!.borderRadius("50%")
-                } else if selectedSegmentIndex == 3 {
-                    aaChartModel!.borderRadius(100)
-                }
+                let borderRadiusArr = [1, 10, "50%", 100] as [Any]
+                let borderRadius = borderRadiusArr[selectedSegmentIndex]
+                aaChartModel!.borderRadius(borderRadius)
             } else {
                 let symbolArr = [
                     AAChartSymbolType.circle,

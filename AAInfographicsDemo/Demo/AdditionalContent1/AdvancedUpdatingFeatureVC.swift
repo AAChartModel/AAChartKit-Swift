@@ -63,36 +63,19 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
         case 1:
             if chartType == .column || chartType == .bar {
                 let borderRadiusArr: [Any] = [1, 10, "50%", 100]
-                let borderRadiusValue = borderRadiusArr[selectedSegmentIndex]
+                let borderRadius = borderRadiusArr[selectedSegmentIndex]
                 
                 var aaPlotOptions: AAPlotOptions? = nil
                 if chartType == .column {
-                    if borderRadiusValue is Int {
-                        let borderRadius: Int = borderRadiusValue as! Int
-                        aaPlotOptions = AAPlotOptions()
-                            .column(AAColumn()
-                                .borderRadius(Float(borderRadius)))
-                    } else if borderRadiusValue is String {
-                        let borderRadius: String = borderRadiusValue as! String
-                        aaPlotOptions = AAPlotOptions()
-                            .column(AAColumn()
-                                .borderRadius(borderRadius))
-                    }
+                    aaPlotOptions = AAPlotOptions()
+                        .column(AAColumn()
+                            .borderRadius(borderRadius))
                 } else {
-                    if borderRadiusValue is Int {
-                        let borderRadius: Int = borderRadiusValue as! Int
-                        aaPlotOptions = AAPlotOptions()
-                            .bar(AABar()
-                                .borderRadius(Float(borderRadius)))
-                    } else if borderRadiusValue is String {
-                        let borderRadius: String = borderRadiusValue as! String
-                        aaPlotOptions = AAPlotOptions()
-                            .bar(AABar()
-                                .borderRadius(borderRadius))
-                    }
+                    aaPlotOptions = AAPlotOptions()
+                        .bar(AABar()
+                            .borderRadius(borderRadius))
                 }
                 options = aaPlotOptions
-                
             } else {
                 let symbolArr = [
                     AAChartSymbolType.circle,

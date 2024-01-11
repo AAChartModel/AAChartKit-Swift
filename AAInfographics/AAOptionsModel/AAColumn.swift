@@ -87,6 +87,12 @@ public class AAColumn: AASeries {
     }
     
     @discardableResult
+    public func borderRadius(_ prop: Any?) -> Self {
+        borderRadius = prop
+        return self
+    }
+    
+    @discardableResult
     public func borderRadiusTopLeft(_ prop: Any?) -> Self {
         borderRadiusTopLeft = prop
         return self
@@ -141,6 +147,12 @@ public class AAColumnrange: AAObject {
     
     @discardableResult
     public func borderRadius(_ prop: String?) -> AAColumnrange {
+        borderRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderRadius(_ prop: Any?) -> AAColumnrange {
         borderRadius = prop
         return self
     }

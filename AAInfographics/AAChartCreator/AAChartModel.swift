@@ -476,6 +476,12 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
+    public func borderRadius(_ prop: Any) -> AAChartModel {
+        borderRadius = prop
+        return self
+    }
+    
+    @discardableResult
     public func scrollablePlotArea(_ prop: AAScrollablePlotArea) -> AAChartModel {
         scrollablePlotArea = prop
         return self
