@@ -38,7 +38,7 @@ public class AAColumn: AASeries {
     public var color: String?
     public var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. default：true.
     public var yAxis: Float?
-    public var borderRadius: Float?        //The corner radius of the border surrounding each column or bar.
+    public var borderRadius: Any?        //The corner radius of the border surrounding each column or bar.
     public var borderRadiusTopLeft: Any?
     public var borderRadiusTopRight: Any?
     public var borderRadiusBottomLeft: Any?
@@ -76,6 +76,12 @@ public class AAColumn: AASeries {
     
     @discardableResult
     public func borderRadius(_ prop: Float?) -> Self {
+        borderRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderRadius(_ prop: String?) -> Self {
         borderRadius = prop
         return self
     }
@@ -119,7 +125,7 @@ public class AABar: AAColumn {
 }
 
 public class AAColumnrange: AAObject {
-    public var borderRadius: Float?//The color of the border surrounding each column or bar
+    public var borderRadius: Any?//The color of the border surrounding each column or bar
     public var borderWidth: Float?//The corner radius of the border surrounding each column or bar. default：0
     public var dataLabels: AADataLabels?
     public var groupPadding: Float?//Padding between each value groups, in x axis units. default：0.2.
@@ -129,6 +135,12 @@ public class AAColumnrange: AAObject {
     
     @discardableResult
     public func borderRadius(_ prop: Float?) -> AAColumnrange {
+        borderRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderRadius(_ prop: String?) -> AAColumnrange {
         borderRadius = prop
         return self
     }

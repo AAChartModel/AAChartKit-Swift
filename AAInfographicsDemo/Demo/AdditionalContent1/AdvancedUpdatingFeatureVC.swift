@@ -62,17 +62,34 @@ class AdvancedUpdatingFeatureVC: BasicChartVC {
             
         case 1:
             if chartType == .column || chartType == .bar {
-                let borderRadiusArr: [Float] = [1, 10, 100]
-                let borderRadius = borderRadiusArr[selectedSegmentIndex]
+                let borderRadiusArr: [Any] = [1, 10, "50%", 100]
+                let borderRadiusValue = borderRadiusArr[selectedSegmentIndex]
+                
                 var aaPlotOptions: AAPlotOptions? = nil
                 if chartType == .column {
-                    aaPlotOptions = AAPlotOptions()
-                        .column(AAColumn()
-                            .borderRadius(borderRadius))
+                    if borderRadiusValue is Int {
+                        let borderRadius: Int = borderRadiusValue as! Int
+                        aaPlotOptions = AAPlotOptions()
+                            .column(AAColumn()
+                                .borderRadius(Float(borderRadius)))
+                    } else if borderRadiusValue is String {
+                        let borderRadius: String = borderRadiusValue as! String
+                        aaPlotOptions = AAPlotOptions()
+                            .column(AAColumn()
+                                .borderRadius(borderRadius))
+                    }
                 } else {
-                    aaPlotOptions = AAPlotOptions()
-                        .bar(AABar()
-                            .borderRadius(borderRadius))
+                    if borderRadiusValue is Int {
+                        let borderRadius: Int = borderRadiusValue as! Int
+                        aaPlotOptions = AAPlotOptions()
+                            .bar(AABar()
+                                .borderRadius(Float(borderRadius)))
+                    } else if borderRadiusValue is String {
+                        let borderRadius: String = borderRadiusValue as! String
+                        aaPlotOptions = AAPlotOptions()
+                            .bar(AABar()
+                                .borderRadius(borderRadius))
+                    }
                 }
                 options = aaPlotOptions
                 

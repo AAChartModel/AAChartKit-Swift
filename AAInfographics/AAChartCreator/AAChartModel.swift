@@ -184,7 +184,7 @@ public class AAChartModel: AAObject {
     public var series: [Any]?               //An array of all the chart's series
     public var legendEnabled: Bool?         //Enable or disable the legend. Defaults to true
     public var backgroundColor: Any?        //The background color or gradient for the outer chart area. Defaults to #FFFFFF
-    public var borderRadius: Float?         //The corner radius of the outer chart border. Defaults to 0
+    public var borderRadius: Any?         //The corner radius of the outer chart border. Defaults to 0
     public var markerRadius: Float?         //The radius of the point marker. Defaults to 4
     public var scrollablePlotArea: AAScrollablePlotArea?    //Scroll properties if supported
     
@@ -465,6 +465,12 @@ public class AAChartModel: AAObject {
     
     @discardableResult
     public func borderRadius(_ prop: Float) -> AAChartModel {
+        borderRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderRadius(_ prop: String) -> AAChartModel {
         borderRadius = prop
         return self
     }
