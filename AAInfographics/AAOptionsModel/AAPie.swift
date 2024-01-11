@@ -39,7 +39,8 @@ public class AAPie: AASeries {
     public var endAngle: Float?
     public var depth: Float?
     public var center: [Any]?
-    
+    public var borderRadius: Any?
+
     @discardableResult
     public func type(_ prop: AAChartType) -> AAPie {
         type = prop.rawValue
@@ -97,6 +98,24 @@ public class AAPie: AASeries {
     @discardableResult
     public func center(_ prop: [String]?) -> AAPie {
         center = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderRadius(_ prop: Float?) -> AAPie {
+        borderRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderRadius(_ prop: String?) -> AAPie {
+        borderRadius = prop
+        return self
+    }
+    
+    @discardableResult
+    public func borderRadius(_ prop: Any?) -> AAPie {
+        borderRadius = prop
         return self
     }
     
