@@ -52,6 +52,7 @@
 		84595DEA2B46A94C00F69273 /* AAOptionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */; };
 		84595DEC2B46B34E00F69273 /* AAOptionsWithJSListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */; };
 		84595DEE2B47E53C00F69273 /* OfficialSamplesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DED2B47E53C00F69273 /* OfficialSamplesListVC.swift */; };
+		84595DF02B47E8E700F69273 /* AdvancedFeaturesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */; };
 		848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */; };
 		848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */; };
 		84A9FB7E28C9BC0E00240C11 /* AAScatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */; };
@@ -227,6 +228,7 @@
 		84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsListVC.swift; sourceTree = "<group>"; };
 		84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsWithJSListVC.swift; sourceTree = "<group>"; };
 		84595DED2B47E53C00F69273 /* OfficialSamplesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialSamplesListVC.swift; sourceTree = "<group>"; };
+		84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedFeaturesListVC.swift; sourceTree = "<group>"; };
 		848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAAChartViewForXibVC.swift; sourceTree = "<group>"; };
 		848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAAChartViewForXibVC.xib; sourceTree = "<group>"; };
 		84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAScatter.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */,
 				84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */,
 				84595DED2B47E53C00F69273 /* OfficialSamplesListVC.swift */,
+				84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */,
 				2763384524A7070F00143B9B /* DataSortingWithAnimationChartVC.swift in Sources */,
 				84BDF5A5293064DE00B9EC30 /* OfficialPieChartVC.swift in Sources */,
+				84595DF02B47E8E700F69273 /* AdvancedFeaturesListVC.swift in Sources */,
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
 				448330B824E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift in Sources */,
 				8418479928B8755900094106 /* JSFunctionForAAChartEventsVC.swift in Sources */,
