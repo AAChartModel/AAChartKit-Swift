@@ -299,11 +299,13 @@ public class AAOptionsConstructor {
             if (aaChartModel.dataLabelsEnabled == true) {
                 aaDataLabels.format("<b>{point.name}</b>: {point.percentage:.1f} %")
             }
-            aaPlotOptions
-                .pie(AAPie()
-                         .allowPointSelect(true)
-                         .cursor("pointer")
-                         .showInLegend(true))
+            let aaPie = AAPie()
+                .allowPointSelect(true)
+                .cursor("pointer")
+                .showInLegend(true)
+                .borderRadius(aaChartModel.borderRadius)
+            
+            aaPlotOptions.pie(aaPie)
             
         case .columnrange:
             let aaColumnrange = AAColumnrange()
