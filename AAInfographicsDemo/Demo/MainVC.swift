@@ -188,17 +188,17 @@ class MainVC: UIViewController {
             ],
             /*Custom chart style by AAChartModel*/
             [
-                "pieChart",
-                "doubleLayerPieChart",
-                "doubleLayerDoubleColorsPieChart",
+                "pieChart---扇形图",
+                "doubleLayerPieChart---双层扇形图",
+                "doubleLayerDoubleColorsPieChart---双层双色扇形图",
 
-                "pieChartWithSoftCorners",
-                "doubleLayerPieChartWithSoftCorners",
-                "doubleLayerDoubleColorsPieChartWithSoftCorners",
+                "pieChartWithSoftCorners---弱圆角扇形图",
+                "doubleLayerPieChartWithSoftCorners---弱圆角双层扇形图",
+                "doubleLayerDoubleColorsPieChartWithSoftCorners---弱圆角双层双色扇形图",
 
-                "pieChartWithRoundedCorners",
-                "doubleLayerPieChartWithRoundedCorners",
-                "doubleLayerDoubleColorsPieChartWithRoundedCorners",
+                "pieChartWithRoundedCorners---圆角扇形图",
+                "doubleLayerPieChartWithRoundedCorners---圆角双层扇形图",
+                "doubleLayerDoubleColorsPieChartWithRoundedCorners---圆角双层双色扇形图",
             ]
 
 
@@ -428,7 +428,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             /*Custom chart style by AAChartModel*/
             let vc = CustomStyleForPieChartVC()
             vc.selectedIndex = indexPath.row
-            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
         
