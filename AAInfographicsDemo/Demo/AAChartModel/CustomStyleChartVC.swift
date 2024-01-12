@@ -1008,105 +1008,14 @@ class CustomStyleChartVC: AABaseChartVC {
                 ])
             ])
     }
-    
+
     private func doubleLayerPieChart() -> AAChartModel {
-        AAChartModel()
-            .chartType(.pie)
-            .title("浏览器市场占比历史对比")
-            .subtitle("无任何可靠依据的虚拟数据")
-            .dataLabelsEnabled(true)//是否直接显示扇形图数据
-            .yAxisTitle("摄氏度")
-            .series([
-                AASeriesElement()
-                    .name("Past")
-                    .size("40%")//尺寸大小
-                    .innerSize("30%")//内部圆环半径大小占比
-                    .borderWidth(0)//描边的宽度
-                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
-                    .data([
-                        ["Firefox Past",   3336.2],
-                        ["Chrome Past",      26.8],
-                        ["Safari Past",      88.5],
-                        ["Opera Past",       46.0],
-                        ["Others Past",     223.0],
-                    ]),
-                AASeriesElement()
-                    .name("Now")
-                    .size("80%")//尺寸大小
-                    .innerSize("70%")//内部圆环半径大小占比
-                    .borderWidth(0)//描边的宽度
-                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
-                    .data([
-                        ["Firefox Now",    336.2],
-                        ["Chrome Now",    6926.8],
-                        ["Safari Now",     388.5],
-                        ["Opera Now",      446.0],
-                        ["Others Now",     223.0],
-                    ])
-            ])
+        CustomStyleForPieChartComposer.doubleLayerPieChart()
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/1234
     private func doubleLayerDoubleColorsPieChart() -> AAChartModel {
-        AAChartModel()
-            .chartType(.pie)
-            .title("浏览器市场占比历史对比")
-            .subtitle("无任何可靠依据的虚拟数据")
-            .dataLabelsEnabled(false)//是否直接显示扇形图数据
-            .yAxisTitle("摄氏度")
-            .legendEnabled(true)
-            .series([
-                AASeriesElement()
-                    .name("Past")
-                    .colors([
-                        AARgba(255, 0, 0, 1.0),
-                        AARgba(255, 0, 0, 0.8),
-                        AARgba(255, 0, 0, 0.6),
-                        AARgba(255, 0, 0, 0.4),
-                        AARgba(255, 0, 0, 0.2),
-                    ])
-                    .dataLabels(AADataLabels()
-                        .enabled(false))
-                    .size("25%")//尺寸大小
-                    .innerSize("20%")//内部圆环半径大小占比
-                    .borderWidth(0)//描边的宽度
-                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
-                    .data([
-                        ["Firefox Past",   1336.2],
-                        ["Chrome Past",     126.8],
-                        ["Safari Past",     188.5],
-                        ["Opera Past",      146.0],
-                        ["Others Past",     223.0],
-                    ]),
-                
-                AASeriesElement()
-                    .name("Now")
-                    .colors([
-                        AARgba(30, 144, 255, 1.0),
-                        AARgba(30, 144, 255, 0.8),
-                        AARgba(30, 144, 255, 0.6),
-                        AARgba(30, 144, 255, 0.4),
-                        AARgba(30, 144, 255, 0.2),
-                    ])
-                    .dataLabels(AADataLabels()
-                        .enabled(true)
-                        .format("<b>{point.name}</b> <br> {point.percentage:.1f} %")
-                        .alignTo("plotEdges")
-                        .connectorShape("crookedLine")
-                        .crookDistance("90%")
-                        .style(AAStyle(color: AARgba(30, 144, 255, 1.0))))
-                    .size("40%")//尺寸大小
-                    .innerSize("80%")//内部圆环半径大小占比
-                    .borderWidth(0)//描边的宽度
-                    .allowPointSelect(false)//是否允许在点击数据点标记(扇形图点击选中的块发生位移)
-                    .data([
-                        ["Firefox Now",    926.8],
-                        ["Chrome Now",     336.2],
-                        ["Safari Now",     388.5],
-                        ["Opera Now",      446.0],
-                        ["Others Now",     223.0],
-                    ])
-            ])
+        CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChart()
     }
     
     //GitHub issue https://github.com/AAChartModel/AAChartKit/issues/903
