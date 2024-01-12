@@ -18,7 +18,6 @@ class CustomStyleForPieChartComposer {
             .subtitle("virtual data")
             .dataLabelsEnabled(true)//是否直接显示扇形图数据
             .yAxisTitle("℃")
-            .borderRadius("50%")
             .series([
                 AASeriesElement()
                     .name("Language market shares")
@@ -45,7 +44,6 @@ class CustomStyleForPieChartComposer {
             .subtitle("无任何可靠依据的虚拟数据")
             .dataLabelsEnabled(true)//是否直接显示扇形图数据
             .yAxisTitle("摄氏度")
-            .borderRadius("50%")
             .series([
                 AASeriesElement()
                     .name("Past")
