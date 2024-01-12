@@ -65,6 +65,8 @@
 		84DEA0D62845F5F200D0206F /* CustomSelectionEventCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEA0D52845F5F200D0206F /* CustomSelectionEventCallback.swift */; };
 		84DEA0D82846013F00D0206F /* CustomTouchEndEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEA0D72846013F00D0206F /* CustomTouchEndEventCallbackVC.swift */; };
 		84DEB8A028F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB89F28F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift */; };
+		84E68FBD2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */; };
+		84E68FBF2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */; };
 		84F21858292DF373007AA726 /* OfficialAreaChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F21857292DF373007AA726 /* OfficialAreaChartVC.swift */; };
 		84F2185A292E10DE007AA726 /* OfficialBarOrColumnChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F21859292E10DD007AA726 /* OfficialBarOrColumnChartVC.swift */; };
 		84F8F66B28B714E000F41E6A /* AABoxplot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F66A28B714E000F41E6A /* AABoxplot.swift */; };
@@ -240,6 +242,8 @@
 		84DEA0D52845F5F200D0206F /* CustomSelectionEventCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSelectionEventCallback.swift; sourceTree = "<group>"; };
 		84DEA0D72846013F00D0206F /* CustomTouchEndEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTouchEndEventCallbackVC.swift; sourceTree = "<group>"; };
 		84DEB89F28F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAATooltipVC2.swift; sourceTree = "<group>"; };
+		84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForPieChartVC.swift; sourceTree = "<group>"; };
+		84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForPieChartComposer.swift; sourceTree = "<group>"; };
 		84F21857292DF373007AA726 /* OfficialAreaChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAreaChartVC.swift; sourceTree = "<group>"; };
 		84F21859292E10DD007AA726 /* OfficialBarOrColumnChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialBarOrColumnChartVC.swift; sourceTree = "<group>"; };
 		84F8F66A28B714E000F41E6A /* AABoxplot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABoxplot.swift; sourceTree = "<group>"; };
@@ -461,6 +465,8 @@
 				278C55121EE948C900770B97 /* SpecialChartVC.swift */,
 				4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */,
 				27766454207C55BE00F0A62C /* MixedChartVC.swift */,
+				84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */,
+				84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */,
 			);
 			path = AAChartModel;
 			sourceTree = "<group>";
@@ -724,6 +730,7 @@
 			files = (
 				84595DEA2B46A94C00F69273 /* AAOptionsListVC.swift in Sources */,
 				279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */,
+				84E68FBF2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift in Sources */,
 				278C55151EE948C900770B97 /* MainVC.swift in Sources */,
 				84F21858292DF373007AA726 /* OfficialAreaChartVC.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
@@ -742,6 +749,7 @@
 				84595DF02B47E8E700F69273 /* AdvancedFeaturesListVC.swift in Sources */,
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
 				448330B824E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift in Sources */,
+				84E68FBD2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift in Sources */,
 				8418479928B8755900094106 /* JSFunctionForAAChartEventsVC.swift in Sources */,
 				27E475F924B83AE200690657 /* AABaseChartVC.swift in Sources */,
 				277066112452E99C00C4581D /* ScrollableChartVC.swift in Sources */,
