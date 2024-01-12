@@ -140,12 +140,12 @@ class CustomStyleForPieChartComposer {
     
     static func pieChartWithSoftCorners() -> AAChartModel {
         pieChart()
-            .borderRadius(6)
+            .borderRadius(10)
     }
     
     static func doubleLayerPieChartWithSoftCorners() -> AAChartModel {
         doubleLayerPieChart()
-            .borderRadius(6)
+            .borderRadius(10)
     }
     
     static func doubleLayerDoubleColorsPieChartWithSoftCorners() -> AAChartModel {
