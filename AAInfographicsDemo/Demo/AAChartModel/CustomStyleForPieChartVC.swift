@@ -32,7 +32,7 @@ class CustomStyleForPieChartVC: AABaseChartVC {
         case "doubleLayerPieChartWithRoundedCorners":return CustomStyleForPieChartComposer.doubleLayerPieChartWithRoundedCorners()
         case "doubleLayerDoubleColorsPieChartWithRoundedCorners":return CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithRoundedCorners()
 
-        default: return configureArearangeMixedLineChart()
+        default: return nil
         }
     }
 
