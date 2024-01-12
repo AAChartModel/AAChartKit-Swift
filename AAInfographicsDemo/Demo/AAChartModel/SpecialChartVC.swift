@@ -824,6 +824,7 @@ class SpecialChartVC: AABaseChartVC {
             ])
             .dataLabelsEnabled(true)
             .inverted(true)//x 轴是否垂直翻转
+            .borderRadius("50%")
             .series([
                 AASeriesElement()
                     .name("temperature")
