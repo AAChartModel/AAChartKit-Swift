@@ -39,6 +39,7 @@ public class AALegend: AAObject {
     public var enabled: Bool?
     public var borderColor: String?
     public var borderWidth: Float?
+    public var bubbleLegend: AABubbleLegend?
     public var itemMarginTop: Float? //The top margin of each item of the legend, in px. The default is: 0.
     public var itemMarginBottom: Float?//The bottom margin of each item of the legend, in px. The default is: 0.
     public var itemStyle: AAItemStyle?
@@ -88,6 +89,12 @@ public class AALegend: AAObject {
     @discardableResult
     public func borderWidth(_ prop: Float?) -> AALegend {
         borderWidth = prop
+        return self
+    }
+
+    @discardableResult
+    public func bubbleLegend(_ prop: AABubbleLegend?) -> AALegend {
+        bubbleLegend = prop
         return self
     }
     
