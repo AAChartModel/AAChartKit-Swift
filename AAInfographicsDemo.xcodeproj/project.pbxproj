@@ -26,7 +26,7 @@
 		279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */; };
 		27E475F924B83AE200690657 /* AABaseChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E475F824B83AE200690657 /* AABaseChartVC.swift */; };
 		27FADB8620D6569000FED960 /* HideOrShowChartSeriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FADB8520D6569000FED960 /* HideOrShowChartSeriesVC.swift */; };
-		2DC111EEF4C3BC1532ED957C /* AABubbleLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC11FD83D319267C3D1C1DE /* AABubbleLegend.swift */; };
+		2DC11BB34BC87432BF593AC8 /* BubbleLegendChartOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1178786788013590AD7CC /* BubbleLegendChartOptionsComposer.swift */; };
 		4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4409BECF21B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift */; };
 		4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */; };
 		447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447B4B3421C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift */; };
@@ -182,6 +182,7 @@
 		27E475F824B83AE200690657 /* AABaseChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABaseChartVC.swift; sourceTree = "<group>"; };
 		27E58D3626EA18B900A0709E /* AAStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAStyle.swift; sourceTree = "<group>"; };
 		27FADB8520D6569000FED960 /* HideOrShowChartSeriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideOrShowChartSeriesVC.swift; sourceTree = "<group>"; };
+		2DC1178786788013590AD7CC /* BubbleLegendChartOptionsComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleLegendChartOptionsComposer.swift; sourceTree = "<group>"; };
 		2DC11FD83D319267C3D1C1DE /* AABubbleLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABubbleLegend.swift; sourceTree = "<group>"; };
 		440839A0226AD2B600645263 /* AADataLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADataLabels.swift; sourceTree = "<group>"; };
 		4409BECF21B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateJSStringFunctionVC.swift; sourceTree = "<group>"; };
@@ -486,6 +487,7 @@
 				840716582A70B69C0037193B /* PieChartOptionsVC.swift */,
 				840716542A6E82290037193B /* MultiYAxesChartOptionsVC.swift */,
 				84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */,
+				2DC1178786788013590AD7CC /* BubbleLegendChartOptionsComposer.swift */,
 			);
 			path = AAOptions;
 			sourceTree = "<group>";
@@ -781,7 +783,7 @@
 				840716552A6E82290037193B /* MultiYAxesChartOptionsVC.swift in Sources */,
 				58603456B9A269D72A0F9656 /* PieChartOptionsComposer.swift in Sources */,
 				586035AD1F2AA0AF6BFBDA7D /* LineChartOptionsVC.swift in Sources */,
-				2DC111EEF4C3BC1532ED957C /* AABubbleLegend.swift in Sources */,
+				2DC11BB34BC87432BF593AC8 /* BubbleLegendChartOptionsComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
