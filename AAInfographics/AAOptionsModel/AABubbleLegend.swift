@@ -43,7 +43,7 @@ public class AABubbleLegend: AAObject {
     public var legendIndex: Float?
     public var maxSize: Float?
     public var minSize: Float?
-    public var ranges: [AARange]?
+    public var ranges: [AARangesElement]?
     public var sizeBy: String?
     public var sizeByAbsoluteValue: Bool?
     public var zIndex: Float?
@@ -128,7 +128,7 @@ public class AABubbleLegend: AAObject {
     }
 
     @discardableResult
-    public func ranges(_ prop: [AARange]?) -> AABubbleLegend {
+    public func ranges(_ prop: [AARangesElement]?) -> AABubbleLegend {
         ranges = prop
         return self
     }
@@ -164,32 +164,32 @@ public class AABubbleLegend: AAObject {
 
 
 
-public class AARange: AAObject {
+public class AARangesElement: AAObject {
     public var borderColor: String?
     public var color: String?
     public var connectorColor: String?
     public var value: Float?
 
     @discardableResult
-    public func borderColor(_ prop: String?) -> AARange {
+    public func borderColor(_ prop: String?) -> AARangesElement {
         borderColor = prop
         return self
     }
 
     @discardableResult
-    public func color(_ prop: String?) -> AARange {
+    public func color(_ prop: String?) -> AARangesElement {
         color = prop
         return self
     }
 
     @discardableResult
-    public func connectorColor(_ prop: String?) -> AARange {
+    public func connectorColor(_ prop: String?) -> AARangesElement {
         connectorColor = prop
         return self
     }
 
     @discardableResult
-    public func value(_ prop: Float?) -> AARange {
+    public func value(_ prop: Float?) -> AARangesElement {
         value = prop
         return self
     }

@@ -169,13 +169,13 @@ class BubbleLegendChartOptionsComposer {
                                 .enabled(true)
                                 .borderWidth(2)
                                 .ranges([
-                                    AARange()
+                                    AARangesElement()
                                             .borderColor("#1aadce")
                                             .connectorColor("#1aadce"),
-                                    AARange()
+                                    AARangesElement()
                                             .borderColor("#0d233a")
                                             .connectorColor("#0d233a"),
-                                    AARange()
+                                    AARangesElement()
                                             .borderColor("#f28f43")
                                             .connectorColor("#f28f43")
                                 ])))
