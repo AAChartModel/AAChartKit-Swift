@@ -7,7 +7,144 @@ import AAInfographics
 
 class CustomStyleForColumnChartComposer {
     
+    
     private func configureColorfulColumnChart() -> AAChartModel {
+        let colorsNameArr = [
+            "red",
+            "orange",
+            "yellow",
+            "green",
+            "cyan",
+            "blue",
+            "purple",
+            "gray",
+            "darkGray",
+            "lightGray",
+            "magenta",
+            "brown",
+            "black"
+        ]
+        
+        let colorsArr = [
+            AAColor.red,
+            AAColor.orange,
+            AAColor.yellow,
+            AAColor.green,
+            AAColor.cyan,
+            AAColor.blue,
+            AAColor.purple,
+            AAColor.gray,
+            AAColor.darkGray,
+            AAColor.lightGray,
+            AAColor.magenta,
+            AAColor.brown,
+            AAColor.black
+        ]
+        
+        return AAChartModel()
+            .chartType(.column)
+            .animationType(.bounce)
+            .title("Colorful Chart")
+            .subtitle("use AAColor to get color string")
+            .dataLabelsEnabled(false)
+            .categories(colorsNameArr)
+            .colorsTheme(colorsArr as [Any])
+            .stacking(.percent)
+            .margin(AAMargin(left: 68, right: 0))
+            .series([
+                AASeriesElement()
+                    .name("Tokyo")
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6, 5.5])
+                    .colorByPoint(true)
+            ])
+    }
+    
+    private func configureColorfulGradientColorColumnChart() -> AAChartModel {
+        let gradientColorNamesArr = [
+            "oceanBlue",
+            "sanguine",
+            "lusciousLime",
+            "purpleLake",
+            "freshPapaya",
+            "ultramarine",
+            "pinkSugar",
+            "lemonDrizzle",
+            "victoriaPurple",
+            "springGreens",
+            "mysticMauve",
+            "reflexSilver",
+            "newLeaf",
+            "cottonCandy",
+            "pixieDust",
+            "fizzyPeach",
+            "sweetDream",
+            "firebrick",
+            "wroughtIron",
+            "deepSea",
+            "coastalBreeze",
+            "eveningDelight",
+        ]
+        
+        let gradientColorArr = [
+            AAGradientColor.oceanBlue,
+            AAGradientColor.sanguine,
+            AAGradientColor.lusciousLime,
+            AAGradientColor.purpleLake,
+            AAGradientColor.freshPapaya,
+            AAGradientColor.ultramarine,
+            AAGradientColor.pinkSugar,
+            AAGradientColor.lemonDrizzle,
+            AAGradientColor.victoriaPurple,
+            AAGradientColor.springGreens,
+            AAGradientColor.mysticMauve,
+            AAGradientColor.reflexSilver,
+            AAGradientColor.newLeaf,
+            AAGradientColor.cottonCandy,
+            AAGradientColor.pixieDust,
+            AAGradientColor.fizzyPeach,
+            AAGradientColor.sweetDream,
+            AAGradientColor.firebrick,
+            AAGradientColor.wroughtIron,
+            AAGradientColor.deepSea,
+            AAGradientColor.coastalBreeze,
+            AAGradientColor.eveningDelight,
+        ]
+        
+        return AAChartModel()
+            .chartType(.column)
+            .title("Colorful Gradient Chart")
+            .backgroundColor("#5E5E5E")
+            .categories(gradientColorNamesArr)
+            .colorsTheme(gradientColorArr as [Any])
+            .stacking(.percent)
+            .xAxisLabelsStyle(AAStyle(color: AAColor.white))
+            .dataLabelsEnabled(false)
+            .margin(AAMargin(top: 60, bottom: 60))
+            .series([
+                AASeriesElement()
+                    .name("2018")
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9,
+                           9.6, 7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3,])
+                    .colorByPoint(true)
+            ])
+    }
+    
+    private func configureDiscontinuousDataColumnChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.column)
+            .yAxisTitle("")//设置Y轴标题
+            .dataLabelsEnabled(true)//是否显示值
+            .tooltipEnabled(true)
+            .series([
+                AASeriesElement()
+                    .name("所有专业")
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2,NSNull(),NSNull(),NSNull(),NSNull(), 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6,])
+                    .color(AAGradientColor.firebrick)
+            ])
+    }
+
+    
+    private func configureRandomColorfulColumnChart() -> AAChartModel {
         func configureTheRandomColorArray(colorsNumber: Int) -> [Any] {
             let colorStringArr = NSMutableArray()
             for _ in 0 ..< colorsNumber {
