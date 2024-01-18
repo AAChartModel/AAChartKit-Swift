@@ -8,7 +8,7 @@ import AAInfographics
 class CustomStyleForColumnChartComposer {
     
     
-    private func configureColorfulColumnChart() -> AAChartModel {
+    private func colorfulColumnChart() -> AAChartModel {
         let colorsNameArr = [
             "red",
             "orange",
@@ -59,7 +59,7 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    private func configureColorfulGradientColorColumnChart() -> AAChartModel {
+    private func colorfulGradientColorColumnChart() -> AAChartModel {
         let gradientColorNamesArr = [
             "oceanBlue",
             "sanguine",
@@ -129,7 +129,7 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    private func configureDiscontinuousDataColumnChart() -> AAChartModel {
+    private func discontinuousDataColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .yAxisTitle("")//设置Y轴标题
@@ -144,8 +144,8 @@ class CustomStyleForColumnChartComposer {
     }
 
     
-    private func configureRandomColorfulColumnChart() -> AAChartModel {
-        func configureTheRandomColorArray(colorsNumber: Int) -> [Any] {
+    private func randomColorfulColumnChart() -> AAChartModel {
+        func TheRandomColorArray(colorsNumber: Int) -> [Any] {
             let colorStringArr = NSMutableArray()
             for _ in 0 ..< colorsNumber {
                 let R = arc4random() % 256
@@ -170,7 +170,7 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    private func configureStackingPolarColumnChart() -> AAChartModel {
+    private func stackingPolarColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .xAxisLabelsStyle(AAStyle(color: AAColor.white))
@@ -198,7 +198,7 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    private func configureSpecialStyleColumnOfSingleDataElementChart() -> AAChartModel {
+    private func specialStyleForTheSingleDataElementOfColumnChart() -> AAChartModel {
         let singleSpecialData = AADataElement()
             .color(AAGradientColor.freshPapaya)
             .y(49.5)
@@ -343,7 +343,7 @@ class CustomStyleForColumnChartComposer {
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/365
-    private func customColumnChartBorderStyleAndStatesHoverColor() -> AAChartModel {
+    private func customBorderStyleAndStatesHoverColorColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .stacking(.normal)
@@ -376,7 +376,7 @@ class CustomStyleForColumnChartComposer {
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/1351
-    private func configureSpecialStyleColumnForNegativeDataMixedPositiveData() -> AAChartModel {
+    private func negativeDataMixedPositiveDataColumnChart() -> AAChartModel {
         let categoriesArr = [
             "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑",
             "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至", "小寒", "大寒"
