@@ -29,7 +29,7 @@ class CustomStyleForBarChartComposer {
 
 
 
-    private func specialStyleForTheSingleDataElementOfColumnChart() -> AAChartModel {
+    private func specialStyleForTheSingleDataElementOfBarChart() -> AAChartModel {
         CustomStyleForColumnChartComposer.specialStyleForTheSingleDataElementOfColumnChart()
     }
 

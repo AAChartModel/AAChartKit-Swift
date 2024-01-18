@@ -73,7 +73,7 @@ class CustomStyleForBarChartVC: AABaseChartVC {
         case "randomColorfulBarChart":return CustomStyleForBarChartComposer.randomColorfulBarChart()
         case "stackingPolarBarChart":return CustomStyleForBarChartComposer.stackingPolarBarChart()
 
-        case "specialStyleForTheSingleDataElementOfColumnChart":return CustomStyleForBarChartComposer.specialStyleForTheSingleDataElementOfColumnChart()
+        case "specialStyleForTheSingleDataElementOfBarChart":return CustomStyleForBarChartComposer.specialStyleForTheSingleDataElementOfBarChart()
         case "noMoreGroupingAndOverlapEachOtherBarChart":return CustomStyleForBarChartComposer.noMoreGroupingAndOverlapEachOtherBarChart()
         case "noMoreGroupingAndNestedBarChart":return CustomStyleForBarChartComposer.noMoreGroupingAndNestedBarChart()
         case "topRoundedCornersStackingBarChart":return CustomStyleForBarChartComposer.topRoundedCornersStackingBarChart()
