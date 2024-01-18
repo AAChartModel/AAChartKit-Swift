@@ -32,6 +32,7 @@
 
 import Foundation
 
+//https://api.highcharts.com/highcharts/plotOptions.column
 public class AAColumn: AASeries {
     public var name: String?
     public var data: [Any]?
@@ -123,6 +124,7 @@ public class AAColumn: AASeries {
     
 }
 
+//https://api.highcharts.com/highcharts/plotOptions.bar
 public class AABar: AAColumn {
     
     public override init() {
@@ -130,6 +132,7 @@ public class AABar: AAColumn {
     }
 }
 
+//https://api.highcharts.com/highcharts/plotOptions.columnrange
 public class AAColumnrange: AAObject {
     public var borderRadius: Any?//The color of the border surrounding each column or bar
     public var borderWidth: Float?//The corner radius of the border surrounding each column or bar. default：0
@@ -195,5 +198,40 @@ public class AAColumnrange: AAObject {
     
     public override init() {
         
+    }
+}
+
+//https://api.highcharts.com/class-reference/Highcharts.BorderRadiusOptionsObject
+public class AABorderRadius: AAObject {
+    public var radius: Any?
+    public var scope: String?
+    public var where_: String?
+
+    @discardableResult
+    public func radius(_ prop: Float?) -> AABorderRadius {
+        radius = prop
+        return self
+    }
+
+    @discardableResult
+    public func radius(_ prop: String?) -> AABorderRadius {
+        radius = prop
+        return self
+    }
+
+    @discardableResult
+    public func scope(_ prop: String?) -> AABorderRadius {
+        scope = prop
+        return self
+    }
+
+    @discardableResult
+    public func where_(_ prop: String?) -> AABorderRadius {
+        where_ = prop
+        return self
+    }
+
+    public override init() {
+
     }
 }
