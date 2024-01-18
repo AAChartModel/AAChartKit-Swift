@@ -8,7 +8,7 @@ import AAInfographics
 class CustomStyleForColumnChartComposer {
     
     
-    private func colorfulColumnChart() -> AAChartModel {
+    static func colorfulColumnChart() -> AAChartModel {
         let colorsNameArr = [
             "red",
             "orange",
@@ -59,7 +59,7 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    private func colorfulGradientColorColumnChart() -> AAChartModel {
+    static func colorfulGradientColorColumnChart() -> AAChartModel {
         let gradientColorNamesArr = [
             "oceanBlue",
             "sanguine",
@@ -129,7 +129,7 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    private func discontinuousDataColumnChart() -> AAChartModel {
+    static func discontinuousDataColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .yAxisTitle("")//设置Y轴标题
@@ -144,7 +144,7 @@ class CustomStyleForColumnChartComposer {
     }
 
     
-    private func randomColorfulColumnChart() -> AAChartModel {
+    static func randomColorfulColumnChart() -> AAChartModel {
         func configureTheRandomColorArray(colorsNumber: Int) -> [Any] {
             let colorStringArr = NSMutableArray()
             for _ in 0 ..< colorsNumber {
@@ -170,7 +170,7 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    private func stackingPolarColumnChart() -> AAChartModel {
+    static func stackingPolarColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .xAxisLabelsStyle(AAStyle(color: AAColor.white))
@@ -198,7 +198,7 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    private func specialStyleForTheSingleDataElementOfColumnChart() -> AAChartModel {
+    static func specialStyleForTheSingleDataElementOfColumnChart() -> AAChartModel {
         let singleSpecialData = AADataElement()
             .color(AAGradientColor.freshPapaya)
             .y(49.5)
@@ -223,7 +223,7 @@ class CustomStyleForColumnChartComposer {
     
     
     //https://github.com/AAChartModel/AAChartKit/issues/1269
-    private func noMoreGroupingAndOverlapEachOtherColumnChart() -> AAChartModel {
+    static func noMoreGroupingAndOverlapEachOtherColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .categories(["11/23","11/24", "11/25","11/26","11/27","11/28","11/29"])
@@ -246,7 +246,7 @@ class CustomStyleForColumnChartComposer {
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/1271
-    private func noMoreGroupingAndNestedColumnChart() -> AAChartModel {
+    static func noMoreGroupingAndNestedColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .categories(["11/23","11/24", "11/25","11/26","11/27","11/28","11/29"])
@@ -272,7 +272,7 @@ class CustomStyleForColumnChartComposer {
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/842
-    private func topRoundedCornersStackingColumnChart() -> AAChartModel {
+    static func topRoundedCornersStackingColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .stacking(.normal)
@@ -298,7 +298,7 @@ class CustomStyleForColumnChartComposer {
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/323
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/346
     //https://github.com/highcharts/rounded-corners
-    private func freeStyleRoundedCornersStackingColumnChart() -> AAChartModel {
+    static func freeStyleRoundedCornersStackingColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .stacking(.percent)
@@ -343,7 +343,7 @@ class CustomStyleForColumnChartComposer {
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/365
-    private func customBorderStyleAndStatesHoverColorColumnChart() -> AAChartModel {
+    static func customBorderStyleAndStatesHoverColorColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .stacking(.normal)
@@ -376,7 +376,7 @@ class CustomStyleForColumnChartComposer {
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/1351
-    private func negativeDataMixedPositiveDataColumnChart() -> AAChartModel {
+    static func negativeDataMixedPositiveDataColumnChart() -> AAChartModel {
         let categoriesArr = [
             "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑",
             "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至", "小寒", "大寒"
