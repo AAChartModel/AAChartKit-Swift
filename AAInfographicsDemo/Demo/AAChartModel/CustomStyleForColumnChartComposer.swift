@@ -145,16 +145,16 @@ class CustomStyleForColumnChartComposer {
 
     
     static func randomColorfulColumnChart() -> AAChartModel {
-        func configureTheRandomColorArray(colorsNumber: Int) -> [Any] {
-            let colorStringArr = NSMutableArray()
-            for _ in 0 ..< colorsNumber {
-                let R = arc4random() % 256
-                let G = arc4random() % 256
-                let B = arc4random() % 256
+        func configureTheRandomColorArray(colorsNumber: Int) -> [String] {
+            var colorStringArr = [String]()
+            for _ in 0..<colorsNumber {
+                let R = arc4random_uniform(256)
+                let G = arc4random_uniform(256)
+                let B = arc4random_uniform(256)
                 let rgbaColorStr = AARgba(Int(R), Int(G), Int(B), 0.9)
-                colorStringArr.add(rgbaColorStr)
+                colorStringArr.append(rgbaColorArr)
             }
-            return colorStringArr as! [Any]
+            return colorStringArr
         }
         
         return AAChartModel()
