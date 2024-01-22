@@ -208,7 +208,10 @@ class MainVC: UIViewController {
                 "colorfulGradientColorColumnChart---多彩颜色渐变柱状图",
                 "discontinuousDataColumnChart---数值不连续の柱状图",
                 "randomColorfulColumnChart---随机颜色の多彩柱状图",
-                "stackingPolarColumnChart---堆积效果の极化柱状图",
+
+                "noneStackingPolarColumnChart---无堆积效果の极化柱状图",
+                "normalStackingPolarColumnChart---常规堆积效果の极化柱状图",
+                "percentStackingPolarColumnChart---百分比堆积效果の极化柱状图",
 
                 "specialStyleForTheSingleDataElementOfColumnChart---单个数据元素特别风格柱状图",
                 "noMoreGroupingAndOverlapEachOtherColumnChart---不分组的相互重叠柱状图",
@@ -225,7 +228,10 @@ class MainVC: UIViewController {
                 "colorfulGradientColorBarChart---多彩颜色渐变条形图",
                 "discontinuousDataBarChart---数值不连续の条形图",
                 "randomColorfulBarChart---随机颜色の多彩条形图",
-                "stackingPolarBarChart---堆积效果の极化条形图",
+
+                "noneStackingPolarBarChart---无堆积效果の极化条形图",
+                "normalStackingPolarBarChart---常规堆积效果の极化条形图",
+                "percentStackingPolarBarChart---百分比堆积效果の极化条形图",
 
                 "specialStyleForTheSingleDataElementOfColumnChart---单个数据元素特别风格条形图",
                 "noMoreGroupingAndOverlapEachOtherBarChart---不分组的相互重叠条形图",
@@ -316,7 +322,10 @@ class MainVC: UIViewController {
                 "colorfulGradientColorColumnChart",
                 "discontinuousDataColumnChart",
                 "randomColorfulColumnChart",
-                "stackingPolarColumnChart",
+
+                "noneStackingPolarColumnChart",
+                "normalStackingPolarColumnChart",
+                "percentStackingPolarColumnChart",
 
                 "specialStyleForTheSingleDataElementOfColumnChart",
                 "noMoreGroupingAndOverlapEachOtherColumnChart",
@@ -333,7 +342,10 @@ class MainVC: UIViewController {
                 "colorfulGradientColorBarChart",
                 "discontinuousDataBarChart",
                 "randomColorfulBarChart",
-                "stackingPolarBarChart",
+
+                "noneStackingPolarBarChart",
+                "normalStackingPolarBarChart",
+                "percentStackingPolarBarChart",
 
                 "specialStyleForTheSingleDataElementOfBarChart",
                 "noMoreGroupingAndOverlapEachOtherBarChart",

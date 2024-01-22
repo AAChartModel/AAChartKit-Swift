@@ -21,11 +21,22 @@ class CustomStyleForBarChartComposer {
     static func randomColorfulBarChart() -> AAChartModel {
         CustomStyleForColumnChartComposer.randomColorfulColumnChart().chartType(.bar)
     }
-    
-    static func stackingPolarBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.stackingPolarColumnChart().chartType(.bar)
+
+
+
+    static func noneStackingPolarBarChart() -> AAChartModel {
+        CustomStyleForColumnChartComposer.noneStackingPolarColumnChart().chartType(.bar)
     }
-    
+
+    static func normalStackingPolarBarChart() -> AAChartModel {
+        CustomStyleForColumnChartComposer.normalStackingPolarColumnChart().chartType(.bar)
+
+    }
+
+    static func percentStackingPolarBarChart() -> AAChartModel {
+        CustomStyleForColumnChartComposer.percentStackingPolarColumnChart().chartType(.bar)
+    }
+
     
     
     

@@ -21,7 +21,10 @@ class CustomStyleForColumnChartVC: AABaseChartVC {
         case "colorfulGradientColorColumnChart":return CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart()
         case "discontinuousDataColumnChart":return CustomStyleForColumnChartComposer.discontinuousDataColumnChart()
         case "randomColorfulColumnChart":return CustomStyleForColumnChartComposer.randomColorfulColumnChart()
-        case "stackingPolarColumnChart":return CustomStyleForColumnChartComposer.stackingPolarColumnChart()
+
+        case "noneStackingPolarColumnChart":return CustomStyleForColumnChartComposer.noneStackingPolarColumnChart()
+        case "normalStackingPolarColumnChart":return CustomStyleForColumnChartComposer.normalStackingPolarColumnChart()
+        case "percentStackingPolarColumnChart":return CustomStyleForColumnChartComposer.percentStackingPolarColumnChart()
 
         case "specialStyleForTheSingleDataElementOfColumnChart":return CustomStyleForColumnChartComposer.specialStyleForTheSingleDataElementOfColumnChart()
         case "noMoreGroupingAndOverlapEachOtherColumnChart":return CustomStyleForColumnChartComposer.noMoreGroupingAndOverlapEachOtherColumnChart()

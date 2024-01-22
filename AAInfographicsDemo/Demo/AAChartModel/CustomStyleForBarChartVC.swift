@@ -14,64 +14,17 @@ class CustomStyleForBarChartVC: AABaseChartVC {
         // Do any additional setup after loading the view.
     }
 
-// private func colorfulBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.colorfulColumnChart()
-//    }
-//
-//    private func colorfulGradientColorBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart()
-//    }
-//
-//    private func discontinuousDataBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.discontinuousDataColumnChart()
-//    }
-//
-//    private func randomColorfulBarChart() -> AAChartModel {
-//          CustomStyleForColumnChartComposer.randomColorfulColumnChart()
-//    }
-//
-//    private func stackingPolarBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.stackingPolarColumnChart()
-//    }
 
-
-//    private func specialStyleForTheSingleDataElementOfColumnChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.specialStyleForTheSingleDataElementOfColumnChart()
-//    }
-//
-//    private func noMoreGroupingAndOverlapEachOtherBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.noMoreGroupingAndOverlapEachOtherColumnChart()
-//    }
-//
-//    private func noMoreGroupingAndNestedBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.noMoreGroupingAndNestedColumnChart()
-//    }
-//
-//    private func topRoundedCornersStackingBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.topRoundedCornersStackingColumnChart()
-//    }
-//
-//    private func freeStyleRoundedCornersStackingBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart()
-//    }
-//
-//
-//
-//
-//    private func customBorderStyleAndStatesHoverColorBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.customBorderStyleAndStatesHoverColorColumnChart()
-//    }
-//
-//    private func negativeDataMixedPositiveDataBarChart() -> AAChartModel {
-//        CustomStyleForColumnChartComposer.negativeDataMixedPositiveDataColumnChart()
-//    }
     override func chartConfigurationWithSelectedChartTypeString(_ selectedChartTypeStr: String) -> Any? {
         switch selectedChartTypeStr {
         case "colorfulBarChart":return CustomStyleForBarChartComposer.colorfulBarChart()
         case "colorfulGradientColorBarChart":return CustomStyleForBarChartComposer.colorfulGradientColorBarChart()
         case "discontinuousDataBarChart":return CustomStyleForBarChartComposer.discontinuousDataBarChart()
         case "randomColorfulBarChart":return CustomStyleForBarChartComposer.randomColorfulBarChart()
-        case "stackingPolarBarChart":return CustomStyleForBarChartComposer.stackingPolarBarChart()
+
+        case "noneStackingPolarBarChart":return CustomStyleForBarChartComposer.noneStackingPolarBarChart()
+        case "normalStackingPolarBarChart":return CustomStyleForBarChartComposer.normalStackingPolarBarChart()
+        case "percentStackingPolarBarChart":return CustomStyleForBarChartComposer.percentStackingPolarBarChart()
 
         case "specialStyleForTheSingleDataElementOfBarChart":return CustomStyleForBarChartComposer.specialStyleForTheSingleDataElementOfBarChart()
         case "noMoreGroupingAndOverlapEachOtherBarChart":return CustomStyleForBarChartComposer.noMoreGroupingAndOverlapEachOtherBarChart()
