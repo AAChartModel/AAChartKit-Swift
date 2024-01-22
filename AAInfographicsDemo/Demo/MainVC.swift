@@ -73,12 +73,14 @@ class MainVC: UIViewController {
             "Custom Style Chart| 一些自定义风格样式图表",
             "Mixed Chart | 混合图形",
             "Pie Chart With Custom Style | 一些自定义风格样式饼图",
+            "Column Chart With Custom Style | 一些自定义风格样式柱状图",
+            "Bar Chart With Custom Style | 一些自定义风格样式条形图",
         ]
         
         chartTypeTitleArr = [
             /*Basic types chart*/
             [
-                "Column Chart---柱形图",
+                "Column Chart---柱状图",
                 "Bar Chart---条形图",
                 "Area Chart---折线填充图",
                 "Areaspline Chart---曲线填充图",
@@ -115,7 +117,7 @@ class MainVC: UIViewController {
                 "Colorful Gradient Color Chart---多彩颜色渐变条形图",
                 "Discontinuous Data Chart---数值不连续の图表",
                 "Mixed Line Chart---虚实线混合折线图",
-                "Random Colors Colorful Column Chart---随机颜色の多彩柱形图",
+                "Random Colors Colorful Column Chart---随机颜色の多彩柱状图",
                 "Gradient Color Bar Chart---颜色渐变条形图",
                 "Stacking polar chart---百分比堆积效果の极地图",
                 "Area Chart with minus--带有负数の区域填充图",
@@ -161,7 +163,7 @@ class MainVC: UIViewController {
                 "customLineChartWithColorfulMarkersAndLines---彩色连接点和连接线的折线图📈",
                 "customLineChartWithColorfulMarkersAndLines2---彩色连接点和连接线的多组折线的折线图📈",
                 "drawLineChartWithPointsCoordinates---通过点坐标来绘制折线图",
-                "configureSpecialStyleColumnForNegativeDataMixedPositiveData---为正负数混合的柱形图自定义特殊样式效果",
+                "configureSpecialStyleColumnForNegativeDataMixedPositiveData---为正负数混合的柱状图自定义特殊样式效果",
                 "configureMultiLevelStopsArrGradientColorAreasplineMixedLineChart---多层次半透明渐变效果的曲线填充图混合折线图📈",
                 "connectNullsForSingleAASeriesElement---为单个 AASeriesElement 单独设置是否断点重连",
                 "lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement---测试有多组数据时, 数据量较大时, 不同组数据量差距较大时的折线图📈",
@@ -172,14 +174,14 @@ class MainVC: UIViewController {
             [
                 "Arearange Mixed Line---面积范围均线图",
                 "Columnrange Mixed Line---柱形范围图混合折线图",
-                "Stacking Column Mixed Line---堆积柱形图混合折线图",
+                "Stacking Column Mixed Line---堆积柱状图混合折线图",
                 "Dash Style Types Mixed---多种类型曲线混合图",
                 "Negative Color Mixed Column Chart---基准线以下异色混合图",
                 "scatterMixedLine---散点图混合折线图",
                 "Negative Color Mixed Bubble Chart---基准线以下异色气泡图",
                 "Polygon Mixed Scatter---多边形混合散点图",
                 "Polar Chart Mixed---极地混合图",
-                "Column Mixed Scatter---柱形图混合散点图",
+                "Column Mixed Scatter---柱状图混合散点图",
                 "Pie Mixed Line Mixed Column---扇形折线柱形混合图",
                 "Line Chart With Shadow---带有阴影效果の折线图",
                 "Negative Color Mixed Areaspline chart---基准线以下异色混合曲线填充图",
@@ -199,7 +201,41 @@ class MainVC: UIViewController {
                 "pieChartWithRoundedCorners---圆角扇形图",
                 "doubleLayerPieChartWithRoundedCorners---圆角双层扇形图",
                 "doubleLayerDoubleColorsPieChartWithRoundedCorners---圆角双层双色扇形图",
-            ]
+            ],
+            /*Custom Style For Column Chart*/
+            [
+                "colorfulColumnChart---多彩柱状图",
+                "colorfulGradientColorColumnChart---多彩颜色渐变柱状图",
+                "discontinuousDataColumnChart---数值不连续の柱状图",
+                "randomColorfulColumnChart---随机颜色の多彩柱状图",
+                "stackingPolarColumnChart---堆积效果の极化柱状图",
+
+                "specialStyleForTheSingleDataElementOfColumnChart---单个数据元素特别风格柱状图",
+                "noMoreGroupingAndOverlapEachOtherColumnChart---不分组的相互重叠柱状图",
+                "noMoreGroupingAndNestedColumnChart---不分组的嵌套柱状图",
+                "topRoundedCornersStackingColumnChart---顶部为圆角的堆积柱状图",
+                "freeStyleRoundedCornersStackingColumnChart---各个圆角自由独立设置的堆积柱状图",
+
+                "customBorderStyleAndStatesHoverColorColumnChart---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色",
+                "negativeDataMixedPositiveDataColumnChart---正负数混合的柱状图",
+            ],
+            /*Custom Style For Bar Chart*/
+            [
+                "colorfulBarChart---多彩条形图",
+                "colorfulGradientColorBarChart---多彩颜色渐变条形图",
+                "discontinuousDataBarChart---数值不连续の条形图",
+                "randomColorfulBarChart---随机颜色の多彩条形图",
+                "stackingPolarBarChart---堆积效果の极化条形图",
+
+                "specialStyleForTheSingleDataElementOfColumnChart---单个数据元素特别风格条形图",
+                "noMoreGroupingAndOverlapEachOtherBarChart---不分组的相互重叠条形图",
+                "noMoreGroupingAndNestedBarChart---不分组的嵌套条形图",
+                "topRoundedCornersStackingBarChart---顶部为圆角的堆积条形图",
+                "freeStyleRoundedCornersStackingBarChart---各个圆角自由独立设置的堆积条形图",
+
+                "customBorderStyleAndStatesHoverColorBarChart---自定义条形图 border 样式及手指掠过图表 series 元素时的条形颜色",
+                "negativeDataMixedPositiveDataBarChart---正负数混合的条形图",
+            ],
 
 
 
@@ -260,7 +296,7 @@ class MainVC: UIViewController {
                 "AerasplinerangeMixedColumnrangeMixedLineChart",
                 "boxplotMixedScatterChartWithJitter"
             ],
-            /*Custom chart style by AAChartModel*/
+            /*Custom Style For Pie Chart*/
             [
                 "pieChart",
                 "doubleLayerPieChart",
@@ -273,8 +309,44 @@ class MainVC: UIViewController {
                 "pieChartWithRoundedCorners",
                 "doubleLayerPieChartWithRoundedCorners",
                 "doubleLayerDoubleColorsPieChartWithRoundedCorners",
-            ]
-          
+            ],
+            /*Custom Style For Column Chart*/
+            [
+                "colorfulColumnChart",
+                "colorfulGradientColorColumnChart",
+                "discontinuousDataColumnChart",
+                "randomColorfulColumnChart",
+                "stackingPolarColumnChart",
+
+                "specialStyleForTheSingleDataElementOfColumnChart",
+                "noMoreGroupingAndOverlapEachOtherColumnChart",
+                "noMoreGroupingAndNestedColumnChart",
+                "topRoundedCornersStackingColumnChart",
+                "freeStyleRoundedCornersStackingColumnChart",
+
+                "customBorderStyleAndStatesHoverColorColumnChart",
+                "negativeDataMixedPositiveDataColumnChart",
+            ],
+            /*Custom Style For Bar Chart*/
+            [
+                "colorfulBarChart",
+                "colorfulGradientColorBarChart",
+                "discontinuousDataBarChart",
+                "randomColorfulBarChart",
+                "stackingPolarBarChart",
+
+                "specialStyleForTheSingleDataElementOfBarChart",
+                "noMoreGroupingAndOverlapEachOtherBarChart",
+                "noMoreGroupingAndNestedBarChart",
+                "topRoundedCornersStackingBarChart",
+                "freeStyleRoundedCornersStackingBarChart",
+
+                "customBorderStyleAndStatesHoverColorBarChart",
+                "negativeDataMixedPositiveDataBarChart",
+            ],
+
+
+
         ]
         
         view.backgroundColor = .white
@@ -409,7 +481,7 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             
         case 2:
-            /*Mixed Type Charts*/
+            /*Custom Style Chart*/
             let vc = CustomStyleChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
@@ -425,14 +497,30 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
 
         case 4:
-            /*Custom chart style by AAChartModel*/
+            /*Custom Style For Pie Chart*/
             let vc = CustomStyleForPieChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-        
-            
+
+        case 5:
+            /*Custom Style For Column Chart*/
+            let vc = CustomStyleForColumnChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+
+        case 6:
+            /*Custom Style For Bar Chart*/
+            let vc = CustomStyleForBarChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+
+
         default:
             break
         }
