@@ -152,7 +152,7 @@ class CustomStyleForColumnChartComposer {
                 let G = arc4random_uniform(256)
                 let B = arc4random_uniform(256)
                 let rgbaColorStr = AARgba(Int(R), Int(G), Int(B), 0.9)
-                colorStringArr.append(rgbaColorArr)
+                colorStringArr.append(rgbaColorStr)
             }
             return colorStringArr
         }
