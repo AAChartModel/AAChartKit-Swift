@@ -7,57 +7,57 @@ import AAInfographics
 
 class CustomStyleForBarChartComposer {
     static func colorfulBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.colorfulColumnChart()
+        CustomStyleForColumnChartComposer.colorfulColumnChart().chartType(.bar)
     }
     
     static func colorfulGradientColorBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart()
+        CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart().chartType(.bar)
     }
     
     static func discontinuousDataBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.discontinuousDataColumnChart()
+        CustomStyleForColumnChartComposer.discontinuousDataColumnChart().chartType(.bar)
     }
     
     static func randomColorfulBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.randomColorfulColumnChart()
+        CustomStyleForColumnChartComposer.randomColorfulColumnChart().chartType(.bar)
     }
     
     static func stackingPolarBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.stackingPolarColumnChart()
+        CustomStyleForColumnChartComposer.stackingPolarColumnChart().chartType(.bar)
     }
     
     
     
     
     static func specialStyleForTheSingleDataElementOfBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.specialStyleForTheSingleDataElementOfColumnChart()
+        CustomStyleForColumnChartComposer.specialStyleForTheSingleDataElementOfColumnChart().chartType(.bar)
     }
     
     static func noMoreGroupingAndOverlapEachOtherBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.noMoreGroupingAndOverlapEachOtherColumnChart()
+        CustomStyleForColumnChartComposer.noMoreGroupingAndOverlapEachOtherColumnChart().chartType(.bar)
     }
     
     static func noMoreGroupingAndNestedBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.noMoreGroupingAndNestedColumnChart()
+        CustomStyleForColumnChartComposer.noMoreGroupingAndNestedColumnChart().chartType(.bar)
     }
     
     static func topRoundedCornersStackingBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.topRoundedCornersStackingColumnChart()
+        CustomStyleForColumnChartComposer.topRoundedCornersStackingColumnChart().chartType(.bar)
     }
     
     static func freeStyleRoundedCornersStackingBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart()
+        CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.bar)
     }
     
     
     
     
     static func customBorderStyleAndStatesHoverColorBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.customBorderStyleAndStatesHoverColorColumnChart()
+        CustomStyleForColumnChartComposer.customBorderStyleAndStatesHoverColorColumnChart().chartType(.bar)
     }
     
     static func negativeDataMixedPositiveDataBarChart() -> AAChartModel {
-        CustomStyleForColumnChartComposer.negativeDataMixedPositiveDataColumnChart()
+        CustomStyleForColumnChartComposer.negativeDataMixedPositiveDataColumnChart().chartType(.bar)
     }
     
 }
