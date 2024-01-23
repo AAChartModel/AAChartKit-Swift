@@ -234,10 +234,9 @@ class BasicChartVC: UIViewController {
                 ["No stacking",
                  "Normal stacking",
                  "Percent stacking"],
-                ["Square corners 🟥",
-                 "Soft corners 🌼",
-                 "Rounded corners 🔵",
-//                 "Wedge 🔶"
+                ["Square corners",
+                 "Soft corners",
+                 "Rounded corners",
                 ]
             ]
             typeLabelNamesArr = [
@@ -302,7 +301,7 @@ class BasicChartVC: UIViewController {
             
         case 1:
             if chartType == .column || chartType == .bar {
-                let borderRadiusArr = [1, 10, "50%", 100] as [Any]
+                let borderRadiusArr = [1, 10, "50%"] as [Any]
                 let borderRadius = borderRadiusArr[selectedSegmentIndex]
                 aaChartModel!.borderRadius(borderRadius)
             } else {
