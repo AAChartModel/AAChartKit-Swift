@@ -34,9 +34,14 @@
 		449A0ED62377149D009F8FE1 /* ScrollingUpdateDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */; };
 		44EB70A722BCB606008FECE4 /* JSFunctionForAATooltipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EB70A622BCB606008FECE4 /* JSFunctionForAATooltipVC.swift */; };
 		58603080BAE839A9CF7C8F73 /* BarOrColumnChartOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603443E4FDDF32FE4E4F94 /* BarOrColumnChartOptionsComposer.swift */; };
+		586031CD65041F30252BD805 /* CustomStyleForBarChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603647D3E17BD4C00CBCF5 /* CustomStyleForBarChartComposer.swift */; };
 		58603456B9A269D72A0F9656 /* PieChartOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603EE90A0888618D985466 /* PieChartOptionsComposer.swift */; };
+		586034DF506E8FFB33BFE95A /* CustomStyleForBarChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586039BF1F037FB47A9D7E4D /* CustomStyleForBarChartVC.swift */; };
 		586035AD1F2AA0AF6BFBDA7D /* LineChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860320C2A4B0800D56FF4E0 /* LineChartOptionsVC.swift */; };
+		586036695AB4F35E065C17AF /* CustomStyleForColumnChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603184C6DF4D29C66C028D /* CustomStyleForColumnChartVC.swift */; };
 		5860368820ADD4DC745A2997 /* AreaChartOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860339F7333DE51631C871D /* AreaChartOptionsComposer.swift */; };
+		58603B0D623EDFE55CFFC66B /* CustomStyleForColumnChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5860327DEF5546B683899E44 /* CustomStyleForColumnChartComposer.swift */; };
+		58603F02EF3BB64BA4890452 /* JSFunctionForAAChartEventsComposer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58603418B60256899DD8BF75 /* JSFunctionForAAChartEventsComposer2.swift */; };
 		840716532A6A79770037193B /* AreaChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840716522A6A79770037193B /* AreaChartOptionsVC.swift */; };
 		840716552A6E82290037193B /* MultiYAxesChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840716542A6E82290037193B /* MultiYAxesChartOptionsVC.swift */; };
 		840716572A6FC5170037193B /* ScatterChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840716562A6FC5170037193B /* ScatterChartOptionsVC.swift */; };
@@ -212,10 +217,15 @@
 		4490BB372388E1AE005B9238 /* AAInfographicsDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AAInfographicsDemo.entitlements; sourceTree = "<group>"; };
 		449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingUpdateDataVC.swift; sourceTree = "<group>"; };
 		44EB70A622BCB606008FECE4 /* JSFunctionForAATooltipVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAATooltipVC.swift; sourceTree = "<group>"; };
+		58603184C6DF4D29C66C028D /* CustomStyleForColumnChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyleForColumnChartVC.swift; sourceTree = "<group>"; };
 		5860320C2A4B0800D56FF4E0 /* LineChartOptionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartOptionsVC.swift; sourceTree = "<group>"; };
+		5860327DEF5546B683899E44 /* CustomStyleForColumnChartComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyleForColumnChartComposer.swift; sourceTree = "<group>"; };
 		5860339874E0BA3EA9A9BA0D /* AAPie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPie.swift; sourceTree = "<group>"; };
 		5860339F7333DE51631C871D /* AreaChartOptionsComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaChartOptionsComposer.swift; sourceTree = "<group>"; };
+		58603418B60256899DD8BF75 /* JSFunctionForAAChartEventsComposer2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsComposer2.swift; sourceTree = "<group>"; };
 		58603443E4FDDF32FE4E4F94 /* BarOrColumnChartOptionsComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarOrColumnChartOptionsComposer.swift; sourceTree = "<group>"; };
+		58603647D3E17BD4C00CBCF5 /* CustomStyleForBarChartComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyleForBarChartComposer.swift; sourceTree = "<group>"; };
+		586039BF1F037FB47A9D7E4D /* CustomStyleForBarChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyleForBarChartVC.swift; sourceTree = "<group>"; };
 		58603EE90A0888618D985466 /* PieChartOptionsComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartOptionsComposer.swift; sourceTree = "<group>"; };
 		840716522A6A79770037193B /* AreaChartOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaChartOptionsVC.swift; sourceTree = "<group>"; };
 		840716542A6E82290037193B /* MultiYAxesChartOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiYAxesChartOptionsVC.swift; sourceTree = "<group>"; };
@@ -472,6 +482,10 @@
 				27766454207C55BE00F0A62C /* MixedChartVC.swift */,
 				84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */,
 				84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */,
+				5860327DEF5546B683899E44 /* CustomStyleForColumnChartComposer.swift */,
+				58603647D3E17BD4C00CBCF5 /* CustomStyleForBarChartComposer.swift */,
+				586039BF1F037FB47A9D7E4D /* CustomStyleForBarChartVC.swift */,
+				58603184C6DF4D29C66C028D /* CustomStyleForColumnChartVC.swift */,
 			);
 			path = AAChartModel;
 			sourceTree = "<group>";
@@ -501,6 +515,7 @@
 				84086B1528E44B19006BD30D /* JSFunctionForAALegendVC.swift */,
 				8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */,
 				84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */,
+				58603418B60256899DD8BF75 /* JSFunctionForAAChartEventsComposer2.swift */,
 			);
 			path = AAOptionsWithJS;
 			sourceTree = "<group>";
@@ -648,8 +663,9 @@
 				TargetAttributes = {
 					278C54AD1EE9472300770B97 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = BPAYP34L8N;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					278C54C11EE9472300770B97 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -784,6 +800,11 @@
 				58603456B9A269D72A0F9656 /* PieChartOptionsComposer.swift in Sources */,
 				586035AD1F2AA0AF6BFBDA7D /* LineChartOptionsVC.swift in Sources */,
 				2DC11BB34BC87432BF593AC8 /* BubbleLegendChartOptionsComposer.swift in Sources */,
+				58603B0D623EDFE55CFFC66B /* CustomStyleForColumnChartComposer.swift in Sources */,
+				586031CD65041F30252BD805 /* CustomStyleForBarChartComposer.swift in Sources */,
+				586034DF506E8FFB33BFE95A /* CustomStyleForBarChartVC.swift in Sources */,
+				586036695AB4F35E065C17AF /* CustomStyleForColumnChartVC.swift in Sources */,
+				58603F02EF3BB64BA4890452 /* JSFunctionForAAChartEventsComposer2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,14 +1030,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AAInfographicsDemo/AAInfographicsDemo.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BPAYP34L8N;
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Love.AAInfographics999;
+				PRODUCT_BUNDLE_IDENTIFIER = Love.AAInfographics99988;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = YES;
