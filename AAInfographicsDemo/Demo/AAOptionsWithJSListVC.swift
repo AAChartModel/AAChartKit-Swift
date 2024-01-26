@@ -50,6 +50,7 @@ class AAOptionsWithJSListVC: UIViewController {
             "JS Function For AAAxis Labels | 通过带有 JS 函数的自定义 AAAxis 的文字标签",
             "JS Function For AALegend | 通过带有 JS 函数的自定义 AALegend",
             "JS Function For AAChartEvents---通过 JSFunction 自定义 AAChartEvents 的事件",
+            "JS Function For AAChartEvents2---通过 JSFunction 自定义 AAChartEvents 的事件",
             "JS Function For AAOptions---通过 JSFunction 自定义 AAOptions 内容",
             
 
@@ -105,6 +106,12 @@ class AAOptionsWithJSListVC: UIViewController {
                 "configureECGStyleChart---配置心电图样式的图表",
                 "configureTheSizeOfTheSliceOfDonutAndPieChart---配置环形图和饼图的扇区大小",
                 "configurePlotBackgroundClickEvent---配置绘图区的点击事件",
+            ],
+            /*JS Function For AAChartEvents 2*/
+            [
+                "addClickEventToXAxisLabelAndAccessData---为 X 轴文字标签添加点击事件并获取到所点击的点的信息",
+                "defaultSelectedAPointForLineChart---默认选中折线图的一个点 marker",
+              
             ],
             /*JS Function For AAOptions*/
             [
@@ -263,6 +270,13 @@ extension AAOptionsWithJSListVC: UITableViewDelegate, UITableViewDataSource {
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
         case 4:
+            /*JS Function For AAChartEventsVC2*/
+            let vc = JSFunctionForAAChartEventsVC2()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 5:
             /*JS Function For AAOptions*/
             let vc = JSFunctionForAAOptionsVC()
             vc.selectedIndex = indexPath.row

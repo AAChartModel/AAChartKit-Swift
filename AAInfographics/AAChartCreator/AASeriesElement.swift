@@ -377,6 +377,7 @@ public class AADataElement: AAObject {
     public var color: Any?
     public var dataLabels: AADataLabels?
     public var marker: AAMarker?
+    public var selected: Bool?
     
     @discardableResult
     public func name(_ prop: String) -> AADataElement {
@@ -411,6 +412,12 @@ public class AADataElement: AAObject {
     @discardableResult
     public func marker(_ prop: AAMarker) -> AADataElement {
         marker = prop
+        return self
+    }
+
+    @discardableResult
+    public func selected(_ prop: Bool) -> AADataElement {
+        selected = prop
         return self
     }
     
