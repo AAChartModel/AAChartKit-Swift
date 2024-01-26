@@ -386,7 +386,7 @@
 		278C550F1EE9487F00770B97 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				278C55111EE948C900770B97 /* MainVC.swift */,
+				844F11412B63644000ADEB1C /* AAChartListVC */,
 				84086B1728E44FD0006BD30D /* AAChartModel */,
 				84086B1828E44FE8006BD30D /* AAOptions */,
 				84086B1928E45015006BD30D /* AAOptionsWithJS */,
@@ -394,10 +394,6 @@
 				27E475F724B2FB2E00690657 /* AdditionalContent2 */,
 				84DEA0D928460E9300D0206F /* BackUpContent */,
 				58603C3CC5DAE3EC08DAF5B8 /* OfficialSamples */,
-				84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */,
-				84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */,
-				84595DED2B47E53C00F69273 /* OfficialSamplesListVC.swift */,
-				84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -521,6 +517,18 @@
 				58603418B60256899DD8BF75 /* JSFunctionForAAChartEventsComposer2.swift */,
 			);
 			path = AAOptionsWithJS;
+			sourceTree = "<group>";
+		};
+		844F11412B63644000ADEB1C /* AAChartListVC */ = {
+			isa = PBXGroup;
+			children = (
+				278C55111EE948C900770B97 /* MainVC.swift */,
+				84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */,
+				84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */,
+				84595DED2B47E53C00F69273 /* OfficialSamplesListVC.swift */,
+				84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */,
+			);
+			path = AAChartListVC;
 			sourceTree = "<group>";
 		};
 		84BDF5AB2930AE1700B9EC30 /* ViewController */ = {
