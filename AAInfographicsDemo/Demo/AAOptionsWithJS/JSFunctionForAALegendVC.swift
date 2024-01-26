@@ -69,7 +69,7 @@ class JSFunctionForAALegendVC: AABaseChartVC {
                 .fontWeight(.bold))
         
         //禁用图例点击事件
-        aaOptions.plotOptions?.series?.events = AAEvents()
+        aaOptions.plotOptions?.series?.events = AASeriesEvents()
             .legendItemClick(#"""
                     function() {
                       return false;
@@ -169,7 +169,7 @@ class JSFunctionForAALegendVC: AABaseChartVC {
         
         
         //自定义图例点击事件
-        aaOptions.plotOptions?.series?.events = AAEvents()
+        aaOptions.plotOptions?.series?.events = AASeriesEvents()
             .legendItemClick(#"""
             function(event) {
                 function getVisibleMode(series, serieName) {

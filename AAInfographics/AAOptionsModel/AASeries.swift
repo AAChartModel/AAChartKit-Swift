@@ -41,7 +41,7 @@ public class AASeries: AAObject {
     public var keys: [String]?
     public var colorByPoint: Bool?
     public var connectNulls: Bool? //Whether reconnects the broken line of the chart
-    public var events: AAEvents?
+    public var events: AASeriesEvents?
     public var shadow: AAShadow?
     public var dataLabels: AADataLabels?
     public var states: AAStates?
@@ -115,7 +115,7 @@ public class AASeries: AAObject {
     }
     
     @discardableResult
-    public func events(_ prop: AAEvents?) -> Self {
+    public func events(_ prop: AASeriesEvents?) -> Self {
         events = prop
         return self
     }
@@ -222,32 +222,32 @@ public class AASeries: AAObject {
 }
 
 
-public class AAEvents: AAObject {
+public class AASeriesEvents: AAObject {
     public var click: String?
     public var mouseOver: String?
     public var mouseOut: String?
     public var legendItemClick: String?
     
     @discardableResult
-    public func click(_ prop: String?) -> AAEvents {
+    public func click(_ prop: String?) -> AASeriesEvents {
         click = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
-    public func mouseOver(_ prop: String?) -> AAEvents {
+    public func mouseOver(_ prop: String?) -> AASeriesEvents {
         mouseOver = prop?.aa_toPureJSString()
         return self
     }
     
     @discardableResult
-    public func mouseOut(_ prop: String?) -> AAEvents {
+    public func mouseOut(_ prop: String?) -> AASeriesEvents {
         mouseOut = prop?.aa_toPureJSString()
         return self
     }
 
     @discardableResult
-    public func legendItemClick(_ prop: String?) -> AAEvents {
+    public func legendItemClick(_ prop: String?) -> AASeriesEvents {
         legendItemClick = prop?.aa_toPureJSString()
         return self
     }

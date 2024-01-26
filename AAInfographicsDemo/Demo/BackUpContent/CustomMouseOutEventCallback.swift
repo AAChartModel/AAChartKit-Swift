@@ -65,7 +65,7 @@ class CustomMouseOutEventCallback: UIViewController, WKScriptMessageHandler {
         
         aaOptions.chart?.zoomType(.xy)
         
-        aaOptions.plotOptions?.series?.events(AAEvents()
+        aaOptions.plotOptions?.series?.events(AASeriesEvents()
             .mouseOut(#"""
 function() {
     window.webkit.messageHandlers.seriesMoveOut.postMessage("手指移出图表区域了");

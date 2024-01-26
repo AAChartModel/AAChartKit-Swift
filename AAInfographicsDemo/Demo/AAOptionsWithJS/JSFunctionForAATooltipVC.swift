@@ -160,7 +160,7 @@ function () {
 """#)
         
         //禁用图例点击事件
-        aaOptions.plotOptions?.series?.events = AAEvents()
+        aaOptions.plotOptions?.series?.events = AASeriesEvents()
             .legendItemClick(#"""
                         function() {
                           return false;
@@ -701,7 +701,7 @@ function () {
             """#)
         
         //禁用图例点击事件
-        aaOptions.plotOptions?.series?.events = AAEvents()
+        aaOptions.plotOptions?.series?.events = AASeriesEvents()
             .legendItemClick(#"""
                         function() {
                           return false;

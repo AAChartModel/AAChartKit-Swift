@@ -193,7 +193,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
                 .fontWeight(.bold))
         
         //禁用图例点击事件
-        aaOptions.plotOptions?.series?.events = AAEvents()
+        aaOptions.plotOptions?.series?.events = AASeriesEvents()
             .legendItemClick(#"""
                     function() {
                       return false;
@@ -2501,7 +2501,7 @@ function () {
             .borderColor("#050505")
         
         //禁用图例点击事件
-        aaOptions.plotOptions?.series?.events = AAEvents()
+        aaOptions.plotOptions?.series?.events = AASeriesEvents()
             .legendItemClick("""
         function() {
             return false;

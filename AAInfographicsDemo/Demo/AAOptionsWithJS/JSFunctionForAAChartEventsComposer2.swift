@@ -165,7 +165,7 @@ Highcharts.chart('container', {
                 .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]))
             .plotOptions(AAPlotOptions()
                 .series(AASeries()
-                    .events(AAEvents()
+                    .events(AASeriesEvents()
                         .mouseOver("""
                                     function () {
                                         if(this.hasRun) return;
