@@ -94,6 +94,7 @@ public class AAMarker: AAObject {
     }
 }
 
+
 public class AAMarkerStates: AAObject {
     public var hover: AAMarkerHover?
     public var select: AAMarkerSelect?
@@ -115,13 +116,7 @@ public class AAMarkerStates: AAObject {
     }
 }
 
-//enabled:true
-//fillColor:undefined
-//lineColor:undefined
-//lineWidth:undefined
-//lineWidthPlus:1
-//radius:undefined
-//radiusPlus:2
+
 public class AAMarkerHover: AAObject {
     public var enabled: Bool?
     public var fillColor: String?
@@ -178,13 +173,7 @@ public class AAMarkerHover: AAObject {
     }
 }
 
-//select:{
-//enabled:true
-//fillColor:#cccccc
-//lineColor:#000000
-//lineWidth:2
-//radius:undefined
-//}
+
 public class AAMarkerSelect: AAObject {
     public var enabled: Bool?
     public var fillColor: String?
