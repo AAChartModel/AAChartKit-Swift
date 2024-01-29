@@ -156,8 +156,11 @@ Highcharts.chart('container', {
             .y(29.9)
             .selected(true)
             .toDic()!
-        
-        let dataArr = [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, defaultPointData] as [Any]
+
+        let dataArr = [
+            29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, defaultPointData
+        ] as [Any]
+
         let defaultPointIndex = dataArr.count - 1
 
         return AAOptions()
