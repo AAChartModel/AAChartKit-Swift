@@ -151,6 +151,7 @@ Highcharts.chart('container', {
     //https://api.highcharts.com/highcharts/plotOptions.series.marker.states.hover
     //https://api.highcharts.com/highcharts/plotOptions.series.events.mouseOver
     //https://api.highcharts.com/class-reference/Highcharts.Point#select
+    //https://github.com/AAChartModel/AAChartKit/issues/1532
     static func defaultSelectedAPointForLineChart() -> AAOptions {
         let defaultPointData = AADataElement()
             .y(29.9)
@@ -194,6 +195,37 @@ Highcharts.chart('container', {
             .series([
                 AASeriesElement()
                     .data(dataArr)
+            ])
+    }
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/1531
+    //https://stackoverflow.com/questions/42062016/in-high-chart-how-to-add-event-for-label-click
+    static func configureBlinkMarkerChart() -> AAOptions {
+        AAOptions()
+            .chart(AAChart()
+                .type(.areaspline)
+                .events(AAChartEvents()
+                    .load("""
+                    function() {
+                        const childNodes = this.xAxis[0].labelGroup.element.childNodes;
+                        childNodes
+                        .forEach(function(label, index) {
+                            label.style.cursor = "pointer";
+                            label.onclick = function() {
+                                alert('You clicked on ' + this.textContent + ', index: ' + index);
+                            }
+                        });
+                    }
+""")))
+            .xAxis(AAXAxis()
+                .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]))
+            .series([
+                AASeriesElement()
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+                    .marker(AAMarker()
+                        .lineColor(AAColor.red)
+                        .lineWidth(3)
+                        .radius(10))
             ])
     }
 }
