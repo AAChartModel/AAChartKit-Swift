@@ -159,7 +159,7 @@ Highcharts.chart('container', {
         
         let dataArr = [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, defaultPointData] as [Any]
         let defaultPointIndex = dataArr.count - 1
-        
+
         return AAOptions()
             .xAxis(AAXAxis()
                 .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]))
@@ -167,27 +167,27 @@ Highcharts.chart('container', {
                 .series(AASeries()
                     .events(AASeriesEvents()
                         .mouseOver("""
-                                    function () {
-                                        if(this.hasRun) return;
-                                        
-                                        var series = this;
-                                        var defaultPointIndex = \(defaultPointIndex);
-                                        if (series.data.length > defaultPointIndex) {
-                                            defaultPoint = series.data[defaultPointIndex];
-                                            defaultPoint.select(false);
-                                        }
-                                    
-                                        this.hasRun = true;
-                                    }
-                                    """))
-                        .allowPointSelect(true)
-                        .marker(AAMarker()
-                            .states(AAMarkerStates()
-                                .select(AAMarkerSelect()
-                                    .fillColor("red")
-                                    .lineWidth(10)
-                                    .lineColor("yellow")
-                                    .radius(20))))))
+                                   function () {
+                                       if(this.hasRun) return;
+                                       
+                                       var series = this;
+                                       var defaultPointIndex = \(defaultPointIndex);
+                                       if (series.data.length > defaultPointIndex) {
+                                           defaultPoint = series.data[defaultPointIndex];
+                                           defaultPoint.select(false);
+                                       }
+
+                                       this.hasRun = true;
+                                   }
+                                   """))
+                    .allowPointSelect(true)
+                    .marker(AAMarker()
+                        .states(AAMarkerStates()
+                            .select(AAMarkerSelect()
+                                .fillColor("red")
+                                .lineWidth(10)
+                                .lineColor("yellow")
+                                .radius(20))))))
             .series([
                 AASeriesElement()
                     .data(dataArr)
