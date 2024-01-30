@@ -30,6 +30,7 @@
  
  */
 
+//https://api.highcharts.com/highcharts/series
 public class AASeriesElement: AAObject {
     public var type: String?               //A chart type series. If the type option is not specified, it is inherited from `chart.type`.
     public var name: String?               //The name of the series as shown in the legend, tooltip etc.
@@ -370,6 +371,7 @@ public class AASeriesElement: AAObject {
     }
 }
 
+//https://api.highcharts.com/highcharts/series.area.data
 public class AADataElement: AAObject {
     public var name: String?
     public var x: Float?
@@ -426,6 +428,7 @@ public class AADataElement: AAObject {
     }
 }
 
+//https://api.highcharts.com/highcharts/series.area.shadow
 public class AAShadow: AAObject {
     public var color: String?
     public var offsetX: Float?
@@ -468,6 +471,7 @@ public class AAShadow: AAObject {
     }
 }
 
+//https://api.highcharts.com/highcharts/series.area.zones
 public class AAZonesElement: AAObject {
     public var value: Double?
     public var color: Any?
@@ -503,6 +507,7 @@ public class AAZonesElement: AAObject {
     }
 }
 
+//https://api.highcharts.com/highcharts/series.column.dataSorting
 public class AADataSorting: AAObject {
     public var enabled: Bool?
     public var matchByName: Bool?
