@@ -48,6 +48,10 @@ public class AAEventMessageModel: NSObject {
     public var category: String?
     public var offset: [String: Any]?
     public var index: Int?
+
+    required override init() {
+        
+    }
 }
 
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
@@ -660,44 +664,20 @@ extension AAChartView: WKScriptMessageHandler {
     open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == kUserContentMessageNameClick {
             let messageBody = message.body as! [String: Any]
-            let eventMessageModel = getClickEventMessageModel(messageBody: messageBody)
-            delegate?.aaChartView?(self, clickEventMessage: eventMessageModel )
+            let clickEventMessageModel = getEventMessageModel(messageBody: messageBody, eventType: AAClickEventMessageModel.self)
+            delegate?.aaChartView?(self, clickEventMessage: clickEventMessageModel)
         } else if message.name == kUserContentMessageNameMouseOver {
             let messageBody = message.body as! [String: Any]
-            let eventMessageModel = getMoveOverEventMessageModel(messageBody: messageBody)
-            delegate?.aaChartView?(self, moveOverEventMessage: eventMessageModel)
+            let moveOverEventMessageModel = getEventMessageModel(messageBody: messageBody, eventType: AAMoveOverEventMessageModel.self)
+            delegate?.aaChartView?(self, moveOverEventMessage: moveOverEventMessageModel)
         }
     }
 }
 
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 extension AAChartView {
-    private func getClickEventMessageModel(messageBody: [String: Any]) -> AAClickEventMessageModel {
-        let eventMessageModel = getEventMessageModel(messageBody: messageBody)
-        let clickMessageModel = AAClickEventMessageModel()
-        clickMessageModel.name = eventMessageModel.name
-        clickMessageModel.x = eventMessageModel.x
-        clickMessageModel.y = eventMessageModel.y
-        clickMessageModel.category = eventMessageModel.category
-        clickMessageModel.offset = eventMessageModel.offset
-        clickMessageModel.index = eventMessageModel.index
-        return clickMessageModel
-    }
-    
-    private func getMoveOverEventMessageModel(messageBody: [String: Any]) -> AAMoveOverEventMessageModel {
-        let eventMessageModel = getEventMessageModel(messageBody: messageBody)
-        let moveOverMessageModel = AAMoveOverEventMessageModel()
-        moveOverMessageModel.name = eventMessageModel.name
-        moveOverMessageModel.x = eventMessageModel.x
-        moveOverMessageModel.y = eventMessageModel.y
-        moveOverMessageModel.category = eventMessageModel.category
-        moveOverMessageModel.offset = eventMessageModel.offset
-        moveOverMessageModel.index = eventMessageModel.index
-        return moveOverMessageModel
-    }
-
-    private func getEventMessageModel(messageBody: [String: Any]) -> AAEventMessageModel {
-        let eventMessageModel = AAEventMessageModel()
+    private func getEventMessageModel<T: AAEventMessageModel>(messageBody: [String: Any], eventType: T.Type) -> T {
+        let eventMessageModel = T()
         eventMessageModel.name = messageBody["name"] as? String
         eventMessageModel.x = getFloatValue(messageBody["x"])
         eventMessageModel.y = getFloatValue(messageBody["y"])
