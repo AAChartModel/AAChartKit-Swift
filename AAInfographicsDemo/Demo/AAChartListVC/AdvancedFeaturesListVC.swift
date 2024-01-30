@@ -56,6 +56,7 @@ class AdvancedFeaturesListVC: UIViewController {
             "Chart Options Advanced Updating | 图表高级更新",
             "XIB AAChartView | 在 XIB 中创建 AAChartView",
             "Custom Chart Event Callback | 自定义交互事件回调",
+            "Custom X Axis Labels Click Event Callback | 自定义 X 轴文字点击事件回调",
         ]
         
         chartTypeTitleArr = [
@@ -150,7 +151,11 @@ class AdvancedFeaturesListVC: UIViewController {
             ],
             /*Custom event callback*/
             [
-                "自定义监听触摸结束事件---CustomTouchEndEventCallbackVC"
+                "自定义监听触摸结束事件回调---CustomTouchEndEventCallbackVC"
+            ],
+            /*CustomXAxisLabelsClickEventCallbackVC*/
+            [
+                "自定义X轴文字点击事件回调---CustomXAxisLabelsClickEventCallbackVC"
             ],
      
 
@@ -469,8 +474,14 @@ extension AdvancedFeaturesListVC: UITableViewDelegate, UITableViewDataSource {
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
+        case 11:
+            /*CustomXAxisLabelsClickEventCallbackVC*/
+            let vc = CustomXAxisLabelsClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
 
-            
+
+
         default:
             break
         }
