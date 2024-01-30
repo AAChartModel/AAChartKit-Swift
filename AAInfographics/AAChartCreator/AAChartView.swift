@@ -387,7 +387,7 @@ extension AAChartView {
     }
 }
 
-// MARK: - Addtional update Chart View Content methods
+// MARK: - Additional update Chart View Content methods
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 extension AAChartView {
     /// A common chart update function
@@ -416,7 +416,7 @@ extension AAChartView {
             
             classNameStr = classNameStr.replacingOccurrences(of: "AA", with: "")
             
-            //convert fisrt character to be lowercase string
+            //convert first character to be lowercase string
             let firstChar = classNameStr.prefix(1)
             let lowercaseFirstChar = firstChar.lowercased()
             let index = classNameStr.index(classNameStr.startIndex, offsetBy: 1)
