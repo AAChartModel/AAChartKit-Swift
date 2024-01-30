@@ -695,35 +695,31 @@ extension AAChartView {
         moveOverMessageModel.index = eventMessageModel.index
         return moveOverMessageModel
     }
-    
+
     private func getEventMessageModel(messageBody: [String: Any]) -> AAEventMessageModel {
         let eventMessageModel = AAEventMessageModel()
         eventMessageModel.name = messageBody["name"] as? String
-        let x = messageBody["x"]
-        if x is String {
-            eventMessageModel.x = Float(x as! String)
-        } else if x is Int {
-            eventMessageModel.x = Float(x as! Int)
-        } else if x is Float {
-            eventMessageModel.x = (x as! Float)
-        } else if x is Double {
-            eventMessageModel.x = Float(x as! Double)
-        }
-        
-        let y = messageBody["y"]
-        if y is String {
-            eventMessageModel.y = Float(y as! String)
-        } else if y is Int {
-            eventMessageModel.y = Float(y as! Int)
-        } else if y is Float {
-            eventMessageModel.y = (y as! Float)
-        } else if y is Double {
-            eventMessageModel.y = Float(y as! Double)
-        }
+        eventMessageModel.x = getFloatValue(messageBody["x"])
+        eventMessageModel.y = getFloatValue(messageBody["y"])
         eventMessageModel.category = messageBody["category"] as? String
         eventMessageModel.offset = messageBody["offset"] as? [String: Any]
         eventMessageModel.index = messageBody["index"] as? Int
         return eventMessageModel
+    }
+
+    private func getFloatValue<T>(_ value: T?) -> Float? {
+        if let value = value {
+            if let value = value as? Float {
+                return value
+            } else if let value = value as? Double {
+                return Float(value)
+            } else if let value = value as? Int {
+                return Float(value)
+            } else if let value = value as? String, let floatValue = Float(value) {
+                return floatValue
+            }
+        }
+        return nil
     }
 }
 
