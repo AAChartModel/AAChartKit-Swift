@@ -688,16 +688,14 @@ extension AAChartView {
     }
 
     private func getFloatValue<T>(_ value: T?) -> Float? {
-        if let valueStr = value as? String {
-            return Float(valueStr)
-        } else if let valueInt = value as? Int {
-            return Float(valueInt)
-        } else if let valueFloat = value as? Float {
-            return valueFloat
-        } else if let valueDouble = value as? Double {
-            return Float(valueDouble)
+        switch value {
+        case let value as String: return Float(value)
+        case let value as Int: return Float(value)
+        case let value as Float: return value
+        case let value as Double: return Float(value)
+        default:
+            return nil
         }
-        return nil
     }
 }
 
