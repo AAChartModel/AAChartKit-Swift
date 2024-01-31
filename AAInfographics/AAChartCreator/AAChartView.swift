@@ -217,12 +217,12 @@ public class AAChartView: WKWebView {
                 ------------------------------------------------------------------------------------------
                 code = \(objcError.code);
                 domain = \(objcError.domain);
-                userInfo =     {
-                NSLocalizedDescription = "A JavaScript exception occurred";
-                WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
-                WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
-                WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
-                WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
+                userInfo = {
+                    NSLocalizedDescription = "A JavaScript exception occurred";
+                    WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
+                    WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
+                    WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
+                    WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
                 }
                 ------------------------------------------------------------------------------------------
                 ==========================================================================================
