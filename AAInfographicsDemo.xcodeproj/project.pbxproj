@@ -485,20 +485,8 @@
 		84086B1728E44FD0006BD30D /* AAChartModel */ = {
 			isa = PBXGroup;
 			children = (
-				278C55101EE948C900770B97 /* BasicChartVC.swift */,
-				278C55121EE948C900770B97 /* SpecialChartVC.swift */,
-				4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */,
-				27766454207C55BE00F0A62C /* MixedChartVC.swift */,
-				84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */,
-				84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */,
-				5860327DEF5546B683899E44 /* CustomStyleForColumnChartComposer.swift */,
-				58603647D3E17BD4C00CBCF5 /* CustomStyleForBarChartComposer.swift */,
-				586039BF1F037FB47A9D7E4D /* CustomStyleForBarChartVC.swift */,
-				58603184C6DF4D29C66C028D /* CustomStyleForColumnChartVC.swift */,
-				586030C73877C58B03F2F997 /* CustomStyleForScatterChartComposer.swift */,
-				844F11472B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift */,
-				58603454C8FAA15218D301F7 /* MixedChartComposer.swift */,
-				58603E686F6956B04F862302 /* CustomStyleForAreaChartComposer.swift */,
+				844F11492B6B4A2B00ADEB1C /* ViewController */,
+				844F114A2B6B4A4900ADEB1C /* Composer */,
 			);
 			path = AAChartModel;
 			sourceTree = "<group>";
@@ -544,6 +532,34 @@
 				84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */,
 			);
 			path = AAChartListVC;
+			sourceTree = "<group>";
+		};
+		844F11492B6B4A2B00ADEB1C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				278C55101EE948C900770B97 /* BasicChartVC.swift */,
+				278C55121EE948C900770B97 /* SpecialChartVC.swift */,
+				4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */,
+				27766454207C55BE00F0A62C /* MixedChartVC.swift */,
+				84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */,
+				586039BF1F037FB47A9D7E4D /* CustomStyleForBarChartVC.swift */,
+				58603184C6DF4D29C66C028D /* CustomStyleForColumnChartVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		844F114A2B6B4A4900ADEB1C /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */,
+				5860327DEF5546B683899E44 /* CustomStyleForColumnChartComposer.swift */,
+				58603647D3E17BD4C00CBCF5 /* CustomStyleForBarChartComposer.swift */,
+				586030C73877C58B03F2F997 /* CustomStyleForScatterChartComposer.swift */,
+				844F11472B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift */,
+				58603454C8FAA15218D301F7 /* MixedChartComposer.swift */,
+				58603E686F6956B04F862302 /* CustomStyleForAreaChartComposer.swift */,
+			);
+			path = Composer;
 			sourceTree = "<group>";
 		};
 		84BDF5AB2930AE1700B9EC30 /* ViewController */ = {
