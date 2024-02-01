@@ -212,8 +212,7 @@ public class AAChartView: WKWebView {
                 let errorInfo =
                 """
                 
-                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
-                ==========================================================================================
+                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! JS WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
                 ------------------------------------------------------------------------------------------
                 code = \(objcError.code);
                 domain = \(objcError.domain);
@@ -225,8 +224,7 @@ public class AAChartView: WKWebView {
                     WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
                 }
                 ------------------------------------------------------------------------------------------
-                ==========================================================================================
-                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! FBI WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
+                ☠️☠️💀☠️☠️WARNING!!!!!!!!!!!!!!!!!!!! JS WARNING !!!!!!!!!!!!!!!!!!!!WARNING☠️☠️💀☠️☠️
                 
                 """
                 print(errorInfo)
@@ -619,7 +617,7 @@ extension AAChartView: WKUIDelegate {
     ) {
         #if os(iOS)
         let alertController = UIAlertController(
-            title: "FBI WARNING",
+            title: "JS WARNING",
             message: message,
             preferredStyle: .alert
         )
@@ -641,7 +639,7 @@ extension AAChartView: WKUIDelegate {
         #elseif os(macOS)
         let alert = NSAlert()
         alert.alertStyle = .warning
-        alert.messageText = "FBI WARNING"
+        alert.messageText = "JS WARNING"
         alert.informativeText = message
         alert.addButton(withTitle: "Okay")
         _ = alert.runModal() == .alertFirstButtonReturn
