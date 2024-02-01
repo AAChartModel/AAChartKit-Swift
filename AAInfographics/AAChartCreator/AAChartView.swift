@@ -616,35 +616,28 @@ extension AAChartView: WKUIDelegate {
         completionHandler: @escaping () -> Void
     ) {
         #if os(iOS)
-        // 创建 UIAlertController 并设置标题和消息
         let alertController = UIAlertController(title: "JS WARNING", message: message, preferredStyle: .alert)
         
-        // 添加确认按钮，并在点击后调用完成处理程序
         let okayAction = UIAlertAction(title: "Okay", style: .default) { _ in
             completionHandler()
         }
         alertController.addAction(okayAction)
         
-        // 确保有可展示 alert 的视图控制器；这里假设 AAChartView 是一个 UIView 子类且已附加到某个 UIViewController 上
         guard let presentingViewController = self.nextUIViewController() else {
-            // 如果找不到合适的 UIViewController 来展示警告，则打印错误信息并直接调用完成处理程序
             print("Unable to present UIAlertController from AAChartView. Completing JavaScript alert handler.")
             completionHandler()
             return
         }
         
-        // 展示警告控制器
         presentingViewController.present(alertController, animated: true, completion: nil)
         
         #elseif os(macOS)
-        // 创建 NSAlert 对象并配置样式和消息内容
         let alert = NSAlert()
         alert.alertStyle = .warning
         alert.messageText = "JS WARNING"
         alert.informativeText = message
         alert.addButton(withTitle: "Okay")
         
-        // 使用异步方式呈现模态窗口，确保与主线程同步，并在用户点击“Okay”后调用完成处理程序
         alert.beginSheetModal(for: NSApplication.shared.mainWindow!) { (response) in
             if response == NSApplication.ModalResponse.alertFirstButtonReturn {
                 completionHandler()
@@ -653,7 +646,6 @@ extension AAChartView: WKUIDelegate {
         #endif
     }
     
-    // 假设 AAChartView 是在一个 UIViewController 的视图层次中，并且想要找到最接近的UIViewController以展示警告
     #if os(iOS)
     private func nextUIViewController() -> UIViewController? {
         var responder: UIResponder? = self
