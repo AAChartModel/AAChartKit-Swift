@@ -60,14 +60,6 @@ public class AAClickEventMessageModel: AAEventMessageModel {}
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AAMoveOverEventMessageModel: AAEventMessageModel {}
 
-public enum AADataPointOptions {
-    case integer(Int)
-    case float(Float)
-    case double(Double)
-    case array([Any])
-    case object(AAObject)
-}
-
 //Refer to: https://stackoverflow.com/questions/26383031/wkwebview-causes-my-view-controller-to-leak
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AALeakAvoider : NSObject, WKScriptMessageHandler {
@@ -438,7 +430,7 @@ extension AAChartView {
         safeEvaluateJavaScriptString(jsStr)
     }
     
-    public func aa_addPointToChartSeriesElement(elementIndex: Int, options: AADataPointOptions) {
+    public func aa_addPointToChartSeriesElement(elementIndex: Int, options: Any) {
         aa_addPointToChartSeriesElement(
             elementIndex: elementIndex,
             options: options,
@@ -448,7 +440,7 @@ extension AAChartView {
     
     public func aa_addPointToChartSeriesElement(
         elementIndex: Int,
-        options: AADataPointOptions,
+        options: Any,
         shift: Bool
     ) {
         aa_addPointToChartSeriesElement(
@@ -459,7 +451,7 @@ extension AAChartView {
             animation: true
         )
     }
-
+    
     /// Add a new point to the data column after the chart has been rendered.
     /// The new point can be the last point, or it can be placed in the corresponding position given the X value (first, middle position, depending on the x value)
     /// Refer to https://api.highcharts.com/highcharts#Series.addPoint
@@ -471,39 +463,29 @@ extension AAChartView {
     /// - Parameter animation: The default is true, which means that when adding a point, it contains the default animation effect. This parameter can also be passed to the object form containing duration and easing. For details, refer to the animation related configuration.
     public func aa_addPointToChartSeriesElement(
         elementIndex: Int,
-        options: AADataPointOptions,
+        options: Any,
         redraw: Bool,
         shift: Bool,
         animation: Bool
     ) {
-        let optionsStr = serializeDataPointOptions(options)
+        var optionsStr = ""
+        if options is Int || options is Float || options is Double {
+            optionsStr = "\(options)"
+        } else if options is [Any] {
+            optionsStr = getJSONStringFromArray(array: options as! [Any])
+        } else {
+            let aaOption: AAObject = options as! AAObject
+            optionsStr = aaOption.toJSON()!
+        }
+    
         let javaScriptStr = "addPointToChartSeries('\(elementIndex)','\(optionsStr)','\(redraw)','\(shift)','\(animation)')"
         safeEvaluateJavaScriptString(javaScriptStr)
     }
-
-    private func serializeDataPointOptions(_ options: AADataPointOptions) -> String {
-        switch options {
-        case .integer(let value):
-            return "\(value)"
-
-        case .float(let value):
-            return "\(value)"
-
-        case .double(let value):
-            return "\(value)"
-
-        case .array(let array):
-            return getJSONStringFromArray(array: array)
-
-        case .object(let object):
-            return object.toJSON()!
-        }
-    }
-
+    
     /// Add a new group of points to the data column after the chart has been rendered.
     ///
     public func aa_addPointsToChartSeriesArray(
-        optionsArr: [AADataPointOptions],
+        optionsArr: [Any],
         shift: Bool = true,
         animation: Bool = true
     ) {
@@ -637,7 +619,7 @@ extension AAChartView: WKUIDelegate {
     ) {
         #if os(iOS)
         let alertController = UIAlertController(
-            title: "JS WARNING",
+            title: "FBI WARNING",
             message: message,
             preferredStyle: .alert
         )
@@ -659,7 +641,7 @@ extension AAChartView: WKUIDelegate {
         #elseif os(macOS)
         let alert = NSAlert()
         alert.alertStyle = .warning
-        alert.messageText = "JS WARNING"
+        alert.messageText = "FBI WARNING"
         alert.informativeText = message
         alert.addButton(withTitle: "Okay")
         _ = alert.runModal() == .alertFirstButtonReturn
