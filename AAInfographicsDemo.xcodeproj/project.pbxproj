@@ -12,7 +12,7 @@
 		276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A56FE22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift */; };
 		277066112452E99C00C4581D /* ScrollableChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277066102452E99C00C4581D /* ScrollableChartVC.swift */; };
 		2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */; };
-		27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27766454207C55BE00F0A62C /* MixedChartVC.swift */; };
+		27766455207C55BE00F0A62C /* MixedChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27766454207C55BE00F0A62C /* MixedChartComposer.swift */; };
 		278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54B11EE9472300770B97 /* AppDelegate.swift */; };
 		278C54B71EE9472300770B97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B51EE9472300770B97 /* Main.storyboard */; };
 		278C54B91EE9472300770B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 278C54B81EE9472300770B97 /* Assets.xcassets */; };
@@ -172,7 +172,7 @@
 		276A56FE22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleChartsLinkedWorkVC.swift; sourceTree = "<group>"; };
 		277066102452E99C00C4581D /* ScrollableChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableChartVC.swift; sourceTree = "<group>"; };
 		2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyRefreshChartDataVC.swift; sourceTree = "<group>"; };
-		27766454207C55BE00F0A62C /* MixedChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartVC.swift; sourceTree = "<group>"; };
+		27766454207C55BE00F0A62C /* MixedChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartComposer.swift; sourceTree = "<group>"; };
 		278C54AE1EE9472300770B97 /* AAInfographicsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AAInfographicsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		278C54B11EE9472300770B97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		278C54B61EE9472300770B97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -542,7 +542,7 @@
 				278C55101EE948C900770B97 /* BasicChartVC.swift */,
 				278C55121EE948C900770B97 /* SpecialChartVC.swift */,
 				4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */,
-				27766454207C55BE00F0A62C /* MixedChartVC.swift */,
+				27766454207C55BE00F0A62C /* MixedChartComposer.swift */,
 				84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */,
 				586039BF1F037FB47A9D7E4D /* CustomStyleForBarChartVC.swift */,
 				58603184C6DF4D29C66C028D /* CustomStyleForColumnChartVC.swift */,
@@ -824,7 +824,7 @@
 				277066112452E99C00C4581D /* ScrollableChartVC.swift in Sources */,
 				2770FBBF1F93673700091C75 /* OnlyRefreshChartDataVC.swift in Sources */,
 				84F2185A292E10DE007AA726 /* OfficialBarOrColumnChartVC.swift in Sources */,
-				27766455207C55BE00F0A62C /* MixedChartVC.swift in Sources */,
+				27766455207C55BE00F0A62C /* MixedChartComposer.swift in Sources */,
 				278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */,
 				27FADB8620D6569000FED960 /* HideOrShowChartSeriesVC.swift in Sources */,
 				84AE6B1F26A58380001F0755 /* AADateUTCTool.swift in Sources */,
