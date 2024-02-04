@@ -462,7 +462,7 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    static func configureNegativeColorMixedChart() -> AAChartModel {
+    static func configureNegativeColorMixedColumnChart() -> AAChartModel {
         AAChartModel()
             .dataLabelsEnabled(false)//是否显示数字
             .series([
@@ -477,5 +477,108 @@ class CustomStyleForColumnChartComposer {
                     .threshold(4)//default:0
             ])
     }
+    
+    static func customSingleDataElementSpecialStyleForColumnChart() -> AAChartModel {
+        let singleSpecialData = AADataElement()
+            .color(AAGradientColor.freshPapaya)
+            .y(49.5)
+            .toDic()!
+        
+        return AAChartModel()
+            .chartType(.column)
+            .yAxisTitle("")//设置Y轴标题
+            .dataLabelsEnabled(false)//是否显示值
+            .tooltipEnabled(false)
+            .markerRadius(0)
+            .xAxisVisible(false)
+            .yAxisVisible(false)
+            .series([
+                AASeriesElement()
+                    .name("Virtual Data")
+                    .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData, 5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
+                    .color(AAGradientColor.oceanBlue)
+            ])
+    }
+    
+    static func customHoverColorAndSelectColorForColumnChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.column)
+            .title("Custom Column Chart select color")
+            .yAxisTitle("")
+            .yAxisReversed(true)
+            .xAxisReversed(true)
+            .series([
+                AASeriesElement()
+                    .name("ElementOne")
+                    .data([211,183,157,133,111,91,73,57,43,31,21,13,7,3])
+                    .allowPointSelect(true)
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .color(AARgba(220, 20, 60, 1)))//猩红色, alpha 透明度 1
+                        .select(AASelect()
+                            .color(AAColor.red)))
+            ])
+    }
+    
+    static func customNormalStackingChartDataLabelsContentAndStyleForColumnChart() -> AAChartModel {
+        let categories = [
+            "孤岛危机",
+            "使命召唤",
+            "荣誉勋章",
+            "狙击精英",
+            "神秘海域",
+            "最后生还者",
+            "巫师3狂猎",
+            "对马之魂",
+            "死亡搁浅",
+            "地狱边境",
+            "闪客",
+            "忍者之印"
+        ]
+        
+        let colorsTheme = [
+            "#fe117c",
+            "#ffc069",
+            "#06caf4",
+            "#7dffc0"
+        ]
+        
+        let element1 = AASeriesElement()
+            .name("2017")
+            .dataLabels(AADataLabels()
+                .enabled(true)
+                .y(-10)
+                .format("{total} mm")
+                .color(AAColor.red)
+                .shape(.callout)
+                .backgroundColor(AAColor.white)
+                .borderColor(AAColor.red)
+                .borderRadius(1)
+                .borderWidth(1))
+            .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
+        
+        
+        let element2 = AASeriesElement()
+            .name("2018")
+            .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
+        let element3 = AASeriesElement()
+            .name("2019")
+            .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
+        let element4 = AASeriesElement()
+            .name("2020")
+            .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
+        
+        return AAChartModel()
+            .chartType(.column)
+            .stacking(.normal)
+            .yAxisTitle("")
+            .yAxisGridLineWidth(0)
+            .markerRadius(0)
+            .categories(categories)
+            .colorsTheme(colorsTheme)
+            .series([element1, element2, element3, element4])
+    }
+
+    
     
 }

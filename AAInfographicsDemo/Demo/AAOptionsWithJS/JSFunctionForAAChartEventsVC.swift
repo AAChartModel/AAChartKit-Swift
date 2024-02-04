@@ -737,7 +737,7 @@ function () {
                     .name("Highsoft 员工")
                     .id("employees")
                     .type(.area)
-                    .step("left")
+                    .step(.left)
                     .tooltip(AATooltip()
                         .headerFormat("{point.x:%B %e, %Y}")
                         .pointFormat("{point.name}{point.y}")

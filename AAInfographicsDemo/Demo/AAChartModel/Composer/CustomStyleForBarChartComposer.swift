@@ -70,5 +70,22 @@ class CustomStyleForBarChartComposer {
     static func negativeDataMixedPositiveDataBarChart() -> AAChartModel {
         CustomStyleForColumnChartComposer.negativeDataMixedPositiveDataColumnChart().chartType(.bar)
     }
+
+
+    static func configureNegativeColorMixedBarChart() -> AAChartModel {
+        CustomStyleForColumnChartComposer.configureNegativeColorMixedColumnChart().chartType(.bar)
+    }
+
+    static func customSingleDataElementSpecialStyleForBarChart() -> AAChartModel {
+        CustomStyleForColumnChartComposer.customSingleDataElementSpecialStyleForColumnChart().chartType(.bar)
+    }
+
+    static func customHoverColorAndSelectColorForBarChart() -> AAChartModel {
+        CustomStyleForColumnChartComposer.customHoverColorAndSelectColorForColumnChart().chartType(.bar)
+    }
+
+    static func customNormalStackingChartDataLabelsContentAndStyleForBarChart() -> AAChartModel {
+        CustomStyleForColumnChartComposer.customNormalStackingChartDataLabelsContentAndStyleForColumnChart().chartType(.bar)
+    }
     
 }

@@ -30,6 +30,17 @@
  
  */
 
+public enum AAChartZoneAxisType: String {
+    case x
+    case y
+}
+
+public enum AAChartLineStepType: String {
+    case left
+    case center
+    case right
+}
+
 //https://api.highcharts.com/highcharts/series
 public class AASeriesElement: AAObject {
     public var type: String?               //A chart type series. If the type option is not specified, it is inherited from `chart.type`.
@@ -236,6 +247,12 @@ public class AASeriesElement: AAObject {
     }
     
     @discardableResult
+    public func step(_ prop: AAChartLineStepType) -> AASeriesElement {
+        step = prop.rawValue
+        return self
+    }
+    
+    @discardableResult
     public func states(_ prop: AAStates) -> AASeriesElement {
         states = prop
         return self
@@ -298,6 +315,12 @@ public class AASeriesElement: AAObject {
     @discardableResult
     public func zoneAxis(_ prop: String) -> AASeriesElement {
         zoneAxis = prop
+        return self
+    }
+    
+    @discardableResult
+    public func zoneAxis(_ prop: AAChartZoneAxisType) -> AASeriesElement {
+        zoneAxis = prop.rawValue
         return self
     }
     

@@ -32,6 +32,20 @@
 
 import Foundation
 
+public enum AAChartDataLabelsShapeType: String {
+    case square
+    case callout
+    case circle
+    case diamond
+    case triangle
+}
+
+public enum AAChartDataLabelsOverflowType: String {
+    case none = "none"
+    case allow
+    case justify
+}
+
 public class AADataLabels: AAObject {
     public var enabled: Bool?
     public var align: String?
@@ -171,6 +185,12 @@ public class AADataLabels: AAObject {
         shape = prop
         return self
     }
+
+    @discardableResult
+    public func shape(_ prop: AAChartDataLabelsShapeType?) -> AADataLabels {
+        shape = prop?.rawValue
+        return self
+    }
     
     @discardableResult
     public func crop(_ prop: Bool?) -> AADataLabels {
@@ -183,10 +203,10 @@ public class AADataLabels: AAObject {
         inside = prop
         return self
     }
-    
+
     @discardableResult
-    public func overflow(_ prop: String?) -> AADataLabels {
-        overflow = prop
+    public func overflow(_ prop: AAChartDataLabelsOverflowType) -> AADataLabels {
+        overflow = prop.rawValue
         return self
     }
     

@@ -827,19 +827,16 @@ class SpecialChartComposer {
                 AASeriesElement()
                     .name("Berlin")
                     .data([450, 432, 401, 454, 590, 530, 510])
-                    .step("right")//设置折线样式为直方折线,折线连接点位置靠右👉
-                ,
+                    .step(.right), //折线连接点靠右👉
                 AASeriesElement()
                     .name("New York")
                     .data([220, 282, 201, 234, 290, 430, 410])
-                    .step("center")//设置折线样式为直方折线,折线连接点位置居中
-                ,
+                    .step(.center),//折线连接点居中
                 AASeriesElement()
                     .name("Tokyo")
                     .data([120, 132, 101, 134, 90, 230, 210])
-                    .step("left")//设置折线样式为直方折线,折线连接点位置靠左👈
-                ,
-            ])
+                    .step(.left),//折线连接点靠左边👈
+                ])
     }
     
     static func configureStepAreaChart() -> AAChartModel {

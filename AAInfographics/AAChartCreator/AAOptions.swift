@@ -265,10 +265,7 @@ public class AAOptionsConstructor {
         
         let aaDataLabels = AADataLabels()
             .enabled(aaChartModel.dataLabelsEnabled)
-        if (aaChartModel.dataLabelsEnabled == true) {
-            aaDataLabels
-                .style(aaChartModel.dataLabelsStyle)
-        }
+            .style(aaChartModel.dataLabelsStyle)
         
         switch aaChartType {
         case .column:
@@ -288,11 +285,6 @@ public class AAOptionsConstructor {
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
 
-            if (aaChartModel.polar == true) {
-                aaBar
-                    .pointPadding(0)
-                    .groupPadding(0.005)
-            }
             aaPlotOptions.bar(aaBar)
             
         case .pie:
@@ -312,11 +304,6 @@ public class AAOptionsConstructor {
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
 
-            if (aaChartModel.polar == true) {
-                aaColumnrange
-                    .pointPadding(0)
-                    .groupPadding(0.005)
-            }
             aaPlotOptions.columnrange(aaColumnrange)
             
         default: break
