@@ -45,16 +45,16 @@ class MixedChartVC: AABaseChartVC {
         case "arearangeMixedLine":return configureArearangeMixedLineChart()
         case "columnrangeMixedLine":return configureColumnrangeMixedLineChart()
         case "stackingColumnMixedLine":return configureStackingColumnMixedLineChart()
-        case "dashStyleTypeMixed":return configureDashStyleTypesMixedChart()
-        case "negativeColorMixed":return configureNegativeColorMixedChart()
+//        case "dashStyleTypeMixed":return configureDashStyleTypesMixedChart()
+//        case "negativeColorMixed":return configureNegativeColorMixedChart()
         case "scatterMixedLine":return configureScatterMixedLineChart()
-        case "negativeColorMixedBubble":return configureNegativeColorMixedBubbleChart()
+//        case "negativeColorMixedBubble":return configureNegativeColorMixedBubbleChart()
         case "polygonMixedScatter":return configurePolygonMixedScatterChart()
         case "polarChartMixed":return configurePolarChartMixedChart()
         case "columnMixedScatter":return configureColumnMixedScatterChart()
         case "PieMixedLineMixedColumn":return configurePieMixedLineMixedColumnChart()
-        case "LineChartWithShadow":return configureLineChartWithShadow()
-        case "NegativeColorMixedAreasplineChart": return configureNegativeColorMixedAreasplineChart()
+//        case "LineChartWithShadow":return configureLineChartWithShadow()
+//        case "NegativeColorMixedAreasplineChart": return configureNegativeColorMixedAreasplineChart()
         case "AerasplinerangeMixedColumnrangeMixedLineChart": return configureAerasplinerangeMixedColumnrangeMixedLineChart()
         case "boxplotMixedScatterChartWithJitter": return boxplotMixedScatterChartWithJitter()
         default: return configureArearangeMixedLineChart()
@@ -235,61 +235,6 @@ class MixedChartVC: AABaseChartVC {
                         .enabled(true)
                         .style(AAStyle(color: AAColor.blue, fontSize: 15)))
                 ,
-            ])
-    }
-    
-    private func configureDashStyleTypesMixedChart() -> AAChartModel {
-        AAChartModel()
-            .chartType(.spline)//图形类型
-            .dataLabelsEnabled(false)//是否显示数字
-            .stacking(.normal)
-            .markerRadius(0)
-            .series([
-                AASeriesElement()
-                    .name("Solid")
-                    .lineWidth(3)
-                    .data([50, 320, 230, 370, 230, 400,])
-                ,
-                AASeriesElement()
-                    .name("Dash")
-                    .lineWidth(3)
-                    .dashStyle(.dash)
-                    .data([50, 320, 230, 370, 230, 400,])
-                ,
-                AASeriesElement()
-                    .name("DashDot")
-                    .lineWidth(3)
-                    .dashStyle(.dashDot)
-                    .data([50, 320, 230, 370, 230, 400,])
-                ,
-                AASeriesElement()
-                    .name("LongDash")
-                    .lineWidth(3)
-                    .dashStyle(.longDash)
-                    .data([50, 320, 230, 370, 230, 400,])
-                ,
-                AASeriesElement()
-                    .name("LongDashDot")
-                    .lineWidth(3)
-                    .dashStyle(.longDashDot)
-                    .data([50, 320, 230, 370, 230, 400,])
-                ,
-            ])
-    }
-    
-    private func configureNegativeColorMixedChart() -> AAChartModel {
-        AAChartModel()
-            .dataLabelsEnabled(false)//是否显示数字
-            .series([
-                AASeriesElement()
-                    .name("Column")
-                    .type(.column)
-                    .data([-6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
-                           -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
-                           -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,])
-                    .color("#0088FF")
-                    .negativeColor(AAColor.red)
-                    .threshold(4)//default:0
             ])
     }
     
@@ -518,43 +463,6 @@ class MixedChartVC: AABaseChartVC {
             ])
     }
     
-    private func configureNegativeColorMixedBubbleChart() -> AAChartModel {
-        AAChartModel()
-            .categories(["Saturday", "Friday", "Thursday","Wednesday", "Tuesday", "Monday", "Sunday"])
-            .series([
-                AASeriesElement()
-                    .name("Bubble")
-                    .type(.bubble)
-                    .data([
-                        [0,0,5],[0,1,1],[0,2,0],[0,3,0],[0,4,0],[0,5,0],[0,6,0],[0,7,0],[0,8,0],[0,9,0],
-                        [0,10,0],[0,11,2],[0,12,4],[0,13,1],[0,14,1],[0,15,3],[0,16,4],[0,17,6],[0,18,4],
-                        [0,19,4],[0,20,3],[0,21,3],[0,22,2],[0,23,5],[1,0,7],[1,1,0],[1,2,0],[1,3,0],
-                        [1,4,0],[1,5,0],[1,6,0],[1,7,0],[1,8,0],[1,9,0],[1,10,5],[1,11,2],[1,12,2],
-                        [1,13,6],[1,14,9],[1,15,11],[1,16,6],[1,17,7],[1,18,8],[1,19,12],[1,20,5],[1,21,5],
-                        [1,22,7],[1,23,2],[2,0,1],[2,1,1],[2,2,0],[2,3,0],[2,4,0],[2,5,0],[2,6,0],[2,7,0],
-                        [2,8,0],[2,9,0],[2,10,3],[2,11,2],[2,12,1],[2,13,9],[2,14,8],[2,15,10],[2,16,6],
-                        [2,17,5],[2,18,5],[2,19,5],[2,20,7],[2,21,4],[2,22,2],[2,23,4],[3,0,7],[3,1,3],
-                        [3,2,0],[3,3,0],[3,4,0],[3,5,0],[3,6,0],[3,7,0],[3,8,1],[3,9,0],[3,10,5],[3,11,4],
-                        [3,12,7],[3,13,14],[3,14,13],[3,15,12],[3,16,9],[3,17,5],[3,18,5],[3,19,10],
-                        [3,20,6],[3,21,4],[3,22,4],[3,23,1],[4,0,1],[4,1,3],[4,2,0],[4,3,0],[4,4,0],
-                        [4,5,1],[4,6,0],[4,7,0],[4,8,0],[4,9,2],[4,10,4],[4,11,4],[4,12,2],[4,13,4],
-                        [4,14,4],[4,15,14],[4,16,12],[4,17,1],[4,18,8],[4,19,5],[4,20,3],[4,21,7],[4,22,3],
-                        [4,23,0],[5,0,2],[5,1,1],[5,2,0],[5,3,3],[5,4,0],[5,5,0],[5,6,0],[5,7,0],[5,8,2],
-                        [5,9,0],[5,10,4],[5,11,1],[5,12,5],[5,13,10],[5,14,5],[5,15,7],[5,16,11],[5,17,6],
-                        [5,18,0],[5,19,5],[5,20,3],[5,21,4],[5,22,2],[5,23,0],[6,0,1],[6,1,0],[6,2,0],
-                        [6,3,0],[6,4,0],[6,5,0],[6,6,0],[6,7,0],[6,8,0],[6,9,0],[6,10,1],[6,11,0],[6,12,2],
-                        [6,13,1],[6,14,3],[6,15,4],[6,16,0],[6,17,0],[6,18,0],[6,19,0],[6,20,1],[6,21,2],
-                        [6,22,2],[6,23,6]
-                    ])
-                    .marker(AAMarker()
-                        .lineColor(AAColor.yellow)
-                        .lineWidth(3))
-                    .color("#0088FF")
-                    .negativeColor(AAColor.red)
-                    .threshold(4)//default:0
-            ])
-    }
-    
     private func configurePolygonMixedScatterChart() -> AAChartModel {
         AAChartModel()
             .series([
@@ -749,66 +657,6 @@ class MixedChartVC: AABaseChartVC {
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .dataLabelsEnabled(false)
             .series(aaSeriesArr)
-    }
-    
-    private func configureLineChartWithShadow() -> AAChartModel {
-        AAChartModel()
-            .chartType(.line)
-            .title("Line Chart With Shadow")
-            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
-            .legendEnabled(false)
-            .dataLabelsEnabled(false)
-            .markerSymbolStyle(.borderBlank)
-            .series([
-                AASeriesElement()
-                    .data([7.0, 6.9, 9.5, 9.6, 13.9, 14.5, 18.3, 18.2, 21.5, 25.2, 26.5, 23.3])
-                    .lineWidth(4)
-                    .shadow(AAShadow()
-                        .offsetX(15.0)
-                        .offsetY(15.0)
-                        .opacity(0.1)
-                        .width(9.0)
-                        .color(AAColor.red))
-            ])
-    }
-    
-    //GitHub issue https://github.com/AAChartModel/AAChartKit/issues/921
-    private func configureNegativeColorMixedAreasplineChart() -> AAChartModel {
-        AAChartModel()
-            .chartType(.areaspline)
-            .legendEnabled(false)
-            .dataLabelsEnabled(false)
-            .markerRadius(5)
-            .markerSymbolStyle(.innerBlank)
-            .yAxisGridLineWidth(0)
-            .series([
-                AASeriesElement()
-                    .name("Column")
-                    .data([
-                        +7.0, +6.9, +2.5, +14.5, +18.2, +21.5, +5.2, +26.5, +23.3, +45.3, +13.9, +9.6,
-                        -7.0, -6.9, -2.5, -14.5, -18.2, -21.5, -5.2, -26.5, -23.3, -45.3, -13.9, -9.6,
-                    ])
-                    .lineWidth(5)
-                    .color(AARgba(30, 144, 255, 1.0))
-                    .negativeColor(AARgba(255, 0, 0, 1.0))
-                    .fillColor(AAGradientColor.linearGradient(
-                        direction: .toTop,
-                        stops: [
-                            [0.0, AARgba(30, 144, 255, 0.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-                            [0.5, AARgba(30, 144, 255, 0.0)],
-                            [1.0, AARgba(30, 144, 255, 0.6)]
-                        ]
-                    ))
-                    .negativeFillColor(AAGradientColor.linearGradient(
-                        direction: .toTop,
-                        stops: [
-                            [0.0, AARgba(255, 0, 0, 0.6)],//颜色字符串设置支持十六进制类型和 rgba 类型
-                            [0.5, AARgba(255, 0, 0, 0.0)],
-                            [1.0, AARgba(255, 0, 0, 0.0)]
-                        ]
-                    ))
-                    .threshold(0)//default:0
-            ])
     }
     
     private func configureAerasplinerangeMixedColumnrangeMixedLineChart() -> AAChartModel {

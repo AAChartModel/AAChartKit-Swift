@@ -6,6 +6,45 @@
 import AAInfographics
 
 class CustomStyleForAreaChartComposer {
+    
+    //https://github.com/AAChartModel/AAChartKit/issues/921
+    static func configureNegativeColorMixedAreasplineChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.areaspline)
+            .legendEnabled(false)
+            .dataLabelsEnabled(false)
+            .markerRadius(5)
+            .markerSymbolStyle(.innerBlank)
+            .yAxisGridLineWidth(0)
+            .series([
+                AASeriesElement()
+                    .name("Column")
+                    .data([
+                        +7.0, +6.9, +2.5, +14.5, +18.2, +21.5, +5.2, +26.5, +23.3, +45.3, +13.9, +9.6,
+                        -7.0, -6.9, -2.5, -14.5, -18.2, -21.5, -5.2, -26.5, -23.3, -45.3, -13.9, -9.6,
+                    ])
+                    .lineWidth(5)
+                    .color(AARgba(30, 144, 255, 1.0))
+                    .negativeColor(AARgba(255, 0, 0, 1.0))
+                    .fillColor(AAGradientColor.linearGradient(
+                        direction: .toTop,
+                        stops: [
+                            [0.0, AARgba(30, 144, 255, 0.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.5, AARgba(30, 144, 255, 0.0)],
+                            [1.0, AARgba(30, 144, 255, 0.6)]
+                        ]
+                    ))
+                    .negativeFillColor(AAGradientColor.linearGradient(
+                        direction: .toTop,
+                        stops: [
+                            [0.0, AARgba(255, 0, 0, 0.6)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.5, AARgba(255, 0, 0, 0.0)],
+                            [1.0, AARgba(255, 0, 0, 0.0)]
+                        ]
+                    ))
+                    .threshold(0)//default:0
+            ])
+    }
 
     //https://github.com/AAChartModel/AAChartCore-Kotlin/issues/149
    static func customAreasplineChartWithColorfulGradientColorZones() -> AAChartModel {
