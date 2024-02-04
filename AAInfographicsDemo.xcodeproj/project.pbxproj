@@ -58,6 +58,7 @@
 		8418479928B8755900094106 /* JSFunctionForAAChartEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */; };
 		844007702B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */; };
 		844007742B6F3FA00072FB66 /* MixedChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844007732B6F3FA00072FB66 /* MixedChartVC.swift */; };
+		844007762B6F41A50072FB66 /* SpecialChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844007752B6F41A50072FB66 /* SpecialChartComposer.swift */; };
 		844614D7283C822E00E26DA4 /* ProjectBundlePathLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */; };
 		844F11402B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */; };
 		844F11462B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */; };
@@ -250,6 +251,7 @@
 		8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC.swift; sourceTree = "<group>"; };
 		8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForBubbleChartComposer.swift; sourceTree = "<group>"; };
 		844007732B6F3FA00072FB66 /* MixedChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartVC.swift; sourceTree = "<group>"; };
+		844007752B6F41A50072FB66 /* SpecialChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialChartComposer.swift; sourceTree = "<group>"; };
 		844614D3283C818D00E26DA4 /* PackageBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageBundlePathLoader.swift; sourceTree = "<group>"; };
 		844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC2.swift; sourceTree = "<group>"; };
 		844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomXAxisLabelsClickEventCallbackVC.swift; path = AAInfographicsDemo/Demo/BackUpContent/CustomXAxisLabelsClickEventCallbackVC.swift; sourceTree = SOURCE_ROOT; };
@@ -553,6 +555,7 @@
 		844F114A2B6B4A4900ADEB1C /* Composer */ = {
 			isa = PBXGroup;
 			children = (
+				844007752B6F41A50072FB66 /* SpecialChartComposer.swift */,
 				27766454207C55BE00F0A62C /* MixedChartComposer.swift */,
 				84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */,
 				5860327DEF5546B683899E44 /* CustomStyleForColumnChartComposer.swift */,
@@ -842,6 +845,7 @@
 				278C55141EE948C900770B97 /* BasicChartVC.swift in Sources */,
 				84086B1E28E6C612006BD30D /* CustomTableViewCell.swift in Sources */,
 				844007742B6F3FA00072FB66 /* MixedChartVC.swift in Sources */,
+				844007762B6F41A50072FB66 /* SpecialChartComposer.swift in Sources */,
 				5860368820ADD4DC745A2997 /* AreaChartOptionsComposer.swift in Sources */,
 				8407165B2A7393FC0037193B /* ColumnChartOptionsVC.swift in Sources */,
 				58603080BAE839A9CF7C8F73 /* BarOrColumnChartOptionsComposer.swift in Sources */,
