@@ -504,7 +504,6 @@ class CustomStyleForColumnChartComposer {
         AAChartModel()
             .chartType(.column)
             .title("Custom Column Chart select color")
-            .yAxisTitle("")
             .yAxisReversed(true)
             .xAxisReversed(true)
             .series([
@@ -571,7 +570,6 @@ class CustomStyleForColumnChartComposer {
         return AAChartModel()
             .chartType(.column)
             .stacking(.normal)
-            .yAxisTitle("")
             .yAxisGridLineWidth(0)
             .markerRadius(0)
             .categories(categories)

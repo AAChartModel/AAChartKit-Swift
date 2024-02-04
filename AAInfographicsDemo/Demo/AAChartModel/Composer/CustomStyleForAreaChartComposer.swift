@@ -16,7 +16,6 @@ class CustomStyleForAreaChartComposer {
             .yAxisGridLineWidth(0)
             .dataLabelsEnabled(false)
             .categories(["Java","Swift","Python","Ruby", "PHP","Go","C","C#","C++","HTML","CSS","Perl","R","MATLAB","SQL"])
-            .yAxisTitle("")
             .colorsTheme(["#49C1B6", "#FDC20A", "#F78320", "#068E81", "#EA007B"])
             .series([
                 AASeriesElement()
@@ -51,7 +50,6 @@ class CustomStyleForAreaChartComposer {
             .chartType(.areaspline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
-            .yAxisTitle("")
             .backgroundColor(AAColor.white)
             .markerRadius(0)
             .legendEnabled(false)
@@ -75,7 +73,6 @@ class CustomStyleForAreaChartComposer {
             .chartType(.areaspline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
-            .yAxisTitle("")
             .markerRadius(8)//marker点半径为8个像素
             .markerSymbolStyle(.innerBlank)//marker点为空心效果
             .markerSymbol(.circle)//marker点为圆形点○
@@ -173,7 +170,6 @@ class CustomStyleForAreaChartComposer {
             .title("Custom Spline Chart Marker States Hover Style")
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
-            .yAxisTitle("")
             .markerRadius(8.0)//marker点半径为8个像素
             .yAxisLineWidth(0)
             .yAxisGridLineWidth(0)

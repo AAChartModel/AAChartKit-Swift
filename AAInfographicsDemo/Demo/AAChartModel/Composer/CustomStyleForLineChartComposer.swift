@@ -175,7 +175,6 @@ class CustomStyleForLineChartComposer {
             .chartType(.spline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
-            .yAxisTitle("")
             .markerRadius(0)
             .legendEnabled(false)
             .dataLabelsEnabled(false)
@@ -220,7 +219,6 @@ class CustomStyleForLineChartComposer {
             .chartType(.line)
             .title("Custom Chart Hover And Select Halo Style")
             .colorsTheme([AAColor.red])
-            .yAxisTitle("")
             .yAxisReversed(true)
             .xAxisReversed(true)
             .markerRadius(20)

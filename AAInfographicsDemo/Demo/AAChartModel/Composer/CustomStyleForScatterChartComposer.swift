@@ -36,7 +36,6 @@ class CustomStyleForScatterChartComposer {
 
         return AAChartModel()
             .chartType(.scatter)
-            .yAxisTitle("")
             .yAxisGridLineWidth(0)
             .stacking(.normal)
             .markerRadius(8)

@@ -95,8 +95,7 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
 
         let aaChartModel = AAChartModel()
                 .chartType(.column)
-                .yAxisTitle("")
-                .yAxisGridLineWidth(0)
+                    .yAxisGridLineWidth(0)
                 .categories(categories)
                 .series([
                     AASeriesElement()

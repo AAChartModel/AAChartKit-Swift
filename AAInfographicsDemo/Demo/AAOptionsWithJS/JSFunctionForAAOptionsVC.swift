@@ -142,7 +142,6 @@ class JSFunctionForAAOptionsVC: AABaseChartVC {
         let aaChartModel = AAChartModel()
             .chartType(.bar)
             .title("Custom Bar Chart select color")
-            .yAxisTitle("")
             .yAxisReversed(true)
             .xAxisReversed(true)
             .series([
