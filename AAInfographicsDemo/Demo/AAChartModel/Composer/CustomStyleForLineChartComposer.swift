@@ -916,32 +916,32 @@ class CustomStyleForLineChartComposer {
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.red)
                                 .shape(.square))
-                            .toDic()!,
+                        ,
                         AADataElement()
                             .y(4)
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.orange)
                                 .y(-30)
                                 .shape(.callout))
-                            .toDic()!,
+                        ,
                         AADataElement()
                             .y(8)
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.yellow)
                                 .shape(.circle))
-                            .toDic()!,
+                        ,
                         AADataElement()
                             .y(16)
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.green)
                                 .shape(.diamond))
-                            .toDic()!,
+                        ,
                         AADataElement()
                             .y(32)
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.cyan)
                                 .shape(.triangle))
-                            .toDic()!
+                        ,
                     ])
             ])
     }
