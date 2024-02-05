@@ -31,6 +31,16 @@
  */
 
 //https://api.highcharts.com/class-reference/Highcharts.LinearGradientColorObject
+/// - vertical  : ⇧ top,  ⇩ bottom
+/// - horizontal: ⇦ left, ⇨ right
+/**
+ —————————————————————————————————————
+    V\H   | left       | right
+ ---------|------------|--------------
+ top      | topLeft    | topRight
+ bottom   | bottomLeft | bottomRight
+ —————————————————————————————————————
+ */
 public enum AALinearGradientDirection: Int {
     case toTop = 0       //⇧⇧⇧⇧⇧⇧
     case toBottom        //⇩⇩⇩⇩⇩⇩
