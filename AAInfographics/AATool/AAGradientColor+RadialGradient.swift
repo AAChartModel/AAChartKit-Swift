@@ -79,30 +79,19 @@ extension AAGradientColor {
         ]
     }
     
-
-    
     private class func radialGradientPositionDictionary(
         position: AARadialGradientPosition
     ) -> [String : String] {
         switch position {
-        case .center:
-            return ["cx": "50%", "cy": "50%", "r": "50%"]
-        case .topLeft:
-            return ["cx": "25%", "cy": "25%", "r": "50%"]
-        case .topCenter:
-            return ["cx": "50%", "cy": "25%", "r": "50%"]
-        case .topRight:
-            return ["cx": "75%", "cy": "25%", "r": "50%"]
-        case .centerLeft:
-            return ["cx": "25%", "cy": "50%", "r": "50%"]
-        case .centerRight:
-            return ["cx": "75%", "cy": "50%", "r": "50%"]
-        case .bottomLeft:
-            return ["cx": "25%", "cy": "75%", "r": "50%"]
-        case .bottomCenter:
-            return ["cx": "50%", "cy": "75%", "r": "50%"]
-        case .bottomRight:
-            return ["cx": "75%", "cy": "75%", "r": "50%"]
+        case .center:       return ["cx": "50%", "cy": "50%", "r": "50%"]
+        case .topLeft:      return ["cx": "25%", "cy": "25%", "r": "50%"]
+        case .topCenter:    return ["cx": "50%", "cy": "25%", "r": "50%"]
+        case .topRight:     return ["cx": "75%", "cy": "25%", "r": "50%"]
+        case .centerLeft:   return ["cx": "25%", "cy": "50%", "r": "50%"]
+        case .centerRight:  return ["cx": "75%", "cy": "50%", "r": "50%"]
+        case .bottomLeft:   return ["cx": "25%", "cy": "75%", "r": "50%"]
+        case .bottomCenter: return ["cx": "50%", "cy": "75%", "r": "50%"]
+        case .bottomRight:  return ["cx": "75%", "cy": "75%", "r": "50%"]
         }
     }
 
