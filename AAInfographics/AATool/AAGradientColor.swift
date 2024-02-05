@@ -30,6 +30,7 @@
  
  */
 
+//https://api.highcharts.com/class-reference/Highcharts.GradientColorObject
 public class AAGradientColor: AAObject {
     public var linearGradient: AALinearGradient?
     public var radialGradient: AARadialGradient?

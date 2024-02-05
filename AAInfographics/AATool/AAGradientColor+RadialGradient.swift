@@ -30,6 +30,18 @@
  
  */
 
+//https://api.highcharts.com/class-reference/Highcharts.RadialGradientColorObject
+/// - vertical  : top,  middle, bottom
+/// - horizontal: left, center, right
+/**
+ ----------------------------------------------------
+    V\H   | left       | center       | right
+ ---------|---------------------------|--------------
+ top      | topLeft    | topCenter    | topRight
+ middle   | middleLeft | middleCenter | middleRight
+ bottom   | bottomLeft | bottomCenter | bottomRight
+ ----------------------------------------------------
+ */
 public enum AARadialGradientPosition: Int {
     case topLeft
     case topCenter

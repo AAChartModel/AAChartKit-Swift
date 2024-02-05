@@ -30,6 +30,7 @@
  
  */
 
+//https://api.highcharts.com/class-reference/Highcharts.LinearGradientColorObject
 public enum AALinearGradientDirection: Int {
     case toTop = 0       //⇧⇧⇧⇧⇧⇧
     case toBottom        //⇩⇩⇩⇩⇩⇩
