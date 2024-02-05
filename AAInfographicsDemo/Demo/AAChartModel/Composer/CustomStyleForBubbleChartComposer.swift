@@ -91,6 +91,7 @@ class CustomStyleForBubbleChartComposer {
                 AAGradientColor.radialGradient(position: .bottomCenter, startColor: AAColor.red, endColor: AAColor.yellow),
                 AAGradientColor.radialGradient(position: .bottomRight,  startColor: AAColor.red, endColor: AAColor.yellow),
             ])
+            .yAxisReversed(true)
             .series([
                 AASeriesElement()
                     .name("BubbleOne")
@@ -99,17 +100,17 @@ class CustomStyleForBubbleChartComposer {
                         .lineColor(AAColor.red)
                         .lineWidth(3))
                     .data([
-                        [25, 75, 250],
-                        [50, 75, 250],
-                        [75, 75, 250],
+                        [25, 25, 250],
+                        [50, 25, 250],
+                        [75, 25, 250],
                         
                         [25, 50, 250],
                         [50, 50, 250],
                         [75, 50, 250],
                         
-                        [25, 25, 250],
-                        [50, 25, 250],
-                        [75, 25, 250],
+                        [25, 75, 250],
+                        [50, 75, 250],
+                        [75, 75, 250],
                     ])
                 ,
             ])
