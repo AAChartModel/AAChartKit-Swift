@@ -34,11 +34,11 @@ public enum AARadialGradientPosition: Int {
     case topLeft
     case topCenter
     case topRight
-        
-    case centerLeft
-    case center
-    case centerRight
-        
+    
+    case middleLeft
+    case middleCenter
+    case middleRight
+    
     case bottomLeft
     case bottomCenter
     case bottomRight
@@ -51,7 +51,7 @@ extension AAGradientColor {
         endColor: String
     ) -> [String : Any] {
         radialGradient(
-            position: .center,
+            position: .middleCenter,
             startColor: startColor,
             endColor: endColor
         )
@@ -89,15 +89,15 @@ extension AAGradientColor {
         case .topCenter:    return ["cx": "50%", "cy": "25%", "r": "50%"]
         case .topRight:     return ["cx": "75%", "cy": "25%", "r": "50%"]
             
-        case .centerLeft:   return ["cx": "25%", "cy": "50%", "r": "50%"]
-        case .center:       return ["cx": "50%", "cy": "50%", "r": "50%"]
-        case .centerRight:  return ["cx": "75%", "cy": "50%", "r": "50%"]
+        case .middleLeft:   return ["cx": "25%", "cy": "50%", "r": "50%"]
+        case .middleCenter: return ["cx": "50%", "cy": "50%", "r": "50%"]
+        case .middleRight:  return ["cx": "75%", "cy": "50%", "r": "50%"]
             
         case .bottomLeft:   return ["cx": "25%", "cy": "75%", "r": "50%"]
         case .bottomCenter: return ["cx": "50%", "cy": "75%", "r": "50%"]
         case .bottomRight:  return ["cx": "75%", "cy": "75%", "r": "50%"]
         }
     }
-
+    
 }
 
