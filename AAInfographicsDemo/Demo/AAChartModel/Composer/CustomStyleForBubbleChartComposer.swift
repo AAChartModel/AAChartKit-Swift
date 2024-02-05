@@ -71,4 +71,48 @@ class CustomStyleForBubbleChartComposer {
             ])
     }
     
+    static func showAARadialGradientPositionAllEnumValuesWithBubbleChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.bubble)
+            .title("AACHARTKIT BUBBLES")
+            .subtitle("JUST FOR SHOW AARadialGradientPosition")
+            .yAxisTitle("℃")
+            .yAxisGridLineWidth(0)
+            .colorsTheme([
+                AAGradientColor.radialGradient(position: .topLeft,      startColor: AAColor.red, endColor: AAColor.yellow),
+                AAGradientColor.radialGradient(position: .topCenter,    startColor: AAColor.red, endColor: AAColor.yellow),
+                AAGradientColor.radialGradient(position: .topRight,     startColor: AAColor.red, endColor: AAColor.yellow),
+                
+                AAGradientColor.radialGradient(position: .centerLeft,   startColor: AAColor.red, endColor: AAColor.yellow),
+                AAGradientColor.radialGradient(position: .center,       startColor: AAColor.red, endColor: AAColor.yellow),
+                AAGradientColor.radialGradient(position: .centerRight,  startColor: AAColor.red, endColor: AAColor.yellow),
+                
+                AAGradientColor.radialGradient(position: .bottomLeft,   startColor: AAColor.red, endColor: AAColor.yellow),
+                AAGradientColor.radialGradient(position: .bottomCenter, startColor: AAColor.red, endColor: AAColor.yellow),
+                AAGradientColor.radialGradient(position: .bottomRight,  startColor: AAColor.red, endColor: AAColor.yellow),
+            ])
+            .series([
+                AASeriesElement()
+                    .name("BubbleOne")
+                    .colorByPoint(true)
+                    .marker(AAMarker()
+                        .lineColor(AAColor.red)
+                        .lineWidth(3))
+                    .data([
+                        [25, 75, 250],
+                        [50, 75, 250],
+                        [75, 75, 250],
+                        
+                        [25, 50, 250],
+                        [50, 50, 250],
+                        [75, 50, 250],
+                        
+                        [25, 25, 250],
+                        [50, 25, 250],
+                        [75, 25, 250],
+                    ])
+                ,
+            ])
+    }
+    
 }
