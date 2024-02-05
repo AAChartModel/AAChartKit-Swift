@@ -32,46 +32,42 @@ import AAInfographics
 class CustomStyleForColumnChartComposer {
     
     static func colorfulColumnChart() -> AAChartModel {
-        let colorsNameArr = [
-            "red",
-            "orange",
-            "yellow",
-            "green",
-            "cyan",
-            "blue",
-            "purple",
-            "gray",
-            "darkGray",
-            "lightGray",
-            "magenta",
-            "brown",
-            "black"
-        ]
-        
-        let colorsArr = [
-            AAColor.red,
-            AAColor.orange,
-            AAColor.yellow,
-            AAColor.green,
-            AAColor.cyan,
-            AAColor.blue,
-            AAColor.purple,
-            AAColor.gray,
-            AAColor.darkGray,
-            AAColor.lightGray,
-            AAColor.magenta,
-            AAColor.brown,
-            AAColor.black
-        ]
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .animationType(.bounce)
             .title("Colorful Chart")
             .subtitle("use AAColor to get color string")
             .dataLabelsEnabled(false)
-            .categories(colorsNameArr)
-            .colorsTheme(colorsArr as [Any])
+            .categories([
+                "red",
+                "orange",
+                "yellow",
+                "green",
+                "cyan",
+                "blue",
+                "purple",
+                "gray",
+                "darkGray",
+                "lightGray",
+                "magenta",
+                "brown",
+                "black"
+            ])
+            .colorsTheme([
+                AAColor.red,
+                AAColor.orange,
+                AAColor.yellow,
+                AAColor.green,
+                AAColor.cyan,
+                AAColor.blue,
+                AAColor.purple,
+                AAColor.gray,
+                AAColor.darkGray,
+                AAColor.lightGray,
+                AAColor.magenta,
+                AAColor.brown,
+                AAColor.black
+            ] as [Any])
             .stacking(.percent)
             .margin(AAMargin(left: 68, right: 0))
             .series([
@@ -83,62 +79,58 @@ class CustomStyleForColumnChartComposer {
     }
     
     static func colorfulGradientColorColumnChart() -> AAChartModel {
-        let gradientColorNamesArr = [
-            "oceanBlue",
-            "sanguine",
-            "lusciousLime",
-            "purpleLake",
-            "freshPapaya",
-            "ultramarine",
-            "pinkSugar",
-            "lemonDrizzle",
-            "victoriaPurple",
-            "springGreens",
-            "mysticMauve",
-            "reflexSilver",
-            "newLeaf",
-            "cottonCandy",
-            "pixieDust",
-            "fizzyPeach",
-            "sweetDream",
-            "firebrick",
-            "wroughtIron",
-            "deepSea",
-            "coastalBreeze",
-            "eveningDelight",
-        ]
-        
-        let gradientColorArr = [
-            AAGradientColor.oceanBlue,
-            AAGradientColor.sanguine,
-            AAGradientColor.lusciousLime,
-            AAGradientColor.purpleLake,
-            AAGradientColor.freshPapaya,
-            AAGradientColor.ultramarine,
-            AAGradientColor.pinkSugar,
-            AAGradientColor.lemonDrizzle,
-            AAGradientColor.victoriaPurple,
-            AAGradientColor.springGreens,
-            AAGradientColor.mysticMauve,
-            AAGradientColor.reflexSilver,
-            AAGradientColor.newLeaf,
-            AAGradientColor.cottonCandy,
-            AAGradientColor.pixieDust,
-            AAGradientColor.fizzyPeach,
-            AAGradientColor.sweetDream,
-            AAGradientColor.firebrick,
-            AAGradientColor.wroughtIron,
-            AAGradientColor.deepSea,
-            AAGradientColor.coastalBreeze,
-            AAGradientColor.eveningDelight,
-        ]
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .title("Colorful Gradient Chart")
             .backgroundColor("#5E5E5E")
-            .categories(gradientColorNamesArr)
-            .colorsTheme(gradientColorArr as [Any])
+            .categories([
+                "oceanBlue",
+                "sanguine",
+                "lusciousLime",
+                "purpleLake",
+                "freshPapaya",
+                "ultramarine",
+                "pinkSugar",
+                "lemonDrizzle",
+                "victoriaPurple",
+                "springGreens",
+                "mysticMauve",
+                "reflexSilver",
+                "newLeaf",
+                "cottonCandy",
+                "pixieDust",
+                "fizzyPeach",
+                "sweetDream",
+                "firebrick",
+                "wroughtIron",
+                "deepSea",
+                "coastalBreeze",
+                "eveningDelight",
+            ])
+            .colorsTheme([
+                AAGradientColor.oceanBlue,
+                AAGradientColor.sanguine,
+                AAGradientColor.lusciousLime,
+                AAGradientColor.purpleLake,
+                AAGradientColor.freshPapaya,
+                AAGradientColor.ultramarine,
+                AAGradientColor.pinkSugar,
+                AAGradientColor.lemonDrizzle,
+                AAGradientColor.victoriaPurple,
+                AAGradientColor.springGreens,
+                AAGradientColor.mysticMauve,
+                AAGradientColor.reflexSilver,
+                AAGradientColor.newLeaf,
+                AAGradientColor.cottonCandy,
+                AAGradientColor.pixieDust,
+                AAGradientColor.fizzyPeach,
+                AAGradientColor.sweetDream,
+                AAGradientColor.firebrick,
+                AAGradientColor.wroughtIron,
+                AAGradientColor.deepSea,
+                AAGradientColor.coastalBreeze,
+                AAGradientColor.eveningDelight,
+            ] as [Any])
             .stacking(.percent)
             .xAxisLabelsStyle(AAStyle(color: AAColor.white))
             .dataLabelsEnabled(false)
@@ -167,23 +159,21 @@ class CustomStyleForColumnChartComposer {
     }
     
     static func randomColorfulColumnChart() -> AAChartModel {
-        func configureTheRandomColorArray(colorsNumber: Int) -> [String] {
-            var colorStringArr = [String]()
-            for _ in 0..<colorsNumber {
-                let R = arc4random_uniform(256)
-                let G = arc4random_uniform(256)
-                let B = arc4random_uniform(256)
-                let rgbaColorStr = AARgba(Int(R), Int(G), Int(B), 0.9)
-                colorStringArr.append(rgbaColorStr)
-            }
-            return colorStringArr
-        }
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .title("Colorful Column Chart")
             .subtitle("single data array colorful column chart")
-            .colorsTheme(configureTheRandomColorArray(colorsNumber: 14))
+            .colorsTheme({
+                var colorStringArr = [String]()
+                for _ in 0..<14 {
+                    let R = arc4random_uniform(256)
+                    let G = arc4random_uniform(256)
+                    let B = arc4random_uniform(256)
+                    let rgbaColorStr = AARgba(Int(R), Int(G), Int(B), 0.9)
+                    colorStringArr.append(rgbaColorStr)
+                }
+                return colorStringArr
+            }())
             .series([
                 AASeriesElement()
                     .name("ElementOne")
@@ -231,12 +221,7 @@ class CustomStyleForColumnChartComposer {
     }
     
     static func specialStyleForTheSingleDataElementOfColumnChart() -> AAChartModel {
-        let singleSpecialData = AADataElement()
-            .color(AAGradientColor.freshPapaya)
-            .y(49.5)
-            .toDic()!
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(false)//是否显示值
@@ -248,8 +233,14 @@ class CustomStyleForColumnChartComposer {
                 AASeriesElement()
                     .name("Virtual Data")
                     .lineWidth(6)
-                    .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData, 5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
                     .color(AAGradientColor.oceanBlue)
+                    .data([
+                        7.0, 6.9, 2.5, 14.5, 18.2,
+                        AADataElement()
+                            .color(AAGradientColor.freshPapaya)
+                            .y(49.5)
+                            .toDic()!,
+                        5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
             ])
     }
     
@@ -409,56 +400,55 @@ class CustomStyleForColumnChartComposer {
     
     //https://github.com/AAChartModel/AAChartKit/issues/1351
     static func negativeDataMixedPositiveDataColumnChart() -> AAChartModel {
-        let categoriesArr = [
-            "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑",
-            "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至", "小寒", "大寒"
-        ]
-        
-        let dataArr = [
-            -70, -69, -25, -145, -182, -215, -52, -265, -233, -453, -139, -96,
-             +70, +69, +25, +145, +182, +215, +52, +265, +233, +453, +139, +96,
-        ]
-        
-        var newDataArr = [[String: Any]]()
-        
-        dataArr.forEach { dataElement in
-            let aaDataLabels = AADataLabels()
-                .enabled(true)
-                .verticalAlign(.middle)
-                .x(0)
-                .y(-10)
-            
-            let dataElementValue = Float(dataElement)
-            if dataElementValue < 0 {
-                let negativeDataElement = AADataElement()
-                    .y((-dataElementValue))
-                    .color(AAColor.green)
-                    .dataLabels(aaDataLabels
-                        .format("-{y} 美元")
-                        .style(AAStyle(color: AAColor.green, fontSize: 11, weight: .thin))
-                    )
-                newDataArr.append(negativeDataElement.toDic()!)
-            } else {
-                let positiveDataElement = AADataElement()
-                    .y((dataElementValue))
-                    .color(AAColor.red)
-                    .dataLabels(aaDataLabels
-                        .format("+{y} 美元")
-                        .style(AAStyle(color: AAColor.red, fontSize: 11, weight: .thin))
-                    )
-                newDataArr.append(positiveDataElement.toDic()!)
-            }
-        }
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
-            .categories(categoriesArr)
+            .categories([
+                "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑",
+                "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至", "小寒", "大寒"
+            ])
             .tooltipEnabled(false)
             .yAxisVisible(false)
             .series([
                 AASeriesElement()
                     .name("虚构数据")
-                    .data(newDataArr)
+                    .data({
+                        let dataArr = [
+                            -70, -69, -25, -145, -182, -215, -52, -265, -233, -453, -139, -96,
+                             +70, +69, +25, +145, +182, +215, +52, +265, +233, +453, +139, +96,
+                        ]
+                        
+                        var newDataArr = [[String: Any]]()
+                        
+                        dataArr.forEach { dataElement in
+                            let aaDataLabels = AADataLabels()
+                                .enabled(true)
+                                .verticalAlign(.middle)
+                                .x(0)
+                                .y(-10)
+                            
+                            let dataElementValue = Float(dataElement)
+                            if dataElementValue < 0 {
+                                let negativeDataElement = AADataElement()
+                                    .y((-dataElementValue))
+                                    .color(AAColor.green)
+                                    .dataLabels(aaDataLabels
+                                        .format("-{y} 美元")
+                                        .style(AAStyle(color: AAColor.green, fontSize: 11, weight: .thin))
+                                    )
+                                newDataArr.append(negativeDataElement.toDic()!)
+                            } else {
+                                let positiveDataElement = AADataElement()
+                                    .y((dataElementValue))
+                                    .color(AAColor.red)
+                                    .dataLabels(aaDataLabels
+                                        .format("+{y} 美元")
+                                        .style(AAStyle(color: AAColor.red, fontSize: 11, weight: .thin))
+                                    )
+                                newDataArr.append(positiveDataElement.toDic()!)
+                            }
+                        }
+                        return newDataArr
+                    }())
             ])
     }
     
@@ -479,12 +469,7 @@ class CustomStyleForColumnChartComposer {
     }
     
     static func customSingleDataElementSpecialStyleForColumnChart() -> AAChartModel {
-        let singleSpecialData = AADataElement()
-            .color(AAGradientColor.freshPapaya)
-            .y(49.5)
-            .toDic()!
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(false)//是否显示值
@@ -495,8 +480,15 @@ class CustomStyleForColumnChartComposer {
             .series([
                 AASeriesElement()
                     .name("Virtual Data")
-                    .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData, 5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
                     .color(AAGradientColor.oceanBlue)
+                    .data([
+                        7.0, 6.9, 2.5, 14.5, 18.2,
+                        AADataElement()
+                            .color(AAGradientColor.freshPapaya)
+                            .y(49.5)
+                            .toDic()!,
+                        5.2, 26.5, 23.3, 26.5, 13.9, 9.6
+                    ])
             ])
     }
     
@@ -520,63 +512,57 @@ class CustomStyleForColumnChartComposer {
     }
     
     static func customNormalStackingChartDataLabelsContentAndStyleForColumnChart() -> AAChartModel {
-        let categories = [
-            "孤岛危机",
-            "使命召唤",
-            "荣誉勋章",
-            "狙击精英",
-            "神秘海域",
-            "最后生还者",
-            "巫师3狂猎",
-            "对马之魂",
-            "死亡搁浅",
-            "地狱边境",
-            "闪客",
-            "忍者之印"
-        ]
-        
-        let colorsTheme = [
-            "#fe117c",
-            "#ffc069",
-            "#06caf4",
-            "#7dffc0"
-        ]
-        
-        let element1 = AASeriesElement()
-            .name("2017")
-            .dataLabels(AADataLabels()
-                .enabled(true)
-                .y(-10)
-                .format("{total} mm")
-                .color(AAColor.red)
-                .shape(.callout)
-                .backgroundColor(AAColor.white)
-                .borderColor(AAColor.red)
-                .borderRadius(1)
-                .borderWidth(1))
-            .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-        
-        
-        let element2 = AASeriesElement()
-            .name("2018")
-            .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-        let element3 = AASeriesElement()
-            .name("2019")
-            .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-        let element4 = AASeriesElement()
-            .name("2020")
-            .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.column)
             .stacking(.normal)
             .yAxisGridLineWidth(0)
             .markerRadius(0)
-            .categories(categories)
-            .colorsTheme(colorsTheme)
-            .series([element1, element2, element3, element4])
+            .categories([
+                "孤岛危机",
+                "使命召唤",
+                "荣誉勋章",
+                "狙击精英",
+                "神秘海域",
+                "最后生还者",
+                "巫师3狂猎",
+                "对马之魂",
+                "死亡搁浅",
+                "地狱边境",
+                "闪客",
+                "忍者之印"
+            ])
+            .colorsTheme([
+                "#fe117c",
+                "#ffc069",
+                "#06caf4",
+                "#7dffc0"
+            ])
+            .series([
+                AASeriesElement()
+                    .name("2017")
+                    .dataLabels(AADataLabels()
+                        .enabled(true)
+                        .y(-10)
+                        .format("{total} mm")
+                        .color(AAColor.red)
+                        .shape(.callout)
+                        .backgroundColor(AAColor.white)
+                        .borderColor(AAColor.red)
+                        .borderRadius(1)
+                        .borderWidth(1))
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]),
+                AASeriesElement()
+                    .name("2018")
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]),
+                AASeriesElement()
+                    .name("2019")
+                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]),
+                AASeriesElement()
+                    .name("2020")
+                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
+            ])
     }
-
+    
     
     
 }
