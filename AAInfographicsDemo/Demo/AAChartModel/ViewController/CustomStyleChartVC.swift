@@ -42,7 +42,7 @@ class CustomStyleChartVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0:  return CustomStyleForColumnChartComposer.customDifferentDataLabelsShapeForColumnChart()
+        case 0:  return CustomStyleForColumnChartComposer.colorfulColumnChart()
         case 1:  return CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart()
         case 2:  return CustomStyleForColumnChartComposer.discontinuousDataColumnChart()
         case 3:  return CustomStyleForLineChartComposer.configureMixedLineChart()

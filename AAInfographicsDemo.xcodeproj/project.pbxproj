@@ -59,6 +59,9 @@
 		844007702B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */; };
 		844007742B6F3FA00072FB66 /* MixedChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844007732B6F3FA00072FB66 /* MixedChartVC.swift */; };
 		844007762B6F41A50072FB66 /* SpecialChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844007752B6F41A50072FB66 /* SpecialChartComposer.swift */; };
+		844007782B6F9EF50072FB66 /* AAGradientColor+RadialGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844007772B6F9EF50072FB66 /* AAGradientColor+RadialGradient.swift */; };
+		8440077A2B6FA1860072FB66 /* AAGradientColor+LinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844007792B6FA1860072FB66 /* AAGradientColor+LinearGradient.swift */; };
+		8440077C2B7086960072FB66 /* AAGradientColor+DefaultThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440077B2B7086960072FB66 /* AAGradientColor+DefaultThemes.swift */; };
 		844614D7283C822E00E26DA4 /* ProjectBundlePathLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */; };
 		844F11402B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */; };
 		844F11462B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */; };
@@ -252,6 +255,9 @@
 		8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForBubbleChartComposer.swift; sourceTree = "<group>"; };
 		844007732B6F3FA00072FB66 /* MixedChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartVC.swift; sourceTree = "<group>"; };
 		844007752B6F41A50072FB66 /* SpecialChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialChartComposer.swift; sourceTree = "<group>"; };
+		844007772B6F9EF50072FB66 /* AAGradientColor+RadialGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AAGradientColor+RadialGradient.swift"; sourceTree = "<group>"; };
+		844007792B6FA1860072FB66 /* AAGradientColor+LinearGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AAGradientColor+LinearGradient.swift"; sourceTree = "<group>"; };
+		8440077B2B7086960072FB66 /* AAGradientColor+DefaultThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AAGradientColor+DefaultThemes.swift"; sourceTree = "<group>"; };
 		844614D3283C818D00E26DA4 /* PackageBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageBundlePathLoader.swift; sourceTree = "<group>"; };
 		844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC2.swift; sourceTree = "<group>"; };
 		844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomXAxisLabelsClickEventCallbackVC.swift; path = AAInfographicsDemo/Demo/BackUpContent/CustomXAxisLabelsClickEventCallbackVC.swift; sourceTree = SOURCE_ROOT; };
@@ -436,6 +442,9 @@
 			children = (
 				272BBE7721A258C200DBE69D /* AAColor.swift */,
 				44143D3521A17F2300D44657 /* AAGradientColor.swift */,
+				844007792B6FA1860072FB66 /* AAGradientColor+LinearGradient.swift */,
+				844007772B6F9EF50072FB66 /* AAGradientColor+RadialGradient.swift */,
+				8440077B2B7086960072FB66 /* AAGradientColor+DefaultThemes.swift */,
 				448330B524E23DED00368A30 /* AAExtension.swift */,
 			);
 			path = AATool;
@@ -889,6 +898,7 @@
 				84A9FB7E28C9BC0E00240C11 /* AAScatter.swift in Sources */,
 				84BDF5AA2930A99000B9EC30 /* AAPie.swift in Sources */,
 				ED0A033F272816ED000BF778 /* AATitle.swift in Sources */,
+				8440077C2B7086960072FB66 /* AAGradientColor+DefaultThemes.swift in Sources */,
 				ED0A034B272816F4000BF778 /* AAGradientColor.swift in Sources */,
 				84BDF5A72930A68000B9EC30 /* AAColumn.swift in Sources */,
 				84F8F66B28B714E000F41E6A /* AABoxplot.swift in Sources */,
@@ -906,7 +916,9 @@
 				ED0A0332272816E3000BF778 /* AAChartModel.swift in Sources */,
 				ED0A0330272816E3000BF778 /* AAChartView.swift in Sources */,
 				ED0A034C272816F4000BF778 /* AAColor.swift in Sources */,
+				844007782B6F9EF50072FB66 /* AAGradientColor+RadialGradient.swift in Sources */,
 				2766A4DF2B56D7EE005C082D /* AABubbleLegend.swift in Sources */,
+				8440077A2B6FA1860072FB66 /* AAGradientColor+LinearGradient.swift in Sources */,
 				ED0A033E272816ED000BF778 /* AALegend.swift in Sources */,
 				ED0A0342272816ED000BF778 /* AACrosshair.swift in Sources */,
 				ED0A0346272816ED000BF778 /* AADataLabels.swift in Sources */,

@@ -72,15 +72,16 @@ class SpecialChartComposer {
     static func configurePieChart() -> AAChartModel {
          AAChartModel()
             .chartType(.pie)
-            .backgroundColor(AAColor.white)
+            .backgroundColor(AAGradientColor.radialGradient(position: .topCenter, startColor: AAColor.red, endColor: AAColor.green))
             .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
             .subtitle("virtual data")
             .dataLabelsEnabled(true)//是否直接显示扇形图数据
             .yAxisTitle("℃")
+//            .colorsTheme([(AAGradientColor.radialGradient(position: .bottomCenter, startColor: AAColor.red, endColor: AAColor.green))])
             .series([
                 AASeriesElement()
                     .name("Language market shares")
-                    .innerSize("20%")//内部圆环半径大小占比(内部圆环半径/扇形图半径),
+                    .innerSize("0%")//内部圆环半径大小占比(内部圆环半径/扇形图半径),
                     .allowPointSelect(true)
                     .states(AAStates()
                         .hover(AAHover()
@@ -104,13 +105,14 @@ class SpecialChartComposer {
             .yAxisTitle("℃")
             .yAxisGridLineWidth(0)
             .colorsTheme([
-                AAGradientColor.firebrick,
+                AAGradientColor.radialGradient(position: .topCenter, startColor: AAColor.red, endColor: AAColor.green),
                 AAGradientColor.deepSea,
                 AAGradientColor.lemonDrizzle
             ])
             .series([
                 AASeriesElement()
                     .name("BubbleOne")
+                    .colorByPoint(true)
                     .marker(AAMarker()
                         .lineColor(AAColor.red)
                         .lineWidth(3))
@@ -128,44 +130,44 @@ class SpecialChartComposer {
                         [33, 24, 22]
                     ])
                 ,
-                AASeriesElement()
-                    .name("BubbleTwo")
-                    .marker(AAMarker()
-                        .lineColor(AAColor.blue)
-                        .lineWidth(3))
-                    .data([
-                        [25, 60, 87],
-                        [2,  75, 59],
-                        [11, 54, 8 ],
-                        [86, 55, 93],
-                        [5,  33, 88],
-                        [90, 63, 44],
-                        [91, 43, 17],
-                        [97, 56, 56],
-                        [15, 67, 48],
-                        [54, 25, 81],
-                        [55, 66, 11]
-                    ])
-                ,
-                AASeriesElement()
-                    .name("BubbleThree")
-                    .marker(AAMarker()
-                        .lineColor(AAColor.yellow)
-                        .lineWidth(3))
-                    .data([
-                        [47, 47, 21],
-                        [20, 12, 66],
-                        [6,  76, 91],
-                        [38, 30, 60],
-                        [57, 98, 64],
-                        [61, 47, 80],
-                        [83, 60, 13],
-                        [67, 78, 75],
-                        [64, 12, 55],
-                        [30, 77, 82],
-                        [88, 66, 13]
-                    ])
-                ,
+//                AASeriesElement()
+//                    .name("BubbleTwo")
+//                    .marker(AAMarker()
+//                        .lineColor(AAColor.blue)
+//                        .lineWidth(3))
+//                    .data([
+//                        [25, 60, 87],
+//                        [2,  75, 59],
+//                        [11, 54, 8 ],
+//                        [86, 55, 93],
+//                        [5,  33, 88],
+//                        [90, 63, 44],
+//                        [91, 43, 17],
+//                        [97, 56, 56],
+//                        [15, 67, 48],
+//                        [54, 25, 81],
+//                        [55, 66, 11]
+//                    ])
+//                ,
+//                AASeriesElement()
+//                    .name("BubbleThree")
+//                    .marker(AAMarker()
+//                        .lineColor(AAColor.yellow)
+//                        .lineWidth(3))
+//                    .data([
+//                        [47, 47, 21],
+//                        [20, 12, 66],
+//                        [6,  76, 91],
+//                        [38, 30, 60],
+//                        [57, 98, 64],
+//                        [61, 47, 80],
+//                        [83, 60, 13],
+//                        [67, 78, 75],
+//                        [64, 12, 55],
+//                        [30, 77, 82],
+//                        [88, 66, 13]
+//                    ])
+//                ,
             ])
     }
     
