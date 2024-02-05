@@ -2,22 +2,22 @@
 import PackageDescription
 
 let package = Package(
-     name: "AAInfographics",
-     platforms: [
-         .iOS(.v10),
-         .macOS(.v10_13)
-     ],
-     products: [
-         .library(name: "AAInfographics", targets: ["AAInfographics"])
-     ],
-     targets: [
+    name: "AAInfographics",
+    platforms: [
+        .iOS(.v10),
+        .macOS(.v10_13)
+    ],
+    products: [
+        .library(name: "AAInfographics", targets: ["AAInfographics"])
+    ],
+    targets: [
         .target(
-	    name: "AAInfographics",
-	    path: "AAInfographics",
+            name: "AAInfographics",
+            path: "AAInfographics",
             exclude: ["Info.plist", "ProjectBundlePathLoader.swift"],
-	    resources: [
-	        .copy("AAJSFiles.bundle")
-	    ]
+            resources: [
+                .copy("AAJSFiles.bundle")
+            ]
         )
-     ]
- )
+    ]
+)
