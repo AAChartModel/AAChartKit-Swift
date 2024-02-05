@@ -81,6 +81,29 @@ extension AAGradientColor {
         ]
     }
     
+    /**
+     ( topLeft ) -----------  ( topCenter ) ----------- (  topRight )
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+     (middleLeft) ----------- (middleCenter) ----------- (middleRight)
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+          |                          |                          |
+     (bottomLeft) ----------- (bottomCenter) ----------- (bottomRight)
+     */
     private class func radialGradientPositionDictionary(
         position: AARadialGradientPosition
     ) -> [String : String] {
