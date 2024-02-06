@@ -566,68 +566,57 @@ class MixedChartComposer {
     }
     
     static func configurePieMixedLineMixedColumnChart() -> AAChartModel {
-        let columnElement1 = AASeriesElement()
-            .name("Anna")
-            .type(.column)
-            .data([3, 2, 1, 3, 4])
-        
-        let columnElement2 = AASeriesElement()
-            .name("Babara")
-            .type(.column)
-            .data([2, 3, 5, 7, 6])
-        
-        let columnElement3 = AASeriesElement()
-            .name("Cortana")
-            .type(.column)
-            .data([4, 3, 3, 9, 0])
-        
-        let lineElement = AASeriesElement()
-            .name("average value")
-            .type(.line)
-            .data([3, 2.67, 3, 6.33, 3.33])
-            .marker(AAMarker()
-                .fillColor("#1E90FF")
-                .lineWidth(2.0)
-                .lineColor(AAColor.white))
-        
-        let pieElement = AAPie()
-            .type(.pie)
-            .center([100,80])
-            .size(150)
-            .showInLegend(true)
-            .dataLabels(
-                AADataLabels()
-                    .enabled(false))
-            .data([
-                AADataElement()
-                    .name("Ada")
-                    .y(13.0)
-                    .color(AAGradientColor.firebrick)
-                ,
-                AADataElement()
-                    .name("Bob")
-                    .y(13.0)
-                    .color(AAGradientColor.newLeaf)
-                ,
-                AADataElement()
-                    .name("Coco")
-                    .y(13.0)
-                    .color(AAGradientColor.freshPapaya)
-            ])
-        
-        let aaSeriesArr = [
-            columnElement1,
-            columnElement2,
-            columnElement3,
-            lineElement,
-            pieElement,
-        ]
-        
-        return AAChartModel()
+        AAChartModel()
             .stacking(.normal)
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .dataLabelsEnabled(false)
-            .series(aaSeriesArr)
+            .series([
+                AASeriesElement()
+                    .name("Anna")
+                    .type(.column)
+                    .data([3, 2, 1, 3, 4]),
+                AASeriesElement()
+                    .name("Babara")
+                    .type(.column)
+                    .data([2, 3, 5, 7, 6]),
+                AASeriesElement()
+                    .name("Cortana")
+                    .type(.column)
+                    .data([4, 3, 3, 9, 0]),
+                AASeriesElement()
+                    .name("average value")
+                    .type(.line)
+                    .data([3, 2.67, 3, 6.33, 3.33])
+                    .marker(AAMarker()
+                        .fillColor("#1E90FF")
+                        .lineWidth(2.0)
+                        .lineColor(AAColor.white))
+                ,
+                AAPie()
+                    .type(.pie)
+                    .center([100,80])
+                    .size(150)
+                    .showInLegend(true)
+                    .dataLabels(
+                        AADataLabels()
+                            .enabled(false))
+                    .data([
+                        AADataElement()
+                            .name("Ada")
+                            .y(13.0)
+                            .color(AAGradientColor.firebrick)
+                        ,
+                        AADataElement()
+                            .name("Bob")
+                            .y(13.0)
+                            .color(AAGradientColor.newLeaf)
+                        ,
+                        AADataElement()
+                            .name("Coco")
+                            .y(13.0)
+                            .color(AAGradientColor.freshPapaya)
+                    ]),
+            ])
     }
     
     static func configureAerasplinerangeMixedColumnrangeMixedLineChart() -> AAChartModel {
@@ -710,122 +699,96 @@ class MixedChartComposer {
     }
     
     //https://api.highcharts.com/highcharts/series.scatter.jitter
+    //https://jshare.com.cn/demos/hhhhiQ
+    //https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/tooltip/footerformat/
     static func boxplotMixedScatterChartWithJitter() -> AAChartModel {
-        // Generate test data with continuous Y values.
-        func getExperimentData() -> [Int] {
-            var data = [Int]()
-            let off = 0.3 + 0.2 * Double.random(in: 0..<1)
-            
-            for _ in 0..<200 {
-                let y = Int(round(1000 * (off + (Double.random(in: 0..<1) - 0.5) * (Double.random(in: 0..<1) - 0.5))))
-                data.append(y)
-            }
-            
-            return data
-        }
-        
-        func getBoxPlotData(values: [Int]) -> [String: Int] {
-            let sorted = values.sorted()
-            
-            return [
-                "low": sorted.first ?? 0,
-                "q1": sorted[values.count / 4],
-                "median": sorted[values.count / 2],
-                "q3": sorted[3 * values.count / 4],
-                "high": sorted.last ?? 0
-            ]
-        }
-        
-        let experiments = [
-            getExperimentData(),
-            getExperimentData(),
-            getExperimentData(),
-            getExperimentData(),
-            getExperimentData()
-        ]
-        
-        let scatterData = experiments.enumerated().flatMap { (x, data) in
-            data.map { value in
-                [x, value]
-            }
-        }
-        
-        let boxplotData = experiments.map { data in
-            getBoxPlotData(values: data)
-        }
-        
-        //https://jshare.com.cn/demos/hhhhiQ
-        //https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/tooltip/footerformat/
-        return AAChartModel()
+        AAChartModel()
             .title("AACharts 带有抖动的箱线混合散点图")
             .legendEnabled(false)
             .categories(["1", "2", "3", "4", "5"])
             .xAxisTitle("实验号码")
             .yAxisTitle("观测值")
-            .series([
-                AASeriesElement()
-                    .type(.boxplot)
-                    .name("总结")
-                    .data(boxplotData)
-                    .color("#04d69f")
-                    .lineWidth(3)
-                    .fillColor(AAColor.red)
-                    .tooltip(AATooltip()
-                        .headerFormat("<em>实验号码： {point.key}</em><br/>")
-                        .pointFormat(
-                            "◉</span> <b> {series.name}</b><br/>"
-                            + "最大值: {point.high}<br/>"
-                            + "Q2: {point.q3}<br/>"
-                            + "中位数: {point.median}<br/>"
-                            + "Q1: {point.q1}<br/>"
-                            + "最小值: {point.low}<br/>")
-                            .valueDecimals(2))//设置取值精确到小数点后几位
-                ,
-                AASeriesElement()
-                    .name("观测值")
-                    .type(.scatter)
-                    .data(scatterData)
-                    .jitter(AAJitter()
-                        .x(0.24))// Exact fit for box plot's groupPadding and pointPadding
-                    .marker(AAMarker()
-                        .radius(3))
-                    .color(AAColor.yellow)
-                    .tooltip(AATooltip()
-                        .pointFormat("值: {point.y}"))
-            ])
+            .series({
+                // Generate test data with continuous Y values.
+                func getExperimentData() -> [Int] {
+                    var data = [Int]()
+                    let off = 0.3 + 0.2 * Double.random(in: 0..<1)
+                    
+                    for _ in 0..<200 {
+                        let y = Int(round(1000 * (off + (Double.random(in: 0..<1) - 0.5) * (Double.random(in: 0..<1) - 0.5))))
+                        data.append(y)
+                    }
+                    
+                    return data
+                }
+                
+                func getBoxPlotData(values: [Int]) -> [String: Int] {
+                    let sorted = values.sorted()
+                    
+                    return [
+                        "low": sorted.first ?? 0,
+                        "q1": sorted[values.count / 4],
+                        "median": sorted[values.count / 2],
+                        "q3": sorted[3 * values.count / 4],
+                        "high": sorted.last ?? 0
+                    ]
+                }
+                
+                let experiments = [
+                    getExperimentData(),
+                    getExperimentData(),
+                    getExperimentData(),
+                    getExperimentData(),
+                    getExperimentData()
+                ]
+                
+                let scatterData = experiments.enumerated().flatMap { (x, data) in
+                    data.map { value in
+                        [x, value]
+                    }
+                }
+                
+                let boxplotData = experiments.map { data in
+                    getBoxPlotData(values: data)
+                }
+                
+                return [
+                    AASeriesElement()
+                        .type(.boxplot)
+                        .name("总结")
+                        .data(boxplotData)
+                        .color("#04d69f")
+                        .lineWidth(3)
+                        .fillColor(AAColor.red)
+                        .tooltip(AATooltip()
+                            .headerFormat("<em>实验号码： {point.key}</em><br/>")
+                            .pointFormat(
+                                "◉</span> <b> {series.name}</b><br/>"
+                                + "最大值: {point.high}<br/>"
+                                + "Q2: {point.q3}<br/>"
+                                + "中位数: {point.median}<br/>"
+                                + "Q1: {point.q1}<br/>"
+                                + "最小值: {point.low}<br/>")
+                                .valueDecimals(2))//设置取值精确到小数点后几位
+                    ,
+                    AASeriesElement()
+                        .name("观测值")
+                        .type(.scatter)
+                        .data(scatterData)
+                        .jitter(AAJitter()
+                            .x(0.24))// Exact fit for box plot's groupPadding and pointPadding
+                        .marker(AAMarker()
+                            .radius(3))
+                        .color(AAColor.yellow)
+                        .tooltip(AATooltip()
+                            .pointFormat("值: {point.y}"))
+                ]
+            }())
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/389
     static func configureMultiLevelStopsArrGradientColorAreasplineMixedLineChart() -> AAChartModel {
-        var randomNumArrA = [Any]()
-        var randomNumArrB = [Any]()
-        var y1 = 0.0
-        var y2 = 0.0
-        let Q = Int(arc4random() % 50)
-        let range = 129
-        for  x in 0 ..< range {
-            y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01
-            y2 = cos(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 3.0 * 0.01
-            randomNumArrA.append(y1)
-            randomNumArrB.append(y2)
-        }
-        
-        let redStopsArr = [
-            [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.2, AARgba(255, 0, 0, 0.2)],
-            [0.4, AARgba(255, 0, 0, 0.1)],
-            [0.6, AARgba(255, 0, 0, 0.05)],
-            [0.8, AARgba(255, 0, 0, 0.01)],
-            [1.0, AAColor.clear]
-        ]
-        
-        
-        let gradientRedColorDic = AAGradientColor.linearGradient(
-            direction: .toBottom,
-            stops: redStopsArr
-        )
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.areaspline)
             .stacking(.normal)
             .backgroundColor(AAColor.black)
@@ -836,24 +799,49 @@ class MixedChartComposer {
             .markerSymbolStyle(.innerBlank)
             .yAxisGridLineWidth(0.5)
             .xAxisGridLineWidth(0.5)
-            .series([
-                AASeriesElement()
-                    .name("2017")
-                    .type(.spline)
-                    .lineWidth(6)
-                    .data(randomNumArrA),
-                AASeriesElement()
-                    .name("2018")
-                    .type(.spline)
-                    .lineWidth(6)
-                    .data(randomNumArrB),
-                AASeriesElement()
-                    .name("2020")
-                    .fillColor(gradientRedColorDic)
-                    .lineWidth(6)
-                    .threshold(-4)
-                    .data(randomNumArrA),
-            ])
+            .series({
+                var randomNumArrA = [Any]()
+                var randomNumArrB = [Any]()
+                var y1 = 0.0
+                var y2 = 0.0
+                let Q = Int(arc4random() % 50)
+                let range = 129
+                for  x in 0 ..< range {
+                    y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01
+                    y2 = cos(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 3.0 * 0.01
+                    randomNumArrA.append(y1)
+                    randomNumArrB.append(y2)
+                }
+                
+                return [
+                    AASeriesElement()
+                        .name("2017")
+                        .type(.spline)
+                        .lineWidth(6)
+                        .data(randomNumArrA),
+                    AASeriesElement()
+                        .name("2018")
+                        .type(.spline)
+                        .lineWidth(6)
+                        .data(randomNumArrB),
+                    AASeriesElement()
+                        .name("2020")
+                        .fillColor(AAGradientColor.linearGradient(
+                            direction: .toBottom,
+                            stops: [
+                                [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                                [0.2, AARgba(255, 0, 0, 0.2)],
+                                [0.4, AARgba(255, 0, 0, 0.1)],
+                                [0.6, AARgba(255, 0, 0, 0.05)],
+                                [0.8, AARgba(255, 0, 0, 0.01)],
+                                [1.0, AAColor.clear]
+                            ]
+                        ))
+                        .lineWidth(6)
+                        .threshold(-4)
+                        .data(randomNumArrA),
+                ]
+            }())
     }
     
 }
