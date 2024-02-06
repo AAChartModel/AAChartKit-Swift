@@ -115,24 +115,30 @@ class CustomStyleForLineChartComposer {
     }
     
     static func configureCustomSingleDataLabelChart() -> AAChartModel {
-        let dataElement = AADataElement()
-            .y(1.25)
-            .dataLabels(
-                AADataLabels()
-                    .enabled(true)
-                    .format("{y} 美元🇺🇸💲")
-                    .x(3)
-                    .verticalAlign(.middle)
-                    .style(AAStyle(color: AAColor.red, fontSize: 20, weight: .bold, outline: "1px 1px contrast")))
-            .toDic()!
-        
-        return AAChartModel()
+        AAChartModel()
             .title("单独自定义某个指定数据元素的DataLabel")
             .colorsTheme([AAGradientColor.mysticMauve])
             .series([
                 AASeriesElement()
                     .name("货币")
-                    .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, dataElement, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
+                    .data([
+                        0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86,
+                        AADataElement()
+                            .y(1.25)
+                            .dataLabels(AADataLabels()
+                                .enabled(true)
+                                .format("{y} 美元🇺🇸💲")
+                                .x(3)
+                                .verticalAlign(.middle)
+                                .style(AAStyle(
+                                    color: AAColor.red,
+                                    fontSize: 20,
+                                    weight: .bold, 
+                                    outline: "1px 1px contrast"
+                                )))
+                            .toDic()!,
+                        0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67
+                    ])
             ])
     }
     
@@ -151,12 +157,12 @@ class CustomStyleForLineChartComposer {
                     .lineWidth(8.0)
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
                     .shadow(AAShadow()
-                                .color(AAColor.red)
-                                .offsetX(15.0)
-                                .offsetY(15.0)
-                                .opacity(0.2)
-                                .width(8.0))
-                ])
+                        .color(AAColor.red)
+                        .offsetX(15.0)
+                        .offsetY(15.0)
+                        .opacity(0.2)
+                        .width(8.0))
+            ])
     }
     
     static func configureColorfulGradientSplineChart() -> AAChartModel {
@@ -284,52 +290,45 @@ class CustomStyleForLineChartComposer {
             .markerSymbol(.circle)
             .markerRadius(8.0)
             .markerSymbolStyle(.borderBlank)
-            .series([
-                AASeriesElement()
-                    .name("2017")
-                    .lineWidth(5)
-                    .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
-                    .shadow(AAShadow()
-                        .offsetX(15.0)
-                        .offsetY(15.0)
-                        .opacity(0.2)
-                        .width(8.0)
-                        .color("#1e90ff")
-                    ),
-                AASeriesElement()
-                    .name("2018")
-                    .lineWidth(5)
-                    .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
-                    .shadow(AAShadow()
-                        .offsetX(15.0)
-                        .offsetY(15.0)
-                        .opacity(0.2)
-                        .width(8.0)
-                        .color("#ef476f")
-                    ),
-                AASeriesElement()
-                    .name("2019")
-                    .lineWidth(5)
-                    .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
-                    .shadow(AAShadow()
-                        .offsetX(15.0)
-                        .offsetY(15.0)
-                        .opacity(0.2)
-                        .width(8.0)
-                        .color("#ffd066")
-                    ),
-                AASeriesElement()
-                    .name("2020")
-                    .lineWidth(5)
-                    .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
-                    .shadow(AAShadow()
-                        .offsetX(15.0)
-                        .offsetY(15.0)
-                        .opacity(0.2)
-                        .width(8.0)
-                        .color("#04d69f")
-                    ),
-            ])
+            .series({
+                let aaShadow = AAShadow()
+                    .offsetX(15.0)
+                    .offsetY(15.0)
+                    .opacity(0.2)
+                    .width(8.0)
+                    .color("#1e90ff")
+                
+                return [
+                    AASeriesElement()
+                        .name("2017")
+                        .lineWidth(5)
+                        .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
+                        .shadow(aaShadow
+                            .color("#1e90ff")
+                        ),
+                    AASeriesElement()
+                        .name("2018")
+                        .lineWidth(5)
+                        .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
+                        .shadow(aaShadow
+                            .color("#ef476f")
+                        ),
+                    AASeriesElement()
+                        .name("2019")
+                        .lineWidth(5)
+                        .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
+                        .shadow(aaShadow
+                            .color("#ffd066")
+                        ),
+                    AASeriesElement()
+                        .name("2020")
+                        .lineWidth(5)
+                        .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
+                        .shadow(aaShadow
+                            .color("#04d69f")
+                        ),
+                ]
+            }())
     }
 
     // GitHub issue https://github.com/AAChartModel/AAChartKit/issues/905
@@ -412,88 +411,90 @@ class CustomStyleForLineChartComposer {
 
     //https://github.com/AAChartModel/AAChartKit/issues/1203
     static func configureMaxAndMinDataLabelsForChart() -> AAChartModel {
-        let aaDataLabels = AADataLabels()
-            .enabled(true)
-            .format("{y} 美元")
-            .shape(.callout)
-            .style(AAStyle(color: AAColor.red, fontSize: 15, weight: .bold))
-            .backgroundColor(AAColor.white)// white color
-            .borderColor(AAColor.red)// red color
-            .borderRadius(1.5)
-            .borderWidth(1.3)
-
-        let minData = AADataElement()
-            .dataLabels(aaDataLabels)
-            .y(2.5)
-            .toDic()!
-
-        let maxData = AADataElement()
-            .dataLabels(aaDataLabels)
-            .y(49.5)
-            .toDic()!
-
-        return AAChartModel()
+        AAChartModel()
             .chartType(.spline)
             .dataLabelsEnabled(false)//是否显示值
             .tooltipEnabled(false)
             .markerRadius(0)
             .xAxisVisible(false)
             .yAxisVisible(false)
-            .series([
-                AASeriesElement()
-                    .name("Show The Max and Min values Data Labels")
-                    .lineWidth(7)
-                    .data([7.0, 6.9, minData, 14.5, 18.2, maxData, 5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
-                    .color(AAGradientColor.oceanBlue)
-            ])
+            .series({
+                let aaDataLabels = AADataLabels()
+                    .enabled(true)
+                    .format("{y} 美元")
+                    .shape(.callout)
+                    .style(AAStyle(color: AAColor.red, fontSize: 15, weight: .bold))
+                    .backgroundColor(AAColor.white)// white color
+                    .borderColor(AAColor.red)// red color
+                    .borderRadius(1.5)
+                    .borderWidth(1.3)
+                
+                let minData = AADataElement()
+                    .dataLabels(aaDataLabels)
+                    .y(2.5)
+                    .toDic()!
+                
+                let maxData = AADataElement()
+                    .dataLabels(aaDataLabels)
+                    .y(49.5)
+                    .toDic()!
+                
+                return [
+                    AASeriesElement()
+                        .name("Show The Max and Min values Data Labels")
+                        .lineWidth(7)
+                        .data([7.0, 6.9, minData, 14.5, 18.2, maxData, 5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
+                        .color(AAGradientColor.oceanBlue)
+                ]
+            }())
     }
     
     static func configureDashStyleTypesMixedChart() -> AAChartModel {
-        let dataArr = [50, 320, 230, 370, 230, 400,]
-        let lineWidth: Float = 3
-        return AAChartModel()
+        AAChartModel()
             .chartType(.spline)//图形类型
             .dataLabelsEnabled(false)//是否显示数字
             .stacking(.normal)
             .markerRadius(0)
-            .series([
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.solid.rawValue)
-                    .lineWidth(lineWidth)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.dash.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.dash)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.dashDot.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.dashDot)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.longDash.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.longDash)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.longDashDot.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.longDashDot)
-                    .data(dataArr)
-                ,
-            ])
+            .series({
+                let dataArr = [50, 320, 230, 370, 230, 400,]
+                let lineWidth: Float = 3
+                return [
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.solid.rawValue)
+                        .lineWidth(lineWidth)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.dash.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.dash)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.dashDot.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.dashDot)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.longDash.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.longDash)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.longDashDot.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.longDashDot)
+                        .data(dataArr)
+                    ,
+                ]
+            }())
     }
     
     
     static func configureAllLineDashStyleTypesMixedChart() -> AAChartModel {
-        let dataArr = [50, 620, 230, 370, 130, 720, 230, 570, 230, 400,100,]
-        let lineWidth: Float = 3
-        return AAChartModel()
+        AAChartModel()
             .chartType(.spline)//图表类型
             .yAxisVisible(true)//设置 Y 轴是否可见
             .colorsTheme(["#eb2100", "#eb3600", "#d0570e", "#d0a00e", "#34da62", "#00e9db", "#00c0e9", "#0096f3", "#33CCFF", "#33FFCC"])//设置主体颜色数组
@@ -501,73 +502,76 @@ class CustomStyleForLineChartComposer {
             .yAxisGridLineWidth(0)//y轴横向分割线宽度为0(即是隐藏分割线)
             .stacking(.normal)
             .markerRadius(0)//隐藏连接点
-            .series([
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.solid.rawValue)
-                    .lineWidth(lineWidth)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.shortDash.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.shortDash)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.shortDot.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.shortDot)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.shortDashDot.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.shortDashDot)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.shortDashDotDot.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.shortDashDotDot)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.dot.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.dot)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.dash.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.dash)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.longDash.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.longDash)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.dashDot.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.dashDot)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.longDashDot.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.longDashDot)
-                    .data(dataArr)
-                ,
-                AASeriesElement()
-                    .name(AAChartLineDashStyleType.longDashDotDot.rawValue)
-                    .lineWidth(lineWidth)
-                    .dashStyle(.longDashDotDot)
-                    .data(dataArr)
-                ,
-            ])
+            .series({
+                let dataArr = [50, 620, 230, 370, 130, 720, 230, 570, 230, 400,100,]
+                let lineWidth: Float = 3
+                return [
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.solid.rawValue)
+                        .lineWidth(lineWidth)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.shortDash.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.shortDash)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.shortDot.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.shortDot)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.shortDashDot.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.shortDashDot)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.shortDashDotDot.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.shortDashDotDot)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.dot.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.dot)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.dash.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.dash)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.longDash.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.longDash)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.dashDot.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.dashDot)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.longDashDot.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.longDashDot)
+                        .data(dataArr)
+                    ,
+                    AASeriesElement()
+                        .name(AAChartLineDashStyleType.longDashDotDot.rawValue)
+                        .lineWidth(lineWidth)
+                        .dashStyle(.longDashDotDot)
+                        .data(dataArr)
+                    ,
+                ]}())
     }
     
     static func configureLineChartWithShadow() -> AAChartModel {
@@ -805,15 +809,7 @@ class CustomStyleForLineChartComposer {
     
     //https://github.com/AAChartModel/AAChartKit/issues/1401
     static func connectNullsForSingleAASeriesElement() -> AAChartModel {
-        let dataArr = [
-            0.45, NSNull(), NSNull(),
-            0.55, 0.58, 0.62, NSNull(), NSNull(),
-            0.56, 0.67, 0.50, 0.34, 0.50, NSNull(), NSNull(), NSNull(), NSNull(),
-            0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36, NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(),
-            0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53,
-        ] as [Any]
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.spline)
             .subtitle("虚拟数据")
             .colorsTheme(["#1e90ff", "#ef476f", "#ffd066", "#04d69f"])
@@ -823,82 +819,92 @@ class CustomStyleForLineChartComposer {
             .stacking(.normal)
             .markerRadius(8)
             .markerSymbolStyle(.borderBlank)
-            .series([
-                AASeriesElement()
-                    .name("Do NOT Connect Nulls")
-                    .lineWidth(5)
-                    .connectNulls(false)
-                    .data(dataArr),
-                AASeriesElement()
-                    .name("Connect Nulls")
-                    .lineWidth(5)
-                    .connectNulls(true)
-                    .data(dataArr),
-                AASeriesElement()
-                    .name("Do NOT Connect Nulls")
-                    .lineWidth(5)
-                    .connectNulls(false)
-                    .data(dataArr),
-                AASeriesElement()
-                    .name("Connect Nulls")
-                    .lineWidth(5)
-                    .connectNulls(true)
-                    .data(dataArr)
-            ])
+            .series({
+                let dataArr = [
+                    0.45, NSNull(), NSNull(),
+                    0.55, 0.58, 0.62, NSNull(), NSNull(),
+                    0.56, 0.67, 0.50, 0.34, 0.50, NSNull(), NSNull(), NSNull(), NSNull(),
+                    0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36, NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(), NSNull(),
+                    0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53,
+                ] as [Any]
+                return [
+                    AASeriesElement()
+                        .name("Do NOT Connect Nulls")
+                        .lineWidth(5)
+                        .connectNulls(false)
+                        .data(dataArr),
+                    AASeriesElement()
+                        .name("Connect Nulls")
+                        .lineWidth(5)
+                        .connectNulls(true)
+                        .data(dataArr),
+                    AASeriesElement()
+                        .name("Do NOT Connect Nulls")
+                        .lineWidth(5)
+                        .connectNulls(false)
+                        .data(dataArr),
+                    AASeriesElement()
+                        .name("Connect Nulls")
+                        .lineWidth(5)
+                        .connectNulls(true)
+                        .data(dataArr)
+                ]
+            }())
     }
 
     //https://github.com/AAChartModel/AAChartKit/issues/1419
     static func lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement() -> AAChartModel {
-        func generateRandomNumberArray(length: Int,
-                                       randomRange: Int,
-                                       minNum: Int) -> [Any] {
-            var randomNumArrA = [Any]()
-            for _ in 0 ..< length {
-                let randomNum = Int(arc4random()) % randomRange + minNum
-                randomNumArrA.append(randomNum)
-            }
-            return randomNumArrA
-        }
-        
-        func generateRandomNumberMixedNullArray(length: Int,
-                                                randomRange: Int,
-                                                minNum: Int) -> [Any] {
-            var randomNumArrA = [Any]()
-            for x in 0 ..< length {
-                if (100 < x && x < 150) || (300 < x && x < 350) {
-                    let randomNum = Int(arc4random()) % randomRange + minNum
-                    randomNumArrA.append(randomNum)
-                } else {
-                    randomNumArrA.append(NSNull())
-                }
-            }
-            return randomNumArrA
-        }
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.line)
             .backgroundColor(AAColor.black)
             .colorsTheme(["#1e90ff", "#04d69f", "#ef476f", "#ffd066"])
             .dataLabelsEnabled(false)
             .markerRadius(0)
-            .series([
-                AASeriesElement()
-                    .name("2017")
-                    .lineWidth(6)
-                    .data(generateRandomNumberMixedNullArray(length: 3550, randomRange: 5, minNum: 100)),
-                AASeriesElement()
-                    .name("2018")
-                    .lineWidth(6)
-                    .data(generateRandomNumberArray(length: 3550, randomRange: 100, minNum: 200)),
-                AASeriesElement()
-                    .name("2019")
-                    .lineWidth(6)
-                    .data(generateRandomNumberArray(length: 3550, randomRange: 150, minNum: 400)),
-                AASeriesElement()
-                    .name("2020")
-                    .lineWidth(6)
-                    .data(generateRandomNumberArray(length: 3550, randomRange: 150, minNum: 600)),
-            ])
+            .series({
+                func generateRandomNumberArray(length: Int,
+                                               randomRange: Int,
+                                               minNum: Int) -> [Any] {
+                    var randomNumArrA = [Any]()
+                    for _ in 0 ..< length {
+                        let randomNum = Int(arc4random()) % randomRange + minNum
+                        randomNumArrA.append(randomNum)
+                    }
+                    return randomNumArrA
+                }
+                
+                func generateRandomNumberMixedNullArray(length: Int,
+                                                        randomRange: Int,
+                                                        minNum: Int) -> [Any] {
+                    var randomNumArrA = [Any]()
+                    for x in 0 ..< length {
+                        if (100 < x && x < 150) || (300 < x && x < 350) {
+                            let randomNum = Int(arc4random()) % randomRange + minNum
+                            randomNumArrA.append(randomNum)
+                        } else {
+                            randomNumArrA.append(NSNull())
+                        }
+                    }
+                    return randomNumArrA
+                }
+                return [
+                    AASeriesElement()
+                        .name("2017")
+                        .lineWidth(6)
+                        .data(generateRandomNumberMixedNullArray(length: 3550, randomRange: 5, minNum: 100)),
+                    AASeriesElement()
+                        .name("2018")
+                        .lineWidth(6)
+                        .data(generateRandomNumberArray(length: 3550, randomRange: 100, minNum: 200)),
+                    AASeriesElement()
+                        .name("2019")
+                        .lineWidth(6)
+                        .data(generateRandomNumberArray(length: 3550, randomRange: 150, minNum: 400)),
+                    AASeriesElement()
+                        .name("2020")
+                        .lineWidth(6)
+                        .data(generateRandomNumberArray(length: 3550, randomRange: 150, minNum: 600)),
+                ]
+            }())
     }
     
     static func customDifferentDataLabelsShapeForColumnChart() -> AAChartModel {
