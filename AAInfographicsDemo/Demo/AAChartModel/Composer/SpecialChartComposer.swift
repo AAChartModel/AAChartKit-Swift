@@ -70,14 +70,12 @@ class SpecialChartComposer {
     }
     
     static func configurePieChart() -> AAChartModel {
-         AAChartModel()
+        AAChartModel()
             .chartType(.pie)
-            .backgroundColor(AAGradientColor.radialGradient(position: .topCenter, startColor: AAColor.red, endColor: AAColor.green))
             .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
             .subtitle("virtual data")
             .dataLabelsEnabled(true)//是否直接显示扇形图数据
             .yAxisTitle("℃")
-//            .colorsTheme([(AAGradientColor.radialGradient(position: .bottomCenter, startColor: AAColor.red, endColor: AAColor.green))])
             .series([
                 AASeriesElement()
                     .name("Language market shares")
@@ -86,7 +84,7 @@ class SpecialChartComposer {
                     .states(AAStates()
                         .hover(AAHover()
                             .enabled(false)//禁用点击区块之后出现的半透明遮罩层
-                    ))
+                        ))
                     .data([
                         ["Java"  ,67],
                         ["Swift",999],
@@ -130,44 +128,44 @@ class SpecialChartComposer {
                         [33, 24, 22]
                     ])
                 ,
-//                AASeriesElement()
-//                    .name("BubbleTwo")
-//                    .marker(AAMarker()
-//                        .lineColor(AAColor.blue)
-//                        .lineWidth(3))
-//                    .data([
-//                        [25, 60, 87],
-//                        [2,  75, 59],
-//                        [11, 54, 8 ],
-//                        [86, 55, 93],
-//                        [5,  33, 88],
-//                        [90, 63, 44],
-//                        [91, 43, 17],
-//                        [97, 56, 56],
-//                        [15, 67, 48],
-//                        [54, 25, 81],
-//                        [55, 66, 11]
-//                    ])
-//                ,
-//                AASeriesElement()
-//                    .name("BubbleThree")
-//                    .marker(AAMarker()
-//                        .lineColor(AAColor.yellow)
-//                        .lineWidth(3))
-//                    .data([
-//                        [47, 47, 21],
-//                        [20, 12, 66],
-//                        [6,  76, 91],
-//                        [38, 30, 60],
-//                        [57, 98, 64],
-//                        [61, 47, 80],
-//                        [83, 60, 13],
-//                        [67, 78, 75],
-//                        [64, 12, 55],
-//                        [30, 77, 82],
-//                        [88, 66, 13]
-//                    ])
-//                ,
+                AASeriesElement()
+                    .name("BubbleTwo")
+                    .marker(AAMarker()
+                        .lineColor(AAColor.blue)
+                        .lineWidth(3))
+                    .data([
+                        [25, 60, 87],
+                        [2,  75, 59],
+                        [11, 54, 8 ],
+                        [86, 55, 93],
+                        [5,  33, 88],
+                        [90, 63, 44],
+                        [91, 43, 17],
+                        [97, 56, 56],
+                        [15, 67, 48],
+                        [54, 25, 81],
+                        [55, 66, 11]
+                    ])
+                ,
+                AASeriesElement()
+                    .name("BubbleThree")
+                    .marker(AAMarker()
+                        .lineColor(AAColor.yellow)
+                        .lineWidth(3))
+                    .data([
+                        [47, 47, 21],
+                        [20, 12, 66],
+                        [6,  76, 91],
+                        [38, 30, 60],
+                        [57, 98, 64],
+                        [61, 47, 80],
+                        [83, 60, 13],
+                        [67, 78, 75],
+                        [64, 12, 55],
+                        [30, 77, 82],
+                        [88, 66, 13]
+                    ])
+                ,
             ])
     }
     
@@ -694,17 +692,7 @@ class SpecialChartComposer {
     }
     
     static func configureAreasplinerangeChart() -> AAChartModel {
-        let redStopsArr = [
-            [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AARgba(255, 0, 0, 0.2)],
-            [1.0, AARgba(255, 0, 0, 0.0)]
-        ]
-        let gradientRedColorDic = AAGradientColor.linearGradient(
-            direction: .toBottom,
-            stops: redStopsArr
-        )
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.areasplinerange)
             .title("Area spline range chart")
             .subtitle("virtual data")
@@ -714,7 +702,14 @@ class SpecialChartComposer {
                 AASeriesElement()
                     .name("2020")
                     .color(AAColor.red)
-                    .fillColor(gradientRedColorDic)
+                    .fillColor(AAGradientColor.linearGradient(
+                        direction: .toBottom,
+                        stops: [
+                            [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.6, AARgba(255, 0, 0, 0.2)],
+                            [1.0, AARgba(255, 0, 0, 0.0)]
+                        ]
+                    ))
                     .data([
                         /* 2014-03-01 */
                         [13936356, 2.1,  8.9],
@@ -838,7 +833,7 @@ class SpecialChartComposer {
                     .name("Tokyo")
                     .data([120, 132, 101, 134, 90, 230, 210])
                     .step(.left),//折线连接点靠左边👈
-                ])
+            ])
     }
     
     static func configureStepAreaChart() -> AAChartModel {
@@ -909,7 +904,7 @@ class SpecialChartComposer {
                         ["name": "固定成本", "y": -342000],
                         ["name": "可变成本", "y": -233000],
                         ["name": "余额",    "isSum": true, "color": "#04d69f"]
-                             ])
+                    ])
             ])
     }
     
