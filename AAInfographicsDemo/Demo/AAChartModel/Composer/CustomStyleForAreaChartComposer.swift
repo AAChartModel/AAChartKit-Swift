@@ -6,7 +6,7 @@
 import AAInfographics
 
 class CustomStyleForAreaChartComposer {
-    
+
     static func configureWithMinusNumberChart() -> AAChartModel {
         AAChartModel()
             .chartType(.area)
@@ -35,18 +35,9 @@ class CustomStyleForAreaChartComposer {
                     .data([0, (-4.5), (-0.9), 5.5, (-1.9), 1.3, (-2.8), 0, (-1.7), 0, 3, 0, ]),
             ])
     }
-    
+
     static func configureColorfulGradientAreaChart() -> AAChartModel {
-        let gradientColorDic1 = AAGradientColor.linearGradient(
-            direction: .toRight,
-            stops: [
-                [0.0, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
-                [0.5, "#FF14d4"],
-                [1.0, "#0bf8f5"]
-            ]
-        )
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.areaspline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
@@ -57,19 +48,20 @@ class CustomStyleForAreaChartComposer {
             .series([
                 AASeriesElement()
                     .name("Tokyo Hot")
-                    .color(gradientColorDic1)
+                    .color(AAGradientColor.linearGradient(
+                        direction: .toRight,
+                        stops: [
+                            [0.0, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.5, "#FF14d4"],
+                            [1.0, "#0bf8f5"]
+                        ]
+                    ))
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
             ])
     }
-    
+
     static func configureGradientColorAreasplineChart() -> AAChartModel {
-        let gradientColorDic1 = AAGradientColor.linearGradient(
-            direction: .toBottom,
-            startColor: AARgba(255, 20, 147, 1),//深粉色, alpha 透明度 1
-            endColor: AARgba(255, 20, 147, 0.3)//热情的粉红, alpha 透明度 0.3
-        )
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.areaspline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
@@ -83,19 +75,17 @@ class CustomStyleForAreaChartComposer {
                     .name("Tokyo Hot")
                     .lineWidth(5.0)
                     .color(AARgba(220, 20, 60, 1))//猩红色, alpha 透明度 1
-                    .fillColor(gradientColorDic1)
+                    .fillColor(AAGradientColor.linearGradient(
+                        direction: .toBottom,
+                        startColor: AARgba(255, 20, 147, 1),//深粉色, alpha 透明度 1
+                        endColor: AARgba(255, 20, 147, 0.3)//热情的粉红, alpha 透明度 0.3
+                    ))
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
             ])
     }
-    
+
     static func configureAreaChartThreshold() -> AAChartModel {
-        let gradientColorDic1 = AAGradientColor.linearGradient(
-            direction: .toBottom,
-            startColor: AARgba(30, 144, 255, 1), //DodgerBlue, alpha 透明度 1
-            endColor: AARgba(30, 144, 255, 0.1)//DodgerBlue, alpha 透明度 0.1
-        )
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.area)
             .yAxisTitle("")//设置Y轴标题
             .yAxisGridLineWidth(0)
@@ -111,41 +101,16 @@ class CustomStyleForAreaChartComposer {
                     .data([106.4, 129.2, 269.9, -100.5, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
                     .lineWidth(6)
                     .color(AARgba(30, 144, 255,1))
-                    .fillColor(gradientColorDic1)
+                    .fillColor(AAGradientColor.linearGradient(
+                        direction: .toBottom,
+                        startColor: AARgba(30, 144, 255, 1), //DodgerBlue, alpha 透明度 1
+                        endColor: AARgba(30, 144, 255, 0.1)//DodgerBlue, alpha 透明度 0.1
+                    ))
             ])
     }
-    
+
     static func customSpecialStyleDataLabelOfSingleDataElementChart() -> AAChartModel {
-        let gradientColorDic1 = AAGradientColor.linearGradient(
-            direction: .toBottom,
-            startColor: AARgba(255, 215, 0, 0.1),//gold color, alpha: 0.1
-            endColor: AARgba(255, 215, 0, 0.6)// gold color, alpha: 0.6
-        )
-        
-        let formatStr = (
-            "<img src=https://www.highcharts.com/samples/graphics/sun.png>"
-            + "<span style=color:#FFFFFF;font-weight:thin;font-size:25px>{y}</span>"
-            + "<span style=color:#FFFFFF;font-weight:thin;font-size:17px> m</span>"
-        )
-        
-        let singleSpecialData = AADataElement()
-            .dataLabels(AADataLabels()
-                .enabled(true)
-                .useHTML(true)
-                .format(formatStr)
-                .style(AAStyle()
-                    .fontWeight(.bold)
-                    .color(AAColor.white)
-                    .fontSize(16))
-                    .y(-35)
-                    .align(.center)
-                    .verticalAlign(.top)
-                    .overflow(.none)
-                    .crop(false))
-            .y(26.5)
-            .toDic()!
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.areaspline)
             .backgroundColor("#4b2b7f")
             .yAxisTitle("")//设置Y轴标题
@@ -159,11 +124,36 @@ class CustomStyleForAreaChartComposer {
                     .name("Virtual Data")
                     .lineWidth(6)
                     .color(AARgba(255, 215, 0, 1))
-                    .fillColor(gradientColorDic1)// gold color, alpha: 1.0
-                    .data([7.0, 6.9, 2.5, 14.5, 18.2, singleSpecialData, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
+                    .fillColor(AAGradientColor.linearGradient(
+                        direction: .toBottom,
+                        startColor: AARgba(255, 215, 0, 0.1),//gold color, alpha: 0.1
+                        endColor: AARgba(255, 215, 0, 0.6)// gold color, alpha: 0.6
+                    ))// gold color, alpha: 1.0
+                    .data([
+                        7.0, 6.9, 2.5, 14.5, 18.2,
+                        AADataElement()
+                            .dataLabels(AADataLabels()
+                                .enabled(true)
+                                .useHTML(true)
+                                .format("<img src=https://www.highcharts.com/samples/graphics/sun.png>"
+                                        + "<span style=color:#FFFFFF;font-weight:thin;font-size:25px>{y}</span>"
+                                        + "<span style=color:#FFFFFF;font-weight:thin;font-size:17px> m</span>")
+                                .style(AAStyle()
+                                    .fontWeight(.bold)
+                                    .color(AAColor.white)
+                                    .fontSize(16))
+                                .y(-35)
+                                .align(.center)
+                                .verticalAlign(.top)
+                                .overflow(.none)
+                                .crop(false))
+                            .y(26.5)
+                            .toDic()!,
+                        5.2, 26.5, 23.3, 45.3, 13.9, 9.6
+                    ])
             ])
     }
-    
+
     static func customSplineChartMarkerStatesHoverStyle() -> AAChartModel {
         AAChartModel()
             .chartType(.areaspline)
@@ -190,52 +180,10 @@ class CustomStyleForAreaChartComposer {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
             ])
     }
-    
+
     // GitHub issue https://github.com/AAChartModel/AAChartKit-Swift/issues/223
     static func configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart() -> AAChartModel {
-        let blueStopsArr = [
-            [0.0, AARgba(30, 144, 255, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AARgba(30, 144, 255, 0.2)],
-            [1.0, AARgba(30, 144, 255, 0.0)]
-        ]
-        let gradientBlueColorDic = AAGradientColor.linearGradient(
-            direction: .toBottom,
-            stops: blueStopsArr
-        )
-        
-        let redStopsArr = [
-            [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AARgba(255, 0, 0, 0.2)],
-            [1.0, AARgba(255, 0, 0, 0.0)]
-        ]
-        let gradientRedColorDic = AAGradientColor.linearGradient(
-            direction: .toBottom,
-            stops: redStopsArr
-        )
-        
-        
-        let goldStopsArr = [
-            [0.0, AARgba(255, 215, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AARgba(255, 215, 0, 0.2)],
-            [1.0, AARgba(255, 215, 0, 0.0)]
-        ]
-        let gradientGoldColorDic = AAGradientColor.linearGradient(
-            direction: .toBottom,
-            stops: goldStopsArr
-        )
-        
-        
-        let greenStopsArr = [
-            [0.0, AARgba(50, 205, 50, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [0.6, AARgba(50, 205, 50, 0.2)],
-            [1.0, AARgba(50, 205, 50, 0.0)]
-        ]
-        let gradientGreenColorDic = AAGradientColor.linearGradient(
-            direction: .toBottom,
-            stops: greenStopsArr
-        )
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.area)
             .yAxisVisible(false)
             .stacking(.normal)
@@ -247,7 +195,14 @@ class CustomStyleForAreaChartComposer {
             .series([
                 AASeriesElement()
                     .name("2017")
-                    .fillColor(gradientBlueColorDic)
+                    .fillColor(AAGradientColor.linearGradient(
+                        direction: .toBottom,
+                        stops: [
+                            [0.0, AARgba(30, 144, 255, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.6, AARgba(30, 144, 255, 0.2)],
+                            [1.0, AARgba(30, 144, 255, 0.0)]
+                        ]
+                    ))
                     .lineWidth(6)
                     .step((true))
                     .dataLabels(AADataLabels()
@@ -255,7 +210,14 @@ class CustomStyleForAreaChartComposer {
                     .data([2.10, 2.54, 2.78, 3.62, 4.41, 4.09, 3.83, 4.47, 4.20, 3.94, 3.80, 3.58, 3.19, 4.30, 3.69, 3.52, 3.02, 3.30]),
                 AASeriesElement()
                     .name("2018")
-                    .fillColor(gradientRedColorDic)
+                    .fillColor(AAGradientColor.linearGradient(
+                        direction: .toBottom,
+                        stops: [
+                            [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.6, AARgba(255, 0, 0, 0.2)],
+                            [1.0, AARgba(255, 0, 0, 0.0)]
+                        ]
+                    ))
                     .lineWidth(6)
                     .step((true))
                     .dataLabels(AADataLabels()
@@ -263,7 +225,14 @@ class CustomStyleForAreaChartComposer {
                     .data([1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28]),
                 AASeriesElement()
                     .name("2019")
-                    .fillColor(gradientGoldColorDic)
+                    .fillColor(AAGradientColor.linearGradient(
+                        direction: .toBottom,
+                        stops: [
+                            [0.0, AARgba(255, 215, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.6, AARgba(255, 215, 0, 0.2)],
+                            [1.0, AARgba(255, 215, 0, 0.0)]
+                        ]
+                    ))
                     .lineWidth(6)
                     .step((true))
                     .dataLabels(AADataLabels()
@@ -271,7 +240,14 @@ class CustomStyleForAreaChartComposer {
                     .data([1.16, 1.67, 2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05, 2.18, 3.24]),
                 AASeriesElement()
                     .name("2020")
-                    .fillColor(gradientGreenColorDic)
+                    .fillColor(AAGradientColor.linearGradient(
+                        direction: .toBottom,
+                        stops: [
+                            [0.0, AARgba(50, 205, 50, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.6, AARgba(50, 205, 50, 0.2)],
+                            [1.0, AARgba(50, 205, 50, 0.0)]
+                        ]
+                    ))
                     .lineWidth(6)
                     .step((true))
                     .dataLabels(AADataLabels()
@@ -279,7 +255,7 @@ class CustomStyleForAreaChartComposer {
                     .data([5.59, 3.09, 4.09, 6.14, 5.33, 6.05, 5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.22, 5.77, 6.19, 5.68, 4.33, 5.48]),
             ])
     }
-    
+
     //https://github.com/AAChartModel/AAChartKit/issues/921
     static func configureNegativeColorMixedAreasplineChart() -> AAChartModel {
         AAChartModel()
@@ -294,7 +270,7 @@ class CustomStyleForAreaChartComposer {
                     .name("Column")
                     .data([
                         +7.0, +6.9, +2.5, +14.5, +18.2, +21.5, +5.2, +26.5, +23.3, +45.3, +13.9, +9.6,
-                         -7.0, -6.9, -2.5, -14.5, -18.2, -21.5, -5.2, -26.5, -23.3, -45.3, -13.9, -9.6,
+                        -7.0, -6.9, -2.5, -14.5, -18.2, -21.5, -5.2, -26.5, -23.3, -45.3, -13.9, -9.6,
                     ])
                     .lineWidth(5)
                     .color(AARgba(30, 144, 255, 1.0))
@@ -318,58 +294,10 @@ class CustomStyleForAreaChartComposer {
                     .threshold(0)//default:0
             ])
     }
-    
+
     //https://github.com/AAChartModel/AAChartCore-Kotlin/issues/149
     static func customAreasplineChartWithColorfulGradientColorZones() -> AAChartModel {
-        let redStopsArr = [
-            [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [1.0, AAColor.clear]
-        ]
-        
-        let greenStopsArr = [
-            [0.0, AARgba(0, 255, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [1.0, AAColor.clear]
-        ]
-        
-        let blueStopsArr = [
-            [0.0, AARgba(0, 0, 255, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-            [1.0, AAColor.clear]
-        ]
-        
-        let redGradientColorDic = AAGradientColor.linearGradient(direction: .toBottom, stops: redStopsArr)
-        let greenGradientColorDic = AAGradientColor.linearGradient(direction: .toBottom, stops: greenStopsArr)
-        let blueGradientColorDic = AAGradientColor.linearGradient(direction: .toBottom, stops: blueStopsArr)
-        
-        let singleSpecialData = AADataElement()
-            .marker(AAMarker()
-                .radius(8)//曲线连接点半径
-                .symbol(.circle)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
-                .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                    //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
-                .lineColor("#1E90FF")//道奇蓝
-            )
-            .dataLabels(AADataLabels()
-                .enabled(true)
-                .allowOverlap(true)
-                .useHTML(true)
-                .backgroundColor(AARgba(65, 111, 166, 1.0))
-                .borderRadius(10)
-                .shape(.callout)
-                .format("{point.category}<br>{series.name}: {point.y} %")
-                .style(AAStyle(color: AAColor.white, fontSize: 12, weight: .bold))
-                .x(-80).y(5)
-                .align(.center)
-                .overflow(.none)
-                .verticalAlign(.top)
-                .crop(false)
-            )
-            .y(85.3)
-            .toDic()!
-        
-        let axisLabelsStyle = AAStyle(color: AAColor.white, fontSize: 12, weight: .bold)
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.areaspline)
             .backgroundColor(AAColor.black)
             .categories([
@@ -379,14 +307,8 @@ class CustomStyleForAreaChartComposer {
             .dataLabelsEnabled(false)
             .legendEnabled(false)
             .markerRadius(0)
-            .xAxisLabelsStyle(axisLabelsStyle)
-            .yAxisLabelsStyle(axisLabelsStyle)
-        //            .xAxisGridLineStyle(AALineStyle()
-        //                                    .color(AAColor.white)
-        //                                    .dashStyle(.longDashDotDot)
-        //                                    .width(0.5))
-        //            .yAxisGridLineStyle(AALineStyle()
-        //                                    .width(0))
+            .xAxisLabelsStyle(AAStyle(color: AAColor.white, fontSize: 12, weight: .regular))
+            .yAxisLabelsStyle(AAStyle(color: AAColor.lightGray, fontSize: 15, weight: .bold))
             .series([
                 AASeriesElement()
                     .name("空气湿度")
@@ -396,17 +318,58 @@ class CustomStyleForAreaChartComposer {
                         AAZonesElement()
                             .value(2)
                             .color(AAColor.red)
-                            .fillColor(redGradientColorDic),
+                            .fillColor(AAGradientColor.linearGradient(
+                                direction: .toBottom,
+                                stops: [
+                                    [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                                    [1.0, AAColor.clear]
+                                ])),
                         AAZonesElement()
                             .value(5)
                             .color(AAColor.green)
-                            .fillColor(greenGradientColorDic),
+                            .fillColor(AAGradientColor.linearGradient(
+                                direction: .toBottom,
+                                stops: [
+                                    [0.0, AARgba(0, 255, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                                    [1.0, AAColor.clear]
+                                ])),
                         AAZonesElement()
                             .color(AAColor.blue)
-                            .fillColor(blueGradientColorDic),
+                            .fillColor(AAGradientColor.linearGradient(
+                                direction: .toBottom,
+                                stops: [
+                                    [0.0, AARgba(0, 0, 255, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
+                                    [1.0, AAColor.clear]
+                                ])),
                     ])
                     .data([
-                        56.5, 33.3, 85.3, 23.9, 29.6, 34.5, 28.2, 26.5, 15.2, 56.5, 33.3, singleSpecialData
+                        56.5, 33.3, 85.3, 23.9, 29.6, 34.5, 28.2, 26.5, 15.2, 56.5, 33.3,
+                        AADataElement()
+                            .marker(AAMarker()
+                                .radius(8)//曲线连接点半径
+                                .symbol(.circle)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
+                                .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
+                                .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
+                                //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
+                                .lineColor("#1E90FF")//道奇蓝
+                            )
+                            .dataLabels(AADataLabels()
+                                .enabled(true)
+                                .allowOverlap(true)
+                                .useHTML(true)
+                                .backgroundColor(AARgba(65, 111, 166, 1.0))
+                                .borderRadius(10)
+                                .shape(.callout)
+                                .format("{point.category}<br>{series.name}: {point.y} %")
+                                .style(AAStyle(color: AAColor.white, fontSize: 12, weight: .bold))
+                                .x(-80).y(5)
+                                .align(.center)
+                                .overflow(.none)
+                                .verticalAlign(.top)
+                                .crop(false)
+                            )
+                            .y(85.3)
+                            .toDic()!
                     ]),
             ])
     }
