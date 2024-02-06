@@ -742,11 +742,12 @@ class MixedChartComposer {
                     getExperimentData()
                 ]
                 
-                let scatterData = experiments.enumerated().flatMap { (x, data) in
-                    data.map { value in
-                        [x, value]
+                let scatterData = experiments.enumerated()
+                    .flatMap { (x, data) in
+                        data.map { value in
+                            [x, value]
+                        }
                     }
-                }
                 
                 let boxplotData = experiments.map { data in
                     getBoxPlotData(values: data)
@@ -789,7 +790,6 @@ class MixedChartComposer {
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/389
     static func configureMultiLevelStopsArrGradientColorAreasplineMixedLineChart() -> AAChartModel {
         AAChartModel()
-            .chartType(.areaspline)
             .stacking(.normal)
             .backgroundColor(AAColor.black)
             .colorsTheme(["#1e90ff","#04d69f","#ef476f","#ffd066",])
@@ -826,6 +826,7 @@ class MixedChartComposer {
                         .data(randomNumArrB),
                     AASeriesElement()
                         .name("2020")
+                        .type(.areaspline)
                         .fillColor(AAGradientColor.linearGradient(
                             direction: .toBottom,
                             stops: [
