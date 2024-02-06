@@ -160,18 +160,7 @@ class CustomStyleForLineChartComposer {
     }
     
     static func configureColorfulGradientSplineChart() -> AAChartModel {
-        let gradientColorDic1 = AAGradientColor.linearGradient(
-            direction: .toRight,
-            stops: [
-                [0.00, "#febc0f"] as [Any],//颜色字符串设置支持十六进制类型和 rgba 类型
-                [0.25, "#FF14d4"],
-                [0.50, "#0bf8f5"],
-                [0.75, "#F33c52"],
-                [1.00, "#1904dd"],
-            ]
-        )
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.spline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
@@ -182,7 +171,16 @@ class CustomStyleForLineChartComposer {
                 AASeriesElement()
                     .name("Tokyo Hot")
                     .lineWidth(13)
-                    .color(gradientColorDic1)
+                    .color(AAGradientColor.linearGradient(
+                        direction: .toRight,
+                        stops: [
+                            [0.00, "#febc0f"] as [Any],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.25, "#FF14d4"],
+                            [0.50, "#0bf8f5"],
+                            [0.75, "#F33c52"],
+                            [1.00, "#1904dd"],
+                        ]
+                    ))
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
                 ])
     }
@@ -505,7 +503,7 @@ class CustomStyleForLineChartComposer {
             .markerRadius(0)//隐藏连接点
             .series([
                 AASeriesElement()
-                    .name("Solid")
+                    .name(AAChartLineDashStyleType.solid.rawValue)
                     .lineWidth(lineWidth)
                     .data(dataArr)
                 ,
@@ -915,33 +913,28 @@ class CustomStyleForLineChartComposer {
                             .y(2)
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.red)
-                                .shape(.square))
-                        ,
+                                .shape(.square)),
                         AADataElement()
                             .y(4)
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.orange)
                                 .y(-30)
-                                .shape(.callout))
-                        ,
+                                .shape(.callout)),
                         AADataElement()
                             .y(8)
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.yellow)
-                                .shape(.circle))
-                        ,
+                                .shape(.circle)),
                         AADataElement()
                             .y(16)
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.green)
-                                .shape(.diamond))
-                        ,
+                                .shape(.diamond)),
                         AADataElement()
                             .y(32)
                             .dataLabels(AADataLabels()
                                 .backgroundColor(AAColor.cyan)
-                                .shape(.triangle))
-                        ,
+                                .shape(.triangle)),
                     ])
             ])
     }
