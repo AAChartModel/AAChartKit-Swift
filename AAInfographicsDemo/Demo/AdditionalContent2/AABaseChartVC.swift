@@ -275,18 +275,17 @@ extension AABaseChartVC: AAChartViewDelegate {
 
             clicked point series element name: \(clickEventMessage.name ?? "")
             🖱🖱🖱WARNING!!!!!!!!!!!!!!!!!!!! Click Event Message !!!!!!!!!!!!!!!!!!!! WARNING🖱🖱🖱
-            ==========================================================================================
             ------------------------------------------------------------------------------------------
             user finger moved over!!!,get the move over event message: {
-            category = \(String(describing: clickEventMessage.category))
-            index = \(String(describing: clickEventMessage.index))
-            name = \(String(describing: clickEventMessage.name))
-            offset = \(String(describing: clickEventMessage.offset))
-            x = \(String(describing: clickEventMessage.x))
-            y = \(String(describing: clickEventMessage.y))
+                category = \(String(describing: clickEventMessage.category))
+                index = \(String(describing: clickEventMessage.index))
+                name = \(String(describing: clickEventMessage.name))
+                offset = \(String(describing: clickEventMessage.offset))
+                x = \(String(describing: clickEventMessage.x))
+                y = \(String(describing: clickEventMessage.y))
             }
-            +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            
+            ------------------------------------------------------------------------------------------
+
             
             """
         )
@@ -298,18 +297,16 @@ extension AABaseChartVC: AAChartViewDelegate {
             
             selected point series element name: \(moveOverEventMessage.name ?? "")
             👌👌👌👌👌WARNING!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!! WARNING👌👌👌👌👌
-            || ==========================================================================================
-            || ------------------------------------------------------------------------------------------
-            || user finger moved over!!!,get the move over event message: {
-            || category = \(String(describing: moveOverEventMessage.category))
-            || index = \(String(describing: moveOverEventMessage.index))
-            || name = \(String(describing: moveOverEventMessage.name))
-            || offset = \(String(describing: moveOverEventMessage.offset))
-            || x = \(String(describing: moveOverEventMessage.x))
-            || y = \(String(describing: moveOverEventMessage.y))
-            || }
-            || ------------------------------------------------------------------------------------------
-            || ==========================================================================================
+            | ------------------------------------------------------------------------------------------
+            | user finger moved over!!!,get the move over event message: {
+            |     category = \(String(describing: moveOverEventMessage.category))
+            |     index = \(String(describing: moveOverEventMessage.index))
+            |     name = \(String(describing: moveOverEventMessage.name))
+            |     offset = \(String(describing: moveOverEventMessage.offset))
+            |     x = \(String(describing: moveOverEventMessage.x))
+            |     y = \(String(describing: moveOverEventMessage.y))
+            | }
+            | ------------------------------------------------------------------------------------------
             
             
             """
