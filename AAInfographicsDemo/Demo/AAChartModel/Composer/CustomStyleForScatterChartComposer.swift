@@ -42,36 +42,37 @@ class CustomStyleForScatterChartComposer {
     
     //https://github.com/AAChartModel/AAChartKit/issues/1294
     static func drawLineMixedScatterChartWithPointsCoordinates2() -> AAChartModel {
-        let dataArr = [
-            [0, 200],
-            [0, 300],
-            [0, 400],
-            [1, 100],
-            [2, 120],
-            [3, 130]
-        ]
-        
-        return AAChartModel()
+        AAChartModel()
             .chartType(.scatter)
             .title("Draw Line Chart With Points Coordinates")
             .markerSymbol(.circle)
             .markerSymbolStyle(.borderBlank)
             .markerRadius(8)
             .colorsTheme([AAColor.red])
-            .series([
-                AASeriesElement()
-                    .type(.line)
-                    .enableMouseTracking(false)
-                    .marker(AAMarker()
-                        .enabled(false))
-                    .states(AAStates()
-                        .inactive(AAInactive()
-                            .enabled(false)))
-                    .data(dataArr),
-                AASeriesElement()
-                    .name("Red Dot")
-                    .type(.scatter)
-                    .data(dataArr),
-            ])
+            .series({
+                let dataArr = [
+                    [0, 200],
+                    [0, 300],
+                    [0, 400],
+                    [1, 100],
+                    [2, 120],
+                    [3, 130]
+                ]
+                return [
+                    AASeriesElement()
+                        .type(.line)
+                        .enableMouseTracking(false)
+                        .marker(AAMarker()
+                            .enabled(false))
+                        .states(AAStates()
+                            .inactive(AAInactive()
+                                .enabled(false)))
+                        .data(dataArr),
+                    AASeriesElement()
+                        .name("Red Dot")
+                        .type(.scatter)
+                        .data(dataArr),
+                ]
+            }())
     }
 }
