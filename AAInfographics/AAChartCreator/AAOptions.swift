@@ -30,8 +30,7 @@
  
  */
 
-import Foundation
-
+//https://api.highcharts.com/highcharts/
 public class AAOptions: AAObject {
     public var chart: AAChart?
     public var title: AATitle?
@@ -147,13 +146,7 @@ public class AAOptions: AAObject {
         aaCredits.enabled = false
         credits = aaCredits
     }
-    
-    
-    @available(*, unavailable, message: "This setter function is useless now, please remove it directly")
-    public func touchEventEnabled(_ prop: Bool?) -> AAOptions {
-//        touchEventEnabled = prop
-        return self
-    }
+
 }
 
 
