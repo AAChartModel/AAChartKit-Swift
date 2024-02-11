@@ -43,7 +43,7 @@ class JSFunctionForAAChartEventsVC: AABaseChartVC {
             .chartType(.areaspline)//图形类型
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
             .dataLabelsEnabled(false)
-            .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
+            .colorsTheme(["#04d69f", "#1e90ff", "#ef476f", "#ffd066",])
             .stacking(.normal)
             .markerRadius(0)
             .series([
@@ -744,19 +744,19 @@ function () {
                         .valueSuffix(" employees"))
                     .data([
                         ["x": AADateUTC(2009, 10,  1), "y":  1, "name": "Torstein 一个人工作", "image": "Torstein" ],
-                        ["x": AADateUTC(2010, 10, 20), "y":  2, "name": "Grethe 加入", "image": "Grethe" ],
-                        ["x": AADateUTC(2011, 3,   1), "y":  3, "name": "Erik 加入", "image": NSNull() ],
-                        ["x": AADateUTC(2011, 7,   1), "y":  4, "name": "Gert 加入", "image": "Gert" ],
-                        ["x": AADateUTC(2011, 7,  15), "y":  5, "name": "Hilde 加入", "image": "Hilde" ],
-                        ["x": AADateUTC(2012, 5,   1), "y":  6, "name": "Guro 加入", "image": "Guro" ],
-                        ["x": AADateUTC(2012, 8,   1), "y":  5, "name": "Erik left", "image": NSNull() ],
-                        ["x": AADateUTC(2012, 8,  15), "y":  6, "name": "Anne Jorunn 加入", "image": "AnneJorunn" ],
-                        ["x": AADateUTC(2013, 0,   1), "y":  7, "name": "Hilde T. 加入", "image": NSNull() ],
-                        ["x": AADateUTC(2013, 7,   1), "y":  8, "name": "Jon Arild 加入", "image": "JonArild" ],
-                        ["x": AADateUTC(2013, 7,  20), "y":  9, "name": "Øystein 加入", "image": "Oystein" ],
-                        ["x": AADateUTC(2013, 9,   1), "y": 10, "name": "Stephane 加入", "image": "Stephane" ],
-                        ["x": AADateUTC(2014, 9,   1), "y": 11, "name": "Anita 加入", "image": "Anita" ],
-                        ["x": AADateUTC(2014, 10, 27), "y": 11, "name": "", "image": NSNull() ]
+                        ["x": AADateUTC(2010, 10, 20), "y":  2, "name": "Grethe 加入",        "image": "Grethe" ],
+                        ["x": AADateUTC(2011, 3,   1), "y":  3, "name": "Erik 加入",          "image": NSNull() ],
+                        ["x": AADateUTC(2011, 7,   1), "y":  4, "name": "Gert 加入",          "image": "Gert" ],
+                        ["x": AADateUTC(2011, 7,  15), "y":  5, "name": "Hilde 加入",         "image": "Hilde" ],
+                        ["x": AADateUTC(2012, 5,   1), "y":  6, "name": "Guro 加入",          "image": "Guro" ],
+                        ["x": AADateUTC(2012, 8,   1), "y":  5, "name": "Erik left",         "image": NSNull() ],
+                        ["x": AADateUTC(2012, 8,  15), "y":  6, "name": "Anne Jorunn 加入",   "image": "AnneJorunn" ],
+                        ["x": AADateUTC(2013, 0,   1), "y":  7, "name": "Hilde T. 加入",      "image": NSNull() ],
+                        ["x": AADateUTC(2013, 7,   1), "y":  8, "name": "Jon Arild 加入",     "image": "JonArild" ],
+                        ["x": AADateUTC(2013, 7,  20), "y":  9, "name": "Øystein 加入",       "image": "Oystein" ],
+                        ["x": AADateUTC(2013, 9,   1), "y": 10, "name": "Stephane 加入",      "image": "Stephane" ],
+                        ["x": AADateUTC(2014, 9,   1), "y": 11, "name": "Anita 加入",         "image": "Anita" ],
+                        ["x": AADateUTC(2014, 10, 27), "y": 11, "name": "",                  "image": NSNull() ]
                     ])
                 ])
 }
@@ -825,7 +825,6 @@ function() {
         let aaChartModel = AAChartModel()
             .chartType(.spline)
             .backgroundColor("#4b2b7f")
-            .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(false)//是否显示值
             .tooltipEnabled(true)
             .markerRadius(0)
@@ -1301,10 +1300,10 @@ func configureTheSizeOfTheSliceOfDonutAndPieChart() -> AAOptions {
                 .name("Browser share")
                 .data([
                     ["Firefox", 45.0],
-                    ["IE", 26.8],
-                    ["Safari", 8.5],
-                    ["Opera", 6.2],
-                    ["Others", 0.7]
+                    ["IE",      26.8],
+                    ["Safari",   8.5],
+                    ["Opera",    6.2],
+                    ["Others",   0.7]
                 ])
         ])
 }
