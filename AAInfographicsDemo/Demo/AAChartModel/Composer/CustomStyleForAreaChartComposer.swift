@@ -15,7 +15,9 @@ class CustomStyleForAreaChartComposer {
             .subtitle("横屏查看效果更佳")
             .yAxisGridLineWidth(0)
             .dataLabelsEnabled(false)
-            .categories(["Java","Swift","Python","Ruby", "PHP","Go","C","C#","C++","HTML","CSS","Perl","R","MATLAB","SQL"])
+            .categories(["Java", "Swift", "Python", "Ruby", "PHP", "Go",
+                         "C", "C#", "C++", "HTML", "CSS", "Perl",
+                         "R", "MATLAB", "SQL"])
             .colorsTheme(["#49C1B6", "#FDC20A", "#F78320", "#068E81", "#EA007B"])
             .series([
                 AASeriesElement()
@@ -87,9 +89,9 @@ class CustomStyleForAreaChartComposer {
     static func configureAreaChartThreshold() -> AAChartModel {
         AAChartModel()
             .chartType(.area)
-            .yAxisTitle("")//设置Y轴标题
             .yAxisGridLineWidth(0)
-            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun","July", "Aug", "Spe", "Oct", "Nov", "Dec"])
+            .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                         "July", "Aug", "Spe", "Oct", "Nov", "Dec"])
             .dataLabelsEnabled(false)//是否显示值
             .markerRadius(8)
             .markerSymbol(.circle)
@@ -113,7 +115,6 @@ class CustomStyleForAreaChartComposer {
         AAChartModel()
             .chartType(.areaspline)
             .backgroundColor("#4b2b7f")
-            .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(false)//是否显示值
             .tooltipEnabled(true)
             .markerRadius(0)
@@ -187,7 +188,7 @@ class CustomStyleForAreaChartComposer {
             .chartType(.area)
             .yAxisVisible(false)
             .stacking(.normal)
-            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f"])
+            .colorsTheme(["#1e90ff", "#ef476f", "#ffd066", "#04d69f"])
             .markerSymbol(.circle)
             .markerRadius(5)
             .dataLabelsEnabled(true)
