@@ -147,13 +147,12 @@ class CustomStyleForColumnChartComposer {
     static func discontinuousDataColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
-            .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(true)//是否显示值
             .tooltipEnabled(true)
             .series([
                 AASeriesElement()
                     .name("所有专业")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2,NSNull(),NSNull(),NSNull(),NSNull(), 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6,])
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, NSNull(), NSNull(), NSNull(), NSNull(), 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6,])
                     .color(AAGradientColor.firebrick)
             ])
     }
@@ -177,7 +176,7 @@ class CustomStyleForColumnChartComposer {
             .series([
                 AASeriesElement()
                     .name("ElementOne")
-                    .data([211,183,157,133,111,91,73,57,43,31,21,13,7,3])
+                    .data([211, 183, 157, 133, 111, 91, 73, 57, 43, 31, 21, 13, 7, 3])
                     .colorByPoint(true)//When using automatic point colors pulled from the options.colors collection, this option determines whether the chart should receive one color per series or one color per point. Default Value：false.
             ])
     }
@@ -223,7 +222,6 @@ class CustomStyleForColumnChartComposer {
     static func specialStyleForTheSingleDataElementOfColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
-            .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(false)//是否显示值
             .tooltipEnabled(false)
             .markerRadius(0)
@@ -249,7 +247,7 @@ class CustomStyleForColumnChartComposer {
     static func noMoreGroupingAndOverlapEachOtherColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
-            .categories(["11/23","11/24", "11/25","11/26","11/27","11/28","11/29"])
+            .categories(["11/23", "11/24", "11/25", "11/26", "11/27", "11/28", "11/29"])
             .yAxisTickPositions([0, 10, 20, 30, 40, 50])
             .yAxisMax(50)
             .yAxisMin(0)
@@ -414,7 +412,7 @@ class CustomStyleForColumnChartComposer {
                     .data({
                         let dataArr = [
                             -70, -69, -25, -145, -182, -215, -52, -265, -233, -453, -139, -96,
-                             +70, +69, +25, +145, +182, +215, +52, +265, +233, +453, +139, +96,
+                            +70, +69, +25, +145, +182, +215, +52, +265, +233, +453, +139, +96,
                         ]
                         
                         var newDataArr = [[String: Any]]()
@@ -459,9 +457,11 @@ class CustomStyleForColumnChartComposer {
                 AASeriesElement()
                     .name("Column")
                     .type(.column)
-                    .data([-6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
-                            -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
-                            -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,])
+                    .data([
+                         -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
+                         -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
+                         -6.4, -5.2, -3.0, 0.2, 2.3, 5.5, 8.4, 8.3, 5.1, 0.9, -1.1, -4.0,
+                    ])
                     .color("#0088FF")
                     .negativeColor(AAColor.red)
                     .threshold(4)//default:0
@@ -471,7 +471,6 @@ class CustomStyleForColumnChartComposer {
     static func customSingleDataElementSpecialStyleForColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
-            .yAxisTitle("")//设置Y轴标题
             .dataLabelsEnabled(false)//是否显示值
             .tooltipEnabled(false)
             .markerRadius(0)
@@ -501,7 +500,7 @@ class CustomStyleForColumnChartComposer {
             .series([
                 AASeriesElement()
                     .name("ElementOne")
-                    .data([211,183,157,133,111,91,73,57,43,31,21,13,7,3])
+                    .data([211, 183, 157, 133, 111, 91, 73, 57, 43, 31, 21, 13, 7, 3])
                     .allowPointSelect(true)
                     .states(AAStates()
                         .hover(AAHover()
