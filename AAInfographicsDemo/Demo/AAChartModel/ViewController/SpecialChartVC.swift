@@ -29,8 +29,6 @@
  
  */
 
-
-import UIKit
 import AAInfographics
 
 @available(iOS 10.0, macCatalyst 13.1, *)
