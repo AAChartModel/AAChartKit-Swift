@@ -20,19 +20,19 @@ class CustomStyleForAreaChartComposer {
             .colorsTheme(["#49C1B6", "#FDC20A", "#F78320", "#068E81", "#EA007B"])
             .series([
                 AASeriesElement()
-                    .name("2017")
+                    .name("2021")
                     .data([0, (-7.5), (-1.0), 3.7, 0, (-3), 8, 0,(-3.6), 4, (-2), 0]),
                 AASeriesElement()
-                    .name("2018")
+                    .name("2022")
                     .data([0, (-2.2), 2, (-2.2), 0, (-1.5), 0, 2.4, (-1), 3, (-1), 0]),
                 AASeriesElement()
-                    .name("2019")
+                    .name("2023")
                     .data([0, 2.3, 0, 1.2, (-1), 3, 0, (-3.3), 0, 2, (-0.3), 0]),
                 AASeriesElement()
-                    .name("2020")
+                    .name("2024")
                     .data([0, 10, 0.13,2,0, 2, 0, 3.7, 0, 1, (-3), 0]),
                 AASeriesElement()
-                    .name("2020")
+                    .name("2025")
                     .data([0, (-4.5), (-0.9), 5.5, (-1.9), 1.3, (-2.8), 0, (-1.7), 0, 3, 0, ]),
             ])
     }
