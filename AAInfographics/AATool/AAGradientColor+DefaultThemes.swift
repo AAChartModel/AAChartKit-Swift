@@ -31,6 +31,7 @@
  */
 
 extension AAGradientColor {
+    
     public class var oceanBlue: [String : Any] {
         oceanBlueColor(.toTop)
     }
