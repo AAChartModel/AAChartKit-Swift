@@ -16,8 +16,7 @@ class CustomStyleForAreaChartComposer {
             .yAxisGridLineWidth(0)
             .dataLabelsEnabled(false)
             .categories(["Java", "Swift", "Python", "Ruby", "PHP", "Go",
-                         "C", "C#", "C++", "HTML", "CSS", "Perl",
-                         "R", "MATLAB", "SQL"])
+                         "C", "C#", "C++", "Objective-C", "Kotlin", "Rust",])
             .colorsTheme(["#49C1B6", "#FDC20A", "#F78320", "#068E81", "#EA007B"])
             .series([
                 AASeriesElement()
