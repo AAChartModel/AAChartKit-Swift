@@ -38,13 +38,13 @@ class CustomStyleForLineChartComposer {
         AAChartModel()
             .chartType(.line)
             .subtitle("虚拟数据")
-            .categories(["Java","Swift","Python","Ruby", "PHP","Go","C","C#","C++","Perl","R","MATLAB","SQL"])
+            .categories(["Java", "Swift", "Python", "Ruby", "PHP", "Go", "C", "C#", "C++", "Perl", "R", "MATLAB", "SQL"])
             .yAxisTitle("摄氏度")
             .dataLabelsEnabled(true)
             .series([
                 AASeriesElement()
                     .name("本专业")
-                    .data([45,88,49,43,65,56,47,28,49,44,89,55])
+                    .data([45, 88, 49, 43, 65, 56, 47, 28, 49, 44, 89, 55])
                     .zoneAxis(.x)
                     .color(AAGradientColor.freshPapaya)
                     .lineWidth(5)
@@ -180,7 +180,7 @@ class CustomStyleForLineChartComposer {
                     .color(AAGradientColor.linearGradient(
                         direction: .toRight,
                         stops: [
-                            [0.00, "#febc0f"] as [Any],//颜色字符串设置支持十六进制类型和 rgba 类型
+                            [0.00, "#febc0f"],//颜色字符串设置支持十六进制类型和 rgba 类型
                             [0.25, "#FF14d4"],
                             [0.50, "#0bf8f5"],
                             [0.75, "#F33c52"],
@@ -229,7 +229,7 @@ class CustomStyleForLineChartComposer {
             .series([
                 AASeriesElement()
                     .name("ElementOne")
-                    .data([211,183,157,133,111,91,73,57,43,31,21,13,7,3])
+                    .data([211, 183, 157, 133, 111, 91, 73, 57, 43, 31, 21, 13, 7, 3])
                     .allowPointSelect(true)
                     .states(AAStates()
                         .hover(AAHover()
@@ -246,8 +246,8 @@ class CustomStyleForLineChartComposer {
                                 .opacity(1.0)
                                 .attributes(AASVGAttributes()
                                     .strokeWidth(150)
-                                    .fill(AARgba(138,43,226,1))
-                                    .stroke(AARgba(30,144,255,1))))))
+                                    .fill(AARgba(138, 43, 226, 1))
+                                    .stroke(AARgba(30, 144, 255, 1))))))
             ])
     }
 
@@ -337,7 +337,7 @@ class CustomStyleForLineChartComposer {
             .chartType(.line)
             .yAxisVisible(false)
             .stacking(.normal)
-            .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f"])
+            .colorsTheme(["#1e90ff", "#ef476f", "#ffd066", "#04d69f"])
             .markerSymbol(.circle)
             .markerRadius(8.0)
             .markerSymbolStyle(.innerBlank)
