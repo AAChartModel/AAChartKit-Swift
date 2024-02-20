@@ -53,6 +53,7 @@ public enum AALinearGradientDirection: Int {
 }
 
 extension AAGradientColor {
+    
     public class func linearGradient(
         startColor: String,
         endColor: String
