@@ -129,7 +129,7 @@ class MixedChartComposer {
     
     static func configureColumnrangeMixedLineChart() -> AAChartModel {
         AAChartModel()
-            .colorsTheme(["#1e90ff","#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",])//主题颜色数组
+            .colorsTheme(["#1e90ff", "#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",])//主题颜色数组
             .chartType(.line)
             .dataLabelsEnabled(false)
             .markerSymbolStyle(.borderBlank)
@@ -442,7 +442,7 @@ class MixedChartComposer {
                     .type(.polygon)
                     .data([[153, 42], [149, 46], [149, 55], [152, 60], [159, 70], [170, 77], [180, 70],
                            [180, 60], [173, 52], [166, 45]])
-                    .color("rgba(119, 152, 191, 0.5)")
+                    .color(AARgba(119, 152, 191, 0.5))
                 ,
                 AASeriesElement()
                     .name("实际值")
@@ -512,17 +512,17 @@ class MixedChartComposer {
             .polar(true)
             .series([
                 AASeriesElement()
-                    .name("Column")
+                    .name((AAChartType.column.rawValue.uppercased()))
                     .type(.column)
                     .data([8, 7, 6, 5, 4, 3, 2, 1])
                 ,
                 AASeriesElement()
-                    .name("Line")
+                    .name(AAChartType.line.rawValue.uppercased())
                     .type(.line)
                     .data([1, 2, 3, 4, 5, 6, 7, 8])
                 ,
                 AASeriesElement()
-                    .name("Area")
+                    .name((AAChartType.area.rawValue.uppercased()))
                     .type(.area)
                     .data([1, 8, 2, 7, 3, 6, 4, 5])
                 ,
@@ -534,7 +534,7 @@ class MixedChartComposer {
             .xAxisReversed(true)
             .series([
                 AASeriesElement()
-                    .name("Column")
+                    .name(AAChartType.column.rawValue)
                     .type(.column)
                     .data([
                         8,NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),NSNull(),
@@ -547,7 +547,7 @@ class MixedChartComposer {
                         1])
                 ,
                 AASeriesElement()
-                    .name("Scatter")
+                    .name(AAChartType.scatter.rawValue)
                     .type(.scatter)
                     .data([3.5, 3, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3, 3.3, 4, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3,
                            3.4, 3, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3, 3.8, 3.2,
@@ -558,7 +558,7 @@ class MixedChartComposer {
                            3, 3.4, 3])
                     .marker(AAMarker()
                         .radius(5)
-                        .symbol("circle")
+                        .symbol(.circle)
                         .fillColor("#1E90FF")
                         .lineWidth(2.0)
                         .lineColor(AAColor.red))
@@ -568,7 +568,7 @@ class MixedChartComposer {
     static func configurePieMixedLineMixedColumnChart() -> AAChartModel {
         AAChartModel()
             .stacking(.normal)
-            .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
+            .colorsTheme(["#fe117c", "#ffc069", "#06caf4", "#7dffc0"])
             .dataLabelsEnabled(false)
             .series([
                 AASeriesElement()
@@ -584,7 +584,7 @@ class MixedChartComposer {
                     .type(.column)
                     .data([4, 3, 3, 9, 0]),
                 AASeriesElement()
-                    .name("average value")
+                    .name("Average Value")
                     .type(.line)
                     .data([3, 2.67, 3, 6.33, 3.33])
                     .marker(AAMarker()
@@ -792,7 +792,7 @@ class MixedChartComposer {
         AAChartModel()
             .stacking(.normal)
             .backgroundColor(AAColor.black)
-            .colorsTheme(["#1e90ff","#04d69f","#ef476f","#ffd066",])
+            .colorsTheme(["#1e90ff", "#04d69f", "#ef476f", "#ffd066",])
             .dataLabelsEnabled(false)
             .markerSymbol(.circle)
             .markerRadius(5)
@@ -830,9 +830,9 @@ class MixedChartComposer {
                         .fillColor(AAGradientColor.linearGradient(
                             direction: .toBottom,
                             stops: [
-                                [0.0, AARgba(255, 0, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
-                                [0.2, AARgba(255, 0, 0, 0.2)],
-                                [0.4, AARgba(255, 0, 0, 0.1)],
+                                [0.0, AARgba(255, 0, 0, 1.0 )],//颜色字符串设置支持十六进制类型和 rgba 类型
+                                [0.2, AARgba(255, 0, 0, 0.2 )],
+                                [0.4, AARgba(255, 0, 0, 0.1 )],
                                 [0.6, AARgba(255, 0, 0, 0.05)],
                                 [0.8, AARgba(255, 0, 0, 0.01)],
                                 [1.0, AAColor.clear]
