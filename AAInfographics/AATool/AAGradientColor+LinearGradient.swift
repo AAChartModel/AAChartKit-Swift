@@ -46,6 +46,7 @@ public enum AALinearGradientDirection: Int {
     case toBottom        //⇩⇩⇩⇩⇩⇩
     case toLeft          //⇦⇦⇦⇦⇦⇦
     case toRight         //⇨⇨⇨⇨⇨⇨
+    
     case toTopLeft       //⇖⇖⇖⇖⇖⇖
     case toTopRight      //⇗⇗⇗⇗⇗⇗
     case toBottomLeft    //⇙⇙⇙⇙⇙⇙
@@ -106,6 +107,7 @@ extension AAGradientColor {
         case .toBottom:      return ["x1":0, "y1":0, "x2":0, "y2":1]
         case .toLeft:        return ["x1":1, "y1":0, "x2":0, "y2":0]
         case .toRight:       return ["x1":0, "y1":0, "x2":1, "y2":0]
+            
         case .toTopLeft:     return ["x1":1, "y1":1, "x2":0, "y2":0]
         case .toTopRight:    return ["x1":0, "y1":1, "x2":1, "y2":0]
         case .toBottomLeft:  return ["x1":1, "y1":0, "x2":0, "y2":1]
