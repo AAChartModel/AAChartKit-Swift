@@ -77,8 +77,8 @@ public class AAStyle: AAObject {
 
     @discardableResult
     public func borderRadius(_ prop: Float?) -> AAStyle {
-        if prop != nil {
-            borderRadius = "\(prop!)px"
+        if let validProp = prop {
+            borderRadius = "\(validProp)px"
         }
         return self
     }
@@ -103,8 +103,8 @@ public class AAStyle: AAObject {
 
     @discardableResult
     public func fontSize(_ prop: Float?) -> AAStyle {
-        if prop != nil {
-            fontSize = "\(prop!)px"
+        if let validProp = prop {
+            fontSize = "\(validProp)px"
         }
         return self
     }
@@ -135,8 +135,8 @@ public class AAStyle: AAObject {
 
     @discardableResult
     public func padding(_ prop: Float?) -> AAStyle {
-        if prop != nil {
-            padding = "\(prop!)px"
+        if let validProp = prop {
+            padding = "\(validProp)px"
         }
         return self
     }
