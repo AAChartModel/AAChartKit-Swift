@@ -290,45 +290,48 @@ class CustomStyleForLineChartComposer {
             .markerSymbol(.circle)
             .markerRadius(8.0)
             .markerSymbolStyle(.borderBlank)
-            .series({
-                let aaShadow = AAShadow()
-                    .offsetX(15.0)
-                    .offsetY(15.0)
-                    .opacity(0.2)
-                    .width(8.0)
-                    .color("#1e90ff")
-                
-                return [
-                    AASeriesElement()
-                        .name("2017")
-                        .lineWidth(5)
-                        .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
-                        .shadow(aaShadow
-                            .color("#1e90ff")
-                        ),
-                    AASeriesElement()
-                        .name("2018")
-                        .lineWidth(5)
-                        .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
-                        .shadow(aaShadow
-                            .color("#ef476f")
-                        ),
-                    AASeriesElement()
-                        .name("2019")
-                        .lineWidth(5)
-                        .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
-                        .shadow(aaShadow
-                            .color("#ffd066")
-                        ),
-                    AASeriesElement()
-                        .name("2020")
-                        .lineWidth(5)
-                        .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
-                        .shadow(aaShadow
-                            .color("#04d69f")
-                        ),
-                ]
-            }())
+            .series([
+                AASeriesElement()
+                    .name("2017")
+                    .lineWidth(5)
+                    .data([0.45, 0.43, 0.50, 0.55, 0.58, 0.62, 0.83, 0.39, 0.56, 0.67, 0.50, 0.34, 0.50, 0.67, 0.58, 0.29, 0.46, 0.23, 0.47, 0.46, 0.38, 0.56, 0.48, 0.36])
+                    .shadow(AAShadow()
+                        .offsetX(15.0)
+                        .offsetY(15.0)
+                        .opacity(0.2)
+                        .width(8.0)
+                        .color("#1e90ff")),
+                AASeriesElement()
+                    .name("2018")
+                    .lineWidth(5)
+                    .data([0.38, 0.31, 0.32, 0.32, 0.64, 0.66, 0.86, 0.47, 0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67])
+                    .shadow(AAShadow()
+                        .offsetX(15.0)
+                        .offsetY(15.0)
+                        .opacity(0.2)
+                        .width(8.0)
+                        .color("#ef476f")),
+                AASeriesElement()
+                    .name("2019")
+                    .lineWidth(5)
+                    .data([0.46, 0.32, 0.53, 0.58, 0.86, 0.68, 0.85, 0.73, 0.69, 0.71, 0.91, 0.74, 0.60, 0.50, 0.39, 0.67, 0.55, 0.49, 0.65, 0.45, 0.64, 0.47, 0.63, 0.64])
+                    .shadow(AAShadow()
+                        .offsetX(15.0)
+                        .offsetY(15.0)
+                        .opacity(0.2)
+                        .width(8.0)
+                        .color("#ffd066")),
+                AASeriesElement()
+                    .name("2020")
+                    .lineWidth(5)
+                    .data([0.60, 0.51, 0.52, 0.53, 0.64, 0.84, 0.65, 0.68, 0.63, 0.47, 0.72, 0.60, 0.65, 0.74, 0.66, 0.65, 0.71, 0.59, 0.65, 0.77, 0.52, 0.53, 0.58, 0.53])
+                    .shadow(AAShadow()
+                        .offsetX(15.0)
+                        .offsetY(15.0)
+                        .opacity(0.2)
+                        .width(8.0)
+                        .color("#04d69f")),
+            ])
     }
 
     // GitHub issue https://github.com/AAChartModel/AAChartKit/issues/905
