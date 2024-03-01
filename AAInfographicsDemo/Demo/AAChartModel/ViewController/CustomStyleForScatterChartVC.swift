@@ -20,8 +20,8 @@ class CustomStyleForScatterChartVC: AABaseChartVC {
 
     override func chartConfigurationWithSelectedChartTypeString(_ selectedChartTypeStr: String) -> Any? {
         switch selectedChartTypeStr {
-        case "colorfulBarChart": return CustomStyleForScatterChartComposer.customScatterChartMarkerSymbolContent()
-        case "colorfulGradientColorBarChart": return CustomStyleForScatterChartComposer.drawLineMixedScatterChartWithPointsCoordinates2()
+        case "customScatterChartMarkerSymbolContent": return CustomStyleForScatterChartComposer.customScatterChartMarkerSymbolContent()
+        case "drawLineMixedScatterChartWithPointsCoordinates2": return CustomStyleForScatterChartComposer.drawLineMixedScatterChartWithPointsCoordinates2()
             
         default: return nil
         }
