@@ -51,7 +51,7 @@ public class AASeriesElement: AAObject {
     public var lineWidth: Float?           //The line width, It is only valid for line, spline, area, areaspline, arearange and arearangespline chart types
     public var borderColor: String?        //The border color, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
     public var borderWidth: Float?         //The border width, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
-    public var borderRadius: Any?        //The corner radius of the border surrounding each column or bar.
+    public var borderRadius: Any?          //The corner radius of the border surrounding each column or bar.
     public var borderRadiusTopLeft: Any?
     public var borderRadiusTopRight: Any?
     public var borderRadiusBottomLeft: Any?
@@ -391,6 +391,7 @@ public class AASeriesElement: AAObject {
     }
     
     public  override init() {
+        
     }
 }
 
