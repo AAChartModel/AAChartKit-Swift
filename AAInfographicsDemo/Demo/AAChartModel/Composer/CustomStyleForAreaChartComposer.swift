@@ -350,9 +350,7 @@ class CustomStyleForAreaChartComposer {
                                 .symbol(.circle)//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
                                 .fillColor(AAColor.white)//点的填充色(用来设置折线连接点的填充色)
                                 .lineWidth(5)//外沿线的宽度(用来设置折线连接点的轮廓描边的宽度)
-                                //外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
-                                .lineColor("#1E90FF")//道奇蓝
-                            )
+                                .lineColor("#1E90FF"))//道奇蓝色, 外沿线的颜色(用来设置折线连接点的轮廓描边颜色，当值为空字符串时，默认取数据点或数据列的颜色)
                             .dataLabels(AADataLabels()
                                 .enabled(true)
                                 .allowOverlap(true)
@@ -366,10 +364,8 @@ class CustomStyleForAreaChartComposer {
                                 .align(.center)
                                 .overflow(.none)
                                 .verticalAlign(.top)
-                                .crop(false)
-                            )
+                                .crop(false))
                             .y(85.3)
-                            .toDic()!
                     ]),
             ])
     }
