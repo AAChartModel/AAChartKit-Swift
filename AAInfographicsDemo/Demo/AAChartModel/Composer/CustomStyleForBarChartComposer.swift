@@ -30,7 +30,6 @@ class CustomStyleForBarChartComposer {
 
     static func normalStackingPolarBarChart() -> AAChartModel {
         CustomStyleForColumnChartComposer.normalStackingPolarColumnChart().chartType(.bar)
-
     }
 
     static func percentStackingPolarBarChart() -> AAChartModel {
