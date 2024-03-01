@@ -75,6 +75,10 @@ class MainVC: UIViewController {
             "Pie Chart With Custom Style | 一些自定义风格样式饼图",
             "Column Chart With Custom Style | 一些自定义风格样式柱状图",
             "Bar Chart With Custom Style | 一些自定义风格样式条形图",
+            "Line Chart With Custom Style | 一些自定义风格样式折线图",
+            "Area Chart With Custom Style | 一些自定义风格样式折线填充图",
+            "Scatter Chart With Custom Style | 一些自定义风格样式散点图",
+            "Bubble Chart With Custom Style | 一些自定义风格样式气泡图",
         ]
         
         chartTypeTitleArr = [
@@ -242,7 +246,53 @@ class MainVC: UIViewController {
                 "customBorderStyleAndStatesHoverColorBarChart---自定义条形图 border 样式及手指掠过图表 series 元素时的条形颜色",
                 "negativeDataMixedPositiveDataBarChart---正负数混合的条形图",
             ],
-
+            /*Custom Style For Line Chart*/
+            [
+                "configureMixedLineChart",
+                "configureStepLineChart",
+                "configureStepAreaChart",
+                "configureCustomSingleDataLabelChart",
+                "configureChartWithShadowStyle",
+                "configureColorfulGradientSplineChart",
+                "customLineChartMarkerSymbolContent",
+                "drawLineChartWithPointsCoordinates",
+                "customChartHoverAndSelectHaloStyle",
+                "disableSomeOfLinesMouseTrackingEffect",
+                "configureColorfulShadowSplineChart",
+                "configureColorfulDataLabelsStepLineChart",
+                "disableSplineChartMarkerHoverEffect",
+                "configureMaxAndMinDataLabelsForChart",
+                "configureDashStyleTypesMixedChart",
+                "configureAllLineDashStyleTypesMixedChart",
+                "configureLineChartWithShadow",
+                "customLineChartWithColorfulMarkersAndLines",
+                "customLineChartWithColorfulMarkersAndLines2",
+                "connectNullsForSingleAASeriesElement",
+                "lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement",
+                "customDifferentDataLabelsShapeForColumnChart",
+            ],
+            /*Custom Style For Area Chart*/
+            [
+                "configureWithMinusNumberChart",
+                "configureColorfulGradientAreaChart",
+                "configureGradientColorAreasplineChart",
+                "configureAreaChartThreshold",
+                "customSpecialStyleDataLabelOfSingleDataElementChart",
+                "customSplineChartMarkerStatesHoverStyle",
+                "configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart",
+                "configureNegativeColorMixedAreasplineChart",
+                "customAreasplineChartWithColorfulGradientColorZones",
+            ],
+            /*Custom Style For Scatter Chart*/
+            [
+                "customScatterChartMarkerSymbolContent",
+                "drawLineMixedScatterChartWithPointsCoordinates2",
+            ],
+            /*Custom Style For Bubble Chart*/
+            [
+                "configureNegativeColorMixedBubbleChart",
+                "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
+            ],
 
 
 
@@ -356,8 +406,53 @@ class MainVC: UIViewController {
                 "customBorderStyleAndStatesHoverColorBarChart",
                 "negativeDataMixedPositiveDataBarChart",
             ],
-
-
+            /*Custom Style For Line Chart*/
+            [
+                "configureMixedLineChart",
+                "configureStepLineChart",
+                "configureStepAreaChart",
+                "configureCustomSingleDataLabelChart",
+                "configureChartWithShadowStyle",
+                "configureColorfulGradientSplineChart",
+                "customLineChartMarkerSymbolContent",
+                "drawLineChartWithPointsCoordinates",
+                "customChartHoverAndSelectHaloStyle",
+                "disableSomeOfLinesMouseTrackingEffect",
+                "configureColorfulShadowSplineChart",
+                "configureColorfulDataLabelsStepLineChart",
+                "disableSplineChartMarkerHoverEffect",
+                "configureMaxAndMinDataLabelsForChart",
+                "configureDashStyleTypesMixedChart",
+                "configureAllLineDashStyleTypesMixedChart",
+                "configureLineChartWithShadow",
+                "customLineChartWithColorfulMarkersAndLines",
+                "customLineChartWithColorfulMarkersAndLines2",
+                "connectNullsForSingleAASeriesElement",
+                "lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement",
+                "customDifferentDataLabelsShapeForColumnChart",
+            ],
+            /*Custom Style For Area Chart*/
+            [
+                "configureWithMinusNumberChart",
+                "configureColorfulGradientAreaChart",
+                "configureGradientColorAreasplineChart",
+                "configureAreaChartThreshold",
+                "customSpecialStyleDataLabelOfSingleDataElementChart",
+                "customSplineChartMarkerStatesHoverStyle",
+                "configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart",
+                "configureNegativeColorMixedAreasplineChart",
+                "customAreasplineChartWithColorfulGradientColorZones",
+            ],
+            /*Custom Style For Scatter Chart*/
+            [
+                "customScatterChartMarkerSymbolContent",
+                "drawLineMixedScatterChartWithPointsCoordinates2",
+            ],
+            /*Custom Style For Bubble Chart*/
+            [
+                "configureNegativeColorMixedBubbleChart",
+                "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
+            ],
 
         ]
         
@@ -475,7 +570,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            /*Basic Type Charts*/
             let vc = BasicChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
             if indexPath.row == 4 || indexPath.row == 5 {
@@ -485,7 +579,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             
         case 1:
-            /*Special Type Charts*/
             let vc = SpecialChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
@@ -493,7 +586,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             
         case 2:
-            /*Custom Style Chart*/
             let vc = CustomStyleChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
@@ -501,7 +593,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             
         case 3:
-            /*Mixed Type Charts*/
             let vc = MixedChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
@@ -509,7 +600,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
 
         case 4:
-            /*Custom Style For Pie Chart*/
             let vc = CustomStyleForPieChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
@@ -517,7 +607,6 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
 
         case 5:
-            /*Custom Style For Column Chart*/
             let vc = CustomStyleForColumnChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
@@ -525,13 +614,39 @@ extension MainVC: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
 
         case 6:
-            /*Custom Style For Bar Chart*/
             let vc = CustomStyleForBarChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
+        case 7:
+            let vc = CustomStyleForLineChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 8:
+            let vc = CustomStyleForAreaChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 9:
+            let vc = CustomStyleForScatterChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 10:
+            let vc = CustomStyleForBubbleChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
 
         default:
             break
