@@ -85,6 +85,10 @@
 		84DEB8A028F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DEB89F28F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift */; };
 		84E68FBD2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */; };
 		84E68FBF2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */; };
+		84EAD7DC2B91AD660028CB7C /* CustomStyleForLineChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EAD7DB2B91AD660028CB7C /* CustomStyleForLineChartVC.swift */; };
+		84EAD7DE2B91B08C0028CB7C /* CustomStyleForAreaChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EAD7DD2B91B08C0028CB7C /* CustomStyleForAreaChartVC.swift */; };
+		84EAD7E02B91B1A10028CB7C /* CustomStyleForScatterChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EAD7DF2B91B1A10028CB7C /* CustomStyleForScatterChartVC.swift */; };
+		84EAD7E22B91B2D10028CB7C /* CustomStyleForBubbleChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EAD7E12B91B2D10028CB7C /* CustomStyleForBubbleChartVC.swift */; };
 		84F21858292DF373007AA726 /* OfficialAreaChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F21857292DF373007AA726 /* OfficialAreaChartVC.swift */; };
 		84F2185A292E10DE007AA726 /* OfficialBarOrColumnChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F21859292E10DD007AA726 /* OfficialBarOrColumnChartVC.swift */; };
 		84F8F66B28B714E000F41E6A /* AABoxplot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F66A28B714E000F41E6A /* AABoxplot.swift */; };
@@ -280,6 +284,10 @@
 		84DEB89F28F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAATooltipVC2.swift; sourceTree = "<group>"; };
 		84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForPieChartVC.swift; sourceTree = "<group>"; };
 		84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForPieChartComposer.swift; sourceTree = "<group>"; };
+		84EAD7DB2B91AD660028CB7C /* CustomStyleForLineChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForLineChartVC.swift; sourceTree = "<group>"; };
+		84EAD7DD2B91B08C0028CB7C /* CustomStyleForAreaChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForAreaChartVC.swift; sourceTree = "<group>"; };
+		84EAD7DF2B91B1A10028CB7C /* CustomStyleForScatterChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForScatterChartVC.swift; sourceTree = "<group>"; };
+		84EAD7E12B91B2D10028CB7C /* CustomStyleForBubbleChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForBubbleChartVC.swift; sourceTree = "<group>"; };
 		84F21857292DF373007AA726 /* OfficialAreaChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAreaChartVC.swift; sourceTree = "<group>"; };
 		84F21859292E10DD007AA726 /* OfficialBarOrColumnChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialBarOrColumnChartVC.swift; sourceTree = "<group>"; };
 		84F8F66A28B714E000F41E6A /* AABoxplot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABoxplot.swift; sourceTree = "<group>"; };
@@ -555,8 +563,12 @@
 				844007732B6F3FA00072FB66 /* MixedChartVC.swift */,
 				4419618B230D8EDC00C12AAF /* CustomStyleChartVC.swift */,
 				84E68FBC2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift */,
-				586039BF1F037FB47A9D7E4D /* CustomStyleForBarChartVC.swift */,
 				58603184C6DF4D29C66C028D /* CustomStyleForColumnChartVC.swift */,
+				586039BF1F037FB47A9D7E4D /* CustomStyleForBarChartVC.swift */,
+				84EAD7DB2B91AD660028CB7C /* CustomStyleForLineChartVC.swift */,
+				84EAD7DD2B91B08C0028CB7C /* CustomStyleForAreaChartVC.swift */,
+				84EAD7DF2B91B1A10028CB7C /* CustomStyleForScatterChartVC.swift */,
+				84EAD7E12B91B2D10028CB7C /* CustomStyleForBubbleChartVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -569,9 +581,9 @@
 				84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */,
 				5860327DEF5546B683899E44 /* CustomStyleForColumnChartComposer.swift */,
 				58603647D3E17BD4C00CBCF5 /* CustomStyleForBarChartComposer.swift */,
-				586030C73877C58B03F2F997 /* CustomStyleForScatterChartComposer.swift */,
 				844F11472B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift */,
 				58603E686F6956B04F862302 /* CustomStyleForAreaChartComposer.swift */,
+				586030C73877C58B03F2F997 /* CustomStyleForScatterChartComposer.swift */,
 				8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */,
 			);
 			path = Composer;
@@ -806,6 +818,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84EAD7DC2B91AD660028CB7C /* CustomStyleForLineChartVC.swift in Sources */,
 				84595DEA2B46A94C00F69273 /* AAOptionsListVC.swift in Sources */,
 				279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */,
 				844F11402B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift in Sources */,
@@ -817,11 +830,13 @@
 				844F11462B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift in Sources */,
 				84DEB8A028F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift in Sources */,
 				84086B2128E6F499006BD30D /* JSFunctionForAAOptionsVC.swift in Sources */,
+				84EAD7E02B91B1A10028CB7C /* CustomStyleForScatterChartVC.swift in Sources */,
 				84086B1B28E45127006BD30D /* JSFunctionForAAAxisVC.swift in Sources */,
 				840716532A6A79770037193B /* AreaChartOptionsVC.swift in Sources */,
 				840716592A70B69C0037193B /* PieChartOptionsVC.swift in Sources */,
 				84595DEE2B47E53C00F69273 /* OfficialSamplesListVC.swift in Sources */,
 				276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */,
+				84EAD7DE2B91B08C0028CB7C /* CustomStyleForAreaChartVC.swift in Sources */,
 				848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */,
 				844F11482B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift in Sources */,
 				4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */,
@@ -841,6 +856,7 @@
 				27FADB8620D6569000FED960 /* HideOrShowChartSeriesVC.swift in Sources */,
 				84AE6B1F26A58380001F0755 /* AADateUTCTool.swift in Sources */,
 				84DEA0D62845F5F200D0206F /* CustomSelectionEventCallback.swift in Sources */,
+				84EAD7E22B91B2D10028CB7C /* CustomStyleForBubbleChartVC.swift in Sources */,
 				84DEA0D82846013F00D0206F /* CustomTouchEndEventCallbackVC.swift in Sources */,
 				44EB70A722BCB606008FECE4 /* JSFunctionForAATooltipVC.swift in Sources */,
 				84595DE82B4698D600F69273 /* PolarChartOptionsVC.swift in Sources */,
