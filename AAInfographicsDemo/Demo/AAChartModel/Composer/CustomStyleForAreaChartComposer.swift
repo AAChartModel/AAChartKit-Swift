@@ -366,6 +366,7 @@ class CustomStyleForAreaChartComposer {
                                 .verticalAlign(.top)
                                 .crop(false))
                             .y(85.3)
+                            .toDic() as Any
                     ]),
             ])
     }
