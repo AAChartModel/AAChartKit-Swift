@@ -20,17 +20,17 @@ class CustomStyleForPieChartVC: AABaseChartVC {
 
     override func chartConfigurationWithSelectedChartTypeString(_ selectedChartTypeStr: String) -> Any? {
         switch selectedChartTypeStr {
-        case "pieChart":return CustomStyleForPieChartComposer.pieChart()
-        case "doubleLayerPieChart":return CustomStyleForPieChartComposer.doubleLayerPieChart()
-        case "doubleLayerDoubleColorsPieChart":return CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChart()
+        case "pieChart": return CustomStyleForPieChartComposer.pieChart()
+        case "doubleLayerPieChart": return CustomStyleForPieChartComposer.doubleLayerPieChart()
+        case "doubleLayerDoubleColorsPieChart": return CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChart()
 
-        case "pieChartWithSoftCorners":return CustomStyleForPieChartComposer.pieChartWithSoftCorners()
-        case "doubleLayerPieChartWithSoftCorners":return CustomStyleForPieChartComposer.doubleLayerPieChartWithSoftCorners()
-        case "doubleLayerDoubleColorsPieChartWithSoftCorners":return CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithSoftCorners()
+        case "pieChartWithSoftCorners": return CustomStyleForPieChartComposer.pieChartWithSoftCorners()
+        case "doubleLayerPieChartWithSoftCorners": return CustomStyleForPieChartComposer.doubleLayerPieChartWithSoftCorners()
+        case "doubleLayerDoubleColorsPieChartWithSoftCorners": return CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithSoftCorners()
 
-        case "pieChartWithRoundedCorners":return CustomStyleForPieChartComposer.pieChartWithRoundedCorners()
-        case "doubleLayerPieChartWithRoundedCorners":return CustomStyleForPieChartComposer.doubleLayerPieChartWithRoundedCorners()
-        case "doubleLayerDoubleColorsPieChartWithRoundedCorners":return CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithRoundedCorners()
+        case "pieChartWithRoundedCorners": return CustomStyleForPieChartComposer.pieChartWithRoundedCorners()
+        case "doubleLayerPieChartWithRoundedCorners": return CustomStyleForPieChartComposer.doubleLayerPieChartWithRoundedCorners()
+        case "doubleLayerDoubleColorsPieChartWithRoundedCorners": return CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithRoundedCorners()
 
         default: return nil
         }
