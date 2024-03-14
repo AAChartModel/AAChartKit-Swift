@@ -29,7 +29,6 @@ class AAOptionsListVC: AABaseListVC {
         ]
         
         chartTypeTitleArr = [
-            
             /*Draw Chart with AAOptions*/
             [
                 "configureLegendStyle",
