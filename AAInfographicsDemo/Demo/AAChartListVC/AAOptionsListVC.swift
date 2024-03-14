@@ -9,33 +9,8 @@
 import UIKit
 import AAInfographics
 
-//let kCustomTableViewCell = "CustomTableViewCell"
-
 @available(iOS 10.0, macCatalyst 13.1, *)
-class AAOptionsListVC: UIViewController {
-    private var sectionTitleArr = [String]()
-    private var chartTypeTitleArr = [[String]]()
-    private var colorsArr = [
-//        "#5470c6",
-//        "#91cc75",
-//        "#fac858",
-//        "#ee6666",
-//        "#73c0de",
-//        "#3ba272",
-//        "#fc8452",
-//        "#9a60b4",
-        "#ea7ccc",
-
-        "#5470c6",
-        "#91cc75",
-        "#fac858",
-        "#ee6666",
-        "#73c0de",
-        "#3ba272",
-        "#fc8452",
-        "#9a60b4",
-        "#ea7ccc",
-    ]
+class AAOptionsListVC: AABaseListVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,9 +122,6 @@ class AAOptionsListVC: UIViewController {
                 "disableGroupingColumnChart---",
                 "disableGroupingBarChart---"
             ]
-
-
-
         ]
         
         
@@ -158,113 +130,13 @@ class AAOptionsListVC: UIViewController {
         setUpMainTableView()
     }
     
-    private func setUpMainTableView() {
-        let tableView = UITableView()
-        tableView.frame = view.bounds
-        tableView.autoresizingMask = [.flexibleWidth , .flexibleHeight]
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .white
-        tableView.sectionHeaderHeight = 45
-        tableView.sectionIndexColor = .red
-        tableView.register(UINib.init(nibName: kCustomTableViewCell, bundle: Bundle.main), forCellReuseIdentifier: kCustomTableViewCell)
-        view.addSubview(tableView)
-    }
     
-    private func kRGBColorFromHex(rgbValue: Int) -> UIColor {
-        UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
-                green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
-                blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
-                alpha: 1.0)
-    }
-
-    //convert hex color string to UIColor
-    private func kColorWithHexString(_ hexString: String) -> UIColor {
-        var cString: String = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
-        if (cString.hasPrefix("#")) {
-            cString = (cString as NSString).substring(from: 1)
-        }
-
-        if (cString.count != 6) {
-            return UIColor.gray
-        }
-
-        let rString = (cString as NSString).substring(to: 2)
-        let gString = ((cString as NSString).substring(from: 2) as NSString).substring(to: 2)
-        let bString = ((cString as NSString).substring(from: 4) as NSString).substring(to: 2)
-
-        var r: CUnsignedInt = 0, g: CUnsignedInt = 0, b: CUnsignedInt = 0
-        Scanner(string: rString).scanHexInt32(&r)
-        Scanner(string: gString).scanHexInt32(&g)
-        Scanner(string: bString).scanHexInt32(&b)
-
-        return UIColor(
-            red: CGFloat(r) / 255.0,
-            green: CGFloat(g) / 255.0,
-            blue: CGFloat(b) / 255.0,
-            alpha: 1
-        )
-    }
 }
 
 @available(macCatalyst 13.1, *)
-extension AAOptionsListVC: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        chartTypeTitleArr.count
-    }
+extension AAOptionsListVC {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        chartTypeTitleArr[section].count
-    }
-    
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        var listTitles = [String]()
-        for item: String in sectionTitleArr {
-            let titleStr = item.prefix(1)
-            listTitles.append(String(titleStr))
-        }
-        return listTitles
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeaderView = UIView()
-        let bgColor = kColorWithHexString(colorsArr[section % 18])
-        sectionHeaderView.backgroundColor = bgColor
-        
-        let sectionTitleLabel = UILabel()
-        sectionTitleLabel.frame = sectionHeaderView.bounds
-        sectionTitleLabel.autoresizingMask = [.flexibleWidth , .flexibleHeight]
-        sectionTitleLabel.text = sectionTitleArr[section]
-        sectionTitleLabel.textColor = .white
-        sectionTitleLabel.font = .boldSystemFont(ofSize: 17)
-        sectionTitleLabel.textAlignment = .center
-        sectionHeaderView.addSubview(sectionTitleLabel)
-  
-        
-        return sectionHeaderView
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kCustomTableViewCell) as! CustomTableViewCell
-        cell.accessoryType = .disclosureIndicator
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = .white
-        } else {
-            cell.backgroundColor = kRGBColorFromHex(rgbValue: 0xE6E6FA)// kRGBColorFromHex(rgbValue: 0xF5F5F5)//白烟
-        }
-        
-        let cellTitle = chartTypeTitleArr[indexPath.section][indexPath.row]
-        cell.titleLabel?.text = cellTitle
-        cell.titleLabel.textColor = .black
-        cell.numberLabel.text = String(indexPath.row + 1)
-        let bgColor = kColorWithHexString(colorsArr[indexPath.section % 18])
-        cell.numberLabel.backgroundColor = bgColor
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
 //            "LineChartOptions--- 通过 Options 绘制折线📈图",
 //            "AreaChartOptions--- 通过 Options 绘制折线填充图",
