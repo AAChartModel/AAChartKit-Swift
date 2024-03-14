@@ -92,6 +92,7 @@
 		84F21858292DF373007AA726 /* OfficialAreaChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F21857292DF373007AA726 /* OfficialAreaChartVC.swift */; };
 		84F2185A292E10DE007AA726 /* OfficialBarOrColumnChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F21859292E10DD007AA726 /* OfficialBarOrColumnChartVC.swift */; };
 		84F4E0E42BA2CC6B00B3F1F3 /* BasicChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4E0E32BA2CC6B00B3F1F3 /* BasicChartComposer.swift */; };
+		84F4E0E62BA2D3D300B3F1F3 /* AABaseListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F4E0E52BA2D3D300B3F1F3 /* AABaseListVC.swift */; };
 		84F8F66B28B714E000F41E6A /* AABoxplot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F66A28B714E000F41E6A /* AABoxplot.swift */; };
 		ED0A032527281695000BF778 /* AAInfographics.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0A032327281695000BF778 /* AAInfographics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED0A032827281695000BF778 /* AAInfographics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; };
@@ -292,6 +293,7 @@
 		84F21857292DF373007AA726 /* OfficialAreaChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialAreaChartVC.swift; sourceTree = "<group>"; };
 		84F21859292E10DD007AA726 /* OfficialBarOrColumnChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialBarOrColumnChartVC.swift; sourceTree = "<group>"; };
 		84F4E0E32BA2CC6B00B3F1F3 /* BasicChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicChartComposer.swift; sourceTree = "<group>"; };
+		84F4E0E52BA2D3D300B3F1F3 /* AABaseListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AABaseListVC.swift; sourceTree = "<group>"; };
 		84F8F66A28B714E000F41E6A /* AABoxplot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABoxplot.swift; sourceTree = "<group>"; };
 		D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBundlePathLoader.swift; sourceTree = "<group>"; };
 		ED0A032127281695000BF778 /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -439,6 +441,7 @@
 				848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */,
 				848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */,
 				27E475F824B83AE200690657 /* AABaseChartVC.swift */,
+				84F4E0E52BA2D3D300B3F1F3 /* AABaseListVC.swift */,
 				84B68245266DB09100957FC5 /* AAChartSymbolConstant.swift */,
 				84AE6B1E26A58380001F0755 /* AADateUTCTool.swift */,
 				84086B1C28E6C612006BD30D /* CustomTableViewCell.swift */,
@@ -844,6 +847,7 @@
 				848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */,
 				844F11482B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift in Sources */,
 				4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */,
+				84F4E0E62BA2D3D300B3F1F3 /* AABaseListVC.swift in Sources */,
 				2763384524A7070F00143B9B /* DataSortingWithAnimationChartVC.swift in Sources */,
 				84BDF5A5293064DE00B9EC30 /* OfficialPieChartVC.swift in Sources */,
 				84595DF02B47E8E700F69273 /* AdvancedFeaturesListVC.swift in Sources */,
@@ -1125,7 +1129,7 @@
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Love.AAInfographics99988;
+				PRODUCT_BUNDLE_IDENTIFIER = Love.AAInfographics9990;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = YES;
@@ -1145,7 +1149,7 @@
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographijiijiji;
+				PRODUCT_BUNDLE_IDENTIFIER = Hobbies.AAInfographics888;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
