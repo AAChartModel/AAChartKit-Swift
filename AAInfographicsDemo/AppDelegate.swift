@@ -94,9 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return tabBarController
     }
 
-    func createFirstViewController() -> MainVC {
+    func createFirstViewController() -> AAChartModelListVC {
         // 创建第一个视图控制器
-        let firstVC = MainVC()
+        let firstVC = AAChartModelListVC()
         firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
 
         // 在这里添加第一个视图控制器的其他配置

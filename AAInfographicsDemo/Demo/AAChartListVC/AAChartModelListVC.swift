@@ -34,7 +34,7 @@ import UIKit
 import AAInfographics
 
 @available(iOS 10.0, macCatalyst 13.1, *)
-class MainVC: AABaseListVC {
+class AAChartModelListVC: AABaseListVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -437,7 +437,7 @@ class MainVC: AABaseListVC {
 }
 
 @available(macCatalyst 13.1, *)
-extension MainVC {
+extension AAChartModelListVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {

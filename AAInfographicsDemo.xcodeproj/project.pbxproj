@@ -20,7 +20,7 @@
 		278C54C71EE9472300770B97 /* AAInfographicsDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54C61EE9472300770B97 /* AAInfographicsDemoTests.swift */; };
 		278C54D21EE9472300770B97 /* AAInfographicsDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C54D11EE9472300770B97 /* AAInfographicsDemoUITests.swift */; };
 		278C55141EE948C900770B97 /* BasicChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55101EE948C900770B97 /* BasicChartVC.swift */; };
-		278C55151EE948C900770B97 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55111EE948C900770B97 /* MainVC.swift */; };
+		278C55151EE948C900770B97 /* AAChartModelListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55111EE948C900770B97 /* AAChartModelListVC.swift */; };
 		278C55161EE948C900770B97 /* SpecialChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55121EE948C900770B97 /* SpecialChartVC.swift */; };
 		278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278C55131EE948C900770B97 /* AnimationTypeVC.swift */; };
 		279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */; };
@@ -196,7 +196,7 @@
 		278C54D11EE9472300770B97 /* AAInfographicsDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAInfographicsDemoUITests.swift; sourceTree = "<group>"; };
 		278C54D31EE9472300770B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		278C55101EE948C900770B97 /* BasicChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicChartVC.swift; sourceTree = "<group>"; };
-		278C55111EE948C900770B97 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		278C55111EE948C900770B97 /* AAChartModelListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAChartModelListVC.swift; sourceTree = "<group>"; };
 		278C55121EE948C900770B97 /* SpecialChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialChartVC.swift; sourceTree = "<group>"; };
 		278C55131EE948C900770B97 /* AnimationTypeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypeVC.swift; sourceTree = "<group>"; };
 		279B5B131FB0577A000B8DBF /* ShowManyChartViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowManyChartViewVC.swift; sourceTree = "<group>"; };
@@ -551,7 +551,7 @@
 		844F11412B63644000ADEB1C /* AAChartListVC */ = {
 			isa = PBXGroup;
 			children = (
-				278C55111EE948C900770B97 /* MainVC.swift */,
+				278C55111EE948C900770B97 /* AAChartModelListVC.swift */,
 				84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */,
 				84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */,
 				84595DED2B47E53C00F69273 /* OfficialSamplesListVC.swift */,
@@ -829,7 +829,7 @@
 				279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */,
 				844F11402B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift in Sources */,
 				84E68FBF2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift in Sources */,
-				278C55151EE948C900770B97 /* MainVC.swift in Sources */,
+				278C55151EE948C900770B97 /* AAChartModelListVC.swift in Sources */,
 				84F21858292DF373007AA726 /* OfficialAreaChartVC.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
 				4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */,
