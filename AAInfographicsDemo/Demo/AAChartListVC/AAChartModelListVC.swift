@@ -264,7 +264,7 @@ class AAChartModelListVC: AABaseListVC {
             ],
             /*Custom Style For Bubble Chart*/
             [
-                "configureNegativeColorMixedBubbleChart",
+                "negativeColorMixedBubbleChart",
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
 
@@ -424,7 +424,7 @@ class AAChartModelListVC: AABaseListVC {
             ],
             /*Custom Style For Bubble Chart*/
             [
-                "configureNegativeColorMixedBubbleChart",
+                "negativeColorMixedBubbleChart",
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
 

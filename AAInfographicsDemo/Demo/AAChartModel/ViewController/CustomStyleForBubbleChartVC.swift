@@ -20,7 +20,7 @@ class CustomStyleForBubbleChartVC: AABaseChartVC {
 
     override func chartConfigurationWithSelectedChartTypeString(_ selectedChartTypeStr: String) -> Any? {
         switch selectedChartTypeStr {
-        case "configureNegativeColorMixedBubbleChart": return CustomStyleForBubbleChartComposer.configureNegativeColorMixedBubbleChart()
+        case "negativeColorMixedBubbleChart": return CustomStyleForBubbleChartComposer.negativeColorMixedBubbleChart()
         case "showAARadialGradientPositionAllEnumValuesWithBubbleChart": return CustomStyleForBubbleChartComposer.showAARadialGradientPositionAllEnumValuesWithBubbleChart()
             
         default: return nil

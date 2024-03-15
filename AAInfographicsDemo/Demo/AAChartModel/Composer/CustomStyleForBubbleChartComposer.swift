@@ -34,7 +34,7 @@ import AAInfographics
 
 class CustomStyleForBubbleChartComposer {
     
-    static func configureNegativeColorMixedBubbleChart() -> AAChartModel {
+    static func negativeColorMixedBubbleChart() -> AAChartModel {
         AAChartModel()
             .categories(["Saturday", "Friday", "Thursday","Wednesday", "Tuesday", "Monday", "Sunday"])
             .series([
