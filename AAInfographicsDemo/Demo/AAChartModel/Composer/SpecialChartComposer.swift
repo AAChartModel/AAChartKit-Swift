@@ -34,7 +34,7 @@ import AAInfographics
 
 class SpecialChartComposer {
     
-    static func configureBasePolarChart() -> AAChartModel {
+    static private func basePolarChart() -> AAChartModel {
         AAChartModel()
             .polar(true)
             .dataLabelsEnabled(false)
@@ -49,27 +49,27 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configurePolarColumnChart() -> AAChartModel {
-        configureBasePolarChart()
+    static func polarColumnChart() -> AAChartModel {
+        basePolarChart()
             .chartType(.column)
     }
     
-    static func configurePolarBarChart() -> AAChartModel {
-        configureBasePolarChart()
+    static func polarBarChart() -> AAChartModel {
+        basePolarChart()
             .chartType(.bar)
     }
     
-    static func configurePolarLineChart() -> AAChartModel {
-        configureBasePolarChart()
+    static func polarLineChart() -> AAChartModel {
+        basePolarChart()
             .chartType(.line)
     }
     
-    static func configurePolarAreaChart() -> AAChartModel {
-        configureBasePolarChart()
+    static func polarAreaChart() -> AAChartModel {
+        basePolarChart()
             .chartType(.area)
     }
     
-    static func configurePieChart() -> AAChartModel {
+    static func pieChart() -> AAChartModel {
         AAChartModel()
             .chartType(.pie)
             .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
@@ -95,7 +95,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureBubbleChart() -> AAChartModel {
+    static func bubbleChart() -> AAChartModel {
         AAChartModel()
             .chartType(.bubble)
             .title("AACHARTKIT BUBBLES")
@@ -169,7 +169,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureScatterChart() -> AAChartModel {
+    static func scatterChart() -> AAChartModel {
         AAChartModel()
             .chartType(.scatter)
             .title("Height and weight distribution by sex")
@@ -299,7 +299,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureArearangeChart() -> AAChartModel {
+    static func arearangeChart() -> AAChartModel {
         AAChartModel()
             .chartType(.arearange)
             .title("Twilight Hall day temperature fluctuation map")
@@ -691,7 +691,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureAreasplinerangeChart() -> AAChartModel {
+    static func areasplinerangeChart() -> AAChartModel {
         AAChartModel()
             .chartType(.areasplinerange)
             .title("Area spline range chart")
@@ -778,7 +778,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureColumnrangeChart() -> AAChartModel {
+    static func columnrangeChart() -> AAChartModel {
         AAChartModel()
             .chartType(.columnrange)
             .title("TEMPERATURE VARIATION BY MONTH")
@@ -811,7 +811,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureStepLineChart() -> AAChartModel {
+    static func stepLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)//图形类型
             .animationType(.easeOutCubic)//图形渲染动画类型为"easeOutCubic"
@@ -836,7 +836,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureStepAreaChart() -> AAChartModel {
+    static func stepAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.area)//图形类型
             .animationType(.easeOutCubic)//图形渲染动画类型为"easeOutCubic"
@@ -864,7 +864,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureBoxplotChart() -> AAChartModel {
+    static func boxplotChart() -> AAChartModel {
         AAChartModel()
             .chartType(.boxplot)
             .title("BOXPLOT CHART")
@@ -886,7 +886,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureWaterfallChart() -> AAChartModel {
+    static func waterfallChart() -> AAChartModel {
         AAChartModel()
             .chartType(.waterfall)
             .title("WATERFALL CHART")
@@ -908,7 +908,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configurePyramidChart() -> AAChartModel {
+    static func pyramidChart() -> AAChartModel {
         AAChartModel()
             .chartType(.pyramid)
             .title("THE HEAT OF PROGRAM LANGUAGE")
@@ -927,7 +927,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureFunnelChart() -> AAChartModel {
+    static func funnelChart() -> AAChartModel {
         AAChartModel()
             .chartType(.funnel)
             .title("THE HEAT OF PROGRAM LANGUAGE")
@@ -953,7 +953,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureErrorbarChart() -> AAChartModel {
+    static func errorbarChart() -> AAChartModel {
         AAChartModel()
             .categories([
                 "一月", "二月", "三月", "四月", "五月", "六月",
@@ -976,7 +976,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configureGaugeChart() -> AAChartModel {
+    static func gaugeChart() -> AAChartModel {
         AAChartModel()
             .title("速度仪")
             .yAxisTitle("km/h")
@@ -994,7 +994,7 @@ class SpecialChartComposer {
             ])
     }
     
-    static func configurePolygonChart() -> AAChartModel {
+    static func polygonChart() -> AAChartModel {
         AAChartModel()
             .title("多边形图")
             .dataLabelsEnabled(false)
