@@ -69,6 +69,59 @@ class SpecialChartComposer {
             .chartType(.area)
     }
     
+    static func stepLineChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.line)//图形类型
+            .animationType(.easeOutCubic)//图形渲染动画类型为"easeOutCubic"
+            .title("STEP LINE CHART")//图形标题
+            .subtitle("2020/08/08")//图形副标题
+            .dataLabelsEnabled(false)//是否显示数字
+            .markerSymbolStyle(.borderBlank)//折线连接点样式
+            .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
+            .series([
+                AASeriesElement()
+                    .name("Berlin")
+                    .data([450, 432, 401, 454, 590, 530, 510])
+                    .step(.right), //折线连接点靠右👉
+                AASeriesElement()
+                    .name("New York")
+                    .data([220, 282, 201, 234, 290, 430, 410])
+                    .step(.center),//折线连接点居中
+                AASeriesElement()
+                    .name("Tokyo")
+                    .data([120, 132, 101, 134, 90, 230, 210])
+                    .step(.left),//折线连接点靠左边👈
+            ])
+    }
+    
+    static func stepAreaChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.area)//图形类型
+            .animationType(.easeOutCubic)//图形渲染动画类型为"easeOutCubic"
+            .title("STEP AREA CHART")//图形标题
+            .subtitle("2049/08/08")//图形副标题
+            .dataLabelsEnabled(false)//是否显示数字
+            .markerSymbolStyle(.innerBlank)//折线连接点样式
+            .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
+            .series([
+                AASeriesElement()
+                    .name("Berlin")
+                    .data([450, 432, 401, 454, 590, 530, 510])
+                    .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
+                ,
+                AASeriesElement()
+                    .name("New York")
+                    .data([220, 282, 201, 234, 290, 430, 410])
+                    .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
+                ,
+                AASeriesElement()
+                    .name("Tokyo")
+                    .data([120, 132, 101, 134, 90, 230, 210])
+                    .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
+                ,
+            ])
+    }
+    
     static func pieChart() -> AAChartModel {
         AAChartModel()
             .chartType(.pie)
@@ -808,59 +861,6 @@ class SpecialChartComposer {
                         [-5.2, 10.4],
                         [-13.5, 9.8]
                     ])
-            ])
-    }
-    
-    static func stepLineChart() -> AAChartModel {
-        AAChartModel()
-            .chartType(.line)//图形类型
-            .animationType(.easeOutCubic)//图形渲染动画类型为"easeOutCubic"
-            .title("STEP LINE CHART")//图形标题
-            .subtitle("2020/08/08")//图形副标题
-            .dataLabelsEnabled(false)//是否显示数字
-            .markerSymbolStyle(.borderBlank)//折线连接点样式
-            .markerRadius(7)//折线连接点半径长度,为0时相当于没有折线连接点
-            .series([
-                AASeriesElement()
-                    .name("Berlin")
-                    .data([450, 432, 401, 454, 590, 530, 510])
-                    .step(.right), //折线连接点靠右👉
-                AASeriesElement()
-                    .name("New York")
-                    .data([220, 282, 201, 234, 290, 430, 410])
-                    .step(.center),//折线连接点居中
-                AASeriesElement()
-                    .name("Tokyo")
-                    .data([120, 132, 101, 134, 90, 230, 210])
-                    .step(.left),//折线连接点靠左边👈
-            ])
-    }
-    
-    static func stepAreaChart() -> AAChartModel {
-        AAChartModel()
-            .chartType(.area)//图形类型
-            .animationType(.easeOutCubic)//图形渲染动画类型为"easeOutCubic"
-            .title("STEP AREA CHART")//图形标题
-            .subtitle("2049/08/08")//图形副标题
-            .dataLabelsEnabled(false)//是否显示数字
-            .markerSymbolStyle(.innerBlank)//折线连接点样式
-            .markerRadius(0)//折线连接点半径长度,为0时相当于没有折线连接点
-            .series([
-                AASeriesElement()
-                    .name("Berlin")
-                    .data([450, 432, 401, 454, 590, 530, 510])
-                    .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
-                ,
-                AASeriesElement()
-                    .name("New York")
-                    .data([220, 282, 201, 234, 290, 430, 410])
-                    .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
-                ,
-                AASeriesElement()
-                    .name("Tokyo")
-                    .data([120, 132, 101, 134, 90, 230, 210])
-                    .step(true)//设置折线样式为直方折线,折线连接点位置靠左👈
-                ,
             ])
     }
     

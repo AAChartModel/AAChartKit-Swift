@@ -41,19 +41,20 @@ class SpecialChartVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedChartType(_ selectedChartType: AAChartType) -> Any? {
         switch selectedChartType {
+        /*Basic Chart Mutant*/
         case .column:          return SpecialChartComposer.polarColumnChart()
         case .bar:             return SpecialChartComposer.polarBarChart()
         case .line:            return SpecialChartComposer.polarLineChart()
         case .area:            return SpecialChartComposer.polarAreaChart()
+        case .spline:          return SpecialChartComposer.stepLineChart()
+        case .areaspline:      return SpecialChartComposer.stepAreaChart()
+        /*True Special Chart*/
         case .pie:             return SpecialChartComposer.pieChart()
         case .bubble:          return SpecialChartComposer.bubbleChart()
-            
         case .scatter:         return SpecialChartComposer.scatterChart()
         case .arearange:       return SpecialChartComposer.arearangeChart()
         case .areasplinerange: return SpecialChartComposer.areasplinerangeChart()
         case .columnrange:     return SpecialChartComposer.columnrangeChart()
-        case .spline:          return SpecialChartComposer.stepLineChart()
-        case .areaspline:      return SpecialChartComposer.stepAreaChart()
         case .boxplot:         return SpecialChartComposer.boxplotChart()
         case .waterfall:       return SpecialChartComposer.waterfallChart()
         case .pyramid:         return SpecialChartComposer.pyramidChart()
