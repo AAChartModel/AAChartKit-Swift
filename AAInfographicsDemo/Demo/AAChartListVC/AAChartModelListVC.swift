@@ -150,21 +150,16 @@ class AAChartModelListVC: AABaseListVC {
             ],
             /*Mixed Chart*/
             [
-                "Arearange Mixed Line---面积范围均线图",
-                "Columnrange Mixed Line---柱形范围图混合折线图",
-                "Stacking Column Mixed Line---堆积柱状图混合折线图",
-                "Dash Style Types Mixed---多种类型曲线混合图",
-                "Negative Color Mixed Column Chart---基准线以下异色混合图",
-                "scatterMixedLine---散点图混合折线图",
-                "Negative Color Mixed Bubble Chart---基准线以下异色气泡图",
-                "Polygon Mixed Scatter---多边形混合散点图",
-                "Polar Chart Mixed---极地混合图",
-                "Column Mixed Scatter---柱状图混合散点图",
-                "Pie Mixed Line Mixed Column---扇形折线柱形混合图",
-                "Line Chart With Shadow---带有阴影效果の折线图",
-                "Negative Color Mixed Areaspline chart---基准线以下异色混合曲线填充图",
-                "Aerasplinerange Mixed Columnrange Mixed Line Chart---曲线面积范围混合柱形范围混合折线图",
-                "boxplot Mixed Scatter Chart With Jitter---带有抖动的箱线混合散点图",
+                "arearangeMixedLineChart---面积范围均线图",
+                "columnrangeMixedLineChart---柱形范围图混合折线图",
+                "stackingColumnMixedLineChart---堆积柱状图混合折线图",
+                "scatterMixedLineChart---多种类型曲线混合图",
+                "polygonMixedScatterChart---多边形混合散点图",
+                "polarChartMixedChart---极地混合图",
+                "columnMixedScatterChart---柱状图混合散点图",
+                "pieMixedLineMixedColumnChart---扇形折线柱形混合图",
+                "aerasplinerangeMixedColumnrangeMixedLineChart---曲线面积范围混合柱形范围混合折线图",
+                "boxplotMixedScatterChartWithJitterChart---带有抖动的箱线混合散点图"
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -310,21 +305,16 @@ class AAChartModelListVC: AABaseListVC {
             ],
             /*Mixed Chart*/
             [
-                "arearangeMixedLine",
-                "columnrangeMixedLine",
-                "stackingColumnMixedLine",
-                "dashStyleTypeMixed",
-                "negativeColorMixed",
-                "scatterMixedLine",
-                "negativeColorMixedBubble",
-                "polygonMixedScatter",
-                "polarChartMixed",
-                "columnMixedScatter",
-                "PieMixedLineMixedColumn",
-                "LineChartWithShadow",
-                "NegativeColorMixedAreasplineChart",
-                "AerasplinerangeMixedColumnrangeMixedLineChart",
-                "boxplotMixedScatterChartWithJitter"
+                "arearangeMixedLineChart",
+                "columnrangeMixedLineChart",
+                "stackingColumnMixedLineChart",
+                "scatterMixedLineChart",
+                "polygonMixedScatterChart",
+                "polarChartMixedChart",
+                "columnMixedScatterChart",
+                "pieMixedLineMixedColumnChart",
+                "aerasplinerangeMixedColumnrangeMixedLineChart",
+                "boxplotMixedScatterChartWithJitterChart"
             ],
             /*Custom Style For Pie Chart*/
             [
