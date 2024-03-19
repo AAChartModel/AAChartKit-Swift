@@ -93,7 +93,7 @@ class CustomStyleChartVC: AABaseChartVC {
         case 47: return CustomStyleForLineChartComposer.customLineChartWithColorfulMarkersAndLines2()
         case 48: return CustomStyleForScatterChartComposer.drawLineMixedScatterChartWithPointsCoordinates2()
         case 49: return CustomStyleForColumnChartComposer.negativeDataMixedPositiveDataColumnChart()
-        case 50: return MixedChartComposer.configureMultiLevelStopsArrGradientColorAreasplineMixedLineChart()
+        case 50: return MixedChartComposer.multiLevelStopsArrGradientColorAreasplineMixedLineChart()
         case 51: return CustomStyleForLineChartComposer.connectNullsForSingleAASeriesElement()
         case 52: return CustomStyleForLineChartComposer.lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement()
         case 53: return CustomStyleForAreaChartComposer.customAreasplineChartWithColorfulGradientColorZones()

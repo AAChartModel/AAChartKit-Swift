@@ -35,7 +35,7 @@ import AAInfographics
 class MixedChartComposer {
     
     //http://jsfiddle.net/7L6n922w/1/
-    static func configureArearangeMixedLineChart() -> AAChartModel {
+    static func arearangeMixedLineChart() -> AAChartModel {
         AAChartModel()
             .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
             .subtitle("virtual data")
@@ -127,7 +127,7 @@ class MixedChartComposer {
             ])
     }
     
-    static func configureColumnrangeMixedLineChart() -> AAChartModel {
+    static func columnrangeMixedLineChart() -> AAChartModel {
         AAChartModel()
             .colorsTheme(["#1e90ff", "#EA007B", "#49C1B6", "#FDC20A", "#F78320", "#068E81",])//主题颜色数组
             .chartType(.line)
@@ -171,7 +171,7 @@ class MixedChartComposer {
             ])
     }
     
-    static func configureStackingColumnMixedLineChart() -> AAChartModel {
+    static func stackingColumnMixedLineChart() -> AAChartModel {
         AAChartModel()
             .title("16年1月-16年11月充值客单分析")//图形标题
             .subtitle("BY MICVS")//图形副标题
@@ -209,7 +209,7 @@ class MixedChartComposer {
             ])
     }
     
-    static func configureScatterMixedLineChart() -> AAChartModel {
+    static func scatterMixedLineChart() -> AAChartModel {
         AAChartModel()
             .dataLabelsEnabled(false)//是否显示数字
             .chartType(.scatter)
@@ -434,7 +434,7 @@ class MixedChartComposer {
             ])
     }
     
-    static func configurePolygonMixedScatterChart() -> AAChartModel {
+    static func polygonMixedScatterChart() -> AAChartModel {
         AAChartModel()
             .series([
                 AASeriesElement()
@@ -506,7 +506,7 @@ class MixedChartComposer {
             ])
     }
     
-    static func configurePolarChartMixedChart() -> AAChartModel {
+    static func polarChartMixedChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
             .polar(true)
@@ -529,7 +529,7 @@ class MixedChartComposer {
             ])
     }
     
-    static func configureColumnMixedScatterChart() -> AAChartModel {
+    static func columnMixedScatterChart() -> AAChartModel {
         AAChartModel()
             .xAxisReversed(true)
             .series([
@@ -565,7 +565,7 @@ class MixedChartComposer {
             ])
     }
     
-    static func configurePieMixedLineMixedColumnChart() -> AAChartModel {
+    static func pieMixedLineMixedColumnChart() -> AAChartModel {
         AAChartModel()
             .stacking(.normal)
             .colorsTheme(["#fe117c", "#ffc069", "#06caf4", "#7dffc0"])
@@ -619,7 +619,7 @@ class MixedChartComposer {
             ])
     }
     
-    static func configureAerasplinerangeMixedColumnrangeMixedLineChart() -> AAChartModel {
+    static func areasplinerangeMixedColumnrangeMixedLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .dataLabelsEnabled(true)
@@ -788,7 +788,7 @@ class MixedChartComposer {
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/389
-    static func configureMultiLevelStopsArrGradientColorAreasplineMixedLineChart() -> AAChartModel {
+    static func multiLevelStopsArrGradientColorAreasplineMixedLineChart() -> AAChartModel {
         AAChartModel()
             .stacking(.normal)
             .backgroundColor(AAColor.black)

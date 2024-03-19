@@ -41,17 +41,17 @@ class MixedChartVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedChartTypeString(_ selectedChartTypeStr: String) -> Any? {
         switch selectedChartTypeStr {
-        case "arearangeMixedLine": return MixedChartComposer.configureArearangeMixedLineChart()
-        case "columnrangeMixedLine": return MixedChartComposer.configureColumnrangeMixedLineChart()
-        case "stackingColumnMixedLine": return MixedChartComposer.configureStackingColumnMixedLineChart()
-        case "scatterMixedLine": return MixedChartComposer.configureScatterMixedLineChart()
-        case "polygonMixedScatter": return MixedChartComposer.configurePolygonMixedScatterChart()
-        case "polarChartMixed": return MixedChartComposer.configurePolarChartMixedChart()
-        case "columnMixedScatter": return MixedChartComposer.configureColumnMixedScatterChart()
-        case "PieMixedLineMixedColumn": return MixedChartComposer.configurePieMixedLineMixedColumnChart()
-        case "AerasplinerangeMixedColumnrangeMixedLineChart": return MixedChartComposer.configureAerasplinerangeMixedColumnrangeMixedLineChart()
+        case "arearangeMixedLine": return MixedChartComposer.arearangeMixedLineChart()
+        case "columnrangeMixedLine": return MixedChartComposer.columnrangeMixedLineChart()
+        case "stackingColumnMixedLine": return MixedChartComposer.stackingColumnMixedLineChart()
+        case "scatterMixedLine": return MixedChartComposer.scatterMixedLineChart()
+        case "polygonMixedScatter": return MixedChartComposer.polygonMixedScatterChart()
+        case "polarChartMixed": return MixedChartComposer.polarChartMixedChart()
+        case "columnMixedScatter": return MixedChartComposer.columnMixedScatterChart()
+        case "pieMixedLineMixedColumn": return MixedChartComposer.pieMixedLineMixedColumnChart()
+        case "aerasplinerangeMixedColumnrangeMixedLineChart": return MixedChartComposer.areasplinerangeMixedColumnrangeMixedLineChart()
         case "boxplotMixedScatterChartWithJitter": return MixedChartComposer.boxplotMixedScatterChartWithJitter()
-        default: return MixedChartComposer.configureArearangeMixedLineChart()
+        default: return MixedChartComposer.arearangeMixedLineChart()
         }
     }
 }
