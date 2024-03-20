@@ -15,7 +15,7 @@ class OfficialSamplesListVC: AABaseListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "AAInfographics"
+        title = "Offical Samples"
         
         sectionTitleArr = [
             "Official Samples For Area Chart---折线📈填充图官方示例",
