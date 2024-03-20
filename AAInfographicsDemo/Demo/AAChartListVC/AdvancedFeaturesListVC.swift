@@ -15,7 +15,7 @@ class AdvancedFeaturesListVC: AABaseListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "AAInfographics"
+        title = "Advanced Features"
         
         sectionTitleArr = [
             "Only Refresh data | 单纯刷新数据",
