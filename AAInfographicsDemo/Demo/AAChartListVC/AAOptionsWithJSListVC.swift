@@ -18,7 +18,6 @@ class AAOptionsWithJSListVC: AABaseListVC {
         title = "AAOptionsWithJS"
         
         sectionTitleArr = [
-          
             "JS Function For AAOptionns | 通过带有 JS 函数的 Options 绘图",
          
             "JS Function For AAAxis Labels | 通过带有 JS 函数的自定义 AAAxis 的文字标签",
@@ -26,12 +25,9 @@ class AAOptionsWithJSListVC: AABaseListVC {
             "JS Function For AAChartEvents---通过 JSFunction 自定义 AAChartEvents 的事件",
             "JS Function For AAChartEvents2---通过 JSFunction 自定义 AAChartEvents 的事件",
             "JS Function For AAOptions---通过 JSFunction 自定义 AAOptions 内容",
-            
-
         ]
         
         chartTypeTitleArr = [
-           
             /*JavaScript Formatter Function */
             [
                 "customAreaChartTooltipStyleWithSimpleFormatString---简单字符串拼接",
@@ -45,7 +41,6 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "customTooltipWhichDataSourceComeFromOutSideRatherThanSeries---通过来自外部の数据源来自定义 tooltip (而非常规の来自图表の series)",
                 "customAreasplineChartTooltipStyleByDivWithCSS---通过自定义 div 的 css 样式来自定义复杂效果的 tooltip 浮动提示框",
             ],
-       
             /*JS Function For AAAXis Labels*/
             [
                 "customYAxisLabels---自定义Y轴文字",
@@ -85,7 +80,6 @@ class AAOptionsWithJSListVC: AABaseListVC {
             [
                 "addClickEventToXAxisLabelAndAccessData---为 X 轴文字标签添加点击事件并获取到所点击的点的信息",
                 "defaultSelectedAPointForLineChart---默认选中折线图的一个点 marker",
-              
             ],
             /*JS Function For AAOptions*/
             [
@@ -94,7 +88,6 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "customizeEveryDataLabelSinglelyByDataLabelsFormatter---通过 formatter 来自定义单个 dataLabels 元素",
                 "configureColorfulDataLabelsForPieChart---为饼图配置多彩 dataLabels"
             ],
-       
 
         ]
         
@@ -119,7 +112,6 @@ extension AAOptionsWithJSListVC {
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-            
 
         case 1:
             /*JS Function For AAAxis Labels*/
@@ -128,6 +120,7 @@ extension AAOptionsWithJSListVC {
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
+            
         case 2:
             /*JS Function For AALegend*/
             let vc = JSFunctionForAALegendVC()
@@ -135,6 +128,7 @@ extension AAOptionsWithJSListVC {
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
+            
         case 3:
             /*JS Function For AAChartEventsVC*/
             let vc = JSFunctionForAAChartEventsVC()
@@ -142,6 +136,7 @@ extension AAOptionsWithJSListVC {
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
+            
         case 4:
             /*JS Function For AAChartEventsVC2*/
             let vc = JSFunctionForAAChartEventsVC2()
@@ -149,6 +144,7 @@ extension AAOptionsWithJSListVC {
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
+            
         case 5:
             /*JS Function For AAOptions*/
             let vc = JSFunctionForAAOptionsVC()

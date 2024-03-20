@@ -146,7 +146,6 @@ class AAChartModelListVC: AABaseListVC {
                 "connectNullsForSingleAASeriesElement---为单个 AASeriesElement 单独设置是否断点重连",
                 "lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement---测试有多组数据时, 数据量较大时, 不同组数据量差距较大时的折线图📈",
                 "customAreasplineChartWithColorfulGradientColorZones---彩色渐变色区域填充图",
-
             ],
             /*Mixed Chart*/
             [
@@ -262,8 +261,6 @@ class AAChartModelListVC: AABaseListVC {
                 "negativeColorMixedBubbleChart",
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
-
-
 
         ]
         
@@ -431,6 +428,7 @@ extension AAChartModelListVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
+            
         case 0:
             let vc = BasicChartVC()
             vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType

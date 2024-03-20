@@ -77,7 +77,6 @@ class AdvancedFeaturesListVC: AABaseListVC {
                 "Custom Chart StackLabel Sample ",
                 "Support Dragging Chart On X Axis",
             ],
-            
             /*Scrolling update chart data*/
             [  "Column Chart---柱形图",
                "Bar Chart---条形图",
@@ -200,7 +199,6 @@ class AdvancedFeaturesListVC: AABaseListVC {
                 AAChartType.spline,
                 AAChartType.scatter
             ],
-            
             /*Data Sorting With Animation Charts*/
             [
                 AAChartType.column,
@@ -235,6 +233,7 @@ extension AdvancedFeaturesListVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
+            
         case 0:
             /*Only Refresh Chart Data Dynamiclly*/
             let vc = OnlyRefreshChartDataVC()
@@ -287,9 +286,7 @@ extension AdvancedFeaturesListVC {
             vc.sampleChartTypeIndex = indexPath.row
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-            
          
- 
         case 5:
             /*Scrolling update Chart Data Dynamiclly*/
             let vc = ScrollingUpdateDataVC()

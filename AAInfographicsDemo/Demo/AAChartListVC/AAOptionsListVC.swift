@@ -106,17 +106,21 @@ class AAOptionsListVC: AABaseListVC {
                 "configureComplicatedCustomStepAreaChart2---复杂自定义阶梯折线填充图 2",
                 "configureComplicatedCustomStepAreaChart3---复杂自定义阶梯折线填充图 3",
             ],
+            
             [
                 "doubleXAxesAndDoubleYAxesChart---",
                 "disableGroupingBoxplotMixedScatterChart---",
             ],
+            
             [
                 "scatterChartWithJitter---",
                 "boxPlotMixedScatterChartWithJitter---"
             ],
+            
             [
                 "pieDonutChart---",
             ],
+            
             [
                 "disableGroupingColumnChart---",
                 "disableGroupingBarChart---"
@@ -137,12 +141,7 @@ extension AAOptionsListVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-//            "LineChartOptions--- 通过 Options 绘制折线📈图",
-//            "AreaChartOptions--- 通过 Options 绘制折线填充图",
-//            "MultiYAxesChartOptionsVC---通过 Options 绘制多 Y 轴图",
-//            "ScatterChartOptionsVC---通过 Options 绘制散点图",
-//            "PieChartOptionsVC---通过 Options 绘饼图",
-//            "ColumnChartOptionsVC---通过 Options 绘制条形图",
+            
         case 0:
             /*Draw Chart With AAOptions Instance Object*/
             let vc = DrawChartWithAAOptionsVC()
@@ -151,7 +150,6 @@ extension AAOptionsListVC {
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-
         case 1:
             /*Line Chart Options*/
             let vc = LineChartOptionsVC()
