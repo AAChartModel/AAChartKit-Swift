@@ -15,7 +15,7 @@ class AAOptionsWithJSListVC: AABaseListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "AAInfographics"
+        title = "AAOptionsWithJS"
         
         sectionTitleArr = [
           
