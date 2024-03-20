@@ -39,7 +39,7 @@ class AAChartModelListVC: AABaseListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "AAInfographics"
+        title = "AAChartModel"
         
         sectionTitleArr = [
             "Basic Type Chart | 基础类型图表",
