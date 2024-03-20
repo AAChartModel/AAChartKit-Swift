@@ -15,7 +15,7 @@ class AAOptionsListVC: AABaseListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "AAInfographics"
+        title = "AAOptions"
         
         sectionTitleArr = [
             "Draw Chart With AAOptions | 通过Options绘图",
