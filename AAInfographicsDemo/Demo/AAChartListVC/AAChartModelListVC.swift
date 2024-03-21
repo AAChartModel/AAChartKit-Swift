@@ -241,14 +241,14 @@ class AAChartModelListVC: AABaseListVC {
             ],
             /*Custom Style For Area Chart*/
             [
-                "configureWithMinusNumberChart",
-                "configureColorfulGradientAreaChart",
-                "configureGradientColorAreasplineChart",
-                "configureAreaChartThreshold",
+                "withMinusNumberChart",
+                "colorfulGradientAreaChart",
+                "gradientColorAreasplineChart",
+                "areaChartThreshold",
                 "customSpecialStyleDataLabelOfSingleDataElementChart",
                 "customSplineChartMarkerStatesHoverStyle",
-                "configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart",
-                "configureNegativeColorMixedAreasplineChart",
+                "colorfulGradientColorAndColorfulDataLabelsStepAreaChart",
+                "negativeColorMixedAreasplineChart",
                 "customAreasplineChartWithColorfulGradientColorZones",
             ],
             /*Custom Style For Scatter Chart*/
@@ -394,14 +394,14 @@ class AAChartModelListVC: AABaseListVC {
             ],
             /*Custom Style For Area Chart*/
             [
-                "configureWithMinusNumberChart",
-                "configureColorfulGradientAreaChart",
-                "configureGradientColorAreasplineChart",
-                "configureAreaChartThreshold",
+                "withMinusNumberChart",
+                "colorfulGradientAreaChart",
+                "gradientColorAreasplineChart",
+                "areaChartThreshold",
                 "customSpecialStyleDataLabelOfSingleDataElementChart",
                 "customSplineChartMarkerStatesHoverStyle",
-                "configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart",
-                "configureNegativeColorMixedAreasplineChart",
+                "colorfulGradientColorAndColorfulDataLabelsStepAreaChart",
+                "negativeColorMixedAreasplineChart",
                 "customAreasplineChartWithColorfulGradientColorZones",
             ],
             /*Custom Style For Scatter Chart*/

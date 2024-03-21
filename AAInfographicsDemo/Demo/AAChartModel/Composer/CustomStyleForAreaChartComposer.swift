@@ -7,7 +7,7 @@ import AAInfographics
 
 class CustomStyleForAreaChartComposer {
 
-    static func configureWithMinusNumberChart() -> AAChartModel {
+    static func withMinusNumberChart() -> AAChartModel {
         AAChartModel()
             .chartType(.area)
             .title("带有负数的区域填充图")
@@ -37,7 +37,7 @@ class CustomStyleForAreaChartComposer {
             ])
     }
 
-    static func configureColorfulGradientAreaChart() -> AAChartModel {
+    static func colorfulGradientAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.areaspline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
@@ -61,7 +61,7 @@ class CustomStyleForAreaChartComposer {
             ])
     }
 
-    static func configureGradientColorAreasplineChart() -> AAChartModel {
+    static func gradientColorAreasplineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.areaspline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
@@ -85,7 +85,7 @@ class CustomStyleForAreaChartComposer {
             ])
     }
 
-    static func configureAreaChartThreshold() -> AAChartModel {
+    static func areaChartThreshold() -> AAChartModel {
         AAChartModel()
             .chartType(.area)
             .yAxisGridLineWidth(0)
@@ -182,7 +182,7 @@ class CustomStyleForAreaChartComposer {
     }
 
     // GitHub issue https://github.com/AAChartModel/AAChartKit-Swift/issues/223
-    static func configureColorfulGradientColorAndColorfulDataLabelsStepAreaChart() -> AAChartModel {
+    static func colorfulGradientColorAndColorfulDataLabelsStepAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.area)
             .yAxisVisible(false)
@@ -257,7 +257,7 @@ class CustomStyleForAreaChartComposer {
     }
 
     //https://github.com/AAChartModel/AAChartKit/issues/921
-    static func configureNegativeColorMixedAreasplineChart() -> AAChartModel {
+    static func negativeColorMixedAreasplineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.areaspline)
             .legendEnabled(false)
