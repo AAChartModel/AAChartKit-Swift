@@ -80,8 +80,8 @@ class BasicChartComposer: NSObject {
         if aaChartModel.chartType == .areaspline {
             let gradientColorDic = AAGradientColor.linearGradient(
                 direction: .toBottomRight,
-                startColor: "rgba(138,43,226,1)",
-                endColor: "rgba(30,144,255,1)"//Color string settings support hexadecimal and rgba types
+                startColor: AARgba(138,43,226,1),
+                endColor: AARgba(30,144,255,1)//Color string settings support hexadecimal and rgba types
             )
             return aaChartModel
                 .animationType(.easeFrom)//Set chart rendering animation type to EaseFrom
