@@ -34,7 +34,7 @@ import AAInfographics
 
 class CustomStyleForLineChartComposer {
     
-    static func configureMixedLineChart() -> AAChartModel {
+    static func mixedLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .subtitle("虚拟数据")
@@ -61,7 +61,7 @@ class CustomStyleForLineChartComposer {
                 ])
     }
     
-    static func configureStepLineChart() -> AAChartModel {
+    static func stepLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)//图形类型
             .animationType(.bounce)//图形渲染动画类型为"bounce"
@@ -86,7 +86,7 @@ class CustomStyleForLineChartComposer {
                 ])
     }
     
-    static func configureStepAreaChart() -> AAChartModel {
+    static func stepAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.area)//图形类型
             .animationType(.bounce)//图形渲染动画类型为"bounce"
@@ -114,7 +114,7 @@ class CustomStyleForLineChartComposer {
                 ])
     }
     
-    static func configureCustomSingleDataLabelChart() -> AAChartModel {
+    static func customSingleDataLabelChart() -> AAChartModel {
         AAChartModel()
             .title("单独自定义某个指定数据元素的DataLabel")
             .colorsTheme([AAGradientColor.mysticMauve])
@@ -142,7 +142,7 @@ class CustomStyleForLineChartComposer {
             ])
     }
     
-    static func configureChartWithShadowStyle() -> AAChartModel {
+    static func chartWithShadowStyle() -> AAChartModel {
         AAChartModel()
             .yAxisVisible(false)
             .chartType(.spline)
@@ -165,7 +165,7 @@ class CustomStyleForLineChartComposer {
             ])
     }
     
-    static func configureColorfulGradientSplineChart() -> AAChartModel {
+    static func colorfulGradientSplineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.spline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
@@ -281,7 +281,7 @@ class CustomStyleForLineChartComposer {
     }
 
     // GitHub issue https://github.com/AAChartModel/AAChartKit/issues/904
-    static func configureColorfulShadowSplineChart() -> AAChartModel {
+    static func colorfulShadowSplineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.spline)
             .yAxisVisible(false)
@@ -335,7 +335,7 @@ class CustomStyleForLineChartComposer {
     }
 
     // GitHub issue https://github.com/AAChartModel/AAChartKit/issues/905
-    static func configureColorfulDataLabelsStepLineChart() -> AAChartModel {
+    static func colorfulDataLabelsStepLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .yAxisVisible(false)
@@ -413,7 +413,7 @@ class CustomStyleForLineChartComposer {
     }
 
     //https://github.com/AAChartModel/AAChartKit/issues/1203
-    static func configureMaxAndMinDataLabelsForChart() -> AAChartModel {
+    static func maxAndMinDataLabelsForChart() -> AAChartModel {
         AAChartModel()
             .chartType(.spline)
             .dataLabelsEnabled(false)//是否显示值
@@ -452,7 +452,7 @@ class CustomStyleForLineChartComposer {
             }())
     }
     
-    static func configureDashStyleTypesMixedChart() -> AAChartModel {
+    static func dashStyleTypesMixedChart() -> AAChartModel {
         AAChartModel()
             .chartType(.spline)//图形类型
             .dataLabelsEnabled(false)//是否显示数字
@@ -496,7 +496,7 @@ class CustomStyleForLineChartComposer {
     }
     
     
-    static func configureAllLineDashStyleTypesMixedChart() -> AAChartModel {
+    static func allLineDashStyleTypesMixedChart() -> AAChartModel {
         AAChartModel()
             .chartType(.spline)//图表类型
             .yAxisVisible(true)//设置 Y 轴是否可见
@@ -577,7 +577,7 @@ class CustomStyleForLineChartComposer {
                 ]}())
     }
     
-    static func configureLineChartWithShadow() -> AAChartModel {
+    static func lineChartWithShadow() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .title("Line Chart With Shadow")
