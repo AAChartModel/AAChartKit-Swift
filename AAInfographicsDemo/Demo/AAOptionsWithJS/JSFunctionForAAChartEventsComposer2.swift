@@ -54,10 +54,10 @@ Highcharts.chart('container', {
   }]
 });
      */
-
     //How to add click event to X-axis label and access data ?
     //https://www.highcharts.com/forum/viewtopic.php?t=40590
     //https://codepen.io/anon/pen/LmObxY?editors=1010
+    //https://github.com/AAChartModel/AAChartKit/issues/1531
     static func addClickEventToXAxisLabelAndAccessData() -> AAOptions {
         AAOptions()
             .chart(AAChart()
@@ -146,8 +146,6 @@ Highcharts.chart('container', {
      }]
  });
  */
-    
-   
     //https://api.highcharts.com/highcharts/plotOptions.series.marker.states.hover
     //https://api.highcharts.com/highcharts/plotOptions.series.events.mouseOver
     //https://api.highcharts.com/class-reference/Highcharts.Point#select
