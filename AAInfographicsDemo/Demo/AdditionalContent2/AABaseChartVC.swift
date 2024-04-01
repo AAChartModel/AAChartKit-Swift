@@ -214,7 +214,7 @@ class AABaseChartVC: UIViewController {
             aaChartView?.aa_drawChartWithChartModel(aaChartModel)
         } else if (chartConfiguration is AAOptions) {
             let aaOptions = chartConfiguration as! AAOptions
-            aaOptions.touchEventEnabled = true
+//            aaOptions.touchEventEnabled = true
             aaChartView?.aa_drawChartWithChartOptions(aaOptions)
         }
     }
@@ -236,7 +236,7 @@ class AABaseChartVC: UIViewController {
             aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel)
         } else if (chartConfiguration is AAOptions) {
             let aaOptions = chartConfiguration as! AAOptions
-            aaOptions.touchEventEnabled = true
+//            aaOptions.touchEventEnabled = true
             aaOptions.credits?
                 .enabled(true)
                 .text("https://github.com/AAChartModel/AAChartKit")
