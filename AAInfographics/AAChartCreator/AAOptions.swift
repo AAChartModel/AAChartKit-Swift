@@ -48,8 +48,8 @@ public class AAOptions: AAObject {
     public var credits: AACredits?
     public var defaultOptions: AALang?
     
-    public var clickEventEnabled: Bool?//Please DO NOT use this property
-    public var touchEventEnabled: Bool?//Please DO NOT use this property
+    internal var clickEventEnabled: Bool?//Please DO NOT use this property
+    internal var touchEventEnabled: Bool?//Please DO NOT use this property
     
     @discardableResult
     public func chart(_ prop: AAChart?) -> AAOptions {
