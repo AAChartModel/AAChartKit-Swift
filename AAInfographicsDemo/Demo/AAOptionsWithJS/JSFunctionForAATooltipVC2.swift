@@ -380,27 +380,23 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
             .useHTML(true)
             .formatter(#"""
                           function () {
-                                  function hoursToHoursMinutes (hours) {
-                                      const hoursInt = Math.floor(hours);
-                                      const minutes = Math.round((hours - hoursInt) * 60);
-                                      return hoursInt + "小时 " + minutes + "分钟";
+                                      function formatTime(hours) {
+                                          return [Math.floor(hours), '小时', Math.round((hours - Math.floor(hours)) * 60), '分钟'].join(' ');
+                                      }
+                                      
+                                      var colorStyles = {
+                                          blue: '<span style=\"color:#1e90ff;font-size:13px;\">◉</span> ',
+                                          red: '<span style=\"color:#ef476f;font-size:13px;\">◉</span> '
+                                      };
+                                      
+                                      var output = [
+                                          '<b>', this.x, '</b><br/>',
+                                          colorStyles.blue, this.points[0].series.name, ': ', formatTime(this.points[0].y), '<br/>',
+                                          colorStyles.red, this.points[1].series.name, ': ', formatTime(this.points[1].y)
+                                      ].join('');
+                                                    
+                                      return output;
                                   }
-
-                                  let s = '<b>' + this.x + '</b>' + '<br/>';
-                                  const colorDot1 = '<span style=\"'+'color:#1e90ff; font-size:13px\"'+'>◉</span> ';
-                                  const colorDot2 = '<span style=\"'+'color:#ef476f; font-size:13px\"'+'>◉</span> ';
-
-                                  const originalPoint1 = this.points[0].y;
-                                  const originalPoint2 = this.points[1].y;
-
-                                  const finalPoint1 = hoursToHoursMinutes (originalPoint1);
-                                  const finalPoint2 = hoursToHoursMinutes (originalPoint2);
-
-                                  const s1 = colorDot1 +this.points[0].series.name + ': ' + finalPoint1 + '<br/>';
-                                  const s2 = colorDot2 +this.points[1].series.name + ': ' + finalPoint2;
-                                  s += s1 + s2;
-                                  return s;
-                              }
                           """#)
 
         //禁用图例点击事件
