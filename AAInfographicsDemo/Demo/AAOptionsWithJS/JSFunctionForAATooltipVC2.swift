@@ -380,24 +380,22 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
             .useHTML(true)
             .formatter(#"""
                           function () {
-                                      function formatTime(hours) {
-                                          return [Math.floor(hours), '小时', Math.round((hours - Math.floor(hours)) * 60), '分钟'].join(' ');
-                                      }
+                                      const formatTime = hours => `${Math.floor(hours)}小时 ${Math.round((hours - Math.floor(hours)) * 60)}分钟`;
                                       
-                                      var colorStyles = {
-                                          blue: '<span style=\"color:#1e90ff;font-size:13px;\">◉</span> ',
-                                          red: '<span style=\"color:#ef476f;font-size:13px;\">◉</span> '
+                                      const colorStyles = {
+                                          blue: '<span style=\"color: #1e90ff; font-size: 13px;\">◉</span> ',
+                                          red: '<span style=\"color: #ef476f; font-size: 13px;\">◉</span> '
                                       };
                                       
-                                      var output = [
-                                          '<b>', this.x, '</b><br/>',
-                                          colorStyles.blue, this.points[0].series.name, ': ', formatTime(this.points[0].y), '<br/>',
-                                          colorStyles.red, this.points[1].series.name, ': ', formatTime(this.points[1].y)
-                                      ].join('');
-                                                    
-                                      return output;
+                                      return `
+                                      <b>${this.x}</b><br/>
+                                      ${colorStyles.blue}${this.points[0].series.name}: ${formatTime(this.points[0].y)}<br/>
+                                      ${colorStyles.red}${this.points[1].series.name}: ${formatTime(this.points[1].y)}
+                                  `;
                                   }
                           """#)
+        
+        
 
         //禁用图例点击事件
         aaOptions.plotOptions?.series?.events = AASeriesEvents()
