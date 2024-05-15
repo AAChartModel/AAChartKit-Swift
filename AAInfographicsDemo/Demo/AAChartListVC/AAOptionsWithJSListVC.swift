@@ -18,7 +18,9 @@ class AAOptionsWithJSListVC: AABaseListVC {
         title = "AAOptionsWithJS"
         
         sectionTitleArr = [
-            "JS Function For AAOptionns | 通过带有 JS 函数的 Options 绘图",
+            "JS Function For AATooltip 1 | 通过带有 JS 函数的自定义 AATooltip 浮动提示框 1",
+            "JS Function For AATooltip 2 | 通过带有 JS 函数的自定义 AATooltip 浮动提示框 2",
+
          
             "JS Function For AAAxis Labels | 通过带有 JS 函数的自定义 AAAxis 的文字标签",
             "JS Function For AALegend | 通过带有 JS 函数的自定义 AALegend",
@@ -28,7 +30,7 @@ class AAOptionsWithJSListVC: AABaseListVC {
         ]
         
         chartTypeTitleArr = [
-            /*JavaScript Formatter Function */
+            /*JS Function For AATooltip 1*/
             [
                 "customAreaChartTooltipStyleWithSimpleFormatString---简单字符串拼接",
                 "customAreaChartTooltipStyleWithDifferentUnitSuffix---自定义不同单位后缀",
@@ -40,6 +42,16 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "customLineChartOriginalPointPositionByConfiguringXAxisFormatterAndTooltipFormatter---调整折线图の X 轴左边距",
                 "customTooltipWhichDataSourceComeFromOutSideRatherThanSeries---通过来自外部の数据源来自定义 tooltip (而非常规の来自图表の series)",
                 "customAreasplineChartTooltipStyleByDivWithCSS---通过自定义 div 的 css 样式来自定义复杂效果的 tooltip 浮动提示框",
+            ],
+            /*JS Function For AATooltip 2*/
+            [
+                "customColumnChartBorderStyleAndStatesHoverColor---自定义📊柱状图的 border 样式和手指或鼠标 hover 时的显示效果",
+                "customTooltipPositionerFunction---自定义浮动提示框 Positioner 函数",
+                "fixedTooltipPositionByCustomPositionerFunction---通过 Positioner 函数来实现一个位置固定的提示框",
+                "customPlotAreaOutsideComplicatedTooltipStyle---通过 Positioner 函数来实现绘图区外的复杂浮动提示框样式",
+                "makePieChartShow0Data---使饼图显示为 0 的数据",
+                "formatTimeInfoForTooltip---自定义浮动提示框的形状和阴影样式",
+                "formatTimeInfoForTooltip---浮动提示框 tooltip 时间信息格式化显示"
             ],
             /*JS Function For AAAXis Labels*/
             [
@@ -112,8 +124,16 @@ extension AAOptionsWithJSListVC {
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-
+            
         case 1:
+            /*Custom Tooltip With JavaScript Formatter Function */
+            let vc = JSFunctionForAATooltipVC2()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+
+        case 2:
             /*JS Function For AAAxis Labels*/
             let vc = JSFunctionForAAAxisVC()
             vc.selectedIndex = indexPath.row
@@ -121,7 +141,7 @@ extension AAOptionsWithJSListVC {
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 2:
+        case 3:
             /*JS Function For AALegend*/
             let vc = JSFunctionForAALegendVC()
             vc.selectedIndex = indexPath.row
@@ -129,7 +149,7 @@ extension AAOptionsWithJSListVC {
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 3:
+        case 4:
             /*JS Function For AAChartEventsVC*/
             let vc = JSFunctionForAAChartEventsVC()
             vc.selectedIndex = indexPath.row
@@ -137,7 +157,7 @@ extension AAOptionsWithJSListVC {
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 4:
+        case 5:
             /*JS Function For AAChartEventsVC2*/
             let vc = JSFunctionForAAChartEventsVC2()
             vc.selectedIndex = indexPath.row
@@ -145,7 +165,7 @@ extension AAOptionsWithJSListVC {
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 5:
+        case 6:
             /*JS Function For AAOptions*/
             let vc = JSFunctionForAAOptionsVC()
             vc.selectedIndex = indexPath.row

@@ -24,6 +24,8 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
         case 3: return customPlotAreaOutsideComplicatedTooltipStyle() //通过 Positioner 函数来实现绘图区外的复杂浮动提示框样式
         case 4: return makePieChartShow0Data() //使饼图显示为 0 的数据
         case 5: return customizeTooltipShapeAndShadowBeSpecialStyle() //自定义浮动提示框的形状和阴影样式
+        case 6: return formatTimeInfoForTooltip() //浮动提示框 tooltip 时间信息格式化显示
+
         default:
             return nil
         }
@@ -359,6 +361,76 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
             ])
 
         return aaOptions
+    }
+
+    func formatTimeInfoForTooltip() -> AAOptions {
+        let categories = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+
+        let deepSeconds = [31320, 31320, 31320, 31320, 31320, 31320, 31320]
+        let lightSeconds = [3600, 3600, 3600, 3600, 3600, 3600, 3600]
+
+        let deepHours = [8.7, 8.7, 8.7, 8.7, 8.7, 8.7, 8.7]
+        let lightHours = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+
+        let chartModel = generateChartModel(categories: categories, deepValues: deepHours, lightValues: lightHours)
+
+        let aaOptions = chartModel.aa_toAAOptions()
+        aaOptions.tooltip?
+            .shared(true)
+            .useHTML(true)
+            .formatter(#"""
+                          function () {
+                                  function hoursToHoursMinutes (hours) {
+                                      const hoursInt = Math.floor(hours);
+                                      const minutes = Math.round((hours - hoursInt) * 60);
+                                      return hoursInt + "小时 " + minutes + "分钟";
+                                  }
+
+                                  let s = '<b>' + this.x + '</b>' + '<br/>';
+                                  const colorDot1 = '<span style=\"'+'color:#1e90ff; font-size:13px\"'+'>◉</span> ';
+                                  const colorDot2 = '<span style=\"'+'color:#ef476f; font-size:13px\"'+'>◉</span> ';
+
+                                  const originalPoint1 = this.points[0].y;
+                                  const originalPoint2 = this.points[1].y;
+
+                                  const finalPoint1 = hoursToHoursMinutes (originalPoint1);
+                                  const finalPoint2 = hoursToHoursMinutes (originalPoint2);
+
+                                  const s1 = colorDot1 +this.points[0].series.name + ': ' + finalPoint1 + '<br/>';
+                                  const s2 = colorDot2 +this.points[1].series.name + ': ' + finalPoint2;
+                                  s += s1 + s2;
+                                  return s;
+                              }
+                          """#)
+
+        //禁用图例点击事件
+        aaOptions.plotOptions?.series?.events = AASeriesEvents()
+            .legendItemClick(#"""
+                    function() {
+                      return false;
+                    }
+        """#)
+        return aaOptions
+    }
+
+    func generateChartModel(categories: [String], deepValues: [Double], lightValues: [Double]) -> AAChartModel {
+        let element1 = AASeriesElement()
+            .name("深度睡眠")
+            .data(deepValues)
+        let element2 = AASeriesElement()
+            .name("浅睡眠")
+            .data(lightValues)
+
+        let series = [element1, element2]
+
+        return AAChartModel()
+            .chartType(.column)
+            .stacking(.normal)
+            .legendEnabled(true)
+            .categories(categories)
+            .markerRadius(0)
+            .markerSymbolStyle(AAChartSymbolStyleType.borderBlank)
+            .series(series)
     }
     
 }
