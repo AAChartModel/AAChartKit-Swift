@@ -69,11 +69,14 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
                 ])
 
         let aaOptions = aaChartModel.aa_toAAOptions()
-        aaOptions.tooltip?.formatter("""
-                                     function () {
-                                         return false;
-                                             }
-                                     """)
+        
+        //Return `false` to disable tooltip for a specific point on series.
+        aaOptions.tooltip?
+            .formatter("""
+            function () {
+                return false;
+            }
+            """)
 
         return aaOptions
     }
@@ -304,7 +307,7 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
     //https://github.com/AAChartModel/AAChartKit/issues/1406
     //https://www.highcharts.com/forum/viewtopic.php?f=9&t=49629
     private func customizeTooltipShapeAndShadowBeSpecialStyle() -> AAOptions {
-        let aaOptions = AAOptions()
+        AAOptions()
             .chart(AAChart()
                 .type(.spline)
                 .backgroundColor("#f4f8ff"))
@@ -359,72 +362,55 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
                 AASeriesElement()
                     .data([122.2, 53.7, 300.0, 110.5, 320.4]),
             ])
-
-        return aaOptions
     }
 
+    //https://github.com/AAChartModel/AAChartCore/issues/192
     func formatTimeInfoForTooltip() -> AAOptions {
-        let categories = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
-
-        let deepSeconds = [31320, 31320, 31320, 31320, 31320, 31320, 31320]
-        let lightSeconds = [3600, 3600, 3600, 3600, 3600, 3600, 3600]
-
-        let deepHours = [8.7, 8.7, 8.7, 8.7, 8.7, 8.7, 8.7]
-        let lightHours = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
-
-        let chartModel = generateChartModel(categories: categories, deepValues: deepHours, lightValues: lightHours)
-
-        let aaOptions = chartModel.aa_toAAOptions()
+        let aaChartModel = AAChartModel()
+            .chartType(.column)
+            .stacking(.normal)
+            .legendEnabled(true)
+            .categories(["周一", "周二", "周三", "周四", "周五", "周六", "周日"])
+            .markerRadius(0)
+            .markerSymbolStyle(AAChartSymbolStyleType.borderBlank)
+            .series([
+                AASeriesElement()
+                    .name("深度睡眠")
+                    .data([8.7, 8.7, 8.7, 8.7, 8.7, 8.7, 8.7]),
+                AASeriesElement()
+                    .name("浅睡眠")
+                    .data([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+            ])
+        
+        let aaOptions = aaChartModel.aa_toAAOptions()
         aaOptions.tooltip?
             .shared(true)
             .useHTML(true)
             .formatter(#"""
                           function () {
-                                      const formatTime = hours => `${Math.floor(hours)}小时 ${Math.round((hours - Math.floor(hours)) * 60)}分钟`;
-                                      
-                                      const colorStyles = {
-                                          blue: '<span style=\"color: #1e90ff; font-size: 13px;\">◉</span> ',
-                                          red: '<span style=\"color: #ef476f; font-size: 13px;\">◉</span> '
-                                      };
-                                      
-                                      return `
+                                  const formatTime = hours => `${Math.floor(hours)}小时 ${Math.round((hours - Math.floor(hours)) * 60)}分钟`;
+                          
+                                  const pointStyle = (color, seriesName, yValue) =>
+                                      `<span style="color:${color};font-size:13px;">◉</span> ${seriesName}: ${formatTime(yValue)}`;
+                          
+                                  return `
                                       <b>${this.x}</b><br/>
-                                      ${colorStyles.blue}${this.points[0].series.name}: ${formatTime(this.points[0].y)}<br/>
-                                      ${colorStyles.red}${this.points[1].series.name}: ${formatTime(this.points[1].y)}
+                                      ${pointStyle('#1e90ff', this.points[0].series.name, this.points[0].y)}<br/>
+                                      ${pointStyle('#ef476f', this.points[1].series.name, this.points[1].y)}
                                   `;
-                                  }
+                              }
                           """#)
         
         
-
+        
         //禁用图例点击事件
         aaOptions.plotOptions?.series?.events = AASeriesEvents()
             .legendItemClick(#"""
                     function() {
                       return false;
                     }
-        """#)
+                    """#)
         return aaOptions
     }
 
-    func generateChartModel(categories: [String], deepValues: [Double], lightValues: [Double]) -> AAChartModel {
-        let element1 = AASeriesElement()
-            .name("深度睡眠")
-            .data(deepValues)
-        let element2 = AASeriesElement()
-            .name("浅睡眠")
-            .data(lightValues)
-
-        let series = [element1, element2]
-
-        return AAChartModel()
-            .chartType(.column)
-            .stacking(.normal)
-            .legendEnabled(true)
-            .categories(categories)
-            .markerRadius(0)
-            .markerSymbolStyle(AAChartSymbolStyleType.borderBlank)
-            .series(series)
-    }
-    
 }
