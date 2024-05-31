@@ -38,8 +38,8 @@ public class AALabels: AAObject {
     public var autoRotationLimit: Float? // When the width of each category is much larger than the value of this parameter (pixels), the axis labels will not be automatically rotated, but the axis labels will be displayed in a new line. When the axis label contains multiple short words, displaying the axis label in a new line can make the axis label have enough space, so it is very meaningful to set a reasonable automatic rotation lower limit. The default is: 80.
     public var distance: Float? // The label's pixel distance from the perimeter of the plot area. On cartesian charts, this is overridden if the labels.y setting is set.
     public var enabled: Bool? // Whether axis labels are displayed. The default is: true.
-    public var format: String? /// Axis format string. The default is: {value}.
-    public var formatter: String? // The axis format string. The default is: {value}.
+    public var format: String? // A format string for the axis label. The context is available as format string variables.
+    public var formatter: String? // Callback JavaScript function to format the label. The value is given by this.value.
     public var padding: Float? // The inner spacing of the axis labels, which is used to ensure that there is a gap between the axis labels. The default is: 5.
     public var rotation: Float? // The rotation angle of the axis label The default is: 0.
     public var staggerLines: Int? // Only valid for the horizontal axis, define the number of lines displayed on the axis label.
