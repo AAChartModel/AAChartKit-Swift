@@ -50,6 +50,7 @@ class AAChartModelListVC: AABaseListVC {
             "Column Chart With Custom Style | 一些自定义风格样式柱状图",
             "Bar Chart With Custom Style | 一些自定义风格样式条形图",
             "Line Chart With Custom Style | 一些自定义风格样式折线图",
+            "Spine Chart With Custom Style | 一些自定义风格样式曲线图",
             "Area Chart With Custom Style | 一些自定义风格样式折线填充图",
             "Scatter Chart With Custom Style | 一些自定义风格样式散点图",
             "Bubble Chart With Custom Style | 一些自定义风格样式气泡图",
@@ -239,6 +240,31 @@ class AAChartModelListVC: AABaseListVC {
                 "largeDifferencesInTheNumberOfDataInDifferentSeriesElementLineChart",
                 "customDifferentDataLabelsShapeForLineChart",
             ],
+            /*Custom Style For Spline Chart*/
+            [
+                "mixedSplineChart",
+                "stepSplineChart",
+                "stepAreaChart",
+                "customSingleDataLabelForSplineChart",
+                "shadowStyleSplineChart",
+                "colorfulGradientSplineChart",
+                "customMarkerSymbolContentSplineChart",
+                "drawPointsWithCoordinatesForSplineChart",
+                "customHoverAndSelectHaloStyleForSplineChart",
+                "disableSomeOfLinesMouseTrackingEffectForSplineChart",
+                "colorfulShadowSplineChart",
+                "colorfulDataLabelsStepSplineChart",
+                "disableMarkerHoverEffectForSplineChart",
+                "maxAndMinDataLabelsForSplineChart",
+                "dashStyleTypesMixedSplineChart",
+                "allLineDashStyleTypesMixedSplineChart",
+                "shadowSplineChart",
+                "colorfulMarkersAndLinesSplineChart",
+                "colorfulMarkersAndLinesSplineChart2",
+                "connectNullsForSingleAASeriesElementSplineChart",
+                "largeDifferencesInTheNumberOfDataInDifferentSeriesElementSplineChart",
+                "customDifferentDataLabelsShapeForSplineChart",
+            ],
             /*Custom Style For Area Chart*/
             [
                 "withMinusNumberChart",
@@ -392,6 +418,31 @@ class AAChartModelListVC: AABaseListVC {
                 "largeDifferencesInTheNumberOfDataInDifferentSeriesElementLineChart",
                 "customDifferentDataLabelsShapeForLineChart",
             ],
+            /*Custom Style For Spline Chart*/
+            [
+                "mixedSplineChart",
+                "stepSplineChart",
+                "stepAreaChart",
+                "customSingleDataLabelForSplineChart",
+                "shadowStyleSplineChart",
+                "colorfulGradientSplineChart",
+                "customMarkerSymbolContentSplineChart",
+                "drawPointsWithCoordinatesForSplineChart",
+                "customHoverAndSelectHaloStyleForSplineChart",
+                "disableSomeOfLinesMouseTrackingEffectForSplineChart",
+                "colorfulShadowSplineChart",
+                "colorfulDataLabelsStepSplineChart",
+                "disableMarkerHoverEffectForSplineChart",
+                "maxAndMinDataLabelsForSplineChart",
+                "dashStyleTypesMixedSplineChart",
+                "allLineDashStyleTypesMixedSplineChart",
+                "shadowSplineChart",
+                "colorfulMarkersAndLinesSplineChart",
+                "colorfulMarkersAndLinesSplineChart2",
+                "connectNullsForSingleAASeriesElementSplineChart",
+                "largeDifferencesInTheNumberOfDataInDifferentSeriesElementSplineChart",
+                "customDifferentDataLabelsShapeForSplineChart",
+            ],
             /*Custom Style For Area Chart*/
             [
                 "withMinusNumberChart",
@@ -482,6 +533,13 @@ extension AAChartModelListVC {
 
         case 7:
             let vc = CustomStyleForLineChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 8:
+            let vc = CustomStyleForSplineChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
