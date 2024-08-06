@@ -42,8 +42,8 @@ class CustomStyleChartVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-//        case 0:  return CustomStyleForColumnChartComposer.colorfulColumnChart()
-//        case 1:  return CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart()
+        case 0:  return upsideDownPyramidChart()
+        case 1:  return customVerticalXAxisCategoriesLabelsByHTMLBreakLineTag()
 //        case 2:  return CustomStyleForColumnChartComposer.discontinuousDataColumnChart()
 //        case 3:  return CustomStyleForLineChartComposer.mixedLineChart()
 //        case 4:  return CustomStyleForColumnChartComposer.randomColorfulColumnChart()
