@@ -19,15 +19,15 @@ class CustomStyleForAreaChartVC: AABaseChartVC {
 
     override func chartConfigurationWithSelectedChartTypeString(_ selectedChartTypeStr: String) -> Any? {
         switch selectedChartTypeStr {
-        case "withMinusNumberChart": return CustomStyleForAreaChartComposer.withMinusNumberChart()
+        case "withMinusNumberChart": return CustomStyleForAreaChartComposer.withMinusNumberAreaChart()
         case "colorfulGradientAreaChart": return CustomStyleForAreaChartComposer.colorfulGradientAreaChart()
-        case "gradientColorAreasplineChart": return CustomStyleForAreaChartComposer.gradientColorAreasplineChart()
-        case "areaChartThreshold": return CustomStyleForAreaChartComposer.areaChartThreshold()
-        case "customSpecialStyleDataLabelOfSingleDataElementChart": return CustomStyleForAreaChartComposer.customSpecialStyleDataLabelOfSingleDataElementChart()
-        case "customSplineChartMarkerStatesHoverStyle": return CustomStyleForAreaChartComposer.customSplineChartMarkerStatesHoverStyle()
+        case "gradientColorAreasplineChart": return CustomStyleForAreaChartComposer.gradientColorAreaChart()
+        case "areaChartThreshold": return CustomStyleForAreaChartComposer.thresholdForAreaChart()
+        case "customSpecialStyleDataLabelOfSingleDataElementChart": return CustomStyleForAreaChartComposer.customSpecialStyleDataLabelOfSingleDataElementForAreaChart()
+        case "customSplineChartMarkerStatesHoverStyle": return CustomStyleForAreaChartComposer.customMarkerStatesHoverStyleForAreaChart()
         case "colorfulGradientColorAndColorfulDataLabelsStepAreaChart": return CustomStyleForAreaChartComposer.colorfulGradientColorAndColorfulDataLabelsStepAreaChart()
-        case "negativeColorMixedAreasplineChart": return CustomStyleForAreaChartComposer.negativeColorMixedAreasplineChart()
-        case "customAreasplineChartWithColorfulGradientColorZones": return CustomStyleForAreaChartComposer.customAreasplineChartWithColorfulGradientColorZones()
+        case "negativeColorMixedAreasplineChart": return CustomStyleForAreaChartComposer.negativeColorMixedAreaChart()
+        case "customAreasplineChartWithColorfulGradientColorZones": return CustomStyleForAreaChartComposer.customColorfulGradientColorZonesForAreaChart()
             
         default: return nil
         }

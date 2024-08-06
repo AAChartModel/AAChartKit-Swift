@@ -7,7 +7,7 @@ import AAInfographics
 
 class CustomStyleForAreaChartComposer {
 
-    static func withMinusNumberChart() -> AAChartModel {
+    static func withMinusNumberAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.area)
             .title("带有负数的区域填充图")
@@ -61,7 +61,7 @@ class CustomStyleForAreaChartComposer {
             ])
     }
 
-    static func gradientColorAreasplineChart() -> AAChartModel {
+    static func gradientColorAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.areaspline)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
@@ -85,7 +85,7 @@ class CustomStyleForAreaChartComposer {
             ])
     }
 
-    static func areaChartThreshold() -> AAChartModel {
+    static func thresholdForAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.area)
             .yAxisGridLineWidth(0)
@@ -110,7 +110,7 @@ class CustomStyleForAreaChartComposer {
             ])
     }
 
-    static func customSpecialStyleDataLabelOfSingleDataElementChart() -> AAChartModel {
+    static func customSpecialStyleDataLabelOfSingleDataElementForAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.areaspline)
             .backgroundColor("#4b2b7f")
@@ -154,7 +154,7 @@ class CustomStyleForAreaChartComposer {
             ])
     }
 
-    static func customSplineChartMarkerStatesHoverStyle() -> AAChartModel {
+    static func customMarkerStatesHoverStyleForAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.areaspline)
             .title("Custom Spline Chart Marker States Hover Style")
@@ -257,7 +257,7 @@ class CustomStyleForAreaChartComposer {
     }
 
     //https://github.com/AAChartModel/AAChartKit/issues/921
-    static func negativeColorMixedAreasplineChart() -> AAChartModel {
+    static func negativeColorMixedAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.areaspline)
             .legendEnabled(false)
@@ -296,7 +296,7 @@ class CustomStyleForAreaChartComposer {
     }
 
     //https://github.com/AAChartModel/AAChartCore-Kotlin/issues/149
-    static func customAreasplineChartWithColorfulGradientColorZones() -> AAChartModel {
+    static func customColorfulGradientColorZonesForAreaChart() -> AAChartModel {
         AAChartModel()
             .chartType(.areaspline)
             .backgroundColor(AAColor.black)
