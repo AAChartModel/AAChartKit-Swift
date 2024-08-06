@@ -58,7 +58,7 @@ class CustomStyleForLineChartComposer {
                     .color(AAGradientColor.pixieDust)
                     .lineWidth(5)
                     .data([NSNull(), NSNull(), 100, 109, 89, NSNull(), NSNull(), 120, NSNull(), NSNull(), NSNull(), NSNull()])
-                ])
+            ])
     }
     
     static func stepLineChart() -> AAChartModel {
@@ -83,7 +83,7 @@ class CustomStyleForLineChartComposer {
                     .name("Tokyo")
                     .data([120, 132, 101, 134, 90, 230, 210])
                     .step(.left),//折线连接点靠左边👈
-                ])
+            ])
     }
     
     static func stepAreaChart() -> AAChartModel {
@@ -111,10 +111,10 @@ class CustomStyleForLineChartComposer {
                     .data([120, 132, 101, 134, 90, 230, 210])
                     .step((true))//设置折线样式为直方折线,连接点位置默认靠左👈
                 ,
-                ])
+            ])
     }
     
-    static func customSingleDataLabelChart() -> AAChartModel {
+    static func customSingleDataLabelForLineChart() -> AAChartModel {
         AAChartModel()
             .title("单独自定义某个指定数据元素的DataLabel")
             .colorsTheme([AAGradientColor.mysticMauve])
@@ -133,7 +133,7 @@ class CustomStyleForLineChartComposer {
                                 .style(AAStyle(
                                     color: AAColor.red,
                                     fontSize: 20,
-                                    weight: .bold, 
+                                    weight: .bold,
                                     outline: "1px 1px contrast"
                                 )))
                             .toDic()!,
@@ -142,10 +142,10 @@ class CustomStyleForLineChartComposer {
             ])
     }
     
-    static func chartWithShadowStyle() -> AAChartModel {
+    static func shadowStyleLineChart() -> AAChartModel {
         AAChartModel()
             .yAxisVisible(false)
-            .chartType(.spline)
+            .chartType(.line)
             .legendEnabled(false)//隐藏图例(底部可点按的小圆点)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .markerSymbolStyle(.innerBlank)
@@ -165,9 +165,9 @@ class CustomStyleForLineChartComposer {
             ])
     }
     
-    static func colorfulGradientSplineChart() -> AAChartModel {
+    static func colorfulGradientLineChart() -> AAChartModel {
         AAChartModel()
-            .chartType(.spline)
+            .chartType(.line)
             .categories(["一月", "二月", "三月", "四月", "五月", "六月",
                          "七月", "八月", "九月", "十月", "十一月", "十二月"])
             .markerRadius(0)
@@ -188,17 +188,17 @@ class CustomStyleForLineChartComposer {
                         ]
                     ))
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]),
-                ])
+            ])
     }
-
+    
     //refer to online sample https://jshare.com.cn/github/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-marker-symbol/
-    static func customLineChartMarkerSymbolContent() -> AAChartModel {
+    static func customMarkerSymbolContentLineChart() -> AAChartModel {
         let aaChartModel = CustomStyleForScatterChartComposer.customScatterChartMarkerSymbolContent()
         aaChartModel.chartType = .line
         return aaChartModel
     }
-
-    static func drawLineChartWithPointsCoordinates() -> AAChartModel {
+    
+    static func drawPointsWithCoordinatesForLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .title("Draw Line Chart With Points Coordinates")
@@ -217,8 +217,8 @@ class CustomStyleForLineChartComposer {
                     ])
             ])
     }
-
-    static func customChartHoverAndSelectHaloStyle() -> AAChartModel {
+    
+    static func customHoverAndSelectHaloStyleForLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .title("Custom Chart Hover And Select Halo Style")
@@ -250,9 +250,9 @@ class CustomStyleForLineChartComposer {
                                     .stroke(AARgba(30, 144, 255, 1))))))
             ])
     }
-
+    
     //GitHub issue https://github.com/AAChartModel/AAChartKit/issues/903
-    static func disableSomeOfLinesMouseTrackingEffect() -> AAChartModel {
+    static func disableSomeOfLinesMouseTrackingEffectForLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)//图表类型
             .tooltipValueSuffix("万元")//设置浮动提示框单位后缀
@@ -279,11 +279,11 @@ class CustomStyleForLineChartComposer {
                     .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
             ])
     }
-
+    
     // GitHub issue https://github.com/AAChartModel/AAChartKit/issues/904
-    static func colorfulShadowSplineChart() -> AAChartModel {
+    static func colorfulShadowLineChart() -> AAChartModel {
         AAChartModel()
-            .chartType(.spline)
+            .chartType(.line)
             .yAxisVisible(false)
             .stacking(.normal)
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f"])
@@ -333,7 +333,7 @@ class CustomStyleForLineChartComposer {
                         .color("#04d69f")),
             ])
     }
-
+    
     // GitHub issue https://github.com/AAChartModel/AAChartKit/issues/905
     static func colorfulDataLabelsStepLineChart() -> AAChartModel {
         AAChartModel()
@@ -384,12 +384,12 @@ class CustomStyleForLineChartComposer {
                     .data([5.59, 3.09, 4.09, 6.14, 5.33, 6.05, 5.71, 6.22, 6.56, 4.75, 5.27, 6.02, 5.22, 5.77, 6.19, 5.68, 4.33, 5.48]),
             ])
     }
-
+    
     // https://github.com/AAChartModel/AAChartKit/issues/1318
-    // Refer to https://api.highcharts.com.cn/highcharts#plotOptions.spline.marker.states.hover.enabled
-    static func disableSplineChartMarkerHoverEffect() -> AAChartModel {
+    // Refer to https://api.highcharts.com.cn/highcharts#plotOptions.line.marker.states.hover.enabled
+    static func disableMarkerHoverEffectForLineChart() -> AAChartModel {
         AAChartModel()
-            .chartType(.spline)
+            .chartType(.line)
             .title("Disable Spline Chart Marker Hover Effect")
             .categories([
                 "一月", "二月", "三月", "四月", "五月", "六月",
@@ -411,11 +411,11 @@ class CustomStyleForLineChartComposer {
                     .data([7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6])
             ])
     }
-
+    
     //https://github.com/AAChartModel/AAChartKit/issues/1203
-    static func maxAndMinDataLabelsForChart() -> AAChartModel {
+    static func maxAndMinDataLabelsForLineChart() -> AAChartModel {
         AAChartModel()
-            .chartType(.spline)
+            .chartType(.line)
             .dataLabelsEnabled(false)//是否显示值
             .tooltipEnabled(false)
             .markerRadius(0)
@@ -452,9 +452,9 @@ class CustomStyleForLineChartComposer {
             }())
     }
     
-    static func dashStyleTypesMixedChart() -> AAChartModel {
+    static func dashStyleTypesMixedLineChart() -> AAChartModel {
         AAChartModel()
-            .chartType(.spline)//图形类型
+            .chartType(.line)//图形类型
             .dataLabelsEnabled(false)//是否显示数字
             .stacking(.normal)
             .markerRadius(0)
@@ -496,9 +496,9 @@ class CustomStyleForLineChartComposer {
     }
     
     
-    static func allLineDashStyleTypesMixedChart() -> AAChartModel {
+    static func allLineDashStyleTypesMixedLineChart() -> AAChartModel {
         AAChartModel()
-            .chartType(.spline)//图表类型
+            .chartType(.line)//图表类型
             .yAxisVisible(true)//设置 Y 轴是否可见
             .colorsTheme(["#eb2100", "#eb3600", "#d0570e", "#d0a00e", "#34da62", "#00e9db", "#00c0e9", "#0096f3", "#33CCFF", "#33FFCC"])//设置主体颜色数组
             .tooltipValueSuffix("℃")//设置浮动提示框单位后缀
@@ -577,7 +577,7 @@ class CustomStyleForLineChartComposer {
                 ]}())
     }
     
-    static func lineChartWithShadow() -> AAChartModel {
+    static func shadowLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .title("Line Chart With Shadow")
@@ -599,7 +599,7 @@ class CustomStyleForLineChartComposer {
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/1291
-    static func customLineChartWithColorfulMarkersAndLines() -> AAChartModel {
+    static func colorfulMarkersAndLinesLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .title("Custom Line Chart With Colorful Markers And Lines")
@@ -652,7 +652,7 @@ class CustomStyleForLineChartComposer {
     
     //https://github.com/AAChartModel/AAChartKit/issues/1291
     //https://github.com/AAChartModel/AAChartKit/issues/1293
-    static func customLineChartWithColorfulMarkersAndLines2() -> AAChartModel {
+    static func colorfulMarkersAndLinesLineChart2() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .title("Custom Line Chart With Colorful Markers And Lines")
@@ -811,9 +811,9 @@ class CustomStyleForLineChartComposer {
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/1401
-    static func connectNullsForSingleAASeriesElement() -> AAChartModel {
+    static func connectNullsForSingleAASeriesElementLineChart() -> AAChartModel {
         AAChartModel()
-            .chartType(.spline)
+            .chartType(.line)
             .subtitle("虚拟数据")
             .colorsTheme(["#1e90ff", "#ef476f", "#ffd066", "#04d69f"])
             .yAxisTitle("摄氏度")
@@ -854,9 +854,9 @@ class CustomStyleForLineChartComposer {
                 ]
             }())
     }
-
+    
     //https://github.com/AAChartModel/AAChartKit/issues/1419
-    static func lineChartsWithLargeDifferencesInTheNumberOfDataInDifferentSeriesElement() -> AAChartModel {
+    static func largeDifferencesInTheNumberOfDataInDifferentSeriesElementLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .backgroundColor(AAColor.black)
@@ -910,7 +910,7 @@ class CustomStyleForLineChartComposer {
             }())
     }
     
-    static func customDifferentDataLabelsShapeForColumnChart() -> AAChartModel {
+    static func customDifferentDataLabelsShapeForLineChart() -> AAChartModel {
         AAChartModel()
             .chartType(.line)
             .dataLabelsStyle(AAStyle(color: AAColor.white, fontSize: 50, weight: .bold))
