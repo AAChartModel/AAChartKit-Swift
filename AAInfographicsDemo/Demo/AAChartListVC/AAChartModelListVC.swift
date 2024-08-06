@@ -52,6 +52,7 @@ class AAChartModelListVC: AABaseListVC {
             "Line Chart With Custom Style | 一些自定义风格样式折线图",
             "Spine Chart With Custom Style | 一些自定义风格样式曲线图",
             "Area Chart With Custom Style | 一些自定义风格样式折线填充图",
+            "Areaspline Chart With Custom Style | 一些自定义风格样式曲线填充图",
             "Scatter Chart With Custom Style | 一些自定义风格样式散点图",
             "Bubble Chart With Custom Style | 一些自定义风格样式气泡图",
         ]
@@ -267,15 +268,27 @@ class AAChartModelListVC: AABaseListVC {
             ],
             /*Custom Style For Area Chart*/
             [
-                "withMinusNumberChart",
+                "withMinusNumberAreaChart",
                 "colorfulGradientAreaChart",
-                "gradientColorAreasplineChart",
-                "areaChartThreshold",
-                "customSpecialStyleDataLabelOfSingleDataElementChart",
-                "customSplineChartMarkerStatesHoverStyle",
+                "gradientColorAreaChart",
+                "thresholdForAreaChart",
+                "customSpecialStyleDataLabelOfSingleDataElementForAreaChart",
+                "customMarkerStatesHoverStyleForAreaChart",
                 "colorfulGradientColorAndColorfulDataLabelsStepAreaChart",
+                "negativeColorMixedAreaChart",
+                "customColorfulGradientColorZonesForAreaChart",
+            ],
+            /*Custom Style For Areaspline Chart*/
+            [
+                "withMinusNumberAreasplineChart",
+                "colorfulGradientAreasplineChart",
+                "gradientColorAreasplineChart",
+                "thresholdForAreasplineChart",
+                "customSpecialStyleDataLabelOfSingleDataElementForAreasplineChart",
+                "customMarkerStatesHoverStyleForAreasplineChart",
+                "colorfulGradientColorAndColorfulDataLabelsStepAreasplineChart",
                 "negativeColorMixedAreasplineChart",
-                "customAreasplineChartWithColorfulGradientColorZones",
+                "customColorfulGradientColorZonesForAreasplineChart",
             ],
             /*Custom Style For Scatter Chart*/
             [
@@ -445,16 +458,30 @@ class AAChartModelListVC: AABaseListVC {
             ],
             /*Custom Style For Area Chart*/
             [
-                "withMinusNumberChart",
+                "withMinusNumberAreaChart",
                 "colorfulGradientAreaChart",
-                "gradientColorAreasplineChart",
-                "areaChartThreshold",
-                "customSpecialStyleDataLabelOfSingleDataElementChart",
-                "customSplineChartMarkerStatesHoverStyle",
+                "gradientColorAreaChart",
+                "thresholdForAreaChart",
+                "customSpecialStyleDataLabelOfSingleDataElementForAreaChart",
+                "customMarkerStatesHoverStyleForAreaChart",
                 "colorfulGradientColorAndColorfulDataLabelsStepAreaChart",
-                "negativeColorMixedAreasplineChart",
-                "customAreasplineChartWithColorfulGradientColorZones",
+                "negativeColorMixedAreaChart",
+                "customColorfulGradientColorZonesForAreaChart",
             ],
+            /*Custom Style For Areaspline Chart*/
+            [
+                "withMinusNumberAreasplineChart",
+                "colorfulGradientAreasplineChart",
+                "gradientColorAreasplineChart",
+                "thresholdForAreasplineChart",
+                "customSpecialStyleDataLabelOfSingleDataElementForAreasplineChart",
+                "customMarkerStatesHoverStyleForAreasplineChart",
+                "colorfulGradientColorAndColorfulDataLabelsStepAreasplineChart",
+                "negativeColorMixedAreasplineChart",
+                "customColorfulGradientColorZonesForAreasplineChart",
+            ],
+    
+            
             /*Custom Style For Scatter Chart*/
             [
                 "customScatterChartMarkerSymbolContent",
@@ -545,21 +572,29 @@ extension AAChartModelListVC {
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 8:
+        case 9:
             let vc = CustomStyleForAreaChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 9:
+        case 10:
+            let vc = CustomStyleForAreasplineChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+            
+        case 11:
             let vc = CustomStyleForScatterChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 10:
+        case 12:
             let vc = CustomStyleForBubbleChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
