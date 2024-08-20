@@ -6,6 +6,62 @@
 import AAInfographics
 
 class JSFunctionForAAChartEventsComposer2 {
+    
+    //https://github.com/AAChartModel/AAChartCore/issues/203
+    static func disableHoverEventTooltipEffect() -> AAOptions {
+        AAOptions()
+            .chart(AAChart()
+                .type(.line)
+                .events(AAChartEvents()
+                    .load(#"""
+                        function() {
+                            const chart = this;
+                            Highcharts.addEvent(chart.container, 'touchmove', function (e) {
+                                e.preventDefault();
+                                chart.tooltip.hide(0);
+                            });
+                        }
+                    """#)
+                )
+            )
+            .title(AATitle()
+                .text("Disable Hover Event Tooltip Effect")
+            )
+            .plotOptions(AAPlotOptions()
+                .series(AASeries()
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .enabled(false) // 禁用默认 hover 状态
+                        )
+                    )
+                    .point(AAPoint()
+                        .events(AAPointEvents()
+                            .click(#"""
+                                function() {
+                                    const chart = this.series.chart;
+                                    chart.tooltip.refresh(this);
+                                }
+                            """#)
+                        )
+                    )
+                    .marker(AAMarker()
+                        .enabled(true)
+                        .radius(10)
+                    )
+                )
+            )
+            .tooltip(AATooltip()
+                .enabled(true)
+                .hideDelay(0) // 设置 tooltip 立刻隐藏
+                .shared(false)
+            )
+            .series([
+                AASeriesElement()
+                    .data([1, 3, 2, 4, 5])
+            ])
+    }
+    
+    
 
     /*
 Highcharts.chart('container', {

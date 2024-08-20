@@ -54,6 +54,7 @@ public class AATooltip: AAObject {
     public var padding: Float?
     public var pointFormatter: String?
     public var positioner: String?
+    public var hideDelay: Int?
     public var dateTimeLabelFormats: AADateTimeLabelFormats?
     public var split: Bool?
     
@@ -174,6 +175,12 @@ public class AATooltip: AAObject {
     @discardableResult
     public func positioner(_ prop: String) -> AATooltip {
         positioner = prop.aa_toPureJSString()
+        return self
+    }
+    
+    @discardableResult
+    public func hideDelay(_ prop: Int?) -> AATooltip {
+        hideDelay = prop
         return self
     }
     
