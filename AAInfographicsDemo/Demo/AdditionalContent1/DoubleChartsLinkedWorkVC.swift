@@ -41,7 +41,8 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     private var aaChartModel2 = AAChartModel()
     private var colorsArr: [String]?
     private var selectedColor: String?
-    
+    private var selectedCategoryIndex: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -129,11 +130,13 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     
     func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
         selectedColor = colorsArr?[moveOverEventMessage.index ?? 0] ?? "#ff000"
+        selectedCategoryIndex = moveOverEventMessage.index ?? 0
         
+        aaChartView2.aa_updateXAxisCategories(configureXAxisCategoresDataArray(), redraw: false)
         aaChartView2.aa_onlyRefreshTheChartDataWithChartModelSeries([
             AASeriesElement()
                 .data(configureSeriesDataArray())
-            ])
+            ], animation: false)
         
         //https://github.com/AAChartModel/AAChartKit-Swift/issues/434
         let defaultSelectedIndex = moveOverEventMessage.index ?? 0
@@ -182,6 +185,15 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
                     .y(Float(y1)))
         }
         return randomNumArrA as! [Any]
+    }
+    
+    private func configureXAxisCategoresDataArray() -> [String] {
+        let randomNumArrA = NSMutableArray()
+        for  x in 0 ..< 40 {
+            let prefixStr = "第\(selectedCategoryIndex ?? 0)组\(x)"
+            randomNumArrA.add(prefixStr)
+        }
+        return randomNumArrA as! [String]
     }
     
     

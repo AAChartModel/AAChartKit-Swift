@@ -548,6 +548,8 @@ extension AAChartView {
     }
     
     /// Update the X axis categories of chart
+    /// Refer to https://api.highcharts.com/class-reference/Highcharts.Axis#setCategories
+    ///
     /// - Parameters:
     ///   - categories: The X axis categories array
     ///   - redraw: Redraw whole chart or not
@@ -558,6 +560,8 @@ extension AAChartView {
     }
     
     /// Update the X axis Extremes
+    /// Refer to https://api.highcharts.com/class-reference/Highcharts.Axis#setExtremes
+    ///
     /// - Parameters:
     ///   - min: X axis minimum
     ///   - max: X axis maximum
