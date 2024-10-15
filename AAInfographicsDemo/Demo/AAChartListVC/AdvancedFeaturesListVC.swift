@@ -31,6 +31,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
             "XIB AAChartView | 在 XIB 中创建 AAChartView",
             "Custom Chart Event Callback | 自定义交互事件回调",
             "Custom X Axis Labels Click Event Callback | 自定义 X 轴文字点击事件回调",
+            "CustomTooltipEventCallbackVC | 自定义tooltip事件回调"
+
         ]
         
         chartTypeTitleArr = [
@@ -130,7 +132,10 @@ class AdvancedFeaturesListVC: AABaseListVC {
             [
                 "自定义X轴文字点击事件回调---CustomXAxisLabelsClickEventCallbackVC"
             ],
-            
+            /*CustomTooltipEventCallbackVC*/
+            [
+                "自定义tooltip事件回调---CustomTooltipEventCallbackVC"
+            ],
             
         ]
         
@@ -346,6 +351,12 @@ extension AdvancedFeaturesListVC {
         case 11:
             /*CustomXAxisLabelsClickEventCallbackVC*/
             let vc = CustomXAxisLabelsClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 12:
+            /*CustomTooltipEventCallbackVC*/
+            let vc = CustomTooltipEventCallbackVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
