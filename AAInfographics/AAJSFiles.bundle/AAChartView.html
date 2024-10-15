@@ -109,15 +109,13 @@
         
         function onlyRefreshTheChartDataWithSeries(receivedSeries, animation) {
             let receivedSeriesArr = JSON.parse(receivedSeries);
-            let seriesArrLength = receivedSeriesArr.length;
-            for (let i = 0; i < seriesArrLength; i++) {
-                let receivedSeriesElementData = receivedSeriesArr[i].data;
-                let seriesElement = aaGlobalChart.series[i];
-                seriesElement.setData(receivedSeriesElementData, false);
-            }
-            
             let animationBool = (animation === "true");
-            aaGlobalChart.redraw(animationBool);
+
+            aaGlobalChart.update({
+                    series: receivedSeriesArr
+                },
+                true, false, animationBool
+            );
         }
         
         function updateChart(optionsStr, redraw) {

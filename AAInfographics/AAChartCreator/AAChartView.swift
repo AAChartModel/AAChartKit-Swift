@@ -310,6 +310,7 @@ extension AAChartView {
     }
     
     /// Function of only refresh the chart data after the chart has been rendered
+    /// Refer to https://api.highcharts.com/class-reference/Highcharts.Chart#update
     ///
     /// - Parameter chartModelSeries: chart model series  array
     public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [AASeriesElement]) {
@@ -317,6 +318,7 @@ extension AAChartView {
     }
     
     /// Function of only refresh the chart data after the chart has been rendered
+    /// Refer to https://api.highcharts.com/class-reference/Highcharts.Chart#update
     ///
     /// - Parameter chartModelSeries: chart model series  array
     /// - Parameter animation: enable animation effect or not
@@ -355,13 +357,15 @@ extension AAChartView {
     }
     
     /// Function of only refresh the chart data after the chart has been rendered
+    /// Refer to https://api.highcharts.com/class-reference/Highcharts.Chart#update
     ///
     /// - Parameter chartOptionsSeries: chart options series  array
     public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartOptionsSeries: [AASeriesElement]) {
-      aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartOptionsSeries, animation: true)
+        aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartOptionsSeries, animation: true)
     }
     
     /// Function of only refresh the chart data after the chart has been rendered
+    /// Refer to https://api.highcharts.com/class-reference/Highcharts.Chart#update
     ///
     /// - Parameter chartOptionsSeries: chart options series  array
     /// - Parameter animation: enable animation effect or not
