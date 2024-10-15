@@ -48,11 +48,15 @@ class CustomTooltipEventCallbackVC: UIViewController {
                 .events(AAChartEvents()
                     .load("""
             function() {
-                    var chart = this;
-                    
-                    setInterval(function() {
-                        window.webkit.messageHandlers.\(kUserContentMessageNameTooltipIsHidden).postMessage("Tooltip is hidden: " + chart.tooltip.isHidden);
-                    }, 1000);
+                Highcharts.wrap(Highcharts.Tooltip.prototype, 'refresh', function (proceed, point, mouseEvent) {
+                    proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+                    window.webkit.messageHandlers.\(kUserContentMessageNameTooltipIsHidden).postMessage('Tooltip is being refreshed (shown)');
+                });
+
+                Highcharts.wrap(Highcharts.Tooltip.prototype, 'hide', function (proceed, delay) {
+                    proceed.apply(this, Array.prototype.slice.call(arguments, 1));
+                    window.webkit.messageHandlers.\(kUserContentMessageNameTooltipIsHidden).postMessage('Tooltip is being hidden');
+                });
             }
             """)))
             .xAxis(AAXAxis()
@@ -75,6 +79,12 @@ extension CustomTooltipEventCallbackVC: WKScriptMessageHandler {
             if let messageBody = message.body as? String {
                 // 处理 JavaScript 回调的信息
                 print("Received message from JavaScript: \(messageBody)")
+                // 根据不同的消息体内容更新界面
+                if messageBody == "Tooltip is being refreshed (shown)" {
+                    // 更新 tooltip 显示状态
+                } else if messageBody == "Tooltip is being hidden" {
+                    // 更新 tooltip 隐藏状态
+                }
             }
         }
     }
