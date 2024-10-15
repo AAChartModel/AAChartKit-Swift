@@ -313,16 +313,8 @@ extension AAChartView {
     /// Refer to https://api.highcharts.com/class-reference/Highcharts.Chart#update
     ///
     /// - Parameter chartModelSeries: chart model series  array
-    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [AASeriesElement]) {
-        aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartModelSeries)
-    }
-    
-    /// Function of only refresh the chart data after the chart has been rendered
-    /// Refer to https://api.highcharts.com/class-reference/Highcharts.Chart#update
-    ///
-    /// - Parameter chartModelSeries: chart model series  array
     /// - Parameter animation: enable animation effect or not
-    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [AASeriesElement], animation: Bool) {
+    public func aa_onlyRefreshTheChartDataWithChartModelSeries(_ chartModelSeries: [AASeriesElement], animation: Bool = true) {
         aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartModelSeries, animation: animation)
     }
     
@@ -360,16 +352,8 @@ extension AAChartView {
     /// Refer to https://api.highcharts.com/class-reference/Highcharts.Chart#update
     ///
     /// - Parameter chartOptionsSeries: chart options series  array
-    public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartOptionsSeries: [AASeriesElement]) {
-        aa_onlyRefreshTheChartDataWithChartOptionsSeries(chartOptionsSeries, animation: true)
-    }
-    
-    /// Function of only refresh the chart data after the chart has been rendered
-    /// Refer to https://api.highcharts.com/class-reference/Highcharts.Chart#update
-    ///
-    /// - Parameter chartOptionsSeries: chart options series  array
     /// - Parameter animation: enable animation effect or not
-    public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartOptionsSeries: [AASeriesElement], animation: Bool) {
+    public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartOptionsSeries: [AASeriesElement], animation: Bool = true) {
         var seriesElementDicArr = [[String: Any]]()
         chartOptionsSeries.forEach { (aaSeriesElement) in
             seriesElementDicArr.append(aaSeriesElement.toDic()!)
