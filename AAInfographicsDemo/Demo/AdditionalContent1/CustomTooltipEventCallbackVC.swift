@@ -9,6 +9,8 @@
 import AAInfographics
 import WebKit
 
+//https://github.com/AAChartModel/AAChartKit-Swift/issues/496
+//https://stackoverflow.com/questions/34202979/highcharts-detect-if-tooltip-is-being-shown
 class CustomTooltipEventCallbackVC: UIViewController {
     let kUserContentMessageNameTooltipIsHidden = "tooltipIsHidden"
     
