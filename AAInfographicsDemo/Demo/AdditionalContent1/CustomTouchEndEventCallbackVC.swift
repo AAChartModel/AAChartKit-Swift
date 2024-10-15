@@ -10,9 +10,11 @@ import UIKit
 import AAInfographics
 import WebKit
 
-let kUserContentMessageNameChartTouchEnd = "touchEnd"
-
+//https://github.com/AAChartModel/AAChartKit-Swift/issues/356
+//https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events
 class CustomTouchEndEventCallbackVC: UIViewController {
+    let kUserContentMessageNameChartTouchEnd = "touchEnd"
+
     private var aaChartView: AAChartView!
     
     override func viewDidLoad() {
