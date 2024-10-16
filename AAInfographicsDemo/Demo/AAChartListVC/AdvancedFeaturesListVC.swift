@@ -31,8 +31,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
             "XIB AAChartView | 在 XIB 中创建 AAChartView",
             "Custom Chart Event Callback | 自定义交互事件回调",
             "Custom X Axis Labels Click Event Callback | 自定义 X 轴文字点击事件回调",
-            "CustomTooltipEventCallbackVC | 自定义tooltip事件回调"
-
+            "CustomTooltipIsHiddenEventCallbackVC | 自定义tooltip isHidden 事件回调",
+            "CustomTooltipIsHiddenEventCallbackVC | 自定义 tooltip 点击事件",
         ]
         
         chartTypeTitleArr = [
@@ -126,17 +126,20 @@ class AdvancedFeaturesListVC: AABaseListVC {
             ],
             /*Custom event callback*/
             [
-                "自定义监听触摸结束事件回调---CustomTouchEndEventCallbackVC"
+                "CustomTouchEndEventCallbackVC---自定义监听触摸结束事件回调"
             ],
             /*CustomXAxisLabelsClickEventCallbackVC*/
             [
-                "自定义X轴文字点击事件回调---CustomXAxisLabelsClickEventCallbackVC"
+                "CustomXAxisLabelsClickEventCallbackVC---自定义X轴文字点击事件回调"
             ],
             /*CustomTooltipEventCallbackVC*/
             [
-                "自定义tooltip事件回调---CustomTooltipEventCallbackVC"
+                "CustomTooltipEventCallbackVC---自定义tooltip事件回调"
             ],
-            
+            /*CustomTooltipIsHiddenEventCallbackVC*/
+            [
+                "CustomTooltipIsHiddenEventCallbackVC---自定义 tooltip 点击事件",
+            ],
         ]
         
         chartTypeArr = [
@@ -355,11 +358,17 @@ extension AdvancedFeaturesListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 12:
-            /*CustomTooltipEventCallbackVC*/
+            /*CustomTooltipIsHiddenEventCallbackVC*/
             let vc = CustomTooltipEventCallbackVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-
+            
+        case 13:
+            /*CustomTooltipClickEventCallbackVC*/
+            let vc = CustomTooltipClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
         default:
             break
         }
