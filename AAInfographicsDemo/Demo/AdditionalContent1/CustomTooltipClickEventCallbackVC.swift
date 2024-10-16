@@ -198,10 +198,9 @@ class CustomTooltipClickEventCallbackVC: UIViewController {
                                                           `Series: ${p.series.name}, X: ${p.x}, Y: ${p.y}`
                                                       ).join('\n');
 
-                                                      if (window.webkit?.messageHandlers?.tooltipClicked) {
-                                                          window.webkit.messageHandlers.tooltipClicked.postMessage(tooltipContent);
-                                                      }
-                                                      console.log('Tooltip clicked:', tooltipContent);
+                                                      const handlerName = '\(kUserContentMessageNameTooltipClicked)';
+                                                      const handler = window.webkit?.messageHandlers?.[handlerName];
+                                                      handler?.postMessage(tooltipContent);
                                                   }
                                               }
                                           };
