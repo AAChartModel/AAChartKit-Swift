@@ -42,6 +42,7 @@ class CustomStyleForLineChartVC: AABaseChartVC {
         case "connectNullsForSingleAASeriesElementLineChart": return CustomStyleForLineChartComposer.connectNullsForSingleAASeriesElementLineChart()
         case "largeDifferencesInTheNumberOfDataInDifferentSeriesElementLineChart": return CustomStyleForLineChartComposer.largeDifferencesInTheNumberOfDataInDifferentSeriesElementLineChart()
         case "customDifferentDataLabelsShapeForLineChart": return CustomStyleForLineChartComposer.customDifferentDataLabelsShapeForLineChart()
+        case "clipForAASeriesElementLineChart": return CustomStyleForLineChartComposer.clipForAASeriesElementLineChart()
             
         default: return nil
         }

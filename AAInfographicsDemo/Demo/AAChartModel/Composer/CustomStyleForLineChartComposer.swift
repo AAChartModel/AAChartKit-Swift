@@ -947,4 +947,28 @@ class CustomStyleForLineChartComposer {
                     ])
             ])
     }
+    
+    
+    
+    static func clipForAASeriesElementLineChart() -> AAChartModel {
+        AAChartModel()
+            .series([
+                AASeriesElement()
+                    .lineWidth(15)
+                    .clip(false)
+                    .type(.area)
+                    .name("Non clipped series")
+                    .data([100, 100, 50, 50, 0, 0])
+                ,
+                AASeriesElement()
+                    .lineWidth(26)
+                    .clip(false)
+                    .type(.line)
+                    .name("Clipped series")
+                    .data([0, 0, 50, 50, 100, 100])
+            ])
+    }
+
+    
+
 }

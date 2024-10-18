@@ -242,6 +242,7 @@ class AAChartModelListVC: AABaseListVC {
                 "connectNullsForSingleAASeriesElementLineChart",
                 "largeDifferencesInTheNumberOfDataInDifferentSeriesElementLineChart",
                 "customDifferentDataLabelsShapeForLineChart",
+                "clipForAASeriesElementLineChart",
             ],
             /*Custom Style For Spline Chart*/
             [
@@ -432,6 +433,7 @@ class AAChartModelListVC: AABaseListVC {
                 "connectNullsForSingleAASeriesElementLineChart",
                 "largeDifferencesInTheNumberOfDataInDifferentSeriesElementLineChart",
                 "customDifferentDataLabelsShapeForLineChart",
+                "clipForAASeriesElementLineChart",
             ],
             /*Custom Style For Spline Chart*/
             [
