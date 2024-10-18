@@ -11,7 +11,14 @@ import WebKit
 
 class CustomLargeDateSeriesClickEventCallbackVC: UIViewController {
     let kUserContentMessageNamePointMoveOver = "pointMoveOver"
-    
+    // Constants.swift
+    struct ChartDataKeys {
+        static let x = "x"
+        static let y = "y"
+        static let customData1 = "customData1"
+        static let customData2 = "customData2"
+    }
+
     private var aaChartView: AAChartView!
 
     override func viewDidLoad() {
@@ -49,23 +56,23 @@ class CustomLargeDateSeriesClickEventCallbackVC: UIViewController {
                 .text("Custom Large Date Series Click Event Callback"))
             .plotOptions(AAPlotOptions()
                 .series(AASeries()
-                    .keys(["x", "y", "customData1", "customData2"]) // 指定数据的键名
+                    .keys([ChartDataKeys.x, ChartDataKeys.y, ChartDataKeys.customData1, ChartDataKeys.customData2]) // 指定数据的键名
                     .point(AAPoint()
                         .events(AAPointEvents()
                             .mouseOver("""
                          function() {
                                    let message = {
                                        name: this.series.name,
-                                       x: this[0],
-                                       y: this[1],
+                                       \(ChartDataKeys.x): this.\(ChartDataKeys.x),
+                                       \(ChartDataKeys.y): this.\(ChartDataKeys.y),
                                        category: this.category,
                                        offset: {
                                            plotX: this.plotX,
                                            plotY: this.plotY
                                        },
                                        index: this.index,
-                                       customData1: this.customData1,
-                                       customData2: this.customData2
+                                       \(ChartDataKeys.customData1): this.\(ChartDataKeys.customData1),
+                                       \(ChartDataKeys.customData2): this.\(ChartDataKeys.customData2)
                                    };
                                    window.webkit.messageHandlers.\(kUserContentMessageNamePointMoveOver).postMessage(message);
                                }
@@ -94,10 +101,10 @@ class CustomLargeDateSeriesClickEventCallbackVC: UIViewController {
         var data = [[String: Any]]()
         for i in 0..<1001 {
             let dict = [
-                "x": 1711051200000 + i * 86400000,
-                "y": Double(arc4random() % 100) * 0.01,
-                "customData1": UUID().uuidString,
-                "customData2": UUID().uuidString
+                ChartDataKeys.x: 1711051200000 + i * 86400000,
+                ChartDataKeys.y: Double(arc4random() % 100) * 0.01,
+                ChartDataKeys.customData1: UUID().uuidString,
+                ChartDataKeys.customData2: UUID().uuidString
             ] as [String : Any]
             data.append(dict)
         }
