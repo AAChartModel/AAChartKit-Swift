@@ -18,9 +18,9 @@ class CustomLargeDateSeriesClickEventCallbackVC: UIViewController {
         static let customData1 = "customData1"
         static let customData2 = "customData2"
     }
-
+    
     private var aaChartView: AAChartView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,32 +56,37 @@ class CustomLargeDateSeriesClickEventCallbackVC: UIViewController {
                 .text("Custom Large Date Series Click Event Callback"))
             .plotOptions(AAPlotOptions()
                 .series(AASeries()
-                    .keys([ChartDataKeys.x, ChartDataKeys.y, ChartDataKeys.customData1, ChartDataKeys.customData2]) // 指定数据的键名
+                    .keys([
+                        ChartDataKeys.x,
+                        ChartDataKeys.y,
+                        ChartDataKeys.customData1,
+                        ChartDataKeys.customData2
+                    ]) // 指定数据的键名
                     .point(AAPoint()
                         .events(AAPointEvents()
                             .mouseOver("""
-                         function() {
-                                   let message = {
-                                       name: this.series.name,
-                                       \(ChartDataKeys.x): this.\(ChartDataKeys.x),
-                                       \(ChartDataKeys.y): this.\(ChartDataKeys.y),
-                                       category: this.category,
-                                       offset: {
-                                           plotX: this.plotX,
-                                           plotY: this.plotY
-                                       },
-                                       index: this.index,
-                                       \(ChartDataKeys.customData1): this.\(ChartDataKeys.customData1),
-                                       \(ChartDataKeys.customData2): this.\(ChartDataKeys.customData2)
-                                   };
-                                   window.webkit.messageHandlers.\(kUserContentMessageNamePointMoveOver).postMessage(message);
-                               }
+                        function() {
+                            let message = {
+                                name: this.series.name,
+                                \(ChartDataKeys.x): this.\(ChartDataKeys.x),
+                                \(ChartDataKeys.y): this.\(ChartDataKeys.y),
+                                category: this.category,
+                                offset: {
+                                    plotX: this.plotX,
+                                    plotY: this.plotY
+                                },
+                                index: this.index,
+                                \(ChartDataKeys.customData1): this.\(ChartDataKeys.customData1),
+                                \(ChartDataKeys.customData2): this.\(ChartDataKeys.customData2)
+                            };
+                            window.webkit.messageHandlers.\(kUserContentMessageNamePointMoveOver).postMessage(message);
+                        }
                         """)))
                 )
             )
             .series([
                 AASeriesElement()
-//                    .keys(["x", "y", "customData1", "customData2"]) // 指定数据的键名
+                //                    .keys(["x", "y", "customData1", "customData2"]) // 指定数据的键名
                     .data(generateLargeDataSeriesPureArray())
                     .marker(AAMarker()
                         .lineColor(AAColor.yellow)
@@ -89,7 +94,7 @@ class CustomLargeDateSeriesClickEventCallbackVC: UIViewController {
                         .radius(10))
             ])
     }
-
+    
     //        {
     //          "x" : 1711051200000,
     //          "y" : 0.44,
@@ -110,7 +115,7 @@ class CustomLargeDateSeriesClickEventCallbackVC: UIViewController {
         }
         return data
     }
-
+    
     //        {
     //          1711051200000,
     //          0.44,
@@ -147,7 +152,7 @@ extension CustomLargeDateSeriesClickEventCallbackVC: WKScriptMessageHandler {
 
 extension CustomLargeDateSeriesClickEventCallbackVC: AAChartViewDelegate {
     open func aaChartViewDidFinishLoad(_ aaChartView: AAChartView) {
-       print("🚀🚀🚀, AAChartView Did Finished Load!!!")
+        print("🚀🚀🚀, AAChartView Did Finished Load!!!")
     }
-
+    
 }
