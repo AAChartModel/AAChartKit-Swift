@@ -77,6 +77,7 @@
 		84595DEE2B47E53C00F69273 /* OfficialSamplesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DED2B47E53C00F69273 /* OfficialSamplesListVC.swift */; };
 		84595DF02B47E8E700F69273 /* AdvancedFeaturesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */; };
 		84790F3F2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F3E2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift */; };
+		84790F442CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F432CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift */; };
 		848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */; };
 		848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */; };
 		84A9FB7E28C9BC0E00240C11 /* AAScatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */; };
@@ -285,6 +286,7 @@
 		84595DED2B47E53C00F69273 /* OfficialSamplesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficialSamplesListVC.swift; sourceTree = "<group>"; };
 		84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedFeaturesListVC.swift; sourceTree = "<group>"; };
 		84790F3E2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTooltipClickEventCallbackVC.swift; sourceTree = "<group>"; };
+		84790F432CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLargeDateSeriesClickEventCallbackVC.swift; sourceTree = "<group>"; };
 		848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAAChartViewForXibVC.swift; sourceTree = "<group>"; };
 		848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAAChartViewForXibVC.xib; sourceTree = "<group>"; };
 		84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAScatter.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */,
 				842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */,
 				84790F3E2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift */,
+				84790F432CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift */,
 			);
 			path = AdditionalContent1;
 			sourceTree = "<group>";
@@ -889,6 +892,7 @@
 				44EB70A722BCB606008FECE4 /* JSFunctionForAATooltipVC.swift in Sources */,
 				84595DE82B4698D600F69273 /* PolarChartOptionsVC.swift in Sources */,
 				84B68246266DB09100957FC5 /* AAChartSymbolConstant.swift in Sources */,
+				84790F442CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift in Sources */,
 				84086B1628E44B19006BD30D /* JSFunctionForAALegendVC.swift in Sources */,
 				8441C0932C62082500A6F784 /* CustomStyleForSplineChartComposer.swift in Sources */,
 				840716572A6FC5170037193B /* ScatterChartOptionsVC.swift in Sources */,

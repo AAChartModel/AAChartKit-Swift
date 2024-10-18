@@ -33,6 +33,7 @@ class AdvancedFeaturesListVC: AABaseListVC {
             "Custom X Axis Labels Click Event Callback | 自定义 X 轴文字点击事件回调",
             "CustomTooltipIsHiddenEventCallbackVC | 自定义tooltip isHidden 事件回调",
             "CustomTooltipIsHiddenEventCallbackVC | 自定义 tooltip 点击事件",
+            "CustomLargeDateSeriesClickEventCallbackVC | 自定义大数据量的 series 点击事件"
         ]
         
         chartTypeTitleArr = [
@@ -140,6 +141,10 @@ class AdvancedFeaturesListVC: AABaseListVC {
             [
                 "CustomTooltipIsHiddenEventCallbackVC---自定义 tooltip 点击事件",
             ],
+            [
+                "CustomLargeDateSeriesClickEventCallbackVC---自定义大数据量的 series 点击事件",
+            ],
+            
         ]
         
         chartTypeArr = [
@@ -366,6 +371,10 @@ extension AdvancedFeaturesListVC {
         case 13:
             /*CustomTooltipClickEventCallbackVC*/
             let vc = CustomTooltipClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 14:
+            let vc = CustomLargeDateSeriesClickEventCallbackVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
