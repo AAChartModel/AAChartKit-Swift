@@ -116,12 +116,12 @@ class CustomLargeDateSeriesClickEventCallbackVC: UIViewController {
         return data
     }
     
-    //        {
+    //        [
     //          1711051200000,
     //          0.44,
     //          "77A705DB-6501-49EA-9CAB-EEAB58EDAA2D",
     //          "D7CA67BD-3B69-448F-9A8D-38687AB035A4"
-    //        },
+    //        ],
     //生成如上格式的数据, 数量为 1001 (测试证明, 1000个数据点是可以正常显示的, 1001个数据点也能正常显示, 也就是说, 这种格式的数据, 1000个数据点不是极限值)
     private func generateLargeDataSeriesPureArray() -> [Any] {
         var data = [[Any]]()
