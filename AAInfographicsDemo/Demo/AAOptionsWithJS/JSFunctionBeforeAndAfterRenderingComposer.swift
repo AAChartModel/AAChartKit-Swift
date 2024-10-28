@@ -130,25 +130,26 @@ class JSFunctionBeforeAndAfterRenderingComposer {
         
         let tooltip = AATooltip()
             .format("{series.chart.tooltipText}")
-        
-        let now = Date()
-        let calendar = Calendar(identifier: .gregorian)
-        let components = calendar.dateComponents([.hour, .minute, .second], from: now)
-        
-        let hours = Double(components.hour!) + Double(components.minute!) / 60.0
-        let minutes = Double(components.minute!) * 12.0 / 60.0 + Double(components.second!) * 12.0 / 3600.0
-        let seconds = Double(components.second!) * 12.0 / 60.0
-        
-        let dataArr: [[String: Any]] = [
-            ["id": "hour", "y": hours, "dial": ["radius": "60%", "baseWidth": 4, "baseLength": "95%", "rearLength": 0]],
-            ["id": "minute", "y": minutes, "dial": ["baseLength": "95%", "rearLength": 0]],
-            ["id": "second", "y": seconds, "dial": ["radius": "100%", "baseWidth": 1, "rearLength": "20%"]]
-        ]
-        
-        print("Series: \(dataArr)")
-        
+                
         let hourSeries = AASeriesElement()
-            .data(dataArr)
+            .data({
+                let now = Date()
+                let calendar = Calendar(identifier: .gregorian)
+                let components = calendar.dateComponents([.hour, .minute, .second], from: now)
+                
+                let hours = Double(components.hour!) + Double(components.minute!) / 60.0
+                let minutes = Double(components.minute!) * 12.0 / 60.0 + Double(components.second!) * 12.0 / 3600.0
+                let seconds = Double(components.second!) * 12.0 / 60.0
+                
+                let dataArr: [[String: Any]] = [
+                    ["id": "hour", "y": hours, "dial": ["radius": "60%", "baseWidth": 4, "baseLength": "95%", "rearLength": 0]],
+                    ["id": "minute", "y": minutes, "dial": ["baseLength": "95%", "rearLength": 0]],
+                    ["id": "second", "y": seconds, "dial": ["radius": "100%", "baseWidth": 1, "rearLength": "20%"]]
+                ]
+                
+                print("Series: \(dataArr)")
+                return dataArr
+            }())
             .dataLabels(AADataLabels()
                 .enabled(false)
             )
