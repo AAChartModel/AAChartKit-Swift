@@ -34,7 +34,7 @@
 public class AAGradientColor: AAObject {
     public var linearGradient: AALinearGradient?
     public var radialGradient: AARadialGradient?
-    public var stops: [Float: String]?
+    public var stops: [[Any]]?
     
     @discardableResult
     public func linearGradient(_ prop: AALinearGradient?) -> AAGradientColor {
@@ -49,7 +49,7 @@ public class AAGradientColor: AAObject {
     }
     
     @discardableResult
-    public func stops(_ prop: [Float: String]?) -> AAGradientColor {
+    public func stops(_ prop: [[Any]]?) -> AAGradientColor {
         stops = prop
         return self
     }
