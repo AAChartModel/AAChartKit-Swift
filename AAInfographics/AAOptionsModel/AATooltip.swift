@@ -40,6 +40,7 @@ public class AATooltip: AAObject {
     public var style: AAStyle?
     public var enabled: Bool?
     public var useHTML: Bool?
+    public var format: String?
     public var formatter: String?
     public var headerFormat: String?
     public var pointFormat: String?
@@ -97,6 +98,12 @@ public class AATooltip: AAObject {
     @discardableResult
     public func useHTML(_ prop: Bool?) -> AATooltip {
         useHTML = prop
+        return self
+    }
+    
+    @discardableResult
+    public func format(_ prop: String) -> AATooltip {
+        format = prop
         return self
     }
     
