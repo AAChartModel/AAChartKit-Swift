@@ -90,10 +90,10 @@ public class AALinearGradient: AAObject {
     }
     
     public init(
-        x1: Float? = nil,
-        y1: Float? = nil,
-        x2: Float? = nil,
-        y2: Float? = nil
+        x1: Float,
+        y1: Float,
+        x2: Float,
+        y2: Float
     ) {
         self.x1 = x1
         self.y1 = y1
@@ -130,9 +130,9 @@ public class AARadialGradient: AAObject {
     }
     
     public init(
-        cx: Float? = nil,
-        cy: Float? = nil,
-        r: Float? = nil
+        cx: Float,
+        cy: Float,
+        r: Float
     ) {
         self.cx = cx
         self.cy = cy
