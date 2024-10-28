@@ -82,7 +82,7 @@ extension AAGradientColor {
     
     public class func linearGradient(
         direction: AALinearGradientDirection,
-        stops: [Any]
+        stops: [[Any]]
     ) -> [String : Any] {
         [
             "linearGradient": linearGradientDirectionDictionary(direction: direction),
