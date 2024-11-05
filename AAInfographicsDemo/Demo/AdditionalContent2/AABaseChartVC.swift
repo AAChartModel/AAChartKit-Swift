@@ -304,7 +304,7 @@ class AABaseChartVC: UIViewController {
                 .type(.x)
                 .pinchType(.x)
             
-            aaOptions.chart?.pinchType(.x)
+            aaOptions.chart?.pinchType = nil
                 
                     
             
