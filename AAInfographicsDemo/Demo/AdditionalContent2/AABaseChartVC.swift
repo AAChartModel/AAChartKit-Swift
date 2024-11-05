@@ -217,12 +217,50 @@ class AABaseChartVC: UIViewController {
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
-            aaChartView?.aa_drawChartWithChartModel(aaChartModel)
+            let aaOptions = aaChartModel.aa_toAAOptions()
+            configureGlobalDefaultOptions(aaOptions)
+            aaChartView?.aa_drawChartWithChartOptions(aaOptions)
         } else if (chartConfiguration is AAOptions) {
             let aaOptions = chartConfiguration as! AAOptions
+            configureGlobalDefaultOptions(aaOptions)
 //            aaOptions.touchEventEnabled = true
             aaChartView?.aa_drawChartWithChartOptions(aaOptions)
         }
+    }
+    
+    fileprivate func configureGlobalDefaultOptions(_ aaOptions: AAOptions) {
+        aaOptions.credits?
+            .enabled(true)
+            .text("https://github.com/AAChartModel/AAChartKit")
+            .href("https://github.com/AAChartModel/AAChartKit")
+            .style(AAStyle()
+                .color(AAColor.red)
+                .fontSize(9))
+        
+        aaOptions.defaultOptions = AALang()
+            .noData("暂无数据")
+            .resetZoom("点击重置缩放比例")
+        
+        aaOptions.chart?.pinchType = nil
+        
+        aaOptions.chart?.zooming = AAZooming()
+            .resetButton(AAResetButton()
+                .theme([
+                    "fill": "yellow",
+                    "stroke": "green",
+                    "r": 3,
+                    "states": [
+                        "hover": [
+                            "fill": "#ff0000",
+                            "style": [
+                                "color": "white"
+                            ]
+                        ]
+                    ]
+                ]))
+            .singleTouch(true)
+            .type(.x)
+            .pinchType(.x)
     }
     
     func refreshChartWithChartConfiguration() {
@@ -239,76 +277,14 @@ class AABaseChartVC: UIViewController {
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
-            aaChartView?.aa_refreshChartWholeContentWithChartModel(aaChartModel)
+            let aaOptions = aaChartModel.aa_toAAOptions()
+            configureGlobalDefaultOptions(aaOptions)
+            aaChartView?.aa_refreshChartWholeContentWithChartOptions(aaOptions)
         } else if (chartConfiguration is AAOptions) {
             let aaOptions = chartConfiguration as! AAOptions
 //            aaOptions.touchEventEnabled = true
-            aaOptions.credits?
-                .enabled(true)
-                .text("https://github.com/AAChartModel/AAChartKit")
-                .href("https://github.com/AAChartModel/AAChartKit")
-                .style(AAStyle()
-                    .color(AAColor.red)
-                    .fontSize(9))
-            
-            aaOptions.defaultOptions = AALang()
-                .noData("暂无数据")
-                .resetZoom("点击重置缩放比例")
-            /**
-             public class AAZooming: AAObject {
-                 public var key: String?
-                 public var mouseWheel: AAMouseWheel?
-                 public var pinchType: String?
-                 public var resetButton: AAResetButton?
-                 public var singleTouch: Bool?
-                 public var type: String?
-             */
-            /**
-             chart: {
-                     zooming: {
-                         type: 'x',
-                         resetButton: {
-                             theme: {
-                                 fill: 'yellow',
-                                 stroke: 'green',
-                                 r: 3,
-                                 states: {
-                                     hover: {
-                                         fill: '#ff0000',
-                                         style: {
-                                             color: 'white'
-                                         }
-                                     }
-                                 }
-                             }
-                         }
-                     }
-                 },
-             */
-            aaOptions.chart?.zooming = AAZooming()
-                .resetButton(AAResetButton()
-                    .theme([
-                        "fill": "yellow",
-                        "stroke": "green",
-                        "r": 3,
-                        "states": [
-                            "hover": [
-                                "fill": "#ff0000",
-                                "style": [
-                                    "color": "white"
-                                ]
-                            ]
-                        ]
-                    ]))
-                .singleTouch(true)
-                .type(.x)
-                .pinchType(.x)
-            
-            aaOptions.chart?.pinchType = nil
-                
-                    
-            
-            aaChartView?.isScrollEnabled = true
+            configureGlobalDefaultOptions(aaOptions)
+//            aaChartView?.isScrollEnabled = true
             aaChartView?.aa_refreshChartWholeContentWithChartOptions(aaOptions)
         }
     }
