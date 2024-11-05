@@ -89,6 +89,12 @@ class AABaseChartVC: UIViewController {
     private func setupChartView() {
         aaChartView = AAChartView()
         aaChartView!.isScrollEnabled = false
+        //设置 aaChartView 可以调试
+        if #available(iOS 16.4, *) {
+            aaChartView!.isInspectable = true
+        } else {
+            // Fallback on earlier versions
+        }
         aaChartView!.delegate = self as AAChartViewDelegate
         aaChartView!.aa_adaptiveScreenRotation()
         view.addSubview(aaChartView!)
