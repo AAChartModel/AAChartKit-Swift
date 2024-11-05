@@ -449,7 +449,7 @@ public class AAMouseWheel: AAObject {
 public class AAResetButton: AAObject {
     public var position: AAPosition?
     public var relativeTo: String?
-    public var theme: AAButtonTheme?
+    public var theme: [String: Any]?
     
     @discardableResult
     public func position(_ prop: AAPosition?) -> AAResetButton {
@@ -465,7 +465,7 @@ public class AAResetButton: AAObject {
     
     @discardableResult
     public func theme(_ prop: AAButtonTheme?) -> AAResetButton {
-        theme = prop
+        theme = prop?.toDictionaryProp()
         return self
     }
     

@@ -181,6 +181,47 @@ public class AAButtonTheme: AAObject {
         return self
     }
     
+    /*
+     public func toDictionaryProp() -> [String: Any]? {
+         var dic = [String: Any]()
+         if let fill = fill {
+             dic["fill"] = fill
+         }
+         if let stroke = stroke {
+             dic["stroke"] = stroke
+         }
+         if let strokeWidth = strokeWidth {
+             dic["stroke-width"] = strokeWidth
+         }
+         return dic
+     }
+     */
+    public func toDictionaryProp() -> [String: Any]? {
+        var dic = [String: Any]()
+        if let fill = fill {
+            dic["fill"] = fill
+        }
+        if let padding = padding {
+            dic["padding"] = padding
+        }
+        if let r = r {
+            dic["r"] = r
+        }
+        if let states = states {
+            dic["states"] = states.toDic() as Any
+        }
+        if let stroke = stroke {
+            dic["stroke"] = stroke
+        }
+        if let strokeWidth = strokeWidth {
+            dic["stroke-width"] = strokeWidth
+        }
+        if let style = style {
+            dic["style"] = style.toDic() as Any
+        }
+        return dic
+    }
+    
     public override init() {
 
     }

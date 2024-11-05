@@ -261,7 +261,7 @@ class AABaseChartVC: UIViewController {
                 .theme(AAButtonTheme()
                     .fill(AAColor.yellow)
                     .stroke(AAColor.green)
-//                    .strokeWidth(6)
+                    .strokeWidth(3)
                     .r(3)
                     .states(AAButtonThemeStates()
                         .hover(AAButtonThemeStatesHover()
