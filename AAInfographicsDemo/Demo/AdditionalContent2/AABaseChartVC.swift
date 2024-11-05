@@ -250,7 +250,63 @@ class AABaseChartVC: UIViewController {
                 .style(AAStyle()
                     .color(AAColor.red)
                     .fontSize(9))
-            aaChartView?.isScrollEnabled = true
+            
+//            aaOptions.defaultOptions = AALang()
+//                .noData("暂无数据")
+//                .resetZoom("重置缩放比例")
+            /**
+             public class AAZooming: AAObject {
+                 public var key: String?
+                 public var mouseWheel: AAMouseWheel?
+                 public var pinchType: String?
+                 public var resetButton: AAResetButton?
+                 public var singleTouch: Bool?
+                 public var type: String?
+             */
+            /**
+             chart: {
+                     zooming: {
+                         type: 'x',
+                         resetButton: {
+                             theme: {
+                                 fill: 'yellow',
+                                 stroke: 'green',
+                                 r: 3,
+                                 states: {
+                                     hover: {
+                                         fill: '#ff0000',
+                                         style: {
+                                             color: 'white'
+                                         }
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 },
+             */
+            aaOptions.chart?.zooming = AAZooming()
+                .resetButton(AAResetButton()
+                    .theme([
+                        "fill": "yellow",
+                        "stroke": "green",
+                        "r": 3,
+                        "states": [
+                            "hover": [
+                                "fill": "#ff0000",
+                                "style": [
+                                    "color": "white"
+                                ]
+                            ]
+                        ]
+                    ]))
+                .singleTouch(true)
+                .type(.xy)
+                    
+                
+                    
+            
+//            aaChartView?.isScrollEnabled = true
             aaChartView?.aa_refreshChartWholeContentWithChartOptions(aaOptions)
         }
     }
