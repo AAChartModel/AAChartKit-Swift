@@ -54,6 +54,7 @@
 		84086B1E28E6C612006BD30D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B1C28E6C612006BD30D /* CustomTableViewCell.swift */; };
 		84086B1F28E6C612006BD30D /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84086B1D28E6C612006BD30D /* CustomTableViewCell.xib */; };
 		84086B2128E6F499006BD30D /* JSFunctionForAAOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */; };
+		8409E6BA2CDA3805000EFCF2 /* AAButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409E6B92CDA3805000EFCF2 /* AAButtonTheme.swift */; };
 		840AC39A280CFFA200B10289 /* AAAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AC396280CFFA200B10289 /* AAAxis.swift */; };
 		8418479928B8755900094106 /* JSFunctionForAAChartEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */; };
 		842FC3EE2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */; };
@@ -264,6 +265,7 @@
 		84086B1C28E6C612006BD30D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		84086B1D28E6C612006BD30D /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAOptionsVC.swift; sourceTree = "<group>"; };
+		8409E6B92CDA3805000EFCF2 /* AAButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAButtonTheme.swift; sourceTree = "<group>"; };
 		840AC396280CFFA200B10289 /* AAAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAxis.swift; sourceTree = "<group>"; };
 		8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC.swift; sourceTree = "<group>"; };
 		842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTooltipEventCallbackVC.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				27065A5B24C1A7A400D872EB /* AACredits.swift */,
 				27E58D3626EA18B900A0709E /* AAStyle.swift */,
 				2DC11FD83D319267C3D1C1DE /* AABubbleLegend.swift */,
+				8409E6B92CDA3805000EFCF2 /* AAButtonTheme.swift */,
 			);
 			path = AAOptionsModel;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				ED0A034A272816ED000BF778 /* AASeries.swift in Sources */,
 				ED0A033A272816ED000BF778 /* AATooltip.swift in Sources */,
 				ED0A0345272816ED000BF778 /* AAStyle.swift in Sources */,
+				8409E6BA2CDA3805000EFCF2 /* AAButtonTheme.swift in Sources */,
 				ED0A0333272816E3000BF778 /* AASerializable.swift in Sources */,
 				ED0A0335272816ED000BF778 /* AASubtitle.swift in Sources */,
 				ED0A0348272816ED000BF778 /* AAPlotOptions.swift in Sources */,

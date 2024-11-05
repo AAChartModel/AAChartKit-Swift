@@ -245,19 +245,29 @@ class AABaseChartVC: UIViewController {
         
         aaOptions.chart?.zooming = AAZooming()
             .resetButton(AAResetButton()
-                .theme([
-                    "fill": "yellow",
-                    "stroke": "green",
-                    "r": 3,
-                    "states": [
-                        "hover": [
-                            "fill": "#ff0000",
-                            "style": [
-                                "color": "white"
-                            ]
-                        ]
-                    ]
-                ]))
+//                .theme([
+//                    "fill": "yellow",
+//                    "stroke": "green",
+//                    "r": 3,
+//                    "states": [
+//                        "hover": [
+//                            "fill": "#ff0000",
+//                            "style": [
+//                                "color": "white"
+//                            ]
+//                        ]
+//                    ]
+//                ]))
+                .theme(AAButtonTheme()
+                    .fill(AAColor.yellow)
+                    .stroke(AAColor.green)
+//                    .strokeWidth(6)
+                    .r(3)
+                    .states(AAButtonThemeStates()
+                        .hover(AAButtonThemeStatesHover()
+                            .fill(AAColor.red)
+                            .style(AAStyle()
+                                .color(AAColor.white))))))
             .singleTouch(true)
             .type(.x)
             .pinchType(.x)
