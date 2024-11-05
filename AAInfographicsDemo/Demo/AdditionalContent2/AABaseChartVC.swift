@@ -232,7 +232,7 @@ class AABaseChartVC: UIViewController {
         aaOptions.credits?
             .enabled(true)
             .text("https://github.com/AAChartModel/AAChartKit")
-            .href("https://github.com/AAChartModel/AAChartKit")
+//            .href("https://github.com/AAChartModel/AAChartKit")
             .style(AAStyle()
                 .color(AAColor.red)
                 .fontSize(9))
@@ -245,19 +245,6 @@ class AABaseChartVC: UIViewController {
         
         aaOptions.chart?.zooming = AAZooming()
             .resetButton(AAResetButton()
-//                .theme([
-//                    "fill": "yellow",
-//                    "stroke": "green",
-//                    "r": 3,
-//                    "states": [
-//                        "hover": [
-//                            "fill": "#ff0000",
-//                            "style": [
-//                                "color": "white"
-//                            ]
-//                        ]
-//                    ]
-//                ]))
                 .theme(AAButtonTheme()
                     .fill(AAColor.yellow)
                     .stroke(AAColor.green)
