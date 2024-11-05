@@ -7,56 +7,58 @@
             <script src="AAFunnel.js"></script>
             <script src="AAEasing.js"></script>
             <script src="AARounded-Corners.js"></script>
-
+            
 <!--            <script src="https://code.highcharts.com/highcharts.js"></script>-->
 <!--            <script src="https://code.highcharts.com/highcharts-more.js"></script>-->
 <!--            <script src="https://code.highcharts.com/modules/funnel.js"></script>-->
-            <style>*{
-                -webkit-user-select: none;
-                user-select: none;
-            }
-                </style>
-            </head>
+
+            <style>
+                * {-webkit-user-select: none;
+                   user-select: none; }
+            </style>
+    </head>
     <body style="margin:0 0 0 0;">
-        <div id="container" style="width:100%; height: 100%;"></div>
+        <div id="container" style="width:100%; height: 100%;">
+        </div>
         <script>
-            let aaGlobalChart;
-            function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
-                let container = document.getElementById('container');
-                if (receivedWidth != 0) {
-                    container.style.width = receivedWidth;
-                }
-                if(receivedHeight != 0) {
-                    container.style.height = receivedHeight;
-                }
-
-                let aaOptions = JSON.parse(sender, function (key, value) {
-                    if (typeof (value) == 'string'
-                        && value.indexOf('function') !== -1) {
-                        return eval(value)
-                    }
-                    return value;
-                });
-
-                if (aaOptions.defaultOptions) {
-                    Highcharts.setOptions({
-                        lang: aaOptions.defaultOptions
-                    });
-                }
-                
-                if (aaOptions.xAxisArray) {
-                    aaOptions.xAxis = aaOptions.xAxisArray
-                }
-                if (aaOptions.yAxisArray) {
-                    aaOptions.yAxis = aaOptions.yAxisArray
-                }
-                
-                if (aaOptions.plotOptions) {
-                    configurePlotOptions(aaOptions);
-                }
-                                
-                aaGlobalChart = Highcharts.chart('container', aaOptions);
+            
+        let aaGlobalChart;
+        function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
+            let container = document.getElementById('container');
+            if (receivedWidth != 0) {
+                container.style.width = receivedWidth;
             }
+            if(receivedHeight != 0) {
+                container.style.height = receivedHeight;
+            }
+
+            let aaOptions = JSON.parse(sender, function (key, value) {
+                if (typeof (value) == 'string'
+                    && value.indexOf('function') !== -1) {
+                    return eval(value)
+                }
+                return value;
+            });
+
+            if (aaOptions.defaultOptions) {
+                Highcharts.setOptions({
+                    lang: aaOptions.defaultOptions
+                });
+            }
+            
+            if (aaOptions.xAxisArray) {
+                aaOptions.xAxis = aaOptions.xAxisArray
+            }
+            if (aaOptions.yAxisArray) {
+                aaOptions.yAxis = aaOptions.yAxisArray
+            }
+            
+            if (aaOptions.plotOptions) {
+                configurePlotOptions(aaOptions);
+            }
+                            
+            aaGlobalChart = Highcharts.chart('container', aaOptions);
+        }
 
         function configurePlotOptions(aaOptions) {
             let aaPlotOptions = aaOptions.plotOptions;
@@ -202,7 +204,7 @@
             
             aaGlobalChart.setSize(receivedWidth, receivedHeight, aaAnimation);
         }
-        
-            </script>
+            
+        </script>
     </body>
 </html>
