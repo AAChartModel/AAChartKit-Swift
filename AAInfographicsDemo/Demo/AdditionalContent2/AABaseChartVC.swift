@@ -251,9 +251,9 @@ class AABaseChartVC: UIViewController {
                     .color(AAColor.red)
                     .fontSize(9))
             
-//            aaOptions.defaultOptions = AALang()
-//                .noData("暂无数据")
-//                .resetZoom("重置缩放比例")
+            aaOptions.defaultOptions = AALang()
+                .noData("暂无数据")
+                .resetZoom("点击重置缩放比例")
             /**
              public class AAZooming: AAObject {
                  public var key: String?
@@ -301,12 +301,14 @@ class AABaseChartVC: UIViewController {
                         ]
                     ]))
                 .singleTouch(true)
-                .type(.xy)
-                    
+                .type(.x)
+                .pinchType(.x)
+            
+            aaOptions.chart?.pinchType(.x)
                 
                     
             
-//            aaChartView?.isScrollEnabled = true
+            aaChartView?.isScrollEnabled = true
             aaChartView?.aa_refreshChartWholeContentWithChartOptions(aaOptions)
         }
     }
