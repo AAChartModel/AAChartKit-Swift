@@ -593,7 +593,10 @@ class MixedChartComposer {
                 AASeriesElement()
                     .name("Average Value")
                     .type(.line)
-                    .data([3, 2.67, 3, 6.33, 3.33])
+                    .data([3, 2.67, 3, 6.33, 3.33,
+                           3, 2.67, 3, 6.33, 3.33,
+                           3, 2.67, 3, 6.33, 3.33,
+                           3, 2.67, 3, 6.33, 3.33])
                     .marker(AAMarker()
                         .fillColor("#1E90FF")
                         .lineWidth(2.0)
