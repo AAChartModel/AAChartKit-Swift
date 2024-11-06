@@ -39,6 +39,8 @@ public enum AAChartAxisType: String {
     case category
 }
 
+/// https://api.highcharts.com/highcharts/xAxis
+/// https://api.highcharts.com/highcharts/yAxis
 public class AAAxis: AAObject {
     public var allowDecimals: Bool?
     public var alternateGridColor: Any?
@@ -65,7 +67,7 @@ public class AAAxis: AAObject {
     public var minorGridLineDashStyle: String? //The dash or dot style of the minor grid lines.
     public var minorGridLineWidth: Float? //Width of the minor, secondary grid lines.
     public var minorTickColor: String? //Color for the minor tick marks.
-    public var minorTickInterval: Any?/*Specific tick interval in axis units for the minor ticks. On a linear axis, if "auto", the minor tick interval is calculated as a fifth of the tickInterval. If null or undefined, minor ticks are not shown.
+    public var minorTickInterval: Any? /*Specific tick interval in axis units for the minor ticks. On a linear axis, if "auto", the minor tick interval is calculated as a fifth of the tickInterval. If null or undefined, minor ticks are not shown.
      
      On logarithmic axes, the unit is the power of the value. For example, setting the minorTickInterval to 1 puts one tick on each of 0.1, 1, 10, 100 etc. Setting the minorTickInterval to 0.1 produces 9 ticks between 1 and 10, 10 and 100 etc.
 
@@ -79,13 +81,13 @@ public class AAAxis: AAObject {
     public var gridLineDashStyle: String? // XOrY-axis grid line style
     public var gridLineInterpolation: String?
     public var gridZIndex: Int?
-    public var offset: Float? // XOrY-axis vertical offset
+    public var offset: Float? // The distance in pixels from the plot area to the axis line. A positive offset moves the axis with it's line, labels and ticks away from the plot area. This is typically used when two or more axes are displayed on the same side of the plot. With multiple axes the offset is dynamically adjusted to avoid collision, this can be overridden by setting offset explicitly.
     public var labels: AALabels? // Used to set the XOrY-axis text related
     public var visible: Bool? // Used to set whether the XOrY-axis and XOrY-axis text are displayed
     public var opposite: Bool? // Whether to display the coordinate axis on the opposite surface. By default, the X or Y axis is displayed below the chart, the y axis is on the left, the coordinate axis is displayed on the opposite surface, and the X or Y axis is displayed on the top. The axis is displayed on the right (that is, the coordinate axis is displayed on the opposite side). This configuration is generally used for multi-axis display, and in Highstock, the y-axis is displayed on the opposite side by default. The default is: false.
 
     public var startOnTick: Bool? // Whether to force the axis to start on a tick. Use this option with the minPadding option to control the axis start. The default is false.
-    public var endOnTick: Bool?// Whether to force the axis to end on a tick. Use this option with the minPadding option to control the axis end. The default is false.
+    public var endOnTick: Bool? // Whether to force the axis to end on a tick. Use this option with the minPadding option to control the axis end. The default is false.
     public var tickColor: String? // Color of tick mark below X or Y axis
     public var tickAmount: Int?
     public var tickInterval: Float? // Number of ticks on the X or Y axis (set the X or Y axis content every few points:
