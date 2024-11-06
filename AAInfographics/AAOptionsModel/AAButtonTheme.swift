@@ -30,7 +30,7 @@
  
  */
 
-//https://api.highcharts.com/highcharts/global.buttonTheme
+/// https://api.highcharts.com/highcharts/global.buttonTheme
 public class AAButtonTheme: AAObject {
     public var fill: String?
     public var padding: Float?
@@ -157,6 +157,7 @@ public class AAButtonThemeStatesDisabled: AAObject {
     }
 }
 
+
 public class AAButtonThemeStatesHover: AAObject {
     public var fill: String?
     public var style: AAStyle?
@@ -177,6 +178,7 @@ public class AAButtonThemeStatesHover: AAObject {
         
     }
 }
+
 
 public class AAButtonThemeStatesSelect: AAObject {
     public var fill: String?
