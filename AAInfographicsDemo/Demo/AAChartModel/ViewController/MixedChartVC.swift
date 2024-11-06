@@ -51,6 +51,7 @@ class MixedChartVC: AABaseChartVC {
         case "pieMixedLineMixedColumnChart": return MixedChartComposer.pieMixedLineMixedColumnChart()
         case "aerasplinerangeMixedColumnrangeMixedLineChart": return MixedChartComposer.areasplinerangeMixedColumnrangeMixedLineChart()
         case "boxplotMixedScatterChartWithJitterChart": return MixedChartComposer.boxplotMixedScatterChartWithJitter()
+        case "multiLevelStopsArrGradientColorAreasplineMixedLineChart": return MixedChartComposer.multiLevelStopsArrGradientColorAreasplineMixedLineChart()
         default: return MixedChartComposer.arearangeMixedLineChart()
         }
     }
