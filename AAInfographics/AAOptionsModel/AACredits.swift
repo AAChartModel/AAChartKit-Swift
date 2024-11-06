@@ -31,6 +31,7 @@
  */
 
 
+/// https://api.highcharts.com/highcharts/credits
 public class AACredits: AAObject {
     public var enabled: Bool?
     public var href: String?
@@ -72,6 +73,7 @@ public class AACredits: AAObject {
         
     }
 }
+
 
 public class AAPosition: AAObject {
     public var align: String?
