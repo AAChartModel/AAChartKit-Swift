@@ -2076,7 +2076,7 @@ function () {
                     .crop(false)
             )
             .y(51.5)
-            .toDic()!
+            .toDic()
         
         let singleSpecialData2 = AADataElement()
             .marker(
@@ -2108,7 +2108,7 @@ function () {
                     .crop(false)
             )
             .y(26.5)
-            .toDic()!
+            .toDic()
 
         
         let aaSeriesArr = [
@@ -2190,7 +2190,7 @@ function () {
                     .crop(false)
             )
             .y(51.5)
-            .toDic()!
+            .toDic()
         
         let singleSpecialData2 = AADataElement()
             .marker(
@@ -2219,7 +2219,7 @@ function () {
                     .crop(false)
             )
             .y(26.5)
-            .toDic()!
+            .toDic()
         
         let aaSeriesArr = [
             AASeriesElement()
@@ -2302,7 +2302,7 @@ function () {
                     .crop(false)
             )
             .y(34.5)
-            .toDic()!
+            .toDic()
 
         
         let singleSpecialData2 = AADataElement()
@@ -2332,7 +2332,7 @@ function () {
                     .crop(false)
             )
             .y(14.5)
-            .toDic()!
+            .toDic()
 
         
         let aaSeriesArr = [
@@ -2963,7 +2963,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(35).y(1.36)
@@ -2974,7 +2974,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(38).y(1.32)
@@ -2985,7 +2985,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(35).y(1.32)
@@ -2996,7 +2996,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(47).y(1.19)
@@ -3007,7 +3007,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         [ 33, 1.37],
                         [ 35, 1.36],
@@ -3029,7 +3029,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(38).y(1.37)
@@ -3039,7 +3039,7 @@ function () {
                                     .format("Paint/Blast worker")
                                     .x(123)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         [ 38, 1.37],
                         [ 38, 1.37],
@@ -3058,7 +3058,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(40).y(1.33)
@@ -3069,7 +3069,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(40).y(1.33)
@@ -3080,7 +3080,7 @@ function () {
                                     .x(123)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(42).y(1.31)
@@ -3091,7 +3091,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(40).y(1.35)
@@ -3102,7 +3102,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         [ 43, 1.30],
                         [ 40, 1.33],
@@ -3124,7 +3124,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(44).y(1.11)
@@ -3135,7 +3135,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         
                         AADataElement()
                             .x(41).y(1.12)
@@ -3146,7 +3146,7 @@ function () {
                                     .x(3)
                                     .verticalAlign(.middle)
                             )
-                            .toDic()!,
+                            .toDic(),
                         [ 41, 1.15],
                         [ 44, 1.11],
                         [ 41, 1.12],

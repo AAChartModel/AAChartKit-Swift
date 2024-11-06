@@ -266,7 +266,7 @@ public class AAChartView: WKWebView {
         }
         
         #if DEBUG
-        let modelJsonDic = aaOptions.toDic()!
+        let modelJsonDic = aaOptions.toDic()
         let data = try? JSONSerialization.data(withJSONObject: modelJsonDic, options: .prettyPrinted)
         if data != nil {
             let prettyPrintedModelJson = String(data: data!, encoding: String.Encoding.utf8)
@@ -279,7 +279,7 @@ public class AAChartView: WKWebView {
         }
         #endif
         
-        optionsJson = aaOptions.toJSON()!
+        optionsJson = aaOptions.toJSON()
     }
     
     private func addClickEventMessageHandler() {
@@ -360,7 +360,7 @@ extension AAChartView {
     public func aa_onlyRefreshTheChartDataWithChartOptionsSeries(_ chartOptionsSeries: [AASeriesElement], animation: Bool = true) {
         var seriesElementDicArr = [[String: Any]]()
         chartOptionsSeries.forEach { (aaSeriesElement) in
-            seriesElementDicArr.append(aaSeriesElement.toDic()!)
+            seriesElementDicArr.append(aaSeriesElement.toDic())
         }
         
          let str = getJSONStringFromArray(array: seriesElementDicArr)
@@ -478,7 +478,7 @@ extension AAChartView {
             optionsStr = getJSONStringFromArray(array: options as! [Any])
         } else {
             let aaOption: AAObject = options as! AAObject
-            optionsStr = aaOption.toJSON()!
+            optionsStr = aaOption.toJSON()
         }
     
         let javaScriptStr = "addPointToChartSeries('\(elementIndex)','\(optionsStr)','\(redraw)','\(shift)','\(animation)')"
@@ -510,7 +510,7 @@ extension AAChartView {
     ///
     /// - Parameter element: chart series element
     public func aa_addElementToChartSeries(element: AASeriesElement) {
-        let elementJson = element.toJSON()!
+        let elementJson = element.toJSON()
         let pureElementJsonStr = elementJson.aa_toPureJSString()
         let jsStr = "addElementToChartSeriesWithElement('\(pureElementJsonStr)')"
         safeEvaluateJavaScriptString(jsStr)
@@ -608,7 +608,7 @@ extension AAChartView {
     }
     
     private func handleDeviceOrientationChangeEventWithAnimation(_ animation: AAAnimation) {
-        let animationJsonStr = animation.toJSON()!
+        let animationJsonStr = animation.toJSON()
         let jsFuncStr = "changeChartSize('\(frame.size.width)','\(frame.size.height)','\(animationJsonStr)')"
         safeEvaluateJavaScriptString(jsFuncStr)
     }

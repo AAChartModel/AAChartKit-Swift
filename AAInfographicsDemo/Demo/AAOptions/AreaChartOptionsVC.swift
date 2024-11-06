@@ -139,7 +139,7 @@ class AreaChartOptionsVC: AABaseChartVC {
                     .crop(false)
             )
             .y(51.5)
-            .toDic()!
+            .toDic()
         
         let singleSpecialData2 = AADataElement()
             .marker(
@@ -171,7 +171,7 @@ class AreaChartOptionsVC: AABaseChartVC {
                     .crop(false)
             )
             .y(26.5)
-            .toDic()!
+            .toDic()
 
         
         let aaSeriesArr = [
@@ -253,7 +253,7 @@ class AreaChartOptionsVC: AABaseChartVC {
                     .crop(false)
             )
             .y(51.5)
-            .toDic()!
+            .toDic()
         
         let singleSpecialData2 = AADataElement()
             .marker(
@@ -282,7 +282,7 @@ class AreaChartOptionsVC: AABaseChartVC {
                     .crop(false)
             )
             .y(26.5)
-            .toDic()!
+            .toDic()
         
         let aaSeriesArr = [
             AASeriesElement()
@@ -365,7 +365,7 @@ class AreaChartOptionsVC: AABaseChartVC {
                     .crop(false)
             )
             .y(34.5)
-            .toDic()!
+            .toDic()
 
         
         let singleSpecialData2 = AADataElement()
@@ -395,7 +395,7 @@ class AreaChartOptionsVC: AABaseChartVC {
                     .crop(false)
             )
             .y(14.5)
-            .toDic()!
+            .toDic()
 
         
         let aaSeriesArr = [

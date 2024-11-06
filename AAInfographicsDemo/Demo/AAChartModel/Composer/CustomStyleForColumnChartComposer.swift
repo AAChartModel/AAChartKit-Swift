@@ -237,7 +237,7 @@ class CustomStyleForColumnChartComposer {
                         AADataElement()
                             .color(AAGradientColor.freshPapaya)
                             .y(49.5)
-                            .toDic()!,
+                            .toDic(),
                         5.2, 26.5, 23.3, 26.5, 13.9, 9.6])
             ])
     }
@@ -433,7 +433,7 @@ class CustomStyleForColumnChartComposer {
                                         .format("-{y} 美元")
                                         .style(AAStyle(color: AAColor.green, fontSize: 11, weight: .thin))
                                     )
-                                newDataArr.append(negativeDataElement.toDic()!)
+                                newDataArr.append(negativeDataElement.toDic())
                             } else {
                                 let positiveDataElement = AADataElement()
                                     .y((dataElementValue))
@@ -442,7 +442,7 @@ class CustomStyleForColumnChartComposer {
                                         .format("+{y} 美元")
                                         .style(AAStyle(color: AAColor.red, fontSize: 11, weight: .thin))
                                     )
-                                newDataArr.append(positiveDataElement.toDic()!)
+                                newDataArr.append(positiveDataElement.toDic())
                             }
                         }
                         return newDataArr
@@ -485,7 +485,7 @@ class CustomStyleForColumnChartComposer {
                         AADataElement()
                             .color(AAGradientColor.freshPapaya)
                             .y(49.5)
-                            .toDic()!,
+                            .toDic(),
                         5.2, 26.5, 23.3, 26.5, 13.9, 9.6
                     ])
             ])

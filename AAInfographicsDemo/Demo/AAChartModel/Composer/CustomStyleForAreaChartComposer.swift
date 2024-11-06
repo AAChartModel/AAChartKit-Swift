@@ -148,7 +148,7 @@ class CustomStyleForAreaChartComposer {
                                 .overflow(.none)
                                 .crop(false))
                             .y(26.5)
-                            .toDic()!,
+                            .toDic(),
                         5.2, 26.5, 23.3, 45.3, 13.9, 9.6
                     ])
             ])

@@ -35,6 +35,7 @@ import Foundation
 
 public class AAObject { }
 
+
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public extension AAObject {
     var classNameString: String {
@@ -43,8 +44,10 @@ public extension AAObject {
     }
 }
 
+
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public extension AAObject {
+    
     fileprivate func loopForMirrorChildren(_ mirrorChildren: Mirror.Children, _ representation: inout [String : Any]) {
         for case let (label?, value) in mirrorChildren {
             switch value {
@@ -76,7 +79,7 @@ public extension AAObject {
         }
     }
     
-    func toDic() -> [String: Any]? {
+    func toDic() -> [String: Any] {
         var representation = [String: Any]()
         
         let mirrorChildren = Mirror(reflecting: self).children
@@ -87,17 +90,16 @@ public extension AAObject {
             loopForMirrorChildren(superMirrorChildren!, &representation)
         }
         
-        return representation as [String: Any]?
+        return representation
     }
     
-    
-    func toJSON() -> String? {
+    func toJSON() -> String {
         do {
             let data = try JSONSerialization.data(withJSONObject: toDic() as Any, options: [])
-            let jsonStr = String(data: data, encoding: String.Encoding.utf8)
+            guard let jsonStr = String(data: data, encoding: String.Encoding.utf8) else { return "" }
             return jsonStr
         } catch {
-            return nil
+            return ""
         }
     }
     

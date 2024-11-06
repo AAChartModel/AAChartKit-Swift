@@ -268,13 +268,19 @@ static func basicPieChart() -> AAOptions {
                         ["Chrome", 12.8],
                         ["Safari", 8.5],
                         ["Opera", 6.2],
-                        [
-                            "name": "其他",
-                            "y": 0.7,
-                            "dataLabels": AADataLabels()
+//                        [
+//                            "name": "其他",
+//                            "y": 0.7,
+//                            "dataLabels": AADataLabels()
+//                                .enabled(false)
+//                                .toDic()// 数据比较少，没有空间显示数据标签，所以将其关闭
+//                        ]
+                        AADataElement()
+                            .name("其他")
+                            .y(0.7)
+                            .dataLabels(AADataLabels()
                                 .enabled(false)
-                                .toDic()!// 数据比较少，没有空间显示数据标签，所以将其关闭
-                        ]
+                            )
                     ])
             ])
     }

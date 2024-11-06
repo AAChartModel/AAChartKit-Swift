@@ -136,7 +136,7 @@ class CustomStyleForLineChartComposer {
                                     weight: .bold,
                                     outline: "1px 1px contrast"
                                 )))
-                            .toDic()!,
+                            .toDic(),
                         0.52, 0.75, 0.52, 0.56, 0.54, 0.60, 0.46, 0.63, 0.54, 0.51, 0.58, 0.64, 0.60, 0.45, 0.36, 0.67
                     ])
             ])
@@ -435,12 +435,12 @@ class CustomStyleForLineChartComposer {
                 let minData = AADataElement()
                     .dataLabels(aaDataLabels)
                     .y(2.5)
-                    .toDic()!
+                    .toDic()
                 
                 let maxData = AADataElement()
                     .dataLabels(aaDataLabels)
                     .y(49.5)
-                    .toDic()!
+                    .toDic()
                 
                 return [
                     AASeriesElement()
