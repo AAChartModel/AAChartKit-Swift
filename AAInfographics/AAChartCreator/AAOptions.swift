@@ -30,7 +30,7 @@
  
  */
 
-//https://api.highcharts.com/highcharts/
+/// https://api.highcharts.com/highcharts/
 public class AAOptions: AAObject {
     public var chart: AAChart?
     public var title: AATitle?
@@ -187,12 +187,12 @@ public class AAOptionsConstructor {
         
         let aaPlotOptions = AAPlotOptions()
             .series(AASeries()
-                        .stacking(aaChartModel.stacking))
+                .stacking(aaChartModel.stacking))
         
         aaPlotOptions.series?
             .animation(AAAnimation()
-                        .easing(aaChartModel.animationType)
-                        .duration(aaChartModel.animationDuration))
+                .easing(aaChartModel.animationType)
+                .duration(aaChartModel.animationDuration))
         
         configurePlotOptionsMarkerStyle(aaChartModel, aaPlotOptions)
         configurePlotOptionsDataLabels(aaPlotOptions, aaChartModel)
@@ -263,7 +263,7 @@ public class AAOptionsConstructor {
             let aaColumn = AAColumn()
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
-
+            
             if (aaChartModel.polar == true) {
                 aaColumn
                     .pointPadding(0)
@@ -275,7 +275,7 @@ public class AAOptionsConstructor {
             let aaBar = AABar()
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
-
+            
             aaPlotOptions.bar(aaBar)
             
         case .pie:
@@ -294,7 +294,7 @@ public class AAOptionsConstructor {
             let aaColumnrange = AAColumnrange()
                 .borderWidth(0)
                 .borderRadius(aaChartModel.borderRadius)
-
+            
             aaPlotOptions.columnrange(aaColumnrange)
             
         default: break
@@ -341,8 +341,8 @@ public class AAOptionsConstructor {
                     .visible(aaChartModel.xAxisVisible) //whether the x axis is visible
                     .tickInterval(aaChartModel.xAxisTickInterval) //Number of x-axis coordinate point intervals
                     .title(AATitle()
-                            .text(aaChartModel.xAxisTitle)) //x axis title
-                                            
+                        .text(aaChartModel.xAxisTitle)) //x axis title
+                
                 aaOptions.xAxis(aaXAxis)
             }
             
@@ -365,7 +365,7 @@ public class AAOptionsConstructor {
                 .lineWidth(aaChartModel.yAxisLineWidth) //Set the width of the y-axis axis, which is 0 to hide the y-axis axis
                 .visible(aaChartModel.yAxisVisible)
                 .title(AATitle()
-                        .text(aaChartModel.yAxisTitle)) //y axis title
+                    .text(aaChartModel.yAxisTitle)) //y axis title
             
             aaOptions.yAxis(aaYAxis)
         }
