@@ -30,8 +30,8 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/subtitle
 public class AASubtitle: AAObject {
     public var text: String?
     public var style: AAStyle?
