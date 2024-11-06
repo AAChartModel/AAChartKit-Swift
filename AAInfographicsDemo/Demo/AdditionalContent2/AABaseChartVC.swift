@@ -243,21 +243,21 @@ class AABaseChartVC: UIViewController {
         
 //        aaOptions.chart?.pinchType = nil
         
-        aaOptions.chart?.zooming?
-            .resetButton(AAResetButton()
-                .theme(AAButtonTheme()
-                    .fill(AAColor.yellow)
-                    .stroke(AAColor.green)
-                    .strokeWidth(3)
-                    .r(3)
-                    .states(AAButtonThemeStates()
-                        .hover(AAButtonThemeStatesHover()
-                            .fill(AAColor.red)
-                            .style(AAStyle()
-                                .color(AAColor.white))))))
-            .singleTouch(true)
-            .type(.x)
-            .pinchType(.x)
+//        aaOptions.chart?.zooming?
+//            .resetButton(AAResetButton()
+//                .theme(AAButtonTheme()
+//                    .fill(AAColor.yellow)
+//                    .stroke(AAColor.green)
+//                    .strokeWidth(3)
+//                    .r(3)
+//                    .states(AAButtonThemeStates()
+//                        .hover(AAButtonThemeStatesHover()
+//                            .fill(AAColor.red)
+//                            .style(AAStyle()
+//                                .color(AAColor.white))))))
+//            .singleTouch(true)
+//            .type(.x)
+//            .pinchType(.x)
     }
     
     func refreshChartWithChartConfiguration() {
