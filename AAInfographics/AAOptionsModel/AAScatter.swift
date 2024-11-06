@@ -30,8 +30,8 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/plotOptions.scatter
 public class AAScatter: AAObject {
     public var lineWidth: Float?
     public var lineColor: String?
@@ -109,9 +109,10 @@ public class AAScatter: AAObject {
     }
 }
 
+
 public class AABubble: AAObject {
-    public var minSize: Any? // (String | Number)
-    public var maxSize: Any? // (String | Number)
+    public var minSize: Any? //(String | Number)
+    public var maxSize: Any? //(String | Number)
     public var zMin: Float?
     public var zMax: Float?
     public var dataLabels:AADataLabels?
@@ -157,6 +158,7 @@ public class AABubble: AAObject {
         
     }
 }
+
 
 public class AAJitter: AAObject {
     public var x: Float?
