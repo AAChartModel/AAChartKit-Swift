@@ -31,6 +31,7 @@
  */
 
 
+/// https://api.highcharts.com/highcharts/lang
 public class AALang: AAObject {
     public var noData: String?
     public var numericSymbolMagnitude: Int?
