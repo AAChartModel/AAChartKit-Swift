@@ -349,14 +349,6 @@ public class AAChartEvents: AAObject {
     }
 }
 
-
-
-/**
- panning:{
- enabled:false
- type:x
- }
- */
 public class AAPanning: AAObject {
     public var enabled: Bool?
     public var type: String?
@@ -377,34 +369,6 @@ public class AAPanning: AAObject {
         
     }
 }
-
-
-/**
- zooming:{
- key:undefined
- mouseWheel:{
- enabled:true
- sensitivity:1.1
- type:undefined
- }
- pinchType:undefined
- resetButton:{
- position:{
- align:right
- verticalAlign:top
- x:-10
- y:10
- }
- relativeTo:plot
- theme:{
- zIndex:6
- }
- }
- singleTouch:false
- type:undefined
- }
- */
-
 
 public class AAZooming: AAObject {
     public var key: String?
