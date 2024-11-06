@@ -271,8 +271,10 @@ public class AAChartView: WKWebView {
         if data != nil {
             let prettyPrintedModelJson = String(data: data!, encoding: String.Encoding.utf8)
             print("""
+                
                 -----------🖨🖨🖨 console log AAOptions JSON information of AAChartView 🖨🖨🖨-----------:
                 \(prettyPrintedModelJson!)
+                
                 """)
         }
         #endif
@@ -412,6 +414,19 @@ extension AAChartView {
             let finalClassNameStr = lowercaseFirstChar + classNameStr
             finalOptionsDic = [finalClassNameStr: optionsDic as Any]
         }
+        
+        #if DEBUG
+        let data = try? JSONSerialization.data(withJSONObject: finalOptionsDic as Any, options: .prettyPrinted)
+        if data != nil {
+            let prettyPrintedModelJson = String(data: data!, encoding: String.Encoding.utf8)
+            print("""
+
+                -----------📊🔄🖨 console log AAOptions JSON information of advanced updating 🖨🔄📊-----------:
+                \(prettyPrintedModelJson!)
+
+                """)
+        }
+        #endif
                 
         let optionsStr = getJSONStringFromDictionary(dictionary: finalOptionsDic)
         let jsStr = "updateChart('\(optionsStr)','\(redraw)')"
