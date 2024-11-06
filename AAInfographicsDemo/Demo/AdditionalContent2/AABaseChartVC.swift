@@ -241,9 +241,9 @@ class AABaseChartVC: UIViewController {
             .noData("暂无数据")
             .resetZoom("点击重置缩放比例")
         
-        aaOptions.chart?.pinchType = nil
+//        aaOptions.chart?.pinchType = nil
         
-        aaOptions.chart?.zooming = AAZooming()
+        aaOptions.chart?.zooming?
             .resetButton(AAResetButton()
                 .theme(AAButtonTheme()
                     .fill(AAColor.yellow)
