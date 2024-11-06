@@ -160,7 +160,7 @@ public class AAOptionsConstructor {
             .inverted(aaChartModel.inverted)
             .backgroundColor(aaChartModel.backgroundColor)
             .pinchType(aaChartModel.zoomType) //Set gesture zoom direction
-            .panning(true) //Set whether gestures can be panned after zooming
+//            .panning(true) //Set whether gestures can be panned after zooming
             .polar(aaChartModel.polar) //Whether to polarize the chart (turn on polar mode)
             .scrollablePlotArea(aaChartModel.scrollablePlotArea)
         aaChart.margin = aaChartModel.margin

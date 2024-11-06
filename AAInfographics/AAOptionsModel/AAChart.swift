@@ -38,7 +38,7 @@ public class AAChart: AAObject {
     public var plotBackgroundColor: Any?
     public var plotBackgroundImage: String?
     public var pinchType: String?
-    public var panning: Bool?
+    public var panning: AAPanning?
     public var panKey: String?
     public var polar: Bool?
     public var animation: AAAnimation?
@@ -97,7 +97,7 @@ public class AAChart: AAObject {
     }
     
     @discardableResult
-    public func panning(_ prop: Bool?) -> AAChart {
+    public func panning(_ prop: AAPanning?) -> AAChart {
         panning = prop
         return self
     }
@@ -333,6 +333,35 @@ public class AAChartEvents: AAObject {
     @discardableResult
     public func selection(_ prop: String?) -> AAChartEvents {
         selection = prop?.aa_toPureJSString()
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
+
+
+
+/**
+ panning:{
+ enabled:false
+ type:x
+ }
+ */
+public class AAPanning: AAObject {
+    public var enabled: Bool?
+    public var type: String?
+    
+    @discardableResult
+    public func enabled(_ prop: Bool?) -> AAPanning {
+        enabled = prop
+        return self
+    }
+    
+    @discardableResult
+    public func type(_ prop: String?) -> AAPanning {
+        type = prop
         return self
     }
     
