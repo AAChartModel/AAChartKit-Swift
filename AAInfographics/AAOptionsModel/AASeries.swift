@@ -30,11 +30,11 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/plotOptions.series
 public class AASeries: AAObject {
-    public var borderColor: String?        //The border color, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
-    public var borderWidth: Float?         //The border width, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
+    public var borderColor: String? //The border color, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
+    public var borderWidth: Float? //The border width, It is only valid for column, bar, pie, columnrange, pyramid and funnel chart types
     public var marker: AAMarker?
     public var stacking: String?
     public var animation: Any? //AAAnimation | Bool
@@ -58,7 +58,6 @@ public class AASeries: AAObject {
     public var minPointLength: Float?
     public var tooltip: AATooltip?
     public var lineWidth: Float?
-    
 
     @discardableResult
     public func borderColor(_ prop: String?) -> Self {
@@ -256,7 +255,6 @@ public class AASeriesEvents: AAObject {
         
     }
 }
-
 
 
 public class AAPoint: AAObject {
