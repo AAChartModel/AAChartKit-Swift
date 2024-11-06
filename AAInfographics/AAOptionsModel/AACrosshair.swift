@@ -30,8 +30,8 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/xAxis.crosshair
 public class AACrosshair: AAObject {
     public var dashStyle: String?
     public var color: String?
