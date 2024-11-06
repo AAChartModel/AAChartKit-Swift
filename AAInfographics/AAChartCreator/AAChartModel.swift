@@ -30,7 +30,8 @@
  
  */
 
-//https://api.highcharts.com/highcharts/chart.animation
+
+/// https://api.highcharts.com/highcharts/chart.animation
 public enum AAChartAnimationType: Int {
     case linear
     case easeInQuad
@@ -69,7 +70,7 @@ public enum AAChartAnimationType: Int {
     case easeTo
 }
 
-//https://api.highcharts.com/highcharts/plotOptions
+/// https://api.highcharts.com/highcharts/plotOptions
 public enum AAChartType: String {
     case column          //Column series display one column per value along an X axis.
     case bar             //A bar series is a special type of column series where the columns are horizontal.
@@ -92,32 +93,32 @@ public enum AAChartType: String {
     case errorbar        //Error bars are a graphical representation of the variability of data and are used on graphs to indicate the error, or uncertainty in a reported measurement.
 }
 
-//https://api.highcharts.com/highcharts/legend.layout
+/// https://api.highcharts.com/highcharts/legend.layout
 public enum AAChartLayoutType: String {
     case horizontal, vertical
 }
 
-//https://api.highcharts.com/highcharts/legend.align
+/// https://api.highcharts.com/highcharts/legend.align
 public enum AAChartAlignType: String {
     case left, center, right
 }
 
-//https://api.highcharts.com/highcharts/legend.verticalAlign
+/// https://api.highcharts.com/highcharts/legend.verticalAlign
 public enum AAChartVerticalAlignType: String {
     case top, middle, bottom
 }
 
-//https://api.highcharts.com/highcharts/chart.zoomType
+/// https://api.highcharts.com/highcharts/chart.zoomType
 public enum AAChartZoomType: String {
     case none, x, y, xy
 }
 
-//https://api.highcharts.com/highcharts/plotOptions.series.stacking
+/// https://api.highcharts.com/highcharts/plotOptions.series.stacking
 public enum AAChartStackingType: String {
     case none = "", normal, percent
 }
 
-//https://api.highcharts.com/highcharts/plotOptions.series.marker.symbol
+/// https://api.highcharts.com/highcharts/plotOptions.series.marker.symbol
 public enum AAChartSymbolType: String {
     case circle   //◉ ◉ ◉
     case square   //■ ■ ■
@@ -130,12 +131,12 @@ public enum AAChartSymbolStyleType: String {
     case normal, innerBlank, borderBlank
 }
 
-//https://api.highcharts.com/highcharts/title.style.fontWeight
+/// https://api.highcharts.com/highcharts/title.style.fontWeight
 public enum AAChartFontWeightType: String {
     case thin, regular, bold
 }
 
-//https://api.highcharts.com/highcharts/series.line.dashStyle
+/// https://api.highcharts.com/highcharts/series.line.dashStyle
 public enum AAChartLineDashStyleType: String {
     case solid           //———————————————————————————————————
     case shortDash       //— — — — — — — — — — — — — — — — — —
