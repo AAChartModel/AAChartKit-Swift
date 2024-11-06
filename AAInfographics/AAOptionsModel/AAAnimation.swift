@@ -30,8 +30,11 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/chart.animation
+/// https://api.highcharts.com/highcharts/plotOptions.series.animation
+/// https://api.highcharts.com/highcharts/plotOptions.line.animation
+/// https://api.highcharts.com/highcharts/series.line.animation
 public class AAAnimation: AAObject {
     public var duration: Int?
     public var easing: Int?
