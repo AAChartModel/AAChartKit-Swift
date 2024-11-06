@@ -30,8 +30,8 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/legend.bubbleLegend
 public class AALegend: AAObject {
     public var layout: String? //The layout of the legend data items. Layout type: "horizontal" or "vertical" ie horizontal and vertical layout The default is: "horizontal".
     public var align: String? //Set the horizontal alignment of the legend in the chart area. Legal values are "left", "center", and "right".  The default is: "center".
@@ -185,8 +185,8 @@ public class AALegend: AAObject {
     public override init () {
         
     }
-    
 }
+
 
 public class AAItemStyle: AAObject {
     public var color: String?
@@ -215,8 +215,8 @@ public class AAItemStyle: AAObject {
     
     @discardableResult
     public func fontSize(_ prop: Float?) -> AAItemStyle {
-        if (prop != nil) {
-            fontSize = "\(prop!)px"
+        if let validProp = prop {
+            fontSize = "\(validProp)px"
         }
         return self
     }
