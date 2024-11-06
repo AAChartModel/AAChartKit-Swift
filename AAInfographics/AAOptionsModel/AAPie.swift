@@ -27,8 +27,8 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/plotOptions.pie
 public class AAPie: AASeries {
     public var type: String?
     public var data: [Any]?
@@ -122,6 +122,5 @@ public class AAPie: AASeries {
     public override init() {
         
     }
-    
 }
 
