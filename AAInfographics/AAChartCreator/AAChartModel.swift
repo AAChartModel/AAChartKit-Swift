@@ -487,7 +487,7 @@ public class AAChartModel: AAObject {
     }
     
     @discardableResult
-    public func borderRadius(_ prop: Any) -> AAChartModel {
+    public func borderRadius(_ prop: AABorderRadius) -> AAChartModel {
         borderRadius = prop
         return self
     }
@@ -497,7 +497,6 @@ public class AAChartModel: AAObject {
         scrollablePlotArea = prop
         return self
     }
-    
 
     public override init() {
         title                  = ""

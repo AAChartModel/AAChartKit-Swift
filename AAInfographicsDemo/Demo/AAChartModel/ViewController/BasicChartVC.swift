@@ -179,7 +179,11 @@ class BasicChartVC: UIViewController {
             if chartType == .column || chartType == .bar {
                 let borderRadiusArr = [1, 10, "50%"] as [Any]
                 let borderRadius = borderRadiusArr[selectedSegmentIndex]
-                aaChartModel!.borderRadius(borderRadius)
+                if borderRadius is Int {
+                    aaChartModel!.borderRadius(borderRadius as! Float)
+                } else {
+                    aaChartModel!.borderRadius(borderRadius as! String)
+                }
             } else {
                 let symbolArr = [
                     AAChartSymbolType.circle,
