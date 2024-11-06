@@ -27,8 +27,8 @@
 
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/legend.bubbleLegend
 public class AABubbleLegend: AAObject {
     public var borderColor: String?
     public var borderWidth: Float?
@@ -161,7 +161,6 @@ public class AABubbleLegend: AAObject {
 
     }
 }
-
 
 
 public class AARangesElement: AAObject {
