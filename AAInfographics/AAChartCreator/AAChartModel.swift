@@ -191,11 +191,11 @@ public class AAChartModel: AAObject {
     public var yAxisAllowDecimals: Bool?    //The y axis values label allow decimals or not
     public var tooltipEnabled: Bool?        //Show the tooltip or not
     public var tooltipValueSuffix: String?  //Custom tooltip value unit suffix
-    public var colorsTheme: [Any]?          //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to: ["#bb250c","#f67210","#fde680","#257679","#f1c6c5"]
+    public var colorsTheme: [Any]?          //An array containing the default colors for the chart's series. When all colors are used, new colors are pulled from the start again. Defaults to: ["#1e90ff", "#ef476f", "#ffd066", "#04d69f", "#25547c",]
     public var series: [Any]?               //An array of all the chart's series
     public var legendEnabled: Bool?         //Enable or disable the legend. Defaults to true
     public var backgroundColor: Any?        //The background color or gradient for the outer chart area. Defaults to #FFFFFF
-    public var borderRadius: Any?         //The corner radius of the outer chart border. Defaults to 0
+    public var borderRadius: Any?           //The corner radius of the outer chart border. Defaults to 0
     public var markerRadius: Float?         //The radius of the point marker. Defaults to 4
     public var scrollablePlotArea: AAScrollablePlotArea?    //Scroll properties if supported
     
@@ -506,7 +506,7 @@ public class AAChartModel: AAObject {
         chartType              = .line
         stacking               = AAChartStackingType.none
         zoomType               = AAChartZoomType.none //Disable gesture zoom by default
-        colorsTheme            = ["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
+        colorsTheme            = ["#1e90ff", "#ef476f", "#ffd066", "#04d69f", "#25547c",]
         tooltipEnabled         = true
         xAxisLabelsEnabled     = true
         xAxisVisible           = true
