@@ -30,8 +30,8 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/chart
 public class AAChart: AAObject {
     public var type: String?
     public var backgroundColor: Any?
@@ -307,6 +307,7 @@ public class AAResetZoomButton: AAObject {
     }
 }
 
+
 public class AAChartEvents: AAObject {
     public var click: String?
     public var load: String?
@@ -349,6 +350,7 @@ public class AAChartEvents: AAObject {
     }
 }
 
+
 public class AAPanning: AAObject {
     public var enabled: Bool?
     public var type: String?
@@ -369,6 +371,7 @@ public class AAPanning: AAObject {
         
     }
 }
+
 
 public class AAZooming: AAObject {
     public var key: String?
@@ -419,6 +422,7 @@ public class AAZooming: AAObject {
     }
 }
 
+
 public class AAMouseWheel: AAObject {
     public var enabled: Bool?
     public var sensitivity: Float?
@@ -446,6 +450,7 @@ public class AAMouseWheel: AAObject {
         
     }
 }
+
 
 public class AAResetButton: AAObject {
     public var position: AAPosition?
