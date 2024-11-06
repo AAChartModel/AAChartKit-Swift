@@ -30,16 +30,15 @@
  
  */
 
-import Foundation
 
-//https://api.highcharts.com/highcharts/plotOptions.column
+/// https://api.highcharts.com/highcharts/plotOptions.column
 public class AAColumn: AASeries {
     public var name: String?
     public var data: [Any]?
     public var color: String?
-    public var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. default：true.
+    public var grouping: Bool? //Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. default：true.
     public var yAxis: Float?
-    public var borderRadius: Any?        //The corner radius of the border surrounding each column or bar.
+    public var borderRadius: Any? //The corner radius of the border surrounding each column or bar.
     public var borderRadiusTopLeft: Any?
     public var borderRadiusTopRight: Any?
     public var borderRadiusBottomLeft: Any?
@@ -116,15 +115,13 @@ public class AAColumn: AASeries {
         borderRadiusBottomRight = prop
         return self
     }
-
     
     public override init() {
         
     }
-    
 }
 
-//https://api.highcharts.com/highcharts/plotOptions.bar
+/// https://api.highcharts.com/highcharts/plotOptions.bar
 public class AABar: AAColumn {
     
     public override init() {
@@ -132,7 +129,7 @@ public class AABar: AAColumn {
     }
 }
 
-//https://api.highcharts.com/highcharts/plotOptions.columnrange
+/// https://api.highcharts.com/highcharts/plotOptions.columnrange
 public class AAColumnrange: AAObject {
     public var borderRadius: Any?//The color of the border surrounding each column or bar
     public var borderWidth: Float?//The corner radius of the border surrounding each column or bar. default：0
@@ -201,7 +198,7 @@ public class AAColumnrange: AAObject {
     }
 }
 
-//https://api.highcharts.com/class-reference/Highcharts.BorderRadiusOptionsObject
+/// https://api.highcharts.com/class-reference/Highcharts.BorderRadiusOptionsObject
 public class AABorderRadius: AAObject {
     public var radius: Any?
     public var scope: String?
