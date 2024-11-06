@@ -39,6 +39,7 @@ class MixedChartComposer {
         AAChartModel()
             .title("LANGUAGE MARKET SHARES JANUARY,2020 TO MAY")
             .subtitle("virtual data")
+            .zoomType(.xy)
             .series([
                 AASeriesElement()
                     .name("Temperature")
@@ -133,6 +134,7 @@ class MixedChartComposer {
             .chartType(.line)
             .dataLabelsEnabled(false)
             .markerSymbolStyle(.borderBlank)
+            .zoomType(.xy)
             .series([
                 AASeriesElement()
                     .name("Temperature")
@@ -183,6 +185,7 @@ class MixedChartComposer {
                 AAColor.gray,
                 AAColor.lightGray,
             ])
+            .zoomType(.xy)
             .series([
                 AASeriesElement()
                     .name("新用户")
@@ -216,6 +219,7 @@ class MixedChartComposer {
             .markerSymbolStyle(.innerBlank)
             .markerSymbol(.circle)
             .markerRadius(10)
+            .zoomType(.xy)
             .series([
                 AASeriesElement()
                     .name("观测值")
@@ -436,6 +440,7 @@ class MixedChartComposer {
     
     static func polygonMixedScatterChart() -> AAChartModel {
         AAChartModel()
+            .zoomType(.xy)
             .series([
                 AASeriesElement()
                     .name("目标")
@@ -532,6 +537,7 @@ class MixedChartComposer {
     static func columnMixedScatterChart() -> AAChartModel {
         AAChartModel()
             .xAxisReversed(true)
+            .zoomType(.xy)
             .series([
                 AASeriesElement()
                     .name(AAChartType.column.rawValue)
@@ -570,6 +576,7 @@ class MixedChartComposer {
             .stacking(.normal)
             .colorsTheme(["#fe117c", "#ffc069", "#06caf4", "#7dffc0"])
             .dataLabelsEnabled(false)
+            .zoomType(.x)
             .series([
                 AASeriesElement()
                     .name("Anna")
@@ -636,6 +643,7 @@ class MixedChartComposer {
                 "维修工",
                 "质检员",
             ])
+            .zoomType(.xy)
             .series([
                 AASeriesElement()
                     .name("工资变化曲线")
@@ -708,6 +716,7 @@ class MixedChartComposer {
             .categories(["1", "2", "3", "4", "5"])
             .xAxisTitle("实验号码")
             .yAxisTitle("观测值")
+            .zoomType(.xy)
             .series({
                 // Generate test data with continuous Y values.
                 func getExperimentData() -> [Int] {
@@ -799,6 +808,7 @@ class MixedChartComposer {
             .markerSymbolStyle(.innerBlank)
             .yAxisGridLineWidth(0.5)
             .xAxisGridLineWidth(0.5)
+            .zoomType(.xy)
             .series({
                 var randomNumArrA = [Any]()
                 var randomNumArrB = [Any]()
