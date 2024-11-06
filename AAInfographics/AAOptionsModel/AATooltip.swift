@@ -30,8 +30,8 @@
  
  */
 
-import Foundation 
 
+/// https://api.highcharts.com/highcharts/tooltip
 public class AATooltip: AAObject {
     public var backgroundColor: Any?
     public var borderColor: String?
@@ -50,7 +50,7 @@ public class AATooltip: AAObject {
     public var valuePrefix: String?
     public var valueSuffix: String?
     public var followPointer: Bool?
-    public var followTouchMove: Bool?//https://api.highcharts.com.cn/highcharts#chart.panning
+    public var followTouchMove: Bool? //https://api.highcharts.com.cn/highcharts#chart.panning
     public var shadow: Bool?
     public var padding: Float?
     public var pointFormatter: String?
@@ -203,7 +203,6 @@ public class AATooltip: AAObject {
         return self
     }
 
-    
     public override init() {
         enabled = true
         shared = true
