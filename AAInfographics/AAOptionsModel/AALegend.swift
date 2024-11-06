@@ -41,7 +41,7 @@ public class AALegend: AAObject {
     public var borderWidth: Float?
     public var bubbleLegend: AABubbleLegend?
     public var itemMarginTop: Float? //The top margin of each item of the legend, in px. The default is: 0.
-    public var itemMarginBottom: Float?//The bottom margin of each item of the legend, in px. The default is: 0.
+    public var itemMarginBottom: Float? //The bottom margin of each item of the legend, in px. The default is: 0.
     public var itemStyle: AAItemStyle?
     public var itemWidth: Float?
     public var symbolHeight: Float?
