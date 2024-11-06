@@ -202,7 +202,7 @@ public class AAColumnrange: AAObject {
 public class AABorderRadius: AAObject {
     public var radius: Any?
     public var scope: String?
-    public var where_: String?
+    public var `where`: String?
 
     @discardableResult
     public func radius(_ prop: Float?) -> AABorderRadius {
@@ -223,8 +223,8 @@ public class AABorderRadius: AAObject {
     }
 
     @discardableResult
-    public func where_(_ prop: String?) -> AABorderRadius {
-        where_ = prop
+    public func `where`(_ prop: String?) -> AABorderRadius {
+        `where` = prop
         return self
     }
 
