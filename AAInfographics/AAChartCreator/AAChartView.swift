@@ -250,12 +250,6 @@ public class AAChartView: WKWebView {
     }
     
     private func configureOptionsJsonStringWithAAOptions(_ aaOptions: AAOptions) {
-        //添加 `frame.size.height`, 是为了解决新版 Highcharts 的图表的高度 height 不会自适应 container 的问题
-        //Add `frame.size.height` to solve the problem that the height of the new version of Highcharts chart will not adapt to the container
-        if aaOptions.chart?.height == nil {
-            aaOptions.chart?.height = frame.size.height
-        }
-        
         if isClearBackgroundColor == true {
             aaOptions.chart?.backgroundColor = AAColor.clear
         }
