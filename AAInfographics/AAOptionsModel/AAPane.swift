@@ -76,12 +76,12 @@ public class AAPane: AAObject {
 }
 
 public class AABackgroundElement: AAObject {
-    public var backgroundColor: Any? //背景颜色
-    public var borderColor: String? //边框颜色
-    public var borderWidth: Float? //边框宽度
-    public var className: String?//类名
-    public var innerRadius: Any?//内半径
-    public var outerRadius: Any?//外半径
+    public var backgroundColor: Any?
+    public var borderColor: String?
+    public var borderWidth: Float?
+    public var className: String?
+    public var innerRadius: Any?
+    public var outerRadius: Any?
     public var shape: String?
     
     @discardableResult
