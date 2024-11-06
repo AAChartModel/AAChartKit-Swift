@@ -30,7 +30,6 @@
  
  */
 
-import Foundation
 
 public enum AAChartDataLabelsShapeType: String {
     case square
@@ -46,6 +45,11 @@ public enum AAChartDataLabelsOverflowType: String {
     case justify
 }
 
+/// https://api.highcharts.com/highcharts/plotOptions.series.dataLabels
+/// https://api.highcharts.com/highcharts/plotOptions.line.dataLabels
+/// https://api.highcharts.com/highcharts/plotOptions.pie.dataLabels
+/// https://api.highcharts.com/highcharts/series.line.dataLabels
+/// https://api.highcharts.com/highcharts/series.pie.dataLabels
 public class AADataLabels: AAObject {
     public var enabled: Bool?
     public var align: String?
@@ -269,6 +273,7 @@ public class AADataLabels: AAObject {
     }
 }
 
+
 public class AAFilter: AAObject {
     public var property: String?
     public var `operator`: String?
@@ -296,6 +301,7 @@ public class AAFilter: AAObject {
         
     }
 }
+
 
 public class AATextPath: AAObject {
     public var enabled: Bool?
