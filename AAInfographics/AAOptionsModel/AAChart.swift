@@ -37,7 +37,6 @@ public class AAChart: AAObject {
     public var backgroundColor: Any?
     public var plotBackgroundColor: Any?
     public var plotBackgroundImage: String?
-    //为 pinchType 属性添加废弃标记. 请使用 `zooming` 属性的 `pinchType` 属性代替
     @available(*, deprecated, message: "This property has been deprecated, please use the `pinchType` property of `zooming` property of `AAChart` instead")
     public var pinchType: String?
     public var panning: AAPanning?
@@ -57,7 +56,6 @@ public class AAChart: AAObject {
     public var spacingLeft: Float? //👈
     public var scrollablePlotArea: AAScrollablePlotArea?
     public var resetZoomButton: AAResetZoomButton?
-    //为 zoomtype 属性添加废弃标记. 请使用 `zooming` 属性的 `type` 属性代替
     @available(*, deprecated, message: "This property has been deprecated, please use the `type` property of `zooming` property of `AAChart` instead")
     public var zoomType: String?
     public var zooming: AAZooming?
@@ -94,7 +92,6 @@ public class AAChart: AAObject {
         return self
     }
     
-    //为 pinchType 属性添加废弃标记. 请使用 `zooming` 属性的 `pinchType` 属性代替
     @available(*, deprecated, message: "This property has been deprecated, please use the `pinchType` property of `zooming` set method of `AAChart` instead")
     @discardableResult
     public func pinchType(_ prop: AAChartZoomType?) -> AAChart {
@@ -230,7 +227,6 @@ public class AAChart: AAObject {
         return self
     }
     
-    //为 zoomType 属性添加废弃标记. 请使用 `zooming` 属性的 `type` 属性代替
     @available(*, deprecated, message: "This method has been deprecated, please use the `type` property of `zooming` set method of `AAChart` instead")
     @discardableResult
     public func zoomType(_ prop: AAChartZoomType?) -> AAChart {
