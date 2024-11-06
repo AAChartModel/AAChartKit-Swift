@@ -30,12 +30,12 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/plotOptions.boxplot
 public class AABoxplot: AAObject {
     public var boxDashStyle: String?
     public var fillColor: Any?
-    public var grouping: Bool?//Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. default：true.
+    public var grouping: Bool? //Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other. default：true.
     public var lineWidth: Float?
     public var medianColor: String?
     public var medianDashStyle: String?
@@ -142,5 +142,4 @@ public class AABoxplot: AAObject {
     public override init() {
         
     }
-
 }
