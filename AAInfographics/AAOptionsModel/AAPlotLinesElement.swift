@@ -30,8 +30,8 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/xAxis.plotLines
 public class AAPlotLinesElement: AAObject {
     public var color: Any?
     public var dashStyle: String?
@@ -79,7 +79,6 @@ public class AAPlotLinesElement: AAObject {
     public override init() {
         
     }
-
 }
 
 
