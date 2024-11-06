@@ -31,8 +31,7 @@
  */
 
 
-import Foundation
-
+/// https://api.highcharts.com/highcharts/xAxis
 public class AAYAxis: AAAxis {
     public var stackLabels: AALabels?
     
@@ -42,9 +41,7 @@ public class AAYAxis: AAAxis {
         return self
     }
 
-    
     public override init() {
         
     }
-
 }
