@@ -30,6 +30,7 @@
  
  */
 
+
 /// https://api.highcharts.com/highcharts/
 public class AAOptions: AAObject {
     public var chart: AAChart?
@@ -48,8 +49,8 @@ public class AAOptions: AAObject {
     public var credits: AACredits?
     public var defaultOptions: AALang?
     
-    internal var clickEventEnabled: Bool?//Please DO NOT use this property
-    internal var touchEventEnabled: Bool?//Please DO NOT use this property
+    internal var clickEventEnabled: Bool? //Please DO NOT use this property
+    internal var touchEventEnabled: Bool? //Please DO NOT use this property
     
     @discardableResult
     public func chart(_ prop: AAChart?) -> AAOptions {
