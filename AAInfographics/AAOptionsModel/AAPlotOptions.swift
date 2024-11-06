@@ -30,8 +30,8 @@
  
  */
 
-import Foundation
 
+/// https://api.highcharts.com/highcharts/plotOptions
 public class AAPlotOptions: AAObject {
     public var series: AASeries?
     public var column: AAColumn?
@@ -160,12 +160,14 @@ public class AALine: AAObject {
     }
 }
 
+
 public class AASpline: AALine {
     
     public override init() {
         
     }
 }
+
 
 public class AAArea: AASeries {
     public var fillColor: String?
@@ -209,12 +211,14 @@ public class AAArea: AASeries {
     }
 }
 
+
 public class AAAreaspline: AAArea {
     
     public override init() {
         
     }
 }
+
 
 public class AAArearange: AAObject {
     public var dataLabels: AADataLabels?
