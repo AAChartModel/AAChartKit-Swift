@@ -30,7 +30,9 @@
  
  */
 
-//https://api.highcharts.com/class-reference/Highcharts.LinearGradientColorObject
+
+/// https://api.highcharts.com/class-reference/Highcharts.LinearGradientColorObject
+///
 /// - vertical  : ⇧ top,  ⇩ bottom
 /// - horizontal: ⇦ left, ⇨ right
 /**
