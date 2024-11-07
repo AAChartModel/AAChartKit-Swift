@@ -40,6 +40,7 @@ import WebKit
     @objc optional func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel)
 }
 
+
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AAEventMessageModel: NSObject {
     public var name: String?
@@ -54,13 +55,15 @@ public class AAEventMessageModel: NSObject {
     }
 }
 
+
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AAClickEventMessageModel: AAEventMessageModel {}
 
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AAMoveOverEventMessageModel: AAEventMessageModel {}
 
-//Refer to: https://stackoverflow.com/questions/26383031/wkwebview-causes-my-view-controller-to-leak
+
+/// Refer to: https://stackoverflow.com/questions/26383031/wkwebview-causes-my-view-controller-to-leak
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AALeakAvoider : NSObject, WKScriptMessageHandler {
     weak var delegate : WKScriptMessageHandler?
@@ -78,6 +81,7 @@ public class AALeakAvoider : NSObject, WKScriptMessageHandler {
     }
 }
 
+
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AAChartView: WKWebView {
     let kUserContentMessageNameClick = "click"
@@ -89,7 +93,7 @@ public class AAChartView: WKWebView {
     private weak var _delegate: AAChartViewDelegate?
     public weak var delegate: AAChartViewDelegate? {
         set {
-            assert(optionsJson == nil, "You should set the delegate before drawing the chart")//To Make sure the clickEventEnabled and touchEventEnabled properties are working correctly
+            assert(optionsJson == nil, "You should set the delegate before drawing the chart") //To Make sure the clickEventEnabled and touchEventEnabled properties are working correctly
 
             _delegate = newValue
             if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:clickEventMessage:))) == true {
@@ -101,10 +105,10 @@ public class AAChartView: WKWebView {
                 addMouseOverEventMessageHandler()
             }
         }
+        
         get {
             _delegate
         }
-        
     }
   
     // MARK: - Setter Method
@@ -190,14 +194,12 @@ public class AAChartView: WKWebView {
    
     
     private func drawChart() {
-        //添加 `frame.size.height`, 是为了解决新版 Highcharts 的图表的高度 height 不会自适应 container 的问题
         //Add `frame.size.height` to solve the problem that the height of the new version of Highcharts chart will not adapt to the container
         let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? frame.size.height)')"
         safeEvaluateJavaScriptString(jsStr)
     }
     
     private func safeEvaluateJavaScriptString (_ jsString: String) {
-        
         if optionsJson == nil {
             #if DEBUG
             print("💀💀💀AAChartView did not finish loading!!!")
@@ -260,7 +262,7 @@ public class AAChartView: WKWebView {
         }
         if touchEventEnabled == true {
             aaOptions.touchEventEnabled = true
-            if clickEventEnabled != true {//避免重复调用配置方法
+            if clickEventEnabled != true { //Avoid duplicate invocation of configuration method
                 configurePlotOptionsSeriesPointEvents(aaOptions)
             }
         }
@@ -298,7 +300,6 @@ public class AAChartView: WKWebView {
         print("👻👻👻 AAChartView was destroyed!!!")
         #endif
     }
-
 }
 
 
@@ -330,6 +331,7 @@ extension AAChartView {
         aa_refreshChartWholeContentWithChartOptions(aaOptions)
     }
 }
+
 
 // MARK: - Configure Chart View Content With AAOptions
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
@@ -363,10 +365,10 @@ extension AAChartView {
             seriesElementDicArr.append(aaSeriesElement.toDic())
         }
         
-         let str = getJSONStringFromArray(array: seriesElementDicArr)
-         let jsStr = "onlyRefreshTheChartDataWithSeries('\(str)','\(animation)');"
-         safeEvaluateJavaScriptString(jsStr)
-     }
+        let str = getJSONStringFromArray(array: seriesElementDicArr)
+        let jsStr = "onlyRefreshTheChartDataWithSeries('\(str)','\(animation)');"
+        safeEvaluateJavaScriptString(jsStr)
+    }
     
     ///  Function of refreshing whole chart view content after the chart has been rendered
     ///
@@ -376,6 +378,7 @@ extension AAChartView {
         drawChart()
     }
 }
+
 
 // MARK: - Additional update Chart View Content methods
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
@@ -615,6 +618,7 @@ extension AAChartView {
     #endif
 }
 
+
 // MARK: - WKUIDelegate
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 extension AAChartView: WKUIDelegate {
@@ -669,6 +673,7 @@ extension AAChartView: WKUIDelegate {
     #endif
 }
 
+
 // MARK: - WKNavigationDelegate
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 extension AAChartView:  WKNavigationDelegate {
@@ -677,6 +682,7 @@ extension AAChartView:  WKNavigationDelegate {
         delegate?.aaChartViewDidFinishLoad?(self)
     }
 }
+
 
 // MARK: - WKScriptMessageHandler
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
@@ -694,6 +700,8 @@ extension AAChartView: WKScriptMessageHandler {
     }
 }
 
+
+// MARK: - Event Message Model
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 extension AAChartView {
     private func getEventMessageModel<T: AAEventMessageModel>(messageBody: [String: Any], eventType: T.Type) -> T {
@@ -718,6 +726,7 @@ extension AAChartView {
         }
     }
 }
+
 
 // MARK: - JSONSerialization
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
