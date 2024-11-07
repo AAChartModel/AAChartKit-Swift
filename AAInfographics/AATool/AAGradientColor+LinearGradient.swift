@@ -84,10 +84,9 @@ extension AAGradientColor {
         direction: AALinearGradientDirection,
         stops: [[Any]]
     ) -> AAGradientColor {
-        let linearGradientColor = AAGradientColor()
-        linearGradientColor.linearGradient = linearGradientDirectionDictionary(direction: direction)
-        linearGradientColor.stops = stops
-        return linearGradientColor
+        AAGradientColor()
+            .linearGradient(linearGradientDirectionObject(direction))
+            .stops(stops)
     }
     
     /**
@@ -99,8 +98,8 @@ extension AAGradientColor {
      |                   |
      (0,1) ----------- (1,1)
      */
-    private class func linearGradientDirectionDictionary(
-        direction: AALinearGradientDirection
+    private class func linearGradientDirectionObject(
+        _ direction: AALinearGradientDirection
     ) -> AALinearGradient {
         switch direction {
         case .toTop:         return AALinearGradient(x1: 0, y1: 1, x2: 0, y2: 0)
