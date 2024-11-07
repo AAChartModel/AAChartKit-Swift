@@ -58,7 +58,7 @@ extension AAGradientColor {
     public class func linearGradient(
         startColor: String,
         endColor: String
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: .toTop,
             startColor: startColor,
@@ -70,7 +70,7 @@ extension AAGradientColor {
         direction: AALinearGradientDirection,
         startColor: String,
         endColor: String
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             stops: [
@@ -83,11 +83,11 @@ extension AAGradientColor {
     public class func linearGradient(
         direction: AALinearGradientDirection,
         stops: [[Any]]
-    ) -> [String : Any] {
-        [
-            "linearGradient": linearGradientDirectionDictionary(direction: direction),
-            "stops": stops
-        ]
+    ) -> AAGradientColor {
+        let linearGradientColor = AAGradientColor()
+        linearGradientColor.linearGradient = linearGradientDirectionDictionary(direction: direction)
+        linearGradientColor.stops = stops
+        return linearGradientColor
     }
     
     /**
@@ -101,17 +101,17 @@ extension AAGradientColor {
      */
     private class func linearGradientDirectionDictionary(
         direction: AALinearGradientDirection
-    ) -> [String : Int] {
+    ) -> AALinearGradient {
         switch direction {
-        case .toTop:         return ["x1":0, "y1":1, "x2":0, "y2":0]
-        case .toBottom:      return ["x1":0, "y1":0, "x2":0, "y2":1]
-        case .toLeft:        return ["x1":1, "y1":0, "x2":0, "y2":0]
-        case .toRight:       return ["x1":0, "y1":0, "x2":1, "y2":0]
+        case .toTop:         return AALinearGradient(x1: 0, y1: 1, x2: 0, y2: 0)
+        case .toBottom:      return AALinearGradient(x1: 0, y1: 0, x2: 0, y2: 1)
+        case .toLeft:        return AALinearGradient(x1: 1, y1: 0, x2: 0, y2: 0)
+        case .toRight:       return AALinearGradient(x1: 0, y1: 0, x2: 1, y2: 0)
             
-        case .toTopLeft:     return ["x1":1, "y1":1, "x2":0, "y2":0]
-        case .toTopRight:    return ["x1":0, "y1":1, "x2":1, "y2":0]
-        case .toBottomLeft:  return ["x1":1, "y1":0, "x2":0, "y2":1]
-        case .toBottomRight: return ["x1":0, "y1":0, "x2":1, "y2":1]
+        case .toTopLeft:     return AALinearGradient(x1: 1, y1: 1, x2: 0, y2: 0)
+        case .toTopRight:    return AALinearGradient(x1: 0, y1: 1, x2: 1, y2: 0)
+        case .toBottomLeft:  return AALinearGradient(x1: 1, y1: 0, x2: 0, y2: 1)
+        case .toBottomRight: return AALinearGradient(x1: 0, y1: 0, x2: 1, y2: 1)
         }
     }
 }
