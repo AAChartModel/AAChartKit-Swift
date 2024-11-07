@@ -61,7 +61,7 @@ extension AAGradientColor {
     public class func radialGradient(
         startColor: String,
         endColor: String
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         radialGradient(
             position: .middleCenter,
             startColor: startColor,
@@ -73,7 +73,7 @@ extension AAGradientColor {
         position: AARadialGradientPosition,
         startColor: String,
         endColor: String
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         radialGradient(
             position: position,
             stops: [
@@ -85,12 +85,12 @@ extension AAGradientColor {
     
     public class func radialGradient(
         position: AARadialGradientPosition,
-        stops: [Any]
-    ) -> [String : Any] {
-        [
-            "radialGradient": radialGradientPositionDictionary(position: position),
-            "stops": stops
-        ]
+        stops: [[Any]]
+    ) -> AAGradientColor {
+        let gradientColor = AAGradientColor()
+        gradientColor.radialGradient = radialGradientPositionDictionary(position: position)
+        gradientColor.stops = stops
+        return gradientColor
     }
     
     /**
@@ -127,19 +127,19 @@ extension AAGradientColor {
      */
     private class func radialGradientPositionDictionary(
         position: AARadialGradientPosition
-    ) -> [String : String] {
+    ) -> AARadialGradient {
         switch position {
-        case .topLeft:      return ["cx": "25%", "cy": "25%", "r": "50%"]
-        case .topCenter:    return ["cx": "50%", "cy": "25%", "r": "50%"]
-        case .topRight:     return ["cx": "75%", "cy": "25%", "r": "50%"]
+        case .topLeft:      return AARadialGradient(cx: "25%", cy: "25%", r: "50%")
+        case .topCenter:    return AARadialGradient(cx: "50%", cy: "25%", r: "50%")
+        case .topRight:     return AARadialGradient(cx: "75%", cy: "25%", r: "50%")
             
-        case .middleLeft:   return ["cx": "25%", "cy": "50%", "r": "50%"]
-        case .middleCenter: return ["cx": "50%", "cy": "50%", "r": "50%"]
-        case .middleRight:  return ["cx": "75%", "cy": "50%", "r": "50%"]
+        case .middleLeft:   return AARadialGradient(cx: "25%", cy: "50%", r: "50%")
+        case .middleCenter: return AARadialGradient(cx: "50%", cy: "50%", r: "50%")
+        case .middleRight:  return AARadialGradient(cx: "75%", cy: "50%", r: "50%")
             
-        case .bottomLeft:   return ["cx": "25%", "cy": "75%", "r": "50%"]
-        case .bottomCenter: return ["cx": "50%", "cy": "75%", "r": "50%"]
-        case .bottomRight:  return ["cx": "75%", "cy": "75%", "r": "50%"]
+        case .bottomLeft:   return AARadialGradient(cx: "25%", cy: "75%", r: "50%")
+        case .bottomCenter: return AARadialGradient(cx: "50%", cy: "75%", r: "50%")
+        case .bottomRight:  return AARadialGradient(cx: "75%", cy: "75%", r: "50%")
         }
     }
     
