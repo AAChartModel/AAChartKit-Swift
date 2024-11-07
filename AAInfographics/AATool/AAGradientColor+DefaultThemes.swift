@@ -32,105 +32,105 @@
 
 extension AAGradientColor {
     
-    public class var oceanBlue: [String : Any] {
+    public class var oceanBlue: AAGradientColor {
         oceanBlueColor(.toTop)
     }
     
-    public class var sanguine: [String : Any] {
+    public class var sanguine: AAGradientColor {
         sanguineColor(.toTop)
     }
     
-    public class var lusciousLime: [String : Any] {
+    public class var lusciousLime: AAGradientColor {
         lusciousLimeColor(.toTop)
     }
     
-    public class var purpleLake: [String : Any] {
+    public class var purpleLake: AAGradientColor {
         purpleLakeColor(.toTop)
     }
     
-    public class var freshPapaya: [String : Any] {
+    public class var freshPapaya: AAGradientColor {
         freshPapayaColor(.toTop)
     }
     
-    public class var ultramarine: [String : Any] {
+    public class var ultramarine: AAGradientColor {
         ultramarineColor(.toTop)
     }
     
-    public class var pinkSugar: [String : Any] {
+    public class var pinkSugar: AAGradientColor {
         pinkSugarColor(.toTop)
     }
     
-    public class var lemonDrizzle: [String : Any] {
+    public class var lemonDrizzle: AAGradientColor {
         lemonDrizzleColor(.toTop)
     }
     
-    public class var victoriaPurple: [String : Any] {
+    public class var victoriaPurple: AAGradientColor {
         victoriaPurpleColor(.toTop)
     }
     
-    public class var springGreens: [String : Any] {
+    public class var springGreens: AAGradientColor {
         springGreensColor(.toTop)
     }
     
-    public class var mysticMauve: [String : Any] {
+    public class var mysticMauve: AAGradientColor {
         mysticMauveColor(.toTop)
     }
     
-    public class var reflexSilver: [String : Any] {
+    public class var reflexSilver: AAGradientColor {
         reflexSilverColor(.toTop)
     }
     
-    public class var neonGlow: [String : Any] {
+    public class var neonGlow: AAGradientColor {
         neonGlowColor(.toTop)
     }
     
-    public class var berrySmoothie: [String : Any] {
+    public class var berrySmoothie: AAGradientColor {
         berrySmoothieColor(.toTop)
     }
     
-    public class var newLeaf: [String : Any] {
+    public class var newLeaf: AAGradientColor {
         newLeafColor(.toTop)
     }
     
-    public class var cottonCandy: [String : Any] {
+    public class var cottonCandy: AAGradientColor {
         cottonCandyColor(.toTop)
     }
     
-    public class var pixieDust: [String : Any] {
+    public class var pixieDust: AAGradientColor {
         pixieDustColor(.toTop)
     }
     
-    public class var fizzyPeach: [String : Any] {
+    public class var fizzyPeach: AAGradientColor {
         fizzyPeachColor(.toTop)
     }
     
-    public class var sweetDream: [String : Any] {
+    public class var sweetDream: AAGradientColor {
         sweetDreamColor(.toTop)
     }
     
-    public class var firebrick: [String : Any] {
+    public class var firebrick: AAGradientColor {
         firebrickColor(.toTop)
     }
     
-    public class var wroughtIron: [String : Any] {
+    public class var wroughtIron: AAGradientColor {
         wroughtIronColor(.toTop)
     }
     
-    public class var deepSea: [String : Any] {
+    public class var deepSea: AAGradientColor {
         deepSeaColor(.toTop)
     }
     
-    public class var coastalBreeze: [String : Any] {
+    public class var coastalBreeze: AAGradientColor {
         coastalBreezeColor(.toTop)
     }
     
-    public class var eveningDelight: [String : Any] {
+    public class var eveningDelight: AAGradientColor {
         eveningDelightColor(.toTop)
     }
     
     public class func oceanBlueColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#2E3192",
@@ -140,7 +140,7 @@ extension AAGradientColor {
     
     public class func sanguineColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#D4145A",
@@ -150,7 +150,7 @@ extension AAGradientColor {
     
     public class func lusciousLimeColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#009245",
@@ -160,7 +160,7 @@ extension AAGradientColor {
     
     public class func purpleLakeColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#662D8C",
@@ -170,7 +170,7 @@ extension AAGradientColor {
     
     public class func freshPapayaColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#ED1C24",
@@ -180,7 +180,7 @@ extension AAGradientColor {
     
     public class func ultramarineColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#00A8C5",
@@ -190,7 +190,7 @@ extension AAGradientColor {
     
     public class func pinkSugarColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#D74177",
@@ -200,7 +200,7 @@ extension AAGradientColor {
     
     public class func lemonDrizzleColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#FB872B",
@@ -210,7 +210,7 @@ extension AAGradientColor {
     
     public class func victoriaPurpleColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#312A6C",
@@ -220,7 +220,7 @@ extension AAGradientColor {
     
     public class func springGreensColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#009E00",
@@ -230,7 +230,7 @@ extension AAGradientColor {
     
     public class func mysticMauveColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#B066FE",
@@ -240,7 +240,7 @@ extension AAGradientColor {
     
     public class func reflexSilverColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#808080",
@@ -250,7 +250,7 @@ extension AAGradientColor {
     
     public class func neonGlowColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#00FFA1",
@@ -260,7 +260,7 @@ extension AAGradientColor {
     
     public class func berrySmoothieColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#8E78FF",
@@ -270,7 +270,7 @@ extension AAGradientColor {
     
     public class func newLeafColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#00537E",
@@ -280,7 +280,7 @@ extension AAGradientColor {
     
     public class func cottonCandyColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#FCA5F1",
@@ -290,7 +290,7 @@ extension AAGradientColor {
     
     public class func pixieDustColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#D585FF",
@@ -300,7 +300,7 @@ extension AAGradientColor {
     
     public class func fizzyPeachColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#F24645",
@@ -310,7 +310,7 @@ extension AAGradientColor {
     
     public class func sweetDreamColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#3A3897",
@@ -320,7 +320,7 @@ extension AAGradientColor {
     
     public class func firebrickColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#45145A",
@@ -330,7 +330,7 @@ extension AAGradientColor {
     
     public class func wroughtIronColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#333333",
@@ -340,7 +340,7 @@ extension AAGradientColor {
     
     public class func deepSeaColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#4F00BC",
@@ -350,7 +350,7 @@ extension AAGradientColor {
     
     public class func coastalBreezeColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#00B7FF",
@@ -360,7 +360,7 @@ extension AAGradientColor {
     
     public class func eveningDelightColor(
         _ direction: AALinearGradientDirection
-    ) -> [String : Any] {
+    ) -> AAGradientColor {
         linearGradient(
             direction: direction,
             startColor: "#93278F",
