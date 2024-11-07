@@ -110,12 +110,18 @@ public class AALinearGradient: AAObject {
 
 
 public class AARadialGradient: AAObject {
-    public var cx: Float?
-    public var cy: Float?
-    public var r: Float?
+    public var cx: Any?
+    public var cy: Any?
+    public var r: Any?
     
     @discardableResult
     public func cx(_ prop: Float?) -> AARadialGradient {
+        cx = prop
+        return self
+    }
+    
+    @discardableResult
+    public func cx(_ prop: String?) -> AARadialGradient {
         cx = prop
         return self
     }
@@ -127,7 +133,19 @@ public class AARadialGradient: AAObject {
     }
     
     @discardableResult
+    public func cy(_ prop: String?) -> AARadialGradient {
+        cy = prop
+        return self
+    }
+    
+    @discardableResult
     public func r(_ prop: Float?) -> AARadialGradient {
+        r = prop
+        return self
+    }
+    
+    @discardableResult
+    public func r(_ prop: String?) -> AARadialGradient {
         r = prop
         return self
     }
@@ -136,6 +154,16 @@ public class AARadialGradient: AAObject {
         cx: Float,
         cy: Float,
         r: Float
+    ) {
+        self.cx = cx
+        self.cy = cy
+        self.r = r
+    }
+    
+    public init(
+        cx: String,
+        cy: String,
+        r: String
     ) {
         self.cx = cx
         self.cy = cy
