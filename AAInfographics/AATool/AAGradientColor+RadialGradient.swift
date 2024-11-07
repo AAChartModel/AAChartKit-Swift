@@ -30,7 +30,9 @@
  
  */
 
-//https://api.highcharts.com/class-reference/Highcharts.RadialGradientColorObject
+
+/// https://api.highcharts.com/class-reference/Highcharts.RadialGradientColorObject
+///
 /// - vertical  : top,  middle, bottom
 /// - horizontal: left, center, right
 /**
@@ -87,10 +89,9 @@ extension AAGradientColor {
         position: AARadialGradientPosition,
         stops: [[Any]]
     ) -> AAGradientColor {
-        let gradientColor = AAGradientColor()
-        gradientColor.radialGradient = radialGradientPositionDictionary(position: position)
-        gradientColor.stops = stops
-        return gradientColor
+        AAGradientColor()
+            .radialGradient(radialGradientPositionObject(position))
+            .stops(stops)
     }
     
     /**
@@ -125,8 +126,8 @@ extension AAGradientColor {
           |                          |                          |
      (bottomLeft) ----------- (bottomCenter) ----------- (bottomRight)
      */
-    private class func radialGradientPositionDictionary(
-        position: AARadialGradientPosition
+    private class func radialGradientPositionObject(
+        _ position: AARadialGradientPosition
     ) -> AARadialGradient {
         switch position {
         case .topLeft:      return AARadialGradient(cx: "25%", cy: "25%", r: "50%")
