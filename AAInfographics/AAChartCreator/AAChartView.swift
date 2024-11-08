@@ -285,6 +285,7 @@ public class AAChartView: WKWebView {
     }
     
     private func addClickEventMessageHandler() {
+        configuration.userContentController.removeScriptMessageHandler(forName: kUserContentMessageNameClick)
         configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameClick)
     }
     
