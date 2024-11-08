@@ -695,15 +695,8 @@ Highcharts.chart('container', {
              type: 'line',
              zoomType: 'xy',
              panning: true,
-             panKey: 'shift',
-             // 添加事件监听
-             events: {
-               
-             }
          },
        
-         
-         // 添加触摸事件监听
          tooltip: {
              followTouchMove: false
          },
@@ -712,14 +705,12 @@ Highcharts.chart('container', {
              data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
          }]
      });
-
-
      */
     static func simpleZoomingChart() -> AAOptions {
         AAOptions()
             .chart(AAChart()
                 .type(.line)
-                .zoomType(.xy)
+                .zoomType(.x)
                 .panning(AAPanning()
                     .enabled(true)))
             .tooltip(AATooltip()
@@ -733,7 +724,7 @@ Highcharts.chart('container', {
     static func simpleZoomingChart2() -> AAOptions {
         AAOptions()
             .chart(AAChart()
-                .type(.line)
+                .type(.area)
                 .zooming(AAZooming()
                     .singleTouch(true)
                     .type(.xy)
