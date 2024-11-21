@@ -299,7 +299,7 @@ public class AAChartView: WKWebView {
         configuration.userContentController.removeAllUserScripts()
         NotificationCenter.default.removeObserver(self)
         #if DEBUG
-        print("👻👻👻 AAChartView was destroyed!!!")
+        print("👻👻👻 AAChartView instance \(self) has been destroyed!")
         #endif
     }
 }
