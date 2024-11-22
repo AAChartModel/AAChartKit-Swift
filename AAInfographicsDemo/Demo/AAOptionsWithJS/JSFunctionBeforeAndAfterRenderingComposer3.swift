@@ -138,7 +138,7 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
         let aaOptions2JsonStr = singleChartOptions(chartRank: 2).toJSON()
         let aaOptions3JsonStr = singleChartOptions(chartRank: 3).toJSON()
         
-        let aaOptions1 = singleChartOptions(chartRank: 1)
+        let aaOptions1 = AAOptions()
       .beforeDrawChartJavaScript(#"""
         (function() {
             ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
@@ -217,6 +217,22 @@ function resetZoom(e) {
 """#)
                 
 //            .series(configureSeriesArray())
+      .legend(AALegend()
+            .enabled(false))
+      .series([
+        AASeriesElement()
+            .type(.column)
+            .name("Berlin Hot")
+            .color(AAColor.green)
+            .borderRadiusTopLeft("50%")
+            .borderRadiusTopRight("50%")
+            .data([
+                1.51, 6.70, 0.94, 1.44, 1.60, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
+                4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28, 1.51, 12.7, 0.94, 1.44,
+                18.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46,
+                3.46, 3.55, 3.50, 4.13, 2.58, 2.28, 1.33, 4.68, 1.31, 1.10, 13.9, 1.10, 1.16, 1.67,
+            ]),
+      ])
             .afterDrawChartJavaScript("""
 (function() {
 // 动态追加3个div容器
@@ -232,7 +248,7 @@ function resetZoom(e) {
 // 计算并设置子 div 的高度
 function setChartHeight() {
     const containerHeight = container.clientHeight; // 获取父 div 的高度
-    const chartHeight = containerHeight / 4; // 计算子 div 的高度
+    const chartHeight = containerHeight / 4 - 30; // 计算子 div 的高度
     chartDiv.style.height = chartHeight + 'px'; // 设置子 div 的高度
 }
 
