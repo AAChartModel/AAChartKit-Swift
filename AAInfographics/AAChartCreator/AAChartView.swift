@@ -89,6 +89,10 @@ public class AAChartView: WKWebView {
     
     private var clickEventEnabled: Bool?
     private var touchEventEnabled: Bool?
+//    NSString *_beforeDrawChartJavaScript;
+//    NSString *_afterDrawChartJavaScript;
+    private var beforeDrawChartJavaScript: String?
+    private var afterDrawChartJavaScript: String?
     
     private weak var _delegate: AAChartViewDelegate?
     public weak var delegate: AAChartViewDelegate? {
@@ -194,9 +198,23 @@ public class AAChartView: WKWebView {
    
     
     private func drawChart() {
+//        if (_beforeDrawChartJavaScript) {
+//            [self safeEvaluateJavaScriptString:_beforeDrawChartJavaScript];
+//        }
+        if beforeDrawChartJavaScript != nil {
+            safeEvaluateJavaScriptString(beforeDrawChartJavaScript!)
+        }
+        
         //Add `frame.size.height` to solve the problem that the height of the new version of Highcharts chart will not adapt to the container
-        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? frame.size.height)')"
+        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
         safeEvaluateJavaScriptString(jsStr)
+        
+//if (self.afterDrawChartJavaScript) {
+//            [self safeEvaluateJavaScriptString:self.afterDrawChartJavaScript];
+//        }
+        if afterDrawChartJavaScript != nil {
+            safeEvaluateJavaScriptString(afterDrawChartJavaScript!)
+        }
     }
     
     private func safeEvaluateJavaScriptString (_ jsString: String) {
@@ -221,7 +239,7 @@ public class AAChartView: WKWebView {
                 code = \(objcError.code);
                 domain = \(objcError.domain);
                 userInfo = {
-                    NSLocalizedDescription = "A JavaScript exception occurred";
+                    NSLocalizedDescription = "\(errorUserInfo["NSLocalizedDescription"] ?? "")";
                     WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
                     WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
                     WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
@@ -252,6 +270,25 @@ public class AAChartView: WKWebView {
     }
     
     private func configureOptionsJsonStringWithAAOptions(_ aaOptions: AAOptions) {
+//        if (aaOptions.beforeDrawChartJavaScript) {
+//            _beforeDrawChartJavaScript = aaOptions.beforeDrawChartJavaScript;
+//            aaOptions.beforeDrawChartJavaScript = nil;
+//        }
+        if aaOptions.beforeDrawChartJavaScript != nil {
+            beforeDrawChartJavaScript = aaOptions.beforeDrawChartJavaScript
+            aaOptions.beforeDrawChartJavaScript = nil
+        }
+        
+//        if (aaOptions.afterDrawChartJavaScript) {
+//            _afterDrawChartJavaScript = aaOptions.afterDrawChartJavaScript;
+//            aaOptions.afterDrawChartJavaScript = nil;
+//        }
+        
+        if aaOptions.afterDrawChartJavaScript != nil {
+            afterDrawChartJavaScript = aaOptions.afterDrawChartJavaScript
+            aaOptions.afterDrawChartJavaScript = nil
+        }
+        
         if isClearBackgroundColor == true {
             aaOptions.chart?.backgroundColor = AAColor.clear
         }

@@ -52,6 +52,11 @@ public class AAOptions: AAObject {
     internal var clickEventEnabled: Bool? //Please DO NOT use this property
     internal var touchEventEnabled: Bool? //Please DO NOT use this property
     
+    //beforeDrawChartJavaScript
+    public var beforeDrawChartJavaScript: String?
+    //afterDrawChartJavaScript
+    public var afterDrawChartJavaScript: String?
+    
     @discardableResult
     public func chart(_ prop: AAChart?) -> AAOptions {
         chart = prop
@@ -139,6 +144,18 @@ public class AAOptions: AAObject {
     @discardableResult
     public func defaultOptions(_ prop: AALang?) -> AAOptions {
         defaultOptions = prop
+        return self
+    }
+    
+    @discardableResult
+    public func beforeDrawChartJavaScript(_ prop: String?) -> AAOptions {
+        beforeDrawChartJavaScript = prop
+        return self
+    }
+    
+    @discardableResult
+    public func afterDrawChartJavaScript(_ prop: String?) -> AAOptions {
+        afterDrawChartJavaScript = prop
         return self
     }
     
