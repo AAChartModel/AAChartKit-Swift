@@ -229,6 +229,18 @@ function resetZoom(e) {
         chartDiv.className = 'chart';
         document.getElementById('container').appendChild(chartDiv);
 
+// 计算并设置子 div 的高度
+function setChartHeight() {
+    const containerHeight = container.clientHeight; // 获取父 div 的高度
+    const chartHeight = containerHeight / 4; // 计算子 div 的高度
+    chartDiv.style.height = chartHeight + 'px'; // 设置子 div 的高度
+}
+
+// 初始设置高度
+setChartHeight();
+
+// 如果需要响应窗口大小的变化，可以监听窗口的 resize 事件
+window.addEventListener('resize', setChartHeight);
 
         let chartOptionsJsonObj;
 if (i == 0) {
