@@ -80,7 +80,7 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
             let seriesElement = AASeriesElement()
                 .data(newData)
                 .name(dataset["name"] as? String ?? "")
-                .type(.area)
+//                .type(.area)
                 .color(colorsArr[idx])
             
             finalDatasets.append(seriesElement)
