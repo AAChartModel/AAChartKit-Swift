@@ -134,11 +134,11 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
      }
      */
     static func synchronizedChart() -> AAOptions {
-        let jsonStr1 = singleChartOptions(chartRank: 1).toJSON()
-        let jsonStr2 = singleChartOptions(chartRank: 2).toJSON()
-        let jsonStr3 = singleChartOptions(chartRank: 3).toJSON()
+        let aaOptions1JsonStr = singleChartOptions(chartRank: 1).toJSON()
+        let aaOptions2JsonStr = singleChartOptions(chartRank: 2).toJSON()
+        let aaOptions3JsonStr = singleChartOptions(chartRank: 3).toJSON()
         
-        let aaOptions = AAOptions()
+        let aaOptions1 = singleChartOptions(chartRank: 1)
       .beforeDrawChartJavaScript(#"""
         (function() {
             ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
@@ -216,18 +216,11 @@ function resetZoom(e) {
         })()
 """#)
                 
-            .chart(AAChart()
-                    .type(.area))
-            .series([
-                AASeriesElement()
-                    .name("Beijing Hot")
-                    .data([1.16, 1.67, 2.64, 2.86, 3.00, 3.21, 4.14, 4.07, 3.68, 3.11, 3.41, 3.25, 3.32, 3.07, 3.92, 3.05, 2.18, 3.24]),
-            ])
 //            .series(configureSeriesArray())
             .afterDrawChartJavaScript("""
 (function() {
 // 动态追加3个div容器
-        for (let i = 2; i <= 4; i++) {
+        for (let i = 0; i < 3; i++) {
 //            const div = document.createElement('div');
 //            div.id = `container${i}`;
 //            div.className = 'chart-container';
@@ -238,12 +231,12 @@ function resetZoom(e) {
 
 
         let chartOptionsJsonObj;
-if (i == 2) {
-    chartOptionsJsonObj = \(jsonStr1);
-} else if (i == 3) {
-    chartOptionsJsonObj = \(jsonStr2);
+if (i == 0) {
+    chartOptionsJsonObj = \(aaOptions1JsonStr);
+} else if (i == 1) {
+    chartOptionsJsonObj = \(aaOptions2JsonStr);
 } else {
-    chartOptionsJsonObj = \(jsonStr3);
+    chartOptionsJsonObj = \(aaOptions3JsonStr);
 }
 
 let sender = JSON.stringify(chartOptionsJsonObj);
@@ -266,7 +259,7 @@ console.log("代码执行成功🎉");
 """)
 
         
-        return aaOptions
+        return aaOptions1
     }
     
     /**
@@ -343,34 +336,47 @@ console.log("代码执行成功🎉");
              });
          });
      */
-    
+
     static func singleChartOptions(chartRank: Int) -> AAOptions {
-       let aaOptions = AAOptions()
+        var aaSeriesElement = AASeriesElement()
+        if chartRank == 1 {
+            aaSeriesElement = configureSeriesArray()[0]
+        } else if chartRank == 2 {
+            aaSeriesElement = configureSeriesArray()[1]
+        } else if chartRank == 3 {
+            aaSeriesElement = configureSeriesArray()[2]
+        }
+
+        let aaOptions = AAOptions()
             .chart(AAChart()
                 .type(.area)
                 .marginLeft(40)
                 .spacingTop(20)
                 .spacingBottom(20)
                 .zooming(AAZooming()
-                        .type(.x))
+                    .type(.x))
                 .events(AAChartEvents()
                     .selection(#"""
-                    function (e) {
-                        if (e.resetSelection) {
-                            return;
-                        }
+                               function (e) {
+                                   if (e.resetSelection) {
+                                       return;
+                                   }
 
-                        Highcharts.charts.forEach(chart => {
-                            if (chart !== e.target) {
-                                chart.zoomOut();
-                            }
-                        });
-                    }
-                    """#))
+                                   Highcharts.charts.forEach(chart => {
+                                       if (chart !== e.target) {
+                                           chart.zoomOut();
+                                       }
+                                   });
+                               }
+                               """#))
             )
             .title(AATitle()
-                .text("dataset.name")
+                .text(aaSeriesElement.name)
                 .align(.left)
+                .style(AAStyle()
+                    .color(aaSeriesElement.color as? String)
+                    .fontWeight(.bold)
+                    .fontSize(30))
                 .x(30)
             )
             .credits(AACredits()
@@ -379,8 +385,11 @@ console.log("代码执行成功🎉");
                 .enabled(false))
             .xAxis(AAXAxis()
                 .crosshair(AACrosshair()
-                    .color(AAColor.red))
-                    .events(AAAxisEvents()
+                    .color(AAColor.green)
+                    .width(2)
+                    .dashStyle(.longDashDot)
+                    .zIndex(5))
+                .events(AAAxisEvents()
                         .setExtremes(#"""
                                         function (e) {
                                             const thisChart = this.chart;
@@ -388,7 +397,7 @@ console.log("代码执行成功🎉");
                                             if (e.trigger !== 'syncExtremes') {
                                                 Highcharts.charts.forEach(chart => {
                                                     if (chart !== thisChart) {
-                                                        if (chart.xAxis[0].setExtremes) { 
+                                                        if (chart.xAxis[0].setExtremes) {
                                                             chart.xAxis[0].setExtremes(
                                                                 e.min,
                                                                 e.max,
@@ -411,13 +420,13 @@ console.log("代码执行成功🎉");
             )
             .tooltip(AATooltip()
                 .positioner(#"""
-                    function () {
-                        return {
-                            x: this.chart.chartWidth - this.label.width,
-                            y: 10
-                        };
-                    }
-                    """#)
+                            function () {
+                                return {
+                                    x: this.chart.chartWidth - this.label.width,
+                                    y: 10
+                                };
+                            }
+                            """#)
                 .borderWidth(0)
                 .backgroundColor("none")
                 .pointFormat("{point.y}")
@@ -427,23 +436,13 @@ console.log("代码执行成功🎉");
                     .fontSize(18))
                 .valueDecimals(2)
             )
-//            .series([
-//                configureSeriesArray()[0]
-//            ])
-        
-        if chartRank == 1 {
-            aaOptions.series([
-                configureSeriesArray()[0]
+            .legend(AALegend()
+                .enabled(false))
+            .series([
+                aaSeriesElement
             ])
-        } else if chartRank == 2 {
-            aaOptions.series([
-                configureSeriesArray()[1]
-            ])
-        } else if chartRank == 3 {
-            aaOptions.series([
-                configureSeriesArray()[2]
-            ])
-        }
+
+
         return aaOptions
     }
 }
