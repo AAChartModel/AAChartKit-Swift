@@ -57,6 +57,20 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
         return finalDatasets
     }
     
+    static func configureSeriesDataArray() -> [Any] {
+        let randomNumArrA = NSMutableArray()
+        var y1 = 0.0
+        let Q = arc4random() % 38
+        let length = configureSeriesArray()[0].data!.count
+        for  x in 0 ..< length {
+            y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1
+            randomNumArrA.add(
+                AADataElement()
+                    .y(Float(y1)))
+        }
+        return randomNumArrA as! [Any]
+    }
+    
     /**
      + (AAOptions *)synchronizedChart {
          NSString *jsonStr = [AAJsonConverter pureOptionsJsonStringWithOptionsInstance:[self singleChartOptions]];
@@ -200,6 +214,24 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
 """#)
         
         //            .series(configureSeriesArray())
+            .title(AATitle()
+                .text("Rainfall")
+                .align(.left)
+                .style(AAStyle()
+                    .color(AAColor.green)
+                    .fontWeight(.bold)
+                    .fontSize(30))
+                .x(30)
+            )
+            .xAxis(AAXAxis()
+                .crosshair(AACrosshair()
+                    .color(AAColor.green)
+                    .width(2)
+                    .dashStyle(.longDashDot)
+                    .zIndex(5))
+                .labels(AALabels()
+                    .format("{value} km"))
+            )
             .legend(AALegend()
                 .enabled(false))
             .series([
@@ -207,14 +239,10 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
                     .type(.column)
                     .name("Berlin Hot")
                     .color(AAColor.green)
-                    .borderRadiusTopLeft("50%")
-                    .borderRadiusTopRight("50%")
-                    .data([
-                        1.51, 6.70, 0.94, 1.44, 1.60, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
-                        4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28, 1.51, 12.7, 0.94, 1.44,
-                        18.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46,
-                        3.46, 3.55, 3.50, 4.13, 2.58, 2.28, 1.33, 4.68, 1.31, 1.10, 13.9, 1.10, 1.16, 1.67,
-                    ]),
+                    .borderRadius("50%")
+//                    .borderRadiusTopLeft("50%")
+//                    .borderRadiusTopRight("50%")
+                    .data(configureSeriesDataArray()),
             ])
             .afterDrawChartJavaScript("""
             (function() {
@@ -461,10 +489,12 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
                             .fill(AAColor.red)
                             .style(AAStyle()
                                 .color(AAColor.white))))))
-            .singleTouch(true)
+//            .singleTouch(true)
             .type(.x)
             .pinchType(.x)
 
         return aaOptions
     }
+    
+    
 }

@@ -213,7 +213,7 @@ class AABaseChartVC: UIViewController {
         }
         if chartConfiguration == nil {
             let selectedChartTypeStr = navigationItemTitleArr?[selectedIndex]
-            chartConfiguration = chartConfigurationWithSelectedChartTypeString(selectedChartTypeStr as! String)
+            chartConfiguration = chartConfigurationWithSelectedChartTypeString(selectedChartTypeStr as? String ?? "")
         }
         if (chartConfiguration is AAChartModel) {
             let aaChartModel = chartConfiguration as! AAChartModel
