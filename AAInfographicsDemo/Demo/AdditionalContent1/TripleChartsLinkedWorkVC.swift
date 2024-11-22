@@ -10,11 +10,10 @@ import UIKit
 import AAInfographics
 
 class TripleChartsLinkedWorkVC: UIViewController {
-
     var aaChartView1: AAChartView!
     var aaChartView2: AAChartView!
     var aaChartView3: AAChartView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Triple Charts Linked Work---3表联动"
@@ -24,7 +23,7 @@ class TripleChartsLinkedWorkVC: UIViewController {
         setUpTheAAChartView2()
         setUpTheAAChartView3()
     }
-
+    
     // 配置第 1 个 AAChartView
     func setUpTheAAChartView1() {
         let chartViewWidth = self.view.frame.size.width
@@ -35,7 +34,6 @@ class TripleChartsLinkedWorkVC: UIViewController {
         self.view.addSubview(aaChartView1)
         self.aaChartView1 = aaChartView1
         self.aaChartView1.delegate = self
-//        setupChartViewHandler()
         
         let aaOptions1 = AAOptions()
             .title(AATitle()
@@ -55,7 +53,7 @@ class TripleChartsLinkedWorkVC: UIViewController {
         
         aaChartView1.aa_drawChartWithChartOptions(aaOptions1)
     }
-
+    
     // 配置第 2 个 AAChartView
     func setUpTheAAChartView2() {
         let chartViewWidth = self.view.frame.size.width
@@ -66,7 +64,6 @@ class TripleChartsLinkedWorkVC: UIViewController {
         self.view.addSubview(aaChartView2)
         self.aaChartView2 = aaChartView2
         self.aaChartView2.delegate = self
-//        setupChartViewHandler2()
         
         let aaOptions2 = AAOptions()
             .title(AATitle()
@@ -86,7 +83,7 @@ class TripleChartsLinkedWorkVC: UIViewController {
         
         aaChartView2.aa_drawChartWithChartOptions(aaOptions2)
     }
-
+    
     // 配置第 3 个 AAChartView
     func setUpTheAAChartView3() {
         let chartViewWidth = self.view.frame.size.width
@@ -97,7 +94,6 @@ class TripleChartsLinkedWorkVC: UIViewController {
         self.view.addSubview(aaChartView3)
         self.aaChartView3 = aaChartView3
         self.aaChartView3.delegate = self
-//        setupChartViewHandler3()
         
         let aaOptions3 = AAOptions()
             .title(AATitle()
@@ -117,60 +113,28 @@ class TripleChartsLinkedWorkVC: UIViewController {
         
         aaChartView3.aa_drawChartWithChartOptions(aaOptions3)
     }
-
-//    func setupChartViewHandler() {
-//        weak var weakSelf = self
-//        aaChartView1.moveOverEventHandler { (aaChartView, message) in
-//            guard let weakSelf = weakSelf else { return }
-//            let jsFunc = weakSelf.configureSyncRefreshTooltipJSString(message: message)
-//            print("📊chart view 1 mouse over event message: \(message.name ?? "")")
-//            weakSelf.aaChartView2.aa_evaluateJavaScriptStringFunction(jsFunc)
-//            weakSelf.aaChartView3.aa_evaluateJavaScriptStringFunction(jsFunc)
-//        }
-//    }
-//
-//    func setupChartViewHandler2() {
-//        weak var weakSelf = self
-//        aaChartView2.moveOverEventHandler { (aaChartView, message) in
-//            guard let weakSelf = weakSelf else { return }
-//            let jsFunc = weakSelf.configureSyncRefreshTooltipJSString(message: message)
-//            print("📊chart view 2 mouse over event message: \(message.name ?? "")")
-//            weakSelf.aaChartView1.aa_evaluateJavaScriptStringFunction(jsFunc)
-//            weakSelf.aaChartView3.aa_evaluateJavaScriptStringFunction(jsFunc)
-//        }
-//    }
-//
-//    func setupChartViewHandler3() {
-//        weak var weakSelf = self
-//        aaChartView3.moveOverEventHandler { (aaChartView, message) in
-//            guard let weakSelf = weakSelf else { return }
-//            let jsFunc = weakSelf.configureSyncRefreshTooltipJSString(message: message)
-//            print("📊chart view 3 mouse over event message: \(message.name ?? "")")
-//            weakSelf.aaChartView1.aa_evaluateJavaScriptStringFunction(jsFunc)
-//            weakSelf.aaChartView2.aa_evaluateJavaScriptStringFunction(jsFunc)
-//        }
-//    }
-
-   func configureSyncRefreshTooltipJSString(message: AAMoveOverEventMessageModel) -> String {
-    let defaultSelectedIndex = (message.index ?? 0) as Int
-    let jsFunc = """
-    function syncRefreshTooltip() {
-        const points = [];
-        const chart = aaGlobalChart;
-        const series = chart.series;
-        const length = series.length;
-
-        for (let i = 0; i < length; i++) {
-            const pointElement = series[i].data[\(defaultSelectedIndex)];
-            points.push(pointElement);
-        }
-        chart.xAxis[0].drawCrosshair(null, points[0]);
-        chart.tooltip.refresh(points);
+    
+    
+    func configureSyncRefreshTooltipJSString(message: AAMoveOverEventMessageModel) -> String {
+        let defaultSelectedIndex = (message.index ?? 0) as Int
+        let jsFunc = """
+                     function syncRefreshTooltip() {
+                            const points = [];
+                            const chart = aaGlobalChart;
+                            const series = chart.series;
+                            const length = series.length;
+                                       
+                            for (let i = 0; i < length; i++) {
+                                const pointElement = series[i].data[\(defaultSelectedIndex)];
+                                points.push(pointElement);
+                            }
+                            chart.xAxis[0].drawCrosshair(null, points[0]);
+                            chart.tooltip.refresh(points);
+                     }
+                     syncRefreshTooltip();
+        """
+        return jsFunc
     }
-    syncRefreshTooltip();
-    """
-    return jsFunc
-}
 }
 
 
@@ -182,15 +146,16 @@ extension TripleChartsLinkedWorkVC: AAChartViewDelegate {
     func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
         let message = moveOverEventMessage
         print("📊📊📊move over event message: \(message.name ?? "")")
+        let jsFuncStr = configureSyncRefreshTooltipJSString(message: message)
         if aaChartView == aaChartView1 {
-            aaChartView2.aa_evaluateJavaScriptStringFunction(configureSyncRefreshTooltipJSString(message: message))
-            aaChartView3.aa_evaluateJavaScriptStringFunction(configureSyncRefreshTooltipJSString(message: message))
+            aaChartView2.evaluateJavaScript(jsFuncStr)
+            aaChartView3.evaluateJavaScript(jsFuncStr)
         } else if aaChartView == aaChartView2 {
-            aaChartView1.aa_evaluateJavaScriptStringFunction(configureSyncRefreshTooltipJSString(message: message))
-            aaChartView3.aa_evaluateJavaScriptStringFunction(configureSyncRefreshTooltipJSString(message: message))
+            aaChartView1.evaluateJavaScript(jsFuncStr)
+            aaChartView3.evaluateJavaScript(jsFuncStr)
         } else if aaChartView == aaChartView3 {
-            aaChartView1.aa_evaluateJavaScriptStringFunction(configureSyncRefreshTooltipJSString(message: message))
-            aaChartView2.aa_evaluateJavaScriptStringFunction(configureSyncRefreshTooltipJSString(message: message))
+            aaChartView1.evaluateJavaScript(jsFuncStr)
+            aaChartView2.evaluateJavaScript(jsFuncStr)
         }
     }
 }
