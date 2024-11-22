@@ -139,153 +139,136 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
         let aaOptions3JsonStr = singleChartOptions(chartRank: 3).toJSON()
         
         let aaOptions1 = AAOptions()
-      .beforeDrawChartJavaScript(#"""
-        (function() {
-            ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
-                document.getElementById('container').addEventListener(
-                    eventType,
-                    function (e) {
-                        let chart,
-                            point,
-                            i,
-                            event;
+            .beforeDrawChartJavaScript(#"""
+            (function() {
+                /**
+                 The purpose of this demo is to demonstrate how multiple charts on the same page
+                 can be linked through DOM and Highcharts events and API methods. It takes a
+                 standard Highcharts config with a small variation for each data set, and a
+                 mouse/touch event handler to bind the charts together.
+                 */
 
-                        for (i = 0; i < Highcharts.charts.length; i = i + 1) {
-                            chart = Highcharts.charts[i];
-                            event = chart.pointer.normalize(e);
-                            point = chart.series[0].searchPoint(event, true);
-    //alert("输出查看找到了几个 chart" + Highcharts.charts.length);
-    console.log("输出查看找到了几个 chart", Highcharts.charts.length);
-                            if (point) {
-                                point.highlight(e);
+
+                /**
+                 * In order to synchronize tooltips and crosshairs, override the
+                 * built-in events with handlers defined on the parent element.
+                 */
+                ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
+                    document.getElementById('container').addEventListener(
+                        eventType,
+                        function (e) {
+                            let chart,
+                                point,
+                                i,
+                                event;
+
+                            for (i = 0; i < Highcharts.charts.length; i = i + 1) {
+                                chart = Highcharts.charts[i];
+                                // Find coordinates within the chart
+                                event = chart.pointer.normalize(e);
+                                // Get the hovered point
+                                point = chart.series[0].searchPoint(event, true);
+
+                                if (point) {
+                                    point.highlight(e);
+                                }
                             }
                         }
-                    }
-                );
-            });
-
-            Highcharts.Pointer.prototype.reset = function () {
-                return undefined;
-            };
-
-            Highcharts.Point.prototype.highlight = function (event) {
-                event = this.series.chart.pointer.normalize(event);
-                this.onMouseOver();
-                this.series.chart.tooltip.refresh(this);
-                this.series.chart.xAxis[0].drawCrosshair(event, this);
-            };
-
-
-
-function syncExtremes(e) {
-    const thisChart = this.chart;
-
-    if (e.trigger !== 'syncExtremes') { // Prevent feedback loop
-        Highcharts.charts.forEach(chart => {
-            if (chart !== thisChart) {
-                if (chart.xAxis[0].setExtremes) { // It is null while updating
-                    chart.xAxis[0].setExtremes(
-                        e.min,
-                        e.max,
-                        undefined,
-                        false,
-                        { trigger: 'syncExtremes' }
                     );
-                }
-            }
-        });
-    }
-}
+                });
 
+                /**
+                 * Override the reset function, we don't need to hide the tooltips and
+                 * crosshairs.
+                 */
+                Highcharts.Pointer.prototype.reset = function () {
+                    return undefined;
+                };
 
-function resetZoom(e) {
-    // Prevent feedback loop
-    if (e.resetSelection) {
-        return;
-    }
+                /**
+                 * Highlight a point by showing tooltip, setting hover state and draw crosshair
+                 */
+                Highcharts.Point.prototype.highlight = function (event) {
+                    event = this.series.chart.pointer.normalize(event);
+                    this.onMouseOver(); // Show the hover marker
+                    this.series.chart.tooltip.refresh(this); // Show the tooltip
+                    this.series.chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
+                };
 
-    // Zoom out all other charts on selection
-    Highcharts.charts.forEach(chart => {
-        if (chart !== e.target) {
-            chart.zoomOut();
-        }
-    });
-}
-
-            return "JavaScript execution completed successfully";
-        })()
+                return "JavaScript execution completed successfully";
+            })()
 """#)
-                
-//            .series(configureSeriesArray())
-      .legend(AALegend()
-            .enabled(false))
-      .series([
-        AASeriesElement()
-            .type(.column)
-            .name("Berlin Hot")
-            .color(AAColor.green)
-            .borderRadiusTopLeft("50%")
-            .borderRadiusTopRight("50%")
-            .data([
-                1.51, 6.70, 0.94, 1.44, 1.60, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
-                4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28, 1.51, 12.7, 0.94, 1.44,
-                18.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46,
-                3.46, 3.55, 3.50, 4.13, 2.58, 2.28, 1.33, 4.68, 1.31, 1.10, 13.9, 1.10, 1.16, 1.67,
-            ]),
-      ])
+        
+        //            .series(configureSeriesArray())
+            .legend(AALegend()
+                .enabled(false))
+            .series([
+                AASeriesElement()
+                    .type(.column)
+                    .name("Berlin Hot")
+                    .color(AAColor.green)
+                    .borderRadiusTopLeft("50%")
+                    .borderRadiusTopRight("50%")
+                    .data([
+                        1.51, 6.70, 0.94, 1.44, 1.60, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10,
+                        4.17, 3.85, 4.17, 3.46, 3.46, 3.55, 3.50, 4.13, 2.58, 2.28, 1.51, 12.7, 0.94, 1.44,
+                        18.6, 1.63, 1.56, 1.91, 2.45, 3.87, 3.24, 4.90, 4.61, 4.10, 4.17, 3.85, 4.17, 3.46,
+                        3.46, 3.55, 3.50, 4.13, 2.58, 2.28, 1.33, 4.68, 1.31, 1.10, 13.9, 1.10, 1.16, 1.67,
+                    ]),
+            ])
             .afterDrawChartJavaScript("""
-(function() {
-// 动态追加3个div容器
-        for (let i = 0; i < 3; i++) {
-//            const div = document.createElement('div');
-//            div.id = `container${i}`;
-//            div.className = 'chart-container';
-//            document.body.appendChild(div);
-       const chartDiv = document.createElement('div');
-        chartDiv.className = 'chart';
-        document.getElementById('container').appendChild(chartDiv);
-
-// 计算并设置子 div 的高度
-function setChartHeight() {
-    const containerHeight = container.clientHeight; // 获取父 div 的高度
-    const chartHeight = containerHeight / 4 - 30; // 计算子 div 的高度
-    chartDiv.style.height = chartHeight + 'px'; // 设置子 div 的高度
-}
-
-// 初始设置高度
-setChartHeight();
-
-// 如果需要响应窗口大小的变化，可以监听窗口的 resize 事件
-window.addEventListener('resize', setChartHeight);
-
-        let chartOptionsJsonObj;
-if (i == 0) {
-    chartOptionsJsonObj = \(aaOptions1JsonStr);
-} else if (i == 1) {
-    chartOptionsJsonObj = \(aaOptions2JsonStr);
-} else {
-    chartOptionsJsonObj = \(aaOptions3JsonStr);
-}
-
-let sender = JSON.stringify(chartOptionsJsonObj);
-
-            let aaOptions = JSON.parse(sender, function (key, value) {
-                if (typeof (value) == 'string'
-                    && value.indexOf('function') !== -1) {
-                    return eval(value)
+            (function() {
+                // 动态追加3个div容器
+                for (let i = 0; i < 3; i++) {
+                    //            const div = document.createElement('div');
+                    //            div.id = `container${i}`;
+                    //            div.className = 'chart-container';
+                    //            document.body.appendChild(div);
+                    const chartDiv = document.createElement('div');
+                    chartDiv.className = 'chart';
+                    document.getElementById('container').appendChild(chartDiv);
+                    
+                    // 计算并设置子 div 的高度
+                    function setChartHeight() {
+                        const containerHeight = container.clientHeight; // 获取父 div 的高度
+                        const chartHeight = containerHeight / 4 - 30; // 计算子 div 的高度
+                        chartDiv.style.height = chartHeight + 'px'; // 设置子 div 的高度
+                    }
+                    
+                    // 初始设置高度
+                    setChartHeight();
+                    
+                    // 如果需要响应窗口大小的变化，可以监听窗口的 resize 事件
+                    window.addEventListener('resize', setChartHeight);
+                    
+                    let chartOptionsJsonObj;
+                    if (i == 0) {
+                        chartOptionsJsonObj = \(aaOptions1JsonStr);
+                    } else if (i == 1) {
+                        chartOptionsJsonObj = \(aaOptions2JsonStr);
+                    } else {
+                        chartOptionsJsonObj = \(aaOptions3JsonStr);
+                    }
+                    
+                    let sender = JSON.stringify(chartOptionsJsonObj);
+                    
+                    let aaOptions = JSON.parse(sender, function (key, value) {
+                        if (typeof (value) == 'string'
+                            && value.indexOf('function') !== -1) {
+                            return eval(value)
+                        }
+                            return value;
+                    });
+                    
+                    Highcharts.chart(chartDiv, aaOptions);
                 }
-                return value;
-            });
-
-        Highcharts.chart(chartDiv, aaOptions);
-        }
-
-console.log("代码执行成功🎉");
-
-        return "JavaScript execution completed successfully";
-    })();
+                
+                console.log("代码执行成功🎉");
+                
+                return "JavaScript execution completed successfully";
+            })();
 """)
-
+        
         
         return aaOptions1
     }
@@ -469,7 +452,6 @@ console.log("代码执行成功🎉");
             .series([
                 aaSeriesElement
             ])
-
 
         return aaOptions
     }
