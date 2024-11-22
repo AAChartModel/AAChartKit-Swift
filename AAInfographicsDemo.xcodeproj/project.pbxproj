@@ -72,6 +72,9 @@
 		844F11402B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */; };
 		844F11462B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */; };
 		844F11482B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F11472B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift */; };
+		84526E252CF0210500EB2563 /* synchronizedChartActivityData.json in Resources */ = {isa = PBXBuildFile; fileRef = 84526E242CF0210500EB2563 /* synchronizedChartActivityData.json */; };
+		84526E272CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E262CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift */; };
+		84526E292CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E282CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift */; };
 		84595DE82B4698D600F69273 /* PolarChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */; };
 		84595DEA2B46A94C00F69273 /* AAOptionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */; };
 		84595DEC2B46B34E00F69273 /* AAOptionsWithJSListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */; };
@@ -283,6 +286,9 @@
 		844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC2.swift; sourceTree = "<group>"; };
 		844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomXAxisLabelsClickEventCallbackVC.swift; path = AAInfographicsDemo/Demo/BackUpContent/CustomXAxisLabelsClickEventCallbackVC.swift; sourceTree = SOURCE_ROOT; };
 		844F11472B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForLineChartComposer.swift; sourceTree = "<group>"; };
+		84526E242CF0210500EB2563 /* synchronizedChartActivityData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = synchronizedChartActivityData.json; sourceTree = "<group>"; };
+		84526E262CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionBeforeAndAfterRenderingComposer3.swift; sourceTree = "<group>"; };
+		84526E282CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleChartsLinkedWorkVC.swift; sourceTree = "<group>"; };
 		84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarChartOptionsVC.swift; sourceTree = "<group>"; };
 		84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsListVC.swift; sourceTree = "<group>"; };
 		84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsWithJSListVC.swift; sourceTree = "<group>"; };
@@ -358,6 +364,7 @@
 			children = (
 				2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */,
 				276A56FE22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift */,
+				84526E282CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift */,
 				277066102452E99C00C4581D /* ScrollableChartVC.swift */,
 				449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */,
 				2763384424A7070F00143B9B /* DataSortingWithAnimationChartVC.swift */,
@@ -567,6 +574,8 @@
 				84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */,
 				58603418B60256899DD8BF75 /* JSFunctionForAAChartEventsComposer2.swift */,
 				84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */,
+				84526E262CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift */,
+				84526E242CF0210500EB2563 /* synchronizedChartActivityData.json */,
 			);
 			path = AAOptionsWithJS;
 			sourceTree = "<group>";
@@ -818,6 +827,7 @@
 				848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */,
 				84086B1F28E6C612006BD30D /* CustomTableViewCell.xib in Resources */,
 				278C54B71EE9472300770B97 /* Main.storyboard in Resources */,
+				84526E252CF0210500EB2563 /* synchronizedChartActivityData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +893,7 @@
 				448330B824E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift in Sources */,
 				84E68FBD2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift in Sources */,
 				8418479928B8755900094106 /* JSFunctionForAAChartEventsVC.swift in Sources */,
+				84526E292CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift in Sources */,
 				27E475F924B83AE200690657 /* AABaseChartVC.swift in Sources */,
 				277066112452E99C00C4581D /* ScrollableChartVC.swift in Sources */,
 				84790F3F2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift in Sources */,
@@ -920,6 +931,7 @@
 				58603456B9A269D72A0F9656 /* PieChartOptionsComposer.swift in Sources */,
 				586035AD1F2AA0AF6BFBDA7D /* LineChartOptionsVC.swift in Sources */,
 				2DC11BB34BC87432BF593AC8 /* BubbleLegendChartOptionsComposer.swift in Sources */,
+				84526E272CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift in Sources */,
 				58603B0D623EDFE55CFFC66B /* CustomStyleForColumnChartComposer.swift in Sources */,
 				844007702B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift in Sources */,
 				586031CD65041F30252BD805 /* CustomStyleForBarChartComposer.swift in Sources */,

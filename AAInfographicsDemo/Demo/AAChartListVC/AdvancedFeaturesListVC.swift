@@ -51,7 +51,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
             /*Show double chart as the same time*/
             [
                 "在同一个页面同时添加多个 AAChartView",
-                " Double Charts Linkedwork 双表联动",
+                "Double Charts Linkedwork 双表联动",
+                "Triple Charts Linkedwork 三表联动",
             ],
             /*Animation types*/
             [  "Column Chart---柱形图",
@@ -265,8 +266,12 @@ extension AdvancedFeaturesListVC {
                 let vc = ShowManyChartViewVC()
                 vc.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(vc, animated: true)
-            } else {
+            } else if indexPath.row == 1 {
                 let vc = DoubleChartsLinkedWorkVC()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = TripleChartsLinkedWorkVC()
                 vc.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(vc, animated: true)
             }
