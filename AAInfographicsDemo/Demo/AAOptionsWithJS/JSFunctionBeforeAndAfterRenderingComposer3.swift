@@ -220,10 +220,6 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
             (function() {
                 // 动态追加3个div容器
                 for (let i = 0; i < 3; i++) {
-                    //            const div = document.createElement('div');
-                    //            div.id = `container${i}`;
-                    //            div.className = 'chart-container';
-                    //            document.body.appendChild(div);
                     const chartDiv = document.createElement('div');
                     chartDiv.className = 'chart';
                     document.getElementById('container').appendChild(chartDiv);
@@ -452,6 +448,22 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
             .series([
                 aaSeriesElement
             ])
+        
+        aaOptions.chart?.zooming?
+            .resetButton(AAResetButton()
+                .theme(AAButtonTheme()
+                    .fill(AAColor.yellow)
+                    .stroke(AAColor.green)
+                    .strokeWidth(3)
+                    .r(3)
+                    .states(AAButtonThemeStates()
+                        .hover(AAButtonThemeStatesHover()
+                            .fill(AAColor.red)
+                            .style(AAStyle()
+                                .color(AAColor.white))))))
+            .singleTouch(true)
+            .type(.x)
+            .pinchType(.x)
 
         return aaOptions
     }
