@@ -33,7 +33,7 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
         let datasets = activityDic["datasets"] as! [[String: Any]]
         
         var finalDatasets = [AASeriesElement]()
-        let colorsArr = ["#1e90ff", "#ef476f", "#ffd066", "#04d69f", "#25547c"]
+        let colorsArr = [AAGradientColor.freshPapaya, AAGradientColor.oceanBlue, AAGradientColor.lemonDrizzle, "#04d69f", "#25547c"] as [Any]
         
         datasets.enumerated().forEach { (idx, obj) in
             let dataset = obj
@@ -238,7 +238,7 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
                 AASeriesElement()
                     .type(.column)
                     .name("Berlin Hot")
-                    .color(AAColor.green)
+                    .color(AAGradientColor.lusciousLime)
                     .borderRadius("50%")
 //                    .borderRadiusTopLeft("50%")
 //                    .borderRadiusTopRight("50%")
