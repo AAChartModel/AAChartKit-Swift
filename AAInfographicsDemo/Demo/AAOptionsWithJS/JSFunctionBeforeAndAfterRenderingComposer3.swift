@@ -175,6 +175,43 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
                 this.series.chart.xAxis[0].drawCrosshair(event, this);
             };
 
+
+
+function syncExtremes(e) {
+    const thisChart = this.chart;
+
+    if (e.trigger !== 'syncExtremes') { // Prevent feedback loop
+        Highcharts.charts.forEach(chart => {
+            if (chart !== thisChart) {
+                if (chart.xAxis[0].setExtremes) { // It is null while updating
+                    chart.xAxis[0].setExtremes(
+                        e.min,
+                        e.max,
+                        undefined,
+                        false,
+                        { trigger: 'syncExtremes' }
+                    );
+                }
+            }
+        });
+    }
+}
+
+
+function resetZoom(e) {
+    // Prevent feedback loop
+    if (e.resetSelection) {
+        return;
+    }
+
+    // Zoom out all other charts on selection
+    Highcharts.charts.forEach(chart => {
+        if (chart !== e.target) {
+            chart.zoomOut();
+        }
+    });
+}
+
             return "JavaScript execution completed successfully";
         })()
 """#)
@@ -233,88 +270,80 @@ console.log("代码执行成功🎉");
     }
     
     /**
-     + (AAOptions *)singleChartOptions {
-         return AAOptions.new
-         .chartSet(AAChart.new
-                   .marginLeftSet(@40)
-                   .spacingTopSet(@20)
-                   .spacingBottomSet(@20)
-     //              .zoomTypeSet(AAZoomTypeX)
-                   .eventsSet(AAChartEvents.new
-     //                         .selectionSet(@AAJSFunc(/**
-     //                                                  * Resets chart zoom on selection event.
-     //                                                  */
-     //                                                 function resetZoom(e) {
-     //                                                     // Prevent feedback loop
-     //                                                     if (e.resetSelection) {
-     //                                                         return;
-     //                                                     }
-     //
-     //                                                     // Zoom out all other charts on selection
-     //                                                     Highcharts.charts.forEach(chart => {
-     //                                                         if (chart !== e.target) {
-     //                                                             chart.zoomOut();
-     //                                                         }
-     //                                                     });
-     //                                                 }))
-                              )
-                   )
-         .titleSet(AATitle.new
-                   .textSet(@"dataset.name")
-                   .alignSet(AAChartAlignTypeLeft)
-     //              .marginSet(@0)
-                   .xSet(@30)
-                   )
-         .creditsSet(AACredits.new
-                     .enabledSet(false))
-         .legendSet(AALegend.new
-                     .enabledSet(false))
-         .xAxisSet(AAXAxis.new
-                     .crosshairSet(AACrosshair.new
-                                   .colorSet(AAColor.redColor))
-     //                .eventsSet(AAEvents.new
-     //                             .setExtremesSet(@"syncExtremes")
-     //                             )
-                     .labelsSet(AALabels.new
-                                  .formatSet(@"{value} km")
-                                  )
-     //                .accessibilitySet(AAAccessibility.new
-     //                                    .descriptionSet(@"Kilometers")
-     //                                    .rangeDescriptionSet(@"0km to 6.5km")
-     //                                    )
-                     )
-         .yAxisSet(AAYAxis.new
-                     .titleSet(AAAxisTitle.new
-                                 .textSet(nil)
-                                 )
-                     )
-         .tooltipSet(AATooltip.new
-     //                .positionerSet(@"function () {\
-     //                                return {\
-     //                                // right aligned\
-     //                                x: this.chart.chartWidth - this.label.width,\
-     //                                y: 10 // align to title\
-     //                                };\
-     //                                }")
-                     .borderWidthSet(@0)
-                     .backgroundColorSet(@"none")
-                     .pointFormatSet(@"{point.y}")
-                     .headerFormatSet(@"")
-                     .shadowSet(false)
-                     .styleSet(AAStyle.new
-                               .fontSizeSet(@"18px")
-                               )
-                     .valueDecimalsSet(@2)
-                     )
-         .seriesSet(@[
-             AASeriesElement.new
-                 .nameSet(@"Tokyo")
-                 .dataSet(@[@7.0, @6.9, @9.5, @14.5, @18.2, @21.5, @25.2, @26.5, @23.3, @18.3, @13.9, @9.6])
-                 .colorByPointSet(@true)
-         ])
-         ;
-     }
+     Highcharts.chart(chartDiv, {
+                 chart: {
+                     marginLeft: 40, // Keep all charts left aligned
+                     spacingTop: 20,
+                     spacingBottom: 20,
+                     zooming: {
+                         type: 'x'
+                     },
+                     events: {
+                         selection: resetZoom
+                     }
+                 },
+                 title: {
+                     text: dataset.name,
+                     align: 'left',
+                     margin: 0,
+                     x: 30
+                 },
+                 credits: {
+                     enabled: false
+                 },
+                 legend: {
+                     enabled: false
+                 },
+                 xAxis: {
+                     crosshair: true,
+                     events: {
+                         setExtremes: syncExtremes
+                     },
+                     labels: {
+                         format: '{value} km'
+                     },
+                     accessibility: {
+                         description: 'Kilometers',
+                         rangeDescription: '0km to 6.5km'
+                     }
+                 },
+                 yAxis: {
+                     title: {
+                         text: null
+                     }
+                 },
+                 tooltip: {
+                     positioner: function () {
+                         return {
+                             // right aligned
+                             x: this.chart.chartWidth - this.label.width,
+                             y: 10 // align to title
+                         };
+                     },
+                     borderWidth: 0,
+                     backgroundColor: 'none',
+                     pointFormat: '{point.y}',
+                     headerFormat: '',
+                     shadow: false,
+                     style: {
+                         fontSize: '18px'
+                     },
+                     valueDecimals: dataset.valueDecimals
+                 },
+                 series: [{
+                     data: dataset.data,
+                     name: dataset.name,
+                     type: dataset.type,
+                     color: Highcharts.getOptions().colors[i],
+                     fillOpacity: 0.3,
+                     tooltip: {
+                         valueSuffix: ' ' + dataset.unit
+                     }
+                 }]
+             });
+         });
      */
+    
     static func singleChartOptions(chartRank: Int) -> AAOptions {
        let aaOptions = AAOptions()
             .chart(AAChart()
@@ -322,9 +351,11 @@ console.log("代码执行成功🎉");
                 .marginLeft(40)
                 .spacingTop(20)
                 .spacingBottom(20)
+                .zooming(AAZooming()
+                        .type(.x))
                 .events(AAChartEvents()
                     .selection(#"""
-                    function resetZoom(e) {
+                    function (e) {
                         if (e.resetSelection) {
                             return;
                         }
@@ -349,6 +380,28 @@ console.log("代码执行成功🎉");
             .xAxis(AAXAxis()
                 .crosshair(AACrosshair()
                     .color(AAColor.red))
+                    .events(AAAxisEvents()
+                        .setExtremes(#"""
+                                        function (e) {
+                                            const thisChart = this.chart;
+
+                                            if (e.trigger !== 'syncExtremes') {
+                                                Highcharts.charts.forEach(chart => {
+                                                    if (chart !== thisChart) {
+                                                        if (chart.xAxis[0].setExtremes) { 
+                                                            chart.xAxis[0].setExtremes(
+                                                                e.min,
+                                                                e.max,
+                                                                undefined,
+                                                                false,
+                                                                { trigger: 'syncExtremes' }
+                                                            );
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        }
+                        """#))
                 .labels(AALabels()
                     .format("{value} km"))
             )
