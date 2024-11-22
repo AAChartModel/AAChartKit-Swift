@@ -88,7 +88,7 @@ class AABaseChartVC: UIViewController {
     
     private func setupChartView() {
         aaChartView = AAChartView()
-        aaChartView!.isScrollEnabled = false
+        aaChartView!.isScrollEnabled = true
         //设置 aaChartView 可以调试
         if #available(iOS 16.4, *) {
             aaChartView!.isInspectable = true
