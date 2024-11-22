@@ -134,46 +134,49 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
      }
      */
     static func synchronizedChart() -> AAOptions {
-        let jsonStr = disableGroupingColumnChart().toJSON()
+        let jsonStr1 = singleChartOptions(chartRank: 1).toJSON()
+        let jsonStr2 = singleChartOptions(chartRank: 2).toJSON()
+        let jsonStr3 = singleChartOptions(chartRank: 3).toJSON()
         
         let aaOptions = AAOptions()
       .beforeDrawChartJavaScript(#"""
-    (function() {
-        ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
-            document.getElementById('container').addEventListener(
-                eventType,
-                function (e) {
-                    let chart,
-                        point,
-                        i,
-                        event;
+        (function() {
+            ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
+                document.getElementById('container').addEventListener(
+                    eventType,
+                    function (e) {
+                        let chart,
+                            point,
+                            i,
+                            event;
 
-                    for (i = 0; i < Highcharts.charts.length; i = i + 1) {
-                        chart = Highcharts.charts[i];
-                        event = chart.pointer.normalize(e);
-                        point = chart.series[0].searchPoint(event, true);
-
-                        if (point) {
-                            point.highlight(e);
+                        for (i = 0; i < Highcharts.charts.length; i = i + 1) {
+                            chart = Highcharts.charts[i];
+                            event = chart.pointer.normalize(e);
+                            point = chart.series[0].searchPoint(event, true);
+    //alert("输出查看找到了几个 chart" + Highcharts.charts.length);
+    console.log("输出查看找到了几个 chart", Highcharts.charts.length);
+                            if (point) {
+                                point.highlight(e);
+                            }
                         }
                     }
-                }
-            );
-        });
+                );
+            });
 
-        Highcharts.Pointer.prototype.reset = function () {
-            return undefined;
-        };
+            Highcharts.Pointer.prototype.reset = function () {
+                return undefined;
+            };
 
-        Highcharts.Point.prototype.highlight = function (event) {
-            event = this.series.chart.pointer.normalize(event);
-            this.onMouseOver();
-            this.series.chart.tooltip.refresh(this);
-            this.series.chart.xAxis[0].drawCrosshair(event, this);
-        };
+            Highcharts.Point.prototype.highlight = function (event) {
+                event = this.series.chart.pointer.normalize(event);
+                this.onMouseOver();
+                this.series.chart.tooltip.refresh(this);
+                this.series.chart.xAxis[0].drawCrosshair(event, this);
+            };
 
-        return "JavaScript execution completed successfully";
-    })()
+            return "JavaScript execution completed successfully";
+        })()
 """#)
                 
             .chart(AAChart()
@@ -188,17 +191,38 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
 (function() {
 // 动态追加3个div容器
         for (let i = 2; i <= 4; i++) {
-            const div = document.createElement('div');
-            div.id = `container${i}`;
-            div.className = 'chart-container';
-            document.body.appendChild(div);
-        let chartOptionsJsonStr = \(jsonStr);
+//            const div = document.createElement('div');
+//            div.id = `container${i}`;
+//            div.className = 'chart-container';
+//            document.body.appendChild(div);
+       const chartDiv = document.createElement('div');
+        chartDiv.className = 'chart';
+        document.getElementById('container').appendChild(chartDiv);
 
-        Highcharts.chart(div, chartOptionsJsonStr);
+
+        let chartOptionsJsonObj;
+if (i == 2) {
+    chartOptionsJsonObj = \(jsonStr1);
+} else if (i == 3) {
+    chartOptionsJsonObj = \(jsonStr2);
+} else {
+    chartOptionsJsonObj = \(jsonStr3);
+}
+
+let sender = JSON.stringify(chartOptionsJsonObj);
+
+            let aaOptions = JSON.parse(sender, function (key, value) {
+                if (typeof (value) == 'string'
+                    && value.indexOf('function') !== -1) {
+                    return eval(value)
+                }
+                return value;
+            });
+
+        Highcharts.chart(chartDiv, aaOptions);
         }
 
 console.log("代码执行成功🎉");
-alert("代码执行成功🎉");
 
         return "JavaScript execution completed successfully";
     })();
@@ -208,60 +232,165 @@ alert("代码执行成功🎉");
         return aaOptions
     }
     
-    static func disableGroupingColumnChart() -> AAOptions {
-        AAOptions()
+    /**
+     + (AAOptions *)singleChartOptions {
+         return AAOptions.new
+         .chartSet(AAChart.new
+                   .marginLeftSet(@40)
+                   .spacingTopSet(@20)
+                   .spacingBottomSet(@20)
+     //              .zoomTypeSet(AAZoomTypeX)
+                   .eventsSet(AAChartEvents.new
+     //                         .selectionSet(@AAJSFunc(/**
+     //                                                  * Resets chart zoom on selection event.
+     //                                                  */
+     //                                                 function resetZoom(e) {
+     //                                                     // Prevent feedback loop
+     //                                                     if (e.resetSelection) {
+     //                                                         return;
+     //                                                     }
+     //
+     //                                                     // Zoom out all other charts on selection
+     //                                                     Highcharts.charts.forEach(chart => {
+     //                                                         if (chart !== e.target) {
+     //                                                             chart.zoomOut();
+     //                                                         }
+     //                                                     });
+     //                                                 }))
+                              )
+                   )
+         .titleSet(AATitle.new
+                   .textSet(@"dataset.name")
+                   .alignSet(AAChartAlignTypeLeft)
+     //              .marginSet(@0)
+                   .xSet(@30)
+                   )
+         .creditsSet(AACredits.new
+                     .enabledSet(false))
+         .legendSet(AALegend.new
+                     .enabledSet(false))
+         .xAxisSet(AAXAxis.new
+                     .crosshairSet(AACrosshair.new
+                                   .colorSet(AAColor.redColor))
+     //                .eventsSet(AAEvents.new
+     //                             .setExtremesSet(@"syncExtremes")
+     //                             )
+                     .labelsSet(AALabels.new
+                                  .formatSet(@"{value} km")
+                                  )
+     //                .accessibilitySet(AAAccessibility.new
+     //                                    .descriptionSet(@"Kilometers")
+     //                                    .rangeDescriptionSet(@"0km to 6.5km")
+     //                                    )
+                     )
+         .yAxisSet(AAYAxis.new
+                     .titleSet(AAAxisTitle.new
+                                 .textSet(nil)
+                                 )
+                     )
+         .tooltipSet(AATooltip.new
+     //                .positionerSet(@"function () {\
+     //                                return {\
+     //                                // right aligned\
+     //                                x: this.chart.chartWidth - this.label.width,\
+     //                                y: 10 // align to title\
+     //                                };\
+     //                                }")
+                     .borderWidthSet(@0)
+                     .backgroundColorSet(@"none")
+                     .pointFormatSet(@"{point.y}")
+                     .headerFormatSet(@"")
+                     .shadowSet(false)
+                     .styleSet(AAStyle.new
+                               .fontSizeSet(@"18px")
+                               )
+                     .valueDecimalsSet(@2)
+                     )
+         .seriesSet(@[
+             AASeriesElement.new
+                 .nameSet(@"Tokyo")
+                 .dataSet(@[@7.0, @6.9, @9.5, @14.5, @18.2, @21.5, @25.2, @26.5, @23.3, @18.3, @13.9, @9.6])
+                 .colorByPointSet(@true)
+         ])
+         ;
+     }
+     */
+    static func singleChartOptions(chartRank: Int) -> AAOptions {
+       let aaOptions = AAOptions()
             .chart(AAChart()
-                    .type(.column))
+                .type(.area)
+                .marginLeft(40)
+                .spacingTop(20)
+                .spacingBottom(20)
+                .events(AAChartEvents()
+                    .selection(#"""
+                    function resetZoom(e) {
+                        if (e.resetSelection) {
+                            return;
+                        }
+
+                        Highcharts.charts.forEach(chart => {
+                            if (chart !== e.target) {
+                                chart.zoomOut();
+                            }
+                        });
+                    }
+                    """#))
+            )
             .title(AATitle()
-                    .text("Monthly Average Rainfall"))
-            .subtitle(AASubtitle()
-                        .text("Source: WorldClimate.com"))
-            .xAxis(AAXAxis()
-                    .categories(["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]))
-            .yAxis(AAYAxis()
-                    .min(0)
-                    .title(AATitle()
-                            .text("Rainfall (mm)")))
+                .text("dataset.name")
+                .align(.left)
+                .x(30)
+            )
+            .credits(AACredits()
+                .enabled(false))
             .legend(AALegend()
-                    .layout(.vertical)
-                    .backgroundColor("#FFFFFF")
-                    .align(.left)
-                    .verticalAlign(.top)
-                    .x(100)
-                    .y(70)
-                    .floating(true)
-                    .shadow(true))
+                .enabled(false))
+            .xAxis(AAXAxis()
+                .crosshair(AACrosshair()
+                    .color(AAColor.red))
+                .labels(AALabels()
+                    .format("{value} km"))
+            )
+            .yAxis(AAYAxis()
+                .title(AATitle()
+                    .text(""))
+            )
             .tooltip(AATooltip()
-                        .shared(true)
-                        .valueSuffix(" mm"))
-            .plotOptions(AAPlotOptions()
-                            .column(AAColumn()
-                                    .grouping(false)
-//                                    .shadow(false)
-                            ))
-            .series([
-                AASeriesElement()
-                    .name("Tokyo")
-                    .data([49.9, 71.5, 106.4, 129.2, 144.0, 176.0,
-                           135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
-                    .pointPadding(0),
-                AASeriesElement()
-                    .name("New York")
-                    .data([83.6, 78.8, 98.5, 93.4, 106.0, 84.5,
-                           105.0, 104.3, 91.2, 83.5, 106.6, 92.3])
-                    .pointPadding(0.1),
-                AASeriesElement()
-                    .name("London")
-                    .data([48.9, 38.8, 39.3, 41.4, 47.0, 48.3,
-                           59.0, 59.6, 52.4, 65.2, 59.3, 51.2])
-                    .pointPadding(0.2),
-                AASeriesElement()
-                    .name("Berlin")
-                    .data([42.4, 33.2, 34.5, 39.7, 52.6, 75.5,
-                           57.4, 60.4, 47.6, 39.1, 46.8, 51.1])
-                    .pointPadding(0.3)
-            ])
+                .positioner(#"""
+                    function () {
+                        return {
+                            x: this.chart.chartWidth - this.label.width,
+                            y: 10
+                        };
+                    }
+                    """#)
+                .borderWidth(0)
+                .backgroundColor("none")
+                .pointFormat("{point.y}")
+                .headerFormat("")
+                .shadow(false)
+                .style(AAStyle()
+                    .fontSize(18))
+                .valueDecimals(2)
+            )
+//            .series([
+//                configureSeriesArray()[0]
+//            ])
         
+        if chartRank == 1 {
+            aaOptions.series([
+                configureSeriesArray()[0]
+            ])
+        } else if chartRank == 2 {
+            aaOptions.series([
+                configureSeriesArray()[1]
+            ])
+        } else if chartRank == 3 {
+            aaOptions.series([
+                configureSeriesArray()[2]
+            ])
+        }
+        return aaOptions
     }
 }
