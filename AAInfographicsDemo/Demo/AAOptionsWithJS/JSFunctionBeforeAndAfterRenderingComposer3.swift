@@ -240,8 +240,6 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
                     .name("Berlin Hot")
                     .color(AAGradientColor.lusciousLime)
                     .borderRadius("50%")
-//                    .borderRadiusTopLeft("50%")
-//                    .borderRadiusTopRight("50%")
                     .data(configureSeriesDataArray()),
             ])
             .afterDrawChartJavaScript("""
