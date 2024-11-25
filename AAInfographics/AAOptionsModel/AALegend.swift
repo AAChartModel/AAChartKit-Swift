@@ -105,7 +105,7 @@ public class AALegend: AAObject {
     }
     
     //添加方法废弃警告⚠️
-    @available(*, deprecated, message: "Please use AAStyle for legend item style instead")
+    @available(*, deprecated, message: "`public func itemStyle(_ prop: AAItemStyle?) -> AALegend {...}` has been deprecated,  please use `public func itemStyle(_ prop: AAStyle?) -> AALegend {...}` for legend item style instead")
     @discardableResult
     public func itemStyle(_ prop: AAItemStyle?) -> AALegend {
 //        itemStyle = prop
