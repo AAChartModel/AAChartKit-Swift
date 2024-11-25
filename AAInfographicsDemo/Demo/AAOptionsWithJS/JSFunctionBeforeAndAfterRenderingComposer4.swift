@@ -380,7 +380,7 @@ class JSFunctionBeforeAndAfterRenderingComposer4: NSObject {
 //                    .fillOpacity(0.25)
                 )
                 .column(AAColumn()
-//                    .negativeColor("#910000")
+                    .negativeColor(AAColor.red)
                     .borderColor("silver")
                 )
             )
