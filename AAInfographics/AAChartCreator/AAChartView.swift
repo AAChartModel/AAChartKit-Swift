@@ -202,10 +202,11 @@ public class AAChartView: WKWebView {
 //            [self safeEvaluateJavaScriptString:_beforeDrawChartJavaScript];
 //        }
         if beforeDrawChartJavaScript != nil {
-            safeEvaluateJavaScriptString(beforeDrawChartJavaScript!)
 #if DEBUG
             print("📝 \(beforeDrawChartJavaScript ?? "")")
 #endif
+            safeEvaluateJavaScriptString(beforeDrawChartJavaScript!)
+            beforeDrawChartJavaScript = nil
         }
         
         //Add `frame.size.height` to solve the problem that the height of the new version of Highcharts chart will not adapt to the container
@@ -215,12 +216,13 @@ public class AAChartView: WKWebView {
 //if (self.afterDrawChartJavaScript) {
 //            [self safeEvaluateJavaScriptString:self.afterDrawChartJavaScript];
 //        }
-        if afterDrawChartJavaScript != nil {
-            safeEvaluateJavaScriptString(afterDrawChartJavaScript!)
-            
 #if DEBUG
             print("📝 \(afterDrawChartJavaScript ?? "")")
 #endif
+        if afterDrawChartJavaScript != nil {
+            safeEvaluateJavaScriptString(afterDrawChartJavaScript!)
+            afterDrawChartJavaScript = nil
+
         }
     }
     
