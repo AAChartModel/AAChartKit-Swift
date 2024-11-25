@@ -18,6 +18,7 @@ class BasicChartComposer: NSObject {
             .dataLabelsEnabled(false)
             .tooltipValueSuffix("℃")
             .animationType(.bounce)
+            .legendItemStyle(AAStyle(color: AAColor.lightGray))
             .series([
                 AASeriesElement()
                     .name("Tokyo")

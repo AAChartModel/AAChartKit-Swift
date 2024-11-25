@@ -219,6 +219,7 @@ public class AAOptionsConstructor {
         
         let aaLegend = AALegend()
             .enabled(aaChartModel.legendEnabled)
+            .itemStyle(aaChartModel.legendItemStyle)
         
         let aaOptions = AAOptions()
             .chart(aaChart)
