@@ -171,25 +171,26 @@ class JSFunctionBeforeAndAfterRenderingComposer4: NSObject {
      */
     
     static func sparklineChart() -> AAOptions {
-        let sparklinesHtml = getHtmlStringWithFileName(fileName: "sparklines", fileType: "html").aa_toPureJSStringqq()
-        let sparklinesCss  = getHtmlStringWithFileName(fileName: "sparklines", fileType: "css").aa_toPureJSStringqq()
+        let sparklinesFileName = "sparklines"
+        let sparklinesHtml = getHtmlStringWithFileName(fileName: sparklinesFileName, fileType: "html").aa_toPureHTMLString()
+        let sparklinesCss  = getHtmlStringWithFileName(fileName: sparklinesFileName, fileType: "css").aa_toPureCSSString()
         let defaultOptionsJson = defaultOptionsJson()
         
         return AAOptions()
             .beforeDrawChartJavaScript("""
-//将已有的 container div 元素高度设为 0
-document.getElementById('container').style.height = '0px';
+        //将已有的 container div 元素高度设为 0
+        document.getElementById('container').style.height = '0px';
 
-//注入 sparklinesHtml 到 HTML 中
-document.body.insertAdjacentHTML('beforeend', '\(sparklinesHtml)');
-console.log('🔥🔥🔥 Inject sparklinesHtml to HTML successfully! 🔥🔥🔥');
+        //注入 sparklinesHtml 到 HTML 中
+        document.body.insertAdjacentHTML('beforeend', '\(sparklinesHtml)');
+        console.log('🔥🔥🔥 Inject sparklinesHtml to HTML successfully! 🔥🔥🔥');
 
-//注入 sparklinesCss 到 HTML 中
-const style = document.createElement('style');
-style.type = 'text/css';
-style.innerHTML = '\(sparklinesCss)';
-document.head.appendChild(style);
-console.log('🔥🔥🔥 Inject sparklinesCss to HTML successfully! 🔥🔥🔥');
+        //注入 sparklinesCss 到 HTML 中
+        const style = document.createElement('style');
+        style.type = 'text/css';
+        style.innerHTML = '\(sparklinesCss)';
+        document.head.appendChild(style);
+        console.log('🔥🔥🔥 Inject sparklinesCss to HTML successfully! 🔥🔥🔥');
 
 """)
             .afterDrawChartJavaScript("""
@@ -271,7 +272,7 @@ console.log('🔥🔥🔥 Inject sparklinesCss to HTML successfully! 🔥🔥�
      }
      doChunk();
 
-console.log('🔥🔥🔥 The sparklines have been created successfully! 🔥🔥🔥');
+     console.log('🔥🔥🔥 The sparklines have been created successfully! 🔥🔥🔥');
 """)
     }
     
