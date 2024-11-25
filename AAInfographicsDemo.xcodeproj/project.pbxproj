@@ -79,6 +79,7 @@
 		84526E2D2CF409BB00EB2563 /* MixedChartComposer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E2C2CF409BA00EB2563 /* MixedChartComposer2.swift */; };
 		84526E2F2CF414F500EB2563 /* JSFunctionBeforeAndAfterRenderingComposer4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E2E2CF414F500EB2563 /* JSFunctionBeforeAndAfterRenderingComposer4.swift */; };
 		84526E312CF415F900EB2563 /* sparklines.html in Resources */ = {isa = PBXBuildFile; fileRef = 84526E302CF415F900EB2563 /* sparklines.html */; };
+		84526E332CF4206900EB2563 /* sparklines.css in Resources */ = {isa = PBXBuildFile; fileRef = 84526E322CF4206900EB2563 /* sparklines.css */; };
 		84595DE82B4698D600F69273 /* PolarChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */; };
 		84595DEA2B46A94C00F69273 /* AAOptionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */; };
 		84595DEC2B46B34E00F69273 /* AAOptionsWithJSListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */; };
@@ -297,6 +298,7 @@
 		84526E2C2CF409BA00EB2563 /* MixedChartComposer2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartComposer2.swift; sourceTree = "<group>"; };
 		84526E2E2CF414F500EB2563 /* JSFunctionBeforeAndAfterRenderingComposer4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionBeforeAndAfterRenderingComposer4.swift; sourceTree = "<group>"; };
 		84526E302CF415F900EB2563 /* sparklines.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = sparklines.html; path = AAInfographics/AAJSFiles.bundle/sparklines.html; sourceTree = SOURCE_ROOT; };
+		84526E322CF4206900EB2563 /* sparklines.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = sparklines.css; path = AAInfographics/AAJSFiles.bundle/sparklines.css; sourceTree = SOURCE_ROOT; };
 		84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarChartOptionsVC.swift; sourceTree = "<group>"; };
 		84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsListVC.swift; sourceTree = "<group>"; };
 		84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsWithJSListVC.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				84526E242CF0210500EB2563 /* synchronizedChartActivityData.json */,
 				84526E2E2CF414F500EB2563 /* JSFunctionBeforeAndAfterRenderingComposer4.swift */,
 				84526E302CF415F900EB2563 /* sparklines.html */,
+				84526E322CF4206900EB2563 /* sparklines.css */,
 			);
 			path = AAOptionsWithJS;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				278C54BC1EE9472300770B97 /* LaunchScreen.storyboard in Resources */,
+				84526E332CF4206900EB2563 /* sparklines.css in Resources */,
 				84526E312CF415F900EB2563 /* sparklines.html in Resources */,
 				278C54B91EE9472300770B97 /* Assets.xcassets in Resources */,
 				848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */,

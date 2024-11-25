@@ -170,8 +170,9 @@ class JSFunctionBeforeAndAfterRenderingComposer4: NSObject {
 
      */
     
-    static func chartOptions() -> AAOptions {
-        let sparklinesHtml = getHtmlStringWithFileName(fileName: "sparklines").aa_toPureJSStringqq()
+    static func sparklineChart() -> AAOptions {
+        let sparklinesHtml = getHtmlStringWithFileName(fileName: "sparklines", fileType: "html").aa_toPureJSStringqq()
+        let sparklinesCss  = getHtmlStringWithFileName(fileName: "sparklines", fileType: "css").aa_toPureJSStringqq()
         let defaultOptionsJson = defaultOptionsJson()
         
         return AAOptions()
@@ -182,6 +183,14 @@ document.getElementById('container').style.height = '0px';
 //注入 sparklinesHtml 到 HTML 中
 document.body.insertAdjacentHTML('beforeend', '\(sparklinesHtml)');
 console.log('🔥🔥🔥 Inject sparklinesHtml to HTML successfully! 🔥🔥🔥');
+
+//注入 sparklinesCss 到 HTML 中
+const style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = '\(sparklinesCss)';
+document.head.appendChild(style);
+console.log('🔥🔥🔥 Inject sparklinesCss to HTML successfully! 🔥🔥🔥');
+
 """)
             .afterDrawChartJavaScript("""
      /**
@@ -267,8 +276,8 @@ console.log('🔥🔥🔥 The sparklines have been created successfully! 🔥�
     }
     
     //获取指定文件名的 html 文件内容
-    static func getHtmlStringWithFileName(fileName: String) -> String {
-        let path = Bundle.main.path(forResource: fileName, ofType: "html")
+    static func getHtmlStringWithFileName(fileName: String, fileType: String) -> String {
+        let path = Bundle.main.path(forResource: fileName, ofType: fileType)
         var htmlString = ""
         do {
             htmlString = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
@@ -290,7 +299,7 @@ console.log('🔥🔥🔥 The sparklines have been created successfully! 🔥�
     
     static func toJSON(dic: Dictionary<String, Any>) -> String {
         do {
-            let data = try JSONSerialization.data(withJSONObject: dic as Any, options: [])
+            let data = try JSONSerialization.data(withJSONObject: dic as Any, options: .prettyPrinted)
             guard let jsonStr = String(data: data, encoding: String.Encoding.utf8) else { return "" }
             return jsonStr
         } catch {
