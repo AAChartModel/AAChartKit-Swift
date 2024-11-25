@@ -186,7 +186,9 @@ public class AAOptionsConstructor {
             .text(aaChartModel.title) //Title text content
         
         if aaChartModel.title != "" {
-            aaTitle.style(aaChartModel.titleStyle)
+            aaTitle
+                .align(aaChartModel.titleAlign) //Title horizontal alignment
+                .style(aaChartModel.titleStyle)
         }
         
         var aaSubtitle: AASubtitle?

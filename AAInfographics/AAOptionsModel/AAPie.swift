@@ -30,9 +30,11 @@
 
 /// https://api.highcharts.com/highcharts/plotOptions.pie
 public class AAPie: AASeries {
+    public var name: String?
     public var type: String?
     public var data: [Any]?
-    public var size: Float?
+    public var size: Any?
+    public var innerSize: Any?
     public var cursor: String?
     public var showInLegend: Bool?
     public var startAngle: Float?
@@ -40,6 +42,12 @@ public class AAPie: AASeries {
     public var depth: Float?
     public var center: [Any]?
     public var borderRadius: Any?
+    
+    @discardableResult
+    public func name(_ prop: String) -> AAPie {
+        name = prop
+        return self
+    }
 
     @discardableResult
     public func type(_ prop: AAChartType) -> AAPie {
@@ -52,10 +60,26 @@ public class AAPie: AASeries {
         data = prop
         return self
     }
-    
+        
     @discardableResult
     public func size(_ prop: Float?) -> AAPie {
         size = prop
+        return self
+    }
+    @discardableResult
+    public func size(_ prop: String?) -> AAPie {
+        size = prop
+        return self
+    }
+    
+    @discardableResult
+    public func innerSize(_ prop: Float?) -> AAPie {
+        innerSize = prop
+        return self
+    }
+    @discardableResult
+    public func innerSize(_ prop: String?) -> AAPie {
+        innerSize = prop
         return self
     }
     

@@ -156,6 +156,7 @@ public class AAChartModel: AAObject {
     public var animationType: AAChartAnimationType? //The type of chart animation
     public var animationDuration: Int?      //The chart rendering animation duration
     public var title: String?               //The chart title
+    public var titleAlign: AAChartAlignType?//The chart title text align style
     public var titleStyle: AAStyle?         //The chart title style
     public var subtitle: String?            //The chart subtitle
     public var subtitleAlign: AAChartAlignType?//The chart subtitle text align style
@@ -215,6 +216,12 @@ public class AAChartModel: AAObject {
     @discardableResult
     public func title(_ prop: String) -> AAChartModel {
         title = prop
+        return self
+    }
+    
+    @discardableResult
+    public func titleAlign(_ prop: AAChartAlignType) -> AAChartModel {
+        titleAlign = prop
         return self
     }
     

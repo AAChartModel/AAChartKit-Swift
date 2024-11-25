@@ -284,7 +284,7 @@ class MixedChartComposer2: NSObject {
     static func pieMixedLineMixedColumnChart() -> AAChartModel {
         AAChartModel()
             .title("Sales of petroleum products March, Norway")
-//            .titleAlign(.left)
+            .titleAlign(.left)
             .categories(["Jet fuel", "Duty-free diesel", "Petrol", "Diesel", "Gas oil"])
             .yAxisTitle("Million liters")
             .tooltipValueSuffix(" million liters")
@@ -313,7 +313,7 @@ class MixedChartComposer2: NSObject {
                     ),
                 AAPie()
                     .type(.pie)
-//                    .name("Total")
+                    .name("Total")
                     .data([
                         ["2020", 619],
                         ["2021", 586],
@@ -321,7 +321,7 @@ class MixedChartComposer2: NSObject {
                     ])
                     .center([75, 65])
                     .size(100)
-//                    .innerSize("70%")
+                    .innerSize("70%")
                     .showInLegend(false)
                     .dataLabels(AADataLabels()
                                     .enabled(false)
