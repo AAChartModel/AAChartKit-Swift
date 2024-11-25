@@ -43,6 +43,7 @@ public class AAColumn: AASeries {
     public var borderRadiusTopRight: Any?
     public var borderRadiusBottomLeft: Any?
     public var borderRadiusBottomRight: Any?
+    public var pointRange: Float?
     
     @discardableResult
     public func name(_ prop: String) -> Self {
@@ -113,6 +114,12 @@ public class AAColumn: AASeries {
     @discardableResult
     public func borderRadiusBottomRight(_ prop: Any?) -> Self {
         borderRadiusBottomRight = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pointRange(_ prop: Float?) -> Self {
+        pointRange = prop
         return self
     }
     
