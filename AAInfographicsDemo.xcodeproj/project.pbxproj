@@ -76,6 +76,7 @@
 		84526E272CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E262CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift */; };
 		84526E292CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E282CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift */; };
 		84526E2B2CF0849700EB2563 /* TripleChartsLinkedWorkVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E2A2CF0849700EB2563 /* TripleChartsLinkedWorkVC2.swift */; };
+		84526E2D2CF409BB00EB2563 /* MixedChartComposer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E2C2CF409BA00EB2563 /* MixedChartComposer2.swift */; };
 		84595DE82B4698D600F69273 /* PolarChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */; };
 		84595DEA2B46A94C00F69273 /* AAOptionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */; };
 		84595DEC2B46B34E00F69273 /* AAOptionsWithJSListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */; };
@@ -291,6 +292,7 @@
 		84526E262CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionBeforeAndAfterRenderingComposer3.swift; sourceTree = "<group>"; };
 		84526E282CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleChartsLinkedWorkVC.swift; sourceTree = "<group>"; };
 		84526E2A2CF0849700EB2563 /* TripleChartsLinkedWorkVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripleChartsLinkedWorkVC2.swift; sourceTree = "<group>"; };
+		84526E2C2CF409BA00EB2563 /* MixedChartComposer2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartComposer2.swift; sourceTree = "<group>"; };
 		84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarChartOptionsVC.swift; sourceTree = "<group>"; };
 		84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsListVC.swift; sourceTree = "<group>"; };
 		84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsWithJSListVC.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				8441C0962C620ED400A6F784 /* CustomStyleForAreasplineChartComposer.swift */,
 				586030C73877C58B03F2F997 /* CustomStyleForScatterChartComposer.swift */,
 				8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */,
+				84526E2C2CF409BA00EB2563 /* MixedChartComposer2.swift */,
 			);
 			path = Composer;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				586035AD1F2AA0AF6BFBDA7D /* LineChartOptionsVC.swift in Sources */,
 				2DC11BB34BC87432BF593AC8 /* BubbleLegendChartOptionsComposer.swift in Sources */,
 				84526E272CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift in Sources */,
+				84526E2D2CF409BB00EB2563 /* MixedChartComposer2.swift in Sources */,
 				58603B0D623EDFE55CFFC66B /* CustomStyleForColumnChartComposer.swift in Sources */,
 				844007702B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift in Sources */,
 				586031CD65041F30252BD805 /* CustomStyleForBarChartComposer.swift in Sources */,
