@@ -80,6 +80,7 @@
 		84526E2F2CF414F500EB2563 /* JSFunctionBeforeAndAfterRenderingComposer4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E2E2CF414F500EB2563 /* JSFunctionBeforeAndAfterRenderingComposer4.swift */; };
 		84526E312CF415F900EB2563 /* sparklines.html in Resources */ = {isa = PBXBuildFile; fileRef = 84526E302CF415F900EB2563 /* sparklines.html */; };
 		84526E332CF4206900EB2563 /* sparklines.css in Resources */ = {isa = PBXBuildFile; fileRef = 84526E322CF4206900EB2563 /* sparklines.css */; };
+		84526E352CF4621D00EB2563 /* XAxisYAxisTypeOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84526E342CF4621D00EB2563 /* XAxisYAxisTypeOptionsComposer.swift */; };
 		84595DE82B4698D600F69273 /* PolarChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */; };
 		84595DEA2B46A94C00F69273 /* AAOptionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */; };
 		84595DEC2B46B34E00F69273 /* AAOptionsWithJSListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */; };
@@ -299,6 +300,7 @@
 		84526E2E2CF414F500EB2563 /* JSFunctionBeforeAndAfterRenderingComposer4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionBeforeAndAfterRenderingComposer4.swift; sourceTree = "<group>"; };
 		84526E302CF415F900EB2563 /* sparklines.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = sparklines.html; path = AAInfographics/AAJSFiles.bundle/sparklines.html; sourceTree = SOURCE_ROOT; };
 		84526E322CF4206900EB2563 /* sparklines.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = sparklines.css; path = AAInfographics/AAJSFiles.bundle/sparklines.css; sourceTree = SOURCE_ROOT; };
+		84526E342CF4621D00EB2563 /* XAxisYAxisTypeOptionsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAxisYAxisTypeOptionsComposer.swift; sourceTree = "<group>"; };
 		84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarChartOptionsVC.swift; sourceTree = "<group>"; };
 		84595DE92B46A94C00F69273 /* AAOptionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsListVC.swift; sourceTree = "<group>"; };
 		84595DEB2B46B34E00F69273 /* AAOptionsWithJSListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsWithJSListVC.swift; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 				840716542A6E82290037193B /* MultiYAxesChartOptionsVC.swift */,
 				84595DE72B4698D600F69273 /* PolarChartOptionsVC.swift */,
 				2DC1178786788013590AD7CC /* BubbleLegendChartOptionsComposer.swift */,
+				84526E342CF4621D00EB2563 /* XAxisYAxisTypeOptionsComposer.swift */,
 			);
 			path = AAOptions;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				449A0ED62377149D009F8FE1 /* ScrollingUpdateDataVC.swift in Sources */,
 				84595DEC2B46B34E00F69273 /* AAOptionsWithJSListVC.swift in Sources */,
 				447B4B3521C9F40900FDA965 /* DrawChartWithAAOptionsVC.swift in Sources */,
+				84526E352CF4621D00EB2563 /* XAxisYAxisTypeOptionsComposer.swift in Sources */,
 				278C55141EE948C900770B97 /* BasicChartVC.swift in Sources */,
 				84086B1E28E6C612006BD30D /* CustomTableViewCell.swift in Sources */,
 				8441C0972C620ED400A6F784 /* CustomStyleForAreasplineChartComposer.swift in Sources */,
