@@ -81,6 +81,56 @@ struct GridView: View {
         CustomStyleForColumnChartComposer.customBorderStyleAndStatesHoverColorColumnChart().aa_toAAOptions(),
         CustomStyleForColumnChartComposer.negativeDataMixedPositiveDataColumnChart().aa_toAAOptions(),
         
+        
+        CustomStyleForLineChartComposer.mixedLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.stepLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.stepAreaChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.customSingleDataLabelForLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.shadowStyleLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.colorfulGradientLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.customMarkerSymbolContentLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.drawPointsWithCoordinatesForLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.customHoverAndSelectHaloStyleForLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.disableSomeOfLinesMouseTrackingEffectForLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.colorfulShadowLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.colorfulDataLabelsStepLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.disableMarkerHoverEffectForLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.maxAndMinDataLabelsForLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.dashStyleTypesMixedLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.allLineDashStyleTypesMixedLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.shadowLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.colorfulMarkersAndLinesLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.colorfulMarkersAndLinesLineChart2().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.connectNullsForSingleAASeriesElementLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.largeDifferencesInTheNumberOfDataInDifferentSeriesElementLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.customDifferentDataLabelsShapeForLineChart().aa_toAAOptions(),
+        CustomStyleForLineChartComposer.clipForAASeriesElementLineChart().aa_toAAOptions(),
+        
+        
+        CustomStyleForAreasplineChartComposer.withMinusNumberAreasplineChart().aa_toAAOptions(),
+        CustomStyleForAreasplineChartComposer.colorfulGradientAreasplineChart().aa_toAAOptions(),
+        CustomStyleForAreasplineChartComposer.gradientColorAreasplineChart().aa_toAAOptions(),
+        CustomStyleForAreasplineChartComposer.thresholdForAreasplineChart().aa_toAAOptions(),
+        CustomStyleForAreasplineChartComposer.customSpecialStyleDataLabelOfSingleDataElementForAreasplineChart().aa_toAAOptions(),
+        CustomStyleForAreasplineChartComposer.customMarkerStatesHoverStyleForAreasplineChart().aa_toAAOptions(),
+        CustomStyleForAreasplineChartComposer.colorfulGradientColorAndColorfulDataLabelsStepAreasplineChart().aa_toAAOptions(),
+        CustomStyleForAreasplineChartComposer.negativeColorMixedAreasplineChart().aa_toAAOptions(),
+        CustomStyleForAreasplineChartComposer.customColorfulGradientColorZonesForAreasplineChart().aa_toAAOptions(),
+            
+        
+        CustomStyleForPieChartComposer.pieChart().aa_toAAOptions(),
+        CustomStyleForPieChartComposer.doubleLayerPieChart().aa_toAAOptions(),
+        CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChart().aa_toAAOptions(),
+
+        CustomStyleForPieChartComposer.pieChartWithSoftCorners().aa_toAAOptions(),
+        CustomStyleForPieChartComposer.doubleLayerPieChartWithSoftCorners().aa_toAAOptions(),
+        CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithSoftCorners().aa_toAAOptions(),
+
+        CustomStyleForPieChartComposer.pieChartWithRoundedCorners().aa_toAAOptions(),
+        CustomStyleForPieChartComposer.doubleLayerPieChartWithRoundedCorners().aa_toAAOptions(),
+        CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithRoundedCorners().aa_toAAOptions(),
+
+        
         SpecialChartComposer.polarColumnChart().aa_toAAOptions(),
         SpecialChartComposer.polarBarChart().aa_toAAOptions(),
         SpecialChartComposer.polarLineChart().aa_toAAOptions(),
