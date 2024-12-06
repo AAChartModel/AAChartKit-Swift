@@ -9,6 +9,7 @@ import SwiftUI
 import AAInfographics
 
 // 封装 AAChartView
+@available(iOS 14.0, *)
 struct AAChartViewRepresentable: UIViewRepresentable {
     @Binding var chartOptions: AAOptions
     
@@ -26,6 +27,7 @@ struct AAChartViewRepresentable: UIViewRepresentable {
 
 
 
+@available(iOS 14.0, *)
 @available(macCatalyst 14.0, *)
 struct GridView: View {
       
@@ -60,6 +62,57 @@ struct GridView: View {
 //        PieChartOptionsComposer.basicPieChartWithGradientColor2(),//带有渐变色的基本饼状图
 //        PieChartOptionsComposer.basicPieChartWithMonochromeColor(),//带有单色的基本饼状图
 //        PieChartOptionsComposer.customPieChartTitlePosition(),//自定义饼状图标题位置
+        
+        CustomStyleForColumnChartComposer.colorfulColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.discontinuousDataColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.randomColorfulColumnChart().aa_toAAOptions(),
+
+        CustomStyleForColumnChartComposer.noneStackingPolarColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.normalStackingPolarColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.percentStackingPolarColumnChart().aa_toAAOptions(),
+
+        CustomStyleForColumnChartComposer.specialStyleForTheSingleDataElementOfColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.noMoreGroupingAndOverlapEachOtherColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.noMoreGroupingAndNestedColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.topRoundedCornersStackingColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().aa_toAAOptions(),
+
+        CustomStyleForColumnChartComposer.customBorderStyleAndStatesHoverColorColumnChart().aa_toAAOptions(),
+        CustomStyleForColumnChartComposer.negativeDataMixedPositiveDataColumnChart().aa_toAAOptions(),
+        
+        SpecialChartComposer.polarColumnChart().aa_toAAOptions(),
+        SpecialChartComposer.polarBarChart().aa_toAAOptions(),
+        SpecialChartComposer.polarLineChart().aa_toAAOptions(),
+        SpecialChartComposer.polarAreaChart().aa_toAAOptions(),
+        SpecialChartComposer.stepLineChart().aa_toAAOptions(),
+        SpecialChartComposer.stepAreaChart().aa_toAAOptions(),
+        SpecialChartComposer.pieChart().aa_toAAOptions(),
+        SpecialChartComposer.bubbleChart().aa_toAAOptions(),
+        SpecialChartComposer.scatterChart().aa_toAAOptions(),
+        SpecialChartComposer.arearangeChart().aa_toAAOptions(),
+        SpecialChartComposer.areasplinerangeChart().aa_toAAOptions(),
+        SpecialChartComposer.columnrangeChart().aa_toAAOptions(),
+        SpecialChartComposer.boxplotChart().aa_toAAOptions(),
+        SpecialChartComposer.waterfallChart().aa_toAAOptions(),
+        SpecialChartComposer.pyramidChart().aa_toAAOptions(),
+        SpecialChartComposer.funnelChart().aa_toAAOptions(),
+        SpecialChartComposer.errorbarChart().aa_toAAOptions(),
+        SpecialChartComposer.gaugeChart().aa_toAAOptions(),
+        SpecialChartComposer.polygonChart().aa_toAAOptions(),
+        
+        MixedChartComposer.arearangeMixedLineChart().aa_toAAOptions(),
+        MixedChartComposer.columnrangeMixedLineChart().aa_toAAOptions(),
+        MixedChartComposer.stackingColumnMixedLineChart().aa_toAAOptions(),
+        MixedChartComposer.scatterMixedLineChart().aa_toAAOptions(),
+        MixedChartComposer.polygonMixedScatterChart().aa_toAAOptions(),
+        MixedChartComposer.polarChartMixedChart().aa_toAAOptions(),
+        MixedChartComposer.columnMixedScatterChart().aa_toAAOptions(),
+        MixedChartComposer.pieMixedLineMixedColumnChart().aa_toAAOptions(),
+        MixedChartComposer.areasplinerangeMixedColumnrangeMixedLineChart().aa_toAAOptions(),
+        MixedChartComposer.boxplotMixedScatterChartWithJitter().aa_toAAOptions(),
+        MixedChartComposer.multiLevelStopsArrGradientColorAreasplineMixedLineChart().aa_toAAOptions(),
+        MixedChartComposer.arearangeMixedLineChart().aa_toAAOptions(),
         
         
         
@@ -113,7 +166,7 @@ struct GridView: View {
     let columns: [GridItem] = [
         GridItem(.flexible()),  // 列宽自动调整
         GridItem(.flexible()),
-        GridItem(.flexible())   // 3 列
+//        GridItem(.flexible())   // 3 列
     ]
 
     var body: some View {

@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 
+@available(iOS 14.0, *)
 @available(macCatalyst 14.0, *)
 class OfficialChartSampleVC: UIViewController {
     override func viewDidLoad() {

@@ -205,8 +205,13 @@ extension AAOptionsListVC {
         case 7:
             /*OfficialChartSampleVC*/
             if #available(macCatalyst 14.0, *) {
-                let vc = OfficialChartSampleVC()
-                navigationController?.pushViewController(vc, animated: true)
+                if #available(iOS 14.0, *) {
+                    let vc = OfficialChartSampleVC()
+                    navigationController?.pushViewController(vc, animated: true)
+
+                } else {
+                    // Fallback on earlier versions
+                }
 
             } else {
                 // Fallback on earlier versions
