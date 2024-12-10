@@ -30,6 +30,18 @@
         </div>
         <script>
             
+            // 在页面加载时设置图表高度
+            function setChartHeight() {
+                const chartContainer = document.getElementById('container'); // 图表容器的 ID
+                chartContainer.style.height = window.innerHeight + 'px'; // 设置高度为窗口高度
+            }
+            
+            // 在窗口调整大小时更新图表高度
+            window.onresize = function() {
+                setChartHeight();
+            };
+
+            
         let aaGlobalChart;
         function loadTheHighChartView(sender, receivedWidth, receivedHeight) {
             let container = document.getElementById('container');
