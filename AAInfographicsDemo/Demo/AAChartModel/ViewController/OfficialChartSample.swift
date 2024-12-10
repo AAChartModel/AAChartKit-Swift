@@ -75,6 +75,62 @@ struct GridView: View {
 
         BubbleLegendChartOptionsComposer.bubbleLegendChart(),
         BubbleLegendChartOptionsComposer.customBubbleLegendChart(),
+        
+        DrawChartWithAAOptionsVC.configureLegendStyle(),
+        DrawChartWithAAOptionsVC.simpleGaugeChart(),
+        DrawChartWithAAOptionsVC.gaugeChartWithPlotBand(),
+        DrawChartWithAAOptionsVC.configureChartWithBackgroundImage(),
+        DrawChartWithAAOptionsVC.customAreaChartYAxisLabelsAndGridLineStyle(),//自定义曲线填充图图的 Y 轴 的 Labels 和 网格线样式
+        DrawChartWithAAOptionsVC.adjustYAxisMinValueForChart(),
+        DrawChartWithAAOptionsVC.configureTheMirrorColumnChart(),
+        DrawChartWithAAOptionsVC.adjustTheXAxisLabels(),
+        DrawChartWithAAOptionsVC.adjustGroupPaddingBetweenColumns(),
+        DrawChartWithAAOptionsVC.configureAAPlotBandsForChart(),
+            
+        DrawChartWithAAOptionsVC.configureAAPlotLinesForChart(),
+        DrawChartWithAAOptionsVC.customAATooltipWithJSFuntion(),
+        DrawChartWithAAOptionsVC.customXAxisCrosshairStyle(),
+        DrawChartWithAAOptionsVC.configureXAxisLabelsFontColorWithHTMLString(),
+        DrawChartWithAAOptionsVC.configureXAxisLabelsFontColorAndFontSizeWithHTMLString(),
+        DrawChartWithAAOptionsVC.configure_DataLabels_XAXis_YAxis_Legend_Style(),
+        DrawChartWithAAOptionsVC.configureXAxisPlotBand(),
+        DrawChartWithAAOptionsVC.configureDoubleYAxisChartOptions(),
+        DrawChartWithAAOptionsVC.configureTripleYAxesMixedChart(),
+        DrawChartWithAAOptionsVC.configureDoubleYAxesAndColumnLineMixedChart(),
+        DrawChartWithAAOptionsVC.configureDoubleYAxesMarketDepthChart(),
+        DrawChartWithAAOptionsVC.customAreaChartTooltipStyleLikeHTMLTable(),
+        DrawChartWithAAOptionsVC.customAxesGridLineStyle(),
+        DrawChartWithAAOptionsVC.customRadarChartStyle(),
+        DrawChartWithAAOptionsVC.customColumnrangeChartStyle(),
+        DrawChartWithAAOptionsVC.customXAxisLabelsBeImages(),//自定义曲线面积图 X 轴 labels 为一组图片🖼
+        DrawChartWithAAOptionsVC.configureTriangleRadarChart(),//带有颜色标志带の三角形雷达图
+        DrawChartWithAAOptionsVC.configureQuadrangleRadarChart(),//带有颜色标志带の四角形雷达图
+        DrawChartWithAAOptionsVC.configurePentagonRadarChart(),//带有颜色标志带の五角形雷达图
+        DrawChartWithAAOptionsVC.configureHexagonRadarChart(),//带有颜色标志带の六角形雷达图
+        DrawChartWithAAOptionsVC.configureSpiderWebRadarChart(),//带有颜色标志带の🕸蜘蛛网状雷达图
+        
+        DrawChartWithAAOptionsVC.configureComplicatedCustomAreasplineChart(),//复杂自定义曲线填充图 1
+        DrawChartWithAAOptionsVC.configureComplicatedCustomAreasplineChart2(),//复杂自定义曲线填充图 2
+        DrawChartWithAAOptionsVC.configureComplicatedCustomAreasplineChart3(),//复杂自定义曲线填充图 3
+        DrawChartWithAAOptionsVC.yAxisOnTheRightSideChart(),//y轴在右侧的图表
+        DrawChartWithAAOptionsVC.doubleLayerHalfPieChart(),//双层嵌套的玉阕图
+        DrawChartWithAAOptionsVC.customAreasplineChartTooltipContentWithHeaderFormat(),//通过 tooltip 的 headerFormat 属性来自定义 曲线填充图的 tooltip
+        DrawChartWithAAOptionsVC.customAreaChartTooltipStyleWithTotalValueHeader(),//浮动提示框 header 显示总值信息
+        DrawChartWithAAOptionsVC.configureYAxisLabelsNumericSymbolsMagnitudeOfAerasplineChart(),//自定义 Y 轴的 Labels 国际单位符基数及国际单位符
+        DrawChartWithAAOptionsVC.timeDataWithIrregularIntervalsChart(),//X 轴时间不连续的折线图
+        DrawChartWithAAOptionsVC.logarithmicAxisLineChart(),//对数轴折线图📈
+        DrawChartWithAAOptionsVC.logarithmicAxisScatterChart(),//对数轴散点图
+        
+        DrawChartWithAAOptionsVC.disableMixedChartInactiveAnimationEffect(),//禁用混合图表的 inactive 动画效果
+        DrawChartWithAAOptionsVC.adjustBubbleChartMinAndMax(),//调整气泡图的 min 和 max 相关属性
+        DrawChartWithAAOptionsVC.customLineChartDataLabelsFormat(),//自定义曲线图的 DataLabels 的 format 属性
+        DrawChartWithAAOptionsVC.customLineChartDataLabelsFormat2(),//自定义曲线图的 DataLabels 的 format 属性(更简易方法)
+        DrawChartWithAAOptionsVC.complicatedScatterChart(),//复杂的自定义散点图
+        DrawChartWithAAOptionsVC.customColumnrangeChartGroupStyleAndSeriesStatesHoverColor(),
+        DrawChartWithAAOptionsVC.configureBoxplotChartWithSpecialStyle(), //自定义盒须图特殊样式
+        DrawChartWithAAOptionsVC.configurePieChartWithSpecialStyleLegend(),//自定义饼图的 legend 为特殊样式
+        DrawChartWithAAOptionsVC.disableAnimationForChart(), //禁用图表渲染动画
+
 
   /**
         AreaChartOptionsComposer.basicAreaChart(),//基础面积图
