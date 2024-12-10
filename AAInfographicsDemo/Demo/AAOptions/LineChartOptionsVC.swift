@@ -15,12 +15,12 @@ class LineChartOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return fancySplineChart()
-        case 1: return fancyLineChart()
-        case 2: return fancySplineChartWithInnerBlankMarkerSymbol()
-        case 3: return fancyLineChartWithInnerBlankMarkerSymbol()
-        case 4: return fancySplineChartWithBorderBlankMarkerSymbol()
-        case 5: return fancyLineChartWithBorderBlankMarkerSymbol()
+        case 0: return LineChartOptionsVC.fancySplineChart()
+        case 1: return LineChartOptionsVC.fancyLineChart()
+        case 2: return LineChartOptionsVC.fancySplineChartWithInnerBlankMarkerSymbol()
+        case 3: return LineChartOptionsVC.fancyLineChartWithInnerBlankMarkerSymbol()
+        case 4: return LineChartOptionsVC.fancySplineChartWithBorderBlankMarkerSymbol()
+        case 5: return LineChartOptionsVC.fancyLineChartWithBorderBlankMarkerSymbol()
 
         default:
             return AAOptions()
@@ -176,7 +176,7 @@ class LineChartOptionsVC: AABaseChartVC {
     //});
 
     //https://www.highcharts.com/blog/tutorials/line-chart/
-    private func fancySplineChart() -> AAOptions {
+    static func fancySplineChart() -> AAOptions {
         AAOptions()
                 .chart(AAChart()
                         .type(.spline)
@@ -284,7 +284,7 @@ class LineChartOptionsVC: AABaseChartVC {
                 ])
     }
     
-    private func fancyLineChart() -> AAOptions {
+    static func fancyLineChart() -> AAOptions {
        let aaOptions = fancySplineChart()
         
         aaOptions.chart?.type(.line)
@@ -292,7 +292,7 @@ class LineChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
 
-    private func fancySplineChartWithInnerBlankMarkerSymbol() -> AAOptions {
+    static func fancySplineChartWithInnerBlankMarkerSymbol() -> AAOptions {
        let aaOptions = fancySplineChart()
         
         aaOptions.chart?.type(.spline)
@@ -310,7 +310,7 @@ class LineChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func fancyLineChartWithInnerBlankMarkerSymbol() -> AAOptions {
+    static func fancyLineChartWithInnerBlankMarkerSymbol() -> AAOptions {
        let aaOptions = fancySplineChartWithInnerBlankMarkerSymbol()
         
         aaOptions.chart?.type(.line)
@@ -318,7 +318,7 @@ class LineChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func fancySplineChartWithBorderBlankMarkerSymbol() -> AAOptions {
+    static func fancySplineChartWithBorderBlankMarkerSymbol() -> AAOptions {
        let aaOptions = fancySplineChart()
         
         aaOptions.chart?.type(.spline)
@@ -336,7 +336,7 @@ class LineChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func fancyLineChartWithBorderBlankMarkerSymbol() -> AAOptions {
+    static func fancyLineChartWithBorderBlankMarkerSymbol() -> AAOptions {
        let aaOptions = fancySplineChartWithBorderBlankMarkerSymbol()
         
         aaOptions.chart?.type(.line)

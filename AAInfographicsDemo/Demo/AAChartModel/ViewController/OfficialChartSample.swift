@@ -33,7 +33,50 @@ struct GridView: View {
       
    
     let optionsItems = [
+        XAxisYAxisTypeOptionsComposer.datatimeTypeLineAndColumnMixedChart(),
+        AreaChartOptionsVC.configureComplicatedCustomAreasplineChart(),//复杂自定义曲线填充图 1
+        AreaChartOptionsVC.configureComplicatedCustomAreasplineChart2(),//复杂自定义曲线填充图 2
+        AreaChartOptionsVC.configureComplicatedCustomAreasplineChart3(),//复杂自定义曲线填充图 3
+        AreaChartOptionsVC.configureComplicatedCustomAreaChart(),//复杂自定义折线填充图 1
+        AreaChartOptionsVC.configureComplicatedCustomAreaChart2(),//复杂自定义折线填充图 2
+        AreaChartOptionsVC.configureComplicatedCustomAreaChart3(),//复杂自定义折线填充图 3
+        AreaChartOptionsVC.configureComplicatedCustomStepAreaChart(),//复杂自定义阶梯折线填充图 1
+        AreaChartOptionsVC.configureComplicatedCustomStepAreaChart2(),//复杂自定义阶梯折线填充图 2
+        AreaChartOptionsVC.configureComplicatedCustomStepAreaChart3(),//复杂自定义阶梯折线填充图 3
         
+        LineChartOptionsVC.fancySplineChart(),
+        LineChartOptionsVC.fancyLineChart(),
+        LineChartOptionsVC.fancySplineChartWithInnerBlankMarkerSymbol(),
+        LineChartOptionsVC.fancyLineChartWithInnerBlankMarkerSymbol(),
+        LineChartOptionsVC.fancySplineChartWithBorderBlankMarkerSymbol(),
+        LineChartOptionsVC.fancyLineChartWithBorderBlankMarkerSymbol(),
+        
+        PolarChartOptionsVC.configureTriangleRadarChart(),//带有颜色标志带の三角形雷达图
+        PolarChartOptionsVC.configureQuadrangleRadarChart(),//带有颜色标志带の四角形雷达图
+        PolarChartOptionsVC.configurePentagonRadarChart(),//带有颜色标志带の五角形雷达图
+        PolarChartOptionsVC.configureHexagonRadarChart(),//带有颜色标志带の六角形雷达图
+        PolarChartOptionsVC.configureSpiderWebRadarChart(),//带有颜色标志带の🕸蜘蛛网状雷达图
+        PolarChartOptionsVC.configureSpiderWebRadarChart2(),//带有颜色标志带の🕸蜘蛛网状雷达图
+        
+        ColumnChartOptionsVC.disableGroupingColumnChart(),
+        ColumnChartOptionsVC.disableGroupingBarChart(),
+        
+        ScatterChartOptionsVC.scatterChartWithJitter(),
+        ScatterChartOptionsVC.boxPlotMixedScatterChartWithJitter(),
+
+        PieChartOptionsVC.pieDonutChart(),
+        
+        MultiYAxesChartOptionsVC.doubleXAxesAndDoubleYAxesChart(),
+        MultiYAxesChartOptionsVC.doubleXAxesAndDoubleYAxesChart2(),
+        MultiYAxesChartOptionsVC.doubleXAxesAndDoubleYAxesChart3(),
+        MultiYAxesChartOptionsVC.doubleXAxesAndDoubleYAxesChart4(),
+
+        MultiYAxesChartOptionsVC.disableGroupingBoxplotMixedScatterChart(),
+
+        BubbleLegendChartOptionsComposer.bubbleLegendChart(),
+        BubbleLegendChartOptionsComposer.customBubbleLegendChart(),
+
+  /**
         AreaChartOptionsComposer.basicAreaChart(),//基础面积图
         AreaChartOptionsComposer.areaWithNegativeValuesChart(),//带有负值的面积图
         AreaChartOptionsComposer.stackedAreaChart(),//堆积面积图
@@ -189,7 +232,7 @@ struct GridView: View {
         
         
         
-        
+        */
         
         
         
@@ -216,7 +259,10 @@ struct GridView: View {
     let columns: [GridItem] = [
         GridItem(.flexible()),  // 列宽自动调整
         GridItem(.flexible()),
-//        GridItem(.flexible())   // 3 列
+        GridItem(.flexible()),  // 列宽自动调整
+        GridItem(.flexible()),
+        GridItem(.flexible()),  // 列宽自动调整
+        GridItem(.flexible())   // 3 列
     ]
 
     var body: some View {
