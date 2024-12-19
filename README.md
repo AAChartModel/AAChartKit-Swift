@@ -35,7 +35,7 @@
 
 * ⛓  **Chain programming**.  Supports `chain programming syntax` like *SwiftUI* and *Jetpack Compose*.
 
-* 🦋  **Minimalist**. `AAChartView + AAChartModel = Chart`. The AAChartKit follows a minimalist formula: Chart view + Chart model = The chart you want, just like the powerful and beautiful charts framework [AAChartKit](https://github.com/AAChartModel/AAChartKit).
+* 🦋  **Minimalist**. `AAChartView + AAChartModel = Chart`. The **AAInfographics** follows a minimalist formula: Chart view + Chart model = The chart you want, just like the powerful and beautiful charts framework [AAChartKit](https://github.com/AAChartModel/AAChartKit).
 
 * 🖱 **Interaction event callback**. Support for monitoring [user click events and single finger move over events](https://github.com/AAChartModel/AAChartKit-Swift#support-user-click-events-and-move-over-events), which can be used to achieve double charts linked-working and even multiple charts linkage, as well as other more complex custom user interaction effects.
 ***
