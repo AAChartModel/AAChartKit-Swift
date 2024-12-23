@@ -210,7 +210,7 @@ public class AAChartView: WKWebView {
         }
         
         //Add `frame.size.height` to solve the problem that the height of the new version of Highcharts chart will not adapt to the container
-        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? frame.size.height)');"
+        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)');"
         safeEvaluateJavaScriptString(jsStr)
         
 //if (self.afterDrawChartJavaScript) {
