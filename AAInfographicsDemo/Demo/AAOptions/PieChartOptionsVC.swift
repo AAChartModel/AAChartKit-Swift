@@ -18,7 +18,7 @@ class PieChartOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return pieDonutChart()
+        case 0: return PieChartOptionsVC.pieDonutChart()
 //        case 1: return boxPlotMixedScatterChartWithJitter()
 
             
@@ -33,7 +33,7 @@ class PieChartOptionsVC: AABaseChartVC {
     //In Highcharts, pies can also be hollow, in which case they are commonly
     //referred to as donut charts. This pie also has an inner chart, resulting
     //in a hierarchical type of visualization.
-    private func pieDonutChart() -> AAOptions {
+    static func pieDonutChart() -> AAOptions {
         let colors = [
             AARgba(137, 78, 36),
             AARgba(220, 36, 30),

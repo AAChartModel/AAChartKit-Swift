@@ -18,8 +18,8 @@ class ScatterChartOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return scatterChartWithJitter()
-        case 1: return boxPlotMixedScatterChartWithJitter()
+        case 0: return ScatterChartOptionsVC.scatterChartWithJitter()
+        case 1: return ScatterChartOptionsVC.boxPlotMixedScatterChartWithJitter()
 
             
             
@@ -97,7 +97,7 @@ class ScatterChartOptionsVC: AABaseChartVC {
     //        data: getTestData(4)
     //    }]
     //});
-    private func scatterChartWithJitter() -> AAOptions {
+    static func scatterChartWithJitter() -> AAOptions {
         //Generate test data with discrete X values and continuous Y values
         func getTestData(_ x: Float) -> [[Float]] {
             let off = 0.2 + 0.2 * Float.random(in: 0..<1)
@@ -251,7 +251,7 @@ class ScatterChartOptionsVC: AABaseChartVC {
     //    }]
     //});
     
-    private func boxPlotMixedScatterChartWithJitter() -> AAOptions {
+    static func boxPlotMixedScatterChartWithJitter() -> AAOptions {
         // Generate test data with continuous Y values.
         func getExperimentData() -> [Int] {
             var data = [Int]()

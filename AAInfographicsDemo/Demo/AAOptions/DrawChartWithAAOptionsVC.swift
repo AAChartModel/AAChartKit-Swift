@@ -42,67 +42,67 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case  0: return configureLegendStyle()
-        case  1: return simpleGaugeChart()
-        case  2: return gaugeChartWithPlotBand()
-        case  3: return configureChartWithBackgroundImage()
-        case  4: return customAreaChartYAxisLabelsAndGridLineStyle()//自定义曲线填充图图的 Y 轴 的 Labels 和 网格线样式
-        case  5: return adjustYAxisMinValueForChart()
-        case  6: return configureTheMirrorColumnChart()
-        case  7: return adjustTheXAxisLabels()
-        case  8: return adjustGroupPaddingBetweenColumns()
-        case  9: return configureAAPlotBandsForChart()
+        case  0: return DrawChartWithAAOptionsVC.configureLegendStyle()
+        case  1: return DrawChartWithAAOptionsVC.simpleGaugeChart()
+        case  2: return DrawChartWithAAOptionsVC.gaugeChartWithPlotBand()
+        case  3: return DrawChartWithAAOptionsVC.configureChartWithBackgroundImage()
+        case  4: return DrawChartWithAAOptionsVC.customAreaChartYAxisLabelsAndGridLineStyle()//自定义曲线填充图图的 Y 轴 的 Labels 和 网格线样式
+        case  5: return DrawChartWithAAOptionsVC.adjustYAxisMinValueForChart()
+        case  6: return DrawChartWithAAOptionsVC.configureTheMirrorColumnChart()
+        case  7: return DrawChartWithAAOptionsVC.adjustTheXAxisLabels()
+        case  8: return DrawChartWithAAOptionsVC.adjustGroupPaddingBetweenColumns()
+        case  9: return DrawChartWithAAOptionsVC.configureAAPlotBandsForChart()
             
-        case 10: return configureAAPlotLinesForChart()
-        case 11: return customAATooltipWithJSFuntion()
-        case 12: return customXAxisCrosshairStyle()
-        case 13: return configureXAxisLabelsFontColorWithHTMLString()
-        case 14: return configureXAxisLabelsFontColorAndFontSizeWithHTMLString()
-        case 15: return configure_DataLabels_XAXis_YAxis_Legend_Style()
-        case 16: return configureXAxisPlotBand()
-        case 17: return configureDoubleYAxisChartOptions()
-        case 18: return configureTripleYAxesMixedChart()
-        case 19: return configureDoubleYAxesAndColumnLineMixedChart()
-        case 20: return configureDoubleYAxesMarketDepthChart()
-        case 21: return customAreaChartTooltipStyleLikeHTMLTable()
-        case 22: return customAxesGridLineStyle()
-        case 23: return customRadarChartStyle()
-        case 24: return customColumnrangeChartStyle()
-        case 25: return customXAxisLabelsBeImages()//自定义曲线面积图 X 轴 labels 为一组图片🖼
-        case 26: return configureTriangleRadarChart()//带有颜色标志带の三角形雷达图
-        case 27: return configureQuadrangleRadarChart()//带有颜色标志带の四角形雷达图
-        case 28: return configurePentagonRadarChart()//带有颜色标志带の五角形雷达图
-        case 29: return configureHexagonRadarChart()//带有颜色标志带の六角形雷达图
-        case 30: return configureSpiderWebRadarChart()//带有颜色标志带の🕸蜘蛛网状雷达图
+        case 10: return DrawChartWithAAOptionsVC.configureAAPlotLinesForChart()
+        case 11: return DrawChartWithAAOptionsVC.customAATooltipWithJSFuntion()
+        case 12: return DrawChartWithAAOptionsVC.customXAxisCrosshairStyle()
+        case 13: return DrawChartWithAAOptionsVC.configureXAxisLabelsFontColorWithHTMLString()
+        case 14: return DrawChartWithAAOptionsVC.configureXAxisLabelsFontColorAndFontSizeWithHTMLString()
+        case 15: return DrawChartWithAAOptionsVC.configure_DataLabels_XAXis_YAxis_Legend_Style()
+        case 16: return DrawChartWithAAOptionsVC.configureXAxisPlotBand()
+        case 17: return DrawChartWithAAOptionsVC.configureDoubleYAxisChartOptions()
+        case 18: return DrawChartWithAAOptionsVC.configureTripleYAxesMixedChart()
+        case 19: return DrawChartWithAAOptionsVC.configureDoubleYAxesAndColumnLineMixedChart()
+        case 20: return DrawChartWithAAOptionsVC.configureDoubleYAxesMarketDepthChart()
+        case 21: return DrawChartWithAAOptionsVC.customAreaChartTooltipStyleLikeHTMLTable()
+        case 22: return DrawChartWithAAOptionsVC.customAxesGridLineStyle()
+        case 23: return DrawChartWithAAOptionsVC.customRadarChartStyle()
+        case 24: return DrawChartWithAAOptionsVC.customColumnrangeChartStyle()
+        case 25: return DrawChartWithAAOptionsVC.customXAxisLabelsBeImages()//自定义曲线面积图 X 轴 labels 为一组图片🖼
+        case 26: return DrawChartWithAAOptionsVC.configureTriangleRadarChart()//带有颜色标志带の三角形雷达图
+        case 27: return DrawChartWithAAOptionsVC.configureQuadrangleRadarChart()//带有颜色标志带の四角形雷达图
+        case 28: return DrawChartWithAAOptionsVC.configurePentagonRadarChart()//带有颜色标志带の五角形雷达图
+        case 29: return DrawChartWithAAOptionsVC.configureHexagonRadarChart()//带有颜色标志带の六角形雷达图
+        case 30: return DrawChartWithAAOptionsVC.configureSpiderWebRadarChart()//带有颜色标志带の🕸蜘蛛网状雷达图
         
-        case 31: return configureComplicatedCustomAreasplineChart()//复杂自定义曲线填充图 1
-        case 32: return configureComplicatedCustomAreasplineChart2()//复杂自定义曲线填充图 2
-        case 33: return configureComplicatedCustomAreasplineChart3()//复杂自定义曲线填充图 3
-        case 34: return yAxisOnTheRightSideChart()//y轴在右侧的图表
-        case 35: return doubleLayerHalfPieChart()//双层嵌套的玉阕图
-        case 36: return customAreasplineChartTooltipContentWithHeaderFormat()//通过 tooltip 的 headerFormat 属性来自定义 曲线填充图的 tooltip
-        case 37: return customAreaChartTooltipStyleWithTotalValueHeader()//浮动提示框 header 显示总值信息
-        case 38: return configureYAxisLabelsNumericSymbolsMagnitudeOfAerasplineChart()//自定义 Y 轴的 Labels 国际单位符基数及国际单位符
-        case 39: return timeDataWithIrregularIntervalsChart()//X 轴时间不连续的折线图
-        case 40: return logarithmicAxisLineChart()//对数轴折线图📈
-        case 41: return logarithmicAxisScatterChart()//对数轴散点图
+        case 31: return DrawChartWithAAOptionsVC.configureComplicatedCustomAreasplineChart()//复杂自定义曲线填充图 1
+        case 32: return DrawChartWithAAOptionsVC.configureComplicatedCustomAreasplineChart2()//复杂自定义曲线填充图 2
+        case 33: return DrawChartWithAAOptionsVC.configureComplicatedCustomAreasplineChart3()//复杂自定义曲线填充图 3
+        case 34: return DrawChartWithAAOptionsVC.yAxisOnTheRightSideChart()//y轴在右侧的图表
+        case 35: return DrawChartWithAAOptionsVC.doubleLayerHalfPieChart()//双层嵌套的玉阕图
+        case 36: return DrawChartWithAAOptionsVC.customAreasplineChartTooltipContentWithHeaderFormat()//通过 tooltip 的 headerFormat 属性来自定义 曲线填充图的 tooltip
+        case 37: return DrawChartWithAAOptionsVC.customAreaChartTooltipStyleWithTotalValueHeader()//浮动提示框 header 显示总值信息
+        case 38: return DrawChartWithAAOptionsVC.configureYAxisLabelsNumericSymbolsMagnitudeOfAerasplineChart()//自定义 Y 轴的 Labels 国际单位符基数及国际单位符
+        case 39: return DrawChartWithAAOptionsVC.timeDataWithIrregularIntervalsChart()//X 轴时间不连续的折线图
+        case 40: return DrawChartWithAAOptionsVC.logarithmicAxisLineChart()//对数轴折线图📈
+        case 41: return DrawChartWithAAOptionsVC.logarithmicAxisScatterChart()//对数轴散点图
         
-        case 42: return disableMixedChartInactiveAnimationEffect()//禁用混合图表的 inactive 动画效果
-        case 43: return adjustBubbleChartMinAndMax()//调整气泡图的 min 和 max 相关属性
-        case 44: return customLineChartDataLabelsFormat()//自定义曲线图的 DataLabels 的 format 属性
-        case 45: return customLineChartDataLabelsFormat2()//自定义曲线图的 DataLabels 的 format 属性(更简易方法)
-        case 46: return complicatedScatterChart()//复杂的自定义散点图
-        case 47: return customColumnrangeChartGroupStyleAndSeriesStatesHoverColor()
-        case 48: return configureBoxplotChartWithSpecialStyle() //自定义盒须图特殊样式
-        case 49: return configurePieChartWithSpecialStyleLegend()//自定义饼图的 legend 为特殊样式
-        case 50: return disableAnimationForChart() //禁用图表渲染动画
+        case 42: return DrawChartWithAAOptionsVC.disableMixedChartInactiveAnimationEffect()//禁用混合图表的 inactive 动画效果
+        case 43: return DrawChartWithAAOptionsVC.adjustBubbleChartMinAndMax()//调整气泡图的 min 和 max 相关属性
+        case 44: return DrawChartWithAAOptionsVC.customLineChartDataLabelsFormat()//自定义曲线图的 DataLabels 的 format 属性
+        case 45: return DrawChartWithAAOptionsVC.customLineChartDataLabelsFormat2()//自定义曲线图的 DataLabels 的 format 属性(更简易方法)
+        case 46: return DrawChartWithAAOptionsVC.complicatedScatterChart()//复杂的自定义散点图
+        case 47: return DrawChartWithAAOptionsVC.customColumnrangeChartGroupStyleAndSeriesStatesHoverColor()
+        case 48: return DrawChartWithAAOptionsVC.configureBoxplotChartWithSpecialStyle() //自定义盒须图特殊样式
+        case 49: return DrawChartWithAAOptionsVC.configurePieChartWithSpecialStyleLegend()//自定义饼图的 legend 为特殊样式
+        case 50: return DrawChartWithAAOptionsVC.disableAnimationForChart() //禁用图表渲染动画
 
         default:
             return AAOptions()
         }
     }
     
-    private func configureLegendStyle() -> AAOptions {
+    static func configureLegendStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .animationType(.easeFrom)//设置图表渲染动画类型为 EaseFrom
@@ -208,7 +208,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func configureChartWithBackgroundImage() -> AAOptions {
+    static func configureChartWithBackgroundImage() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.pie)
             .title("编程语言热度")
@@ -239,7 +239,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/299
-    private func customAreaChartYAxisLabelsAndGridLineStyle() -> AAOptions {
+    static func customAreaChartYAxisLabelsAndGridLineStyle() -> AAOptions {
         let model = AAChartModel()
             .chartType(.line)
             .animationType(.easeInSine)
@@ -304,7 +304,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func adjustYAxisMinValueForChart() -> AAOptions {
+    static func adjustYAxisMinValueForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)//图表类型
             .borderRadius(5)
@@ -321,7 +321,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func configureTheMirrorColumnChart() -> AAOptions {
+    static func configureTheMirrorColumnChart() -> AAOptions {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toTop,
             startColor: "#7052f4",
@@ -398,7 +398,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func adjustTheXAxisLabels() -> AAOptions {
+    static func adjustTheXAxisLabels() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)
             .colorsTheme(["#ffc069","#fe117c","#06caf4","#7dffc0"])
@@ -435,7 +435,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func adjustGroupPaddingBetweenColumns() -> AAOptions {
+    static func adjustGroupPaddingBetweenColumns() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.column)
             .categories(["January", "February", "March", "April", "May", "June",
@@ -462,7 +462,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func simpleGaugeChart() -> AAOptions {
+    static func simpleGaugeChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.gauge)
             .yAxisMin(0)
@@ -493,7 +493,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func gaugeChartWithPlotBand() -> AAOptions {
+    static func gaugeChartWithPlotBand() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.gauge)
             .backgroundColor(["#555555"])
@@ -532,7 +532,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func configureAAPlotBandsForChart() -> AAOptions {
+    static func configureAAPlotBandsForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.spline)//图形类型
             .dataLabelsEnabled(false)
@@ -578,7 +578,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func configureAAPlotLinesForChart() -> AAOptions {
+    static func configureAAPlotLinesForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .dataLabelsEnabled(false)
@@ -660,7 +660,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func customAATooltipWithJSFuntion() -> AAOptions {
+    static func customAATooltipWithJSFuntion() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
             .title("近三个月金价起伏周期图")//图表主标题
@@ -723,7 +723,7 @@ function () {
     }
     
     // https://github.com/AAChartModel/AAChartKit-Swift/issues/342
-    private func customXAxisCrosshairStyle() -> AAOptions {
+    static func customXAxisCrosshairStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图表类型
             .series([
@@ -775,7 +775,7 @@ function () {
         return aaOptions
     }
     
-    private func configureXAxisLabelsFontColorWithHTMLString() -> AAOptions {
+    static func configureXAxisLabelsFontColorWithHTMLString() -> AAOptions {
         let categories = [
             "<font color=\\\"#CC0066\\\">孤岛危机<\\/font>",
             "<font color=\\\"#CC0033\\\">使命召唤<\\/font>",
@@ -810,7 +810,7 @@ function () {
         return aaOptions
     }
     
-    private func configureXAxisLabelsFontColorAndFontSizeWithHTMLString() -> AAOptions {
+    static func configureXAxisLabelsFontColorAndFontSizeWithHTMLString() -> AAOptions {
         let categories = [
             "<span style=\\\"color:#CC0066;font-weight:bold;font-size:10px\\\">使命召唤</span>",
             "<span style=\\\"color:#CC0033;font-weight:bold;font-size:11px\\\">荣誉勋章</span>",
@@ -846,7 +846,7 @@ function () {
         return aaOptions
     }
     
-    private func configure_DataLabels_XAXis_YAxis_Legend_Style() -> AAOptions {
+    static func configure_DataLabels_XAXis_YAxis_Legend_Style() -> AAOptions {
         let backgroundColorGradientColor = AAGradientColor.linearGradient(
             direction: .toTop,
             startColor: "#4F00BC",
@@ -917,7 +917,7 @@ function () {
         return aaOptions
     }
     
-    private func configureXAxisPlotBand() -> AAOptions {
+    static func configureXAxisPlotBand() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)
             .categories([
@@ -967,7 +967,7 @@ function () {
         return aaOptions
     }
     
-    private func configureDoubleYAxisChartOptions() -> AAOptions {
+    static func configureDoubleYAxisChartOptions() -> AAOptions {
         let aaTitle = AATitle()
             .text("")
         
@@ -1059,7 +1059,7 @@ function () {
         return aaOptions
     }
     
-    private func configureTripleYAxesMixedChart() -> AAOptions {
+    static func configureTripleYAxesMixedChart() -> AAOptions {
         let colorsThemeArr = [
             "red",
             "mediumspringgreen",
@@ -1175,7 +1175,7 @@ function () {
         return aaOptions
     }
     
-    private func configureDoubleYAxesAndColumnLineMixedChart() -> AAOptions {
+    static func configureDoubleYAxesAndColumnLineMixedChart() -> AAOptions {
         let stopsArr = [
             [0.0, AARgba(156,107,211,0.5)],//颜色字符串设置支持十六进制类型和 rgba 类型
             [0.2, AARgba(156,107,211,0.3)],
@@ -1336,7 +1336,7 @@ function () {
         return aaOptions
     }
     
-    private func configureDoubleYAxesMarketDepthChart() -> AAOptions {
+    static func configureDoubleYAxesMarketDepthChart() -> AAOptions {
         let aaChart = AAChart()
             .type(.area)
         
@@ -1464,7 +1464,7 @@ function () {
     }
     
     // Chart Sample Online:   https://jshare.com.cn/highcharts/hhhhG1
-    private func customAreaChartTooltipStyleLikeHTMLTable() -> AAOptions {
+    static func customAreaChartTooltipStyleLikeHTMLTable() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
@@ -1512,7 +1512,7 @@ function () {
     }
     
     
-    private func customAxesGridLineStyle() -> AAOptions {
+    static func customAxesGridLineStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图表类型
             .title("custom Axes Grid Line Style")//图表主标题
@@ -1544,7 +1544,7 @@ function () {
     }
     
     // https://github.com/AAChartModel/AAChartKit-Swift/issues/213
-    private func customRadarChartStyle() -> AAOptions {
+    static func customRadarChartStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .colorsTheme(["#5BCCC8"])
             .chartType(.area)
@@ -1593,7 +1593,7 @@ function () {
         return aaOptions
     }
     
-    private func customColumnrangeChartStyle() -> AAOptions {
+    static func customColumnrangeChartStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.columnrange)
             .title("TEMPERATURE VARIATION BY MONTH")
@@ -1655,7 +1655,7 @@ function () {
         return aaOptions
     }
     
-    private func customXAxisLabelsBeImages() -> AAOptions {
+    static func customXAxisLabelsBeImages() -> AAOptions {
         let imageLinkStrArr = [
             "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197582.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
             "<span><img src=\\\"https:/image.flaticon.com/icons/svg/197/197604.svg\\\" style=\\\"width: 30px; height: 30px;\\\"/><br></span>",
@@ -1687,7 +1687,7 @@ function () {
     }
     
     //三角形雷达图
-    private func configureTriangleRadarChart() -> AAOptions {
+    static func configureTriangleRadarChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)
             .backgroundColor(AAColor.white)
@@ -1760,7 +1760,7 @@ function () {
     }
     
     //四边形雷达图
-    private func configureQuadrangleRadarChart() -> AAOptions {
+    static func configureQuadrangleRadarChart() -> AAOptions {
         let aaOptions: AAOptions = configureTriangleRadarChart()
         aaOptions.yAxis?.plotBands = [
             AAPlotBandsElement()
@@ -1798,7 +1798,7 @@ function () {
     }
     
     //五边形雷达图
-    private func configurePentagonRadarChart() -> AAOptions {
+    static func configurePentagonRadarChart() -> AAOptions {
         let aaOptions = configureTriangleRadarChart()
         aaOptions.yAxis?.plotBands = [
             AAPlotBandsElement()
@@ -1836,7 +1836,7 @@ function () {
     }
     
     //六边形雷达图
-    private func configureHexagonRadarChart() -> AAOptions {
+    static func configureHexagonRadarChart() -> AAOptions {
         let aaOptions = configureTriangleRadarChart()
         aaOptions.yAxis?.plotBands = [
             AAPlotBandsElement()
@@ -1874,7 +1874,7 @@ function () {
     }
     
     //🕸蜘蛛网状雷达图
-    private func configureSpiderWebRadarChart() -> AAOptions {
+    static func configureSpiderWebRadarChart() -> AAOptions {
         let aaOptions = configureTriangleRadarChart()
         aaOptions.yAxis?.plotBands = [
             AAPlotBandsElement()
@@ -1912,7 +1912,7 @@ function () {
     }
     
     //🕸蜘蛛网状雷达图
-    private func configureSpiderWebRadarChart2() -> AAOptions {
+    static func configureSpiderWebRadarChart2() -> AAOptions {
         let aaOptions = configureTriangleRadarChart()
         aaOptions.yAxis?.plotBands = [
             AAPlotBandsElement()
@@ -1973,7 +1973,7 @@ function () {
         return aaOptions
     }
     
-    private func configureComplicatedCustomAreasplineChart() -> AAOptions {
+    static func configureComplicatedCustomAreasplineChart() -> AAOptions {
         let aaChart = AAChart()
             .type(.areaspline)
             .backgroundColor(AAColor.black)
@@ -2138,7 +2138,7 @@ function () {
         return aaOptions
     }
     
-    private func configureComplicatedCustomAreasplineChart2() -> AAOptions {
+    static func configureComplicatedCustomAreasplineChart2() -> AAOptions {
         let aaOptions = configureComplicatedCustomAreasplineChart()
         
         aaOptions.chart!.backgroundColor = AAGradientColor.linearGradient(
@@ -2268,7 +2268,7 @@ function () {
         return aaOptions
     }
     
-    private func configureComplicatedCustomAreasplineChart3() -> AAOptions {
+    static func configureComplicatedCustomAreasplineChart3() -> AAOptions {
         let aaDataLabelsStyle = AAStyle()
             .fontWeight(.bold)
             .color(AAColor.white)
@@ -2382,7 +2382,7 @@ function () {
         return aaOptions
     }
     
-    private func yAxisOnTheRightSideChart() -> AAOptions {
+    static func yAxisOnTheRightSideChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图表类型
             .title("yAxis on the right side 📈")//图表主标题
@@ -2409,7 +2409,7 @@ function () {
     }
     
     //    https://github.com/AAChartModel/AAChartKit-Swift/issues/244
-    private func doubleLayerHalfPieChart() -> AAOptions {
+    static func doubleLayerHalfPieChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.pie)
             .title("浏览器市场占比历史对比")
@@ -2457,7 +2457,7 @@ function () {
     //https://github.com/AAChartModel/AAChartKit/issues/987
     //headerFormat 参考链接: https://api.highcharts.com.cn/highcharts#tooltip.headerFormat
     // \<span> 标签🏷 参考链接: https://www.w3school.com.cn/tags/tag_span.asp
-    private func customAreasplineChartTooltipContentWithHeaderFormat() -> AAOptions {
+    static func customAreasplineChartTooltipContentWithHeaderFormat() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图表类型
             .colorsTheme(["#04d69f","#1e90ff","#ef476f","#ffd066",])
@@ -2511,7 +2511,7 @@ function () {
     
     
     //https://github.com/AAChartModel/AAChartKit/issues/1125
-    private func customAreaChartTooltipStyleWithTotalValueHeader() -> AAOptions {
+    static func customAreaChartTooltipStyleWithTotalValueHeader() -> AAOptions {
         let goldStopsArr = [
             [0.0, AARgba(255, 215, 0, 1.0)],//颜色字符串设置支持十六进制类型和 rgba 类型
             [0.6, AARgba(255, 215, 0, 0.2)],
@@ -2566,7 +2566,7 @@ function () {
     }
     
     //https://github.com/AAChartModel/AAChartKit/issues/1208
-    private func configureYAxisLabelsNumericSymbolsMagnitudeOfAerasplineChart() -> AAOptions {
+    static func configureYAxisLabelsNumericSymbolsMagnitudeOfAerasplineChart() -> AAOptions {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toBottom,
             startColor: "#FC354C",
@@ -2606,7 +2606,7 @@ function () {
     
     //X 轴时间不连续的折线图
     //https://github.com/AAChartModel/AAChartKit/issues/1220
-    private func timeDataWithIrregularIntervalsChart() -> AAOptions {
+    static func timeDataWithIrregularIntervalsChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)//图形类型
             .title("Snow depth at Vikjafjellet, Norway")//图形标题
@@ -2746,7 +2746,7 @@ function () {
         return aaOptions
     }
     
-    private func logarithmicAxisLineChart() -> AAOptions {
+    static func logarithmicAxisLineChart() -> AAOptions {
         AAOptions()
             .title(AATitle()
                     .text("Logarithmic Axis Chart"))
@@ -2769,7 +2769,7 @@ function () {
             ])
     }
     
-    private func logarithmicAxisScatterChart() -> AAOptions {
+    static func logarithmicAxisScatterChart() -> AAOptions {
         let aaMarker = AAMarker()
             .radius(8)
             .symbol(.circle)
@@ -2827,7 +2827,7 @@ function () {
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/230
-    private func disableMixedChartInactiveAnimationEffect() -> AAOptions {
+    static func disableMixedChartInactiveAnimationEffect() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.line)
             .colorsTheme(["#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",])//Colors theme
@@ -2862,7 +2862,7 @@ function () {
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/242
-    private func adjustBubbleChartMinAndMax() -> AAOptions {
+    static func adjustBubbleChartMinAndMax() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.bubble)
             .title("AACHARTKIT BUBBLES")
@@ -2901,7 +2901,7 @@ function () {
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/260
-    private func customLineChartDataLabelsFormat() -> AAOptions {
+    static func customLineChartDataLabelsFormat() -> AAOptions {
         let aaChartModel = AAChartModel()
             .dataLabelsEnabled(true)
             .series([
@@ -2922,7 +2922,7 @@ function () {
     
     //A more simple way to custom line chart dataLabels format
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/260
-    private func customLineChartDataLabelsFormat2() -> AAOptions {
+    static func customLineChartDataLabelsFormat2() -> AAOptions {
         let aaChartModel = AAChartModel()
             .dataLabelsEnabled(true)
             .categories(["测试 1", "测试 2", "测试 3", ])
@@ -2938,7 +2938,7 @@ function () {
         return aaOptions
     }
     
-    private func complicatedScatterChart() -> AAOptions {
+    static func complicatedScatterChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .subtitle("Multiplier between base rate and charge rate")
             .subtitleAlign(.left)
@@ -3215,7 +3215,7 @@ function () {
     }
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/365
-    private func customColumnrangeChartGroupStyleAndSeriesStatesHoverColor() -> AAOptions {
+    static func customColumnrangeChartGroupStyleAndSeriesStatesHoverColor() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.columnrange)
             .title("TEMPERATURE VARIATION BY MONTH")
@@ -3286,7 +3286,7 @@ function () {
     }
 
     //https://github.com/AAChartModel/AAChartKit/issues/1381
-    private func configureBoxplotChartWithSpecialStyle() -> AAOptions {
+    static func configureBoxplotChartWithSpecialStyle() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.boxplot)
             .title("BOXPLOT CHART")
@@ -3331,7 +3331,7 @@ function () {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/391
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/393
-    private func configurePieChartWithSpecialStyleLegend() -> AAOptions {
+    static func configurePieChartWithSpecialStyleLegend() -> AAOptions {
          let aaChartModel = AAChartModel()
             .chartType(.pie)
             .backgroundColor(AAColor.white)
@@ -3375,7 +3375,7 @@ function () {
 
     //https://github.com/AAChartModel/AAChartKit/issues/380
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/408
-    private func disableAnimationForChart() -> AAOptions {
+    static func disableAnimationForChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图表类型
             .yAxisLineWidth(0)
