@@ -33,28 +33,35 @@ struct GridView: View {
       
    
     let optionsItems = [
+        JSFunctionBeforeAndAfterRenderingComposer4.sparklineChart(),
+        JSFunctionBeforeAndAfterRenderingComposer3.synchronizedChart(),
         
-        AreaChartOptionsComposer.basicAreaChart(),//基础面积图
-        AreaChartOptionsComposer.areaWithNegativeValuesChart(),//带有负值的面积图
-        AreaChartOptionsComposer.stackedAreaChart(),//堆积面积图
-        AreaChartOptionsComposer.percentStackedAreaChart(),//百分比堆积面积图
-        AreaChartOptionsComposer.areaWithMissingPointsChart(),//带有缺失点的面积图
-        AreaChartOptionsComposer.invertedAreaChart(),//翻转面积图
-        AreaChartOptionsComposer.areasplineChart(),//曲线面积图
-        AreaChartOptionsComposer.arearangeChart(),//区域范围图
-        AreaChartOptionsComposer.arearangeAndLineChart(),//区域范围图和折线图混合图
-        
-        BarOrColumnChartOptionsComposer.basicBarChart(),//基础柱状图
-        BarOrColumnChartOptionsComposer.stackingBarChart(),//堆积柱状图
-        BarOrColumnChartOptionsComposer.populationPyramidChart(),//人口金字塔图
-        BarOrColumnChartOptionsComposer.basicColumnChart(),//基础条形图
-        BarOrColumnChartOptionsComposer.basicColumnChartWithNegativeValue(),//带有负值的条形图
-        BarOrColumnChartOptionsComposer.basicColumnChartWithStackedDataLabels(),//带有数据标签的堆积条形图
-        BarOrColumnChartOptionsComposer.basicColumnChartWithStackedDataLabels2(),//带有数据标签的堆积条形图2
-        BarOrColumnChartOptionsComposer.percentStackedColumnChart(),//百分比堆积条形图
-        BarOrColumnChartOptionsComposer.columnChartWithRotatedLabels(),//带有旋转标签的条形图
-        BarOrColumnChartOptionsComposer.columnChartWithNestedColumn(),//嵌套条形图
-        BarOrColumnChartOptionsComposer.columnRangeChart(),//条形范围图
+        BasicChartComposer.configureBasicChartModel(chartType: .column).stacking(.normal).aa_toAAOptions(),//基础面积图
+        BasicChartComposer.configureBasicChartModel(chartType: .bar).stacking(.normal).aa_toAAOptions(),//基础面积图
+        BasicChartComposer.configureAreaChartAndAreasplineChartStyle(AAChartModel().chartType(.area).stacking(.normal)).aa_toAAOptions(),//基础面积图
+        BasicChartComposer.configureAreaChartAndAreasplineChartStyle(AAChartModel().chartType(.areaspline).stacking(.normal)).aa_toAAOptions(),//基础面积图
+
+//        AreaChartOptionsComposer.basicAreaChart(),//基础面积图
+//        AreaChartOptionsComposer.areaWithNegativeValuesChart(),//带有负值的面积图
+//        AreaChartOptionsComposer.stackedAreaChart(),//堆积面积图
+//        AreaChartOptionsComposer.percentStackedAreaChart(),//百分比堆积面积图
+//        AreaChartOptionsComposer.areaWithMissingPointsChart(),//带有缺失点的面积图
+//        AreaChartOptionsComposer.invertedAreaChart(),//翻转面积图
+//        AreaChartOptionsComposer.areasplineChart(),//曲线面积图
+//        AreaChartOptionsComposer.arearangeChart(),//区域范围图
+//        AreaChartOptionsComposer.arearangeAndLineChart(),//区域范围图和折线图混合图
+//        
+//        BarOrColumnChartOptionsComposer.basicBarChart(),//基础柱状图
+//        BarOrColumnChartOptionsComposer.stackingBarChart(),//堆积柱状图
+//        BarOrColumnChartOptionsComposer.populationPyramidChart(),//人口金字塔图
+//        BarOrColumnChartOptionsComposer.basicColumnChart(),//基础条形图
+//        BarOrColumnChartOptionsComposer.basicColumnChartWithNegativeValue(),//带有负值的条形图
+//        BarOrColumnChartOptionsComposer.basicColumnChartWithStackedDataLabels(),//带有数据标签的堆积条形图
+//        BarOrColumnChartOptionsComposer.basicColumnChartWithStackedDataLabels2(),//带有数据标签的堆积条形图2
+//        BarOrColumnChartOptionsComposer.percentStackedColumnChart(),//百分比堆积条形图
+//        BarOrColumnChartOptionsComposer.columnChartWithRotatedLabels(),//带有旋转标签的条形图
+//        BarOrColumnChartOptionsComposer.columnChartWithNestedColumn(),//嵌套条形图
+//        BarOrColumnChartOptionsComposer.columnRangeChart(),//条形范围图
 //        
 //        PieChartOptionsComposer.basicPieChart(),//基本饼状图
 //        PieChartOptionsComposer.basicPieChartWithLegend(),//带有图例的基本饼状图
@@ -216,7 +223,15 @@ struct GridView: View {
     let columns: [GridItem] = [
         GridItem(.flexible()),  // 列宽自动调整
         GridItem(.flexible()),
-//        GridItem(.flexible())   // 3 列
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+
+        GridItem(.flexible())   // 3 列
     ]
 
     var body: some View {
