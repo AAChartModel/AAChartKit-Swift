@@ -89,7 +89,7 @@
                 name: selectedPoint.series.name,
                 y: selectedPoint.y,
                 x: selectedPoint.x,
-                category: selectedPoint.category,
+                category: selectedPoint.category ? selectedPoint.category : selectedPoint.name,
                 offset: {
                     plotX: selectedPoint.plotX,
                     plotY: selectedPoint.plotY
