@@ -653,12 +653,12 @@ extension AAChartView {
             queue: nil) { [weak self] _ in
                 //Delay execution by 0.01 seconds to prevent incorrect screen width and height obtained when the screen is rotated
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                    self?.aa_resizeChart(with: animation)
+                    self?.aa_resizeChart(animation: animation)
                 }
             }
     }
     
-    public func aa_resizeChart(with animation: AAAnimation) {
+    public func aa_resizeChart(animation: AAAnimation) {
         let animationJsonStr = animation.toJSON()
         let jsFuncStr = "changeChartSize('\(frame.size.width)','\(frame.size.height)','\(animationJsonStr)')"
         safeEvaluateJavaScriptString(jsFuncStr)

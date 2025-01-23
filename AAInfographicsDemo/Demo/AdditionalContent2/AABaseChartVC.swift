@@ -57,9 +57,9 @@ class AABaseChartVC: UIViewController {
         
         let aaAnimation = AAAnimation()
             .duration(800)
-            .easing(.easeOutQuart)
+            .easing(.easeOutBounce)
         
-        aaChartView?.aa_resizeChart(with: aaAnimation)
+        aaChartView?.aa_resizeChart(animation: aaAnimation)
     }
     
     func setupTitle() {
