@@ -235,6 +235,58 @@ class AdvancedFeaturesListVC: AABaseListVC {
 @available(macCatalyst 13.1, *)
 extension AdvancedFeaturesListVC {
     
+    fileprivate func customEventCallback(_ indexPath: IndexPath) {
+        /*Custom Event Callback*/
+        switch indexPath.row {
+        case 0:
+            let vc = CustomTouchEndEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = CustomXAxisLabelsClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = CustomTooltipEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = CustomTooltipClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            let vc = CustomLargeDateSeriesClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        default: break
+        }
+    }
+    
+    fileprivate func showManyChartsInSameView(_ indexPath: IndexPath) {
+        /*Show Many Charts In the Same View*/
+        switch indexPath.row {
+        case 0:
+            let vc = ShowManyChartViewVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = DoubleChartsLinkedWorkVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = TripleChartsLinkedWorkVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = TripleChartsLinkedWorkVC2()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        default: break
+        }
+    }
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
             
@@ -251,24 +303,7 @@ extension AdvancedFeaturesListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 1:
-            /*Show Many Charts In the Same View*/
-            if indexPath.row == 0 {
-                let vc = ShowManyChartViewVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            } else if indexPath.row == 1 {
-                let vc = DoubleChartsLinkedWorkVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            } else if indexPath.row == 2 {
-                let vc = TripleChartsLinkedWorkVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            } else {
-                let vc = TripleChartsLinkedWorkVC2()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            }
+            showManyChartsInSameView(indexPath)
             
         case 2:
             /*Chart Rendering Animation Types*/
@@ -348,58 +383,9 @@ extension AdvancedFeaturesListVC {
             let vc = TestAAChartViewForXibVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-          
-//        case 10:
-//            /*CustomTouchEndEventCallbackVCs*/
-//            let vc = CustomTouchEndEventCallbackVC()
-//            vc.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(vc, animated: true)
-//
-//        case 11:
-//            /*CustomXAxisLabelsClickEventCallbackVC*/
-//            let vc = CustomXAxisLabelsClickEventCallbackVC()
-//            vc.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(vc, animated: true)
-//            
-//        case 12:
-//            /*CustomTooltipIsHiddenEventCallbackVC*/
-//            let vc = CustomTooltipEventCallbackVC()
-//            vc.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(vc, animated: true)
-//            
-//        case 13:
-//            /*CustomTooltipClickEventCallbackVC*/
-//            let vc = CustomTooltipClickEventCallbackVC()
-//            vc.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(vc, animated: true)
-//        case 14:
-//            let vc = CustomLargeDateSeriesClickEventCallbackVC()
-//            vc.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(vc, animated: true)
             
         case 10:
-            /*Custom Event Callback*/
-            if indexPath.row == 0 {
-                let vc = CustomTouchEndEventCallbackVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            } else if indexPath.row == 1 {
-                let vc = CustomXAxisLabelsClickEventCallbackVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            } else if indexPath.row == 2 {
-                let vc = CustomTooltipEventCallbackVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            } else if indexPath.row == 3 {
-                let vc = CustomTooltipClickEventCallbackVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            } else {
-                let vc = CustomLargeDateSeriesClickEventCallbackVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            }
+            customEventCallback(indexPath)
             
         default:
             break
