@@ -59,7 +59,7 @@ class AABaseChartVC: UIViewController {
             .duration(800)
             .easing(.easeOutQuart)
         
-        aaChartView?.handleDeviceOrientationChangeEventWithAnimation(aaAnimation)
+        aaChartView?.aa_resizeChart(with: aaAnimation)
     }
     
     func setupTitle() {
