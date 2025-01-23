@@ -154,64 +154,66 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
         
         let aaOptions1 = AAOptions()
             .beforeDrawChartJavaScript(#"""
-            (function() {
-                /**
-                 The purpose of this demo is to demonstrate how multiple charts on the same page
-                 can be linked through DOM and Highcharts events and API methods. It takes a
-                 standard Highcharts config with a small variation for each data set, and a
-                 mouse/touch event handler to bind the charts together.
-                 */
+                (function() {
+                    /**
+                     The purpose of this demo is to demonstrate how multiple charts on the same page
+                     can be linked through DOM and Highcharts events and API methods. It takes a
+                     standard Highcharts config with a small variation for each data set, and a
+                     mouse/touch event handler to bind the charts together.
+                     */
 
+                    // 获取父容器
+                    const parentContainer = document.getElementById('container').parentElement;
 
-                /**
-                 * In order to synchronize tooltips and crosshairs, override the
-                 * built-in events with handlers defined on the parent element.
-                 */
-                ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
-                    document.getElementById('container').addEventListener(
-                        eventType,
-                        function (e) {
-                            let chart,
-                                point,
-                                i,
-                                event;
+                    /**
+                     * In order to synchronize tooltips and crosshairs, override the
+                     * built-in events with handlers defined on the parent element.
+                     */
+                    ['mousemove', 'touchmove', 'touchstart'].forEach(function (eventType) {
+                        parentContainer.addEventListener(
+                            eventType,
+                            function (e) {
+                                let chart,
+                                    point,
+                                    i,
+                                    event;
 
-                            for (i = 0; i < Highcharts.charts.length; i = i + 1) {
-                                chart = Highcharts.charts[i];
-                                // Find coordinates within the chart
-                                event = chart.pointer.normalize(e);
-                                // Get the hovered point
-                                point = chart.series[0].searchPoint(event, true);
+                                for (i = 0; i < Highcharts.charts.length; i = i + 1) {
+                                    chart = Highcharts.charts[i];
+                                    // Find coordinates within the chart
+                                    event = chart.pointer.normalize(e);
+                                    // Get the hovered point
+                                    point = chart.series[0].searchPoint(event, true);
 
-                                if (point) {
-                                    point.highlight(e);
+                                    if (point) {
+                                        point.highlight(e);
+                                    }
                                 }
                             }
-                        }
-                    );
-                });
+                        );
+                    });
 
-                /**
-                 * Override the reset function, we don't need to hide the tooltips and
-                 * crosshairs.
-                 */
-                Highcharts.Pointer.prototype.reset = function () {
-                    return undefined;
-                };
+                    /**
+                     * Override the reset function, we don't need to hide the tooltips and
+                     * crosshairs.
+                     */
+                    Highcharts.Pointer.prototype.reset = function () {
+                        return undefined;
+                    };
 
-                /**
-                 * Highlight a point by showing tooltip, setting hover state and draw crosshair
-                 */
-                Highcharts.Point.prototype.highlight = function (event) {
-                    event = this.series.chart.pointer.normalize(event);
-                    this.onMouseOver(); // Show the hover marker
-                    this.series.chart.tooltip.refresh(this); // Show the tooltip
-                    this.series.chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
-                };
+                    /**
+                     * Highlight a point by showing tooltip, setting hover state and draw crosshair
+                     */
+                    Highcharts.Point.prototype.highlight = function (event) {
+                        event = this.series.chart.pointer.normalize(event);
+                        this.onMouseOver(); // Show the hover marker
+                        this.series.chart.tooltip.refresh(this); // Show the tooltip
+                        this.series.chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
+                    };
 
-                return "JavaScript execution completed successfully";
-            })()
-"""#)
+                    return "JavaScript execution completed successfully";
+                })()
+            """#)
         
         //            .series(configureSeriesArray())
             .title(AATitle()
@@ -243,53 +245,81 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
                     .data(configureSeriesDataArray()),
             ])
             .afterDrawChartJavaScript("""
-            (function() {
-                // 动态追加3个div容器
-                for (let i = 0; i < 3; i++) {
-                    const chartDiv = document.createElement('div');
-                    chartDiv.className = 'chart';
-                    document.getElementById('container').appendChild(chartDiv);
+                (function() {
+                    // 获取原始 div 容器
+                    const container = document.getElementById('container');
+                    const parentContainer = container.parentElement; // 获取 container 的父元素（即 body）
                     
-                    // 计算并设置子 div 的高度
-                    function setChartHeight() {
-                        const containerHeight = container.clientHeight; // 获取父 div 的高度
-                        const chartHeight = containerHeight / 4 - 30; // 计算子 div 的高度
-                        chartDiv.style.height = chartHeight + 'px'; // 设置子 div 的高度
+                    // 动态移除 container 的 position: absolute
+                    container.style.position = 'static'; // 改为 static 或 relative
+                    
+                    // 设置 container 的高度为整个页面的四分之一
+                    function setContainerHeight() {
+                        const parentHeight = parentContainer.clientHeight; // 获取父容器的高度
+                        container.style.height = (parentHeight / 4) + 'px'; // 设置 container 的高度为四分之一
                     }
                     
-                    // 初始设置高度
-                    setChartHeight();
+                    // 初始设置 container 的高度
+                    setContainerHeight();
                     
-                    // 如果需要响应窗口大小的变化，可以监听窗口的 resize 事件
-                    window.addEventListener('resize', setChartHeight);
+                    // 监听窗口大小变化，动态调整 container 的高度
+                    window.addEventListener('resize', setContainerHeight);
                     
-                    let chartOptionsJsonObj;
-                    if (i == 0) {
-                        chartOptionsJsonObj = \(aaOptions1JsonStr);
-                    } else if (i == 1) {
-                        chartOptionsJsonObj = \(aaOptions2JsonStr);
-                    } else {
-                        chartOptionsJsonObj = \(aaOptions3JsonStr);
-                    }
-                    
-                    let sender = JSON.stringify(chartOptionsJsonObj);
-                    
-                    let aaOptions = JSON.parse(sender, function (key, value) {
-                        if (typeof (value) == 'string'
-                            && value.indexOf('function') !== -1) {
-                            return eval(value)
+                    // 动态追加3个 div 容器到原始 div 的下方
+                    for (let i = 0; i < 3; i++) {
+                        const chartDiv = document.createElement('div');
+                        chartDiv.className = 'chart';
+                        
+                        // 设置新 div 的样式
+                        chartDiv.style.display = 'block'; // 确保是块级元素
+                        chartDiv.style.width = '100%'; // 宽度占满父容器
+                        chartDiv.style.height = (parentContainer.clientHeight / 4) + 'px'; // 高度为四分之一
+                        chartDiv.style.marginBottom = '0'; // 移除默认的 margin
+                        chartDiv.style.position = 'static'; // 确保是静态定位
+                        
+                        // 将新的 div 添加到 container 的父元素中
+                        parentContainer.appendChild(chartDiv);
+                        
+                        // 计算并设置新 div 的高度
+                        function setChartHeight() {
+                            const parentHeight = parentContainer.clientHeight; // 获取父容器的高度
+                            const chartHeight = parentHeight / 4; // 每个 div 的高度为四分之一
+                            chartDiv.style.height = chartHeight + 'px'; // 设置新 div 的高度
                         }
+                        
+                        // 初始设置新 div 的高度
+                        setChartHeight();
+                        
+                        // 监听窗口大小变化，动态调整新 div 的高度
+                        window.addEventListener('resize', setChartHeight);
+                        
+                        // 根据索引设置不同的图表配置
+                        let chartOptionsJsonObj;
+                        if (i == 0) {
+                            chartOptionsJsonObj = \(aaOptions1JsonStr);
+                        } else if (i == 1) {
+                            chartOptionsJsonObj = \(aaOptions2JsonStr);
+                        } else {
+                            chartOptionsJsonObj = \(aaOptions3JsonStr);
+                        }
+                        
+                        // 将 JSON 字符串转换为对象
+                        let sender = JSON.stringify(chartOptionsJsonObj);
+                        let aaOptions = JSON.parse(sender, function (key, value) {
+                            if (typeof (value) == 'string' && value.indexOf('function') !== -1) {
+                                return eval(value);
+                            }
                             return value;
-                    });
+                        });
+                        
+                        // 在新增的 div 中渲染图表
+                        Highcharts.chart(chartDiv, aaOptions);
+                    }
                     
-                    Highcharts.chart(chartDiv, aaOptions);
-                }
-                
-                console.log("代码执行成功🎉");
-                
-                return "JavaScript execution completed successfully";
-            })();
-""")
+                    console.log("代码执行成功🎉");
+                    return "JavaScript execution completed successfully";
+                })();
+            """)
         
         
         return aaOptions1
