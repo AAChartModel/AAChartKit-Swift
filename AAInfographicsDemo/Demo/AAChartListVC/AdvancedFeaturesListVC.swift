@@ -30,10 +30,6 @@ class AdvancedFeaturesListVC: AABaseListVC {
             "Chart Options Advanced Updating | 图表高级更新",
             "XIB AAChartView | 在 XIB 中创建 AAChartView",
             "Custom Chart Event Callback | 自定义交互事件回调",
-            "Custom X Axis Labels Click Event Callback | 自定义 X 轴文字点击事件回调",
-            "CustomTooltipIsHiddenEventCallbackVC | 自定义tooltip isHidden 事件回调",
-            "CustomTooltipIsHiddenEventCallbackVC | 自定义 tooltip 点击事件",
-            "CustomLargeDateSeriesClickEventCallbackVC | 自定义大数据量的 series 点击事件"
         ]
         
         chartTypeTitleArr = [
@@ -129,21 +125,14 @@ class AdvancedFeaturesListVC: AABaseListVC {
             ],
             /*Custom event callback*/
             [
-                "CustomTouchEndEventCallbackVC---自定义监听触摸结束事件回调"
-            ],
-            /*CustomXAxisLabelsClickEventCallbackVC*/
-            [
-                "CustomXAxisLabelsClickEventCallbackVC---自定义X轴文字点击事件回调"
-            ],
-            /*CustomTooltipEventCallbackVC*/
-            [
-                "CustomTooltipEventCallbackVC---自定义tooltip事件回调"
-            ],
-            /*CustomTooltipIsHiddenEventCallbackVC*/
-            [
+                "CustomTouchEndEventCallbackVC---自定义监听触摸结束事件回调",
+                
+                "CustomXAxisLabelsClickEventCallbackVC---自定义X轴文字点击事件回调",
+                
+                "CustomTooltipEventCallbackVC---自定义tooltip事件回调",
+                
                 "CustomTooltipIsHiddenEventCallbackVC---自定义 tooltip 点击事件",
-            ],
-            [
+                
                 "CustomLargeDateSeriesClickEventCallbackVC---自定义大数据量的 series 点击事件",
             ],
             
@@ -355,38 +344,62 @@ extension AdvancedFeaturesListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 9:
-            /*Special Type Charts*/
+            /*Test AAChartView For Xib VC*/
             let vc = TestAAChartViewForXibVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
           
+//        case 10:
+//            /*CustomTouchEndEventCallbackVCs*/
+//            let vc = CustomTouchEndEventCallbackVC()
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
+//
+//        case 11:
+//            /*CustomXAxisLabelsClickEventCallbackVC*/
+//            let vc = CustomXAxisLabelsClickEventCallbackVC()
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
+//            
+//        case 12:
+//            /*CustomTooltipIsHiddenEventCallbackVC*/
+//            let vc = CustomTooltipEventCallbackVC()
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
+//            
+//        case 13:
+//            /*CustomTooltipClickEventCallbackVC*/
+//            let vc = CustomTooltipClickEventCallbackVC()
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
+//        case 14:
+//            let vc = CustomLargeDateSeriesClickEventCallbackVC()
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
+            
         case 10:
-            /*CustomTouchEndEventCallbackVCs*/
-            let vc = CustomTouchEndEventCallbackVC()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-
-        case 11:
-            /*CustomXAxisLabelsClickEventCallbackVC*/
-            let vc = CustomXAxisLabelsClickEventCallbackVC()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case 12:
-            /*CustomTooltipIsHiddenEventCallbackVC*/
-            let vc = CustomTooltipEventCallbackVC()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case 13:
-            /*CustomTooltipClickEventCallbackVC*/
-            let vc = CustomTooltipClickEventCallbackVC()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-        case 14:
-            let vc = CustomLargeDateSeriesClickEventCallbackVC()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
+            /*Custom Event Callback*/
+            if indexPath.row == 0 {
+                let vc = CustomTouchEndEventCallbackVC()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.row == 1 {
+                let vc = CustomXAxisLabelsClickEventCallbackVC()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.row == 2 {
+                let vc = CustomTooltipEventCallbackVC()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.row == 3 {
+                let vc = CustomTooltipClickEventCallbackVC()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = CustomLargeDateSeriesClickEventCallbackVC()
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+            }
             
         default:
             break
