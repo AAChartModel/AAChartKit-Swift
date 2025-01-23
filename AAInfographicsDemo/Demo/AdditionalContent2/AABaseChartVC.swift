@@ -50,6 +50,18 @@ class AABaseChartVC: UIViewController {
         setupChartView()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print("View layout changed: \(view.bounds.size)")
+        // 在这里处理视图布局变化的逻辑
+        
+        let aaAnimation = AAAnimation()
+            .duration(800)
+            .easing(.easeOutQuart)
+        
+        aaChartView?.handleDeviceOrientationChangeEventWithAnimation(aaAnimation)
+    }
+    
     func setupTitle() {
         let chartType = navigationItemTitleArr?[selectedIndex]
         

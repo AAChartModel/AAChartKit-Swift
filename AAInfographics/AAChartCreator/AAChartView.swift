@@ -658,7 +658,7 @@ extension AAChartView {
             }
     }
     
-    private func handleDeviceOrientationChangeEventWithAnimation(_ animation: AAAnimation) {
+    public func handleDeviceOrientationChangeEventWithAnimation(_ animation: AAAnimation) {
         let animationJsonStr = animation.toJSON()
         let jsFuncStr = "changeChartSize('\(frame.size.width)','\(frame.size.height)','\(animationJsonStr)')"
         safeEvaluateJavaScriptString(jsFuncStr)
