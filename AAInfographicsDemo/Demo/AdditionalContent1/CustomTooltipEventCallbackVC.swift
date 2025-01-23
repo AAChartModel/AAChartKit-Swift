@@ -14,8 +14,15 @@ import WebKit
 class CustomTooltipEventCallbackVC: UIViewController {
     let kUserContentMessageNameTooltipIsHidden = "tooltipIsHidden"
     
-    private var aaChartView: AAChartView!
-
+    private lazy var aaChartView: AAChartView = {
+        let chartView = AAChartView()
+        chartView.translatesAutoresizingMaskIntoConstraints = false
+        chartView.isScrollEnabled = false // Disable chart content scrolling
+        chartView.delegate = self as AAChartViewDelegate
+        return chartView
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,18 +36,18 @@ class CustomTooltipEventCallbackVC: UIViewController {
     }
     
     private func configureChartView() {
-        aaChartView = AAChartView()
-        let chartViewWidth = view.frame.size.width
-        let chartViewHeight = view.frame.size.height - 220
-        aaChartView!.frame = CGRect(x: 0, y: 60, width: chartViewWidth, height: chartViewHeight)
-        aaChartView!.isScrollEnabled = false//Disable chart content scrolling
-        aaChartView!.isClearBackgroundColor = true
-        aaChartView!.delegate = self as AAChartViewDelegate
-        view.addSubview(aaChartView!)
+        view.addSubview(aaChartView)
+        
+        NSLayoutConstraint.activate([
+            aaChartView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            aaChartView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            aaChartView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            aaChartView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     private func configureChartViewCustomEventMessageHandler() {
-        aaChartView!.configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameTooltipIsHidden)
+        aaChartView.configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameTooltipIsHidden)
     }
     
     private func configureChartOptions() -> AAOptions {
