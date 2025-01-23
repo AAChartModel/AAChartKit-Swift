@@ -38,7 +38,10 @@ class AABaseChartVC: UIViewController {
     var selectedIndex: Int = 0
     var aaChartView: AAChartView?
     var topConstraint: NSLayoutConstraint?
-    
+    private var resizeTimer: Timer?
+    //添加一个属性, 用于确保先绘制完图表后再进行布局调整
+    private var isChartDrawn: Bool = false
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,19 +51,42 @@ class AABaseChartVC: UIViewController {
         setupTitle()
         setupNextTypeChartButton()
         setupChartView()
+        
+        //还要在设置 isChartDrawn 前, 延时 2 秒, 以确保图表已经绘制完毕
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.isChartDrawn = true
+        }
     }
     
+    //在 viewDidLayoutSubviews 中设置一个延迟执行的计时器。
+    //如果用户在 0.1 秒内没有继续调整窗口大小，则执行 aa_resizeChart(animation:)。
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         print("View layout changed: \(view.bounds.size)")
         // 在这里处理视图布局变化的逻辑
         
-        let aaAnimation = AAAnimation()
-            .duration(800)
-            .easing(.easeOutBounce)
-        
-        aaChartView?.aa_resizeChart(animation: aaAnimation)
+        if !isChartDrawn {
+            return
+        }
+        // 取消之前的计时器
+         resizeTimer?.invalidate()
+         
+         // 设置新的计时器，延迟 0.1 秒执行
+         resizeTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { [weak self] _ in
+             guard let self = self else { return }
+             self.handleChartResize()
+         }
     }
+    
+    private func handleChartResize() {
+         print("用户结束调整窗口大小")
+         
+         let aaAnimation = AAAnimation()
+             .duration(800)
+             .easing(.easeOutBounce)
+         
+         aaChartView?.aa_resizeChart(animation: aaAnimation)
+     }
     
     func setupTitle() {
         let chartType = navigationItemTitleArr?[selectedIndex]
