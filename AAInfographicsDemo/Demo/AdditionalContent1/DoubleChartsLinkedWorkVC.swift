@@ -39,8 +39,8 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     private var aaChartView1 = AAChartView()
     private var aaChartView2 = AAChartView()
     private var aaChartModel2 = AAChartModel()
-    private var colorsArr: [String]?
-    private var selectedColor: String?
+    private var colorsArr: [AAGradientColor]?
+    private var selectedColor: AAGradientColor?
     private var selectedCategoryIndex: Int?
 
     override func viewDidLoad() {
@@ -63,25 +63,10 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
 //        aaChartView1.contentHeight = (screenHeight / 2) - 20
         view.addSubview(aaChartView1)
         
-        colorsArr = ["#fe117c","#ffc069","#06caf4","#7dffc0","#1e90ff","#ef476f","#ffd066","#04d69f","#25547c",]
         
-        let  aaChartModel1 = AAChartModel()
-            .chartType(.column)//图形类型
-            .animationType(.bounce)//图形渲染动画类型为"bounce"
-            .dataLabelsEnabled(false)//是否显示数字
-            .legendEnabled(false)
-            .colorsTheme(colorsArr!)
-            .tooltipEnabled(true)
-            .borderRadius(3)
-            .inverted(true)
-            .yAxisReversed(true)
-            .categories(colorsArr!)
-            .series([
-                AASeriesElement()
-                    .colorByPoint(true)
-                    .data(getRandomNumbersArr(numbers: 9))
-                ,
-            ])
+        let aaChartModel1 = CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart()
+            .backgroundColor(AAColor.white)
+        colorsArr = aaChartModel1.colorsTheme as? [AAGradientColor]
         
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel1)
         
@@ -129,7 +114,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     }
     
     func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
-        selectedColor = colorsArr?[moveOverEventMessage.index ?? 0] ?? "#ff000"
+        selectedColor = colorsArr?[moveOverEventMessage.index ?? 0] ?? AAGradientColor.deepSea
         selectedCategoryIndex = moveOverEventMessage.index ?? 0
         
         aaChartView2.aa_updateXAxisCategories(configureXAxisCategoresDataArray(), redraw: false)
