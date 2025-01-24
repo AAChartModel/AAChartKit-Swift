@@ -180,7 +180,10 @@ class BasicChartVC: UIViewController {
                 let borderRadiusArr = [1, 10, "50%"] as [Any]
                 let borderRadius = borderRadiusArr[selectedSegmentIndex]
                 if borderRadius is Int {
-                    aaChartModel!.borderRadius(borderRadius as! Float)
+                    //优化代码, 避免崩溃
+                    if let borderRadius = borderRadius as? Int {
+                        aaChartModel!.borderRadius(Float(borderRadius))
+                    }
                 } else {
                     aaChartModel!.borderRadius(borderRadius as! String)
                 }
