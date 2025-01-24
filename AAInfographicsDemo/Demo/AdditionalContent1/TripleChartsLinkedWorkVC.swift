@@ -17,7 +17,7 @@ class TripleChartsLinkedWorkVC: UIViewController {
         chartView.isScrollEnabled = false
         chartView.delegate = self
         let aaOptions1 = AAOptions()
-            .chart(AAChart().type(.column))
+            .chart(AAChart().type(.area))
             .title(AATitle().text("Speed").align(.left))
             .tooltip(AATooltip().shared(true))
             .xAxis(AAXAxis()
@@ -37,8 +37,8 @@ class TripleChartsLinkedWorkVC: UIViewController {
         chartView.isScrollEnabled = false
         chartView.delegate = self
         let aaOptions2 = AAOptions()
-            .chart(AAChart().type(.column))
-            .title(AATitle().text("Some Title").align(.left))
+            .chart(AAChart().type(.area))
+            .title(AATitle().text("Elevation").align(.left))
             .tooltip(AATooltip().shared(true))
             .xAxis(AAXAxis()
                 .crosshair(AACrosshair()
@@ -57,8 +57,8 @@ class TripleChartsLinkedWorkVC: UIViewController {
         chartView.isScrollEnabled = false
         chartView.delegate = self
         let aaOptions3 = AAOptions()
-            .chart(AAChart().type(.column))
-            .title(AATitle().text("Another Title").align(.left))
+            .chart(AAChart().type(.area))
+            .title(AATitle().text("Heart Rate").align(.left))
             .tooltip(AATooltip().shared(true))
             .xAxis(AAXAxis()
                 .crosshair(AACrosshair()
