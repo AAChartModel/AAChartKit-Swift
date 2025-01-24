@@ -238,7 +238,7 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
                 .enabled(false))
             .series([
                 AASeriesElement()
-                    .type(.column)
+                    .type(.area)
                     .name("Berlin Hot")
                     .color(AAGradientColor.lusciousLime)
                     .borderRadius("50%")
