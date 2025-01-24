@@ -482,18 +482,18 @@ class JSFunctionBeforeAndAfterRenderingComposer3 {
                     .text(""))
             )
             .tooltip(AATooltip()
-                .positioner(#"""
-                            function () {
-                                return {
-                                    x: this.chart.chartWidth - this.label.width,
-                                    y: 10
-                                };
-                            }
-                            """#)
+//                .positioner(#"""
+//                            function () {
+//                                return {
+//                                    x: this.chart.chartWidth - this.label.width,
+//                                    y: 10
+//                                };
+//                            }
+//                            """#)
                 .borderWidth(0)
                 .backgroundColor(AAColor.black)
                 .borderColor(AAColor.black)
-                .pointFormat("{point.y}")
+//                .pointFormat("{point.y}")
                 .headerFormat("")
 //                .shadow(false)
                 .style(AAStyle()
