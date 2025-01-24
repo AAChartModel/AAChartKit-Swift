@@ -42,6 +42,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     private var colorsArr: [AAGradientColor]?
     private var selectedColor: AAGradientColor?
     private var selectedCategoryIndex: Int?
+    public var isRefreshAnimation = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +122,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
         aaChartView2.aa_onlyRefreshTheChartDataWithChartModelSeries([
             AASeriesElement()
                 .data(configureSeriesDataArray())
-            ], animation: false)
+            ], animation: isRefreshAnimation)
         
         //https://github.com/AAChartModel/AAChartKit-Swift/issues/434
         let defaultSelectedIndex = moveOverEventMessage.index ?? 0
