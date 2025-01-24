@@ -11,6 +11,16 @@ import UIKit
 import AAInfographics
 
 class TripleChartsLinkedWorkVC: UIViewController {
+    private lazy var aaChartView0: AAChartView = {
+        let chartView = AAChartView()
+        chartView.isScrollEnabled = false
+        chartView.delegate = self
+        let aaOptions1 = JSFunctionBeforeAndAfterRenderingComposer3.synchronizedChart()
+            .beforeDrawChartJavaScript(nil)
+            .afterDrawChartJavaScript(nil)
+        chartView.aa_drawChartWithChartOptions(aaOptions1)
+        return chartView
+    }()
 
     private lazy var aaChartView1: AAChartView = {
         let chartView = AAChartView()
@@ -97,6 +107,8 @@ class TripleChartsLinkedWorkVC: UIViewController {
             containerStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             containerStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        containerStackView.addArrangedSubview(aaChartView0)
         containerStackView.addArrangedSubview(aaChartView1)
         containerStackView.addArrangedSubview(aaChartView2)
         containerStackView.addArrangedSubview(aaChartView3)
@@ -136,15 +148,24 @@ extension TripleChartsLinkedWorkVC: AAChartViewDelegate {
         let message = moveOverEventMessage
         print("📊📊📊move over event message: \(message.name ?? "")")
         let jsFuncStr = configureSyncRefreshTooltipJSString(message: message)
-        if aaChartView == aaChartView1 {
+        
+        if aaChartView == aaChartView0 {
+            aaChartView1.evaluateJavaScript(jsFuncStr)
+            aaChartView2.evaluateJavaScript(jsFuncStr)
+            aaChartView3.evaluateJavaScript(jsFuncStr)
+        } else if aaChartView == aaChartView1 {
+            aaChartView0.evaluateJavaScript(jsFuncStr)
             aaChartView2.evaluateJavaScript(jsFuncStr)
             aaChartView3.evaluateJavaScript(jsFuncStr)
         } else if aaChartView == aaChartView2 {
+            aaChartView0.evaluateJavaScript(jsFuncStr)
             aaChartView1.evaluateJavaScript(jsFuncStr)
             aaChartView3.evaluateJavaScript(jsFuncStr)
         } else if aaChartView == aaChartView3 {
+            aaChartView0.evaluateJavaScript(jsFuncStr)
             aaChartView1.evaluateJavaScript(jsFuncStr)
             aaChartView2.evaluateJavaScript(jsFuncStr)
         }
+            
     }
 }

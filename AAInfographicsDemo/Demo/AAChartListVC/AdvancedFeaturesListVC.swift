@@ -48,8 +48,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
             [
                 "在同一个页面同时添加多个 AAChartView",
                 "Double Charts Linkedwork 双表联动",
-                "Triple Charts Linkedwork 三表联动",
-                "Triple Charts Linkedwork2 三表联动2(推荐)",
+                "Quadra Charts Linkedwork---四表联动(多个 AAChartView)",
+                "Quadra Charts Linkedwork2---四表联动2(单个 AAChartView, 多个 div)",
             ],
             /*Animation types*/
             [  "Column Chart---柱形图",
