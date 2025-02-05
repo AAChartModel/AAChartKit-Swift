@@ -30,6 +30,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
             "Chart Options Advanced Updating | 图表高级更新",
             "XIB AAChartView | 在 XIB 中创建 AAChartView",
             "Custom Chart Event Callback | 自定义交互事件回调",
+            //排序算法演示
+            "Sort Algorithm Demo | 排序算法演示",
         ]
         
         chartTypeTitleArr = [
@@ -136,7 +138,11 @@ class AdvancedFeaturesListVC: AABaseListVC {
                 
                 "CustomLargeDateSeriesClickEventCallbackVC---自定义大数据量的 series 点击事件",
             ],
-            
+            /*Sort Algorithm Demo*/
+            [
+                //冒泡🫧排序
+                "Bubble Sort---冒泡🫧排序"
+            ],
         ]
         
         chartTypeArr = [
@@ -393,6 +399,11 @@ extension AdvancedFeaturesListVC {
             
         case 10:
             customEventCallback(indexPath)
+            
+        case 11:
+            let vc = SortAlgorithmVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
             
         default:
             break
