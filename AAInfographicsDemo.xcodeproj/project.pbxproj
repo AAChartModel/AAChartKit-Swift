@@ -644,7 +644,6 @@
 				84EAD7E12B91B2D10028CB7C /* CustomStyleForBubbleChartVC.swift */,
 				845BABEF2D030318004C15D4 /* OfficialChartSample.swift */,
 				845BABF02D030318004C15D4 /* OfficialChartSampleVC.swift */,
-				84339F562D54591900F54F1E /* AAOptionsItemComposer.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -655,6 +654,7 @@
 				84F4E0E32BA2CC6B00B3F1F3 /* BasicChartComposer.swift */,
 				844007752B6F41A50072FB66 /* SpecialChartComposer.swift */,
 				27766454207C55BE00F0A62C /* MixedChartComposer.swift */,
+				84526E2C2CF409BA00EB2563 /* MixedChartComposer2.swift */,
 				84E68FBE2B50E04E00CD8B2D /* CustomStyleForPieChartComposer.swift */,
 				5860327DEF5546B683899E44 /* CustomStyleForColumnChartComposer.swift */,
 				58603647D3E17BD4C00CBCF5 /* CustomStyleForBarChartComposer.swift */,
@@ -664,7 +664,7 @@
 				8441C0962C620ED400A6F784 /* CustomStyleForAreasplineChartComposer.swift */,
 				586030C73877C58B03F2F997 /* CustomStyleForScatterChartComposer.swift */,
 				8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */,
-				84526E2C2CF409BA00EB2563 /* MixedChartComposer2.swift */,
+				84339F562D54591900F54F1E /* AAOptionsItemComposer.swift */,
 			);
 			path = Composer;
 			sourceTree = "<group>";
