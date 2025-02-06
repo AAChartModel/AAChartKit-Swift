@@ -38,12 +38,41 @@ import AAInfographics
 class BasicChartVC: UIViewController {
     public var chartType: AAChartType!
     public var step: Bool?
-    public var aaChartModel: AAChartModel!
-    public var aaChartView: AAChartView!
     
+    public lazy var aaChartModel: AAChartModel = {
+        let model = AAChartModel()
+        return model
+    }()
+
+    public lazy var aaChartView: AAChartView = {
+        let chartView = AAChartView()
+        chartView.translatesAutoresizingMaskIntoConstraints = false
+        chartView.isScrollEnabled = false//Disable chart content scrolling
+        chartView.isClearBackgroundColor = true
+        chartView.delegate = self as AAChartViewDelegate
+        return chartView
+    }()
+
     // New UIStackView containers
-    private var segmentedStackView: UIStackView!
-    private var switchStackView: UIStackView!
+    private lazy var segmentedStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "SegmentedStackView"
+        return stackView
+    }()
+
+    private lazy var switchStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "SwitchStackView"
+        return stackView
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,13 +96,7 @@ class BasicChartVC: UIViewController {
     }
     
     private func setUpAAChartView() {
-        aaChartView = AAChartView()
-        aaChartView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(aaChartView)
-        aaChartView.isScrollEnabled = false//Disable chart content scrolling
-        aaChartView.isClearBackgroundColor = true
-        aaChartView.delegate = self as AAChartViewDelegate
-        
         // Chart view constraints
         NSLayoutConstraint.activate([
             aaChartView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
@@ -129,11 +152,6 @@ class BasicChartVC: UIViewController {
             ]
         }
         
-        segmentedStackView = UIStackView()
-        segmentedStackView.axis = .vertical
-        segmentedStackView.spacing = 8
-        segmentedStackView.translatesAutoresizingMaskIntoConstraints = false
-        segmentedStackView.accessibilityIdentifier = "SegmentedStackView"
         view.addSubview(segmentedStackView)
         
         for i in 0..<segmentedNamesArr.count {
@@ -178,13 +196,6 @@ class BasicChartVC: UIViewController {
             nameArr.append("HideMarker")
         }
         
-        switchStackView = UIStackView()
-        switchStackView.axis = .horizontal
-        switchStackView.alignment = .center
-        switchStackView.distribution = .fillEqually
-        switchStackView.spacing = 8
-        switchStackView.translatesAutoresizingMaskIntoConstraints = false
-        switchStackView.accessibilityIdentifier = "SwitchStackView"
         view.addSubview(switchStackView)
         
         for i in 0..<nameArr.count {
@@ -230,7 +241,7 @@ class BasicChartVC: UIViewController {
                 .normal,
                 .percent
             ]
-            aaChartModel!.stacking(stackingArr[selectedSegmentIndex])
+            aaChartModel.stacking(stackingArr[selectedSegmentIndex])
             
         case 1:
             if chartType == .column || chartType == .bar {
@@ -238,10 +249,10 @@ class BasicChartVC: UIViewController {
                 let borderRadius = borderRadiusArr[selectedSegmentIndex]
                 if borderRadius is Int {
                     if let borderRadius = borderRadius as? Int {
-                        aaChartModel!.borderRadius(Float(borderRadius))
+                        aaChartModel.borderRadius(Float(borderRadius))
                     }
                 } else {
-                    aaChartModel!.borderRadius(borderRadius as! String)
+                    aaChartModel.borderRadius(borderRadius as! String)
                 }
             } else {
                 let symbolArr = [
@@ -251,28 +262,28 @@ class BasicChartVC: UIViewController {
                     .triangle,
                     .triangleDown
                 ]
-                aaChartModel!.markerSymbol(symbolArr[selectedSegmentIndex])
+                aaChartModel.markerSymbol(symbolArr[selectedSegmentIndex])
             }
             
         default: break
         }
-        aaChartView!.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
+        aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
     }
     
     @objc func switchDidChange(switchView: UISwitch) {
         let isOn = switchView.isOn
         
         switch switchView.tag {
-        case 0: aaChartModel!.xAxisReversed(isOn)
-        case 1: aaChartModel!.yAxisReversed(isOn)
-        case 2: aaChartModel!.inverted(isOn)
-        case 3: aaChartModel!.polar(isOn)
-        case 4: aaChartModel!.dataLabelsEnabled(isOn)
-        case 5: aaChartModel!.markerRadius(isOn ? 0 : 5)
+        case 0: aaChartModel.xAxisReversed(isOn)
+        case 1: aaChartModel.yAxisReversed(isOn)
+        case 2: aaChartModel.inverted(isOn)
+        case 3: aaChartModel.polar(isOn)
+        case 4: aaChartModel.dataLabelsEnabled(isOn)
+        case 5: aaChartModel.markerRadius(isOn ? 0 : 5)
         default: break
         }
         
-        aaChartView!.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
+        aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
     }
     
     private func kRGBColorFromHex(rgbValue: Int) -> UIColor {
