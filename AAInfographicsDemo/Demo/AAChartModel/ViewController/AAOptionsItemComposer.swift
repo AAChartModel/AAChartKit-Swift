@@ -258,5 +258,30 @@ class AAOptionsItemComposer: NSObject {
             PieChartOptionsComposer.customPieChartTitlePosition(),//自定义饼状图标题位置
         ]
     }
+    
+    
+    static func randomValueDataItems() -> [AAOptions] {
+        return [
+            AARandomValueDataComposer.configureChartOptions(chartType: .column),          //Column series display one column per value along an X axis.
+            AARandomValueDataComposer.configureChartOptions(chartType: .bar),             //A bar series is a special type of column series where the columns are horizontal.
+            AARandomValueDataComposer.configureChartOptions(chartType: .area),            //The area series type.
+            AARandomValueDataComposer.configureChartOptions(chartType: .areaspline),      //The area spline series is an area series where the graph between the points is smoothed into a spline.
+            AARandomValueDataComposer.configureChartOptions(chartType: .line),            //A line series displays information as a series of data points connected by straight line segments.
+            AARandomValueDataComposer.configureChartOptions(chartType: .spline),          //A spline series is a special type of line series, where the segments between the data points are smoothed.
+            AARandomValueDataComposer.configureChartOptions(chartType: .scatter),         //A scatter plot uses cartesian coordinates to display values for two variables for a set of data.
+            AARandomValueDataComposer.configureChartOptions(chartType: .pie),             //A pie chart is a circular graphic which is divided into slices to illustrate numerical proportion.
+            AARandomValueDataComposer.configureChartOptions(chartType: .bubble),          //A bubble series is a three dimensional series type where each point renders an X, Y and Z value. Each points is drawn as a bubble where the position along the X and Y axes mark the X and Y values, and the size of the bubble relates to the Z value.
+            AARandomValueDataComposer.configureChartOptions(chartType: .pyramid),         //A pyramid series is a special type of funnel, without neck and reversed by default.
+            AARandomValueDataComposer.configureChartOptions(chartType: .funnel),          //Funnel charts are a type of chart often used to visualize stages in a sales project, where the top are the initial stages with the most clients. It requires that the modules/funnel.js file is loaded.
+            AARandomValueDataComposer.configureChartOptions(chartType: .columnrange),     //The column range is a cartesian series type with higher and lower Y values along an X axis. To display horizontal bars, set chart.inverted to true.
+            AARandomValueDataComposer.configureChartOptions(chartType: .arearange),       //The area range series is a carteseian series with higher and lower values for each point along an X axis, where the area between the values is shaded.
+            AARandomValueDataComposer.configureChartOptions(chartType: .areasplinerange), //The area spline range is a cartesian series type with higher and lower Y values along an X axis. The area inside the range is colored, and the graph outlining the area is a smoothed spline.
+            AARandomValueDataComposer.configureChartOptions(chartType: .boxplot),         //A box plot is a convenient way of depicting groups of data through their five-number summaries: the smallest observation (sample minimum), lower quartile (Q1), median (Q2), upper quartile (Q3), and largest observation (sample maximum).
+            AARandomValueDataComposer.configureChartOptions(chartType: .waterfall),       //A waterfall chart displays sequentially introduced positive or negative values in cumulative columns.
+            AARandomValueDataComposer.configureChartOptions(chartType: .polygon),         //A polygon series can be used to draw any freeform shape in the cartesian coordinate system. A fill is applied with the color option, and stroke is applied through lineWidth and lineColor options.
+            AARandomValueDataComposer.configureChartOptions(chartType: .gauge),           //Gauges are circular plots displaying one or more values with a dial pointing to values along the perimeter.
+            AARandomValueDataComposer.configureChartOptions(chartType: .errorbar),        //Error bars are a graphical representation of the variability of data and are used on graphs to indicate the error, or uncertainty in a reported measurement.
+        ]
+    }
 
 }

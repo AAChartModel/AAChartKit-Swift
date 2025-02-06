@@ -309,6 +309,7 @@ class AAChartModelListVC: AABaseListVC {
                 "所有 AAChartModel 图表",
                 "所有 AAOptions 图表",
                 "所有 Official Sample AAOptions 图表",
+                "所有类型 Random Value Data 图表",
             ],
 
         ]
@@ -530,6 +531,8 @@ extension AAChartModelListVC {
                     vc.optionsItems = AAOptionsItemComposer.aaOptionsItems()
                 } else if indexPathRow == 2 {
                     vc.optionsItems = AAOptionsItemComposer.officalChartSampleItems()
+                } else if indexPathRow == 3 {
+                    vc.optionsItems = AAOptionsItemComposer.randomValueDataItems()
                 }
                 navigationController?.pushViewController(vc, animated: true)
                 
