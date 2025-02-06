@@ -40,8 +40,8 @@ class BasicChartVC: UIViewController {
     public var step: Bool?
     
     public lazy var aaChartModel: AAChartModel = {
-        let model = AAChartModel()
-        return model
+        let chartModel = configureTheStyleForDifferentTypeChart(chartType: chartType)
+        return chartModel
     }()
 
     public lazy var aaChartView: AAChartView = {
@@ -119,26 +119,27 @@ class BasicChartVC: UIViewController {
     }
     
     private func setUpAAChartView() {
-        aaChartModel = BasicChartComposer.configureBasicChartModel(chartType: chartType)
-        aaChartModel = configureTheStyleForDifferentTypeChart(chartType: chartType)
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
     }
     
     private func configureTheStyleForDifferentTypeChart(chartType: AAChartType) -> AAChartModel {
+        var aaChartModel = AAChartModel()
         if (chartType == .area && step == true)
             || (chartType == .line && step == true) {
-            return BasicChartComposer.configureStepAreaChartAndStepLineChartStyle(aaChartModel)
+            aaChartModel = BasicChartComposer.configureStepAreaChartAndStepLineChart()
         } else if chartType == .column
             || chartType == .bar {
-            return BasicChartComposer.configureColumnChartAndBarChartStyle(aaChartModel)
+            aaChartModel = BasicChartComposer.configureColumnChartAndBarChart()
         } else if chartType == .area
             || chartType == .areaspline {
-            return BasicChartComposer.configureAreaChartAndAreasplineChartStyle(aaChartModel)
+            aaChartModel = BasicChartComposer.configureAreaChartAndAreasplineChartStyle(chartType)
         } else if chartType == .line
             || chartType == .spline {
-            return BasicChartComposer.configureLineChartAndSplineChartStyle(aaChartModel)
+            aaChartModel = BasicChartComposer.configureLineChartAndSplineChartStyle(chartType)
         }
-       return AAChartModel()
+        aaChartModel.chartType = chartType
+        
+       return aaChartModel
     }
     
     // Replacing manual frames with vertical UIStackView for segmented controls and their labels.
