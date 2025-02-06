@@ -55,6 +55,7 @@ class AAChartModelListVC: AABaseListVC {
             "Areaspline Chart With Custom Style | 一些自定义风格样式曲线填充图",
             "Scatter Chart With Custom Style | 一些自定义风格样式散点图",
             "Bubble Chart With Custom Style | 一些自定义风格样式气泡图",
+            "全部显示所有样式的图表",
         ]
         
         chartTypeTitleArr = [
@@ -304,6 +305,9 @@ class AAChartModelListVC: AABaseListVC {
                 "negativeColorMixedBubbleChart",
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
+            [
+                "在listVC中显示所有样式的图表",
+            ],
 
         ]
         
@@ -498,6 +502,9 @@ class AAChartModelListVC: AABaseListVC {
                 "negativeColorMixedBubbleChart",
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
+            
+            [
+            ],
 
         ]
          
@@ -509,6 +516,23 @@ class AAChartModelListVC: AABaseListVC {
 
 @available(macCatalyst 13.1, *)
 extension AAChartModelListVC {
+    
+    fileprivate func pushToOfficalChartSampleVC() {
+        /*OfficialChartSampleVC*/
+        if #available(macCatalyst 14.0, *) {
+            if #available(iOS 14.0, *) {
+                let vc = OfficialChartSampleVC()
+                vc.optionsItems = AAOptionsItemComposer.aaChartModelItems()
+                navigationController?.pushViewController(vc, animated: true)
+                
+            } else {
+                // Fallback on earlier versions
+            }
+            
+        } else {
+            // Fallback on earlier versions
+        }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
@@ -606,6 +630,9 @@ extension AAChartModelListVC {
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
+            
+        case 13:
+            pushToOfficalChartSampleVC()
 
         default:
             break

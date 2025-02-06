@@ -32,7 +32,7 @@ struct AAChartViewRepresentable: UIViewRepresentable {
 struct GridView: View {
       
    
-    let optionsItems = [
+    public var optionsItems = [
         XAxisYAxisTypeOptionsComposer.datatimeTypeLineAndColumnMixedChart(),
         AreaChartOptionsVC.configureComplicatedCustomAreasplineChart(),//复杂自定义曲线填充图 1
         AreaChartOptionsVC.configureComplicatedCustomAreasplineChart2(),//复杂自定义曲线填充图 2

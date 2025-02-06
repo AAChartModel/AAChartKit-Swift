@@ -7,16 +7,22 @@
 
 import UIKit
 import SwiftUI
+import AAInfographics
 
 @available(iOS 14.0, *)
 @available(macCatalyst 14.0, *)
 class OfficialChartSampleVC: UIViewController {
+    public var optionsItems = [AAOptions]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         // 将 SwiftUI 视图嵌入到当前 UIViewController
-        let swiftUIView = GridView()
+        var swiftUIView = GridView()
+        if optionsItems.count > 0 {
+            swiftUIView.optionsItems = optionsItems
+        }
         let hostingController = UIHostingController(rootView: swiftUIView)
         
         // 添加为子控制器
