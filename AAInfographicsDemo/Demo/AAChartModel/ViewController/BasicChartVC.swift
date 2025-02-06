@@ -50,6 +50,14 @@ class BasicChartVC: UIViewController {
         chartView.isScrollEnabled = false//Disable chart content scrolling
         chartView.isClearBackgroundColor = true
         chartView.delegate = self as AAChartViewDelegate
+        view.addSubview(chartView)
+        // Chart view constraints
+        NSLayoutConstraint.activate([
+            chartView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            chartView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            chartView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            chartView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -220)
+        ])
         return chartView
     }()
 
@@ -60,6 +68,13 @@ class BasicChartVC: UIViewController {
         stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "SegmentedStackView"
+        view.addSubview(stackView)
+        // Constrain the segmentedStackView at the bottom of the view above the switch controls.
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -110)
+        ])
         return stackView
     }()
 
@@ -71,6 +86,14 @@ class BasicChartVC: UIViewController {
         stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.accessibilityIdentifier = "SwitchStackView"
+        view.addSubview(stackView)
+        // Constrain switchStackView at the bottom of the view.
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            stackView.heightAnchor.constraint(equalToConstant: 70)
+        ])
         return stackView
     }()
     
@@ -90,21 +113,12 @@ class BasicChartVC: UIViewController {
         view.backgroundColor = kRGBColorFromHex(rgbValue: 0x22324c)
         title = chartType.map { $0.rawValue }
         
+        setUpAAChartView()
         setUpTheStackedSegmentControls()
         setUpTheStackedSwitches()
-        setUpAAChartView()
     }
     
     private func setUpAAChartView() {
-        view.addSubview(aaChartView)
-        // Chart view constraints
-        NSLayoutConstraint.activate([
-            aaChartView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            aaChartView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            aaChartView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            aaChartView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -220)
-        ])
-        
         aaChartModel = BasicChartComposer.configureBasicChartModel(chartType: chartType)
         aaChartModel = configureTheStyleForDifferentTypeChart(chartType: chartType)
         aaChartView.aa_drawChartWithChartModel(aaChartModel)
@@ -151,9 +165,7 @@ class BasicChartVC: UIViewController {
                 "Marker Symbols Type Selection"
             ]
         }
-        
-        view.addSubview(segmentedStackView)
-        
+                
         for i in 0..<segmentedNamesArr.count {
             // Create a label for the control type.
             let subLabel = UILabel()
@@ -174,13 +186,6 @@ class BasicChartVC: UIViewController {
             singleStack.spacing = 4
             segmentedStackView.addArrangedSubview(singleStack)
         }
-        
-        // Constrain the segmentedStackView at the bottom of the view above the switch controls.
-        NSLayoutConstraint.activate([
-            segmentedStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            segmentedStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            segmentedStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -110)
-        ])
     }
     
     // Replacing manual frames with horizontal UIStackView for switches and their labels.
@@ -221,14 +226,6 @@ class BasicChartVC: UIViewController {
             controlStack.spacing = 4
             switchStackView.addArrangedSubview(controlStack)
         }
-        
-        // Constrain switchStackView at the bottom of the view.
-        NSLayoutConstraint.activate([
-            switchStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            switchStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            switchStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            switchStackView.heightAnchor.constraint(equalToConstant: 70)
-        ])
     }
     
     @objc func segmentDidSelected(segmentedControl: UISegmentedControl) {
