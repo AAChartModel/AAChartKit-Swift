@@ -473,6 +473,7 @@
 				84086B1728E44FD0006BD30D /* AAChartModel */,
 				84086B1828E44FE8006BD30D /* AAOptions */,
 				84086B1928E45015006BD30D /* AAOptionsWithJS */,
+				84339F5A2D546E5100F54F1E /* AAOptionsWithJS2 */,
 				275BB8D720CFA6DB00DE1991 /* AdditionalContent1 */,
 				27E475F724B2FB2E00690657 /* AdditionalContent2 */,
 				84DEA0D928460E9300D0206F /* BackUpContent */,
@@ -596,6 +597,13 @@
 				844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */,
 				84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */,
 				58603418B60256899DD8BF75 /* JSFunctionForAAChartEventsComposer2.swift */,
+			);
+			path = AAOptionsWithJS;
+			sourceTree = "<group>";
+		};
+		84339F5A2D546E5100F54F1E /* AAOptionsWithJS2 */ = {
+			isa = PBXGroup;
+			children = (
 				84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */,
 				84526E262CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift */,
 				84526E242CF0210500EB2563 /* synchronizedChartActivityData.json */,
@@ -603,7 +611,7 @@
 				84DC91172D328846002EDC1F /* sparklines.css */,
 				84DC91182D328846002EDC1F /* sparklines.html */,
 			);
-			path = AAOptionsWithJS;
+			path = AAOptionsWithJS2;
 			sourceTree = "<group>";
 		};
 		844F11412B63644000ADEB1C /* AAChartListVC */ = {
