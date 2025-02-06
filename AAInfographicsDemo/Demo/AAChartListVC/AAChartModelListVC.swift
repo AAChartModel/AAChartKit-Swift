@@ -306,7 +306,9 @@ class AAChartModelListVC: AABaseListVC {
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
             [
-                "在listVC中显示所有样式的图表",
+                "所有 AAChartModel 图表",
+                "所有 AAOptions 图表",
+                "所有 Official Sample AAOptions 图表",
             ],
 
         ]
@@ -517,12 +519,18 @@ class AAChartModelListVC: AABaseListVC {
 @available(macCatalyst 13.1, *)
 extension AAChartModelListVC {
     
-    fileprivate func pushToOfficalChartSampleVC() {
+    fileprivate func pushToOfficalChartSampleVC(indexPathRow: Int) {
         /*OfficialChartSampleVC*/
         if #available(macCatalyst 14.0, *) {
             if #available(iOS 14.0, *) {
                 let vc = OfficialChartSampleVC()
-                vc.optionsItems = AAOptionsItemComposer.aaChartModelItems()
+                if indexPathRow == 0 {
+                    vc.optionsItems = AAOptionsItemComposer.aaChartModelItems()
+                } else if indexPathRow == 1 {
+                    vc.optionsItems = AAOptionsItemComposer.aaOptionsItems()
+                } else if indexPathRow == 2 {
+                    vc.optionsItems = AAOptionsItemComposer.officalChartSampleItems()
+                }
                 navigationController?.pushViewController(vc, animated: true)
                 
             } else {
@@ -632,7 +640,7 @@ extension AAChartModelListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 13:
-            pushToOfficalChartSampleVC()
+            pushToOfficalChartSampleVC(indexPathRow: indexPath.row)
 
         default:
             break
