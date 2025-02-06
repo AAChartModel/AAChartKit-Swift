@@ -60,7 +60,6 @@ class AABaseListVC: UIViewController {
         tableView.autoresizingMask = [.flexibleWidth , .flexibleHeight]
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .white
         tableView.sectionHeaderHeight = 45
         tableView.sectionIndexColor = .red
         tableView.register(UINib.init(nibName: kCustomTableViewCell, bundle: Bundle.main), forCellReuseIdentifier: kCustomTableViewCell)
@@ -126,6 +125,9 @@ extension AABaseListVC: UITableViewDelegate, UITableViewDataSource {
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeaderView = UIView()
         let bgColor = kColorWithHexString(colorsArr[section % 18])
+        //设置圆角效果
+        sectionHeaderView.layer.cornerRadius = 6
+        sectionHeaderView.layer.masksToBounds = true
         sectionHeaderView.backgroundColor = bgColor
         
         let sectionTitleLabel = UILabel()
@@ -144,15 +146,15 @@ extension AABaseListVC: UITableViewDelegate, UITableViewDataSource {
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: kCustomTableViewCell) as! CustomTableViewCell
         cell.accessoryType = .disclosureIndicator
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = .white
-        } else {
-            cell.backgroundColor = kRGBColorFromHex(rgbValue: 0xE6E6FA)// kRGBColorFromHex(rgbValue: 0xF5F5F5)//白烟
-        }
+//        if indexPath.row % 2 == 0 {
+//            cell.backgroundColor = .systemBackground
+//        } else {
+//            cell.contentView.backgroundColor = kRGBColorFromHex(rgbValue: 0xE6E6FA)// kRGBColorFromHex(rgbValue: 0xF5F5F5)//白烟
+//        }
         
         let cellTitle = chartTypeTitleArr[indexPath.section][indexPath.row]
         cell.titleLabel?.text = cellTitle
-        cell.titleLabel.textColor = .black
+//        cell.titleLabel.textColor = .black
         cell.numberLabel.text = String(indexPath.row + 1)
         let bgColor = kColorWithHexString(colorsArr[indexPath.section % 18])
         cell.numberLabel.backgroundColor = bgColor
