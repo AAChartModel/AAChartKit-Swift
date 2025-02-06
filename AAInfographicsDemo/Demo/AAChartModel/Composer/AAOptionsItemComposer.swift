@@ -39,11 +39,15 @@ class AAOptionsItemComposer: NSObject {
             MixedChartComposer.polygonMixedScatterChart(),
             MixedChartComposer.polarChartMixedChart(),
             MixedChartComposer.columnMixedScatterChart(),
-            MixedChartComposer.pieMixedLineMixedColumnChart(),
             MixedChartComposer.areasplinerangeMixedColumnrangeMixedLineChart(),
             MixedChartComposer.boxplotMixedScatterChartWithJitter(),
             MixedChartComposer.multiLevelStopsArrGradientColorAreasplineMixedLineChart(),
             MixedChartComposer.arearangeMixedLineChart(),
+            
+            MixedChartComposer2.scatterPlotWithTrendLine(),
+            MixedChartComposer2.scatterPlotWithTrendLine2(),
+            MixedChartComposer2.pieMixedLineMixedColumnChart(),
+            MixedChartComposer2.pieMixedLineMixedColumnChart2(),
             
             CustomStyleForColumnChartComposer.colorfulColumnChart(),
             CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart(),

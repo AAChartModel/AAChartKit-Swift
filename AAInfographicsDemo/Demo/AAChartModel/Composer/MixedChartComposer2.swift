@@ -349,6 +349,64 @@ class MixedChartComposer2: NSObject {
             ])
     }
     
+    static func pieMixedLineMixedColumnChart() -> AAChartModel {
+        AAChartModel()
+            .stacking(.normal)
+            .colorsTheme(["#fe117c", "#ffc069", "#06caf4", "#7dffc0"])
+            .dataLabelsEnabled(false)
+            .zoomType(.x)
+            .series([
+                AASeriesElement()
+                    .name("Anna")
+                    .type(.column)
+                    .data([3, 2, 1, 3, 4]),
+                AASeriesElement()
+                    .name("Babara")
+                    .type(.column)
+                    .data([2, 3, 5, 7, 6]),
+                AASeriesElement()
+                    .name("Cortana")
+                    .type(.column)
+                    .data([4, 3, 3, 9, 0]),
+                AASeriesElement()
+                    .name("Average Value")
+                    .type(.line)
+                    .data([3, 2.67, 3, 6.33, 3.33,
+                           3, 2.67, 3, 6.33, 3.33,
+                           3, 2.67, 3, 6.33, 3.33,
+                           3, 2.67, 3, 6.33, 3.33])
+                    .marker(AAMarker()
+                        .fillColor("#1E90FF")
+                        .lineWidth(2.0)
+                        .lineColor(AAColor.white))
+                ,
+                AAPie()
+                    .type(.pie)
+                    .center([100,80])
+                    .size(150)
+                    .showInLegend(true)
+                    .dataLabels(
+                        AADataLabels()
+                            .enabled(false))
+                    .data([
+                        AADataElement()
+                            .name("Ada")
+                            .y(13.0)
+                            .color(AAGradientColor.firebrick)
+                        ,
+                        AADataElement()
+                            .name("Bob")
+                            .y(13.0)
+                            .color(AAGradientColor.newLeaf)
+                        ,
+                        AADataElement()
+                            .name("Coco")
+                            .y(13.0)
+                            .color(AAGradientColor.freshPapaya)
+                    ]),
+            ])
+    }
+    
     /**
      // Data retrieved from https://www.ssb.no/energi-og-industri/olje-og-gass/statistikk/sal-av-petroleumsprodukt/artikler/auka-sal-av-petroleumsprodukt-til-vegtrafikk
      Highcharts.chart('container', {
@@ -430,7 +488,7 @@ class MixedChartComposer2: NSObject {
          }]
      });
      */
-    static func pieMixedLineMixedColumnChart() -> AAChartModel {
+    static func pieMixedLineMixedColumnChart2() -> AAChartModel {
         AAChartModel()
             .title("Sales of petroleum products March, Norway")
             .titleAlign(.left)

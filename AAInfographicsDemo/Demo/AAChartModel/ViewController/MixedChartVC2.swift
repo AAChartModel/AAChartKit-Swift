@@ -21,6 +21,7 @@ class MixedChartVC2: AABaseChartVC {
         case "scatterPlotWithTrendLine": return MixedChartComposer2.scatterPlotWithTrendLine()
         case "scatterPlotWithTrendLine2": return MixedChartComposer2.scatterPlotWithTrendLine2()
         case "pieMixedLineMixedColumnChart": return MixedChartComposer2.pieMixedLineMixedColumnChart()
+        case "pieMixedLineMixedColumnChart2": return MixedChartComposer2.pieMixedLineMixedColumnChart2()
   
         default: return MixedChartComposer2.scatterPlotWithTrendLine()
         }

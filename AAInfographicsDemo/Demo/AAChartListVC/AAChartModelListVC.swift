@@ -162,7 +162,6 @@ class AAChartModelListVC: AABaseListVC {
                 "polygonMixedScatterChart---多边形混合散点图",
                 "polarChartMixedChart---极地混合图",
                 "columnMixedScatterChart---柱状图混合散点图",
-                "pieMixedLineMixedColumnChart---扇形折线柱形混合图",
                 "aerasplinerangeMixedColumnrangeMixedLineChart---曲线面积范围混合柱形范围混合折线图",
                 "boxplotMixedScatterChartWithJitterChart---带有抖动的箱线混合散点图",
                 "multiLevelStopsArrGradientColorAreasplineMixedLineChart---多层次半透明渐变效果的曲线填充图混合折线图",
@@ -172,6 +171,7 @@ class AAChartModelListVC: AABaseListVC {
                 "scatterPlotWithTrendLine---带有趋势线的散点图",
                 "scatterPlotWithTrendLine2---带有趋势线的散点图 2",
                 "pieMixedLineMixedColumnChart---扇形折线柱形混合图",
+                "pieMixedLineMixedColumnChart2---扇形折线柱形混合图2",
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -366,7 +366,6 @@ class AAChartModelListVC: AABaseListVC {
                 "polygonMixedScatterChart",
                 "polarChartMixedChart",
                 "columnMixedScatterChart",
-                "pieMixedLineMixedColumnChart",
                 "aerasplinerangeMixedColumnrangeMixedLineChart",
                 "boxplotMixedScatterChartWithJitterChart",
                 "multiLevelStopsArrGradientColorAreasplineMixedLineChart",
@@ -376,6 +375,7 @@ class AAChartModelListVC: AABaseListVC {
                 "scatterPlotWithTrendLine",
                 "scatterPlotWithTrendLine2",
                 "pieMixedLineMixedColumnChart",
+                "pieMixedLineMixedColumnChart2",
             ],
             /*Custom Style For Pie Chart*/
             [
