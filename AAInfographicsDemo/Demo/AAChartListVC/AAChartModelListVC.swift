@@ -46,6 +46,7 @@ class AAChartModelListVC: AABaseListVC {
             "Special Type Chart | 特殊类型图表",
             "Custom Style Chart| 一些自定义风格样式图表",
             "Mixed Chart | 混合图形",
+            "Mixed Chart2 | 混合图形2",
             "Pie Chart With Custom Style | 一些自定义风格样式饼图",
             "Column Chart With Custom Style | 一些自定义风格样式柱状图",
             "Bar Chart With Custom Style | 一些自定义风格样式条形图",
@@ -165,6 +166,12 @@ class AAChartModelListVC: AABaseListVC {
                 "aerasplinerangeMixedColumnrangeMixedLineChart---曲线面积范围混合柱形范围混合折线图",
                 "boxplotMixedScatterChartWithJitterChart---带有抖动的箱线混合散点图",
                 "multiLevelStopsArrGradientColorAreasplineMixedLineChart---多层次半透明渐变效果的曲线填充图混合折线图",
+            ],
+            /*Mixed Chart 2*/
+            [
+                "scatterPlotWithTrendLine---带有趋势线的散点图",
+                "scatterPlotWithTrendLine2---带有趋势线的散点图 2",
+                "pieMixedLineMixedColumnChart---扇形折线柱形混合图",
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -363,6 +370,12 @@ class AAChartModelListVC: AABaseListVC {
                 "aerasplinerangeMixedColumnrangeMixedLineChart",
                 "boxplotMixedScatterChartWithJitterChart",
                 "multiLevelStopsArrGradientColorAreasplineMixedLineChart",
+            ],
+            /*Mixed Chart 2*/
+            [
+                "scatterPlotWithTrendLine",
+                "scatterPlotWithTrendLine2",
+                "pieMixedLineMixedColumnChart",
             ],
             /*Custom Style For Pie Chart*/
             [
@@ -577,50 +590,57 @@ extension AAChartModelListVC {
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-
+            
         case 4:
-            let vc = CustomStyleForPieChartVC()
+            let vc = MixedChartVC2()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
         case 5:
-            let vc = CustomStyleForColumnChartVC()
+            let vc = CustomStyleForPieChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
         case 6:
-            let vc = CustomStyleForBarChartVC()
+            let vc = CustomStyleForColumnChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
         case 7:
+            let vc = CustomStyleForBarChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+
+        case 8:
             let vc = CustomStyleForLineChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 8:
+        case 9:
             let vc = CustomStyleForSplineChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 9:
+        case 10:
             let vc = CustomStyleForAreaChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 10:
+        case 11:
             let vc = CustomStyleForAreasplineChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
@@ -628,21 +648,21 @@ extension AAChartModelListVC {
             navigationController?.pushViewController(vc, animated: true)
             
             
-        case 11:
+        case 12:
             let vc = CustomStyleForScatterChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 12:
+        case 13:
             let vc = CustomStyleForBubbleChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 13:
+        case 14:
             pushToOfficalChartSampleVC(indexPathRow: indexPath.row)
 
         default:
