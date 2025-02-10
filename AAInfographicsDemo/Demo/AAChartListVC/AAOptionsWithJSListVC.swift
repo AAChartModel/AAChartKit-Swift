@@ -27,6 +27,7 @@ class AAOptionsWithJSListVC: AABaseListVC {
             "JS Function For AAChartEvents---通过 JSFunction 自定义 AAChartEvents 的事件",
             "JS Function For AAChartEvents2---通过 JSFunction 自定义 AAChartEvents 的事件",
             "JS Function For AAOptions---通过 JSFunction 自定义 AAOptions 内容",
+            "JSFunctionBeforeAndAfterRenderingVC---在图表渲染前后添加 JS 函数",
         ]
         
         chartTypeTitleArr = [
@@ -100,6 +101,13 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "customizeEveryDataLabelSinglelyByDataLabelsFormatter---通过 formatter 来自定义单个 dataLabels 元素",
                 "configureColorfulDataLabelsForPieChart---为饼图配置多彩 dataLabels"
             ],
+            /*JSFunctionBeforeAndAfterRenderingVC*/
+            [
+                "clockChart",
+                "synchronizedChart",
+                "sparklineChart",
+                    
+            ]
 
         ]
         
@@ -168,6 +176,14 @@ extension AAOptionsWithJSListVC {
         case 6:
             /*JS Function For AAOptions*/
             let vc = JSFunctionForAAOptionsVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 7:
+            /*JSFunctionBeforeAndAfterRenderingVC*/
+            let vc = JSFunctionBeforeAndAfterRenderingVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
