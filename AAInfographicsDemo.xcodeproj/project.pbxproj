@@ -56,7 +56,7 @@
 		84086B2128E6F499006BD30D /* JSFunctionForAAOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */; };
 		8409E6BA2CDA3805000EFCF2 /* AAButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409E6B92CDA3805000EFCF2 /* AAButtonTheme.swift */; };
 		840AC39A280CFFA200B10289 /* AAAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AC396280CFFA200B10289 /* AAAxis.swift */; };
-		8418479928B8755900094106 /* JSFunctionForAAChartEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */; };
+		8418479928B8755900094106 /* JSFunctionForAAChartEventsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418479828B8755900094106 /* JSFunctionForAAChartEventsComposer.swift */; };
 		842FC3EE2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */; };
 		84339F4F2D536AC900F54F1E /* SortAlgorithmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F4E2D536AC900F54F1E /* SortAlgorithmVC.swift */; };
 		84339F572D54591900F54F1E /* AAOptionsItemComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F562D54591900F54F1E /* AAOptionsItemComposer.swift */; };
@@ -283,7 +283,7 @@
 		84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAOptionsVC.swift; sourceTree = "<group>"; };
 		8409E6B92CDA3805000EFCF2 /* AAButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAButtonTheme.swift; sourceTree = "<group>"; };
 		840AC396280CFFA200B10289 /* AAAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAxis.swift; sourceTree = "<group>"; };
-		8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC.swift; sourceTree = "<group>"; };
+		8418479828B8755900094106 /* JSFunctionForAAChartEventsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsComposer.swift; sourceTree = "<group>"; };
 		842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTooltipEventCallbackVC.swift; sourceTree = "<group>"; };
 		84339F4E2D536AC900F54F1E /* SortAlgorithmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAlgorithmVC.swift; sourceTree = "<group>"; };
 		84339F562D54591900F54F1E /* AAOptionsItemComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsItemComposer.swift; sourceTree = "<group>"; };
@@ -600,9 +600,9 @@
 				84DEB89F28F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift */,
 				84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */,
 				84086B1528E44B19006BD30D /* JSFunctionForAALegendVC.swift */,
-				8418479828B8755900094106 /* JSFunctionForAAChartEventsVC.swift */,
-				844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */,
 				84086B2028E6F499006BD30D /* JSFunctionForAAOptionsVC.swift */,
+				8418479828B8755900094106 /* JSFunctionForAAChartEventsComposer.swift */,
+				844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */,
 				58603418B60256899DD8BF75 /* JSFunctionForAAChartEventsComposer2.swift */,
 			);
 			path = AAOptionsWithJS;
@@ -945,7 +945,7 @@
 				278C55171EE948C900770B97 /* AnimationTypeVC.swift in Sources */,
 				448330B824E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift in Sources */,
 				84E68FBD2B50E02E00CD8B2D /* CustomStyleForPieChartVC.swift in Sources */,
-				8418479928B8755900094106 /* JSFunctionForAAChartEventsVC.swift in Sources */,
+				8418479928B8755900094106 /* JSFunctionForAAChartEventsComposer.swift in Sources */,
 				84526E292CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift in Sources */,
 				27E475F924B83AE200690657 /* AABaseChartVC.swift in Sources */,
 				277066112452E99C00C4581D /* ScrollableChartVC.swift in Sources */,

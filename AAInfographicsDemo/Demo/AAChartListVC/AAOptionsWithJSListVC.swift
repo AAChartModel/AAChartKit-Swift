@@ -165,7 +165,7 @@ extension AAOptionsWithJSListVC {
             
         case 4:
             /*JS Function For AAChartEventsVC*/
-            let vc = JSFunctionForAAChartEventsVC()
+            let vc = JSFunctionForAAChartEventsComposer()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true

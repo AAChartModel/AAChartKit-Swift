@@ -9,7 +9,7 @@
 import UIKit
 import AAInfographics
 
-class JSFunctionForAAChartEventsVC: AABaseChartVC {
+class JSFunctionForAAChartEventsComposer: AABaseChartVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,18 +19,18 @@ class JSFunctionForAAChartEventsVC: AABaseChartVC {
 
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch (selectedIndex) {
-        case 0: return setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart() //图表加载完成后,设置默认的十字准星和数据提示框的位置
-        case 1: return generalDrawingChart() //自由绘图
-        case 2: return advancedTimeLineChart() //高级时间线图
-        case 3: return configureBlinkMarkerChart() //配置标记点闪烁特效
-        case 4: return configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect() //配置单个数据元素的特殊样式标记点的闪烁特效
-        case 5: return configureScatterChartWithBlinkEffect() //配置散点图的闪烁特效
-        case 6: return automaticallyHideTooltipAfterItIsShown() //浮动提示框显示一段时间后,自动隐藏
-        case 7: return dynamicHeightGridLineAreaChart() //动态高度网格线的区域填充图
-        case 8: return customizeYAxisPlotLinesLabelBeSpecialStyle() //自定义 Y 轴轴线上面的标签文字特殊样式
-        case 9: return configureECGStyleChart() //配置心电图样式的图表
-        case 10: return configureTheSizeOfTheSliceOfDonutAndPieChart() //配置环形图和饼图的扇区大小
-        case 11: return configurePlotBackgroundClickEvent() //配置绘图区的点击事件
+        case 0: return JSFunctionForAAChartEventsComposer.setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart() //图表加载完成后,设置默认的十字准星和数据提示框的位置
+        case 1: return JSFunctionForAAChartEventsComposer.generalDrawingChart() //自由绘图
+        case 2: return JSFunctionForAAChartEventsComposer.advancedTimeLineChart() //高级时间线图
+        case 3: return JSFunctionForAAChartEventsComposer.configureBlinkMarkerChart() //配置标记点闪烁特效
+        case 4: return JSFunctionForAAChartEventsComposer.configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect() //配置单个数据元素的特殊样式标记点的闪烁特效
+        case 5: return JSFunctionForAAChartEventsComposer.configureScatterChartWithBlinkEffect() //配置散点图的闪烁特效
+        case 6: return JSFunctionForAAChartEventsComposer.automaticallyHideTooltipAfterItIsShown() //浮动提示框显示一段时间后,自动隐藏
+        case 7: return JSFunctionForAAChartEventsComposer.dynamicHeightGridLineAreaChart() //动态高度网格线的区域填充图
+        case 8: return JSFunctionForAAChartEventsComposer.customizeYAxisPlotLinesLabelBeSpecialStyle() //自定义 Y 轴轴线上面的标签文字特殊样式
+        case 9: return JSFunctionForAAChartEventsComposer.configureECGStyleChart() //配置心电图样式的图表
+        case 10: return JSFunctionForAAChartEventsComposer.configureTheSizeOfTheSliceOfDonutAndPieChart() //配置环形图和饼图的扇区大小
+        case 11: return JSFunctionForAAChartEventsComposer.configurePlotBackgroundClickEvent() //配置绘图区的点击事件
 
         default: return nil
         }
@@ -38,7 +38,7 @@ class JSFunctionForAAChartEventsVC: AABaseChartVC {
 
 
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/345
-    private func setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart() -> AAOptions {
+    static func setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.areaspline)//图形类型
             .markerSymbolStyle(.borderBlank)//折线连接点样式为外边缘空白
@@ -113,7 +113,7 @@ class JSFunctionForAAChartEventsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func generalDrawingChart() -> AAOptions {
+    static func generalDrawingChart() -> AAOptions {
         AAOptions()
             .chart(AAChart()
                 .backgroundColor(AAColor.white)
@@ -346,7 +346,7 @@ class JSFunctionForAAChartEventsVC: AABaseChartVC {
     }
     
     
-    private func advancedTimeLineChart() -> AAOptions {
+    static func advancedTimeLineChart() -> AAOptions {
         AAOptions()
             .chart(AAChart()
                 .events(AAChartEvents()
@@ -763,7 +763,7 @@ function () {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/394
     //https://www.highcharts.com/forum/viewtopic.php?t=44985
-    func configureBlinkMarkerChart() -> AAOptions {
+    static func configureBlinkMarkerChart() -> AAOptions {
         let dataArr = [7.0, 6.9, 2.5, 14.5, 18.2, 21.5, 5.2, 26.5, 23.3, 45.3, 13.9, 9.6]
         let selectedIndex = dataArr.count - 1
         
@@ -797,7 +797,7 @@ function() {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/394
     //https://www.highcharts.com/forum/viewtopic.php?t=44985
-    private func configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect() -> AAOptions {
+    static func configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect() -> AAOptions {
         let gradientColorDic1 = AAGradientColor.linearGradient(
             direction: .toRight,
             stops: [
@@ -867,7 +867,7 @@ function() {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/394
     //https://echarts.apache.org/examples/zh/editor.html?c=scatter-effect
-    private func configureScatterChartWithBlinkEffect() -> AAOptions {
+    static func configureScatterChartWithBlinkEffect() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.scatter)
             .title("Height and weight distribution by sex")
@@ -980,7 +980,7 @@ function() {
 
     //https://github.com/AAChartModel/AAChartKit/issues/1093
     //https://github.com/highcharts/highcharts-ios/issues/97
-    private func automaticallyHideTooltipAfterItIsShown() -> AAOptions {
+    static func automaticallyHideTooltipAfterItIsShown() -> AAOptions {
         let aaChartModel = AAChartModel()
             .chartType(.area)//图形类型
             .markerRadius(6)
@@ -1045,7 +1045,7 @@ function() {
 
     //https://github.com/AAChartModel/AAChartKit/issues/1383
     //https://www.highcharts.com/forum/viewtopic.php?t=49409
-    private func dynamicHeightGridLineAreaChart() -> AAOptions {
+    static func dynamicHeightGridLineAreaChart() -> AAOptions {
         return AAOptions()
             .title(AATitle()
                 .text("dynamicHeightGridLineAreaChart"))
@@ -1094,11 +1094,10 @@ function() {
                 ])
     }
 
-}
 
 //https://github.com/AAChartModel/AAChartKit-Swift-Pro/issues/3
 //https://www.highcharts.com/forum/viewtopic.php?f=9&t=49492
-func customizeYAxisPlotLinesLabelBeSpecialStyle() -> AAOptions {
+static func customizeYAxisPlotLinesLabelBeSpecialStyle() -> AAOptions {
     return AAOptions()
         .chart(AAChart()
             .events(AAChartEvents()
@@ -1195,7 +1194,7 @@ func customizeYAxisPlotLinesLabelBeSpecialStyle() -> AAOptions {
 //}
 
 //https://stackoverflow.com/questions/47392848/set-ecg-paper-like-grid-intervals-highcharts-js
-func configureECGStyleChart() -> AAOptions {
+static func configureECGStyleChart() -> AAOptions {
     return AAOptions()
         .title(AATitle()
             .text("ECG Paper Style Chart"))
@@ -1275,7 +1274,7 @@ func configureECGStyleChart() -> AAOptions {
 
 //https://github.com/AAChartModel/AAChartKit/issues/1449
 //https://www.highcharts.com/forum/viewtopic.php?t=28267
-func configureTheSizeOfTheSliceOfDonutAndPieChart() -> AAOptions {
+static func configureTheSizeOfTheSliceOfDonutAndPieChart() -> AAOptions {
     return AAOptions()
         .title(AATitle()
             .text("Configure The Size Of The Slice Of Donut And Pie Chart"))
@@ -1344,13 +1343,13 @@ func configureTheSizeOfTheSliceOfDonutAndPieChart() -> AAOptions {
 //}
 
 //https://api.highcharts.com/highcharts/chart.events.click
-func configurePlotBackgroundClickEvent() -> AAOptions {
-    return AAOptions()
-        .title(AATitle()
-            .text("configure Plot Background Click Event"))
-        .chart(AAChart()
-            .events(AAChartEvents()
-                .click("""
+    static func configurePlotBackgroundClickEvent() -> AAOptions {
+        return AAOptions()
+            .title(AATitle()
+                .text("configure Plot Background Click Event"))
+            .chart(AAChart()
+                .events(AAChartEvents()
+                    .click("""
                     function () {
                         const label = this.renderer.label(
                                 'x: ' + Highcharts.numberFormat(event.xAxis[0].value, 2) + ', y: ' + Highcharts.numberFormat(event.yAxis[0].value, 2),
@@ -1367,17 +1366,19 @@ func configurePlotBackgroundClickEvent() -> AAOptions {
                                     color: '#FFFFFF'
                                 })
                                 .add();
-
+                    
                         setTimeout(function () {
                             label.fadeOut();
                         }, 1000);
                     }
                     """
-                     )))
-        .series([
-            AASeriesElement()
-                .data([29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
-        ])
+                          )))
+            .series([
+                AASeriesElement()
+                    .data([29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4])
+            ])
+        
+    }
 }
 
 
