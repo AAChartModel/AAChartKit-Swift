@@ -24,9 +24,9 @@ class AAOptionsWithJSListVC: AABaseListVC {
          
             "JS Function For AAAxis Labels | 通过带有 JS 函数的自定义 AAAxis 的文字标签",
             "JS Function For AALegend | 通过带有 JS 函数的自定义 AALegend",
-            "JS Function For AAChartEvents---通过 JSFunction 自定义 AAChartEvents 的事件",
-            "JS Function For AAChartEvents2---通过 JSFunction 自定义 AAChartEvents 的事件",
             "JS Function For AAOptions---通过 JSFunction 自定义 AAOptions 内容",
+            "JSFunctionForAAChartEventsVC---通过 JSFunction 自定义 AAChartEvents 的事件",
+            "JSFunctionForAAChartEventsVC2---通过 JSFunction 自定义 AAChartEvents 的事件2",
             "JSFunctionBeforeAndAfterRenderingVC---在图表渲染前后添加 JS 函数",
         ]
         
@@ -74,7 +74,14 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "disableLegendClickEventForPieChart---禁用饼图 legend 点击事件",
                 "customLegendItemClickEvent---自定义图例 legend 的点击事件",
             ],
-            /*JS Function For AAChartEvents*/
+            /*JS Function For AAOptions*/
+            [
+                "customDoubleXAxesChart---自定义双 X 轴图表",
+                "disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction---通过 Series 的 Point 的选中事件函数来禁用条形图反选效果",
+                "customizeEveryDataLabelSinglelyByDataLabelsFormatter---通过 formatter 来自定义单个 dataLabels 元素",
+                "configureColorfulDataLabelsForPieChart---为饼图配置多彩 dataLabels"
+            ],
+            /*JSFunctionForAAChartEventsVC*/
             [
                 "setCrosshairAndTooltipToTheDefaultPositionAfterLoadingChart---图表加载完成后设置 crosshair 和 tooltip 到默认位置",
                 "generalDrawingChart---普通绘图",
@@ -89,17 +96,16 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "configureTheSizeOfTheSliceOfDonutAndPieChart---配置环形图和饼图的扇区大小",
                 "configurePlotBackgroundClickEvent---配置绘图区的点击事件",
             ],
-            /*JS Function For AAChartEvents 2*/
-            [
-                "addClickEventToXAxisLabelAndAccessData---为 X 轴文字标签添加点击事件并获取到所点击的点的信息",
-                "defaultSelectedAPointForLineChart---默认选中折线图的一个点 marker",
-            ],
-            /*JS Function For AAOptions*/
-            [
-                "customDoubleXAxesChart---自定义双 X 轴图表",
-                "disableColumnChartUnselectEventEffectBySeriesPointEventClickFunction---通过 Series 的 Point 的选中事件函数来禁用条形图反选效果",
-                "customizeEveryDataLabelSinglelyByDataLabelsFormatter---通过 formatter 来自定义单个 dataLabels 元素",
-                "configureColorfulDataLabelsForPieChart---为饼图配置多彩 dataLabels"
+            /*JJSFunctionForAAChartEventsVC2*/
+            [ 
+                "disableHoverEventTooltipEffect---禁用折线图的 hover 事件的 tooltip 效果",
+                "addClickEventToXAxisLabelAndAccessData---给 X 轴标签添加点击事件并获取数据",
+                "defaultSelectedAPointForLineChart---折线图默认选中一个点",
+                "configureBlinkMarkerChart---配置闪烁特效的 marker 图表",
+                "toggleDataLabelsOnTouch---点击后切换数据标签显示",
+                "autoCrosshairAndTooltip---自动十字准星与 tooltip",
+                "simpleZoomingChart---简单放大缩小图表",
+                "simpleZoomingChart2---简单放大缩小图表2",
             ],
             /*JSFunctionBeforeAndAfterRenderingVC*/
             [
@@ -166,20 +172,21 @@ extension AAOptionsWithJSListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 5:
-            /*JS Function For AAChartEventsVC2*/
-            let vc = JSFunctionForAAChartEventsVC2()
-            vc.selectedIndex = indexPath.row
-            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case 6:
             /*JS Function For AAOptions*/
             let vc = JSFunctionForAAOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
+            
+        case 6:
+            /*JS Function For AAChartEventsVC2*/
+            let vc = JSFunctionForAAChartEventsVC2()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+
             
         case 7:
             /*JSFunctionBeforeAndAfterRenderingVC*/
