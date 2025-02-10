@@ -781,43 +781,69 @@ extension AAChartView {
 extension AAChartView {
     
     func getJSONStringFromDictionary(dictionary: [String: Any]) -> String {
-        if !JSONSerialization.isValidJSONObject(dictionary) {
-            print("❌ String object is not valid Dictionary JSON String")
+        guard JSONSerialization.isValidJSONObject(dictionary) else {
+            print("❌ Dictionary object is not valid JSON")
             return ""
         }
         
-        let data: Data = try! JSONSerialization.data(withJSONObject: dictionary, options: [])
-        let JSONString = String(data: data, encoding: .utf8)
-        return JSONString! as String
+        do {
+            let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+            if let jsonString = String(data: data, encoding: .utf8) {
+                return jsonString
+            }
+        } catch {
+            print("❌ Error serializing dictionary to JSON: \(error.localizedDescription)")
+        }
+        return ""
     }
     
     func getJSONStringFromArray(array: [Any]) -> String {
-        if !JSONSerialization.isValidJSONObject(array) {
-            print("❌ String object is not valid Array JSON String")
+        guard JSONSerialization.isValidJSONObject(array) else {
+            print("❌ Array object is not valid JSON")
             return ""
         }
         
-        let data: Data = try! JSONSerialization.data(withJSONObject: array, options: [])
-        let JSONString = String(data: data, encoding: .utf8)
-        return JSONString! as String
+        do {
+            let data = try JSONSerialization.data(withJSONObject: array, options: [])
+            if let jsonString = String(data: data, encoding: .utf8) {
+                return jsonString
+            }
+        } catch {
+            print("❌ Error serializing array to JSON: \(error.localizedDescription)")
+        }
+        return ""
     }
     
     func getDictionaryFromJSONString(jsonString: String) -> [String: Any] {
-        let jsonData: Data = jsonString.data(using: .utf8)!
-        let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
-        if dict != nil {
-            return dict as! [String: Any]
+        guard let jsonData = jsonString.data(using: .utf8) else {
+            print("❌ Failed to convert string to data")
+            return [:]
         }
-        return [String: Any]()
+        
+        do {
+            if let dict = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [String: Any] {
+                return dict
+            }
+        } catch {
+            print("❌ Error parsing JSON string to dictionary: \(error.localizedDescription)")
+        }
+        return [:]
     }
     
     func getArrayFromJSONString(jsonString: String) -> [Any] {
-        let jsonData: Data = jsonString.data(using: .utf8)!
-        let array = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
-        if array != nil {
-            return array as! [Any]
+        guard let jsonData = jsonString.data(using: .utf8) else {
+            print("❌ Failed to convert string to data")
+            return []
         }
-        return [Any]()
+        
+        do {
+            if let array = try JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers) as? [Any] {
+                return array
+            }
+        } catch {
+            print("❌ Error parsing JSON string to array: \(error.localizedDescription)")
+        }
+        return []
     }
 }
 
