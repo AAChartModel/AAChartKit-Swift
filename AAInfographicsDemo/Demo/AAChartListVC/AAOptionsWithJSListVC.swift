@@ -88,7 +88,7 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "advancedTimeLineChart---高级时间轴绘图",
                 "configureBlinkMarkerChart---配置闪烁特效的 marker 图表",
                 "configureSpecialStyleMarkerOfSingleDataElementChartWithBlinkEffect---配置闪烁特效的 marker 图表2",
-                "configureScatterChartWithBlinkEffect---配置闪烁特效的散点图",
+                "addEventForLabelClick---为 X 轴文字标签添加点击事件",
                 "automaticallyHideTooltipAfterItIsShown---在浮动提示框显示后自动隐藏",
                 "dynamicHeightGridLineAreaChart---动态高度的网格线区域填充图",
                 "customizeYAxisPlotLinesLabelBeSpecialStyle---自定义 Y 轴轴线上面的标签文字特殊样式",
@@ -97,7 +97,7 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "configurePlotBackgroundClickEvent---配置绘图区的点击事件",
             ],
             /*JJSFunctionForAAChartEventsVC2*/
-            [ 
+            [
                 "disableHoverEventTooltipEffect---禁用折线图的 hover 事件的 tooltip 效果",
                 "addClickEventToXAxisLabelAndAccessData---给 X 轴标签添加点击事件并获取数据",
                 "defaultSelectedAPointForLineChart---折线图默认选中一个点",

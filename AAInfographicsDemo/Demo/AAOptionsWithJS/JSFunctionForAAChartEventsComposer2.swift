@@ -254,7 +254,7 @@ Highcharts.chart('container', {
     
     //https://github.com/AAChartModel/AAChartKit/issues/1531
     //https://stackoverflow.com/questions/42062016/in-high-chart-how-to-add-event-for-label-click
-    static func configureBlinkMarkerChart() -> AAOptions {
+    static func addEventForLabelClick() -> AAOptions {
         AAOptions()
             .chart(AAChart()
                 .type(.areaspline)
