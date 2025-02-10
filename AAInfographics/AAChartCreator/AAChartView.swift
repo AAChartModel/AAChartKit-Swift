@@ -304,13 +304,12 @@ public class AAChartView: WKWebView {
         
         if clickEventEnabled == true {
             aaOptions.clickEventEnabled = true
-            configurePlotOptionsSeriesPointEvents(aaOptions)
         }
         if touchEventEnabled == true {
             aaOptions.touchEventEnabled = true
-            if clickEventEnabled != true { //Avoid duplicate invocation of configuration method
-                configurePlotOptionsSeriesPointEvents(aaOptions)
-            }
+        }
+        if clickEventEnabled == true || touchEventEnabled == true {
+            configurePlotOptionsSeriesPointEvents(aaOptions)
         }
         
         #if DEBUG
