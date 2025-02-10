@@ -164,16 +164,16 @@ extension AAOptionsWithJSListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 4:
-            /*JS Function For AAChartEventsVC*/
-            let vc = JSFunctionForAAChartEventsComposer()
+            /*JS Function For AAOptions*/
+            let vc = JSFunctionForAAOptionsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         case 5:
-            /*JS Function For AAOptions*/
-            let vc = JSFunctionForAAOptionsVC()
+            /*JS Function For AAChartEventsVC*/
+            let vc = JSFunctionForAAChartEventsVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
