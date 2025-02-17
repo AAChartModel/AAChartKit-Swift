@@ -55,52 +55,32 @@ public extension AAStyle {
 
 public extension String {
     
+    private func aa_toPureString() -> String {
+        var pureStr = self
+        pureStr = pureStr.replacingOccurrences(of: "'", with: "\"")
+        pureStr = pureStr.replacingOccurrences(of: "\0", with: "")
+        pureStr = pureStr.replacingOccurrences(of: "\n", with: "")
+        pureStr = pureStr.replacingOccurrences(of: "\\", with: "\\\\")
+        pureStr = pureStr.replacingOccurrences(of: "\"", with: "\\\"")
+        pureStr = pureStr.replacingOccurrences(of: "\n", with: "\\n")
+        pureStr = pureStr.replacingOccurrences(of: "\r", with: "\\r")
+        pureStr = pureStr.replacingOccurrences(of: "\u{000C}", with: "\\f")
+        pureStr = pureStr.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
+        pureStr = pureStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
+        return pureStr
+    }
+    
     func aa_toPureJSString() -> String {
         //https://stackoverflow.com/questions/34334232/why-does-function-not-work-but-function-does-chrome-devtools-node
-        var pureJSStr = "(\(self))"
-        pureJSStr = pureJSStr.replacingOccurrences(of: "'", with: "\"")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\0", with: "")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\n", with: "")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\\", with: "\\\\")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\"", with: "\\\"")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\n", with: "\\n")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\r", with: "\\r")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{000C}", with: "\\f")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
-        return pureJSStr
+        return "(\(self.aa_toPureString()))"
     }
     
     func aa_toPureHTMLString() -> String {
-        //https://stackoverflow.com/questions/34334232/why-does-function-not-work-but-function-does-chrome-devtools-node
-        var pureJSStr = "\(self)"
-        pureJSStr = pureJSStr.replacingOccurrences(of: "'", with: "\"")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\0", with: "")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\n", with: "")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\\", with: "\\\\")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\"", with: "\\\"")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\n", with: "\\n")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\r", with: "\\r")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{000C}", with: "\\f")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
-        return pureJSStr
+        return self.aa_toPureString()
     }
     
     func aa_toPureCSSString() -> String {
-        //https://stackoverflow.com/questions/34334232/why-does-function-not-work-but-function-does-chrome-devtools-node
-        var pureJSStr = "\(self)"
-        pureJSStr = pureJSStr.replacingOccurrences(of: "'", with: "\"")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\0", with: "")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\n", with: "")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\\", with: "\\\\")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\"", with: "\\\"")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\n", with: "\\n")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\r", with: "\\r")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{000C}", with: "\\f")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{2028}", with: "\\u2028")
-        pureJSStr = pureJSStr.replacingOccurrences(of: "\u{2029}", with: "\\u2029")
-        return pureJSStr
+        return self.aa_toPureString()
     }
     
 }
