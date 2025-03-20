@@ -128,15 +128,16 @@ class AdvancedFeaturesListVC: AABaseListVC {
             ],
             /*Custom event callback*/
             [
-                "CustomTouchEndEventCallbackVC---自定义监听触摸结束事件回调",
+                "CustomTouchEndEventCallbackVC---自定义触摸结束事件回调",
                 
                 "CustomXAxisLabelsClickEventCallbackVC---自定义X轴文字点击事件回调",
                 
                 "CustomTooltipEventCallbackVC---自定义tooltip事件回调",
                 
-                "CustomTooltipIsHiddenEventCallbackVC---自定义 tooltip 点击事件",
+                "CustomTooltipIsHiddenEventCallbackVC---自定义 tooltip 点击事件回调",
                 
-                "CustomLargeDateSeriesClickEventCallbackVC---自定义大数据量的 series 点击事件",
+                "CustomLargeDateSeriesClickEventCallbackVC---自定义大数据量的 series 点击事件回调",
+                "CustomChartZoomEventEventCallbackVC---自定义 chart 缩放事件回调",
             ],
             /*Sort Algorithm Demo*/
             [
@@ -263,6 +264,10 @@ extension AdvancedFeaturesListVC {
             navigationController?.pushViewController(vc, animated: true)
         case 4:
             let vc = CustomLargeDateSeriesClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            let vc = CustomChartZoomEventEventCallbackVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
