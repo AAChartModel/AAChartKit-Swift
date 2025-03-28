@@ -51,8 +51,9 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "fixedTooltipPositionByCustomPositionerFunction---通过 Positioner 函数来实现一个位置固定的提示框",
                 "customPlotAreaOutsideComplicatedTooltipStyle---通过 Positioner 函数来实现绘图区外的复杂浮动提示框样式",
                 "makePieChartShow0Data---使饼图显示为 0 的数据",
-                "formatTimeInfoForTooltip---自定义浮动提示框的形状和阴影样式",
-                "formatTimeInfoForTooltip---浮动提示框 tooltip 时间信息格式化显示"
+                "customizeTooltipShapeAndShadowBeSpecialStyle---自定义浮动提示框的形状和阴影样式",
+                "formatTimeInfoForTooltip---浮动提示框 tooltip 时间信息格式化显示",
+                "doublePointsSplineChart---双点之间的曲线"
             ],
             /*JS Function For AAAXis Labels*/
             [
