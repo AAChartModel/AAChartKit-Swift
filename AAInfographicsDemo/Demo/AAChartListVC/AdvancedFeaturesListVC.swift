@@ -296,17 +296,17 @@ extension AdvancedFeaturesListVC {
             let vc = TripleChartsLinkedWorkVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-//        case 4:
-//            let vc = TripleChartsLinkedWorkVC2()
-//            vc.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(vc, animated: true)
-            // ChartListVC *vc = ChartListVC.new;
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:vc animated:YES];
         case 4:
-            let vc = ChartListVC()
+            let vc = TripleChartsLinkedWorkVC2()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
+//             ChartListVC *vc = ChartListVC.new;
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        case 4:
+//            let vc = ChartListVC()
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
         default: break
         }
     }

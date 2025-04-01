@@ -9,7 +9,474 @@
 
 import AAInfographics
 
+extension Dictionary where Key == Int, Value == Bool {
+    func toStringKeyed() -> [String: Bool] {
+        return Dictionary<String, Bool>(uniqueKeysWithValues: self.map { (String($0.key), $0.value) })
+    }
+}
+
+// Custom JavaScript for conditional rounding
+let customJS = #"""
+(function(H) {
+    if (!H || !H.seriesTypes.columnrange) {
+        console.error("Highcharts and highcharts-more.js (for columnrange) must be loaded before this plugin.");
+        return;
+    }
+
+    var rel = H.relativeLength;
+
+    // --- Configuration ---
+    // Minimum height (in pixels) required to draw the bottom corners nicely.
+    // Adjust this value based on your desired borderRadius.
+    // Good starting point: slightly more than 2 * desired bottom radius.
+    var MIN_HEIGHT_FOR_BOTTOM_ROUNDING = 15; // e.g., if radius is 6, maybe 14 or 15px.
+    // --- End Configuration ---
+
+
+    H.wrap(H.seriesTypes.columnrange.prototype, 'translate', function(proceed) {
+        proceed.call(this);
+
+        var series = this,
+            options = series.options,
+            chartOptions = series.chart.options,
+            categoryHasBoth = (chartOptions.customData && chartOptions.customData.categoryHasBoth) || {};
+
+        var base_TL = options.borderRadiusTopLeft || 0,
+            base_TR = options.borderRadiusTopRight || 0,
+            base_BR = options.borderRadiusBottomRight || 0,
+            base_BL = options.borderRadiusBottomLeft || 0;
+
+        // Check if bottom rounding is configured *at all* for this series
+        var potentiallyNeedsBottomRounding = base_BR > 0 || base_BL > 0;
+
+        if (base_TL || base_TR || base_BR || base_BL) {
+
+            series.points.forEach(function(point) {
+                // Ensure shapeArgs exists and point is visible
+                if (!point.shapeArgs || point.isNull || !point.visible) {
+                    return;
+                }
+
+                var shapeArgs = point.shapeArgs;
+                var w = shapeArgs.width;
+                var h = shapeArgs.height;
+                var x = shapeArgs.x;
+                var y = shapeArgs.y;
+
+                var hasBothColors = categoryHasBoth[point.x] === true;
+                var isOrangeSeries = series.name === '低于 25'; // Assuming this name identifies the bottom series
+
+                // --- Determine if bottom rounding WILL be applied to THIS point ---
+                var applyBottomRounding = false;
+                if (isOrangeSeries && potentiallyNeedsBottomRounding) {
+                    // Apply if orange series AND (it's standalone OR it's overlapping)
+                    // Since orange is always the bottom part when overlapping, it always gets bottom rounding if configured.
+                    applyBottomRounding = true;
+                } else if (!isOrangeSeries && !hasBothColors && potentiallyNeedsBottomRounding) {
+                    // Apply if it's the *other* series (red), it's STANDALONE, and has bottom radius configured
+                    applyBottomRounding = true;
+                }
+                 // --- If it's the Red series AND overlapping, bottom rounding is explicitly turned OFF later ---
+
+
+                // --- Minimum Height Adjustment (Visual Fix) ---
+                // Apply ONLY to the series needing bottom rounding, if it's too short
+                if (applyBottomRounding && h < MIN_HEIGHT_FOR_BOTTOM_ROUNDING) {
+                    var heightToAdd = MIN_HEIGHT_FOR_BOTTOM_ROUNDING - h;
+                    // Store original values if needed elsewhere (though tooltip uses original data)
+                    point.originalShapeArgs = H.extend({}, shapeArgs);
+
+                    // Adjust visually: move top edge up, increase height
+                    shapeArgs.y = y - heightToAdd;
+                    shapeArgs.height = MIN_HEIGHT_FOR_BOTTOM_ROUNDING;
+
+                    // Update local variables for path calculation
+                    y = shapeArgs.y;
+                    h = shapeArgs.height;
+                    // console.log(`Adjusted height for point x=${point.x}, new y=${y}, new h=${h}`); // For debugging
+                }
+                // --- End Minimum Height Adjustment ---
+
+
+                // --- Calculate Radii ---
+                var R_TL = rel(base_TL, w);
+                var R_TR = rel(base_TR, w);
+                var R_BR = rel(base_BR, w);
+                var R_BL = rel(base_BL, w);
+
+                // --- Conditional Override for Overlapping Bars ---
+                if (hasBothColors) {
+                    if (isOrangeSeries) { // Orange Part (Bottom)
+                        R_TL = 0;
+                        R_TR = 0;
+                        // Keep R_BL, R_BR as calculated (respecting min height adjustment)
+                    } else { // Red Part (Top)
+                        R_BL = 0;
+                        R_BR = 0;
+                         // Keep R_TL, R_TR as calculated
+                         applyBottomRounding = false; // Explicitly mark that red top part doesn't get bottom rounding here
+                    }
+                }
+                // --- End Conditional Override ---
+
+                // Prevent overly large radii (This now uses the potentially adjusted height 'h')
+                var maxR = Math.min(w, h) / 2;
+                R_TL = Math.min(R_TL, maxR);
+                R_TR = Math.min(R_TR, maxR);
+                // Only cap bottom radius if bottom rounding is actually being applied to this specific segment
+                if (applyBottomRounding) {
+                     R_BR = Math.min(R_BR, maxR);
+                     R_BL = Math.min(R_BL, maxR);
+                } else {
+                    // If bottom rounding isn't applied (e.g., red bar on top), don't let its base config force a large radius there
+                    R_BR = 0;
+                    R_BL = 0;
+                }
+
+
+                // Apply the path only if any final radius is > 0
+                if (R_TL || R_TR || R_BR || R_BL) {
+                    point.dlBox = point.shapeArgs; // Keep using adjusted shapeArgs for data label pos
+                    point.shapeType = 'path';
+                    point.shapeArgs = { // Use adjusted x, y, w, h
+                        d: [
+                            'M', x + R_TL, y,
+                            'L', x + w - R_TR, y,
+                            'C', x + w - R_TR / 2, y, x + w, y + R_TR / 2, x + w, y + R_TR,
+                            'L', x + w, y + h - R_BR,
+                            'C', x + w, y + h - R_BR / 2, x + w - R_BR / 2, y + h, x + w - R_BR, y + h,
+                            'L', x + R_BL, y + h,
+                            'C', x + R_BL / 2, y + h, x, y + h - R_BL / 2, x, y + h - R_BL,
+                            'L', x, y + R_TL,
+                            'C', x, y + R_TL / 2, x + R_TL / 2, y, x + R_TL, y,
+                            'Z'
+                        ]
+                    };
+                } else {
+                    // Revert to rect if no rounding is needed after adjustments
+                    if (point.shapeType === 'path') {
+                         point.shapeType = 'rect';
+                         // Use adjusted shapeArgs if min height was applied, otherwise original
+                         point.shapeArgs = point.originalShapeArgs || shapeArgs;
+                    }
+                    // Ensure dlBox matches final shape
+                    point.dlBox = point.shapeArgs;
+                }
+            });
+        }
+    });
+}(Highcharts));
+"""#
+
 class JSFunctionBeforeAndAfterRenderingComposer3 {
+    
+
+   static func createHRVChartOptions() -> AAOptions {
+       // --- Data Preparation ---
+       let originalData: [[Any]] = [
+           // ... (same data as before) ...
+           ["02-17", 5, 15], ["02-18", 8, 18], ["02-19", 6, 16], ["02-20", 10, 22], ["02-21", 7, 19], ["02-22", 5, 12], ["02-23", 9, 24], ["02-24", 11, 23],
+           ["03-02", 15, 35], ["03-03", 18, 40], ["03-04", 20, 45], ["03-05", 22, 50], ["03-06", 10, 30],
+           ["03-07", 26, 55], ["03-08", 30, 60], ["03-09", 28, 58], ["03-10", 35, 70], ["03-11", 40, 80],
+           ["03-12", 38, 75], ["03-13", 42, 85], ["03-14", 30, 65], ["03-15", 45, 90], ["03-16", 20, 50],
+           ["03-17", 2, 8],    // <<< Changed this one to be fully below 25
+           ["03-18", 30, 180]  // Fully above 25
+       ]
+
+       let threshold = 25
+       var orangeData: [[String: Any]] = []
+       var redData: [[String: Any]] = []
+       var categories: [String] = []
+       var categoryHasBoth: [Int: Bool] = [:] // <<< New lookup object
+
+       for item in originalData {
+           let x = item[0] as! String
+           let low = item[1] as! Int
+           let high = item[2] as! Int
+           
+           let currentIndex = categories.count
+           categories.append(x)
+           
+           let hasOrangePart = high > low && low < threshold
+           let hasRedPart = high > low && high >= threshold
+           
+           // Flag if this category index will have both colors
+           if hasOrangePart && hasRedPart {
+               categoryHasBoth[currentIndex] = true
+           }
+           
+           // Orange part (below threshold)
+           let orangeLow = low
+           let orangeHigh = min(high, threshold)
+           if orangeHigh > orangeLow {
+               orangeData.append([
+                   "x": currentIndex,
+                   "low": orangeLow,
+                   "high": orangeHigh,
+                   "originalLow": low,
+                   "originalHigh": high
+               ])
+           }
+           
+           // Red part (at or above threshold)
+           let redLow = max(low, threshold)
+           let redHigh = high
+           if redHigh > redLow {
+               redData.append([
+                   "x": currentIndex,
+                   "low": redLow,
+                   "high": redHigh,
+                   "originalLow": low,
+                   "originalHigh": high
+               ])
+           }
+       }
+       // --- End Data Preparation ---
+        
+        // --- Chart Options ---
+        let aaChart = AAChart()
+            .type(.columnrange)
+        
+        let aaTitle = AATitle()
+            .text("心率变异性 (条件圆角)")
+        
+        let aaXAxis = AAXAxis()
+            .categories(categories)
+            .plotLines([
+                AAPlotLinesElement()
+                    .color("#cccccc")
+                    .dashStyle(.dash)
+                    .value(7.5) // Index between 02-24 and 03-02
+                    .width(1)
+                    .zIndex(3)
+            ])
+        
+        let aaYAxis = AAYAxis()
+            .opposite(true)  // 将Y轴显示在右侧
+            .title(AATitle()
+                .text("毫秒"))
+            .max(200)
+        
+        let aaLegend = AALegend()
+            .enabled(false)
+        
+        let aaTooltip = AATooltip()
+            .formatter("""
+            function() {
+                const index = this.point.x;
+                let originalLow = null;
+                let originalHigh = null;
+                this.series.chart.series.forEach(s => {
+                    s.points.forEach(p => {
+                        if (p.x === index) {
+                            if (p.options.originalLow !== undefined) originalLow = p.options.originalLow;
+                            if (p.options.originalHigh !== undefined) originalHigh = p.options.originalHigh;
+                        }
+                    });
+                });
+                if (originalLow !== null && originalHigh !== null) {
+                    return `<b>${this.x}</b><br/>范围: ${originalLow} - ${originalHigh} 毫秒`;
+                } else {
+                    return `<b>${this.x}</b><br/>${this.series.name}: ${this.point.low} - ${this.point.high}`;
+                }
+            }
+            """)
+            .shared(true)
+        
+        let aaPlotOptions = AAPlotOptions()
+            .columnrange(AAColumnrange()
+                .grouping(false)
+                .borderWidth(0)
+                .pointPadding(0.2)
+                .groupPadding(0.1))
+            .series(AASeries()
+                .states(AAStates()
+                    .inactive(AAInactive()
+                        .enabled(false))))
+        
+        let orangeSeries = AASeriesElement()
+            .name("低于 25") // Orange series
+            .data(orangeData)
+            .color("#FFA07A")
+            .borderRadiusTopLeft(6)
+            .borderRadiusTopRight(6)
+            .borderRadiusBottomLeft(6)
+            .borderRadiusBottomRight(6)
+        
+        let redSeries = AASeriesElement()
+            .name("大于等于 25") // Red series
+            .data(redData)
+            .color("#FF6347")
+            .borderRadiusTopLeft(6)
+            .borderRadiusTopRight(6)
+            .borderRadiusBottomLeft(6)
+            .borderRadiusBottomRight(6)
+        
+        
+        
+        let aaOptions = AAOptions()
+            .beforeDrawChartJavaScript(customJS)
+            .chart(aaChart)
+            .title(aaTitle)
+            .xAxis(aaXAxis)
+            .yAxis(aaYAxis)
+            .legend(aaLegend)
+            .tooltip(aaTooltip)
+            .plotOptions(aaPlotOptions)
+            .series([orangeSeries, redSeries])
+        
+        // Add custom data and JavaScript
+//        aaOptions.customData = categoryHasBoth.toStringKeyed()
+//        aaOptions.customJS = customJS
+        
+        return aaOptions
+    }
+    
+    
+    
+
+  static  func configureChartOptions() -> AAOptions {
+        // --- Data Preparation ---
+        let originalData: [[Any]] = [
+            ["02-17", 5, 15], ["02-18", 8, 18], ["02-19", 6, 16], ["02-20", 10, 22], ["02-21", 7, 19],
+            ["02-22", 5, 12], ["02-23", 9, 24], ["02-24", 11, 23],
+            ["03-02", 15, 35], ["03-03", 18, 40], ["03-04", 20, 45], ["03-05", 22, 50], ["03-06", 10, 30],
+            ["03-07", 26, 55], ["03-08", 30, 60], ["03-09", 28, 58], ["03-10", 35, 70], ["03-11", 40, 80],
+            ["03-12", 38, 75], ["03-13", 42, 85], ["03-14", 30, 65], ["03-15", 45, 90], ["03-16", 20, 50],
+            ["03-17", 2, 8],    // Changed this one to be fully below 25
+            ["03-18", 30, 180]  // Fully above 25
+        ]
+
+        let threshold = 25
+        var orangeData: [[String: Any]] = []
+        var redData: [[String: Any]] = []
+        var categories: [String] = []
+        var categoryHasBoth: [Int: Bool] = [:]
+
+        originalData.enumerated().forEach { (index, element) in
+            let x = element[0] as! String
+            let low = element[1] as! Int
+            let high = element[2] as! Int
+
+            categories.append(x)
+
+            let hasOrangePart = high > low && low < threshold
+            let hasRedPart = high > low && high >= threshold
+
+            if hasOrangePart && hasRedPart {
+                categoryHasBoth[index] = true
+            }
+
+            // Orange part (below threshold)
+            let orangeLow = low
+            let orangeHigh = min(high, threshold)
+            if orangeHigh > orangeLow {
+                orangeData.append([
+                    "x": index,
+                    "low": orangeLow,
+                    "high": orangeHigh,
+                    "originalLow": low,
+                    "originalHigh": high
+                ])
+            }
+
+            // Red part (at or above threshold)
+            let redLow = max(low, threshold)
+            let redHigh = high
+            if redHigh > redLow {
+                redData.append([
+                    "x": index,
+                    "low": redLow,
+                    "high": redHigh,
+                    "originalLow": low,
+                    "originalHigh": high
+                ])
+            }
+        }
+
+        // --- Chart Configuration ---
+        let chartOptions = AAOptions()
+            .chart(AAChart()
+                .type(.columnrange))
+            .title(AATitle()
+                .text("心率变异性 (条件圆角)"))
+            .xAxis(AAXAxis()
+                .categories(categories)
+                .plotLines([AAPlotLinesElement()
+                    .color("#cccccc")
+                    .dashStyle(.dash)
+                    .value(7.5) // Index between 02-24 and 03-02
+                    .width(1)
+                    .zIndex(3)]))
+            .yAxis(AAYAxis()
+                .opposite(true) // Y-axis on the right
+                .title(AATitle()
+                    .text("毫秒"))
+                .max(200))
+            .legend(AALegend()
+                .enabled(false))
+            .tooltip(AATooltip()
+                .shared(true)
+                .formatter("""
+                    function () {
+                        const index = this.point.x;
+                        let originalLow = null;
+                        let originalHigh = null;
+                        this.series.chart.series.forEach(s => {
+                            s.points.forEach(p => {
+                                if (p.x === index) {
+                                    if (p.options.originalLow !== undefined) originalLow = p.options.originalLow;
+                                    if (p.options.originalHigh !== undefined) originalHigh = p.options.originalHigh;
+                                }
+                            });
+                        });
+                        if (originalLow !== null && originalHigh !== null) {
+                            return `<b>${this.x}</b><br/>范围: ${originalLow} - ${originalHigh} 毫秒`;
+                        } else {
+                            return `<b>${this.x}</b><br/>${this.series.name}: ${this.point.low} - ${this.point.high}`;
+                        }
+                    }
+                    """))
+            .plotOptions(AAPlotOptions()
+                .columnrange(AAColumnrange()
+                    .grouping(false)
+                    .borderWidth(0)
+                    .pointPadding(0.2)
+                    .groupPadding(0.1))
+                .series(AASeries()
+                    .states(AAStates()
+                        .inactive(AAInactive()
+                            .enabled(false)))))
+            .series([
+                AASeriesElement()
+                    .name("低于 25")
+                    .data(orangeData)
+                    .color("#FFA07A")
+                    .borderRadiusTopLeft(6)
+                    .borderRadiusTopRight(6)
+                    .borderRadiusBottomLeft(6)
+                    .borderRadiusBottomRight(6),
+                AASeriesElement()
+                    .name("大于等于 25")
+                    .data(redData)
+                    .color("#FF6347")
+                    .borderRadiusTopLeft(6)
+                    .borderRadiusTopRight(6)
+                    .borderRadiusBottomLeft(6)
+                    .borderRadiusBottomRight(6)
+            ])
+
+        // Custom data (categoryHasBoth) - AAChartKit doesn't directly support custom chart data,
+        // so you might need to handle this separately in your app logic if needed
+        // For now, it's omitted from AAOptions as it's not a standard Highcharts property
+        chartOptions.customData = [
+            "categoryHasBoth": categoryHasBoth.toStringKeyed()// Pass the lookup object
+     ]
+      chartOptions.beforeDrawChartJavaScript(customJS)
+
+        return chartOptions
+    }
+
     
     static func getJsonData(jsonFileName: String) -> Any? {
         guard let path = Bundle.main.path(forResource: jsonFileName, ofType: "json"),

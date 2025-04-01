@@ -57,6 +57,10 @@ public class AAOptions: AAObject {
     //afterDrawChartJavaScript
     public var afterDrawChartJavaScript: String?
     
+    
+    //customData
+    public var customData: [String: Any]?
+    
     @discardableResult
     public func chart(_ prop: AAChart?) -> AAOptions {
         chart = prop

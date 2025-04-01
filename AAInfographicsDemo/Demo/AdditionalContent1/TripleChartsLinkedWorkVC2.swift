@@ -27,7 +27,7 @@ class TripleChartsLinkedWorkVC2: UIViewController, AAChartViewDelegate {
         
         configureChartView()
         
-        let aaOptions = JSFunctionBeforeAndAfterRenderingComposer3.synchronizedChart()
+        let aaOptions = JSFunctionBeforeAndAfterRenderingComposer3.configureChartOptions()
         aaChartView.aa_drawChartWithChartOptions(aaOptions)
     }
     
