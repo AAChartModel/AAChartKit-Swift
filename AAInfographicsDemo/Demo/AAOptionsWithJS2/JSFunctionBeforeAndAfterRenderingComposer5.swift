@@ -21,13 +21,31 @@ class JSFunctionBeforeAndAfterRenderingComposer5 {
     static func columnrangeChartSinglePrismDifferentColorZoningEffect() -> AAOptions {
         // --- Data Preparation ---
         let originalData: [[Any]] = [
-            ["02-17", 5, 15], ["02-18", 8, 18], ["02-19", 6, 16], ["02-20", 10, 22], ["02-21", 7, 19],
-            ["02-22", 5, 12], ["02-23", 9, 24], ["02-24", 11, 23],
-            ["03-02", 15, 35], ["03-03", 18, 40], ["03-04", 20, 45], ["03-05", 22, 50], ["03-06", 10, 30],
-            ["03-07", 26, 55], ["03-08", 30, 60], ["03-09", 28, 58], ["03-10", 35, 70], ["03-11", 40, 80],
-            ["03-12", 38, 75], ["03-13", 42, 85], ["03-14", 30, 65], ["03-15", 45, 90], ["03-16", 20, 50],
-            ["03-17", 2, 8],    // Changed this one to be fully below 25
-            ["03-18", 30, 180]  // Fully above 25
+            ["02-17", 5,  15],
+            ["02-18", 8,  18],
+            ["02-19", 6,  16],
+            ["02-20", 10, 22],
+            ["02-21", 7,  19],
+            ["02-22", 5,  12],
+            ["02-23", 9,  24],
+            ["02-24", 11, 23],
+            ["03-02", 15, 35],
+            ["03-03", 18, 40],
+            ["03-04", 20, 45],
+            ["03-05", 22, 50],
+            ["03-06", 10, 30],
+            ["03-07", 26, 55],
+            ["03-08", 30, 60],
+            ["03-09", 28, 58],
+            ["03-10", 35, 70],
+            ["03-11", 40, 80],
+            ["03-12", 38, 75],
+            ["03-13", 42, 85],
+            ["03-14", 30, 65],
+            ["03-15", 45, 90],
+            ["03-16", 20, 50],
+            ["03-17", 2,   8], // Changed this one to be fully below 25
+            ["03-18", 30,180]  // Fully above 25
         ]
 
         let threshold = 25
@@ -313,7 +331,7 @@ class JSFunctionBeforeAndAfterRenderingComposer5 {
                 AASeriesElement()
                     .name("低于 25")
                     .data(orangeData)
-                    .color("#FFA07A")
+                    .color(AAColor.red)
                     .borderRadiusTopLeft(6)
                     .borderRadiusTopRight(6)
                     .borderRadiusBottomLeft(6)
@@ -321,7 +339,7 @@ class JSFunctionBeforeAndAfterRenderingComposer5 {
                 AASeriesElement()
                     .name("大于等于 25")
                     .data(redData)
-                    .color("#FF6347")
+                    .color("#1E90FF")// Dodger blue
                     .borderRadiusTopLeft(6)
                     .borderRadiusTopRight(6)
                     .borderRadiusBottomLeft(6)
@@ -331,9 +349,14 @@ class JSFunctionBeforeAndAfterRenderingComposer5 {
         // Custom data (categoryHasBoth) - AAChartKit doesn't directly support custom chart data,
         // so you might need to handle this separately in your app logic if needed
         // For now, it's omitted from AAOptions as it's not a standard Highcharts property
-        chartOptions.customData = [
-            "categoryHasBoth": categoryHasBoth.toStringKeyed()// Pass the lookup object
-     ]
+//        chartOptions.customData = [
+//            "categoryHasBoth": categoryHasBoth.toStringKeyed()// Pass the lookup object
+//     ]
+        
+        chartOptions.customData(
+            AACustomData()
+            .categoryHasBoth(categoryHasBoth.toStringKeyed())
+        )
 
         return chartOptions
     }
