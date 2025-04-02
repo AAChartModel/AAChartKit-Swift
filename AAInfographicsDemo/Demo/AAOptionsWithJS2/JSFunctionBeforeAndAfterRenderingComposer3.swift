@@ -23,147 +23,171 @@ let customJS = #"""
         return;
     }
 
-    var rel = H.relativeLength;
+    var rel = H.relativeLength || function(value, base) {
+        // Fall back implementation if relativeLength isn't available
+        return /%$/.test(value) ? base * parseFloat(value) / 100 : parseFloat(value);
+    };
 
-    // --- Configuration ---
-    // Minimum height (in pixels) required to draw the bottom corners nicely.
-    // Adjust this value based on your desired borderRadius.
-    // Good starting point: slightly more than 2 * desired bottom radius.
-    var MIN_HEIGHT_FOR_BOTTOM_ROUNDING = 15; // e.g., if radius is 6, maybe 14 or 15px.
-    // --- End Configuration ---
+    // Configuration
+    var MIN_HEIGHT_FOR_BOTTOM_ROUNDING = 15;
 
+    // Check if extend is available, otherwise use a simple implementation
+    var extend = H.extend || function(target, source) {
+        for (var prop in source) {
+            if (source.hasOwnProperty(prop)) {
+                target[prop] = source[prop];
+            }
+        }
+        return target;
+    };
 
     H.wrap(H.seriesTypes.columnrange.prototype, 'translate', function(proceed) {
-        proceed.call(this);
+        // First call original translate
+        proceed.apply(this, Array.prototype.slice.call(arguments, 1));
 
         var series = this,
-            options = series.options,
-            chartOptions = series.chart.options,
-            categoryHasBoth = (chartOptions.customData && chartOptions.customData.categoryHasBoth) || {};
+            options = series.options || {},
+            chart = series.chart,
+            chartOptions = chart.options || {},
+            customData = chartOptions.customData || {},
+            categoryHasBoth = customData.categoryHasBoth || {};
+
+        // Check if we have border radius options
+        var hasBorderRadius = !!(
+            options.borderRadiusTopLeft || 
+            options.borderRadiusTopRight || 
+            options.borderRadiusBottomRight || 
+            options.borderRadiusBottomLeft
+        );
+
+        if (!hasBorderRadius) {
+            return; // Early return if no border radius is specified
+        }
 
         var base_TL = options.borderRadiusTopLeft || 0,
             base_TR = options.borderRadiusTopRight || 0,
             base_BR = options.borderRadiusBottomRight || 0,
             base_BL = options.borderRadiusBottomLeft || 0;
 
-        // Check if bottom rounding is configured *at all* for this series
+        // Check if bottom rounding is configured at all
         var potentiallyNeedsBottomRounding = base_BR > 0 || base_BL > 0;
 
-        if (base_TL || base_TR || base_BR || base_BL) {
+        // Process each point
+        (series.points || []).forEach(function(point) {
+            // Skip if point has no shape or is not visible
+            if (!point || !point.shapeArgs || point.isNull || point.y === null || 
+                (typeof point.visible === 'boolean' && !point.visible)) {
+                return;
+            }
 
-            series.points.forEach(function(point) {
-                // Ensure shapeArgs exists and point is visible
-                if (!point.shapeArgs || point.isNull || !point.visible) {
-                    return;
-                }
+            var shapeArgs = point.shapeArgs;
+            if (!shapeArgs || typeof shapeArgs !== 'object') {
+                return; // Additional safety check
+            }
 
-                var shapeArgs = point.shapeArgs;
-                var w = shapeArgs.width;
-                var h = shapeArgs.height;
-                var x = shapeArgs.x;
-                var y = shapeArgs.y;
+            var w = shapeArgs.width || 0;
+            var h = shapeArgs.height || 0;
+            var x = shapeArgs.x || 0;
+            var y = shapeArgs.y || 0;
+            
+            // Skip processing if width or height is zero
+            if (w <= 0 || h <= 0) {
+                return;
+            }
 
-                var hasBothColors = categoryHasBoth[point.x] === true;
-                var isOrangeSeries = series.name === '低于 25'; // Assuming this name identifies the bottom series
+            var hasBothColors = categoryHasBoth[point.x] === true;
+            var isOrangeSeries = series.name === '低于 25';
 
-                // --- Determine if bottom rounding WILL be applied to THIS point ---
-                var applyBottomRounding = false;
-                if (isOrangeSeries && potentiallyNeedsBottomRounding) {
-                    // Apply if orange series AND (it's standalone OR it's overlapping)
-                    // Since orange is always the bottom part when overlapping, it always gets bottom rounding if configured.
-                    applyBottomRounding = true;
-                } else if (!isOrangeSeries && !hasBothColors && potentiallyNeedsBottomRounding) {
-                    // Apply if it's the *other* series (red), it's STANDALONE, and has bottom radius configured
-                    applyBottomRounding = true;
-                }
-                 // --- If it's the Red series AND overlapping, bottom rounding is explicitly turned OFF later ---
+            // Determine if bottom rounding should be applied
+            var applyBottomRounding = false;
+            if (isOrangeSeries && potentiallyNeedsBottomRounding) {
+                applyBottomRounding = true;
+            } else if (!isOrangeSeries && !hasBothColors && potentiallyNeedsBottomRounding) {
+                applyBottomRounding = true;
+            }
 
+            // Minimum height adjustment
+            if (applyBottomRounding && h < MIN_HEIGHT_FOR_BOTTOM_ROUNDING) {
+                var heightToAdd = MIN_HEIGHT_FOR_BOTTOM_ROUNDING - h;
+                // Store original values
+                point.originalShapeArgs = extend({}, shapeArgs);
 
-                // --- Minimum Height Adjustment (Visual Fix) ---
-                // Apply ONLY to the series needing bottom rounding, if it's too short
-                if (applyBottomRounding && h < MIN_HEIGHT_FOR_BOTTOM_ROUNDING) {
-                    var heightToAdd = MIN_HEIGHT_FOR_BOTTOM_ROUNDING - h;
-                    // Store original values if needed elsewhere (though tooltip uses original data)
-                    point.originalShapeArgs = H.extend({}, shapeArgs);
+                // Adjust visually
+                shapeArgs.y = y - heightToAdd;
+                shapeArgs.height = MIN_HEIGHT_FOR_BOTTOM_ROUNDING;
+                
+                // Update local variables for path calculation
+                y = shapeArgs.y;
+                h = shapeArgs.height;
+            }
 
-                    // Adjust visually: move top edge up, increase height
-                    shapeArgs.y = y - heightToAdd;
-                    shapeArgs.height = MIN_HEIGHT_FOR_BOTTOM_ROUNDING;
+            // Calculate radii safely
+            var R_TL = Math.max(0, rel(base_TL, w));
+            var R_TR = Math.max(0, rel(base_TR, w));
+            var R_BR = Math.max(0, rel(base_BR, w));
+            var R_BL = Math.max(0, rel(base_BL, w));
 
-                    // Update local variables for path calculation
-                    y = shapeArgs.y;
-                    h = shapeArgs.height;
-                    // console.log(`Adjusted height for point x=${point.x}, new y=${y}, new h=${h}`); // For debugging
-                }
-                // --- End Minimum Height Adjustment ---
-
-
-                // --- Calculate Radii ---
-                var R_TL = rel(base_TL, w);
-                var R_TR = rel(base_TR, w);
-                var R_BR = rel(base_BR, w);
-                var R_BL = rel(base_BL, w);
-
-                // --- Conditional Override for Overlapping Bars ---
-                if (hasBothColors) {
-                    if (isOrangeSeries) { // Orange Part (Bottom)
-                        R_TL = 0;
-                        R_TR = 0;
-                        // Keep R_BL, R_BR as calculated (respecting min height adjustment)
-                    } else { // Red Part (Top)
-                        R_BL = 0;
-                        R_BR = 0;
-                         // Keep R_TL, R_TR as calculated
-                         applyBottomRounding = false; // Explicitly mark that red top part doesn't get bottom rounding here
-                    }
-                }
-                // --- End Conditional Override ---
-
-                // Prevent overly large radii (This now uses the potentially adjusted height 'h')
-                var maxR = Math.min(w, h) / 2;
-                R_TL = Math.min(R_TL, maxR);
-                R_TR = Math.min(R_TR, maxR);
-                // Only cap bottom radius if bottom rounding is actually being applied to this specific segment
-                if (applyBottomRounding) {
-                     R_BR = Math.min(R_BR, maxR);
-                     R_BL = Math.min(R_BL, maxR);
+            // Handle overlapping bars
+            if (hasBothColors) {
+                if (isOrangeSeries) {
+                    R_TL = 0;
+                    R_TR = 0;
                 } else {
-                    // If bottom rounding isn't applied (e.g., red bar on top), don't let its base config force a large radius there
-                    R_BR = 0;
                     R_BL = 0;
+                    R_BR = 0;
+                    applyBottomRounding = false;
                 }
+            }
 
+            // Prevent overly large radii
+            var maxR = Math.min(w, h) / 2;
+            R_TL = Math.min(R_TL, maxR);
+            R_TR = Math.min(R_TR, maxR);
+            
+            if (applyBottomRounding) {
+                R_BR = Math.min(R_BR, maxR);
+                R_BL = Math.min(R_BL, maxR);
+            } else {
+                R_BR = 0;
+                R_BL = 0;
+            }
 
-                // Apply the path only if any final radius is > 0
-                if (R_TL || R_TR || R_BR || R_BL) {
-                    point.dlBox = point.shapeArgs; // Keep using adjusted shapeArgs for data label pos
-                    point.shapeType = 'path';
-                    point.shapeArgs = { // Use adjusted x, y, w, h
-                        d: [
-                            'M', x + R_TL, y,
-                            'L', x + w - R_TR, y,
-                            'C', x + w - R_TR / 2, y, x + w, y + R_TR / 2, x + w, y + R_TR,
-                            'L', x + w, y + h - R_BR,
-                            'C', x + w, y + h - R_BR / 2, x + w - R_BR / 2, y + h, x + w - R_BR, y + h,
-                            'L', x + R_BL, y + h,
-                            'C', x + R_BL / 2, y + h, x, y + h - R_BL / 2, x, y + h - R_BL,
-                            'L', x, y + R_TL,
-                            'C', x, y + R_TL / 2, x + R_TL / 2, y, x + R_TL, y,
-                            'Z'
-                        ]
-                    };
+            // Apply the path only if any radius is > 0
+            if (R_TL > 0 || R_TR > 0 || R_BR > 0 || R_BL > 0) {
+                // Ensure dlBox exists
+                if (!point.dlBox) {
+                    point.dlBox = extend({}, shapeArgs);
                 } else {
-                    // Revert to rect if no rounding is needed after adjustments
-                    if (point.shapeType === 'path') {
-                         point.shapeType = 'rect';
-                         // Use adjusted shapeArgs if min height was applied, otherwise original
-                         point.shapeArgs = point.originalShapeArgs || shapeArgs;
-                    }
-                    // Ensure dlBox matches final shape
-                    point.dlBox = point.shapeArgs;
+                    // Update existing dlBox
+                    extend(point.dlBox, shapeArgs);
                 }
-            });
-        }
+                
+                point.shapeType = 'path';
+                point.shapeArgs = {
+                    d: [
+                        'M', x + R_TL, y,
+                        'L', x + w - R_TR, y,
+                        'C', x + w - R_TR / 2, y, x + w, y + R_TR / 2, x + w, y + R_TR,
+                        'L', x + w, y + h - R_BR,
+                        'C', x + w, y + h - R_BR / 2, x + w - R_BR / 2, y + h, x + w - R_BR, y + h,
+                        'L', x + R_BL, y + h,
+                        'C', x + R_BL / 2, y + h, x, y + h - R_BL / 2, x, y + h - R_BL,
+                        'L', x, y + R_TL,
+                        'C', x, y + R_TL / 2, x + R_TL / 2, y, x + R_TL, y,
+                        'Z'
+                    ]
+                };
+            } else if (point.shapeType === 'path') {
+                // Revert to rect if no rounding is needed
+                point.shapeType = 'rect';
+                // Use original shape args if available
+                if (point.originalShapeArgs) {
+                    point.shapeArgs = extend({}, point.originalShapeArgs);
+                }
+                // Ensure dlBox matches final shape
+                point.dlBox = extend({}, point.shapeArgs);
+            }
+        });
     });
 }(Highcharts));
 """#
