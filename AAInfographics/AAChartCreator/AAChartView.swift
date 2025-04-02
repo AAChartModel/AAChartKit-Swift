@@ -89,8 +89,6 @@ public class AAChartView: WKWebView {
     
     private var clickEventEnabled: Bool?
     private var touchEventEnabled: Bool?
-//    NSString *_beforeDrawChartJavaScript;
-//    NSString *_afterDrawChartJavaScript;
     private var beforeDrawChartJavaScript: String?
     private var afterDrawChartJavaScript: String?
     
@@ -198,13 +196,10 @@ public class AAChartView: WKWebView {
    
     
     private func drawChart() {
-//        if (_beforeDrawChartJavaScript) {
-//            [self safeEvaluateJavaScriptString:_beforeDrawChartJavaScript];
-//        }
         if beforeDrawChartJavaScript != nil {
-#if DEBUG
+            #if DEBUG
             print("📝 \(beforeDrawChartJavaScript ?? "")")
-#endif
+            #endif
             safeEvaluateJavaScriptString(beforeDrawChartJavaScript!)
             beforeDrawChartJavaScript = nil
         }
@@ -213,16 +208,12 @@ public class AAChartView: WKWebView {
         let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)');"
         safeEvaluateJavaScriptString(jsStr)
         
-//if (self.afterDrawChartJavaScript) {
-//            [self safeEvaluateJavaScriptString:self.afterDrawChartJavaScript];
-//        }
-#if DEBUG
-            print("📝 \(afterDrawChartJavaScript ?? "")")
-#endif
         if afterDrawChartJavaScript != nil {
+            #if DEBUG
+            print("📝 \(afterDrawChartJavaScript ?? "")")
+            #endif
             safeEvaluateJavaScriptString(afterDrawChartJavaScript!)
             afterDrawChartJavaScript = nil
-
         }
     }
     
@@ -250,7 +241,7 @@ public class AAChartView: WKWebView {
                 userInfo = {
                     NSLocalizedDescription = "\(errorUserInfo["NSLocalizedDescription"] ?? "")";
                     WKJavaScriptExceptionColumnNumber = \(errorUserInfo["WKJavaScriptExceptionColumnNumber"] ?? "");
-                    WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"]  ?? "");
+                    WKJavaScriptExceptionLineNumber = \(errorUserInfo["WKJavaScriptExceptionLineNumber"] ?? "");
                     WKJavaScriptExceptionMessage = \(errorUserInfo["WKJavaScriptExceptionMessage"] ?? "");
                     WKJavaScriptExceptionSourceURL = \(errorUserInfo["WKJavaScriptExceptionSourceURL"] ?? "");
                 }
@@ -279,19 +270,10 @@ public class AAChartView: WKWebView {
     }
     
     private func configureOptionsJsonStringWithAAOptions(_ aaOptions: AAOptions) {
-//        if (aaOptions.beforeDrawChartJavaScript) {
-//            _beforeDrawChartJavaScript = aaOptions.beforeDrawChartJavaScript;
-//            aaOptions.beforeDrawChartJavaScript = nil;
-//        }
         if aaOptions.beforeDrawChartJavaScript != nil {
             beforeDrawChartJavaScript = aaOptions.beforeDrawChartJavaScript
             aaOptions.beforeDrawChartJavaScript = nil
         }
-        
-//        if (aaOptions.afterDrawChartJavaScript) {
-//            _afterDrawChartJavaScript = aaOptions.afterDrawChartJavaScript;
-//            aaOptions.afterDrawChartJavaScript = nil;
-//        }
         
         if aaOptions.afterDrawChartJavaScript != nil {
             afterDrawChartJavaScript = aaOptions.afterDrawChartJavaScript
