@@ -27,7 +27,8 @@ class TripleChartsLinkedWorkVC2: UIViewController, AAChartViewDelegate {
         
         configureChartView()
         
-        let aaOptions = JSFunctionBeforeAndAfterRenderingComposer3.configureChartOptions()
+//        let aaOptions = JSFunctionBeforeAndAfterRenderingComposer3.configureChartOptions()
+        let aaOptions = JSFunctionBeforeAndAfterRenderingComposer5.columnrangeChartSinglePrismDifferentColorZoningEffect()
         aaChartView.aa_drawChartWithChartOptions(aaOptions)
     }
     
