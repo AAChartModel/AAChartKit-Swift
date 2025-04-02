@@ -60,26 +60,22 @@ public extension AAObject {
     fileprivate func loopForMirrorChildren(_ mirrorChildren: Mirror.Children, _ representation: inout [String : Any]) {
         for case let (label?, value) in mirrorChildren {
             switch value {
-            case let value as AAObject: do {
+            case let value as AAObject:
                 representation[label] = value.toDic()
-            }
                 
-            case let value as [AAObject]: do {
-                var aaObjectArr = [Any]()
-                
+            case let value as [AAObject]:
                 let valueCount = value.count
-                for i in 0 ..< valueCount {
-                    let aaObject = value[i]
-                    let aaObjectDic = aaObject.toDic()
-                    aaObjectArr.append(aaObjectDic as Any)
+                var aaObjectArr = [Any]()
+                aaObjectArr.reserveCapacity(valueCount)
+                
+                for aaObject in value {
+                    aaObjectArr.append(aaObject.toDic())
                 }
                 
                 representation[label] = aaObjectArr
-            }
                 
-            case let value as NSObject: do {
+            case let value as NSObject:
                 representation[label] = value
-            }
                 
             default:
                 // Ignore any unserializable properties
@@ -89,16 +85,21 @@ public extension AAObject {
     }
     
     func toDic() -> [String: Any] {
-        var representation = [String: Any]()
+        // Create mirror once
+        let mirror = Mirror(reflecting: self)
+        
+        // Estimate capacity based on property count
+        let estimatedCapacity = mirror.children.underestimatedCount + 
+                              (mirror.superclassMirror?.children.underestimatedCount ?? 0) + 5
+        
+        var representation = [String: Any](minimumCapacity: estimatedCapacity)
         
         // 遍历当前类的反射子属性
-        let mirrorChildren = Mirror(reflecting: self).children
-        loopForMirrorChildren(mirrorChildren, &representation)
+        loopForMirrorChildren(mirror.children, &representation)
         
         // 遍历父类的反射子属性
-        let superMirrorChildren = Mirror(reflecting: self).superclassMirror?.children
-        if superMirrorChildren?.count ?? 0 > 0 {
-            loopForMirrorChildren(superMirrorChildren!, &representation)
+        if let superMirror = mirror.superclassMirror, !superMirror.children.isEmpty {
+            loopForMirrorChildren(superMirror.children, &representation)
         }
         
         // 如果实现了 SerializableWithComputedProperties 协议，获取计算属性
@@ -114,13 +115,11 @@ public extension AAObject {
     
     func toJSON() -> String {
         do {
-            let data = try JSONSerialization.data(withJSONObject: toDic() as Any, options: [])
-            guard let jsonStr = String(data: data, encoding: String.Encoding.utf8) else { return "" }
-            return jsonStr
+            let data = try JSONSerialization.data(withJSONObject: toDic(), options: [.fragmentsAllowed])
+            return String(data: data, encoding: .utf8) ?? ""
         } catch {
+            print("JSON serialization error: \(error)")
             return ""
         }
     }
-    
 }
-
