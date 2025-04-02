@@ -10,7 +10,6 @@
  * License: MIT License
  */
 (function(factory) {
-    // UMD header (same as before)
     if (typeof module === "object" && module.exports) {
         module.exports = factory;
     } else if (typeof define === 'function' && define.amd) {
@@ -29,33 +28,28 @@
 
     var rel = H.relativeLength;
 
-    // Helper function to calculate the rounded path
     function getRoundedPath(shapeArgs, options) {
         var w = shapeArgs.width,
             h = shapeArgs.height,
             x = shapeArgs.x,
             y = shapeArgs.y;
 
-        // Read effective border radius options
-        // (Combine series and point options if necessary)
         var rTL = rel(options.borderRadiusTopLeft || 0, w),
             rTR = rel(options.borderRadiusTopRight || 0, w),
             rBR = rel(options.borderRadiusBottomRight || 0, w),
             rBL = rel(options.borderRadiusBottomLeft || 0, w);
 
         if (!(rTL || rTR || rBR || rBL)) {
-            return null; // No rounding needed
+            return null;
         }
 
         var maxR = Math.min(w, h) / 2;
 
-        // Cap radii
         rTL = Math.min(rTL, maxR);
         rTR = Math.min(rTR, maxR);
         rBR = Math.min(rBR, maxR);
         rBL = Math.min(rBL, maxR);
 
-        // Define the path
         var path = [
             ['M', x + rTL, y],
             ['L', x + w - rTR, y],
@@ -71,48 +65,24 @@
         return path;
     }
 
-    // We might still need to wrap translate to ensure shapeArgs are calculated
-    // but we won't modify shapeType or shapeArgs.d here.
     H.wrap(H.seriesTypes.column.prototype, "translate", function(proceed) {
         proceed.call(this);
-        // Store options on point for easier access in drawPoints? Optional.
-        /*
-        var series = this;
-        series.points.forEach(function(point) {
-            if (point.shapeArgs) {
-                 // You could store calculated radii here if complex logic needed
-                 // point.customRadii = { ... };
-            }
-        });
-        */
     });
 
-    // Wrap drawPoints to modify the SVG element *after* it's drawn
     H.wrap(H.seriesTypes.column.prototype, "drawPoints", function(proceed) {
-        // Let Highcharts draw the points first (likely as standard rects)
         proceed.call(this);
 
         var series = this,
-            options = series.options; // Series-level options
+            options = series.options;
 
         series.points.forEach(function(point) {
-            // Ensure the point has been rendered and has shape arguments
             if (point.graphic && point.shapeArgs) {
-
-                // Calculate the desired rounded path
-                // Pass point.options if you want point-specific overrides
-                var path = getRoundedPath(point.shapeArgs, options); // Or pass point.options merged with options
-
+                var path = getRoundedPath(point.shapeArgs, options);
                 if (path) {
-                    // If a rounded path was generated, update the graphic's 'd' attribute
                     point.graphic.attr({
                         d: path
                     });
                 }
-                // If path is null (no rounding needed), do nothing,
-                // let the original rect/path drawn by Highcharts remain.
-                // If it was drawn as rect, setting 'd' will likely convert it?
-                // Highcharts' attr method is usually smart about this.
             }
         });
     });
