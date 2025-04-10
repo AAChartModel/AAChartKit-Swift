@@ -176,6 +176,10 @@ public class AAChartView: WKWebView {
     
     private var optionsJson: String?
     
+    #if DEBUG
+    public var shouldPrintOptionsJSON: Bool = true
+    #endif
+    
     // MARK: - Initialization
     override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
         super.init(frame: frame, configuration: configuration)
@@ -295,16 +299,18 @@ public class AAChartView: WKWebView {
         }
         
         #if DEBUG
-        let modelJsonDic = aaOptions.toDic()
-        let data = try? JSONSerialization.data(withJSONObject: modelJsonDic, options: .prettyPrinted)
-        if data != nil {
-            let prettyPrintedModelJson = String(data: data!, encoding: String.Encoding.utf8)
-            print("""
+        if shouldPrintOptionsJSON {
+            let modelJsonDic = aaOptions.toDic()
+            let data = try? JSONSerialization.data(withJSONObject: modelJsonDic, options: .prettyPrinted)
+            if data != nil {
+                let prettyPrintedModelJson = String(data: data!, encoding: String.Encoding.utf8)
+                print("""
                 
                 -----------🖨🖨🖨 console log AAOptions JSON information of AAChartView 🖨🖨🖨-----------:
                 \(prettyPrintedModelJson!)
                 
                 """)
+            }
         }
         #endif
         

@@ -50,6 +50,9 @@ class BasicChartVC: UIViewController {
         chartView.isScrollEnabled = false//Disable chart content scrolling
         chartView.isClearBackgroundColor = true
         chartView.delegate = self as AAChartViewDelegate
+#if DEBUG
+        chartView.shouldPrintOptionsJSON = false
+#endif
         view.addSubview(chartView)
         // Chart view constraints
         NSLayoutConstraint.activate([
