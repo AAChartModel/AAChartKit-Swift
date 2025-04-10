@@ -26,6 +26,7 @@ class AAOptionsListVC: AABaseListVC {
             "ScatterChartOptionsVC---通过 Options 绘制散点图",
             "PieChartOptionsVC---通过 Options 绘饼图",
             "ColumnChartOptionsVC---通过 Options 绘制条形图",
+            "OfficialChartSample---官方图表📊示例"
         ]
         
         chartTypeTitleArr = [
@@ -124,7 +125,10 @@ class AAOptionsListVC: AABaseListVC {
             [
                 "disableGroupingColumnChart---",
                 "disableGroupingBarChart---"
-            ]
+            ],
+            [
+                "columnChart---",
+            ],
         ]
         
         
@@ -197,6 +201,25 @@ extension AAOptionsListVC {
             vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
+            
+        case 7:
+            /*OfficialChartSampleVC*/
+            if #available(macCatalyst 14.0, *) {
+                if #available(iOS 14.0, *) {
+                    let vc = OfficialChartSampleVC()
+                    navigationController?.pushViewController(vc, animated: true)
+
+                } else {
+                    // Fallback on earlier versions
+                }
+
+            } else {
+                // Fallback on earlier versions
+            }
+//            vc.selectedIndex = indexPath.row
+//            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
             
         default:
             break

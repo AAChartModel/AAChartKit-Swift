@@ -14,11 +14,18 @@
 
             <style>
                 * {-webkit-user-select: none;
-                   user-select: none; }
+                    user-select: none;
+                }
+                
+                #container {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                }
             </style>
     </head>
     <body style="margin:0 0 0 0;">
-        <div id="container" style="width:100%; height: 100%;">
+        <div id="container">
         </div>
         <script>
             
@@ -82,7 +89,7 @@
                 name: selectedPoint.series.name,
                 y: selectedPoint.y,
                 x: selectedPoint.x,
-                category: selectedPoint.category,
+                category: selectedPoint.category ? selectedPoint.category : selectedPoint.name,
                 offset: {
                     plotX: selectedPoint.plotX,
                     plotY: selectedPoint.plotY

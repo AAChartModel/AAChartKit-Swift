@@ -46,6 +46,7 @@ class AAChartModelListVC: AABaseListVC {
             "Special Type Chart | 特殊类型图表",
             "Custom Style Chart| 一些自定义风格样式图表",
             "Mixed Chart | 混合图形",
+            "Mixed Chart2 | 混合图形2",
             "Pie Chart With Custom Style | 一些自定义风格样式饼图",
             "Column Chart With Custom Style | 一些自定义风格样式柱状图",
             "Bar Chart With Custom Style | 一些自定义风格样式条形图",
@@ -55,6 +56,7 @@ class AAChartModelListVC: AABaseListVC {
             "Areaspline Chart With Custom Style | 一些自定义风格样式曲线填充图",
             "Scatter Chart With Custom Style | 一些自定义风格样式散点图",
             "Bubble Chart With Custom Style | 一些自定义风格样式气泡图",
+            "全部显示所有样式的图表",
         ]
         
         chartTypeTitleArr = [
@@ -160,10 +162,16 @@ class AAChartModelListVC: AABaseListVC {
                 "polygonMixedScatterChart---多边形混合散点图",
                 "polarChartMixedChart---极地混合图",
                 "columnMixedScatterChart---柱状图混合散点图",
-                "pieMixedLineMixedColumnChart---扇形折线柱形混合图",
                 "aerasplinerangeMixedColumnrangeMixedLineChart---曲线面积范围混合柱形范围混合折线图",
                 "boxplotMixedScatterChartWithJitterChart---带有抖动的箱线混合散点图",
                 "multiLevelStopsArrGradientColorAreasplineMixedLineChart---多层次半透明渐变效果的曲线填充图混合折线图",
+            ],
+            /*Mixed Chart 2*/
+            [
+                "scatterPlotWithTrendLine---带有趋势线的散点图",
+                "scatterPlotWithTrendLine2---带有趋势线的散点图 2",
+                "pieMixedLineMixedColumnChart---扇形折线柱形混合图",
+                "pieMixedLineMixedColumnChart2---扇形折线柱形混合图2",
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -304,6 +312,12 @@ class AAChartModelListVC: AABaseListVC {
                 "negativeColorMixedBubbleChart",
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
+            [
+                "所有 AAChartModel 图表",
+                "所有 AAOptions 图表",
+                "所有 Official Sample AAOptions 图表",
+                "所有类型 Random Value Data 图表",
+            ],
 
         ]
         
@@ -352,10 +366,16 @@ class AAChartModelListVC: AABaseListVC {
                 "polygonMixedScatterChart",
                 "polarChartMixedChart",
                 "columnMixedScatterChart",
-                "pieMixedLineMixedColumnChart",
                 "aerasplinerangeMixedColumnrangeMixedLineChart",
                 "boxplotMixedScatterChartWithJitterChart",
                 "multiLevelStopsArrGradientColorAreasplineMixedLineChart",
+            ],
+            /*Mixed Chart 2*/
+            [
+                "scatterPlotWithTrendLine",
+                "scatterPlotWithTrendLine2",
+                "pieMixedLineMixedColumnChart",
+                "pieMixedLineMixedColumnChart2",
             ],
             /*Custom Style For Pie Chart*/
             [
@@ -498,6 +518,9 @@ class AAChartModelListVC: AABaseListVC {
                 "negativeColorMixedBubbleChart",
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
+            
+            [
+            ],
 
         ]
          
@@ -509,6 +532,31 @@ class AAChartModelListVC: AABaseListVC {
 
 @available(macCatalyst 13.1, *)
 extension AAChartModelListVC {
+    
+    fileprivate func pushToOfficalChartSampleVC(indexPathRow: Int) {
+        /*OfficialChartSampleVC*/
+        if #available(macCatalyst 14.0, *) {
+            if #available(iOS 14.0, *) {
+                let vc = OfficialChartSampleVC()
+                if indexPathRow == 0 {
+                    vc.optionsItems = AAOptionsItemComposer.aaChartModelItems()
+                } else if indexPathRow == 1 {
+                    vc.optionsItems = AAOptionsItemComposer.aaOptionsItems()
+                } else if indexPathRow == 2 {
+                    vc.optionsItems = AAOptionsItemComposer.officalChartSampleItems()
+                } else if indexPathRow == 3 {
+                    vc.optionsItems = AAOptionsItemComposer.randomValueDataItems()
+                }
+                navigationController?.pushViewController(vc, animated: true)
+                
+            } else {
+                // Fallback on earlier versions
+            }
+            
+        } else {
+            // Fallback on earlier versions
+        }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
@@ -542,50 +590,57 @@ extension AAChartModelListVC {
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-
+            
         case 4:
-            let vc = CustomStyleForPieChartVC()
+            let vc = MixedChartVC2()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
         case 5:
-            let vc = CustomStyleForColumnChartVC()
+            let vc = CustomStyleForPieChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
         case 6:
-            let vc = CustomStyleForBarChartVC()
+            let vc = CustomStyleForColumnChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
 
         case 7:
+            let vc = CustomStyleForBarChartVC()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+
+        case 8:
             let vc = CustomStyleForLineChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 8:
+        case 9:
             let vc = CustomStyleForSplineChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 9:
+        case 10:
             let vc = CustomStyleForAreaChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 10:
+        case 11:
             let vc = CustomStyleForAreasplineChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
@@ -593,19 +648,22 @@ extension AAChartModelListVC {
             navigationController?.pushViewController(vc, animated: true)
             
             
-        case 11:
+        case 12:
             let vc = CustomStyleForScatterChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
-        case 12:
+        case 13:
             let vc = CustomStyleForBubbleChartVC()
             vc.selectedIndex = indexPath.row
             vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
+            
+        case 14:
+            pushToOfficalChartSampleVC(indexPathRow: indexPath.row)
 
         default:
             break

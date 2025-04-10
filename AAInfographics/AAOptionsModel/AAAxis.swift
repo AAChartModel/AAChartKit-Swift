@@ -97,6 +97,7 @@ public class AAAxis: AAObject {
     public var tickPositions: [Any]? //Custom XOrY-axis coordinates
     public var height: Any? //number | string
     public var top: Any? //number | string
+    public var events: AAAxisEvents?
 
     @discardableResult
     public func allowDecimals(_ prop: Bool?) -> Self {
@@ -398,6 +399,12 @@ public class AAAxis: AAObject {
         return self
     }
     
+    @discardableResult
+    public func events(_ prop: AAAxisEvents?) -> Self {
+        events = prop
+        return self
+    }
+    
     public override init() {
         
     }
@@ -467,4 +474,76 @@ public class AADateTimeLabelFormats: AAObject {
     }
 }
 
+/**
+ events:{
+ afterBreaks:undefined
+ afterSetExtremes:undefined
+ pointBreak:undefined
+ pointBreakOut:undefined
+ pointInBreak:undefined
+ setExtremes:undefined
+ }
+ */
+public class AAAxisEvents: AAObject {
+    public var afterBreaks: String?
+    public var afterSetExtremes: String?
+    public var pointBreak: String?
+    public var pointBreakOut: String?
+    public var pointInBreak: String?
+    public var setExtremes: String?
+    
+    @discardableResult
+    public func afterBreaks(_ prop: String?) -> AAAxisEvents {
+        afterBreaks = prop?.aa_toPureJSString()
+        return self
+    }
+    
+    @discardableResult
+    public func afterSetExtremes(_ prop: String?) -> AAAxisEvents {
+        afterSetExtremes = prop?.aa_toPureJSString()
+        return self
+    }
+    
+    @discardableResult
+    public func pointBreak(_ prop: String?) -> AAAxisEvents {
+        pointBreak = prop?.aa_toPureJSString()
+        return self
+    }
+    
+    @discardableResult
+    public func pointBreakOut(_ prop: String?) -> AAAxisEvents {
+        pointBreakOut = prop?.aa_toPureJSString()
+        return self
+    }
+    
+    @discardableResult
+    public func pointInBreak(_ prop: String?) -> AAAxisEvents {
+        pointInBreak = prop?.aa_toPureJSString()
+        return self
+    }
+    
+    @discardableResult
+    public func setExtremes(_ prop: String?) -> AAAxisEvents {
+        setExtremes = prop?.aa_toPureJSStringqq()
+        return self
+    }
+    
+    public override init() {
+        
+    }
+}
 
+
+public extension String {
+    
+    func aa_toPureJSStringqq() -> String {
+        //https://stackoverflow.com/questions/34334232/why-does-function-not-work-but-function-does-chrome-devtools-node
+        var pureJSStr = "(\(self))"
+        pureJSStr = pureJSStr.replacingOccurrences(of: "'", with: "\"")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\0", with: "")
+        pureJSStr = pureJSStr.replacingOccurrences(of: "\n", with: "")
+  
+        return pureJSStr
+    }
+    
+}

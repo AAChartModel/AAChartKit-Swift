@@ -25,6 +25,7 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
         case 4: return makePieChartShow0Data() //使饼图显示为 0 的数据
         case 5: return customizeTooltipShapeAndShadowBeSpecialStyle() //自定义浮动提示框的形状和阴影样式
         case 6: return formatTimeInfoForTooltip() //浮动提示框 tooltip 时间信息格式化显示
+        case 7: return doublePointsSplineChart() //双点之间的曲线
 
         default:
             return nil
@@ -411,6 +412,85 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
                     }
                     """#)
         return aaOptions
+    }
+    
+    //https://github.com/AAChartModel/AAChartCore/issues/208
+    // 使用示例
+    func doublePointsSplineChart() -> AAOptions {
+        func createSplineDataWithCurve(point1: [Double], point2: [Double], curveOffset: Double) -> [[String: Any]] {
+            let x0 = point1[0]
+            let y0 = point1[1]
+            let x2 = point2[0]
+            let y2 = point2[1]
+            
+            let x1 = (x0 + x2) / 2
+            let y1 = (y0 + y2) / 2 + curveOffset
+            
+            return [
+                ["x": x0, "y": y0],
+                [
+                    "x": x1,
+                    "y": y1,
+                    "marker": [
+                        "enabled": false,
+                        "states": [
+                            "hover": [
+                                "enabled": false
+                            ]
+                        ]
+                    ],
+                    "dataLabels": [
+                        "enabled": false
+                    ],
+                    "isVirtual": true
+                ],
+                ["x": x2, "y": y2]
+            ]
+        }
+        
+        let dataPoint1: [Double] = [1, 5]
+        let dataPoint2: [Double] = [8, 15]
+        let splineData = createSplineDataWithCurve(point1: dataPoint1, point2: dataPoint2, curveOffset: 2)
+        
+        let options = AAOptions()
+            .chart(AAChart()
+                .type(.spline))
+            .title(AATitle()
+                .text("两点间的曲线 (中间点无交互)"))
+            .tooltip(AATooltip()
+                .useHTML(true)
+                .formatter(#"""
+                    function () {
+                            if (this.point) {
+                                if (this.point.isVirtual) {
+                                    return false; 
+                                }
+                                return `<span style="color:${this.series.color}">\u25CF</span> ${this.series.name}: ${this.y}`;
+                            }
+
+                            if (this.points) {
+                                let s = '';
+                                this.points.forEach(point => {
+                                    if (!point.isVirtual) {
+                                        s += `<span style="color:${point.series.color}">\u25CF</span> ${point.series.name}: ${point.y}<br/>`;
+                                    }
+                                });
+                                return s || false; 
+                            }
+
+                            return false;
+                        }
+                    """#))
+            .series([
+                AASeriesElement()
+                    .name("Curved Line")
+                    .data(splineData as [Any])
+                    .marker(AAMarker()
+                        .enabled(true)
+                        .radius(5))
+            ])
+        
+        return options
     }
 
 }

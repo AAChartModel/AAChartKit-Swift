@@ -52,6 +52,12 @@ public class AAOptions: AAObject {
     internal var clickEventEnabled: Bool? //Please DO NOT use this property
     internal var touchEventEnabled: Bool? //Please DO NOT use this property
     
+    //beforeDrawChartJavaScript
+    public var beforeDrawChartJavaScript: String?
+    //afterDrawChartJavaScript
+    public var afterDrawChartJavaScript: String?
+
+    
     @discardableResult
     public func chart(_ prop: AAChart?) -> AAOptions {
         chart = prop
@@ -142,6 +148,18 @@ public class AAOptions: AAObject {
         return self
     }
     
+    @discardableResult
+    public func beforeDrawChartJavaScript(_ prop: String?) -> AAOptions {
+        beforeDrawChartJavaScript = prop
+        return self
+    }
+    
+    @discardableResult
+    public func afterDrawChartJavaScript(_ prop: String?) -> AAOptions {
+        afterDrawChartJavaScript = prop
+        return self
+    }
+    
     public override init() {
         let aaCredits = AACredits()
         aaCredits.enabled = false
@@ -169,7 +187,9 @@ public class AAOptionsConstructor {
             .text(aaChartModel.title) //Title text content
         
         if aaChartModel.title != "" {
-            aaTitle.style(aaChartModel.titleStyle)
+            aaTitle
+                .align(aaChartModel.titleAlign) //Title horizontal alignment
+                .style(aaChartModel.titleStyle)
         }
         
         var aaSubtitle: AASubtitle?
@@ -200,6 +220,7 @@ public class AAOptionsConstructor {
         
         let aaLegend = AALegend()
             .enabled(aaChartModel.legendEnabled)
+            .itemStyle(aaChartModel.legendItemStyle)
         
         let aaOptions = AAOptions()
             .chart(aaChart)

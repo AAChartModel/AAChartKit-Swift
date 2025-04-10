@@ -38,16 +38,75 @@ import AAInfographics
 class BasicChartVC: UIViewController {
     public var chartType: AAChartType!
     public var step: Bool?
-    public var aaChartModel: AAChartModel!
-    public var aaChartView: AAChartView!
+    
+    public lazy var aaChartModel: AAChartModel = {
+        let chartModel = configureTheStyleForDifferentTypeChart(chartType: chartType)
+        return chartModel
+    }()
+
+    public lazy var aaChartView: AAChartView = {
+        let chartView = AAChartView()
+        chartView.translatesAutoresizingMaskIntoConstraints = false
+        chartView.isScrollEnabled = false//Disable chart content scrolling
+        chartView.isClearBackgroundColor = true
+        chartView.delegate = self as AAChartViewDelegate
+#if DEBUG
+        chartView.shouldPrintOptionsJSON = false
+#endif
+        view.addSubview(chartView)
+        // Chart view constraints
+        NSLayoutConstraint.activate([
+            chartView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            chartView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            chartView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            chartView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -220)
+        ])
+        return chartView
+    }()
+
+    // New UIStackView containers
+    private lazy var segmentedStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "SegmentedStackView"
+        view.addSubview(stackView)
+        // Constrain the segmentedStackView at the bottom of the view above the switch controls.
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -110)
+        ])
+        return stackView
+    }()
+
+    private lazy var switchStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "SwitchStackView"
+        view.addSubview(stackView)
+        // Constrain switchStackView at the bottom of the view.
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            stackView.heightAnchor.constraint(equalToConstant: 70)
+        ])
+        return stackView
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.barTintColor = kRGBColorFromHex(rgbValue: 0x22324c)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
+        super.viewWillDisappear(animated)
         navigationController?.navigationBar.barTintColor = .white
     }
     
@@ -57,63 +116,44 @@ class BasicChartVC: UIViewController {
         view.backgroundColor = kRGBColorFromHex(rgbValue: 0x22324c)
         title = chartType.map { $0.rawValue }
         
-        setUpTheSwitches()
-        setUpTheSegmentControls()
-        
         setUpAAChartView()
+        setUpTheStackedSegmentControls()
+        setUpTheStackedSwitches()
     }
     
     private func setUpAAChartView() {
-        aaChartView = AAChartView()
-        let chartViewWidth = view.frame.size.width
-        let chartViewHeight = view.frame.size.height - 220
-        aaChartView!.frame = CGRect(x: 0,
-                                    y: 60,
-                                    width: chartViewWidth,
-                                    height: chartViewHeight)
-        view.addSubview(aaChartView!)
-        aaChartView!.isScrollEnabled = false//Disable chart content scrolling
-        aaChartView!.isClearBackgroundColor = true
-        aaChartView!.delegate = self as AAChartViewDelegate
-        
-        aaChartModel = BasicChartComposer.configureBasicChartModel(chartType: chartType)
-    
-        aaChartModel = configureTheStyleForDifferentTypeChart(chartType: chartType)
-        
-        aaChartView!.aa_drawChartWithChartModel(aaChartModel!)
+        aaChartView.aa_drawChartWithChartModel(aaChartModel)
     }
     
     private func configureTheStyleForDifferentTypeChart(chartType: AAChartType) -> AAChartModel {
+        var aaChartModel = AAChartModel()
         if (chartType == .area && step == true)
             || (chartType == .line && step == true) {
-            return BasicChartComposer.configureStepAreaChartAndStepLineChartStyle(aaChartModel)
+            aaChartModel = BasicChartComposer.configureStepAreaChartAndStepLineChart()
         } else if chartType == .column
             || chartType == .bar {
-            return BasicChartComposer.configureColumnChartAndBarChartStyle(aaChartModel)
+            aaChartModel = BasicChartComposer.configureColumnChartAndBarChart()
         } else if chartType == .area
             || chartType == .areaspline {
-            return BasicChartComposer.configureAreaChartAndAreasplineChartStyle(aaChartModel)
+            aaChartModel = BasicChartComposer.configureAreaChartAndAreasplineChartStyle(chartType)
         } else if chartType == .line
             || chartType == .spline {
-            return BasicChartComposer.configureLineChartAndSplineChartStyle(aaChartModel)
+            aaChartModel = BasicChartComposer.configureLineChartAndSplineChartStyle(chartType)
         }
-       return AAChartModel()
+        aaChartModel.chartType = chartType
+        
+       return aaChartModel
     }
     
-   private func setUpTheSegmentControls() {
-        let segmentedNamesArr:[[String]]
-        let typeLabelNamesArr:[String]
+    // Replacing manual frames with vertical UIStackView for segmented controls and their labels.
+    private func setUpTheStackedSegmentControls() {
+        let segmentedNamesArr: [[String]]
+        let typeLabelNamesArr: [String]
         
-        if chartType == .column
-            || chartType == .bar {
+        if chartType == .column || chartType == .bar {
             segmentedNamesArr = [
-                ["No stacking",
-                 "Normal stacking",
-                 "Percent stacking"],
-                ["Square corners",
-                 "Soft corners",
-                 "Rounded corners",
-                ]
+                ["No stacking", "Normal stacking", "Percent stacking"],
+                ["Square corners", "Soft corners", "Rounded corners"]
             ]
             typeLabelNamesArr = [
                 "Stacking Type Selection",
@@ -121,49 +161,78 @@ class BasicChartVC: UIViewController {
             ]
         } else {
             segmentedNamesArr = [
-                ["No stacking",
-                 "Normal stacking",
-                 "Percent stacking"],
-                ["◉ ◉ ◉",
-                 "■ ■ ■",
-                 "◆ ◆ ◆",
-                 "▲ ▲ ▲",
-                 "▼ ▼ ▼"]
+                ["No stacking", "Normal stacking", "Percent stacking"],
+                ["◉ ◉ ◉", "■ ■ ■", "◆ ◆ ◆", "▲ ▲ ▲", "▼ ▼ ▼"]
             ]
             typeLabelNamesArr = [
                 "Stacking Type Selection",
-                "marker Symbols Type Selection"
+                "Marker Symbols Type Selection"
             ]
         }
-        
-        for  i in 0 ..< segmentedNamesArr.count {
-            let segment = UISegmentedControl.init(items: segmentedNamesArr[i] as [Any])
-            segment.frame = CGRect(x: 20,
-                                   y: 40.0 * CGFloat(i) + (view.frame.size.height - 145),
-                                   width: view.frame.size.width - 40,
-                                   height: 20)
-            segment.tag = i
-            segment.tintColor = .red
-            segment.selectedSegmentIndex = 0
-            segment.addTarget(self,
-                              action: #selector(segmentDidSelected(segmentedControl:)),
-                              for:.valueChanged)
-            view.addSubview(segment)
-            
+                
+        for i in 0..<segmentedNamesArr.count {
+            // Create a label for the control type.
             let subLabel = UILabel()
             subLabel.font = UIFont(name: "EuphemiaUCAS", size: 12.0)
-            subLabel.frame = CGRect(x: 20,
-                                    y: 40 * CGFloat(i) + (view.frame.size.height - 165),
-                                    width: view.frame.size.width - 40,
-                                    height: 20)
-            subLabel.text = typeLabelNamesArr[i] as String
-            subLabel.backgroundColor = .clear
+            subLabel.text = typeLabelNamesArr[i]
             subLabel.textColor = .lightGray
-            view.addSubview(subLabel)
+            
+            // Create UISegmentedControl for the given items.
+            let segment = UISegmentedControl(items: segmentedNamesArr[i])
+            segment.tintColor = .red
+            segment.selectedSegmentIndex = 0
+            segment.tag = i
+            segment.addTarget(self, action: #selector(segmentDidSelected(segmentedControl:)), for: .valueChanged)
+            
+            // Create a vertical stack for label and segment.
+            let singleStack = UIStackView(arrangedSubviews: [subLabel, segment])
+            singleStack.axis = .vertical
+            singleStack.spacing = 4
+            segmentedStackView.addArrangedSubview(singleStack)
         }
     }
     
-    @objc func segmentDidSelected(segmentedControl:UISegmentedControl) {
+    // Replacing manual frames with horizontal UIStackView for switches and their labels.
+    private func setUpTheStackedSwitches() {
+        var nameArr = [
+            "xReversed",
+            "yReversed",
+            "xInverted",
+            "Polarization",
+            "DataShow"
+        ]
+        if chartType != .column && chartType != .bar {
+            nameArr.append("HideMarker")
+        }
+        
+        view.addSubview(switchStackView)
+        
+        for i in 0..<nameArr.count {
+            // Create a switch.
+            let uiSwitch = UISwitch()
+            uiSwitch.isOn = false
+            uiSwitch.tag = i
+            uiSwitch.onTintColor = .red
+            uiSwitch.addTarget(self,
+                               action: #selector(switchDidChange(switchView:)),
+                               for: .valueChanged)
+            
+            // Create label.
+            let subLabel = UILabel()
+            subLabel.font = UIFont(name: "EuphemiaUCAS", size: nameArr.count == 5 ? 10.0 : 9.0)
+            subLabel.text = nameArr[i]
+            subLabel.textColor = .lightGray
+            subLabel.textAlignment = .left
+            
+            // Create a vertical stack for switch and label.
+            let controlStack = UIStackView(arrangedSubviews: [uiSwitch, subLabel])
+            controlStack.axis = .vertical
+            controlStack.spacing = 4
+            switchStackView.addArrangedSubview(controlStack)
+        }
+    }
+    
+    @objc func segmentDidSelected(segmentedControl: UISegmentedControl) {
         let selectedSegmentIndex = segmentedControl.selectedSegmentIndex
         
         switch segmentedControl.tag {
@@ -173,16 +242,18 @@ class BasicChartVC: UIViewController {
                 .normal,
                 .percent
             ]
-            aaChartModel!.stacking(stackingArr[selectedSegmentIndex])
+            aaChartModel.stacking(stackingArr[selectedSegmentIndex])
             
         case 1:
             if chartType == .column || chartType == .bar {
                 let borderRadiusArr = [1, 10, "50%"] as [Any]
                 let borderRadius = borderRadiusArr[selectedSegmentIndex]
                 if borderRadius is Int {
-                    aaChartModel!.borderRadius(borderRadius as! Float)
+                    if let borderRadius = borderRadius as? Int {
+                        aaChartModel.borderRadius(Float(borderRadius))
+                    }
                 } else {
-                    aaChartModel!.borderRadius(borderRadius as! String)
+                    aaChartModel.borderRadius(borderRadius as! String)
                 }
             } else {
                 let symbolArr = [
@@ -192,79 +263,34 @@ class BasicChartVC: UIViewController {
                     .triangle,
                     .triangleDown
                 ]
-                aaChartModel!.markerSymbol(symbolArr[selectedSegmentIndex])
+                aaChartModel.markerSymbol(symbolArr[selectedSegmentIndex])
             }
             
         default: break
         }
-        aaChartView!.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
+        aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
     }
     
-    private func setUpTheSwitches() {
-        var nameArr = [
-            "xReversed",
-            "yReversed",
-            "xInverted",
-            "Polarization",
-            "DataShow"
-        ]
-        let switchWidth: CGFloat
-        
-        if chartType == .column || chartType == .bar {
-            switchWidth = (view.frame.size.width - 40) / 5
-        } else {
-            nameArr.append("HideMarker")
-            switchWidth = (view.frame.size.width - 40) / 6
-        }
-        
-        for  i in 0 ..< nameArr.count {
-            let uiSwitch = UISwitch()
-            uiSwitch.frame = CGRect(x: switchWidth * CGFloat(i) + 20,
-                                    y: view.frame.size.height - 70,
-                                    width: switchWidth,
-                                    height: 20)
-            uiSwitch.isOn = false
-            uiSwitch.tag = i
-            uiSwitch.onTintColor = .red
-            uiSwitch.addTarget(self,
-                               action: #selector(switchDidChange(switchView:)),
-                               for: .valueChanged)
-            view.addSubview(uiSwitch)
-            
-            let subLabel = UILabel()
-            subLabel.font = UIFont(name: "EuphemiaUCAS", size: nameArr.count == 5 ? 10.0 : 9.0)
-            subLabel.frame = CGRect(x: switchWidth * CGFloat(i) + 20,
-                                    y: view.frame.size.height - 45,
-                                    width: switchWidth,
-                                    height: 35)
-            subLabel.text = nameArr[i] as String
-            subLabel.backgroundColor = .clear
-            subLabel.textColor = .lightGray
-            view.addSubview(subLabel)
-        }
-    }
-    
-    @objc func switchDidChange(switchView:UISwitch) {
+    @objc func switchDidChange(switchView: UISwitch) {
         let isOn = switchView.isOn
         
         switch switchView.tag {
-        case 0: aaChartModel!.xAxisReversed(isOn)
-        case 1: aaChartModel!.yAxisReversed(isOn)
-        case 2: aaChartModel!.inverted(isOn)
-        case 3: aaChartModel!.polar(isOn)
-        case 4: aaChartModel!.dataLabelsEnabled(isOn)
-        case 5: aaChartModel!.markerRadius(isOn ? 0 : 5)//Polyline connection point radius length.A value of 0 is equivalent to no polyline connection point.
-        default:
-            break
+        case 0: aaChartModel.xAxisReversed(isOn)
+        case 1: aaChartModel.yAxisReversed(isOn)
+        case 2: aaChartModel.inverted(isOn)
+        case 3: aaChartModel.polar(isOn)
+        case 4: aaChartModel.dataLabelsEnabled(isOn)
+        case 5: aaChartModel.markerRadius(isOn ? 0 : 5)
+        default: break
         }
         
-        aaChartView!.aa_refreshChartWholeContentWithChartModel(aaChartModel!)
+        aaChartView.aa_refreshChartWholeContentWithChartModel(aaChartModel)
     }
     
-   private func kRGBColorFromHex(rgbValue: Int) -> UIColor {
-       UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
-               green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
-               blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
+    private func kRGBColorFromHex(rgbValue: Int) -> UIColor {
+       UIColor(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+               green: CGFloat((rgbValue & 0xFF00) >> 8) / 255.0,
+               blue: CGFloat(rgbValue & 0xFF) / 255.0,
                alpha: 1.0)
     }
 }
@@ -278,7 +304,6 @@ extension BasicChartVC: AAChartViewDelegate {
     open func aaChartView(_ aaChartView: AAChartView, clickEventMessage: AAClickEventMessageModel) {
         print(
             """
-
             clicked point series element name: \(clickEventMessage.name ?? "")
             🖱🖱🖱WARNING!!!!!!!!!!!!!!!!!!!! Click Event Message !!!!!!!!!!!!!!!!!!!! WARNING🖱🖱🖱
             ------------------------------------------------------------------------------------------
@@ -291,8 +316,6 @@ extension BasicChartVC: AAChartViewDelegate {
                 y : \(clickEventMessage.y ?? 0.0)
             }
             ------------------------------------------------------------------------------------------
-
-            
             """
         )
     }
@@ -300,7 +323,6 @@ extension BasicChartVC: AAChartViewDelegate {
     open func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel) {
         print(
             """
-            
             selected point series element name: \(moveOverEventMessage.name ?? "")
             👌👌👌👌👌WARNING!!!!!!!!!!!!!!!!!! Touch Event Message !!!!!!!!!!!!!!!!! WARNING👌👌👌👌👌
             | ------------------------------------------------------------------------------------------
@@ -313,8 +335,6 @@ extension BasicChartVC: AAChartViewDelegate {
             |     y : \(moveOverEventMessage.y ?? 0.0)
             | }
             | ------------------------------------------------------------------------------------------
-            
-            
             """
         )
     }

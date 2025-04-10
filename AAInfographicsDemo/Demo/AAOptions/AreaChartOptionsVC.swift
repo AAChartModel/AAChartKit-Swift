@@ -19,15 +19,15 @@ class AreaChartOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return configureComplicatedCustomAreasplineChart()//复杂自定义曲线填充图 1
-        case 1: return configureComplicatedCustomAreasplineChart2()//复杂自定义曲线填充图 2
-        case 2: return configureComplicatedCustomAreasplineChart3()//复杂自定义曲线填充图 3
-        case 3: return configureComplicatedCustomAreaChart()//复杂自定义折线填充图 1
-        case 4: return configureComplicatedCustomAreaChart2()//复杂自定义折线填充图 2
-        case 5: return configureComplicatedCustomAreaChart3()//复杂自定义折线填充图 3
-        case 6: return configureComplicatedCustomStepAreaChart()//复杂自定义阶梯折线填充图 1
-        case 7: return configureComplicatedCustomStepAreaChart2()//复杂自定义阶梯折线填充图 2
-        case 8: return configureComplicatedCustomStepAreaChart3()//复杂自定义阶梯折线填充图 3
+        case 0: return AreaChartOptionsVC.configureComplicatedCustomAreasplineChart()//复杂自定义曲线填充图 1
+        case 1: return AreaChartOptionsVC.configureComplicatedCustomAreasplineChart2()//复杂自定义曲线填充图 2
+        case 2: return AreaChartOptionsVC.configureComplicatedCustomAreasplineChart3()//复杂自定义曲线填充图 3
+        case 3: return AreaChartOptionsVC.configureComplicatedCustomAreaChart()//复杂自定义折线填充图 1
+        case 4: return AreaChartOptionsVC.configureComplicatedCustomAreaChart2()//复杂自定义折线填充图 2
+        case 5: return AreaChartOptionsVC.configureComplicatedCustomAreaChart3()//复杂自定义折线填充图 3
+        case 6: return AreaChartOptionsVC.configureComplicatedCustomStepAreaChart()//复杂自定义阶梯折线填充图 1
+        case 7: return AreaChartOptionsVC.configureComplicatedCustomStepAreaChart2()//复杂自定义阶梯折线填充图 2
+        case 8: return AreaChartOptionsVC.configureComplicatedCustomStepAreaChart3()//复杂自定义阶梯折线填充图 3
 
         default:
             return AAOptions()
@@ -36,7 +36,7 @@ class AreaChartOptionsVC: AABaseChartVC {
     
     
     
-    private func configureComplicatedCustomAreasplineChart() -> AAOptions {
+    static func configureComplicatedCustomAreasplineChart() -> AAOptions {
         let aaChart = AAChart()
             .type(.areaspline)
             .backgroundColor(AAColor.black)
@@ -201,7 +201,7 @@ class AreaChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func configureComplicatedCustomAreasplineChart2() -> AAOptions {
+    static func configureComplicatedCustomAreasplineChart2() -> AAOptions {
         let aaOptions = configureComplicatedCustomAreasplineChart()
         
         aaOptions.chart!.backgroundColor = AAGradientColor.linearGradient(
@@ -331,7 +331,7 @@ class AreaChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func configureComplicatedCustomAreasplineChart3() -> AAOptions {
+    static func configureComplicatedCustomAreasplineChart3() -> AAOptions {
         let aaDataLabelsStyle = AAStyle()
             .fontWeight(.bold)
             .color(AAColor.white)
@@ -446,7 +446,7 @@ class AreaChartOptionsVC: AABaseChartVC {
     }
     
     
-    private func configureComplicatedCustomAreaChart() -> AAOptions {
+    static func configureComplicatedCustomAreaChart() -> AAOptions {
         let aaOptions = configureComplicatedCustomAreasplineChart()
         
         aaOptions.chart?.type(.area)
@@ -454,7 +454,7 @@ class AreaChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func configureComplicatedCustomAreaChart2() -> AAOptions {
+    static func configureComplicatedCustomAreaChart2() -> AAOptions {
         let aaOptions = configureComplicatedCustomAreasplineChart2()
         
         aaOptions.chart?.type(.area)
@@ -462,7 +462,7 @@ class AreaChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
     
-    private func configureComplicatedCustomAreaChart3() -> AAOptions {
+    static func configureComplicatedCustomAreaChart3() -> AAOptions {
         let aaOptions = configureComplicatedCustomAreasplineChart3()
         
         aaOptions.chart?.type(.area)
@@ -470,7 +470,7 @@ class AreaChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
 
-    private func configureComplicatedCustomStepAreaChart() -> AAOptions {
+    static func configureComplicatedCustomStepAreaChart() -> AAOptions {
         let aaOptions = configureComplicatedCustomAreaChart()
     
         aaOptions.series?.forEach({ seriesElement in
@@ -481,7 +481,7 @@ class AreaChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
 
-    private func configureComplicatedCustomStepAreaChart2() -> AAOptions {
+    static func configureComplicatedCustomStepAreaChart2() -> AAOptions {
         let aaOptions = configureComplicatedCustomAreaChart2()
 
         aaOptions.series?.forEach({ seriesElement in
@@ -492,7 +492,7 @@ class AreaChartOptionsVC: AABaseChartVC {
         return aaOptions
     }
 
-    private func configureComplicatedCustomStepAreaChart3() -> AAOptions {
+    static func configureComplicatedCustomStepAreaChart3() -> AAOptions {
         let aaOptions = configureComplicatedCustomAreaChart3()
 
         aaOptions.series?.forEach({ seriesElement in

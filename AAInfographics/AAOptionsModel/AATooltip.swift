@@ -33,6 +33,7 @@
 
 /// https://api.highcharts.com/highcharts/tooltip
 public class AATooltip: AAObject {
+    public var animation: Any?
     public var backgroundColor: Any?
     public var borderColor: String?
     public var borderRadius: Float?
@@ -58,6 +59,19 @@ public class AATooltip: AAObject {
     public var hideDelay: Int?
     public var dateTimeLabelFormats: AADateTimeLabelFormats?
     public var split: Bool?
+    public var outside: Bool?
+    
+    @discardableResult
+    public func animation(_ prop: AAAnimation?) -> AATooltip {
+        animation = prop
+        return self
+    }
+    
+    @discardableResult
+    public func animation(_ prop: Bool?) -> AATooltip {
+        animation = prop
+        return self
+    }
     
     @discardableResult
     public func backgroundColor(_ prop: Any?) -> AATooltip {
@@ -200,6 +214,12 @@ public class AATooltip: AAObject {
     @discardableResult
     public func split(_ prop: Bool?) -> AATooltip {
         split = prop
+        return self
+    }
+    
+    @discardableResult
+    public func outside(_ prop: Bool?) -> AATooltip {
+        outside = prop
         return self
     }
 

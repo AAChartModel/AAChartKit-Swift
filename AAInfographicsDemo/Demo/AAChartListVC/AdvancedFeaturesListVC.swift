@@ -30,10 +30,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
             "Chart Options Advanced Updating | 图表高级更新",
             "XIB AAChartView | 在 XIB 中创建 AAChartView",
             "Custom Chart Event Callback | 自定义交互事件回调",
-            "Custom X Axis Labels Click Event Callback | 自定义 X 轴文字点击事件回调",
-            "CustomTooltipIsHiddenEventCallbackVC | 自定义tooltip isHidden 事件回调",
-            "CustomTooltipIsHiddenEventCallbackVC | 自定义 tooltip 点击事件",
-            "CustomLargeDateSeriesClickEventCallbackVC | 自定义大数据量的 series 点击事件"
+            //排序算法演示
+            "Sort Algorithm Demo | 排序算法演示",
         ]
         
         chartTypeTitleArr = [
@@ -51,7 +49,10 @@ class AdvancedFeaturesListVC: AABaseListVC {
             /*Show double chart as the same time*/
             [
                 "在同一个页面同时添加多个 AAChartView",
-                " Double Charts Linkedwork 双表联动",
+                "Double Charts Linkedwork 双表联动(没有刷新动画)",
+                "Double Charts Linkedwork 双表联动(有刷新动画)",
+                "Quadra Charts Linkedwork---四表联动(多个 AAChartView)",
+                "Quadra Charts Linkedwork2---四表联动2(单个 AAChartView, 多个 div)",
             ],
             /*Animation types*/
             [  "Column Chart---柱形图",
@@ -127,24 +128,22 @@ class AdvancedFeaturesListVC: AABaseListVC {
             ],
             /*Custom event callback*/
             [
-                "CustomTouchEndEventCallbackVC---自定义监听触摸结束事件回调"
+                "CustomTouchEndEventCallbackVC---自定义触摸结束事件回调",
+                
+                "CustomXAxisLabelsClickEventCallbackVC---自定义X轴文字点击事件回调",
+                
+                "CustomTooltipEventCallbackVC---自定义tooltip事件回调",
+                
+                "CustomTooltipIsHiddenEventCallbackVC---自定义 tooltip 点击事件回调",
+                
+                "CustomLargeDateSeriesClickEventCallbackVC---自定义大数据量的 series 点击事件回调",
+                "CustomChartZoomEventEventCallbackVC---自定义 chart 缩放事件回调",
             ],
-            /*CustomXAxisLabelsClickEventCallbackVC*/
+            /*Sort Algorithm Demo*/
             [
-                "CustomXAxisLabelsClickEventCallbackVC---自定义X轴文字点击事件回调"
+                //冒泡🫧排序
+                "Bubble Sort---冒泡🫧排序"
             ],
-            /*CustomTooltipEventCallbackVC*/
-            [
-                "CustomTooltipEventCallbackVC---自定义tooltip事件回调"
-            ],
-            /*CustomTooltipIsHiddenEventCallbackVC*/
-            [
-                "CustomTooltipIsHiddenEventCallbackVC---自定义 tooltip 点击事件",
-            ],
-            [
-                "CustomLargeDateSeriesClickEventCallbackVC---自定义大数据量的 series 点击事件",
-            ],
-            
         ]
         
         chartTypeArr = [
@@ -244,6 +243,75 @@ class AdvancedFeaturesListVC: AABaseListVC {
 @available(macCatalyst 13.1, *)
 extension AdvancedFeaturesListVC {
     
+    fileprivate func customEventCallback(_ indexPath: IndexPath) {
+        /*Custom Event Callback*/
+        switch indexPath.row {
+        case 0:
+            let vc = CustomTouchEndEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = CustomXAxisLabelsClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = CustomTooltipEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = CustomTooltipClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            let vc = CustomLargeDateSeriesClickEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 5:
+            let vc = CustomChartZoomEventEventCallbackVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        default: break
+        }
+    }
+    
+    fileprivate func showManyChartsInSameView(_ indexPath: IndexPath) {
+        /*Show Many Charts In the Same View*/
+        switch indexPath.row {
+        case 0:
+            let vc = ShowManyChartViewVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = DoubleChartsLinkedWorkVC()
+            vc.isRefreshAnimation = false
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = DoubleChartsLinkedWorkVC()
+            vc.isRefreshAnimation = true
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = TripleChartsLinkedWorkVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            let vc = TripleChartsLinkedWorkVC2()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+//             ChartListVC *vc = ChartListVC.new;
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        case 4:
+//            let vc = ChartListVC()
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
+        default: break
+        }
+    }
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
             
@@ -260,16 +328,7 @@ extension AdvancedFeaturesListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 1:
-            /*Show Many Charts In the Same View*/
-            if indexPath.row == 0 {
-                let vc = ShowManyChartViewVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            } else {
-                let vc = DoubleChartsLinkedWorkVC()
-                vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
-            }
+            showManyChartsInSameView(indexPath)
             
         case 2:
             /*Chart Rendering Animation Types*/
@@ -345,36 +404,16 @@ extension AdvancedFeaturesListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 9:
-            /*Special Type Charts*/
+            /*Test AAChartView For Xib VC*/
             let vc = TestAAChartViewForXibVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-          
+            
         case 10:
-            /*CustomTouchEndEventCallbackVCs*/
-            let vc = CustomTouchEndEventCallbackVC()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-
+            customEventCallback(indexPath)
+            
         case 11:
-            /*CustomXAxisLabelsClickEventCallbackVC*/
-            let vc = CustomXAxisLabelsClickEventCallbackVC()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case 12:
-            /*CustomTooltipIsHiddenEventCallbackVC*/
-            let vc = CustomTooltipEventCallbackVC()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-            
-        case 13:
-            /*CustomTooltipClickEventCallbackVC*/
-            let vc = CustomTooltipClickEventCallbackVC()
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-        case 14:
-            let vc = CustomLargeDateSeriesClickEventCallbackVC()
+            let vc = SortAlgorithmVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             

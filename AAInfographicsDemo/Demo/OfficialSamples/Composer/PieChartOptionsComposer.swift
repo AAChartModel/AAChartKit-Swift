@@ -279,8 +279,9 @@ static func basicPieChart() -> AAOptions {
                             .name("其他")
                             .y(0.7)
                             .dataLabels(AADataLabels()
-                                .enabled(false)
+                                .enabled(false)// 数据比较少，没有空间显示数据标签，所以将其关闭
                             )
+                            .toDic()
                     ])
             ])
     }

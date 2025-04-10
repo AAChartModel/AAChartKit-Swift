@@ -48,7 +48,6 @@ class MixedChartVC: AABaseChartVC {
         case "polygonMixedScatterChart": return MixedChartComposer.polygonMixedScatterChart()
         case "polarChartMixedChart": return MixedChartComposer.polarChartMixedChart()
         case "columnMixedScatterChart": return MixedChartComposer.columnMixedScatterChart()
-        case "pieMixedLineMixedColumnChart": return MixedChartComposer.pieMixedLineMixedColumnChart()
         case "aerasplinerangeMixedColumnrangeMixedLineChart": return MixedChartComposer.areasplinerangeMixedColumnrangeMixedLineChart()
         case "boxplotMixedScatterChartWithJitterChart": return MixedChartComposer.boxplotMixedScatterChartWithJitter()
         case "multiLevelStopsArrGradientColorAreasplineMixedLineChart": return MixedChartComposer.multiLevelStopsArrGradientColorAreasplineMixedLineChart()

@@ -42,7 +42,7 @@ public class AALegend: AAObject {
     public var bubbleLegend: AABubbleLegend?
     public var itemMarginTop: Float? //The top margin of each item of the legend, in px. The default is: 0.
     public var itemMarginBottom: Float? //The bottom margin of each item of the legend, in px. The default is: 0.
-    public var itemStyle: AAItemStyle?
+    public var itemStyle: AAStyle?
     public var itemWidth: Float?
     public var symbolHeight: Float?
     public var symbolPadding: Float?
@@ -104,8 +104,16 @@ public class AALegend: AAObject {
         return self
     }
     
+    //添加方法废弃警告⚠️
+    @available(*, deprecated, message: "`public func itemStyle(_ prop: AAItemStyle?) -> AALegend {...}` has been deprecated,  please use `public func itemStyle(_ prop: AAStyle?) -> AALegend {...}` for legend item style instead")
     @discardableResult
     public func itemStyle(_ prop: AAItemStyle?) -> AALegend {
+//        itemStyle = prop
+        return self
+    }
+    
+    @discardableResult
+    public func itemStyle(_ prop: AAStyle?) -> AALegend {
         itemStyle = prop
         return self
     }
@@ -187,7 +195,13 @@ public class AALegend: AAObject {
     }
 }
 
+/**
+ //添加 AAItemStyle 废弃警告⚠️
+ DEPRECATED_MSG_ATTRIBUTE("Please use AAStyle instead")
+ */
 
+//添加 AAItemStyle 废弃警告⚠️
+@available(*, deprecated, message: "Please use AAStyle instead")
 public class AAItemStyle: AAObject {
     public var color: String?
     public var cursor: String?

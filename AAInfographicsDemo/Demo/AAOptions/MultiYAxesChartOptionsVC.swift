@@ -19,8 +19,8 @@ class MultiYAxesChartOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case 0: return doubleXAxesAndDoubleYAxesChart()
-        case 1: return disableGroupingBoxplotMixedScatterChart()
+        case 0: return MultiYAxesChartOptionsVC.doubleXAxesAndDoubleYAxesChart()
+        case 1: return MultiYAxesChartOptionsVC.disableGroupingBoxplotMixedScatterChart()
 
         default:
             return AAOptions()
@@ -95,7 +95,7 @@ class MultiYAxesChartOptionsVC: AABaseChartVC {
     //});
     
     //https://api.highcharts.com/highcharts/xAxis.reversedStacks
-    private func doubleXAxesAndDoubleYAxesChart() -> AAOptions {
+    static func doubleXAxesAndDoubleYAxesChart() -> AAOptions {
         AAOptions()
             .chart(AAChart()
                 .type(.column))
@@ -149,17 +149,35 @@ class MultiYAxesChartOptionsVC: AABaseChartVC {
                     .xAxis(1)
                     .yAxis(1)
                     .stack("third")
-                    .color(AAColor.red)
+                    .color(AAColor.yellow)
                     .data([29.9, 71.5, 106.4, 129.2, 144.0, 176.0,
                            135.6, 148.5, 216.4, 194.1, 95.6, 54.4]),
                 AASeriesElement()
                     .xAxis(1)
                     .yAxis(1)
                     .stack("fourth")
-                    .color(AAColor.green)
+                    .color(AAColor.blue)
                     .data([144.0, 176.0, 135.6, 148.5, 216.4, 194.1,
                            95.6, 54.4, 29.9, 71.5, 106.4, 129.2])
             ])
+    }
+    
+    static func doubleXAxesAndDoubleYAxesChart2() -> AAOptions {
+       let aaOptions = doubleXAxesAndDoubleYAxesChart()
+        aaOptions.chart?.type(.bar)
+        return aaOptions
+    }
+    
+    static func doubleXAxesAndDoubleYAxesChart3() -> AAOptions {
+       let aaOptions = doubleXAxesAndDoubleYAxesChart()
+        aaOptions.chart?.type(.areaspline)
+        return aaOptions
+    }
+    
+    static func doubleXAxesAndDoubleYAxesChart4() -> AAOptions {
+       let aaOptions = doubleXAxesAndDoubleYAxesChart()
+        aaOptions.chart?.type(.spline)
+        return aaOptions
     }
 
     //Highcharts.chart('container', {
@@ -281,7 +299,7 @@ class MultiYAxesChartOptionsVC: AABaseChartVC {
     //});
 
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/440
-    private func disableGroupingBoxplotMixedScatterChart() -> AAOptions {
+    static func disableGroupingBoxplotMixedScatterChart() -> AAOptions {
         AAOptions()
             .chart(AAChart()
                 .type(.boxplot))
