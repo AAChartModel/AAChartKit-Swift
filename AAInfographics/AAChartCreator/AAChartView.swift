@@ -320,8 +320,25 @@ public class AAChartView: WKWebView {
     
     
     internal func drawChart() {
-        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
+        if beforeDrawChartJavaScript != nil {
+#if DEBUG
+            print("📝 \(beforeDrawChartJavaScript ?? "")")
+#endif
+            safeEvaluateJavaScriptString(beforeDrawChartJavaScript!)
+            beforeDrawChartJavaScript = nil
+        }
+        
+        //Add `frame.size.height` to solve the problem that the height of the new version of Highcharts chart will not adapt to the container
+        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)');"
         safeEvaluateJavaScriptString(jsStr)
+        
+        if afterDrawChartJavaScript != nil {
+#if DEBUG
+            print("📝 \(afterDrawChartJavaScript ?? "")")
+#endif
+            safeEvaluateJavaScriptString(afterDrawChartJavaScript!)
+            afterDrawChartJavaScript = nil
+        }
     }
     
     internal func safeEvaluateJavaScriptString (_ jsString: String) {
