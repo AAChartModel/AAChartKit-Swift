@@ -82,6 +82,7 @@
 		844731F62D9D0CD90040CCCE /* AAOptions+CustomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844731F52D9D0CD90040CCCE /* AAOptions+CustomData.swift */; };
 		844736262DAF8B5E0040CCCE /* AAChartView+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844736252DAF8B5E0040CCCE /* AAChartView+API.swift */; };
 		8447362C2DAFAE140040CCCE /* AAChartViewPluginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447362B2DAFAE140040CCCE /* AAChartViewPluginProvider.swift */; };
+		844736312DAFCEF70040CCCE /* AARounded-Corners.js in Resources */ = {isa = PBXBuildFile; fileRef = 844736302DAFCEF70040CCCE /* AARounded-Corners.js */; };
 		844F11402B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */; };
 		844F11462B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */; };
 		844F11482B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F11472B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift */; };
@@ -317,6 +318,7 @@
 		844731F52D9D0CD90040CCCE /* AAOptions+CustomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AAOptions+CustomData.swift"; sourceTree = "<group>"; };
 		844736252DAF8B5E0040CCCE /* AAChartView+API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AAChartView+API.swift"; sourceTree = "<group>"; };
 		8447362B2DAFAE140040CCCE /* AAChartViewPluginProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChartViewPluginProvider.swift; sourceTree = "<group>"; };
+		844736302DAFCEF70040CCCE /* AARounded-Corners.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "AARounded-Corners.js"; sourceTree = "<group>"; };
 		844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC2.swift; sourceTree = "<group>"; };
 		844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomXAxisLabelsClickEventCallbackVC.swift; path = AAInfographicsDemo/Demo/BackUpContent/CustomXAxisLabelsClickEventCallbackVC.swift; sourceTree = SOURCE_ROOT; };
 		844F11472B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForLineChartComposer.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 		278C550F1EE9487F00770B97 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				8447362E2DAFCEAB0040CCCE /* AAPlugins */,
 				844F11412B63644000ADEB1C /* AAChartListVC */,
 				84086B1728E44FD0006BD30D /* AAChartModel */,
 				84086B1828E44FE8006BD30D /* AAOptions */,
@@ -644,6 +647,22 @@
 				84DC91182D328846002EDC1F /* sparklines.html */,
 			);
 			path = AAOptionsWithJS2;
+			sourceTree = "<group>";
+		};
+		8447362E2DAFCEAB0040CCCE /* AAPlugins */ = {
+			isa = PBXGroup;
+			children = (
+				8447362F2DAFCED50040CCCE /* AARoundedCorners */,
+			);
+			path = AAPlugins;
+			sourceTree = "<group>";
+		};
+		8447362F2DAFCED50040CCCE /* AARoundedCorners */ = {
+			isa = PBXGroup;
+			children = (
+				844736302DAFCEF70040CCCE /* AARounded-Corners.js */,
+			);
+			path = AARoundedCorners;
 			sourceTree = "<group>";
 		};
 		844F11412B63644000ADEB1C /* AAChartListVC */ = {
@@ -901,6 +920,7 @@
 				278C54B71EE9472300770B97 /* Main.storyboard in Resources */,
 				84DC911A2D328846002EDC1F /* sparklines.html in Resources */,
 				84526E252CF0210500EB2563 /* synchronizedChartActivityData.json in Resources */,
+				844736312DAFCEF70040CCCE /* AARounded-Corners.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
