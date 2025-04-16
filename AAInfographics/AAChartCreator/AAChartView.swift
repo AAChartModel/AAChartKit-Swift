@@ -318,7 +318,7 @@ public class AAChartView: WKWebView {
         loadNextScript(index: 0)
     }
     
-    internal func drawChart() {
+    private func drawChart() {
         if beforeDrawChartJavaScript != nil {
             debugLog("📝 \(beforeDrawChartJavaScript ?? "")")
             safeEvaluateJavaScriptString(beforeDrawChartJavaScript!)

@@ -104,7 +104,7 @@ extension AAChartView {
     /// - Parameter aaOptions: The instance object of AAOptions model
     public func aa_refreshChartWholeContentWithChartOptions(_ aaOptions: AAOptions) {
         configureOptionsJsonStringWithAAOptions(aaOptions)
-        drawChart()
+        loadAllPluginsAndDrawChart()
     }
 }
 

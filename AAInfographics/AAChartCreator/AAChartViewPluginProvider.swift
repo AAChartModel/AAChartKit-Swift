@@ -24,7 +24,11 @@ public class ProPluginProvider: AAChartViewPluginProvider {
     public init() {} // Public initializer
 
     // Mapping from chart type rawValue to script names (moved from AAChartView)
-    private static let chartTypeScriptMapping: [String: [String]] = [:
+    private static let chartTypeScriptMapping: [String: [String]] = [
+        AAChartType.funnel.rawValue          : ["AAFunnel"],
+        AAChartType.pyramid.rawValue         : ["AAFunnel"],
+
+                                                                        
 //        // --- Flow & Relationship Charts ---
 //        AAChartType.sankey.rawValue          : ["AASankey"],
 //        AAChartType.dependencywheel.rawValue : ["AASankey", "AADependency-Wheel"],
@@ -127,10 +131,12 @@ public class ProPluginProvider: AAChartViewPluginProvider {
         guard let path = BundlePathLoader()
             .path(forResource: scriptName,
                   ofType: "js",
-                  inDirectory: "AAJSFiles.bundle/AAModules")
+                  inDirectory: "AAJSFiles.bundle")
         else {
             #if DEBUG
             print("⚠️ Warning: Could not find path for script '\(scriptName).js'")
+            //断言
+            assert(false, "⚠️ Warning: Could not find path for script '\(scriptName).js'")
             #endif
             return nil
         }
