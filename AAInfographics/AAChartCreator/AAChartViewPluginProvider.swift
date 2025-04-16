@@ -27,48 +27,16 @@ public class ProPluginProvider: AAChartViewPluginProvider {
     private static let chartTypeScriptMapping: [String: [String]] = [
         AAChartType.funnel.rawValue          : ["AAFunnel"],
         AAChartType.pyramid.rawValue         : ["AAFunnel"],
-
-                                                                        
-//        // --- Flow & Relationship Charts ---
-//        AAChartType.sankey.rawValue          : ["AASankey"],
-//        AAChartType.dependencywheel.rawValue : ["AASankey", "AADependency-Wheel"],
-//        AAChartType.networkgraph.rawValue    : ["AANetworkgraph"],
-//        AAChartType.organization.rawValue    : ["AASankey", "AAOrganization"],
-//        AAChartType.arcdiagram.rawValue      : ["AASankey", "AAArc-Diagram"],
-//        AAChartType.venn.rawValue            : ["AAVenn"], // Can also be considered set theory
-//
-//        // --- Hierarchical Charts ---
-//        AAChartType.treemap.rawValue         : ["AATreemap"],
-//        AAChartType.sunburst.rawValue        : ["AASunburst"],
-//        AAChartType.flame.rawValue           : ["AAFlame"], // Often used for profiling/hierarchy
-//
-//        // --- Distribution & Comparison Charts ---
-//        AAChartType.variablepie.rawValue     : ["AAVariable-Pie"],
-//        AAChartType.variwide.rawValue        : ["AAVariwide"],
-//        AAChartType.dumbbell.rawValue        : ["AADumbbell"],
-//        AAChartType.lollipop.rawValue        : ["AADumbbell", "AALollipop"],
-//        AAChartType.histogram.rawValue       : ["AAHistogram-Bellcurve"],
-//        AAChartType.bellcurve.rawValue       : ["AAHistogram-Bellcurve"],
-//        AAChartType.bullet.rawValue          : ["AABullet"], // Can also be gauge/indicator
-//
-//        // --- Heatmap & Matrix Charts ---
-//        AAChartType.heatmap.rawValue         : ["AAHeatmap"],
-//        AAChartType.tilemap.rawValue         : ["AAHeatmap", "AATilemap"],
-//
-//        // --- Time, Range & Stream Charts ---
-//        AAChartType.streamgraph.rawValue     : ["AAStreamgraph"],
-//        AAChartType.xrange.rawValue          : ["AAXrange"],
-//        AAChartType.timeline.rawValue        : ["AATimeline"],
-//
-//        // --- Gauge & Indicator Charts ---
-//        AAChartType.solidgauge.rawValue      : ["AASolid-Gauge"],
-//        // AAChartType.bullet is listed under Distribution/Comparison but fits here too
-//
-//        // --- Specialized & Other Charts ---
-//        AAChartType.vector.rawValue          : ["AAVector"],
-//        AAChartType.item.rawValue            : ["AAItem-Series"], // Specific series type
-//        AAChartType.windbarb.rawValue        : ["AAWindbarb"], // Meteorological
-//        AAChartType.wordcloud.rawValue       : ["AAWordcloud"], // Text visualization
+        
+        AAChartType.bubble.rawValue          : ["AAHighcharts-More"],
+        AAChartType.arearange.rawValue       : ["AAHighcharts-More"],
+        AAChartType.areasplinerange.rawValue : ["AAHighcharts-More"],
+        AAChartType.columnrange.rawValue     : ["AAHighcharts-More"],
+        AAChartType.gauge.rawValue           : ["AAHighcharts-More"], // Note: solidgauge has its own module
+        AAChartType.boxplot.rawValue         : ["AAHighcharts-More"],
+        AAChartType.errorbar.rawValue        : ["AAHighcharts-More"],
+        AAChartType.waterfall.rawValue       : ["AAHighcharts-More"],
+        AAChartType.polygon.rawValue         : ["AAHighcharts-More"],
     ]
 
     public func getRequiredPluginPaths(for options: AAOptions) -> Set<String> {
@@ -109,11 +77,11 @@ public class ProPluginProvider: AAChartViewPluginProvider {
 
     // Helper to add scripts based on specific AAOptions properties
     private func addChartPluginScripts(for options: AAOptions, into requiredPaths: inout Set<String>) {
-//        if options.chart?.parallelCoordinates == true {
-//            if let scriptPath = generateScriptPathWithScriptName("AAParallel-coordinates") {
-//                requiredPaths.insert(scriptPath)
-//            }
-//        }
+        if options.chart?.polar == true {
+            if let scriptPath = generateScriptPathWithScriptName("AAHighcharts-More") {
+                requiredPaths.insert(scriptPath)
+            }
+        }
 //        if options.data != nil {
 //             if let scriptPath = generateScriptPathWithScriptName("AAData") {
 //                requiredPaths.insert(scriptPath)

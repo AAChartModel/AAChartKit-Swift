@@ -223,6 +223,8 @@ public class AAChartView: WKWebView {
                 print("ℹ️ No additional plugins needed for the current chart options.")
             } else {
                 print("ℹ️ All required plugins (count: \(totalRequiredPluginsSet.count)) already loaded.")
+                //打印 totalRequiredPluginsSet 的内容
+                print("ℹ️ All required plugins: \(totalRequiredPluginsSet)")
             }
 #endif
             drawChart()
