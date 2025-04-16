@@ -49,7 +49,7 @@ public class AAEventMessageModel: NSObject {
     public var category: String?
     public var offset: [String: Any]?
     public var index: Int?
-
+    
     required override init() {
         
     }
@@ -96,7 +96,7 @@ public class AAChartView: WKWebView {
     public weak var delegate: AAChartViewDelegate? {
         set {
             assert(optionsJson == nil, "You should set the delegate before drawing the chart") //To Make sure the clickEventEnabled and touchEventEnabled properties are working correctly
-
+            
             _delegate = newValue
             if newValue?.responds(to: #selector(AAChartViewDelegate.aaChartView(_:clickEventMessage:))) == true {
                 clickEventEnabled = true
@@ -112,20 +112,20 @@ public class AAChartView: WKWebView {
             _delegate
         }
     }
-  
+    
     // MARK: - Setter Method
-    #if os(iOS)
+#if os(iOS)
     public var isScrollEnabled: Bool? {
         willSet {
             scrollView.isScrollEnabled = newValue!
         }
     }
-    #endif
-
+#endif
+    
     
     public var isClearBackgroundColor: Bool? {
         willSet {
-            #if os(iOS)
+#if os(iOS)
             if newValue! == true {
                 backgroundColor = .clear
                 isOpaque = false
@@ -133,7 +133,7 @@ public class AAChartView: WKWebView {
                 backgroundColor = .white
                 isOpaque = true
             }
-            #elseif os(macOS)
+#elseif os(macOS)
             if newValue! == true {
                 layer?.backgroundColor = .clear
                 layer?.isOpaque = false
@@ -141,7 +141,7 @@ public class AAChartView: WKWebView {
                 layer?.backgroundColor = .white
                 layer?.isOpaque = true
             }
-            #endif
+#endif
         }
     }
     
@@ -175,10 +175,17 @@ public class AAChartView: WKWebView {
     }
     
     internal var optionsJson: String?
-    
-    #if DEBUG
+
+    // Property to hold the plugin provider instance.
+    private var pluginProvider: AAChartViewPluginProvider = DefaultPluginProvider()
+
+    private var requiredPluginPaths: Set<String> = []
+    private var loadedPluginPaths: Set<String> = [] // Keep track of loaded plugins
+
+    public var userPluginPaths: Set<String> = []
+#if DEBUG
     public var shouldPrintOptionsJSON: Bool = true
-    #endif
+#endif
     
     // MARK: - Initialization
     override private init(frame: CGRect, configuration: WKWebViewConfiguration) {
@@ -197,40 +204,134 @@ public class AAChartView: WKWebView {
         self.init(frame: .zero, configuration: configuration)
         translatesAutoresizingMaskIntoConstraints = false
     }
-   
+    
+    
+    // MARK: - Plugin Loading and Chart Drawing
+    
+    /// Determines required plugins, loads any missing ones sequentially, and then draws the chart.
+    internal func loadAllPluginsAndDrawChart() {
+        // 1. Determine the total set of required plugins (base requirements + user-defined)
+        let totalRequiredPluginsSet = requiredPluginPaths.union(userPluginPaths)
+        
+        // 2. Identify plugins that are required but not yet loaded
+        let pluginsToLoad = totalRequiredPluginsSet.subtracting(loadedPluginPaths)
+        
+        // 3. If no new plugins need loading, draw the chart immediately
+        guard !pluginsToLoad.isEmpty else {
+#if DEBUG
+            if totalRequiredPluginsSet.isEmpty {
+                print("ℹ️ No additional plugins needed for the current chart options.")
+            } else {
+                print("ℹ️ All required plugins (count: \(totalRequiredPluginsSet.count)) already loaded.")
+            }
+#endif
+            drawChart()
+            return
+        }
+        
+        // 4. Load the necessary new plugins sequentially
+        debugLog("ℹ️ Loading \(pluginsToLoad.count) new plugin scripts...")
+        
+        loadPluginScriptsSequentially(scriptsToLoad: pluginsToLoad) { [weak self] newlyLoadedPlugins in
+            guard let self = self else { return }
+            
+            // 5. Update the set of all loaded plugins
+            self.loadedPluginPaths.formUnion(newlyLoadedPlugins)
+            
+#if DEBUG
+            if newlyLoadedPlugins.count < pluginsToLoad.count {
+                print("⚠️ Failed to evaluate one or more new plugin scripts. Chart drawing may be affected.")
+            }
+            print("ℹ️ Total loaded plugins count: \(self.loadedPluginPaths.count)")
+#endif
+            
+            // 6. Draw the chart after attempting to load new plugins
+            self.drawChart()
+        }
+    }
+    
+    /// Loads a set of plugin scripts sequentially, evaluating them one by one.
+    /// - Parameters:
+    ///   - scriptsToLoad: A Set of file paths for the JavaScript plugins to load.
+    ///   - completion: A closure called when all scripts have been attempted, passing a Set of paths for successfully loaded scripts.
+    private func loadPluginScriptsSequentially(
+        scriptsToLoad: Set<String>,
+        completion: @escaping (Set<String>) -> Void
+    ) {
+        // Convert Set to Array for indexed access, maintaining order isn't critical here
+        // but Array makes indexed recursion simpler than Set index manipulation.
+        let scriptPathsArray = Array(scriptsToLoad)
+        var successfullyLoaded = Set<String>()
+        
+        // Define the recursive loading function
+        func loadNextScript(index: Int) {
+            // Base case: All scripts in the array attempted
+            guard index < scriptPathsArray.count else {
+#if DEBUG
+                if !scriptPathsArray.isEmpty {
+                    print("✅ \(successfullyLoaded.count) out of \(scriptPathsArray.count) new plugin scripts evaluated successfully.")
+                }
+#endif
+                completion(successfullyLoaded) // Return the set of successfully loaded scripts
+                return
+            }
+            
+            let path = scriptPathsArray[index]
+            let scriptName = (path as NSString).lastPathComponent // Extract filename for logging
+            
+            do {
+                // Read the script content
+                let jsString = try String(contentsOfFile: path, encoding: .utf8)
+                
+                // Evaluate the script
+                evaluateJavaScript(jsString) { [weak self] _, error in
+                    // Use guard let to safely unwrap self and create a strong reference
+                    guard let self = self else {
+                        // If self is deallocated, stop loading further scripts
+                        print("⚠️ AAChartView deallocated during script evaluation. Aborting plugin load.") // Direct print or use a static logger if available
+                        completion(successfullyLoaded)
+                        return
+                    }
+                    
+                    if let error = error {
+                        // Use self directly now, no optional chaining needed
+                        self.debugLog("❌ Error evaluating new plugin script '\(scriptName)' (index \(index)): \(error)")
+                        // Continue to the next script even if this one fails
+                        loadNextScript(index: index + 1)
+                    } else {
+                        // Use self directly now, no optional chaining needed
+                        self.debugLog("✅ New plugin script '\(scriptName)' (index \(index)) evaluated.")
+                        successfullyLoaded.insert(path) // Add successfully evaluated script path
+                        // Recursively load the next script
+                        loadNextScript(index: index + 1)
+                    }
+                }
+            } catch {
+                // No change needed here as self is accessed synchronously if debugLog is called
+                debugLog("❌ Failed to load plugin script file '\(scriptName)' (index \(index)): \(error)")
+                // Continue to the next script even if file loading fails
+                loadNextScript(index: index + 1)
+            }
+        }
+        
+        // Start loading from the first script
+        loadNextScript(index: 0)
+    }
+    
     
     internal func drawChart() {
-        if beforeDrawChartJavaScript != nil {
-            #if DEBUG
-            print("📝 \(beforeDrawChartJavaScript ?? "")")
-            #endif
-            safeEvaluateJavaScriptString(beforeDrawChartJavaScript!)
-            beforeDrawChartJavaScript = nil
-        }
-        
-        //Add `frame.size.height` to solve the problem that the height of the new version of Highcharts chart will not adapt to the container
-        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)');"
+        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)')"
         safeEvaluateJavaScriptString(jsStr)
-        
-        if afterDrawChartJavaScript != nil {
-            #if DEBUG
-            print("📝 \(afterDrawChartJavaScript ?? "")")
-            #endif
-            safeEvaluateJavaScriptString(afterDrawChartJavaScript!)
-            afterDrawChartJavaScript = nil
-        }
     }
     
     internal func safeEvaluateJavaScriptString (_ jsString: String) {
         if optionsJson == nil {
-            #if DEBUG
-            print("💀💀💀AAChartView did not finish loading!!!")
-            #endif
+            debugLog("💀💀💀AAChartView did not finish loading!!!")
             return
         }
         
         evaluateJavaScript(jsString, completionHandler: { (item, error) in
-            #if DEBUG
+#if DEBUG
             if error != nil {
                 let objcError = error! as NSError
                 let errorUserInfo = objcError.userInfo
@@ -255,8 +356,8 @@ public class AAChartView: WKWebView {
                 """
                 print(errorInfo)
             }
-            #endif
-
+#endif
+            
             self.delegate?.aaChartViewDidFinishEvaluate?(self)
         })
     }
@@ -273,21 +374,89 @@ public class AAChartView: WKWebView {
         }
     }
     
+    private func determineRequiredPlugins(for aaOptions: AAOptions) {
+        // Use the provider to get additional required plugins based on options
+        let providerPlugins = pluginProvider.getRequiredPluginPaths(for: aaOptions)
+        requiredPluginPaths.formUnion(providerPlugins)
+
+        debugLog("🔌 Determined requiredPluginPaths: \(requiredPluginPaths)")
+    }
+    
+#if DEBUG
+    private func printOptionsJSONInfo(_ aaOptions: AAOptions) {
+        // --- 数据量截断处理 ---
+        // 检查 series 是否为 [AASeriesElement] 类型且不为空
+        if var seriesElements = aaOptions.series as? [AASeriesElement], // Make mutable for potential truncation
+           !seriesElements.isEmpty {
+
+            // 检查1 (先执行): series 数组本身元素个数是否超过 10
+            if seriesElements.count > 10 {
+                // 打印警告信息=>"💊 警告: 系列元素个数超过 10 个, 只打印前 10 个元素到控制台!!!"
+                print("💊 Warning: Series element count more than 10, only the first 10 elements will be displayed in the console!!!")
+                // 截取前 10 个 series 元素
+                seriesElements = Array(seriesElements.prefix(10))
+                // 更新 aaOptions.series 以便后续 JSON 序列化使用截断后的版本
+                // 注意：这会修改传入的 aaOptions 对象的状态，仅用于打印目的
+                aaOptions.series = seriesElements
+            }
+
+            // 检查2 (后执行): 对（可能已截断的）series 列表中的每个 series 的 data 数组元素个数进行检查
+            var didTruncateData = false
+            for seriesElement in seriesElements { // Iterate over the potentially truncated list
+                // 使用可选绑定确保 data 存在
+                if let data = seriesElement.data, data.count > 1000 {
+                    // 截取前 1000 个元素
+                    // 注意：这里直接修改了 seriesElement.data，仅影响后续的打印
+                    seriesElement.data = Array(data.prefix(1000))
+                    didTruncateData = true
+                }
+            }
+            // 如果进行了数据截断，打印警告信息=>"💊 警告: 数据数组元素个数超过 1000 个, 只打印前 1000 个数据元素到控制台!!!"
+            if didTruncateData {
+                print("💊 Warning: Data array element count more than 1000, only the first 1000 data elements will be displayed in the console!!!")
+            }
+        }
+
+        // --- JSON 打印 ---
+        // 将（可能因为数据过长已被截断的）aaOptions 转换为字典
+        let modelJsonDic = aaOptions.toDic()
+        do {
+            // 尝试序列化为 JSON Data
+            let jsonData = try JSONSerialization.data(withJSONObject: modelJsonDic, options: .prettyPrinted)
+            // 尝试将 JSON Data 转换为 UTF8 字符串，并安全解包
+            if let prettyPrintedModelJson = String(data: jsonData, encoding: .utf8) {
+                print("""
+                            -----------🖨🖨🖨 console log AAOptions JSON information of AAChartView 🖨🖨🖨-----------:
+                            \(prettyPrintedModelJson)
+                            """)
+            } else {
+                print("⚠️ Warning: Could not convert JSON data to UTF8 string for logging.")
+            }
+        } catch {
+            // 捕获并打印序列化错误
+            print("⚠️ Warning: Could not serialize AAOptions to JSON for logging: \(error)")
+        }
+    }
+#endif
+    
     internal func configureOptionsJsonStringWithAAOptions(_ aaOptions: AAOptions) {
+        // Determine required plugins using the new method and provider
+        determineRequiredPlugins(for: aaOptions)
+
         if aaOptions.beforeDrawChartJavaScript != nil {
             beforeDrawChartJavaScript = aaOptions.beforeDrawChartJavaScript
             aaOptions.beforeDrawChartJavaScript = nil
         }
-        
+
         if aaOptions.afterDrawChartJavaScript != nil {
             afterDrawChartJavaScript = aaOptions.afterDrawChartJavaScript
             aaOptions.afterDrawChartJavaScript = nil
         }
-        
+
         if isClearBackgroundColor == true {
             aaOptions.chart?.backgroundColor = AAColor.clear
         }
-        
+
         if clickEventEnabled == true {
             aaOptions.clickEventEnabled = true
         }
@@ -297,24 +466,14 @@ public class AAChartView: WKWebView {
         if clickEventEnabled == true || touchEventEnabled == true {
             configurePlotOptionsSeriesPointEvents(aaOptions)
         }
-        
-        #if DEBUG
-        if shouldPrintOptionsJSON {
-            let modelJsonDic = aaOptions.toDic()
-            let data = try? JSONSerialization.data(withJSONObject: modelJsonDic, options: .prettyPrinted)
-            if data != nil {
-                let prettyPrintedModelJson = String(data: data!, encoding: String.Encoding.utf8)
-                print("""
-                
-                -----------🖨🖨🖨 console log AAOptions JSON information of AAChartView 🖨🖨🖨-----------:
-                \(prettyPrintedModelJson!)
-                
-                """)
-            }
-        }
-        #endif
-        
+
         optionsJson = aaOptions.toJSON()
+
+#if DEBUG
+        if shouldPrintOptionsJSON {
+            printOptionsJSONInfo(aaOptions)
+        }
+#endif
     }
     
     private func addClickEventMessageHandler() {
@@ -327,16 +486,20 @@ public class AAChartView: WKWebView {
         configuration.userContentController.add(AALeakAvoider.init(delegate: self), name: kUserContentMessageNameMouseOver)
     }
     
-
+    //添加一个 debug log 方法, 用于打印一些调试信息
+    private func debugLog(_ message: String) {
+#if DEBUG
+        print(message)
+#endif
+    }
+    
+    
     deinit {
         configuration.userContentController.removeAllUserScripts()
         NotificationCenter.default.removeObserver(self)
-        #if DEBUG
-        print("👻👻👻 AAChartView instance \(self) has been destroyed!")
-        #endif
+        debugLog("👻👻👻 AAChartView instance \(self) has been destroyed!")
     }
 }
-
 
 
 // MARK: - WKUIDelegate
@@ -348,7 +511,7 @@ extension AAChartView: WKUIDelegate {
         initiatedByFrame frame: WKFrameInfo,
         completionHandler: @escaping () -> Void
     ) {
-        #if os(iOS)
+#if os(iOS)
         let alertController = UIAlertController(title: "JS WARNING", message: message, preferredStyle: .alert)
         
         let okayAction = UIAlertAction(title: "Okay", style: .default) { _ in
@@ -364,7 +527,7 @@ extension AAChartView: WKUIDelegate {
         
         presentingViewController.present(alertController, animated: true, completion: nil)
         
-        #elseif os(macOS)
+#elseif os(macOS)
         let alert = NSAlert()
         alert.alertStyle = .warning
         alert.messageText = "JS WARNING"
@@ -376,10 +539,10 @@ extension AAChartView: WKUIDelegate {
                 completionHandler()
             }
         }
-        #endif
+#endif
     }
     
-    #if os(iOS)
+#if os(iOS)
     private func nextUIViewController() -> UIViewController? {
         var responder: UIResponder? = self
         while responder != nil {
@@ -390,7 +553,8 @@ extension AAChartView: WKUIDelegate {
         }
         return nil
     }
-    #endif
+#endif
+    
 }
 
 
@@ -398,7 +562,7 @@ extension AAChartView: WKUIDelegate {
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 extension AAChartView:  WKNavigationDelegate {
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        drawChart()
+        loadAllPluginsAndDrawChart()
         delegate?.aaChartViewDidFinishLoad?(self)
     }
 }
@@ -434,7 +598,7 @@ extension AAChartView {
         eventMessageModel.index = messageBody["index"] as? Int
         return eventMessageModel
     }
-
+    
     private func getFloatValue<T>(_ value: T?) -> Float? {
         switch value {
         case let value as Float: return value
