@@ -352,6 +352,8 @@ public func convertToRoundedCornersDictionary(_ element: Any) -> [String: Any] {
         return plotOptions.toRoundedCornersDic()
     } else {
         // 对于其他类型，尝试使用标准 toDic() 方法
-        return (element as AnyObject).toDic() ?? [:]
+//        return (element as AnyObject).toDic() ?? [:]
+        return [:]
+
     }
 }

@@ -9,6 +9,7 @@
 
 
 import AAInfographics
+import UIKit
 
 @available(iOS 10.0, macCatalyst 13.1, *)
 class AARoundedCornersVC: AABaseChartVC {
@@ -98,20 +99,34 @@ class AARoundedCornersVC: AABaseChartVC {
     
     @objc func checkAAOptionsImplementation() {
         let options = AAOptions()
+        let seriesElement = AASeriesElement()
+        let plotOptions = AAPlotOptions()
+        
+        print("==== 类的协议实现检查 ====")
+        print("AAOptions 是否实现 AASerializableWithComputedProperties: \(options is AASerializableWithComputedProperties)")
+        print("AASeriesElement 是否实现 AASerializableWithComputedProperties: \(seriesElement is AASerializableWithComputedProperties)")
+        print("AAPlotOptions 是否实现 AASerializableWithComputedProperties: \(plotOptions is AASerializableWithComputedProperties)")
+        
+        print("\n==== 类继承关系检查 ====")
+        print("AAOptions 是否继承自 AAObject: \(options is AAObject)")
+        print("AASeriesElement 是否继承自 AAObject: \(seriesElement is AAObject)")
+        print("AAPlotOptions 是否继承自 AAObject: \(plotOptions is AAObject)")
+        
         let optionsMirror = Mirror(reflecting: options)
         
-        print("==== AAOptions 类结构分析 ====")
+        print("\n==== AAOptions 类结构分析 ====")
         print("子元素数量: \(optionsMirror.children.count)")
         for (label, value) in optionsMirror.children {
             print("属性: \(String(describing: label)), 值类型: \(type(of: value))")
         }
         
-        print("\n==== AAOptions toDic 方法分析 ====")
-        // 通过KVC检查可能的特殊处理
-        let selectorString = "toDic"
-        if let method = class_getInstanceMethod(type(of: options), NSSelectorFromString(selectorString)) {
-            print("方法实现地址: \(method)")
-            print("方法类型编码: \(String(cString: method_getTypeEncoding(method)!))")
+        print("\n==== 测试手动调用 computedProperties() ====")
+        if let computable = seriesElement as? AASerializableWithComputedProperties {
+            print("AASeriesElement 手动调用 computedProperties(): \(computable.computedProperties())")
+        }
+        
+        if let computable = plotOptions as? AASerializableWithComputedProperties {
+            print("AAPlotOptions 手动调用 computedProperties(): \(computable.computedProperties())")
         }
     }
     
