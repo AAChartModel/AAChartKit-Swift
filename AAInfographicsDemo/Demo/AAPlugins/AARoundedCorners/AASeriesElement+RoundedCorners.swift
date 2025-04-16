@@ -9,10 +9,10 @@ import AAInfographics
 
 // --- 为 AAOptions 定义唯一的键 ---
 private struct AAOptionsAssociatedKeys {
-    static var borderRadiusTopLeft: UInt8 = 0
-    static var borderRadiusTopRight: UInt8 = 0
-    static var borderRadiusBottomLeft: UInt8 = 0
-    static var borderRadiusBottomRight: UInt8 = 0
+    static var borderRadiusTopLeft = "AAOptions.borderRadiusTopLeft"
+    static var borderRadiusTopRight = "AAOptions.borderRadiusTopRight"
+    static var borderRadiusBottomLeft = "AAOptions.borderRadiusBottomLeft"
+    static var borderRadiusBottomRight = "AAOptions.borderRadiusBottomRight"
 }
 
 public extension AAOptions {
@@ -80,24 +80,12 @@ public extension AAOptions {
     }
 }
 
-// --- 为 AAOptions 添加协议遵循和实现 ---
-//extension AAOptions: AASerializableWithComputedProperties {
-//    public func computedProperties() -> [String: Any] {
-//        return [
-//            "borderRadiusTopLeft": borderRadiusTopLeft ?? NSNull(),
-//            "borderRadiusTopRight": borderRadiusTopRight ?? NSNull(),
-//            "borderRadiusBottomLeft": borderRadiusBottomLeft ?? NSNull(),
-//            "borderRadiusBottomRight": borderRadiusBottomRight ?? NSNull()
-//        ]
-//    }
-//}
-
 // --- 为 AASeriesElement 定义唯一的键 ---
 private struct AASeriesElementAssociatedKeys {
-    static var borderRadiusTopLeft: UInt8 = 0
-    static var borderRadiusTopRight: UInt8 = 0
-    static var borderRadiusBottomLeft: UInt8 = 0
-    static var borderRadiusBottomRight: UInt8 = 0
+    static var borderRadiusTopLeft = "AASeriesElement.borderRadiusTopLeft"
+    static var borderRadiusTopRight = "AASeriesElement.borderRadiusTopRight"
+    static var borderRadiusBottomLeft = "AASeriesElement.borderRadiusBottomLeft"
+    static var borderRadiusBottomRight = "AASeriesElement.borderRadiusBottomRight"
 }
 
 public extension AASeriesElement {
@@ -168,21 +156,57 @@ public extension AASeriesElement {
 //遵循协议以提供计算属性
 extension AASeriesElement: AASerializableWithComputedProperties {
     public func computedProperties() -> [String: Any] {
-        return [
-            "borderRadiusTopLeft": borderRadiusTopLeft ?? NSNull(),
-            "borderRadiusTopRight": borderRadiusTopRight ?? NSNull(),
-            "borderRadiusBottomLeft": borderRadiusBottomLeft ?? NSNull(),
-            "borderRadiusBottomRight": borderRadiusBottomRight ?? NSNull()
-        ]
+        var dict = [String: Any]()
+        if let val = borderRadiusTopLeft {
+            dict["borderRadiusTopLeft"] = val
+        }
+        if let val = borderRadiusTopRight {
+            dict["borderRadiusTopRight"] = val
+        }
+        if let val = borderRadiusBottomLeft {
+            dict["borderRadiusBottomLeft"] = val
+        }
+        if let val = borderRadiusBottomRight {
+            dict["borderRadiusBottomRight"] = val
+        }
+        return dict
+    }
+}
+
+// 添加一个直接访问关联对象的工具函数，帮助我们解决问题
+public extension AASeriesElement {
+    func toRoundedCornersDic() -> [String: Any] {
+        var dic = self.toDic()
+        print("Debug - AASeriesElement.toRoundedCornersDic - 初始字典: \(dic)")
+        print("Debug - AASeriesElement.toRoundedCornersDic - 圆角值: \(String(describing: self.borderRadiusTopLeft))")
+        
+        if let val = self.borderRadiusTopLeft {
+            dic["borderRadiusTopLeft"] = val
+            print("Debug - 已添加 borderRadiusTopLeft: \(val)")
+        }
+        if let val = self.borderRadiusTopRight {
+            dic["borderRadiusTopRight"] = val 
+            print("Debug - 已添加 borderRadiusTopRight: \(val)")
+        }
+        if let val = self.borderRadiusBottomLeft {
+            dic["borderRadiusBottomLeft"] = val
+            print("Debug - 已添加 borderRadiusBottomLeft: \(val)")
+        }
+        if let val = self.borderRadiusBottomRight {
+            dic["borderRadiusBottomRight"] = val
+            print("Debug - 已添加 borderRadiusBottomRight: \(val)")
+        }
+        print("Debug - AASeriesElement.toRoundedCornersDic - 最终字典: \(dic)")
+        return dic
     }
 }
 
 // --- 为 AAPlotOptions 定义唯一的键 ---
 private struct AAPlotOptionsAssociatedKeys {
-    static var borderRadiusTopLeft: UInt8 = 0
-    static var borderRadiusTopRight: UInt8 = 0
-    static var borderRadiusBottomLeft: UInt8 = 0
-    static var borderRadiusBottomRight: UInt8 = 0
+    static var borderRadiusTopLeft = "AAPlotOptions.borderRadiusTopLeft"
+    static var borderRadiusTopRight = "AAPlotOptions.borderRadiusTopRight"
+    static var borderRadiusBottomLeft = "AAPlotOptions.borderRadiusBottomLeft"
+    static var borderRadiusBottomRight = "AAPlotOptions.borderRadiusBottomRight"
 }
 
 public extension AAPlotOptions {
@@ -253,11 +277,81 @@ public extension AAPlotOptions {
 //遵循协议以提供计算属性
 extension AAPlotOptions: AASerializableWithComputedProperties {
     public func computedProperties() -> [String: Any] {
-        return [
-            "borderRadiusTopLeft": borderRadiusTopLeft ?? NSNull(),
-            "borderRadiusTopRight": borderRadiusTopRight ?? NSNull(),
-            "borderRadiusBottomLeft": borderRadiusBottomLeft ?? NSNull(),
-            "borderRadiusBottomRight": borderRadiusBottomRight ?? NSNull()
-        ]
+        var dict = [String: Any]()
+        if let val = borderRadiusTopLeft {
+            dict["borderRadiusTopLeft"] = val
+        }
+        if let val = borderRadiusTopRight {
+            dict["borderRadiusTopRight"] = val
+        }
+        if let val = borderRadiusBottomLeft {
+            dict["borderRadiusBottomLeft"] = val
+        }
+        if let val = borderRadiusBottomRight {
+            dict["borderRadiusBottomRight"] = val
+        }
+        return dict
+    }
+}
+
+// 添加一个直接访问关联对象的工具函数，帮助我们解决问题
+public extension AAPlotOptions {
+    func toRoundedCornersDic() -> [String: Any] {
+        var dic = self.toDic()
+        print("Debug - AAPlotOptions.toRoundedCornersDic - 初始字典: \(dic)")
+        print("Debug - AAPlotOptions.toRoundedCornersDic - 圆角值: \(String(describing: self.borderRadiusTopLeft))")
+        
+        if let val = self.borderRadiusTopLeft {
+            dic["borderRadiusTopLeft"] = val
+            print("Debug - 已添加 borderRadiusTopLeft: \(val)")
+        }
+        if let val = self.borderRadiusTopRight {
+            dic["borderRadiusTopRight"] = val 
+            print("Debug - 已添加 borderRadiusTopRight: \(val)")
+        }
+        if let val = self.borderRadiusBottomLeft {
+            dic["borderRadiusBottomLeft"] = val
+            print("Debug - 已添加 borderRadiusBottomLeft: \(val)")
+        }
+        if let val = self.borderRadiusBottomRight {
+            dic["borderRadiusBottomRight"] = val
+            print("Debug - 已添加 borderRadiusBottomRight: \(val)")
+        }
+        print("Debug - AAPlotOptions.toRoundedCornersDic - 最终字典: \(dic)")
+        return dic
+    }
+}
+
+// 也为 AAOptions 添加一个类似的便捷方法
+extension AAOptions {
+    public func toRoundedCornersDic() -> [String: Any] {
+        var dic = self.toDic()
+        if let val = self.borderRadiusTopLeft {
+            dic["borderRadiusTopLeft"] = val
+        }
+        if let val = self.borderRadiusTopRight {
+            dic["borderRadiusTopRight"] = val 
+        }
+        if let val = self.borderRadiusBottomLeft {
+            dic["borderRadiusBottomLeft"] = val
+        }
+        if let val = self.borderRadiusBottomRight {
+            dic["borderRadiusBottomRight"] = val
+        }
+        return dic
+    }
+}
+
+// 为所有支持圆角的图表元素提供一个统一的辅助函数
+public func convertToRoundedCornersDictionary(_ element: Any) -> [String: Any] {
+    if let options = element as? AAOptions {
+        return options.toRoundedCornersDic()
+    } else if let seriesElement = element as? AASeriesElement {
+        return seriesElement.toRoundedCornersDic()
+    } else if let plotOptions = element as? AAPlotOptions {
+        return plotOptions.toRoundedCornersDic()
+    } else {
+        // 对于其他类型，尝试使用标准 toDic() 方法
+        return (element as AnyObject).toDic() ?? [:]
     }
 }
