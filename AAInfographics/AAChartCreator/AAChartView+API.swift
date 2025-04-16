@@ -4,11 +4,33 @@
 //
 //  Created by AnAn on 2025/4/16.
 //  Copyright © 2025 An An. All rights reserved.
-//
+//*************** ...... SOURCE CODE ...... ***************
+//***...................................................***
+//*** https://github.com/AAChartModel/AAChartKit        ***
+//*** https://github.com/AAChartModel/AAChartKit-Swift  ***
+//***...................................................***
+//*************** ...... SOURCE CODE ...... ***************
+
+/*
+ 
+ * -------------------------------------------------------------------------------
+ *
+ *  🌕 🌖 🌗 🌘  ❀❀❀   WARM TIPS!!!   ❀❀❀ 🌑 🌒 🌓 🌔
+ *
+ * Please contact me on GitHub,if there are any problems encountered in use.
+ * GitHub Issues : https://github.com/AAChartModel/AAChartKit-Swift/issues
+ * -------------------------------------------------------------------------------
+ * And if you want to contribute for this project, please contact me as well
+ * GitHub        : https://github.com/AAChartModel
+ * StackOverflow : https://stackoverflow.com/users/12302132/codeforu
+ * JianShu       : https://www.jianshu.com/u/f1e6753d4254
+ * SegmentFault  : https://segmentfault.com/u/huanghunbieguan
+ *
+ * -------------------------------------------------------------------------------
+ 
+ */
 
 import UIKit
-
-
 
 // MARK: - Configure Chart View Content With AAChartModel
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
@@ -125,19 +147,19 @@ extension AAChartView {
             finalOptionsDic = [finalClassNameStr: optionsDic as Any]
         }
         
-        #if DEBUG
+#if DEBUG
         let data = try? JSONSerialization.data(withJSONObject: finalOptionsDic as Any, options: .prettyPrinted)
         if data != nil {
             let prettyPrintedModelJson = String(data: data!, encoding: String.Encoding.utf8)
             print("""
-
+                
                 -----------📊🔄🖨 console log AAOptions JSON information of advanced updating 🖨🔄📊-----------:
                 \(prettyPrintedModelJson!)
-
+                
                 """)
         }
-        #endif
-                
+#endif
+        
         let optionsStr = getJSONStringFromDictionary(dictionary: finalOptionsDic)
         let jsStr = "updateChart('\(optionsStr)','\(redraw)')"
         safeEvaluateJavaScriptString(jsStr)
@@ -190,7 +212,7 @@ extension AAChartView {
             let aaOption: AAObject = options as! AAObject
             optionsStr = aaOption.toJSON()
         }
-    
+        
         let javaScriptStr = "addPointToChartSeries('\(elementIndex)','\(optionsStr)','\(redraw)','\(shift)','\(animation)')"
         safeEvaluateJavaScriptString(javaScriptStr)
     }
@@ -292,7 +314,7 @@ extension AAChartView {
         safeEvaluateJavaScriptString(jsStr)
     }
     
-    #if os(iOS)
+#if os(iOS)
     /// Set the chart view content be adaptive to screen rotation with default animation effect
     public func aa_adaptiveScreenRotation() {
         let aaAnimation = AAAnimation()
@@ -300,7 +322,7 @@ extension AAChartView {
             .easing(.easeOutQuart)
         aa_adaptiveScreenRotationWithAnimation(aaAnimation)
     }
-
+    
     /// Set the chart view content be adaptive to screen rotation with custom animation effect
     /// Refer to https://api.highcharts.com/highcharts#Chart.setSize
     ///
@@ -322,5 +344,6 @@ extension AAChartView {
         let jsFuncStr = "changeChartSize('\(frame.size.width)','\(frame.size.height)','\(animationJsonStr)')"
         safeEvaluateJavaScriptString(jsFuncStr)
     }
-    #endif
+#endif
+    
 }
