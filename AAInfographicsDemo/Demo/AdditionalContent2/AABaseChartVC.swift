@@ -138,11 +138,11 @@ class AABaseChartVC: UIViewController {
         view.addSubview(aaChartView!)
         
         aaChartView?.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 11.0, *) {
-            aaChartView?.scrollView.contentInsetAdjustmentBehavior = .never
-        } else {
-            // Fallback on earlier versions
-        }
+//        if #available(iOS 11.0, *) {
+//            aaChartView?.scrollView.contentInsetAdjustmentBehavior = .never
+//        } else {
+//            // Fallback on earlier versions
+//        }
         view.addConstraints(configureTheConstraintArray(childView: aaChartView!,
                                                              fatherView: view))
         

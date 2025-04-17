@@ -32,6 +32,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
             "Custom Chart Event Callback | 自定义交互事件回调",
             //排序算法演示
             "Sort Algorithm Demo | 排序算法演示",
+            //插件功能演示
+            "Plugin Function Demo | 插件功能演示",
         ]
         
         chartTypeTitleArr = [
@@ -144,6 +146,17 @@ class AdvancedFeaturesListVC: AABaseListVC {
                 //冒泡🫧排序
                 "Bubble Sort---冒泡🫧排序"
             ],
+            /*Plugin Function Demo*/
+            [
+                //单独设置柱状图的圆角
+                "Single Rounded Corners Stacking Column Chart---单独设置柱状图的圆角",
+                //单独设置条形图的圆角
+                "Single Rounded Corners Stacking Bar Chart---单独设置条形图的圆角",
+                //单独设置柱形范围图的圆角(常规)
+                "Single Rounded Corners Columnrange Chart---单独设置柱形范围图的圆角",
+                //单独设置柱形范围图的圆角(反转)
+                "Single Rounded Corners Columnrange Chart(inverted)---单独设置柱形范围图的圆角(反转)",
+            ]
         ]
         
         chartTypeArr = [
@@ -414,6 +427,19 @@ extension AdvancedFeaturesListVC {
             
         case 11:
             let vc = SortAlgorithmVC()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 12:
+            let vc = AARoundedCornersChartVC()
+            vc.selectedIndex = indexPath.row
+            let chartTypeArr =  [
+                AAChartType.column,
+                AAChartType.bar,
+                AAChartType.columnrange,
+                AAChartType.columnrange,
+            ] as [AAChartType]
+            vc.navigationItemTitleArr = chartTypeArr
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             

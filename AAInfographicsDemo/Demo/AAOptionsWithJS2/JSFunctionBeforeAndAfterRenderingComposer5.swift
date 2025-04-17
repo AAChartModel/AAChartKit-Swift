@@ -354,10 +354,10 @@ class JSFunctionBeforeAndAfterRenderingComposer5 {
 //            "categoryHasBoth": categoryHasBoth.toStringKeyed()// Pass the lookup object
 //     ]
         
-//        chartOptions.customData(
-//            AACustomData()
-//            .categoryHasBoth(categoryHasBoth.toStringKeyed())
-//        ).borderRadiusTopLeft("50%")
+        chartOptions.customData(
+            AACustomData()
+            .categoryHasBoth(categoryHasBoth.toStringKeyed())
+        )
 
         return chartOptions
     }
