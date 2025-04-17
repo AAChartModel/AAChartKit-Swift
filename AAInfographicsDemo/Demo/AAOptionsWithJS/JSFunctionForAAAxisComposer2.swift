@@ -11,7 +11,7 @@ import AAInfographics
 class JSFunctionForAAAxisComposer2 {
     
     //https://github.com/AAChartModel/AAChartCore-Kotlin/issues/246
-    static func customWidthForXAxisLabels() -> AAOptions {
+    class func customWidthForXAxisLabels() -> AAOptions {
         AAOptions()
             .chart(AAChart()
                 .type(.column))
@@ -35,6 +35,74 @@ class JSFunctionForAAAxisComposer2 {
                 AASeriesElement()
                     .data([29.9, 71.5, 106.4, 129.2, 144.0])
             ])
+    }
+    
+    /**
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'X轴标签使用图片示例'
+        },
+        xAxis: {
+            categories: ['苹果', '香蕉', '橙子'],
+            labels: {
+                useHTML: true,  // 启用HTML渲染
+                formatter: function() {
+                    // 图片URL映射
+                    const imgMap = {
+                        '苹果': 'https://cdn-icons-png.flaticon.com/512/415/415733.png',
+                        '香蕉': 'https://cdn-icons-png.flaticon.com/512/3144/3144456.png',
+                        '橙子': 'https://cdn-icons-png.flaticon.com/512/3081/3081840.png'
+                    };
+                    return `<img src="${imgMap[this.value]}" width="30" height="30"
+                    alt="${this.value}" title="${this.value}">`;
+                }
+            }
+        },
+        yAxis: {
+            title: {
+                text: '销量 (吨)'
+            }
+        },
+        series: [{
+            name: '2023年',
+            data: [120, 85, 95]
+        }]
+    });
+     */
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/530
+    class func customSimpleXAxisLabelsBeImages() -> AAOptions {
+        let aaOptions = AAOptions()
+            .chart(AAChart()
+                .type(.column))
+            .title(AATitle()
+                .text("X轴标签使用图片示例"))
+            .xAxis(AAXAxis()
+                .categories(["苹果", "香蕉", "橙子"])
+                .labels(AALabels()
+                    .useHTML(true)
+                    .formatter("""
+                        function() {
+                            const imgMap = {
+                                '苹果': 'https://cdn-icons-png.flaticon.com/512/415/415733.png',
+                                '香蕉': 'https://cdn-icons-png.flaticon.com/512/3144/3144456.png',
+                                '橙子': 'https://cdn-icons-png.flaticon.com/512/3081/3081840.png'
+                            };
+                            return `<img src="${imgMap[this.value]}" width="30" height="30" alt="${this.value}" title="${this.value}">`;
+                        }
+                    """)))
+            .yAxis(AAYAxis()
+                .title(AATitle()
+                    .text("销量 (吨)")))
+            .series([
+                AASeriesElement()
+                    .name("2023年")
+                    .data([120, 85, 95])
+            ])
+
+        return aaOptions
     }
     
 }

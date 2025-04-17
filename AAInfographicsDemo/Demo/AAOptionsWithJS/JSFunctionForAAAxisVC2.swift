@@ -20,6 +20,7 @@ class JSFunctionForAAAxisVC2: AABaseChartVC {
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch (selectedIndex) {
         case 0: return JSFunctionForAAAxisComposer2.customWidthForXAxisLabels()//自定义X轴文字标签的宽度
+        case 1: return JSFunctionForAAAxisComposer2.customSimpleXAxisLabelsBeImages()//自定义简单的X轴文字标签为图片
 
         default:
             return nil
