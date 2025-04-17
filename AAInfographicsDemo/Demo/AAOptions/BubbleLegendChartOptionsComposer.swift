@@ -210,6 +210,83 @@ class BubbleLegendChartOptionsComposer {
                         ["x": 64, "y": 82.9, "z": 31.3]
                     ])
             ])
+    }
+    
+    class func packedbubbleChart() -> AAOptions {
+        let aaOptions = SpecialChartComposer
+            .packedbubbleChart()
+            .aa_toAAOptions()
         
+        aaOptions.plotOptions?
+            .packedbubble(AAPackedbubble()
+                .minSize("30%")
+                .maxSize("120%")
+                .zMin(0)
+                .zMax(1000)
+                .layoutAlgorithm(AALayoutAlgorithm() //packedbubbleChart 和 packedbubbleSplitChart 只有layoutAlgorithm这一段不一样
+                    .gravitationalConstant(0.02)
+                    .splitSeries(false))
+                    .dataLabels(AADataLabels()
+                        .enabled(true)
+                        .format("{point.name}")
+                        .filter(AAFilter()
+                            .property("y")
+                            .operator(">")
+                            .value(250))))
+        
+        return aaOptions
+    }
+    
+    static func packedbubbleSplitChart() -> AAOptions {
+        let aaOptions = SpecialChartComposer
+            .packedbubbleChart()
+            .aa_toAAOptions()
+        
+        aaOptions.plotOptions?
+            .packedbubble(AAPackedbubble()
+                .minSize("30%")
+                .maxSize("120%")
+                .zMin(0)
+                .zMax(1000)
+                .layoutAlgorithm(AALayoutAlgorithm() //packedbubbleChart 和 packedbubbleSplitChart 只有layoutAlgorithm这一段不一样
+                    .gravitationalConstant(0.05)
+                    .splitSeries(true)
+                    .seriesInteraction(false)
+                    .dragBetweenSeries(true)
+                    .parentNodeLimit(true))
+                    .dataLabels(AADataLabels()
+                        .enabled(true)
+                        .format("{point.name}")
+                        .filter(AAFilter()
+                            .property("y")
+                            .operator(">")
+                            .value(250))))
+        
+        return aaOptions
+    }
+    
+    static func packedbubbleSpiralChart() -> AAOptions {
+        let aaOptions = SpecialChartComposer
+            .packedbubbleChart()
+            .aa_toAAOptions()
+        
+        aaOptions.plotOptions?
+            .packedbubble(AAPackedbubble()
+                .useSimulation(false)
+                .minSize("20%")
+                .maxSize("80%")
+                .dataLabels(AADataLabels()
+                    .enabled(true)
+                    .format("{point.name}")
+                    .filter(AAFilter()
+                        .property("y")
+                        .operator(">")
+                        .value(250))
+                        .style(AAStyle()
+                            .color(AAColor.black)
+                            .textOutline("none")
+                            .fontWeight(.regular))))
+        
+        return aaOptions
     }
 }

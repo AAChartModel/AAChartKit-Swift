@@ -58,6 +58,8 @@
 		840AC39A280CFFA200B10289 /* AAAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AC396280CFFA200B10289 /* AAAxis.swift */; };
 		84123BC52DB0AE00003DA7A0 /* AARoundedCornersSeriesElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84123BC42DB0AE00003DA7A0 /* AARoundedCornersSeriesElement.swift */; };
 		84123BC72DB0B3F6003DA7A0 /* AARoundedCornersChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84123BC62DB0B3F6003DA7A0 /* AARoundedCornersChartComposer.swift */; };
+		84123BC92DB0F0EB003DA7A0 /* AAPackedbubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84123BC82DB0F0EB003DA7A0 /* AAPackedbubble.swift */; };
+		84123BCB2DB0F130003DA7A0 /* AALayoutAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84123BCA2DB0F130003DA7A0 /* AALayoutAlgorithm.swift */; };
 		8418479928B8755900094106 /* JSFunctionForAAChartEventsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418479828B8755900094106 /* JSFunctionForAAChartEventsComposer.swift */; };
 		842FC3EE2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */; };
 		84339F4F2D536AC900F54F1E /* SortAlgorithmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F4E2D536AC900F54F1E /* SortAlgorithmVC.swift */; };
@@ -297,6 +299,8 @@
 		840AC396280CFFA200B10289 /* AAAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAxis.swift; sourceTree = "<group>"; };
 		84123BC42DB0AE00003DA7A0 /* AARoundedCornersSeriesElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARoundedCornersSeriesElement.swift; sourceTree = "<group>"; };
 		84123BC62DB0B3F6003DA7A0 /* AARoundedCornersChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARoundedCornersChartComposer.swift; sourceTree = "<group>"; };
+		84123BC82DB0F0EB003DA7A0 /* AAPackedbubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPackedbubble.swift; sourceTree = "<group>"; };
+		84123BCA2DB0F130003DA7A0 /* AALayoutAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALayoutAlgorithm.swift; sourceTree = "<group>"; };
 		8418479828B8755900094106 /* JSFunctionForAAChartEventsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsComposer.swift; sourceTree = "<group>"; };
 		842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTooltipEventCallbackVC.swift; sourceTree = "<group>"; };
 		84339F4E2D536AC900F54F1E /* SortAlgorithmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAlgorithmVC.swift; sourceTree = "<group>"; };
@@ -562,6 +566,8 @@
 				84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */,
 				84F8F66A28B714E000F41E6A /* AABoxplot.swift */,
 				442FA90C2340597200CF3BDF /* AAPane.swift */,
+				84123BC82DB0F0EB003DA7A0 /* AAPackedbubble.swift */,
+				84123BCA2DB0F130003DA7A0 /* AALayoutAlgorithm.swift */,
 				44154768231A1D5600382DAD /* AASeries.swift */,
 				4486C50723D7516300B54849 /* AAStates.swift */,
 				4415475A231A18C500382DAD /* AAAnimation.swift */,
@@ -1114,6 +1120,7 @@
 				8440077A2B6FA1860072FB66 /* AAGradientColor+LinearGradient.swift in Sources */,
 				ED0A033E272816ED000BF778 /* AALegend.swift in Sources */,
 				ED0A0342272816ED000BF778 /* AACrosshair.swift in Sources */,
+				84123BC92DB0F0EB003DA7A0 /* AAPackedbubble.swift in Sources */,
 				ED0A0346272816ED000BF778 /* AADataLabels.swift in Sources */,
 				840AC39A280CFFA200B10289 /* AAAxis.swift in Sources */,
 				8447362C2DAFAE140040CCCE /* AAChartViewPluginProvider.swift in Sources */,
@@ -1129,6 +1136,7 @@
 				ED0A0336272816ED000BF778 /* AALabels.swift in Sources */,
 				ED0A033B272816ED000BF778 /* AAStates.swift in Sources */,
 				ED0A0343272816ED000BF778 /* AALang.swift in Sources */,
+				84123BCB2DB0F130003DA7A0 /* AALayoutAlgorithm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

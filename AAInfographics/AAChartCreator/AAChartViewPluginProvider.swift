@@ -29,6 +29,7 @@ public class ProPluginProvider: AAChartViewPluginProvider {
         AAChartType.pyramid.rawValue         : ["AAFunnel"],
         
         AAChartType.bubble.rawValue          : ["AAHighcharts-More"],
+        AAChartType.packedbubble.rawValue    : ["AAHighcharts-More"],
         AAChartType.arearange.rawValue       : ["AAHighcharts-More"],
         AAChartType.areasplinerange.rawValue : ["AAHighcharts-More"],
         AAChartType.columnrange.rawValue     : ["AAHighcharts-More"],

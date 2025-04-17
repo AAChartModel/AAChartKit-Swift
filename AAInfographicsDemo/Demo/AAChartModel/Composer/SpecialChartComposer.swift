@@ -222,6 +222,11 @@ class SpecialChartComposer {
             ])
     }
     
+    static func packedbubbleChart() -> AAChartModel {
+        bubbleChart()
+            .chartType(.packedbubble)
+    }
+    
     static func scatterChart() -> AAChartModel {
         AAChartModel()
             .chartType(.scatter)

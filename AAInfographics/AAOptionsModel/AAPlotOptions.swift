@@ -42,6 +42,7 @@ public class AAPlotOptions: AAObject {
     public var areaspline: AAAreaspline?
     public var pie: AAPie?
     public var bubble: AABubble?
+    public var packedbubble: AAPackedbubble?
     public var columnrange: AAColumnrange?
     public var arearange: AAArearange?
     public var boxplot: AABoxplot?
@@ -98,6 +99,12 @@ public class AAPlotOptions: AAObject {
     @discardableResult
     public func bubble(_ prop: AABubble) -> AAPlotOptions {
         bubble = prop
+        return self
+    }
+    
+    @discardableResult
+    public func packedbubble(_ prop: AAPackedbubble) -> AAPlotOptions {
+        packedbubble = prop
         return self
     }
     

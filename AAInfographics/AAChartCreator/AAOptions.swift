@@ -338,6 +338,7 @@ public class AAOptionsConstructor {
             || aaChartType == .spline
             || aaChartType == .scatter
             || aaChartType == .bubble
+            || aaChartType == .packedbubble
             || aaChartType == .columnrange
             || aaChartType == .arearange
             || aaChartType == .areasplinerange

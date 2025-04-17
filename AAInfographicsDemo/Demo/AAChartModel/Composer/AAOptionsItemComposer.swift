@@ -20,6 +20,7 @@ class AAOptionsItemComposer: NSObject {
             SpecialChartComposer.stepAreaChart(),
             SpecialChartComposer.pieChart(),
             SpecialChartComposer.bubbleChart(),
+            SpecialChartComposer.packedbubbleChart(),
             SpecialChartComposer.scatterChart(),
             SpecialChartComposer.arearangeChart(),
             SpecialChartComposer.areasplinerangeChart(),
@@ -171,6 +172,9 @@ class AAOptionsItemComposer: NSObject {
 
             BubbleLegendChartOptionsComposer.bubbleLegendChart(),
             BubbleLegendChartOptionsComposer.customBubbleLegendChart(),
+            BubbleLegendChartOptionsComposer.packedbubbleChart(),
+            BubbleLegendChartOptionsComposer.packedbubbleSplitChart(),
+            BubbleLegendChartOptionsComposer.packedbubbleSpiralChart(),
             
             DrawChartWithAAOptionsVC.configureLegendStyle(),
             DrawChartWithAAOptionsVC.simpleGaugeChart(),
@@ -275,6 +279,7 @@ class AAOptionsItemComposer: NSObject {
             AARandomValueDataComposer.configureChartOptions(chartType: .scatter),         //A scatter plot uses cartesian coordinates to display values for two variables for a set of data.
             AARandomValueDataComposer.configureChartOptions(chartType: .pie),             //A pie chart is a circular graphic which is divided into slices to illustrate numerical proportion.
             AARandomValueDataComposer.configureChartOptions(chartType: .bubble),          //A bubble series is a three dimensional series type where each point renders an X, Y and Z value. Each points is drawn as a bubble where the position along the X and Y axes mark the X and Y values, and the size of the bubble relates to the Z value.
+            AARandomValueDataComposer.configureChartOptions(chartType: .packedbubble),    //A packed bubble series is a two dimensional series type, where each point renders a value in X, Y position. Each point is drawn as a bubble where the bubbles don't overlap with each other and the radius of the bubble relates to the value.
             AARandomValueDataComposer.configureChartOptions(chartType: .pyramid),         //A pyramid series is a special type of funnel, without neck and reversed by default.
             AARandomValueDataComposer.configureChartOptions(chartType: .funnel),          //Funnel charts are a type of chart often used to visualize stages in a sales project, where the top are the initial stages with the most clients. It requires that the modules/funnel.js file is loaded.
             AARandomValueDataComposer.configureChartOptions(chartType: .columnrange),     //The column range is a cartesian series type with higher and lower Y values along an X axis. To display horizontal bars, set chart.inverted to true.
