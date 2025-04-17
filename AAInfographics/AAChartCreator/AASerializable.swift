@@ -89,10 +89,14 @@ public extension AAObject {
     }
     
     private func addComputedProperties(to representation: inout [String: Any]) {
+        // 仅依赖协议
         if let selfWithComputed = self as? AASerializableWithComputedProperties {
             let computedProps = selfWithComputed.computedProperties()
-            for (key, value) in computedProps {
-                representation[key] = value
+            // 仅在有计算属性时合并
+            if !computedProps.isEmpty {
+                for (key, value) in computedProps {
+                    representation[key] = value
+                }
             }
         }
     }

@@ -155,51 +155,54 @@ public extension AASeriesElement {
 
 //遵循协议以提供计算属性
 extension AASeriesElement: AASerializableWithComputedProperties {
+    // 这个方法实现了协议要求，用于提供那些不能通过标准反射（如关联对象）获取的属性。
+    // 理想情况下，`toDic()` 方法应该调用这个方法来获取这些额外的属性。
     public func computedProperties() -> [String: Any] {
-        var dict = [String: Any]()
-        if let val = borderRadiusTopLeft {
-            dict["borderRadiusTopLeft"] = val
+        var dic = [String:Any]()
+        // 直接尝试读取关联对象并填充字典
+        if let val = self.borderRadiusTopLeft {
+            dic["borderRadiusTopLeft"] = val
         }
-        if let val = borderRadiusTopRight {
-            dict["borderRadiusTopRight"] = val
+        
+        if let val = self.borderRadiusTopRight {
+            dic["borderRadiusTopRight"] = val
         }
-        if let val = borderRadiusBottomLeft {
-            dict["borderRadiusBottomLeft"] = val
+        
+        if let val = self.borderRadiusBottomLeft {
+            dic["borderRadiusBottomLeft"] = val
         }
-        if let val = borderRadiusBottomRight {
-            dict["borderRadiusBottomRight"] = val
+        
+        if let val = self.borderRadiusBottomRight {
+            dic["borderRadiusBottomRight"] = val
         }
-        return dict
+        
+        // 直接返回构建好的字典
+        return dic
     }
-}
-
-// 添加一个直接访问关联对象的工具函数，帮助我们解决问题
-public extension AASeriesElement {
+    
+    // 这个自定义方法直接访问关联对象来构建字典。
+    // 它与 computedProperties() 的实现基本相同，主要用于调试或直接获取圆角值。
+    // 它绕过了标准的 toDic() 序列化流程。
     func toRoundedCornersDic() -> [String: Any] {
-        var dic = self.toDic()
-        print("Debug - AASeriesElement.toRoundedCornersDic - 初始字典: \(dic)")
-        print("Debug - AASeriesElement.toRoundedCornersDic - 圆角值: \(String(describing: self.borderRadiusTopLeft))")
+        var dic = [String:Any]()
         
         if let val = self.borderRadiusTopLeft {
             dic["borderRadiusTopLeft"] = val
-            print("Debug - 已添加 borderRadiusTopLeft: \(val)")
         }
         if let val = self.borderRadiusTopRight {
-            dic["borderRadiusTopRight"] = val 
-            print("Debug - 已添加 borderRadiusTopRight: \(val)")
+            dic["borderRadiusTopRight"] = val
         }
         if let val = self.borderRadiusBottomLeft {
             dic["borderRadiusBottomLeft"] = val
-            print("Debug - 已添加 borderRadiusBottomLeft: \(val)")
         }
         if let val = self.borderRadiusBottomRight {
             dic["borderRadiusBottomRight"] = val
-            print("Debug - 已添加 borderRadiusBottomRight: \(val)")
         }
-        print("Debug - AASeriesElement.toRoundedCornersDic - 最终字典: \(dic)")
         return dic
-    }
+     }
 }
+
+
 
 // --- 为 AAPlotOptions 定义唯一的键 ---
 private struct AAPlotOptionsAssociatedKeys {
@@ -298,26 +301,19 @@ extension AAPlotOptions: AASerializableWithComputedProperties {
 public extension AAPlotOptions {
     func toRoundedCornersDic() -> [String: Any] {
         var dic = self.toDic()
-        print("Debug - AAPlotOptions.toRoundedCornersDic - 初始字典: \(dic)")
-        print("Debug - AAPlotOptions.toRoundedCornersDic - 圆角值: \(String(describing: self.borderRadiusTopLeft))")
         
         if let val = self.borderRadiusTopLeft {
             dic["borderRadiusTopLeft"] = val
-            print("Debug - 已添加 borderRadiusTopLeft: \(val)")
         }
         if let val = self.borderRadiusTopRight {
             dic["borderRadiusTopRight"] = val 
-            print("Debug - 已添加 borderRadiusTopRight: \(val)")
         }
         if let val = self.borderRadiusBottomLeft {
             dic["borderRadiusBottomLeft"] = val
-            print("Debug - 已添加 borderRadiusBottomLeft: \(val)")
         }
         if let val = self.borderRadiusBottomRight {
             dic["borderRadiusBottomRight"] = val
-            print("Debug - 已添加 borderRadiusBottomRight: \(val)")
         }
-        print("Debug - AAPlotOptions.toRoundedCornersDic - 最终字典: \(dic)")
         return dic
     }
 }
@@ -352,7 +348,6 @@ public func convertToRoundedCornersDictionary(_ element: Any) -> [String: Any] {
         return plotOptions.toRoundedCornersDic()
     } else {
         // 对于其他类型，尝试使用标准 toDic() 方法
-//        return (element as AnyObject).toDic() ?? [:]
         return [:]
 
     }
