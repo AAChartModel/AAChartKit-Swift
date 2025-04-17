@@ -217,11 +217,10 @@ class JSFunctionForAATooltipVC2: AABaseChartVC {
                 .chartType(AAChartType.column)
                 .categories(categoriesArr)
                 .series([
-                    AARoundedCornersSeriesElement()
+                    AASeriesElement()
                             .name("个人徒步数据统计")
                             .color(AARgba(235, 88, 40, 1.0))
-                            .borderRadiusTopLeft(3)
-                            .borderRadiusTopRight(3)
+                            .borderRadius(3)
                             .data([
                                 1300.988, 900.699, 1000.089, 1100.965, 1000.534, 1400.523, 1800.254, 1900.377, 2100.523, 2500.256, 2600.555, 2800.366,
                                 1300.988, 900.699, 1000.089, 1100.965, 1000.534, 1400.523, 1800.254, 1900.377, 2100.523, 2500.256, 2600.555, 2800.366,
