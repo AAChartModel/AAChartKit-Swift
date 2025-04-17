@@ -32,36 +32,21 @@ private var customDataKey: UInt8 = 0
 private var borderRadiusTopLeftKey: UInt8 = 0
 
 public extension AAOptions {
-//    var customData: AACustomData? {
-//        get {
-//            return objc_getAssociatedObject(self, &customDataKey) as? AACustomData
-//        }
-//        set {
-//            objc_setAssociatedObject(self, &customDataKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//        }
-//    }
-//    
-//    @discardableResult
-//    func customData(_ prop: AACustomData?) -> AAOptions {
-//        customData = prop
-//        return self
-//    }
+    var customData: AACustomData? {
+        get {
+            return objc_getAssociatedObject(self, &customDataKey) as? AACustomData
+        }
+        set {
+            objc_setAssociatedObject(self, &customDataKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
     
-    
-//    var borderRadiusTopLeft: Any? {
-//         get {
-//             return objc_getAssociatedObject(self, &borderRadiusTopLeftKey)
-//         }
-//         set {
-//             objc_setAssociatedObject(self, &borderRadiusTopLeftKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//         }
-//     }
-//     
-//     @discardableResult
-//     func borderRadiusTopLeft(_ prop: Any?) -> AAOptions {
-//         borderRadiusTopLeft = prop
-//         return self
-//     }
+    @discardableResult
+    func customData(_ prop: AACustomData?) -> AAOptions {
+        customData = prop
+        return self
+    }
+
 }
 
 
@@ -71,16 +56,10 @@ extension AAOptions:  AASerializableWithComputedProperties {
     public func computedProperties() -> [String: Any] {
         
         var dict = [String: Any]()
-//        if customData != nil {
-//            dict["customData"] = customData?.toDic() as Any
-//        }
-        return [
-            "borderRadiusTopLeft": borderRadiusTopLeft ?? NSNull(),
-            "borderRadiusTopRight": borderRadiusTopRight ?? NSNull(),
-            "borderRadiusBottomLeft": borderRadiusBottomLeft ?? NSNull(),
-            "borderRadiusBottomRight": borderRadiusBottomRight ?? NSNull()
-        ]
-        
+        if customData != nil {
+            dict["customData"] = customData?.toDic() as Any
+        }
+ 
         return dict
     }
 }

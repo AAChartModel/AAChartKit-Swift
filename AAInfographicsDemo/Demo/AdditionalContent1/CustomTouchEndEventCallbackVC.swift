@@ -59,7 +59,7 @@ class CustomTouchEndEventCallbackVC: UIViewController {
             .title("Top Rounded Corners Stacking Column Chart")
             .colorsTheme(["#fe117c", "#ffc069", "#06caf4",])
             .series([
-                AASeriesElement()
+                AARoundedCornersSeriesElement()
                     .name("Tokyo Hot")
                     .borderRadiusTopLeft("50%")
                     .borderRadiusTopRight("50%")

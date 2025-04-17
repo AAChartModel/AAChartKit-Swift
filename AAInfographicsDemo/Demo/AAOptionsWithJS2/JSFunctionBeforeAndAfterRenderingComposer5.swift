@@ -328,15 +328,16 @@ class JSFunctionBeforeAndAfterRenderingComposer5 {
                         .inactive(AAInactive()
                             .enabled(false)))))
             .series([
-                AASeriesElement()
+                AARoundedCornersSeriesElement()
                     .name("低于 25")
                     .data(orangeData)
                     .color(AAColor.red)
                     .borderRadiusTopLeft(6)
                     .borderRadiusTopRight(6)
                     .borderRadiusBottomLeft(6)
-                    .borderRadiusBottomRight(6),
-                AASeriesElement()
+                    .borderRadiusBottomRight(6)
+                ,
+                AARoundedCornersSeriesElement()
                     .name("大于等于 25")
                     .data(redData)
                     .color("#1E90FF")// Dodger blue

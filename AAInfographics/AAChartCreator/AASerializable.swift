@@ -53,7 +53,7 @@ public protocol AASerializableWithComputedProperties {
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public extension AAObject {
     
-    fileprivate func loopForMirrorChildren(_ mirrorChildren: Mirror.Children, _ representation: inout [String: Any]) {
+    private func loopForMirrorChildren(_ mirrorChildren: Mirror.Children, _ representation: inout [String: Any]) {
         for case let (label?, value) in mirrorChildren {
             if let value = value as? AAObject {
                 representation[label] = value.toDic()
@@ -72,7 +72,7 @@ public extension AAObject {
         
         // 预估容量
         let estimatedCapacity = mirror.children.underestimatedCount +
-                                (mirror.superclassMirror?.children.underestimatedCount ?? 0) + 5
+        (mirror.superclassMirror?.children.underestimatedCount ?? 0) + 5
         var representation = [String: Any](minimumCapacity: estimatedCapacity)
         
         // 遍历当前类和父类的反射子属性
@@ -114,4 +114,5 @@ public extension AAObject {
             return ""
         }
     }
+    
 }
