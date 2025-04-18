@@ -51,6 +51,7 @@ class CustomXAxisLabelsClickEventCallbackVC: UIViewController {
     }
     
     /*
+    //给 x 轴标签的文字添加点击事件
     private func configureChartOptions() -> AAOptions {
         AAOptions()
             .chart(AAChart()
@@ -85,6 +86,8 @@ class CustomXAxisLabelsClickEventCallbackVC: UIViewController {
     }
     */
     
+    
+    //给 x 轴标签添加图片, 并且给图片添加点击事件
     private func configureChartOptions() -> AAOptions {
         AAOptions()
             .chart(AAChart()
