@@ -63,7 +63,7 @@
 		8418479928B8755900094106 /* JSFunctionForAAChartEventsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418479828B8755900094106 /* JSFunctionForAAChartEventsComposer.swift */; };
 		842FC3EE2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */; };
 		84339F4F2D536AC900F54F1E /* SortAlgorithmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F4E2D536AC900F54F1E /* SortAlgorithmVC.swift */; };
-		84339F572D54591900F54F1E /* AAOptionsItemComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F562D54591900F54F1E /* AAOptionsItemComposer.swift */; };
+		84339F572D54591900F54F1E /* ChartSampleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F562D54591900F54F1E /* ChartSampleProvider.swift */; };
 		84339F5C2D54713E00F54F1E /* MixedChartVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F5B2D54713E00F54F1E /* MixedChartVC2.swift */; };
 		84339F5E2D54DA1000F54F1E /* ChartListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F5D2D54DA1000F54F1E /* ChartListVC.swift */; };
 		84339F602D59F61400F54F1E /* JSFunctionBeforeAndAfterRenderingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F5F2D59F61400F54F1E /* JSFunctionBeforeAndAfterRenderingVC.swift */; };
@@ -105,6 +105,10 @@
 		84595DF02B47E8E700F69273 /* AdvancedFeaturesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */; };
 		845BABF12D030318004C15D4 /* OfficialChartSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BABEF2D030318004C15D4 /* OfficialChartSample.swift */; };
 		845BABF22D030318004C15D4 /* OfficialChartSampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BABF02D030318004C15D4 /* OfficialChartSampleVC.swift */; };
+		8466E39B2DB1FDB100DBF03B /* ChartSampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8466E39A2DB1FDB100DBF03B /* ChartSampleTableViewCell.xib */; };
+		8466E39C2DB1FDB100DBF03B /* ChartListTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466E3972DB1FDB100DBF03B /* ChartListTableViewVC.swift */; };
+		8466E39E2DB1FDB100DBF03B /* ChartSampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466E3992DB1FDB100DBF03B /* ChartSampleTableViewCell.swift */; };
+		8466E3A02DB2291300DBF03B /* ChartExampleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8466E39F2DB2291300DBF03B /* ChartExampleCell.swift */; };
 		84790F3F2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F3E2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift */; };
 		84790F442CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F432CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift */; };
 		84790F4E2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */; };
@@ -304,7 +308,7 @@
 		8418479828B8755900094106 /* JSFunctionForAAChartEventsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsComposer.swift; sourceTree = "<group>"; };
 		842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTooltipEventCallbackVC.swift; sourceTree = "<group>"; };
 		84339F4E2D536AC900F54F1E /* SortAlgorithmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAlgorithmVC.swift; sourceTree = "<group>"; };
-		84339F562D54591900F54F1E /* AAOptionsItemComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAOptionsItemComposer.swift; sourceTree = "<group>"; };
+		84339F562D54591900F54F1E /* ChartSampleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSampleProvider.swift; sourceTree = "<group>"; };
 		84339F5B2D54713E00F54F1E /* MixedChartVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartVC2.swift; sourceTree = "<group>"; };
 		84339F5D2D54DA1000F54F1E /* ChartListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListVC.swift; sourceTree = "<group>"; };
 		84339F5F2D59F61400F54F1E /* JSFunctionBeforeAndAfterRenderingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionBeforeAndAfterRenderingVC.swift; sourceTree = "<group>"; };
@@ -346,6 +350,10 @@
 		84595DEF2B47E8E700F69273 /* AdvancedFeaturesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedFeaturesListVC.swift; sourceTree = "<group>"; };
 		845BABEF2D030318004C15D4 /* OfficialChartSample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficialChartSample.swift; sourceTree = "<group>"; };
 		845BABF02D030318004C15D4 /* OfficialChartSampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficialChartSampleVC.swift; sourceTree = "<group>"; };
+		8466E3972DB1FDB100DBF03B /* ChartListTableViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListTableViewVC.swift; sourceTree = "<group>"; };
+		8466E3992DB1FDB100DBF03B /* ChartSampleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSampleTableViewCell.swift; sourceTree = "<group>"; };
+		8466E39A2DB1FDB100DBF03B /* ChartSampleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartSampleTableViewCell.xib; sourceTree = "<group>"; };
+		8466E39F2DB2291300DBF03B /* ChartExampleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartExampleCell.swift; sourceTree = "<group>"; };
 		84790F3E2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTooltipClickEventCallbackVC.swift; sourceTree = "<group>"; };
 		84790F432CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLargeDateSeriesClickEventCallbackVC.swift; sourceTree = "<group>"; };
 		84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSFunctionBeforeAndAfterRenderingComposer.swift; sourceTree = "<group>"; };
@@ -416,6 +424,7 @@
 		275BB8D720CFA6DB00DE1991 /* AdditionalContent1 */ = {
 			isa = PBXGroup;
 			children = (
+				8466E3962DB1FD8600DBF03B /* ChartGalleryList */,
 				2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */,
 				276A56FE22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift */,
 				84526E282CF0228300EB2563 /* TripleChartsLinkedWorkVC.swift */,
@@ -731,9 +740,20 @@
 				8441C0962C620ED400A6F784 /* CustomStyleForAreasplineChartComposer.swift */,
 				586030C73877C58B03F2F997 /* CustomStyleForScatterChartComposer.swift */,
 				8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */,
-				84339F562D54591900F54F1E /* AAOptionsItemComposer.swift */,
+				84339F562D54591900F54F1E /* ChartSampleProvider.swift */,
 			);
 			path = Composer;
+			sourceTree = "<group>";
+		};
+		8466E3962DB1FD8600DBF03B /* ChartGalleryList */ = {
+			isa = PBXGroup;
+			children = (
+				8466E3972DB1FDB100DBF03B /* ChartListTableViewVC.swift */,
+				8466E39F2DB2291300DBF03B /* ChartExampleCell.swift */,
+				8466E3992DB1FDB100DBF03B /* ChartSampleTableViewCell.swift */,
+				8466E39A2DB1FDB100DBF03B /* ChartSampleTableViewCell.xib */,
+			);
+			path = ChartGalleryList;
 			sourceTree = "<group>";
 		};
 		84BDF5AB2930AE1700B9EC30 /* ViewController */ = {
@@ -927,6 +947,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8466E39B2DB1FDB100DBF03B /* ChartSampleTableViewCell.xib in Resources */,
 				278C54BC1EE9472300770B97 /* LaunchScreen.storyboard in Resources */,
 				278C54B91EE9472300770B97 /* Assets.xcassets in Resources */,
 				848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */,
@@ -971,7 +992,7 @@
 				84EAD7DC2B91AD660028CB7C /* CustomStyleForLineChartVC.swift in Sources */,
 				84595DEA2B46A94C00F69273 /* AAOptionsListVC.swift in Sources */,
 				845BABF22D030318004C15D4 /* OfficialChartSampleVC.swift in Sources */,
-				84339F572D54591900F54F1E /* AAOptionsItemComposer.swift in Sources */,
+				84339F572D54591900F54F1E /* ChartSampleProvider.swift in Sources */,
 				279B5B141FB0577A000B8DBF /* ShowManyChartViewVC.swift in Sources */,
 				844F11402B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift in Sources */,
 				8447363B2DAFD2AD0040CCCE /* AARoundedCornersChartVC.swift in Sources */,
@@ -994,6 +1015,7 @@
 				84339F5E2D54DA1000F54F1E /* ChartListVC.swift in Sources */,
 				84595DEE2B47E53C00F69273 /* OfficialSamplesListVC.swift in Sources */,
 				84123BC72DB0B3F6003DA7A0 /* AARoundedCornersChartComposer.swift in Sources */,
+				8466E3A02DB2291300DBF03B /* ChartExampleCell.swift in Sources */,
 				84790F4E2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift in Sources */,
 				276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */,
 				84EAD7DE2B91B08C0028CB7C /* CustomStyleForAreaChartVC.swift in Sources */,
@@ -1066,6 +1088,8 @@
 				586036695AB4F35E065C17AF /* CustomStyleForColumnChartVC.swift in Sources */,
 				58603F02EF3BB64BA4890452 /* JSFunctionForAAChartEventsComposer2.swift in Sources */,
 				586035ABDF7BCB2B52716BFB /* CustomStyleForScatterChartComposer.swift in Sources */,
+				8466E39C2DB1FDB100DBF03B /* ChartListTableViewVC.swift in Sources */,
+				8466E39E2DB1FDB100DBF03B /* ChartSampleTableViewCell.swift in Sources */,
 				84339F5C2D54713E00F54F1E /* MixedChartVC2.swift in Sources */,
 				58603C7E2656F79AF92F99BC /* CustomStyleForAreaChartComposer.swift in Sources */,
 			);

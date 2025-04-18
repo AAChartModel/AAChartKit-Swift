@@ -318,6 +318,7 @@ class AAChartModelListVC: AABaseListVC {
                 "所有 AAOptions 图表",
                 "所有 Official Sample AAOptions 图表",
                 "所有类型 Random Value Data 图表",
+                "ChartListTableViewVC---所有 AAChartModel 图表 TableView",
             ],
 
         ]
@@ -541,13 +542,17 @@ extension AAChartModelListVC {
             if #available(iOS 14.0, *) {
                 let vc = OfficialChartSampleVC()
                 if indexPathRow == 0 {
-                    vc.optionsItems = AAOptionsItemComposer.aaChartModelItems()
+                    vc.optionsItems = ChartSampleProvider.aaChartModelItems()
                 } else if indexPathRow == 1 {
-                    vc.optionsItems = AAOptionsItemComposer.aaOptionsItems()
+                    vc.optionsItems = ChartSampleProvider.aaOptionsItems()
                 } else if indexPathRow == 2 {
-                    vc.optionsItems = AAOptionsItemComposer.officalChartSampleItems()
+                    vc.optionsItems = ChartSampleProvider.officalChartSampleItems()
                 } else if indexPathRow == 3 {
-                    vc.optionsItems = AAOptionsItemComposer.randomValueDataItems()
+                    vc.optionsItems = ChartSampleProvider.randomValueDataItems()
+                } else if indexPathRow == 4 {
+                    let vc = ChartListTableViewVC()
+                    navigationController?.pushViewController(vc, animated: true)
+                    return
                 }
                 navigationController?.pushViewController(vc, animated: true)
                 
