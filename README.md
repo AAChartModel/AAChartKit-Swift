@@ -27,7 +27,7 @@
 
 * 🎂  **Environment friendly**. Support `iOS `、`iPadOS` and  `macOS`. Totally support `Swift` language, and there are more types version such as  `Objective-C` language version [AAChartKit](https://github.com/AAChartModel/AAChartKit) 、 `Java` language version [AAChartCore](https://github.com/AAChartModel/AAChartCore) 、`Kotlin` language version [AAInfographics](https://github.com/AAChartModel/AAChartCore-Kotlin) . To get more details you can see the [source code links list](https://github.com/AAChartModel/AAChartKit-Swift#source-code-Links).
 
-* 🚀  **Powerful and easy to use**. It supports `column chart`, `bar chart`, `area chart`, `areaspline chart`, `line chart`, `spline chart`, `radar chart`, `polar chart`, `pie chart`, `bubble chart`, `packedbubble chart`, `pyramid chart`, `funnel chart`, `columnrange chart`, `arearange chart`, `mixed chart` and other graphics. Support for more chart types is planned.
+* 🚀  **Powerful and easy to use**. It supports `column chart`, `bar chart`, `area chart`, `areaspline chart`, `line chart`, `spline chart`, `radar chart`, `polar chart`, `pie chart`, `bubble chart`, `packedbubble chart`, `pyramid chart`, `funnel chart`, `columnpyramid chart`, `columnrange chart`, `arearange chart`, `mixed chart` and other graphics. Support for more chart types is planned.
 
 * 📝  **Modern Declarative Syntax**. Unlike previous imperative programming techniques, drawing any custom chart in AAChartKit, you don't need to care about the inner implementation details which is annoying && boring. *Describe what you want, you will get what you described*.
 
@@ -423,6 +423,7 @@ public enum AAChartType: String {
     case packedbubble    //A packed bubble series is a two dimensional series type, where each point renders a value in X, Y position. Each point is drawn as a bubble where the bubbles don't overlap with each other and the radius of the bubble relates to the value.
     case pyramid         //A pyramid series is a special type of funnel, without neck and reversed by default.
     case funnel          //Funnel charts are a type of chart often used to visualize stages in a sales project, where the top are the initial stages with the most clients. It requires that the modules/funnel.js file is loaded.
+    case columnpyramid   //Column pyramid series display one pyramid per value along an X axis. To display horizontal pyramids, set chart.inverted to true.
     case columnrange     //The column range is a cartesian series type with higher and lower Y values along an X axis. To display horizontal bars, set chart.inverted to true.
     case arearange       //The area range series is a cartesian series with higher and lower values for each point along an X axis, where the area between the values is shaded.
     case areasplinerange //The area spline range is a cartesian series type with higher and lower Y values along an X axis. The area inside the range is colored, and the graph outlining the area is a smoothed spline.

@@ -92,7 +92,8 @@ class AAChartModelListVC: AABaseListVC {
                 "Funnel Chart---漏斗图",
                 "Error Bar Chart---误差图",
                 "Gauge Chart---仪表图",
-                "Polygon Chart---多边形图"
+                "Polygon Chart---多边形图",
+                "Columnpyramid Chart---金字塔柱状图",
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -357,6 +358,7 @@ class AAChartModelListVC: AABaseListVC {
                 AAChartType.errorbar,
                 AAChartType.gauge,
                 AAChartType.polygon,
+                AAChartType.columnpyramid,
             ],
             [//Empty Array,just for holding place
             ],

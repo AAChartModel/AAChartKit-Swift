@@ -836,6 +836,13 @@ class SpecialChartComposer {
             ])
     }
     
+    static func columnpyramidChart() -> AAChartModel {
+        stepLineChart()
+            .chartType(.columnpyramid)
+            .title("COLUMN PYRAMID CHART")
+            .subtitle("virtual data")
+    }
+    
     static func columnrangeChart() -> AAChartModel {
         AAChartModel()
             .chartType(.columnrange)

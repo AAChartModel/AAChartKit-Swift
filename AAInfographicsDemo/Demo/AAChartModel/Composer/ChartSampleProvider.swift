@@ -32,6 +32,7 @@ class ChartSampleProvider: NSObject {
             SpecialChartComposer.errorbarChart(),
             SpecialChartComposer.gaugeChart(),
             SpecialChartComposer.polygonChart(),
+            SpecialChartComposer.columnpyramidChart(),
             
 //            MixedChartComposer.arearangeMixedLineChart(),
 //            MixedChartComposer.columnrangeMixedLineChart(),

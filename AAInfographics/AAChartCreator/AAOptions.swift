@@ -338,14 +338,15 @@ public class AAOptionsConstructor {
             || aaChartType == .spline
             || aaChartType == .scatter
             || aaChartType == .bubble
-            || aaChartType == .packedbubble
             || aaChartType == .columnrange
             || aaChartType == .arearange
             || aaChartType == .areasplinerange
             || aaChartType == .boxplot
             || aaChartType == .waterfall
             || aaChartType == .polygon
-            || aaChartType == .gauge {
+            || aaChartType == .gauge
+            || aaChartType == .columnpyramid
+        {
             
             if aaChartType != .gauge {
                 let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled

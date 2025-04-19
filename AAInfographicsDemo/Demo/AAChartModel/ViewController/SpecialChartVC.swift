@@ -63,6 +63,8 @@ class SpecialChartVC: AABaseChartVC {
         case .errorbar:        return SpecialChartComposer.errorbarChart()
         case .gauge :          return SpecialChartComposer.gaugeChart()
         case .polygon:         return SpecialChartComposer.polygonChart()
+        case .columnpyramid:   return SpecialChartComposer.columnpyramidChart()
+
         }
     }
   

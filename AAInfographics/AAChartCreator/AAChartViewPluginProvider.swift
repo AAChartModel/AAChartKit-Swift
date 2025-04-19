@@ -27,7 +27,7 @@ public class ProPluginProvider: AAChartViewPluginProvider {
     private static let chartTypeScriptMapping: [String: [String]] = [
         AAChartType.funnel.rawValue          : ["AAFunnel"],
         AAChartType.pyramid.rawValue         : ["AAFunnel"],
-        
+        AAChartType.columnpyramid.rawValue   : ["AAHighcharts-More"],
         AAChartType.bubble.rawValue          : ["AAHighcharts-More"],
         AAChartType.packedbubble.rawValue    : ["AAHighcharts-More"],
         AAChartType.arearange.rawValue       : ["AAHighcharts-More"],

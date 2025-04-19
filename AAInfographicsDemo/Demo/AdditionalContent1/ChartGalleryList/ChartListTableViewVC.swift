@@ -14,7 +14,11 @@ class ChartListTableViewVC: UIViewController, UITableViewDelegate, UITableViewDa
     private var tableView: UITableView!
     
     // 图表示例数据
-    private let chartExamples = ChartSampleProvider.aaOptionsItems()
+    private let chartExamples = (
+          ChartSampleProvider.aaChartModelItems()
+        + ChartSampleProvider.aaOptionsItems()
+        + ChartSampleProvider.officalChartSampleItems()
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
