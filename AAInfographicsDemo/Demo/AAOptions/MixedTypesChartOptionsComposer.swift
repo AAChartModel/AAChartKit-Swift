@@ -8,7 +8,7 @@
 
 import AAInfographics
 
-class MixedTypesChartOptionsComposer: NSObject {
+class MixedTypesChartOptionsComposer {
 
      /*
      // --- 配置变量 ---
@@ -170,7 +170,7 @@ class MixedTypesChartOptionsComposer: NSObject {
 
      });
      */
-    class func configureMixedTypesChartOptions() -> AAOptions {
+    class func columnrangeAndScatterMixedTypesChart() -> AAOptions {
         // --- 配置变量 ---
         let colorGreen = "#55a655"
         let colorRed = "#e65550"
@@ -224,41 +224,6 @@ class MixedTypesChartOptionsComposer: NSObject {
             ]
         }
         
-        let series = [
-            AASeriesElement()
-                .type(.columnrange)
-                .name("Connectors")
-                .data(columnRangeData)
-                .keys(["x", "low", "high", "color"])
-                .zIndex(1)
-//                .stickyTracking(false) // 明确关闭
-            ,
-            AASeriesElement()
-                .type(.scatter)
-                .name("Low Points")
-                .data(scatterLowData)
-                .keys(["x", "y", "color"])
-                .marker(AAMarker()
-                    .lineWidth(Float(markerLineWidth))
-                    .fillColor("white")
-                    .lineColor(NSNull()) // 让外沿线颜色透明
-                )
-                .zIndex(2)
-//                .stickyTracking(true) // 确保开启
-            ,
-            AASeriesElement()
-                .type(.scatter)
-                .name("High Points")
-                .data(scatterHighData)
-                .keys(["x", "y", "color"])
-                .marker(AAMarker()
-                    .lineWidth(Float(markerLineWidth))
-                    .fillColor("white")
-                    .lineColor(NSNull())
-                )
-                .zIndex(2)
-//                .stickyTracking(true) // 确保开启
-        ]
 
         // --- Highcharts 图表配置 ---
         let aaOptions = AAOptions()
@@ -266,7 +231,7 @@ class MixedTypesChartOptionsComposer: NSObject {
                 .backgroundColor("#f9f9f9") // 或者给一个非常浅的背景色，增加质感
             )
             .title(AATitle()
-                .text(nil)
+                .text("columnrangeAndScatterMixedTypesChart---柱形范围图和散点图混合类型图")
             )
             .legend(AALegend()
                 .enabled(false)
@@ -349,7 +314,41 @@ class MixedTypesChartOptionsComposer: NSObject {
 //                    .stickyTracking(true) // scatter 参与粘性查找
                 )
             )
-            .series(series)
+            .series([
+                AASeriesElement()
+                    .type(.columnrange)
+                    .name("Connectors")
+                    .data(columnRangeData)
+                    .keys(["x", "low", "high", "color"])
+                    .zIndex(1)
+    //                .stickyTracking(false) // 明确关闭
+                ,
+                AASeriesElement()
+                    .type(.scatter)
+                    .name("Low Points")
+                    .data(scatterLowData)
+                    .keys(["x", "y", "color"])
+                    .marker(AAMarker()
+                        .lineWidth(Float(markerLineWidth))
+                        .fillColor("white")
+                        .lineColor(NSNull()) // 让外沿线颜色透明
+                    )
+                    .zIndex(2)
+    //                .stickyTracking(true) // 确保开启
+                ,
+                AASeriesElement()
+                    .type(.scatter)
+                    .name("High Points")
+                    .data(scatterHighData)
+                    .keys(["x", "y", "color"])
+                    .marker(AAMarker()
+                        .lineWidth(Float(markerLineWidth))
+                        .fillColor("white")
+                        .lineColor(NSNull())
+                    )
+                    .zIndex(2)
+    //                .stickyTracking(true) // 确保开启
+            ])
 
         return aaOptions
     }

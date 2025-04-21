@@ -266,8 +266,6 @@ class BubbleLegendChartOptionsComposer {
     }
     
     static func packedbubbleSpiralChart() -> AAOptions {
-        return  MixedTypesChartOptionsComposer.configureMixedTypesChartOptions()
-        
         let aaOptions = SpecialChartComposer
             .packedbubbleChart()
             .aa_toAAOptions()
@@ -291,4 +289,5 @@ class BubbleLegendChartOptionsComposer {
         
         return aaOptions
     }
+    
 }
