@@ -524,7 +524,7 @@ public class AAAxisEvents: AAObject {
     
     @discardableResult
     public func setExtremes(_ prop: String?) -> AAAxisEvents {
-        setExtremes = prop?.aa_toPureJSStringqq()
+        setExtremes = prop?.aa_toPureJSStringWithParentheses()
         return self
     }
     
@@ -534,9 +534,9 @@ public class AAAxisEvents: AAObject {
 }
 
 
-public extension String {
+private extension String {
     
-    func aa_toPureJSStringqq() -> String {
+    func aa_toPureJSStringWithParentheses() -> String {
         //https://stackoverflow.com/questions/34334232/why-does-function-not-work-but-function-does-chrome-devtools-node
         var pureJSStr = "(\(self))"
         pureJSStr = pureJSStr.replacingOccurrences(of: "'", with: "\"")
