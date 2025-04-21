@@ -181,7 +181,7 @@ class MixedTypesChartOptionsComposer {
 
         // --- 生成更多随机数据 ---
         var pointsData: [[String: Any]] = []
-        for i in 0..<numberOfPoints {
+        for _ in 0..<numberOfPoints {
             // 随机生成 low 值 (例如在 10 到 60 之间)
             let lowValue = Double.random(in: 10..<60)
             // 随机生成线条长度 (例如在 20 到 80 之间)
@@ -223,7 +223,6 @@ class MixedTypesChartOptionsComposer {
                 "color": point["color"]!
             ]
         }
-        
 
         // --- Highcharts 图表配置 ---
         let aaOptions = AAOptions()
@@ -250,7 +249,7 @@ class MixedTypesChartOptionsComposer {
                     if (rangePointContext && rangePointContext.point) {
                         const originalPoint = rangePointContext.point;
                         if (typeof originalPoint.low !== 'undefined' && typeof originalPoint.high !== 'undefined') {
-                            const pointColor = rangePointContext.point.color || rangePointContext.series.color; 
+                            const pointColor = rangePointContext.point.color || rangePointContext.series.color;
                             return `<span style="color:${pointColor}">●</span> Range: <b>${originalPoint.low} - ${originalPoint.high}</b>`;
                         }
                     }
@@ -276,14 +275,9 @@ class MixedTypesChartOptionsComposer {
             )
             .plotOptions(AAPlotOptions()
                 .series(AASeries()
-//                    .grouping(false)
                     .pointPadding(0)
-                    .pointWidth(Float(connectorWidth))
                     .groupPadding(0)
                     .borderWidth(0)
-//                    .enableMouseTracking(true)
-//                    .findNearestPointBy("x") // 按 x 轴查找
-//                    .stickyTracking(true)    // 开启粘性跟踪，提升空白区域体验
                     .states(AAStates()
                         .hover(AAHover()
                             .enabled(false) // 仍然禁用元素本身的视觉高亮
@@ -294,14 +288,10 @@ class MixedTypesChartOptionsComposer {
                     )
                 )
                 .columnrange(AAColumnrange()
-                                                 .grouping(false)
-
-//                    .pointWidth(connectorWidth)
-//                    .stickyTracking(false) // columnrange 不参与粘性查找
+                    .grouping(false)
+                    .pointWidth(Float(connectorWidth)) // Specific to columnrange
                 )
                 .scatter(AAScatter()
-                         //                    .grouping(false)
-
                     .marker(AAMarker()
                         .symbol(.circle)
                         .radius(Float(markerRadius))
@@ -311,7 +301,6 @@ class MixedTypesChartOptionsComposer {
                             )
                         )
                     )
-//                    .stickyTracking(true) // scatter 参与粘性查找
                 )
             )
             .series([
@@ -321,7 +310,6 @@ class MixedTypesChartOptionsComposer {
                     .data(columnRangeData)
                     .keys(["x", "low", "high", "color"])
                     .zIndex(1)
-    //                .stickyTracking(false) // 明确关闭
                 ,
                 AASeriesElement()
                     .type(.scatter)
@@ -331,10 +319,9 @@ class MixedTypesChartOptionsComposer {
                     .marker(AAMarker()
                         .lineWidth(Float(markerLineWidth))
                         .fillColor("white")
-                        .lineColor(NSNull()) // 让外沿线颜色透明
+                        .lineColor(NSNull()) // 设置 marker 外沿线颜色关键代码(明确指示 Highcharts 将数据点中定义的 color (#55a655 或 #e65550) 应用于 marker 的边框)
                     )
                     .zIndex(2)
-    //                .stickyTracking(true) // 确保开启
                 ,
                 AASeriesElement()
                     .type(.scatter)
@@ -344,10 +331,9 @@ class MixedTypesChartOptionsComposer {
                     .marker(AAMarker()
                         .lineWidth(Float(markerLineWidth))
                         .fillColor("white")
-                        .lineColor(NSNull())
+                        .lineColor(NSNull()) // 设置 marker 外沿线颜色关键代码(明确指示 Highcharts 将数据点中定义的 color (#55a655 或 #e65550) 应用于 marker 的边框)
                     )
                     .zIndex(2)
-    //                .stickyTracking(true) // 确保开启
             ])
 
         return aaOptions

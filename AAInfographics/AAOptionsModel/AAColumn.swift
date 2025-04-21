@@ -145,7 +145,8 @@ public class AAColumnrange: AAObject {
     public var grouping: Bool?
     public var pointPadding: Float?//Padding between each column or bar, in x axis units. default：0.1.
     public var pointPlacement: Float?//Padding between each column or bar, in x axis units. default：0.1.
-    
+    public var pointWidth: Float?
+
     @discardableResult
     public func borderRadius(_ prop: Float?) -> AAColumnrange {
         borderRadius = prop
@@ -197,6 +198,12 @@ public class AAColumnrange: AAObject {
     @discardableResult
     public func pointPlacement(_ prop: Float?) -> AAColumnrange {
         pointPlacement = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pointWidth(_ prop: Float?) -> AAColumnrange {
+        pointWidth = prop
         return self
     }
     
