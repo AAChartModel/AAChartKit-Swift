@@ -129,6 +129,7 @@ class AAOptionsListVC: AABaseListVC {
             ],
             [
                 "columnrangeAndScatterMixedTypesChart---柱形范围图和散点图混合类型图",
+                "invertedColumnrangeAndScatterMixedTypesChart---倒置柱形范围图和散点图混合类型图",
             ],
             [
                 "columnChart---",

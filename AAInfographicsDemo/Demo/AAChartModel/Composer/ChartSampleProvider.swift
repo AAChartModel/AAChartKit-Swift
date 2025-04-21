@@ -132,6 +132,9 @@ class ChartSampleProvider: NSObject {
     static func aaOptionsItems() -> [AAOptions] {
         return [
             XAxisYAxisTypeOptionsComposer.datatimeTypeLineAndColumnMixedChart(),
+            MixedTypesChartOptionsComposer.columnrangeAndScatterMixedTypesChart(),
+            MixedTypesChartOptionsComposer.invertedColumnrangeAndScatterMixedTypesChart(),
+            
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart(),//复杂自定义曲线填充图 1
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart2(),//复杂自定义曲线填充图 2
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart3(),//复杂自定义曲线填充图 3

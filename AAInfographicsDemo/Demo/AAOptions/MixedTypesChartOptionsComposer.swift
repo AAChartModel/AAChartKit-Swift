@@ -11,6 +11,7 @@ import AAInfographics
 class MixedTypesChartOptionsComposer {
 
      /*
+     以下代码由 Gemini 2.5 Pro AI 工具辅助生成
      // --- 配置变量 ---
      const colorGreen = '#55a655';
      const colorRed = '#e65550';
@@ -336,6 +337,72 @@ class MixedTypesChartOptionsComposer {
                     .zIndex(2)
             ])
 
+        return aaOptions
+    }
+    
+    class func invertedColumnrangeAndScatterMixedTypesChart() -> AAOptions {
+        // --- 配置变量 ---
+        let colorGreen = AAGradientColor.deepSea.toDic()
+        let colorRed = AAGradientColor.sanguine.toDic()
+//        let connectorWidth = 4
+//        let markerRadius = 6
+//        let markerLineWidth = 4
+        let numberOfPoints = 35 // 增加数据点数量
+
+        // --- 生成更多随机数据 ---
+        var pointsData: [[String: Any]] = []
+        for _ in 0..<numberOfPoints {
+            // 随机生成 low 值 (例如在 10 到 60 之间)
+            let lowValue = Double.random(in: 10..<60)
+            // 随机生成线条长度 (例如在 20 到 80 之间)
+            let range = Double.random(in: 20..<80)
+            // 计算 high 值
+            let highValue = lowValue + range
+            // 随机决定颜色 (例如，大约 20% 的概率为红色)
+            let pointColor = Double.random(in: 0..<1) < 0.2 ? colorRed : colorGreen
+
+            pointsData.append([
+                "low": Int(round(lowValue)), // 取整让数值更干净
+                "high": Int(round(highValue)),
+                "color": pointColor
+            ])
+        }
+        // 可选：根据 low 值或 high 值对数据进行排序，产生一种趋势感
+         pointsData.sort { ($0["low"] as! Int) < ($1["low"] as! Int) }
+
+        // --- 数据处理 (为每个系列准备数据) ---
+        let columnRangeData = pointsData.enumerated().map { (index, point) in
+            [
+                "x": index,
+                "low": point["low"]!,
+                "high": point["high"]!,
+                "color": point["color"]!
+            ]
+        }
+        let scatterLowData = pointsData.enumerated().map { (index, point) in
+            [
+                "x": index,
+                "y": point["low"]!,
+                "color": point["color"]!
+            ]
+        }
+        let scatterHighData = pointsData.enumerated().map { (index, point) in
+            [
+                "x": index,
+                "y": point["high"]!,
+                "color": point["color"]!
+            ]
+        }
+        
+        let aaOptions = columnrangeAndScatterMixedTypesChart()
+        aaOptions.chart?.inverted = true // 反转图表
+        
+        //为 series 中的每个元素设置数值
+        let aaSeriesArr = aaOptions.series as! [AASeriesElement]
+        aaSeriesArr[0].data = columnRangeData
+        aaSeriesArr[1].data = scatterLowData
+        aaSeriesArr[2].data = scatterHighData
+        
         return aaOptions
     }
 }

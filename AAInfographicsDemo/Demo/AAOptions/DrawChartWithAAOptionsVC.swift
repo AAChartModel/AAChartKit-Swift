@@ -2493,7 +2493,7 @@ function () {
         
         aaOptions.tooltip?
             .useHTML(true)
-            .headerFormat(headerFormat)
+            .headerFormat(headerFormat.aa_toPureHTMLString())
             .style(AAStyle(color: AAColor.white, fontSize: 14))
             .backgroundColor("#050505")
             .borderColor("#050505")

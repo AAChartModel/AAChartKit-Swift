@@ -19,7 +19,9 @@ class MixedTypesChartOptionsVC: AABaseChartVC {
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
         case 0: return MixedTypesChartOptionsComposer.columnrangeAndScatterMixedTypesChart()
+        case 1: return MixedTypesChartOptionsComposer.invertedColumnrangeAndScatterMixedTypesChart()
 
+            
             
             
         default:
