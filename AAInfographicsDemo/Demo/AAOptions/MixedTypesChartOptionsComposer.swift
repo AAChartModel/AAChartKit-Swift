@@ -604,4 +604,152 @@ class MixedTypesChartOptionsComposer {
         
         return aaOptions
     }
+    
+    class func customLollipopChart() -> AAOptions {
+        // --- 配置变量 ---
+        let colorGreen = "#55a655" // 绿色
+        let colorRed = "#e65550"   // 红色
+        let stickWidth: Float = 3 // “棒子”的宽度 (列宽)
+        let markerRadius: Float = 7 // “糖果”的半径 (散点标记半径)
+        let markerLineWidth: Float = 3 // “糖果”边框宽度
+        let numberOfPoints = 30 // 数据点数量
+        let baseline = 0 // 棒棒糖“棒子”的起始基线
+
+        // --- 生成随机数据 ---
+        var pointsData: [[String: Any]] = []
+        for _ in 0..<numberOfPoints {
+            // 随机生成 value (例如在 20 到 150 之间)
+            let dataValue = Double.random(in: 20..<150)
+            // 随机决定颜色 (例如，大约 20% 的概率为红色)
+            let pointColor = Double.random(in: 0..<1) < 0.2 ? colorRed : colorGreen
+
+            pointsData.append([
+                "value": Int(round(dataValue)), // 取整让数值更干净
+                "color": pointColor
+            ])
+        }
+        // 可选：根据 value 值对数据进行排序，产生一种趋势感
+        // pointsData.sort { ($0["value"] as! Int) < ($1["value"] as! Int) }
+
+        // --- 数据处理 (为每个系列准备数据) ---
+        // column 数据: 每个点是一个柱子，高度为 value
+        let columnData = pointsData.enumerated().map { (index, point) in
+            [
+                "x": index,
+                "y": point["value"]!,
+                "color": point["color"]!
+            ]
+        }
+
+        // scatter 数据: 每个点是一个标记，位置在 value 处
+        let scatterData = pointsData.enumerated().map { (index, point) in
+            [
+                "x": index,
+                "y": point["value"]!,
+                "color": point["color"]!
+            ]
+        }
+
+        // --- Highcharts 图表配置 ---
+        let aaOptions = AAOptions()
+            .chart(AAChart()
+                .backgroundColor("#f9f9f9") // 浅灰色背景
+            )
+            .title(AATitle()
+                .text("自定义 AAInfographics 棒棒糖图")
+            )
+            .subtitle(AASubtitle()
+                .text("使用 Column 和 Scatter 系列实现")
+            )
+            .legend(AALegend()
+                .enabled(false) // 不显示图例
+            )
+            .credits(AACredits()
+                .enabled(false) // 不显示 Highcharts logo
+            )
+            .tooltip(AATooltip()
+                .enabled(true)
+                .shared(true) // 共享 Tooltip，同时显示柱状和散点信息（虽然值一样）
+                .useHTML(true)
+                .headerFormat("索引: {point.key}<br/>") // 在 tooltip 头部显示 x 轴索引
+                .pointFormat("") // 具体格式由 formatter 控制
+                .backgroundColor("rgba(0, 0, 0, 0.75)") // Tooltip 外观样式
+                .style(AAStyle()
+                    .color("#F0F0F0")
+                )
+                .borderWidth(0)
+                .shadow(false)
+            )
+            .xAxis(AAXAxis()
+                .visible(false) // 隐藏 X 轴
+                .minPadding(0.08) // 左右留白，防止标记贴边
+                .maxPadding(0.08)
+            )
+            .yAxis(AAYAxis()
+                .visible(false) // 隐藏 Y 轴
+                .min(Double(baseline)) // !!! 关键：确保柱子从指定的基线开始绘制
+            )
+            .plotOptions(AAPlotOptions()
+                .series(AASeries()
+                    .borderWidth(0) // 无边框
+//                    .findNearestPointBy("x") // 按 x 轴查找最近点
+//                    .stickyTracking(true) // 粘性跟踪，鼠标在空白区域也能触发 tooltip
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .enabled(false) // 禁用元素本身的鼠标悬浮高亮效果
+                        )
+                        .inactive(AAInactive()
+                            .opacity(1) // 其他点在某个点悬浮时，不降低透明度
+                        )
+                    )
+                )
+                .column(AAColumn()
+                    .pointPadding(0) // 同一 x 轴位置的点之间没有内边距
+                    .groupPadding(0.1) // 不同 x 轴位置的点（柱子）之间的距离，调整这个值来控制棒棒糖间距
+                    .grouping(false) // 不对系列进行分组
+                    .pointWidth(stickWidth) // 设置“棒子”的宽度
+                    .colorByPoint(true) // 让每个柱子根据其数据点的 color 属性着色
+//                    .zIndex(1) // 将柱子放在散点标记的后面 (层级较低)
+                )
+                .scatter(AAScatter()
+                    .marker(AAMarker()
+                        .symbol(.circle) // 标记形状：圆形
+                        .radius(markerRadius) // 标记半径
+                        .lineWidth(markerLineWidth) // 标记边框宽度
+                        .fillColor("white") // 标记填充色：白色
+                        .lineColor(NSNull()) // !!! 关键：标记边框颜色，设置为 null 会继承数据点的 color 属性
+                        .states(AAMarkerStates()
+                            .hover(AAMarkerHover()
+                                .enabled(false) // 禁用标记的鼠标悬浮效果
+                            )
+                        )
+                    )
+//                    .zIndex(2) // 将散点标记放在柱子的前面 (层级较高)
+//                    .stickyTracking(true) // 让散点标记更容易触发 tooltip
+                )
+            )
+            .series([
+                AASeriesElement()
+                    .type(.column)
+                    .name("棒子 (Stick)") // 系列名称
+                    .data(columnData)
+                    .keys(["x", "y", "color"]) // 告知 Highcharts 数据结构
+                    .zIndex(1)
+                ,
+                AASeriesElement()
+                    .type(.scatter)
+                    .name("糖果 (Candy)") // 系列名称
+                    .data(scatterData)
+                    .keys(["x", "y", "color"]) // 告知 Highcharts 数据结构
+                    .zIndex(2)
+            ])
+
+        return aaOptions
+    }
+    
+    class func customInvertedLollipopChart() -> AAOptions {
+        let aaOptions = customLollipopChart()
+        aaOptions.chart?.inverted = true // 反转图表
+        return aaOptions
+    }
 }

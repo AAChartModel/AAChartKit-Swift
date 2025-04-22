@@ -136,7 +136,10 @@ class ChartSampleProvider: NSObject {
             MixedTypesChartOptionsComposer.invertedColumnrangeAndScatterMixedTypesChart(),
             MixedTypesChartOptionsComposer.customThermometerChart(),
             MixedTypesChartOptionsComposer.customInvertedThermometerChart(),
+            MixedTypesChartOptionsComposer.customLollipopChart(),
+            MixedTypesChartOptionsComposer.customInvertedLollipopChart(),
 
+            
             
             
             
