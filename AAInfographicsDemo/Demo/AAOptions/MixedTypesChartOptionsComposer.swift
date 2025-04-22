@@ -198,8 +198,8 @@ class MixedTypesChartOptionsComposer {
                 "color": pointColor
             ])
         }
-        // 可选：根据 low 值或 high 值对数据进行排序，产生一种趋势感
-        // pointsData.sort { ($0["low"] as! Int) < ($1["low"] as! Int) }
+//        // 可选：根据 low 值或 high 值对数据进行排序，产生一种趋势感
+//        pointsData.sort { ($0["low"] as! Int) < ($1["low"] as! Int) }
 
         // --- 数据处理 (为每个系列准备数据) ---
         let columnRangeData = pointsData.enumerated().map { (index, point) in
@@ -367,8 +367,8 @@ class MixedTypesChartOptionsComposer {
                 "color": pointColor
             ])
         }
-        // 可选：根据 low 值或 high 值对数据进行排序，产生一种趋势感
-         pointsData.sort { ($0["low"] as! Int) < ($1["low"] as! Int) }
+//        // 可选：根据 low 值或 high 值对数据进行排序，产生一种趋势感
+//         pointsData.sort { ($0["low"] as! Int) < ($1["low"] as! Int) }
 
         // --- 数据处理 (为每个系列准备数据) ---
         let columnRangeData = pointsData.enumerated().map { (index, point) in
@@ -408,8 +408,8 @@ class MixedTypesChartOptionsComposer {
     
     class func customThermometerChart() -> AAOptions {
         // --- 配置变量 ---
-        let colorGreen = "#55a655" // 绿色 (例如表示适中或较低温度)
-        let colorRed = "#e65550"   // 红色 (例如表示较高温度)
+        let colorGreen = AAGradientColor.newLeaf.toDic() // 绿色 (例如表示适中或较低温度)
+        let colorRed = AAGradientColor.sanguine.toDic()   // 红色 (例如表示较高温度)
         let columnWidth: Float = 8 // “温度柱”的宽度 (可以适当加宽)
         let bulbRadius: Float = 12 // “温度计底部圆球”的半径 (可以适当增大)
         let bulbLineWidth: Float = 5 // 圆球边框宽度
@@ -429,8 +429,8 @@ class MixedTypesChartOptionsComposer {
                 "color": pointColor                   // 对应的颜色
             ])
         }
-        // 可选：根据 value 值对数据进行排序
-         pointsData.sort { ($0["value"] as! Int) < ($1["value"] as! Int) }
+//        // 可选：根据 value 值对数据进行排序
+//         pointsData.sort { ($0["value"] as! Int) < ($1["value"] as! Int) }
 
         // --- 数据处理 (为每个系列准备数据) ---
         // column 数据: 代表温度柱的高度
@@ -571,8 +571,8 @@ class MixedTypesChartOptionsComposer {
                 "color": pointColor                   // 对应的颜色
             ])
         }
-        // 可选：根据 value 值对数据进行排序
-        pointsData.sort { ($0["value"] as! Int) < ($1["value"] as! Int) }
+//        // 可选：根据 value 值对数据进行排序
+//        pointsData.sort { ($0["value"] as! Int) < ($1["value"] as! Int) }
         
         // --- 数据处理 (为每个系列准备数据) ---
         // column 数据: 代表温度柱的高度
