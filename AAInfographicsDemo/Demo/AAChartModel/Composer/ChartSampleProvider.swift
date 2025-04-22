@@ -138,10 +138,8 @@ class ChartSampleProvider: NSObject {
             MixedTypesChartOptionsComposer.customInvertedThermometerChart(),
             MixedTypesChartOptionsComposer.customLollipopChart(),
             MixedTypesChartOptionsComposer.customInvertedLollipopChart(),
-
-            
-            
-            
+            MixedTypesChartOptionsComposer.polarThermometerChart(),
+            MixedTypesChartOptionsComposer.polarLollipopChart(),
             
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart(),//复杂自定义曲线填充图 1
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart2(),//复杂自定义曲线填充图 2

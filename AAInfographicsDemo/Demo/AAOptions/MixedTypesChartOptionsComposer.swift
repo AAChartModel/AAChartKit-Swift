@@ -406,6 +406,175 @@ class MixedTypesChartOptionsComposer {
         return aaOptions
     }
     
+    /*
+     // --- 配置变量 ---
+     const colorGreen = '#55a655'; // 绿色 (例如表示适中或较低温度)
+     const colorRed = '#e65550';   // 红色 (例如表示较高温度)
+     const columnWidth = 12;       // “温度柱”的宽度 (可以适当加宽)
+     const bulbRadius = 10;        // “温度计底部圆球”的半径 (可以适当增大)
+     const bulbLineWidth = 3;     // 圆球边框宽度
+     const numberOfPoints = 20;    // 数据点数量 (温度计数量)
+     const baseline = 0;           // 温度计的起始基线 (通常是 0 度)
+
+     // --- 生成随机数据 ---
+     const pointsData = [];
+     for (let i = 0; i < numberOfPoints; i++) {
+         // 随机生成温度值 (例如在 10 到 90 之间)
+         const temperatureValue = Math.random() * 80 + 10;
+         // 根据温度决定颜色 (例如，高于 60 度为红色)
+         const pointColor = temperatureValue > 60 ? colorRed : colorGreen;
+
+         pointsData.push({
+             value: Math.round(temperatureValue), // 温度值
+             color: pointColor                   // 对应的颜色
+         });
+     }
+     // 可选：根据 value 值对数据进行排序
+     // pointsData.sort((a, b) => a.value - b.value);
+
+     // --- 数据处理 (为每个系列准备数据) ---
+     // column 数据: 代表温度柱的高度
+     const columnData = pointsData.map((point, index) => ({
+         x: index,
+         y: point.value,     // 柱子高度为温度值
+         color: point.color  // 柱子颜色
+     }));
+
+     // scatter 数据: 代表底部的圆球，y 坐标固定在基线
+     const scatterData = pointsData.map((point, index) => ({
+         x: index,
+         y: baseline,        // !!! 关键改动：圆球的 Y 坐标在基线处
+         color: point.color  // 圆球边框颜色继承此颜色
+     }));
+
+
+     // --- Highcharts 图表配置 ---
+     Highcharts.chart('container', {
+
+         chart: {
+             backgroundColor: '#f9f9f9',
+         },
+
+         title: {
+             text: '自定义 Highcharts 温度计图 🌡️'
+         },
+         subtitle: {
+             text: '使用 Column 和 Scatter 系列模拟'
+         },
+         legend: {
+             enabled: false
+         },
+         credits: {
+             enabled: false
+         },
+
+         tooltip: {
+             enabled: true,
+             shared: true,
+             useHTML: true,
+             formatter: function () {
+                 // 查找柱状图的点来获取【实际温度值】
+                 const pointContext = this.points.find(p => p.series && p.series.type === 'column');
+                 if (pointContext && pointContext.point) {
+                     const currentPoint = pointContext.point;
+                     if (typeof currentPoint.y !== 'undefined') {
+                         // 获取点的颜色 (可以从 column 点获取，因为颜色是一致的)
+                         const pointColor = currentPoint.color || pointContext.series.color;
+                         // 显示【温度值】，并用颜色标记
+                         return `<span style="color:${pointColor}">●</span> 温度值: <b>${currentPoint.y}</b>`;
+                     }
+                 }
+                 return false; // 无法获取数据则不显示
+             },
+             headerFormat: '索引: {point.key}<br/>',
+             pointFormat: '',
+             // Tooltip 外观样式
+             backgroundColor: 'rgba(0, 0, 0, 0.75)',
+             style: {
+                 color: '#F0F0F0'
+             },
+             borderWidth: 0,
+             shadow: false
+         },
+
+         xAxis: {
+              visible: false,
+              minPadding: 0.1, // 稍微增加边距，给圆球留出空间
+              maxPadding: 0.1
+         },
+
+         yAxis: {
+              visible: false,
+              min: baseline, // 确保柱子从基线开始
+              // 可以考虑设置一个 max 值，或者让 Highcharts 自动计算
+              // max: 100 // 例如设置一个最大刻度
+              startOnTick: false, // Y 轴不强制从刻度线开始
+              endOnTick: false    // Y 轴不强制在刻度线结束
+         },
+
+         plotOptions: {
+             series: {
+                 grouping: false,
+                 pointPadding: 0,
+                 groupPadding: 0.2, // 调整温度计之间的间距
+                 borderWidth: 0,
+                 enableMouseTracking: true,
+                 findNearestPointBy: 'x',
+                 stickyTracking: true,
+                 states: {
+                     hover: {
+                         enabled: false
+                     },
+                     inactive: {
+                         opacity: 1
+                     }
+                 }
+             },
+             column: {
+                 pointWidth: columnWidth, // 设置“温度柱”的宽度
+                 colorByPoint: true,
+                 zIndex: 1,
+                 stickyTracking: true, // 让柱子也能触发 Tooltip
+                 // 可以给柱子顶部加一点圆角，更像液体柱
+                  borderRadius: columnWidth / 4
+             },
+             scatter: {
+                 marker: {
+                     symbol: 'circle',
+                     radius: bulbRadius,
+                     lineWidth: bulbLineWidth,
+                     fillColor: 'white', // 圆球填充色
+                     lineColor: null,    // 圆球边框颜色继承数据点颜色
+                     states: {
+                         hover: { enabled: false }
+                     }
+                 },
+                 zIndex: 2,             // 圆球在柱子之上
+                 stickyTracking: true   // 让圆球区域也能触发 Tooltip
+             }
+         },
+
+         series: [
+             // 顺序很重要：先绘制柱子，再绘制圆球覆盖底部
+             {
+                 type: 'column',
+                 name: '温度柱',
+                 data: columnData,
+                 keys: ['x', 'y', 'color'],
+                 zIndex: 1
+                 // borderRadius 已在 plotOptions 中设置
+             },
+             {
+                 type: 'scatter',
+                 name: '底部圆球',
+                 data: scatterData, // 使用修改后的 scatter 数据（y 在基线）
+                 keys: ['x', 'y', 'color'],
+                 zIndex: 2
+             }
+         ]
+
+     });
+     */
     class func customThermometerChart() -> AAOptions {
         // --- 配置变量 ---
         let colorGreen = AAGradientColor.newLeaf.toDic() // 绿色 (例如表示适中或较低温度)
@@ -605,6 +774,161 @@ class MixedTypesChartOptionsComposer {
         return aaOptions
     }
     
+    /*
+     // --- 配置变量 ---
+        const colorGreen = '#55a655'; // 绿色
+        const colorRed = '#e65550';   // 红色
+        const stickWidth = 3;         // “棒子”的宽度 (列宽)
+        const markerRadius = 7;       // “糖果”的半径 (散点标记半径)
+        const markerLineWidth = 3;    // “糖果”边框宽度
+        const numberOfPoints = 30;    // 数据点数量
+        const baseline = 0;           // 棒棒糖“棒子”的起始基线
+
+        // --- 生成随机数据 ---
+        const pointsData = [];
+        for (let i = 0; i < numberOfPoints; i++) {
+            // 随机生成 value (例如在 20 到 150 之间)
+            const dataValue = Math.random() * 130 + 20;
+            // 随机决定颜色 (例如，大约 20% 的概率为红色)
+            const pointColor = Math.random() < 0.2 ? colorRed : colorGreen;
+
+            pointsData.push({
+                value: Math.round(dataValue), // 取整让数值更干净
+                color: pointColor
+            });
+        }
+        // 可选：根据 value 值对数据进行排序，产生一种趋势感
+        // pointsData.sort((a, b) => a.value - b.value);
+
+        // --- 数据处理 (为每个系列准备数据) ---
+        // column 数据: 每个点是一个柱子，高度为 value
+        const columnData = pointsData.map((point, index) => ({
+            x: index,
+            y: point.value,     // 柱子的高度就是数据值
+            color: point.color  // 柱子的颜色
+        }));
+
+        // scatter 数据: 每个点是一个标记，位置在 value 处
+        const scatterData = pointsData.map((point, index) => ({
+            x: index,
+            y: point.value,     // 标记点的 Y 坐标也是数据值
+            color: point.color  // 标记点边框的颜色将来源于此
+        }));
+
+
+        // --- Highcharts 图表配置 ---
+        Highcharts.chart('container', {
+
+            chart: {
+                // backgroundColor: null // 透明背景
+                backgroundColor: '#f9f9f9', // 浅灰色背景
+                // 可以不指定默认类型，因为我们在 series 中明确指定
+            },
+
+            title: {
+                text: '自定义 Highcharts 棒棒糖图'
+            },
+            subtitle: {
+                text: '使用 Column 和 Scatter 系列实现'
+            },
+            legend: {
+                enabled: false // 不显示图例
+            },
+            credits: {
+                enabled: false // 不显示 Highcharts logo
+            },
+
+            tooltip: {
+                enabled: true,
+                shared: true,       // 共享 Tooltip，同时显示柱状和散点信息（虽然值一样）
+                useHTML: true,
+           
+                headerFormat: '索引: {point.key}<br/>', // 在 tooltip 头部显示 x 轴索引
+                pointFormat: '', // 具体格式由 formatter 控制
+                // Tooltip 外观样式
+                backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                style: {
+                    color: '#F0F0F0'
+                },
+                borderWidth: 0,
+                shadow: false
+            },
+
+            xAxis: {
+                 visible: false, // 隐藏 X 轴
+                 minPadding: 0.08, // 左右留白，防止标记贴边
+                 maxPadding: 0.08
+            },
+
+            yAxis: {
+                 visible: false, // 隐藏 Y 轴
+                 min: baseline   // !!! 关键：确保柱子从指定的基线开始绘制
+                 // 如果你的数据可能有负值，并且希望棒棒糖向下，则不需要设置 min，或者需要更复杂的逻辑
+            },
+
+            plotOptions: {
+                series: {
+                    // animation: false, // 可以启用默认动画
+                    grouping: false,    // 不对系列进行分组
+                    pointPadding: 0,    // 同一 x 轴位置的点之间没有内边距
+                    groupPadding: 0.1,  // 不同 x 轴位置的点（柱子）之间的距离，调整这个值来控制棒棒糖间距
+                    borderWidth: 0,     // 无边框
+                    enableMouseTracking: true, // 启用鼠标跟踪
+                    findNearestPointBy: 'x',   // 按 x 轴查找最近点
+                    stickyTracking: true,      // 粘性跟踪，鼠标在空白区域也能触发 tooltip
+                    states: {
+                        hover: {
+                            enabled: false // 禁用元素本身的鼠标悬浮高亮效果
+                        },
+                        inactive: {
+                            opacity: 1 // 其他点在某个点悬浮时，不降低透明度
+                        }
+                    }
+                },
+                column: {
+                    pointWidth: stickWidth, // 设置“棒子”的宽度
+                    colorByPoint: true,    // 让每个柱子根据其数据点的 color 属性着色 (虽然我们在数据映射里也指定了)
+                    zIndex: 1,             // 将柱子放在散点标记的后面 (层级较低)
+                    stickyTracking: false  // 让细的柱子本身不那么容易触发 tooltip，主要靠散点标记触发
+                },
+                scatter: {
+                    marker: {
+                        symbol: 'circle',       // 标记形状：圆形
+                        radius: markerRadius,   // 标记半径
+                        lineWidth: markerLineWidth, // 标记边框宽度
+                        fillColor: 'white',     // 标记填充色：白色
+                        lineColor: null,        // !!! 关键：标记边框颜色，设置为 null 会继承数据点的 color 属性
+                        states: {
+                            hover: { enabled: false } // 禁用标记的鼠标悬浮效果
+                        }
+                    },
+                    zIndex: 2,             // 将散点标记放在柱子的前面 (层级较高)
+                    stickyTracking: true   // 让散点标记更容易触发 tooltip
+                }
+            },
+
+            series: [
+                {
+                    type: 'column',
+                    name: '棒子 (Stick)', // 系列名称
+                    data: columnData,
+                    keys: ['x', 'y', 'color'], // 告知 Highcharts 数据结构
+                    zIndex: 1,
+                    stickyTracking: false
+                },
+                {
+                    type: 'scatter',
+                    name: '糖果 (Candy)', // 系列名称
+                    data: scatterData,
+                    keys: ['x', 'y', 'color'], // 告知 Highcharts 数据结构
+                    // marker 样式在 plotOptions.scatter.marker 中定义
+                    zIndex: 2,
+                    stickyTracking: true
+                }
+            ]
+
+        });
+     */
     class func customLollipopChart() -> AAOptions {
         // --- 配置变量 ---
         let colorGreen = "#55a655" // 绿色
@@ -692,8 +1016,6 @@ class MixedTypesChartOptionsComposer {
             .plotOptions(AAPlotOptions()
                 .series(AASeries()
                     .borderWidth(0) // 无边框
-//                    .findNearestPointBy("x") // 按 x 轴查找最近点
-//                    .stickyTracking(true) // 粘性跟踪，鼠标在空白区域也能触发 tooltip
                     .states(AAStates()
                         .hover(AAHover()
                             .enabled(false) // 禁用元素本身的鼠标悬浮高亮效果
@@ -709,7 +1031,6 @@ class MixedTypesChartOptionsComposer {
                     .grouping(false) // 不对系列进行分组
                     .pointWidth(stickWidth) // 设置“棒子”的宽度
                     .colorByPoint(true) // 让每个柱子根据其数据点的 color 属性着色
-//                    .zIndex(1) // 将柱子放在散点标记的后面 (层级较低)
                 )
                 .scatter(AAScatter()
                     .marker(AAMarker()
@@ -724,8 +1045,6 @@ class MixedTypesChartOptionsComposer {
                             )
                         )
                     )
-//                    .zIndex(2) // 将散点标记放在柱子的前面 (层级较高)
-//                    .stickyTracking(true) // 让散点标记更容易触发 tooltip
                 )
             )
             .series([
@@ -750,6 +1069,20 @@ class MixedTypesChartOptionsComposer {
     class func customInvertedLollipopChart() -> AAOptions {
         let aaOptions = customLollipopChart()
         aaOptions.chart?.inverted = true // 反转图表
+        return aaOptions
+    }
+    
+    class func polarThermometerChart() -> AAOptions {
+        let aaOptions = customInvertedThermometerChart()
+        aaOptions.chart?.inverted = true // 反转图表
+        aaOptions.chart?.polar = true // 极坐标图表
+        return aaOptions
+    }
+    
+    class func polarLollipopChart() -> AAOptions {
+        let aaOptions = customInvertedLollipopChart()
+        aaOptions.chart?.inverted = true // 反转图表
+        aaOptions.chart?.polar = true // 极坐标图表
         return aaOptions
     }
 }
