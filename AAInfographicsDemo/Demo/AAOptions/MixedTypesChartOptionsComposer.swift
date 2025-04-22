@@ -455,6 +455,7 @@ class MixedTypesChartOptionsComposer {
         let aaOptions = AAOptions()
             .chart(AAChart()
                 .backgroundColor("#f9f9f9")
+                .marginBottom(42) // 底部留出空间给圆球
             )
             .title(AATitle()
                 .text("自定义 AAInfographics 温度计图 🌡️")
@@ -512,6 +513,7 @@ class MixedTypesChartOptionsComposer {
                     .grouping(false)
                     .pointWidth(columnWidth) // 设置“温度柱”的宽度
                     .colorByPoint(true)
+                    .borderRadius("50%") // 设置柱子边框圆角
                 )
                 .scatter(AAScatter()
                     .marker(AAMarker()
@@ -593,6 +595,7 @@ class MixedTypesChartOptionsComposer {
         
         let aaOptions = customThermometerChart()
         aaOptions.chart?.inverted = true // 反转图表
+        aaOptions.chart?.marginLeft = 42 // 左侧留出空间给圆球
         
         //为 series 中的每个元素设置数值
         let aaSeriesArr = aaOptions.series as! [AASeriesElement]
