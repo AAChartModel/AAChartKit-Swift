@@ -134,6 +134,11 @@ class ChartSampleProvider: NSObject {
             XAxisYAxisTypeOptionsComposer.datatimeTypeLineAndColumnMixedChart(),
             MixedTypesChartOptionsComposer.columnrangeAndScatterMixedTypesChart(),
             MixedTypesChartOptionsComposer.invertedColumnrangeAndScatterMixedTypesChart(),
+            MixedTypesChartOptionsComposer.customThermometerChart(),
+            MixedTypesChartOptionsComposer.customInvertedThermometerChart(),
+
+            
+            
             
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart(),//复杂自定义曲线填充图 1
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart2(),//复杂自定义曲线填充图 2

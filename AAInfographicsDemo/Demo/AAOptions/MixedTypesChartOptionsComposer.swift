@@ -405,4 +405,200 @@ class MixedTypesChartOptionsComposer {
         
         return aaOptions
     }
+    
+    class func customThermometerChart() -> AAOptions {
+        // --- 配置变量 ---
+        let colorGreen = "#55a655" // 绿色 (例如表示适中或较低温度)
+        let colorRed = "#e65550"   // 红色 (例如表示较高温度)
+        let columnWidth: Float = 8 // “温度柱”的宽度 (可以适当加宽)
+        let bulbRadius: Float = 12 // “温度计底部圆球”的半径 (可以适当增大)
+        let bulbLineWidth: Float = 5 // 圆球边框宽度
+        let numberOfPoints = 20 // 数据点数量 (温度计数量)
+        let baseline = 0 // 温度计的起始基线 (通常是 0 度)
+
+        // --- 生成随机数据 ---
+        var pointsData: [[String: Any]] = []
+        for _ in 0..<numberOfPoints {
+            // 随机生成温度值 (例如在 10 到 90 之间)
+            let temperatureValue = Double.random(in: 10..<90)
+            // 根据温度决定颜色 (例如，高于 60 度为红色)
+            let pointColor = temperatureValue > 60 ? colorRed : colorGreen
+
+            pointsData.append([
+                "value": Int(round(temperatureValue)), // 温度值
+                "color": pointColor                   // 对应的颜色
+            ])
+        }
+        // 可选：根据 value 值对数据进行排序
+         pointsData.sort { ($0["value"] as! Int) < ($1["value"] as! Int) }
+
+        // --- 数据处理 (为每个系列准备数据) ---
+        // column 数据: 代表温度柱的高度
+        let columnData = pointsData.enumerated().map { (index, point) in
+            [
+                "x": index,
+                "y": point["value"]!,
+                "color": point["color"]!
+            ]
+        }
+
+        // scatter 数据: 代表底部的圆球，y 坐标固定在基线
+        let scatterData = pointsData.enumerated().map { (index, point) in
+            [
+                "x": index,
+                "y": baseline,
+                "color": point["color"]!
+            ]
+        }
+
+        // --- Highcharts 图表配置 ---
+        let aaOptions = AAOptions()
+            .chart(AAChart()
+                .backgroundColor("#f9f9f9")
+            )
+            .title(AATitle()
+                .text("自定义 AAInfographics 温度计图 🌡️")
+            )
+            .subtitle(AASubtitle()
+                .text("使用 Column 和 Scatter 系列模拟")
+            )
+            .legend(AALegend()
+                .enabled(false)
+            )
+            .credits(AACredits()
+                .enabled(false)
+            )
+            .tooltip(AATooltip()
+                .enabled(true)
+                .shared(true)
+                .useHTML(true)
+                .headerFormat("索引: {point.key}<br/>")
+                .pointFormat("")
+                .backgroundColor("rgba(0, 0, 0, 0.75)")
+                .style(AAStyle()
+                    .color("#F0F0F0")
+                )
+                .borderWidth(0)
+                .shadow(false)
+            )
+            .xAxis(AAXAxis()
+                .visible(false)
+                .minPadding(0.1) // 稍微增加边距，给圆球留出空间
+                .maxPadding(0.1)
+            )
+            .yAxis(AAYAxis()
+                .visible(false)
+                .min(Double(baseline)) // 确保柱子从基线开始
+                .startOnTick(false) // Y 轴不强制从刻度线开始
+                .endOnTick(false)   // Y 轴不强制在刻度线结束
+            )
+            .plotOptions(AAPlotOptions()
+                .series(AASeries()
+                    .pointPadding(0)
+                    .groupPadding(0.2) // 调整温度计之间的间距
+                    .borderWidth(0)
+                    .states(AAStates()
+                        .hover(AAHover()
+                            .enabled(false)
+                        )
+                        .inactive(AAInactive()
+                            .opacity(1)
+                        )
+                    )
+                )
+                .column(AAColumn()
+                    .borderWidth(0.5) // 设置柱子边框宽度
+                    .borderColor(AAColor.white) // 设置柱子边框颜色
+                    .grouping(false)
+                    .pointWidth(columnWidth) // 设置“温度柱”的宽度
+                    .colorByPoint(true)
+                )
+                .scatter(AAScatter()
+                    .marker(AAMarker()
+                        .symbol(.circle)
+                        .radius(bulbRadius)
+                        .lineWidth(bulbLineWidth)
+                        .fillColor("white") // 圆球填充色
+                        .lineColor(NSNull())    // 圆球边框颜色继承数据点颜色
+                        .states(AAMarkerStates()
+                            .hover(AAMarkerHover()
+                                .enabled(false)
+                            )
+                        )
+                    )
+                )
+            )
+            .series([
+                AASeriesElement()
+                    .type(.column)
+                    .name("温度柱")
+                    .data(columnData)
+                    .keys(["x", "y", "color"])
+                    .zIndex(1),
+                AASeriesElement()
+                    .type(.scatter)
+                    .name("底部圆球")
+                    .data(scatterData)
+                    .keys(["x", "y", "color"])
+                    .zIndex(2)
+            ])
+
+        return aaOptions
+    }
+    
+    class func customInvertedThermometerChart() -> AAOptions {
+        // --- 配置变量 ---
+        let colorGreen = AAGradientColor.reflexSilver.toDic()
+        let colorRed = AAGradientColor.wroughtIron.toDic()
+//        let columnWidth: Float = 8 // “温度柱”的宽度 (可以适当加宽)
+//        let bulbRadius: Float = 12 // “温度计底部圆球”的半径 (可以适当增大)
+//        let bulbLineWidth: Float = 5 // 圆球边框宽度
+        let numberOfPoints = 20 // 数据点数量 (温度计数量)
+        let baseline = 0 // 温度计的起始基线 (通常是 0 度)
+        
+        // --- 生成随机数据 ---
+        var pointsData: [[String: Any]] = []
+        for _ in 0..<numberOfPoints {
+            // 随机生成温度值 (例如在 10 到 90 之间)
+            let temperatureValue = Double.random(in: 10..<90)
+            // 根据温度决定颜色 (例如，高于 60 度为红色)
+            let pointColor = temperatureValue > 60 ? colorRed : colorGreen
+            
+            pointsData.append([
+                "value": Int(round(temperatureValue)), // 温度值
+                "color": pointColor                   // 对应的颜色
+            ])
+        }
+        // 可选：根据 value 值对数据进行排序
+        pointsData.sort { ($0["value"] as! Int) < ($1["value"] as! Int) }
+        
+        // --- 数据处理 (为每个系列准备数据) ---
+        // column 数据: 代表温度柱的高度
+        let columnData = pointsData.enumerated().map { (index, point) in
+            [
+                "x": index,
+                "y": point["value"]!,
+                "color": point["color"]!
+            ]
+        }
+        
+        // scatter 数据: 代表底部的圆球，y 坐标固定在基线
+        let scatterData = pointsData.enumerated().map { (index, point) in
+            [
+                "x": index,
+                "y": baseline,
+                "color": point["color"]!
+            ]
+        }
+        
+        let aaOptions = customThermometerChart()
+        aaOptions.chart?.inverted = true // 反转图表
+        
+        //为 series 中的每个元素设置数值
+        let aaSeriesArr = aaOptions.series as! [AASeriesElement]
+        aaSeriesArr[0].data = columnData
+        aaSeriesArr[1].data = scatterData
+        
+        return aaOptions
+    }
 }
