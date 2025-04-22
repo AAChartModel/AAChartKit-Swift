@@ -231,7 +231,7 @@ class MixedTypesChartOptionsComposer {
                 .backgroundColor("#f9f9f9") // 或者给一个非常浅的背景色，增加质感
             )
             .title(AATitle()
-                .text("columnrangeAndScatterMixedTypesChart---柱形范围图和散点图混合类型图")
+                .text("自定义 AAInfographics 棒棒糖图🏋")
             )
             .legend(AALegend()
                 .enabled(false)
@@ -627,7 +627,7 @@ class MixedTypesChartOptionsComposer {
                 .marginBottom(42) // 底部留出空间给圆球
             )
             .title(AATitle()
-                .text("自定义 AAInfographics 温度计图 🌡️")
+                .text("自定义 AAInfographics 温度计图🌡️")
             )
             .subtitle(AASubtitle()
                 .text("使用 Column 和 Scatter 系列模拟")
@@ -980,7 +980,7 @@ class MixedTypesChartOptionsComposer {
                 .backgroundColor("#f9f9f9") // 浅灰色背景
             )
             .title(AATitle()
-                .text("自定义 AAInfographics 棒棒糖图")
+                .text("自定义 AAInfographics 棒棒糖图🍭")
             )
             .subtitle(AASubtitle()
                 .text("使用 Column 和 Scatter 系列实现")
@@ -1074,7 +1074,7 @@ class MixedTypesChartOptionsComposer {
     
     class func polarThermometerChart() -> AAOptions {
         let aaOptions = customInvertedThermometerChart()
-        aaOptions.title?.text = "极坐标系下的温度计图"
+        aaOptions.title?.text = "极坐标系下的温度计图🌡"
         
         aaOptions.chart?.margin(top: 0, right: 0, bottom: 0, left: 0) // 去除边距
         aaOptions.chart?.inverted = true // 反转图表
@@ -1084,7 +1084,7 @@ class MixedTypesChartOptionsComposer {
     
     class func polarLollipopChart() -> AAOptions {
         let aaOptions = customInvertedLollipopChart()
-        aaOptions.title?.text = "极坐标系下的棒棒糖图"
+        aaOptions.title?.text = "极坐标系下的棒棒糖图🍭"
         
         aaOptions.chart?.margin(top: 0, right: 0, bottom: 0, left: 0) // 去除边距
         aaOptions.chart?.inverted = true // 反转图表
