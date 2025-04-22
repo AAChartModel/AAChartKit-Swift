@@ -1074,6 +1074,9 @@ class MixedTypesChartOptionsComposer {
     
     class func polarThermometerChart() -> AAOptions {
         let aaOptions = customInvertedThermometerChart()
+        aaOptions.title?.text = "极坐标系下的温度计图"
+        
+        aaOptions.chart?.margin(top: 0, right: 0, bottom: 0, left: 0) // 去除边距
         aaOptions.chart?.inverted = true // 反转图表
         aaOptions.chart?.polar = true // 极坐标图表
         return aaOptions
@@ -1081,6 +1084,9 @@ class MixedTypesChartOptionsComposer {
     
     class func polarLollipopChart() -> AAOptions {
         let aaOptions = customInvertedLollipopChart()
+        aaOptions.title?.text = "极坐标系下的棒棒糖图"
+        
+        aaOptions.chart?.margin(top: 0, right: 0, bottom: 0, left: 0) // 去除边距
         aaOptions.chart?.inverted = true // 反转图表
         aaOptions.chart?.polar = true // 极坐标图表
         return aaOptions
