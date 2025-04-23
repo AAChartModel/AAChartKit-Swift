@@ -19,6 +19,9 @@ struct ParticlePoint {
 // Extension to draw String (Emoji) as UIImage
 extension String {
     func image(with size: CGSize, fontSize: CGFloat? = nil) -> UIImage? {
+//        let testImage = UIImage(named: "licensed-image.jpeg")
+//        return testImage
+        
         let defaultFontSize = size.height * 0.8
         let font = UIFont.systemFont(ofSize: fontSize ?? defaultFontSize)
         let attributes: [NSAttributedString.Key: Any] = [
@@ -161,7 +164,11 @@ class EmojiAnimationCell: UICollectionViewCell {
         return indicator
     }()
     
-    private let numPoints = 600 // 点数量
+    // 使用从控制器传递的配置
+    var pointCount: Int = 1000
+    var markerRadius: CGFloat = 6
+    var markerSymbol: AAChartSymbolType = .circle
+    
     private let canvasSize = CGSize(width: 100, height: 100)
     
     override init(frame: CGRect) {
@@ -228,8 +235,21 @@ class EmojiAnimationCell: UICollectionViewCell {
     }
     
     // 设置emoji并异步加载数据
-    func setEmoji(_ emoji: String) {
+    func setEmoji(_ emoji: String, pointCount: Int? = nil, markerRadius: CGFloat? = nil, markerSymbol: AAChartSymbolType? = nil) {
         self.emoji = emoji
+        
+        // 更新配置（如果提供）
+        if let pointCount = pointCount {
+            self.pointCount = pointCount
+        }
+        
+        if let markerRadius = markerRadius {
+            self.markerRadius = markerRadius
+        }
+        
+        if let markerSymbol = markerSymbol {
+            self.markerSymbol = markerSymbol
+        }
         
         // 显示加载指示器
         activityIndicator.startAnimating()
@@ -248,7 +268,7 @@ class EmojiAnimationCell: UICollectionViewCell {
             }
             
             // 提取目标点
-            let points = emojiImage.getEmojiPoints(numPoints: self.numPoints, canvasSize: self.canvasSize)
+            let points = emojiImage.getEmojiPoints(numPoints: self.pointCount, canvasSize: self.canvasSize)
             
             // 回到主线程更新UI
             DispatchQueue.main.async {
@@ -267,7 +287,7 @@ class EmojiAnimationCell: UICollectionViewCell {
             AASeriesElement()
                 .data(points.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
                 .colorByPoint(true)
-                .marker(AAMarker().radius(6).symbol(.circle))
+                .marker(AAMarker().radius(Float(markerRadius)).symbol(markerSymbol))
         ]
         
         aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeries(updatedOptions.series as! [AASeriesElement], animation: false)
@@ -284,8 +304,168 @@ class EmojiAnimationCell: UICollectionViewCell {
     }
 }
 
+// 控制面板视图
+class ControlPanelView: UIView {
+    // 点数量滑块
+    let pointCountSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 200
+        slider.maximumValue = 3000
+        slider.value = 1000
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        return slider
+    }()
+    
+    // 点大小滑块
+    let markerRadiusSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 1
+        slider.maximumValue = 10
+        slider.value = 6
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        return slider
+    }()
+    
+    // 点形状选择器
+    let markerSymbolSegment: UISegmentedControl = {
+        let items = ["圆形", "方形", "菱形", "三角形", "十字"]
+        let segment = UISegmentedControl(items: items)
+        segment.selectedSegmentIndex = 0
+        segment.translatesAutoresizingMaskIntoConstraints = false
+        return segment
+    }()
+    
+    // 点数量标签
+    let pointCountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "点数量: 1000"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    // 点大小标签
+    let markerRadiusLabel: UILabel = {
+        let label = UILabel()
+        label.text = "点大小: 6"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    // 应用按钮
+    let applyButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("应用设置", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupViews()
+    }
+    
+    private func setupViews() {
+        backgroundColor = .systemBackground
+        layer.cornerRadius = 10
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowRadius = 4
+        
+        // 添加子视图
+        addSubview(pointCountSlider)
+        addSubview(markerRadiusSlider)
+        addSubview(markerSymbolSegment)
+        addSubview(pointCountLabel)
+        addSubview(markerRadiusLabel)
+        addSubview(applyButton)
+        
+        // 布局约束
+        NSLayoutConstraint.activate([
+            pointCountLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            pointCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            pointCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            
+            pointCountSlider.topAnchor.constraint(equalTo: pointCountLabel.bottomAnchor, constant: 6),
+            pointCountSlider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            pointCountSlider.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            
+            markerRadiusLabel.topAnchor.constraint(equalTo: pointCountSlider.bottomAnchor, constant: 12),
+            markerRadiusLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            markerRadiusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            
+            markerRadiusSlider.topAnchor.constraint(equalTo: markerRadiusLabel.bottomAnchor, constant: 6),
+            markerRadiusSlider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            markerRadiusSlider.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            
+            markerSymbolSegment.topAnchor.constraint(equalTo: markerRadiusSlider.bottomAnchor, constant: 12),
+            markerSymbolSegment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            markerSymbolSegment.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            
+            applyButton.topAnchor.constraint(equalTo: markerSymbolSegment.bottomAnchor, constant: 12),
+            applyButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            applyButton.widthAnchor.constraint(equalToConstant: 120),
+            applyButton.heightAnchor.constraint(equalToConstant: 36),
+            applyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
+        ])
+        
+        // 添加事件处理
+        pointCountSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        markerRadiusSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc func sliderValueChanged(_ sender: UISlider) {
+        if sender == pointCountSlider {
+            let value = Int(sender.value)
+            pointCountLabel.text = "点数量: \(value)"
+        } else if sender == markerRadiusSlider {
+            let value = Int(sender.value)
+            markerRadiusLabel.text = "点大小: \(value)"
+        }
+    }
+    
+    // 获取当前设置
+    var currentPointCount: Int {
+        return Int(pointCountSlider.value)
+    }
+    
+    var currentMarkerRadius: CGFloat {
+        return CGFloat(markerRadiusSlider.value)
+    }
+    
+    var currentMarkerSymbol: AAChartSymbolType {
+        switch markerSymbolSegment.selectedSegmentIndex {
+        case 0: return .circle
+        case 1: return .square
+        case 2: return .diamond
+        case 3: return .triangle
+        case 4: return .triangleDown
+        default: return .circle
+        }
+    }
+}
+
 class EmojiParticleAnimationVC: UIViewController {
     private var collectionView: UICollectionView!
+    private var controlPanel: ControlPanelView!
+    private var controlPanelVisible = true
+    private var controlPanelHeight: CGFloat = 220
+    
+    // 当前渲染设置
+    private var currentPointCount = 1000
+    private var currentMarkerRadius: CGFloat = 6
+    private var currentMarkerSymbol: AAChartSymbolType = .circle
+    
     private let defaultEmojis = [
          "🍎",
          "🍐",
@@ -423,12 +603,35 @@ class EmojiParticleAnimationVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
+        setupControlPanel()
         setupCollectionView()
+        
+        // 添加导航栏按钮用于显示/隐藏控制面板
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "设置", style: .plain, 
+            target: self, action: #selector(toggleControlPanel)
+        )
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         stopAllAnimations()
+    }
+    
+    private func setupControlPanel() {
+        controlPanel = ControlPanelView()
+        controlPanel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(controlPanel)
+        
+        NSLayoutConstraint.activate([
+            controlPanel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            controlPanel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            controlPanel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            controlPanel.heightAnchor.constraint(equalToConstant: controlPanelHeight)
+        ])
+        
+        // 添加应用按钮事件
+        controlPanel.applyButton.addTarget(self, action: #selector(applySettings), for: .touchUpInside)
     }
     
     private func setupCollectionView() {
@@ -438,11 +641,11 @@ class EmojiParticleAnimationVC: UIViewController {
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
-        // 计算cell大小，每行显示2个
+        // 计算cell大小
         let width = (view.frame.width - 30) / 4
         layout.itemSize = CGSize(width: width, height: width * 1.2)
         
-        // 创建CollectionView
+        // 创建CollectionView，考虑控制面板高度
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -451,13 +654,55 @@ class EmojiParticleAnimationVC: UIViewController {
         collectionView.delegate = self
         view.addSubview(collectionView)
         
-        // 应用约束
+        // 应用约束，考虑控制面板
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: controlPanel.bottomAnchor, constant: 10),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    @objc private func toggleControlPanel() {
+        controlPanelVisible = !controlPanelVisible
+        
+        UIView.animate(withDuration: 0.3) {
+            self.controlPanel.alpha = self.controlPanelVisible ? 1.0 : 0.0
+        } completion: { _ in
+            // 调整集合视图的位置
+            UIView.animate(withDuration: 0.3) {
+                if self.controlPanelVisible {
+                    self.collectionView.contentInset = UIEdgeInsets(
+                        top: 0, left: 0, bottom: 0, right: 0
+                    )
+                } else {
+                    self.collectionView.contentInset = UIEdgeInsets(
+                        top: -self.controlPanelHeight, left: 0, bottom: 0, right: 0
+                    )
+                }
+            }
+        }
+        
+        navigationItem.rightBarButtonItem?.title = controlPanelVisible ? "隐藏设置" : "显示设置"
+    }
+    
+    @objc private func applySettings() {
+        // 获取当前控制面板设置
+        currentPointCount = controlPanel.currentPointCount
+        currentMarkerRadius = controlPanel.currentMarkerRadius
+        currentMarkerSymbol = controlPanel.currentMarkerSymbol
+        
+        // 更新所有可见单元格
+        for cell in collectionView.visibleCells {
+            if let emojiCell = cell as? EmojiAnimationCell {
+                emojiCell.setEmoji(
+                    emojiCell.emoji, 
+                    pointCount: currentPointCount,
+                    markerRadius: currentMarkerRadius,
+                    markerSymbol: currentMarkerSymbol
+                )
+            }
+        }
     }
     
     private func stopAllAnimations() {
@@ -481,7 +726,12 @@ extension EmojiParticleAnimationVC: UICollectionViewDataSource {
             fatalError("无法创建EmojiAnimationCell")
         }
         
-        // 设置emoji - 异步加载
+        // 设置当前配置
+        cell.pointCount = currentPointCount
+        cell.markerRadius = currentMarkerRadius
+        cell.markerSymbol = currentMarkerSymbol
+        
+        // 设置emoji并应用配置
         cell.setEmoji(defaultEmojis[indexPath.item])
         return cell
     }
@@ -492,7 +742,12 @@ extension EmojiParticleAnimationVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // 点击时重新播放动画
         if let cell = collectionView.cellForItem(at: indexPath) as? EmojiAnimationCell {
-            cell.setEmoji(defaultEmojis[indexPath.item])
+            cell.setEmoji(
+                defaultEmojis[indexPath.item],
+                pointCount: currentPointCount,
+                markerRadius: currentMarkerRadius,
+                markerSymbol: currentMarkerSymbol
+            )
         }
     }
 }
