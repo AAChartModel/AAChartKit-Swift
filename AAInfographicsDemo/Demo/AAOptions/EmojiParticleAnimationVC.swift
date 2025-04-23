@@ -6,14 +6,6 @@
 //  Copyright © 2025 An An. All rights reserved.
 //
 
-
-//  EmojiParticleAnimationVC.swift
-//  AAInfographicsDemo
-//
-//  Created by GitHub Copilot on 2025/04/23.
-//  Copyright © 2025 GitHub Copilot. All rights reserved.
-//
-
 import UIKit
 import AAInfographics
 
@@ -154,234 +146,181 @@ extension UIImage {
     }
 }
 
-
-class EmojiParticleAnimationVC: UIViewController {
-
-    private var aaChartView: AAChartView!
-    private var textField: UITextField!
-    private var generateButton: UIButton!
-
-    private let numPoints = 800 // Number of particles
-    private let canvasSize = CGSize(width: 100, height: 100) // Internal canvas size for pixel extraction
-    private let animationDuration: TimeInterval = 1.5 // seconds
-
+// 自定义 Collection Cell，用于展示每个 emoji 动画
+class EmojiAnimationCell: UICollectionViewCell {
+    private(set) var aaChartView: AAChartView!
+    private(set) var emoji: String = "😊" // 默认 emoji
+    private(set) var isAnimating = false
+    
     private var displayLink: CADisplayLink?
     private var startTime: CFTimeInterval = 0
     private var startPoints: [ParticlePoint] = []
     private var endPoints: [ParticlePoint] = []
-    private var currentPoints: [ParticlePoint] = [] // Holds the initial state before animation
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-
-        setupUI()
-        setupInitialChart()
+    private var currentPoints: [ParticlePoint] = []
+    
+    private let numPoints = 400 // 减少每个图表的粒子数量以提高性能
+    private let canvasSize = CGSize(width: 100, height: 100)
+    private let animationDuration: TimeInterval = 1.5
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupChartView()
     }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        stopAnimation() // Clean up display link
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupChartView()
     }
-
-    private func setupUI() {
-        // Text Field
-        textField = UITextField()
-        textField.placeholder = "输入 Emoji (例如 😊)"
-        textField.borderStyle = .roundedRect
-        textField.textAlignment = .center
-        textField.font = UIFont.systemFont(ofSize: 20) // Make emoji input larger
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textField)
-
-        // Button
-        generateButton = UIButton(type: .system)
-        generateButton.setTitle("生成动画", for: .normal)
-        generateButton.addTarget(self, action: #selector(generateButtonTapped), for: .touchUpInside)
-        generateButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(generateButton)
-
-        // ChartView
+    
+    private func setupChartView() {
         aaChartView = AAChartView()
         aaChartView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(aaChartView)
-
-        // Layout
+        contentView.addSubview(aaChartView)
+        
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            textField.heightAnchor.constraint(equalToConstant: 40),
-
-            generateButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10),
-            generateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
-            aaChartView.topAnchor.constraint(equalTo: generateButton.bottomAnchor, constant: 20),
-            aaChartView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            aaChartView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            aaChartView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            aaChartView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            aaChartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            aaChartView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            aaChartView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-    }
-
-    private func setupInitialChart() {
-        // Generate initial random points
+        
+        // 初始化随机点
         currentPoints = generateRandomPoints(num: numPoints)
-
+        setupInitialChart()
+    }
+    
+    private func setupInitialChart() {
         let aaChartModel = AAChartModel()
             .chartType(.scatter)
-            .animationType(.easeOutCubic) // Use for initial draw, animation handled manually later
+            .animationType(.easeOutCubic)
             .animationDuration(500)
             .backgroundColor("transparent")
-            .title("") // No title
+            .title("")
             .legendEnabled(false)
             .tooltipEnabled(false)
             .xAxisVisible(false)
             .yAxisVisible(false)
-            .colorsTheme(["#000000"]) // Initial color (will be overridden by point color)
+            .colorsTheme(["#000000"])
             .series([
                 AASeriesElement()
                     .name("Particles")
                     .data(currentPoints.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
-                    .colorByPoint(true) // Crucial: Allow individual point colors
+                    .colorByPoint(true)
                     .marker(AAMarker()
                         .radius(2)
                         .symbol(.circle)
-                        .states(AAMarkerStates() // Disable hover effects
+                        .states(AAMarkerStates()
                             .hover(AAMarkerHover()
                                 .enabled(false)
                             )
                         )
                     )
-                    .enableMouseTracking(false) // Improve performance
+                    .enableMouseTracking(false)
             ])
 
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
 
-        // Disable Highcharts internal animation for scatter updates
         aaOptions.plotOptions?
             .series(AASeries()
-                .animation(AAAnimation() // Disable animation on data updates
+                .animation(AAAnimation()
                     .duration(0)
                 )
             )
-            .scatter(AAScatter()
-//                .animation(false) // Ensure scatter animation is off
-             )
+            .scatter(AAScatter())
 
-
-//        aaChartView.aa_drawChartWithOptions(aaOptions)
         aaChartView.aa_drawChartWithChartOptions(aaOptions)
     }
-
-    // Generate random points
+    
+    // 生成随机点
     private func generateRandomPoints(num: Int) -> [ParticlePoint] {
         return (0..<num).map { _ in
             ParticlePoint(x: Double.random(in: 0...100),
                           y: Double.random(in: 0...100),
-                          color: "rgb(0,0,0)") // Initial color black
+                          color: "rgb(0,0,0)")
         }
     }
-
-    @objc private func generateButtonTapped() {
-        guard let emoji = textField.text, !emoji.isEmpty else {
-            showAlert(message: "请输入一个 Emoji！")
+    
+    // 设置并播放emoji动画
+    func setEmoji(_ emoji: String) {
+        self.emoji = emoji
+        
+        // 生成emoji图像
+        guard let emojiImage = emoji.image(with: canvasSize) else {
+            print("无法从 \(emoji) 创建图像")
             return
         }
-
-        // Use the first character if multiple are entered
-        let firstEmoji = String(emoji.prefix(1))
-
-        // Generate image from emoji
-        guard let emojiImage = firstEmoji.image(with: canvasSize) else {
-            showAlert(message: "无法将 Emoji 渲染为图像。")
-            return
-        }
-
-        // Extract target points from the image
+        
+        // 提取目标点
         let targetPoints = emojiImage.getEmojiPoints(numPoints: numPoints, canvasSize: canvasSize)
-
-        if targetPoints.count < numPoints {
-             print("Warning: Could not extract the full number of points (\(targetPoints.count)/\(numPoints)). Animation might look sparse.")
-             // Proceed anyway, the sampling logic should have padded the array
-        }
-         guard !targetPoints.isEmpty else {
-             showAlert(message: "无法从 Emoji 图像中提取点。")
-             return
-         }
-
-
-        // Prepare for animation
-        self.startPoints = self.currentPoints // Use the current state as the start
+        
+        // 准备动画
+        self.startPoints = self.currentPoints
         self.endPoints = targetPoints
         startAnimation()
     }
-
-    private func startAnimation() {
-        stopAnimation() // Ensure previous animation is stopped
-
+    
+    func startAnimation() {
+        stopAnimation()
+        isAnimating = true
+        
         startTime = CACurrentMediaTime()
         displayLink = CADisplayLink(target: self, selector: #selector(updateAnimation))
         displayLink?.add(to: .main, forMode: .common)
     }
-
-    private func stopAnimation() {
+    
+    func stopAnimation() {
         displayLink?.invalidate()
         displayLink = nil
+        isAnimating = false
     }
-
+    
     @objc private func updateAnimation(displaylink: CADisplayLink) {
         let currentTime = CACurrentMediaTime()
         let elapsedTime = currentTime - startTime
-        var progress = min(elapsedTime / animationDuration, 1.0) // Clamp progress to 0-1
-
+        var progress = min(elapsedTime / animationDuration, 1.0)
+        
         // Ease out cubic function
         progress = 1.0 - pow(1.0 - progress, 3.0)
-
+        
         let newData = interpolatePoints(start: startPoints, end: endPoints, progress: progress)
-
-        // Update chart data efficiently
+        
+        // 更新图表数据
         let updatedOptions = AAOptions()
         updatedOptions.series = [
             AASeriesElement()
                 .data(newData.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
-                // Important: Re-apply necessary series options if aa_onlyRefreshTheChartDataWithChartOptions resets them
                 .colorByPoint(true)
-                .marker(AAMarker().radius(2).symbol(.circle)) // Keep marker style consistent
+                .marker(AAMarker().radius(2).symbol(.circle))
         ]
-
-        // Use the method designed for data-only updates
-//        aaChartView.aa_onlyRefreshTheChartDataWithChartOptions(updatedOptions, redraw: true)
-        aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeries(updatedOptions.series as! [AASeriesElement], animation: true)
-
-        // Store the current state for the next animation
+        
+        aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeries(updatedOptions.series as! [AASeriesElement], animation: false)
+        
+        // 存储当前状态
         self.currentPoints = newData
-
+        
         if elapsedTime >= animationDuration {
             stopAnimation()
-            // Ensure final state is accurate
-             let finalData = interpolatePoints(start: startPoints, end: endPoints, progress: 1.0)
-             self.currentPoints = finalData // Store final state
-             let finalOptions = AAOptions()
-             finalOptions.series = [
-                 AASeriesElement()
-                     .data(finalData.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
-                     .colorByPoint(true)
-                     .marker(AAMarker().radius(2).symbol(.circle))
-             ]
-//             aaChartView.aa_onlyRefreshTheChartDataWithChartOptions(finalOptions, redraw: true)
-            aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeries(updatedOptions.series as! [AASeriesElement], animation: true)
-
-            print("Animation finished")
+            // 确保最终状态准确
+            let finalData = interpolatePoints(start: startPoints, end: endPoints, progress: 1.0)
+            self.currentPoints = finalData
+            let finalOptions = AAOptions()
+            finalOptions.series = [
+                AASeriesElement()
+                    .data(finalData.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
+                    .colorByPoint(true)
+                    .marker(AAMarker().radius(2).symbol(.circle))
+            ]
+            aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeries(finalOptions.series as! [AASeriesElement], animation: false)
         }
     }
-
-    // Interpolate between start and end points
+    
+    // 点的插值计算
     private func interpolatePoints(start: [ParticlePoint], end: [ParticlePoint], progress: Double) -> [ParticlePoint] {
         guard start.count == end.count else {
             print("Error: Start and end point counts differ.")
-            return currentPoints // Return current state on error
+            return currentPoints
         }
-
+        
         return zip(start, end).map { startPoint, endPoint in
             let newX = startPoint.x + (endPoint.x - startPoint.x) * progress
             let newY = startPoint.y + (endPoint.y - startPoint.y) * progress
@@ -389,27 +328,26 @@ class EmojiParticleAnimationVC: UIViewController {
             return ParticlePoint(x: newX, y: newY, color: newColor)
         }
     }
-
-    // Interpolate between two "rgb(r,g,b)" color strings
+    
+    // 颜色插值
     private func interpolateColor(from startColor: String, to endColor: String, progress: Double) -> String {
         guard let startRGB = parseRGB(startColor), let endRGB = parseRGB(endColor) else {
-            // Fallback to end color if parsing fails or at the end
             return progress >= 1.0 ? endColor : startColor
         }
-
+        
         let r = Int(round(Double(startRGB.r) + (Double(endRGB.r) - Double(startRGB.r)) * progress))
         let g = Int(round(Double(startRGB.g) + (Double(endRGB.g) - Double(startRGB.g)) * progress))
         let b = Int(round(Double(startRGB.b) + (Double(endRGB.b) - Double(startRGB.b)) * progress))
-
-        // Clamp values to 0-255
+        
+        // 限制值在0-255
         let clampedR = max(0, min(255, r))
         let clampedG = max(0, min(255, g))
         let clampedB = max(0, min(255, b))
-
+        
         return "rgb(\(clampedR),\(clampedG),\(clampedB))"
     }
-
-    // Parse "rgb(r,g,b)" string
+    
+    // 解析RGB颜色
     private func parseRGB(_ rgbString: String) -> (r: Int, g: Int, b: Int)? {
         let scanner = Scanner(string: rgbString)
         guard scanner.scanString("rgb(") != nil,
@@ -419,23 +357,106 @@ class EmojiParticleAnimationVC: UIViewController {
               scanner.scanString(",") != nil,
               let b = scanner.scanInt(),
               scanner.scanString(")") != nil else {
-            // Handle potential hex color from initial options? Unlikely here.
-            // print("Failed to parse RGB: \(rgbString)")
             return nil
         }
         return (r, g, b)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        stopAnimation()
+    }
+}
 
-    // Helper to show alerts
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "确定", style: .default))
-        present(alert, animated: true)
+class EmojiParticleAnimationVC: UIViewController {
+    private var collectionView: UICollectionView!
+    private let defaultEmojis = [
+        "😊", "🚀", "🌈", "🍎", "🐱", "🎉", "🌟", "🎵", "👍", "❤️",
+        "💡", "🌍", "🔥", "🌸", "🍔", "⚽️", "🎈", "🐶", "🍕", "🎂",
+        "🚗", "🏖️", "🎶", "🍉", "🌼", "🐰", "🍦", "🌻", "🎁", "💖",
+        "🌊", "🍩", "🐻", "🍓", "🎃", "🏆", "🌺", "🍇", "🐸", "🍉",
+    ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        
+        setupCollectionView()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopAllAnimations()
+    }
+    
+    private func setupCollectionView() {
+        // 创建网格布局
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
+        // 计算cell大小，每行显示2个
+        let width = (view.frame.width - 30) / 3
+        layout.itemSize = CGSize(width: width, height: width * 1.2)
+        
+        // 创建CollectionView
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(EmojiAnimationCell.self, forCellWithReuseIdentifier: "EmojiCell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        view.addSubview(collectionView)
+        
+        // 应用约束
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    
+    private func stopAllAnimations() {
+        // 停止所有cell的动画
+        for i in 0..<collectionView.numberOfItems(inSection: 0) {
+            if let cell = collectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? EmojiAnimationCell {
+                cell.stopAnimation()
+            }
+        }
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension EmojiParticleAnimationVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return defaultEmojis.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmojiCell", for: indexPath) as? EmojiAnimationCell else {
+            fatalError("无法创建EmojiAnimationCell")
+        }
+        
+        // 设置emoji
+        cell.setEmoji(defaultEmojis[indexPath.item])
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension EmojiParticleAnimationVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 点击时重新播放动画
+        if let cell = collectionView.cellForItem(at: indexPath) as? EmojiAnimationCell {
+            cell.setEmoji(defaultEmojis[indexPath.item])
+        }
     }
 }
 
 // Helper extension for Scanner (if needed, depending on iOS version)
-#if !swift(>=5.7) // Add compatibility for older Swift versions if necessary
+#if !swift(>=5.7)
 extension Scanner {
     func scanInt() -> Int? {
         var value: Int = 0
