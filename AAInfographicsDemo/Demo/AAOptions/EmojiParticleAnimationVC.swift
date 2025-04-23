@@ -194,7 +194,7 @@ class EmojiAnimationCell: UICollectionViewCell {
             .backgroundColor("transparent")
             .title("")
             .legendEnabled(false)
-            .tooltipEnabled(false)
+            .tooltipEnabled(true)
             .xAxisVisible(false)
             .yAxisVisible(false)
             .colorsTheme(["#000000"])
@@ -284,10 +284,18 @@ class EmojiAnimationCell: UICollectionViewCell {
 class EmojiParticleAnimationVC: UIViewController {
     private var collectionView: UICollectionView!
     private let defaultEmojis = [
-        "😊", "🚀", "🌈", "🍎", "🐱", "🎉", "🌟", "🎵", "👍", "❤️",
-        "💡", "🌍", "🔥", "🌸", "🍔", "⚽️", "🎈", "🐶", "🍕", "🎂",
-        "🚗", "🏖️", "🎶", "🍉", "🌼", "🐰", "🍦", "🌻", "🎁", "💖",
-        "🌊", "🍩", "🐻", "🍓", "🎃", "🏆", "🌺", "🍇", "🐸", "🍉",
+        //离离原上草, 一岁一枯荣,
+        //野火烧不尽, 春风吹又生,
+        //远芳侵古道, 晓色染苍苔,
+        //又送王孙去, 萋萋满别情,
+        "离", "离", "原", "上", "草",
+        "一", "岁", "一", "枯", "荣",
+        "野", "火", "烧", "不", "尽",
+        "春", "风", "吹", "又", "生",
+        "远", "芳", "侵", "古", "道",
+        "晓", "色", "染", "苍", "苔",
+        "又", "送", "王", "孙", "去",
+        "萋", "萋", "满", "别", "情",
     ]
     
     override func viewDidLoad() {
