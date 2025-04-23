@@ -156,7 +156,7 @@ class EmojiAnimationCell: UICollectionViewCell {
     private var endPoints: [ParticlePoint] = []
     private var currentPoints: [ParticlePoint] = []
     
-    private let numPoints = 1200 // 增加点数量以提高清晰度
+    private let numPoints = 600 // 增加点数量以提高清晰度
     private let canvasSize = CGSize(width: 100, height: 100)
     
     override init(frame: CGRect) {
@@ -171,6 +171,7 @@ class EmojiAnimationCell: UICollectionViewCell {
     
     private func setupChartView() {
         aaChartView = AAChartView()
+        aaChartView.isScrollEnabled = false
         aaChartView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(aaChartView)
         
@@ -204,7 +205,7 @@ class EmojiAnimationCell: UICollectionViewCell {
                     .data(currentPoints.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
                     .colorByPoint(true)
                     .marker(AAMarker()
-                        .radius(1.5) // 减小点的半径，以便显示更多点
+                        .radius(4) // 减小点的半径，以便显示更多点
                         .symbol(.diamond) // 使用菱形符号
                         .states(AAMarkerStates()
                             .hover(AAMarkerHover()
@@ -264,7 +265,7 @@ class EmojiAnimationCell: UICollectionViewCell {
             AASeriesElement()
                 .data(points.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
                 .colorByPoint(true)
-                .marker(AAMarker().radius(1.5).symbol(.circle))
+                .marker(AAMarker().radius(10).symbol(.circle))
         ]
         
         aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeries(updatedOptions.series as! [AASeriesElement], animation: false)
@@ -283,20 +284,157 @@ class EmojiAnimationCell: UICollectionViewCell {
 
 class EmojiParticleAnimationVC: UIViewController {
     private var collectionView: UICollectionView!
-    private let defaultEmojis = [
-        //离离原上草, 一岁一枯荣,
-        //野火烧不尽, 春风吹又生,
-        //远芳侵古道, 晓色染苍苔,
-        //又送王孙去, 萋萋满别情,
-        "离", "离", "原", "上", "草",
-        "一", "岁", "一", "枯", "荣",
-        "野", "火", "烧", "不", "尽",
-        "春", "风", "吹", "又", "生",
-        "远", "芳", "侵", "古", "道",
-        "晓", "色", "染", "苍", "苔",
-        "又", "送", "王", "孙", "去",
-        "萋", "萋", "满", "别", "情",
-    ]
+//    private let defaultEmojis = [
+//        //离离原上草, 一岁一枯荣,
+//        //野火烧不尽, 春风吹又生,
+//        //远芳侵古道, 晓色染苍苔,
+//        //又送王孙去, 萋萋满别情,
+//        "离", "离", "原", "上", "草",
+//        "一", "岁", "一", "枯", "荣",
+//        "野", "火", "烧", "不", "尽",
+//        "春", "风", "吹", "又", "生",
+//        "远", "芳", "侵", "古", "道",
+//        "晓", "色", "染", "苍", "苔",
+//        "又", "送", "王", "孙", "去",
+//        "萋", "萋", "满", "别", "情",
+    //        "🤡", "🤡", "🤡", "🤡", "🤡",
+    //        "🌞", "🌞", "🌞", "🌞", "🌞",
+    //        "🌈", "🌈", "🌈", "🌈", "🌈",
+    //        "🍀", "🍀", "🍀", "🍀", "🍀",
+    //        "🌸", "🌸", "🌸", "🌸", "🌸",
+//        ]
+        private let defaultEmojis = [
+         "🍎",
+         "🍐",
+         "🍊",
+         "🍋",
+         "🍋‍🟩",
+         "🍌",
+         "🍉",
+         "🍇",
+         "🍓",
+         "🫐",
+         "🍈",
+         "🍒",
+         "🍑",
+         "🥭",
+         "🍍",
+         "🥥",
+         "🥝",
+         "🍅",
+         "🍆",
+         "🥑",
+         "🥦",
+         "🫛",
+         "🥬",
+         "🫜",
+         "🥒",
+         "🌶",
+         "🫑",
+         "🌽",
+         "🥕",
+         "🫒",
+         "🧄",
+         "🧅",
+         "🫚",
+         "🥔",
+         "🍠",
+         "🫘",
+         "🥐",
+         "🥯",
+         "🍞",
+         "🥖",
+         "🥨",
+         "🧀",
+         "🥚",
+         "🍳",
+         "🧈",
+         "🥞",
+         "🧇",
+         "🥓",
+         "🥩",
+         "🍗",
+         "🍖",
+         "🦴",
+         "🌭",
+         "🍔",
+         "🍟",
+         "🍕",
+         "🫓",
+         "🥪",
+         "🥙",
+         "🧆",
+         "🌮",
+         "🌯",
+         "🫔",
+         "🥗",
+         "🥘",
+         "🫕",
+         "🥫",
+         "🍝",
+         "🍜",
+         "🍲",
+         "🍛",
+         "🍣",
+         "🍱",
+         "🥟",
+         "🦪",
+         "🍤",
+         "🍙",
+         "🍚",
+         "🍘",
+         "🍥",
+         "🥠",
+         "🥮",
+         "🍢",
+         "🍡",
+         "🍧",
+         "🍨",
+         "🍦",
+         "🥧",
+         "🧁",
+         "🍰",
+         "🎂",
+         "🍮",
+         "🍭",
+         "🍬",
+         "🍫",
+         "🍿",
+         "🍩",
+         "🍪",
+         "🌰",
+         "🥜",
+         "🍯",
+         "🥛",
+         "🍼",
+         "🫖",
+         "☕️",
+         "🍵",
+         "🧃",
+         "🥤",
+         "🧋",
+         "🫙",
+         "🍶",
+         "🍺",
+         "🍻",
+         "🥂",
+         "🍷",
+         "🫗",
+         "🥃",
+         "🍸",
+         "🍹",
+         "🧉",
+         "🍾",
+         "🧊",
+         "🥄",
+         "🍴",
+         "🍽",
+         "🥣",
+         "🥡",
+         "🥢",
+         "🧂",
+         ]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -318,7 +456,7 @@ class EmojiParticleAnimationVC: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         // 计算cell大小，每行显示2个
-        let width = (view.frame.width - 30) / 3
+        let width = (view.frame.width - 30) / 2
         layout.itemSize = CGSize(width: width, height: width * 1.2)
         
         // 创建CollectionView
@@ -330,13 +468,19 @@ class EmojiParticleAnimationVC: UIViewController {
         collectionView.delegate = self
         view.addSubview(collectionView)
         
-        // 应用约束
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+//        // 应用约束
+//        NSLayoutConstraint.activate([
+//            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+//            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+//        ])
+        //宽度只有 cell 的两倍
+        collectionView.frame = CGRect(x: 0, y: 0, width: 400, height: view.frame.height)
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.layer.cornerRadius = 10
+        collectionView.layer.masksToBounds = true
+        collectionView.layer.borderWidth = 1
     }
     
     private func stopAllAnimations() {
