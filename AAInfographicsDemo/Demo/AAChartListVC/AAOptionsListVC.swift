@@ -209,11 +209,16 @@ extension AAOptionsListVC {
             
         case 7:
             /*Mixed Types Chart Options*/
-            let vc = MixedTypesChartOptionsVC()
-            vc.selectedIndex = indexPath.row
-            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
+//            let vc = MixedTypesChartOptionsVC()
+//            vc.selectedIndex = indexPath.row
+//            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
+            
+            // Example: In your ChartListViewController or similar
+            let vc = EmojiParticleAnimationVC()
+            vc.title = "Emoji 粒子动画" // Set a title for the navigation bar
+            self.navigationController?.pushViewController(vc, animated: true)
             
         case 8:
             /*OfficialChartSampleVC*/
