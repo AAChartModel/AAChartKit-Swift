@@ -152,15 +152,12 @@ class EmojiAnimationCell: UICollectionViewCell {
     private(set) var emoji: String = "😊" // 默认 emoji
     private(set) var isAnimating = false
     
-    private var displayLink: CADisplayLink?
-    private var startTime: CFTimeInterval = 0
     private var startPoints: [ParticlePoint] = []
     private var endPoints: [ParticlePoint] = []
     private var currentPoints: [ParticlePoint] = []
     
-    private let numPoints = 400 // 减少每个图表的粒子数量以提高性能
+    private let numPoints = 1200 // 增加点数量以提高清晰度
     private let canvasSize = CGSize(width: 100, height: 100)
-    private let animationDuration: TimeInterval = 1.5
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -192,8 +189,8 @@ class EmojiAnimationCell: UICollectionViewCell {
     private func setupInitialChart() {
         let aaChartModel = AAChartModel()
             .chartType(.scatter)
-            .animationType(.easeOutCubic)
-            .animationDuration(500)
+            .animationType(.linear) // 简化动画类型
+            .animationDuration(0) // 禁用动画
             .backgroundColor("transparent")
             .title("")
             .legendEnabled(false)
@@ -207,15 +204,16 @@ class EmojiAnimationCell: UICollectionViewCell {
                     .data(currentPoints.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
                     .colorByPoint(true)
                     .marker(AAMarker()
-                        .radius(2)
-                        .symbol(.circle)
+                        .radius(1.5) // 减小点的半径，以便显示更多点
+                        .symbol(.diamond) // 使用菱形符号
                         .states(AAMarkerStates()
                             .hover(AAMarkerHover()
-                                .enabled(false)
+                                .enabled(true)
+                                .radiusPlus(5) // 鼠标悬停时增大半径
                             )
                         )
                     )
-                    .enableMouseTracking(false)
+                    .enableMouseTracking(true)
             ])
 
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
@@ -223,7 +221,7 @@ class EmojiAnimationCell: UICollectionViewCell {
         aaOptions.plotOptions?
             .series(AASeries()
                 .animation(AAAnimation()
-                    .duration(0)
+                    .duration(0) // 确保禁用动画
                 )
             )
             .scatter(AAScatter())
@@ -240,7 +238,7 @@ class EmojiAnimationCell: UICollectionViewCell {
         }
     }
     
-    // 设置并播放emoji动画
+    // 设置并直接显示emoji（无动画）
     func setEmoji(_ emoji: String) {
         self.emoji = emoji
         
@@ -253,118 +251,33 @@ class EmojiAnimationCell: UICollectionViewCell {
         // 提取目标点
         let targetPoints = emojiImage.getEmojiPoints(numPoints: numPoints, canvasSize: canvasSize)
         
-        // 准备动画
-        self.startPoints = self.currentPoints
-        self.endPoints = targetPoints
-        startAnimation()
+        // 直接更新图表显示最终结果
+        updateChartWithPoints(targetPoints)
     }
     
-    func startAnimation() {
-        stopAnimation()
-        isAnimating = true
+    // 直接更新图表到最终状态
+    private func updateChartWithPoints(_ points: [ParticlePoint]) {
+        self.currentPoints = points
         
-        startTime = CACurrentMediaTime()
-        displayLink = CADisplayLink(target: self, selector: #selector(updateAnimation))
-        displayLink?.add(to: .main, forMode: .common)
-    }
-    
-    func stopAnimation() {
-        displayLink?.invalidate()
-        displayLink = nil
-        isAnimating = false
-    }
-    
-    @objc private func updateAnimation(displaylink: CADisplayLink) {
-        let currentTime = CACurrentMediaTime()
-        let elapsedTime = currentTime - startTime
-        var progress = min(elapsedTime / animationDuration, 1.0)
-        
-        // Ease out cubic function
-        progress = 1.0 - pow(1.0 - progress, 3.0)
-        
-        let newData = interpolatePoints(start: startPoints, end: endPoints, progress: progress)
-        
-        // 更新图表数据
         let updatedOptions = AAOptions()
         updatedOptions.series = [
             AASeriesElement()
-                .data(newData.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
+                .data(points.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
                 .colorByPoint(true)
-                .marker(AAMarker().radius(2).symbol(.circle))
+                .marker(AAMarker().radius(1.5).symbol(.circle))
         ]
         
         aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeries(updatedOptions.series as! [AASeriesElement], animation: false)
-        
-        // 存储当前状态
-        self.currentPoints = newData
-        
-        if elapsedTime >= animationDuration {
-            stopAnimation()
-            // 确保最终状态准确
-            let finalData = interpolatePoints(start: startPoints, end: endPoints, progress: 1.0)
-            self.currentPoints = finalData
-            let finalOptions = AAOptions()
-            finalOptions.series = [
-                AASeriesElement()
-                    .data(finalData.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
-                    .colorByPoint(true)
-                    .marker(AAMarker().radius(2).symbol(.circle))
-            ]
-            aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeries(finalOptions.series as! [AASeriesElement], animation: false)
-        }
     }
     
-    // 点的插值计算
-    private func interpolatePoints(start: [ParticlePoint], end: [ParticlePoint], progress: Double) -> [ParticlePoint] {
-        guard start.count == end.count else {
-            print("Error: Start and end point counts differ.")
-            return currentPoints
-        }
-        
-        return zip(start, end).map { startPoint, endPoint in
-            let newX = startPoint.x + (endPoint.x - startPoint.x) * progress
-            let newY = startPoint.y + (endPoint.y - startPoint.y) * progress
-            let newColor = interpolateColor(from: startPoint.color, to: endPoint.color, progress: progress)
-            return ParticlePoint(x: newX, y: newY, color: newColor)
-        }
-    }
-    
-    // 颜色插值
-    private func interpolateColor(from startColor: String, to endColor: String, progress: Double) -> String {
-        guard let startRGB = parseRGB(startColor), let endRGB = parseRGB(endColor) else {
-            return progress >= 1.0 ? endColor : startColor
-        }
-        
-        let r = Int(round(Double(startRGB.r) + (Double(endRGB.r) - Double(startRGB.r)) * progress))
-        let g = Int(round(Double(startRGB.g) + (Double(endRGB.g) - Double(startRGB.g)) * progress))
-        let b = Int(round(Double(startRGB.b) + (Double(endRGB.b) - Double(startRGB.b)) * progress))
-        
-        // 限制值在0-255
-        let clampedR = max(0, min(255, r))
-        let clampedG = max(0, min(255, g))
-        let clampedB = max(0, min(255, b))
-        
-        return "rgb(\(clampedR),\(clampedG),\(clampedB))"
-    }
-    
-    // 解析RGB颜色
-    private func parseRGB(_ rgbString: String) -> (r: Int, g: Int, b: Int)? {
-        let scanner = Scanner(string: rgbString)
-        guard scanner.scanString("rgb(") != nil,
-              let r = scanner.scanInt(),
-              scanner.scanString(",") != nil,
-              let g = scanner.scanInt(),
-              scanner.scanString(",") != nil,
-              let b = scanner.scanInt(),
-              scanner.scanString(")") != nil else {
-            return nil
-        }
-        return (r, g, b)
+    func stopAnimation() {
+        // 保留该方法以维护接口一致性，但实际上不需要做任何事情，因为没有动画
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        stopAnimation()
+        // 重置为随机点
+        currentPoints = generateRandomPoints(num: numPoints)
     }
 }
 
