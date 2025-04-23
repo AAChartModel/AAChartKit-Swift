@@ -150,113 +150,115 @@ extension UIImage {
 class EmojiAnimationCell: UICollectionViewCell {
     private(set) var aaChartView: AAChartView!
     private(set) var emoji: String = "😊" // 默认 emoji
-    private(set) var isAnimating = false
-    
-    private var startPoints: [ParticlePoint] = []
-    private var endPoints: [ParticlePoint] = []
     private var currentPoints: [ParticlePoint] = []
     
-    private let numPoints = 600 // 增加点数量以提高清晰度
+    // 添加加载指示器
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .gray
+        indicator.hidesWhenStopped = true
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
+    private let numPoints = 600 // 点数量
     private let canvasSize = CGSize(width: 100, height: 100)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupChartView()
+        setupViews()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupChartView()
+        setupViews()
     }
     
-    private func setupChartView() {
+    private func setupViews() {
+        // 设置图表视图
         aaChartView = AAChartView()
         aaChartView.isScrollEnabled = false
         aaChartView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(aaChartView)
         
+        // 添加活动指示器
+        contentView.addSubview(activityIndicator)
+        
+        // 布局约束
         NSLayoutConstraint.activate([
             aaChartView.topAnchor.constraint(equalTo: contentView.topAnchor),
             aaChartView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             aaChartView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            aaChartView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            aaChartView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         
-        // 初始化随机点
-        currentPoints = generateRandomPoints(num: numPoints)
+        // 初始图表设置 - 先显示空图表
         setupInitialChart()
     }
     
     private func setupInitialChart() {
+        // 初始化空的图表，稍后用真实数据更新
         let aaChartModel = AAChartModel()
             .chartType(.scatter)
-            .animationType(.linear) // 简化动画类型
-            .animationDuration(0) // 禁用动画
+            .animationDuration(0)
             .backgroundColor("transparent")
             .title("")
             .legendEnabled(false)
-            .tooltipEnabled(true)
+            .tooltipEnabled(false)
             .xAxisVisible(false)
             .yAxisVisible(false)
             .colorsTheme(["#000000"])
             .series([
                 AASeriesElement()
                     .name("Particles")
-                    .data(currentPoints.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
+                    .data([]) // 空数据，等待异步加载
                     .colorByPoint(true)
                     .marker(AAMarker()
-                        .radius(4) // 减小点的半径，以便显示更多点
-                        .symbol(.diamond) // 使用菱形符号
-                        .states(AAMarkerStates()
-                            .hover(AAMarkerHover()
-                                .enabled(true)
-                                .radiusPlus(5) // 鼠标悬停时增大半径
-                            )
-                        )
+                        .radius(6)
+                        .symbol(.circle)
                     )
-                    .enableMouseTracking(true)
+                    .enableMouseTracking(false)
             ])
 
         let aaOptions = AAOptionsConstructor.configureChartOptions(aaChartModel)
-
-        aaOptions.plotOptions?
-            .series(AASeries()
-                .animation(AAAnimation()
-                    .duration(0) // 确保禁用动画
-                )
-            )
-            .scatter(AAScatter())
-
         aaChartView.aa_drawChartWithChartOptions(aaOptions)
     }
     
-    // 生成随机点
-    private func generateRandomPoints(num: Int) -> [ParticlePoint] {
-        return (0..<num).map { _ in
-            ParticlePoint(x: Double.random(in: 0...100),
-                          y: Double.random(in: 0...100),
-                          color: "rgb(0,0,0)")
-        }
-    }
-    
-    // 设置并直接显示emoji（无动画）
+    // 设置emoji并异步加载数据
     func setEmoji(_ emoji: String) {
         self.emoji = emoji
         
-        // 生成emoji图像
-        guard let emojiImage = emoji.image(with: canvasSize) else {
-            print("无法从 \(emoji) 创建图像")
-            return
+        // 显示加载指示器
+        activityIndicator.startAnimating()
+        
+        // 异步处理数据合成
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            
+            // 生成emoji图像
+            guard let emojiImage = emoji.image(with: self.canvasSize) else {
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    print("无法从 \(emoji) 创建图像")
+                }
+                return
+            }
+            
+            // 提取目标点
+            let points = emojiImage.getEmojiPoints(numPoints: self.numPoints, canvasSize: self.canvasSize)
+            
+            // 回到主线程更新UI
+            DispatchQueue.main.async {
+                self.updateChartWithPoints(points)
+                self.activityIndicator.stopAnimating()
+            }
         }
-        
-        // 提取目标点
-        let targetPoints = emojiImage.getEmojiPoints(numPoints: numPoints, canvasSize: canvasSize)
-        
-        // 直接更新图表显示最终结果
-        updateChartWithPoints(targetPoints)
     }
     
-    // 直接更新图表到最终状态
+    // 更新图表
     private func updateChartWithPoints(_ points: [ParticlePoint]) {
         self.currentPoints = points
         
@@ -265,45 +267,26 @@ class EmojiAnimationCell: UICollectionViewCell {
             AASeriesElement()
                 .data(points.map { ["x": $0.x, "y": $0.y, "color": $0.color] })
                 .colorByPoint(true)
-                .marker(AAMarker().radius(10).symbol(.circle))
+                .marker(AAMarker().radius(6).symbol(.circle))
         ]
         
         aaChartView.aa_onlyRefreshTheChartDataWithChartOptionsSeries(updatedOptions.series as! [AASeriesElement], animation: false)
     }
     
     func stopAnimation() {
-        // 保留该方法以维护接口一致性，但实际上不需要做任何事情，因为没有动画
+        // 保留兼容性
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        // 重置为随机点
-        currentPoints = generateRandomPoints(num: numPoints)
+        // 停止指示器，避免重用时继续显示
+        activityIndicator.stopAnimating()
     }
 }
 
 class EmojiParticleAnimationVC: UIViewController {
     private var collectionView: UICollectionView!
-//    private let defaultEmojis = [
-//        //离离原上草, 一岁一枯荣,
-//        //野火烧不尽, 春风吹又生,
-//        //远芳侵古道, 晓色染苍苔,
-//        //又送王孙去, 萋萋满别情,
-//        "离", "离", "原", "上", "草",
-//        "一", "岁", "一", "枯", "荣",
-//        "野", "火", "烧", "不", "尽",
-//        "春", "风", "吹", "又", "生",
-//        "远", "芳", "侵", "古", "道",
-//        "晓", "色", "染", "苍", "苔",
-//        "又", "送", "王", "孙", "去",
-//        "萋", "萋", "满", "别", "情",
-    //        "🤡", "🤡", "🤡", "🤡", "🤡",
-    //        "🌞", "🌞", "🌞", "🌞", "🌞",
-    //        "🌈", "🌈", "🌈", "🌈", "🌈",
-    //        "🍀", "🍀", "🍀", "🍀", "🍀",
-    //        "🌸", "🌸", "🌸", "🌸", "🌸",
-//        ]
-        private let defaultEmojis = [
+    private let defaultEmojis = [
          "🍎",
          "🍐",
          "🍊",
@@ -456,7 +439,7 @@ class EmojiParticleAnimationVC: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         // 计算cell大小，每行显示2个
-        let width = (view.frame.width - 30) / 2
+        let width = (view.frame.width - 30) / 4
         layout.itemSize = CGSize(width: width, height: width * 1.2)
         
         // 创建CollectionView
@@ -468,19 +451,13 @@ class EmojiParticleAnimationVC: UIViewController {
         collectionView.delegate = self
         view.addSubview(collectionView)
         
-//        // 应用约束
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-//        ])
-        //宽度只有 cell 的两倍
-        collectionView.frame = CGRect(x: 0, y: 0, width: 400, height: view.frame.height)
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.layer.cornerRadius = 10
-        collectionView.layer.masksToBounds = true
-        collectionView.layer.borderWidth = 1
+        // 应用约束
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     private func stopAllAnimations() {
@@ -504,7 +481,7 @@ extension EmojiParticleAnimationVC: UICollectionViewDataSource {
             fatalError("无法创建EmojiAnimationCell")
         }
         
-        // 设置emoji
+        // 设置emoji - 异步加载
         cell.setEmoji(defaultEmojis[indexPath.item])
         return cell
     }
