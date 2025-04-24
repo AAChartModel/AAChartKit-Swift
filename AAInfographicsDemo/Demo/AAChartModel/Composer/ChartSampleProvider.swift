@@ -186,6 +186,12 @@ class ChartSampleProvider: NSObject {
             BubbleLegendChartOptionsComposer.packedbubbleSplitChart(),
             BubbleLegendChartOptionsComposer.packedbubbleSpiralChart(),
             
+            BubbleChartOptionsComposer.punchCardChart(),
+            BubbleChartOptionsComposer.punchCardChart2(),
+            BubbleChartOptionsComposer.punchCardChart3(),
+
+            
+            
             DrawChartWithAAOptionsVC.configureLegendStyle(),
             DrawChartWithAAOptionsVC.simpleGaugeChart(),
             DrawChartWithAAOptionsVC.gaugeChartWithPlotBand(),
