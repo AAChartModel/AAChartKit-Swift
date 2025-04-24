@@ -118,6 +118,7 @@
 		848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */; };
 		84903C8E2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903C8D2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift */; };
 		84903C9B2DB9F0680029FE5A /* BubbleChartOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903C9A2DB9F0680029FE5A /* BubbleChartOptionsComposer.swift */; };
+		84903C9D2DBA0BD20029FE5A /* AAChartView+ScreenRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903C9C2DBA0BD20029FE5A /* AAChartView+ScreenRotation.swift */; };
 		84A9FB7E28C9BC0E00240C11 /* AAScatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */; };
 		84AE6B1F26A58380001F0755 /* AADateUTCTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE6B1E26A58380001F0755 /* AADateUTCTool.swift */; };
 		84B68246266DB09100957FC5 /* AAChartSymbolConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B68245266DB09100957FC5 /* AAChartSymbolConstant.swift */; };
@@ -367,6 +368,7 @@
 		848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAAChartViewForXibVC.xib; sourceTree = "<group>"; };
 		84903C8D2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiParticleAnimationVC.swift; sourceTree = "<group>"; };
 		84903C9A2DB9F0680029FE5A /* BubbleChartOptionsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleChartOptionsComposer.swift; sourceTree = "<group>"; };
+		84903C9C2DBA0BD20029FE5A /* AAChartView+ScreenRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AAChartView+ScreenRotation.swift"; sourceTree = "<group>"; };
 		84A9FB7C28C9BC0E00240C11 /* AAScatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAScatter.swift; sourceTree = "<group>"; };
 		84AE6B1E26A58380001F0755 /* AADateUTCTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AADateUTCTool.swift; sourceTree = "<group>"; };
 		84B68245266DB09100957FC5 /* AAChartSymbolConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChartSymbolConstant.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 		275BB8D720CFA6DB00DE1991 /* AdditionalContent1 */ = {
 			isa = PBXGroup;
 			children = (
+				84903C9C2DBA0BD20029FE5A /* AAChartView+ScreenRotation.swift */,
 				8466E3962DB1FD8600DBF03B /* ChartGalleryList */,
 				2770FBBE1F93673700091C75 /* OnlyRefreshChartDataVC.swift */,
 				276A56FE22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift */,
@@ -1098,6 +1101,7 @@
 				58603B0D623EDFE55CFFC66B /* CustomStyleForColumnChartComposer.swift in Sources */,
 				844007702B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift in Sources */,
 				586031CD65041F30252BD805 /* CustomStyleForBarChartComposer.swift in Sources */,
+				84903C9D2DBA0BD20029FE5A /* AAChartView+ScreenRotation.swift in Sources */,
 				84526E2F2CF414F500EB2563 /* JSFunctionBeforeAndAfterRenderingComposer4.swift in Sources */,
 				84903C9B2DB9F0680029FE5A /* BubbleChartOptionsComposer.swift in Sources */,
 				586034DF506E8FFB33BFE95A /* CustomStyleForBarChartVC.swift in Sources */,

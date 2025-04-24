@@ -30,7 +30,7 @@
  
  */
 
-import UIKit
+import WebKit
 
 // MARK: - Configure Chart View Content With AAChartModel
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
@@ -313,38 +313,6 @@ extension AAChartView {
         let jsStr = "redrawWithAnimation('\(animation)')"
         safeEvaluateJavaScriptString(jsStr)
     }
-    
-#if os(iOS)
-    /// Set the chart view content be adaptive to screen rotation with default animation effect
-    public func aa_adaptiveScreenRotation() {
-        let aaAnimation = AAAnimation()
-            .duration(800)
-            .easing(.easeOutQuart)
-        aa_adaptiveScreenRotationWithAnimation(aaAnimation)
-    }
-    
-    /// Set the chart view content be adaptive to screen rotation with custom animation effect
-    /// Refer to https://api.highcharts.com/highcharts#Chart.setSize
-    ///
-    /// - Parameter animation: The instance object of AAAnimation
-    public func aa_adaptiveScreenRotationWithAnimation(_ animation: AAAnimation) {
-        NotificationCenter.default.addObserver(
-            forName: UIDevice.orientationDidChangeNotification,
-            object: nil,
-            queue: nil) { [weak self] _ in
-                //Delay execution by 0.01 seconds to prevent incorrect screen width and height obtained when the screen is rotated
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                    self?.aa_resizeChart(animation: animation)
-                }
-            }
-    }
-    
-    public func aa_resizeChart(animation: AAAnimation) {
-        let animationJsonStr = animation.toJSON()
-        let jsFuncStr = "changeChartSize('\(frame.size.width)','\(frame.size.height)','\(animationJsonStr)')"
-        safeEvaluateJavaScriptString(jsFuncStr)
-    }
-#endif
     
 }
 
