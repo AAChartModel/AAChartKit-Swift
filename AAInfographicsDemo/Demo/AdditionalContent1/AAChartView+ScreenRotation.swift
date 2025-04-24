@@ -58,7 +58,7 @@ extension AAChartView {
                 }
                 
                 // Pass animationJsonStr as a string literal using single quotes
-                changeChartSize(\(frame.size.width), \(frame.size.height), \(animationJsonStr))
+                changeChartSize(\(frame.size.width), \(frame.size.height), '\(animationJsonStr)')
                 """
         safeEvaluateJavaScriptString(jsFuncStr)
     }
