@@ -38,6 +38,11 @@ public enum AAChartAxisType: String {
     case category
 }
 
+public enum AAChartAxisTickmarkPlacementType: String {
+    case between
+    case on
+}
+
 /// https://api.highcharts.com/highcharts/xAxis
 /// https://api.highcharts.com/highcharts/yAxis
 public class AAAxis: AAObject {
@@ -358,8 +363,8 @@ public class AAAxis: AAObject {
     }
     
     @discardableResult
-    public func tickmarkPlacement(_ prop: String?) -> Self {
-        tickmarkPlacement = prop
+    public func tickmarkPlacement(_ prop: AAChartAxisTickmarkPlacementType?) -> Self {
+        tickmarkPlacement = prop?.rawValue
         return self
     }
     

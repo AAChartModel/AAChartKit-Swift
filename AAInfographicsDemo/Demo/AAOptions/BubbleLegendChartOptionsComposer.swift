@@ -477,10 +477,13 @@ class BubbleLegendChartOptionsComposer {
 
         return AAOptions()
             .chart(AAChart()
-                .polar(true)
+//                .polar(true)
                 .type(.bubble)
                 // .marginBottom(100) // Optional: Adjust plot area size if needed
             )
+            .colors([
+                AAGradientColor.wroughtIron, // Default color for the series
+            ])
             .title(AATitle()
                 .text("Punch Card of Github"))
             .pane(AAPane()
@@ -492,7 +495,7 @@ class BubbleLegendChartOptionsComposer {
                 .enabled(false)) // Disable legend for cleaner look
             .xAxis(AAXAxis() // Angle Axis (Hours)
                 .categories(hours)
-//                .tickmarkPlacement(.on) // Place ticks on the category mark
+                .tickmarkPlacement(.on) // Place ticks on the category mark
                 .lineWidth(0)            // Hide axis line
                 .gridLineWidth(1)        // Show radial grid lines
                 .labels(AALabels()
@@ -508,7 +511,7 @@ class BubbleLegendChartOptionsComposer {
                 .max(Double(days.count - 1)) // Ensure axis ends at the last category (outermost)
                 .lineWidth(0)       // Hide axis line
 //                .gridLineInterpolation(.polygon) // Makes circular grid lines look better
-                .gridLineWidth(1)   // Show circular grid lines
+                .gridLineWidth(0)
                 .labels(AALabels()
                     .rotation(-45) // Rotate labels like ECharts
                     .align(.right)
