@@ -12,6 +12,7 @@ public class AALayoutAlgorithm: AAObject {
     public var seriesInteraction: Bool?
     public var dragBetweenSeries: Bool?
     public var parentNodeLimit: Bool?
+    public var enableSimulation: Bool?
     
     @discardableResult
     public func gravitationalConstant(_ prop: Any?) -> AALayoutAlgorithm {
@@ -40,6 +41,12 @@ public class AALayoutAlgorithm: AAObject {
     @discardableResult
     public func parentNodeLimit(_ prop: Bool?) -> AALayoutAlgorithm {
         parentNodeLimit = prop
+        return self
+    }
+    
+    @discardableResult
+    public func enableSimulation(_ prop: Bool?) -> AALayoutAlgorithm {
+        enableSimulation = prop
         return self
     }
     

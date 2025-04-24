@@ -61,6 +61,8 @@ class BubbleLegendChartOptionsComposer {
      */
     class func bubbleLegendChart() -> AAOptions {
         AAOptions()
+            .title(AATitle()
+                .text("Bubble Legend"))
             .chart(AAChart()
                 .type(.bubble))
             .legend(AALegend()
@@ -162,6 +164,8 @@ class BubbleLegendChartOptionsComposer {
     */
     class func customBubbleLegendChart() -> AAOptions {
         AAOptions()
+            .title(AATitle()
+                .text("Bubble Legend"))
             .chart(AAChart()
                 .type(.bubble))
             .legend(AALegend()
@@ -225,7 +229,8 @@ class BubbleLegendChartOptionsComposer {
                 .zMax(1000)
                 .layoutAlgorithm(AALayoutAlgorithm() //packedbubbleChart 和 packedbubbleSplitChart 只有layoutAlgorithm这一段不一样
                     .gravitationalConstant(0.02)
-                    .splitSeries(false))
+                    .splitSeries(false)
+                    .enableSimulation(false))
                     .dataLabels(AADataLabels()
                         .enabled(true)
                         .format("{point.name}")
@@ -253,7 +258,8 @@ class BubbleLegendChartOptionsComposer {
                     .splitSeries(true)
                     .seriesInteraction(false)
                     .dragBetweenSeries(true)
-                    .parentNodeLimit(true))
+                    .parentNodeLimit(true)
+                    .enableSimulation(false))
                     .dataLabels(AADataLabels()
                         .enabled(true)
                         .format("{point.name}")

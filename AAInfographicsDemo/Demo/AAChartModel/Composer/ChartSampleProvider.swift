@@ -141,6 +141,16 @@ class ChartSampleProvider: NSObject {
             MixedTypesChartOptionsComposer.polarThermometerChart(),
             MixedTypesChartOptionsComposer.polarLollipopChart(),
             
+            BubbleLegendChartOptionsComposer.bubbleLegendChart(),
+            BubbleLegendChartOptionsComposer.customBubbleLegendChart(),
+            BubbleLegendChartOptionsComposer.packedbubbleChart(),
+            BubbleLegendChartOptionsComposer.packedbubbleSplitChart(),
+            BubbleLegendChartOptionsComposer.packedbubbleSpiralChart(),
+            
+            BubbleChartOptionsComposer.punchCardChart(),
+            BubbleChartOptionsComposer.punchCardChart2(),
+            BubbleChartOptionsComposer.punchCardChart3(),
+            
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart(),//复杂自定义曲线填充图 1
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart2(),//复杂自定义曲线填充图 2
             AreaChartOptionsVC.configureComplicatedCustomAreasplineChart3(),//复杂自定义曲线填充图 3
@@ -180,15 +190,7 @@ class ChartSampleProvider: NSObject {
 
             MultiYAxesChartOptionsVC.disableGroupingBoxplotMixedScatterChart(),
 
-            BubbleLegendChartOptionsComposer.bubbleLegendChart(),
-            BubbleLegendChartOptionsComposer.customBubbleLegendChart(),
-            BubbleLegendChartOptionsComposer.packedbubbleChart(),
-            BubbleLegendChartOptionsComposer.packedbubbleSplitChart(),
-            BubbleLegendChartOptionsComposer.packedbubbleSpiralChart(),
-            
-            BubbleChartOptionsComposer.punchCardChart(),
-            BubbleChartOptionsComposer.punchCardChart2(),
-            BubbleChartOptionsComposer.punchCardChart3(),
+
 
             
             
