@@ -81,6 +81,7 @@ class AAChartModelListVC: AABaseListVC {
                 "Step Area Chart---直方折线填充图",
                 "Pie Chart---扇形图",
                 "Bubble Chart---气泡图",
+                "Packedbubble Chart---密集气泡图",
                 "Scatter Chart---散点图",
                 "Arearange Chart---折线区域范围图",
                 "Area Spline range Chart--曲线区域范围图",
@@ -91,7 +92,8 @@ class AAChartModelListVC: AABaseListVC {
                 "Funnel Chart---漏斗图",
                 "Error Bar Chart---误差图",
                 "Gauge Chart---仪表图",
-                "Polygon Chart---多边形图"
+                "Polygon Chart---多边形图",
+                "Columnpyramid Chart---金字塔柱状图",
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -317,6 +319,7 @@ class AAChartModelListVC: AABaseListVC {
                 "所有 AAOptions 图表",
                 "所有 Official Sample AAOptions 图表",
                 "所有类型 Random Value Data 图表",
+                "ChartListTableViewVC---所有 AAChartModel 图表 TableView",
             ],
 
         ]
@@ -343,6 +346,7 @@ class AAChartModelListVC: AABaseListVC {
                 AAChartType.areaspline,
                 AAChartType.pie,
                 AAChartType.bubble,
+                AAChartType.packedbubble,
                 AAChartType.scatter,
                 AAChartType.arearange,
                 AAChartType.areasplinerange,
@@ -354,6 +358,7 @@ class AAChartModelListVC: AABaseListVC {
                 AAChartType.errorbar,
                 AAChartType.gauge,
                 AAChartType.polygon,
+                AAChartType.columnpyramid,
             ],
             [//Empty Array,just for holding place
             ],
@@ -539,13 +544,17 @@ extension AAChartModelListVC {
             if #available(iOS 14.0, *) {
                 let vc = OfficialChartSampleVC()
                 if indexPathRow == 0 {
-                    vc.optionsItems = AAOptionsItemComposer.aaChartModelItems()
+                    vc.optionsItems = ChartSampleProvider.aaChartModelItems()
                 } else if indexPathRow == 1 {
-                    vc.optionsItems = AAOptionsItemComposer.aaOptionsItems()
+                    vc.optionsItems = ChartSampleProvider.aaOptionsItems()
                 } else if indexPathRow == 2 {
-                    vc.optionsItems = AAOptionsItemComposer.officalChartSampleItems()
+                    vc.optionsItems = ChartSampleProvider.officalChartSampleItems()
                 } else if indexPathRow == 3 {
-                    vc.optionsItems = AAOptionsItemComposer.randomValueDataItems()
+                    vc.optionsItems = ChartSampleProvider.randomValueDataItems()
+                } else if indexPathRow == 4 {
+                    let vc = ChartListTableViewVC()
+                    navigationController?.pushViewController(vc, animated: true)
+                    return
                 }
                 navigationController?.pushViewController(vc, animated: true)
                 

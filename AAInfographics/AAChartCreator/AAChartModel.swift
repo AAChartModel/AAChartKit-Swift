@@ -81,8 +81,10 @@ public enum AAChartType: String {
     case scatter         //A scatter plot uses cartesian coordinates to display values for two variables for a set of data.
     case pie             //A pie chart is a circular graphic which is divided into slices to illustrate numerical proportion.
     case bubble          //A bubble series is a three dimensional series type where each point renders an X, Y and Z value. Each points is drawn as a bubble where the position along the X and Y axes mark the X and Y values, and the size of the bubble relates to the Z value.
+    case packedbubble    //A packed bubble series is a two dimensional series type, where each point renders a value in X, Y position. Each point is drawn as a bubble where the bubbles don't overlap with each other and the radius of the bubble relates to the value.
     case pyramid         //A pyramid series is a special type of funnel, without neck and reversed by default.
     case funnel          //Funnel charts are a type of chart often used to visualize stages in a sales project, where the top are the initial stages with the most clients. It requires that the modules/funnel.js file is loaded.
+    case columnpyramid   //Column pyramid series display one pyramid per value along an X axis. To display horizontal pyramids, set chart.inverted to true.
     case columnrange     //The column range is a cartesian series type with higher and lower Y values along an X axis. To display horizontal bars, set chart.inverted to true.
     case arearange       //The area range series is a cartesian series with higher and lower values for each point along an X axis, where the area between the values is shaded.
     case areasplinerange //The area spline range is a cartesian series type with higher and lower Y values along an X axis. The area inside the range is colored, and the graph outlining the area is a smoothed spline.
@@ -162,8 +164,8 @@ public class AAChartModel: AAObject {
     public var subtitleAlign: AAChartAlignType?//The chart subtitle text align style
     public var subtitleStyle: AAStyle?      //The chart subtitle style
     public var chartType: AAChartType?      //The default series type for the chart. Can be any of the chart types listed under `AAChartType`. Defaults to line
-    public var stacking: AAChartStackingType? //Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order
-    public var markerSymbol: AAChartSymbolType?   //A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down"
+    public var stacking: AAChartStackingType?//Whether to stack the values of each series on top of each other. Possible values are null to disable, "normal" to stack by value or "percent". When stacking is enabled, data must be sorted in ascending X order
+    public var markerSymbol: AAChartSymbolType?//A predefined shape or symbol for the marker. When null, the symbol is pulled from options.symbols. Other possible values are "circle", "square", "diamond", "triangle" and "triangle-down"
     public var markerSymbolStyle: AAChartSymbolStyleType?
     public var zoomType: AAChartZoomType?   //Decides in what dimensions the user can zoom by dragging the mouse. Can be one of x, y or xy
     public var inverted: Bool?              //Whether to invert the axes so that the x axis is vertical and y axis is horizontal. When true, the x axis is reversed by default. If a bar series is present in the chart, it will be inverted automatically.Inverting the chart doesn't have an effect if there are no cartesian series in the chart, or if the chart is polar.Defaults to false
@@ -199,7 +201,7 @@ public class AAChartModel: AAObject {
     public var backgroundColor: Any?        //The background color or gradient for the outer chart area. Defaults to #FFFFFF
     public var borderRadius: Any?           //The corner radius of the outer chart border. Defaults to 0
     public var markerRadius: Float?         //The radius of the point marker. Defaults to 4
-    public var scrollablePlotArea: AAScrollablePlotArea?    //Scroll properties if supported
+    public var scrollablePlotArea: AAScrollablePlotArea?//Scroll properties if supported
     
 
     @discardableResult

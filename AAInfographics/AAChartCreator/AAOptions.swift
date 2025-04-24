@@ -344,7 +344,9 @@ public class AAOptionsConstructor {
             || aaChartType == .boxplot
             || aaChartType == .waterfall
             || aaChartType == .polygon
-            || aaChartType == .gauge {
+            || aaChartType == .gauge
+            || aaChartType == .columnpyramid
+        {
             
             if aaChartType != .gauge {
                 let aaXAxisLabelsEnabled = aaChartModel.xAxisLabelsEnabled

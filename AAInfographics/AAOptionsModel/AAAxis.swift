@@ -38,6 +38,11 @@ public enum AAChartAxisType: String {
     case category
 }
 
+public enum AAChartAxisTickmarkPlacementType: String {
+    case between
+    case on
+}
+
 /// https://api.highcharts.com/highcharts/xAxis
 /// https://api.highcharts.com/highcharts/yAxis
 public class AAAxis: AAObject {
@@ -358,8 +363,8 @@ public class AAAxis: AAObject {
     }
     
     @discardableResult
-    public func tickmarkPlacement(_ prop: String?) -> Self {
-        tickmarkPlacement = prop
+    public func tickmarkPlacement(_ prop: AAChartAxisTickmarkPlacementType?) -> Self {
+        tickmarkPlacement = prop?.rawValue
         return self
     }
     
@@ -524,7 +529,7 @@ public class AAAxisEvents: AAObject {
     
     @discardableResult
     public func setExtremes(_ prop: String?) -> AAAxisEvents {
-        setExtremes = prop?.aa_toPureJSStringqq()
+        setExtremes = prop?.aa_toPureJSStringWithParentheses()
         return self
     }
     
@@ -534,9 +539,9 @@ public class AAAxisEvents: AAObject {
 }
 
 
-public extension String {
+private extension String {
     
-    func aa_toPureJSStringqq() -> String {
+    func aa_toPureJSStringWithParentheses() -> String {
         //https://stackoverflow.com/questions/34334232/why-does-function-not-work-but-function-does-chrome-devtools-node
         var pureJSStr = "(\(self))"
         pureJSStr = pureJSStr.replacingOccurrences(of: "'", with: "\"")

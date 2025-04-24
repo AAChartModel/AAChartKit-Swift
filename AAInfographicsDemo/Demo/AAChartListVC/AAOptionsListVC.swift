@@ -26,7 +26,8 @@ class AAOptionsListVC: AABaseListVC {
             "ScatterChartOptionsVC---通过 Options 绘制散点图",
             "PieChartOptionsVC---通过 Options 绘饼图",
             "ColumnChartOptionsVC---通过 Options 绘制条形图",
-            "OfficialChartSample---官方图表📊示例"
+            "MixedTypesChartOptionsVC---通过 Options 绘制混合图",
+            "OfficialChartSample---官方图表📊示例",
         ]
         
         chartTypeTitleArr = [
@@ -127,6 +128,10 @@ class AAOptionsListVC: AABaseListVC {
                 "disableGroupingBarChart---"
             ],
             [
+                "columnrangeAndScatterMixedTypesChart---柱形范围图和散点图混合类型图",
+                "invertedColumnrangeAndScatterMixedTypesChart---倒置柱形范围图和散点图混合类型图",
+            ],
+            [
                 "columnChart---",
             ],
         ]
@@ -203,6 +208,19 @@ extension AAOptionsListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 7:
+            /*Mixed Types Chart Options*/
+//            let vc = MixedTypesChartOptionsVC()
+//            vc.selectedIndex = indexPath.row
+//            vc.navigationItemTitleArr = chartTypeTitleArr[indexPath.section]
+//            vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
+            
+            // Example: In your ChartListViewController or similar
+            let vc = EmojiParticleAnimationVC()
+            vc.title = "Emoji 粒子动画" // Set a title for the navigation bar
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        case 8:
             /*OfficialChartSampleVC*/
             if #available(macCatalyst 14.0, *) {
                 if #available(iOS 14.0, *) {

@@ -156,17 +156,18 @@ class SpecialChartComposer {
             .yAxisTitle("℃")
             .yAxisGridLineWidth(0)
             .colorsTheme([
-                AAGradientColor.radialGradient(position: .topCenter, startColor: AAColor.red, endColor: AAColor.green),
+//                AAGradientColor.radialGradient(position: .topCenter, startColor: AAColor.red, endColor: AAColor.green),
                 AAGradientColor.deepSea,
-                AAGradientColor.lemonDrizzle
+                AAGradientColor.lemonDrizzle,
+                AAGradientColor.wroughtIron,
             ])
             .series([
                 AASeriesElement()
                     .name("BubbleOne")
                     .colorByPoint(true)
-                    .marker(AAMarker()
-                        .lineColor(AAColor.red)
-                        .lineWidth(3))
+//                    .marker(AAMarker()
+//                        .lineColor(AAColor.red)
+//                        .lineWidth(3))
                     .data([
                         [97, 36, 79],
                         [94, 74, 60],
@@ -183,9 +184,9 @@ class SpecialChartComposer {
                 ,
                 AASeriesElement()
                     .name("BubbleTwo")
-                    .marker(AAMarker()
-                        .lineColor(AAColor.blue)
-                        .lineWidth(3))
+//                    .marker(AAMarker()
+//                        .lineColor(AAColor.blue)
+//                        .lineWidth(3))
                     .data([
                         [25, 60, 87],
                         [2,  75, 59],
@@ -202,9 +203,9 @@ class SpecialChartComposer {
                 ,
                 AASeriesElement()
                     .name("BubbleThree")
-                    .marker(AAMarker()
-                        .lineColor(AAColor.yellow)
-                        .lineWidth(3))
+//                    .marker(AAMarker()
+//                        .lineColor(AAColor.yellow)
+//                        .lineWidth(3))
                     .data([
                         [47, 47, 21],
                         [20, 12, 66],
@@ -220,6 +221,11 @@ class SpecialChartComposer {
                     ])
                 ,
             ])
+    }
+    
+    static func packedbubbleChart() -> AAChartModel {
+        bubbleChart()
+            .chartType(.packedbubble)
     }
     
     static func scatterChart() -> AAChartModel {
@@ -829,6 +835,13 @@ class SpecialChartComposer {
                         [13988160, 2.8,  9.2],
                     ])
             ])
+    }
+    
+    static func columnpyramidChart() -> AAChartModel {
+        stepLineChart()
+            .chartType(.columnpyramid)
+            .title("COLUMN PYRAMID CHART")
+            .subtitle("virtual data")
     }
     
     static func columnrangeChart() -> AAChartModel {

@@ -75,6 +75,7 @@ class AAOptionsWithJSListVC: AABaseListVC {
             /*JS Function For AAAXis Labels 2*/
             [
                 "customWidthForXAxisLabels---自定义 X 轴文字标签的宽度",
+                "customSimpleXAxisLabelsBeImages---自定义简单的X轴文字标签为图片"
             ],
             
             /*JS Function For AALegend*/
