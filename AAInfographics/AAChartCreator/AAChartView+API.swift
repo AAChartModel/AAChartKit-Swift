@@ -30,6 +30,8 @@
  
  */
 
+import Foundation
+
 // MARK: - Configure Chart View Content With AAChartModel
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 extension AAChartView {
@@ -69,12 +71,16 @@ extension AAChartView {
     public func aa_drawChartWithChartOptions(_ aaOptions: AAOptions) {
         if optionsJson == nil {
             configureOptionsJsonStringWithAAOptions(aaOptions)
-            let path = BundlePathLoader()
+            guard let path = BundlePathLoader()
                 .path(forResource: "AAChartView",
                       ofType: "html",
-                      inDirectory: "AAJSFiles.bundle")
-            let urlStr = URL(fileURLWithPath: path!)
-            let urlRequest = URLRequest(url: urlStr)
+                      inDirectory: "AAJSFiles.bundle") else {
+                // Consider more robust error handling or logging framework for production code
+                print("Error: AAChartView.html not found in AAJSFiles.bundle. Chart cannot be loaded.")
+                return
+            }
+            let fileURL = URL(fileURLWithPath: path) // 'path' is a non-optional String here
+            let urlRequest = URLRequest(url: fileURL)
             load(urlRequest)
         } else {
             aa_refreshChartWholeContentWithChartOptions(aaOptions)
