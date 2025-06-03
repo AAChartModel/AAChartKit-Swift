@@ -122,6 +122,7 @@ class ChartSampleProvider: NSObject {
         //遍历 originalItems 数组,将其中的每个 AAChartModel 实例转化为 AAOptions 实例
         let finalItems = originalItems.map { (aaChartModel) -> AAOptions in
             let aaOptions = aaChartModel.aa_toAAOptions()
+//            aaOptions.chart?.polar(true)
             return aaOptions
         }
         
@@ -130,7 +131,7 @@ class ChartSampleProvider: NSObject {
     
     
     static func aaOptionsItems() -> [AAOptions] {
-        return [
+        let originalItems = [
             XAxisYAxisTypeOptionsComposer.datatimeTypeLineAndColumnMixedChart(),
             MixedTypesChartOptionsComposer.columnrangeAndScatterMixedTypesChart(),
             MixedTypesChartOptionsComposer.invertedColumnrangeAndScatterMixedTypesChart(),
@@ -249,11 +250,20 @@ class ChartSampleProvider: NSObject {
             DrawChartWithAAOptionsVC.configurePieChartWithSpecialStyleLegend(),//自定义饼图的 legend 为特殊样式
             DrawChartWithAAOptionsVC.disableAnimationForChart(), //禁用图表渲染动画
         ]
+        
+        //遍历 originalItems 数组,将其中的每个 AAChartModel 实例转化为 AAOptions 实例
+        let finalItems = originalItems.map { (aaOptions) -> AAOptions in
+            let aaOptions = aaOptions
+//            aaOptions.chart?.polar(true)
+            return aaOptions
+        }
+        
+        return finalItems
     }
     
     
     static func officalChartSampleItems() -> [AAOptions] {
-        return [
+        let originalItems = [
             AreaChartOptionsComposer.basicAreaChart(),//基础面积图
             AreaChartOptionsComposer.areaWithNegativeValuesChart(),//带有负值的面积图
             AreaChartOptionsComposer.stackedAreaChart(),//堆积面积图
@@ -283,6 +293,15 @@ class ChartSampleProvider: NSObject {
             PieChartOptionsComposer.basicPieChartWithMonochromeColor(),//带有单色的基本饼状图
             PieChartOptionsComposer.customPieChartTitlePosition(),//自定义饼状图标题位置
         ]
+        
+        //遍历 originalItems 数组,将其中的每个 AAChartModel 实例转化为 AAOptions 实例
+        let finalItems = originalItems.map { (aaOptions) -> AAOptions in
+            let aaOptions = aaOptions
+//            aaOptions.chart?.polar(true)
+            return aaOptions
+        }
+        
+        return finalItems
     }
     
     
