@@ -30,6 +30,8 @@
  
  */
 
+import Foundation
+
 // MARK: - Configure Chart View Content With AAChartModel
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 extension AAChartView {
@@ -69,12 +71,16 @@ extension AAChartView {
     public func aa_drawChartWithChartOptions(_ aaOptions: AAOptions) {
         if optionsJson == nil {
             configureOptionsJsonStringWithAAOptions(aaOptions)
-            let path = BundlePathLoader()
+            guard let path = BundlePathLoader()
                 .path(forResource: "AAChartView",
                       ofType: "html",
-                      inDirectory: "AAJSFiles.bundle")
-            let urlStr = NSURL.fileURL(withPath: path!)
-            let urlRequest = NSURLRequest(url: urlStr) as URLRequest
+                      inDirectory: "AAJSFiles.bundle") else {
+                // Consider more robust error handling or logging framework for production code
+                print("Error: AAChartView.html not found in AAJSFiles.bundle. Chart cannot be loaded.")
+                return
+            }
+            let fileURL = URL(fileURLWithPath: path) // 'path' is a non-optional String here
+            let urlRequest = URLRequest(url: fileURL)
             load(urlRequest)
         } else {
             aa_refreshChartWholeContentWithChartOptions(aaOptions)
@@ -258,7 +264,7 @@ extension AAChartView {
     /// Show the series element content with index
     ///
     /// - Parameter elementIndex: elementIndex element index
-    public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
+    public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: Int) {
         let jsStr = "showTheSeriesElementContentWithIndex('\(elementIndex)');"
         safeEvaluateJavaScriptString(jsStr)
     }
@@ -266,7 +272,7 @@ extension AAChartView {
     ///  Hide the series element content with index
     ///
     /// - Parameter elementIndex: element index
-    public func aa_hideTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
+    public func aa_hideTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: Int) {
         let jsStr = "hideTheSeriesElementContentWithIndex('\(elementIndex)');"
         safeEvaluateJavaScriptString(jsStr as String)
     }
@@ -311,7 +317,6 @@ extension AAChartView {
         let jsStr = "redrawWithAnimation('\(animation)')"
         safeEvaluateJavaScriptString(jsStr)
     }
-    
 }
 
 
