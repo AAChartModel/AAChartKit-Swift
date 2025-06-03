@@ -1,5 +1,3 @@
-import Foundation
-
 // Protocol defining the responsibility for providing required plugin paths
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public protocol AAChartViewPluginProvider {
@@ -110,8 +108,7 @@ public class ProPluginProvider: AAChartViewPluginProvider {
             return nil
         }
         
-        let urlStr = NSURL.fileURL(withPath: path)
-        return urlStr.path
+        return path
     }
 }
 
