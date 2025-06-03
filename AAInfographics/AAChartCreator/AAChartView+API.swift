@@ -73,8 +73,8 @@ extension AAChartView {
                 .path(forResource: "AAChartView",
                       ofType: "html",
                       inDirectory: "AAJSFiles.bundle")
-            let urlStr = NSURL.fileURL(withPath: path!)
-            let urlRequest = NSURLRequest(url: urlStr) as URLRequest
+            let urlStr = URL(fileURLWithPath: path!)
+            let urlRequest = URLRequest(url: urlStr)
             load(urlRequest)
         } else {
             aa_refreshChartWholeContentWithChartOptions(aaOptions)
@@ -258,7 +258,7 @@ extension AAChartView {
     /// Show the series element content with index
     ///
     /// - Parameter elementIndex: elementIndex element index
-    public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
+    public func aa_showTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: Int) {
         let jsStr = "showTheSeriesElementContentWithIndex('\(elementIndex)');"
         safeEvaluateJavaScriptString(jsStr)
     }
@@ -266,7 +266,7 @@ extension AAChartView {
     ///  Hide the series element content with index
     ///
     /// - Parameter elementIndex: element index
-    public func aa_hideTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: NSInteger) {
+    public func aa_hideTheSeriesElementContentWithSeriesElementIndex(_ elementIndex: Int) {
         let jsStr = "hideTheSeriesElementContentWithIndex('\(elementIndex)');"
         safeEvaluateJavaScriptString(jsStr as String)
     }
@@ -311,7 +311,6 @@ extension AAChartView {
         let jsStr = "redrawWithAnimation('\(animation)')"
         safeEvaluateJavaScriptString(jsStr)
     }
-    
 }
 
 
