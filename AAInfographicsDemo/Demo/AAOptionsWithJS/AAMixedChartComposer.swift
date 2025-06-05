@@ -10,13 +10,16 @@ import AAInfographics
 
 class AAMixedChartComposer {
     
+    /// 构建带有图案填充的混合柱状/箱线图的 AAOptions 配置
     static func barMixedColumnrangeWithPatternFillChart() -> AAOptions {
+        /// 睡眠阶段枚举，便于类型安全访问
         enum SleepStage: Int, CaseIterable {
             case deep = 0
             case light
             case rem
             case awake
             
+            /// 阶段对应的中文名称
             var category: String {
                 switch self {
                 case .deep: return "深睡"
@@ -27,21 +30,24 @@ class AAMixedChartComposer {
             }
         }
         
+        /// 理想睡眠区间数据结构
         struct IdealSleep {
             let low: Int
             let high: Int
             let stage: SleepStage
         }
         
+        /// 实际睡眠数据结构
         struct ActualSleep {
             let value: Int
             let label: String
             let stage: SleepStage
         }
         
+        /// 配置常量，包含颜色、尺寸和数据
         struct Config {
-            static let darkerColors = ["#603EAC", "#7560B1", "#4390AD", "#AF8D0E"]
-            static let actualColors = ["#8B5CF6", "#A78BFA", "#60CDF5", "#FACC15"]
+            static let darkerColors = ["#603EAC", "#7560B1", "#4390AD", "#AF8D0E"] // 理想区间颜色
+            static let actualColors = ["#8B5CF6", "#A78BFA", "#60CDF5", "#FACC15"] // 实际数据颜色
             static let pointWidth: Float = 20
             static let capHeight: Float = 32
             static let capWidth: Float = 2
@@ -61,11 +67,14 @@ class AAMixedChartComposer {
             ]
         }
         
-        // 数据处理函数
+        // MARK: - 数据处理函数
+        
+        /// 获取所有阶段的中文名称，用于 X 轴分类
         func createCategories() -> [String] {
             return Config.ideal.map { $0.stage.category }
         }
 
+        /// 构建箱线图（理想区间）数据
         func createBoxplotData() -> [[String: Any]] {
             return Config.ideal.enumerated().map { index, item in
                 [
@@ -81,6 +90,7 @@ class AAMixedChartComposer {
             }
         }
 
+        /// 构建实际睡眠数据
         func createActualData() -> [[String: Any]] {
             return Config.actual.enumerated().map { index, item in
                 [
@@ -91,6 +101,7 @@ class AAMixedChartComposer {
             }
         }
   
+        /// 构建每个阶段的 plotLine，用于显示阶段和实际时长标签
         func createPlotLines() -> [AAPlotLinesElement] {
             return Config.ideal.enumerated().map { index, idealItem in
                 let category = idealItem.stage.category
@@ -109,7 +120,9 @@ class AAMixedChartComposer {
             }
         }
 
-        // 图表配置
+        // MARK: - 图表配置
+        
+        // 配置图表类型、事件（用于注入 SVG pattern）
         let aaChart = AAChart()
             .type(.columnrange)
             .inverted(true)
@@ -146,6 +159,7 @@ class AAMixedChartComposer {
             }
 """))
 
+        // 配置 X 轴
         let aaXAxis = AAXAxis()
             .categories(createCategories())
             .lineWidth(0)
@@ -153,6 +167,7 @@ class AAMixedChartComposer {
                 .enabled(false))
             .plotLines(createPlotLines())
 
+        // 配置 Y 轴
         let aaYAxis = AAYAxis()
             .min(0)
             .max(100)
@@ -162,27 +177,30 @@ class AAMixedChartComposer {
             .labels(AALabels()
                 .enabled(false))
 
+        // 配置图表选项
         let aaPlotOptions = AAPlotOptions()
             .bar(AABar()
-                .grouping(false)
-                .borderWidth(0)
-                .pointWidth(Config.pointWidth)
+                .grouping(false) // 禁用分组，确保每个系列独立显示
+                .borderWidth(0) // 柱状图无边框
+                .pointWidth(Config.pointWidth) // 设置柱宽
                 .dataLabels(AADataLabels()
-                    .enabled(false)))
+                    .enabled(false))) // 不显示柱状图数据标签
             .boxplot(AABoxplot()
-                .grouping(false)
-                .lineWidth(0)
-                .medianWidth(0)
-                .medianColor("transparent")
-                .stemWidth(0)
-                .pointWidth(Config.pointWidth)
-                .whiskerLength(Config.capHeight)
-                .whiskerWidth(Config.capWidth)
-                .whiskerColor("transparent"))
+                .grouping(false) // 禁用分组，确保每个系列独立显示
+                .lineWidth(0) // 箱线图主线宽度为0
+                .medianWidth(0) // 中位线宽度为0
+                .medianColor("transparent") // 中位线颜色透明
+                .stemWidth(0) // 茎线宽度为0
+                .pointWidth(Config.pointWidth) // 设置箱线宽度
+                .whiskerLength(Config.capHeight) // 须长度
+                .whiskerWidth(Config.capWidth) // 须宽度
+                .whiskerColor("transparent")) // 须颜色透明
 
+        // 配置 tooltip
         let aaTooltip = AATooltip()
             .enabled(false)
 
+        // 配置数据系列
         let aaSeries = [
             AASeriesElement()
                 .name("实际睡眠")
@@ -198,6 +216,7 @@ class AAMixedChartComposer {
                 .clip(false)
         ]
 
+        // 汇总所有配置
         let aaOptions = AAOptions()
             .chart(aaChart)
             .title(AATitle().text("睡眠阶段 vs 理想区间"))
