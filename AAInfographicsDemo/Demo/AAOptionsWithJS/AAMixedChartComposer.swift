@@ -11,75 +11,90 @@ import AAInfographics
 class AAMixedChartComposer {
     
     static func barMixedColumnrangeWithPatternFillChart() -> AAOptions {
-        // 配置常量 - 使用二级枚举
-        let Colors = [
-            "darker": ["#603EAC", "#7560B1", "#4390AD", "#AF8D0E"],
-            "actual": ["#8B5CF6", "#A78BFA", "#60CDF5", "#FACC15"]
-        ]
+        enum SleepStage: Int, CaseIterable {
+            case deep = 0
+            case light
+            case rem
+            case awake
+            
+            var category: String {
+                switch self {
+                case .deep: return "深睡"
+                case .light: return "浅睡"
+                case .rem: return "REM"
+                case .awake: return "清醒"
+                }
+            }
+        }
         
-        let Dimensions = [
-            "pointWidth": 20 as Float,
-            "capHeight": 32 as Float,
-            "capWidth": 2 as Float
-        ]
-
-        // 原始数据
-        let sleepData = [
-            "ideal": [
-                ["low": 20, "high": 32, "category": "深睡"],
-                ["low": 40, "high": 60, "category": "浅睡"],
-                ["low": 10, "high": 25, "category": "REM"],
-                ["low": 0, "high": 5, "category": "清醒"]
-            ],
-            "actual": [
-                ["value": 27, "label": "1小时22分钟（27%）"],
-                ["value": 53, "label": "3小时42分钟（53%）"],
-                ["value": 18, "label": "1小时49分钟（18%）"],
-                ["value": 2, "label": "5分钟（2%）"]
+        struct IdealSleep {
+            let low: Int
+            let high: Int
+            let stage: SleepStage
+        }
+        
+        struct ActualSleep {
+            let value: Int
+            let label: String
+            let stage: SleepStage
+        }
+        
+        struct Config {
+            static let darkerColors = ["#603EAC", "#7560B1", "#4390AD", "#AF8D0E"]
+            static let actualColors = ["#8B5CF6", "#A78BFA", "#60CDF5", "#FACC15"]
+            static let pointWidth: Float = 20
+            static let capHeight: Float = 32
+            static let capWidth: Float = 2
+            
+            static let ideal: [IdealSleep] = [
+                IdealSleep(low: 20, high: 32, stage: .deep),
+                IdealSleep(low: 40, high: 60, stage: .light),
+                IdealSleep(low: 10, high: 25, stage: .rem),
+                IdealSleep(low: 0, high: 5, stage: .awake)
             ]
-        ]
+            
+            static let actual: [ActualSleep] = [
+                ActualSleep(value: 27, label: "1小时22分钟（27%）", stage: .deep),
+                ActualSleep(value: 53, label: "3小时42分钟（53%）", stage: .light),
+                ActualSleep(value: 18, label: "1小时49分钟（18%）", stage: .rem),
+                ActualSleep(value: 2, label: "5分钟（2%）", stage: .awake)
+            ]
+        }
         
         // 数据处理函数
         func createCategories() -> [String] {
-            return sleepData["ideal"]!.map { item in
-                return item["category"] as! String
-            }
+            return Config.ideal.map { $0.stage.category }
         }
 
         func createBoxplotData() -> [[String: Any]] {
-            return sleepData["ideal"]!.enumerated().map { index, item in
-                let low = item["low"] as! Int
-                let high = item["high"] as! Int
-                return [
+            return Config.ideal.enumerated().map { index, item in
+                [
                     "x": index,
-                    "low": low,
-                    "q1": low,
-                    "median": low,
-                    "q3": high,
-                    "high": high,
+                    "low": item.low,
+                    "q1": item.low,
+                    "median": item.low,
+                    "q3": item.high,
+                    "high": item.high,
                     "fillColor": "url(#customPattern\(index))",
-                    "whiskerColor": Colors["darker"]![index]
+                    "whiskerColor": Config.darkerColors[index]
                 ]
             }
         }
 
         func createActualData() -> [[String: Any]] {
-            return sleepData["actual"]!.enumerated().map { index, item in
-                let value = item["value"] as! Int
-                let label = item["label"] as! String
-                return [
-                    "y": value,
-                    "color": Colors["actual"]![index],
-                    "label": label
+            return Config.actual.enumerated().map { index, item in
+                [
+                    "y": item.value,
+                    "color": Config.actualColors[index],
+                    "label": item.label
                 ]
             }
         }
   
-        // 创建plotLines函数
         func createPlotLines() -> [AAPlotLinesElement] {
-            return sleepData["ideal"]!.enumerated().map { index, item in
-                let category = item["category"] as! String
-                let label = sleepData["actual"]![index]["label"] as! String
+            return Config.ideal.enumerated().map { index, idealItem in
+                let category = idealItem.stage.category
+                let label = Config.actual[index].label
                 return AAPlotLinesElement()
                     .value(Double(index))
                     .width(0)
@@ -151,7 +166,7 @@ class AAMixedChartComposer {
             .bar(AABar()
                 .grouping(false)
                 .borderWidth(0)
-                .pointWidth(Dimensions["pointWidth"] as! Float)
+                .pointWidth(Config.pointWidth)
                 .dataLabels(AADataLabels()
                     .enabled(false)))
             .boxplot(AABoxplot()
@@ -160,9 +175,9 @@ class AAMixedChartComposer {
                 .medianWidth(0)
                 .medianColor("transparent")
                 .stemWidth(0)
-                .pointWidth(Dimensions["pointWidth"] as! Float)
-                .whiskerLength(Dimensions["capHeight"] as! Float)
-                .whiskerWidth(Dimensions["capWidth"] as! Float)
+                .pointWidth(Config.pointWidth)
+                .whiskerLength(Config.capHeight)
+                .whiskerWidth(Config.capWidth)
                 .whiskerColor("transparent"))
 
         let aaTooltip = AATooltip()

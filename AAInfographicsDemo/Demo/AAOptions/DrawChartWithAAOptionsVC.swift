@@ -42,7 +42,7 @@ class DrawChartWithAAOptionsVC: AABaseChartVC {
     
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
-        case  0: return DrawChartWithAAOptionsVC.configureLegendStyle()
+        case  0: return AAMixedChartComposer.barMixedColumnrangeWithPatternFillChart()
         case  1: return DrawChartWithAAOptionsVC.simpleGaugeChart()
         case  2: return DrawChartWithAAOptionsVC.gaugeChartWithPlotBand()
         case  3: return DrawChartWithAAOptionsVC.configureChartWithBackgroundImage()
