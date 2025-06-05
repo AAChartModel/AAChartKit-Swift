@@ -48,7 +48,6 @@ public class AABoxplot: AAObject {
     public var whiskerDashStyle: String?
     public var whiskerLength: Any?
     public var whiskerWidth: Float?
-    public var grouping: Bool?
     public var pointPadding: Float?
     public var pointWidth: Float?
 
@@ -145,12 +144,6 @@ public class AABoxplot: AAObject {
     @discardableResult
     public func whiskerWidth(_ prop: Float?) -> AABoxplot {
         whiskerWidth = prop
-        return self
-    }
-    
-    @discardableResult
-    public func grouping(_ prop: Bool?) -> AABoxplot {
-        grouping = prop
         return self
     }
     
