@@ -22,12 +22,6 @@ class AAMixedChartComposer {
             "capHeight": 32 as Float,
             "capWidth": 2 as Float
         ]
-        
-        let YAxis = [
-            "min": 0 as Double,
-            "max": 100 as Double,
-            "tickInterval": 10 as Float
-        ] as [String : Any]
 
         // 原始数据
         let sleepData = [
@@ -45,14 +39,6 @@ class AAMixedChartComposer {
             ]
         ]
         
-        /**
-         // 数据处理函数
-         function createCategories() {
-             return sleepData.ideal.map(item => item.category);
-         }
-
-         */
-
         // 数据处理函数
         func createCategories() -> [String] {
             return sleepData["ideal"]!.map { item in
@@ -153,27 +139,29 @@ class AAMixedChartComposer {
             .plotLines(createPlotLines())
 
         let aaYAxis = AAYAxis()
-            .min(YAxis["min"] as! Double)
-            .max(YAxis["max"] as! Double)
-            .tickInterval(YAxis["tickInterval"] as! Float)
-            .title(nil)
+            .min(0)
+            .max(100)
+            .title(AATitle()
+                .text("")) // 设置 y 轴标题为空
             .gridLineWidth(0)
-            .labels(AALabels().enabled(false))
+            .labels(AALabels()
+                .enabled(false))
 
         let aaPlotOptions = AAPlotOptions()
             .bar(AABar()
                 .grouping(false)
                 .borderWidth(0)
                 .pointWidth(Dimensions["pointWidth"] as! Float)
-                .dataLabels(AADataLabels().enabled(false)))
+                .dataLabels(AADataLabels()
+                    .enabled(false)))
             .boxplot(AABoxplot()
                 .grouping(false)
                 .lineWidth(0)
                 .medianWidth(0)
                 .medianColor("transparent")
                 .stemWidth(0)
-//                .pointWidth(Dimensions["pointWidth"] as! Float)
-//                .whiskerLength(Dimensions["capHeight"] as! Float)
+                .pointWidth(Dimensions["pointWidth"] as! Float)
+                .whiskerLength(Dimensions["capHeight"] as! Float)
                 .whiskerWidth(Dimensions["capWidth"] as! Float)
                 .whiskerColor("transparent"))
 
