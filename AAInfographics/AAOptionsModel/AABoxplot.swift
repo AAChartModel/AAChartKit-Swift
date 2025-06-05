@@ -46,8 +46,11 @@ public class AABoxplot: AAObject {
     public var stemWidth: Float?
     public var whiskerColor: String?
     public var whiskerDashStyle: String?
-    public var whiskerLength: String?
+    public var whiskerLength: Any?
     public var whiskerWidth: Float?
+    public var grouping: Bool?
+    public var pointPadding: Float?
+    public var pointWidth: Float?
 
     @discardableResult
     public func boxDashStyle(_ prop: AAChartLineDashStyleType?) -> AABoxplot {
@@ -132,6 +135,12 @@ public class AABoxplot: AAObject {
         whiskerLength = prop
         return self
     }
+    
+    @discardableResult
+    public func whiskerLength(_ prop: Float?) -> AABoxplot {
+        whiskerLength = prop
+        return self
+    }
 
     @discardableResult
     public func whiskerWidth(_ prop: Float?) -> AABoxplot {
@@ -139,7 +148,26 @@ public class AABoxplot: AAObject {
         return self
     }
     
+    @discardableResult
+    public func grouping(_ prop: Bool?) -> AABoxplot {
+        grouping = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pointPadding(_ prop: Float?) -> AABoxplot {
+        pointPadding = prop
+        return self
+    }
+    
+    @discardableResult
+    public func pointWidth(_ prop: Float?) -> AABoxplot {
+        pointWidth = prop
+        return self
+    }
+    
     public override init() {
         
     }
+
 }
