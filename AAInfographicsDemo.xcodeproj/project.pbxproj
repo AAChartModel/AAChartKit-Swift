@@ -61,6 +61,7 @@
 		84123BC92DB0F0EB003DA7A0 /* AAPackedbubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84123BC82DB0F0EB003DA7A0 /* AAPackedbubble.swift */; };
 		84123BCB2DB0F130003DA7A0 /* AALayoutAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84123BCA2DB0F130003DA7A0 /* AALayoutAlgorithm.swift */; };
 		8418479928B8755900094106 /* JSFunctionForAAChartEventsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418479828B8755900094106 /* JSFunctionForAAChartEventsComposer.swift */; };
+		842EB1B82DF16ECF000166C2 /* AAMixedChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EB1B72DF16ECF000166C2 /* AAMixedChartComposer.swift */; };
 		842FC3EE2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */; };
 		84339F4F2D536AC900F54F1E /* SortAlgorithmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F4E2D536AC900F54F1E /* SortAlgorithmVC.swift */; };
 		84339F572D54591900F54F1E /* ChartSampleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F562D54591900F54F1E /* ChartSampleProvider.swift */; };
@@ -313,6 +314,7 @@
 		84123BC82DB0F0EB003DA7A0 /* AAPackedbubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAPackedbubble.swift; sourceTree = "<group>"; };
 		84123BCA2DB0F130003DA7A0 /* AALayoutAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AALayoutAlgorithm.swift; sourceTree = "<group>"; };
 		8418479828B8755900094106 /* JSFunctionForAAChartEventsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsComposer.swift; sourceTree = "<group>"; };
+		842EB1B72DF16ECF000166C2 /* AAMixedChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAMixedChartComposer.swift; sourceTree = "<group>"; };
 		842FC3ED2CBE119500FBAD3A /* CustomTooltipEventCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTooltipEventCallbackVC.swift; sourceTree = "<group>"; };
 		84339F4E2D536AC900F54F1E /* SortAlgorithmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAlgorithmVC.swift; sourceTree = "<group>"; };
 		84339F562D54591900F54F1E /* ChartSampleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSampleProvider.swift; sourceTree = "<group>"; };
@@ -660,6 +662,7 @@
 		84086B1928E45015006BD30D /* AAOptionsWithJS */ = {
 			isa = PBXGroup;
 			children = (
+				842EB1B72DF16ECF000166C2 /* AAMixedChartComposer.swift */,
 				44EB70A622BCB606008FECE4 /* JSFunctionForAATooltipVC.swift */,
 				84DEB89F28F7A58900BF9423 /* JSFunctionForAATooltipVC2.swift */,
 				84086B1A28E45127006BD30D /* JSFunctionForAAAxisVC.swift */,
@@ -1092,6 +1095,7 @@
 				84086B1E28E6C612006BD30D /* CustomTableViewCell.swift in Sources */,
 				8441C0972C620ED400A6F784 /* CustomStyleForAreasplineChartComposer.swift in Sources */,
 				844007742B6F3FA00072FB66 /* MixedChartVC.swift in Sources */,
+				842EB1B82DF16ECF000166C2 /* AAMixedChartComposer.swift in Sources */,
 				8441C0952C620AC900A6F784 /* CustomStyleForSplineChartVC.swift in Sources */,
 				84903CA02DBA24B50029FE5A /* EmojiProvider.swift in Sources */,
 				845BABF12D030318004C15D4 /* OfficialChartSample.swift in Sources */,
