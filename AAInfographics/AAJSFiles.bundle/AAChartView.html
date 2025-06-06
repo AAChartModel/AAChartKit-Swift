@@ -5,8 +5,6 @@
             <script src="AAHighcharts.js"></script>
 <!--            <script src="AAHighcharts-More.js"></script>-->
 <!--            <script src="AAFunnel.js"></script>-->
-<!--            <script src="AAEasing.js"></script>-->
-<!--            <script src="AARounded-Corners.js"></script>-->
             
 <!--            <script src="https://code.highcharts.com/highcharts.js"></script>-->
 <!--            <script src="https://code.highcharts.com/highcharts-more.js"></script>-->
@@ -69,11 +67,6 @@
 
         function configurePlotOptions(aaOptions) {
             let aaPlotOptions = aaOptions.plotOptions;
-<!--            let animation = aaPlotOptions.series.animation;-->
-<!--            if (animation) {-->
-<!--                let animationEasingType = animation.easing;-->
-<!--                animation.easing = configureTheChartAnimationEasingType(animationEasingType);-->
-<!--            }-->
             
             if (aaOptions.clickEventEnabled == true) {
                 configureChartClickEvent(aaPlotOptions);
