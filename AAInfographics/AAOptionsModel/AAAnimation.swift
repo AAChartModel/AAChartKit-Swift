@@ -47,12 +47,12 @@ public class AAAnimation: AAObject {
     
     @discardableResult
     public func easing(_ prop: AAChartAnimationType?) -> AAAnimation {
-       let easingType = prop
-        if easingType == nil {
+        guard let easingType = prop else {
             easing = nil
             return self
         }
-        let easingJsStr = AAEasing.configureChartAnimationEasingType(easingType: easingType!)
+        
+        let easingJsStr = AAEasing.configureChartAnimationEasingType(easingType: easingType)
         easing = easingJsStr.aa_toPureJSString()
         return self
     }
