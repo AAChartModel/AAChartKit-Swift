@@ -208,6 +208,7 @@ class AAChartModelListVC: AABaseListVC {
 
                 "customBorderStyleAndStatesHoverColorColumnChart---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色",
                 "negativeDataMixedPositiveDataColumnChart---正负数混合的柱状图",
+                "customAnimationForColumnChart---自定义柱状图动画效果",
             ],
             /*Custom Style For Bar Chart*/
             [
@@ -228,6 +229,7 @@ class AAChartModelListVC: AABaseListVC {
 
                 "customBorderStyleAndStatesHoverColorBarChart---自定义条形图 border 样式及手指掠过图表 series 元素时的条形颜色",
                 "negativeDataMixedPositiveDataBarChart---正负数混合的条形图",
+                "customAnimationForBarChart---自定义条形图动画效果",
             ],
             /*Custom Style For Line Chart*/
             [
@@ -415,6 +417,7 @@ class AAChartModelListVC: AABaseListVC {
 
                 "customBorderStyleAndStatesHoverColorColumnChart",
                 "negativeDataMixedPositiveDataColumnChart",
+                "customAnimationForColumnChart",
             ],
             /*Custom Style For Bar Chart*/
             [
@@ -435,6 +438,7 @@ class AAChartModelListVC: AABaseListVC {
 
                 "customBorderStyleAndStatesHoverColorBarChart",
                 "negativeDataMixedPositiveDataBarChart",
+                "customAnimationForBarChart",
             ],
             /*Custom Style For Line Chart*/
             [

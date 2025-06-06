@@ -561,6 +561,25 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    
+    // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-animation-easing/
+    static func customAnimationForColumnChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.column)
+            .categories(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])
+            .series([
+                AASeriesElement()
+                    .data([29.9, 71.5, 106.4, 129.2, 111])
+                    .animation(AAAnimation()
+                              .duration(2000)
+                        .easing(.easeOutBounce))
+                ,
+                AASeriesElement()
+                    .data([29.9, 71.5, 106.4, 129.2, 111])
+                    .animation(AAAnimation()
+                        .duration(1500)
+                        .easing(.easeOutBounce))
+                
+            ])
+    }
     
 }

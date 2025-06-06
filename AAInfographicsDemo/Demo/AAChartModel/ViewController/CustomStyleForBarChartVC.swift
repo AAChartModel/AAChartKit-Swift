@@ -34,6 +34,7 @@ class CustomStyleForBarChartVC: AABaseChartVC {
 
         case "customBorderStyleAndStatesHoverColorBarChart": return CustomStyleForBarChartComposer.customBorderStyleAndStatesHoverColorBarChart()
         case "negativeDataMixedPositiveDataBarChart": return CustomStyleForBarChartComposer.negativeDataMixedPositiveDataBarChart()
+        case "customAnimationForBarChart": return CustomStyleForBarChartComposer.customAnimationForBarChart()
 
         default: return nil
         }

@@ -34,6 +34,8 @@ class CustomStyleForColumnChartVC: AABaseChartVC {
 
         case "customBorderStyleAndStatesHoverColorColumnChart": return CustomStyleForColumnChartComposer.customBorderStyleAndStatesHoverColorColumnChart()
         case "negativeDataMixedPositiveDataColumnChart": return CustomStyleForColumnChartComposer.negativeDataMixedPositiveDataColumnChart()
+        case "customAnimationForColumnChart": return CustomStyleForColumnChartComposer.customAnimationForColumnChart()
+
 
         default: return nil
         }
