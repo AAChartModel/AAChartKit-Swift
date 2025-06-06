@@ -27,10 +27,10 @@ class MultiXAxesChartComposer {
                     .categories(hourLabels)
                     .labels(AALabels()
                         .style(AAStyle()
-                            .color("red")
+                            .color(AAColor.red)
                             .fontWeight(.thin)))
                     .lineWidth(2)
-                    .lineColor("red"),
+                    .lineColor(AAColor.red),
                 
                 // 第二个 X 轴
                 AAXAxis()
@@ -40,7 +40,7 @@ class MultiXAxesChartComposer {
                     .labels(AALabels()
                         .y(40)
                         .style(AAStyle()
-                            .color("green")
+                            .color(AAColor.green)
                             .fontWeight(.bold)
                             .textOverflow("none") // 禁用文本溢出省略号
                             .whiteSpace("nowrap")) // 防止换行
@@ -56,15 +56,14 @@ class MultiXAxesChartComposer {
                             return '';
                         }
                         """)
-                            .autoRotation(false) // 禁用自动旋转
-//                        .overflow("allow") // 允许标签溢出
+                        .autoRotation(false) // 禁用自动旋转
                         .step(1) // 强制显示所有标签位置
                         .useHTML(true)) // 启用HTML渲染，更好控制样式
                     .lineWidth(2)
-                    .lineColor("green")
+                    .lineColor(AAColor.green)
                     .tickInterval(1) // 强制设置刻度间隔
-//                    .min(0)
-//                    .max(dayLabels.count - 1)
+                    .min(0)
+                    .max(Double(dayLabels.count - 1))
             ])
             .yAxis(AAYAxis()
                 .title(AATitle()
