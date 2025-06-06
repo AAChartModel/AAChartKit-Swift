@@ -115,6 +115,7 @@
 		84790F3F2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F3E2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift */; };
 		84790F442CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F432CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift */; };
 		84790F4E2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */; };
+		8481C2C72DF2966D006EFC41 /* MultiXAxesChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C2C62DF2966D006EFC41 /* MultiXAxesChartComposer.swift */; };
 		848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */; };
 		848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */; };
 		84903C8E2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903C8D2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift */; };
@@ -368,6 +369,7 @@
 		84790F3E2CBF73360047C133 /* CustomTooltipClickEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTooltipClickEventCallbackVC.swift; sourceTree = "<group>"; };
 		84790F432CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLargeDateSeriesClickEventCallbackVC.swift; sourceTree = "<group>"; };
 		84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSFunctionBeforeAndAfterRenderingComposer.swift; sourceTree = "<group>"; };
+		8481C2C62DF2966D006EFC41 /* MultiXAxesChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiXAxesChartComposer.swift; sourceTree = "<group>"; };
 		848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAAChartViewForXibVC.swift; sourceTree = "<group>"; };
 		848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAAChartViewForXibVC.xib; sourceTree = "<group>"; };
 		84903C8D2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiParticleAnimationVC.swift; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 				84526E342CF4621D00EB2563 /* XAxisYAxisTypeOptionsComposer.swift */,
 				8437AE1F2DB5F11C003D4D84 /* MixedTypesChartOptionsComposer.swift */,
 				84903C9A2DB9F0680029FE5A /* BubbleChartOptionsComposer.swift */,
+				8481C2C62DF2966D006EFC41 /* MultiXAxesChartComposer.swift */,
 				84903C9F2DBA24B50029FE5A /* EmojiProvider.swift */,
 			);
 			path = AAOptions;
@@ -1083,6 +1086,7 @@
 				84595DE82B4698D600F69273 /* PolarChartOptionsVC.swift in Sources */,
 				84B68246266DB09100957FC5 /* AAChartSymbolConstant.swift in Sources */,
 				84790F442CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift in Sources */,
+				8481C2C72DF2966D006EFC41 /* MultiXAxesChartComposer.swift in Sources */,
 				84086B1628E44B19006BD30D /* JSFunctionForAALegendVC.swift in Sources */,
 				8441C0932C62082500A6F784 /* CustomStyleForSplineChartComposer.swift in Sources */,
 				840716572A6FC5170037193B /* ScatterChartOptionsVC.swift in Sources */,
