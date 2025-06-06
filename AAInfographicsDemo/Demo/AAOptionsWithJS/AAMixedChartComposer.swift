@@ -180,13 +180,13 @@ class AAMixedChartComposer {
         // 配置图表选项
         let aaPlotOptions = AAPlotOptions()
             .bar(AABar()
-                .grouping(false) // 禁用分组，确保每个系列独立显示
+                .grouping(false) // 禁用分组，确保每个系列独立显示(这样就能实现柱状图和箱线图的混合重叠显示)
                 .borderWidth(0) // 柱状图无边框
                 .pointWidth(Config.pointWidth) // 设置柱宽
                 .dataLabels(AADataLabels()
                     .enabled(false))) // 不显示柱状图数据标签
             .boxplot(AABoxplot()
-                .grouping(false) // 禁用分组，确保每个系列独立显示
+                .grouping(false) // 禁用分组，确保每个系列独立显示(这样就能实现柱状图和箱线图的混合重叠显示)
                 .lineWidth(0) // 箱线图主线宽度为0
                 .medianWidth(0) // 中位线宽度为0
                 .medianColor("transparent") // 中位线颜色透明
