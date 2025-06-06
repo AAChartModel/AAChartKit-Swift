@@ -36,8 +36,15 @@
 /// https://api.highcharts.com/highcharts/plotOptions.line.animation
 /// https://api.highcharts.com/highcharts/series.line.animation
 public class AAAnimation: AAObject {
-    public var duration: Int?
-    public var easing: String?
+    public var `defer`: Int?   // The animation delay time in milliseconds.
+    public var duration: Int?  // The duration of the animation in milliseconds. (Defaults to 1000)
+    public var easing: String? // Can be a string reference to an easing function set on the Math object or a function. See the Custom easing function demo below. (Defaults to easeInOutSine)
+    
+    @discardableResult
+    public func `defer`(_ prop: Int?) -> AAAnimation {
+        `defer` = prop
+        return self
+    }
     
     @discardableResult
     public func duration(_ prop: Int?) -> AAAnimation {
