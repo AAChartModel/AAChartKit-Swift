@@ -47,7 +47,7 @@ public class AAAnimation: AAObject {
     
     @discardableResult
     public func easing(_ prop: AAChartAnimationType?) -> AAAnimation {
-       let easingType = prop?.rawValue
+       let easingType = prop
         if easingType == nil {
             easing = nil
             return self

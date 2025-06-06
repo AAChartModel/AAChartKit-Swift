@@ -211,115 +211,121 @@ class AAEasing: NSObject {
     /// - Parameter easingType: The easing type as a string
     /// - Returns: The configured easing type as a string
     
-  class func configureChartAnimationEasingType(easingType: String) -> String {
+    class func configureChartAnimationEasingType(easingType: AAChartAnimationType) -> String {
         switch easingType {
-        case "easeInQuad":
+        case .linear:
+            return """
+            function(pos) {
+                return pos;
+            }
+            """
+        case .easeInQuad:
             return """
             function(pos) {
                 return Math.pow(pos, 2);
             }
             """
-        case "easeOutQuad":
+        case .easeOutQuad:
             return """
             function(pos) {
                 return -(Math.pow((pos-1), 2) -1);
             }
             """
-        case "easeInOutQuad":
+        case .easeInOutQuad:
             return """
             function(pos) {
                 if ((pos/=0.5) < 1) return 0.5*Math.pow(pos,2);
                 return -0.5 * ((pos-=2)*pos - 2);
             }
             """
-        case "easeInCubic":
+        case .easeInCubic:
             return """
             function(pos) {
                 return Math.pow(pos, 3);
             }
             """
-        case "easeOutCubic":
+        case .easeOutCubic:
             return """
             function(pos) {
                 return (Math.pow((pos-1), 3) +1);
             }
             """
-        case "easeInOutCubic":
+        case .easeInOutCubic:
             return """
             function(pos) {
                 if ((pos/=0.5) < 1) return 0.5*Math.pow(pos,3);
                 return 0.5 * (Math.pow((pos-2),3) + 2);
             }
             """
-        case "easeInQuart":
+        case .easeInQuart:
             return """
             function(pos) {
                 return Math.pow(pos, 4);
             }
             """
-        case "easeOutQuart":
+        case .easeOutQuart:
             return """
             function(pos) {
                 return -(Math.pow((pos-1), 4) -1);
             }
             """
-        case "easeInOutQuart":
+        case .easeInOutQuart:
             return """
             function(pos) {
                 if ((pos/=0.5) < 1) return 0.5*Math.pow(pos,4);
                 return -0.5 * ((pos-=2)*Math.pow(pos,3) - 2);
             }
             """
-        case "easeInQuint":
+        case .easeInQuint:
             return """
             function(pos) {
                 return Math.pow(pos, 5);
             }
             """
-        case "easeOutQuint":
+        case .easeOutQuint:
             return """
             function(pos) {
                 return (Math.pow((pos-1), 5) +1);
             }
             """
-        case "easeInOutQuint":
+        case .easeInOutQuint:
             return """
             function(pos) {
                 if ((pos/=0.5) < 1) return 0.5*Math.pow(pos,5);
                 return 0.5 * (Math.pow((pos-2),5) + 2);
             }
             """
-        case "easeInSine":
+        case .easeInSine:
             return """
             function(pos) {
                 return -Math.cos(pos * (Math.PI/2)) + 1;
             }
             """
-        case "easeOutSine":
+        case .easeOutSine:
             return """
             function(pos) {
                 return Math.sin(pos * (Math.PI/2));
             }
             """
-        case "easeInOutSine":
+        case .easeInOutSine:
             return """
             function(pos) {
                 return (-0.5 * (Math.cos(Math.PI*pos) -1));
             }
             """
-        case "easeInExpo":
+        case .easeInExpo:
             return """
             function(pos) {
                 return (pos===0) ? 0 : Math.pow(2, 10 * (pos - 1));
             }
             """
-        case "easeOutExpo":
+        case .easeOutExpo:
             return """
             function(pos) {
                 return (pos===1) ? 1 : -Math.pow(2, -10 * pos) + 1;
             }
             """
-        case "easeInOutExpo":
+        case .easeInOutExpo:
             return """
             function(pos) {
                 if(pos===0) return 0;
@@ -328,26 +334,26 @@ class AAEasing: NSObject {
                 return 0.5 * (-Math.pow(2, -10 * --pos) + 2);
             }
             """
-        case "easeInCirc":
+        case .easeInCirc:
             return """
             function(pos) {
                 return -(Math.sqrt(1 - (pos*pos)) - 1);
             }
             """
-        case "easeOutCirc":
+        case .easeOutCirc:
             return """
             function(pos) {
                 return Math.sqrt(1 - Math.pow((pos-1), 2));
             }
             """
-        case "easeInOutCirc":
+        case .easeInOutCirc:
             return """
             function(pos) {
                 if((pos/=0.5) < 1) return -0.5 * (Math.sqrt(1 - pos*pos) - 1);
                 return 0.5 * (Math.sqrt(1 - (pos-=2)*pos) + 1);
             }
             """
-        case "easeOutBounce":
+        case .easeOutBounce:
             return """
             function(pos) {
                 if ((pos) < (1/2.75)) {
@@ -361,21 +367,21 @@ class AAEasing: NSObject {
                 }
             }
             """
-        case "easeInBack":
+        case .easeInBack:
             return """
             function(pos) {
                 var s = 1.70158;
                 return (pos)*pos*((s+1)*pos - s);
             }
             """
-        case "easeOutBack":
+        case .easeOutBack:
             return """
             function(pos) {
                 var s = 1.70158;
                 return (pos=pos-1)*pos*((s+1)*pos + s) + 1;
             }
             """
-        case "easeInOutBack":
+        case .easeInOutBack:
             return """
             function(pos) {
                 var s = 1.70158;
@@ -383,13 +389,13 @@ class AAEasing: NSObject {
                 return 0.5*((pos-=2)*pos*(((s*=(1.525))+1)*pos +s) +2);
             }
             """
-        case "elastic":
+        case .elastic:
             return """
             function(pos) {
                 return -1 * Math.pow(4,-8*pos) * Math.sin((pos*6-1)*(2*Math.PI)/2) + 1;
             }
             """
-        case "swingFromTo":
+        case .swingFromTo:
             return """
             function(pos) {
                 var s = 1.70158;
@@ -397,21 +403,21 @@ class AAEasing: NSObject {
                 0.5*((pos-=2)*pos*(((s*=(1.525))+1)*pos + s) + 2);
             }
             """
-        case "swingFrom":
+        case .swingFrom:
             return """
             function(pos) {
                 var s = 1.70158;
                 return pos*pos*((s+1)*pos - s);
             }
             """
-        case "swingTo":
+        case .swingTo:
             return """
             function(pos) {
                 var s = 1.70158;
                 return (pos-=1)*pos*((s+1)*pos + s) + 1;
             }
             """
-        case "bounce":
+        case .bounce:
             return """
             function(pos) {
                 if (pos < (1/2.75)) {
@@ -425,7 +431,7 @@ class AAEasing: NSObject {
                 }
             }
             """
-        case "bouncePast":
+        case .bouncePast:
             return """
             function(pos) {
                 if (pos < (1/2.75)) {
@@ -439,34 +445,27 @@ class AAEasing: NSObject {
                 }
             }
             """
-        case "easeFromTo":
+        case .easeFromTo:
             return """
             function(pos) {
                 if ((pos/=0.5) < 1) return 0.5*Math.pow(pos,4);
                 return -0.5 * ((pos-=2)*Math.pow(pos,3) - 2);
             }
             """
-        case "easeFrom":
+        case .easeFrom:
             return """
             function(pos) {
                 return Math.pow(pos,4);
             }
             """
-        case "easeTo":
+        case .easeTo:
             return """
             function(pos) {
                 return Math.pow(pos,0.25);
             }
             """
-        default:
-            return """
-            function(pos) {
-                if ((pos/=0.5) < 1) return 0.5*Math.pow(pos,2);
-                return -0.5 * ((pos-=2)*pos - 2);
-            }
-            """
         }
-  }
+    }
 
 
 }
