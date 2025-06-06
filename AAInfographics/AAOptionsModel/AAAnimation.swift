@@ -37,7 +37,7 @@
 /// https://api.highcharts.com/highcharts/series.line.animation
 public class AAAnimation: AAObject {
     public var duration: Int?
-    public var easing: Int?
+    public var easing: String?
     
     @discardableResult
     public func duration(_ prop: Int?) -> AAAnimation {
@@ -47,7 +47,13 @@ public class AAAnimation: AAObject {
     
     @discardableResult
     public func easing(_ prop: AAChartAnimationType?) -> AAAnimation {
-        easing = prop?.rawValue
+       let easingType = prop?.rawValue
+        if easingType == nil {
+            easing = nil
+            return self
+        }
+        let easingJsStr = AAEasing.configureChartAnimationEasingType(easingType: easingType!)
+        easing = easingJsStr.aa_toPureJSString()
         return self
     }
     
@@ -55,3 +61,4 @@ public class AAAnimation: AAObject {
         
     }
 }
+

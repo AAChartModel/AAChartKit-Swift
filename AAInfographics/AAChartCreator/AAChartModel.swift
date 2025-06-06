@@ -32,7 +32,7 @@
 
 
 /// https://api.highcharts.com/highcharts/chart.animation
-public enum AAChartAnimationType: Int {
+public enum AAChartAnimationType: String {
     case linear
     case easeInQuad
     case easeOutQuad
