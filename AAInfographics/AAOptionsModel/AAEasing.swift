@@ -6,11 +6,8 @@
 //  Copyright © 2025 An An. All rights reserved.
 //
 
-import UIKit
-import JavaScriptCore
-
 /// Easing function from https://github.com/danro/easing-js/blob/master/easing.js
-class AAEasing: NSObject {
+class AAEasing {
 /*
 // --------------------------------------------------
 // easing.js v0.5.4
