@@ -79,6 +79,8 @@ class AppleSwiftChartVC: UIViewController {
     private func createChartModels() -> [AAChartModel] {
 //        return ChartSampleProvider.randomValueDataItemsChartModel()
         return [
+            SpecialChartComposer.scatterChart(),
+            
             CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.area),
             CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.areaspline),
             CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.column),
@@ -109,6 +111,36 @@ class AppleSwiftChartVC: UIViewController {
             CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.bubble).stacking(.normal),
 
 
+            
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.area),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.areaspline),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.column),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.bar),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.line),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.spline),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.scatter),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.bubble),
+
+            
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.area).stacking(.normal),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.areaspline).stacking(.normal),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.column).stacking(.normal),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.bar).stacking(.normal),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.line).stacking(.normal),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.spline).stacking(.normal),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.scatter).stacking(.normal),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.bubble).stacking(.normal),
+
+
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.area).stacking(.percent),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.areaspline).stacking(.percent),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.column).stacking(.percent),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.bar).stacking(.percent),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.line).stacking(.percent),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.spline).stacking(.percent),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.scatter).stacking(.normal),
+            CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart().chartType(.bubble).stacking(.normal),
+            
 
         ]
     }
@@ -136,7 +168,7 @@ struct ChartGridView: View {
                             .makeChart()
                             .frame(height: 200)
                             .background(Color.white)
-                            .cornerRadius(8)
+                            .cornerRadius(3)
                             .shadow(radius: 2)
                     }
                 }
