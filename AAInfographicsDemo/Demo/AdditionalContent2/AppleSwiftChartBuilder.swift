@@ -7,6 +7,7 @@
 //
 import SwiftUI // Required for UIHostingController and Color
 import Charts   // Required for Swift Charts
+import AAInfographics
 
 // Helper extension for Color from hex string
 // This can be placed in a separate utility file or at the top level of this file.
@@ -40,22 +41,12 @@ extension Color {
 
 @available(iOS 16.0, *)
 class AppleSwiftChartBuilder {
-    enum ChartType {
-        case area
-        case line
-        case bar
-        case column
-        case spline
-        case areaspline
-        case bubble
-        case scatter
-        // 可扩展更多类型
-    }
+
     
-    private let chartType: ChartType
+    private let chartType: AAChartType
     private let isPercentStacked: Bool
     
-    init(chartType: ChartType = .area, isPercentStacked: Bool = false) {
+    init(chartType: AAChartType = .area, isPercentStacked: Bool = false) {
         self.chartType = chartType
         self.isPercentStacked = isPercentStacked
     }
@@ -196,6 +187,18 @@ class AppleSwiftChartBuilder {
                 )
                 .foregroundStyle(by: .value("City", series.name))
             }
+
+        default:
+            // ChartContentBuilder 不允许 break/continue/return 等控制流语句
+            // 直接写 ForEach 即可，不要加 break
+            ForEach(series.dataPoints) { dataPoint in
+                AreaMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+            }
         }
     }
 }
@@ -206,7 +209,7 @@ class AppleSwiftChartBuilder {
 struct ChartWithTooltip: View {
     let seriesData: [ChartSeriesData]
     let colors: [Color]
-    let chartType: AppleSwiftChartBuilder.ChartType
+    let chartType: AAChartType
     let seriesNames: [String]
     let categories: [String]
     let isPercentStacked: Bool
@@ -332,7 +335,7 @@ struct ChartWithTooltip: View {
                 )
                 .foregroundStyle(by: .value("City", series.name))
                 .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
-//                .rotationEffect(.degrees(90))
+                //                .rotationEffect(.degrees(90))
             }
         case .spline:
             ForEach(series.dataPoints) { dataPoint in
@@ -360,11 +363,20 @@ struct ChartWithTooltip: View {
                 PointMark(
                     x: .value("Category", dataPoint.category),
                     y: .value("Value", dataPoint.value)
-//                    size: .value("BubbleSize", abs(dataPoint.value))
+                    //                    size: .value("BubbleSize", abs(dataPoint.value))
                 )
                 .foregroundStyle(by: .value("City", series.name))
             }
         case .scatter:
+            ForEach(series.dataPoints) { dataPoint in
+                PointMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+            }
+      
+        default:
             ForEach(series.dataPoints) { dataPoint in
                 PointMark(
                     x: .value("Category", dataPoint.category),
