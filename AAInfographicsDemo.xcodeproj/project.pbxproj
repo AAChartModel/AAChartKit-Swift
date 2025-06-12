@@ -117,6 +117,7 @@
 		84790F4E2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */; };
 		8481C2C92DF2C410006EFC41 /* AAEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C2C82DF2C410006EFC41 /* AAEasing.swift */; };
 		8481C2ED2DFAA934006EFC41 /* AppleSwiftChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C2EC2DFAA934006EFC41 /* AppleSwiftChartVC.swift */; };
+		8481C2EF2DFAB798006EFC41 /* AppleSwiftChartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C2EE2DFAB798006EFC41 /* AppleSwiftChartBuilder.swift */; };
 		848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */; };
 		848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */; };
 		84903C8E2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903C8D2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift */; };
@@ -372,6 +373,7 @@
 		84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSFunctionBeforeAndAfterRenderingComposer.swift; sourceTree = "<group>"; };
 		8481C2C82DF2C410006EFC41 /* AAEasing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAEasing.swift; sourceTree = "<group>"; };
 		8481C2EC2DFAA934006EFC41 /* AppleSwiftChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSwiftChartVC.swift; sourceTree = "<group>"; };
+		8481C2EE2DFAB798006EFC41 /* AppleSwiftChartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSwiftChartBuilder.swift; sourceTree = "<group>"; };
 		848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAAChartViewForXibVC.swift; sourceTree = "<group>"; };
 		848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAAChartViewForXibVC.xib; sourceTree = "<group>"; };
 		84903C8D2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiParticleAnimationVC.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 				84086B1C28E6C612006BD30D /* CustomTableViewCell.swift */,
 				84086B1D28E6C612006BD30D /* CustomTableViewCell.xib */,
 				8481C2EC2DFAA934006EFC41 /* AppleSwiftChartVC.swift */,
+				8481C2EE2DFAB798006EFC41 /* AppleSwiftChartBuilder.swift */,
 			);
 			path = AdditionalContent2;
 			sourceTree = "<group>";
@@ -1108,6 +1111,7 @@
 				845BABF12D030318004C15D4 /* OfficialChartSample.swift in Sources */,
 				844007762B6F41A50072FB66 /* SpecialChartComposer.swift in Sources */,
 				5860368820ADD4DC745A2997 /* AreaChartOptionsComposer.swift in Sources */,
+				8481C2EF2DFAB798006EFC41 /* AppleSwiftChartBuilder.swift in Sources */,
 				8407165B2A7393FC0037193B /* ColumnChartOptionsVC.swift in Sources */,
 				58603080BAE839A9CF7C8F73 /* BarOrColumnChartOptionsComposer.swift in Sources */,
 				840716552A6E82290037193B /* MultiYAxesChartOptionsVC.swift in Sources */,
