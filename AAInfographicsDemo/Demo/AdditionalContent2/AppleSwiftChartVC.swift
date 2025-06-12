@@ -77,7 +77,40 @@ class AppleSwiftChartVC: UIViewController {
     
     @available(iOS 16.0, *)
     private func createChartModels() -> [AAChartModel] {
-        return ChartSampleProvider.randomValueDataItemsChartModel()
+//        return ChartSampleProvider.randomValueDataItemsChartModel()
+        return [
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.area),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.areaspline),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.column),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.bar),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.line),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.spline),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.scatter),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.bubble),
+
+            
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.area).stacking(.normal),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.areaspline).stacking(.normal),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.column).stacking(.normal),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.bar).stacking(.normal),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.line).stacking(.normal),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.spline).stacking(.normal),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.scatter).stacking(.normal),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.bubble).stacking(.normal),
+
+
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.area).stacking(.percent),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.areaspline).stacking(.percent),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.column).stacking(.percent),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.bar).stacking(.percent),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.line).stacking(.percent),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.spline).stacking(.percent),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.scatter).stacking(.normal),
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.bubble).stacking(.normal),
+
+
+
+        ]
     }
 }
 
