@@ -110,27 +110,43 @@ class AppleSwiftChartBuilder {
 
     @ChartContentBuilder
     private func seriesMarks(for series: ChartSeriesData) -> some ChartContent {
-        let stackingValue = stackingType == .none ? "none" : "stacked"
-        
+        let stackingType = self.stackingType
         switch chartType {
         case .area:
             ForEach(series.dataPoints) { dataPoint in
-                AreaMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
+                if stackingType == .none {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                    .position(by: .value("Series", series.name))
+                } else {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         case .areaspline:
             ForEach(series.dataPoints) { dataPoint in
-                AreaMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .interpolationMethod(.catmullRom)
-                .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
+                if stackingType == .none {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(by: .value("City", series.name))
+                    .position(by: .value("Series", series.name))
+                } else {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         case .line:
             ForEach(series.dataPoints) { dataPoint in
@@ -140,7 +156,6 @@ class AppleSwiftChartBuilder {
                 )
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
             }
         case .spline:
             ForEach(series.dataPoints) { dataPoint in
@@ -151,26 +166,40 @@ class AppleSwiftChartBuilder {
                 .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
             }
         case .bar:
             ForEach(series.dataPoints) { dataPoint in
-                BarMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
+                if stackingType == .none {
+                    BarMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                    .position(by: .value("Series", series.name))
+                } else {
+                    BarMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         case .column:
             ForEach(series.dataPoints) { dataPoint in
-                BarMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
-//                .rotationEffect(.degrees(90))
+                if stackingType == .none {
+                    BarMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                    .position(by: .value("Series", series.name))
+                } else {
+                    BarMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         case .bubble:
             ForEach(series.dataPoints) { dataPoint in
@@ -191,15 +220,21 @@ class AppleSwiftChartBuilder {
             }
 
         default:
-            // ChartContentBuilder 不允许 break/continue/return 等控制流语句
-            // 直接写 ForEach 即可，不要加 break
             ForEach(series.dataPoints) { dataPoint in
-                AreaMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
+                if stackingType == .none {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                    .position(by: .value("Series", series.name))
+                } else {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         }
     }
@@ -300,17 +335,23 @@ struct ChartWithTooltip: View {
 
     @ChartContentBuilder
     private func chartMarks(for series: ChartSeriesData) -> some ChartContent {
-        let stackingValue = stackingType == .none ? "none" : "stacked"
-        
         switch chartType {
         case .area:
             ForEach(series.dataPoints) { dataPoint in
-                AreaMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
+                if stackingType == .none {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                    .position(by: .value("Series", series.name))
+                } else {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         case .line:
             ForEach(series.dataPoints) { dataPoint in
@@ -320,26 +361,40 @@ struct ChartWithTooltip: View {
                 )
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
             }
         case .bar:
             ForEach(series.dataPoints) { dataPoint in
-                BarMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
+                if stackingType == .none {
+                    BarMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                    .position(by: .value("Series", series.name))
+                } else {
+                    BarMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         case .column:
             ForEach(series.dataPoints) { dataPoint in
-                BarMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
-                //                .rotationEffect(.degrees(90))
+                if stackingType == .none {
+                    BarMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                    .position(by: .value("Series", series.name))
+                } else {
+                    BarMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         case .spline:
             ForEach(series.dataPoints) { dataPoint in
@@ -350,17 +405,25 @@ struct ChartWithTooltip: View {
                 .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
             }
         case .areaspline:
             ForEach(series.dataPoints) { dataPoint in
-                AreaMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .interpolationMethod(.catmullRom)
-                .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", stackingValue))
+                if stackingType == .none {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(by: .value("City", series.name))
+                    .position(by: .value("Series", series.name))
+                } else {
+                    AreaMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         case .bubble:
             ForEach(series.dataPoints) { dataPoint in
@@ -382,11 +445,19 @@ struct ChartWithTooltip: View {
       
         default:
             ForEach(series.dataPoints) { dataPoint in
-                PointMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .foregroundStyle(by: .value("City", series.name))
+                if stackingType == .none {
+                    PointMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                } else {
+                    PointMark(
+                        x: .value("Category", dataPoint.category),
+                        y: .value("Value", dataPoint.value)
+                    )
+                    .foregroundStyle(by: .value("City", series.name))
+                }
             }
         }
     }
