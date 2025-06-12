@@ -58,6 +58,20 @@ class AppleSwiftChartBuilder {
            let categories = model.categories {
             return categories
         }
+        
+        // 根据实际数据长度动态生成类别
+        let maxDataLength = seriesArray.reduce(0) { maxLength, seriesElement in
+            var dataLength = 0
+            if let dataArray = seriesElement.data as? [Any] {
+                dataLength = dataArray.count
+            }
+            return max(maxLength, dataLength)
+        }
+        
+        if maxDataLength > 0 {
+            return (0..<maxDataLength).map { "Category \($0 + 1)" }
+        }
+        
         return ["Java", "Swift", "Python", "Ruby", "PHP", "Go",
                 "C", "C#", "C++", "Rust", "Kotlin", "TypeScript"]
     }
@@ -134,9 +148,8 @@ class AppleSwiftChartBuilder {
     
     private var seriesData: [ChartSeriesData] {
         let series = seriesArray
-        let cats = categories
         
-        print("📊 [DEBUG] 开始处理 seriesData，series数量: \(series.count), categories数量: \(cats.count)")
+        print("📊 [DEBUG] 开始处理 seriesData，series数量: \(series.count)")
         print("📊 [DEBUG] stackingType: \(stackingType)")
         
         if stackingType == .percent {
@@ -152,8 +165,10 @@ class AppleSwiftChartBuilder {
             }
             
             if !allValues.isEmpty {
+                let maxCount = allValues.map { $0.count }.max() ?? 0
+                let dynamicCategories = (0..<maxCount).map { "Category \($0 + 1)" }
+                
                 var percentSeries: [[Double]] = Array(repeating: [], count: allValues.count)
-                let maxCount = min(cats.count, allValues[0].count)
                 
                 for i in 0..<maxCount {
                     let sum = allValues.reduce(0) { $0 + (i < $1.count ? $1[i] : 0) }
@@ -166,7 +181,7 @@ class AppleSwiftChartBuilder {
                 
                 return series.enumerated().map { index, seriesElement in
                     let name = seriesElement.name ?? "Series \(index + 1)"
-                    let dataPoints = zip(cats.prefix(percentSeries[index].count), percentSeries[index]).map {
+                    let dataPoints = zip(dynamicCategories, percentSeries[index]).map {
                         ChartCategoryDataPoint(category: $0.0, value: $0.1)
                     }
                     return ChartSeriesData(name: name, dataPoints: dataPoints)
@@ -174,7 +189,7 @@ class AppleSwiftChartBuilder {
             }
         }
         
-        // 正常数据或百分比计算失败时的处理
+        // 正常数据处理
         let result = series.enumerated().map { index, seriesElement in
             let name = seriesElement.name ?? "Series \(index + 1)"
             var dataPoints: [ChartCategoryDataPoint] = []
@@ -183,7 +198,8 @@ class AppleSwiftChartBuilder {
             
             if let dataArray = seriesElement.data as? [Double] {
                 print("📊 [DEBUG] Series[\(index)] 数据类型: [Double], 数量: \(dataArray.count)")
-                dataPoints = zip(cats.prefix(dataArray.count), dataArray).map {
+                let dynamicCategories = (0..<dataArray.count).map { "Category \($0 + 1)" }
+                dataPoints = zip(dynamicCategories, dataArray).map {
                     ChartCategoryDataPoint(category: $0.0, value: $0.1)
                 }
             } else if let dataArray = seriesElement.data as? [Any] {
@@ -202,7 +218,8 @@ class AppleSwiftChartBuilder {
                     return nil
                 }
                 print("📊 [DEBUG] Series[\(index)] 转换后的 Double 数组数量: \(doubleArray.count)")
-                dataPoints = zip(cats.prefix(doubleArray.count), doubleArray).map {
+                let dynamicCategories = (0..<doubleArray.count).map { "Category \($0 + 1)" }
+                dataPoints = zip(dynamicCategories, doubleArray).map {
                     ChartCategoryDataPoint(category: $0.0, value: $0.1)
                 }
             } else {
@@ -611,13 +628,16 @@ struct ChartWithTooltip: View {
         // 计算距离最近的 category
         let plotFrame = geometry[proxy.plotAreaFrame]
         
+        // 使用实际的类别数组，而不是预设的
+        let actualCategories = seriesData.first?.dataPoints.map { $0.category } ?? categories
+        
         if chartType == .bar {
             // 对于水平条形图，使用 y 轴查找类别
             let y = location.y - plotFrame.origin.y
             var minDistance: CGFloat = .infinity
             var nearestCategory: String?
             var nearestY: CGFloat = 0
-            for cat in categories {
+            for cat in actualCategories {
                 if let catY = proxy.position(forY: cat) {
                     let distance = abs(catY - y)
                     if distance < minDistance {
@@ -636,7 +656,7 @@ struct ChartWithTooltip: View {
             var minDistance: CGFloat = .infinity
             var nearestCategory: String?
             var nearestX: CGFloat = 0
-            for cat in categories {
+            for cat in actualCategories {
                 if let catX = proxy.position(forX: cat) {
                     let distance = abs(catX - x)
                     if distance < minDistance {
