@@ -44,7 +44,11 @@ class AppleSwiftChartBuilder {
         case area
         case line
         case bar
-        case point
+        case column
+        case spline
+        case areaspline
+        case bubble
+        case scatter
         // 可扩展更多类型
     }
     
@@ -123,6 +127,17 @@ class AppleSwiftChartBuilder {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
+                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+            }
+        case .areaspline:
+            ForEach(series.dataPoints) { dataPoint in
+                AreaMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .interpolationMethod(.catmullRom)
+                .foregroundStyle(by: .value("City", series.name))
+                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
             }
         case .line:
             ForEach(series.dataPoints) { dataPoint in
@@ -132,6 +147,18 @@ class AppleSwiftChartBuilder {
                 )
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
+                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+            }
+        case .spline:
+            ForEach(series.dataPoints) { dataPoint in
+                LineMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .interpolationMethod(.catmullRom)
+                .foregroundStyle(by: .value("City", series.name))
+                .symbol(by: .value("City", series.name))
+                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
             }
         case .bar:
             ForEach(series.dataPoints) { dataPoint in
@@ -140,8 +167,28 @@ class AppleSwiftChartBuilder {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
+                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
             }
-        case .point:
+        case .column:
+            ForEach(series.dataPoints) { dataPoint in
+                BarMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+//                .rotationEffect(.degrees(90))
+            }
+        case .bubble:
+            ForEach(series.dataPoints) { dataPoint in
+                PointMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+//                    size: .value("BubbleSize", abs(dataPoint.value))
+                )
+                .foregroundStyle(by: .value("City", series.name))
+            }
+        case .scatter:
             ForEach(series.dataPoints) { dataPoint in
                 PointMark(
                     x: .value("Category", dataPoint.category),
@@ -277,7 +324,47 @@ struct ChartWithTooltip: View {
                 .foregroundStyle(by: .value("City", series.name))
                 .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
             }
-        case .point:
+        case .column:
+            ForEach(series.dataPoints) { dataPoint in
+                BarMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
+//                .rotationEffect(.degrees(90))
+            }
+        case .spline:
+            ForEach(series.dataPoints) { dataPoint in
+                LineMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .interpolationMethod(.catmullRom)
+                .foregroundStyle(by: .value("City", series.name))
+                .symbol(by: .value("City", series.name))
+                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
+            }
+        case .areaspline:
+            ForEach(series.dataPoints) { dataPoint in
+                AreaMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .interpolationMethod(.catmullRom)
+                .foregroundStyle(by: .value("City", series.name))
+                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
+            }
+        case .bubble:
+            ForEach(series.dataPoints) { dataPoint in
+                PointMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+//                    size: .value("BubbleSize", abs(dataPoint.value))
+                )
+                .foregroundStyle(by: .value("City", series.name))
+            }
+        case .scatter:
             ForEach(series.dataPoints) { dataPoint in
                 PointMark(
                     x: .value("Category", dataPoint.category),
