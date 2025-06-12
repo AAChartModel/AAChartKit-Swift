@@ -584,9 +584,9 @@ extension AAChartModelListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 1:
-            let vc = SpecialChartVC()
-            vc.selectedIndex = indexPath.row
-            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            let vc = AppleSwiftChartVC()
+//            vc.selectedIndex = indexPath.row
+//            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             

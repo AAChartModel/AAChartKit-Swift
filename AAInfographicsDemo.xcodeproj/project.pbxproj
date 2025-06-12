@@ -116,6 +116,7 @@
 		84790F442CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F432CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift */; };
 		84790F4E2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */; };
 		8481C2C92DF2C410006EFC41 /* AAEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C2C82DF2C410006EFC41 /* AAEasing.swift */; };
+		8481C2ED2DFAA934006EFC41 /* AppleSwiftChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8481C2EC2DFAA934006EFC41 /* AppleSwiftChartVC.swift */; };
 		848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */; };
 		848FEAF8265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */; };
 		84903C8E2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84903C8D2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift */; };
@@ -370,6 +371,7 @@
 		84790F432CC236C80047C133 /* CustomLargeDateSeriesClickEventCallbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLargeDateSeriesClickEventCallbackVC.swift; sourceTree = "<group>"; };
 		84790F4D2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSFunctionBeforeAndAfterRenderingComposer.swift; sourceTree = "<group>"; };
 		8481C2C82DF2C410006EFC41 /* AAEasing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAEasing.swift; sourceTree = "<group>"; };
+		8481C2EC2DFAA934006EFC41 /* AppleSwiftChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSwiftChartVC.swift; sourceTree = "<group>"; };
 		848FEAF5265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAAChartViewForXibVC.swift; sourceTree = "<group>"; };
 		848FEAF6265DF5D3006E4F25 /* TestAAChartViewForXibVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestAAChartViewForXibVC.xib; sourceTree = "<group>"; };
 		84903C8D2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiParticleAnimationVC.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				84AE6B1E26A58380001F0755 /* AADateUTCTool.swift */,
 				84086B1C28E6C612006BD30D /* CustomTableViewCell.swift */,
 				84086B1D28E6C612006BD30D /* CustomTableViewCell.xib */,
+				8481C2EC2DFAA934006EFC41 /* AppleSwiftChartVC.swift */,
 			);
 			path = AdditionalContent2;
 			sourceTree = "<group>";
@@ -1028,6 +1031,7 @@
 				278C55151EE948C900770B97 /* AAChartModelListVC.swift in Sources */,
 				8441C0992C62105400A6F784 /* CustomStyleForAreaSplineChartVC.swift in Sources */,
 				84F21858292DF373007AA726 /* OfficialAreaChartVC.swift in Sources */,
+				8481C2ED2DFAA934006EFC41 /* AppleSwiftChartVC.swift in Sources */,
 				278C54B21EE9472300770B97 /* AppDelegate.swift in Sources */,
 				4409BED021B8CC4900D79278 /* EvaluateJSStringFunctionVC.swift in Sources */,
 				844F11462B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift in Sources */,
