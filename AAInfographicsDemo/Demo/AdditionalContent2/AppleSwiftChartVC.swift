@@ -77,13 +77,7 @@ class AppleSwiftChartVC: UIViewController {
     
     @available(iOS 16.0, *)
     private func createChartModels() -> [AAChartModel] {
-        return [
-            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline)
-                .stacking(.normal),
-            BasicChartComposer.configureColumnChartAndBarChart()
-                .stacking(.normal),
-            BasicChartComposer.configureLineChartAndSplineChartStyle(.spline)
-        ]
+        return ChartSampleProvider.randomValueDataItemsChartModel()
     }
 }
 
