@@ -49,9 +49,11 @@ class AppleSwiftChartBuilder {
     }
     
     private let chartType: ChartType
+    private let isPercentStacked: Bool
     
-    init(chartType: ChartType = .area) {
+    init(chartType: ChartType = .area, isPercentStacked: Bool = false) {
         self.chartType = chartType
+        self.isPercentStacked = isPercentStacked
     }
     
     private let categories = ["Java", "Swift", "Python", "Ruby", "PHP", "Go",
@@ -69,12 +71,31 @@ class AppleSwiftChartBuilder {
     ]
     
     private var seriesData: [ChartSeriesData] {
-        [
-            ChartSeriesData(name: "Tokyo", dataPoints: zip(categories, tokyoValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
-            ChartSeriesData(name: "NewYork", dataPoints: zip(categories, newYorkValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
-            ChartSeriesData(name: "London", dataPoints: zip(categories, londonValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
-            ChartSeriesData(name: "Berlin", dataPoints: zip(categories, berlinValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) })
-        ]
+        if isPercentStacked {
+            // 计算每个类别下的总和
+            let allValues = [tokyoValues, newYorkValues, londonValues, berlinValues]
+            var percentSeries: [[Double]] = Array(repeating: [], count: allValues.count)
+            for i in 0..<categories.count {
+                let sum = allValues.reduce(0) { $0 + $1[i] }
+                for (j, values) in allValues.enumerated() {
+                    let percent = sum > 0 ? values[i] / sum * 100.0 : 0
+                    percentSeries[j].append(percent)
+                }
+            }
+            return [
+                ChartSeriesData(name: "Tokyo", dataPoints: zip(categories, percentSeries[0]).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
+                ChartSeriesData(name: "NewYork", dataPoints: zip(categories, percentSeries[1]).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
+                ChartSeriesData(name: "London", dataPoints: zip(categories, percentSeries[2]).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
+                ChartSeriesData(name: "Berlin", dataPoints: zip(categories, percentSeries[3]).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) })
+            ]
+        } else {
+            return [
+                ChartSeriesData(name: "Tokyo", dataPoints: zip(categories, tokyoValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
+                ChartSeriesData(name: "NewYork", dataPoints: zip(categories, newYorkValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
+                ChartSeriesData(name: "London", dataPoints: zip(categories, londonValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
+                ChartSeriesData(name: "Berlin", dataPoints: zip(categories, berlinValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) })
+            ]
+        }
     }
     
     @State private var selectedCategory: String? = nil
@@ -82,13 +103,13 @@ class AppleSwiftChartBuilder {
 
     func makeChart() -> some View {
         let seriesNames = seriesData.map { $0.name }
-        // 使用 wrapper 以便 @State 生效
         return ChartWithTooltip(
             seriesData: seriesData,
             colors: colors,
             chartType: chartType,
             seriesNames: seriesNames,
-            categories: categories
+            categories: categories,
+            isPercentStacked: isPercentStacked
         )
     }
 
@@ -141,6 +162,7 @@ struct ChartWithTooltip: View {
     let chartType: AppleSwiftChartBuilder.ChartType
     let seriesNames: [String]
     let categories: [String]
+    let isPercentStacked: Bool
 
     @State private var selectedCategory: String? = nil
     @State private var currentLocation: CGPoint? = nil
@@ -166,8 +188,13 @@ struct ChartWithTooltip: View {
                     AxisTick()
                     AxisValueLabel {
                         if let doubleValue = axisValue.as(Double.self) {
-                            Text("\(doubleValue, format: .number.precision(.fractionLength(1)))℃")
-                                .foregroundColor(.white)
+                            if isPercentStacked {
+                                Text("\(doubleValue, specifier: "%.0f")%")
+                                    .foregroundColor(.white)
+                            } else {
+                                Text("\(doubleValue, format: .number.precision(.fractionLength(1)))℃")
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 }
@@ -229,6 +256,7 @@ struct ChartWithTooltip: View {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
+                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
             }
         case .line:
             ForEach(series.dataPoints) { dataPoint in
@@ -238,6 +266,7 @@ struct ChartWithTooltip: View {
                 )
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
+                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
             }
         case .bar:
             ForEach(series.dataPoints) { dataPoint in
@@ -246,6 +275,7 @@ struct ChartWithTooltip: View {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
+                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
             }
         case .point:
             ForEach(series.dataPoints) { dataPoint in
