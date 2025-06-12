@@ -47,12 +47,6 @@ class AppleSwiftChartBuilder {
     private let stackingType: AAChartStackingType
     private let chartModel: AAChartModel?
     
-    init(chartType: AAChartType = .area, stackingType: AAChartStackingType = .none) {
-        self.chartType = chartType
-        self.stackingType = stackingType
-        self.chartModel = nil
-    }
-    
     init(chartModel: AAChartModel) {
         self.chartType = chartModel.chartType ?? .area
         self.stackingType = chartModel.stacking ?? .none
@@ -234,7 +228,8 @@ class AppleSwiftChartBuilder {
             chartType: chartType,
             seriesNames: seriesNames,
             categories: categories,
-            stackingType: stackingType
+            stackingType: stackingType,
+            animationEnabled: true
         )
     }
 
@@ -380,9 +375,11 @@ struct ChartWithTooltip: View {
     let seriesNames: [String]
     let categories: [String]
     let stackingType: AAChartStackingType
+    let animationEnabled: Bool
 
     @State private var selectedCategory: String? = nil
     @State private var currentLocation: CGPoint? = nil
+    @State private var animateChart: Bool = false
 
     var body: some View {
         ZStack {
@@ -419,6 +416,17 @@ struct ChartWithTooltip: View {
             .chartLegend(position: .bottom, alignment: .center) {
                 // Legend item style
             }
+            .opacity(animateChart ? 1.0 : 0.0)
+            .scaleEffect(animateChart ? 1.0 : 0.8)
+            .onAppear {
+                if animationEnabled {
+                    withAnimation(.easeInOut(duration: 1.2)) {
+                        animateChart = true
+                    }
+                } else {
+                    animateChart = true
+                }
+            }
             .chartOverlay { proxy in
                 GeometryReader { geo in
                     Rectangle().fill(Color.clear).contentShape(Rectangle())
@@ -443,7 +451,7 @@ struct ChartWithTooltip: View {
                             Group {
                                 if let selectedCategory {
                                     if chartType == .bar {
-                                        // 水平条形图使用垂直的十字线
+                                        // 水平条形图使用水平的十字线
                                         if let yPos = proxy.position(forY: selectedCategory) {
                                             Path { path in
                                                 path.move(to: CGPoint(x: geo[proxy.plotAreaFrame].minX, y: yPos))
@@ -487,14 +495,14 @@ struct ChartWithTooltip: View {
                 if stackingType == .none {
                     AreaMark(
                         x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        y: .value("Value", animateChart ? dataPoint.value : 0)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                     .position(by: .value("Series", series.name))
                 } else {
                     AreaMark(
                         x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        y: .value("Value", animateChart ? dataPoint.value : 0)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                 }
@@ -503,7 +511,7 @@ struct ChartWithTooltip: View {
             ForEach(series.dataPoints) { dataPoint in
                 LineMark(
                     x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
+                    y: .value("Value", animateChart ? dataPoint.value : 0)
                 )
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
@@ -512,14 +520,14 @@ struct ChartWithTooltip: View {
             ForEach(series.dataPoints) { dataPoint in
                 if stackingType == .none {
                     BarMark(
-                        x: .value("Value", dataPoint.value),
+                        x: .value("Value", animateChart ? dataPoint.value : 0),
                         y: .value("Category", dataPoint.category)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                     .position(by: .value("Series", series.name))
                 } else {
                     BarMark(
-                        x: .value("Value", dataPoint.value),
+                        x: .value("Value", animateChart ? dataPoint.value : 0),
                         y: .value("Category", dataPoint.category)
                     )
                     .foregroundStyle(by: .value("City", series.name))
@@ -530,14 +538,14 @@ struct ChartWithTooltip: View {
                 if stackingType == .none {
                     BarMark(
                         x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        y: .value("Value", animateChart ? dataPoint.value : 0)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                     .position(by: .value("Series", series.name))
                 } else {
                     BarMark(
                         x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        y: .value("Value", animateChart ? dataPoint.value : 0)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                 }
@@ -546,7 +554,7 @@ struct ChartWithTooltip: View {
             ForEach(series.dataPoints) { dataPoint in
                 LineMark(
                     x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
+                    y: .value("Value", animateChart ? dataPoint.value : 0)
                 )
                 .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("City", series.name))
@@ -557,7 +565,7 @@ struct ChartWithTooltip: View {
                 if stackingType == .none {
                     AreaMark(
                         x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        y: .value("Value", animateChart ? dataPoint.value : 0)
                     )
                     .interpolationMethod(.catmullRom)
                     .foregroundStyle(by: .value("City", series.name))
@@ -565,42 +573,33 @@ struct ChartWithTooltip: View {
                 } else {
                     AreaMark(
                         x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        y: .value("Value", animateChart ? dataPoint.value : 0)
                     )
                     .interpolationMethod(.catmullRom)
                     .foregroundStyle(by: .value("City", series.name))
                 }
             }
-        case .bubble:
+        case .bubble, .scatter:
             ForEach(series.dataPoints) { dataPoint in
                 PointMark(
                     x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                    //                    size: .value("BubbleSize", abs(dataPoint.value))
+                    y: .value("Value", animateChart ? dataPoint.value : 0)
                 )
                 .foregroundStyle(by: .value("City", series.name))
             }
-        case .scatter:
-            ForEach(series.dataPoints) { dataPoint in
-                PointMark(
-                    x: .value("Category", dataPoint.category),
-                    y: .value("Value", dataPoint.value)
-                )
-                .foregroundStyle(by: .value("City", series.name))
-            }
-      
+        
         default:
             ForEach(series.dataPoints) { dataPoint in
                 if stackingType == .none {
                     PointMark(
                         x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        y: .value("Value", animateChart ? dataPoint.value : 0)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                 } else {
                     PointMark(
                         x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        y: .value("Value", animateChart ? dataPoint.value : 0)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                 }
