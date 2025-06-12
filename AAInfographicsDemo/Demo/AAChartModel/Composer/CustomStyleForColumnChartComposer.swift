@@ -562,6 +562,7 @@ class CustomStyleForColumnChartComposer {
     }
     
     // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-animation-easing/
+    // https://github.com/AAChartModel/AAChartKit-Swift/issues/542
     static func customAnimationForColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
@@ -570,7 +571,7 @@ class CustomStyleForColumnChartComposer {
                 AASeriesElement()
                     .data([29.9, 71.5, 106.4, 129.2, 111])
                     .animation(AAAnimation()
-                              .duration(2000)
+                        .duration(2000)
                         .easing(.easeOutBounce))
                 ,
                 AASeriesElement()
