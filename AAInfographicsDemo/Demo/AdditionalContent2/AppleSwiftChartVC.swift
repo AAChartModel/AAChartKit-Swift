@@ -66,7 +66,8 @@ class AppleSwiftChartVC: UIViewController {
         }
 
         if #available(iOS 16.0, *) {
-            setupSwiftChartView()
+            // 传入不同类型即可切换图表类型
+            setupSwiftChartView(chartType: .area)
         } else {
             // Fallback for earlier iOS versions
             let label = UILabel()
@@ -82,8 +83,8 @@ class AppleSwiftChartVC: UIViewController {
     }
     
     @available(iOS 16.0, *)
-    private func setupSwiftChartView() {
-        let chart = AppleSwiftChartBuilder().makeChart()
+    private func setupSwiftChartView(chartType: AppleSwiftChartBuilder.ChartType) {
+        let chart = AppleSwiftChartBuilder(chartType: chartType).makeChart()
         let hostingController = UIHostingController(rootView: chart)
         addChild(hostingController)
         view.addSubview(hostingController.view)
@@ -104,6 +105,20 @@ class AppleSwiftChartVC: UIViewController {
 
 @available(iOS 16.0, *)
 class AppleSwiftChartBuilder {
+    enum ChartType {
+        case area
+        case line
+        case bar
+        case point
+        // 可扩展更多类型
+    }
+    
+    private let chartType: ChartType
+    
+    init(chartType: ChartType = .area) {
+        self.chartType = chartType
+    }
+    
     private let categories = ["Java", "Swift", "Python", "Ruby", "PHP", "Go",
                               "C", "C#", "C++", "Rust", "Kotlin", "TypeScript"]
     private let tokyoValues = [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
@@ -159,13 +174,42 @@ class AppleSwiftChartBuilder {
         }
     }
     
+    @ChartContentBuilder
     private func seriesMarks(for series: ChartSeriesData) -> some ChartContent {
-        ForEach(series.dataPoints) { dataPoint in
-            AreaMark(
-                x: .value("Category", dataPoint.category),
-                y: .value("Value", dataPoint.value)
-            )
-            .foregroundStyle(by: .value("City", series.name))
+        switch chartType {
+        case .area:
+            ForEach(series.dataPoints) { dataPoint in
+                AreaMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+            }
+        case .line:
+            ForEach(series.dataPoints) { dataPoint in
+                LineMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+                .symbol(by: .value("City", series.name))
+            }
+        case .bar:
+            ForEach(series.dataPoints) { dataPoint in
+                BarMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+            }
+        case .point:
+            ForEach(series.dataPoints) { dataPoint in
+                PointMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+            }
         }
     }
 }
