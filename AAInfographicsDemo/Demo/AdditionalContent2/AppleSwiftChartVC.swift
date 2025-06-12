@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftUI
+import AAInfographics
 
 
 
@@ -53,8 +55,8 @@ class AppleSwiftChartVC: UIViewController {
     }
     
     @available(iOS 16.0, *)
-    private func setupSwiftChartView(chartType: AppleSwiftChartBuilder.ChartType) {
-        let chart = AppleSwiftChartBuilder(chartType: chartType).makeChart()
+    private func setupSwiftChartView(chartType: AAChartType) {
+        let chart = AppleSwiftChartBuilder(chartType: chartType, stackingType: .none).makeChart()
         let hostingController = UIHostingController(rootView: chart)
         addChild(hostingController)
         view.addSubview(hostingController.view)

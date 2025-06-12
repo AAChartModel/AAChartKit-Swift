@@ -44,11 +44,11 @@ class AppleSwiftChartBuilder {
 
     
     private let chartType: AAChartType
-    private let isPercentStacked: Bool
+    private let stackingType: AAChartStackingType
     
-    init(chartType: AAChartType = .area, isPercentStacked: Bool = false) {
+    init(chartType: AAChartType = .area, stackingType: AAChartStackingType = .none) {
         self.chartType = chartType
-        self.isPercentStacked = isPercentStacked
+        self.stackingType = stackingType
     }
     
     private let categories = ["Java", "Swift", "Python", "Ruby", "PHP", "Go",
@@ -66,7 +66,7 @@ class AppleSwiftChartBuilder {
     ]
     
     private var seriesData: [ChartSeriesData] {
-        if isPercentStacked {
+        if stackingType == .percent {
             // 计算每个类别下的总和
             let allValues = [tokyoValues, newYorkValues, londonValues, berlinValues]
             var percentSeries: [[Double]] = Array(repeating: [], count: allValues.count)
@@ -104,12 +104,14 @@ class AppleSwiftChartBuilder {
             chartType: chartType,
             seriesNames: seriesNames,
             categories: categories,
-            isPercentStacked: isPercentStacked
+            stackingType: stackingType
         )
     }
 
     @ChartContentBuilder
     private func seriesMarks(for series: ChartSeriesData) -> some ChartContent {
+        let stackingValue = stackingType == .none ? "none" : "stacked"
+        
         switch chartType {
         case .area:
             ForEach(series.dataPoints) { dataPoint in
@@ -118,7 +120,7 @@ class AppleSwiftChartBuilder {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .areaspline:
             ForEach(series.dataPoints) { dataPoint in
@@ -128,7 +130,7 @@ class AppleSwiftChartBuilder {
                 )
                 .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .line:
             ForEach(series.dataPoints) { dataPoint in
@@ -138,7 +140,7 @@ class AppleSwiftChartBuilder {
                 )
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
-                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .spline:
             ForEach(series.dataPoints) { dataPoint in
@@ -149,7 +151,7 @@ class AppleSwiftChartBuilder {
                 .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
-                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .bar:
             ForEach(series.dataPoints) { dataPoint in
@@ -158,7 +160,7 @@ class AppleSwiftChartBuilder {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .column:
             ForEach(series.dataPoints) { dataPoint in
@@ -167,7 +169,7 @@ class AppleSwiftChartBuilder {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
 //                .rotationEffect(.degrees(90))
             }
         case .bubble:
@@ -197,7 +199,7 @@ class AppleSwiftChartBuilder {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", self.isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         }
     }
@@ -212,7 +214,7 @@ struct ChartWithTooltip: View {
     let chartType: AAChartType
     let seriesNames: [String]
     let categories: [String]
-    let isPercentStacked: Bool
+    let stackingType: AAChartStackingType
 
     @State private var selectedCategory: String? = nil
     @State private var currentLocation: CGPoint? = nil
@@ -238,7 +240,7 @@ struct ChartWithTooltip: View {
                     AxisTick()
                     AxisValueLabel {
                         if let doubleValue = axisValue.as(Double.self) {
-                            if isPercentStacked {
+                            if stackingType == .percent {
                                 Text("\(doubleValue, specifier: "%.0f")%")
                                     .foregroundColor(.white)
                             } else {
@@ -298,6 +300,8 @@ struct ChartWithTooltip: View {
 
     @ChartContentBuilder
     private func chartMarks(for series: ChartSeriesData) -> some ChartContent {
+        let stackingValue = stackingType == .none ? "none" : "stacked"
+        
         switch chartType {
         case .area:
             ForEach(series.dataPoints) { dataPoint in
@@ -306,7 +310,7 @@ struct ChartWithTooltip: View {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .line:
             ForEach(series.dataPoints) { dataPoint in
@@ -316,7 +320,7 @@ struct ChartWithTooltip: View {
                 )
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
-                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .bar:
             ForEach(series.dataPoints) { dataPoint in
@@ -325,7 +329,7 @@ struct ChartWithTooltip: View {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .column:
             ForEach(series.dataPoints) { dataPoint in
@@ -334,7 +338,7 @@ struct ChartWithTooltip: View {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
                 //                .rotationEffect(.degrees(90))
             }
         case .spline:
@@ -346,7 +350,7 @@ struct ChartWithTooltip: View {
                 .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("City", series.name))
                 .symbol(by: .value("City", series.name))
-                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .areaspline:
             ForEach(series.dataPoints) { dataPoint in
@@ -356,7 +360,7 @@ struct ChartWithTooltip: View {
                 )
                 .interpolationMethod(.catmullRom)
                 .foregroundStyle(by: .value("City", series.name))
-                .position(by: .value("Stack", isPercentStacked ? "percent" : "normal"))
+                .position(by: .value("Stack", stackingValue))
             }
         case .bubble:
             ForEach(series.dataPoints) { dataPoint in
@@ -425,7 +429,8 @@ struct ChartWithTooltip: View {
             ForEach(values, id: \.0) { (name, value, color) in
                 HStack(spacing: 8) {
                     Circle().fill(color).frame(width: 8, height: 8)
-                    Text("\(name): \(value, specifier: "%.1f")℃")
+                    let suffix = stackingType == .percent ? "%" : "℃"
+                    Text("\(name): \(value, specifier: "%.1f")\(suffix)")
                         .foregroundColor(.white)
                         .font(.caption)
                 }
