@@ -171,15 +171,15 @@ class AppleSwiftChartBuilder {
             ForEach(series.dataPoints) { dataPoint in
                 if stackingType == .none {
                     BarMark(
-                        x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        x: .value("Value", dataPoint.value),
+                        y: .value("Category", dataPoint.category)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                     .position(by: .value("Series", series.name))
                 } else {
                     BarMark(
-                        x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        x: .value("Value", dataPoint.value),
+                        y: .value("Category", dataPoint.category)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                 }
@@ -311,20 +311,36 @@ struct ChartWithTooltip: View {
                         }
                         .overlay(
                             Group {
-                                if let selectedCategory,
-                                   let xPos = proxy.position(forX: selectedCategory) {
-                                    // Crosshair
-                                    Path { path in
-                                        path.move(to: CGPoint(x: xPos, y: geo[proxy.plotAreaFrame].minY))
-                                        path.addLine(to: CGPoint(x: xPos, y: geo[proxy.plotAreaFrame].maxY))
-                                    }
-                                    .stroke(Color.white.opacity(0.7), style: StrokeStyle(lineWidth: 1, dash: [4, 2]))
-                                    .zIndex(1)
+                                if let selectedCategory {
+                                    if chartType == .bar {
+                                        // 水平条形图使用垂直的十字线
+                                        if let yPos = proxy.position(forY: selectedCategory) {
+                                            Path { path in
+                                                path.move(to: CGPoint(x: geo[proxy.plotAreaFrame].minX, y: yPos))
+                                                path.addLine(to: CGPoint(x: geo[proxy.plotAreaFrame].maxX, y: yPos))
+                                            }
+                                            .stroke(Color.white.opacity(0.7), style: StrokeStyle(lineWidth: 1, dash: [4, 2]))
+                                            .zIndex(1)
 
-                                    // Tooltip
-                                    tooltipView(category: selectedCategory, proxy: proxy, geometry: geo)
-                                        .position(x: min(max(xPos, 60), geo.size.width - 60), y: geo[proxy.plotAreaFrame].minY + 40)
-                                        .zIndex(2)
+                                            tooltipView(category: selectedCategory, proxy: proxy, geometry: geo)
+                                                .position(x: geo[proxy.plotAreaFrame].maxX - 60, y: min(max(yPos, 40), geo.size.height - 40))
+                                                .zIndex(2)
+                                        }
+                                    } else {
+                                        // 其他图表类型使用垂直的十字线
+                                        if let xPos = proxy.position(forX: selectedCategory) {
+                                            Path { path in
+                                                path.move(to: CGPoint(x: xPos, y: geo[proxy.plotAreaFrame].minY))
+                                                path.addLine(to: CGPoint(x: xPos, y: geo[proxy.plotAreaFrame].maxY))
+                                            }
+                                            .stroke(Color.white.opacity(0.7), style: StrokeStyle(lineWidth: 1, dash: [4, 2]))
+                                            .zIndex(1)
+
+                                            tooltipView(category: selectedCategory, proxy: proxy, geometry: geo)
+                                                .position(x: min(max(xPos, 60), geo.size.width - 60), y: geo[proxy.plotAreaFrame].minY + 40)
+                                                .zIndex(2)
+                                        }
+                                    }
                                 }
                             }
                         )
@@ -366,15 +382,15 @@ struct ChartWithTooltip: View {
             ForEach(series.dataPoints) { dataPoint in
                 if stackingType == .none {
                     BarMark(
-                        x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        x: .value("Value", dataPoint.value),
+                        y: .value("Category", dataPoint.category)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                     .position(by: .value("Series", series.name))
                 } else {
                     BarMark(
-                        x: .value("Category", dataPoint.category),
-                        y: .value("Value", dataPoint.value)
+                        x: .value("Value", dataPoint.value),
+                        y: .value("Category", dataPoint.category)
                     )
                     .foregroundStyle(by: .value("City", series.name))
                 }
@@ -465,22 +481,45 @@ struct ChartWithTooltip: View {
     private func findNearestCategory(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) -> (String, CGFloat)? {
         // 计算距离最近的 category
         let plotFrame = geometry[proxy.plotAreaFrame]
-        let x = location.x - plotFrame.origin.x
-        var minDistance: CGFloat = .infinity
-        var nearestCategory: String?
-        var nearestX: CGFloat = 0
-        for cat in categories {
-            if let catX = proxy.position(forX: cat) {
-                let distance = abs(catX - x)
-                if distance < minDistance {
-                    minDistance = distance
-                    nearestCategory = cat
-                    nearestX = catX
+        
+        if chartType == .bar {
+            // 对于水平条形图，使用 y 轴查找类别
+            let y = location.y - plotFrame.origin.y
+            var minDistance: CGFloat = .infinity
+            var nearestCategory: String?
+            var nearestY: CGFloat = 0
+            for cat in categories {
+                if let catY = proxy.position(forY: cat) {
+                    let distance = abs(catY - y)
+                    if distance < minDistance {
+                        minDistance = distance
+                        nearestCategory = cat
+                        nearestY = catY
+                    }
                 }
             }
-        }
-        if let nearestCategory {
-            return (nearestCategory, nearestX + plotFrame.origin.x)
+            if let nearestCategory {
+                return (nearestCategory, nearestY + plotFrame.origin.y)
+            }
+        } else {
+            // 对于其他图表类型，使用 x 轴查找类别
+            let x = location.x - plotFrame.origin.x
+            var minDistance: CGFloat = .infinity
+            var nearestCategory: String?
+            var nearestX: CGFloat = 0
+            for cat in categories {
+                if let catX = proxy.position(forX: cat) {
+                    let distance = abs(catX - x)
+                    if distance < minDistance {
+                        minDistance = distance
+                        nearestCategory = cat
+                        nearestX = catX
+                    }
+                }
+            }
+            if let nearestCategory {
+                return (nearestCategory, nearestX + plotFrame.origin.x)
+            }
         }
         return nil
     }
