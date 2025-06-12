@@ -25,11 +25,18 @@ struct ChartSeriesData: Identifiable {
     let dataPoints: [ChartCategoryDataPoint]
 }
 
+// 添加图表配置数据结构
+struct ChartConfiguration: Identifiable {
+    let id = UUID()
+    let title: String
+    let chartModel: AAChartModel
+}
+
 class AppleSwiftChartVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Swift Charts Example"
+        self.title = "Swift Charts Grid Examples"
         // Set a background color to make white axis labels visible
         if #available(iOS 13.0, *) {
             self.view.backgroundColor = .systemGray3
@@ -38,8 +45,8 @@ class AppleSwiftChartVC: UIViewController {
         }
 
         if #available(iOS 16.0, *) {
-            // 传入不同类型即可切换图表类型
-            setupSwiftChartView(chartType: .area)
+            // 显示网格视图而不是单一图表
+            setupChartGridView()
         } else {
             // Fallback for earlier iOS versions
             let label = UILabel()
@@ -55,9 +62,12 @@ class AppleSwiftChartVC: UIViewController {
     }
     
     @available(iOS 16.0, *)
-    private func setupSwiftChartView(chartType: AAChartType) {
-        let chart = AppleSwiftChartBuilder(chartType: chartType, stackingType: .none).makeChart()
-        let hostingController = UIHostingController(rootView: chart)
+    private func setupChartGridView() {
+        // 创建三种不同的图表配置
+        let chartConfigurations = createChartConfigurations()
+        let gridView = ChartGridView(configurations: chartConfigurations)
+        
+        let hostingController = UIHostingController(rootView: gridView)
         addChild(hostingController)
         view.addSubview(hostingController.view)
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +80,58 @@ class AppleSwiftChartVC: UIViewController {
         ])
         
         hostingController.didMove(toParent: self)
+    }
+    
+    @available(iOS 16.0, *)
+    private func createChartConfigurations() -> [ChartConfiguration] {
+        return [
+            ChartConfiguration(
+                title: "Area Chart",
+                chartModel: BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline)
+                    .stacking(.normal)
+            ),
+            ChartConfiguration(
+                title: "Column Chart",
+                chartModel: BasicChartComposer.configureColumnChartAndBarChart()
+                    .stacking(.normal)
+            ),
+            ChartConfiguration(
+                title: "Line Chart",
+                chartModel: BasicChartComposer.configureLineChartAndSplineChartStyle(.spline)
+            )
+        ]
+    }
+}
+
+// 添加网格视图 SwiftUI 组件
+@available(iOS 16.0, *)
+struct ChartGridView: View {
+    let configurations: [ChartConfiguration]
+    
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: [
+                GridItem(.flexible(), spacing: 10),
+                GridItem(.flexible(), spacing: 10)
+            ], spacing: 20) {
+                ForEach(configurations) { config in
+                    VStack {
+                        Text(config.title)
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                            .padding(.bottom, 5)
+                        
+                        AppleSwiftChartBuilder(chartModel: config.chartModel)
+                            .makeChart()
+                            .frame(height: 200)
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .shadow(radius: 2)
+                    }
+                }
+            }
+            .padding()
+        }
     }
 }
 
