@@ -142,38 +142,21 @@ class AppleSwiftChartBuilder {
         ]
     }
     
+    @State private var selectedCategory: String? = nil
+    @State private var currentLocation: CGPoint? = nil
+
     func makeChart() -> some View {
         let seriesNames = seriesData.map { $0.name }
-        return Chart {
-            ForEach(seriesData) { series in
-                self.seriesMarks(for: series)
-            }
-        }
-        .chartForegroundStyleScale(domain: seriesNames, range: colors.prefix(seriesNames.count))
-        .chartXAxis {
-            AxisMarks(values: .automatic) { _ in
-                AxisGridLine(stroke: StrokeStyle(dash: [2,3])).foregroundStyle(Color.gray.opacity(0.5))
-                AxisTick()
-                AxisValueLabel().foregroundStyle(Color.white)
-            }
-        }
-        .chartYAxis {
-            AxisMarks(values: .automatic) { axisValue in
-                AxisGridLine(stroke: StrokeStyle(dash: [2,3])).foregroundStyle(Color.gray.opacity(0.5))
-                AxisTick()
-                AxisValueLabel {
-                    if let doubleValue = axisValue.as(Double.self) {
-                        Text("\(doubleValue, format: .number.precision(.fractionLength(1)))℃")
-                            .foregroundColor(.white)
-                    }
-                }
-            }
-        }
-        .chartLegend(position: .bottom, alignment: .center) {
-            // Legend item style
-        }
+        // 使用 wrapper 以便 @State 生效
+        return ChartWithTooltip(
+            seriesData: seriesData,
+            colors: colors,
+            chartType: chartType,
+            seriesNames: seriesNames,
+            categories: categories
+        )
     }
-    
+
     @ChartContentBuilder
     private func seriesMarks(for series: ChartSeriesData) -> some ChartContent {
         switch chartType {
@@ -211,5 +194,188 @@ class AppleSwiftChartBuilder {
                 .foregroundStyle(by: .value("City", series.name))
             }
         }
+    }
+}
+
+// MARK: - Tooltip Chart Wrapper
+
+@available(iOS 16.0, *)
+struct ChartWithTooltip: View {
+    let seriesData: [ChartSeriesData]
+    let colors: [Color]
+    let chartType: AppleSwiftChartBuilder.ChartType
+    let seriesNames: [String]
+    let categories: [String]
+
+    @State private var selectedCategory: String? = nil
+    @State private var currentLocation: CGPoint? = nil
+
+    var body: some View {
+        ZStack {
+            Chart {
+                ForEach(seriesData) { series in
+                    chartMarks(for: series)
+                }
+            }
+            .chartForegroundStyleScale(domain: seriesNames, range: colors.prefix(seriesNames.count))
+            .chartXAxis {
+                AxisMarks(values: .automatic) { _ in
+                    AxisGridLine(stroke: StrokeStyle(dash: [2,3])).foregroundStyle(Color.gray.opacity(0.5))
+                    AxisTick()
+                    AxisValueLabel().foregroundStyle(Color.white)
+                }
+            }
+            .chartYAxis {
+                AxisMarks(values: .automatic) { axisValue in
+                    AxisGridLine(stroke: StrokeStyle(dash: [2,3])).foregroundStyle(Color.gray.opacity(0.5))
+                    AxisTick()
+                    AxisValueLabel {
+                        if let doubleValue = axisValue.as(Double.self) {
+                            Text("\(doubleValue, format: .number.precision(.fractionLength(1)))℃")
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+            }
+            .chartLegend(position: .bottom, alignment: .center) {
+                // Legend item style
+            }
+            .chartOverlay { proxy in
+                GeometryReader { geo in
+                    Rectangle().fill(Color.clear).contentShape(Rectangle())
+                        .gesture(
+                            DragGesture(minimumDistance: 0)
+                                .onChanged { value in
+                                    let location = value.location
+                                    currentLocation = location
+                                    if let (category, _) = findNearestCategory(location: location, proxy: proxy, geometry: geo) {
+                                        selectedCategory = category
+                                    }
+                                }
+                                .onEnded { _ in
+                                    // 保持 tooltip 显示，若需消失可设为 nil
+                                }
+                        )
+                        .onTapGesture {
+                            selectedCategory = nil
+                            currentLocation = nil
+                        }
+                        .overlay(
+                            Group {
+                                if let selectedCategory,
+                                   let xPos = proxy.position(forX: selectedCategory) {
+                                    // Crosshair
+                                    Path { path in
+                                        path.move(to: CGPoint(x: xPos, y: geo[proxy.plotAreaFrame].minY))
+                                        path.addLine(to: CGPoint(x: xPos, y: geo[proxy.plotAreaFrame].maxY))
+                                    }
+                                    .stroke(Color.white.opacity(0.7), style: StrokeStyle(lineWidth: 1, dash: [4, 2]))
+                                    .zIndex(1)
+
+                                    // Tooltip
+                                    tooltipView(category: selectedCategory, proxy: proxy, geometry: geo)
+                                        .position(x: min(max(xPos, 60), geo.size.width - 60), y: geo[proxy.plotAreaFrame].minY + 40)
+                                        .zIndex(2)
+                                }
+                            }
+                        )
+                }
+            }
+        }
+    }
+
+    @ChartContentBuilder
+    private func chartMarks(for series: ChartSeriesData) -> some ChartContent {
+        switch chartType {
+        case .area:
+            ForEach(series.dataPoints) { dataPoint in
+                AreaMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+            }
+        case .line:
+            ForEach(series.dataPoints) { dataPoint in
+                LineMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+                .symbol(by: .value("City", series.name))
+            }
+        case .bar:
+            ForEach(series.dataPoints) { dataPoint in
+                BarMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+            }
+        case .point:
+            ForEach(series.dataPoints) { dataPoint in
+                PointMark(
+                    x: .value("Category", dataPoint.category),
+                    y: .value("Value", dataPoint.value)
+                )
+                .foregroundStyle(by: .value("City", series.name))
+            }
+        }
+    }
+
+    private func findNearestCategory(location: CGPoint, proxy: ChartProxy, geometry: GeometryProxy) -> (String, CGFloat)? {
+        // 计算距离最近的 category
+        let plotFrame = geometry[proxy.plotAreaFrame]
+        let x = location.x - plotFrame.origin.x
+        var minDistance: CGFloat = .infinity
+        var nearestCategory: String?
+        var nearestX: CGFloat = 0
+        for cat in categories {
+            if let catX = proxy.position(forX: cat) {
+                let distance = abs(catX - x)
+                if distance < minDistance {
+                    minDistance = distance
+                    nearestCategory = cat
+                    nearestX = catX
+                }
+            }
+        }
+        if let nearestCategory {
+            return (nearestCategory, nearestX + plotFrame.origin.x)
+        }
+        return nil
+    }
+
+    @ViewBuilder
+    private func tooltipView(category: String, proxy: ChartProxy, geometry: GeometryProxy) -> some View {
+        let values: [(String, Double, Color)] = seriesData.enumerated().compactMap { idx, series in
+            if let dp = series.dataPoints.first(where: { $0.category == category }) {
+                return (series.name, dp.value, colors[idx])
+            }
+            return nil
+        }
+        VStack(alignment: .leading, spacing: 4) {
+            Text(category)
+                .font(.headline)
+                .foregroundColor(.white)
+            ForEach(values, id: \.0) { (name, value, color) in
+                HStack(spacing: 8) {
+                    Circle().fill(color).frame(width: 8, height: 8)
+                    Text("\(name): \(value, specifier: "%.1f")℃")
+                        .foregroundColor(.white)
+                        .font(.caption)
+                }
+            }
+        }
+        .padding(10)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.black.opacity(0.85))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.white.opacity(0.2), lineWidth: 1)
+        )
+        .shadow(radius: 4)
     }
 }
