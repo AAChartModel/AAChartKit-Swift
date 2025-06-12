@@ -25,13 +25,6 @@ struct ChartSeriesData: Identifiable {
     let dataPoints: [ChartCategoryDataPoint]
 }
 
-// 添加图表配置数据结构
-struct ChartConfiguration: Identifiable {
-    let id = UUID()
-    let title: String
-    let chartModel: AAChartModel
-}
-
 class AppleSwiftChartVC: UIViewController {
 
     override func viewDidLoad() {
@@ -63,9 +56,9 @@ class AppleSwiftChartVC: UIViewController {
     
     @available(iOS 16.0, *)
     private func setupChartGridView() {
-        // 创建三种不同的图表配置
-        let chartConfigurations = createChartConfigurations()
-        let gridView = ChartGridView(configurations: chartConfigurations)
+        // 创建图表模型数组
+        let chartModels = createChartModels()
+        let gridView = ChartGridView(chartModels: chartModels)
         
         let hostingController = UIHostingController(rootView: gridView)
         addChild(hostingController)
@@ -83,30 +76,21 @@ class AppleSwiftChartVC: UIViewController {
     }
     
     @available(iOS 16.0, *)
-    private func createChartConfigurations() -> [ChartConfiguration] {
+    private func createChartModels() -> [AAChartModel] {
         return [
-            ChartConfiguration(
-                title: "Area Chart",
-                chartModel: BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline)
-                    .stacking(.normal)
-            ),
-            ChartConfiguration(
-                title: "Column Chart",
-                chartModel: BasicChartComposer.configureColumnChartAndBarChart()
-                    .stacking(.normal)
-            ),
-            ChartConfiguration(
-                title: "Line Chart",
-                chartModel: BasicChartComposer.configureLineChartAndSplineChartStyle(.spline)
-            )
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline)
+                .stacking(.normal),
+            BasicChartComposer.configureColumnChartAndBarChart()
+                .stacking(.normal),
+            BasicChartComposer.configureLineChartAndSplineChartStyle(.spline)
         ]
     }
 }
 
-// 添加网格视图 SwiftUI 组件
+// 简化网格视图 SwiftUI 组件
 @available(iOS 16.0, *)
 struct ChartGridView: View {
-    let configurations: [ChartConfiguration]
+    let chartModels: [AAChartModel]
     
     var body: some View {
         ScrollView {
@@ -114,14 +98,14 @@ struct ChartGridView: View {
                 GridItem(.flexible(), spacing: 10),
                 GridItem(.flexible(), spacing: 10)
             ], spacing: 20) {
-                ForEach(configurations) { config in
+                ForEach(Array(chartModels.enumerated()), id: \.offset) { index, chartModel in
                     VStack {
-                        Text(config.title)
+                        Text(getChartTitle(for: chartModel))
                             .font(.headline)
                             .foregroundColor(.primary)
                             .padding(.bottom, 5)
                         
-                        AppleSwiftChartBuilder(chartModel: config.chartModel)
+                        AppleSwiftChartBuilder(chartModel: chartModel)
                             .makeChart()
                             .frame(height: 200)
                             .background(Color.white)
@@ -131,6 +115,23 @@ struct ChartGridView: View {
                 }
             }
             .padding()
+        }
+    }
+    
+    private func getChartTitle(for chartModel: AAChartModel) -> String {
+        switch chartModel.chartType {
+        case .area, .areaspline:
+            return "Area Chart"
+        case .column:
+            return "Column Chart"
+        case .line, .spline:
+            return "Line Chart"
+        case .bar:
+            return "Bar Chart"
+        case .pie:
+            return "Pie Chart"
+        default:
+            return "Chart"
         }
     }
 }
