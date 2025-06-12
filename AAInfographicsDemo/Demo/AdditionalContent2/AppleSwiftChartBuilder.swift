@@ -45,52 +45,182 @@ class AppleSwiftChartBuilder {
     
     private let chartType: AAChartType
     private let stackingType: AAChartStackingType
+    private let chartModel: AAChartModel?
     
     init(chartType: AAChartType = .area, stackingType: AAChartStackingType = .none) {
         self.chartType = chartType
         self.stackingType = stackingType
+        self.chartModel = nil
     }
     
-    private let categories = ["Java", "Swift", "Python", "Ruby", "PHP", "Go",
-                              "C", "C#", "C++", "Rust", "Kotlin", "TypeScript"]
-    private let tokyoValues = [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-    private let newYorkValues = [0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-    private let londonValues = [0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-    private let berlinValues = [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-    private let colors: [Color] = [
-        Color(hex: "#1e90ff"), // Tokyo
-        Color(hex: "#ef476f"), // NewYork
-        Color(hex: "#ffd066"), // London
-        Color(hex: "#04d69f"), // Berlin
-        Color(hex: "#25547c")  // 5th color, unused with 4 series
-    ]
+    init(chartModel: AAChartModel) {
+        self.chartType = chartModel.chartType ?? .area
+        self.stackingType = chartModel.stacking ?? .none
+        self.chartModel = chartModel
+    }
     
-    private var seriesData: [ChartSeriesData] {
-        if stackingType == .percent {
-            // 计算每个类别下的总和
-            let allValues = [tokyoValues, newYorkValues, londonValues, berlinValues]
-            var percentSeries: [[Double]] = Array(repeating: [], count: allValues.count)
-            for i in 0..<categories.count {
-                let sum = allValues.reduce(0) { $0 + $1[i] }
-                for (j, values) in allValues.enumerated() {
-                    let percent = sum > 0 ? values[i] / sum * 100.0 : 0
-                    percentSeries[j].append(percent)
+    private var categories: [String] {
+        if let model = chartModel,
+           let categories = model.categories {
+            return categories
+        }
+        return ["Java", "Swift", "Python", "Ruby", "PHP", "Go",
+                "C", "C#", "C++", "Rust", "Kotlin", "TypeScript"]
+    }
+    
+    private var seriesArray: [AASeriesElement] {
+        if let model = chartModel,
+           let series = model.series {
+            print("📊 [DEBUG] chartModel.series 类型: \(type(of: series))")
+            print("📊 [DEBUG] chartModel.series 数量: \(series.count)")
+            
+            // 更安全的类型转换
+            if let seriesElements = series as? [AASeriesElement] {
+                print("📊 [DEBUG] 成功转换为 [AASeriesElement], 数量: \(seriesElements.count)")
+                for (index, element) in seriesElements.enumerated() {
+                    print("📊 [DEBUG] Series[\(index)]: name=\(element.name ?? "nil"), data类型=\(type(of: element.data))")
+                    if let dataArray = element.data as? [Any] {
+                        print("📊 [DEBUG] Series[\(index)] data数量: \(dataArray.count), 前3个值: \(Array(dataArray.prefix(3)))")
+                    }
+                }
+                return seriesElements
+            } else {
+                print("❌ [ERROR] 无法将 series 转换为 [AASeriesElement]")
+                print("❌ [ERROR] series 实际类型: \(type(of: series))")
+                
+                // 尝试其他可能的类型转换
+                if let anyArray = series as? [Any] {
+                    print("📊 [DEBUG] series 是 [Any] 类型，尝试逐个转换")
+                    let convertedSeries = anyArray.compactMap { $0 as? AASeriesElement }
+                    print("📊 [DEBUG] 转换后的 series 数量: \(convertedSeries.count)")
+                    if !convertedSeries.isEmpty {
+                        return convertedSeries
+                    }
                 }
             }
-            return [
-                ChartSeriesData(name: "Tokyo", dataPoints: zip(categories, percentSeries[0]).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
-                ChartSeriesData(name: "NewYork", dataPoints: zip(categories, percentSeries[1]).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
-                ChartSeriesData(name: "London", dataPoints: zip(categories, percentSeries[2]).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
-                ChartSeriesData(name: "Berlin", dataPoints: zip(categories, percentSeries[3]).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) })
-            ]
         } else {
-            return [
-                ChartSeriesData(name: "Tokyo", dataPoints: zip(categories, tokyoValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
-                ChartSeriesData(name: "NewYork", dataPoints: zip(categories, newYorkValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
-                ChartSeriesData(name: "London", dataPoints: zip(categories, londonValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) }),
-                ChartSeriesData(name: "Berlin", dataPoints: zip(categories, berlinValues).map { ChartCategoryDataPoint(category: $0.0, value: $0.1) })
-            ]
+            print("📊 [DEBUG] 使用默认数据，chartModel 或 series 为 nil")
         }
+        
+        // 默认数据
+        let tokyoValues = [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+        let newYorkValues = [0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+        let londonValues = [0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+        let berlinValues = [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        
+        print("📊 [DEBUG] 返回默认数据")
+        return [
+            AASeriesElement().name("Tokyo").data(tokyoValues),
+            AASeriesElement().name("NewYork").data(newYorkValues),
+            AASeriesElement().name("London").data(londonValues),
+            AASeriesElement().name("Berlin").data(berlinValues)
+        ]
+    }
+    
+    private var colors: [Color] {
+        if let model = chartModel,
+           let colorsArray = model.colorsTheme {
+            print("📊 [DEBUG] 使用 chartModel 的颜色主题，数量: \(colorsArray.count)")
+            return colorsArray.compactMap { colorItem in
+                if let colorString = colorItem as? String {
+                    return Color(hex: colorString)
+                }
+                return nil
+            }
+        }
+        print("📊 [DEBUG] 使用默认颜色主题")
+        return [
+            Color(hex: "#1e90ff"), // Tokyo
+            Color(hex: "#ef476f"), // NewYork
+            Color(hex: "#ffd066"), // London
+            Color(hex: "#04d69f"), // Berlin
+            Color(hex: "#25547c")  // 5th color
+        ]
+    }
+    
+    private var seriesData: [ChartSeriesData] {
+        let series = seriesArray
+        let cats = categories
+        
+        print("📊 [DEBUG] 开始处理 seriesData，series数量: \(series.count), categories数量: \(cats.count)")
+        print("📊 [DEBUG] stackingType: \(stackingType)")
+        
+        if stackingType == .percent {
+            // 计算每个类别下的总和
+            var allValues: [[Double]] = []
+            for seriesElement in series {
+                if let dataArray = seriesElement.data as? [Double] {
+                    allValues.append(dataArray)
+                } else if let dataArray = seriesElement.data as? [Any] {
+                    let doubleArray = dataArray.compactMap { $0 as? Double }
+                    allValues.append(doubleArray)
+                }
+            }
+            
+            if !allValues.isEmpty {
+                var percentSeries: [[Double]] = Array(repeating: [], count: allValues.count)
+                let maxCount = min(cats.count, allValues[0].count)
+                
+                for i in 0..<maxCount {
+                    let sum = allValues.reduce(0) { $0 + (i < $1.count ? $1[i] : 0) }
+                    for (j, values) in allValues.enumerated() {
+                        let value = i < values.count ? values[i] : 0
+                        let percent = sum > 0 ? value / sum * 100.0 : 0
+                        percentSeries[j].append(percent)
+                    }
+                }
+                
+                return series.enumerated().map { index, seriesElement in
+                    let name = seriesElement.name ?? "Series \(index + 1)"
+                    let dataPoints = zip(cats.prefix(percentSeries[index].count), percentSeries[index]).map {
+                        ChartCategoryDataPoint(category: $0.0, value: $0.1)
+                    }
+                    return ChartSeriesData(name: name, dataPoints: dataPoints)
+                }
+            }
+        }
+        
+        // 正常数据或百分比计算失败时的处理
+        let result = series.enumerated().map { index, seriesElement in
+            let name = seriesElement.name ?? "Series \(index + 1)"
+            var dataPoints: [ChartCategoryDataPoint] = []
+            
+            print("📊 [DEBUG] 处理 Series[\(index)]: \(name)")
+            
+            if let dataArray = seriesElement.data as? [Double] {
+                print("📊 [DEBUG] Series[\(index)] 数据类型: [Double], 数量: \(dataArray.count)")
+                dataPoints = zip(cats.prefix(dataArray.count), dataArray).map {
+                    ChartCategoryDataPoint(category: $0.0, value: $0.1)
+                }
+            } else if let dataArray = seriesElement.data as? [Any] {
+                print("📊 [DEBUG] Series[\(index)] 数据类型: [Any], 数量: \(dataArray.count)")
+                let doubleArray = dataArray.compactMap { item -> Double? in
+                    if let doubleValue = item as? Double {
+                        return doubleValue
+                    } else if let intValue = item as? Int {
+                        return Double(intValue)
+                    } else if let floatValue = item as? Float {
+                        return Double(floatValue)
+                    } else if let stringValue = item as? String, let doubleValue = Double(stringValue) {
+                        return doubleValue
+                    }
+                    print("⚠️ [WARNING] 无法转换数据项: \(item), 类型: \(type(of: item))")
+                    return nil
+                }
+                print("📊 [DEBUG] Series[\(index)] 转换后的 Double 数组数量: \(doubleArray.count)")
+                dataPoints = zip(cats.prefix(doubleArray.count), doubleArray).map {
+                    ChartCategoryDataPoint(category: $0.0, value: $0.1)
+                }
+            } else {
+                print("❌ [ERROR] Series[\(index)] 数据类型未知: \(type(of: seriesElement.data))")
+            }
+            
+            print("📊 [DEBUG] Series[\(index)] 最终数据点数量: \(dataPoints.count)")
+            return ChartSeriesData(name: name, dataPoints: dataPoints)
+        }
+        
+        print("📊 [DEBUG] seriesData 处理完成，总数量: \(result.count)")
+        return result
     }
     
     @State private var selectedCategory: String? = nil
