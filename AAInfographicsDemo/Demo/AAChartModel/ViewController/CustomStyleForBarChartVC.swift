@@ -28,13 +28,21 @@ class CustomStyleForBarChartVC: AABaseChartVC {
 
         case "specialStyleForTheSingleDataElementOfBarChart": return CustomStyleForBarChartComposer.specialStyleForTheSingleDataElementOfBarChart()
         case "noMoreGroupingAndOverlapEachOtherBarChart": return CustomStyleForBarChartComposer.noMoreGroupingAndOverlapEachOtherBarChart()
-        case "noMoreGroupingAndNestedBarChart": return CustomStyleForBarChartComposer.noMoreGroupingAndNestedBarChart()
         case "topRoundedCornersStackingBarChart": return CustomStyleForBarChartComposer.topRoundedCornersStackingBarChart()
         case "freeStyleRoundedCornersStackingBarChart": return CustomStyleForBarChartComposer.freeStyleRoundedCornersStackingBarChart()
 
         case "customBorderStyleAndStatesHoverColorBarChart": return CustomStyleForBarChartComposer.customBorderStyleAndStatesHoverColorBarChart()
         case "negativeDataMixedPositiveDataBarChart": return CustomStyleForBarChartComposer.negativeDataMixedPositiveDataBarChart()
         case "customAnimationForBarChart": return CustomStyleForBarChartComposer.customAnimationForBarChart()
+            
+            
+
+        case "noMoreGroupingAndNestedBarChart": return CustomStyleForBarChartComposer.noMoreGroupingAndNestedBarChart()
+            case "configureNegativeColorMixedBarChart": return CustomStyleForBarChartComposer.configureNegativeColorMixedBarChart()
+        case "customSingleDataElementSpecialStyleForBarChart": return CustomStyleForBarChartComposer.customSingleDataElementSpecialStyleForBarChart()
+        case "customHoverColorAndSelectColorForBarChart": return CustomStyleForBarChartComposer.customHoverColorAndSelectColorForBarChart()
+        case "customNormalStackingChartDataLabelsContentAndStyleForBarChart": return CustomStyleForBarChartComposer.customNormalStackingChartDataLabelsContentAndStyleForBarChart()
+
 
         default: return nil
         }
