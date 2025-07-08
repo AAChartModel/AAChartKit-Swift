@@ -40,7 +40,7 @@ import WebKit
     @objc optional func aaChartView(_ aaChartView: AAChartView, moveOverEventMessage: AAMoveOverEventMessageModel)
 }
 
-
+/// Refer to: https://api.highcharts.com/class-reference/Highcharts.Point
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AAEventMessageModel: NSObject {
     public var name: String?
