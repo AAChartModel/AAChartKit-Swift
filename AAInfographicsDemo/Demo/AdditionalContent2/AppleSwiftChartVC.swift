@@ -79,7 +79,21 @@ class AppleSwiftChartVC: UIViewController {
     private func createChartModels() -> [AAChartModel] {
 //        return ChartSampleProvider.randomValueDataItemsChartModel()
         return [
-            SpecialChartComposer.scatterChart(),
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.areaspline).stacking(.none),
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.areaspline).stacking(.normal),
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.areaspline).stacking(.percent),
+            
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.area).stacking(.none),
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.area).stacking(.normal),
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.area).stacking(.percent),
+
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.column).stacking(.none),
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.column).stacking(.normal),
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.column).stacking(.percent),
+            
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.bar).stacking(.none),
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.bar).stacking(.normal),
+            BasicChartComposer.configureAreaChartAndAreasplineChartStyle(.areaspline).chartType(.bar).stacking(.percent),
             
             CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.area),
             CustomStyleForAreaChartComposer.withMinusNumberAreaChart().chartType(.areaspline),
