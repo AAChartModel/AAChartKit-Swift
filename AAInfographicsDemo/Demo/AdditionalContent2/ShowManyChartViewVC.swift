@@ -42,74 +42,70 @@ class ShowManyChartViewVC: UIViewController {
         title = "同时显示多个图表"
         view.backgroundColor = .white
         
-        setUpTheAAChartViewOne()
-        setUpTheAAChartViewTwo()
-        
+        setupChartView()
     }
     
-   private func setUpTheAAChartViewOne() {
-        let chartViewWidth  = view.frame.size.width
-        let screenHeight = view.frame.size.height - 60
+    private func setupChartView() {
+        // Create the stack view to hold the chart views
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
+        view.addSubview(stackView)
         
-        let aaChartView = AAChartView()
-        aaChartView.frame = CGRect(x: 0,
-                                   y: 60,
-                                   width: chartViewWidth,
-                                   height: screenHeight / 2)
-        aaChartView.isScrollEnabled = false
-        aaChartView.contentHeight = (screenHeight / 2) - 20
-        view.addSubview(aaChartView)
+        // Setup constraints for the stack view
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         
-        let  aaChartModel = AAChartModel()
-            .chartType(.bar)//图形类型
-            .animationType(.bounce)//图形渲染动画类型为"bounce"
-            .title("都市天气")//图形标题
-            .subtitle("2020年08月08日")//图形副标题
-            .dataLabelsEnabled(false)//是否显示数字
+        // Create and configure the first chart view
+        let aaChartView1 = AAChartView()
+        stackView.addArrangedSubview(aaChartView1)
+        let aaChartModel1 = configureBarChartModel()
+        aaChartView1.aa_drawChartWithChartModel(aaChartModel1)
+        
+        // Create and configure the second chart view
+        let aaChartView2 = AAChartView()
+        stackView.addArrangedSubview(aaChartView2)
+        let aaChartModel2 = configureAreaChartModel()
+        aaChartView2.aa_drawChartWithChartModel(aaChartModel2)
+    }
+    
+    private func configureBarChartModel() -> AAChartModel {
+        return AAChartModel()
+            .chartType(.bar)
+            .animationType(.bounce)
+            .title("都市天气")
+            .subtitle("2020年08月08日")
+            .dataLabelsEnabled(false)
             .colorsTheme(["#fe117c","#ffc069","#06caf4","#7dffc0"])
             .stacking(.percent)
             .series([
                 AASeriesElement()
                     .name("Tokyo")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    ,
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]),
                 AASeriesElement()
                     .name("New York")
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    ,
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]),
                 AASeriesElement()
                     .name("Berlin")
-                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                    ,
+                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]),
                 AASeriesElement()
                     .name("London")
-                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                    ,
+                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
             ])
-        
-        aaChartView.aa_drawChartWithChartModel(aaChartModel)
-        
     }
     
-   private func setUpTheAAChartViewTwo() {
-        let chartViewWidth  = view.frame.size.width
-        let screenHeight = view.frame.size.height - 60
-        
-        let aaChartView2 = AAChartView()
-        aaChartView2.frame = CGRect(x:0,
-                                    y:screenHeight / 2 + 60,
-                                    width:chartViewWidth,
-                                    height:screenHeight / 2)
-        aaChartView2.isScrollEnabled = false
-        view.addSubview(aaChartView2)
-        
-        let  aaChartModel2 = AAChartModel()
-            .chartType(.area)//图形类型
-            .animationType(.bounce)//图形渲染动画类型为"bounce"
-            .title("都市天气")//图形标题
-            .subtitle("2020年08月08日")//图形副标题
-            .dataLabelsEnabled(false)//是否显示数字
-            .markerRadius(4)//折线连接点半径长度,为0时相当于没有折线连接点
+    private func configureAreaChartModel() -> AAChartModel {
+        return AAChartModel()
+            .chartType(.area)
+            .animationType(.bounce)
+            .title("都市天气")
+            .subtitle("2020年08月08日")
+            .dataLabelsEnabled(false)
+            .markerRadius(4)
             .markerSymbolStyle(.innerBlank)
             .legendEnabled(true)
             .tooltipEnabled(false)
@@ -126,28 +122,21 @@ class ShowManyChartViewVC: UIViewController {
                 "地<br>狱<br>边<br>境",
                 "闪<br>客",
                 "忍<br>者<br>之<br>印"
-                ])
+            ])
             .series([
                 AASeriesElement()
                     .name("Tokyo")
-                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6])
-                    ,
+                    .data([7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]),
                 AASeriesElement()
                     .name("New York")
-                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5])
-                    ,
+                    .data([0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]),
                 AASeriesElement()
                     .name("Berlin")
-                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0])
-                    ,
+                    .data([0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]),
                 AASeriesElement()
                     .name("London")
-                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8])
-                    ,
+                    .data([3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]),
             ])
-        
-        aaChartView2.aa_drawChartWithChartModel(aaChartModel2)
-
     }
  
  }
