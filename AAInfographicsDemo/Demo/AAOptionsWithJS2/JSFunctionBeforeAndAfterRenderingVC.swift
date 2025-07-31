@@ -22,7 +22,7 @@ class JSFunctionBeforeAndAfterRenderingVC: AABaseChartVC {
         case 0: return JSFunctionBeforeAndAfterRenderingComposer.clockChart()
         case 1: return JSFunctionBeforeAndAfterRenderingComposer3.synchronizedChart()
         case 2: return JSFunctionBeforeAndAfterRenderingComposer4.sparklineChart()
-            
+        case 3: return JSFunctionBeforeAndAfterRenderingComposer6.customXAxisLabelsWithBase64ImageChart()
         default:
             return nil
         }
