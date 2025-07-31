@@ -67,10 +67,20 @@ class JSFunctionBeforeAndAfterRenderingComposer6 {
     }
     
     static func customXAxisLabelsWithBase64ImageChart2() -> AAOptions {
-        let emojis = ["😀", "😃", "😄", "😁", "😆", "😅", "😂", "🤣", "😊", "😇", "🙂", "🙃"]
+        // 使用 EmojiProvider 提供的表情符号(截取数组中的前 12 个表情符号)
+        let emojis = Array(EmojiProvider.clothingAndAccessories().prefix(12))
+
+        // 将每个 emoji 转换为 Base64 编码的 PNG 图像
         let base64Images = emojis.compactMap { emojiToBase64PNG($0) }
         let categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        // 将 Base64 编码的图像转换为 JavaScript 数组格式
+        // 注意: 这里的字符串需要用单引号包裹, 因为 Highcharts 的 formatter 函数使用单引号来包裹字符串
+        // 这样可以避免与 JavaScript 中的双引号冲突
+        // 生成 JavaScript 数组字符串
+        // 将 Base64 编码的图像转换为 JavaScript 数组格式
         let imagesJSArray = base64Images.map { "'\($0)'" }.joined(separator: ",")
+        // 使用 JavaScript 函数来格式化 x 轴标签
+        // 这里使用了模板字符串来插入 Base64 编码的图像
         let formatterJS = """
             function() {
                 const images = [
@@ -78,7 +88,7 @@ class JSFunctionBeforeAndAfterRenderingComposer6 {
                 ];
                 const idx = this.pos;
                 const img = images[idx] || images[0];
-                return `<img src=\"data:image/png;base64,${img}\" style=\"width:32px; height:32px; vertical-align:middle;\" /> ${this.value}`;
+                return `<img src=\"data:image/png;base64,${img}\" style=\"width:64px; height:64px; vertical-align:middle;\" /> ${this.value}`;
             }
         """
         let aaOptions = AAOptions()
