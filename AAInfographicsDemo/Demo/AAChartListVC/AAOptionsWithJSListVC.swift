@@ -123,6 +123,7 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "synchronizedChart",
                 "sparklineChart",
                 "customXAxisLabelsWithBase64ImageChart",
+                "customXAxisLabelsWithBase64ImageChart2",
             ]
 
         ]
