@@ -11,6 +11,8 @@ import AAInfographics
 class JSFunctionBeforeAndAfterRenderingComposer6 {
     
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/546
+    //https://www.highcharts.com/forum/viewtopic.php?t=49610
+    //https://jsfiddle.net/BlackLabel/q65az9us/
     static func customXAxisLabelsWithBase64ImageChart() -> AAOptions {
         let aaOptions = AAOptions()
             .beforeDrawChartJavaScript("""
