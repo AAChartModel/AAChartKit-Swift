@@ -92,6 +92,7 @@
 		8447362C2DAFAE140040CCCE /* AAChartViewPluginProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447362B2DAFAE140040CCCE /* AAChartViewPluginProvider.swift */; };
 		844736312DAFCEF70040CCCE /* AARounded-Corners.js in Resources */ = {isa = PBXBuildFile; fileRef = 844736302DAFCEF70040CCCE /* AARounded-Corners.js */; };
 		8447363B2DAFD2AD0040CCCE /* AARoundedCornersChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447363A2DAFD2AD0040CCCE /* AARoundedCornersChartVC.swift */; };
+		844C13262E3C5425000F29D4 /* ScrollingUpdateDataVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844C13252E3C5425000F29D4 /* ScrollingUpdateDataVC2.swift */; };
 		844F11402B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */; };
 		844F11462B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */; };
 		844F11482B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F11472B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift */; };
@@ -349,6 +350,7 @@
 		8447362B2DAFAE140040CCCE /* AAChartViewPluginProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChartViewPluginProvider.swift; sourceTree = "<group>"; };
 		844736302DAFCEF70040CCCE /* AARounded-Corners.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "AARounded-Corners.js"; sourceTree = "<group>"; };
 		8447363A2DAFD2AD0040CCCE /* AARoundedCornersChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AARoundedCornersChartVC.swift; sourceTree = "<group>"; };
+		844C13252E3C5425000F29D4 /* ScrollingUpdateDataVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingUpdateDataVC2.swift; sourceTree = "<group>"; };
 		844F113F2B635C9900ADEB1C /* JSFunctionForAAChartEventsVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC2.swift; sourceTree = "<group>"; };
 		844F11452B689B8600ADEB1C /* CustomXAxisLabelsClickEventCallbackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomXAxisLabelsClickEventCallbackVC.swift; path = AAInfographicsDemo/Demo/BackUpContent/CustomXAxisLabelsClickEventCallbackVC.swift; sourceTree = SOURCE_ROOT; };
 		844F11472B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForLineChartComposer.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				84526E2A2CF0849700EB2563 /* TripleChartsLinkedWorkVC2.swift */,
 				277066102452E99C00C4581D /* ScrollableChartVC.swift */,
 				449A0ED52377149D009F8FE1 /* ScrollingUpdateDataVC.swift */,
+				844C13252E3C5425000F29D4 /* ScrollingUpdateDataVC2.swift */,
 				2763384424A7070F00143B9B /* DataSortingWithAnimationChartVC.swift */,
 				448330B724E270FE00368A30 /* AdvancedUpdatingFeatureVC.swift */,
 				84DEA0D72846013F00D0206F /* CustomTouchEndEventCallbackVC.swift */,
@@ -1099,6 +1102,7 @@
 				84086B1628E44B19006BD30D /* JSFunctionForAALegendVC.swift in Sources */,
 				8441C0932C62082500A6F784 /* CustomStyleForSplineChartComposer.swift in Sources */,
 				840716572A6FC5170037193B /* ScatterChartOptionsVC.swift in Sources */,
+				844C13262E3C5425000F29D4 /* ScrollingUpdateDataVC2.swift in Sources */,
 				84DEA0D42845ADEB00D0206F /* CustomMouseOutEventCallback.swift in Sources */,
 				449A0ED62377149D009F8FE1 /* ScrollingUpdateDataVC.swift in Sources */,
 				840EEB882E3B503F00EDC233 /* JSFunctionBeforeAndAfterRenderingComposer6.swift in Sources */,

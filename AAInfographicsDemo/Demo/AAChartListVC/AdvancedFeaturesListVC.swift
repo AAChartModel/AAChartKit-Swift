@@ -34,6 +34,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
             "Sort Algorithm Demo | 排序算法演示",
             //插件功能演示
             "Plugin Function Demo | 插件功能演示",
+            "Scrolling update chart data 2 | 滚动刷新图表数据 2",
+
         ]
         
         chartTypeTitleArr = [
@@ -156,7 +158,19 @@ class AdvancedFeaturesListVC: AABaseListVC {
                 "Single Rounded Corners Columnrange Chart---单独设置柱形范围图的圆角",
                 //单独设置柱形范围图的圆角(反转)
                 "Single Rounded Corners Columnrange Chart(inverted)---单独设置柱形范围图的圆角(反转)",
-            ]
+            ],
+            /*Scrollable  chart 2 */
+            [
+//                "Column Chart---柱形图",
+//               "Bar Chart---条形图",
+//               "Area Chart---折线填充图",
+               "Areaspline Chart---曲线填充图",
+//               "Step Area Chart---直方折线填充图",
+//               "Step Line Chart---直方折线图",
+//               "Line Chart---折线图",
+//               "Spline Chart---曲线图",
+//               "Scatter Chart---散点图",
+            ],
         ]
         
         chartTypeArr = [
@@ -441,6 +455,18 @@ extension AdvancedFeaturesListVC {
             ] as [AAChartType]
             vc.navigationItemTitleArr = chartTypeArr
             vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 13:
+            /*Scrolling update Chart Data Dynamiclly*/
+            let vc = ScrollingUpdateDataVC2()
+//            vc.selectedIndex = indexPath.row
+//            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+//            vc.step = false
+//            if indexPath.row == 4 || indexPath.row == 5 {
+//                vc.step = true
+//            }
+//            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         default:
