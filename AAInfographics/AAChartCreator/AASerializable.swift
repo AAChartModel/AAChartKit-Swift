@@ -34,11 +34,9 @@ import Foundation
 
 open class AAObject {
     public init() {}
-}
 
-@available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
-public extension AAObject {
-    var classNameString: String {
+    @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
+    open var classNameString: String {
         let nameClass: AnyClass! = object_getClass(self)
         return NSStringFromClass(nameClass)
     }
