@@ -37,8 +37,7 @@ open class AAObject {
 
     @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
     open var classNameString: String {
-        let nameClass: AnyClass! = object_getClass(self)
-        return NSStringFromClass(nameClass)
+        return String(describing: type(of: self))
     }
 }
 
