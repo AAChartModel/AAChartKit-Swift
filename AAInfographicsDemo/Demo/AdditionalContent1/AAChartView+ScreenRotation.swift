@@ -38,6 +38,7 @@ extension AAChartView {
     
     public func aa_resizeChart(animation: AAAnimation) {
         let animationJsonStr = animation.toJSON()
+        let animationEasing: String = animation.easing ?? "linear"
         //        let jsFuncStr = "changeChartSize('\(frame.size.width)','\(frame.size.height)','\(animationJsonStr)')"
         let jsFuncStr =
                 """
@@ -51,7 +52,7 @@ extension AAChartView {
                         // Parse the received JSON string
                         aaAnimation = JSON.parse(receivedAnimation);
                         let animationEasingType = aaAnimation.easing;
-                        aaAnimation.easing = configureTheChartAnimationEasingType(animationEasingType);
+                        aaAnimation.easing = \(animationEasing);
                     }
                     
                     aaGlobalChart.setSize(receivedWidth, receivedHeight, aaAnimation);
