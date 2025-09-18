@@ -6,6 +6,7 @@
 //  Copyright © 2025 An An. All rights reserved.
 //
 
+//https://api.highcharts.com/highcharts/xAxis.title.align
 //https://api.highcharts.com/highcharts/yAxis.title.align
 public enum AAChartAxisTitleAlignValueType: String {
     case high
