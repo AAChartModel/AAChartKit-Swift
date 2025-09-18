@@ -70,7 +70,7 @@ class ScatterChartOptionsVC: AABaseChartVC {
         aaOptions.plotOptions?
             .scatter(AAScatter()
                 .enableMouseTracking(false)//关闭 hover/click
-                .stickyTracking(false))
+                )
         
         return aaOptions
     }
