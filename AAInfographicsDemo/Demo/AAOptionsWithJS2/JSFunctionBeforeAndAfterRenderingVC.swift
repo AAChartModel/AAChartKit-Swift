@@ -24,6 +24,8 @@ class JSFunctionBeforeAndAfterRenderingVC: AABaseChartVC {
         case 2: return JSFunctionBeforeAndAfterRenderingComposer4.sparklineChart()
         case 3: return JSFunctionBeforeAndAfterRenderingComposer6.customXAxisLabelsWithBase64ImageChart()
         case 4: return JSFunctionBeforeAndAfterRenderingComposer6.customXAxisLabelsWithBase64ImageChart2()
+//        case 0: return JSFunctionBeforeAndAfterRenderingComposer7.customFontFaceChart()
+//        case 1: return JSFunctionBeforeAndAfterRenderingComposer7.multipleFontStylesPlotLinesChart()
         default:
             return nil
         }
