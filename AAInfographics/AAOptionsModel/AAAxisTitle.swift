@@ -6,27 +6,27 @@
 //  Copyright © 2025 An An. All rights reserved.
 //
 
-//https://api.highcharts.com/highcharts/xAxis.title.align
-//https://api.highcharts.com/highcharts/yAxis.title.align
+/// https://api.highcharts.com/highcharts/xAxis.title.align
+/// https://api.highcharts.com/highcharts/yAxis.title.align
 public enum AAChartAxisTitleAlignValueType: String {
     case high
     case low
     case middle
 }
 
-//https://api.highcharts.com/highcharts/xAxis.title
-//https://api.highcharts.com/highcharts/yAxis.title
+/// https://api.highcharts.com/highcharts/xAxis.title
+/// https://api.highcharts.com/highcharts/yAxis.title
 public class AAAxisTitle: AAObject {
     public var align: String?
     public var margin: String?
-    public var offset: Double?
-    public var rotation: Double?
+    public var offset: Float?
+    public var rotation: Float?
     public var style: AAStyle?
     public var text: String?
     public var textAlign: String?
     public var useHTML: Bool?
-    public var x: Double?
-    public var y: Double?
+    public var x: Float?
+    public var y: Float?
 
     @discardableResult
     public func align(_ prop: AAChartAxisTitleAlignValueType?) -> AAAxisTitle {
@@ -41,13 +41,13 @@ public class AAAxisTitle: AAObject {
     }
 
     @discardableResult
-    public func offset(_ prop: Double?) -> AAAxisTitle {
+    public func offset(_ prop: Float?) -> AAAxisTitle {
         offset = prop
         return self
     }
 
     @discardableResult
-    public func rotation(_ prop: Double?) -> AAAxisTitle {
+    public func rotation(_ prop: Float?) -> AAAxisTitle {
         rotation = prop
         return self
     }
@@ -77,13 +77,13 @@ public class AAAxisTitle: AAObject {
     }
 
     @discardableResult
-    public func x(_ prop: Double?) -> AAAxisTitle {
+    public func x(_ prop: Float?) -> AAAxisTitle {
         x = prop
         return self
     }
 
     @discardableResult
-    public func y(_ prop: Double?) -> AAAxisTitle {
+    public func y(_ prop: Float?) -> AAAxisTitle {
         y = prop
         return self
     }

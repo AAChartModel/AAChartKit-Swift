@@ -134,19 +134,13 @@ public class AAAxis: AAObject {
     @discardableResult
     public func title(_ prop: AATitle?) -> Self {
         if let aaTitle = prop {
-            // 将AATitle转换为AAAxisTitle
+            // 将 AATitle 转换为 AAAxisTitle
             let axisTitle = AAAxisTitle()
                 .text(aaTitle.text)
                 .style(aaTitle.style)
+                .x(aaTitle.x)
+                .y(aaTitle.y)
                 .useHTML(aaTitle.useHTML)
-            
-            // 如果AATitle有x和y属性，转换为Double类型
-            if let x = aaTitle.x {
-                axisTitle.x = Double(x)
-            }
-            if let y = aaTitle.y {
-                axisTitle.y = Double(y)
-            }
             
             title = axisTitle
         } else {
