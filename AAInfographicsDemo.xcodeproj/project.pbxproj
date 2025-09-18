@@ -72,6 +72,7 @@
 		84339F622D5A0D6D00F54F1E /* JSFunctionForAAChartEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84339F612D5A0D6D00F54F1E /* JSFunctionForAAChartEventsVC.swift */; };
 		8437AE202DB5F11C003D4D84 /* MixedTypesChartOptionsComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437AE1F2DB5F11C003D4D84 /* MixedTypesChartOptionsComposer.swift */; };
 		8437AE222DB61965003D4D84 /* MixedTypesChartOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437AE212DB61965003D4D84 /* MixedTypesChartOptionsVC.swift */; };
+		843E5E182E7BA9E80030D36E /* AAAxisTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E5E172E7BA9E80030D36E /* AAAxisTitle.swift */; };
 		844007702B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */; };
 		844007742B6F3FA00072FB66 /* MixedChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844007732B6F3FA00072FB66 /* MixedChartVC.swift */; };
 		844007762B6F41A50072FB66 /* SpecialChartComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844007752B6F41A50072FB66 /* SpecialChartComposer.swift */; };
@@ -331,6 +332,7 @@
 		84339F612D5A0D6D00F54F1E /* JSFunctionForAAChartEventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSFunctionForAAChartEventsVC.swift; sourceTree = "<group>"; };
 		8437AE1F2DB5F11C003D4D84 /* MixedTypesChartOptionsComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedTypesChartOptionsComposer.swift; sourceTree = "<group>"; };
 		8437AE212DB61965003D4D84 /* MixedTypesChartOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedTypesChartOptionsVC.swift; sourceTree = "<group>"; };
+		843E5E172E7BA9E80030D36E /* AAAxisTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAAxisTitle.swift; sourceTree = "<group>"; };
 		8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForBubbleChartComposer.swift; sourceTree = "<group>"; };
 		844007732B6F3FA00072FB66 /* MixedChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedChartVC.swift; sourceTree = "<group>"; };
 		844007752B6F41A50072FB66 /* SpecialChartComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialChartComposer.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 				4454E46822DF15AE00E01944 /* AALabels.swift */,
 				440839A0226AD2B600645263 /* AADataLabels.swift */,
 				840AC396280CFFA200B10289 /* AAAxis.swift */,
+				843E5E172E7BA9E80030D36E /* AAAxisTitle.swift */,
 				446809DD22C3809000BAE647 /* AAXAxis.swift */,
 				446809DF22C380A000BAE647 /* AAYAxis.swift */,
 				4415475E231A1A4000382DAD /* AACrosshair.swift */,
@@ -1191,6 +1194,7 @@
 				ED0A032F272816E3000BF778 /* AAOptions.swift in Sources */,
 				8481C2C92DF2C410006EFC41 /* AAEasing.swift in Sources */,
 				ED0A0340272816ED000BF778 /* AAAnimation.swift in Sources */,
+				843E5E182E7BA9E80030D36E /* AAAxisTitle.swift in Sources */,
 				ED0A0334272816ED000BF778 /* AALabel.swift in Sources */,
 				ED0A0332272816E3000BF778 /* AAChartModel.swift in Sources */,
 				ED0A0330272816E3000BF778 /* AAChartView.swift in Sources */,
@@ -1389,7 +1393,7 @@
 				INFOPLIST_FILE = AAInfographicsDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Love.AAInfographics9998;
+				PRODUCT_BUNDLE_IDENTIFIER = Love.AAInfographics001;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = YES;
