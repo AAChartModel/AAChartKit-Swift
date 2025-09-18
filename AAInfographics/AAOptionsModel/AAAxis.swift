@@ -128,6 +128,33 @@ public class AAAxis: AAObject {
         return self
     }
     
+    // 为了保持向后兼容性，添加对 AATitle 的支持
+    // 同时添加方法废弃警告⚠️, 提示用户使用新的 AAAxisTitle 类型
+    @available(*, deprecated, message: "Use `public func title(_ prop: AAAxisTitle?) -> Self {...}` instead. AATitle is deprecated for axis titles.")
+    @discardableResult
+    public func title(_ prop: AATitle?) -> Self {
+        if let aaTitle = prop {
+            // 将AATitle转换为AAAxisTitle
+            let axisTitle = AAAxisTitle()
+                .text(aaTitle.text)
+                .style(aaTitle.style)
+                .useHTML(aaTitle.useHTML)
+            
+            // 如果AATitle有x和y属性，转换为Double类型
+            if let x = aaTitle.x {
+                axisTitle.x = Double(x)
+            }
+            if let y = aaTitle.y {
+                axisTitle.y = Double(y)
+            }
+            
+            title = axisTitle
+        } else {
+            title = nil
+        }
+        return self
+    }
+    
     @discardableResult
     public func type(_ prop: AAChartAxisType?) -> Self {
         type = prop?.rawValue
@@ -407,32 +434,6 @@ public class AAAxis: AAObject {
     @discardableResult
     public func events(_ prop: AAAxisEvents?) -> Self {
         events = prop
-        return self
-    }
-    
-    // 为了保持向后兼容性，添加对 AATitle 的支持
-    // 同时添加方法废弃警告⚠️, 提示用户使用新的 AAAxisTitle 类型
-    @available(*, deprecated, message: "Use `public func title(_ prop: AAAxisTitle?) -> Self {...}` instead. AATitle is deprecated for axis titles.")
-    @discardableResult
-    public func title(_ prop: AATitle?) -> Self {
-        if let aaTitle = prop {
-            // 将AATitle转换为AAAxisTitle
-            let axisTitle = AAAxisTitle()
-                .text(aaTitle.text)
-                .style(aaTitle.style)
-            
-            // 如果AATitle有x和y属性，转换为Double类型
-            if let x = aaTitle.x {
-                axisTitle.x = Double(x)
-            }
-            if let y = aaTitle.y {
-                axisTitle.y = Double(y)
-            }
-            
-            title = axisTitle
-        } else {
-            title = nil
-        }
         return self
     }
     
