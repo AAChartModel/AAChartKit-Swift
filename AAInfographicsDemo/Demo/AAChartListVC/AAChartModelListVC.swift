@@ -316,6 +316,7 @@ class AAChartModelListVC: AABaseListVC {
             [
                 "customScatterChartMarkerSymbolContent",
                 "drawLineMixedScatterChartWithPointsCoordinates2",
+                "ScatterChartWithScrollablePlotArea",
             ],
             /*Custom Style For Bubble Chart*/
             [
@@ -533,6 +534,7 @@ class AAChartModelListVC: AABaseListVC {
             [
                 "customScatterChartMarkerSymbolContent",
                 "drawLineMixedScatterChartWithPointsCoordinates2",
+                "ScatterChartWithScrollablePlotArea",
             ],
             /*Custom Style For Bubble Chart*/
             [

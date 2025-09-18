@@ -19,7 +19,7 @@ class ScatterChartOptionsVC: AABaseChartVC {
     override func chartConfigurationWithSelectedIndex(_ selectedIndex: Int) -> Any? {
         switch selectedIndex {
         case 0: return ScatterChartOptionsVC.scatterChartWithJitter()
-        case 1: return ScatterChartOptionsVC.boxPlotMixedScatterChartWithJitter()
+        case 1: return ScatterChartOptionsVC.ScatterChartWithScrollablePlotArea()
 
             
             
@@ -28,6 +28,52 @@ class ScatterChartOptionsVC: AABaseChartVC {
         }
     }
     
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/547
+    static func ScatterChartWithScrollablePlotArea() -> AAOptions {
+        let aaChartModel = SpecialChartComposer.scatterChart()
+            .scrollablePlotArea(AAScrollablePlotArea() //可滚动的绘图区域
+                .minWidth(3000)
+                .scrollPositionX(1))
+        //chart: {
+        //        panning: {
+        //          enabled: true,
+        //          type: 'x'
+        //        },
+        //        panKey: 'shift', // 如果不想要按键，直接删掉这一行
+        //      }
+//        chart: {
+//            zoomType: 'xy',
+//            panning: true,
+//            panKey: 'shift'
+//        }
+        
+
+
+        let aaOptions = aaChartModel.aa_toAAOptions()
+        aaOptions.chart?
+            .backgroundColor(AAColor.white)
+//            .zooming(AAZooming()
+//                .type(.xy))
+//            .panning(AAPanning()
+//                .enabled(true))
+//            .panning(AAPanning()
+//                .enabled(true)
+//                .type("x"))
+        
+        //        plotOptions: {
+        //          scatter: {
+        //            enableMouseTracking: false, // 关闭 hover/click
+        //            stickyTracking: false
+        //          }
+        //        }
+        aaOptions.plotOptions?
+            .scatter(AAScatter()
+                .enableMouseTracking(false)//关闭 hover/click
+                .stickyTracking(false))
+        
+        return aaOptions
+    }
     //// Generate test data with discrete X values and continuous Y values.
     //const getTestData = x => {
     //    const off = 0.2 + 0.2 * Math.random();
