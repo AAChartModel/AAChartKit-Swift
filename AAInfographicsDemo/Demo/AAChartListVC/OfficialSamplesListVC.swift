@@ -69,10 +69,6 @@ class OfficialSamplesListVC: AABaseListVC {
         
         setUpMainTableView()
     }
-}
-
-@available(macCatalyst 13.1, *)
-extension OfficialSamplesListVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {

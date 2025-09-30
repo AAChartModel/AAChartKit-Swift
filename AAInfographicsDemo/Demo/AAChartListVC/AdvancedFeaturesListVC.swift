@@ -265,13 +265,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
         
         setUpMainTableView()
     }
-}
-
-@available(macCatalyst 13.1, *)
-extension AdvancedFeaturesListVC {
     
-    fileprivate func customEventCallback(_ indexPath: IndexPath) {
-        /*Custom Event Callback*/
+    private func customEventCallback(_ indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             let vc = CustomTouchEndEventCallbackVC()
@@ -297,13 +292,12 @@ extension AdvancedFeaturesListVC {
             let vc = CustomChartZoomEventEventCallbackVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-            
-        default: break
+        default:
+            break
         }
     }
     
-    fileprivate func showManyChartsInSameView(_ indexPath: IndexPath) {
-        /*Show Many Charts In the Same View*/
+    private func showManyChartsInSameView(_ indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             let vc = ShowManyChartViewVC()
@@ -327,17 +321,10 @@ extension AdvancedFeaturesListVC {
             let vc = TripleChartsLinkedWorkVC2()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-//             ChartListVC *vc = ChartListVC.new;
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:vc animated:YES];
-//        case 4:
-//            let vc = ChartListVC()
-//            vc.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(vc, animated: true)
-        default: break
+        default:
+            break
         }
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {

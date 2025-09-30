@@ -134,11 +134,6 @@ class AAOptionsWithJSListVC: AABaseListVC {
         setUpMainTableView()
     }
     
-}
-
-@available(macCatalyst 13.1, *)
-extension AAOptionsWithJSListVC {
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
      

@@ -551,12 +551,7 @@ class AAChartModelListVC: AABaseListVC {
     }
     
    
-}
-
-@available(macCatalyst 13.1, *)
-extension AAChartModelListVC {
-    
-    fileprivate func pushToOfficalChartSampleVC(indexPathRow: Int) {
+    private func pushToOfficalChartSampleVC(indexPathRow: Int) {
         /*OfficialChartSampleVC*/
         if #available(macCatalyst 14.0, *) {
             if #available(iOS 14.0, *) {
