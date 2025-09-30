@@ -154,22 +154,36 @@ private struct AABaseListView: View {
     let indexTitles: [String]
     let onSelect: (Int, Int) -> Void
 
-    private var backgroundColor: Color {
+    private var backgroundColor: LinearGradient {
         colorScheme == .dark
-            ? Color(red: 0.07, green: 0.07, blue: 0.1, opacity: 1)
-            : Color(red: 1, green: 1, blue: 1, opacity: 1)
+            ? LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 0.05, green: 0.05, blue: 0.08),
+                    Color(red: 0.10, green: 0.10, blue: 0.15)
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            : LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 0.98, green: 0.98, blue: 1.0),
+                    Color(red: 0.95, green: 0.95, blue: 0.98)
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
     }
 
-    private var rowBackgroundColor: Color {
+    private var cardBackgroundColor: Color {
         colorScheme == .dark
-            ? Color(red: 0.12, green: 0.12, blue: 0.15, opacity: 1)
-            : Color(red: 1, green: 1, blue: 1, opacity: 1)
+            ? Color(red: 0.15, green: 0.15, blue: 0.18, opacity: 0.95)
+            : Color(red: 1, green: 1, blue: 1, opacity: 0.95)
     }
 
     private var indexBackgroundColor: Color {
         colorScheme == .dark
-            ? Color(red: 0.18, green: 0.18, blue: 0.22, opacity: 0.9)
-            : Color(red: 0.9, green: 0.9, blue: 0.95, opacity: 0.9)
+            ? Color(red: 0.20, green: 0.20, blue: 0.25, opacity: 0.85)
+            : Color(red: 0.88, green: 0.88, blue: 0.92, opacity: 0.85)
     }
 
     var body: some View {
@@ -179,14 +193,14 @@ private struct AABaseListView: View {
                     sections: sections,
                     indexTitles: indexTitles,
                     onSelect: onSelect,
-                    rowBackgroundColor: rowBackgroundColor,
+                    cardBackgroundColor: cardBackgroundColor,
                     indexBackgroundColor: indexBackgroundColor
                 )
             } else {
                 LegacyListView(
                     sections: sections,
                     onSelect: onSelect,
-                    rowBackgroundColor: rowBackgroundColor
+                    cardBackgroundColor: cardBackgroundColor
                 )
             }
         }
@@ -199,7 +213,7 @@ private struct ScrollableListContainer: View {
     let sections: [AABaseListView.SectionData]
     let indexTitles: [String]
     let onSelect: (Int, Int) -> Void
-    let rowBackgroundColor: Color
+    let cardBackgroundColor: Color
     let indexBackgroundColor: Color
 
     var body: some View {
@@ -208,20 +222,20 @@ private struct ScrollableListContainer: View {
                 SectionedList(
                     sections: sections,
                     onSelect: onSelect,
-                    rowBackgroundColor: rowBackgroundColor
+                    cardBackgroundColor: cardBackgroundColor
                 )
-                    .listStyle(.plain)
+                .listStyle(.plain)
 
                 if !indexTitles.isEmpty {
                     SectionIndexView(
                         indexTitles: indexTitles,
                         backgroundColor: indexBackgroundColor
                     ) { targetSection in
-                        withAnimation {
+                        withAnimation(.easeInOut(duration: 0.6)) {
                             proxy.scrollTo(targetSection, anchor: .top)
                         }
                     }
-                    .padding(.trailing, 6)
+                    .padding(.trailing, 8)
                 }
             }
         }
@@ -232,15 +246,15 @@ private struct ScrollableListContainer: View {
 private struct LegacyListView: View {
     let sections: [AABaseListView.SectionData]
     let onSelect: (Int, Int) -> Void
-    let rowBackgroundColor: Color
+    let cardBackgroundColor: Color
 
     var body: some View {
         SectionedList(
             sections: sections,
             onSelect: onSelect,
-            rowBackgroundColor: rowBackgroundColor
+            cardBackgroundColor: cardBackgroundColor
         )
-            .listStyle(.plain)
+        .listStyle(.plain)
     }
 }
 
@@ -248,26 +262,49 @@ private struct LegacyListView: View {
 private struct SectionedList: View {
     let sections: [AABaseListView.SectionData]
     let onSelect: (Int, Int) -> Void
-    let rowBackgroundColor: Color
+    let cardBackgroundColor: Color
+    
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         List {
             ForEach(sections) { section in
-                Section(header: SectionHeader(title: section.title, color: section.color)) {
-                    ForEach(section.rows.indices, id: \.self) { rowIndex in
-                        RowView(
-                            number: rowIndex + 1,
-                            title: section.rows[rowIndex],
-                            accentColor: section.color
-                        ) {
-                            onSelect(section.id, rowIndex)
+                Section(
+                    header: SectionHeader(title: section.title, color: section.color)
+                        .padding(.top, 16)
+                ) {
+                    VStack(spacing: 8) {
+                        ForEach(section.rows.indices, id: \.self) { rowIndex in
+                            RowView(
+                                number: rowIndex + 1,
+                                title: section.rows[rowIndex],
+                                accentColor: section.color
+                            ) {
+                                onSelect(section.id, rowIndex)
+                            }
                         }
-                        .background(rowBackgroundColor)
                     }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .fill(cardBackgroundColor)
+                            .shadow(
+                                color: colorScheme == .dark 
+                                    ? Color.black.opacity(0.3)
+                                    : Color.black.opacity(0.08),
+                                radius: 8,
+                                x: 0,
+                                y: 2
+                            )
+                    )
+                    .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                    .listRowBackground(Color.clear)
                 }
                 .id(section.id)
             }
         }
+        .listStyle(PlainListStyle())
     }
 }
 
@@ -275,17 +312,70 @@ private struct SectionedList: View {
 private struct SectionHeader: View {
     let title: String
     let color: Color
+    
+    @Environment(\.colorScheme) private var colorScheme
+    
+    private var backgroundGradient: LinearGradient {
+        colorScheme == .dark
+            ? LinearGradient(
+                gradient: Gradient(colors: [
+                    color.opacity(0.25),
+                    color.opacity(0.1)
+                ]),
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+            : LinearGradient(
+                gradient: Gradient(colors: [
+                    color.opacity(0.12),
+                    color.opacity(0.04)
+                ]),
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+    }
+    
+    private var borderColor: Color {
+        colorScheme == .dark
+            ? color.opacity(0.4)
+            : color.opacity(0.25)
+    }
+    
+    private var textColor: Color {
+        colorScheme == .dark
+            ? Color.white
+            : Color.black
+    }
 
     var body: some View {
-        Text(title)
-            .font(.system(size: 17, weight: .bold))
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 8)
-            .background(
-                RoundedRectangle(cornerRadius: 6, style: .continuous)
-                    .fill(color)
-            )
+        HStack(spacing: 12) {
+            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                .fill(color)
+                .frame(width: 4, height: 24)
+            
+            Text(title)
+                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .foregroundColor(textColor)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(backgroundGradient)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .stroke(borderColor, lineWidth: 1)
+                )
+        )
+        .shadow(
+            color: colorScheme == .dark 
+                ? color.opacity(0.3)
+                : color.opacity(0.15),
+            radius: colorScheme == .dark ? 6 : 4,
+            x: 0,
+            y: 2
+        )
     }
 }
 
@@ -295,32 +385,110 @@ private struct RowView: View {
     let title: String
     let accentColor: Color
     let action: () -> Void
+    
+    @Environment(\.colorScheme) private var colorScheme
+    @State private var isPressed = false
+    
+    private var rowBackgroundColor: Color {
+        colorScheme == .dark 
+            ? Color(red: 0.16, green: 0.16, blue: 0.18)
+            : Color(red: 0.99, green: 0.99, blue: 1.0)
+    }
+    
+    private var borderColor: Color {
+        colorScheme == .dark
+            ? accentColor.opacity(0.3)
+            : accentColor.opacity(0.15)
+    }
+    
+    private var primaryTextColor: Color {
+        colorScheme == .dark
+            ? Color.white
+            : Color.black
+    }
+    
+    private var secondaryTextColor: Color {
+        colorScheme == .dark
+            ? Color.gray
+            : Color.secondary
+    }
+    
+    private var shadowColor: Color {
+        colorScheme == .dark
+            ? Color.black.opacity(0.4)
+            : Color.black.opacity(0.08)
+    }
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 12) {
-                Text("\(number)")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(
-                        Capsule()
-                            .fill(accentColor)
-                    )
+            HStack(spacing: 16) {
+                ZStack {
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(colors: [
+                                    accentColor,
+                                    accentColor.opacity(colorScheme == .dark ? 0.8 : 0.7)
+                                ]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: 32, height: 32)
+                        .shadow(
+                            color: accentColor.opacity(colorScheme == .dark ? 0.4 : 0.25),
+                            radius: colorScheme == .dark ? 6 : 4,
+                            x: 0,
+                            y: 2
+                        )
+                    
+                    Text("\(number)")
+                        .font(.system(size: 14, weight: .bold, design: .rounded))
+                        .foregroundColor(.white)
+                }
 
-                Text(title)
-                    .foregroundColor(.primary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(title)
+                        .font(.system(size: 16, weight: .medium, design: .default))
+                        .foregroundColor(primaryTextColor)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Text("Chart Example #\(number)")
+                        .font(.system(size: 13, weight: .regular, design: .default))
+                        .foregroundColor(secondaryTextColor)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
 
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundColor(.secondary)
+                Image(systemName: "arrow.right.circle.fill")
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundColor(accentColor)
+                    .opacity(colorScheme == .dark ? 0.9 : 0.8)
             }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(rowBackgroundColor)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(borderColor, lineWidth: 1)
+                    )
+                    .shadow(
+                        color: shadowColor,
+                        radius: colorScheme == .dark ? 8 : 6,
+                        x: 0,
+                        y: colorScheme == .dark ? 3 : 2
+                    )
+            )
+            .scaleEffect(isPressed ? 0.98 : 1.0)
+            .animation(.easeInOut(duration: 0.1), value: isPressed)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .padding(.vertical, 6)
+        .onLongPressGesture(minimumDuration: 0, maximumDistance: .infinity, pressing: { pressing in
+            isPressed = pressing
+        }, perform: {})
     }
 }
 
@@ -329,22 +497,75 @@ private struct SectionIndexView: View {
     let indexTitles: [String]
     let backgroundColor: Color
     let onTap: (Int) -> Void
+    
+    @Environment(\.colorScheme) private var colorScheme
+    @State private var selectedIndex: Int? = nil
+    
+    private var indexTextColor: Color {
+        colorScheme == .dark
+            ? Color(red: 0.8, green: 0.8, blue: 0.85)
+            : Color(red: 0.4, green: 0.4, blue: 0.5)
+    }
+    
+    private var selectedBackgroundColor: Color {
+        colorScheme == .dark
+            ? Color.blue.opacity(0.8)
+            : Color.blue
+    }
+    
+    private var shadowColor: Color {
+        colorScheme == .dark
+            ? Color.black.opacity(0.3)
+            : Color.black.opacity(0.1)
+    }
 
     var body: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 3) {
             ForEach(indexTitles.indices, id: \.self) { index in
-                Button(action: { onTap(index) }) {
+                Button(action: { 
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        selectedIndex = index
+                    }
+                    onTap(index)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            selectedIndex = nil
+                        }
+                    }
+                }) {
                     Text(indexTitles[index])
-                        .font(.system(size: 11, weight: .medium))
-                        .foregroundColor(.secondary)
-                        .frame(width: 24, height: 16)
+                        .font(.system(size: 11, weight: .bold, design: .rounded))
+                        .foregroundColor(
+                            selectedIndex == index ? .white : indexTextColor
+                        )
+                        .frame(width: 28, height: 20)
+                        .background(
+                            Circle()
+                                .fill(
+                                    selectedIndex == index 
+                                        ? selectedBackgroundColor
+                                        : Color.clear
+                                )
+                                .scaleEffect(selectedIndex == index ? 1.0 : 0.8)
+                                .animation(.spring(response: 0.3, dampingFraction: 0.6), value: selectedIndex == index)
+                        )
                 }
                 .buttonStyle(.plain)
             }
         }
-        .padding(.vertical, 6)
-        .background(backgroundColor)
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .padding(.vertical, 8)
+        .padding(.horizontal, 4)
+        .background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(backgroundColor)
+                .shadow(
+                    color: shadowColor,
+                    radius: colorScheme == .dark ? 10 : 8,
+                    x: 0,
+                    y: colorScheme == .dark ? 3 : 2
+                )
+        )
     }
 }
 
