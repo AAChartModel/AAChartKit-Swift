@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import SwiftUI
 import AAInfographics
 
 let kCustomTableViewCell = "CustomTableViewCell"
 
-@available(iOS 10.0, macCatalyst 13.1, *)
+@available(iOS 13.0, macCatalyst 13.1, *)
 class AABaseListVC: UIViewController {
     public var sectionTitleArr = [String]()
     public var chartTypeTitleArr = [[String]]()
@@ -38,6 +39,9 @@ class AABaseListVC: UIViewController {
         "#ea7ccc",
     ]
     
+    private var hostingController: UIHostingController<AABaseListView>?
+    private let selectionProxyTableView = UITableView(frame: .zero, style: .plain)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,30 +53,44 @@ class AABaseListVC: UIViewController {
 //        
 //        chartTypeArr = []
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
 //        setUpMainTableView()
     }
     
     public func setUpMainTableView() {
-        let tableView = UITableView()
-        tableView.frame = view.bounds
-        tableView.autoresizingMask = [.flexibleWidth , .flexibleHeight]
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.sectionHeaderHeight = 45
-        tableView.sectionIndexColor = .red
-        tableView.register(UINib.init(nibName: kCustomTableViewCell, bundle: Bundle.main), forCellReuseIdentifier: kCustomTableViewCell)
-        view.addSubview(tableView)
+        hostingController?.willMove(toParent: nil)
+        hostingController?.view.removeFromSuperview()
+        hostingController?.removeFromParent()
+
+        let sections = makeSectionData()
+        let indexTitles = sections.map { $0.indexTitle }
+
+        let rootView = AABaseListView(
+            sections: sections,
+            indexTitles: indexTitles,
+            onSelect: { [weak self] section, row in
+                guard let self = self else { return }
+                let indexPath = IndexPath(row: row, section: section)
+                self.tableView(self.selectionProxyTableView, didSelectRowAt: indexPath)
+            }
+        )
+
+        let host = UIHostingController(rootView: rootView)
+        host.view.backgroundColor = .clear
+        addChild(host)
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(host.view)
+        NSLayoutConstraint.activate([
+            host.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            host.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            host.view.topAnchor.constraint(equalTo: view.topAnchor),
+            host.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        host.didMove(toParent: self)
+        hostingController = host
     }
     
-    private func kRGBColorFromHex(rgbValue: Int) -> UIColor {
-        UIColor(red: ((CGFloat)((rgbValue & 0xFF0000) >> 16)) / 255.0,
-                green: ((CGFloat)((rgbValue & 0xFF00) >> 8)) / 255.0,
-                blue: ((CGFloat)(rgbValue & 0xFF)) / 255.0,
-                alpha: 1.0)
-    }
-
     //convert hex color string to UIColor
     private func kColorWithHexString(_ hexString: String) -> UIColor {
         var cString: String = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -101,68 +119,148 @@ class AABaseListVC: UIViewController {
             alpha: 1
         )
     }
-}
 
-@available(macCatalyst 13.1, *)
-extension AABaseListVC: UITableViewDelegate, UITableViewDataSource {
-    open func numberOfSections(in tableView: UITableView) -> Int {
-        chartTypeTitleArr.count
-    }
-    
-    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        chartTypeTitleArr[section].count
-    }
-    
-    open func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        var listTitles = [String]()
-        for item: String in sectionTitleArr {
-            let titleStr = item.prefix(1)
-            listTitles.append(String(titleStr))
+    private func makeSectionData() -> [AABaseListView.SectionData] {
+        guard !sectionTitleArr.isEmpty else { return [] }
+        return chartTypeTitleArr.enumerated().compactMap { index, rows in
+            guard sectionTitleArr.indices.contains(index) else { return nil }
+            let colorHex = colorsArr.isEmpty ? "#5470c6" : colorsArr[index % colorsArr.count]
+            return AABaseListView.SectionData(
+                id: index,
+                title: sectionTitleArr[index],
+                rows: rows,
+                color: Color(uiColor: kColorWithHexString(colorHex))
+            )
         }
-        return listTitles
-    }
-    
-    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeaderView = UIView()
-        let bgColor = kColorWithHexString(colorsArr[section % 18])
-        //设置圆角效果
-        sectionHeaderView.layer.cornerRadius = 6
-        sectionHeaderView.layer.masksToBounds = true
-        sectionHeaderView.backgroundColor = bgColor
-        
-        let sectionTitleLabel = UILabel()
-        sectionTitleLabel.frame = sectionHeaderView.bounds
-        sectionTitleLabel.autoresizingMask = [.flexibleWidth , .flexibleHeight]
-        sectionTitleLabel.text = sectionTitleArr[section]
-        sectionTitleLabel.textColor = .white
-        sectionTitleLabel.font = .boldSystemFont(ofSize: 17)
-        sectionTitleLabel.textAlignment = .center
-        sectionHeaderView.addSubview(sectionTitleLabel)
-  
-        
-        return sectionHeaderView
-    }
-    
-    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kCustomTableViewCell) as! CustomTableViewCell
-        cell.accessoryType = .disclosureIndicator
-//        if indexPath.row % 2 == 0 {
-//            cell.backgroundColor = .systemBackground
-//        } else {
-//            cell.contentView.backgroundColor = kRGBColorFromHex(rgbValue: 0xE6E6FA)// kRGBColorFromHex(rgbValue: 0xF5F5F5)//白烟
-//        }
-        
-        let cellTitle = chartTypeTitleArr[indexPath.section][indexPath.row]
-        cell.titleLabel?.text = cellTitle
-//        cell.titleLabel.textColor = .black
-        cell.numberLabel.text = String(indexPath.row + 1)
-        let bgColor = kColorWithHexString(colorsArr[indexPath.section % 18])
-        cell.numberLabel.backgroundColor = bgColor
-        
-        return cell
     }
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { }
-    
 }
+
+@available(iOS 13.0, macCatalyst 13.1, *)
+private struct AABaseListView: View {
+    struct SectionData: Identifiable {
+        let id: Int
+        let title: String
+        let rows: [String]
+        let color: Color
+        var indexTitle: String { String(title.prefix(1)) }
+    }
+
+    let sections: [SectionData]
+    let indexTitles: [String]
+    let onSelect: (Int, Int) -> Void
+
+    var body: some View {
+        ScrollViewReader { proxy in
+            ZStack(alignment: .trailing) {
+                List {
+                    ForEach(sections) { section in
+                        Section(header: SectionHeader(title: section.title, color: section.color)) {
+                            ForEach(section.rows.indices, id: \.self) { rowIndex in
+                                RowView(
+                                    number: rowIndex + 1,
+                                    title: section.rows[rowIndex],
+                                    accentColor: section.color
+                                ) {
+                                    onSelect(section.id, rowIndex)
+                                }
+                                .listRowBackground(Color(.systemBackground))
+                            }
+                        }
+                        .id(section.id)
+                    }
+                }
+                .listStyle(.plain)
+
+                if !indexTitles.isEmpty {
+                    SectionIndexView(indexTitles: indexTitles) { targetSection in
+                        withAnimation {
+                            proxy.scrollTo(targetSection, anchor: .top)
+                        }
+                    }
+                    .padding(.trailing, 6)
+                }
+            }
+        }
+        .background(Color(.systemBackground))
+    }
+}
+
+@available(iOS 13.0, macCatalyst 13.1, *)
+private struct SectionHeader: View {
+    let title: String
+    let color: Color
+
+    var body: some View {
+        Text(title)
+            .font(.system(size: 17, weight: .bold))
+            .foregroundStyle(Color.white)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 8)
+            .background(
+                RoundedRectangle(cornerRadius: 6, style: .continuous)
+                    .fill(color)
+            )
+    }
+}
+
+@available(iOS 13.0, macCatalyst 13.1, *)
+private struct RowView: View {
+    let number: Int
+    let title: String
+    let accentColor: Color
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 12) {
+                Text("\(number)")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(
+                        Capsule()
+                            .fill(accentColor)
+                    )
+
+                Text(title)
+                    .foregroundStyle(Color.primary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(Color.secondary)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .padding(.vertical, 6)
+    }
+}
+
+@available(iOS 13.0, macCatalyst 13.1, *)
+private struct SectionIndexView: View {
+    let indexTitles: [String]
+    let onTap: (Int) -> Void
+
+    var body: some View {
+        VStack(spacing: 4) {
+            ForEach(indexTitles.indices, id: \.self) { index in
+                Button(action: { onTap(index) }) {
+                    Text(indexTitles[index])
+                        .font(.system(size: 11, weight: .medium))
+                        .foregroundStyle(Color.secondary)
+                        .frame(width: 24, height: 16)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.vertical, 6)
+        .background(.thinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+    }
+}
+
 
