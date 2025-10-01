@@ -32,7 +32,7 @@ internal protocol AAChartViewPluginLoaderProtocol: AnyObject {
 
 // Default loader for standard version (does nothing)
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
-internal final class DefaultPluginLoader: AAChartViewPluginLoaderProtocol {
+internal final class AAChartViewDefaultPluginLoader: AAChartViewPluginLoaderProtocol {
     public init() {}
 
     public func configure(options: AAOptions) {

@@ -24,7 +24,7 @@ internal protocol AAChartViewPluginProviderProtocol: AnyObject {
 
 // Default provider (can be used for the standard version or as a base)
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
-internal final class DefaultPluginProvider: AAChartViewPluginProviderProtocol {
+internal final class AAChartViewDefaultPluginProvider: AAChartViewPluginProviderProtocol {
     public init() {}
 
     public func getRequiredPluginPaths(for options: AAOptions) -> Set<String> {
@@ -35,11 +35,11 @@ internal final class DefaultPluginProvider: AAChartViewPluginProviderProtocol {
 // Provider for the standard version, handling specific chart type plugins
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtocol {
-    public init(bundlePathLoader: BundlePathLoading = BundlePathLoader()) {
+    public init(bundlePathLoader: AAChartBundlePathLoadingProtocol = BundlePathLoader()) {
         self.bundlePathLoader = bundlePathLoader
     }
 
-    private let bundlePathLoader: BundlePathLoading
+    private let bundlePathLoader: AAChartBundlePathLoadingProtocol
 
     private struct ChartPluginConfiguration {
         let types: Set<AAChartType>
@@ -150,7 +150,7 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
 
 // MARK: - Bundle Path Loader Abstraction
 
-internal protocol BundlePathLoading {
+internal protocol AAChartBundlePathLoadingProtocol {
     func path(
         forResource name: String,
         ofType fileType: String,
@@ -159,6 +159,6 @@ internal protocol BundlePathLoading {
     ) -> String?
 }
 
-extension BundlePathLoader: BundlePathLoading {}
+extension BundlePathLoader: AAChartBundlePathLoadingProtocol {}
 
 
