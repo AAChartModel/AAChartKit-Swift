@@ -1,5 +1,19 @@
 import Foundation
 
+// MARK: - Shared Plugin Script Definition (Standard Version)
+
+/// Enum representing available plugin scripts for standard version
+@available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
+internal enum PluginScript: String {
+    case funnel = "AAFunnel"
+    case highchartsMore = "AAHighcharts-More"
+    
+    /// Returns the complete JavaScript file name with .js extension
+    var fileName: String {
+        return rawValue + ".js"
+    }
+}
+
 // MARK: - Plugin Provider Protocol
 
 // Protocol defining the responsibility for providing required plugin paths
@@ -18,7 +32,7 @@ internal final class DefaultPluginProvider: AAChartViewPluginProviderProtocol {
     }
 }
 
-// Provider for the Pro version, handling specific chart type plugins
+// Provider for the standard version, handling specific chart type plugins
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtocol {
     public init(bundlePathLoader: BundlePathLoading = BundlePathLoader()) {
@@ -27,21 +41,35 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
 
     private let bundlePathLoader: BundlePathLoading
 
-    // Mapping from chart type rawValue to script names (standard version - AAChartKit-Swift)
-    private static let chartTypeScriptMapping: [String: [String]] = [
-        AAChartType.funnel.rawValue          : ["AAFunnel"],
-        AAChartType.pyramid.rawValue         : ["AAFunnel"],
-        AAChartType.columnpyramid.rawValue   : ["AAHighcharts-More"],
-        AAChartType.bubble.rawValue          : ["AAHighcharts-More"],
-        AAChartType.packedbubble.rawValue    : ["AAHighcharts-More"],
-        AAChartType.arearange.rawValue       : ["AAHighcharts-More"],
-        AAChartType.areasplinerange.rawValue : ["AAHighcharts-More"],
-        AAChartType.columnrange.rawValue     : ["AAHighcharts-More"],
-        AAChartType.gauge.rawValue           : ["AAHighcharts-More"],
-        AAChartType.boxplot.rawValue         : ["AAHighcharts-More"],
-        AAChartType.errorbar.rawValue        : ["AAHighcharts-More"],
-        AAChartType.waterfall.rawValue       : ["AAHighcharts-More"],
-        AAChartType.polygon.rawValue         : ["AAHighcharts-More"],
+    private struct ChartPluginConfiguration {
+        let types: Set<AAChartType>
+        let scripts: [PluginScript]
+
+        init(types: [AAChartType], scripts: [PluginScript]) {
+            self.types = Set(types)
+            self.scripts = scripts
+        }
+    }
+
+    /// Plugin configurations for standard version chart types
+    private static let pluginConfigurations: [ChartPluginConfiguration] = [
+        // --- Funnel & Pyramid Charts ---
+        .init(types: [.funnel, .pyramid], scripts: [.funnel]),
+        
+        // --- Advanced Charts requiring Highcharts-More ---
+        .init(types: [
+            .columnpyramid,
+            .bubble,
+            .packedbubble,
+            .arearange,
+            .areasplinerange,
+            .columnrange,
+            .gauge,
+            .boxplot,
+            .errorbar,
+            .waterfall,
+            .polygon
+        ], scripts: [.highchartsMore])
     ]
 
     public func getRequiredPluginPaths(for options: AAOptions) -> Set<String> {
@@ -70,11 +98,19 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
 
     // Helper to add scripts based on chart type string
     private func addChartPluginScripts(forType chartType: String, into requiredPaths: inout Set<String>) {
-        guard let scriptNames = Self.chartTypeScriptMapping[chartType] else {
+        guard let resolvedType = AAChartType(rawValue: chartType) else {
             return
         }
-        scriptNames.forEach { scriptName in
-            if let scriptPath = generateScriptPathWithScriptName(scriptName) {
+
+        let scripts = Self.pluginConfigurations.reduce(into: Set<PluginScript>()) { result, configuration in
+            guard configuration.types.contains(resolvedType) else {
+                return
+            }
+            configuration.scripts.forEach { result.insert($0) }
+        }
+
+        scripts.forEach { script in
+            if let scriptPath = generateScriptPath(for: script) {
                 requiredPaths.insert(scriptPath)
             }
         }
@@ -82,16 +118,18 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
 
     // Helper to add scripts based on specific AAOptions properties
     private func addChartPluginScripts(for options: AAOptions, into requiredPaths: inout Set<String>) {
+        // For polar charts, Highcharts-More is required
         if options.chart?.polar == true {
-            if let scriptPath = generateScriptPathWithScriptName("AAHighcharts-More") {
+            if let scriptPath = generateScriptPath(for: .highchartsMore) {
                 requiredPaths.insert(scriptPath)
             }
         }
-        // Add checks for other options properties that require specific plugins if needed
     }
 
     // Generates the full path for a given script name
-    private func generateScriptPathWithScriptName(_ scriptName: String) -> String? {
+    private func generateScriptPath(for script: PluginScript) -> String? {
+        let scriptName = script.rawValue
+        let fullScriptName = script.fileName
         guard let path = bundlePathLoader
             .path(forResource: scriptName,
                   ofType: "js",
@@ -99,9 +137,9 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
                   forLocalization: nil)
         else {
             #if DEBUG
-            print("⚠️ Warning: Could not find path for script '\(scriptName).js'")
+            print("⚠️ Warning: Could not find path for script '\(fullScriptName)'")
             //断言
-            assert(false, "⚠️ Warning: Could not find path for script '\(scriptName).js'")
+            assert(false, "⚠️ Warning: Could not find path for script '\(fullScriptName)'")
             #endif
             return nil
         }
