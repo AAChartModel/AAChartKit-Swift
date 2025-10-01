@@ -41,7 +41,7 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
 
     private let bundlePathLoader: AAChartBundlePathLoadingProtocol
 
-    private struct ChartPluginConfiguration {
+    private struct AAChartPluginConfiguration {
         let types: Set<AAChartType>
         let scripts: [AAChartPluginScriptType]
 
@@ -52,7 +52,7 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
     }
 
     /// Plugin configurations for standard version chart types
-    private static let pluginConfigurations: [ChartPluginConfiguration] = [
+    private static let pluginConfigurations: [AAChartPluginConfiguration] = [
         // --- Funnel & Pyramid Charts ---
         .init(types: [.funnel, .pyramid], scripts: [.funnel]),
         
