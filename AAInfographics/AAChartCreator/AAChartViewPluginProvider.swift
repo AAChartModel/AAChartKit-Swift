@@ -1,27 +1,33 @@
+import Foundation
+
+// MARK: - Plugin Provider Protocol
+
 // Protocol defining the responsibility for providing required plugin paths
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
-public protocol AAChartViewPluginProvider {
+internal protocol AAChartViewPluginProviderProtocol: AnyObject {
     func getRequiredPluginPaths(for options: AAOptions) -> Set<String>
 }
 
 // Default provider (can be used for the standard version or as a base)
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
-public class DefaultPluginProvider: AAChartViewPluginProvider {
-    public init() {} // Public initializer
+internal final class DefaultPluginProvider: AAChartViewPluginProviderProtocol {
+    public init() {}
 
     public func getRequiredPluginPaths(for options: AAOptions) -> Set<String> {
-        // Standard version might return empty or handle truly common plugins if any exist
-        // For now, returning empty as per the abstraction goal.
-        return ProPluginProvider.init().getRequiredPluginPaths(for: options)
+        return Set()
     }
 }
 
 // Provider for the Pro version, handling specific chart type plugins
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
-public class ProPluginProvider: AAChartViewPluginProvider {
-    public init() {} // Public initializer
+internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtocol {
+    public init(bundlePathLoader: BundlePathLoading = BundlePathLoader()) {
+        self.bundlePathLoader = bundlePathLoader
+    }
 
-    // Mapping from chart type rawValue to script names (moved from AAChartView)
+    private let bundlePathLoader: BundlePathLoading
+
+    // Mapping from chart type rawValue to script names (standard version - AAChartKit-Swift)
     private static let chartTypeScriptMapping: [String: [String]] = [
         AAChartType.funnel.rawValue          : ["AAFunnel"],
         AAChartType.pyramid.rawValue         : ["AAFunnel"],
@@ -31,7 +37,7 @@ public class ProPluginProvider: AAChartViewPluginProvider {
         AAChartType.arearange.rawValue       : ["AAHighcharts-More"],
         AAChartType.areasplinerange.rawValue : ["AAHighcharts-More"],
         AAChartType.columnrange.rawValue     : ["AAHighcharts-More"],
-        AAChartType.gauge.rawValue           : ["AAHighcharts-More"], // Note: solidgauge has its own module
+        AAChartType.gauge.rawValue           : ["AAHighcharts-More"],
         AAChartType.boxplot.rawValue         : ["AAHighcharts-More"],
         AAChartType.errorbar.rawValue        : ["AAHighcharts-More"],
         AAChartType.waterfall.rawValue       : ["AAHighcharts-More"],
@@ -81,24 +87,16 @@ public class ProPluginProvider: AAChartViewPluginProvider {
                 requiredPaths.insert(scriptPath)
             }
         }
-//        if options.data != nil {
-//             if let scriptPath = generateScriptPathWithScriptName("AAData") {
-//                requiredPaths.insert(scriptPath)
-//            }
-//        }
         // Add checks for other options properties that require specific plugins if needed
     }
 
-    // Generates the full path for a given script name (moved from AAChartView)
-    // Consider moving this to a shared utility if used elsewhere.
+    // Generates the full path for a given script name
     private func generateScriptPathWithScriptName(_ scriptName: String) -> String? {
-        // Assuming BundlePathLoader is accessible here or refactored.
-        // If BundlePathLoader is specific to AAChartView's context,
-        // you might need to pass the bundle or path finding logic differently.
-        guard let path = BundlePathLoader()
+        guard let path = bundlePathLoader
             .path(forResource: scriptName,
                   ofType: "js",
-                  inDirectory: "AAJSFiles.bundle")
+                  inDirectory: "AAJSFiles.bundle",
+                  forLocalization: nil)
         else {
             #if DEBUG
             print("⚠️ Warning: Could not find path for script '\(scriptName).js'")
@@ -111,4 +109,18 @@ public class ProPluginProvider: AAChartViewPluginProvider {
         return path
     }
 }
+
+// MARK: - Bundle Path Loader Abstraction
+
+internal protocol BundlePathLoading {
+    func path(
+        forResource name: String,
+        ofType fileType: String,
+        inDirectory subpath: String?,
+        forLocalization localizationName: String?
+    ) -> String?
+}
+
+extension BundlePathLoader: BundlePathLoading {}
+
 

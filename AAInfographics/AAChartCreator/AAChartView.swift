@@ -83,14 +83,24 @@ public class AALeakAvoider : NSObject, WKScriptMessageHandler {
 
 
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
+public struct AADependency {
+    let dependent: String // The plugin that has a dependency
+    let on: String        // The plugin it depends on
+
+    public init(_ dependent: String, on dependency: String) {
+        self.dependent = dependent
+        self.on = dependency
+    }
+}
+
+
+@available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 public class AAChartView: WKWebView {
     let kUserContentMessageNameClick = "click"
     let kUserContentMessageNameMouseOver = "mouseover"
     
     private var clickEventEnabled: Bool?
     private var touchEventEnabled: Bool?
-    private var beforeDrawChartJavaScript: String?
-    private var afterDrawChartJavaScript: String?
     
     private weak var _delegate: AAChartViewDelegate?
     public weak var delegate: AAChartViewDelegate? {
@@ -176,13 +186,14 @@ public class AAChartView: WKWebView {
     
     internal var optionsJson: String?
 
-    // Property to hold the plugin provider instance.
-    private var pluginProvider: AAChartViewPluginProvider = DefaultPluginProvider()
-
-    private var requiredPluginPaths: Set<String> = []
-    private var loadedPluginPaths: Set<String> = [] // Keep track of loaded plugins
+    // --- Plugin Loader ---
+    private var pluginLoader: AAChartViewPluginLoaderProtocol = AAChartViewPluginLoader(provider: AAChartViewPluginProvider())
 
     public var userPluginPaths: Set<String> = []
+    
+    /// Configure plugin dependencies using a more readable struct-based array.
+    /// Example: `aaChartView.dependencies = [AADependency("pluginB.js", on: "pluginA.js")]`
+    public var dependencies: [AADependency] = []
 #if DEBUG
     public var shouldPrintOptionsJSON: Bool = true
 #endif
@@ -207,144 +218,27 @@ public class AAChartView: WKWebView {
     
     
     // MARK: - Plugin Loading and Chart Drawing
-    
-    /// Determines required plugins, loads any missing ones sequentially, and then draws the chart.
-    internal func loadAllPluginsAndDrawChart() {
-        // 1. Determine the total set of required plugins (base requirements + user-defined)
-        let totalRequiredPluginsSet = requiredPluginPaths.union(userPluginPaths)
-        
-        // 2. Identify plugins that are required but not yet loaded
-        let pluginsToLoad = totalRequiredPluginsSet.subtracting(loadedPluginPaths)
-        
-        // 3. If no new plugins need loading, draw the chart immediately
-        guard !pluginsToLoad.isEmpty else {
-#if DEBUG
-            if totalRequiredPluginsSet.isEmpty {
-                print("ℹ️ No additional plugins needed for the current chart options.")
-            } else {
-                print("ℹ️ All required plugins (count: \(totalRequiredPluginsSet.count)) already loaded.")
-                //打印 totalRequiredPluginsSet 的内容
-                print("ℹ️ All required plugins: \(totalRequiredPluginsSet)")
-            }
-#endif
-            drawChart()
-            return
-        }
-        
-        // 4. Load the necessary new plugins sequentially
-        debugLog("ℹ️ Loading \(pluginsToLoad.count) new plugin scripts...")
-        
-        loadPluginScriptsSequentially(scriptsToLoad: pluginsToLoad) { [weak self] newlyLoadedPlugins in
-            guard let self = self else { return }
-            
-            // 5. Update the set of all loaded plugins
-            self.loadedPluginPaths.formUnion(newlyLoadedPlugins)
-            
-#if DEBUG
-            if newlyLoadedPlugins.count < pluginsToLoad.count {
-                print("⚠️ Failed to evaluate one or more new plugin scripts. Chart drawing may be affected.")
-            }
-            print("ℹ️ Total loaded plugins count: \(self.loadedPluginPaths.count)")
-#endif
-            
-            // 6. Draw the chart after attempting to load new plugins
-            self.drawChart()
-        }
-    }
-    
-    /// Loads a set of plugin scripts sequentially, evaluating them one by one.
-    /// - Parameters:
-    ///   - scriptsToLoad: A Set of file paths for the JavaScript plugins to load.
-    ///   - completion: A closure called when all scripts have been attempted, passing a Set of paths for successfully loaded scripts.
-    private func loadPluginScriptsSequentially(
-        scriptsToLoad: Set<String>,
-        completion: @escaping (Set<String>) -> Void
-    ) {
-        // Convert Set to Array for indexed access, maintaining order isn't critical here
-        // but Array makes indexed recursion simpler than Set index manipulation.
-        let scriptPathsArray = Array(scriptsToLoad)
-        var successfullyLoaded = Set<String>()
-        
-        // Define the recursive loading function
-        func loadNextScript(index: Int) {
-            // Base case: All scripts in the array attempted
-            guard index < scriptPathsArray.count else {
-#if DEBUG
-                if !scriptPathsArray.isEmpty {
-                    print("✅ \(successfullyLoaded.count) out of \(scriptPathsArray.count) new plugin scripts evaluated successfully.")
-                }
-#endif
-                completion(successfullyLoaded) // Return the set of successfully loaded scripts
-                return
-            }
-            
-            let path = scriptPathsArray[index]
-            let scriptName = (path as NSString).lastPathComponent // Extract filename for logging
-            
-            do {
-                // Read the script content
-                let jsString = try String(contentsOfFile: path, encoding: .utf8)
-                
-                // Evaluate the script
-                evaluateJavaScript(jsString) { [weak self] _, error in
-                    // Use guard let to safely unwrap self and create a strong reference
-                    guard let self = self else {
-                        // If self is deallocated, stop loading further scripts
-                        print("⚠️ AAChartView deallocated during script evaluation. Aborting plugin load.") // Direct print or use a static logger if available
-                        completion(successfullyLoaded)
-                        return
-                    }
-                    
-                    if let error = error {
-                        // Use self directly now, no optional chaining needed
-                        self.debugLog("❌ Error evaluating new plugin script '\(scriptName)' (index \(index)): \(error)")
-                        // Continue to the next script even if this one fails
-                        loadNextScript(index: index + 1)
-                    } else {
-                        // Use self directly now, no optional chaining needed
-                        self.debugLog("✅ New plugin script '\(scriptName)' (index \(index)) evaluated.")
-                        successfullyLoaded.insert(path) // Add successfully evaluated script path
-                        // Recursively load the next script
-                        loadNextScript(index: index + 1)
-                    }
-                }
-            } catch {
-                // No change needed here as self is accessed synchronously if debugLog is called
-                debugLog("❌ Failed to load plugin script file '\(scriptName)' (index \(index)): \(error)")
-                // Continue to the next script even if file loading fails
-                loadNextScript(index: index + 1)
-            }
-        }
-        
-        // Start loading from the first script
-        loadNextScript(index: 0)
-    }
-    
+
     private func drawChart() {
-        if beforeDrawChartJavaScript != nil {
-            debugLog("📝 \(beforeDrawChartJavaScript ?? "")")
-            safeEvaluateJavaScriptString(beforeDrawChartJavaScript!)
-            beforeDrawChartJavaScript = nil
-        }
-        
-        //Add `frame.size.height` to solve the problem that the height of the new version of Highcharts chart will not adapt to the container
-        let jsStr = "loadTheHighChartView('\(optionsJson ?? "")','\(contentWidth ?? 0)','\(contentHeight ?? 0)');"
-        safeEvaluateJavaScriptString(jsStr)
-        
-        if afterDrawChartJavaScript != nil {
-            debugLog("📝 \(afterDrawChartJavaScript ?? "")")
-            safeEvaluateJavaScriptString(afterDrawChartJavaScript!)
-            afterDrawChartJavaScript = nil
-        }
-    }
-    
-    internal func safeEvaluateJavaScriptString (_ jsString: String) {
-        if optionsJson == nil {
-            debugLog("💀💀💀AAChartView did not finish loading!!!")
+        // Execute pre-draw script via loader
+        pluginLoader.executeBeforeDrawScript(webView: self)
+
+        // Check if optionsJson is ready before drawing
+        guard optionsJson != nil else {
+            debugLog("💀💀💀 Attempted to draw chart before optionsJson was configured.")
             return
         }
-        
-        evaluateJavaScript(jsString, completionHandler: { (item, error) in
+
+        let jsStr = "loadTheHighChartView('\(optionsJson!)','\(contentWidth ?? 0)','\(contentHeight ?? 0)');"
+        safeEvaluateJavaScriptString(jsStr)
+
+        // Execute post-draw script via loader
+        pluginLoader.executeAfterDrawScript(webView: self)
+    }
+
+    internal func safeEvaluateJavaScriptString (_ jsString: String) {
+        evaluateJavaScript(jsString, completionHandler: { [weak self] (item, error) in
+            guard let self = self else { return }
 #if DEBUG
             if error != nil {
                 let objcError = error! as NSError
@@ -386,14 +280,6 @@ public class AAChartView: WKWebView {
         } else if aaOptions.plotOptions?.series?.point?.events == nil {
             aaOptions.plotOptions?.series?.point?.events = AAPointEvents()
         }
-    }
-    
-    private func determineRequiredPlugins(for aaOptions: AAOptions) {
-        // Use the provider to get additional required plugins based on options
-        let providerPlugins = pluginProvider.getRequiredPluginPaths(for: aaOptions)
-        requiredPluginPaths.formUnion(providerPlugins)
-
-        debugLog("🔌 Determined requiredPluginPaths: \(requiredPluginPaths)")
     }
     
 #if DEBUG
@@ -454,18 +340,8 @@ public class AAChartView: WKWebView {
 #endif
     
     internal func configureOptionsJsonStringWithAAOptions(_ aaOptions: AAOptions) {
-        // Determine required plugins using the new method and provider
-        determineRequiredPlugins(for: aaOptions)
-
-        if aaOptions.beforeDrawChartJavaScript != nil {
-            beforeDrawChartJavaScript = aaOptions.beforeDrawChartJavaScript
-            aaOptions.beforeDrawChartJavaScript = nil
-        }
-
-        if aaOptions.afterDrawChartJavaScript != nil {
-            afterDrawChartJavaScript = aaOptions.afterDrawChartJavaScript
-            aaOptions.afterDrawChartJavaScript = nil
-        }
+        // Configure the plugin loader (determines required plugins, gets scripts)
+        pluginLoader.configure(options: aaOptions)
 
         if isClearBackgroundColor == true {
             aaOptions.chart?.backgroundColor = AAColor.clear
@@ -575,6 +451,27 @@ extension AAChartView: WKUIDelegate {
 // MARK: - WKNavigationDelegate
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
 extension AAChartView:  WKNavigationDelegate {
+    internal func loadAllPluginsAndDrawChart() {
+        // Load plugins via loader, then draw chart in completion
+        // Convert the dependency array to a dictionary for the loader
+        let dependenciesDict = dependencies.reduce(into: [String: String]()) { dict, dependency in
+            dict[dependency.dependent] = dependency.on
+        }
+
+        pluginLoader.loadPluginsIfNeeded(
+            webView: self,
+            userPlugins: userPluginPaths,
+            dependencies: dependenciesDict
+        ) { [weak self] in
+            // Ensure options are ready before drawing
+            guard let self = self, self.optionsJson != nil else {
+                self?.debugLog("💀💀💀 AAChartView options not ready after plugin load or view deallocated.")
+                return
+            }
+            self.drawChart()
+        }
+    }
+    
     open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         loadAllPluginsAndDrawChart()
         delegate?.aaChartViewDidFinishLoad?(self)
@@ -624,5 +521,6 @@ extension AAChartView {
         }
     }
 }
+
 
 
