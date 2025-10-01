@@ -4,7 +4,7 @@ import Foundation
 
 /// Enum representing available plugin scripts for standard version
 @available(iOS 10.0, macCatalyst 13.1, macOS 10.13, *)
-internal enum PluginScript: String {
+internal enum AAChartPluginScriptType: String {
     case funnel = "AAFunnel"
     case highchartsMore = "AAHighcharts-More"
     
@@ -43,9 +43,9 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
 
     private struct ChartPluginConfiguration {
         let types: Set<AAChartType>
-        let scripts: [PluginScript]
+        let scripts: [AAChartPluginScriptType]
 
-        init(types: [AAChartType], scripts: [PluginScript]) {
+        init(types: [AAChartType], scripts: [AAChartPluginScriptType]) {
             self.types = Set(types)
             self.scripts = scripts
         }
@@ -102,7 +102,7 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
             return
         }
 
-        let scripts = Self.pluginConfigurations.reduce(into: Set<PluginScript>()) { result, configuration in
+        let scripts = Self.pluginConfigurations.reduce(into: Set<AAChartPluginScriptType>()) { result, configuration in
             guard configuration.types.contains(resolvedType) else {
                 return
             }
@@ -127,7 +127,7 @@ internal final class AAChartViewPluginProvider: AAChartViewPluginProviderProtoco
     }
 
     // Generates the full path for a given script name
-    private func generateScriptPath(for script: PluginScript) -> String? {
+    private func generateScriptPath(for script: AAChartPluginScriptType) -> String? {
         let scriptName = script.rawValue
         let fullScriptName = script.fileName
         guard let path = bundlePathLoader
