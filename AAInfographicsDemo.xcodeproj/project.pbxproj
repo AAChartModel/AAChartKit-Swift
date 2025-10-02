@@ -536,13 +536,8 @@
 		278C54F51EE947DF00770B97 /* AAChartCreator */ = {
 			isa = PBXGroup;
 			children = (
-				2749914E210D90B5003D18C2 /* AAChartView.swift */,
-				844736252DAF8B5E0040CCCE /* AAChartView+API.swift */,
-				8447362B2DAFAE140040CCCE /* AAChartViewPluginProvider.swift */,
-				845F42982E8D6CA400CE65AB /* AAChartViewPluginLoader.swift */,
-				2749914B210D90B5003D18C2 /* AAChartModel.swift */,
-				2749914C210D90B5003D18C2 /* AASeriesElement.swift */,
-				44154762231A1B4800382DAD /* AAOptions.swift */,
+				845F42B02E8EB9B500CE65AB /* AAChartView */,
+				845F42B12E8EB9DC00CE65AB /* AAChartOptions */,
 				2749914D210D90B5003D18C2 /* AASerializable.swift */,
 			);
 			path = AAChartCreator;
@@ -791,6 +786,27 @@
 				84339F562D54591900F54F1E /* ChartSampleProvider.swift */,
 			);
 			path = Composer;
+			sourceTree = "<group>";
+		};
+		845F42B02E8EB9B500CE65AB /* AAChartView */ = {
+			isa = PBXGroup;
+			children = (
+				2749914E210D90B5003D18C2 /* AAChartView.swift */,
+				844736252DAF8B5E0040CCCE /* AAChartView+API.swift */,
+				8447362B2DAFAE140040CCCE /* AAChartViewPluginProvider.swift */,
+				845F42982E8D6CA400CE65AB /* AAChartViewPluginLoader.swift */,
+			);
+			path = AAChartView;
+			sourceTree = "<group>";
+		};
+		845F42B12E8EB9DC00CE65AB /* AAChartOptions */ = {
+			isa = PBXGroup;
+			children = (
+				2749914B210D90B5003D18C2 /* AAChartModel.swift */,
+				2749914C210D90B5003D18C2 /* AASeriesElement.swift */,
+				44154762231A1B4800382DAD /* AAOptions.swift */,
+			);
+			path = AAChartOptions;
 			sourceTree = "<group>";
 		};
 		8466E3962DB1FD8600DBF03B /* ChartGalleryList */ = {
