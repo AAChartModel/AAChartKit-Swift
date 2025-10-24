@@ -121,7 +121,9 @@ class JSFunctionBeforeAndAfterRenderingComposer6 {
         return aaOptions
     }
   
-    
+    //⚠️有点邪门了, 这个示例放在网格列表视图里面, 就不能正常显示 Base64 图片标签
+    //后面把这个示例单独放在一个视图控制器里面就可以正常显示 Base64 图片标签了
+    //有时间再研究研究这是为什么吧
     //https://github.com/AAChartModel/AAChartKit-Swift/issues/555
     static func configureCircularRadarChartWithDashedGridAndImageLabels2() -> AAOptions {
         // 使用 EmojiProvider 提供的表情符号(截取数组中的前 12 个表情符号)
