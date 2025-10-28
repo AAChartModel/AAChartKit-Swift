@@ -160,10 +160,15 @@ class JSFunctionBeforeAndAfterRenderingComposer6 {
                 ];
                 const idx = this.pos;
                 const img = images[idx] || images[0];
+                let extraStyle = '';
+                    if (this.pos === 0) {
+                        extraStyle = 'padding-bottom: 50px;'; 
+                    }
+         
                 return `
-                <div style="text-align:center;">
-                <img <img src=\"data:image/png;base64,${img}\" style="width:28px;height:28px;"><br>
-                        <span style="font-size:18px;">${this.value}</span>
+                <div style="text-align:center; padding-top:10px; ${extraStyle} ">
+                    <img src=\"data:image/png;base64,${img}\" style="width:28px;height:28px;"><br>
+                    <span style="font-size:18px;">${this.value}</span>
                 </div>
                 `;
             }
