@@ -12,7 +12,43 @@ import AAInfographics
 class CustomStyleChartProvider: NSObject {
     
     static func aaChartModelItems() -> [AAOptions] {
-        let originalItems = [
+        var originalItems = [AAChartModel]()
+        
+        // SpecialChartComposer
+        originalItems += specialChartItems()
+        
+        // MixedChartComposer
+        originalItems += mixedChartItems()
+        
+        // MixedChartComposer2
+        originalItems += mixedChart2Items()
+        
+        // CustomStyleForColumnChartComposer
+        originalItems += customStyleForColumnChartItems()
+        
+        // CustomStyleForLineChartComposer
+        originalItems += customStyleForLineChartItems()
+        
+        // CustomStyleForAreasplineChartComposer
+        originalItems += customStyleForAreasplineChartItems()
+        
+        // CustomStyleForPieChartComposer
+        originalItems += customStyleForPieChartItems()
+        
+        //遍历 originalItems 数组,将其中的每个 AAChartModel 实例转化为 AAOptions 实例
+        let finalItems = originalItems.map { (aaChartModel) -> AAOptions in
+            let aaOptions = aaChartModel.aa_toAAOptions()
+//            aaOptions.chart?.polar(true)
+            return aaOptions
+        }
+        
+        return finalItems
+    }
+    
+    // MARK: - SpecialChartComposer
+    
+    private static func specialChartItems() -> [AAChartModel] {
+        return [
             SpecialChartComposer.polarColumnChart(),
             SpecialChartComposer.polarBarChart(),
             SpecialChartComposer.polarLineChart(),
@@ -34,7 +70,13 @@ class CustomStyleChartProvider: NSObject {
             SpecialChartComposer.gaugeChart(),
             SpecialChartComposer.polygonChart(),
             SpecialChartComposer.columnpyramidChart(),
-            
+        ]
+    }
+    
+    // MARK: - MixedChartComposer
+    
+    private static func mixedChartItems() -> [AAChartModel] {
+        return [
             MixedChartComposer.arearangeMixedLineChart(),
             MixedChartComposer.columnrangeMixedLineChart(),
             MixedChartComposer.stackingColumnMixedLineChart(),
@@ -46,31 +88,48 @@ class CustomStyleChartProvider: NSObject {
             MixedChartComposer.boxplotMixedScatterChartWithJitter(),
             MixedChartComposer.multiLevelStopsArrGradientColorAreasplineMixedLineChart(),
             MixedChartComposer.arearangeMixedLineChart(),
-
+        ]
+    }
+    
+    // MARK: - MixedChartComposer2
+    
+    private static func mixedChart2Items() -> [AAChartModel] {
+        return [
             MixedChartComposer2.scatterPlotWithTrendLine(),
             MixedChartComposer2.scatterPlotWithTrendLine2(),
             MixedChartComposer2.pieMixedLineMixedColumnChart(),
             MixedChartComposer2.pieMixedLineMixedColumnChart2(),
-
+        ]
+    }
+    
+    // MARK: - CustomStyleForColumnChartComposer
+    
+    private static func customStyleForColumnChartItems() -> [AAChartModel] {
+        return [
             CustomStyleForColumnChartComposer.colorfulColumnChart(),
             CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart(),
             CustomStyleForColumnChartComposer.discontinuousDataColumnChart(),
             CustomStyleForColumnChartComposer.randomColorfulColumnChart(),
-
+            
             CustomStyleForColumnChartComposer.noneStackingPolarColumnChart(),
             CustomStyleForColumnChartComposer.normalStackingPolarColumnChart(),
             CustomStyleForColumnChartComposer.percentStackingPolarColumnChart(),
-
+            
             CustomStyleForColumnChartComposer.specialStyleForTheSingleDataElementOfColumnChart(),
             CustomStyleForColumnChartComposer.noMoreGroupingAndOverlapEachOtherColumnChart(),
             CustomStyleForColumnChartComposer.noMoreGroupingAndNestedColumnChart(),
             CustomStyleForColumnChartComposer.topRoundedCornersStackingColumnChart(),
             CustomStyleForColumnChartComposer.freeStyleRoundedCornersStackingColumnChart(),
-
+            
             CustomStyleForColumnChartComposer.customBorderStyleAndStatesHoverColorColumnChart(),
             CustomStyleForColumnChartComposer.negativeDataMixedPositiveDataColumnChart(),
-
-
+        ]
+    }
+    
+    // MARK: - CustomStyleForLineChartComposer
+    
+    private static func customStyleForLineChartItems() -> [AAChartModel] {
+        return [
             CustomStyleForLineChartComposer.mixedLineChart(),
             CustomStyleForLineChartComposer.stepLineChart(),
             CustomStyleForLineChartComposer.stepAreaChart(),
@@ -94,8 +153,13 @@ class CustomStyleChartProvider: NSObject {
             CustomStyleForLineChartComposer.largeDifferencesInTheNumberOfDataInDifferentSeriesElementLineChart(),
             CustomStyleForLineChartComposer.customDifferentDataLabelsShapeForLineChart(),
             CustomStyleForLineChartComposer.clipForAASeriesElementLineChart(),
-
-
+        ]
+    }
+    
+    // MARK: - CustomStyleForAreasplineChartComposer
+    
+    private static func customStyleForAreasplineChartItems() -> [AAChartModel] {
+        return [
             CustomStyleForAreasplineChartComposer.withMinusNumberAreasplineChart(),
             CustomStyleForAreasplineChartComposer.colorfulGradientAreasplineChart(),
             CustomStyleForAreasplineChartComposer.gradientColorAreasplineChart(),
@@ -105,29 +169,25 @@ class CustomStyleChartProvider: NSObject {
             CustomStyleForAreasplineChartComposer.colorfulGradientColorAndColorfulDataLabelsStepAreasplineChart(),
             CustomStyleForAreasplineChartComposer.negativeColorMixedAreasplineChart(),
             CustomStyleForAreasplineChartComposer.customColorfulGradientColorZonesForAreasplineChart(),
-
-
+        ]
+    }
+    
+    // MARK: - CustomStyleForPieChartComposer
+    
+    private static func customStyleForPieChartItems() -> [AAChartModel] {
+        return [
             CustomStyleForPieChartComposer.pieChart(),
             CustomStyleForPieChartComposer.doubleLayerPieChart(),
             CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChart(),
-
+            
             CustomStyleForPieChartComposer.pieChartWithSoftCorners(),
             CustomStyleForPieChartComposer.doubleLayerPieChartWithSoftCorners(),
             CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithSoftCorners(),
-
+            
             CustomStyleForPieChartComposer.pieChartWithRoundedCorners(),
             CustomStyleForPieChartComposer.doubleLayerPieChartWithRoundedCorners(),
             CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithRoundedCorners(),
         ]
-        
-        //遍历 originalItems 数组,将其中的每个 AAChartModel 实例转化为 AAOptions 实例
-        let finalItems = originalItems.map { (aaChartModel) -> AAOptions in
-            let aaOptions = aaChartModel.aa_toAAOptions()
-//            aaOptions.chart?.polar(true)
-            return aaOptions
-        }
-        
-        return finalItems
     }
 
 }
