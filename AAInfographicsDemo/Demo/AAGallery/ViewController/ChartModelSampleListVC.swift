@@ -55,48 +55,30 @@ class ChartModelSampleListVC: AABaseListVC {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chartModels: [AAChartModel]
+        
         switch indexPath.row {
-            
         case 0:
-            let vc = OfficialChartSampleVC()
-            vc.optionsItems = CustomStyleChartModelProvider.specialChartItems().map { (aaChartModel) -> AAOptions in
-                let aaOptions = aaChartModel.aa_toAAOptions()
-    //            aaOptions.chart?.polar(true)
-                return aaOptions
-            }
-            navigationController?.pushViewController(vc, animated: true)
-            
-            
+            chartModels = CustomStyleChartModelProvider.specialChartItems()
         case 1:
-            let vc = OfficialChartSampleVC()
-            vc.optionsItems = CustomStyleChartModelProvider.mixedChartItems().map { (aaChartModel) -> AAOptions in
-                let aaOptions = aaChartModel.aa_toAAOptions()
-    //            aaOptions.chart?.polar(true)
-                return aaOptions
-            }
-            navigationController?.pushViewController(vc, animated: true)
-
+            chartModels = CustomStyleChartModelProvider.mixedChartItems()
         case 2:
-            let vc = OfficialChartSampleVC()
-            vc.optionsItems = CustomStyleChartModelProvider.mixedChart2Items().map { (aaChartModel) -> AAOptions in
-                let aaOptions = aaChartModel.aa_toAAOptions()
-    //            aaOptions.chart?.polar(true)
-                return aaOptions
-            }
-            navigationController?.pushViewController(vc, animated: true)
-            
+            chartModels = CustomStyleChartModelProvider.mixedChart2Items()
         case 3:
-            let vc = OfficialChartSampleVC()
-            vc.optionsItems = CustomStyleChartModelProvider.customStyleForColumnChartItems().map { (aaChartModel) -> AAOptions in
-                let aaOptions = aaChartModel.aa_toAAOptions()
-    //            aaOptions.chart?.polar(true)
-                return aaOptions
-            }
-            navigationController?.pushViewController(vc, animated: true)
-              
+            chartModels = CustomStyleChartModelProvider.customStyleForColumnChartItems()
         default:
-            break
+            return
         }
+        
+        showChartSample(with: chartModels)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func showChartSample(with chartModels: [AAChartModel]) {
+        let vc = OfficialChartSampleVC()
+        vc.optionsItems = chartModels.map { $0.aa_toAAOptions() }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
