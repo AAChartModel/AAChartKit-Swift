@@ -46,7 +46,7 @@ class CustomStyleChartModelProvider: NSObject {
     
     // MARK: - SpecialChartComposer
     
-    private static func specialChartItems() -> [AAChartModel] {
+    static func specialChartItems() -> [AAChartModel] {
         return [
             SpecialChartComposer.polarColumnChart(),
             SpecialChartComposer.polarBarChart(),
@@ -74,7 +74,7 @@ class CustomStyleChartModelProvider: NSObject {
     
     // MARK: - MixedChartComposer
     
-    private static func mixedChartItems() -> [AAChartModel] {
+    static func mixedChartItems() -> [AAChartModel] {
         return [
             MixedChartComposer.arearangeMixedLineChart(),
             MixedChartComposer.columnrangeMixedLineChart(),
@@ -92,7 +92,7 @@ class CustomStyleChartModelProvider: NSObject {
     
     // MARK: - MixedChartComposer2
     
-    private static func mixedChart2Items() -> [AAChartModel] {
+    static func mixedChart2Items() -> [AAChartModel] {
         return [
             MixedChartComposer2.scatterPlotWithTrendLine(),
             MixedChartComposer2.scatterPlotWithTrendLine2(),
@@ -103,7 +103,7 @@ class CustomStyleChartModelProvider: NSObject {
     
     // MARK: - CustomStyleForColumnChartComposer
     
-    private static func customStyleForColumnChartItems() -> [AAChartModel] {
+    static func customStyleForColumnChartItems() -> [AAChartModel] {
         return [
             CustomStyleForColumnChartComposer.colorfulColumnChart(),
             CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart(),
@@ -127,7 +127,7 @@ class CustomStyleChartModelProvider: NSObject {
     
     // MARK: - CustomStyleForLineChartComposer
     
-    private static func customStyleForLineChartItems() -> [AAChartModel] {
+    static func customStyleForLineChartItems() -> [AAChartModel] {
         return [
             CustomStyleForLineChartComposer.mixedLineChart(),
             CustomStyleForLineChartComposer.stepLineChart(),
@@ -157,7 +157,7 @@ class CustomStyleChartModelProvider: NSObject {
     
     // MARK: - CustomStyleForAreasplineChartComposer
     
-    private static func customStyleForAreasplineChartItems() -> [AAChartModel] {
+    static func customStyleForAreasplineChartItems() -> [AAChartModel] {
         return [
             CustomStyleForAreasplineChartComposer.withMinusNumberAreasplineChart(),
             CustomStyleForAreasplineChartComposer.colorfulGradientAreasplineChart(),
@@ -173,7 +173,7 @@ class CustomStyleChartModelProvider: NSObject {
     
     // MARK: - CustomStyleForPieChartComposer
     
-    private static func customStyleForPieChartItems() -> [AAChartModel] {
+    static func customStyleForPieChartItems() -> [AAChartModel] {
         return [
             CustomStyleForPieChartComposer.pieChart(),
             CustomStyleForPieChartComposer.doubleLayerPieChart(),

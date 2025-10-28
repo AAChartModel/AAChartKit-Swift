@@ -157,6 +157,7 @@
 		84F9980C2EB0C3D700D41382 /* CustomStyleForLineChartVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9980B2EB0C3D700D41382 /* CustomStyleForLineChartVC2.swift */; };
 		84F9980E2EB0C83100D41382 /* CustomStyleChartModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9980D2EB0C83100D41382 /* CustomStyleChartModelProvider.swift */; };
 		84F998112EB0CBF500D41382 /* CustomChartOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998102EB0CBF500D41382 /* CustomChartOptionsProvider.swift */; };
+		84F998132EB0CFA700D41382 /* ChartModelSampleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998122EB0CFA700D41382 /* ChartModelSampleListVC.swift */; };
 		ED0A032527281695000BF778 /* AAInfographics.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0A032327281695000BF778 /* AAInfographics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED0A032827281695000BF778 /* AAInfographics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; };
 		ED0A032927281695000BF778 /* AAInfographics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -421,6 +422,7 @@
 		84F9980B2EB0C3D700D41382 /* CustomStyleForLineChartVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForLineChartVC2.swift; sourceTree = "<group>"; };
 		84F9980D2EB0C83100D41382 /* CustomStyleChartModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleChartModelProvider.swift; sourceTree = "<group>"; };
 		84F998102EB0CBF500D41382 /* CustomChartOptionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChartOptionsProvider.swift; sourceTree = "<group>"; };
+		84F998122EB0CFA700D41382 /* ChartModelSampleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModelSampleListVC.swift; sourceTree = "<group>"; };
 		D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBundlePathLoader.swift; sourceTree = "<group>"; };
 		ED0A032127281695000BF778 /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A032327281695000BF778 /* AAInfographics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAInfographics.h; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 		278C550F1EE9487F00770B97 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				84F998142EB0D01700D41382 /* AAGallery */,
 				844F11412B63644000ADEB1C /* AAChartListVC */,
 				84086B1728E44FD0006BD30D /* AAChartModel */,
 				84086B1828E44FE8006BD30D /* AAOptions */,
@@ -869,6 +872,22 @@
 			path = Provider;
 			sourceTree = "<group>";
 		};
+		84F998142EB0D01700D41382 /* AAGallery */ = {
+			isa = PBXGroup;
+			children = (
+				84F998152EB0D02400D41382 /* ViewController */,
+			);
+			path = AAGallery;
+			sourceTree = "<group>";
+		};
+		84F998152EB0D02400D41382 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84F998122EB0CFA700D41382 /* ChartModelSampleListVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		ED0A032227281695000BF778 /* AAInfographics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1199,7 @@
 				84526E272CF0212000EB2563 /* JSFunctionBeforeAndAfterRenderingComposer3.swift in Sources */,
 				84526E2D2CF409BB00EB2563 /* MixedChartComposer2.swift in Sources */,
 				58603B0D623EDFE55CFFC66B /* CustomStyleForColumnChartComposer.swift in Sources */,
+				84F998132EB0CFA700D41382 /* ChartModelSampleListVC.swift in Sources */,
 				844007702B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift in Sources */,
 				586031CD65041F30252BD805 /* CustomStyleForBarChartComposer.swift in Sources */,
 				84903C9D2DBA0BD20029FE5A /* AAChartView+ScreenRotation.swift in Sources */,

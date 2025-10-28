@@ -574,7 +574,8 @@ class AAChartModelListVC: AABaseListVC {
             if #available(iOS 14.0, *) {
                 let vc = OfficialChartSampleVC()
                 if indexPathRow == 0 {
-                    vc.optionsItems = ChartSampleProvider.aaChartModelItems()
+                    let myVC = ChartModelSampleListVC()
+                    navigationController?.pushViewController(myVC, animated: true)
                 } else if indexPathRow == 1 {
                     vc.optionsItems = ChartSampleProvider.aaOptionsItems()
                 } else if indexPathRow == 2 {
