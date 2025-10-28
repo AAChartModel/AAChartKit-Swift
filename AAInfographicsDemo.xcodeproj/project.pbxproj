@@ -660,7 +660,6 @@
 			children = (
 				844F11492B6B4A2B00ADEB1C /* ViewController */,
 				844F114A2B6B4A4900ADEB1C /* Composer */,
-				84F9980F2EB0CB7000D41382 /* Provider */,
 			);
 			path = AAChartModel;
 			sourceTree = "<group>";
@@ -876,6 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				84F998152EB0D02400D41382 /* ViewController */,
+				84F9980F2EB0CB7000D41382 /* Provider */,
 			);
 			path = AAGallery;
 			sourceTree = "<group>";
