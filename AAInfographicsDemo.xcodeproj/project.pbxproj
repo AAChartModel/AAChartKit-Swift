@@ -155,7 +155,7 @@
 		84F8F66B28B714E000F41E6A /* AABoxplot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8F66A28B714E000F41E6A /* AABoxplot.swift */; };
 		84F9980A2EB0BBCA00D41382 /* CustomStyleForLineChartComposer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998092EB0BBCA00D41382 /* CustomStyleForLineChartComposer2.swift */; };
 		84F9980C2EB0C3D700D41382 /* CustomStyleForLineChartVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9980B2EB0C3D700D41382 /* CustomStyleForLineChartVC2.swift */; };
-		84F9980E2EB0C83100D41382 /* CustomStyleChartProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9980D2EB0C83100D41382 /* CustomStyleChartProvider.swift */; };
+		84F9980E2EB0C83100D41382 /* CustomStyleChartModelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9980D2EB0C83100D41382 /* CustomStyleChartModelProvider.swift */; };
 		84F998112EB0CBF500D41382 /* CustomChartOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998102EB0CBF500D41382 /* CustomChartOptionsProvider.swift */; };
 		ED0A032527281695000BF778 /* AAInfographics.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0A032327281695000BF778 /* AAInfographics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED0A032827281695000BF778 /* AAInfographics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; };
@@ -419,7 +419,7 @@
 		84F8F66A28B714E000F41E6A /* AABoxplot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AABoxplot.swift; sourceTree = "<group>"; };
 		84F998092EB0BBCA00D41382 /* CustomStyleForLineChartComposer2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForLineChartComposer2.swift; sourceTree = "<group>"; };
 		84F9980B2EB0C3D700D41382 /* CustomStyleForLineChartVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleForLineChartVC2.swift; sourceTree = "<group>"; };
-		84F9980D2EB0C83100D41382 /* CustomStyleChartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleChartProvider.swift; sourceTree = "<group>"; };
+		84F9980D2EB0C83100D41382 /* CustomStyleChartModelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyleChartModelProvider.swift; sourceTree = "<group>"; };
 		84F998102EB0CBF500D41382 /* CustomChartOptionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChartOptionsProvider.swift; sourceTree = "<group>"; };
 		D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBundlePathLoader.swift; sourceTree = "<group>"; };
 		ED0A032127281695000BF778 /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -863,7 +863,7 @@
 			isa = PBXGroup;
 			children = (
 				84339F562D54591900F54F1E /* ChartSampleProvider.swift */,
-				84F9980D2EB0C83100D41382 /* CustomStyleChartProvider.swift */,
+				84F9980D2EB0C83100D41382 /* CustomStyleChartModelProvider.swift */,
 				84F998102EB0CBF500D41382 /* CustomChartOptionsProvider.swift */,
 			);
 			path = Provider;
@@ -1094,7 +1094,7 @@
 				84F9980C2EB0C3D700D41382 /* CustomStyleForLineChartVC2.swift in Sources */,
 				84339F4F2D536AC900F54F1E /* SortAlgorithmVC.swift in Sources */,
 				84086B2128E6F499006BD30D /* JSFunctionForAAOptionsVC.swift in Sources */,
-				84F9980E2EB0C83100D41382 /* CustomStyleChartProvider.swift in Sources */,
+				84F9980E2EB0C83100D41382 /* CustomStyleChartModelProvider.swift in Sources */,
 				84EAD7E02B91B1A10028CB7C /* CustomStyleForScatterChartVC.swift in Sources */,
 				84086B1B28E45127006BD30D /* JSFunctionForAAAxisVC.swift in Sources */,
 				840716532A6A79770037193B /* AreaChartOptionsVC.swift in Sources */,

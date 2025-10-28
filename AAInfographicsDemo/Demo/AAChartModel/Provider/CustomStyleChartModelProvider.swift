@@ -6,10 +6,9 @@
 //  Copyright © 2025 An An. All rights reserved.
 //
 
-import UIKit
 import AAInfographics
 
-class CustomStyleChartProvider: NSObject {
+class CustomStyleChartModelProvider: NSObject {
     
     static func aaChartModelItems() -> [AAOptions] {
         var originalItems = [AAChartModel]()
