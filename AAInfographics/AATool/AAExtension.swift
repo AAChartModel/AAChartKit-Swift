@@ -37,7 +37,7 @@ public extension AAStyle {
     }
     
     convenience init(color : String?, fontSize: Float?) {
-        self.init(color: color, fontSize: fontSize,weight: nil)
+        self.init(color: color, fontSize: fontSize, weight: nil)
     }
     
     convenience init(color : String?, fontSize: Float?, weight: AAChartFontWeightType?) {
