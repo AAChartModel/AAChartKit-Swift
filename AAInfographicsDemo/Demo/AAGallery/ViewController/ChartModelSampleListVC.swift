@@ -43,11 +43,7 @@ class ChartModelSampleListVC: AABaseListVC {
                 "Bubble Chart With Custom Style | 一些自定义风格样式气泡图",
                 "Line Chart With Custom Style2 | 一些自定义风格样式折线图2",
             ],
-
-
-
         ]
-        
         
         view.backgroundColor = .white
         
@@ -65,7 +61,25 @@ class ChartModelSampleListVC: AABaseListVC {
         case 2:
             chartModels = CustomStyleChartModelProvider.mixedChart2Items()
         case 3:
+            chartModels = CustomStyleChartModelProvider.customStyleForPieChartItems()
+        case 4:
             chartModels = CustomStyleChartModelProvider.customStyleForColumnChartItems()
+        case 5:
+            chartModels = CustomStyleChartModelProvider.customStyleForBarChartItems()
+        case 6:
+            chartModels = CustomStyleChartModelProvider.customStyleForLineChartItems()
+        case 7:
+            chartModels = CustomStyleChartModelProvider.customStyleForSplineChartItems()
+        case 8:
+            chartModels = CustomStyleChartModelProvider.customStyleForAreaChartItems()
+        case 9:
+            chartModels = CustomStyleChartModelProvider.customStyleForAreasplineChartItems()
+        case 10:
+            chartModels = CustomStyleChartModelProvider.customStyleForScatterChartItems()
+        case 11:
+            chartModels = CustomStyleChartModelProvider.customStyleForBubbleChartItems()
+        case 12:
+            chartModels = CustomStyleChartModelProvider.customStyleForLineChartItems2()
         default:
             return
         }

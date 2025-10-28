@@ -34,6 +34,9 @@ class CustomStyleChartModelProvider: NSObject {
         // CustomStyleForPieChartComposer
         originalItems += customStyleForPieChartItems()
         
+        // CustomStyleForLineChartComposer2
+        originalItems += customStyleForLineChartItems2()
+        
         //遍历 originalItems 数组,将其中的每个 AAChartModel 实例转化为 AAOptions 实例
         let finalItems = originalItems.map { (aaChartModel) -> AAOptions in
             let aaOptions = aaChartModel.aa_toAAOptions()
@@ -186,6 +189,101 @@ class CustomStyleChartModelProvider: NSObject {
             CustomStyleForPieChartComposer.pieChartWithRoundedCorners(),
             CustomStyleForPieChartComposer.doubleLayerPieChartWithRoundedCorners(),
             CustomStyleForPieChartComposer.doubleLayerDoubleColorsPieChartWithRoundedCorners(),
+        ]
+    }
+    
+    // MARK: - CustomStyleForBarChartComposer
+    
+    static func customStyleForBarChartItems() -> [AAChartModel] {
+        return [
+            CustomStyleForBarChartComposer.colorfulBarChart(),
+            CustomStyleForBarChartComposer.colorfulGradientColorBarChart(),
+            CustomStyleForBarChartComposer.discontinuousDataBarChart(),
+            CustomStyleForBarChartComposer.randomColorfulBarChart(),
+            
+            CustomStyleForBarChartComposer.noneStackingPolarBarChart(),
+            CustomStyleForBarChartComposer.normalStackingPolarBarChart(),
+            CustomStyleForBarChartComposer.percentStackingPolarBarChart(),
+            
+            CustomStyleForBarChartComposer.specialStyleForTheSingleDataElementOfBarChart(),
+            CustomStyleForBarChartComposer.noMoreGroupingAndOverlapEachOtherBarChart(),
+            CustomStyleForBarChartComposer.noMoreGroupingAndNestedBarChart(),
+            CustomStyleForBarChartComposer.topRoundedCornersStackingBarChart(),
+            CustomStyleForBarChartComposer.freeStyleRoundedCornersStackingBarChart(),
+            
+            CustomStyleForBarChartComposer.customBorderStyleAndStatesHoverColorBarChart(),
+            CustomStyleForBarChartComposer.negativeDataMixedPositiveDataBarChart(),
+        ]
+    }
+    
+    // MARK: - CustomStyleForSplineChartComposer
+    
+    static func customStyleForSplineChartItems() -> [AAChartModel] {
+        return [
+            CustomStyleForSplineChartComposer.mixedSplineChart(),
+            CustomStyleForSplineChartComposer.stepSplineChart(),
+            CustomStyleForSplineChartComposer.customSingleDataLabelForSplineChart(),
+            CustomStyleForSplineChartComposer.shadowStyleSplineChart(),
+            CustomStyleForSplineChartComposer.colorfulGradientSplineChart(),
+            CustomStyleForSplineChartComposer.customMarkerSymbolContentSplineChart(),
+            CustomStyleForSplineChartComposer.drawPointsWithCoordinatesForSplineChart(),
+            CustomStyleForSplineChartComposer.customHoverAndSelectHaloStyleForSplineChart(),
+            CustomStyleForSplineChartComposer.disableSomeOfLinesMouseTrackingEffectForSplineChart(),
+            CustomStyleForSplineChartComposer.colorfulShadowSplineChart(),
+            CustomStyleForSplineChartComposer.colorfulDataLabelsStepSplineChart(),
+            CustomStyleForSplineChartComposer.disableMarkerHoverEffectForSplineChart(),
+            CustomStyleForSplineChartComposer.maxAndMinDataLabelsForSplineChart(),
+            CustomStyleForSplineChartComposer.dashStyleTypesMixedSplineChart(),
+            CustomStyleForSplineChartComposer.allLineDashStyleTypesMixedSplineChart(),
+            CustomStyleForSplineChartComposer.shadowSplineChart(),
+            CustomStyleForSplineChartComposer.colorfulMarkersAndLinesSplineChart(),
+            CustomStyleForSplineChartComposer.colorfulMarkersAndLinesSplineChart2(),
+            CustomStyleForSplineChartComposer.connectNullsForSingleAASeriesElementSplineChart(),
+            CustomStyleForSplineChartComposer.largeDifferencesInTheNumberOfDataInDifferentSeriesElementSplineChart(),
+            CustomStyleForSplineChartComposer.customDifferentDataLabelsShapeForSplineChart(),
+        ]
+    }
+    
+    // MARK: - CustomStyleForAreaChartComposer
+    
+    static func customStyleForAreaChartItems() -> [AAChartModel] {
+        return [
+            CustomStyleForAreaChartComposer.withMinusNumberAreaChart(),
+            CustomStyleForAreaChartComposer.colorfulGradientAreaChart(),
+            CustomStyleForAreaChartComposer.gradientColorAreaChart(),
+            CustomStyleForAreaChartComposer.thresholdForAreaChart(),
+            CustomStyleForAreaChartComposer.customSpecialStyleDataLabelOfSingleDataElementForAreaChart(),
+            CustomStyleForAreaChartComposer.customMarkerStatesHoverStyleForAreaChart(),
+            CustomStyleForAreaChartComposer.colorfulGradientColorAndColorfulDataLabelsStepAreaChart(),
+            CustomStyleForAreaChartComposer.negativeColorMixedAreaChart(),
+            CustomStyleForAreaChartComposer.customColorfulGradientColorZonesForAreaChart(),
+        ]
+    }
+    
+    // MARK: - CustomStyleForScatterChartComposer
+    
+    static func customStyleForScatterChartItems() -> [AAChartModel] {
+        return [
+            CustomStyleForScatterChartComposer.customScatterChartMarkerSymbolContent(),
+            CustomStyleForScatterChartComposer.drawLineMixedScatterChartWithPointsCoordinates2(),
+            CustomStyleForScatterChartComposer.ScatterChartWithScrollablePlotArea(),
+        ]
+    }
+    
+    // MARK: - CustomStyleForBubbleChartComposer
+    
+    static func customStyleForBubbleChartItems() -> [AAChartModel] {
+        return [
+            CustomStyleForBubbleChartComposer.negativeColorMixedBubbleChart(),
+            CustomStyleForBubbleChartComposer.showAARadialGradientPositionAllEnumValuesWithBubbleChart(),
+        ]
+    }
+    
+    // MARK: - CustomStyleForLineChartComposer2
+    
+    static func customStyleForLineChartItems2() -> [AAChartModel] {
+        return [
+            CustomStyleForLineChartComposer2.colorfulMarkerWithZonesChart(),
         ]
     }
 
