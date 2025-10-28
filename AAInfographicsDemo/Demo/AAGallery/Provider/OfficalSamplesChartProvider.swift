@@ -11,7 +11,18 @@ import AAInfographics
 class OfficalSamplesChartProvider {
 
     static func officalChartSampleItems() -> [AAOptions] {
-        let originalItems = [
+        var allItems: [AAOptions] = []
+        allItems.append(contentsOf: areaChartSamples())
+        allItems.append(contentsOf: barOrColumnChartSamples())
+        allItems.append(contentsOf: pieChartSamples())
+        
+        return processChartOptions(allItems)
+    }
+    
+    // MARK: - Area Chart Samples
+    
+    private static func areaChartSamples() -> [AAOptions] {
+        return [
             AreaChartOptionsComposer.basicAreaChart(),//基础面积图
             AreaChartOptionsComposer.areaWithNegativeValuesChart(),//带有负值的面积图
             AreaChartOptionsComposer.stackedAreaChart(),//堆积面积图
@@ -21,7 +32,13 @@ class OfficalSamplesChartProvider {
             AreaChartOptionsComposer.areasplineChart(),//曲线面积图
             AreaChartOptionsComposer.arearangeChart(),//区域范围图
             AreaChartOptionsComposer.arearangeAndLineChart(),//区域范围图和折线图混合图
-            
+        ]
+    }
+    
+    // MARK: - Bar/Column Chart Samples
+    
+    private static func barOrColumnChartSamples() -> [AAOptions] {
+        return [
             BarOrColumnChartOptionsComposer.basicBarChart(),//基础柱状图
             BarOrColumnChartOptionsComposer.stackingBarChart(),//堆积柱状图
             BarOrColumnChartOptionsComposer.populationPyramidChart(),//人口金字塔图
@@ -33,7 +50,13 @@ class OfficalSamplesChartProvider {
             BarOrColumnChartOptionsComposer.columnChartWithRotatedLabels(),//带有旋转标签的条形图
             BarOrColumnChartOptionsComposer.columnChartWithNestedColumn(),//嵌套条形图
             BarOrColumnChartOptionsComposer.columnRangeChart(),//条形范围图
+        ]
+    }
     
+    // MARK: - Pie Chart Samples
+    
+    private static func pieChartSamples() -> [AAOptions] {
+        return [
             PieChartOptionsComposer.basicPieChart(),//基本饼状图
             PieChartOptionsComposer.basicPieChartWithLegend(),//带有图例的基本饼状图
             PieChartOptionsComposer.basicPieChartWithGradientColor(),//带有渐变色的基本饼状图
@@ -41,14 +64,17 @@ class OfficalSamplesChartProvider {
             PieChartOptionsComposer.basicPieChartWithMonochromeColor(),//带有单色的基本饼状图
             PieChartOptionsComposer.customPieChartTitlePosition(),//自定义饼状图标题位置
         ]
-        
-        //遍历 originalItems 数组,将其中的每个 AAChartModel 实例转化为 AAOptions 实例
-        let finalItems = originalItems.map { (aaOptions) -> AAOptions in
+    }
+    
+    // MARK: - Helper Methods
+    
+    private static func processChartOptions(_ options: [AAOptions]) -> [AAOptions] {
+        //遍历 options 数组,将其中的每个 AAChartModel 实例转化为 AAOptions 实例
+        let finalItems = options.map { (aaOptions) -> AAOptions in
             let aaOptions = aaOptions
 //            aaOptions.chart?.polar(true)
             return aaOptions
         }
-        
         return finalItems
     }
 
