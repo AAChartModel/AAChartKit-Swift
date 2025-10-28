@@ -655,6 +655,7 @@
 			children = (
 				844F11492B6B4A2B00ADEB1C /* ViewController */,
 				844F114A2B6B4A4900ADEB1C /* Composer */,
+				84F9980F2EB0CB7000D41382 /* Provider */,
 			);
 			path = AAChartModel;
 			sourceTree = "<group>";
@@ -791,8 +792,6 @@
 				8441C0962C620ED400A6F784 /* CustomStyleForAreasplineChartComposer.swift */,
 				586030C73877C58B03F2F997 /* CustomStyleForScatterChartComposer.swift */,
 				8440076F2B6F37180072FB66 /* CustomStyleForBubbleChartComposer.swift */,
-				84339F562D54591900F54F1E /* ChartSampleProvider.swift */,
-				84F9980D2EB0C83100D41382 /* CustomStyleChartProvider.swift */,
 			);
 			path = Composer;
 			sourceTree = "<group>";
@@ -856,6 +855,15 @@
 				84DEA0D52845F5F200D0206F /* CustomSelectionEventCallback.swift */,
 			);
 			path = BackUpContent;
+			sourceTree = "<group>";
+		};
+		84F9980F2EB0CB7000D41382 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				84339F562D54591900F54F1E /* ChartSampleProvider.swift */,
+				84F9980D2EB0C83100D41382 /* CustomStyleChartProvider.swift */,
+			);
+			path = Provider;
 			sourceTree = "<group>";
 		};
 		ED0A032227281695000BF778 /* AAInfographics */ = {
