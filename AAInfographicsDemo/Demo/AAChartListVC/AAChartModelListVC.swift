@@ -56,6 +56,8 @@ class AAChartModelListVC: AABaseListVC {
             "Areaspline Chart With Custom Style | 一些自定义风格样式曲线填充图",
             "Scatter Chart With Custom Style | 一些自定义风格样式散点图",
             "Bubble Chart With Custom Style | 一些自定义风格样式气泡图",
+            "Line Chart With Custom Style2 | 一些自定义风格样式折线图2",
+
             "全部显示所有样式的图表",
         ]
         
@@ -323,6 +325,12 @@ class AAChartModelListVC: AABaseListVC {
                 "negativeColorMixedBubbleChart",
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
+            
+            /*Custom Style For Line Chart 2*/
+            [
+                "colorfulMarkerWithZonesChart",
+             
+            ],
             [
                 "所有 AAChartModel 图表",
                 "所有 AAOptions 图表",
@@ -479,6 +487,8 @@ class AAChartModelListVC: AABaseListVC {
                 "customDifferentDataLabelsShapeForLineChart",
                 "clipForAASeriesElementLineChart",
             ],
+     
+            
             /*Custom Style For Spline Chart*/
             [
                 "mixedSplineChart",
@@ -542,9 +552,16 @@ class AAChartModelListVC: AABaseListVC {
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
             
+            /*Custom Style For Line Chart 2*/
+            [
+                "colorfulMarkerWithZonesChart",
+             
+            ],
+            
             [
             ],
-
+            
+         
         ]
          
         setUpMainTableView()
@@ -685,6 +702,13 @@ class AAChartModelListVC: AABaseListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 14:
+            let vc = CustomStyleForLineChartVC2()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 15:
             pushToOfficalChartSampleVC(indexPathRow: indexPath.row)
 
         default:
