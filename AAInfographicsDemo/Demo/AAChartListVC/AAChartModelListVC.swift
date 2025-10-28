@@ -572,22 +572,23 @@ class AAChartModelListVC: AABaseListVC {
         /*OfficialChartSampleVC*/
         if #available(macCatalyst 14.0, *) {
             if #available(iOS 14.0, *) {
-                let vc = OfficialChartSampleVC()
                 if indexPathRow == 0 {
                     let myVC = ChartModelSampleListVC()
                     navigationController?.pushViewController(myVC, animated: true)
                 } else if indexPathRow == 1 {
+                    let vc = OfficialChartSampleVC()
                     vc.optionsItems = ChartSampleProvider.aaOptionsItems()
                 } else if indexPathRow == 2 {
+                    let vc = OfficialChartSampleVC()
                     vc.optionsItems = ChartSampleProvider.officalChartSampleItems()
                 } else if indexPathRow == 3 {
+                    let vc = OfficialChartSampleVC()
                     vc.optionsItems = ChartSampleProvider.randomValueDataItems()
                 } else if indexPathRow == 4 {
                     let vc = ChartListTableViewVC()
                     navigationController?.pushViewController(vc, animated: true)
                     return
                 }
-                navigationController?.pushViewController(vc, animated: true)
                 
             } else {
                 // Fallback on earlier versions
