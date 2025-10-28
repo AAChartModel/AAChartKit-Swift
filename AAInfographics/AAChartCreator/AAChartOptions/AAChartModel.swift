@@ -517,8 +517,6 @@ public class AAChartModel: AAObject {
     public override init() {
         title                  = ""
         subtitle               = ""
-        animationType          = .linear
-        animationDuration      = 800 //In milliseconds
         chartType              = .line
         stacking               = AAChartStackingType.none
         zoomType               = AAChartZoomType.none //Disable gesture zoom by default
