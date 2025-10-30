@@ -517,9 +517,9 @@ class MixedChartComposer2: NSObject {
                     .name("Average")
                     .data([47, 83.33, 70.66, 239.33, 175.66])
                     .marker(AAMarker()
-                                .lineWidth(2)
-                                .lineColor(AAColor.white)
-                                .fillColor(AAColor.black)
+                        .lineWidth(2)
+                        .lineColor(AAColor.white)
+                        .fillColor(AAColor.black)
                     ),
                 AAPie()
                     .type(.pie)
@@ -534,8 +534,208 @@ class MixedChartComposer2: NSObject {
                     .innerSize("70%")
                     .showInLegend(false)
                     .dataLabels(AADataLabels()
-                                    .enabled(false)
+                        .enabled(false)
                     )
             ])
     }
+    
+    static func scatterWithMultipleLinearRegressionChart() -> AAChartModel {
+        
+        // 获取回归曲线数据
+        // 多项式回归: 返回 [a0, a1, a2, ...] 对应 y = a0 + a1*x + a2*x^2 + ...
+        func linearRegression(x: [Double], y: [Double], nDegrees: Int) -> [Double] {
+            let n = x.count
+            let m = nDegrees + 1 // 系数个数
+            
+            // 构建范德蒙矩阵 X: 每行是 [1, x_i, x_i^2, ..., x_i^nDegrees]
+            var X: [[Double]] = Array(repeating: Array(repeating: 0, count: m), count: n)
+            for i in 0..<n {
+                for j in 0..<m {
+                    X[i][j] = pow(x[i], Double(j))
+                }
+            }
+            
+            // 转置 X -> Xt
+            var Xt = [[Double]](repeating: Array(repeating: 0, count: n), count: m)
+            for i in 0..<m {
+                for j in 0..<n {
+                    Xt[i][j] = X[j][i]
+                }
+            }
+            
+            // Xt * X
+            var XtX = [[Double]](repeating: Array(repeating: 0, count: m), count: m)
+            for i in 0..<m {
+                for j in 0..<m {
+                    for k in 0..<n {
+                        XtX[i][j] += Xt[i][k] * X[k][j]
+                    }
+                }
+            }
+            
+            // Xt * y
+            var Xty = Array(repeating: 0.0, count: m)
+            for i in 0..<m {
+                for k in 0..<n {
+                    Xty[i] += Xt[i][k] * y[k]
+                }
+            }
+            
+            // 求解线性方程组 XtX * β = Xty （使用高斯消元法求逆或直接求解）
+            let coefficients = solveLinearSystem(matrix: XtX, vector: Xty)
+            return coefficients
+        }
+        
+        // 高斯消元法求解线性方程组 Ax = b
+        func solveLinearSystem(matrix: [[Double]], vector: [Double]) -> [Double] {
+            let n = vector.count
+            let A = matrix
+            let b = vector
+            
+            // 增广矩阵
+            var aug = [[Double]](repeating: Array(repeating: 0, count: n + 1), count: n)
+            for i in 0..<n {
+                for j in 0..<n {
+                    aug[i][j] = A[i][j]
+                }
+                aug[i][n] = b[i]
+            }
+            
+            // 前向消元
+            for col in 0..<n {
+                // 找主元
+                var maxRow = col
+                for row in col..<n {
+                    if abs(aug[row][col]) > abs(aug[maxRow][col]) {
+                        maxRow = row
+                    }
+                }
+                aug.swapAt(col, maxRow)
+                
+                // 消元
+                for row in (col + 1)..<n {
+                    let factor = aug[row][col] / aug[col][col]
+                    for j in col...n {
+                        aug[row][j] -= factor * aug[col][j]
+                    }
+                }
+            }
+            
+            // 回代
+            var x = Array(repeating: 0.0, count: n)
+            for i in stride(from: n - 1, through: 0, by: -1) {
+                x[i] = aug[i][n]
+                for j in (i + 1)..<n {
+                    x[i] -= aug[i][j] * x[j]
+                }
+                x[i] /= aug[i][i]
+            }
+            
+            return x
+        }
+        
+        // 生成回归曲线上的点
+        func generateLineData(constants: [Double], start: Double, end: Double, resolution: Int) -> [[Double]] {
+            let step = (end - start) / Double(resolution * 10) // 更细的步长
+            var data: [[Double]] = []
+            var x = start
+            while x <= end {
+                var y: Double = 0
+                for (i, coef) in constants.enumerated() {
+                    y += coef * pow(x, Double(i))
+                }
+                data.append([x, y])
+                x += step
+            }
+            return data
+        }
+        
+        // 数据集
+        let dataset: [(x: Double, y: Double)] = [
+            (4.648, 2.013), (4.583, 1.354), (-2.548, 1.066), (-2.321, -0.733), (3.684, 1.013),
+            (2.888, -0.539), (2.358, 1.496), (-0.535, 1.718), (1.848, -0.462), (1.854, 2.748),
+            (1.65, 3.253), (-1.733, 2.058), (0.445, 2.586), (0.148, 1.168), (2.784, 1.399),
+            (4.959, 4.581), (4.595, 3.141), (1.353, 2.451), (0.559, 2.402), (-0.854, 0.831),
+            (-2.713, 0.781), (-2.78, -1.127), (0.719, 0.905), (-0.452, 3.767), (0.04, 2.959),
+            (4.134, 1.68), (1.206, 1.339), (1.484, 1.781), (-1.111, 1.82), (-2.809, -0.987),
+            (-0.399, 2.752), (-1.906, 0.949), (1.082, 1.394), (4.989, 4.606), (2.396, 0.42),
+            (-1.545, 1.738), (4.149, 2.807), (3.374, 1.321), (2.875, 0.939), (4.253, 3.535),
+            (3.103, -0.248), (3.318, 2.644), (-0.17, 1.078), (4.848, 3.636), (4.695, 2.203),
+            (-1.711, 1.126), (3.032, -0.522), (2.721, 0.315), (0.691, 2.694), (1.243, 2.708),
+            (0.92, 2.536), (4.399, 2.117), (1.007, 2.395), (3.652, 1.265), (-0.169, 2.138),
+            (4.063, 1.791), (4.198, 1.705), (0.688, 3.712), (1.542, 1.832), (4.363, 1.436),
+            (2.79, 0.954), (0.893, 1.342), (-1.226, 3.519), (-0.403, 2.466), (2.597, -0.78),
+            (-1.671, 0.765), (4.264, 2.736), (-0.855, 3.988), (4.291, 2.888), (-0.523, 2.865),
+            (4.659, 3.201), (2.65, 2.046), (1.034, 0.55), (1.142, 1.522), (2.211, 1.456),
+            (1.704, 2.286), (-0.505, 3.947), (-1.337, 1.281), (1.095, 1.113), (4.473, 1.199),
+            (1.986, 2.308), (-2.397, 1.838), (3.563, 1.649), (2.808, 1.676), (4.261, 0.631),
+            (-1.469, 2.266), (2.958, 0.901), (-2.53, 0.325), (2.223, 1.89), (-0.815, 2.656),
+            (-1.187, 2.236), (4.004, 1.712), (-2.15, -0.832), (1.179, 2.359), (3.832, 2.834),
+            (-1.041, 3.408), (-1.316, 1.606), (4.045, 1.696), (0.383, 3.496), (2.736, 0.766)
+        ]
+        
+        // 提取 x, y 数组
+        let xData = dataset.map { $0.x }
+        let yData = dataset.map { $0.y }
+        
+        // 生成回归线数据
+        let line1 = generateLineData(constants: linearRegression(x: xData, y: yData, nDegrees: 1), start: -3, end: 5, resolution: 10)
+        let line2 = generateLineData(constants: linearRegression(x: xData, y: yData, nDegrees: 2), start: -3, end: 5, resolution: 10)
+        let line3 = generateLineData(constants: linearRegression(x: xData, y: yData, nDegrees: 3), start: -3, end: 5, resolution: 10)
+        
+        // 散点数据
+        let scatterData: [[Double]] = dataset.map { [$0.x, $0.y] }
+        
+        return AAChartModel()
+            .title("Scatter plot with regression lines")
+        //                .xAxisMin(-3.3)
+        //                .xAxisMax(5.3)
+            .xAxisLabelsEnabled(true)
+            .yAxisTitle("")
+            .yAxisMin(-2)
+            .yAxisMax(6)
+            .series([
+                AASeriesElement()
+                    .name("Observations")
+                    .type(.scatter)
+                    .data(scatterData)
+                    .marker(AAMarker()
+                        .radius(6)
+                            //空心效果的 marker
+                        .fillColor(AAColor.white)
+                        .lineWidth(3)
+                        .lineColor(AAColor.red)
+                    ),
+                
+                AASeriesElement()
+                    .name("1st degree regression line")
+                    .type(.spline)
+                    .data(line1)
+                    .lineWidth(5)
+                    .marker(AAMarker()
+                        .enabled(false))
+                    .enableMouseTracking(false),
+                
+                AASeriesElement()
+                    .name("2nd degree regression line")
+                    .type(.spline)
+                    .data(line2)
+                    .lineWidth(5)
+                    .marker(AAMarker()
+                        .enabled(false))
+                    .enableMouseTracking(false),
+                
+                AASeriesElement()
+                    .name("3rd degree regression line")
+                    .type(.spline)
+                    .data(line3)
+                    .lineWidth(5)
+                    .marker(AAMarker()
+                        .enabled(false))
+                    .enableMouseTracking(false)
+            ])
+    }
+    
+    
+    
 }

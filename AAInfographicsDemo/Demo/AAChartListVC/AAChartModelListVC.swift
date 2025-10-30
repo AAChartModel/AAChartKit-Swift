@@ -176,6 +176,7 @@ class AAChartModelListVC: AABaseListVC {
                 "scatterPlotWithTrendLine2---带有趋势线的散点图 2",
                 "pieMixedLineMixedColumnChart---扇形折线柱形混合图",
                 "pieMixedLineMixedColumnChart2---扇形折线柱形混合图2",
+                "scatterWithMultipleLinearRegressionChart---多元线性回归散点图",
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -398,6 +399,7 @@ class AAChartModelListVC: AABaseListVC {
                 "scatterPlotWithTrendLine2",
                 "pieMixedLineMixedColumnChart",
                 "pieMixedLineMixedColumnChart2",
+                "scatterWithMultipleLinearRegressionChart"
             ],
             /*Custom Style For Pie Chart*/
             [
