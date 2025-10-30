@@ -44,11 +44,12 @@ struct BasicChartView: View {
     // MARK: - Body
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Chart View
-            AAChartModelViewRepresentable(
-                chartModel: $chartModel,
-                refreshTrigger: refreshTrigger,
+        GeometryReader { geometry in
+            ZStack(alignment: .bottom) {
+                // Chart View - fills most of the screen
+                AAChartModelViewRepresentable(
+                    chartModel: $chartModel,
+                    refreshTrigger: refreshTrigger,
                 onChartLoaded: {
                     print("🚀🚀🚀, AAChartView Did Finished Load!!!")
                 },
@@ -88,14 +89,15 @@ struct BasicChartView: View {
                         """
                     )
                 }
-            )
-            .padding(.top, 60)
-            .padding(.bottom, 220)
-            
-            Spacer()
-            
-            // Segmented Controls Area
-            VStack(spacing: 8) {
+                )
+                .frame(maxWidth: .infinity)
+                .padding(.top, 60)
+                .padding(.bottom, 220)
+                
+                // Controls overlay at the bottom
+                VStack(spacing: 0) {
+                    // Segmented Controls Area
+                    VStack(spacing: 8) {
                 // First control: Stacking type selection
                 SegmentedControlRow(
                     title: "Stacking Type Selection",
@@ -125,13 +127,13 @@ struct BasicChartView: View {
                     .onChange(of: secondControlIndex) { newValue in
                         updateMarkerSymbol(index: newValue)
                     }
+                    }
                 }
-            }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 110)
-            
-            // Toggle Controls Area
-            HStack(spacing: 8) {
+                .padding(.horizontal, 20)
+                .padding(.bottom, 8)
+                
+                // Toggle Controls Area
+                HStack(spacing: 8) {
                 let hasSixToggles = chartType != .column && chartType != .bar
                 let toggleFontSize: CGFloat = hasSixToggles ? 9 : 10
                 
@@ -178,11 +180,15 @@ struct BasicChartView: View {
                             chartModel.markerRadius(newValue ? 0 : 5)
                             triggerChartRefresh()
                         }
+                    }
                 }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
+                .frame(height: 70)
             }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 20)
-            .frame(height: 70)
+            .frame(height: 200) // Total height for controls: segmented + toggles
+            .padding(.bottom, 0)
+        }
         }
         .background(Color(red: 0x22/255, green: 0x32/255, blue: 0x4c/255))
         .navigationTitle(chartType.rawValue)
