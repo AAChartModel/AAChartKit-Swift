@@ -21,6 +21,7 @@ struct BasicChartView: View {
     // MARK: - State Properties
     
     @State private var chartModel: AAChartModel
+    @State private var refreshTrigger: Int = 0  // Used to trigger chart refresh
     @State private var stackingTypeIndex: Int = 0
     @State private var secondControlIndex: Int = 0
     @State private var xReversed: Bool = false
@@ -47,6 +48,7 @@ struct BasicChartView: View {
             // Chart View
             AAChartModelViewRepresentable(
                 chartModel: $chartModel,
+                refreshTrigger: refreshTrigger,
                 onChartLoaded: {
                     print("🚀🚀🚀, AAChartView Did Finished Load!!!")
                 },
@@ -137,35 +139,35 @@ struct BasicChartView: View {
                     .frame(maxWidth: .infinity)
                     .onChange(of: xReversed) { newValue in
                         chartModel.xAxisReversed(newValue)
-                        chartModel = chartModel // Trigger update
+                        triggerChartRefresh()
                     }
                 
                 ToggleControl(title: "yReversed", isOn: $yReversed, fontSize: toggleFontSize)
                     .frame(maxWidth: .infinity)
                     .onChange(of: yReversed) { newValue in
                         chartModel.yAxisReversed(newValue)
-                        chartModel = chartModel // Trigger update
+                        triggerChartRefresh()
                     }
                 
                 ToggleControl(title: "xInverted", isOn: $inverted, fontSize: toggleFontSize)
                     .frame(maxWidth: .infinity)
                     .onChange(of: inverted) { newValue in
                         chartModel.inverted(newValue)
-                        chartModel = chartModel // Trigger update
+                        triggerChartRefresh()
                     }
                 
                 ToggleControl(title: "Polarization", isOn: $polar, fontSize: toggleFontSize)
                     .frame(maxWidth: .infinity)
                     .onChange(of: polar) { newValue in
                         chartModel.polar(newValue)
-                        chartModel = chartModel // Trigger update
+                        triggerChartRefresh()
                     }
                 
                 ToggleControl(title: "DataShow", isOn: $dataLabelsEnabled, fontSize: toggleFontSize)
                     .frame(maxWidth: .infinity)
                     .onChange(of: dataLabelsEnabled) { newValue in
                         chartModel.dataLabelsEnabled(newValue)
-                        chartModel = chartModel // Trigger update
+                        triggerChartRefresh()
                     }
                 
                 // Conditionally show HideMarker toggle for non-column/bar charts
@@ -174,7 +176,7 @@ struct BasicChartView: View {
                         .frame(maxWidth: .infinity)
                         .onChange(of: markerHidden) { newValue in
                             chartModel.markerRadius(newValue ? 0 : 5)
-                            chartModel = chartModel // Trigger update
+                            triggerChartRefresh()
                         }
                 }
             }
@@ -209,12 +211,16 @@ struct BasicChartView: View {
         return model
     }
     
+    /// Triggers a chart refresh
+    private func triggerChartRefresh() {
+        refreshTrigger += 1
+    }
+    
     /// Updates the stacking type based on segmented control selection
     private func updateStackingType(index: Int) {
         let stackingTypes: [AAChartStackingType] = [.none, .normal, .percent]
         chartModel.stacking(stackingTypes[index])
-        // Trigger view update by creating a new reference
-        chartModel = chartModel
+        triggerChartRefresh()
     }
     
     /// Updates the border radius for column/bar charts
@@ -227,16 +233,14 @@ struct BasicChartView: View {
         } else if let stringValue = borderRadius as? String {
             chartModel.borderRadius(stringValue)
         }
-        // Trigger view update by creating a new reference
-        chartModel = chartModel
+        triggerChartRefresh()
     }
     
     /// Updates the marker symbol for non-column/bar charts
     private func updateMarkerSymbol(index: Int) {
         let symbols: [AAChartSymbolType] = [.circle, .square, .diamond, .triangle, .triangleDown]
         chartModel.markerSymbol(symbols[index])
-        // Trigger view update by creating a new reference
-        chartModel = chartModel
+        triggerChartRefresh()
     }
 }
 

@@ -19,6 +19,9 @@ struct AAChartModelViewRepresentable: UIViewRepresentable {
     /// Binding to the chart model for two-way data flow
     @Binding var chartModel: AAChartModel
     
+    /// Trigger value that changes when chart needs to refresh
+    var refreshTrigger: Int
+    
     /// Callback when chart finishes loading
     var onChartLoaded: (() -> Void)?
     
@@ -48,9 +51,11 @@ struct AAChartModelViewRepresentable: UIViewRepresentable {
         // Check if this is the initial draw or an update
         if context.coordinator.hasDrawnChart {
             // Chart already exists, refresh it
+            print("🔄 Refreshing chart with trigger: \(refreshTrigger)")
             uiView.aa_refreshChartWholeContentWithChartModel(chartModel)
         } else {
             // Initial draw
+            print("🎨 Initial chart draw")
             uiView.aa_drawChartWithChartModel(chartModel)
             context.coordinator.hasDrawnChart = true
         }
