@@ -772,10 +772,7 @@ class MixedChartComposer2: NSObject {
         let line1 = generateLineData(constants: linearRegression(x: xData, y: yData, nDegrees: 1), start: -3, end: 5, resolution: 10)
         let line2 = generateLineData(constants: linearRegression(x: xData, y: yData, nDegrees: 2), start: -3, end: 5, resolution: 10)
         let line3 = generateLineData(constants: linearRegression(x: xData, y: yData, nDegrees: 3), start: -3, end: 5, resolution: 10)
-        
-        // 散点数据
-        let scatterData: [[Double]] = dataset.map { [$0[0], $0[1]] }
-        
+                
         return AAChartModel()
             .title("Scatter plot with regression lines")
             .xAxisLabelsEnabled(true)
@@ -786,7 +783,7 @@ class MixedChartComposer2: NSObject {
                 AASeriesElement()
                     .name("Observations")
                     .type(.scatter)
-                    .data(scatterData)
+                    .data(dataset)
                     .marker(AAMarker()
                         .radius(6)
                         //空心效果的 marker
