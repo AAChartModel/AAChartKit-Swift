@@ -204,20 +204,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // 自定义导航栏外观
     func customizeNavigationBar(_ navigationController: UINavigationController) {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemBackground
-        
-        // 设置分隔线颜色
-        appearance.shadowColor = .separator
-        appearance.shadowImage = UIImage()
+        // 标准外观 - 滚动时显示（有背景）
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.configureWithOpaqueBackground()
+        standardAppearance.backgroundColor = .systemBackground
+        standardAppearance.shadowColor = .separator
+        standardAppearance.shadowImage = UIImage()
         
         // 自定义标题样式
-        appearance.titleTextAttributes = [
+        standardAppearance.titleTextAttributes = [
             .foregroundColor: UIColor.label,
             .font: UIFont.systemFont(ofSize: 17, weight: .semibold)
         ]
-        appearance.largeTitleTextAttributes = [
+        standardAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.label,
             .font: UIFont.systemFont(ofSize: 34, weight: .bold)
         ]
@@ -228,20 +227,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .foregroundColor: UIColor.systemBlue,
             .font: UIFont.systemFont(ofSize: 17, weight: .regular)
         ]
-        appearance.buttonAppearance = buttonAppearance
-        appearance.doneButtonAppearance = buttonAppearance
+        standardAppearance.buttonAppearance = buttonAppearance
+        standardAppearance.doneButtonAppearance = buttonAppearance
         
-        navigationController.navigationBar.standardAppearance = appearance
-        navigationController.navigationBar.scrollEdgeAppearance = appearance
-        navigationController.navigationBar.compactAppearance = appearance
+        // 滚动边缘外观 - 页面顶部时显示（透明）
+        let scrollEdgeAppearance = UINavigationBarAppearance()
+        scrollEdgeAppearance.configureWithTransparentBackground()
+        
+        // 保持标题样式一致
+        scrollEdgeAppearance.titleTextAttributes = standardAppearance.titleTextAttributes
+        scrollEdgeAppearance.largeTitleTextAttributes = standardAppearance.largeTitleTextAttributes
+        scrollEdgeAppearance.buttonAppearance = buttonAppearance
+        scrollEdgeAppearance.doneButtonAppearance = buttonAppearance
+        
+        // 应用外观配置
+        navigationController.navigationBar.standardAppearance = standardAppearance
+        navigationController.navigationBar.scrollEdgeAppearance = scrollEdgeAppearance
+        navigationController.navigationBar.compactAppearance = standardAppearance
         if #available(iOS 15.0, *) {
-            navigationController.navigationBar.compactScrollEdgeAppearance = appearance
+            navigationController.navigationBar.compactScrollEdgeAppearance = scrollEdgeAppearance
         }
         
         navigationController.navigationBar.tintColor = .systemBlue
         navigationController.navigationBar.prefersLargeTitles = true
-        
-        // 启用平滑过渡
         navigationController.navigationBar.isTranslucent = true
     }
 
