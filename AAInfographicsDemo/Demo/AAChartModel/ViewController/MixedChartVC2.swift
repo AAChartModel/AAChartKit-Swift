@@ -23,6 +23,7 @@ class MixedChartVC2: AABaseChartVC {
         case "pieMixedLineMixedColumnChart": return MixedChartComposer2.pieMixedLineMixedColumnChart()
         case "pieMixedLineMixedColumnChart2": return MixedChartComposer2.pieMixedLineMixedColumnChart2()
         case "scatterWithMultipleLinearRegressionChart": return MixedChartComposer2.scatterWithMultipleLinearRegressionChart()
+        case "rangeSplineAreaSplineAndMarkerChart": return MixedChartComposer2.rangeSplineAreaSplineAndMarkerChart()
 
         default: return MixedChartComposer2.scatterPlotWithTrendLine()
         }

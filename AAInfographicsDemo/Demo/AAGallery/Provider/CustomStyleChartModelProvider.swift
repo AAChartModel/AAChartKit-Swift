@@ -101,6 +101,8 @@ class CustomStyleChartModelProvider: NSObject {
             MixedChartComposer2.scatterPlotWithTrendLine2(),
             MixedChartComposer2.pieMixedLineMixedColumnChart(),
             MixedChartComposer2.pieMixedLineMixedColumnChart2(),
+            MixedChartComposer2.scatterWithMultipleLinearRegressionChart(),
+            MixedChartComposer2.rangeSplineAreaSplineAndMarkerChart(),
         ]
     }
     
