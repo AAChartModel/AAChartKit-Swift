@@ -72,16 +72,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         
-        // 设置背景颜色为白色
+        // 设置背景颜色和模糊效果
         appearance.backgroundColor = .systemBackground
         
-        // 设置阴影效果
-        appearance.shadowColor = UIColor.black.withAlphaComponent(0.1)
-        appearance.shadowImage = nil
+        // 设置更明显的阴影效果
+        appearance.shadowColor = UIColor.separator
+        appearance.shadowImage = UIImage()
         
         // 自定义选中和未选中状态的颜色
         let normalAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.systemGray,
+            .foregroundColor: UIColor.secondaryLabel,
             .font: UIFont.systemFont(ofSize: 10, weight: .medium)
         ]
         let selectedAttributes: [NSAttributedString.Key: Any] = [
@@ -89,10 +89,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .font: UIFont.systemFont(ofSize: 10, weight: .semibold)
         ]
         
+        // 配置所有布局样式
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = normalAttributes
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedAttributes
-        appearance.stackedLayoutAppearance.normal.iconColor = .systemGray
+        appearance.stackedLayoutAppearance.normal.iconColor = .secondaryLabel
         appearance.stackedLayoutAppearance.selected.iconColor = .systemBlue
+        
+        appearance.inlineLayoutAppearance.normal.titleTextAttributes = normalAttributes
+        appearance.inlineLayoutAppearance.selected.titleTextAttributes = selectedAttributes
+        appearance.inlineLayoutAppearance.normal.iconColor = .secondaryLabel
+        appearance.inlineLayoutAppearance.selected.iconColor = .systemBlue
+        
+        appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = normalAttributes
+        appearance.compactInlineLayoutAppearance.selected.titleTextAttributes = selectedAttributes
+        appearance.compactInlineLayoutAppearance.normal.iconColor = .secondaryLabel
+        appearance.compactInlineLayoutAppearance.selected.iconColor = .systemBlue
         
         tabBarController.tabBar.standardAppearance = appearance
         if #available(iOS 15.0, *) {
@@ -101,37 +112,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 设置 TabBar 的色调
         tabBarController.tabBar.tintColor = .systemBlue
-        tabBarController.tabBar.unselectedItemTintColor = .systemGray
+        tabBarController.tabBar.unselectedItemTintColor = .secondaryLabel
+        
+        // 添加轻微的弹性动画效果
+        tabBarController.tabBar.isTranslucent = true
     }
 
-    //创建一个 UITabBarController
+    // 创建一个 UITabBarController
     func createTabBarController() -> UITabBarController {
-        // 创建一个 UITabBarController
         let tabBarController = UITabBarController()
-
-        // 创建一个数组来保存所有的视图控制器
-        var viewControllers = [UINavigationController]()
-
-        let firstVC = createFirstNavigationController()
-        viewControllers.append(firstVC)
-
-        let secondVC =  createSecondNavigationController()
-        viewControllers.append(secondVC)
-
-        let thirdVC = createThirdNavigationController()
-        viewControllers.append(thirdVC)
-
-        let fourthVC = createFourthNavigationController()
-        viewControllers.append(fourthVC)
-
-        let fifthVC = createFifthNavigationController()
-        viewControllers.append(fifthVC)
-
-        // 将数组赋值给 UITabBarController
+        
+        // 使用更简洁的方式创建所有视图控制器
+        let viewControllers = [
+            createNavigationController(with: createFirstViewController()),
+            createNavigationController(with: createSecondViewController()),
+            createNavigationController(with: createThirdViewController()),
+            createNavigationController(with: createFourthViewController()),
+            createNavigationController(with: createFifthViewController())
+        ]
+        
         tabBarController.viewControllers = viewControllers
-
-        // 返回 UITabBarController
         return tabBarController
+    }
+    
+    // 通用的导航控制器创建方法
+    func createNavigationController(with viewController: UIViewController) -> UINavigationController {
+        let navigationController = UINavigationController(rootViewController: viewController)
+        customizeNavigationBar(navigationController)
+        return navigationController
     }
 
     func createFirstViewController() -> AAChartModelListVC {
@@ -192,52 +200,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-    // 创建导航控制器，并将第一个视图控制器设置为根视图控制器
-    func createFirstNavigationController() -> UINavigationController {
-        let firstViewController = createFirstViewController()
-        let navigationController = UINavigationController(rootViewController: firstViewController)
-        customizeNavigationBar(navigationController)
-        return navigationController
-    }
 
-    // 创建导航控制器，并将第二个视图控制器设置为根视图控制器
-    func createSecondNavigationController() -> UINavigationController {
-        let secondViewController = createSecondViewController()
-        let navigationController = UINavigationController(rootViewController: secondViewController)
-        customizeNavigationBar(navigationController)
-        return navigationController
-    }
-
-    // 创建导航控制器，并将第三个视图控制器设置为根视图控制器
-    func createThirdNavigationController() -> UINavigationController {
-        let thirdViewController = createThirdViewController()
-        let navigationController = UINavigationController(rootViewController: thirdViewController)
-        customizeNavigationBar(navigationController)
-        return navigationController
-    }
-
-    // 创建导航控制器，并将第四个视图控制器设置为根视图控制器
-    func createFourthNavigationController() -> UINavigationController {
-        let fourthViewController = createFourthViewController()
-        let navigationController = UINavigationController(rootViewController: fourthViewController)
-        customizeNavigationBar(navigationController)
-        return navigationController
-    }
-
-    // 创建导航控制器，并将第五个视图控制器设置为根视图控制器
-    func createFifthNavigationController() -> UINavigationController {
-        let fifthViewController = createFifthViewController()
-        let navigationController = UINavigationController(rootViewController: fifthViewController)
-        customizeNavigationBar(navigationController)
-        return navigationController
-    }
     
     // 自定义导航栏外观
     func customizeNavigationBar(_ navigationController: UINavigationController) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .systemBackground
-        appearance.shadowColor = UIColor.black.withAlphaComponent(0.1)
+        
+        // 设置分隔线颜色
+        appearance.shadowColor = .separator
+        appearance.shadowImage = UIImage()
         
         // 自定义标题样式
         appearance.titleTextAttributes = [
@@ -249,12 +222,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .font: UIFont.systemFont(ofSize: 34, weight: .bold)
         ]
         
+        // 自定义按钮样式
+        let buttonAppearance = UIBarButtonItemAppearance()
+        buttonAppearance.normal.titleTextAttributes = [
+            .foregroundColor: UIColor.systemBlue,
+            .font: UIFont.systemFont(ofSize: 17, weight: .regular)
+        ]
+        appearance.buttonAppearance = buttonAppearance
+        appearance.doneButtonAppearance = buttonAppearance
+        
         navigationController.navigationBar.standardAppearance = appearance
         navigationController.navigationBar.scrollEdgeAppearance = appearance
         navigationController.navigationBar.compactAppearance = appearance
+        if #available(iOS 15.0, *) {
+            navigationController.navigationBar.compactScrollEdgeAppearance = appearance
+        }
         
         navigationController.navigationBar.tintColor = .systemBlue
         navigationController.navigationBar.prefersLargeTitles = true
+        
+        // 启用平滑过渡
+        navigationController.navigationBar.isTranslucent = true
     }
 
 
