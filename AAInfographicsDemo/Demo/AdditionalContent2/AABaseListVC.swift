@@ -64,11 +64,12 @@ class AABaseListVC: UIViewController {
         hostingController?.removeFromParent()
 
         let sections = makeSectionData()
-        // 为每个 section 创建独立的索引项，包含 section ID
+        // 为每个 section 创建独立的索引项，包含 section ID 和颜色
         let indexItems = sections.map { section in
             AABaseListView.IndexItem(
                 displayText: section.indexTitle,
-                targetSectionId: section.id
+                targetSectionId: section.id,
+                color: section.color
             )
         }
 
@@ -158,6 +159,7 @@ private struct AABaseListView: View {
         let id = UUID()
         let displayText: String
         let targetSectionId: Int
+        let color: Color  // 添加对应 section 的颜色
     }
 
     @Environment(\.colorScheme) private var colorScheme
@@ -230,6 +232,7 @@ private struct ScrollableListContainer: View {
     let indexBackgroundColor: Color
 
     @State private var toastText: String? = nil
+    @State private var toastColor: Color? = nil  // 添加 Toast 颜色状态
     @State private var isDraggingIndex = false
 
     var body: some View {
@@ -263,17 +266,19 @@ private struct ScrollableListContainer: View {
                             }
                             
                             toastText = indexItem.displayText
+                            toastColor = indexItem.color  // 设置 Toast 颜色
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                                 withAnimation {
                                     toastText = nil
+                                    toastColor = nil
                                 }
                             }
                         }
                     }
                 }
                 
-                if let text = toastText {
-                    ToastView(text: text)
+                if let text = toastText, let color = toastColor {
+                    ToastView(text: text, accentColor: color)
                         .transition(.opacity.combined(with: .scale(scale: 0.8)))
                         .zIndex(1)
                 }
@@ -546,10 +551,12 @@ private struct SectionIndexView: View {
             : Color(red: 0.4, green: 0.4, blue: 0.5)
     }
     
-    private var selectedBackgroundColor: Color {
-        colorScheme == .dark
-            ? Color.blue.opacity(0.8)
-            : Color.blue
+    // 获取选中项的颜色
+    private func selectedColor(for index: Int) -> Color {
+        guard index >= 0 && index < indexItems.count else {
+            return colorScheme == .dark ? Color.blue.opacity(0.8) : Color.blue
+        }
+        return indexItems[index].color
     }
     
     private var shadowColor: Color {
@@ -616,7 +623,7 @@ private struct SectionIndexView: View {
                         Circle()
                             .fill(
                                 selectedIndex == index
-                                    ? selectedBackgroundColor
+                                    ? selectedColor(for: index)  // 使用对应 section 的颜色
                                     : Color.clear
                             )
                             .scaleEffect(selectedIndex == index ? 1.0 : 0.8)
@@ -691,25 +698,32 @@ private struct SectionIndexView: View {
 @available(iOS 13.0, macCatalyst 13.1, *)
 private struct ToastView: View {
     let text: String
+    let accentColor: Color  // 添加强调色参数
     
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         Text(text)
             .font(.system(size: 56, weight: .bold, design: .rounded))
-            .foregroundColor(.white)
+            .foregroundColor(accentColor)  // 使用对应的 section 颜色
             .padding(25)
             .background(
                 Circle()
-                    .fill(Color.black.opacity(0.6))
+                    .fill(
+                        colorScheme == .dark
+                            ? Color.black.opacity(0.75)
+                            : Color.white.opacity(0.95)
+                    )
             )
             .shadow(
-                color: colorScheme == .dark
-                    ? Color.black.opacity(0.5)
-                    : Color.black.opacity(0.2),
-                radius: 12,
+                color: accentColor.opacity(0.3),  // 使用颜色的阴影
+                radius: 20,
                 x: 0,
                 y: 4
+            )
+            .overlay(
+                Circle()
+                    .stroke(accentColor.opacity(0.3), lineWidth: 2)  // 添加边框
             )
     }
 }
