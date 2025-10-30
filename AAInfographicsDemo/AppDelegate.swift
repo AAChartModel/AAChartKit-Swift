@@ -50,12 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         // 创建 UIWindow 实例
         window = UIWindow(frame: UIScreen.main.bounds)
 
         // 使用 createTabBarController 方法创建 UITabBarController
         let tabBarController = createTabBarController()
+        
+        // 自定义 TabBar 外观
+        customizeTabBarAppearance(tabBarController)
 
         // 将 UITabBarController 设置为根视图控制器
         window?.rootViewController = tabBarController
@@ -63,6 +65,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 设置窗口可见
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    // 自定义 TabBar 外观
+    func customizeTabBarAppearance(_ tabBarController: UITabBarController) {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        
+        // 设置背景颜色为白色
+        appearance.backgroundColor = .systemBackground
+        
+        // 设置阴影效果
+        appearance.shadowColor = UIColor.black.withAlphaComponent(0.1)
+        appearance.shadowImage = nil
+        
+        // 自定义选中和未选中状态的颜色
+        let normalAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.systemGray,
+            .font: UIFont.systemFont(ofSize: 10, weight: .medium)
+        ]
+        let selectedAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.systemBlue,
+            .font: UIFont.systemFont(ofSize: 10, weight: .semibold)
+        ]
+        
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = normalAttributes
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedAttributes
+        appearance.stackedLayoutAppearance.normal.iconColor = .systemGray
+        appearance.stackedLayoutAppearance.selected.iconColor = .systemBlue
+        
+        tabBarController.tabBar.standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            tabBarController.tabBar.scrollEdgeAppearance = appearance
+        }
+        
+        // 设置 TabBar 的色调
+        tabBarController.tabBar.tintColor = .systemBlue
+        tabBarController.tabBar.unselectedItemTintColor = .systemGray
     }
 
     //创建一个 UITabBarController
@@ -98,10 +137,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createFirstViewController() -> AAChartModelListVC {
         // 创建第一个视图控制器
         let firstVC = AAChartModelListVC()
-        firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-
-        // 在这里添加第一个视图控制器的其他配置
-
+        firstVC.tabBarItem = UITabBarItem(
+            title: "图表模型",
+            image: UIImage(systemName: "chart.bar.fill"),
+            tag: 0
+        )
         return firstVC
     }
     
@@ -110,40 +150,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createSecondViewController() -> UIViewController {
         // 创建第二个视图控制器
         let secondVC = AAOptionsListVC()
-        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
-
-        // 在这里添加第二个视图控制器的其他配置
-
+        secondVC.tabBarItem = UITabBarItem(
+            title: "配置选项",
+            image: UIImage(systemName: "slider.horizontal.3"),
+            tag: 1
+        )
         return secondVC
     }
 
     func createThirdViewController() -> UIViewController {
         // 创建第三个视图控制器
         let thirdVC = AAOptionsWithJSListVC()
-        thirdVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
-
-        // 在这里添加第三个视图控制器的其他配置
-
+        thirdVC.tabBarItem = UITabBarItem(
+            title: "JS 配置",
+            image: UIImage(systemName: "chevron.left.forwardslash.chevron.right"),
+            tag: 2
+        )
         return thirdVC
     }
 
     func createFourthViewController() -> UIViewController {
         // 创建第四个视图控制器
         let fourthVC = OfficialSamplesListVC()
-        fourthVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 3)
-
-        // 在这里添加第四个视图控制器的其他配置
-
+        fourthVC.tabBarItem = UITabBarItem(
+            title: "官方示例",
+            image: UIImage(systemName: "star.fill"),
+            tag: 3
+        )
         return fourthVC
     }
 
     func createFifthViewController() -> UIViewController {
         // 创建第五个视图控制器
         let fifthVC = AdvancedFeaturesListVC()
-        fifthVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 4)
-
-        // 在这里添加第五个视图控制器的其他配置
-
+        fifthVC.tabBarItem = UITabBarItem(
+            title: "高级功能",
+            image: UIImage(systemName: "gearshape.fill"),
+            tag: 4
+        )
         return fifthVC
     }
 
@@ -152,6 +196,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createFirstNavigationController() -> UINavigationController {
         let firstViewController = createFirstViewController()
         let navigationController = UINavigationController(rootViewController: firstViewController)
+        customizeNavigationBar(navigationController)
         return navigationController
     }
 
@@ -159,6 +204,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createSecondNavigationController() -> UINavigationController {
         let secondViewController = createSecondViewController()
         let navigationController = UINavigationController(rootViewController: secondViewController)
+        customizeNavigationBar(navigationController)
         return navigationController
     }
 
@@ -166,6 +212,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createThirdNavigationController() -> UINavigationController {
         let thirdViewController = createThirdViewController()
         let navigationController = UINavigationController(rootViewController: thirdViewController)
+        customizeNavigationBar(navigationController)
         return navigationController
     }
 
@@ -173,6 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createFourthNavigationController() -> UINavigationController {
         let fourthViewController = createFourthViewController()
         let navigationController = UINavigationController(rootViewController: fourthViewController)
+        customizeNavigationBar(navigationController)
         return navigationController
     }
 
@@ -180,7 +228,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func createFifthNavigationController() -> UINavigationController {
         let fifthViewController = createFifthViewController()
         let navigationController = UINavigationController(rootViewController: fifthViewController)
+        customizeNavigationBar(navigationController)
         return navigationController
+    }
+    
+    // 自定义导航栏外观
+    func customizeNavigationBar(_ navigationController: UINavigationController) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .systemBackground
+        appearance.shadowColor = UIColor.black.withAlphaComponent(0.1)
+        
+        // 自定义标题样式
+        appearance.titleTextAttributes = [
+            .foregroundColor: UIColor.label,
+            .font: UIFont.systemFont(ofSize: 17, weight: .semibold)
+        ]
+        appearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.label,
+            .font: UIFont.systemFont(ofSize: 34, weight: .bold)
+        ]
+        
+        navigationController.navigationBar.standardAppearance = appearance
+        navigationController.navigationBar.scrollEdgeAppearance = appearance
+        navigationController.navigationBar.compactAppearance = appearance
+        
+        navigationController.navigationBar.tintColor = .systemBlue
+        navigationController.navigationBar.prefersLargeTitles = true
     }
 
 
