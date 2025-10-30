@@ -12,7 +12,7 @@ import AAInfographics
 
 let kCustomTableViewCell = "CustomTableViewCell"
 
-@available(iOS 13.0, macCatalyst 13.1, *)
+@available(iOS 14.0, macCatalyst 14.0, *)
 class AABaseListVC: UIViewController {
     public var sectionTitleArr = [String]()
     public var chartTypeTitleArr = [[String]]()
@@ -144,7 +144,7 @@ class AABaseListVC: UIViewController {
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { }
 }
 
-@available(iOS 13.0, macCatalyst 13.1, *)
+@available(iOS 14.0, macCatalyst 14.0, *)
 private struct AABaseListView: View {
     struct SectionData: Identifiable {
         let id: Int
@@ -199,7 +199,7 @@ private struct AABaseListView: View {
     }
 
     var body: some View {
-        Group {
+        ZStack {
             if #available(iOS 14.0, macCatalyst 14.0, *) {
                 ScrollableListContainer(
                     sections: sections,
@@ -209,7 +209,8 @@ private struct AABaseListView: View {
                     indexBackgroundColor: indexBackgroundColor
                 )
             } else {
-                LegacyListView(
+                // iOS 13 不支持 ScrollViewReader，只显示列表内容不带索引
+                SectionListContent(
                     sections: sections,
                     onSelect: onSelect,
                     cardBackgroundColor: cardBackgroundColor
@@ -234,23 +235,21 @@ private struct ScrollableListContainer: View {
         ScrollViewReader { proxy in
             ZStack {
                 HStack(spacing: 0) {
-                    SectionedList(
+                    // 使用共享的内容组件
+                    SectionListContent(
                         sections: sections,
                         onSelect: onSelect,
                         cardBackgroundColor: cardBackgroundColor
                     )
-                    .listStyle(.plain)
                     
                     if !indexItems.isEmpty {
                         SectionIndexView(
                             indexItems: indexItems,
                             backgroundColor: indexBackgroundColor
                         ) { indexItem in
-                            // 直接使用 indexItem 中存储的精确 sectionId
-                            DispatchQueue.main.async {
-                                withAnimation(.easeInOut(duration: 0.5)) {
-                                    proxy.scrollTo(indexItem.targetSectionId, anchor: .top)
-                                }
+                            // 使用 withAnimation 确保平滑滚动
+                            withAnimation(.easeInOut(duration: 0.4)) {
+                                proxy.scrollTo(indexItem.targetSectionId, anchor: .top)
                             }
                             
                             toastText = indexItem.displayText
@@ -273,24 +272,9 @@ private struct ScrollableListContainer: View {
     }
 }
 
-@available(iOS 13.0, macCatalyst 13.1, *)
-private struct LegacyListView: View {
-    let sections: [AABaseListView.SectionData]
-    let onSelect: (Int, Int) -> Void
-    let cardBackgroundColor: Color
-
-    var body: some View {
-        SectionedList(
-            sections: sections,
-            onSelect: onSelect,
-            cardBackgroundColor: cardBackgroundColor
-        )
-        .listStyle(.plain)
-    }
-}
-
-@available(iOS 13.0, macCatalyst 13.1, *)
-private struct SectionedList: View {
+// 通用的列表内容组件（iOS 13+ 都可用）
+@available(iOS 14.0, macCatalyst 14.0, *)
+private struct SectionListContent: View {
     let sections: [AABaseListView.SectionData]
     let onSelect: (Int, Int) -> Void
     let cardBackgroundColor: Color
@@ -298,56 +282,54 @@ private struct SectionedList: View {
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
-        List {
-            ForEach(sections) { section in
-                Section(
-                    header: SectionHeader(title: section.title, color: section.color)
-                        .padding(.top, 16)
-                ) {
-                    VStack(spacing: 8) {
-                        ForEach(section.rows.indices, id: \.self) { rowIndex in
-                            RowView(
-                                number: rowIndex + 1,
-                                title: section.rows[rowIndex],
-                                accentColor: section.color
-                            ) {
-                                onSelect(section.id, rowIndex)
+        ScrollView {
+            LazyVStack(spacing: 0, pinnedViews: []) {
+                ForEach(sections) { section in
+                    VStack(alignment: .leading, spacing: 0) {
+                        // Section Header
+                        SectionHeader(title: section.title, color: section.color)
+                            .padding(.top, 16)
+                            .padding(.horizontal, 16)
+                        
+                        // Section Content
+                        VStack(spacing: 8) {
+                            ForEach(section.rows.indices, id: \.self) { rowIndex in
+                                RowView(
+                                    number: rowIndex + 1,
+                                    title: section.rows[rowIndex],
+                                    accentColor: section.color
+                                ) {
+                                    onSelect(section.id, rowIndex)
+                                }
                             }
                         }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .fill(cardBackgroundColor)
+                                .shadow(
+                                    color: colorScheme == .dark 
+                                        ? Color.black.opacity(0.3)
+                                        : Color.black.opacity(0.08),
+                                    radius: 8,
+                                    x: 0,
+                                    y: 2
+                                )
+                        )
+                        .padding(.horizontal, 16)
+                        .padding(.top, 8)
+                        .padding(.bottom, 8)
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 12)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(cardBackgroundColor)
-                            .shadow(
-                                color: colorScheme == .dark 
-                                    ? Color.black.opacity(0.3)
-                                    : Color.black.opacity(0.08),
-                                radius: 8,
-                                x: 0,
-                                y: 2
-                            )
-                    )
-                    .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-                    .listRowBackground(Color.clear)
+                    .id(section.id)
                 }
-                .id(section.id)
-            }
-            
-            // 添加底部占位空间，确保最后一项能完整显示
-            if #available(macCatalyst 15.0, *) {
+                
+                // 底部安全空间
                 Color.clear
-                    .frame(height: 50)
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets())
-                    .listRowSeparator(.hidden)
-            } else {
-                // Fallback on earlier versions
+                    .frame(height: 60)
             }
+            .padding(.bottom, 20)
         }
-        .listStyle(.plain)
-        .environment(\.defaultMinListRowHeight, 0)
     }
 }
 
@@ -535,7 +517,7 @@ private struct RowView: View {
     }
 }
 
-@available(iOS 13.0, macCatalyst 13.1, *)
+@available(iOS 14.0, macCatalyst 14.0, *)
 private struct SectionIndexView: View {
     let indexItems: [AABaseListView.IndexItem]
     let backgroundColor: Color

@@ -9,7 +9,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 10.0, macCatalyst 13.1, *)
+@available(iOS 14.0, macCatalyst 14.0, *)
 class OfficialSamplesListVC: AABaseListVC {
         
     override func viewDidLoad() {
