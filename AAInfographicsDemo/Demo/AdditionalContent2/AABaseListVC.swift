@@ -230,6 +230,7 @@ private struct ScrollableListContainer: View {
     let indexBackgroundColor: Color
 
     @State private var toastText: String? = nil
+    @State private var isDraggingIndex = false
 
     var body: some View {
         ScrollViewReader { proxy in
@@ -245,11 +246,20 @@ private struct ScrollableListContainer: View {
                     if !indexItems.isEmpty {
                         SectionIndexView(
                             indexItems: indexItems,
-                            backgroundColor: indexBackgroundColor
+                            backgroundColor: indexBackgroundColor,
+                            onDraggingChanged: { dragging in
+                                isDraggingIndex = dragging
+                            }
                         ) { indexItem in
-                            // 使用 withAnimation 确保平滑滚动
-                            withAnimation(.easeInOut(duration: 0.4)) {
+                            // 拖动时不使用动画，点击时使用动画
+                            if isDraggingIndex {
+                                // 快速滑动时，不使用动画直接跳转
                                 proxy.scrollTo(indexItem.targetSectionId, anchor: .top)
+                            } else {
+                                // 点击时使用平滑动画
+                                withAnimation(.easeInOut(duration: 0.4)) {
+                                    proxy.scrollTo(indexItem.targetSectionId, anchor: .top)
+                                }
                             }
                             
                             toastText = indexItem.displayText
@@ -521,10 +531,14 @@ private struct RowView: View {
 private struct SectionIndexView: View {
     let indexItems: [AABaseListView.IndexItem]
     let backgroundColor: Color
+    let onDraggingChanged: (Bool) -> Void  // 新增：拖动状态回调
     let onTap: (AABaseListView.IndexItem) -> Void
     
     @Environment(\.colorScheme) private var colorScheme
     @State private var selectedIndex: Int? = nil
+    @State private var isDragging = false
+    @State private var dragStartLocation: CGPoint?
+    @State private var hasMoved = false  // 是否有实际移动
     
     private var indexTextColor: Color {
         colorScheme == .dark
@@ -543,41 +557,71 @@ private struct SectionIndexView: View {
             ? Color.black.opacity(0.3)
             : Color.black.opacity(0.1)
     }
+    
+    // 根据触摸位置计算索引
+    private func indexAtLocation(_ location: CGPoint, in geometry: GeometryProxy) -> Int? {
+        let totalHeight = geometry.size.height
+        let itemSpacing: CGFloat = 4
+        let verticalPadding: CGFloat = 8
+        let itemHeight: CGFloat = 22
+        
+        // 计算有效内容区域
+        let contentHeight = totalHeight - (verticalPadding * 2)
+        let totalItemsHeight = CGFloat(indexItems.count) * itemHeight + CGFloat(indexItems.count - 1) * itemSpacing
+        
+        // 计算起始偏移
+        let startOffset = verticalPadding + max(0, (contentHeight - totalItemsHeight) / 2)
+        
+        // 调整后的 Y 位置
+        let adjustedY = location.y - startOffset
+        
+        // 计算索引
+        let singleItemHeight = itemHeight + itemSpacing
+        let index = Int(adjustedY / singleItemHeight)
+        
+        // 确保索引在有效范围内
+        if index >= 0 && index < indexItems.count {
+            return index
+        }
+        return nil
+    }
+    
+    // 触发索引选择
+    private func selectIndex(_ index: Int) {
+        guard index >= 0 && index < indexItems.count else { return }
+        
+        // 添加触觉反馈（轻触感）
+        #if !targetEnvironment(macCatalyst)
+        let impactFeedback = UIImpactFeedbackGenerator(style: .light)
+        impactFeedback.impactOccurred()
+        #endif
+        
+        withAnimation(.easeInOut(duration: 0.15)) {
+            selectedIndex = index
+        }
+        
+        onTap(indexItems[index])
+    }
 
     var body: some View {
         VStack(spacing: 4) {
             ForEach(indexItems.indices, id: \.self) { index in
-                Button(action: {
-                    withAnimation(.easeInOut(duration: 0.2)) {
-                        selectedIndex = index
-                    }
-                    onTap(indexItems[index])
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            selectedIndex = nil
-                        }
-                    }
-                }) {
-                    Text(indexItems[index].displayText)
-                        .font(.system(size: 11, weight: .bold, design: .rounded))
-                        .foregroundColor(
-                            selectedIndex == index ? .white : indexTextColor
-                        )
-                        .frame(width: 28, height: 22)
-                        .contentShape(Rectangle())
-                        .background(
-                            Circle()
-                                .fill(
-                                    selectedIndex == index
-                                        ? selectedBackgroundColor
-                                        : Color.clear
-                                )
-                                .scaleEffect(selectedIndex == index ? 1.0 : 0.8)
-                                .animation(.spring(response: 0.3, dampingFraction: 0.6), value: selectedIndex == index)
-                        )
-                }
-                .buttonStyle(.plain)
+                Text(indexItems[index].displayText)
+                    .font(.system(size: 11, weight: .bold, design: .rounded))
+                    .foregroundColor(
+                        selectedIndex == index ? .white : indexTextColor
+                    )
+                    .frame(width: 28, height: 22)
+                    .background(
+                        Circle()
+                            .fill(
+                                selectedIndex == index
+                                    ? selectedBackgroundColor
+                                    : Color.clear
+                            )
+                            .scaleEffect(selectedIndex == index ? 1.0 : 0.8)
+                            .animation(.spring(response: 0.3, dampingFraction: 0.6), value: selectedIndex == index)
+                    )
             }
         }
         .padding(.vertical, 8)
@@ -591,6 +635,55 @@ private struct SectionIndexView: View {
                     x: 0,
                     y: colorScheme == .dark ? 3 : 2
                 )
+        )
+        .overlay(
+            // 使用 overlay 中的 GeometryReader 来捕获手势，覆盖在内容之上
+            GeometryReader { geometry in
+                Color.clear
+                    .contentShape(Rectangle())
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { value in
+                                if !isDragging {
+                                    isDragging = true
+                                    dragStartLocation = value.startLocation
+                                    hasMoved = false
+                                }
+                                
+                                // 检测是否真的在拖动（移动距离超过3pt）
+                                if let startLoc = dragStartLocation {
+                                    let distance = abs(value.location.y - startLoc.y)
+                                    if distance > 3 && !hasMoved {
+                                        hasMoved = true
+                                        onDraggingChanged(true)  // 确认是拖动
+                                    }
+                                }
+                                
+                                if let index = indexAtLocation(value.location, in: geometry) {
+                                    if selectedIndex != index {
+                                        selectIndex(index)
+                                    }
+                                }
+                            }
+                            .onEnded { _ in
+                                isDragging = false
+                                dragStartLocation = nil
+                                
+                                // 根据是否真的拖动来决定通知
+                                if hasMoved {
+                                    onDraggingChanged(false)
+                                }
+                                hasMoved = false
+                                
+                                // 延迟清除选中状态
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                    withAnimation(.easeInOut(duration: 0.2)) {
+                                        selectedIndex = nil
+                                    }
+                                }
+                            }
+                    )
+            }
         )
     }
 }
