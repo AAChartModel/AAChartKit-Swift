@@ -10,7 +10,7 @@ import UIKit
 import AAInfographics
 
 
-@available(macCatalyst 14.0, *)
+@available(iOS 14.0, *)
 class ChartModelSampleListVC: AABaseListVC {
         
     override func viewDidLoad() {

@@ -607,13 +607,24 @@ class AAChartModelListVC: AABaseListVC {
         switch indexPath.section {
             
         case 0:
-            let vc = BasicChartVC()
-            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
-            if indexPath.row == 4 || indexPath.row == 5 {
-                vc.step = true
+            // Use SwiftUI version if available, otherwise fallback to UIKit
+            if #available(iOS 14.0, *) {
+                let vc = BasicChartSwiftUIVC()
+                vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+                if indexPath.row == 4 || indexPath.row == 5 {
+                    vc.step = true
+                }
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = BasicChartVC()
+                vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+                if indexPath.row == 4 || indexPath.row == 5 {
+                    vc.step = true
+                }
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
             }
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
             
         case 1:
             let vc = SpecialChartVC()

@@ -159,6 +159,11 @@
 		84F998112EB0CBF500D41382 /* CustomChartOptionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998102EB0CBF500D41382 /* CustomChartOptionsProvider.swift */; };
 		84F998132EB0CFA700D41382 /* ChartModelSampleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998122EB0CFA700D41382 /* ChartModelSampleListVC.swift */; };
 		84F998172EB0DE9C00D41382 /* OfficalSamplesChartProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998162EB0DE9C00D41382 /* OfficalSamplesChartProvider.swift */; };
+		84F9981D2EB348BA00D41382 /* SegmentedControlRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9981A2EB348BA00D41382 /* SegmentedControlRow.swift */; };
+		84F9981E2EB348BA00D41382 /* AAChartViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998182EB348BA00D41382 /* AAChartViewRepresentable.swift */; };
+		84F9981F2EB348BA00D41382 /* BasicChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998192EB348BA00D41382 /* BasicChartView.swift */; };
+		84F998202EB348BA00D41382 /* ToggleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9981B2EB348BA00D41382 /* ToggleControl.swift */; };
+		84F998222EB34D0900D41382 /* BasicChartSwiftUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998212EB34D0900D41382 /* BasicChartSwiftUIVC.swift */; };
 		ED0A032527281695000BF778 /* AAInfographics.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0A032327281695000BF778 /* AAInfographics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED0A032827281695000BF778 /* AAInfographics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; };
 		ED0A032927281695000BF778 /* AAInfographics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -425,6 +430,11 @@
 		84F998102EB0CBF500D41382 /* CustomChartOptionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChartOptionsProvider.swift; sourceTree = "<group>"; };
 		84F998122EB0CFA700D41382 /* ChartModelSampleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModelSampleListVC.swift; sourceTree = "<group>"; };
 		84F998162EB0DE9C00D41382 /* OfficalSamplesChartProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficalSamplesChartProvider.swift; sourceTree = "<group>"; };
+		84F998182EB348BA00D41382 /* AAChartViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AAChartViewRepresentable.swift; sourceTree = "<group>"; };
+		84F998192EB348BA00D41382 /* BasicChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicChartView.swift; sourceTree = "<group>"; };
+		84F9981A2EB348BA00D41382 /* SegmentedControlRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlRow.swift; sourceTree = "<group>"; };
+		84F9981B2EB348BA00D41382 /* ToggleControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleControl.swift; sourceTree = "<group>"; };
+		84F998212EB34D0900D41382 /* BasicChartSwiftUIVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicChartSwiftUIVC.swift; sourceTree = "<group>"; };
 		D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBundlePathLoader.swift; sourceTree = "<group>"; };
 		ED0A032127281695000BF778 /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A032327281695000BF778 /* AAInfographics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAInfographics.h; sourceTree = "<group>"; };
@@ -662,6 +672,7 @@
 			children = (
 				844F11492B6B4A2B00ADEB1C /* ViewController */,
 				844F114A2B6B4A4900ADEB1C /* Composer */,
+				84F9981C2EB348BA00D41382 /* SwiftUI */,
 			);
 			path = AAChartModel;
 			sourceTree = "<group>";
@@ -889,6 +900,18 @@
 				84F998122EB0CFA700D41382 /* ChartModelSampleListVC.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		84F9981C2EB348BA00D41382 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				84F998182EB348BA00D41382 /* AAChartViewRepresentable.swift */,
+				84F998192EB348BA00D41382 /* BasicChartView.swift */,
+				84F9981A2EB348BA00D41382 /* SegmentedControlRow.swift */,
+				84F9981B2EB348BA00D41382 /* ToggleControl.swift */,
+				84F998212EB34D0900D41382 /* BasicChartSwiftUIVC.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		ED0A032227281695000BF778 /* AAInfographics */ = {
@@ -1128,6 +1151,10 @@
 				8466E3A02DB2291300DBF03B /* ChartExampleCell.swift in Sources */,
 				84790F4E2CCF2D2C0047C133 /* JSFunctionBeforeAndAfterRenderingComposer.swift in Sources */,
 				276A56FF22C77228007F53E7 /* DoubleChartsLinkedWorkVC.swift in Sources */,
+				84F9981D2EB348BA00D41382 /* SegmentedControlRow.swift in Sources */,
+				84F9981E2EB348BA00D41382 /* AAChartViewRepresentable.swift in Sources */,
+				84F9981F2EB348BA00D41382 /* BasicChartView.swift in Sources */,
+				84F998202EB348BA00D41382 /* ToggleControl.swift in Sources */,
 				84EAD7DE2B91B08C0028CB7C /* CustomStyleForAreaChartVC.swift in Sources */,
 				848FEAF7265DF5D3006E4F25 /* TestAAChartViewForXibVC.swift in Sources */,
 				844F11482B6B3F2100ADEB1C /* CustomStyleForLineChartComposer.swift in Sources */,
@@ -1165,6 +1192,7 @@
 				84EAD7E22B91B2D10028CB7C /* CustomStyleForBubbleChartVC.swift in Sources */,
 				84DEA0D82846013F00D0206F /* CustomTouchEndEventCallbackVC.swift in Sources */,
 				44EB70A722BCB606008FECE4 /* JSFunctionForAATooltipVC.swift in Sources */,
+				84F998222EB34D0900D41382 /* BasicChartSwiftUIVC.swift in Sources */,
 				84123BC52DB0AE00003DA7A0 /* AARoundedCornersSeriesElement.swift in Sources */,
 				84903CAE2DBA2E5C0029FE5A /* LissajousCurveViewController.swift in Sources */,
 				84595DE82B4698D600F69273 /* PolarChartOptionsVC.swift in Sources */,
