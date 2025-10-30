@@ -216,26 +216,44 @@ private struct ScrollableListContainer: View {
     let cardBackgroundColor: Color
     let indexBackgroundColor: Color
 
+    @State private var toastText: String? = nil
+
     var body: some View {
         ScrollViewReader { proxy in
-            ZStack(alignment: .trailing) {
-                SectionedList(
-                    sections: sections,
-                    onSelect: onSelect,
-                    cardBackgroundColor: cardBackgroundColor
-                )
-                .listStyle(.plain)
-
-                if !indexTitles.isEmpty {
-                    SectionIndexView(
-                        indexTitles: indexTitles,
-                        backgroundColor: indexBackgroundColor
-                    ) { targetSection in
-                        withAnimation(.easeInOut(duration: 0.6)) {
-                            proxy.scrollTo(targetSection, anchor: .top)
+            ZStack {
+                HStack(spacing: 0) {
+                    SectionedList(
+                        sections: sections,
+                        onSelect: onSelect,
+                        cardBackgroundColor: cardBackgroundColor
+                    )
+                    .listStyle(.plain)
+                    
+                    if !indexTitles.isEmpty {
+                        SectionIndexView(
+                            indexTitles: indexTitles,
+                            backgroundColor: indexBackgroundColor
+                        ) { indexTitle in
+                            if let targetSection = sections.firstIndex(where: { $0.indexTitle == indexTitle }) {
+                                withAnimation(.easeInOut(duration: 0.6)) {
+                                    proxy.scrollTo(sections[targetSection].id, anchor: .top)
+                                }
+                                
+                                toastText = indexTitle
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                    withAnimation {
+                                        toastText = nil
+                                    }
+                                }
+                            }
                         }
                     }
-                    .padding(.trailing, 8)
+                }
+                
+                if let text = toastText {
+                    ToastView(text: text)
+                        .transition(.opacity.combined(with: .scale(scale: 0.8)))
+                        .zIndex(1)
                 }
             }
         }
@@ -304,7 +322,6 @@ private struct SectionedList: View {
                 .id(section.id)
             }
         }
-        .listStyle(PlainListStyle())
     }
 }
 
@@ -496,7 +513,7 @@ private struct RowView: View {
 private struct SectionIndexView: View {
     let indexTitles: [String]
     let backgroundColor: Color
-    let onTap: (Int) -> Void
+    let onTap: (String) -> Void
     
     @Environment(\.colorScheme) private var colorScheme
     @State private var selectedIndex: Int? = nil
@@ -520,13 +537,13 @@ private struct SectionIndexView: View {
     }
 
     var body: some View {
-        VStack(spacing: 3) {
+        VStack(spacing: 4) {
             ForEach(indexTitles.indices, id: \.self) { index in
-                Button(action: { 
+                Button(action: {
                     withAnimation(.easeInOut(duration: 0.2)) {
                         selectedIndex = index
                     }
-                    onTap(index)
+                    onTap(indexTitles[index])
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation(.easeInOut(duration: 0.2)) {
@@ -539,11 +556,12 @@ private struct SectionIndexView: View {
                         .foregroundColor(
                             selectedIndex == index ? .white : indexTextColor
                         )
-                        .frame(width: 28, height: 20)
+                        .frame(width: 28, height: 22)
+                        .contentShape(Rectangle())
                         .background(
                             Circle()
                                 .fill(
-                                    selectedIndex == index 
+                                    selectedIndex == index
                                         ? selectedBackgroundColor
                                         : Color.clear
                                 )
@@ -566,6 +584,32 @@ private struct SectionIndexView: View {
                     y: colorScheme == .dark ? 3 : 2
                 )
         )
+    }
+}
+
+@available(iOS 13.0, macCatalyst 13.1, *)
+private struct ToastView: View {
+    let text: String
+    
+    @Environment(\.colorScheme) private var colorScheme
+
+    var body: some View {
+        Text(text)
+            .font(.system(size: 56, weight: .bold, design: .rounded))
+            .foregroundColor(.white)
+            .padding(25)
+            .background(
+                Circle()
+                    .fill(Color.black.opacity(0.6))
+            )
+            .shadow(
+                color: colorScheme == .dark
+                    ? Color.black.opacity(0.5)
+                    : Color.black.opacity(0.2),
+                radius: 12,
+                x: 0,
+                y: 4
+            )
     }
 }
 
