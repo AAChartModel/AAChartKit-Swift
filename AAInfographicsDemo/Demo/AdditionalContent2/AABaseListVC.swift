@@ -64,11 +64,17 @@ class AABaseListVC: UIViewController {
         hostingController?.removeFromParent()
 
         let sections = makeSectionData()
-        let indexTitles = sections.map { $0.indexTitle }
+        // 为每个 section 创建独立的索引项，包含 section ID
+        let indexItems = sections.map { section in
+            AABaseListView.IndexItem(
+                displayText: section.indexTitle,
+                targetSectionId: section.id
+            )
+        }
 
         let rootView = AABaseListView(
             sections: sections,
-            indexTitles: indexTitles,
+            indexItems: indexItems,
             onSelect: { [weak self] section, row in
                 guard let self = self else { return }
                 let indexPath = IndexPath(row: row, section: section)
@@ -147,11 +153,17 @@ private struct AABaseListView: View {
         let color: Color
         var indexTitle: String { String(title.prefix(1)) }
     }
+    
+    struct IndexItem: Identifiable {
+        let id = UUID()
+        let displayText: String
+        let targetSectionId: Int
+    }
 
     @Environment(\.colorScheme) private var colorScheme
 
     let sections: [SectionData]
-    let indexTitles: [String]
+    let indexItems: [IndexItem]
     let onSelect: (Int, Int) -> Void
 
     private var backgroundColor: LinearGradient {
@@ -191,7 +203,7 @@ private struct AABaseListView: View {
             if #available(iOS 14.0, macCatalyst 14.0, *) {
                 ScrollableListContainer(
                     sections: sections,
-                    indexTitles: indexTitles,
+                    indexItems: indexItems,
                     onSelect: onSelect,
                     cardBackgroundColor: cardBackgroundColor,
                     indexBackgroundColor: indexBackgroundColor
@@ -211,7 +223,7 @@ private struct AABaseListView: View {
 @available(iOS 14.0, macCatalyst 14.0, *)
 private struct ScrollableListContainer: View {
     let sections: [AABaseListView.SectionData]
-    let indexTitles: [String]
+    let indexItems: [AABaseListView.IndexItem]
     let onSelect: (Int, Int) -> Void
     let cardBackgroundColor: Color
     let indexBackgroundColor: Color
@@ -229,21 +241,22 @@ private struct ScrollableListContainer: View {
                     )
                     .listStyle(.plain)
                     
-                    if !indexTitles.isEmpty {
+                    if !indexItems.isEmpty {
                         SectionIndexView(
-                            indexTitles: indexTitles,
+                            indexItems: indexItems,
                             backgroundColor: indexBackgroundColor
-                        ) { indexTitle in
-                            if let targetSection = sections.firstIndex(where: { $0.indexTitle == indexTitle }) {
-                                withAnimation(.easeInOut(duration: 0.6)) {
-                                    proxy.scrollTo(sections[targetSection].id, anchor: .top)
+                        ) { indexItem in
+                            // 直接使用 indexItem 中存储的精确 sectionId
+                            DispatchQueue.main.async {
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    proxy.scrollTo(indexItem.targetSectionId, anchor: .top)
                                 }
-                                
-                                toastText = indexTitle
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                                    withAnimation {
-                                        toastText = nil
-                                    }
+                            }
+                            
+                            toastText = indexItem.displayText
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                withAnimation {
+                                    toastText = nil
                                 }
                             }
                         }
@@ -321,7 +334,20 @@ private struct SectionedList: View {
                 }
                 .id(section.id)
             }
+            
+            // 添加底部占位空间，确保最后一项能完整显示
+            if #available(macCatalyst 15.0, *) {
+                Color.clear
+                    .frame(height: 50)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets())
+                    .listRowSeparator(.hidden)
+            } else {
+                // Fallback on earlier versions
+            }
         }
+        .listStyle(.plain)
+        .environment(\.defaultMinListRowHeight, 0)
     }
 }
 
@@ -511,9 +537,9 @@ private struct RowView: View {
 
 @available(iOS 13.0, macCatalyst 13.1, *)
 private struct SectionIndexView: View {
-    let indexTitles: [String]
+    let indexItems: [AABaseListView.IndexItem]
     let backgroundColor: Color
-    let onTap: (String) -> Void
+    let onTap: (AABaseListView.IndexItem) -> Void
     
     @Environment(\.colorScheme) private var colorScheme
     @State private var selectedIndex: Int? = nil
@@ -538,12 +564,12 @@ private struct SectionIndexView: View {
 
     var body: some View {
         VStack(spacing: 4) {
-            ForEach(indexTitles.indices, id: \.self) { index in
+            ForEach(indexItems.indices, id: \.self) { index in
                 Button(action: {
                     withAnimation(.easeInOut(duration: 0.2)) {
                         selectedIndex = index
                     }
-                    onTap(indexTitles[index])
+                    onTap(indexItems[index])
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation(.easeInOut(duration: 0.2)) {
@@ -551,7 +577,7 @@ private struct SectionIndexView: View {
                         }
                     }
                 }) {
-                    Text(indexTitles[index])
+                    Text(indexItems[index].displayText)
                         .font(.system(size: 11, weight: .bold, design: .rounded))
                         .foregroundColor(
                             selectedIndex == index ? .white : indexTextColor
