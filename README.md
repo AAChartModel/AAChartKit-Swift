@@ -8,12 +8,12 @@
 [![](https://img.shields.io/badge/language-Swift-green.svg)](https://github.com/AAChartModel/AAChartKit-Swift) </br>
 [![](https://img.shields.io/badge/support-Animation-yellow.svg)](https://github.com/AAChartModel/AAChartKit-Swift#supported-animation-type-for-now)</br>
 [![](https://img.shields.io/badge/support-OC-orange.svg)](https://github.com/AAChartModel/AAChartKit)</br>
-[![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)
-[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAChartKit-Swift)
+[![](https://jaywcjlove.github.io/sb/lang/chinese.svg)](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)</br>
+[![](https://jaywcjlove.github.io/sb/lang/english.svg)](https://github.com/AAChartModel/AAChartKit-Swift)</br>
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/AAChartModel/AAChartKit-Swift.svg)](http://isitmaintained.com/project/AAChartModel/AAChartKit-Swift "Average time to resolve an issue")
 [![](https://img.shields.io/badge/AAChartKitSwift-StarHistory-blue.svg)](https://star-history.t9t.io/#AAChartModel/AAChartKit-Swift)
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FAAChartModel%2FAAChartKit-Swift-Pro%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/AAChartModel/AAChartKit-Swift-Pro)
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FAAChartModel%2FAAChartKit-Swift-Pro%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/AAChartModel/AAChartKit-Swift-Pro)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FAAChartModel%2FAAChartKit-Swift%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/AAChartModel/AAChartKit-Swift)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FAAChartModel%2FAAChartKit-Swift%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/AAChartModel/AAChartKit-Swift)
 
 ## [ **English Document 🇬🇧** ](https://github.com/AAChartModel/AAChartKit-Swift)  |  [ **简体中文文档 🇨🇳** ](https://github.com/AAChartModel/AAChartKit-Swift/blob/master/CHINESE-README.md)
 ### There is the link of **Objective-C version** of  `AAChartKit` as follow
