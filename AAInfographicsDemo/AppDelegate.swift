@@ -53,14 +53,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 创建 UIWindow 实例
         window = UIWindow(frame: UIScreen.main.bounds)
 
+        let rootViewController: UIViewController
+        #if targetEnvironment(macCatalyst)
+        rootViewController = createSidebarSplitViewController()
+        #else
         // 使用 createTabBarController 方法创建 UITabBarController
         let tabBarController = createTabBarController()
         
         // 自定义 TabBar 外观
         customizeTabBarAppearance(tabBarController)
+        rootViewController = tabBarController
+        #endif
 
-        // 将 UITabBarController 设置为根视图控制器
-        window?.rootViewController = tabBarController
+        // 设置根视图控制器
+        window?.rootViewController = rootViewController
 
         // 设置窗口可见
         window?.makeKeyAndVisible()
@@ -134,6 +140,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.viewControllers = viewControllers
         return tabBarController
     }
+
+    #if targetEnvironment(macCatalyst)
+    // 在 macOS (Mac Catalyst) 上使用左侧边栏替代底部 TabBar，更符合 macOS 交互习惯
+    func createSidebarSplitViewController() -> UISplitViewController {
+        let navigationControllersBySection: [CatalystSidebarSection: UINavigationController] = [
+            .chartModels: createNavigationController(with: createFirstViewController()),
+            .options: createNavigationController(with: createSecondViewController()),
+            .jsOptions: createNavigationController(with: createThirdViewController()),
+            .officialSamples: createNavigationController(with: createFourthViewController()),
+            .advanced: createNavigationController(with: createFifthViewController())
+        ]
+
+        let sidebarViewController = CatalystSidebarViewController()
+        sidebarViewController.title = "AAChartKit"
+
+        let sidebarNavigationController = UINavigationController(rootViewController: sidebarViewController)
+        customizeNavigationBar(sidebarNavigationController)
+
+        if #available(iOS 14.0, macCatalyst 14.0, *) {
+            let splitViewController = UISplitViewController(style: .doubleColumn)
+            splitViewController.preferredDisplayMode = .oneBesideSecondary
+            splitViewController.preferredPrimaryColumnWidthFraction = 0.20
+            splitViewController.minimumPrimaryColumnWidth = 200
+            splitViewController.maximumPrimaryColumnWidth = 240
+            splitViewController.setViewController(sidebarNavigationController, for: .primary)
+
+            sidebarViewController.onSelectSection = { [weak splitViewController] section in
+                guard let splitViewController else { return }
+                guard let navigationController = navigationControllersBySection[section] else { return }
+                splitViewController.setViewController(navigationController, for: .secondary)
+            }
+
+            // 默认展示第一个栏目
+            sidebarViewController.loadViewIfNeeded()
+            sidebarViewController.setSelectedSection(.chartModels, animated: false, notify: true)
+
+            return splitViewController
+        } else {
+            let splitViewController = UISplitViewController()
+            splitViewController.preferredDisplayMode = .allVisible
+            splitViewController.viewControllers = [
+                sidebarNavigationController,
+                navigationControllersBySection[.chartModels] ?? UINavigationController()
+            ]
+
+            sidebarViewController.onSelectSection = { [weak splitViewController] section in
+                guard let splitViewController else { return }
+                guard let navigationController = navigationControllersBySection[section] else { return }
+                splitViewController.showDetailViewController(navigationController, sender: nil)
+            }
+
+            // 默认展示第一个栏目
+            sidebarViewController.loadViewIfNeeded()
+            sidebarViewController.setSelectedSection(.chartModels, animated: false, notify: true)
+
+            return splitViewController
+        }
+    }
+    #endif
     
     // 通用的导航控制器创建方法
     func createNavigationController(with viewController: UIViewController) -> UINavigationController {
@@ -249,7 +314,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         navigationController.navigationBar.tintColor = .systemBlue
+        #if targetEnvironment(macCatalyst)
+        navigationController.navigationBar.prefersLargeTitles = false
+        #else
         navigationController.navigationBar.prefersLargeTitles = true
+        #endif
         navigationController.navigationBar.isTranslucent = true
     }
 
@@ -279,3 +348,93 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+#if targetEnvironment(macCatalyst)
+private enum CatalystSidebarSection: Int, CaseIterable {
+    case chartModels
+    case options
+    case jsOptions
+    case officialSamples
+    case advanced
+
+    var title: String {
+        switch self {
+        case .chartModels: return "图表模型"
+        case .options: return "配置选项"
+        case .jsOptions: return "JS 配置"
+        case .officialSamples: return "官方示例"
+        case .advanced: return "高级功能"
+        }
+    }
+
+    var systemImageName: String {
+        switch self {
+        case .chartModels: return "chart.bar.fill"
+        case .options: return "slider.horizontal.3"
+        case .jsOptions: return "chevron.left.forwardslash.chevron.right"
+        case .officialSamples: return "star.fill"
+        case .advanced: return "gearshape.fill"
+        }
+    }
+}
+
+private final class CatalystSidebarViewController: UITableViewController {
+    var onSelectSection: ((CatalystSidebarSection) -> Void)?
+
+    private let sections = CatalystSidebarSection.allCases
+    private var selectedSection: CatalystSidebarSection?
+
+    init() {
+        super.init(style: .insetGrouped)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SidebarCell")
+        tableView.allowsMultipleSelection = false
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 44, bottom: 0, right: 0)
+    }
+
+    func setSelectedSection(_ section: CatalystSidebarSection, animated: Bool, notify: Bool) {
+        selectedSection = section
+        guard let index = sections.firstIndex(of: section) else { return }
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.selectRow(at: indexPath, animated: animated, scrollPosition: .none)
+        if notify {
+            onSelectSection?(section)
+        }
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        sections.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = sections[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SidebarCell", for: indexPath)
+        cell.textLabel?.text = section.title
+        cell.imageView?.image = UIImage(systemName: section.systemImageName)
+        cell.imageView?.tintColor = .secondaryLabel
+        cell.accessoryType = .none
+        cell.backgroundColor = .clear
+
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = sections[indexPath.row]
+        selectedSection = section
+        onSelectSection?(section)
+    }
+}
+#endif
