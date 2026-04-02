@@ -295,18 +295,18 @@ private struct SectionListContent: View {
     let cardBackgroundColor: Color
     
     @Environment(\.colorScheme) private var colorScheme
+    
+    private var pinnedHeaderBackgroundColor: Color {
+        colorScheme == .dark
+            ? Color(red: 0.08, green: 0.08, blue: 0.11, opacity: 0.96)
+            : Color(red: 0.97, green: 0.97, blue: 0.99, opacity: 0.96)
+    }
 
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 0, pinnedViews: []) {
+            LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                 ForEach(sections) { section in
-                    VStack(alignment: .leading, spacing: 0) {
-                        // Section Header
-                        SectionHeader(title: section.title, color: section.color)
-                            .padding(.top, 16)
-                            .padding(.horizontal, 16)
-                        
-                        // Section Content
+                    Section {
                         VStack(spacing: 8) {
                             ForEach(section.rows.indices, id: \.self) { rowIndex in
                                 RowView(
@@ -333,10 +333,16 @@ private struct SectionListContent: View {
                                 )
                         )
                         .padding(.horizontal, 16)
-                        .padding(.top, 8)
+                        .padding(.top, 12)
                         .padding(.bottom, 8)
+                    } header: {
+                        SectionHeader(title: section.title, color: section.color)
+                            .padding(.top, 16)
+                            .padding(.horizontal, 16)
+                            .padding(.bottom, 4)
+                            .background(pinnedHeaderBackgroundColor)
+                            .id(section.id)
                     }
-                    .id(section.id)
                 }
                 
                 // 底部安全空间
@@ -727,5 +733,4 @@ private struct ToastView: View {
             )
     }
 }
-
 
