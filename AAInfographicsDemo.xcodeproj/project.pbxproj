@@ -164,6 +164,7 @@
 		84F9981F2EB348BA00D41382 /* BasicChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998192EB348BA00D41382 /* BasicChartView.swift */; };
 		84F998202EB348BA00D41382 /* ToggleControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9981B2EB348BA00D41382 /* ToggleControl.swift */; };
 		84F998222EB34D0900D41382 /* BasicChartSwiftUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F998212EB34D0900D41382 /* BasicChartSwiftUIVC.swift */; };
+		8A10A0012F2444F300A1B2C3 /* AASectionedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10A0022F2444F300A1B2C3 /* AASectionedList.swift */; };
 		ED0A032527281695000BF778 /* AAInfographics.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0A032327281695000BF778 /* AAInfographics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED0A032827281695000BF778 /* AAInfographics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; };
 		ED0A032927281695000BF778 /* AAInfographics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ED0A032127281695000BF778 /* AAInfographics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -435,6 +436,7 @@
 		84F9981A2EB348BA00D41382 /* SegmentedControlRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlRow.swift; sourceTree = "<group>"; };
 		84F9981B2EB348BA00D41382 /* ToggleControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleControl.swift; sourceTree = "<group>"; };
 		84F998212EB34D0900D41382 /* BasicChartSwiftUIVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicChartSwiftUIVC.swift; sourceTree = "<group>"; };
+		8A10A0022F2444F300A1B2C3 /* AASectionedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASectionedList.swift; sourceTree = "<group>"; };
 		D01D701A2587EE730093C01F /* ProjectBundlePathLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBundlePathLoader.swift; sourceTree = "<group>"; };
 		ED0A032127281695000BF778 /* AAInfographics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AAInfographics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0A032327281695000BF778 /* AAInfographics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAInfographics.h; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				4490BB372388E1AE005B9238 /* AAInfographicsDemo.entitlements */,
+				8A10A0032F2444F300A1B2C3 /* SharedUI */,
 				278C550F1EE9487F00770B97 /* Demo */,
 				278C54B11EE9472300770B97 /* AppDelegate.swift */,
 				278C54B51EE9472300770B97 /* Main.storyboard */,
@@ -602,6 +605,22 @@
 				8481C2EE2DFAB798006EFC41 /* AppleSwiftChartBuilder.swift */,
 			);
 			path = AdditionalContent2;
+			sourceTree = "<group>";
+		};
+		8A10A0032F2444F300A1B2C3 /* SharedUI */ = {
+			isa = PBXGroup;
+			children = (
+				8A10A0042F2444F300A1B2C3 /* AASectionedList */,
+			);
+			path = SharedUI;
+			sourceTree = "<group>";
+		};
+		8A10A0042F2444F300A1B2C3 /* AASectionedList */ = {
+			isa = PBXGroup;
+			children = (
+				8A10A0022F2444F300A1B2C3 /* AASectionedList.swift */,
+			);
+			path = AASectionedList;
 			sourceTree = "<group>";
 		};
 		441AF0B92334699100F0D39D /* AATool */ = {
@@ -1161,6 +1180,7 @@
 				4419618C230D8EDC00C12AAF /* CustomStyleChartVC.swift in Sources */,
 				8437AE222DB61965003D4D84 /* MixedTypesChartOptionsVC.swift in Sources */,
 				84903C8E2DB8D6A40029FE5A /* EmojiParticleAnimationVC.swift in Sources */,
+				8A10A0012F2444F300A1B2C3 /* AASectionedList.swift in Sources */,
 				84F4E0E62BA2D3D300B3F1F3 /* AABaseListVC.swift in Sources */,
 				2763384524A7070F00143B9B /* DataSortingWithAnimationChartVC.swift in Sources */,
 				84BDF5A5293064DE00B9EC30 /* OfficialPieChartVC.swift in Sources */,
