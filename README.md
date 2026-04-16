@@ -106,13 +106,14 @@ targets: [
 
 1. Add following content
 ```ruby
-github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 1.0
+github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 9.5
 
 ```
 to your project Cartfile.
 
-2. Run `carthage bootstrap` or `carthage update`.
-3. Import  `AAInfographics`.
+2. Run `carthage bootstrap --use-xcframeworks` or `carthage update --use-xcframeworks`.
+3. Link `AAInfographics.xcframework` to your app target.
+4. Import `AAInfographics`.
 
 ### Manually  (old school way)
 

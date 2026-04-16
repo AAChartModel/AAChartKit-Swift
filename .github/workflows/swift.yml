@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  swiftpm:
     runs-on: macos-latest
 
     steps:
@@ -29,3 +29,21 @@ jobs:
           else
             echo "No SwiftPM tests found. Skipping."
           fi
+
+  xcode-framework:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show Xcode Version
+        run: xcodebuild -version
+
+      - name: Build AAInfographics Framework Scheme
+        run: |
+          xcodebuild \
+            -project AAInfographicsDemo.xcodeproj \
+            -scheme AAInfographics \
+            -configuration Release \
+            -destination 'generic/platform=iOS Simulator' \
+            build
