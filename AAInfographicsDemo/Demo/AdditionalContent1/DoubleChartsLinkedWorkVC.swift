@@ -47,23 +47,34 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        setUpViews()
+    }
+
+    private func setUpViews() {
+        setUpStackView()
         setUpTheAAChartViewOne()
         setUpTheAAChartViewTwo()
     }
+
+    private func setUpStackView() {
+        let stackView = UIStackView(arrangedSubviews: [aaChartView1, aaChartView2])
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+    }
     
     private func setUpTheAAChartViewOne() {
-        let chartViewWidth  = view.frame.size.width
-        let screenHeight = view.frame.size.height - 60
-        
-        aaChartView1.frame = CGRect(x: 0,
-                                    y: 60,
-                                    width: chartViewWidth,
-                                    height: screenHeight / 2 - 80)
         aaChartView1.isScrollEnabled = false
         aaChartView1.delegate = self
-//        aaChartView1.contentHeight = (screenHeight / 2) - 20
-        view.addSubview(aaChartView1)
-        
         
         let aaChartModel1 = CustomStyleForColumnChartComposer.colorfulGradientColorColumnChart()
             .backgroundColor(AAColor.white)
@@ -83,15 +94,7 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
     }
     
     private func setUpTheAAChartViewTwo() {
-        let chartViewWidth  = view.frame.size.width
-        let screenHeight = view.frame.size.height - 60
-        
-        aaChartView2.frame = CGRect(x:0,
-                                    y:screenHeight / 2 + 60 - 80,
-                                    width:chartViewWidth,
-                                    height:screenHeight / 2 + 80)
         aaChartView2.isScrollEnabled = false
-        view.addSubview(aaChartView2)
         
         aaChartModel2
             .chartType(.column)//图形类型
@@ -118,68 +121,65 @@ class DoubleChartsLinkedWorkVC: UIViewController, AAChartViewDelegate {
         selectedColor = colorsArr?[moveOverEventMessage.index ?? 0] ?? AAGradientColor.deepSea
         selectedCategoryIndex = moveOverEventMessage.index ?? 0
         
+        updateChart2Data()
+        synchronizeTooltip(at: moveOverEventMessage.index ?? 0)
+    }
+
+    private func updateChart2Data() {
         aaChartView2.aa_updateXAxisCategories(configureXAxisCategoresDataArray(), redraw: false)
         aaChartView2.aa_onlyRefreshTheChartDataWithChartModelSeries([
             AASeriesElement()
                 .data(configureSeriesDataArray())
-            ], animation: isRefreshAnimation)
+        ], animation: isRefreshAnimation)
+    }
+
+    private func synchronizeTooltip(at index: Int) {
+        let jsFunc = """
+        function syncRefreshTooltip() {
+            const chart = aaGlobalChart;
+            if (!chart) {
+                return;
+            }
+            const points = [];
+            const series = chart.series;
+            const length = series.length;
+            
+            for (let i = 0; i < length; i++) {
+                const pointElement = series[i].data[\(index)];
+                if (pointElement) {
+                    pointElement.onMouseOver();
+                    points.push(pointElement);
+                }
+            }
+            
+            if (points.length > 0) {
+                chart.xAxis[0].drawCrosshair(null, points[0]);
+                chart.tooltip.refresh(points);
+            }
+        }
+        syncRefreshTooltip();
+        """
         
-        //https://github.com/AAChartModel/AAChartKit-Swift/issues/434
-        let defaultSelectedIndex = moveOverEventMessage.index ?? 0
-        
-        let jsFunc = ("""
-                     function syncRefreshTooltip() {
-                            const points = [];
-                            const chart = aaGlobalChart;
-                            const series = chart.series;
-                            const length = series.length;
-                                       
-                            for (let i = 0; i < length; i++) {
-                                const pointElement = series[i].data[\(defaultSelectedIndex)];
-                                pointElement.onMouseOver();
-                                points.push(pointElement);
-                            }
-                            chart.xAxis[0].drawCrosshair(null, points[0]);
-                            chart.tooltip.refresh(points);
-                     }
-                     syncRefreshTooltip();
-""")
-        
-        //图表加载完成后调用,避免WebView还没有获得JavaScript上下文,致使调用失败
         aaChartView2.evaluateJavaScript(jsFunc)
     }
     
     
     private func getRandomNumbersArr(numbers: Int) -> [Float] {
-        let randomNumArr = NSMutableArray()
-        for _ in 0 ..< numbers {
-            print(Float(arc4random() % 100))
-            randomNumArr.add(Float(arc4random() % 1000 + 500))
-        }
-        return randomNumArr as! [Float]
+        (0..<numbers).map { _ in Float(arc4random() % 1000 + 500) }
     }
     
     private func configureSeriesDataArray() -> [Any] {
-        let randomNumArrA = NSMutableArray()
-        var y1 = 0.0
         let Q = arc4random() % 38
-        for  x in 0 ..< 40 {
-            y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1 
-            randomNumArrA.add(
-                AADataElement()
-                    .color(selectedColor as Any)
-                    .y(Float(y1)))
+        return (0..<40).map { x in
+            let y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1
+            return AADataElement()
+                .color(selectedColor as Any)
+                .y(Float(y1))
         }
-        return randomNumArrA as! [Any]
     }
     
     private func configureXAxisCategoresDataArray() -> [String] {
-        let randomNumArrA = NSMutableArray()
-        for  x in 0 ..< 40 {
-            let prefixStr = "第\(selectedCategoryIndex ?? 0)组\(x)"
-            randomNumArrA.add(prefixStr)
-        }
-        return randomNumArrA as! [String]
+        (0..<40).map { "第\(selectedCategoryIndex ?? 0)组\($0)" }
     }
     
     

@@ -91,12 +91,12 @@ class ScrollableChartVC: AABaseChartVC {
         let chartSeriesArr = [
             AASeriesElement()
                 .name("2019")
-                .lineWidth(5)
+//                .lineWidth(5)
                 .step(step ?? false)
                 .data(randomNumArrA),
             AASeriesElement()
                 .name("2018")
-                .lineWidth(5)
+//                .lineWidth(5)
                 .step(step ?? false)
                 .data(randomNumArrB)
         ]

@@ -119,7 +119,7 @@ struct GridView: View {
 
 
 class AARandomValueDataComposer {
-    public static func configureChartOptions(chartType: AAChartType) -> AAOptions {
+    public static func configureChartModel(chartType: AAChartType) -> AAChartModel {
        let aaChartModel = AAChartModel()
             .chartType(chartType)//图形类型
             .title(chartType.rawValue)//图形标题
@@ -136,6 +136,12 @@ class AARandomValueDataComposer {
                 ,
             ])
         
+        return aaChartModel
+    }
+    
+    public static func configureChartOptions(chartType: AAChartType) -> AAOptions {
+        let aaChartModel = AARandomValueDataComposer.configureChartModel(chartType: chartType)
+        
         return aaChartModel.aa_toAAOptions()
     }
     
@@ -145,10 +151,12 @@ class AARandomValueDataComposer {
         let Q = arc4random() % 38
         for  x in 0 ..< 100 {
             y1 = sin(Double(Q) * (Double(x) * Double.pi / 180)) + Double(x) * 2.0 * 0.01 - 1
-            randomNumArrA.add(
-                AADataElement()
-                    .color(AAColor.red)
-                    .y(Float(y1)))
+//            randomNumArrA.add(
+//                AADataElement()
+//                    .color(AAColor.red)
+//                    .y(Float(y1)))
+            
+            randomNumArrA.add(Float(y1))
         }
         return randomNumArrA as! [Any]
     }

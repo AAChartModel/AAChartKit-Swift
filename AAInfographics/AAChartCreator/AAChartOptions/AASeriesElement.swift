@@ -87,6 +87,7 @@ open class AASeriesElement: AAObject {
     public var jitter: AAJitter?           //Only useful for scatter chart and bubble chart
     public var clip: Bool?
     public var keys: [String]?
+    public var animation: Any?             //AAAnimation | Bool
     
     @discardableResult
     public func type(_ prop: AAChartType) -> Self {
@@ -373,6 +374,18 @@ open class AASeriesElement: AAObject {
     @discardableResult
     public func keys(_ prop: [String]?) -> Self {
         keys = prop
+        return self
+    }
+    
+    @discardableResult
+    public func animation(_ prop: AAAnimation?) -> Self {
+        animation = prop
+        return self
+    }
+    
+    @discardableResult
+    public func animation(_ prop: Bool?) -> Self {
+        animation = prop
         return self
     }
     

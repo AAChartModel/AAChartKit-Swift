@@ -1,19 +1,49 @@
-# name: Swift
+name: Swift
 
-# on:
-#   push:
-#     branches: [ master ]
-#   pull_request:
-#     branches: [ master ]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
-# jobs:
-#   build:
+jobs:
+  swiftpm:
+    runs-on: macos-latest
 
-#     runs-on: ios-latest
+    steps:
+      - uses: actions/checkout@v4
 
-#     steps:
-#     - uses: actions/checkout@v2
-#     - name: Build
-#       run: swift build -v
-#     - name: Run tests
-#       run: swift test -v
+      - name: Show Swift Version
+        run: swift --version
+
+      - name: Resolve Package
+        run: swift package resolve
+
+      - name: Build
+        run: swift build -v
+
+      - name: Run Tests
+        run: |
+          if [ -d Tests ] && [ -n "$(find Tests -mindepth 1 -print -quit)" ]; then
+            swift test -v
+          else
+            echo "No SwiftPM tests found. Skipping."
+          fi
+
+  xcode-framework:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show Xcode Version
+        run: xcodebuild -version
+
+      - name: Build AAInfographics Framework Scheme
+        run: |
+          xcodebuild \
+            -project AAInfographicsDemo.xcodeproj \
+            -scheme AAInfographics \
+            -configuration Release \
+            -destination 'generic/platform=iOS Simulator' \
+            build

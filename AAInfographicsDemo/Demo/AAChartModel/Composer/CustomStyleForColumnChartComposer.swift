@@ -321,15 +321,15 @@ class CustomStyleForColumnChartComposer {
     static func freeStyleRoundedCornersStackingColumnChart() -> AAChartModel {
         AAChartModel()
             .chartType(.column)
-            .stacking(.percent)
+//            .stacking(.percent)
             .title("Free-Style Rounded Corners Stacking Column Chart")
-            .colorsTheme([
-                AAGradientColor.linearGradient(startColor: AARgb(128, 255, 165), endColor: AARgb(1  , 191, 236)),
-                AAGradientColor.linearGradient(startColor: AARgb(0  , 221, 255), endColor: AARgb(77 , 119, 255)),
-                AAGradientColor.linearGradient(startColor: AARgb(55 , 162, 255), endColor: AARgb(116, 21 , 219)),
-                AAGradientColor.linearGradient(startColor: AARgb(255, 0  , 135), endColor: AARgb(135, 0  , 157)),
-                AAGradientColor.linearGradient(startColor: AARgb(255, 191, 0  ), endColor: AARgb(224, 62 , 76 )),
-            ])
+//            .colorsTheme([
+//                AAGradientColor.linearGradient(startColor: AARgb(128, 255, 165), endColor: AARgb(1  , 191, 236)),
+//                AAGradientColor.linearGradient(startColor: AARgb(0  , 221, 255), endColor: AARgb(77 , 119, 255)),
+//                AAGradientColor.linearGradient(startColor: AARgb(55 , 162, 255), endColor: AARgb(116, 21 , 219)),
+//                AAGradientColor.linearGradient(startColor: AARgb(255, 0  , 135), endColor: AARgb(135, 0  , 157)),
+//                AAGradientColor.linearGradient(startColor: AARgb(255, 191, 0  ), endColor: AARgb(224, 62 , 76 )),
+//            ])
             .series([
                 AARoundedCornersSeriesElement()
                     .name("Tokyo Hot")
@@ -561,6 +561,26 @@ class CustomStyleForColumnChartComposer {
             ])
     }
     
-    
+    // https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-animation-easing/
+    // https://github.com/AAChartModel/AAChartKit-Swift/issues/542
+    static func customAnimationForColumnChart() -> AAChartModel {
+        AAChartModel()
+            .chartType(.column)
+            .categories(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])
+            .series([
+                AASeriesElement()
+                    .data([29.9, 71.5, 106.4, 129.2, 111])
+                    .animation(AAAnimation()
+                        .duration(2000)
+                        .easing(.easeOutBounce))
+                ,
+                AASeriesElement()
+                    .data([29.9, 71.5, 106.4, 129.2, 111])
+                    .animation(AAAnimation()
+                        .duration(1500)
+                        .easing(.easeOutBounce))
+                
+            ])
+    }
     
 }

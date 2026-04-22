@@ -9,7 +9,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 10.0, macCatalyst 13.1, *)
+@available(iOS 14.0, macCatalyst 14.0, *)
 class AdvancedFeaturesListVC: AABaseListVC {
     
     override func viewDidLoad() {
@@ -34,6 +34,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
             "Sort Algorithm Demo | 排序算法演示",
             //插件功能演示
             "Plugin Function Demo | 插件功能演示",
+            "Scrolling update chart data 2 | 滚动刷新图表数据 2",
+
         ]
         
         chartTypeTitleArr = [
@@ -156,7 +158,19 @@ class AdvancedFeaturesListVC: AABaseListVC {
                 "Single Rounded Corners Columnrange Chart---单独设置柱形范围图的圆角",
                 //单独设置柱形范围图的圆角(反转)
                 "Single Rounded Corners Columnrange Chart(inverted)---单独设置柱形范围图的圆角(反转)",
-            ]
+            ],
+            /*Scrollable  chart 2 */
+            [
+//                "Column Chart---柱形图",
+//               "Bar Chart---条形图",
+//               "Area Chart---折线填充图",
+               "Areaspline Chart---曲线填充图",
+//               "Step Area Chart---直方折线填充图",
+//               "Step Line Chart---直方折线图",
+//               "Line Chart---折线图",
+//               "Spline Chart---曲线图",
+//               "Scatter Chart---散点图",
+            ],
         ]
         
         chartTypeArr = [
@@ -251,13 +265,8 @@ class AdvancedFeaturesListVC: AABaseListVC {
         
         setUpMainTableView()
     }
-}
-
-@available(macCatalyst 13.1, *)
-extension AdvancedFeaturesListVC {
     
-    fileprivate func customEventCallback(_ indexPath: IndexPath) {
-        /*Custom Event Callback*/
+    private func customEventCallback(_ indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             let vc = CustomTouchEndEventCallbackVC()
@@ -283,13 +292,12 @@ extension AdvancedFeaturesListVC {
             let vc = CustomChartZoomEventEventCallbackVC()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-            
-        default: break
+        default:
+            break
         }
     }
     
-    fileprivate func showManyChartsInSameView(_ indexPath: IndexPath) {
-        /*Show Many Charts In the Same View*/
+    private func showManyChartsInSameView(_ indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             let vc = ShowManyChartViewVC()
@@ -313,17 +321,10 @@ extension AdvancedFeaturesListVC {
             let vc = TripleChartsLinkedWorkVC2()
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
-//             ChartListVC *vc = ChartListVC.new;
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:vc animated:YES];
-//        case 4:
-//            let vc = ChartListVC()
-//            vc.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(vc, animated: true)
-        default: break
+        default:
+            break
         }
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
@@ -441,6 +442,18 @@ extension AdvancedFeaturesListVC {
             ] as [AAChartType]
             vc.navigationItemTitleArr = chartTypeArr
             vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 13:
+            /*Scrolling update Chart Data Dynamiclly*/
+            let vc = ScrollingUpdateDataVC2()
+//            vc.selectedIndex = indexPath.row
+//            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+//            vc.step = false
+//            if indexPath.row == 4 || indexPath.row == 5 {
+//                vc.step = true
+//            }
+//            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             
         default:

@@ -36,7 +36,7 @@ class TripleChartsLinkedWorkVC: UIViewController {
                     .width(2)
                     .dashStyle(.longDashDot)
                     .zIndex(5)))
-            .yAxis(AAYAxis().title(nil))
+            .yAxis(AAYAxis().title(AAAxisTitle().text(nil)))
             .series([JSFunctionBeforeAndAfterRenderingComposer3.configureSeriesArray()[0]])
         chartView.aa_drawChartWithChartOptions(aaOptions1)
         return chartView
@@ -56,7 +56,7 @@ class TripleChartsLinkedWorkVC: UIViewController {
                     .width(2)
                     .dashStyle(.longDashDot)
                     .zIndex(5)))
-            .yAxis(AAYAxis().title(nil))
+            .yAxis(AAYAxis().title(AAAxisTitle().text(nil)))
             .series([JSFunctionBeforeAndAfterRenderingComposer3.configureSeriesArray()[1]])
         chartView.aa_drawChartWithChartOptions(aaOptions2)
         return chartView
@@ -76,7 +76,7 @@ class TripleChartsLinkedWorkVC: UIViewController {
                     .width(2)
                     .dashStyle(.longDashDot)
                     .zIndex(5)))
-            .yAxis(AAYAxis().title(nil))
+            .yAxis(AAYAxis().title(AAAxisTitle().text(nil)))
             .series([JSFunctionBeforeAndAfterRenderingComposer3.configureSeriesArray()[2]])
         chartView.aa_drawChartWithChartOptions(aaOptions3)
         return chartView
@@ -169,3 +169,4 @@ extension TripleChartsLinkedWorkVC: AAChartViewDelegate {
             
     }
 }
+

@@ -99,17 +99,44 @@ pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.
 2. 在终端中运行命令 `pod install` or `pod update`.
 3. 导入头文件  `AAInfographics`.
 
+### 使用 Swift Package Manager
+
+1. 在 Xcode 中选择 `File > Add Package Dependencies...`
+2. 输入仓库地址:
+```text
+https://github.com/AAChartModel/AAChartKit-Swift.git
+```
+3. 选择 `9.5.0` 或更高版本.
+4. 将 `AAInfographics` product 添加到你的 target.
+
+如果你使用 `Package.swift`, 可以这样配置:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/AAChartModel/AAChartKit-Swift.git", from: "9.5.0")
+],
+targets: [
+    .target(
+        name: "YourTarget",
+        dependencies: [
+            .product(name: "AAInfographics", package: "AAChartKit-Swift")
+        ]
+    )
+]
+```
+
 ### 使用 Carthage
 
 1. 添加 
 ```ruby
-github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 1.0
+github "https://github.com/AAChartModel/AAChartKit-Swift.git" ~> 9.5
 
 ```
  到你的 **Cartfile** 文件当中.
  
-2. 在终端中运行命令 `carthage bootstrap` or `carthage update`.
-3. 导入头文件  `AAInfographics`.
+2. 在终端中运行命令 `carthage bootstrap --use-xcframeworks` 或 `carthage update --use-xcframeworks`.
+3. 将 `AAInfographics.xcframework` 链接到你的 app target.
+4. 导入头文件 `AAInfographics`.
 
 ### 手动安装
 

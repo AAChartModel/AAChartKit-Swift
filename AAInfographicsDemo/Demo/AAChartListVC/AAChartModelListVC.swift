@@ -33,7 +33,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 10.0, macCatalyst 13.1, *)
+@available(iOS 14.0, macCatalyst 14.0, *)
 class AAChartModelListVC: AABaseListVC {
     
     override func viewDidLoad() {
@@ -56,6 +56,8 @@ class AAChartModelListVC: AABaseListVC {
             "Areaspline Chart With Custom Style | 一些自定义风格样式曲线填充图",
             "Scatter Chart With Custom Style | 一些自定义风格样式散点图",
             "Bubble Chart With Custom Style | 一些自定义风格样式气泡图",
+            "Line Chart With Custom Style2 | 一些自定义风格样式折线图2",
+
             "全部显示所有样式的图表",
         ]
         
@@ -174,6 +176,8 @@ class AAChartModelListVC: AABaseListVC {
                 "scatterPlotWithTrendLine2---带有趋势线的散点图 2",
                 "pieMixedLineMixedColumnChart---扇形折线柱形混合图",
                 "pieMixedLineMixedColumnChart2---扇形折线柱形混合图2",
+                "scatterWithMultipleLinearRegressionChart---多元线性回归散点图",
+                "rangeSplineAreaSplineAndMarkerChart---范围曲线图、曲线填充图和标记图混合图",
             ],
             /*Custom chart style by AAChartModel*/
             [
@@ -208,6 +212,7 @@ class AAChartModelListVC: AABaseListVC {
 
                 "customBorderStyleAndStatesHoverColorColumnChart---自定义柱状图 border 样式及手指掠过图表 series 元素时的柱形颜色",
                 "negativeDataMixedPositiveDataColumnChart---正负数混合的柱状图",
+                "customAnimationForColumnChart---自定义柱状图动画效果",
             ],
             /*Custom Style For Bar Chart*/
             [
@@ -228,6 +233,13 @@ class AAChartModelListVC: AABaseListVC {
 
                 "customBorderStyleAndStatesHoverColorBarChart---自定义条形图 border 样式及手指掠过图表 series 元素时的条形颜色",
                 "negativeDataMixedPositiveDataBarChart---正负数混合的条形图",
+                "customAnimationForBarChart---自定义条形图动画效果",
+                
+                "noMoreGroupingAndNestedBarChart---不分组的嵌套条形图",
+                "configureNegativeColorMixedBarChart---正负数混合的条形图",
+                "customSingleDataElementSpecialStyleForBarChart---单个数据元素特别风格条形图",
+                "customHoverColorAndSelectColorForBarChart---自定义手指掠过图表 series 元素时的条形颜色以及选中状态下的条形颜色",
+                "customNormalStackingChartDataLabelsContentAndStyleForBarChart---常规堆积图数据标签内容及样式自定义",
             ],
             /*Custom Style For Line Chart*/
             [
@@ -308,11 +320,18 @@ class AAChartModelListVC: AABaseListVC {
             [
                 "customScatterChartMarkerSymbolContent",
                 "drawLineMixedScatterChartWithPointsCoordinates2",
+                "ScatterChartWithScrollablePlotArea",
             ],
             /*Custom Style For Bubble Chart*/
             [
                 "negativeColorMixedBubbleChart",
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
+            ],
+            
+            /*Custom Style For Line Chart 2*/
+            [
+                "colorfulMarkerWithZonesChart",
+             
             ],
             [
                 "所有 AAChartModel 图表",
@@ -381,6 +400,8 @@ class AAChartModelListVC: AABaseListVC {
                 "scatterPlotWithTrendLine2",
                 "pieMixedLineMixedColumnChart",
                 "pieMixedLineMixedColumnChart2",
+                "scatterWithMultipleLinearRegressionChart",
+                "rangeSplineAreaSplineAndMarkerChart",
             ],
             /*Custom Style For Pie Chart*/
             [
@@ -415,6 +436,7 @@ class AAChartModelListVC: AABaseListVC {
 
                 "customBorderStyleAndStatesHoverColorColumnChart",
                 "negativeDataMixedPositiveDataColumnChart",
+                "customAnimationForColumnChart",
             ],
             /*Custom Style For Bar Chart*/
             [
@@ -435,6 +457,13 @@ class AAChartModelListVC: AABaseListVC {
 
                 "customBorderStyleAndStatesHoverColorBarChart",
                 "negativeDataMixedPositiveDataBarChart",
+                "customAnimationForBarChart",
+                
+                "noMoreGroupingAndNestedBarChart",
+                "configureNegativeColorMixedBarChart",
+                "customSingleDataElementSpecialStyleForBarChart",
+                "customHoverColorAndSelectColorForBarChart",
+                "customNormalStackingChartDataLabelsContentAndStyleForBarChart",
             ],
             /*Custom Style For Line Chart*/
             [
@@ -462,6 +491,8 @@ class AAChartModelListVC: AABaseListVC {
                 "customDifferentDataLabelsShapeForLineChart",
                 "clipForAASeriesElementLineChart",
             ],
+     
+            
             /*Custom Style For Spline Chart*/
             [
                 "mixedSplineChart",
@@ -517,6 +548,7 @@ class AAChartModelListVC: AABaseListVC {
             [
                 "customScatterChartMarkerSymbolContent",
                 "drawLineMixedScatterChartWithPointsCoordinates2",
+                "ScatterChartWithScrollablePlotArea",
             ],
             /*Custom Style For Bubble Chart*/
             [
@@ -524,39 +556,43 @@ class AAChartModelListVC: AABaseListVC {
                 "showAARadialGradientPositionAllEnumValuesWithBubbleChart",
             ],
             
+            /*Custom Style For Line Chart 2*/
+            [
+                "colorfulMarkerWithZonesChart",
+             
+            ],
+            
             [
             ],
-
+            
+         
         ]
          
         setUpMainTableView()
     }
     
    
-}
-
-@available(macCatalyst 13.1, *)
-extension AAChartModelListVC {
-    
-    fileprivate func pushToOfficalChartSampleVC(indexPathRow: Int) {
+    private func pushToOfficalChartSampleVC(indexPathRow: Int) {
         /*OfficialChartSampleVC*/
         if #available(macCatalyst 14.0, *) {
             if #available(iOS 14.0, *) {
-                let vc = OfficialChartSampleVC()
                 if indexPathRow == 0 {
-                    vc.optionsItems = ChartSampleProvider.aaChartModelItems()
+                    let myVC = ChartModelSampleListVC()
+                    navigationController?.pushViewController(myVC, animated: true)
                 } else if indexPathRow == 1 {
+                    let vc = OfficialChartSampleVC()
                     vc.optionsItems = ChartSampleProvider.aaOptionsItems()
                 } else if indexPathRow == 2 {
+                    let vc = OfficialChartSampleVC()
                     vc.optionsItems = ChartSampleProvider.officalChartSampleItems()
                 } else if indexPathRow == 3 {
+                    let vc = OfficialChartSampleVC()
                     vc.optionsItems = ChartSampleProvider.randomValueDataItems()
                 } else if indexPathRow == 4 {
                     let vc = ChartListTableViewVC()
                     navigationController?.pushViewController(vc, animated: true)
                     return
                 }
-                navigationController?.pushViewController(vc, animated: true)
                 
             } else {
                 // Fallback on earlier versions
@@ -571,13 +607,24 @@ extension AAChartModelListVC {
         switch indexPath.section {
             
         case 0:
-            let vc = BasicChartVC()
-            vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
-            if indexPath.row == 4 || indexPath.row == 5 {
-                vc.step = true
+            // Use SwiftUI version if available, otherwise fallback to UIKit
+            if #available(iOS 14.0, *) {
+                let vc = BasicChartSwiftUIVC()
+                vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+                if indexPath.row == 4 || indexPath.row == 5 {
+                    vc.step = true
+                }
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = BasicChartVC()
+                vc.chartType = chartTypeArr[indexPath.section][indexPath.row] as? AAChartType
+                if indexPath.row == 4 || indexPath.row == 5 {
+                    vc.step = true
+                }
+                vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
             }
-            vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
             
         case 1:
             let vc = SpecialChartVC()
@@ -672,6 +719,13 @@ extension AAChartModelListVC {
             navigationController?.pushViewController(vc, animated: true)
             
         case 14:
+            let vc = CustomStyleForLineChartVC2()
+            vc.selectedIndex = indexPath.row
+            vc.navigationItemTitleArr = chartTypeArr[indexPath.section]
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case 15:
             pushToOfficalChartSampleVC(indexPathRow: indexPath.row)
 
         default:

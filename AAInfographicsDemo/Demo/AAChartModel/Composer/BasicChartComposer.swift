@@ -39,7 +39,8 @@ class BasicChartComposer {
         
         return configureBasicOptions()
             .chartType(.area)
-            .categories(["Java","Swift","Python","Ruby", "PHP","Go","C","C#","C++"])
+            .categories(["Java", "Swift", "Python", "Ruby", "PHP", "Go",
+                         "C", "C#", "C++", "Rust", "Kotlin", "TypeScript"])
             .series([element1, element2, element3, element4])
     }
     

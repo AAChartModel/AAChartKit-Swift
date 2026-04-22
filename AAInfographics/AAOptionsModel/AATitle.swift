@@ -39,7 +39,7 @@ public class AATitle: AAObject {
     public var verticalAlign: String?
     public var x: Float?
     public var y: Float?
-    public var userHTML: Bool?
+    public var useHTML: Bool?
     public var floating: Bool?
     
     @discardableResult
@@ -79,8 +79,8 @@ public class AATitle: AAObject {
     }
     
     @discardableResult
-    public func userHTML(_ prop: Bool?) -> AATitle {
-        userHTML = prop
+    public func useHTML(_ prop: Bool?) -> AATitle {
+        useHTML = prop
         return self
     }
 

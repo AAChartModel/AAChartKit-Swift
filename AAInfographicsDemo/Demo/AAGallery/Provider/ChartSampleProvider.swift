@@ -304,8 +304,36 @@ class ChartSampleProvider: NSObject {
         return finalItems
     }
     
+    static func randomValueDataItemsChartModel() -> [AAChartModel] {
+        return [
+            AARandomValueDataComposer.configureChartModel(chartType: .column),          //Column series display one column per value along an X axis.
+            AARandomValueDataComposer.configureChartModel(chartType: .bar),             //A bar series is a special type of column series where the columns are horizontal.
+            AARandomValueDataComposer.configureChartModel(chartType: .area),            //The area series type.
+            AARandomValueDataComposer.configureChartModel(chartType: .areaspline),      //The area spline series is an area series where the graph between the points is smoothed into a spline.
+            AARandomValueDataComposer.configureChartModel(chartType: .line),            //A line series displays information as a series of data points connected by straight line segments.
+            AARandomValueDataComposer.configureChartModel(chartType: .spline),          //A spline series is a special type of line series, where the segments between the data points are smoothed.
+            AARandomValueDataComposer.configureChartModel(chartType: .scatter),         //A scatter plot uses cartesian coordinates to display values for two variables for a set of data.
+            AARandomValueDataComposer.configureChartModel(chartType: .pie),             //A pie chart is a circular graphic which is divided into slices to illustrate numerical proportion.
+            AARandomValueDataComposer.configureChartModel(chartType: .bubble),          //A bubble series is a three dimensional series type where each point renders an X, Y and Z value. Each points is drawn as a bubble where the position along the X and Y axes mark the X and Y values, and the size of the bubble relates to the Z value.
+            AARandomValueDataComposer.configureChartModel(chartType: .packedbubble),    //A packed bubble series is a two dimensional series type, where each point renders a value in X, Y position. Each point is drawn as a bubble where the bubbles don't overlap with each other and the radius of the bubble relates to the value.
+            AARandomValueDataComposer.configureChartModel(chartType: .pyramid),         //A pyramid series is a special type of funnel, without neck and reversed by default.
+            AARandomValueDataComposer.configureChartModel(chartType: .funnel),          //Funnel charts are a type of chart often used to visualize stages in a sales project, where the top are the initial stages with the most clients. It requires that the modules/funnel.js file is loaded.
+            AARandomValueDataComposer.configureChartModel(chartType: .columnrange),     //The column range is a cartesian series type with higher and lower Y values along an X axis. To display horizontal bars, set chart.inverted to true.
+            AARandomValueDataComposer.configureChartModel(chartType: .arearange),       //The area range series is a carteseian series with higher and lower values for each point along an X axis, where the area between the values is shaded.
+            AARandomValueDataComposer.configureChartModel(chartType: .areasplinerange), //The area spline range is a cartesian series type with higher and lower Y values along an X axis. The area inside the range is colored, and the graph outlining the area is a smoothed spline.
+            AARandomValueDataComposer.configureChartModel(chartType: .boxplot),         //A box plot is a convenient way of depicting groups of data through their five-number summaries: the smallest observation (sample minimum), lower quartile (Q1), median (Q2), upper quartile (Q3), and largest observation (sample maximum).
+            AARandomValueDataComposer.configureChartModel(chartType: .waterfall),       //A waterfall chart displays sequentially introduced positive or negative values in cumulative columns.
+            AARandomValueDataComposer.configureChartModel(chartType: .polygon),         //A polygon series can be used to draw any freeform shape in the cartesian coordinate system. A fill is applied with the color option, and stroke is applied through lineWidth and lineColor options.
+            AARandomValueDataComposer.configureChartModel(chartType: .gauge),           //Gauges are circular plots displaying one or more values with a dial pointing to values along the perimeter.
+            AARandomValueDataComposer.configureChartModel(chartType: .errorbar),        //Error bars are a graphical representation of the variability of data and are used on graphs to indicate the error, or uncertainty in a reported measurement.
+        ]
+    }
+    
     
     static func randomValueDataItems() -> [AAOptions] {
+        let chartModelArr = ChartSampleProvider.randomValueDataItemsChartModel()
+        //后面有时间转一下类型, 简化代码
+        
         return [
             AARandomValueDataComposer.configureChartOptions(chartType: .column),          //Column series display one column per value along an X axis.
             AARandomValueDataComposer.configureChartOptions(chartType: .bar),             //A bar series is a special type of column series where the columns are horizontal.

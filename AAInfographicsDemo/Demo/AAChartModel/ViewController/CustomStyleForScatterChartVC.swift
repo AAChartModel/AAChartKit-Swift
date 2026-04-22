@@ -22,6 +22,7 @@ class CustomStyleForScatterChartVC: AABaseChartVC {
         switch selectedChartTypeStr {
         case "customScatterChartMarkerSymbolContent": return CustomStyleForScatterChartComposer.customScatterChartMarkerSymbolContent()
         case "drawLineMixedScatterChartWithPointsCoordinates2": return CustomStyleForScatterChartComposer.drawLineMixedScatterChartWithPointsCoordinates2()
+        case "ScatterChartWithScrollablePlotArea": return CustomStyleForScatterChartComposer.ScatterChartWithScrollablePlotArea()
             
         default: return nil
         }

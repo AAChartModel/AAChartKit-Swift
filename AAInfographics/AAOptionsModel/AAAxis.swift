@@ -49,7 +49,7 @@ public class AAAxis: AAObject {
     public var allowDecimals: Bool?
     public var alternateGridColor: Any?
     public var crosshair: AACrosshair? //Focus line style settings
-    public var title: AATitle?
+    public var title: AAAxisTitle?
     public var type: String?
     public var dateTimeLabelFormats: AADateTimeLabelFormats?
     public var plotBands: [AAPlotBandsElement]?
@@ -123,8 +123,29 @@ public class AAAxis: AAObject {
     }
     
     @discardableResult
-    public func title(_ prop: AATitle?) -> Self {
+    public func title(_ prop: AAAxisTitle?) -> Self {
         title = prop
+        return self
+    }
+    
+    // 为了保持向后兼容性，添加对 AATitle 的支持
+    // 同时添加方法废弃警告⚠️, 提示用户使用新的 AAAxisTitle 类型
+    @available(*, deprecated, message: "Use `public func title(_ prop: AAAxisTitle?) -> Self {...}` instead. AATitle is deprecated for axis titles.")
+    @discardableResult
+    public func title(_ prop: AATitle?) -> Self {
+        if let aaTitle = prop {
+            // 将 AATitle 转换为 AAAxisTitle
+            let axisTitle = AAAxisTitle()
+                .text(aaTitle.text)
+                .style(aaTitle.style)
+                .x(aaTitle.x)
+                .y(aaTitle.y)
+                .useHTML(aaTitle.useHTML)
+            
+            title = axisTitle
+        } else {
+            title = nil
+        }
         return self
     }
     

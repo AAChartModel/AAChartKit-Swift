@@ -32,7 +32,7 @@
 
 
 /// https://api.highcharts.com/highcharts/chart.animation
-public enum AAChartAnimationType: Int {
+public enum AAChartAnimationType: String {
     case linear
     case easeInQuad
     case easeOutQuad
@@ -517,8 +517,6 @@ public class AAChartModel: AAObject {
     public override init() {
         title                  = ""
         subtitle               = ""
-        animationType          = .linear
-        animationDuration      = 800 //In milliseconds
         chartType              = .line
         stacking               = AAChartStackingType.none
         zoomType               = AAChartZoomType.none //Disable gesture zoom by default

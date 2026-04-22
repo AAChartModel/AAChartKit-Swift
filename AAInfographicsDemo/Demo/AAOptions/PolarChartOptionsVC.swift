@@ -304,5 +304,93 @@ class PolarChartOptionsVC: AABaseChartVC {
         
         return aaOptions
     }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/555
+    static func configureCircularRadarChartWithDashedGridAndImageLabels() -> AAOptions {
+        // chart
+        let aaChart = AAChart()
+            .type(.area)
+            .polar(true)
+        
+        // title
+        let aaTitle = AATitle()
+            .text("圆形雷达图（x / y 双虚线网格 + 图片标签）")
+        
+        // pane
+        let aaPane = AAPane()
+            .size("80%")
+        
+        // xAxis with HTML image labels and dashed radial grid lines
+        let xLabelsFormatter = """
+        function () {
+            const imgMap = {
+                '苹果': 'https://cdn-icons-png.flaticon.com/512/415/415733.png',
+                '香蕉': 'https://cdn-icons-png.flaticon.com/512/415/415734.png',
+                '橙子': 'https://cdn-icons-png.flaticon.com/512/415/415732.png',
+                '冰棍': 'https://cdn-icons-png.flaticon.com/512/415/415739.png',
+                '棒棒糖': 'https://cdn-icons-png.flaticon.com/512/415/415736.png'
+            };
+            const imgURL = imgMap[this.value];
+            return `
+                <div style="text-align:center;">
+                    <img src="${imgURL}" style="width:28px;height:28px;"><br>
+                    <span style="font-size:11px;">${this.value}</span>
+                </div>
+            `;
+        }
+        """
+        
+        let aaXAxis = AAXAxis()
+            .categories(["苹果", "香蕉", "橙子", "冰棍", "棒棒糖"]) // categories
+            .tickmarkPlacement(.on) // tickmarkPlacement: 'on'
+            .lineWidth(0) // lineWidth: 0
+            .gridLineColor("#999") // gridLineColor: '#999'
+            .gridLineWidth(1) // gridLineWidth: 1
+            .gridLineDashStyle(.dash) // gridLineDashStyle: 'Dash'
+            .labels(AALabels()
+                .distance(15) // distance: 15
+                .useHTML(true) // useHTML: true
+                .formatter(xLabelsFormatter) // formatter: function () { ... }
+            )
+        
+        // yAxis with circular grid and dashed lines
+        let aaYAxis = AAYAxis()
+            .gridLineInterpolation("circle") // gridLineInterpolation: 'circle'
+            .gridLineDashStyle(.dash) // gridLineDashStyle: 'Dash'
+            .gridLineColor("#999")
+            .lineWidth(0)
+            .min(0)
+            .max(10)
+            .tickInterval(2)
+        
+        // tooltip
+        let aaTooltip = AATooltip()
+            .shared(true)
+            .pointFormat("<span style=\"color:{series.color}\">{series.name}: <b>{point.y}</b><br/>".aa_toPureHTMLString())
+        
+        // series
+        let series = [
+            AASeriesElement()
+                .name("水果甜食评分")
+                .data([8, 6, 7, 5, 9])
+                .pointPlacement("on") // pointPlacement: 'on'
+        ]
+        
+        // assemble options
+        let aaOptions = AAOptions()
+            .chart(aaChart)
+            .title(aaTitle)
+            .pane(aaPane)
+            .xAxis(aaXAxis)
+            .yAxis(aaYAxis)
+            .tooltip(aaTooltip)
+            .series(series)
+        
+        return aaOptions
+    }
+    
+    /**
+     
+     */
 
 }

@@ -42,6 +42,7 @@ class CustomStyleForScatterChartComposer {
     
     //https://github.com/AAChartModel/AAChartKit/issues/1294
     static func drawLineMixedScatterChartWithPointsCoordinates2() -> AAChartModel {
+        return ScatterChartWithScrollablePlotArea()
         AAChartModel()
             .chartType(.scatter)
             .title("Draw Line Chart With Points Coordinates")
@@ -75,4 +76,13 @@ class CustomStyleForScatterChartComposer {
                 ]
             }())
     }
+    
+    //https://github.com/AAChartModel/AAChartKit-Swift/issues/547
+    static func ScatterChartWithScrollablePlotArea() -> AAChartModel {
+        SpecialChartComposer.scatterChart()
+            .scrollablePlotArea(AAScrollablePlotArea() //可滚动的绘图区域
+                .minWidth(3000)
+                .scrollPositionX(1))
+    }
+
 }

@@ -150,6 +150,7 @@ extension UIImage {
 }
 
 // 自定义 Collection Cell，用于展示每个 emoji 动画
+@available(iOS 13.0, *)
 class EmojiAnimationCell: UICollectionViewCell {
     private(set) var aaChartView: AAChartView!
     private(set) var emoji: String = "😊" // 默认 emoji
@@ -305,6 +306,7 @@ class EmojiAnimationCell: UICollectionViewCell {
 }
 
 // 控制面板视图
+@available(iOS 13.0, *)
 class ControlPanelView: UIView {
     // 点数量滑块
     let pointCountSlider: UISlider = {
@@ -455,6 +457,7 @@ class ControlPanelView: UIView {
     }
 }
 
+@available(iOS 13.0, *)
 class EmojiParticleAnimationVC: UIViewController {
     private var collectionView: UICollectionView!
     private var controlPanel: ControlPanelView!
@@ -586,6 +589,7 @@ class EmojiParticleAnimationVC: UIViewController {
 }
 
 // MARK: - UICollectionViewDataSource
+@available(iOS 13.0, *)
 extension EmojiParticleAnimationVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return defaultEmojis.count
@@ -608,6 +612,7 @@ extension EmojiParticleAnimationVC: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegate
+@available(iOS 13.0, *)
 extension EmojiParticleAnimationVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // 点击时重新播放动画

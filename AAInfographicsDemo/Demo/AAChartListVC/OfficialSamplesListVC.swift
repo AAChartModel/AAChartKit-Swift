@@ -9,7 +9,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 10.0, macCatalyst 13.1, *)
+@available(iOS 14.0, macCatalyst 14.0, *)
 class OfficialSamplesListVC: AABaseListVC {
         
     override func viewDidLoad() {
@@ -69,10 +69,6 @@ class OfficialSamplesListVC: AABaseListVC {
         
         setUpMainTableView()
     }
-}
-
-@available(macCatalyst 13.1, *)
-extension OfficialSamplesListVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {

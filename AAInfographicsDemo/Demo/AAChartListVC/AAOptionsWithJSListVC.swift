@@ -9,7 +9,7 @@
 import UIKit
 import AAInfographics
 
-@available(iOS 10.0, macCatalyst 13.1, *)
+@available(iOS 14.0, macCatalyst 14.0, *)
 class AAOptionsWithJSListVC: AABaseListVC {
     
     override func viewDidLoad() {
@@ -122,7 +122,8 @@ class AAOptionsWithJSListVC: AABaseListVC {
                 "clockChart",
                 "synchronizedChart",
                 "sparklineChart",
-                    
+                "customXAxisLabelsWithBase64ImageChart",
+                "customXAxisLabelsWithBase64ImageChart2",
             ]
 
         ]
@@ -132,11 +133,6 @@ class AAOptionsWithJSListVC: AABaseListVC {
         
         setUpMainTableView()
     }
-    
-}
-
-@available(macCatalyst 13.1, *)
-extension AAOptionsWithJSListVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
