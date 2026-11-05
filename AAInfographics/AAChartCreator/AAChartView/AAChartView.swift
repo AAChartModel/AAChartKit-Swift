@@ -284,46 +284,10 @@ public class AAChartView: WKWebView {
     
 #if DEBUG
     private func printOptionsJSONInfo(_ aaOptions: AAOptions) {
-        // --- 数据量截断处理 ---
-        // 检查 series 是否为 [AASeriesElement] 类型且不为空
-        if var seriesElements = aaOptions.series as? [AASeriesElement], // Make mutable for potential truncation
-           !seriesElements.isEmpty {
+        let modelJsonDic = Self.optionsDictionaryForDebugLogging(aaOptions)
 
-            // 检查1 (先执行): series 数组本身元素个数是否超过 10
-            if seriesElements.count > 10 {
-                // 打印警告信息=>"💊 警告: 系列元素个数超过 10 个, 只打印前 10 个元素到控制台!!!"
-                print("💊 Warning: Series element count more than 10, only the first 10 elements will be displayed in the console!!!")
-                // 截取前 10 个 series 元素
-                seriesElements = Array(seriesElements.prefix(10))
-                // 更新 aaOptions.series 以便后续 JSON 序列化使用截断后的版本
-                // 注意：这会修改传入的 aaOptions 对象的状态，仅用于打印目的
-                aaOptions.series = seriesElements
-            }
-
-            // 检查2 (后执行): 对（可能已截断的）series 列表中的每个 series 的 data 数组元素个数进行检查
-            var didTruncateData = false
-            for seriesElement in seriesElements { // Iterate over the potentially truncated list
-                // 使用可选绑定确保 data 存在
-                if let data = seriesElement.data, data.count > 1000 {
-                    // 截取前 1000 个元素
-                    // 注意：这里直接修改了 seriesElement.data，仅影响后续的打印
-                    seriesElement.data = Array(data.prefix(1000))
-                    didTruncateData = true
-                }
-            }
-            // 如果进行了数据截断，打印警告信息=>"💊 警告: 数据数组元素个数超过 1000 个, 只打印前 1000 个数据元素到控制台!!!"
-            if didTruncateData {
-                print("💊 Warning: Data array element count more than 1000, only the first 1000 data elements will be displayed in the console!!!")
-            }
-        }
-
-        // --- JSON 打印 ---
-        // 将（可能因为数据过长已被截断的）aaOptions 转换为字典
-        let modelJsonDic = aaOptions.toDic()
         do {
-            // 尝试序列化为 JSON Data
             let jsonData = try JSONSerialization.data(withJSONObject: modelJsonDic, options: .prettyPrinted)
-            // 尝试将 JSON Data 转换为 UTF8 字符串，并安全解包
             if let prettyPrintedModelJson = String(data: jsonData, encoding: .utf8) {
                 print("""
                             -----------🖨🖨🖨 console log AAOptions JSON information of AAChartView 🖨🖨🖨-----------:
@@ -333,9 +297,36 @@ public class AAChartView: WKWebView {
                 print("⚠️ Warning: Could not convert JSON data to UTF8 string for logging.")
             }
         } catch {
-            // 捕获并打印序列化错误
             print("⚠️ Warning: Could not serialize AAOptions to JSON for logging: \(error)")
         }
+    }
+
+    internal static func optionsDictionaryForDebugLogging(_ aaOptions: AAOptions) -> [String: Any] {
+        var modelJsonDic = aaOptions.toDic()
+
+        // Truncate only the serialized copy; chart models may be reused by callers.
+        if let seriesElements = aaOptions.series as? [AASeriesElement],
+           !seriesElements.isEmpty {
+            if seriesElements.count > 10 {
+                print("💊 Warning: Series element count more than 10, only the first 10 elements will be displayed in the console!!!")
+            }
+
+            var seriesDictionaries = Array(seriesElements.prefix(10)).map { $0.toDic() }
+            var didTruncateData = false
+            for index in seriesDictionaries.indices {
+                if let data = seriesDictionaries[index]["data"] as? [Any], data.count > 1000 {
+                    seriesDictionaries[index]["data"] = Array(data.prefix(1000))
+                    didTruncateData = true
+                }
+            }
+
+            if didTruncateData {
+                print("💊 Warning: Data array element count more than 1000, only the first 1000 data elements will be displayed in the console!!!")
+            }
+            modelJsonDic["series"] = seriesDictionaries
+        }
+
+        return modelJsonDic
     }
 #endif
     

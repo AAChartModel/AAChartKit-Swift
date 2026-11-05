@@ -18,6 +18,11 @@ let package = Package(
             resources: [
                 .copy("AAJSFiles.bundle")
             ]
+        ),
+        .testTarget(
+            name: "AAInfographicsTests",
+            dependencies: ["AAInfographics"],
+            path: "Tests/AAInfographicsTests"
         )
     ]
 )
